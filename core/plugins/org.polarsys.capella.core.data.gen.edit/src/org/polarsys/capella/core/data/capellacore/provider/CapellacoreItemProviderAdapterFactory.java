@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.data.activity.AbstractAction;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.util.ActivitySwitch;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -618,7 +617,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 			@Override
 			public Object caseModelElement(ModelElement object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -645,7 +644,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 			@Override
 			public Object caseAbstractParameterSet(AbstractParameterSet object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -745,7 +744,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 			@Override
 			public Object caseAbstractAction(AbstractAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

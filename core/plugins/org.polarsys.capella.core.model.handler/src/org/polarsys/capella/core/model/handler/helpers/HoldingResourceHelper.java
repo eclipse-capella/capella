@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,25 +34,25 @@ public class HoldingResourceHelper {
 
   /**
    * Return the holding resource for the given domain, create one if no holding resource exists
-   * @param domain_p
+   * @param domain
    * @return
    */
-  public static Resource getHoldingResource(TransactionalEditingDomain domain_p) {
-    return getHoldingResource(domain_p, true);
+  public static Resource getHoldingResource(TransactionalEditingDomain domain) {
+    return getHoldingResource(domain, true);
   }
 
-  protected static Resource getHoldingResource(final TransactionalEditingDomain domain_p, boolean create_p) {
-    Resource hresource = domain_p.getResourceSet().getResource(uri, false);
+  protected static Resource getHoldingResource(final TransactionalEditingDomain domain, boolean create) {
+    Resource hresource = domain.getResourceSet().getResource(uri, false);
     if (hresource == null) {
-      ExecutionManagerRegistry.getInstance().getExecutionManager(domain_p).execute(new AbstractNonDirtyingCommand() {
+      ExecutionManagerRegistry.getInstance().getExecutionManager(domain).execute(new AbstractNonDirtyingCommand() {
         public void run() {
           HoldingResource resource = new HoldingResource(uri);
-          domain_p.getResourceSet().getResources().add(resource);
+          domain.getResourceSet().getResources().add(resource);
         }
       });
     }
 
-    hresource = domain_p.getResourceSet().getResource(uri, false);
+    hresource = domain.getResourceSet().getResource(uri, false);
     return hresource;
   }
 
@@ -61,11 +61,11 @@ public class HoldingResourceHelper {
   }
 
   /**
-   * Remove the holding resource and its content if a holding resource is registered on the given domain_p
-   * @param domain_p
+   * Remove the holding resource and its content if a holding resource is registered on the given domain
+   * @param domain
    */
-  public static void flushHoldingResource(TransactionalEditingDomain domain_p) {
-    Resource resource = getHoldingResource(domain_p, false);
+  public static void flushHoldingResource(TransactionalEditingDomain domain) {
+    Resource resource = getHoldingResource(domain, false);
     if (resource != null) {
       Collection<EObject> all = new HashSet<EObject>();
       Iterator<EObject> child = resource.getAllContents();
@@ -77,33 +77,37 @@ public class HoldingResourceHelper {
       }
       resource.getContents().clear();
       resource.unload();
-      domain_p.getResourceSet().getResources().remove(resource);
+      domain.getResourceSet().getResources().remove(resource);
     }
   }
 
   /**
-   * @param element_p
-   * @param resource_p
+   * @param element
+   * @param resource
    */
-  public static void attachToHoldingResource(EObject element_p, Resource resource_p) {
-    if (resource_p != null) {
-      resource_p.getContents().add(element_p);
+  public static void attachToHoldingResource(EObject element, Resource resource) {
+    if (resource != null) {
+      resource.getContents().add(element);
     }
   }
 
   /**
-   * @param trace_p
-   * @param linkSrc_p
+   * @param element
+   * @param newContainer
    */
-  public static void ensureMoveElement(EObject element_p, EObject newContainer_p) {
-    if ((newContainer_p != null) && (newContainer_p.eResource() != null) && (element_p != null) && (element_p.eResource() != null)) {
-      if (HoldingResourceHelper.isHoldByHoldingResource(element_p)) {
-        if (!HoldingResourceHelper.isHoldByHoldingResource(newContainer_p)) {
-          ((ResourceImpl) element_p.eResource()).getContents().remove(element_p);
-          ((ResourceImpl) newContainer_p.eResource()).attached(element_p);
+  public static void ensureMoveElement(EObject element, EObject newContainer) {
+    if ((newContainer != null) && (newContainer.eResource() != null) && (element != null) && (element.eResource() != null)) {
+      if (HoldingResourceHelper.isHoldByHoldingResource(element)) {
+        if (!HoldingResourceHelper.isHoldByHoldingResource(newContainer)) {
+          ((ResourceImpl) element.eResource()).getContents().remove(element);
+          ((ResourceImpl) newContainer.eResource()).attached(element);
+
+          // the elements of the sub-tree shall also be moved
+          for (EObject o : element.eContents()) {
+            ensureMoveElement(o, newContainer);
+          }
         }
       }
     }
   }
-
 }

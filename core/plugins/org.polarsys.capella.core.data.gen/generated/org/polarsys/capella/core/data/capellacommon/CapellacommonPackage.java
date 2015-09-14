@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/common/0.8.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/common/1.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -2221,15 +2221,15 @@ public interface CapellacommonPackage extends EPackage {
 	int ABSTRACT_STATE__REFERENCED_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE__AVAILABLE_IN_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+  int ABSTRACT_STATE__EXPLOITED_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2501,15 +2501,15 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE__REFERENCED_STATES = ABSTRACT_STATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__AVAILABLE_IN_STATES = ABSTRACT_STATE__AVAILABLE_IN_STATES;
+  int STATE__EXPLOITED_STATES = ABSTRACT_STATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2853,15 +2853,15 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__REFERENCED_STATES = STATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODE__AVAILABLE_IN_STATES = STATE__AVAILABLE_IN_STATES;
+  int MODE__EXPLOITED_STATES = STATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3205,15 +3205,15 @@ public interface CapellacommonPackage extends EPackage {
 	int FINAL_STATE__REFERENCED_STATES = STATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FINAL_STATE__AVAILABLE_IN_STATES = STATE__AVAILABLE_IN_STATES;
+  int FINAL_STATE__EXPLOITED_STATES = STATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3864,15 +3864,15 @@ public interface CapellacommonPackage extends EPackage {
 	int PSEUDOSTATE__REFERENCED_STATES = ABSTRACT_STATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PSEUDOSTATE__AVAILABLE_IN_STATES = ABSTRACT_STATE__AVAILABLE_IN_STATES;
+  int PSEUDOSTATE__EXPLOITED_STATES = ABSTRACT_STATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4144,15 +4144,15 @@ public interface CapellacommonPackage extends EPackage {
 	int INITIAL_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int INITIAL_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4424,15 +4424,15 @@ public interface CapellacommonPackage extends EPackage {
 	int JOIN_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int JOIN_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4704,15 +4704,15 @@ public interface CapellacommonPackage extends EPackage {
 	int FORK_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORK_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int FORK_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4984,15 +4984,15 @@ public interface CapellacommonPackage extends EPackage {
 	int CHOICE_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHOICE_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int CHOICE_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5264,15 +5264,15 @@ public interface CapellacommonPackage extends EPackage {
 	int TERMINATE_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINATE_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int TERMINATE_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6032,15 +6032,15 @@ public interface CapellacommonPackage extends EPackage {
 	int SHALLOW_HISTORY_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SHALLOW_HISTORY_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int SHALLOW_HISTORY_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6312,15 +6312,15 @@ public interface CapellacommonPackage extends EPackage {
 	int DEEP_HISTORY_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEEP_HISTORY_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int DEEP_HISTORY_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6592,15 +6592,15 @@ public interface CapellacommonPackage extends EPackage {
 	int ENTRY_POINT_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_POINT_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int ENTRY_POINT_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6872,15 +6872,15 @@ public interface CapellacommonPackage extends EPackage {
 	int EXIT_POINT_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXIT_POINT_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+  int EXIT_POINT_PSEUDO_STATE__EXPLOITED_STATES = PSEUDOSTATE__EXPLOITED_STATES;
 
-	/**
+  /**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7396,13 +7396,13 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_EVENT__ABSTRACT_TYPED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * The feature id for the '<em><b>Expression</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_EVENT__CONDITION = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int STATE_EVENT__EXPRESSION = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Owned State Event Realizations</b></em>' containment reference list.
@@ -7631,13 +7631,13 @@ public interface CapellacommonPackage extends EPackage {
 	int CHANGE_EVENT__ABSTRACT_TYPED_ELEMENTS = STATE_EVENT__ABSTRACT_TYPED_ELEMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * The feature id for the '<em><b>Expression</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_EVENT__CONDITION = STATE_EVENT__CONDITION;
+	int CHANGE_EVENT__EXPRESSION = STATE_EVENT__EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Owned State Event Realizations</b></em>' containment reference list.
@@ -7875,13 +7875,13 @@ public interface CapellacommonPackage extends EPackage {
 	int TIME_EVENT__ABSTRACT_TYPED_ELEMENTS = STATE_EVENT__ABSTRACT_TYPED_ELEMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * The feature id for the '<em><b>Expression</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_EVENT__CONDITION = STATE_EVENT__CONDITION;
+	int TIME_EVENT__EXPRESSION = STATE_EVENT__EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Owned State Event Realizations</b></em>' containment reference list.
@@ -7902,22 +7902,13 @@ public interface CapellacommonPackage extends EPackage {
 	int TIME_EVENT__KIND = STATE_EVENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_EVENT__TIME = STATE_EVENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Time Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_EVENT_FEATURE_COUNT = STATE_EVENT_FEATURE_COUNT + 2;
+	int TIME_EVENT_FEATURE_COUNT = STATE_EVENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.TransitionKind <em>Transition Kind</em>}' enum.
@@ -8651,15 +8642,15 @@ public interface CapellacommonPackage extends EPackage {
 	EClass getStateEvent();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateEvent#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateEvent#getExpression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Condition</em>'.
-	 * @see org.polarsys.capella.core.data.capellacommon.StateEvent#getCondition()
+	 * @return the meta object for the reference '<em>Expression</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEvent#getExpression()
 	 * @see #getStateEvent()
 	 * @generated
 	 */
-	EReference getStateEvent_Condition();
+	EReference getStateEvent_Expression();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.capellacommon.StateEvent#getOwnedStateEventRealizations <em>Owned State Event Realizations</em>}'.
@@ -8713,17 +8704,6 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTimeEvent_Kind();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getTime <em>Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Time</em>'.
-	 * @see org.polarsys.capella.core.data.capellacommon.TimeEvent#getTime()
-	 * @see #getTimeEvent()
-	 * @generated
-	 */
-	EAttribute getTimeEvent_Time();
 
 	/**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.capellacommon.TransitionKind <em>Transition Kind</em>}'.
@@ -9360,12 +9340,12 @@ public interface CapellacommonPackage extends EPackage {
 		EClass STATE_EVENT = eINSTANCE.getStateEvent();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Expression</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE_EVENT__CONDITION = eINSTANCE.getStateEvent_Condition();
+		EReference STATE_EVENT__EXPRESSION = eINSTANCE.getStateEvent_Expression();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned State Event Realizations</b></em>' containment reference list feature.
@@ -9410,14 +9390,6 @@ public interface CapellacommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TIME_EVENT__KIND = eINSTANCE.getTimeEvent_Kind();
-
-		/**
-		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TIME_EVENT__TIME = eINSTANCE.getTimeEvent_Time();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.TransitionKind <em>Transition Kind</em>}' enum.

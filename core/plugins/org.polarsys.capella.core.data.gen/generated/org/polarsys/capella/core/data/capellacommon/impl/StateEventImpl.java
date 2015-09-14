@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -47,7 +47,7 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl#getAbstractTypedElements <em>Abstract Typed Elements</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl#getOwnedStateEventRealizations <em>Owned State Event Realizations</em>}</li>
  * </ul>
  * </p>
@@ -57,14 +57,14 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 public abstract class StateEventImpl extends NamedElementImpl implements StateEvent {
 
 	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' reference.
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCondition()
+	 * @see #getExpression()
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint condition;
+	protected Constraint expression;
 
 
 
@@ -157,19 +157,18 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 	 * @generated
 	 */
 
-	public Constraint getCondition() {
+	public Constraint getExpression() {
 
-		if (condition != null && condition.eIsProxy()) {
-			InternalEObject oldCondition = (InternalEObject)condition;
-			condition = (Constraint)eResolveProxy(oldCondition);
-			if (condition != oldCondition) {
+		if (expression != null && expression.eIsProxy()) {
+			InternalEObject oldExpression = (InternalEObject)expression;
+			expression = (Constraint)eResolveProxy(oldExpression);
+			if (expression != oldExpression) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_EVENT__CONDITION, oldCondition, condition));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_EVENT__EXPRESSION, oldExpression, expression));
 			}
 		}
-		return condition;
+		return expression;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,12 +176,10 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 	 * @generated
 	 */
 
-	public Constraint basicGetCondition() {
+	public Constraint basicGetExpression() {
 
-		return condition;
+		return expression;
 	}
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,19 +187,14 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 	 * @generated
 	 */
 
-	public void setCondition(Constraint newCondition) {
+	public void setExpression(Constraint newExpression) {
 
-		Constraint oldCondition = condition;
-		condition = newCondition;
+		Constraint oldExpression = expression;
+		expression = newExpression;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_EVENT__CONDITION, oldCondition, condition));
+			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_EVENT__EXPRESSION, oldExpression, expression));
 
 	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -244,9 +236,9 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 		switch (featureID) {
 			case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS:
 				return getAbstractTypedElements();
-			case CapellacommonPackage.STATE_EVENT__CONDITION:
-				if (resolve) return getCondition();
-				return basicGetCondition();
+			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
+				if (resolve) return getExpression();
+				return basicGetExpression();
 			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
 				return getOwnedStateEventRealizations();
 		}
@@ -262,11 +254,11 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT__CONDITION:
+			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof Constraint) {
 				// end-extension-code
-					setCondition((Constraint)newValue);
+					setExpression((Constraint)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -288,8 +280,8 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CapellacommonPackage.STATE_EVENT__CONDITION:
-				setCondition((Constraint)null);
+			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
+				setExpression((Constraint)null);
 				return;
 			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
 				getOwnedStateEventRealizations().clear();
@@ -310,8 +302,8 @@ public abstract class StateEventImpl extends NamedElementImpl implements StateEv
 		switch (featureID) {
 			case CapellacommonPackage.STATE_EVENT__ABSTRACT_TYPED_ELEMENTS:
 				return !getAbstractTypedElements().isEmpty();
-			case CapellacommonPackage.STATE_EVENT__CONDITION:
-				return condition != null;
+			case CapellacommonPackage.STATE_EVENT__EXPRESSION:
+				return expression != null;
 			case CapellacommonPackage.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS:
 				return ownedStateEventRealizations != null && !ownedStateEventRealizations.isEmpty();
 		}

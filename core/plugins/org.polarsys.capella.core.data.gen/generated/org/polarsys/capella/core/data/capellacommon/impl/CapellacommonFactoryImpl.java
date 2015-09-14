@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 	 */
 	public static CapellacommonFactory init() {
 		try {
-			CapellacommonFactory theCapellacommonFactory = (CapellacommonFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/common/0.8.0"); //$NON-NLS-1$ 
+			CapellacommonFactory theCapellacommonFactory = (CapellacommonFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/common/1.0.0"); //$NON-NLS-1$ 
 			if (theCapellacommonFactory != null) {
 				return theCapellacommonFactory;
 			}

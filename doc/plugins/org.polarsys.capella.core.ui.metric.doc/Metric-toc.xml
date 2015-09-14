@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="Model Analysis" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#UI" >
+<topic label="Model Metrics">
+	<topic href="html/12. Model Analysis/12.3. Metrics Computation.html" label="Metrics Computation"></topic>
+	<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html" label="Progress Monitoring">
+		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#STEPS_FOR_CREATING_PROJECT-SPECIFIC_PROGRESS_STATUS" label="Steps For Creating Project-Specific Progress Status"></topic>
+		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#SETTING_PROGRESS_STATUS_ON_ELEMENTS" label="Setting Progress Status On Elements"></topic>
+		<topic href="html/12. Model Analysis/12.4. Progress Monitoring.html#VISUALIZATION_OF_PROGRESS_MONITORING_INFORMATION" label="Visualization Of Progress Monitoring Information"></topic>
+	</topic>
+</topic>
+</toc>

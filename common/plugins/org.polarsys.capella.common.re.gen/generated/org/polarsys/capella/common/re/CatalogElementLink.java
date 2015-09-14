@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.polarsys.capella.common.re;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 
@@ -27,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#getTarget <em>Target</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#getUnsynchronizedFeatures <em>Unsynchronized Features</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#isSuffixed <em>Suffixed</em>}</li>
  * </ul>
  * </p>
  *
@@ -175,6 +175,42 @@ public interface CatalogElementLink extends ReAbstractElement {
 	 */
 
 	EList<String> getUnsynchronizedFeatures();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Suffixed</b></em>' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Suffixed</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Suffixed</em>' attribute.
+	 * @see #setSuffixed(boolean)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElementLink_Suffixed()
+	 * @model
+	 * @generated
+	 */
+
+	boolean isSuffixed();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElementLink#isSuffixed <em>Suffixed</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Suffixed</em>' attribute.
+	 * @see #isSuffixed()
+	 * @generated
+	 */
+
+	void setSuffixed(boolean value);
 
 
 

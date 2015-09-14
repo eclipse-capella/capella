@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,7 @@ public class GenerateGenModelsTask implements ITaskProduction {
 			
 			public void setGenModelParameters(GenModel genModel_p) {
 				super.setGenModelParameters(genModel_p);
-				genModel_p.setCopyrightText(" Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n    Thales - initial API and implementation");
+				genModel_p.setCopyrightText(" Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n    Thales - initial API and implementation");
 				
 				//Add a customization for set melody extension (to be discussed)
 				if ("CapellaModeller".equals(genModel_p.getModelName())) {

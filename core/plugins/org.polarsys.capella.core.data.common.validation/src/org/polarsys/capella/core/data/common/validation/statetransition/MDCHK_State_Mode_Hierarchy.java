@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -33,57 +34,66 @@ public class MDCHK_State_Mode_Hierarchy extends AbstractModelConstraint {
   public MDCHK_State_Mode_Hierarchy() {
   }
 
+  public boolean isMixedHierarchyAllowed() {
+    return CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed();
+  }
+
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    State state = (State) ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    if (isMixedHierarchyAllowed())
+      return ctx.createSuccessStatus();
+
+    State state = (State) ctx.getTarget();
     if ((state instanceof Pseudostate) || (state instanceof FinalState)) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
 
     // check if state/mode has no mode/state as "brother"
     EList<Region> regions = state.getInvolverRegions();
     for (Region region : regions) {
       EList<AbstractState> ownedStates = region.getOwnedStates();
-      Collection<AbstractState> states = Collections2.filter(ownedStates, Utils.getPredicate(CapellacommonPackage.eINSTANCE.getState()));
-      Collection<AbstractState> modes = Collections2.filter(ownedStates, Utils.getPredicate(CapellacommonPackage.eINSTANCE.getMode()));
+      Collection<AbstractState> states = Collections2.filter(ownedStates,
+          Utils.getPredicate(CapellacommonPackage.eINSTANCE.getState()));
+      Collection<AbstractState> modes = Collections2.filter(ownedStates,
+          Utils.getPredicate(CapellacommonPackage.eINSTANCE.getMode()));
       if ((modes.size() != 0) && (states.size() != 0)) {
-        return createFailureStatus(ctx_p, state);
+        return createFailureStatus(ctx, state);
       }
     }
 
-    return checkStateHierarchy(ctx_p, state);
+    return checkStateHierarchy(ctx, state);
   }
 
   /**
-   * @param ctx_p
-   * @param state_p
+   * @param ctx
+   * @param state
    */
-  private IStatus createFailureStatus(IValidationContext ctx_p, State state_p) {
+  private IStatus createFailureStatus(IValidationContext ctx, State state) {
 
-    if (state_p instanceof Mode) {
-      return ctx_p.createFailureStatus(new Object[] { "Mode", state_p.getName(), "State" }); //$NON-NLS-1$ //$NON-NLS-2$
+    if (state instanceof Mode) {
+      return ctx.createFailureStatus(new Object[] { "Mode", state.getName(), "State" }); //$NON-NLS-1$ //$NON-NLS-2$
     }
-    return ctx_p.createFailureStatus(new Object[] { "State", state_p.getName(), "Mode" }); //$NON-NLS-1$//$NON-NLS-2$
+    return ctx.createFailureStatus(new Object[] { "State", state.getName(), "Mode" }); //$NON-NLS-1$//$NON-NLS-2$
   }
 
   /**
-   * @param ctx_p
-   * @param state_p
+   * @param ctx
+   * @param state
    * @param alreadyChecked
    * @return
    */
-  private IStatus checkStateHierarchy(IValidationContext ctx_p, State state_p) {
-    for (Region region : state_p.getOwnedRegions()) {
+  private IStatus checkStateHierarchy(IValidationContext ctx, State state) {
+    for (Region region : state.getOwnedRegions()) {
       for (AbstractState subState : region.getOwnedStates()) {
-        if ((subState instanceof Mode) && !(state_p instanceof Mode)) {
-          return createFailureStatus(ctx_p, state_p);
+        if ((subState instanceof Mode) && !(state instanceof Mode)) {
+          return createFailureStatus(ctx, state);
         }
-        if ((subState.eClass() == CapellacommonPackage.eINSTANCE.getState()) && (state_p instanceof Mode)) {
-          return createFailureStatus(ctx_p, state_p);
+        if ((subState.eClass() == CapellacommonPackage.eINSTANCE.getState()) && (state instanceof Mode)) {
+          return createFailureStatus(ctx, state);
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
 
   }
 }

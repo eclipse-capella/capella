@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,11 +49,11 @@ public class AttachmentActivity extends AbstractActivity {
    * {@inheritDoc}
    */
   @Override
-  protected IStatus _run(ActivityParameters activityParams_p) {
+  protected IStatus _run(ActivityParameters activityParams) {
 
-    IContext context = getContext(activityParams_p);
+    IContext context = getContext(activityParams);
 
-    initializeTraceabilityAttachmentHandler(context, activityParams_p);
+    initializeTraceabilityAttachmentHandler(context, activityParams);
 
     CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
     CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
@@ -74,14 +74,14 @@ public class AttachmentActivity extends AbstractActivity {
     if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value) || IReConstants.COMMAND__UPDATE_CURRENT_REPLICA_FROM_REPLICA.equals(value)
         || IReConstants.COMMAND__CREATE_REPLICABLE_ELEMENT.equals(value)) {
 
-      //We set unsynchronize features from values set in the wizard by the user
+      // We set unsynchronize features from values set in the wizard by the user
       for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(targetElement)) {
         storeUnsynchronizedFeatures(context, link, link, targetElement);
       }
 
       if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
 
-        //For all links of the replica, add a unsynchronizable on parent
+        // For all links of the replica, add a unsynchronizable on parent
         for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(sourceElement)) {
           storeUnsynchronizedFeatures(context, link.getOrigin(), link, targetElement);
         }
@@ -90,14 +90,14 @@ public class AttachmentActivity extends AbstractActivity {
 
     } else if (IReConstants.COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE.equals(value) || IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(value)) {
 
-      //We copy unsychronizedFeatures into RPL from its REC
+      // We copy unsychronizedFeatures into RPL from its REC
       for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(targetElement)) {
         storeUnsynchronizedFeatures(context, link, link.getOrigin(), targetElement);
       }
 
     }
 
-    //Update user-modified features
+    // Update user-modified features
     for (EObject custom : AttributesHandlerHelper.getInstance(context).getCustomNameElements(context)) {
       if (custom instanceof CatalogElementLink) {
         EObject target = ((CatalogElementLink) custom).getTarget();
@@ -128,9 +128,9 @@ public class AttachmentActivity extends AbstractActivity {
    * @param b_p
    * @param targetElement_p
    */
-  protected void updateElement(IContext context_p, EObject object_p, boolean b_p, CatalogElement targetElement_p) {
-    if (object_p instanceof CatalogElementLink) {
-      CatalogElementLink link = (CatalogElementLink) object_p;
+  protected void updateElement(IContext context, EObject object, boolean b, CatalogElement targetElement) {
+    if (object instanceof CatalogElementLink) {
+      CatalogElementLink link = (CatalogElementLink) object;
       EObject target = link.getTarget();
       if ((target != null) && (target instanceof CatalogElement)) {
         CatalogElement element = (CatalogElement) target;
@@ -138,7 +138,7 @@ public class AttachmentActivity extends AbstractActivity {
           if (element.getKind() == CatalogElementKind.RPL) {
             element.setKind(CatalogElementKind.REC_RPL);
           }
-          //maybe we should set also the kind for all element.subrpls
+          // maybe we should set also the kind for all element.subrpls
         }
       }
     }
@@ -150,19 +150,19 @@ public class AttachmentActivity extends AbstractActivity {
    * @param b_p
    * @param target_p
    */
-  protected void storeUnsynchronizedFeatures(IContext context_p, EObject link_p, EObject linkSuffixable_p, CatalogElement target_p) {
-    if (link_p instanceof CatalogElementLink) {
-      CatalogElementLink link = (CatalogElementLink) link_p;
+  protected void storeUnsynchronizedFeatures(IContext context, EObject link1, EObject linkSuffixable, CatalogElement target1) {
+    if (link1 instanceof CatalogElementLink) {
+      CatalogElementLink link = (CatalogElementLink) link1;
 
-      CatalogElementLink suffixLink = (CatalogElementLink) linkSuffixable_p;
+      CatalogElementLink suffixLink = (CatalogElementLink) linkSuffixable;
 
-      if (linkSuffixable_p == null) {
+      if (linkSuffixable == null) {
         return;
       }
-      EObject target = ((CatalogElementLink) linkSuffixable_p).getTarget();
+      EObject target = ((CatalogElementLink) linkSuffixable).getTarget();
       if (target != null) {
 
-        if (link_p != linkSuffixable_p) {
+        if (link1 != linkSuffixable) {
           for (String feature : new ArrayList<String>(link.getUnsynchronizedFeatures())) {
             if (!suffixLink.getUnsynchronizedFeatures().contains(feature)) {
               link.getUnsynchronizedFeatures().remove(feature);
@@ -174,13 +174,13 @@ public class AttachmentActivity extends AbstractActivity {
             }
           }
         }
-        if (AttributesHandlerHelper.getInstance(context_p).isSuffixable(target, context_p)) {
-          if (!(link.getUnsynchronizedFeatures().contains("name"))) {
-            link.getUnsynchronizedFeatures().add("name");
+        if (AttributesHandlerHelper.getInstance(context).isSuffixable(target, context)) {
+          if (!(link.isSuffixed())) {
+            link.setSuffixed(true);
           }
         } else {
-          if (link.getUnsynchronizedFeatures().contains("name")) {
-            link.getUnsynchronizedFeatures().remove("name");
+          if (link.isSuffixed()) {
+            link.setSuffixed(false);
           }
         }
 
@@ -195,21 +195,21 @@ public class AttachmentActivity extends AbstractActivity {
    * @param b_p
    * @param target_p
    */
-  protected void renameElement(IContext context_p, EObject object_p, boolean isSource, CatalogElement target_p) {
-    if (object_p instanceof CatalogElementLink) {
-      EObject target = ((CatalogElementLink) object_p).getTarget();
+  protected void renameElement(IContext context1, EObject object, boolean isSource, CatalogElement target1) {
+    if (object instanceof CatalogElementLink) {
+      EObject target = ((CatalogElementLink) object).getTarget();
       if (target == null) {
         return;
       }
-      if (!context_p.exists(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX)) {
+      if (!context1.exists(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX)) {
         return;
       }
 
-      String suffix = (String) context_p.get(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
-      if (((CatalogElementLink) object_p).getOrigin().getUnsynchronizedFeatures().contains("name")) {
+      String suffix = (String) context1.get(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
+      if (((CatalogElementLink) object).getOrigin().isSuffixed()) {
         EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
         String name = (String) target.eGet(feature);
-        //if (!((name != null) && name.endsWith(suffix))) {
+        // if (!((name != null) && name.endsWith(suffix))) {
         if (name != null) {
           target.eSet(feature, name + suffix);
         }
@@ -224,14 +224,14 @@ public class AttachmentActivity extends AbstractActivity {
    * @param activityParams_p
    * @return
    */
-  protected IStatus initializeTraceabilityAttachmentHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(IReConstants.TRACEABILITY_ATTACHMENT_HANDLER, activityParams_p);
+  protected IStatus initializeTraceabilityAttachmentHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(IReConstants.TRACEABILITY_ATTACHMENT_HANDLER, activityParams);
     if (handler == null) {
       handler = createDefaultTraceabilityTransformationHandler();
     }
-    context_p.put(IReConstants.TRACEABILITY_ATTACHMENT_HANDLER, handler);
-    context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, handler);
-    handler.init(context_p);
+    context.put(IReConstants.TRACEABILITY_ATTACHMENT_HANDLER, handler);
+    context.put(ITransitionConstants.TRACEABILITY_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
@@ -243,28 +243,28 @@ public class AttachmentActivity extends AbstractActivity {
     return new CompoundTraceabilityHandler(new MatchConfiguration());
   }
 
-  public void attachContainment(IContext context_p, EObject source_p, boolean isSource, CatalogElement element_p) {
+  public void attachContainment(IContext context, EObject source1, boolean isSource, CatalogElement element) {
 
-    CatalogElementLink link = (CatalogElementLink) source_p;
+    CatalogElementLink link = (CatalogElementLink) source1;
 
-    //Don't attach an invalid link
+    // Don't attach an invalid link
     if ((link == null) || (link.getTarget() == null)) {
       return;
     }
-    //Don't move such element, element must not be copied, and so on, not moved from its original location
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.UNMERGEABLE_ELEMENTS, link.getTarget(), context_p)) {
+    // Don't move such element, element must not be copied, and so on, not moved from its original location
+    if (ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.UNMERGEABLE_ELEMENTS, link.getTarget(), context)) {
       return;
     }
-    //If the target is already attached somewhere, we don't wan't to move it!
+    // If the target is already attached somewhere, we don't wan't to move it!
     if ((link.getTarget() != null) && (link.getTarget().eContainer() != null)) {
       return;
     }
 
     Role destinationRole = isSource ? Role.REFERENCE : Role.TARGET;
     Role oppositeRole = !isSource ? Role.REFERENCE : Role.TARGET;
-    ExtendedComparison comparison = (ExtendedComparison) context_p.get(ITransitionConstants.MERGE_COMPARISON);
+    ExtendedComparison comparison = (ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
 
-    EObject targetElement = ((CatalogElementLink) source_p).getTarget();
+    EObject targetElement = ((CatalogElementLink) source1).getTarget();
     IMatch match = comparison.getMapping().getMatchFor(targetElement, destinationRole);
 
     if (match == null) {
@@ -273,17 +273,17 @@ public class AttachmentActivity extends AbstractActivity {
     EObject source = match.get(oppositeRole);
     EObject target = match.get(destinationRole);
 
-    CatalogElementLink oppositeLink = ReplicableElementHandlerHelper.getInstance(context_p).getOppositeLink(link, context_p);
+    CatalogElementLink oppositeLink = ReplicableElementHandlerHelper.getInstance(context).getOppositeLink(link, context);
 
-    //For a REC to RPL, all location have been set as current after the first wizard. location should not be null for these modes.
-    EObject location = LocationHandlerHelper.getInstance(context_p).getCurrentLocation(link, context_p);
+    // For a REC to RPL, all location have been set as current after the first wizard. location should not be null for these modes.
+    EObject location = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
     if (location == null) {
-      //For a RPL to REC, we can go in that case.
-      //When an element have been added from the RPL to the REC. There is no wizard to set the location (sic)
-      //but since we have a new element created, we need to store it somewhere...
-      location = LocationHandlerHelper.getInstance(context_p).getLocation(link, oppositeLink, context_p);
+      // For a RPL to REC, we can go in that case.
+      // When an element have been added from the RPL to the REC. There is no wizard to set the location (sic)
+      // but since we have a new element created, we need to store it somewhere...
+      location = LocationHandlerHelper.getInstance(context).getLocation(link, oppositeLink, context);
       if (location == null) {
-        location = LocationHandlerHelper.getInstance(context_p).getDefaultLocation(link, oppositeLink, context_p);
+        location = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, oppositeLink, context);
       }
     }
 
@@ -296,17 +296,17 @@ public class AttachmentActivity extends AbstractActivity {
         if (match2 != null) {
           location = match2.get(destinationRole);
         } else {
-          //No match, location is not in the scope of the diffmerge.
-          //This can occurs when instanciating sub replicas: a sub replica's element can be located inside 
-          //a super replica's element which is not present in the scope at the time where instanciating the sub replica.
-          //It will be stored when re-updating the super-replica.
+          // No match, location is not in the scope of the diffmerge.
+          // This can occurs when instanciating sub replicas: a sub replica's element can be located inside
+          // a super replica's element which is not present in the scope at the time where instanciating the sub replica.
+          // It will be stored when re-updating the super-replica.
         }
       }
     }
 
     if (location != null) {
-      EStructuralFeature feature = LocationHandlerHelper.getInstance(context_p).getFeature(source, target, location, context_p);
-      attachElement(context_p, target, location, feature);
+      EStructuralFeature feature = LocationHandlerHelper.getInstance(context).getFeature(source, target, location, context);
+      attachElement(context, target, location, feature);
     }
 
   }
@@ -316,11 +316,11 @@ public class AttachmentActivity extends AbstractActivity {
    * @param currentLocation_p
    * @return
    */
-  protected boolean attachElement(IContext context_p, EObject source_p, EObject container, EStructuralFeature feature) {
+  protected boolean attachElement(IContext context, EObject source, EObject container, EStructuralFeature feature) {
 
     if ((container != null) && (feature != null)) {
-      if (AttachmentHelper.getInstance(context_p).isApplicable(container.eClass(), feature)) {
-        AttachmentHelper.getInstance(context_p).attachElementByReference(container, source_p, (EReference) feature);
+      if (AttachmentHelper.getInstance(context).isApplicable(container.eClass(), feature)) {
+        AttachmentHelper.getInstance(context).attachElementByReference(container, source, (EReference) feature);
         return true;
       }
     }

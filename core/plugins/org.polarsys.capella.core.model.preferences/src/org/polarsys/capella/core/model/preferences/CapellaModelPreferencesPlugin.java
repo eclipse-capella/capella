@@ -214,4 +214,9 @@ public class CapellaModelPreferencesPlugin extends Plugin {
     return AbstractPreferencesInitializer.getBoolean(
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH, true);
   }
+
+  public boolean isMixedModeStateAllowed() {
+    return AbstractPreferencesInitializer.getBoolean(IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED,
+        true);
+  }
 }

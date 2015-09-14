@@ -1,0 +1,20 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+org.polarsys.capella.core.ui.properties.doc/html/*/Images
+
+4.06. Properties View_html_2468c0f3.png
+4.06. Properties View_html_2939276.png
+4.06. Properties View_html_3563deb8.png
+4.06. Properties View_html_35d5a95e.png
+4.06. Properties View_html_3a2738b6.png
+4.06. Properties View_html_598f5164.png
+4.06. Properties View_html_685fadcb.png
+4.06. Properties View_html_6e4a98ee.png
+4.06. Properties View_html_82fa288.png
+4.06. Properties View_html_m602830a9.png
+4.06. Properties View_html_m6b8df94e.png
+warning.png

@@ -5377,7 +5377,7 @@ public class CsServices {
           }
           result += name;
           if (trigger instanceof StateEvent) {
-            Constraint triggerCondition = ((StateEvent) trigger).getCondition();
+            Constraint triggerCondition = ((StateEvent) trigger).getExpression();
             if (triggerCondition != null) {
               result += CapellaServices.getService().getConstraintLabel(triggerCondition);
             } else {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,8 +29,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
@@ -139,6 +139,7 @@ public class CatalogElementLinkItemProvider extends
 			addTargetPropertyDescriptor(object);
 			addOriginPropertyDescriptor(object);
 			addUnsynchronizedFeaturesPropertyDescriptor(object);
+			addSuffixedPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -252,6 +253,34 @@ public class CatalogElementLinkItemProvider extends
 	}
 
 	/**
+	 * This adds a property descriptor for the Suffixed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuffixedPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElementLink_suffixed_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_suffixed_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT_LINK__SUFFIXED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+
+	/**
 	 * This returns CatalogElementLink.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,6 +328,7 @@ public class CatalogElementLinkItemProvider extends
 
 		switch (notification.getFeatureID(CatalogElementLink.class)) {
 			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
+			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -731,14 +731,14 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIState_AvailableInStates() {
+  public EReference getIState_ExploitedStates() {
 		return (EReference)iStateEClass.getEStructuralFeatures().get(1);
 	}
 
-	/**
+  /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -854,7 +854,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 		iStateEClass = createEClass(ISTATE);
 		createEReference(iStateEClass, ISTATE__REFERENCED_STATES);
-		createEReference(iStateEClass, ISTATE__AVAILABLE_IN_STATES);
+		createEReference(iStateEClass, ISTATE__EXPLOITED_STATES);
 
 		// Create enums
 		parameterEffectKindEEnum = createEEnum(PARAMETER_EFFECT_KIND);
@@ -990,7 +990,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 		initEClass(iStateEClass, IState.class, "IState", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getIState_ReferencedStates(), this.getIState(), null, "referencedStates", null, 0, -1, IState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getIState_AvailableInStates(), this.getIState(), null, "availableInStates", null, 0, -1, IState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getIState_ExploitedStates(), this.getIState(), null, "exploitedStates", null, 0, -1, IState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(parameterEffectKindEEnum, ParameterEffectKind.class, "ParameterEffectKind"); //$NON-NLS-1$
@@ -1725,7 +1725,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getIState_AvailableInStates(), 
+		  (getIState_ExploitedStates(), 
 		   source, 
 		   new String[] {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
@@ -1851,7 +1851,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   new String[] {
 		   });				
 		addAnnotation
-		  (getIState_AvailableInStates(), 
+		  (getIState_ExploitedStates(), 
 		   source, 
 		   new String[] {
 		   });
@@ -2434,7 +2434,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getIState_AvailableInStates(), 
+		  (getIState_ExploitedStates(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$

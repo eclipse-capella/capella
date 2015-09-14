@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="Model Analysis" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" >
+	<topic href="html/12. Model Analysis/12.1. Model Validation.html" label="Model Validation">
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#TOPOLOGY_OF_VALIDATION_RULES" label="Topology Of Validation Rules">
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Structural_conformance_to_core_model" label="Structural conformance to core model"></topic>
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Integrity" label="Integrity"></topic>
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Quality" label="Quality"></topic>
+			<topic href="html/12. Model Analysis/12.1. Model Validation.html#Design" label="Design"></topic>
+		</topic>
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#USAGE_AND_VALIDATION_SCOPES" label="Usage And Validation Scopes"></topic>
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#VALIDATION_RESULTS" label="Validation Results"></topic>
+		<topic href="html/12. Model Analysis/12.1. Model Validation.html#EXAMPLE_OF_QUICK_FIX" label="Example Of Quick Fix"></topic>
+	</topic>
+</toc>

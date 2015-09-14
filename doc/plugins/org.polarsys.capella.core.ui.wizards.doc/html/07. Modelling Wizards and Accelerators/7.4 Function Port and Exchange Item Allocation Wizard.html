@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td><img height="34" width="34" border="0"
+				src="Images/warning.png" /></td>
+			<td>Warning: The Capella User Manual is currently being
+				refactored. This page might contain obsolete diagram look and feel /
+				user interface screenshots / references to Melody Advance, the
+				ancestor of Capella.</td>
+		</tr>
+	</table>
+	<h1 id="Function_Port_and_Exchange_Item_Allocation_Wizard">Function
+		Port and Exchange Item Allocation Wizard</h1>
+	<h2 id="PRINCIPLES">PRINCIPLES</h2>
+	<p>Capella Function Port and EI Allocation tool provides means
+		manage Function / Port / Exchange Item traceability and allocations
+		between two engineering phases.</p>
+	<p>With this tool a user can perform Exchange item allocation from
+		one or several functions located in the source engineering phase to
+		other functions in the following engineering phase, by launching a
+		dedicated wizard via the &ldquo;Function Port and EI Traceability
+		Wizard&rdquo; command of the contextual menu (see the following
+		figure).</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<img height="407" width="470" border="0"
+			src="Images/7.4%20Function%20Port%20and%20Exchange%20Item%20Allocation%20Wizard_html_5cde59bb.png" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<h2 id="Source_Engineering_Phase_.28SEP.29">Source Engineering
+		Phase (SEP)</h2>
+	<p>The left pane of the following wizard represent all elements to
+		be refined / enriched between the source architecture (SEP) and the
+		target Architecture (TEP).</p>
+	<p>
+		<img height="296" width="314" border="0"
+			src="Images/7.4%20Function%20Port%20and%20Exchange%20Item%20Allocation%20Wizard_html_md5d81bf.png" />
+	</p>
+	<p>In the above figure, the Function &ldquo;LogicalFunction
+		1&rdquo; has one Port &ldquo;FOP1&rdquo; which exposes the Exchange
+		Item &ldquo;ExchangeItem1&rdquo;.</p>
+	<p>
+		<br />
+	</p>
+	<h3 id="Target_Engineering_Phase_.28TEP.29">Target Engineering
+		Phase (TEP)</h3>
+	<p>The right pane contains all the TEP elements contributing to the
+		realization of the SEP elements.</p>
+	<p>
+		<img height="294" width="348" border="0"
+			src="Images/7.4%20Function%20Port%20and%20Exchange%20Item%20Allocation%20Wizard_html_m7cfae2ea.png" />
+	</p>
+	<p>In the above figure, the Function &ldquo;PhysicalFunction
+		1&rdquo; gets a new Exchange Item provided by &ldquo;LogicalFunction
+		1&rdquo;.</p>
+	<p>
+		<br />
+	</p>
+	<h3 id="Features">Features</h3>
+	<ul>
+		<li>All displayed SEP Functions without one traceability link
+			coming from the TEP is shown to user with RED color.</li>
+		<li>All displayed SEP Ports without one traceability link coming
+			from the TEP is shown to user with RED color.</li>
+		<li>When an Exchange Item allocated to one Port FP located in the
+			SEP is not allocated to at least one of the port realization in the
+			TEP, the Exchange Item line will be displayed with red color in the
+			left pane.</li>
+		<li>When a Function or Function Port is selected in the left
+			pane, the tracing elements in the right pane are highlighted.</li>
+		<li>A user can drag and drop all displayed Exchange Items from
+			left to right or from right to left pane.</li>
+		<li>When performing drag and drop of Exchange Item allocations
+			from a SEP Port to a TEP Port, a traceability link between the two
+			Ports is created automatically if it does not exist yet</li>
+		<li>All elements displayed in the wizard can be shown in Capella
+			Explorer or Semantic Browser by using a contextual menu &ldquo; Show
+			in Capella Explorer&rdquo;</li>
+	</ul>
+	<h3 id="Creation_of_elements_in_the_TEP_.28Right_pane_of_the_wizard.29">Creation
+		of elements in the TEP (Right pane of the wizard)</h3>
+	<ul>
+		<li><b>Elements creation or modification</b></li>
+		<li><b>Creation of Traceability link</b></li>
+		<li>Elements creation or modification
+			<ul>
+				<li>The wizard provides a button to create a new Function under
+					an existing one.</li>
+				<li>User can rename directly a source or target element in the
+					wizard.</li>
+				<li>The wizard provides a contextual menu to create a new Input
+					Port under an existing Function (see the following figure).</li>
+				<li>The wizard provides a contextual menu to create a new
+					output Port under an existing Function (see the following figure).</li>
+				<li>By using a contextual menu, the user can delete a Function
+					or create a new Function under an existing one.</li>
+			</ul>
+		</li>
+		<li>Creation of Traceability link
+			<ul>
+				<li>The wizard provides mean to manually create traceability
+					between Functions in SEP and TEP.</li>
+				<li>The wizard provides mean to manually create 1-N and N-1
+					traceability link between Functions in SEP and TEP.</li>
+				<li>User can create a traceability link between selected
+					elements by using two contextual menu commands : “Start link” and
+					“Make link”:
+					<ul>
+						<li>User can create a multiple link from TEP to SEP by
+							selecting all source and target elements and using a contextual
+							menu “start link”.<br /> <img height="253" width="276"
+							border="0"
+							src="Images/7.4%20Function%20Port%20and%20Exchange%20Item%20Allocation%20Wizard_html_d1af40e.png" />
+						</li>
+						<li>To create a multiple new links between TEP and SEP, user
+							have to make the following operations :
+							<ul>
+								<li>First, user must select one or more elements from the
+									TEP and using the menu entry “Start Link”.</li>
+								<li>Then user can select one or more elements from SEP and
+									select the menu entry “make link” to create one or more link
+									towards others elements of the TEP <br /> <img height="262"
+									width="276" border="0"
+									src="Images/7.4%20Function%20Port%20and%20Exchange%20Item%20Allocation%20Wizard_html_m7817c5f8.png" />
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>
+		<br />
+	</p>
+	<h3 id="Validation_Rules_and_Resolutions">Validation Rules and
+		Resolutions</h3>
+	<p>
+		<br />
+	</p>
+	<table border="1">
+		<tr>
+			<td><b>Constraint ID</b></td>
+			<td><b>Model Validation</b></td>
+			<td><b>Applied to source</b></td>
+			<td><b>Applied to target</b></td>
+			<td><b>Quick Fix</b></td>
+			<td><b>Rule Description</b></td>
+		</tr>
+		<tr>
+			<td><b>TC_DF_02</b></td>
+			<td>Y</td>
+			<td>--</td>
+			<td>--</td>
+			<td>Y</td>
+			<td>When a realization link exists between System Function Port
+				and Logical Function Port, another realization link should exist
+				between System Function and Logical Function.</td>
+		</tr>
+		<tr>
+			<td><b>TC_DF_10</b></td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>N</td>
+			<td>Y</td>
+			<td>Every System Function Port must be realized by at least one
+				Logical Function Port.</td>
+		</tr>
+		<tr>
+			<td><b>TC_DF_11 &amp; TC_DF_12</b></td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>When an Exchange Item is allocated to a System Function Port
+				and a Logical Function Port, with an existing realization link
+				between System Function and Logical Function, another realization
+				link between System Function Port and Logical Function Port must
+				exist.</td>
+		</tr>
+		<tr>
+			<td><b>TC_DF_13</b></td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>If a realization link between a System Function Port (SFP)
+				and a Logical Function Port (LFP) exists, it shall exist at least
+				one System Analysis Exchange Item allocated by SFP who is realized
+				by a Logical Analysis Exchange Item allocated by LFP.</td>
+		</tr>
+		<tr>
+			<td><b>TC_DF_14</b></td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>Y</td>
+			<td>If a realization link between a System Function Port and a
+				Logical Function Port exist, then the System Function shall be
+				realized by the Logical Function.</td>
+		</tr>
+	</table>
+	<p>
+		<br />
+	</p>
+</body>
+</html>

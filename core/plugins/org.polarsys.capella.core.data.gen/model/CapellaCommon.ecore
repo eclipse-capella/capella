@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capellacommon" nsURI="http://www.polarsys.org/capella/core/common/0.8.0"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capellacommon" nsURI="http://www.polarsys.org/capella/core/common/1.0.0"
     nsPrefix="org.polarsys.capella.core.data.capellacommon">
   <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
     <details key="profileName" value="Capella"/>
@@ -376,6 +376,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="Multiplicity must be [0..1]"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="doActivity" eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractEvent">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
@@ -401,6 +402,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="Multiplicity must be [0..1]"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateInvariant" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint"
         containment="true">
@@ -1069,7 +1071,7 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="ecore:EClass CapellaCore.ecore#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass CapellaCore.ecore#//Constraint">
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="uml::ChangeEvent::changeExpression if current element is a ChangeEvent&#xD;&#xA;uml::TimeEvent::when if current element is a TimeEvent&#xD;&#xA;"/>
         <details key="base metaclass in UML/SysML profile " value="uml::ChangeEvent and uml::TimeEvent&#xD;&#xA;"/>
@@ -1149,20 +1151,6 @@
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::isRelative"/>
         <details key="explanation" value="A relative time trigger is specified with the keyword ‘after’ followed by an expression that evaluates to a time value, such&#xD;&#xA;as “after (5 seconds).” An absolute time trigger is specified with the keyword ‘at’ followed by an expression that&#xD;&#xA;evaluates to a time value, such as “Jan. 1, 2000, Noon.&quot;"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Specifies the corresponding time deadline&#xD;&#xA;[source: UML superstructure v2.4]&#xD;&#xA;"/>
-        <details key="constraints" value="none"/>
-        <details key="type" value="a string-based time value "/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::when"/>
-        <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>

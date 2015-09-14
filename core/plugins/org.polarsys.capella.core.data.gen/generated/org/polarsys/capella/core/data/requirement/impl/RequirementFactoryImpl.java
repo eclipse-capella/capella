@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 */
 	public static RequirementFactory init() {
 		try {
-			RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/requirement/0.8.0"); //$NON-NLS-1$ 
+			RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/requirement/1.0.0"); //$NON-NLS-1$ 
 			if (theRequirementFactory != null) {
 				return theRequirementFactory;
 			}

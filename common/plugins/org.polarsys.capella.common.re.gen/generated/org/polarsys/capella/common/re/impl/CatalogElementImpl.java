@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ import org.polarsys.capella.common.re.RePackage;
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getSuffix <em>Suffix</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getPurpose <em>Purpose</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getOrigin <em>Origin</em>}</li>
@@ -149,6 +150,34 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
+	 * The default value of the '{@link #getSuffix() <em>Suffix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see #getSuffix()
+	 * @generated
+	 * @ordered
+	 */
+  protected static final String SUFFIX_EDEFAULT = null;
+
+
+
+
+
+  /**
+	 * The cached value of the '{@link #getSuffix() <em>Suffix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see #getSuffix()
+	 * @generated
+	 * @ordered
+	 */
+  protected String suffix = SUFFIX_EDEFAULT;
+
+
+
+
+
+  /**
 	 * The default value of the '{@link #getPurpose() <em>Purpose</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -385,6 +414,32 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+  public String getSuffix() {
+
+		return suffix;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+  public void setSuffix(String newSuffix) {
+
+		String oldSuffix = suffix;
+		suffix = newSuffix;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__SUFFIX, oldSuffix, suffix));
+
+	}
+
+  /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -721,6 +776,8 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return getAuthor();
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
 				return getEnvironment();
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				return getSuffix();
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 				return getPurpose();
 			case RePackage.CATALOG_ELEMENT__TAGS:
@@ -780,6 +837,15 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				if (newValue == null || newValue instanceof String) {
 				// end-extension-code
 					setEnvironment((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setSuffix((String)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -853,6 +919,9 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
 				setEnvironment(ENVIRONMENT_EDEFAULT);
 				return;
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				setSuffix(SUFFIX_EDEFAULT);
+				return;
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 				setPurpose(PURPOSE_EDEFAULT);
 				return;
@@ -893,6 +962,8 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return AUTHOR_EDEFAULT == null ? author != null : !AUTHOR_EDEFAULT.equals(author);
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
 				return ENVIRONMENT_EDEFAULT == null ? environment != null : !ENVIRONMENT_EDEFAULT.equals(environment);
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				return SUFFIX_EDEFAULT == null ? suffix != null : !SUFFIX_EDEFAULT.equals(suffix);
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 				return PURPOSE_EDEFAULT == null ? purpose != null : !PURPOSE_EDEFAULT.equals(purpose);
 			case RePackage.CATALOG_ELEMENT__TAGS:
@@ -962,6 +1033,8 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 		result.append(author);
 		result.append(", environment: "); //$NON-NLS-1$
 		result.append(environment);
+		result.append(", suffix: "); //$NON-NLS-1$
+		result.append(suffix);
 		result.append(", purpose: "); //$NON-NLS-1$
 		result.append(purpose);
 		result.append(", tags: "); //$NON-NLS-1$

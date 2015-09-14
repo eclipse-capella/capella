@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -27,34 +26,46 @@ public class TraceabilityConfiguration implements ITraceabilityConfiguration {
 
   private List<ITraceabilityHandler> _handlers;
 
-  protected String getIdentifier(IContext context_p) {
+  protected String getIdentifier(IContext context) {
     return getClass().getSimpleName();
   }
 
-  protected void addHandler(IContext fContext_p, ITraceabilityHandler handler_p) {
-    getDefinedHandlers(fContext_p).add(handler_p);
-    handler_p.init(fContext_p);
+  protected void addHandler(IContext fContext, ITraceabilityHandler handler) {
+    getDefinedHandlers(fContext).add(handler);
+    handler.init(fContext);
   }
 
-  protected void initHandlers(final IContext fContext_p) {
-    //Nothing here
+  /**
+   * Retrieve the traceability handler matching the given class
+   */
+  public ITraceabilityHandler getDefinedHandler(IContext context, Class clazz) {
+    for (ITraceabilityHandler handler : getDefinedHandlers(context)) {
+      if (clazz.isInstance(handler)) {
+        return handler;
+      }
+    }
+    return null;
+  }
+
+  protected void initHandlers(final IContext fContext) {
+    // Nothing here
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
-    initHandlers(context_p);
+  public IStatus init(IContext context) {
+    initHandlers(context);
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     if (_handlers != null) {
       for (ITraceabilityHandler handler : _handlers) {
-        handler.dispose(context_p);
+        handler.dispose(context);
       }
       _handlers.clear();
       _handlers = null;
@@ -65,7 +76,7 @@ public class TraceabilityConfiguration implements ITraceabilityConfiguration {
   /**
    * {@inheritDoc}
    */
-  public List<ITraceabilityHandler> getDefinedHandlers(IContext context_p) {
+  public List<ITraceabilityHandler> getDefinedHandlers(IContext context) {
     if (_handlers == null) {
       _handlers = new LinkedList<ITraceabilityHandler>();
     }
@@ -75,21 +86,21 @@ public class TraceabilityConfiguration implements ITraceabilityConfiguration {
   /**
    * {@inheritDoc}
    */
-  public boolean useHandlerForAttachment(EObject source_p, EObject target_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForAttachment(EObject source, EObject target, ITraceabilityHandler handler, IContext context) {
     return true;
   }
 
   /**
    * {@inheritDoc}
    */
-  public boolean useHandlerForTracedElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForTracedElements(EObject source, ITraceabilityHandler handler, IContext context) {
     return true;
   }
 
   /**
    * {@inheritDoc}
    */
-  public boolean useHandlerForSourceElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForSourceElements(EObject source, ITraceabilityHandler handler, IContext context) {
     return true;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,23 +38,23 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     // pre-condition: call contributed filters
-    if (filterNotification(notification_p)) {
+    if (filterNotification(notification)) {
       return;
     }
 
     // pre-condition: only SET notifications are wanted
-    if ((notification_p.getEventType() != Notification.SET) && (notification_p.getEventType() != Notification.ADD)) {
+    if ((notification.getEventType() != Notification.SET) && (notification.getEventType() != Notification.ADD)) {
       return;
     }
 
-    EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
+    EStructuralFeature feature = (EStructuralFeature) notification.getFeature();
     if (feature != null) {
-      if (notification_p.getEventType() == Notification.SET
+      if (notification.getEventType() == Notification.SET
           && (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__EXCHANGE_MECHANISM) || (feature
               .equals(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__KIND)))) {
-        Object notifier = notification_p.getNotifier();
+        Object notifier = notification.getNotifier();
         if (notifier instanceof ExchangeItem) {
           final ExchangeItem item = (ExchangeItem) notifier;
           executeCommand(item, new AbstractReadWriteCommand() {
@@ -77,19 +77,21 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
 
             @Override
             public void run() {
-              ExchangeItemElementExt.changeExchangeItemElementKind(eie);
+              if (eie.eContainer() != null)
+                ExchangeItemElementExt.changeExchangeItemElementDirection(eie,
+                    ((ExchangeItem) eie.eContainer()).getExchangeMechanism());
             }
 
           });
 
         }
 
-      } else if ((notification_p.getEventType() == Notification.ADD && feature
+      } else if ((notification.getEventType() == Notification.ADD && feature
           .equals(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_ELEMENTS))) {
-        Object notifier = notification_p.getNotifier();
+        Object notifier = notification.getNotifier();
         if (notifier instanceof ExchangeItem) {
           final ExchangeItem item = (ExchangeItem) notifier;
-          final Object newValue = notification_p.getNewValue();
+          final Object newValue = notification.getNewValue();
           if (null != newValue && newValue instanceof ExchangeItemElement) {
             executeCommand(item, new AbstractReadWriteCommand() {
               @Override

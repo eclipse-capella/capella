@@ -1,0 +1,48 @@
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+{| border="1"
+|-
+| [[Image:Images/warning.png|34x34px]]
+| Warning: The Capella User Manual is currently being refactored. This page might contain obsolete diagram look and feel / user interface screenshots / references to Melody Advance, the ancestor of Capella.
+|}
+  
+= TYPOLOGY OF Capella DIAGRAMS =
+ 
+== CLASS DIAGRAMS ==
+ 
+[[Image:Images/5.4.%20Typologie%20of%20Capella%20Diagrams_html_479f9bb0.png|392x234px]]
+
+== STATE AND MODE DIAGRAMS ==
+ 
+[[Image:Images/5.4.%20Typologie%20of%20Capella%20Diagrams_html_m4bdfca4a.png|354x259px]]
+
+== BREAKDOWN DIAGRAMS ==
+ 
+[[Image:Images/5.4.%20Typologie%20of%20Capella%20Diagrams_html_m58700682.png|582x202px]]
+
+== DATAFLOW DIAGRAMS ==
+ 
+[[Image:Images/5.4.%20Typologie%20of%20Capella%20Diagrams_html_57102121.png|518x234px]]
+
+== ARCHITECTURE DIAGRAMS ==
+ 
+[[Image:Images/5.4.%20Typologie%20of%20Capella%20Diagrams_html_77fa1253.png|554x373px]]
+
+== INTERFACE DIAGRAMS ==
+ 
+[[Image:Images/5.4.%20Typologie%20of%20Capella%20Diagrams_html_2b3dfb13.png|553x273px]]
+
+== SCENARIOS ==
+ 
+[[Image:Images/5.4.%20Typologie%20of%20Capella%20Diagrams_html_m5d9f02c6.png|477x383px]]
+
+<br>  

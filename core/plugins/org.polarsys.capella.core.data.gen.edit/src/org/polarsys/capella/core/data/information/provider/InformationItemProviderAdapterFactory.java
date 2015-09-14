@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -812,7 +812,7 @@ public class InformationItemProviderAdapterFactory extends InformationAdapterFac
 			@Override
 			public Object caseAbstractConstraint(AbstractConstraint object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -852,7 +852,7 @@ public class InformationItemProviderAdapterFactory extends InformationAdapterFac
 			@Override
 			public Object caseAbstractParameter(AbstractParameter object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -919,7 +919,7 @@ public class InformationItemProviderAdapterFactory extends InformationAdapterFac
 			@Override
 			public Object caseAbstractParameterSet(AbstractParameterSet object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1032,7 +1032,7 @@ public class InformationItemProviderAdapterFactory extends InformationAdapterFac
 			@Override
 			public Object caseActivityEdge(ActivityEdge object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1151,7 +1151,7 @@ public class InformationItemProviderAdapterFactory extends InformationAdapterFac
 			@Override
 			public Object caseObjectNode(ObjectNode object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1192,7 +1192,7 @@ public class InformationItemProviderAdapterFactory extends InformationAdapterFac
 			@Override
 			public Object caseValuePin(ValuePin object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

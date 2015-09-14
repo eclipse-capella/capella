@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -84,6 +84,21 @@
          
       <properties
             id="org.polarsys.capella.common.re.CatalogElement">
+         <property
+               class="org.polarsys.capella.common.flexibility.properties.property.EAdaptableFeatureProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.properties.replicableElement.information.name"
+               id="org.polarsys.capella.common.re.ReNamedElement_suffix"
+               name="Suffix">
+            <argument
+                  id="eclass"
+                  value="org.polarsys.capella.common.re.CatalogElement">
+            </argument>
+            <argument
+                  id="feature"
+                  value="suffix">
+            </argument>
+         </property>
        
        
          <property
@@ -562,7 +577,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.re.properties.StringProperty"
+               class="org.polarsys.capella.common.re.properties.SuffixProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
                id="suffix"
@@ -633,7 +648,32 @@
                name="Catalog">
          </property>
          
-     </properties>    
+     </properties>
+     
+      <properties id="org.polarsys.capella.common.re.rpl2rec.conformance.check">
+          <inheritance properties="org.polarsys.capella.common.re.re2rpl" />
+          <property
+               class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicableElementProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
+               id="isource"
+               name="REC">
+         </property>
+         <property
+               class="org.polarsys.capella.common.re.re2rpl.properties.SourceElementProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description"
+               id="source.scopeElements"
+               name="Scope">
+         </property>
+         <property
+               class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicaProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup"
+               id="itarget"
+               name="Name">
+         </property>
+     </properties> 
      
      <properties id="org.polarsys.capella.common.re.updateReplica">
           <inheritance properties="org.polarsys.capella.common.re.re2rpl" />
@@ -656,7 +696,7 @@
          
          
          <property
-               class="org.polarsys.capella.common.re.properties.StringProperty"
+               class="org.polarsys.capella.common.re.properties.SuffixProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
                id="suffix"
@@ -935,6 +975,19 @@
       </mapping>
    </extension>
    
+   <extension id="org.polarsys.capella.common.re.rpl2rec.conformance.check"
+         name="Check RPL to REC Conformance"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.common.re.re2rpl"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="Check RPL to REC Conformancer"
+            domainHelper="org.polarsys.capella.core.transition.common.domain.DomainHelper"
+            mappingName="RPL to REC Conformance"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
    <extension id="org.polarsys.capella.common.re.updateReplica"
          name="Update Replica"
          point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
@@ -1079,6 +1132,20 @@
          </Description>
       </ActivityDeclaration>
    </extension>
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.common.re.re2rpl.activities.AddRECSuffixActivity"
+            Identifier="org.polarsys.capella.common.re.re2rpl.activities.AddRECSuffixActivity"
+            Multiple="false"
+            Name="Initialization of Capella DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
    
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">
@@ -1173,6 +1240,20 @@
          </Description>
       </ActivityDeclaration>
    </extension>
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.common.re.re2rpl.activities.RemoveRECSuffixActivity"
+            Identifier="org.polarsys.capella.common.re.re2rpl.activities.RemoveRECSuffixActivity"
+            Multiple="false"
+            Name="Initialization of Capella DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
    
    
    <extension
@@ -1190,7 +1271,6 @@
       </ActivityDeclaration>
       
    </extension>
-   
    
    <extension point="org.polarsys.capella.common.flexibility.properties">
       <properties

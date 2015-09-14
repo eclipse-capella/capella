@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td><img height="34" width="34" border="0"
+				src="Images/warning.png" /></td>
+			<td>Warning: The Capella User Manual is currently being
+				refactored. This page might contain obsolete diagram look and feel /
+				user interface screenshots / references to Melody Advance, the
+				ancestor of Capella.</td>
+		</tr>
+	</table>
+	<h1 id="Capella_DIAGRAM_EDITOR">Capella DIAGRAM EDITOR</h1>
+	<h2 id="INTRODUCTION">INTRODUCTION</h2>
+	<p>The diagram View is the main View in Capella. The palette on the
+		right side of the diagram area is different according to the current
+		diagram.</p>
+	<p>
+		<img height="247" width="573" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m35738deb.png" />
+	</p>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.05.%20Diagram%20Editor_html_3c78e109.png" /></td>
+			<td>Once a tool is selected in the palette, holding the
+				&ldquo;CTRL&rdquo; key while clicking in the diagram area will keep
+				the tool active, so that is it possible to create several elements
+				or links in a raw. If the &ldquo;CTRL&rdquo; click is not hold, then
+				the focus is automatically set on the new created element.</td>
+		</tr>
+	</table>
+	<p>Two kinds of diagrams are distinguished:</p>
+	<ul>
+		<li><b>Contextual</b> diagrams are focused on one specific
+			element; the update of the diagram obeys to a set of predefined
+			rules. For example, a Contextual Function Dataflow diagram will
+			always display the current Function as well as the other Functions
+			with which it has Functional Exchanges.</li>
+		<li><b>Blank</b> diagrams are not focused on any specific
+			element; the user is free to select the elements that should appear
+			on the diagram. Nevertheless, some calculated elements will still
+			appear automatically on blank diagrams: for example, Ports on
+			Functions still appear automatically on the diagram if the Function
+			is displayed.</li>
+	</ul>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.05.%20Diagram%20Editor_html_3c78e109.png" /></td>
+			<td>Note: Blank diagrams can be <b>unsynchronized</b>: in that
+				case for example, Ports on Functions would not appear automatically.
+				When a diagram is unsynchronized, new Insert / Remove tools become
+				available in the diagram palette. This is convenient for management
+				of very big models. See Embedded DoReMi User Guide.
+			</td>
+		</tr>
+	</table>
+	<p>Creation of new diagrams or navigation between diagrams can be
+		achieved through the &ldquo;Navigate&rdquo; command of the contextual
+		menu on the elements appearing on the diagram, directly from the
+		browser, or from the methodological Activity Browser.</p>
+	<p>
+		<img height="203" width="660" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_mac1e5e8.png" />
+	</p>
+	<p>Default name of diagrams is prefixed with an acronym standing
+		for the diagram type (for example SFBD for System Function Breakdown).</p>
+	<h2 id="DIAGRAM_PALETTES">DIAGRAM PALETTES</h2>
+	<ul>
+		<li>All the palettes of Capella diagrams are organized according
+			to the same pattern.</li>
+		<li>Sections are dedicated to a specific theme (for example,
+			Components, Functions, Deployment, etc.) and can be folded / unfolded
+			for a better visibility</li>
+		<li>Element creation tools are typically represented by the icon
+			of the concerned element.</li>
+		<li>Insert/Remove tools (<img height="23" width="21" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_3a2f0e04.jpg" />) are
+			typically available on Blank diagrams. For example, if a component in
+			the model is made of two sub components, the Insert/Remove tool
+			applied on this component will allow selecting which one(s) of its
+			sub components shall be displayed. <b>Insert/Remove tools modify
+				the content of the diagram but do not modify the model itself</b>. They
+			are displaying a double-list dialog box.
+		</li>
+		<li>Allocation Management tools (<img height="21" width="24"
+			border="0" src="Images/4.05.%20Diagram%20Editor_html_m7c4f8528.jpg" />)
+			allow creating relationships between elements, for example the
+			allocation of a Function on a Component. <b>Allocation Management
+				tool modify the model.</b> They are displaying a double-list dialog box.
+		</li>
+	</ul>
+	<p>
+		<br />
+	</p>
+	<p>
+		<img height="499" width="636" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m5de5d199.png" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<h2 id="DIAGRAM_TOOLBAR">DIAGRAM TOOLBAR</h2>
+	<p>The diagram toolbar is contextual: different tools are available
+		if a diagram or a diagram element is currently selected.</p>
+	<p>
+		<img height="31" width="547" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_a4de74b.png" />
+	</p>
+	<ol>
+		<li>Arrange All tools (automatic layouts)</li>
+		<li>Selection tools</li>
+		<li>The refresh diagram button allows to update the diagram
+			according to the content of the model when the automated
+			synchronization is not activated (Control+R)</li>
+		<li>Selection of active layers</li>
+		<li>Selection of active filters</li>
+		<li>Show/Hide dialog (select which elements of the diagram are
+			visible or not)</li>
+		<li>Pin/Unpin dialog (select which elements of the diagram cannot
+			be moved by automatic layouts)</li>
+		<li>Paste layout on the current diagram</li>
+		<li>Zoom in</li>
+		<li>Zoom out</li>
+		<li>Zoom factor</li>
+		<li>Export the current diagram as an image</li>
+		<li>Switch on/off the layout mode on the diagram</li>
+	</ol>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.05.%20Diagram%20Editor_html_3c78e109.png" /></td>
+			<td>The <b>diagram &ldquo;layout&rdquo; mode disables
+					operations likely to modify the semantic model</b> (for example the
+				semantic drag and drop) so that the end user can focus on layout
+				tasks without being afraid to trigger an unexpected model update.
+			</td>
+		</tr>
+	</table>
+	<p>Focus on 5, selection of active filters</p>
+	<p>
+		<img height="219" width="403" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_507951c5.png" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>Focus on 4, selection of active layers</p>
+	<p>
+		<img height="84" width="414" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m2017f59a.png" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<h2 id="DIAGRAM_ELEMENT_TOOLBAR">DIAGRAM ELEMENT TOOLBAR</h2>
+	<p>
+		<img height="25" width="628" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m1ec848c1.png" />
+	</p>
+	<ol>
+		<li>Arrange selected elements (partial layout)</li>
+		<li>Alignment tools</li>
+		<li>Pin selected elements</li>
+		<li>Unpin selected elements</li>
+		<li>Copy layout of selected elements</li>
+		<li>Hide selected elements</li>
+		<li>Delete selected elements from diagram</li>
+		<li>Delete selected elements from model</li>
+		<li>Police related tool : Bold</li>
+		<li>Police related tool : Italic</li>
+		<li>Police related tool : Font Color</li>
+		<li>Police related tool : Font</li>
+		<li>Color background selection</li>
+		<li>Line color</li>
+		<li>Line style</li>
+		<li>Insert image tool</li>
+		<li>Reset custom style</li>
+		<li>Apply the applicable custom settings of the first element to
+			other selected elements</li>
+		<li>Make height and width identical for all selected elements
+			(the referenced element is the last selected one)</li>
+		<li>Auto size</li>
+	</ol>
+	<table border="1">
+		<tr>
+			<td><img height="34" width="34" border="0"
+				src="Images/4.05.%20Diagram%20Editor_html_723ed3f9.png" /></td>
+			<td>In both Bank and Contextual diagrams, some elements appear
+				automatically. It is not possible to delete from diagram calculated
+				elements (for example, a Function Port owned by a Function, or a
+				Functional Exchange between two Function Ports).
+				<p>If the user wants to hide a calculated element on a
+					contextual diagram, he must use the &ldquo;Show/Hide&rdquo; tools.</p>
+			</td>
+		</tr>
+	</table>
+	<p>Focus on 16: It is possible to customize the presentation of
+		elements shown in diagrams using external images. The first step is to
+		import image resources in the current Eclipse project. This can be
+		achieved easily using a drag and drop in Windows.</p>
+	<p>
+		<img height="190" width="412" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m61b99006.png" />
+	</p>
+	<p>The next step is to select in the diagram the model element to
+		be customized and click on the &ldquo;Insert image tool&rdquo; of the
+		toolbar. A dialog appears, allowing to chose among the images already
+		present in the workspace:</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<img height="155" width="422" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m77e9f963.png" />
+	</p>
+	<p>
+		<img height="209" width="230" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_39791356.png" />
+	</p>
+	<p>The result can be the following:</p>
+	<p>
+		<img height="173" width="301" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m1f9f7ba3.png" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<h2 id="MATRICES">MATRICES</h2>
+	<p>The Diagram View is also used for Simple and Cross Tables. A CSV
+		export tool is provided for these tables, allowing for example to
+		retrieving allocation matrices in Excel.</p>
+	<p>
+		<img height="336" width="400" border="0"
+			src="Images/4.05.%20Diagram%20Editor_html_m4ecd8e82.png" />
+	</p>
+</body>
+</html>

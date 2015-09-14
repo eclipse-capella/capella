@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="Diagram Management" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution">
+<topic label="Diagram Management">
+	<topic href="html/05. Diagram Management/5.1. Diagram concepts.html" label="Diagram Concepts">
+		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#DIAGRAM_REFRESHING_STRATEGIES" label="Diagrams Refreshing Strategies"></topic>
+		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#BLANK_AND_CONTEXTUAL_DIAGRAMS.2C_CONTEXTUAL_DIAGRAM_ELEMENTS" label="Blank And Contextual Diagrams, Contextual Diagram Elements">
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#BLANK_DIAGRAMS" label="Blank Diagrams"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#CONTEXTUAL_DIAGRAMS" label="Contextual Diagrams"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#CONTEXTUAL_DIAGRAM_ELEMENTS" label="Contextual Diagram Elements"></topic>
+		</topic>
+		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#LAYOUT_MANAGEMENT" label="Layout Management">
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#PIN_.2F_UNPIN_DIAGRAM_ELEMENTS" label="Pin / Unpin Diagram Elements"></topic>
+			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#ARRANGE_ALL_BORDERED_NODES" label="Arrange All Bordered Nodes"></topic>
+		</topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.2. Advanced Managenement of Diagrams.html" label="Synchronized And Unsynchronized Diagrames: An Example"></topic>
+	<topic href="html/05. Diagram Management/5.2. Advanced Managenement of Diagrams.html#Removing_hidden_elements_from_diagrams" label="Removing hidden elements from diagrams">
+		<topic href="html/05. Diagram Management/5.2. Advanced Managenement of Diagrams.html#Example" label="Example"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html" label="The Diagram Business Copy-Paste">
+		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#EXAMPLE_OF_LOGICAL_ARCHITECTURE_DIAGRAM" label="Example Of Logical Architecture Diagram"></topic>
+		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#EXAMPLE:_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM" label="Example: Component External Interfaces Diagrams"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html" label="Typology Of Capella Diagrams">
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#CLASS_DIAGRAMS" label="Class Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#STATE_AND_MODE_DIAGRAMS" label="State And Mode Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#BREAKDOWN_DIAGRAMS" label="Breakdown Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#DATAFLOW_DIAGRAMS" label="Dataflow Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#ARCHITECTURE_DIAGRAMS" label="Architecture Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#INTERFACE_DIAGRAMS" label="Interface Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#SCENARIOS" label="Scenarios"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html" label="Creation Of Functional Chains And Physical Paths">
+		<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html#FUNCTIONAL_CHAINS_AND_OPERATIONAL_PROCESSES" label="Functional Chains And Operational Processes"></topic>
+		<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html#PHYSICAL_PATHS" label="Physical Paths"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html" label="Diagrams tips and tricks">
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Setting_default_style_for_links:_oblique_or_rectilinear" label="Setting default style for links: oblique or rectilinear"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Uniform_distribution_tools" label="Uniform distribution tools"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Reset_Origin" label="Reset Origin"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Select_All" label="Select All"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Auto_Size" label="Auto Size"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Make_same_width_.2F_heigt" label="Make same width / heigt"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Grid_visible" label="Grid visible"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Snap_to_grid" label="Snap to grid"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Snap_to_Shapes" label="Snap to Shapes"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Copy_.2F_Paste_Layout" label="Copy / Paste Layout"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Selection" label="Selection">
+			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Left_to_right" label="Left to right"></topic>
+			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Right_to_Left" label="Right to Left"></topic>
+		</topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Copy_Paste_of_Notes" label="Copy Paste of Notes"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Create_several_elements_in_row" label="Create several elements in row"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Quick_Search" label="Quick Search"></topic>
+		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Export_as_images" label="Export as images"></topic>
+	</topic>
+</topic>
+</toc>

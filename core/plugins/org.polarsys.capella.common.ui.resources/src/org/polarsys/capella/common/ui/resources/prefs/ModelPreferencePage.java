@@ -22,6 +22,7 @@ import org.polarsys.capella.core.model.preferences.IDataPreferences;
 import org.polarsys.capella.core.model.preferences.IDeploymentPreferences;
 import org.polarsys.capella.core.model.preferences.IInheritancePreferences;
 import org.polarsys.capella.core.model.preferences.IInterModelIntegrityPreferences;
+import org.polarsys.capella.core.model.preferences.IModeAndStateManagementPreferences;
 import org.polarsys.capella.core.model.preferences.IReuseComponentsPreferences;
 import org.polarsys.capella.core.model.preferences.ISynchronizationPreferences;
 import org.polarsys.capella.core.preferences.Activator;
@@ -121,5 +122,10 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
     addField(new PreferenceField(IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION,
         Messages.interModelIntegrity_PreventInterModelDependencyViolation_Title, group5), UserProfileModeEnum.Expert,
         group5, ProjectScope.class);
+
+    addField(new SpacerFieldEditor(fieldEditorParent));
+    Group group6 = createGroup(Messages.ModeAndState_Group_Title, Messages.ModeAndState_Group_Title, fieldEditorParent);
+    addField(new PreferenceField(IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED,
+        Messages.ModeAndState_MixedHierarchy_Title, group6), UserProfileModeEnum.Expert, group6, ProjectScope.class);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1035,7 +1035,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateEvent_Condition() {
+	public EReference getStateEvent_Expression() {
 		return (EReference)stateEventEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1082,15 +1082,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 */
 	public EAttribute getTimeEvent_Kind() {
 		return (EAttribute)timeEventEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTimeEvent_Time() {
-		return (EAttribute)timeEventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1240,7 +1231,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		createEReference(stateEventRealizationEClass, STATE_EVENT_REALIZATION__REALIZING_EVENT);
 
 		stateEventEClass = createEClass(STATE_EVENT);
-		createEReference(stateEventEClass, STATE_EVENT__CONDITION);
+		createEReference(stateEventEClass, STATE_EVENT__EXPRESSION);
 		createEReference(stateEventEClass, STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS);
 
 		changeEventEClass = createEClass(CHANGE_EVENT);
@@ -1248,7 +1239,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		timeEventEClass = createEClass(TIME_EVENT);
 		createEAttribute(timeEventEClass, TIME_EVENT__KIND);
-		createEAttribute(timeEventEClass, TIME_EVENT__TIME);
 
 		// Create enums
 		transitionKindEEnum = createEEnum(TRANSITION_KIND);
@@ -1418,7 +1408,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		initEReference(getStateEventRealization_RealizingEvent(), this.getStateEvent(), null, "realizingEvent", null, 1, 1, StateEventRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(stateEventEClass, StateEvent.class, "StateEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getStateEvent_Condition(), theCapellacorePackage.getConstraint(), null, "condition", null, 0, 1, StateEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStateEvent_Expression(), theCapellacorePackage.getConstraint(), null, "expression", null, 0, 1, StateEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateEvent_OwnedStateEventRealizations(), this.getStateEventRealization(), null, "ownedStateEventRealizations", null, 0, -1, StateEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(changeEventEClass, ChangeEvent.class, "ChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1426,7 +1416,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		initEClass(timeEventEClass, TimeEvent.class, "TimeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getTimeEvent_Kind(), this.getTimeEventKind(), "kind", null, 0, 1, TimeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTimeEvent_Time(), ecorePackage.getEString(), "time", null, 0, 1, TimeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(transitionKindEEnum, TransitionKind.class, "TransitionKind"); //$NON-NLS-1$
@@ -1507,7 +1496,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.TransfoLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																												
+		   });																																																																																																																																																																																																											
 	}
 
 	/**
@@ -1527,7 +1516,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																				
+		   });																																																																																																																																																																																																																																			
 	}
 
 	/**
@@ -1729,7 +1718,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If\r\ndefined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the\r\nstate.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });				
 		addAnnotation
 		  (getState_DoActivity(), 
 		   source, 
@@ -1745,7 +1734,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the\r\nstate. If defined, exit actions are always executed to completion only after all internal activities and transition actions have\r\ncompleted execution.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });				
 		addAnnotation
 		  (getState_StateInvariant(), 
 		   source, 
@@ -2194,15 +2183,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getTimeEvent_Time(), 
-		   source, 
-		   new String[] {
-			 "description", "Specifies the corresponding time deadline\r\n[source: UML superstructure v2.4]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "a string-based time value ", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
 		  (timeEventKindEEnum, 
 		   source, 
 		   new String[] {
@@ -2326,12 +2306,22 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getState_AvailableAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });				
+		addAnnotation
+		  (getState_Entry(), 
+		   source, 
+		   new String[] {
+		   });				
 		addAnnotation
 		  (getState_DoActivity(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });				
+		addAnnotation
+		  (getState_Exit(), 
+		   source, 
+		   new String[] {
+		   });						
 		addAnnotation
 		  (modeEClass, 
 		   source, 
@@ -2478,7 +2468,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   new String[] {
 		   });			
 		addAnnotation
-		  (getStateEvent_Condition(), 
+		  (getStateEvent_Expression(), 
 		   source, 
 		   new String[] {
 		   });						
@@ -2501,11 +2491,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getTimeEvent_Kind(), 
 		   source, 
 		   new String[] {
-		   });				
-		addAnnotation
-		  (getTimeEvent_Time(), 
-		   source, 
-		   new String[] {
 		   });										
 	}
 
@@ -2526,7 +2511,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																	
+		   });																																																																																																																																																																																																																																
 	}
 
 	/**
@@ -2566,7 +2551,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   source, 
 		   new String[] {
 			 "Label", "JustificationLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																								
+		   });																																																																																																																																																																																																							
 	}
 
 	/**
@@ -2729,7 +2714,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::State::entry", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });				
 		addAnnotation
 		  (getState_DoActivity(), 
 		   source, 
@@ -2745,7 +2730,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::State::exit", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });				
 		addAnnotation
 		  (getState_StateInvariant(), 
 		   source, 
@@ -3093,7 +3078,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
 		addAnnotation
-		  (getStateEvent_Condition(), 
+		  (getStateEvent_Expression(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::ChangeEvent::changeExpression if current element is a ChangeEvent\r\numl::TimeEvent::when if current element is a TimeEvent\r\n", //$NON-NLS-1$ //$NON-NLS-2$
@@ -3141,14 +3126,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getTimeEvent_Time(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::TimeEvent::when", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
@@ -3215,7 +3192,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (justificationLinkEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																							
+		   });																																																																																																																																																																																																						
 	}
 
 	/**
@@ -3230,7 +3207,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getGenericTrace_KeyValuePairs(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																																				
+		   });																																																																																																																																																																																																																			
 	}
 
 	/**
@@ -3275,7 +3252,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getState_AvailableAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });																								
 		addAnnotation
 		  (getAbstractState_RealizedAbstractStates(), 
 		   source, 
@@ -3330,7 +3307,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getStateEventRealization_RealizingEvent(), 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });																															
 	}
 
 } //CapellacommonPackageImpl

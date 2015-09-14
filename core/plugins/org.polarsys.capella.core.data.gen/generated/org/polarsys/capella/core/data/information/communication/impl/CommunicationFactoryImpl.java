@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 */
 	public static CommunicationFactory init() {
 		try {
-			CommunicationFactory theCommunicationFactory = (CommunicationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/communication/0.8.0"); //$NON-NLS-1$ 
+			CommunicationFactory theCommunicationFactory = (CommunicationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/communication/1.0.0"); //$NON-NLS-1$ 
 			if (theCommunicationFactory != null) {
 				return theCommunicationFactory;
 			}

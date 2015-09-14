@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ import org.polarsys.capella.core.ui.properties.fields.SimpleEditableSemanticFiel
  */
 public abstract class StateEventSection extends NamedElementSection {
 
-  private SimpleEditableSemanticField _guard;
+  private SimpleEditableSemanticField _expression;
 
   /**
    * 
@@ -47,16 +47,16 @@ public abstract class StateEventSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     boolean displayedInWizard = isDisplayedInWizard();
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+    super.createControls(parent, aTabbedPropertySheetPage);
 
-    _guard = new SimpleEditableSemanticField(getReferencesGroup(), Messages.getString("StateEvent.Guard"), getWidgetFactory(), //$NON-NLS-1$ 
+    _expression = new SimpleEditableSemanticField(getReferencesGroup(), Messages.getString("StateEvent.Expression"), getWidgetFactory(), //$NON-NLS-1$ 
         ICommonConstants.EMPTY_STRING, new AbstractSimpleEditableSemanticFieldController() {
 
           @Override
-          public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
-            semanticElement_p.eSet(semanticFeature_p, value);
+          public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+            semanticElement.eSet(semanticFeature, value);
             return value;
           }
 
@@ -64,17 +64,17 @@ public abstract class StateEventSection extends NamedElementSection {
            * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
            */
           @Override
-          public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-            if (semanticElement_p instanceof StateEvent) {
-              Constraint currentValue = (Constraint) semanticElement_p.eGet(semanticFeature_p);
+          public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+            if (semanticElement instanceof StateEvent) {
+              Constraint currentValue = (Constraint) semanticElement.eGet(semanticFeature);
               if (currentValue != null) {
                 editValueWizard(currentValue);
               } else {
                 Constraint newValue = CapellacoreFactory.eINSTANCE.createConstraint();
-                StateEvent stateEvent = (StateEvent) semanticElement_p;
+                StateEvent stateEvent = (StateEvent) semanticElement;
                 stateEvent.getOwnedConstraints().add(newValue);
 
-                semanticElement_p.eSet(semanticFeature_p, newValue);
+                semanticElement.eSet(semanticFeature, newValue);
                 if (editValueWizard(newValue)) {
                   currentValue = newValue;
                 } else {
@@ -89,7 +89,7 @@ public abstract class StateEventSection extends NamedElementSection {
 
         });
 
-    _guard.setDisplayedInWizard(displayedInWizard);
+    _expression.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -102,10 +102,10 @@ public abstract class StateEventSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _guard.loadData(capellaElement_p, CapellacommonPackage.Literals.STATE_EVENT__CONDITION);
+    _expression.loadData(capellaElement, CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION);
   }
 
   /**
@@ -116,7 +116,7 @@ public abstract class StateEventSection extends NamedElementSection {
     ArrayList<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
     fields.addAll(super.getSemanticFields());
 
-    fields.add(_guard);
+    fields.add(_expression);
 
     return fields;
   }

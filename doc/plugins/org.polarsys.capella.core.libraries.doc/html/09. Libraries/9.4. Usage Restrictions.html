@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td><img height="34" width="34" border="0"
+				src="Images/warning.png" /></td>
+			<td>Warning: The Capella User Manual is currently being
+				refactored. This page might contain obsolete diagram look and feel /
+				user interface screenshots / references to Melody Advance, the
+				ancestor of Capella.</td>
+		</tr>
+	</table>
+	<h1 id="USAGE_RESTRICTIONS">USAGE RESTRICTIONS</h1>
+	<h2 id="Librairies_usage_restriction">Librairies usage restriction</h2>
+	<ul>
+		<li>Trying to open a model (library or project) while one of its
+			referenced libraries is not present in the workspace is not possible.<br />
+			If you want to use a project without referenced libraries you can use
+			the <i>Detach tool</i> to remove references of missing libraries
+		</li>
+		<li>Downgraded use cases are not properly supported. Please be
+			aware of the constraints described in the following section.</li>
+	</ul>
+	<p>
+		<br />
+	</p>
+	<h2 id="NOMINAL_CASE_VS_DOWNGRADED_CASES">NOMINAL CASE VS
+		DOWNGRADED CASES</h2>
+	<p>Violation of one of these rules might shift the user into
+		downgraded use cases:</p>
+	<ul>
+		<li>Replace a library by another version while a referencing
+			project is opened (for instance through an update from Clearcase)</li>
+		<li>Perform action that creates a reference between two objects
+			from different models M1, M2 (project or library) where M2 is
+			referencing M1. For instance, if a project is referencing a library,
+			create a generalization from a class in the library to a class in the
+			project. Such a situation can be obtained when moving graphically
+			elements between diagrams. Future version of Capella will provide an
+			automatic check to prevent such a situation.</li>
+	</ul>
+	<p>
+		<br />
+	</p>
+	<h2 id="USE_Cases_Changes">USE Cases Changes</h2>
+	<p>In Capella, working sessions on models are fully separated,
+		meaning that modifications made on a library will not appear on the
+		project until session library is saved.</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<img height="498" width="266" border="0"
+			src="Images/9.4.%20Usage%20Restrictions_html_m9524248.png" /><br />
+		(note the (*) on the <b>library</b> when the element has been renamed.
+		It doesn&rsquo;t appear on <i>Project_1</i> before the session of <i>A_Library</i>
+		is saved)
+	</p>
+	<p>
+		<img height="92" width="92" border="0"
+			src="Images/9.4.%20Usage%20Restrictions_html_m2f4cc7f5.jpg" /><img
+			height="92" width="92" border="0"
+			src="Images/9.4.%20Usage%20Restrictions_html_733c5d5d.jpg" />
+	</p>
+</body>
+</html>

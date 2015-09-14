@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,12 +13,15 @@ package org.polarsys.capella.core.sirius.analysis;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
+import org.polarsys.capella.core.data.la.LaFactory;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 
 /**
  * Services for logical Architecture.
@@ -85,5 +88,19 @@ public class LogicalServices {
       }
     }
     return returnedList;
+  }
+  
+  public LogicalComponent createLogicalComponent(EObject container) {
+	
+	  LogicalComponent component = LaFactory.eINSTANCE.createLogicalComponent();
+		if (component != null) {
+		  if (container instanceof LogicalComponent) {
+		    LogicalComponent componentContainer = (LogicalComponent) container;
+		    componentContainer.getOwnedLogicalComponents().add(component);
+		  }
+		  CapellaServices.getService().creationService(component);
+		}
+		
+		return component;
   }
 }

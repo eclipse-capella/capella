@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td><img height="34" width="34" border="0"
+				src="Images/warning.png" /></td>
+			<td>Warning: The Capella User Manual is currently being
+				refactored. This page might contain obsolete diagram look and feel /
+				user interface screenshots / references to Melody Advance, the
+				ancestor of Capella.</td>
+		</tr>
+	</table>
+	<h1 id="SEMANTIC_BROWSER">SEMANTIC BROWSER</h1>
+	<h2 id="VIEW">VIEW</h2>
+	<p>The objective of the Semantic Browser is to provide a summary of
+		all meaningful relationships for one given element.</p>
+	<p>
+		<img height="361" width="1005" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_m2d24d060.png" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.07.%20Semantic%20Browser_html_3c78e109.png" /></td>
+			<td>Control double-click (or typing F9) on an element in the
+				Semantic Browser automatically makes it the &ldquo;current
+				element&rdquo;. Typing F9 on an element on a diagram or in the
+				Project Explorer instantaneously brings the Semantic Browser focused
+				on this element.</td>
+		</tr>
+	</table>
+	<p>With the upper right toolbar, it is possible to navigate in the
+		history of the Semantic Browser (Back / Next buttons).</p>
+	<p>
+		<img height="233" width="311" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_fbc69c2.png" />
+	</p>
+	<p>By default, the Semantic Browser is always synchronized with the
+		current selection in the Diagram Editor or in the Project Explorer.
+		However, with big models, performing all the requests might introduce
+		lag between selections and make the environment less smooth. It is
+		possible to deactivate this synchronization (and only rely on F9 when
+		necessary).</p>
+	<p>
+		<img height="54" width="230" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_111420cd.png" />
+	</p>
+	<h2 id="Display_OPTIONS">Display OPTIONS</h2>
+	<p>
+		<b>Show/Hide Diagrams</b>
+	</p>
+	<p>If this option is toggled, all diagrams related to the current
+		element are displayed by the Semantic Browser (in category named
+		&ldquo;All Related Diagrams&rdquo;). Disabling it is likely to improve
+		performances since computation of all related diagrams for an element
+		is time-consuming (especially if the Semantic Browser is
+		synchronized). This option is enabled by default.</p>
+	<p>
+		<img height="54" width="230" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_m5a6e68c9.png" />
+	</p>
+	<p>
+		<b>Show/Hide Pattern Instances</b>
+	</p>
+	<p>If this option is toggled, all pattern instances related to the
+		current element are displayed by the Semantic Browser (in category
+		named &ldquo;All Related Pattern Instances&rdquo;). Disabling it is
+		likely to improve performances since computation of all related
+		pattern instances for an element is time-consuming (especially if the
+		Semantic Browser is synchronized). This option is disabled by default.</p>
+	<p>
+		<img height="54" width="230" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_1b801b62.png" />
+	</p>
+	<p>
+		<b>Collapsed/Expanded Mode</b>
+	</p>
+	<p>By default, the Semantic Browser works in the &ldquo;expanded
+		mode&rdquo; which means that tree nodes are all expanded (children are
+		visible). If this option is toggled, the Semantic Browser switches to
+		the &ldquo;collapsed mode&rdquo;. In that case, all category nodes are
+		not expanded by default and the Semantic Browser will remember which
+		categories have been manually expanded and keep them expanded for
+		future display (until they are manually collapsed). This option is
+		useful when the user want to focus on particular relationships when
+		dealing with complex models.</p>
+	<p>
+		<img height="265" width="1015" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_508676fd.png" />
+	</p>
+	<h2 id="ACTIONS">ACTIONS</h2>
+	<p>Double-clicking on an element in the Semantic Browser opens the
+		editor of this element. F8, F9, F10 keys allow selecting the current
+		element in other Views. All other applicative commands are still
+		available through the contextual menu.</p>
+	<p>
+		<img height="305" width="704" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_19afb6d3.png" />
+	</p>
+	<p>Finally, opening a diagram from the Semantic Browser is also
+		possible. In that case, the focus in the Diagram Editor is set on the
+		current element.</p>
+	<p>
+		<img height="240" width="765" border="0"
+			src="Images/4.07.%20Semantic%20Browser_html_m7ad4cfca.png" />
+	</p>
+</body>
+</html>

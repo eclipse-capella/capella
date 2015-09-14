@@ -55,7 +55,9 @@ public class Rule_DWF_D_51 extends AbstractRulesOnDesignTest {
         "e44c0907-6754-4ba5-8ea8-91c6b2fc9358",
         "f193c8d3-548c-435c-a935-e2cbe19b4fd0",
         "81bb90c0-079f-412a-b3c5-787ad6daa791",
-        "58d56883-89ad-479f-a379-bea10208603b"});
+        "58d56883-89ad-479f-a379-bea10208603b",
+        "2c5f3de1-de76-47da-bc1b-afd687c92c67",
+        "6931c927-6bbd-431e-b4e8-bb6ccd6b32f2"});
   }
 
   /**

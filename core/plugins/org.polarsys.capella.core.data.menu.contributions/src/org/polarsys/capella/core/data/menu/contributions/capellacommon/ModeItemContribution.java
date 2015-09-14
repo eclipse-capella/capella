@@ -16,52 +16,42 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Mode;
-import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
 public class ModeItemContribution implements IMDEMenuItemContribution {
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p, EStructuralFeature feature_p) {
-    if (createdElement_p instanceof Mode) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement,
+      final ModelElement createdElement, EStructuralFeature feature) {
+    if (createdElement instanceof Mode) {
       CompoundCommand cmd = new CompoundCommand();
 
       // Creates the region.
-      Command createRegionCmd = CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
-        CapellacommonPackage.Literals.STATE__OWNED_REGIONS, CapellacommonFactory.eINSTANCE.createRegion("region")), Collections.EMPTY_LIST); //$NON-NLS-1$
+      Command createRegionCmd = CreateChildCommand.create(editingDomain, createdElement,
+          new CommandParameter(createdElement, CapellacommonPackage.Literals.STATE__OWNED_REGIONS,
+              CapellacommonFactory.eINSTANCE.createRegion("region")), Collections.EMPTY_LIST); //$NON-NLS-1$
       cmd.append(createRegionCmd);
-
-      EObject superContainer = containerElement_p.eContainer();
-      if (superContainer instanceof State) {
-		State superContainerState = (State) superContainer;
-		cmd.append(new AddCommand(editingDomain_p, superContainerState, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES, createdElement_p));
-	  }
 
       return cmd;
     }
-	  return new IdentityCommand();
+    return new IdentityCommand();
   }
 
   /**

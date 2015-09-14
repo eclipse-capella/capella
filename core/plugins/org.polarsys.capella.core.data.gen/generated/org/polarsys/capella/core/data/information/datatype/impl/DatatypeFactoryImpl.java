@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 */
 	public static DatatypeFactory init() {
 		try {
-			DatatypeFactory theDatatypeFactory = (DatatypeFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datatype/0.8.0"); //$NON-NLS-1$ 
+			DatatypeFactory theDatatypeFactory = (DatatypeFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datatype/1.0.0"); //$NON-NLS-1$ 
 			if (theDatatypeFactory != null) {
 				return theDatatypeFactory;
 			}

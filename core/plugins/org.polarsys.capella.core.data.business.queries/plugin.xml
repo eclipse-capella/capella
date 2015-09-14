@@ -279,8 +279,8 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_Exit" id="org.polarsys.capella.core.business.queries.capellacommon.State_Exit" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.Mode_Exit" id="org.polarsys.capella.core.business.queries.capellacommon.Mode_Exit" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Exit" id="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Exit" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Guard" id="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Guard" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.ChangeEvent_Guard" id="org.polarsys.capella.core.business.queries.capellacommon.ChangeEvent_Guard" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Expression" id="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Expression" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.ChangeEvent_Expression" id="org.polarsys.capella.core.business.queries.capellacommon.ChangeEvent_Expression" />
   </extension>
   <extension name="capellacore" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.Constraint_ConstrainedElements" id="org.polarsys.capella.core.business.queries.capellacore.Constraint_ConstrainedElements" />
@@ -1685,11 +1685,11 @@
     <querySpecification queryIdentifier="GetCurrent_ValuePart_ReferencedProperty">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ValuePart_ReferencedProperty" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_ChangeEvent_Guard">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChangeEvent_Guard" />
+    <querySpecification queryIdentifier="GetAvailable_ChangeEvent_Expression">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChangeEvent_Expression" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_ChangeEvent_Guard">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ChangeEvent_Guard" />
+    <querySpecification queryIdentifier="GetCurrent_ChangeEvent_Expression">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ChangeEvent_Expression" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_ChoicePseudoState_StateRealizations">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChoicePseudoState_StateRealizations" />
@@ -1775,11 +1775,11 @@
     <querySpecification queryIdentifier="GetCurrent_TerminatePseudoState_StateRealizations">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_TerminatePseudoState_StateRealizations" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_TimeEvent_Guard">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_TimeEvent_Guard" />
+    <querySpecification queryIdentifier="GetAvailable_TimeEvent_Expression">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_TimeEvent_Expression" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_TimeEvent_Guard">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_TimeEvent_Guard" />
+    <querySpecification queryIdentifier="GetCurrent_TimeEvent_Expression">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_TimeEvent_Expression" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValueGroups">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_AppliedPropertyValueGroups" />

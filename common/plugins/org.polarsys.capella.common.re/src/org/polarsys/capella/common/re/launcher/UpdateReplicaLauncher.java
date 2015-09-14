@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,9 +18,11 @@ import org.polarsys.capella.common.re.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.common.re.activities.InitializeReMgtActivity;
 import org.polarsys.capella.common.re.activities.MakeTraceabilityActivity;
 import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.re2rpl.activities.AddRECSuffixActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeDiffMergeUpdateReplicaActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeTransitionActivity;
+import org.polarsys.capella.common.re.re2rpl.activities.RemoveRECSuffixActivity;
 import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
 import org.polarsys.capella.core.transition.common.launcher.ILoopActivityDispatcher;
@@ -46,8 +48,8 @@ public class UpdateReplicaLauncher extends ReLauncher {
   }
 
   @Override
-  protected Iterator<String> iteratorWorkflowElements(String workflowId_p) {
-    return new DispatcherArrayIterator(getWorkflowElements(workflowId_p));
+  protected Iterator<String> iteratorWorkflowElements(String workflowId) {
+    return new DispatcherArrayIterator(getWorkflowElements(workflowId));
   }
 
   @Override
@@ -57,6 +59,7 @@ public class UpdateReplicaLauncher extends ReLauncher {
 
   /**
    * Activities to be loaded into the workflow element of cadence "PRE ANALYSIS".
+   * 
    * @return the workflow element associated
    */
   @Override
@@ -73,17 +76,24 @@ public class UpdateReplicaLauncher extends ReLauncher {
 
   /**
    * Activities to be loaded into the workflow element of cadence "POST EXECUTION".
+   * 
    * @return the workflow element associated
    */
   @Override
   protected WorkflowActivityParameter buildDiffMergeActivities() {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
 
+    // AddRECSuffixActivity
+    parameter.addActivity(getActivity(AddRECSuffixActivity.ID));
+
     // InitializeDiffMergeUpdateReplicaActivity
     parameter.addActivity(getActivity(InitializeDiffMergeUpdateReplicaActivity.ID));
 
     // DifferencesComputingActivity
     parameter.addActivity(getActivity(DifferencesComputingActivity.ID));
+
+    // RemoveRECSuffixActivity
+    parameter.addActivity(getActivity(RemoveRECSuffixActivity.ID));
 
     // DifferencesFilteringActivity
     parameter.addActivity(getActivity(DifferencesFilteringActivity.ID));

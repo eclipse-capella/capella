@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
@@ -25,7 +23,6 @@ import org.polarsys.capella.common.libraries.LibraryAbstractElement;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.common.libraries.ModelVersion;
-
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
@@ -410,7 +407,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 		  (modelInformationEClass, 
 		   source, 
 		   new String[] {
-			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/0.8.0#//Project" //$NON-NLS-1$ //$NON-NLS-2$
+			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.0.0#//Project" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 	}
 

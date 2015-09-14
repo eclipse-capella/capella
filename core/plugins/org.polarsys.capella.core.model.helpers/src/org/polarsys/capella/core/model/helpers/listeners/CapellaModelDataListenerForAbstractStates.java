@@ -12,12 +12,14 @@ package org.polarsys.capella.core.model.helpers.listeners;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Region;
 
 /**
- * This listener is used to synchronize involvedStates references when an AbstractState is moved from one Region to another
+ * This listener is used to synchronize involvedStates references when an AbstractState is moved from one Region to
+ * another
  */
 public class CapellaModelDataListenerForAbstractStates extends CapellaModelDataListener {
 
@@ -25,29 +27,33 @@ public class CapellaModelDataListenerForAbstractStates extends CapellaModelDataL
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     // Preconditions :
     // Call contributed filters.
-    if (filterNotification(notification_p)) {
+    if (filterNotification(notification)) {
       return;
     }
 
-    Object notifier = notification_p.getNotifier();
-    EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
+    Object notifier = notification.getNotifier();
+    EStructuralFeature feature = (EStructuralFeature) notification.getFeature();
 
     // Only ADD and REMOVE notifications are wanted.
-    if (!((notification_p.getEventType() == Notification.ADD) || (notification_p.getEventType() == Notification.REMOVE))) {
+    if (!((notification.getEventType() == Notification.ADD) || (notification.getEventType() == Notification.REMOVE))) {
       return;
     }
 
     if (CapellacommonPackage.Literals.REGION__OWNED_STATES.equals(feature)) {
       Region region = (Region) notifier;
 
-      if (notification_p.getEventType() == Notification.REMOVE) {
-        region.getInvolvedStates().remove(notification_p.getOldValue());
+      if (notification.getEventType() == Notification.REMOVE) {
+        region.getInvolvedStates().remove(notification.getOldValue());
+        if (region.eContainer() instanceof AbstractState)
+          ((AbstractState) region.eContainer()).getReferencedStates().remove((IState) notification.getOldValue());
 
-      } else if (notification_p.getEventType() == Notification.ADD) {
-        region.getInvolvedStates().add((AbstractState) notification_p.getNewValue());
+      } else if (notification.getEventType() == Notification.ADD) {
+        region.getInvolvedStates().add((AbstractState) notification.getNewValue());
+        if (region.eContainer() instanceof AbstractState)
+          ((AbstractState) region.eContainer()).getReferencedStates().add((IState) notification.getNewValue());
       }
 
     }

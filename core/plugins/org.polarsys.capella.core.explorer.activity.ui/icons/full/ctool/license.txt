@@ -1,0 +1,35 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/ctool/external-interface-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/external-interface-diagram.png
+/icons/full/ctool/matrix.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/matrix.png
+/icons/full/ctool/interaction-scenario.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/interaction-scenario.png
+/icons/full/ctool/AF-system-architecture-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/AF-system-architecture-diagram.png
+/icons/full/ctool/physical-architecture-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/physical-architecture-diagram.png
+/icons/full/ctool/physical-component-breakdown-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/physical-component-breakdown-diagram.png
+/icons/full/ctool/dataflows-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/dataflows-diagram.png
+/icons/full/ctool/activity-scenario.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/activity-scenario.png
+/icons/full/ctool/function-scenario.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/function-scenario.png
+/icons/full/ctool/operational-interaction-blank-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/operational-interaction-blank-diagram.png
+/icons/full/ctool/transition.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/transition.png
+/icons/full/ctool/detailed-interface-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/detailed-interface-diagram.png
+/icons/full/ctool/operational-capabilities.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/operational-capabilities.png
+/icons/full/ctool/exchange-scenario.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/exchange-scenario.png
+/icons/full/ctool/operational-activity-breakdown-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/operational-activity-breakdown-diagram.png
+/icons/full/ctool/mode-state-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/mode-state-diagram.png
+/icons/full/ctool/missions-capabilities-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/missions-capabilities-diagram.png
+/icons/full/ctool/class-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/class-diagram.png
+/icons/full/ctool/interface-scenario.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/interface-scenario.png
+/icons/full/ctool/logical-component-breakdown-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/logical-component-breakdown-diagram.png
+/icons/full/ctool/operational-entity-blank-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/operational-entity-blank-diagram.png
+/icons/full/ctool/physical-architecture-functions-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/physical-architecture-functions-diagram.png
+/icons/full/ctool/contextual-system-actors-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/contextual-system-actors-diagram.png
+/icons/full/ctool/operational-role-blank-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/operational-role-blank-diagram.png
+/icons/full/ctool/functional-breakdown-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/functional-breakdown-diagram.png
+/icons/full/ctool/logical-architecture-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/logical-architecture-diagram.png
+/icons/full/ctool/internal-interface-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/internal-interface-diagram.png
+/icons/full/ctool/operational-entity-breakdown-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/operational-entity-breakdown-diagram.png
+/icons/full/ctool/AF-logical-architecture-diagram.png - org.polarsys.capella.core.explorer.activity.ui - org.polarsys.capella.core.explorer.activity.ui/icons/full/ctool/AF-logical-architecture-diagram.png
