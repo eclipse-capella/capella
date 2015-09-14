@@ -152,13 +152,18 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
 
   private IStatus isMigrationPossible(IResource fileToMigrate, Version currentVersion, MigrationContext context) {
 
-    // Get major & minor version in given capella resource.
-    String fileToMigrateVersion = CapellaFeatureHelper.getDetectedVersion((IFile) fileToMigrate).substring(0, 5);
-    Version fileVersion = Version.parseVersion(fileToMigrateVersion);
+    // Get major & minor version in given Capella resource.
+    String detectedVersion = CapellaFeatureHelper.getDetectedVersion((IFile) fileToMigrate);
+    String fileToMigrateVersion = detectedVersion != null && !detectedVersion.isEmpty() ? detectedVersion.substring(0, 5) : null;
+
     if (null == fileToMigrateVersion) {
-      String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_CorruptedMessage, new String[] { fileToMigrate.getFullPath().toString() });
+      String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_CorruptedMessage,
+          new String[] { fileToMigrate.getFullPath().toString() });
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
     }
+    
+    // Parse version
+    Version fileVersion = Version.parseVersion(fileToMigrateVersion);
 
     // Compare versions...
     boolean isMigrationPossible = (currentVersion.getMajor() == fileVersion.getMajor());
@@ -170,8 +175,8 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     }
 
     if (!isMigrationPossible && !isExceptionalCase(fileVersion, currentVersion)) {
-      String formattedMessage =
-          NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage, new String[] { fileToMigrate.getFullPath().toString(), getCurrentVersion() });
+      String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage, new String[] {
+          fileToMigrate.getFullPath().toString(), getCurrentVersion() });
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
     }
 
