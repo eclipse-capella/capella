@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,14 +18,16 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.capellacore.KeyValue;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
+import org.polarsys.capella.core.data.information.datavalue.DataValue;
+import org.polarsys.capella.core.data.information.datavalue.util.DataValueNaminghelper;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
@@ -39,27 +41,36 @@ public class EObjectHelper {
     return new EObjectHelper();
   }
 
-  public String getID(EObject object_p) {
-    return "_id_" + getIdentifier(object_p);
+  public String getID(EObject object) {
+    return "_id_" + getQualifiedIdentifier(object);
   }
 
-  public String getVariable(EObject object_p) {
-    return "_" + getIdentifier(object_p);
+  public String getVariable(EObject object) {
+    return "_" + getQualifiedIdentifier(object);
   }
 
-  public String getIdentifier(EObject object_p) {
-    return getIdentifier(object_p, true);
-  }
-
-  public String getIdentifier(EObject object_p, boolean isLast_p) {
-    String name = object_p.eClass().getName().toUpperCase();
+  protected String getIdentifier(EObject object, boolean isLast) {
+    String name = object.eClass().getName().toUpperCase();
     try {
-      name = EObjectLabelProviderHelper.getText(object_p);
-    } catch (Exception e) {
 
+      if (object instanceof KeyValue) {
+        name = ((KeyValue) object).getKey();
+
+      } else if (object instanceof DataValue) {
+        String prefix = DataValueNaminghelper.getReferencePrefix((DataValue) object).replace(" ", "");
+        if (prefix.isEmpty()) {
+          prefix = object.eContainingFeature().getName().replace("owned", "");
+        }
+        name = prefix + (((((DataValue) object).getName() == null) || (((DataValue) object).getName().isEmpty())) ? "" : "_" + ((DataValue) object).getName());
+
+      } else {
+        name = EObjectLabelProviderHelper.getText(object);
+      }
+
+    } catch (Exception e) {
     }
 
-    if (object_p instanceof Part) {
+    if (object instanceof Part) {
       name = "part_" + name;
     }
 
@@ -87,11 +98,11 @@ public class EObjectHelper {
       }
     }
 
-    if (clazzes.contains(object_p.eClass())) {
+    if (clazzes.contains(object.eClass())) {
       String className =
-          object_p.eClass().getName()
+          object.eClass().getName()
               .replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])", "(?<=[^A-Z])(?=[A-Z])", "(?<=[A-Za-z])(?=[^A-Za-z])"), " ");
-      String MAJ = object_p.eClass().getName().replaceAll("[a-z]", "");
+      String MAJ = object.eClass().getName().replaceAll("[a-z]", "");
       name = name.replace(className, MAJ);
     }
 
@@ -100,13 +111,14 @@ public class EObjectHelper {
 
     name = name.toUpperCase();
     name = name.replace(" ", "_");
+    name = name.replace(".", "_");
     name = name.replace(":", "");
     name = name.replace("[", "");
     name = name.replace("]", "");
 
     name = name.replace("EPBSA", "EPBS");
 
-    if (!isLast_p) {
+    if (!isLast) {
       name = name.replace("PHYSICAL_SYSTEM", "");
       name = name.replace("LOGICAL_SYSTEM", "");
       name = name.replace("SYSTEM_FUNCTIONS", "");
@@ -118,12 +130,12 @@ public class EObjectHelper {
     return name;
   }
 
-  public String getName(Object object_p) {
-    if (object_p instanceof EObject) {
-      return EObjectLabelProviderHelper.getText((EObject) object_p);
-    } else if (object_p instanceof EList) {
+  public String getName(Object object) {
+    if (object instanceof EObject) {
+      return EObjectLabelProviderHelper.getText((EObject) object);
+    } else if (object instanceof EList) {
       int i = 0;
-      EList list = (EList) object_p;
+      EList list = (EList) object;
       String result = "{";
       for (Object res : list) {
         result += getName(res);
@@ -134,37 +146,40 @@ public class EObjectHelper {
       }
       result += "}";
       return result;
-    } else if (object_p instanceof Enumerator) {
-      return ((Enumerator) object_p).getName();
+    } else if (object instanceof Enumerator) {
+      return ((Enumerator) object).getName();
     }
-    return object_p.toString();
+    return object.toString();
 
   }
 
-  public String getIDValue(EObject object_p) {
-    return EcoreUtil.getID(object_p);
+  public String getIDValue(EObject object) {
+    return EcoreUtil.getID(object);
   }
 
-  public String getID2(EObject object_p) {
-    return getID2(object_p, true);
+  public String getQualifiedIdentifier(EObject object) {
+    return getQualifiedIdentifier(object, true);
   }
 
   /**
    * @param object_p
    * @return
    */
-  public String getID2(EObject object_p, boolean isLast_p) {
-    if (object_p instanceof Project) {
-      return "";
+  protected String getQualifiedIdentifier(EObject object, boolean isLast) {
+    if (object instanceof Project) {
+      return "PROJECT_" + getIdentifier(object, isLast);
     }
-    if (object_p instanceof SystemEngineering) {
-      return getIdentifier(object_p, isLast_p);
+    if ((object instanceof SystemEngineering)) {
+      if ((((Project) object.eContainer()).getOwnedModelRoots().size() == 1)) {
+        return isLast ? getIdentifier(object, isLast) : "";
+      }
+      return getIdentifier(object, isLast);
     }
 
-    if (object_p.eContainer() != null) {
-      String parent = getID2(object_p.eContainer(), false);
+    if ((object.eContainer() != null)) {
+      String parent = getQualifiedIdentifier(object.eContainer(), false);
 
-      String identifier = getIdentifier(object_p, isLast_p);
+      String identifier = getIdentifier(object, isLast);
       if (parent.length() > 0) {
         if (parent.endsWith("__")) {
           return parent + identifier;
@@ -172,7 +187,6 @@ public class EObjectHelper {
         return parent + "__" + identifier;
       }
     }
-    return getIdentifier(object_p, isLast_p);
+    return getIdentifier(object, isLast);
   }
-
 }
