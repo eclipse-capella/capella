@@ -1132,20 +1132,6 @@
          </Description>
       </ActivityDeclaration>
    </extension>
-   <extension
-         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
-      <ActivityDeclaration
-            ActivityClass="org.polarsys.capella.common.re.re2rpl.activities.AddRECSuffixActivity"
-            Identifier="org.polarsys.capella.common.re.re2rpl.activities.AddRECSuffixActivity"
-            Multiple="false"
-            Name="Initialization of Capella DiffMerge From Transformation"
-            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
-            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
-         <Description>
-            This activity initialize Transposer for Capella Transformation execution.
-         </Description>
-      </ActivityDeclaration>
-   </extension>
    
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">
@@ -1240,21 +1226,6 @@
          </Description>
       </ActivityDeclaration>
    </extension>
-   <extension
-         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
-      <ActivityDeclaration
-            ActivityClass="org.polarsys.capella.common.re.re2rpl.activities.RemoveRECSuffixActivity"
-            Identifier="org.polarsys.capella.common.re.re2rpl.activities.RemoveRECSuffixActivity"
-            Multiple="false"
-            Name="Initialization of Capella DiffMerge From Transformation"
-            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
-            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
-         <Description>
-            This activity initialize Transposer for Capella Transformation execution.
-         </Description>
-      </ActivityDeclaration>
-   </extension>
-   
    
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">
