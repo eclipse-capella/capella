@@ -18,11 +18,9 @@ import org.polarsys.capella.common.re.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.common.re.activities.InitializeReMgtActivity;
 import org.polarsys.capella.common.re.activities.MakeTraceabilityActivity;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.re2rpl.activities.AddRECSuffixActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeDiffMergeUpdateReplicaActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeTransitionActivity;
-import org.polarsys.capella.common.re.re2rpl.activities.RemoveRECSuffixActivity;
 import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
 import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
 import org.polarsys.capella.core.transition.common.launcher.ILoopActivityDispatcher;
@@ -83,17 +81,11 @@ public class UpdateReplicaLauncher extends ReLauncher {
   protected WorkflowActivityParameter buildDiffMergeActivities() {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
 
-    // AddRECSuffixActivity
-    parameter.addActivity(getActivity(AddRECSuffixActivity.ID));
-
     // InitializeDiffMergeUpdateReplicaActivity
     parameter.addActivity(getActivity(InitializeDiffMergeUpdateReplicaActivity.ID));
 
     // DifferencesComputingActivity
     parameter.addActivity(getActivity(DifferencesComputingActivity.ID));
-
-    // RemoveRECSuffixActivity
-    parameter.addActivity(getActivity(RemoveRECSuffixActivity.ID));
 
     // DifferencesFilteringActivity
     parameter.addActivity(getActivity(DifferencesFilteringActivity.ID));
