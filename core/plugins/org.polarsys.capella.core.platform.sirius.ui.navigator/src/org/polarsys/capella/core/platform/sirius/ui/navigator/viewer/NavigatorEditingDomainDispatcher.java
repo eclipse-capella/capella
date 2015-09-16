@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,27 +52,27 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
    * {@inheritDoc}
    */
   @Override
-  public void createdEditingDomain(EditingDomain editingDomain_p) {
-    _dataListener.registerToDataNotifier((SemanticEditingDomain) editingDomain_p);
-    _csListener.registerCommandStackListener((SemanticEditingDomain) editingDomain_p);
+  public void createdEditingDomain(EditingDomain editingDomain) {
+    _dataListener.registerToDataNotifier((SemanticEditingDomain) editingDomain);
+    _csListener.registerCommandStackListener((SemanticEditingDomain) editingDomain);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void disposedEditingDomain(EditingDomain editingDomain_p) {
-    _dataListener.unregisterFromDataNotifier((SemanticEditingDomain) editingDomain_p);
-    _csListener.unregisterCommandStackListener((SemanticEditingDomain) editingDomain_p);
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+    _dataListener.unregisterFromDataNotifier((SemanticEditingDomain) editingDomain);
+    _csListener.unregisterCommandStackListener((SemanticEditingDomain) editingDomain);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     for (INotifyChangedListener provider : _notifyListeners) {
-      provider.notifyChanged(notification_p);
+      provider.notifyChanged(notification);
     }
   }
 
@@ -80,31 +80,31 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
    * {@inheritDoc}
    */
   @Override
-  public void commandStackSelectionChanged(final ISelection selection_p) {
+  public void commandStackSelectionChanged(final ISelection selection) {
     PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
       @Override
       public void run() {
         for (final ICommandStackSelectionProvider provider : _commandStackListeners) {
-          provider.commandStackSelectionChanged(selection_p);
+          provider.commandStackSelectionChanged(selection);
         }
       }
     });
   }
 
-  public static void registerNotifyChangedListener(INotifyChangedListener listener_p) {
-    _notifyListeners.add(listener_p);
+  public static void registerNotifyChangedListener(INotifyChangedListener listener) {
+    _notifyListeners.add(listener);
   }
 
-  public static void unregisterNotifyChangedListener(INotifyChangedListener listener_p) {
-    _notifyListeners.remove(listener_p);
+  public static void unregisterNotifyChangedListener(INotifyChangedListener listener) {
+    _notifyListeners.remove(listener);
   }
 
-  public static void registerCommandStackSelectionProvider(ICommandStackSelectionProvider listener_p) {
-    _commandStackListeners.add(listener_p);
+  public static void registerCommandStackSelectionProvider(ICommandStackSelectionProvider listener) {
+    _commandStackListeners.add(listener);
   }
 
-  public static void unregisterCommandStackSelectionProvider(ICommandStackSelectionProvider listener_p) {
-    _commandStackListeners.remove(listener_p);
+  public static void unregisterCommandStackSelectionProvider(ICommandStackSelectionProvider listener) {
+    _commandStackListeners.remove(listener);
   }
 
 }

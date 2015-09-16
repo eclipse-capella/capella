@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,33 +30,33 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
 
   protected Resource getResource(TransactionalEditingDomain domain, URI uri, boolean resolve) {
-    //we load the resource in the given ted.
+    // we load the resource in the given ted.
     try {
       return domain.getResourceSet().getResource(uri, resolve);
     } catch (Exception e) {
-      //if there is error at loading time, we will have a resource with errors. maybe we should remove it (tests on errors are made in other methods)
+      // if there is error at loading time, we will have a resource with errors. maybe we should remove it (tests on errors are made in other methods)
     }
     return null;
   }
 
-  protected ModelIdentifier createModelIdentifier(Resource resource_p) {
-    return CapellaModel.createModelIdentifier(resource_p);
+  protected ModelIdentifier createModelIdentifier(Resource resource) {
+    return CapellaModel.createModelIdentifier(resource);
   }
 
-  protected IModel createModel(ModelIdentifier identifier_p, TransactionalEditingDomain domain) {
-    return CapellaModel.createModel(identifier_p, domain);
+  protected IModel createModel(ModelIdentifier identifier, TransactionalEditingDomain domain) {
+    return CapellaModel.createModel(identifier, domain);
   }
 
-  protected boolean isHandled(URI uri_p) {
+  protected boolean isHandled(URI uri) {
     return false;
   }
 
   @Override
-  public IModel getModel(TransactionalEditingDomain domain_p) {
+  public IModel getModel(TransactionalEditingDomain domain) {
 
     Collection<Resource> toCheck = new ArrayList<Resource>();
-    for (Resource resource : domain_p.getResourceSet().getResources()) {
-      if (isHandled(resource.getURI())) {
+    for (Resource resource : domain.getResourceSet().getResources()) {
+      if (isHandled(resource.getURI()) && !CapellaResourceHelper.isCapellaFragment(resource.getURI())) {
         if (resource.getErrors().isEmpty()) {
           toCheck.add(resource);
         }
@@ -65,7 +65,7 @@ public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
 
     Collection<IModel> models = new ArrayList<IModel>();
     for (Resource resource : toCheck) {
-      IModel model = createModel(createModelIdentifier(resource), domain_p);
+      IModel model = createModel(createModelIdentifier(resource), domain);
       if ((model != null) && !(models.contains(model))) {
         models.add(model);
       }
@@ -73,8 +73,8 @@ public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
 
     IModel result = null;
     if (models.size() > 1) {
-      //we find a model without any depending model in the current domain
-      //we remove all models that another depends on, they are not the main model.
+      // we find a model without any depending model in the current domain
+      // we remove all models that another depends on, they are not the main model.
       for (IModel model : new ArrayList<IModel>(models)) {
         for (IModel reference : LibraryManagerExt.getAllReferences(model)) {
           models.remove(reference);
@@ -83,25 +83,25 @@ public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
     }
     if (!models.isEmpty()) {
       result = models.iterator().next();
-      //if there is many models (not fragments) without dependencies between them, it's a weird session
+      // if there is many models (not fragments) without dependencies between them, it's a weird session
     }
     return result;
   }
 
   @Override
-  public IModel getModel(EObject object_p) {
-    EObject semanticElement = object_p;
+  public IModel getModel(EObject object) {
+    EObject semanticElement = object;
     if (semanticElement == null) {
       return null;
     }
 
-    //don't forget to adapt to capella
+    // don't forget to adapt to capella
     if (!(CapellaResourceHelper.isSemanticElement(semanticElement))) {
       semanticElement = ModelAdaptation.adaptToCapella(semanticElement);
     }
 
-    //If we are in a capella resource, the resource is loaded in the resourceSet, so we can return the model
-    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(object_p);
+    // If we are in a capella resource, the resource is loaded in the resourceSet, so we can return the model
+    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(object);
     if (semanticElement != null) {
       Resource resource = semanticElement.eResource();
       if ((resource != null) && isHandled(resource.getURI())) {
@@ -109,7 +109,7 @@ public abstract class AbstractCapellaProvider extends AbstractLibraryProvider {
           return createModel(createModelIdentifier(resource), domain);
         }
 
-        //otherwise, we should ask to the library manager
+        // otherwise, we should ask to the library manager
         ModelIdentifier identifier = createModelIdentifier(resource);
         return ILibraryManager.INSTANCE.getModel(domain, identifier);
       }
