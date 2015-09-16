@@ -27,7 +27,7 @@ public class CapellaMigrationContributor extends AbstractMigrationContributor {
    * @return
    */
   public boolean isValidResource(IResource member) {
-    return CapellaResourceHelper.isCapellaResource(member);
+    return CapellaResourceHelper.isCapellaResource(member, true);
   }
 
   @Override
