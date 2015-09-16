@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
@@ -34,6 +35,7 @@ import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
 import org.polarsys.capella.detachment.version.precondition.Activator;
 import org.polarsys.capella.detachment.version.precondition.util.SAXModelsElementsParser;
+import org.polarsys.kitalpha.model.common.precondition.exception.InvalidPreconditionException;
 import org.polarsys.kitalpha.model.common.precondition.interfaces.IPrecondition;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -43,7 +45,7 @@ import org.xml.sax.XMLReader;
 public class VersionChecker implements IPrecondition<IFile> {
 
 	@Override
-	public void executePrecondition(IFile param) {
+	public void executePrecondition(IFile param, IProgressMonitor monitor) throws InvalidPreconditionException {
 		SAXParserFactory parserFactory = SAXParserFactory.newInstance();
 		parserFactory.setNamespaceAware(false);
 		InputSource is;
