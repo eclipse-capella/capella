@@ -17,11 +17,13 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMIException;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
+import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.data.migration.Activator;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
@@ -33,7 +35,14 @@ import org.xml.sax.Attributes;
  */
 public class SiriusMigrationContribution extends AbstractMigrationContribution {
 
-  HashMap<Resource, String> versions = new HashMap<Resource, String>();
+  HashMap<Resource, String> versions = null;
+
+  protected void addVersion(Resource resource, String version) {
+    if (versions == null) {
+      versions = new HashMap<Resource, String>();
+    }
+    versions.put(resource, version);
+  }
 
   @Override
   public void newResource(Resource resource, MigrationContext context) {
@@ -41,13 +50,34 @@ public class SiriusMigrationContribution extends AbstractMigrationContribution {
 
     if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(resource.getURI().fileExtension())) {
       String version = (String) ((XMLResource) resource).getDefaultLoadOptions().get("VERSION");
-      versions.put(resource, version);
+      addVersion(resource, version);
     }
 
   }
 
   private String getLoadedVersion(Resource resource) {
-    return versions.get(resource);
+    if (versions != null) {
+      return versions.get(resource);
+    }
+    return null;
+  }
+
+  @Override
+  public void dispose(MigrationContext context) {
+    super.dispose(context);
+    if (versions != null) {
+      versions.clear();
+      versions = null;
+    }
+  }
+
+  @Override
+  public void dispose(ExecutionManager manager, ResourceSet resourceSet, MigrationContext context) {
+    super.dispose(manager, resourceSet, context);
+    if (versions != null) {
+      versions.clear();
+      versions = null;
+    }
   }
 
   @Override

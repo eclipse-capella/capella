@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,12 +18,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.Activator;
 import org.polarsys.capella.common.libraries.ILibraryManager;
@@ -32,19 +30,19 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 
 /**
  */
-public class ResourceAccessPolicyListener extends ResourceSetListenerImpl implements IEditingDomainListener {
+public class ResourceAccessPolicyListener extends ResourceSetListenerImpl {
 
   @Override
-  public Command transactionAboutToCommit(ResourceSetChangeEvent event_p) throws RollbackException {
-    TransactionalEditingDomain domain = event_p.getEditingDomain();
+  public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+    TransactionalEditingDomain domain = event.getEditingDomain();
 
-    //Retrieve the model linked to the editing domain
+    // Retrieve the model linked to the editing domain
     IModel sourceModel = ILibraryManager.INSTANCE.getModel(domain);
 
     HashSet<IModel> modifiedModels = new HashSet<IModel>();
 
-    //for all notifications, if there is one which can't be modified, we rollback
-    for (Notification notification : event_p.getNotifications()) {
+    // for all notifications, if there is one which can't be modified, we rollback
+    for (Notification notification : event.getNotifications()) {
       Object notifier = notification.getNotifier();
 
       if (notifier instanceof EObject) {
@@ -61,22 +59,6 @@ public class ResourceAccessPolicyListener extends ResourceSetListenerImpl implem
       }
     }
     return null;
-  }
-
-  /**
-   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
-   */
-  @Override
-  public void createdEditingDomain(EditingDomain editingDomain) {
-    ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
-  }
-
-  /**
-   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
-   */
-  @Override
-  public void disposedEditingDomain(EditingDomain editingDomain) {
-    ((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
   }
 
 }
