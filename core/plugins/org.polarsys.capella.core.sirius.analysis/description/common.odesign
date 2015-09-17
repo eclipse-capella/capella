@@ -2352,7 +2352,7 @@
               <targetViewVariable name="targetView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;%$target%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;%$source%>"/>
                   </subModelOperations>
@@ -4311,7 +4311,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;%$target%>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;%$source%>"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -5985,7 +5985,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;%$target%>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;%$source%>"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -7627,7 +7627,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;%$target%>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;%$source%>"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -9282,7 +9282,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;%$target%>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;%$source%>"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -11736,7 +11736,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 </subModelOperations>
