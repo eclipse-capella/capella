@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.recrpl.ju;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
@@ -31,7 +35,7 @@ public class RecRplCommandManager implements IActivityExtender {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -39,7 +43,7 @@ public class RecRplCommandManager implements IActivityExtender {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -47,23 +51,23 @@ public class RecRplCommandManager implements IActivityExtender {
    * {@inheritDoc}
    */
   @Override
-  public IStatus preActivity(IContext context_p, String activityIdentifier_p, ActivityParameters activityParams_p) {
-    if ("DifferencesFilteringActivity".equals(activityIdentifier_p)) {
+  public IStatus preActivity(IContext context, String activityIdentifier, ActivityParameters activityParams) {
+    if ("DifferencesFilteringActivity".equals(activityIdentifier)) {
     	//throw new UnsupportedOperationException();
 //      if (_currentTest != null) {
-//        _currentTest.filteringTest(context_p);
+//        _currentTest.filteringTest(context);
 //      }
     }
     return Status.OK_STATUS;
   } 
   
-  protected static String propertyName = null;
-  protected static Object value = null;
+  protected static Map<String, Object> properties = new HashMap<String, Object>();
+//  protected static String propertyName = null;
+//  protected static Object value = null;
   protected static IContext context;
   
-  public static void push(String propertyName_p, Object value_p) {
-  	propertyName = propertyName_p;
-  	value = value_p;  	
+  public static void push(String propertyName, Object value) {
+    properties.put(propertyName, value);
   }
   
   public static IContext getContext() {
@@ -74,22 +78,23 @@ public class RecRplCommandManager implements IActivityExtender {
    * {@inheritDoc}
    */
   @Override
-  public IStatus postActivity(IContext context_p, String activityIdentifier_p, ActivityParameters activityParams_p) {  	
-  	if (ITransitionSteps.INITIALIZE_TRANSITION.equals(activityIdentifier_p) && propertyName != null) {
+  public IStatus postActivity(IContext contextParameter, String activityIdentifier, ActivityParameters activityParams) {  	
+  	if (ITransitionSteps.INITIALIZE_TRANSITION.equals(activityIdentifier)) {
       IPropertyContext propertyContext =
-          ((DefaultOptionsHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
-              (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
-      propertyContext.setCurrentValue(propertyContext.getProperties().getProperty(propertyName), value);
+          ((DefaultOptionsHandler) OptionsHandlerHelper.getInstance(contextParameter)).getPropertyContext(contextParameter,
+              (String) contextParameter.get(ITransitionConstants.OPTIONS_SCOPE));
+      for (Entry<String, Object> entry : properties.entrySet()) {
+        propertyContext.setCurrentValue(propertyContext.getProperties().getProperty(entry.getKey()), entry.getValue());
+      }
     } 
-  	if ("FinalizeTransitionActivity".equals(activityIdentifier_p)) {
-  		context = context_p;
+  	if ("FinalizeTransitionActivity".equals(activityIdentifier)) {
+  		context = contextParameter;
   		System.out.println(ReplicableElementHandlerHelper.getInstance(getContext()));  		
   	}
     return Status.OK_STATUS;
   }
 
 	public static void clear() {
-		propertyName = null;
-		value = null;
+	  properties.clear();
 	}
 }

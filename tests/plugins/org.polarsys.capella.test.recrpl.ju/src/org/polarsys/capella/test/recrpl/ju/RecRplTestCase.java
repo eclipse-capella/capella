@@ -116,12 +116,19 @@ public abstract class RecRplTestCase extends BasicTestCase {
     return newREC;
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   protected CatalogElement createReplica(Collection<EObject> elements, CatalogElement REC) {
+    return createReplica(elements, REC, null);
+  }
+  
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  protected CatalogElement createReplica(Collection<EObject> elements, CatalogElement REC, String suffix) {
     Collection<CatalogElement> RPLS = ReplicableElementExt.getReplicas(REC);
 
     ICommand command = new CreateReplicaCommand((Collection) elements, new NullProgressMonitor());
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE, REC);
+    if (suffix != null) {
+      RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX, suffix);
+    }
     executeCommand(command);
 
     // A new RPL must be created
@@ -156,6 +163,14 @@ public abstract class RecRplTestCase extends BasicTestCase {
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
     executeCommand(command);
   }
+  
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  protected void updateReplica(Collection<EObject> elements, CatalogElement replica, String suffix) {
+    ICommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor());
+    RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
+    RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX, suffix);
+    executeCommand(command);
+  }
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void updateReplicaCheck(Collection<EObject> elements, CatalogElement replica) {
@@ -166,10 +181,10 @@ public abstract class RecRplTestCase extends BasicTestCase {
         return new UpdateReplicaLauncher() {
 
           @Override
-          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId_p) {
-            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId_p);
+          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
+            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId);
             param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, new CheckedFilteringHandler(),
-                workflowId_p));
+                workflowId));
             return param;
           }
         };
@@ -190,10 +205,10 @@ public abstract class RecRplTestCase extends BasicTestCase {
         return new UpdateDefLauncher() {
 
           @Override
-          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId_p) {
-            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId_p);
+          protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
+            SharedWorkflowActivityParameter param = super.getSharedParameter(workflowId);
             param.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, new CheckedFilteringHandler(),
-                workflowId_p));
+                workflowId));
             return param;
           }
         };
@@ -273,9 +288,9 @@ public abstract class RecRplTestCase extends BasicTestCase {
     return getModelResource().getEObject(id);
   }
 
-  protected Collection<EObject> getObjects(String... ids_p) {
+  protected Collection<EObject> getObjects(String... ids) {
     Collection<EObject> objects = new ArrayList<EObject>();
-    for (String id : ids_p) {
+    for (String id : ids) {
       objects.add(getObject(id));
     }
     return objects;
