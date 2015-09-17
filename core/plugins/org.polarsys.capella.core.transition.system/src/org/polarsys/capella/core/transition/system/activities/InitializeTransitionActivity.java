@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,7 @@ import org.polarsys.capella.core.transition.common.handlers.scope.RuleContainers
 import org.polarsys.capella.core.transition.common.handlers.scope.RuleRootElementsScopeRetriever;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.ITraceabilityConfiguration;
-import org.polarsys.capella.core.transition.system.constants.ISystemConstants;
 import org.polarsys.capella.core.transition.system.handlers.attachment.CapellaDefaultAttachmentHandler;
-import org.polarsys.capella.core.transition.system.handlers.optimize.CrossReferencerHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.config.MergeTargetConfiguration;
 import org.polarsys.capella.core.transition.system.handlers.transformation.CapellaTransformationHandler;
 import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
@@ -52,14 +50,14 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
    * {@inheritDoc}
    */
   @Override
-  protected IStatus initializeContext(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeContext(IContext context, ActivityParameters activityParams) {
     // Initialize handlers and source/target of transition
-    IStatus status = super.initializeContext(context_p, activityParams_p);
+    IStatus status = super.initializeContext(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = initializeOptimizations(context_p, activityParams_p);
+    status = initializeOptimizations(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
@@ -73,50 +71,46 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
    * @param activityParams_p
    */
   @Override
-  protected IStatus initializeScopeRetrieverHandlers(IContext context_p, CompoundScopeRetriever handler_p, ActivityParameters activityParams_p) {
-    //Add a scope retriever based on IRuleScope implementations
-    handler_p.addScopeRetriever(new RuleRootElementsScopeRetriever(), context_p);
-    handler_p.addScopeRetriever(new RuleContainersScopeRetriever(), context_p);
-    return super.initializeScopeRetrieverHandlers(context_p, handler_p, activityParams_p);
+  protected IStatus initializeScopeRetrieverHandlers(IContext context, CompoundScopeRetriever handler, ActivityParameters activityParams) {
+    // Add a scope retriever based on IRuleScope implementations
+    handler.addScopeRetriever(new RuleRootElementsScopeRetriever(), context);
+    handler.addScopeRetriever(new RuleContainersScopeRetriever(), context);
+    return super.initializeScopeRetrieverHandlers(context, handler, activityParams);
   }
 
-  protected IStatus initializeOptimizations(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = new CrossReferencerHandler();
-    context_p.put(ISystemConstants.CROSS_REFERENCER_HANDLER, handler);
-    handler.init(context_p);
+  protected IStatus initializeOptimizations(IContext context, ActivityParameters activityParams) {
+    // IHandler handler = new CrossReferencerHandler();
+    // context_p.put(ISystemConstants.CROSS_REFERENCER_HANDLER, handler);
+    // handler.init(context_p);
     return Status.OK_STATUS;
   }
 
   @Override
-  protected IStatus initializeTransitionSources(IContext context_p, ActivityParameters activityParams_p) {
-    Collection<Object> selection = (Collection) context_p.get(ITransitionConstants.TRANSITION_SELECTION);
+  protected IStatus initializeTransitionSources(IContext context, ActivityParameters activityParams) {
+    Collection<Object> selection = (Collection) context.get(ITransitionConstants.TRANSITION_SELECTION);
 
-    context_p.put(ITransitionConstants.TRANSITION_SOURCES, adaptSelection(selection));
+    context.put(ITransitionConstants.TRANSITION_SOURCES, adaptSelection(selection));
 
     return Status.OK_STATUS;
   }
 
   /**
-   * Adapt selection to a system transition
-   * (all graphical elements are mapped to their semantic elements)
+   * Adapt selection to a system transition (all graphical elements are mapped to their semantic elements)
    * @param selection_p
    * @return
    */
-  protected Collection<Object> adaptSelection(Collection<Object> selection_p) {
-    Collection<Object> result = SemanticHelper.getSemanticObjects(selection_p);
+  protected Collection<Object> adaptSelection(Collection<Object> selection) {
+    Collection<Object> result = SemanticHelper.getSemanticObjects(selection);
     return result;
   }
 
   /**
-   * In a system transition, 
-   * 
-   * TRANSITION_SOURCE_ROOT = getSystemEngineering(TRANSITION_SOURCES)
-   * TRANSITION_SOURCE_RESOURCE = TRANSITION_SOURCE_ROOT.eResource
+   * In a system transition, TRANSITION_SOURCE_ROOT = getSystemEngineering(TRANSITION_SOURCES) TRANSITION_SOURCE_RESOURCE = TRANSITION_SOURCE_ROOT.eResource
    * TRANSITION_SOURCE_EDITING_DOMAIN = editingDomain(TRANSITION_SOURCE_RESOURCE)
    */
   @Override
-  protected IStatus initializeSource(IContext context_p, ActivityParameters activityParams_p) {
-    Collection<EObject> selection = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+  protected IStatus initializeSource(IContext context, ActivityParameters activityParams) {
+    Collection<EObject> selection = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     if (selection.size() > 0) {
 
       EObject source = (EObject) selection.toArray()[0];
@@ -127,9 +121,9 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
       ensureOpening(source);
 
       EObject root = SystemEngineeringExt.getSystemEngineering((CapellaElement) source);
-      context_p.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, root);
-      context_p.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, root.eResource());
-      context_p.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(root.eResource()));
+      context.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, root);
+      context.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, root.eResource());
+      context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(root.eResource()));
 
     } else {
       return new Status(IStatus.ERROR, Messages.Activity_Transition, "No input selection");
@@ -139,34 +133,30 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   /**
-   * In a system transition, 
-   * default use is where source and target resources are the same
-   * 
-   * TRANSITION_TARGET_RESOURCE = TRANSITION_SOURCE_RESOURCE
-   * TRANSITION_TARGET_EDITING_DOMAIN = editingDomain(TRANSITION_TARGET_RESOURCE)
-   * TRANSITION_TARGET_ROOT = TRANSITION_SOURCE_ROOT 
+   * In a system transition, default use is where source and target resources are the same TRANSITION_TARGET_RESOURCE = TRANSITION_SOURCE_RESOURCE
+   * TRANSITION_TARGET_EDITING_DOMAIN = editingDomain(TRANSITION_TARGET_RESOURCE) TRANSITION_TARGET_ROOT = TRANSITION_SOURCE_ROOT
    */
   @Override
-  protected IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p) {
-    //default transition, targetResource is same resource
-    Resource sourceResource = (Resource) context_p.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
+  protected IStatus initializeTarget(IContext context, ActivityParameters activityParams) {
+    // default transition, targetResource is same resource
+    Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
     Resource outputResource = sourceResource;
 
     if ((outputResource != null) && (outputResource.getContents().size() != 0)) {
-      context_p.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
-      context_p.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
+      context.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
+      context.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
 
       Project project = (Project) org.polarsys.capella.core.model.helpers.CapellaElementExt.getRoot((CapellaElement) outputResource.getContents().get(0));
 
       SystemEngineering sysengineering = null;
-      Object sourceRoot = context_p.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
+      Object sourceRoot = context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
       if (sourceRoot instanceof SystemEngineering) {
         sysengineering = (SystemEngineering) sourceRoot;
       } else {
         sysengineering = getEngineering(project, project.getName());
       }
       if (sysengineering != null) {
-        context_p.put(ITransitionConstants.TRANSITION_TARGET_ROOT, sysengineering);
+        context.put(ITransitionConstants.TRANSITION_TARGET_ROOT, sysengineering);
       }
     } else {
       return new Status(IStatus.ERROR, Messages.Activity_Transition, "Output model is invalid");
@@ -198,28 +188,28 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   /**
    * @param source_p
    */
-  protected void ensureOpening(EObject source_p) {
-    Session session = SessionManager.INSTANCE.getSession(source_p);
-    if ((session == null) && (source_p instanceof CapellaElement)) {
-      CapellaElement element = SystemEngineeringExt.getSystemEngineering((CapellaElement) source_p);
+  protected void ensureOpening(EObject source) {
+    Session session = SessionManager.INSTANCE.getSession(source);
+    if ((session == null) && (source instanceof CapellaElement)) {
+      CapellaElement element = SystemEngineeringExt.getSystemEngineering((CapellaElement) source);
       EObject root = element.eContainer();
       root.eResource();
     }
   }
 
-  protected SystemEngineering getEngineering(Project project_p, String name_p) {
+  protected SystemEngineering getEngineering(Project project, String name) {
 
-    for (ModelRoot root : project_p.getOwnedModelRoots()) {
+    for (ModelRoot root : project.getOwnedModelRoots()) {
       if (root instanceof SystemEngineering) {
-        if (((SystemEngineering) root).getName().equals(name_p)) {
+        if (((SystemEngineering) root).getName().equals(name)) {
           return (SystemEngineering) root;
         }
       }
     }
 
-    if (!project_p.getOwnedModelRoots().isEmpty()) {
-      if (project_p.getOwnedModelRoots().size() == 1) {
-        ModelRoot root = project_p.getOwnedModelRoots().iterator().next();
+    if (!project.getOwnedModelRoots().isEmpty()) {
+      if (project.getOwnedModelRoots().size() == 1) {
+        ModelRoot root = project.getOwnedModelRoots().iterator().next();
         if (root instanceof SystemEngineering) {
           return (SystemEngineering) root;
         }

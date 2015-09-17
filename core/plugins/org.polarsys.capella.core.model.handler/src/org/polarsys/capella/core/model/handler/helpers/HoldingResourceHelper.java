@@ -27,10 +27,10 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 public class HoldingResourceHelper {
 
   /**
-   * URI for the holding resource
-   * Extension should be the same as we use in the semantic resource since we store here semantic elements, and crossreferencer doens't work on other resources
+   * URI for the holding resource Extension should be the same as we use in the semantic resource since we store here semantic elements, and crossreferencer
+   * doens't work on other resources
    */
-  protected static URI uri = URI.createURI("capella://holdingResource." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
+  protected static URI uri = URI.createURI("capella://capella/holdingResource." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
 
   /**
    * Return the holding resource for the given domain, create one if no holding resource exists

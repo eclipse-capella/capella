@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,15 +11,13 @@
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -34,24 +32,11 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 public class InterfaceHelper {
   private static InterfaceHelper instance;
-  /**
-   * Cross referencing re-entrance collection for components user.
-   */
-  private List<Interface> _isCrossReferencingUser;
-  /**
-   * Cross referencing re-entrance collection for components implementor.
-   */
-  private List<Interface> _isCrossReferencingImplementor;
 
   private InterfaceHelper() {
-    _isCrossReferencingUser = new ArrayList<Interface>(0);
-    _isCrossReferencingImplementor = new ArrayList<Interface>(0);
   }
 
   public static InterfaceHelper getInstance() {
@@ -61,49 +46,49 @@ public class InterfaceHelper {
     return instance;
   }
 
-  public Object doSwitch(Interface element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(Interface element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(CsPackage.Literals.INTERFACE__ALLOCATING_INTERFACES)) {
-      ret = getAllocatingInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__ALLOCATING_COMPONENTS)) {
-      ret = getAllocatingComponents(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__IMPLEMENTOR_COMPONENTS)) {
-      ret = getImplementorComponents(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__USER_COMPONENTS)) {
-      ret = getUserComponents(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__PROVISIONING_INTERFACE_ALLOCATIONS)) {
-      ret = getProvisioningInterfaceAllocations(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__INTERFACE_IMPLEMENTATIONS)) {
-      ret = getInterfaceImplementations(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__INTERFACE_USES)) {
-      ret = getInterfaceUses(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__EXCHANGE_ITEMS)) {
-      ret = getExchangeItems(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__REQUIRING_COMPONENTS)) {
-      ret = getRequiringComponents(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__PROVIDING_COMPONENTS)) {
-      ret = getProvidingComponents(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__REQUIRING_COMPONENT_PORTS)) {
-      ret = getRequiringComponentPorts(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__PROVIDING_COMPONENT_PORTS)) {
-      ret = getProvidingComponentPorts(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__REALIZING_LOGICAL_INTERFACES)) {
-      ret = getRealizingLogicalInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__REALIZED_CONTEXT_INTERFACES)) {
-      ret = getRealizedContextInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__REALIZING_PHYSICAL_INTERFACES)) {
-      ret = getRealizingPhysicalInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.INTERFACE__REALIZED_LOGICAL_INTERFACES)) {
-      ret = getRealizedLogicalInterfaces(element_p);
+    if (feature.equals(CsPackage.Literals.INTERFACE__ALLOCATING_INTERFACES)) {
+      ret = getAllocatingInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__ALLOCATING_COMPONENTS)) {
+      ret = getAllocatingComponents(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__IMPLEMENTOR_COMPONENTS)) {
+      ret = getImplementorComponents(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__USER_COMPONENTS)) {
+      ret = getUserComponents(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__PROVISIONING_INTERFACE_ALLOCATIONS)) {
+      ret = getProvisioningInterfaceAllocations(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__INTERFACE_IMPLEMENTATIONS)) {
+      ret = getInterfaceImplementations(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__INTERFACE_USES)) {
+      ret = getInterfaceUses(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__EXCHANGE_ITEMS)) {
+      ret = getExchangeItems(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__REQUIRING_COMPONENTS)) {
+      ret = getRequiringComponents(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__PROVIDING_COMPONENTS)) {
+      ret = getProvidingComponents(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__REQUIRING_COMPONENT_PORTS)) {
+      ret = getRequiringComponentPorts(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__PROVIDING_COMPONENT_PORTS)) {
+      ret = getProvidingComponentPorts(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__REALIZING_LOGICAL_INTERFACES)) {
+      ret = getRealizingLogicalInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__REALIZED_CONTEXT_INTERFACES)) {
+      ret = getRealizedContextInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__REALIZING_PHYSICAL_INTERFACES)) {
+      ret = getRealizingPhysicalInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.INTERFACE__REALIZED_LOGICAL_INTERFACES)) {
+      ret = getRealizedLogicalInterfaces(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = InterfaceAllocatorHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InterfaceAllocatorHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = GeneralClassHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = GeneralClassHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
@@ -111,13 +96,12 @@ public class InterfaceHelper {
 
   /**
    * Gets the exchange items.
-   *
    * @param element_p the given interface
    * @return the exchange items
    */
-  protected List<ExchangeItem> getExchangeItems(Interface element_p) {
+  protected List<ExchangeItem> getExchangeItems(Interface element) {
     List<ExchangeItem> ret = new ArrayList<ExchangeItem>();
-    for (ExchangeItemAllocation exchangeItemAllocation : element_p.getOwnedExchangeItemAllocations()) {
+    for (ExchangeItemAllocation exchangeItemAllocation : element.getOwnedExchangeItemAllocations()) {
       ExchangeItem item = exchangeItemAllocation.getAllocatedItem();
       if (null != item) {
         ret.add(item);
@@ -126,78 +110,17 @@ public class InterfaceHelper {
     return ret;
   }
 
-  protected boolean isCrossReferencing(Interface element_p, boolean user_p) {
-    return user_p ? _isCrossReferencingUser.contains(element_p) : _isCrossReferencingImplementor.contains(element_p);
+  protected List<InterfaceImplementation> getInterfaceImplementations(Interface element) {
+    return EObjectExt.getReferencers(element, CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE);
   }
 
-  protected void markAsCrossReferenced(Interface element_p, boolean user_p) {
-    if (user_p) {
-      _isCrossReferencingUser.add(element_p);
-    } else {
-      _isCrossReferencingImplementor.add(element_p);
-    }
+  protected List<InterfaceUse> getInterfaceUses(Interface element) {
+    return EObjectExt.getReferencers(element, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE);
   }
 
-  protected void unmarkAsCrossReferenced(Interface element_p, boolean user_p) {
-    if (user_p) {
-      _isCrossReferencingUser.remove(element_p);
-    } else {
-      _isCrossReferencingImplementor.remove(element_p);
-    }
-  }
-
-  protected List<InterfaceImplementation> getInterfaceImplementations(Interface element_p) {
-    List<InterfaceImplementation> ret = new ArrayList<InterfaceImplementation>();
-
-    if (!isCrossReferencing(element_p, false)) {
-      try {
-        markAsCrossReferenced(element_p, false);
-
-        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
-        if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
-          Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
-
-          for (EStructuralFeature.Setting setting : references) {
-            if (CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE.equals(setting.getEStructuralFeature())) {
-              ret.add((InterfaceImplementation) setting.getEObject());
-            }
-          }
-        }
-      } finally {
-        unmarkAsCrossReferenced(element_p, false);
-      }
-    }
-
-    return ret;
-  }
-
-  protected List<InterfaceUse> getInterfaceUses(Interface element_p) {
-    List<InterfaceUse> ret = new ArrayList<InterfaceUse>();
-
-    if (!isCrossReferencing(element_p, true)) {
-      try {
-        markAsCrossReferenced(element_p, true);
-        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
-        if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
-          Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
-
-          for (EStructuralFeature.Setting setting : references) {
-            if (CsPackage.Literals.INTERFACE_USE__USED_INTERFACE.equals(setting.getEStructuralFeature())) {
-              ret.add((InterfaceUse) setting.getEObject());
-            }
-          }
-        }
-      } finally {
-        unmarkAsCrossReferenced(element_p, true);
-      }
-    }
-
-    return ret;
-  }
-
-  protected List<Component> getImplementorComponents(Interface element_p) {
+  protected List<Component> getImplementorComponents(Interface element) {
     List<Component> ret = new ArrayList<Component>();
-    for (InterfaceImplementation interfaceImplementation : element_p.getInterfaceImplementations()) {
+    for (InterfaceImplementation interfaceImplementation : element.getInterfaceImplementations()) {
       Component interfaceImplementor = interfaceImplementation.getInterfaceImplementor();
       if (null != interfaceImplementor) {
         ret.add(interfaceImplementor);
@@ -206,9 +129,9 @@ public class InterfaceHelper {
     return ret;
   }
 
-  protected List<Component> getUserComponents(Interface element_p) {
+  protected List<Component> getUserComponents(Interface element) {
     List<Component> ret = new ArrayList<Component>();
-    for (InterfaceUse interfaceUse : element_p.getInterfaceUses()) {
+    for (InterfaceUse interfaceUse : element.getInterfaceUses()) {
       Component interfaceUser = interfaceUse.getInterfaceUser();
       if (null != interfaceUser) {
         ret.add(interfaceUser);
@@ -217,9 +140,9 @@ public class InterfaceHelper {
     return ret;
   }
 
-  protected List<Interface> getAllocatingInterfaces(Interface element_p) {
+  protected List<Interface> getAllocatingInterfaces(Interface element) {
     List<Interface> ret = new ArrayList<Interface>();
-    for (InterfaceAllocation interfaceAllocation : element_p.getProvisionedInterfaceAllocations()) {
+    for (InterfaceAllocation interfaceAllocation : element.getProvisionedInterfaceAllocations()) {
       InterfaceAllocator allocator = interfaceAllocation.getAllocatingInterfaceAllocator();
       if (allocator instanceof Interface) {
         ret.add((Interface) allocator);
@@ -228,9 +151,9 @@ public class InterfaceHelper {
     return ret;
   }
 
-  protected List<Component> getAllocatingComponents(Interface element_p) {
+  protected List<Component> getAllocatingComponents(Interface element) {
     List<Component> ret = new ArrayList<Component>();
-    for (InterfaceAllocation interfaceAllocation : element_p.getProvisionedInterfaceAllocations()) {
+    for (InterfaceAllocation interfaceAllocation : element.getProvisionedInterfaceAllocations()) {
       InterfaceAllocator allocator = interfaceAllocation.getAllocatingInterfaceAllocator();
       if (allocator instanceof Component) {
         ret.add((Component) allocator);
@@ -239,9 +162,9 @@ public class InterfaceHelper {
     return ret;
   }
 
-  protected List<InterfaceAllocation> getProvisioningInterfaceAllocations(Interface element_p) {
+  protected List<InterfaceAllocation> getProvisioningInterfaceAllocations(Interface element) {
     List<InterfaceAllocation> ret = new ArrayList<InterfaceAllocation>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof InterfaceAllocation) {
         ret.add((InterfaceAllocation) trace);
       }
@@ -252,9 +175,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<Component> getRequiringComponents(Interface element_p) {
+  protected List<Component> getRequiringComponents(Interface element) {
     List<Component> ret = new ArrayList<Component>();
-    for (ComponentPort port : element_p.getRequiringComponentPorts()) {
+    for (ComponentPort port : element.getRequiringComponentPorts()) {
       EObject obj = port.eContainer();
       if (obj instanceof Component) {
         ret.add((Component) obj);
@@ -266,9 +189,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<Component> getProvidingComponents(Interface element_p) {
+  protected List<Component> getProvidingComponents(Interface element) {
     List<Component> ret = new ArrayList<Component>();
-    for (ComponentPort port : element_p.getProvidingComponentPorts()) {
+    for (ComponentPort port : element.getProvidingComponentPorts()) {
       EObject obj = port.eContainer();
       if (obj instanceof Component) {
         ret.add((Component) obj);
@@ -280,9 +203,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<ComponentPort> getRequiringComponentPorts(Interface element_p) {
+  protected List<ComponentPort> getRequiringComponentPorts(Interface element) {
     List<ComponentPort> ret = new ArrayList<ComponentPort>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
+    for (EObject obj : EObjectExt.getReferencers(element, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
       if (obj instanceof ComponentPort) {
         ret.add((ComponentPort) obj);
       }
@@ -293,9 +216,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<ComponentPort> getProvidingComponentPorts(Interface element_p) {
+  protected List<ComponentPort> getProvidingComponentPorts(Interface element) {
     List<ComponentPort> ret = new ArrayList<ComponentPort>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
+    for (EObject obj : EObjectExt.getReferencers(element, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
       if (obj instanceof ComponentPort) {
         ret.add((ComponentPort) obj);
       }
@@ -306,9 +229,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<Interface> getRealizingLogicalInterfaces(Interface element_p) {
+  protected List<Interface> getRealizingLogicalInterfaces(Interface element) {
     List<Interface> result = new ArrayList<Interface>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ContextInterfaceRealization) {
         TraceableElement src = ((ContextInterfaceRealization) trace).getSourceElement();
         if (src instanceof Interface) {
@@ -322,9 +245,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<Interface> getRealizedContextInterfaces(Interface element_p) {
+  protected List<Interface> getRealizedContextInterfaces(Interface element) {
     List<Interface> result = new ArrayList<Interface>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ContextInterfaceRealization) {
         TraceableElement src = ((ContextInterfaceRealization) trace).getTargetElement();
         if (src instanceof Interface) {
@@ -338,9 +261,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<Interface> getRealizingPhysicalInterfaces(Interface element_p) {
+  protected List<Interface> getRealizingPhysicalInterfaces(Interface element) {
     List<Interface> result = new ArrayList<Interface>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof LogicalInterfaceRealization) {
         TraceableElement src = ((LogicalInterfaceRealization) trace).getSourceElement();
         if (src instanceof Interface) {
@@ -354,9 +277,9 @@ public class InterfaceHelper {
   /**
    *
    */
-  protected List<Interface> getRealizedLogicalInterfaces(Interface element_p) {
+  protected List<Interface> getRealizedLogicalInterfaces(Interface element) {
     List<Interface> result = new ArrayList<Interface>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof LogicalInterfaceRealization) {
         TraceableElement src = ((LogicalInterfaceRealization) trace).getTargetElement();
         if (src instanceof Interface) {

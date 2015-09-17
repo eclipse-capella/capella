@@ -46,7 +46,8 @@ public class HoldingResourceRemovalContribution extends AbstractMigrationContrib
       String scheme = uri.scheme();
       if (schemeResource.equals(scheme)) {
         String host = uri.host();
-        if (holdingResource.equals(host)) {
+        String file = uri.path();
+        if (holdingResource.equals(host) || holdingResource.equals(file)) {
           return true;
         }
       }

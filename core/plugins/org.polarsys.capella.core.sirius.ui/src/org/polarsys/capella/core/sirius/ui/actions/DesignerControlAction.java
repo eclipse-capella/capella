@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,16 +79,16 @@ public class DesignerControlAction extends ControlAction {
      * @param representations_p
      * @param representationsDest_p
      */
-    public CapellaSiriusControlCommand(EObject semanticRoot_p, URI semanticDest_p, Set<DRepresentation> representations_p, URI representationsDest_p) {
-      super(semanticRoot_p, semanticDest_p, representations_p, representationsDest_p, new NullProgressMonitor());
+    public CapellaSiriusControlCommand(EObject semanticRoot, URI semanticDest, Set<DRepresentation> representations, URI representationsDest) {
+      super(semanticRoot, semanticDest, representations, representationsDest, new NullProgressMonitor());
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected EObject getRootContainer(EObject eObject_p) {
-      return super.getRootContainer(eObject_p);
+    protected EObject getRootContainer(EObject eObject) {
+      return super.getRootContainer(eObject);
     }
   }
 
@@ -106,9 +106,9 @@ public class DesignerControlAction extends ControlAction {
      * @param semanticRoot_p
      * @param uncontrolRepresentations_p
      */
-    public CapellaSiriusUncontrolCommand(EObject semanticRoot_p, boolean uncontrolRepresentations_p) {
-      super(semanticRoot_p, uncontrolRepresentations_p, new NullProgressMonitor());
-      _semanticRoot = semanticRoot_p;
+    public CapellaSiriusUncontrolCommand(EObject semanticRoot, boolean uncontrolRepresentations) {
+      super(semanticRoot, uncontrolRepresentations, new NullProgressMonitor());
+      _semanticRoot = semanticRoot;
     }
 
     /**
@@ -129,7 +129,6 @@ public class DesignerControlAction extends ControlAction {
       ENotificationImpl notification = new ENotificationImpl((InternalEObject) _semanticRoot.eContainer(), eventType, containingFeature, null, _semanticRoot);
       // Broadcast the notif to Capella cross referencers.
       // FIXME It might be interesting to broadcast this faked notif to the whole eAdapters() ?
-      editingDomain.getDerivedCrossReferencer().notifyChanged(notification);
       editingDomain.getCrossReferencer().notifyChanged(notification);
     }
 
@@ -137,24 +136,24 @@ public class DesignerControlAction extends ControlAction {
      * {@inheritDoc}
      */
     @Override
-    public Resource getAirdResourceWithAnalysisOn(EObject object_p) {
-      return super.getAirdResourceWithAnalysisOn(object_p);
+    public Resource getAirdResourceWithAnalysisOn(EObject object) {
+      return super.getAirdResourceWithAnalysisOn(object);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Collection<DAnalysis> getAnalyses(Resource aird_p) {
-      return super.getAnalyses(aird_p);
+    public Collection<DAnalysis> getAnalyses(Resource aird) {
+      return super.getAnalyses(aird);
     }
 
     /**
      * Overridden to get the right container i.e the first one that is serialized in its own resource. {@inheritDoc}
      */
     @Override
-    protected EObject getRootContainer(EObject eObject_p) {
-      return super.getRootContainer(eObject_p);
+    protected EObject getRootContainer(EObject eObject) {
+      return super.getRootContainer(eObject);
     }
   }
 
@@ -165,8 +164,8 @@ public class DesignerControlAction extends ControlAction {
     /**
      * @param shell_p
      */
-    public CapellaSiriusControlHandler(Shell shell_p) {
-      _shell = shell_p;
+    public CapellaSiriusControlHandler(Shell shell) {
+      _shell = shell;
     }
 
     /**
@@ -174,7 +173,7 @@ public class DesignerControlAction extends ControlAction {
      */
     @SuppressWarnings("synthetic-access")
     @Override
-    protected ResourceDialog createControlResourceDialog(Shell shell_p, String defaultURI_p) {
+    protected ResourceDialog createControlResourceDialog(Shell shell, String defaultURI) {
       org.polarsys.capella.core.sirius.ui.internal.ControlResourceDialog controlResourceDialog =
           new org.polarsys.capella.core.sirius.ui.internal.ControlResourceDialog(_shell, domain, _eObject.eResource(), _eObject);
       return controlResourceDialog;
@@ -184,8 +183,8 @@ public class DesignerControlAction extends ControlAction {
      * @see org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler#getDefaultCorrespondingAird(org.eclipse.emf.common.util.URI)
      */
     @Override
-    protected URI getDefaultCorrespondingAird(URI semanticModelUri_p) {
-      return semanticModelUri_p.trimFileExtension().appendFileExtension(
+    protected URI getDefaultCorrespondingAird(URI semanticModelUri) {
+      return semanticModelUri.trimFileExtension().appendFileExtension(
           AbstractPreferencesInitializer.getString(ICapellaPreferences.PREFERENCE_CAPELLA_AIRD_FRAGMENT_FILE_EXTENSION, true));
     }
 
@@ -193,13 +192,13 @@ public class DesignerControlAction extends ControlAction {
      * {@inheritDoc}
      */
     @Override
-    protected Collection<DRepresentation> getRepresentationsToMove(Shell shell_p, Session session_p, EObject semanticRoot_p) throws InterruptedException {
-      Collection<DRepresentation> representations = collectExistingRepresentations(session_p, semanticRoot_p);
+    protected Collection<DRepresentation> getRepresentationsToMove(Shell shell, Session session, EObject semanticRoot) throws InterruptedException {
+      Collection<DRepresentation> representations = collectExistingRepresentations(session, semanticRoot);
       Collection<DRepresentation> representationsToMove = null;
       if (representations.isEmpty()) {
         representationsToMove = representations;
       } else {
-        representationsToMove = askUserWhichRepresentationToSplit(_shell, session_p, representations);
+        representationsToMove = askUserWhichRepresentationToSplit(_shell, session, representations);
       }
       return representationsToMove;
     }
@@ -209,14 +208,14 @@ public class DesignerControlAction extends ControlAction {
      */
     @SuppressWarnings("synthetic-access")
     @Override
-    public void performControl(Shell shell_p, final EObject semanticRoot_p, IProgressMonitor monitor_p) {
-      final Session session = SessionManager.INSTANCE.getSession(semanticRoot_p);
+    public void performControl(Shell shell, final EObject semanticRoot, IProgressMonitor monitor) {
+      final Session session = SessionManager.INSTANCE.getSession(semanticRoot);
       if (session != null) {
-        final URI semanticDest = getControledResourceURI(_shell, semanticRoot_p);
+        final URI semanticDest = getControledResourceURI(_shell, semanticRoot);
         if (semanticDest != null) {
           final Set<DRepresentation> representations = new HashSet<DRepresentation>(0);
           try {
-            representations.addAll(getRepresentationsToMove(_shell, session, semanticRoot_p));
+            representations.addAll(getRepresentationsToMove(_shell, session, semanticRoot));
           } catch (InterruptedException exception_p) {
             StringBuilder loggerMessage = new StringBuilder(".performControl(..) _ "); //$NON-NLS-1$
             __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI));
@@ -226,19 +225,19 @@ public class DesignerControlAction extends ControlAction {
             resources.add(representation.eResource());
           }
           // Collect resources that needs to be updated according to this fragmentation.
-          resources.addAll(RepresentationHelper.collectDependentResources(semanticRoot_p));
+          resources.addAll(RepresentationHelper.collectDependentResources(semanticRoot));
 
           URI representationDest = getDefaultCorrespondingAird(semanticDest);
           // Disable resourceSetSync notification to avoid unload / reload of fragmented resources during the fragmentation.
           setResourceSetSyncNotificationEnabled(session, false);
           try {
-            doExecuteCommand(semanticRoot_p, resources, new CapellaSiriusControlCommand(semanticRoot_p, semanticDest, representations, representationDest));
+            doExecuteCommand(semanticRoot, resources, new CapellaSiriusControlCommand(semanticRoot, semanticDest, representations, representationDest));
           } finally {
             Display.getCurrent().syncExec(new Runnable() {
               public void run() {
                 // Re-enable the notification.
                 setResourceSetSyncNotificationEnabled(session, true);
-                saveSession(semanticRoot_p);
+                saveSession(semanticRoot);
                 SessionHelper.reloadEditors(session, representations);
               }
             });
@@ -262,7 +261,7 @@ public class DesignerControlAction extends ControlAction {
      * @param semanticRoot_p
      * @return
      */
-    private Resource addUnreferencedRootSemanticResource(final EObject semanticRoot_p) {
+    private Resource addUnreferencedRootSemanticResource(final EObject semanticRoot) {
       // Get the execution manager.
       final List<Resource> referencingElements = new ArrayList<Resource>(1);
       // Create a writable command to make sure computation is performed in a transactional way.
@@ -277,11 +276,11 @@ public class DesignerControlAction extends ControlAction {
          * @see java.lang.Runnable#run()
          */
         public void run() {
-          referencingElements.add(semanticRoot_p.eResource());
+          referencingElements.add(semanticRoot.eResource());
         }
       };
       // Run the command.
-      TransactionHelper.getExecutionManager(semanticRoot_p).execute(resolveResourceCommand);
+      TransactionHelper.getExecutionManager(semanticRoot).execute(resolveResourceCommand);
       return referencingElements.get(0);
     }
 
@@ -289,20 +288,20 @@ public class DesignerControlAction extends ControlAction {
      * {@inheritDoc}
      */
     @Override
-    public void performUncontrol(final Shell shell_p, final EObject semanticRoot_p, IProgressMonitor monitor_p) {
-      boolean uncontrolRepresentations = shouldUncontrolRepresentations(shell_p);
-      CapellaSiriusUncontrolCommand vuc = new CapellaSiriusUncontrolCommand(semanticRoot_p, uncontrolRepresentations);
+    public void performUncontrol(final Shell shell, final EObject semanticRoot, IProgressMonitor monitor) {
+      boolean uncontrolRepresentations = shouldUncontrolRepresentations(shell);
+      CapellaSiriusUncontrolCommand vuc = new CapellaSiriusUncontrolCommand(semanticRoot, uncontrolRepresentations);
       // Use the container to fake the modified resource since this is container resource that needs to be saved.
-      EObject parentContainer = EcoreUtil2.getResourceContainer(semanticRoot_p);
+      EObject parentContainer = EcoreUtil2.getResourceContainer(semanticRoot);
       Resource airdResource = vuc.getAirdResourceWithAnalysisOn(parentContainer);
       Collection<Resource> resources = new HashSet<Resource>(1);
       if (null != airdResource) {
         resources.add(airdResource);
       }
 
-      final Session session = SessionManager.INSTANCE.getSession(semanticRoot_p);
+      final Session session = SessionManager.INSTANCE.getSession(semanticRoot);
       if (session != null) {
-        Collection<Setting> settings = session.getSemanticCrossReferencer().getInverseReferences(semanticRoot_p);
+        Collection<Setting> settings = session.getSemanticCrossReferencer().getInverseReferences(semanticRoot);
         for (Setting setting : settings) {
           if ((setting != null) && ViewpointPackage.Literals.DANALYSIS__MODELS.equals(setting.getEStructuralFeature())) {
             if ((setting.getEObject() != null) && (setting.getEObject().eResource() != null)) {
@@ -313,10 +312,10 @@ public class DesignerControlAction extends ControlAction {
       }
 
       // Collect resources that needs to be updated according to this unfragmentation.
-      resources.addAll(RepresentationHelper.collectDependentResources(semanticRoot_p));
+      resources.addAll(RepresentationHelper.collectDependentResources(semanticRoot));
       // In case of the semantic root is not referenced we have to add it to the file list.
-      if ((null != semanticRoot_p.eResource()) && !resources.contains(semanticRoot_p.eResource())) {
-        resources.add(addUnreferencedRootSemanticResource(semanticRoot_p));
+      if ((null != semanticRoot.eResource()) && !resources.contains(semanticRoot.eResource())) {
+        resources.add(addUnreferencedRootSemanticResource(semanticRoot));
       }
       // Disable resourceSetSync notification to avoid unload / reload of fragmented resources during the unfragmentation.
       setResourceSetSyncNotificationEnabled(session, false);
@@ -327,7 +326,7 @@ public class DesignerControlAction extends ControlAction {
           public void run() {
             // Re-enable the notification.
             setResourceSetSyncNotificationEnabled(session, true);
-            saveSession(semanticRoot_p);
+            saveSession(semanticRoot);
             SessionHelper.reloadEditors(session);
           }
         });
@@ -352,10 +351,10 @@ public class DesignerControlAction extends ControlAction {
    * @param representationResources_p
    * @param realCommand_p
    */
-  protected void doExecuteCommand(final EObject semanticRoot_p, final Collection<Resource> representationResources_p, final Command realCommand_p) {
+  protected void doExecuteCommand(final EObject semanticRoot, final Collection<Resource> representationResources, final Command realCommand) {
     final Map<Resource, ResourceStatus> initialResourceWithStatus = new HashMap<Resource, ResourceStatus>(1);
     try {
-      TransactionHelper.getExecutionManager(semanticRoot_p).execute(new AbstractNonDirtyingCommand() {
+      TransactionHelper.getExecutionManager(semanticRoot).execute(new AbstractNonDirtyingCommand() {
         /**
          * Change resource status for specified parameters.
          * @param resourceSetSync_p
@@ -363,11 +362,11 @@ public class DesignerControlAction extends ControlAction {
          * @param handleResource_p
          * @param handleResourceStatus_p
          */
-        private void changeResourceSyncStatus(ResourceSetSync resourceSetSync_p, Map<Resource, ResourceStatus> resourceWithStatus_p, Resource handleResource_p,
-            ResourceStatus handleResourceStatus_p) {
+        private void changeResourceSyncStatus(ResourceSetSync resourceSetSync, Map<Resource, ResourceStatus> resourceWithStatus, Resource handleResource,
+            ResourceStatus handleResourceStatus) {
           // Store resource and its initial status if we need to rollback to initial state.
-          resourceWithStatus_p.put(handleResource_p, handleResourceStatus_p);
-          resourceSetSync_p.statusChanged(handleResource_p, handleResourceStatus_p, ResourceStatus.CHANGED /* new status */);
+          resourceWithStatus.put(handleResource, handleResourceStatus);
+          resourceSetSync.statusChanged(handleResource, handleResourceStatus, ResourceStatus.CHANGED /* new status */);
         }
 
         /**
@@ -383,19 +382,19 @@ public class DesignerControlAction extends ControlAction {
          */
         @Override
         public void commandRolledBack() {
-          restoreResourceSyncStatus(initialResourceWithStatus, ResourceSetSync.getOrInstallResourceSetSync(TransactionHelper.getEditingDomain(semanticRoot_p)));
+          restoreResourceSyncStatus(initialResourceWithStatus, ResourceSetSync.getOrInstallResourceSetSync(TransactionHelper.getEditingDomain(semanticRoot)));
         }
 
         /**
          * Restore specified resources in the map to their initial sync status.<br>
          * This method must be called when rollbacking and/or interrupting the command.
          */
-        protected void restoreResourceSyncStatus(Map<Resource, ResourceStatus> initialResourceWithStatus_p, ResourceSetSync resourceSetSync_p) {
+        protected void restoreResourceSyncStatus(Map<Resource, ResourceStatus> initialResourceWithStatus, ResourceSetSync resourceSetSync) {
           // Restore all modified resources to their initial status.
-          Iterator<Entry<Resource, ResourceStatus>> iterator = initialResourceWithStatus_p.entrySet().iterator();
+          Iterator<Entry<Resource, ResourceStatus>> iterator = initialResourceWithStatus.entrySet().iterator();
           while (iterator.hasNext()) {
             Map.Entry<Resource, ResourceStatus> entry = iterator.next();
-            resourceSetSync_p.statusChanged(entry.getKey(), ResourceStatus.CHANGED /* status set in command execution */, entry.getValue());
+            resourceSetSync.statusChanged(entry.getKey(), ResourceStatus.CHANGED /* status set in command execution */, entry.getValue());
           }
         }
 
@@ -403,12 +402,12 @@ public class DesignerControlAction extends ControlAction {
          * {@inheritDoc}
          */
         public void run() {
-          ResourceSetSync resourceSetSync = ResourceSetSync.getOrInstallResourceSetSync(TransactionHelper.getEditingDomain(semanticRoot_p));
+          ResourceSetSync resourceSetSync = ResourceSetSync.getOrInstallResourceSetSync(TransactionHelper.getEditingDomain(semanticRoot));
           // Handle Semantic resource.
-          changeResourceSyncStatus(resourceSetSync, initialResourceWithStatus, semanticRoot_p.eResource(),
-              ResourceSetSync.getStatus(semanticRoot_p.eResource()));
+          changeResourceSyncStatus(resourceSetSync, initialResourceWithStatus, semanticRoot.eResource(),
+              ResourceSetSync.getStatus(semanticRoot.eResource()));
           // Handle representations resources.
-          for (Resource representationResource : representationResources_p) {
+          for (Resource representationResource : representationResources) {
             changeResourceSyncStatus(resourceSetSync, initialResourceWithStatus, representationResource, ResourceSetSync.getStatus(representationResource));
           }
           // Try to make file writable (if necessary).
@@ -418,8 +417,8 @@ public class DesignerControlAction extends ControlAction {
               filesToMakeWritable.add(EcoreUtil2.getFile(currentResource));
             }
             // Throws exception if an issue occurs.
-            FileModificationPreCommitListener.makeFilesWritable(TransactionHelper.getEditingDomain(semanticRoot_p), filesToMakeWritable);
-            realCommand_p.execute();
+            FileModificationPreCommitListener.makeFilesWritable(TransactionHelper.getEditingDomain(semanticRoot), filesToMakeWritable);
+            realCommand.execute();
           } catch (AbortedTransactionException exception_p) {
             commandRolledBack();
           }
@@ -435,9 +434,9 @@ public class DesignerControlAction extends ControlAction {
    * Fragment
    * @param shell__p
    */
-  protected void fragment(final Shell shell__p) {
-    SiriusControlHandler siriusControlHandler = new CapellaSiriusControlHandler(shell__p);
-    siriusControlHandler.performControl(shell__p, _eObject, new NullProgressMonitor());
+  protected void fragment(final Shell shell_) {
+    SiriusControlHandler siriusControlHandler = new CapellaSiriusControlHandler(shell_);
+    siriusControlHandler.performControl(shell_, _eObject, new NullProgressMonitor());
 
     return;
   }
@@ -460,9 +459,9 @@ public class DesignerControlAction extends ControlAction {
    * Save session.
    * @param semanticRoot_p
    */
-  protected void saveSession(final EObject semanticRoot_p) {
+  protected void saveSession(final EObject semanticRoot) {
     // Force to save the session again to make sure all modifications are saved.
-    final Session session = SessionManager.INSTANCE.getSession(semanticRoot_p);
+    final Session session = SessionManager.INSTANCE.getSession(semanticRoot);
     TransactionHelper.getExecutionManager(session).execute(new AbstractNonDirtyingCommand() {
       public void run() {
         session.save(new NullProgressMonitor());
@@ -474,9 +473,9 @@ public class DesignerControlAction extends ControlAction {
    * UnFragment
    * @param shell__p
    */
-  protected void unFragment(final Shell shell__p) {
+  protected void unFragment(final Shell shell_) {
     // Ask the end-user to confirm the uncontrol operation.
-    final UncontrolMessageDialog confirmationDialog = new UncontrolMessageDialog(shell__p, EObjectLabelProviderHelper.getText(_eObject));
+    final UncontrolMessageDialog confirmationDialog = new UncontrolMessageDialog(shell_, EObjectLabelProviderHelper.getText(_eObject));
     if (!(Window.OK == confirmationDialog.open())) {
       return;
     }
@@ -486,12 +485,12 @@ public class DesignerControlAction extends ControlAction {
        * @see org.eclipse.sirius.ui.tools.api.control.SiriusUncontrolHandler#shouldUncontrolRepresentations(org.eclipse.swt.widgets.Shell)
        */
       @Override
-      protected boolean shouldUncontrolRepresentations(Shell shell_p) {
+      protected boolean shouldUncontrolRepresentations(Shell shell) {
         return confirmationDialog.shouldUncontrolRepresentations();
       }
     };
 
-    siriusUncontrolHandler.performUncontrol(shell__p, _eObject, new NullProgressMonitor());
+    siriusUncontrolHandler.performUncontrol(shell_, _eObject, new NullProgressMonitor());
 
     return;
   }
@@ -500,7 +499,7 @@ public class DesignerControlAction extends ControlAction {
    * Set whether or not the resourceSetSync related to current TED emits notifications to its clients.
    * @param notificationEnabled_p
    */
-  protected void setResourceSetSyncNotificationEnabled(Session session, boolean notificationEnabled_p) {
-    ResourceSetSync.getOrInstallResourceSetSync(TransactionHelper.getEditingDomain(session)).setNotificationIsRequired(notificationEnabled_p);
+  protected void setResourceSetSyncNotificationEnabled(Session session, boolean notificationEnabled) {
+    ResourceSetSync.getOrInstallResourceSetSync(TransactionHelper.getEditingDomain(session)).setNotificationIsRequired(notificationEnabled);
   }
 }
