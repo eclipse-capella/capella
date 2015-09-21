@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class CapelladPropertySection extends AdvancedPropertySection implements 
            * {@inheritDoc}
            */
           @Override
-          public void setPropertyValue(Object propertyId_p, Object value_p) {
+          public void setPropertyValue(Object propertyId, Object value) {
             try {
               if (!_reentrantCall) {
                 // Set flag to true to filter out reentrant call from the Expert property sheet page.
@@ -63,7 +63,7 @@ public class CapelladPropertySection extends AdvancedPropertySection implements 
                 if (object instanceof EObject) {
                   Resource res = ((EObject) object).eResource();
                   if (null != res) {
-                    super.setPropertyValue(propertyId_p, value_p);
+                    super.setPropertyValue(propertyId, value);
                   }
                 }
               }

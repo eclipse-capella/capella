@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,8 +25,8 @@ import org.polarsys.capella.common.flexibility.wizards.ui.tabbed.ObjectPropertie
 public class SubPropertiesTabDescriptorProvider extends ObjectPropertiesTabDescriptorProvider {
 
   @Override
-  protected String adapt(String canonicalName_p) {
-    String result = canonicalName_p;
+  protected String adapt(String canonicalName) {
+    String result = canonicalName;
     result = result.replace("org.polarsys.capella.common.data", "org.polarsys.capella.core.properties");
     result = result.replace("org.polarsys.capella.core.data", "org.polarsys.capella.core.properties");
     result = result.replace("org.eclipse.sirius", "org.polarsys.capella.core.properties");
@@ -35,23 +35,23 @@ public class SubPropertiesTabDescriptorProvider extends ObjectPropertiesTabDescr
   }
 
   @Override
-  protected Object adapt(Object source_p) {
-    Object source = source_p;
-    if (source instanceof IGraphicalEditPart) {
-      source = ((IGraphicalEditPart) source).getModel();
+  protected Object adapt(Object source) {
+    Object src = source;
+    if (src instanceof IGraphicalEditPart) {
+      src = ((IGraphicalEditPart) src).getModel();
     }
-    if (source instanceof View) {
-      source = ((View) source).getElement();
+    if (src instanceof View) {
+      src = ((View) src).getElement();
     }
-    if (!(source instanceof DDiagram)) {
-      if (source instanceof DSemanticDecorator) {
-        return Arrays.asList(new Object[] { ((DSemanticDecorator) source).getTarget(), source });
+    if (!(src instanceof DDiagram)) {
+      if (src instanceof DSemanticDecorator) {
+        return Arrays.asList(new Object[] { ((DSemanticDecorator) src).getTarget(), src });
       }
     }
 
-    if (source instanceof Collection) {
+    if (src instanceof Collection) {
       Collection<Object> result = new ArrayList<Object>();
-      for (Object sourceItem : (Collection) source_p) {
+      for (Object sourceItem : (Collection) source) {
         Object res = adapt(sourceItem);
         if (res instanceof Collection) {
           result.addAll((Collection) res);
@@ -63,7 +63,7 @@ public class SubPropertiesTabDescriptorProvider extends ObjectPropertiesTabDescr
       }
       return result;
     }
-    return source;
+    return src;
   }
 
 }

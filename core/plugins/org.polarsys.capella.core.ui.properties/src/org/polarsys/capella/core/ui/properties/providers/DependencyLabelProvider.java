@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,15 +43,15 @@ public class DependencyLabelProvider extends CapellaTransfertViewerLabelProvider
    * Once the dependency relationship has been specified via the parameters below, it is impossible to change it.
    * The only way for a client to refresh is to create a new instance of this class.
    * 
-   * @param dependencies_p The element that subject depends on 
-   * @param inverseDependencies_p The elements that depend on the subject
-   * @param subject_p the subject itself
+   * @param dependencies The element that subject depends on 
+   * @param inverseDependencies The elements that depend on the subject
+   * @param subject the subject itself
    */
-  public DependencyLabelProvider(Collection<?> dependencies_p, Collection<?> inverseDependencies_p, Object subject_p) {
+  public DependencyLabelProvider(Collection<?> dependencies, Collection<?> inverseDependencies, Object subject) {
 	super();
-    this.dependencies = dependencies_p;
-    this.inverseDependencies = inverseDependencies_p;
-    this.subject = subject_p;
+    this.dependencies = dependencies;
+    this.inverseDependencies = inverseDependencies;
+    this.subject = subject;
   }
   
   // cache the text of the subject, it's required for each element
@@ -66,17 +66,17 @@ public class DependencyLabelProvider extends CapellaTransfertViewerLabelProvider
   /**
    * {@inheritDoc}
    */
-  public String getText(Object element_p){
+  public String getText(Object element){
     
     String left = getSubjectText();
-    String right = super.getText(element_p);
+    String right = super.getText(element);
     String fmt = FMT_DEFAULT;
     
-    if (dependencies.contains(element_p) && inverseDependencies.contains(element_p)){
+    if (dependencies.contains(element) && inverseDependencies.contains(element)){
       fmt = FMT_CYCLE;
-    } else if (dependencies.contains(element_p)){
+    } else if (dependencies.contains(element)){
       fmt = FMT_DEPENDS;
-    } else if (inverseDependencies.contains(element_p)){
+    } else if (inverseDependencies.contains(element)){
       fmt = FMT_INVERSE_DEPENDS;
     }
     return MessageFormat.format(fmt, left, right);

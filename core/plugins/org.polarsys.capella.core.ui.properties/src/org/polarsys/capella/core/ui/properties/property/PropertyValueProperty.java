@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,26 +27,26 @@ public abstract class PropertyValueProperty extends AbstractProperty implements 
   protected abstract String[] getPathProperty();
 
   /**
-   * @param element_p
+   * @param element
    */
-  protected void unsetPropertyValue(NamedElement element_p) {
-    PropertiesServices.unsetProperty(element_p, getPathProperty());
+  protected void unsetPropertyValue(NamedElement element) {
+    PropertiesServices.unsetProperty(element, getPathProperty());
   }
 
   /**
-   * @param element_p
-   * @param intValue_p
+   * @param element
+   * @param intValue
    */
-  protected void setPropertyValue(NamedElement element_p, String value_p) {
-    PropertiesServices.setPropertyValue(element_p, getPathProperty(), value_p, true);
+  protected void setPropertyValue(NamedElement element, String value) {
+    PropertiesServices.setPropertyValue(element, getPathProperty(), value, true);
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  protected String getPropertyValue(NamedElement element_p) {
-    return PropertiesServices.getPropertyValue(element_p, getPathProperty(), ICommonConstants.EMPTY_STRING);
+  protected String getPropertyValue(NamedElement element) {
+    return PropertiesServices.getPropertyValue(element, getPathProperty(), ICommonConstants.EMPTY_STRING);
   }
 
   /**
@@ -56,24 +56,24 @@ public abstract class PropertyValueProperty extends AbstractProperty implements 
     return Integer.class;
   }
 
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    if ((value_p != null) && !(ICommonConstants.EMPTY_STRING.equals(value_p))) {
-      return Integer.valueOf(value_p.toString());
+  public Object toType(Object value, IPropertyContext context) {
+    if ((value != null) && !(ICommonConstants.EMPTY_STRING.equals(value))) {
+      return Integer.valueOf(value.toString());
     }
     return null;
   }
 
-  public Object getValue(IPropertyContext context_p) {
-    NamedElement element = (NamedElement) getSource(context_p);
+  public Object getValue(IPropertyContext context) {
+    NamedElement element = (NamedElement) getSource(context);
     return new Integer(getPropertyValue(element));
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty#setValue(org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext)
    */
-  public void setValue(IPropertyContext context_p) {
-    Object value = context_p.getCurrentValue(this);
-    NamedElement element = (NamedElement) getSource(context_p);
+  public void setValue(IPropertyContext context) {
+    Object value = context.getCurrentValue(this);
+    NamedElement element = (NamedElement) getSource(context);
 
     if ((value != null) && (value instanceof Integer)) {
       setPropertyValue(element, ((Integer) value).toString());
@@ -82,7 +82,7 @@ public abstract class PropertyValueProperty extends AbstractProperty implements 
     }
   }
 
-  public IStatus validate(Object newValue, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     try {
       if ((newValue != null) && !(ICommonConstants.EMPTY_STRING.equals(newValue))) {
         Integer.parseInt(newValue.toString());

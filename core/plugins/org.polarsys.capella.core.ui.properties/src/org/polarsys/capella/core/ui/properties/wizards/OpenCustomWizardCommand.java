@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,8 @@ public class OpenCustomWizardCommand extends AbstractReadWriteCommand {
   protected EObject object;
   private boolean canceled;
 
-  public OpenCustomWizardCommand(EObject object_p) {
-    this.object = object_p;
+  public OpenCustomWizardCommand(EObject object) {
+    this.object = object;
   }
 
   public void run() {
@@ -69,11 +69,11 @@ public class OpenCustomWizardCommand extends AbstractReadWriteCommand {
   }
 
   // FIXME why do we have to call this explicitly?
-  private final void refreshPropertiesView(EObject object_p) {
+  private final void refreshPropertiesView(EObject object) {
     IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
     PropertySheet propertyView = (PropertySheet) activePage.findView(PROPERTIES_SHEET_VIEW_ID);
     if (null != propertyView) {
-      propertyView.selectionChanged(activePage.getActivePart(), new StructuredSelection(object_p));
+      propertyView.selectionChanged(activePage.getActivePart(), new StructuredSelection(object));
     }
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,67 +32,67 @@ public class TextValueGroup extends AbstractSemanticGroup {
   protected Button _valueResetBtn;
 
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
    */
-  public TextValueGroup(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, label_p, widgetFactory_p, false, false);
+  public TextValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, label, widgetFactory, false, false);
   }
 
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param skipGroup_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param skipGroup
    */
-  public TextValueGroup(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean skipGroup_p) {
-    this(parent_p, label_p, widgetFactory_p, false, skipGroup_p);
+  public TextValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory, boolean skipGroup) {
+    this(parent, label, widgetFactory, false, skipGroup);
   }
 
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param showResetBtn_p
-   * @param skipGroup_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param showResetBtn
+   * @param skipGroup
    */
-  public TextValueGroup(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean hasResetBtn_p, boolean skipGroup_p) {
-    super(parent_p, widgetFactory_p, skipGroup_p);
+  public TextValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory, boolean hasResetBtn, boolean skipGroup) {
+    super(parent, widgetFactory, skipGroup);
 
-    createValueTextField(label_p, hasResetBtn_p);
+    createValueTextField(label, hasResetBtn);
   }
 
   /**
-   * @param label_p
-   * @param hasResetBtn_p
+   * @param label
+   * @param hasResetBtn
    */
-  protected void createValueTextField(String label_p, boolean hasResetBtn_p) {
+  protected void createValueTextField(String label, boolean hasResetBtn) {
     Composite main = _widgetFactory.createComposite(_parent);
     main.setLayout(new GridLayout(3, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = ((GridLayout) _parent.getLayout()).numColumns; //2;
     main.setLayoutData(gd);
 
-    _widgetFactory.createCLabel(main, label_p);
+    _widgetFactory.createCLabel(main, label);
     _valueField = _widgetFactory.createText(main, ""); //$NON-NLS-1$
     _valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     addListeners();
 
-    if (hasResetBtn_p) {
+    if (hasResetBtn) {
       createResetButton(main);
     }
   }
 
   /**
    * Create Reset button.
-   * @param parent_p
+   * @param parent
    */
-  protected void createResetButton(Composite parent_p) {
+  protected void createResetButton(Composite parent) {
     ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
     Image removeImage = imgRegistry.get(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID);
     String tooltip = Messages.TextValueGroup_ValueResetBtn_Label;
-    _valueResetBtn = createButton(parent_p, removeImage, tooltip);
+    _valueResetBtn = createButton(parent, removeImage, tooltip);
   }
 
   /**
@@ -107,8 +107,8 @@ public class TextValueGroup extends AbstractSemanticGroup {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    super.loadData(semanticElement_p, semanticFeature_p);
+  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    super.loadData(semanticElement, semanticFeature);
 
     loadTextValue();
   }
@@ -117,7 +117,7 @@ public class TextValueGroup extends AbstractSemanticGroup {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
+  public void loadData(CapellaElement semanticElement) {
     loadTextValue();
   }
 
@@ -132,11 +132,11 @@ public class TextValueGroup extends AbstractSemanticGroup {
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField text field to be filled
    */
   @Override
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(_valueField)) {
+  protected void fillTextField(Text textField) {
+    if (textField.equals(_valueField)) {
       setDataValue(_semanticElement, _semanticFeature, _valueField.getText());
     }
   }
@@ -145,12 +145,12 @@ public class TextValueGroup extends AbstractSemanticGroup {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != _valueField && !_valueField.isDisposed()) {
-      _valueField.setEnabled(enabled_p);
+      _valueField.setEnabled(enabled);
     }
     if (null != _valueResetBtn && !_valueResetBtn.isDisposed()) {
-      _valueResetBtn.setEnabled(enabled_p);
+      _valueResetBtn.setEnabled(enabled);
     }
   }
 
@@ -158,9 +158,9 @@ public class TextValueGroup extends AbstractSemanticGroup {
    * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
    */
   @Override
-  public void widgetSelected(SelectionEvent event_p) {
-    if (event_p != null) {
-      Object source = event_p.getSource();
+  public void widgetSelected(SelectionEvent event) {
+    if (event != null) {
+      Object source = event.getSource();
       if (source != null) {
         if (source.equals(_valueResetBtn)) {
           handleResetButtonClicked(_valueResetBtn);
@@ -171,9 +171,9 @@ public class TextValueGroup extends AbstractSemanticGroup {
 
   /**
    * Handle Reset button click event.
-   * @param button_p
+   * @param button
    */
-  protected void handleResetButtonClicked(Button button_p) {
+  protected void handleResetButtonClicked(Button button) {
     setDataValue(_semanticElement, _semanticFeature, null);
   }
 

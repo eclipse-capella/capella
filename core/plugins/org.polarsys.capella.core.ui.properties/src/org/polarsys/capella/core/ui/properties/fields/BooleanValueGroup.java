@@ -29,29 +29,29 @@ public class BooleanValueGroup extends AbstractSemanticField {
   protected String[] _comboItems = new String[] { Boolean.TRUE.toString().toUpperCase(), Boolean.FALSE.toString().toUpperCase() };
 
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
    */
-  public BooleanValueGroup(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(widgetFactory_p);
+  public BooleanValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(widgetFactory);
 
-    Group comboGroup_p = _widgetFactory.createGroup(parent_p, ""); //$NON-NLS-1$
-    comboGroup_p.setLayout(new GridLayout(2, false));
+    Group comboGroup = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
+    comboGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
-    comboGroup_p.setLayoutData(gd);
+    comboGroup.setLayoutData(gd);
 
-    createValueComboField(comboGroup_p, label_p);
+    createValueComboField(comboGroup, label);
   }
 
   /**
-   * @param comboGroup_p
-   * @param label_p
+   * @param comboGroup
+   * @param label
    */
-  private void createValueComboField(Group comboGroup_p, String label_p) {
-    _widgetFactory.createCLabel(comboGroup_p, label_p);
-    _valueField = _widgetFactory.createCCombo(comboGroup_p, SWT.BORDER);
+  private void createValueComboField(Group comboGroup, String label) {
+    _widgetFactory.createCLabel(comboGroup, label);
+    _valueField = _widgetFactory.createCCombo(comboGroup, SWT.BORDER);
     _valueField.addSelectionListener(this);
     _valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     _valueField.setItems(_comboItems);
@@ -62,8 +62,8 @@ public class BooleanValueGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    super.loadData(semanticElement_p, semanticFeature_p);
+  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    super.loadData(semanticElement, semanticFeature);
 
     loadComboValue();
   }
@@ -72,7 +72,7 @@ public class BooleanValueGroup extends AbstractSemanticField {
    * @see org.polarsys.capella.core.data.core.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
+  public void loadData(CapellaElement semanticElement) {
     loadComboValue();
   }
 
@@ -89,11 +89,11 @@ public class BooleanValueGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param comboField_p combo field to be filled
+   * @param comboField combo field to be filled
    */
   @Override
-  protected void fillComboField(CCombo comboField_p) {
-    if (comboField_p.equals(_valueField)) {
+  protected void fillComboField(CCombo comboField) {
+    if (comboField.equals(_valueField)) {
       Boolean value = Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]);
       setDataValue(_semanticElement, _semanticFeature, value);
     }
@@ -103,9 +103,9 @@ public class BooleanValueGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != _valueField && !_valueField.isDisposed()) {
-      _valueField.setEnabled(enabled_p);
+      _valueField.setEnabled(enabled);
     }
   }
 }

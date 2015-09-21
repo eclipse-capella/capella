@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,22 +71,22 @@ public class TabbedPropertiesLabelProvider extends CapellaElementLabelProvider i
   }
 
   /**
-   * @param selection_p
+   * @param editPart
    * @return
    */
   @SuppressWarnings("restriction")
-  private String getTextForEditPart(AbstractGraphicalEditPart editPart_p) {
+  private String getTextForEditPart(AbstractGraphicalEditPart editPart) {
     StringBuilder sb = new StringBuilder(""); //$NON-NLS-1$
-    Object model = editPart_p.getModel();
-    if (editPart_p instanceof NoteEditPart) {
+    Object model = editPart.getModel();
+    if (editPart instanceof NoteEditPart) {
       sb.append(((Shape) model).getType());
       return sb.toString();
     }
-    if (editPart_p instanceof TextEditPart) {
+    if (editPart instanceof TextEditPart) {
       sb.append(((Shape) model).getType());
       return sb.toString();
     }
-    if (editPart_p instanceof NoteAttachmentEditPart) {
+    if (editPart instanceof NoteAttachmentEditPart) {
       sb.append(((Connector) model).getType());
       return sb.toString();
     }
@@ -94,11 +94,11 @@ public class TabbedPropertiesLabelProvider extends CapellaElementLabelProvider i
   }
 
   /**
-   * @param str_p
+   * @param str
    * @return encoded string
    */
-  protected String encode(String str_p) {
-    return str_p.replaceAll("&", "&&"); //$NON-NLS-1$ //$NON-NLS-2$
+  protected String encode(String str) {
+    return str.replaceAll("&", "&&"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**
@@ -136,7 +136,7 @@ public class TabbedPropertiesLabelProvider extends CapellaElementLabelProvider i
    * {@inheritDoc}
    */
   @Override
-  public boolean provides(Object selection_p) {
+  public boolean provides(Object selection) {
     return true;
   }
 }

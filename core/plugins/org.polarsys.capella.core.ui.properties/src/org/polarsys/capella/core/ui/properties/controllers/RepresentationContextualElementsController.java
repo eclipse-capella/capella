@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,27 +25,27 @@ public class RepresentationContextualElementsController {
   /**
    * {@inheritDoc}
    */
-  public List<EObject> loadValues(EObject semanticElement_p) {
-    return ContextualDiagramHelper.getService().getContextualElements((DRepresentation) semanticElement_p);
+  public List<EObject> loadValues(EObject semanticElement) {
+    return ContextualDiagramHelper.getService().getContextualElements((DRepresentation) semanticElement);
   }
 
   /**
    * {@inheritDoc}
    */
-  public List<EObject> readOpenValues(EObject semanticElement_p, boolean available_p) {
-    if (available_p) {
+  public List<EObject> readOpenValues(EObject semanticElement, boolean available) {
+    if (available) {
       ArrayList<EObject> values = new ArrayList<EObject>();
-      values.addAll(ContextualDiagramHelper.getService().getAvailableContextualElements((DRepresentation) semanticElement_p));
+      values.addAll(ContextualDiagramHelper.getService().getAvailableContextualElements((DRepresentation) semanticElement));
       return values;
     }
-    return ContextualDiagramHelper.getService().getContextualElements((DRepresentation) semanticElement_p);
+    return ContextualDiagramHelper.getService().getContextualElements((DRepresentation) semanticElement);
   }
 
   /**
    * {@inheritDoc}
    */
-  public List<EObject> writeOpenValues(EObject semanticElement_p, List<EObject> values_p) {
-    ContextualDiagramHelper.getService().setContextualElements((DRepresentation) semanticElement_p, values_p);
-    return values_p;
+  public List<EObject> writeOpenValues(EObject semanticElement, List<EObject> values) {
+    ContextualDiagramHelper.getService().setContextualElements((DRepresentation) semanticElement, values);
+    return values;
   }
 }

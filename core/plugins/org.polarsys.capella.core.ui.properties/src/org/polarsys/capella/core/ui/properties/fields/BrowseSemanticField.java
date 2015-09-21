@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,43 +92,43 @@ public class BrowseSemanticField extends AbstractSemanticField {
 
 	/**
 	 * Create Edit button.
-	 * @param parent_p
+	 * @param parent
 	 */
-	protected void createEditButton(Composite parent_p) {
+	protected void createEditButton(Composite parent) {
 		ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
 		Image editImage = imgRegistry.get(ToolkitPlugin.EDIT_IMAGE_ITEM_ID);
 		String tooltip = Messages.BrowseSemanticField_EditBtn;
-		_valueEditBtn = createButton(parent_p, editImage, tooltip);
+		_valueEditBtn = createButton(parent, editImage, tooltip);
 	}
 
 	/**
 	 * Create Open button.
-	 * @param parent_p
+	 * @param parent
 	 */
-	protected void createOpenButton(Composite parent_p) {
+	protected void createOpenButton(Composite parent) {
 		ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
 		Image openImage = imgRegistry.get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID);
 		String tooltip = Messages.BrowseSemanticField_BrowseBtn;
-		_valueOpenBtn = createButton(parent_p, openImage, tooltip);
+		_valueOpenBtn = createButton(parent, openImage, tooltip);
 	}
 
 	/**
 	 * Create Add button.
-	 * @param parent_p
+	 * @param parent
 	 */
-	protected void createAddButton(Composite parent_p) {
+	protected void createAddButton(Composite parent) {
 		ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
 		Image addImage = imgRegistry.get(ToolkitPlugin.ADD_ITEM_IMAGE_ID);
 		String tooltip = Messages.BrowseSemanticField_AddBtn;
-		_valueAddBtn = createButton(parent_p, addImage, tooltip);
+		_valueAddBtn = createButton(parent, addImage, tooltip);
 	}
 
 	/**
 	 * Create Shortcut button.
-	 * @param parent_p
+	 * @param parent
 	 * @param cardType 
 	 */
-	protected void createShortcutButton(Composite parent_p, int cardType) {
+	protected void createShortcutButton(Composite parent, int cardType) {
 		Image image = null;
 		switch (cardType) {
 		case 0: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_CARD_ID);			
@@ -144,7 +144,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 		}
 		String tooltip = Messages.BrowseSemanticField_ShortcutBtn;
 		if(image != null){
-			_valueShortcutBtn = createButton(parent_p, image, tooltip);
+			_valueShortcutBtn = createButton(parent, image, tooltip);
 
 			menu = new Menu(_valueShortcutBtn);
 
@@ -223,21 +223,21 @@ public class BrowseSemanticField extends AbstractSemanticField {
 
 	/**
 	 * Create text field.
-	 * @param parent_p
-	 * @param textFieldSpan_p
+	 * @param parent
+	 * @param textFieldSpan
 	 */
-	protected void createTextField(Composite parent_p, int textFieldSpan_p) {
+	protected void createTextField(Composite parent, int textFieldSpan) {
 		// this intermediate composite have been created to allow a tooltip to be shown
 		// (because the text field is disabled, its own tooltip is never shown)
-		_valueTextContainer = _widgetFactory.createComposite(parent_p);
+		_valueTextContainer = _widgetFactory.createComposite(parent);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = textFieldSpan_p;
+		gd.horizontalSpan = textFieldSpan;
 		_valueTextContainer.setLayoutData(gd);
 		_valueTextContainer.setLayout(new GridLayout());
 
 		_valueTextField = _widgetFactory.createText(_valueTextContainer, ICommonConstants.EMPTY_STRING);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = textFieldSpan_p;
+		gd.horizontalSpan = textFieldSpan;
 		gd.widthHint = _TEXTFIELD_DEFAULT_WIDTH;
 		_valueTextField.setLayoutData(gd);
 		_valueTextField.setEditable(false);
@@ -246,51 +246,51 @@ public class BrowseSemanticField extends AbstractSemanticField {
 
 	/**
 	 * Enable / Disable Delete button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	public void enableDeleteButton(boolean status_p) {
+	public void enableDeleteButton(boolean status) {
 		if ((_valueDelBtn != null) && !_valueDelBtn.isDisposed()) {
-			_valueDelBtn.setEnabled(status_p);
+			_valueDelBtn.setEnabled(status);
 		}
 	}
 
 	/**
 	 * Enable / Disable edit button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	public void enableEditButton(boolean status_p) {
+	public void enableEditButton(boolean status) {
 		if ((_valueEditBtn != null) && !_valueEditBtn.isDisposed()) {
-			_valueEditBtn.setEnabled(status_p);
+			_valueEditBtn.setEnabled(status);
 		}
 	}
 
 	/**
 	 * Enable / Disable Open button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	public void enableOpenButton(boolean status_p) {
+	public void enableOpenButton(boolean status) {
 		if ((_valueOpenBtn != null) && !_valueOpenBtn.isDisposed()) {
-			_valueOpenBtn.setEnabled(status_p);
+			_valueOpenBtn.setEnabled(status);
 		}
 	}
 
 	/**
 	 * Enable / Disable Add button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	public void enableAddButton(boolean status_p) {
+	public void enableAddButton(boolean status) {
 		if ((_valueAddBtn != null) && !_valueAddBtn.isDisposed()) {
-			_valueAddBtn.setEnabled(status_p);
+			_valueAddBtn.setEnabled(status);
 		}
 	}
 
 	/**
 	 * Enable / Disable Shortcut button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	public void enableShortcutButton(boolean status_p) {
+	public void enableShortcutButton(boolean status) {
 		if ((_valueShortcutBtn != null) && !_valueShortcutBtn.isDisposed()) {
-			_valueAddBtn.setEnabled(status_p);
+			_valueAddBtn.setEnabled(status);
 		}
 	}
 
@@ -298,80 +298,80 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setEnabled(boolean enabled_p) {
-		LockHelper.getInstance().enable(_valueAddBtn, enabled_p);
-		LockHelper.getInstance().enable(_valueDelBtn, enabled_p);
-		LockHelper.getInstance().enable(_valueEditBtn, enabled_p);
-		LockHelper.getInstance().enable(_valueOpenBtn, enabled_p);
-		LockHelper.getInstance().enable(_valueShortcutBtn, enabled_p);
-		LockHelper.getInstance().update(_valueTextField, enabled_p);
+	public void setEnabled(boolean enabled) {
+		LockHelper.getInstance().enable(_valueAddBtn, enabled);
+		LockHelper.getInstance().enable(_valueDelBtn, enabled);
+		LockHelper.getInstance().enable(_valueEditBtn, enabled);
+		LockHelper.getInstance().enable(_valueOpenBtn, enabled);
+		LockHelper.getInstance().enable(_valueShortcutBtn, enabled);
+		LockHelper.getInstance().update(_valueTextField, enabled);
 	}
 
 	/**
 	 * Show / Hide Delete button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	protected void setVisibleDeleteButton(boolean status_p) {
+	protected void setVisibleDeleteButton(boolean status) {
 		if (_valueDelBtn != null) {
-			_valueDelBtn.setVisible(status_p);
+			_valueDelBtn.setVisible(status);
 		}
 	}
 
 	/**
 	 * Show / Hide edit button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	protected void setVisibleEditButton(boolean status_p) {
+	protected void setVisibleEditButton(boolean status) {
 		if (_valueEditBtn != null) {
-			_valueEditBtn.setVisible(status_p);
+			_valueEditBtn.setVisible(status);
 		}
 	}
 
 	/**
 	 * Show / Hide Open button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	protected void setVisibleOpenButton(boolean status_p) {
+	protected void setVisibleOpenButton(boolean status) {
 		if (_valueOpenBtn != null) {
-			_valueOpenBtn.setVisible(status_p);
+			_valueOpenBtn.setVisible(status);
 		}
 	}
 
 	/**
 	 * Show / Hide Add button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	protected void setVisibleAddButton(boolean status_p) {
+	protected void setVisibleAddButton(boolean status) {
 		if (_valueAddBtn != null) {
-			_valueAddBtn.setVisible(status_p);
+			_valueAddBtn.setVisible(status);
 		}
 	}
 
 	/**
 	 * Show / Hide Shortcut button with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	protected void setVisibleShortcutButton(boolean status_p) {
+	protected void setVisibleShortcutButton(boolean status) {
 		if (_valueShortcutBtn != null) {
-			_valueShortcutBtn.setVisible(status_p);
+			_valueShortcutBtn.setVisible(status);
 		}
 	}
 
 	/**
 	 * Show / Hide widget with specified value.
-	 * @param status_p
+	 * @param status
 	 */
-	public void setVisible(boolean status_p) {
-		setVisibleAddButton(status_p);
-		setVisibleDeleteButton(status_p);
-		setVisibleEditButton(status_p);
-		setVisibleOpenButton(status_p);
-		setVisibleShortcutButton(status_p);
+	public void setVisible(boolean status) {
+		setVisibleAddButton(status);
+		setVisibleDeleteButton(status);
+		setVisibleEditButton(status);
+		setVisibleOpenButton(status);
+		setVisibleShortcutButton(status);
 		if (_valueTextField != null) {
-			_valueTextField.setVisible(status_p);
+			_valueTextField.setVisible(status);
 		}
 		if (_labelTextField != null) {
-			_labelTextField.setVisible(status_p);
+			_labelTextField.setVisible(status);
 		}
 	}
 
@@ -379,8 +379,8 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	 * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
 	@Override
-	public void loadData(CapellaElement semanticElement_p) {
-		loadData(semanticElement_p, _semanticFeature);
+	public void loadData(CapellaElement semanticElement) {
+		loadData(semanticElement, _semanticFeature);
 	}
 
 	/**
@@ -393,12 +393,12 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	}
 
 	/**
-	 * @param eObject_p object whose path is required
+	 * @param eObject object whose path is required
 	 * @return the complete path of the given model element, or null if it's not a model element
 	 */
-	public String getFullLabel(EObject eObject_p) {
-		if (eObject_p instanceof ModelElement) {
-			String path = ((ModelElement) eObject_p).getFullLabel();
+	public String getFullLabel(EObject eObject) {
+		if (eObject instanceof ModelElement) {
+			String path = ((ModelElement) eObject).getFullLabel();
 			if (path.startsWith("/")) { //$NON-NLS-1$
 				path = path.substring(1);
 			}
@@ -408,20 +408,20 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	}
 
 	/**
-	 * @param object_p
+	 * @param object
 	 */
-	public void setValueTextField(Object object_p) {
+	public void setValueTextField(Object object) {
 		if (_valueTextField == null)
 			return;
 
-		if (object_p != null) {
-			if (object_p instanceof String) {
-				_valueTextField.setText((String) object_p);
-			} else if (object_p instanceof EObject) {
-				_valueTextField.setText(NamingHelper.getValue((EObject) object_p, _semanticFeature));
-				_valueTextContainer.setToolTipText(getFullLabel((EObject) object_p));
-			} else if (object_p instanceof Collection<?>) {
-				_valueTextField.setText(EObjectExt2.formatValues((Collection<?>) object_p, _semanticFeature));
+		if (object != null) {
+			if (object instanceof String) {
+				_valueTextField.setText((String) object);
+			} else if (object instanceof EObject) {
+				_valueTextField.setText(NamingHelper.getValue((EObject) object, _semanticFeature));
+				_valueTextContainer.setToolTipText(getFullLabel((EObject) object));
+			} else if (object instanceof Collection<?>) {
+				_valueTextField.setText(EObjectExt2.formatValues((Collection<?>) object, _semanticFeature));
 			}
 		} else {
 			_valueTextField.setText(Messages.UndefinedValue);
@@ -436,20 +436,20 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	}
 
 	/**
-	 * @param label_p
+	 * @param label
 	 */
-	public void setLabel(String label_p) {
+	public void setLabel(String label) {
 		if (_labelTextField != null)
-			_labelTextField.setText(label_p);
+			_labelTextField.setText(label);
 	}
 
 	/**
 	 * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 	 */
 	@Override
-	public void widgetSelected(SelectionEvent event_p) {
-		if (event_p != null) {
-			Object source = event_p.getSource();
+	public void widgetSelected(SelectionEvent event) {
+		if (event != null) {
+			Object source = event.getSource();
 			if (source != null) {
 				if (source.equals(_valueOpenBtn)) {
 					handleOpenButtonClicked(_valueOpenBtn);
@@ -478,9 +478,9 @@ public class BrowseSemanticField extends AbstractSemanticField {
 
 	/**
 	 * Handle Open button click event.
-	 * @param button_p
+	 * @param button
 	 */
-	protected void handleOpenButtonClicked(Button button_p) {
+	protected void handleOpenButtonClicked(Button button) {
 		// do nothing (shall be overloaded)
 	}
 
@@ -520,27 +520,27 @@ public class BrowseSemanticField extends AbstractSemanticField {
 
 
 	/**
-	 * @param element_p
-	 * @param feature_p
+	 * @param element
+	 * @param feature
 	 * @return
 	 */
-	protected AbstractReadWriteCommand getDeleteCommand(final EObject element_p, final EStructuralFeature feature_p) {
+	protected AbstractReadWriteCommand getDeleteCommand(final EObject element, final EStructuralFeature feature) {
 		return new AbstractReadWriteCommand() {
 			public void run() {
-				doDeleteCommand(element_p, feature_p);
+				doDeleteCommand(element, feature);
 			}
 		};
 	}
 
 	/**
-	 * @param element_p
-	 * @param feature_p
+	 * @param element
+	 * @param feature
 	 */
-	protected void doDeleteCommand(EObject element_p, EStructuralFeature feature_p) {
-		if (feature_p.isMany()) {
-			removeAllDataValue(element_p, feature_p);
+	protected void doDeleteCommand(EObject element, EStructuralFeature feature) {
+		if (feature.isMany()) {
+			removeAllDataValue(element, feature);
 		} else {
-			setDataValue(element_p, feature_p, null);
+			setDataValue(element, feature, null);
 		}
 
 		if (_valueEditBtn != null)

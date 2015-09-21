@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,15 +25,15 @@ public class MultipleEditableSemanticField extends MultipleSemanticField {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param controller_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param controller
    */
-  public MultipleEditableSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-      IMultipleEditableSemanticFieldController controller_p)
+  public MultipleEditableSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
+      IMultipleEditableSemanticFieldController controller)
   {
-    super(parent_p, label_p, widgetFactory_p, 1, controller_p, true);
+    super(parent, label, widgetFactory, 1, controller, true);
   }
 
   /**

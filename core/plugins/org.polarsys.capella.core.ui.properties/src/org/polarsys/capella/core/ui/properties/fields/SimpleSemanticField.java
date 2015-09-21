@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,54 +37,54 @@ public class SimpleSemanticField extends BrowseSemanticField {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param controller_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param controller
    */
-  public SimpleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, ISimpleSemanticFieldController controller_p) {
-    this(parent_p, label_p, widgetFactory_p, 3, controller_p, null, false);
+  public SimpleSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory, ISimpleSemanticFieldController controller) {
+    this(parent, label, widgetFactory, 3, controller, null, false);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param textFieldSpan_p
-   * @param controller_p
-   * @param hasEditBtn_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param textFieldSpan
+   * @param controller
+   * @param hasEditBtn
    */
-  public SimpleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-		    int textFieldSpan_p, ISimpleSemanticFieldController controller_p, String defaultName_p, boolean hasEditBtn_p, boolean hasShortcutBtn_p, int cardType)
+  public SimpleSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
+		    int textFieldSpan, ISimpleSemanticFieldController controller, String defaultName, boolean hasEditBtn, boolean hasShortcutBtn, int cardType)
 {
-	    super(parent_p, label_p, widgetFactory_p, textFieldSpan_p);
-	    setController(controller_p);
+	    super(parent, label, widgetFactory, textFieldSpan);
+	    setController(controller);
 
-	    _defaultName = defaultName_p;
+	    _defaultName = defaultName;
 
-	    if (hasShortcutBtn_p) {
-	    	 createShortcutButton(parent_p, cardType);
+	    if (hasShortcutBtn) {
+	    	 createShortcutButton(parent, cardType);
 	      }
-	    if (hasEditBtn_p) {
-	      createEditButton(parent_p);
+	    if (hasEditBtn) {
+	      createEditButton(parent);
 	    }
-	    createOpenButton(parent_p);
-	    createDeleteButton(parent_p); 
+	    createOpenButton(parent);
+	    createDeleteButton(parent); 
 }
   
-  public SimpleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-		    int textFieldSpan_p, ISimpleSemanticFieldController controller_p, String defaultName_p, boolean hasEditBtn_p)
+  public SimpleSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
+		    int textFieldSpan, ISimpleSemanticFieldController controller, String defaultName, boolean hasEditBtn)
   {
-	  this(parent_p, label_p, widgetFactory_p, textFieldSpan_p, controller_p, defaultName_p, hasEditBtn_p, false, 0);
+	  this(parent, label, widgetFactory, textFieldSpan, controller, defaultName, hasEditBtn, false, 0);
   }
   
   /**
    * Set given controller.
-   * @param controller_p
+   * @param controller
    */
-  public void setController(ISimpleSemanticFieldController controller_p) {
-    _controller = controller_p;
+  public void setController(ISimpleSemanticFieldController controller) {
+    _controller = controller;
   }
 
   /**
@@ -92,26 +92,26 @@ public class SimpleSemanticField extends BrowseSemanticField {
    *      org.eclipse.emf.ecore.EReference)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    super.loadData(semanticElement_p, semanticFeature_p);
+  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    super.loadData(semanticElement, semanticFeature);
 
     if (null != _controller) {
-      EObject obj = _controller.loadValue(semanticElement_p, semanticFeature_p);
+      EObject obj = _controller.loadValue(semanticElement, semanticFeature);
       setValueTextField(obj);
     }
   }
 
   /**
    * Handle Open button click event.
-   * @param button_p
+   * @param button
    */
   @Override
-  protected void handleOpenButtonClicked(final Button button_p) {
+  protected void handleOpenButtonClicked(final Button button) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
         List<EObject> list = _controller.readOpenValues(_semanticElement, _semanticFeature);
         // calling selection wizard
-        EObject firstResult = DialogHelper.openSimpleSelectionDialog(button_p, list);
+        EObject firstResult = DialogHelper.openSimpleSelectionDialog(button, list);
         if (null != firstResult) {
           EObject obj = _controller.writeOpenValue(_semanticElement, _semanticFeature, _defaultName, firstResult);
           setValueTextField(obj);

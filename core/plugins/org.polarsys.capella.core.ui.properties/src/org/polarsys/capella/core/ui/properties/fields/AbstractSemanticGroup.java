@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,22 +24,22 @@ public abstract class AbstractSemanticGroup extends AbstractSemanticField {
   protected Composite _parent;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param skipGroup_p
+   * @param parent
+   * @param widgetFactory
+   * @param skipGroup
    */
-  public AbstractSemanticGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean skipGroup_p) {
-    super(widgetFactory_p);
+  public AbstractSemanticGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean skipGroup) {
+    super(widgetFactory);
 
-    if (!skipGroup_p) {
-      createGroup(parent_p);
+    if (!skipGroup) {
+      createGroup(parent);
     } else {
-      _parent = parent_p;
+      _parent = parent;
     }
   }
 
-  protected void createGroup(Composite parent_p) {
-    _parent = _widgetFactory.createGroup(parent_p, ICommonConstants.EMPTY_STRING);
+  protected void createGroup(Composite parent) {
+    _parent = _widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
     _parent.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;

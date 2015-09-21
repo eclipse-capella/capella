@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,15 +37,15 @@ public class BusinessQueryProperty extends EStructuralFeatureProperty implements
   Pattern _split = Pattern.compile("\\.");
 
   /**
-   * @param eClass_p
-   * @param reference_p
-   * @param source_p
+   * @param eClass
+   * @param reference
+   * @param source
    */
   public BusinessQueryProperty() {
   }
 
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -83,23 +83,23 @@ public class BusinessQueryProperty extends EStructuralFeatureProperty implements
   }
 
   @Override
-  protected Object getFeatureValue(IPropertyContext context_p, EObject element_p, EStructuralFeature reference_p) {
+  protected Object getFeatureValue(IPropertyContext context, EObject element, EStructuralFeature reference) {
     EClass clazz = getRelatedEClass();
-    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(clazz, reference_p);
-    if ((query != null) && (element_p instanceof CapellaElement)) {
-      return new ArrayList<Object>(query.getCurrentElements((CapellaElement) element_p, false));
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(clazz, reference);
+    if ((query != null) && (element instanceof CapellaElement)) {
+      return new ArrayList<Object>(query.getCurrentElements((CapellaElement) element, false));
     }
-    return super.getFeatureValue(context_p, element_p, reference_p);
+    return super.getFeatureValue(context, element, reference);
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IRestraintProperty#getChoiceValues(org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext)
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public Collection<Object> getChoiceValues(IPropertyContext context_p) {
+  public Collection<Object> getChoiceValues(IPropertyContext context) {
     ArrayList<EObject> result = new ArrayList<EObject>();
     EClass clazz = getRelatedEClass();
-    for (Object object : context_p.getSourceAsList()) {
+    for (Object object : context.getSourceAsList()) {
       if (object instanceof EObject) {
         EObject element = (EObject) object;
         EStructuralFeature feature = element.eClass().getEStructuralFeature(getRelatedEReference());
