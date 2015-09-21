@@ -85,7 +85,7 @@ public class PortAllocationItemProvider
 			// Process InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT
 			if (allocatedPortPropertyDescriptor != null) {
 				Object allocatedPortValue = eObject.eGet(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT, true);
-				if (allocatedPortValue != null && allocatedPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedPortValue)) {
+				if (allocatedPortValue != null && allocatedPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedPortValue)) {
 					itemPropertyDescriptors.remove(allocatedPortPropertyDescriptor);
 				} else if (allocatedPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATED_PORT) != null) {
 					itemPropertyDescriptors.remove(allocatedPortPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class PortAllocationItemProvider
 			// Process InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT
 			if (allocatingPortPropertyDescriptor != null) {
 				Object allocatingPortValue = eObject.eGet(InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT, true);
-				if (allocatingPortValue != null && allocatingPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingPortValue)) {
+				if (allocatingPortValue != null && allocatingPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingPortValue)) {
 					itemPropertyDescriptors.remove(allocatingPortPropertyDescriptor);
 				} else if (allocatingPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_ALLOCATION__ALLOCATING_PORT) != null) {
 					itemPropertyDescriptors.remove(allocatingPortPropertyDescriptor);				  					

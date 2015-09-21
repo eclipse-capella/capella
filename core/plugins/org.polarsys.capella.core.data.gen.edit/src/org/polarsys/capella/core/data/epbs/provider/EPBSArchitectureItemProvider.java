@@ -82,7 +82,7 @@ public class EPBSArchitectureItemProvider
 			// Process EpbsPackage.Literals.EPBS_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG
 			if (containedCapabilityRealizationPkgPropertyDescriptor != null) {
 				Object containedCapabilityRealizationPkgValue = eObject.eGet(EpbsPackage.Literals.EPBS_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG, true);
-				if (containedCapabilityRealizationPkgValue != null && containedCapabilityRealizationPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedCapabilityRealizationPkgValue)) {
+				if (containedCapabilityRealizationPkgValue != null && containedCapabilityRealizationPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedCapabilityRealizationPkgValue)) {
 					itemPropertyDescriptors.remove(containedCapabilityRealizationPkgPropertyDescriptor);
 				} else if (containedCapabilityRealizationPkgValue == null && ExtensionModelManager.getAnyType(eObject, EpbsPackage.Literals.EPBS_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG) != null) {
 					itemPropertyDescriptors.remove(containedCapabilityRealizationPkgPropertyDescriptor);				  					

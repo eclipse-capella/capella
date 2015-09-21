@@ -84,7 +84,7 @@ public class StateEventItemProvider
 			// Process CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION
 			if (expressionPropertyDescriptor != null) {
 				Object expressionValue = eObject.eGet(CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION, true);
-				if (expressionValue != null && expressionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) expressionValue)) {
+				if (expressionValue != null && expressionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) expressionValue)) {
 					itemPropertyDescriptors.remove(expressionPropertyDescriptor);
 				} else if (expressionValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION) != null) {
 					itemPropertyDescriptors.remove(expressionPropertyDescriptor);				  					

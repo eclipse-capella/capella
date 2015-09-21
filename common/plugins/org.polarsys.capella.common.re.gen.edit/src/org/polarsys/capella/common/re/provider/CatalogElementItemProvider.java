@@ -90,7 +90,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			// Process RePackage.Literals.CATALOG_ELEMENT__ORIGIN
 			if (originPropertyDescriptor != null) {
 				Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__ORIGIN, true);
-				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) originValue)) {
+				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) originValue)) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);
 				} else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__ORIGIN) != null) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			// Process RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY
 			if (currentCompliancyPropertyDescriptor != null) {
 				Object currentCompliancyValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY, true);
-				if (currentCompliancyValue != null && currentCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) currentCompliancyValue)) {
+				if (currentCompliancyValue != null && currentCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) currentCompliancyValue)) {
 					itemPropertyDescriptors.remove(currentCompliancyPropertyDescriptor);
 				} else if (currentCompliancyValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY) != null) {
 					itemPropertyDescriptors.remove(currentCompliancyPropertyDescriptor);				  					
@@ -112,7 +112,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			// Process RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY
 			if (defaultReplicaCompliancyPropertyDescriptor != null) {
 				Object defaultReplicaCompliancyValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY, true);
-				if (defaultReplicaCompliancyValue != null && defaultReplicaCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) defaultReplicaCompliancyValue)) {
+				if (defaultReplicaCompliancyValue != null && defaultReplicaCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) defaultReplicaCompliancyValue)) {
 					itemPropertyDescriptors.remove(defaultReplicaCompliancyPropertyDescriptor);
 				} else if (defaultReplicaCompliancyValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY) != null) {
 					itemPropertyDescriptors.remove(defaultReplicaCompliancyPropertyDescriptor);				  					

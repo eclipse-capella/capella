@@ -85,7 +85,7 @@ public class ComponentFunctionalAllocationItemProvider
 			// Process FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION
 			if (functionPropertyDescriptor != null) {
 				Object functionValue = eObject.eGet(FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION, true);
-				if (functionValue != null && functionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) functionValue)) {
+				if (functionValue != null && functionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) functionValue)) {
 					itemPropertyDescriptors.remove(functionPropertyDescriptor);
 				} else if (functionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__FUNCTION) != null) {
 					itemPropertyDescriptors.remove(functionPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ComponentFunctionalAllocationItemProvider
 			// Process FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK
 			if (blockPropertyDescriptor != null) {
 				Object blockValue = eObject.eGet(FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK, true);
-				if (blockValue != null && blockValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) blockValue)) {
+				if (blockValue != null && blockValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) blockValue)) {
 					itemPropertyDescriptors.remove(blockPropertyDescriptor);
 				} else if (blockValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION__BLOCK) != null) {
 					itemPropertyDescriptors.remove(blockPropertyDescriptor);				  					

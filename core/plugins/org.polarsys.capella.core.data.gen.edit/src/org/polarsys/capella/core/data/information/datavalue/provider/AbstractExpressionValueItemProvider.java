@@ -113,7 +113,7 @@ public class AbstractExpressionValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE
 			if (complexTypePropertyDescriptor != null) {
 				Object complexTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE, true);
-				if (complexTypeValue != null && complexTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) complexTypeValue)) {
+				if (complexTypeValue != null && complexTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) complexTypeValue)) {
 					itemPropertyDescriptors.remove(complexTypePropertyDescriptor);
 				} else if (complexTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE) != null) {
 					itemPropertyDescriptors.remove(complexTypePropertyDescriptor);				  					
@@ -124,7 +124,7 @@ public class AbstractExpressionValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE
 			if (enumerationTypePropertyDescriptor != null) {
 				Object enumerationTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE, true);
-				if (enumerationTypeValue != null && enumerationTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) enumerationTypeValue)) {
+				if (enumerationTypeValue != null && enumerationTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) enumerationTypeValue)) {
 					itemPropertyDescriptors.remove(enumerationTypePropertyDescriptor);
 				} else if (enumerationTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE) != null) {
 					itemPropertyDescriptors.remove(enumerationTypePropertyDescriptor);				  					
@@ -135,7 +135,7 @@ public class AbstractExpressionValueItemProvider
 			// Process DatavaluePackage.Literals.NUMERIC_VALUE__UNIT
 			if (unitPropertyDescriptor != null) {
 				Object unitValue = eObject.eGet(DatavaluePackage.Literals.NUMERIC_VALUE__UNIT, true);
-				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) unitValue)) {
+				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) unitValue)) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);
 				} else if (unitValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.NUMERIC_VALUE__UNIT) != null) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);				  					
@@ -146,7 +146,7 @@ public class AbstractExpressionValueItemProvider
 			// Process DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE
 			if (numericTypePropertyDescriptor != null) {
 				Object numericTypeValue = eObject.eGet(DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE, true);
-				if (numericTypeValue != null && numericTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) numericTypeValue)) {
+				if (numericTypeValue != null && numericTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) numericTypeValue)) {
 					itemPropertyDescriptors.remove(numericTypePropertyDescriptor);
 				} else if (numericTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE) != null) {
 					itemPropertyDescriptors.remove(numericTypePropertyDescriptor);				  					
@@ -157,7 +157,7 @@ public class AbstractExpressionValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE
 			if (stringTypePropertyDescriptor != null) {
 				Object stringTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE, true);
-				if (stringTypeValue != null && stringTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) stringTypeValue)) {
+				if (stringTypeValue != null && stringTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) stringTypeValue)) {
 					itemPropertyDescriptors.remove(stringTypePropertyDescriptor);
 				} else if (stringTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE) != null) {
 					itemPropertyDescriptors.remove(stringTypePropertyDescriptor);				  					
@@ -168,7 +168,7 @@ public class AbstractExpressionValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE
 			if (expressionTypePropertyDescriptor != null) {
 				Object expressionTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE, true);
-				if (expressionTypeValue != null && expressionTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) expressionTypeValue)) {
+				if (expressionTypeValue != null && expressionTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) expressionTypeValue)) {
 					itemPropertyDescriptors.remove(expressionTypePropertyDescriptor);
 				} else if (expressionTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE__EXPRESSION_TYPE) != null) {
 					itemPropertyDescriptors.remove(expressionTypePropertyDescriptor);				  					

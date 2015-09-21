@@ -102,7 +102,7 @@ public class SwimlaneItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_PARTITION__REPRESENTED_ELEMENT
 			if (representedElementPropertyDescriptor != null) {
 				Object representedElementValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_PARTITION__REPRESENTED_ELEMENT, true);
-				if (representedElementValue != null && representedElementValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) representedElementValue)) {
+				if (representedElementValue != null && representedElementValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) representedElementValue)) {
 					itemPropertyDescriptors.remove(representedElementPropertyDescriptor);
 				} else if (representedElementValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_PARTITION__REPRESENTED_ELEMENT) != null) {
 					itemPropertyDescriptors.remove(representedElementPropertyDescriptor);				  					
@@ -113,7 +113,7 @@ public class SwimlaneItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION
 			if (superPartitionPropertyDescriptor != null) {
 				Object superPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION, true);
-				if (superPartitionValue != null && superPartitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) superPartitionValue)) {
+				if (superPartitionValue != null && superPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) superPartitionValue)) {
 					itemPropertyDescriptors.remove(superPartitionPropertyDescriptor);
 				} else if (superPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION) != null) {
 					itemPropertyDescriptors.remove(superPartitionPropertyDescriptor);				  					
@@ -124,7 +124,7 @@ public class SwimlaneItemProvider
 			// Process OaPackage.Literals.SWIMLANE__REPRESENTED_ENTITY
 			if (representedEntityPropertyDescriptor != null) {
 				Object representedEntityValue = eObject.eGet(OaPackage.Literals.SWIMLANE__REPRESENTED_ENTITY, true);
-				if (representedEntityValue != null && representedEntityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) representedEntityValue)) {
+				if (representedEntityValue != null && representedEntityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) representedEntityValue)) {
 					itemPropertyDescriptors.remove(representedEntityPropertyDescriptor);
 				} else if (representedEntityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.SWIMLANE__REPRESENTED_ENTITY) != null) {
 					itemPropertyDescriptors.remove(representedEntityPropertyDescriptor);				  					

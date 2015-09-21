@@ -82,7 +82,7 @@ public class ActorItemProvider
 			// Process CtxPackage.Literals.ACTOR__SYSTEM_COMMUNICATION
 			if (systemCommunicationPropertyDescriptor != null) {
 				Object systemCommunicationValue = eObject.eGet(CtxPackage.Literals.ACTOR__SYSTEM_COMMUNICATION, true);
-				if (systemCommunicationValue != null && systemCommunicationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) systemCommunicationValue)) {
+				if (systemCommunicationValue != null && systemCommunicationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) systemCommunicationValue)) {
 					itemPropertyDescriptors.remove(systemCommunicationPropertyDescriptor);
 				} else if (systemCommunicationValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.ACTOR__SYSTEM_COMMUNICATION) != null) {
 					itemPropertyDescriptors.remove(systemCommunicationPropertyDescriptor);				  					

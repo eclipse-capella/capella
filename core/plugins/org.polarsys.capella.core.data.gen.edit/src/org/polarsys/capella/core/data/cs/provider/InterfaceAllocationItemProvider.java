@@ -85,7 +85,7 @@ public class InterfaceAllocationItemProvider
 			// Process CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE
 			if (allocatedInterfacePropertyDescriptor != null) {
 				Object allocatedInterfaceValue = eObject.eGet(CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE, true);
-				if (allocatedInterfaceValue != null && allocatedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedInterfaceValue)) {
+				if (allocatedInterfaceValue != null && allocatedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedInterfaceValue)) {
 					itemPropertyDescriptors.remove(allocatedInterfacePropertyDescriptor);
 				} else if (allocatedInterfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATED_INTERFACE) != null) {
 					itemPropertyDescriptors.remove(allocatedInterfacePropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class InterfaceAllocationItemProvider
 			// Process CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR
 			if (allocatingInterfaceAllocatorPropertyDescriptor != null) {
 				Object allocatingInterfaceAllocatorValue = eObject.eGet(CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR, true);
-				if (allocatingInterfaceAllocatorValue != null && allocatingInterfaceAllocatorValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingInterfaceAllocatorValue)) {
+				if (allocatingInterfaceAllocatorValue != null && allocatingInterfaceAllocatorValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingInterfaceAllocatorValue)) {
 					itemPropertyDescriptors.remove(allocatingInterfaceAllocatorPropertyDescriptor);
 				} else if (allocatingInterfaceAllocatorValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_ALLOCATION__ALLOCATING_INTERFACE_ALLOCATOR) != null) {
 					itemPropertyDescriptors.remove(allocatingInterfaceAllocatorPropertyDescriptor);				  					

@@ -76,7 +76,7 @@ public class CapabilityConfigurationItemProvider
 			// Process OaPackage.Literals.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY
 			if (configuredCapabilityPropertyDescriptor != null) {
 				Object configuredCapabilityValue = eObject.eGet(OaPackage.Literals.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY, true);
-				if (configuredCapabilityValue != null && configuredCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) configuredCapabilityValue)) {
+				if (configuredCapabilityValue != null && configuredCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) configuredCapabilityValue)) {
 					itemPropertyDescriptors.remove(configuredCapabilityPropertyDescriptor);
 				} else if (configuredCapabilityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY) != null) {
 					itemPropertyDescriptors.remove(configuredCapabilityPropertyDescriptor);				  					

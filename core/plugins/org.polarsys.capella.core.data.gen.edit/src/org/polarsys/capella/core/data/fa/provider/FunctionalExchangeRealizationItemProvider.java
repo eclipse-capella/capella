@@ -85,7 +85,7 @@ public class FunctionalExchangeRealizationItemProvider
 			// Process FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE
 			if (realizedFunctionalExchangePropertyDescriptor != null) {
 				Object realizedFunctionalExchangeValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE, true);
-				if (realizedFunctionalExchangeValue != null && realizedFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedFunctionalExchangeValue)) {
+				if (realizedFunctionalExchangeValue != null && realizedFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedFunctionalExchangeValue)) {
 					itemPropertyDescriptors.remove(realizedFunctionalExchangePropertyDescriptor);
 				} else if (realizedFunctionalExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(realizedFunctionalExchangePropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class FunctionalExchangeRealizationItemProvider
 			// Process FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE
 			if (realizingFunctionalExchangePropertyDescriptor != null) {
 				Object realizingFunctionalExchangeValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE, true);
-				if (realizingFunctionalExchangeValue != null && realizingFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingFunctionalExchangeValue)) {
+				if (realizingFunctionalExchangeValue != null && realizingFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingFunctionalExchangeValue)) {
 					itemPropertyDescriptors.remove(realizingFunctionalExchangePropertyDescriptor);
 				} else if (realizingFunctionalExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(realizingFunctionalExchangePropertyDescriptor);				  					

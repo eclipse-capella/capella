@@ -77,7 +77,7 @@ public class FunctionalChainReferenceItemProvider
 			// Process FaPackage.Literals.FUNCTIONAL_CHAIN_REFERENCE__REFERENCED_FUNCTIONAL_CHAIN
 			if (referencedFunctionalChainPropertyDescriptor != null) {
 				Object referencedFunctionalChainValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_CHAIN_REFERENCE__REFERENCED_FUNCTIONAL_CHAIN, true);
-				if (referencedFunctionalChainValue != null && referencedFunctionalChainValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) referencedFunctionalChainValue)) {
+				if (referencedFunctionalChainValue != null && referencedFunctionalChainValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedFunctionalChainValue)) {
 					itemPropertyDescriptors.remove(referencedFunctionalChainPropertyDescriptor);
 				} else if (referencedFunctionalChainValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_CHAIN_REFERENCE__REFERENCED_FUNCTIONAL_CHAIN) != null) {
 					itemPropertyDescriptors.remove(referencedFunctionalChainPropertyDescriptor);				  					

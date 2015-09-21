@@ -87,7 +87,7 @@ public class CollectionItemProvider
 			// Process InformationPackage.Literals.COLLECTION__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(InformationPackage.Literals.COLLECTION__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.COLLECTION__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					

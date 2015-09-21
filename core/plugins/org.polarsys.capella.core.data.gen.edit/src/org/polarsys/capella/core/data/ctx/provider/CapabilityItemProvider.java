@@ -89,7 +89,7 @@ public class CapabilityItemProvider
 			// Process CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM
 			if (involvedSystemPropertyDescriptor != null) {
 				Object involvedSystemValue = eObject.eGet(CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM, true);
-				if (involvedSystemValue != null && involvedSystemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involvedSystemValue)) {
+				if (involvedSystemValue != null && involvedSystemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedSystemValue)) {
 					itemPropertyDescriptors.remove(involvedSystemPropertyDescriptor);
 				} else if (involvedSystemValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM) != null) {
 					itemPropertyDescriptors.remove(involvedSystemPropertyDescriptor);				  					
@@ -100,7 +100,7 @@ public class CapabilityItemProvider
 			// Process CtxPackage.Literals.CAPABILITY__PARTICIPATING_SYSTEM
 			if (participatingSystemPropertyDescriptor != null) {
 				Object participatingSystemValue = eObject.eGet(CtxPackage.Literals.CAPABILITY__PARTICIPATING_SYSTEM, true);
-				if (participatingSystemValue != null && participatingSystemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) participatingSystemValue)) {
+				if (participatingSystemValue != null && participatingSystemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) participatingSystemValue)) {
 					itemPropertyDescriptors.remove(participatingSystemPropertyDescriptor);
 				} else if (participatingSystemValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.CAPABILITY__PARTICIPATING_SYSTEM) != null) {
 					itemPropertyDescriptors.remove(participatingSystemPropertyDescriptor);				  					

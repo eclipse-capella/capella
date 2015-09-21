@@ -100,7 +100,7 @@ public class EntityOperationalCapabilityInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVER
 			if (involverPropertyDescriptor != null) {
 				Object involverValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, true);
-				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involverValue)) {
+				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involverValue)) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);
 				} else if (involverValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER) != null) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);				  					
@@ -111,7 +111,7 @@ public class EntityOperationalCapabilityInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVED
 			if (involvedPropertyDescriptor != null) {
 				Object involvedValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, true);
-				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involvedValue)) {
+				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedValue)) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);
 				} else if (involvedValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED) != null) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);				  					
@@ -122,7 +122,7 @@ public class EntityOperationalCapabilityInvolvementItemProvider
 			// Process OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY
 			if (entityPropertyDescriptor != null) {
 				Object entityValue = eObject.eGet(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY, true);
-				if (entityValue != null && entityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) entityValue)) {
+				if (entityValue != null && entityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) entityValue)) {
 					itemPropertyDescriptors.remove(entityPropertyDescriptor);
 				} else if (entityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY) != null) {
 					itemPropertyDescriptors.remove(entityPropertyDescriptor);				  					
@@ -133,7 +133,7 @@ public class EntityOperationalCapabilityInvolvementItemProvider
 			// Process OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY
 			if (capabilityPropertyDescriptor != null) {
 				Object capabilityValue = eObject.eGet(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY, true);
-				if (capabilityValue != null && capabilityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) capabilityValue)) {
+				if (capabilityValue != null && capabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) capabilityValue)) {
 					itemPropertyDescriptors.remove(capabilityPropertyDescriptor);
 				} else if (capabilityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY) != null) {
 					itemPropertyDescriptors.remove(capabilityPropertyDescriptor);				  					

@@ -85,7 +85,7 @@ public class AbstractCapabilityRealizationItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY
 			if (realizedCapabilityPropertyDescriptor != null) {
 				Object realizedCapabilityValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY, true);
-				if (realizedCapabilityValue != null && realizedCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedCapabilityValue)) {
+				if (realizedCapabilityValue != null && realizedCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedCapabilityValue)) {
 					itemPropertyDescriptors.remove(realizedCapabilityPropertyDescriptor);
 				} else if (realizedCapabilityValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZED_CAPABILITY) != null) {
 					itemPropertyDescriptors.remove(realizedCapabilityPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class AbstractCapabilityRealizationItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY
 			if (realizingCapabilityPropertyDescriptor != null) {
 				Object realizingCapabilityValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY, true);
-				if (realizingCapabilityValue != null && realizingCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingCapabilityValue)) {
+				if (realizingCapabilityValue != null && realizingCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingCapabilityValue)) {
 					itemPropertyDescriptors.remove(realizingCapabilityPropertyDescriptor);
 				} else if (realizingCapabilityValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY) != null) {
 					itemPropertyDescriptors.remove(realizingCapabilityPropertyDescriptor);				  					

@@ -77,7 +77,7 @@ public class MessageReferenceItemProvider
 			// Process CommunicationPackage.Literals.MESSAGE_REFERENCE__MESSAGE
 			if (messagePropertyDescriptor != null) {
 				Object messageValue = eObject.eGet(CommunicationPackage.Literals.MESSAGE_REFERENCE__MESSAGE, true);
-				if (messageValue != null && messageValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) messageValue)) {
+				if (messageValue != null && messageValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) messageValue)) {
 					itemPropertyDescriptors.remove(messagePropertyDescriptor);
 				} else if (messageValue == null && ExtensionModelManager.getAnyType(eObject, CommunicationPackage.Literals.MESSAGE_REFERENCE__MESSAGE) != null) {
 					itemPropertyDescriptors.remove(messagePropertyDescriptor);				  					

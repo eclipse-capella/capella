@@ -84,7 +84,7 @@ public class ExchangeContainmentItemProvider
 			// Process FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE
 			if (exchangePropertyDescriptor != null) {
 				Object exchangeValue = eObject.eGet(FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE, true);
-				if (exchangeValue != null && exchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) exchangeValue)) {
+				if (exchangeValue != null && exchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exchangeValue)) {
 					itemPropertyDescriptors.remove(exchangePropertyDescriptor);
 				} else if (exchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_CONTAINMENT__EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(exchangePropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class ExchangeContainmentItemProvider
 			// Process FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK
 			if (linkPropertyDescriptor != null) {
 				Object linkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK, true);
-				if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) linkValue)) {
+				if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) linkValue)) {
 					itemPropertyDescriptors.remove(linkPropertyDescriptor);
 				} else if (linkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_CONTAINMENT__LINK) != null) {
 					itemPropertyDescriptors.remove(linkPropertyDescriptor);				  					

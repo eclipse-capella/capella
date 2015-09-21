@@ -85,7 +85,7 @@ public class InterfaceUseItemProvider
 			// Process CsPackage.Literals.INTERFACE_USE__INTERFACE_USER
 			if (interfaceUserPropertyDescriptor != null) {
 				Object interfaceUserValue = eObject.eGet(CsPackage.Literals.INTERFACE_USE__INTERFACE_USER, true);
-				if (interfaceUserValue != null && interfaceUserValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) interfaceUserValue)) {
+				if (interfaceUserValue != null && interfaceUserValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interfaceUserValue)) {
 					itemPropertyDescriptors.remove(interfaceUserPropertyDescriptor);
 				} else if (interfaceUserValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_USE__INTERFACE_USER) != null) {
 					itemPropertyDescriptors.remove(interfaceUserPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class InterfaceUseItemProvider
 			// Process CsPackage.Literals.INTERFACE_USE__USED_INTERFACE
 			if (usedInterfacePropertyDescriptor != null) {
 				Object usedInterfaceValue = eObject.eGet(CsPackage.Literals.INTERFACE_USE__USED_INTERFACE, true);
-				if (usedInterfaceValue != null && usedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) usedInterfaceValue)) {
+				if (usedInterfaceValue != null && usedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) usedInterfaceValue)) {
 					itemPropertyDescriptors.remove(usedInterfacePropertyDescriptor);
 				} else if (usedInterfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE) != null) {
 					itemPropertyDescriptors.remove(usedInterfacePropertyDescriptor);				  					

@@ -79,7 +79,7 @@ public class AbstractActionItemProvider
 			// Process ActivityPackage.Literals.ABSTRACT_ACTION__CONTEXT
 			if (contextPropertyDescriptor != null) {
 				Object contextValue = eObject.eGet(ActivityPackage.Literals.ABSTRACT_ACTION__CONTEXT, true);
-				if (contextValue != null && contextValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) contextValue)) {
+				if (contextValue != null && contextValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) contextValue)) {
 					itemPropertyDescriptors.remove(contextPropertyDescriptor);
 				} else if (contextValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ABSTRACT_ACTION__CONTEXT) != null) {
 					itemPropertyDescriptors.remove(contextPropertyDescriptor);				  					

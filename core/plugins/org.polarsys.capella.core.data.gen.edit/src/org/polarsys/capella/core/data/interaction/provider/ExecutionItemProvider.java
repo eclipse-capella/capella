@@ -76,7 +76,7 @@ public class ExecutionItemProvider
 			// Process InteractionPackage.Literals.EXECUTION__COVERED
 			if (coveredPropertyDescriptor != null) {
 				Object coveredValue = eObject.eGet(InteractionPackage.Literals.EXECUTION__COVERED, true);
-				if (coveredValue != null && coveredValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) coveredValue)) {
+				if (coveredValue != null && coveredValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) coveredValue)) {
 					itemPropertyDescriptors.remove(coveredPropertyDescriptor);
 				} else if (coveredValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.EXECUTION__COVERED) != null) {
 					itemPropertyDescriptors.remove(coveredPropertyDescriptor);				  					

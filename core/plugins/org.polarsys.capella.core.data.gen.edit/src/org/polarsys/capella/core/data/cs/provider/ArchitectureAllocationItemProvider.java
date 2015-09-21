@@ -85,7 +85,7 @@ public class ArchitectureAllocationItemProvider
 			// Process CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE
 			if (allocatedArchitecturePropertyDescriptor != null) {
 				Object allocatedArchitectureValue = eObject.eGet(CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE, true);
-				if (allocatedArchitectureValue != null && allocatedArchitectureValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedArchitectureValue)) {
+				if (allocatedArchitectureValue != null && allocatedArchitectureValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedArchitectureValue)) {
 					itemPropertyDescriptors.remove(allocatedArchitecturePropertyDescriptor);
 				} else if (allocatedArchitectureValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE) != null) {
 					itemPropertyDescriptors.remove(allocatedArchitecturePropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ArchitectureAllocationItemProvider
 			// Process CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE
 			if (allocatingArchitecturePropertyDescriptor != null) {
 				Object allocatingArchitectureValue = eObject.eGet(CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE, true);
-				if (allocatingArchitectureValue != null && allocatingArchitectureValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingArchitectureValue)) {
+				if (allocatingArchitectureValue != null && allocatingArchitectureValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingArchitectureValue)) {
 					itemPropertyDescriptors.remove(allocatingArchitecturePropertyDescriptor);
 				} else if (allocatingArchitectureValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE) != null) {
 					itemPropertyDescriptors.remove(allocatingArchitecturePropertyDescriptor);				  					

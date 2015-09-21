@@ -79,7 +79,7 @@ public class ModelInformationItemProvider extends LibraryAbstractElementItemProv
 			// Process LibrariesPackage.Literals.MODEL_INFORMATION__VERSION
 			if (versionPropertyDescriptor != null) {
 				Object versionValue = eObject.eGet(LibrariesPackage.Literals.MODEL_INFORMATION__VERSION, true);
-				if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) versionValue)) {
+				if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) versionValue)) {
 					itemPropertyDescriptors.remove(versionPropertyDescriptor);
 				} else if (versionValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.MODEL_INFORMATION__VERSION) != null) {
 					itemPropertyDescriptors.remove(versionPropertyDescriptor);				  					

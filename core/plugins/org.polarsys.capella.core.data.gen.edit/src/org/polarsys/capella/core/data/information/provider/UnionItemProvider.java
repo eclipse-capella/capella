@@ -85,7 +85,7 @@ public class UnionItemProvider
 			// Process InformationPackage.Literals.UNION__DISCRIMINANT
 			if (discriminantPropertyDescriptor != null) {
 				Object discriminantValue = eObject.eGet(InformationPackage.Literals.UNION__DISCRIMINANT, true);
-				if (discriminantValue != null && discriminantValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) discriminantValue)) {
+				if (discriminantValue != null && discriminantValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) discriminantValue)) {
 					itemPropertyDescriptors.remove(discriminantPropertyDescriptor);
 				} else if (discriminantValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.UNION__DISCRIMINANT) != null) {
 					itemPropertyDescriptors.remove(discriminantPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class UnionItemProvider
 			// Process InformationPackage.Literals.UNION__DEFAULT_PROPERTY
 			if (defaultPropertyPropertyDescriptor != null) {
 				Object defaultPropertyValue = eObject.eGet(InformationPackage.Literals.UNION__DEFAULT_PROPERTY, true);
-				if (defaultPropertyValue != null && defaultPropertyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) defaultPropertyValue)) {
+				if (defaultPropertyValue != null && defaultPropertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) defaultPropertyValue)) {
 					itemPropertyDescriptors.remove(defaultPropertyPropertyDescriptor);
 				} else if (defaultPropertyValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.UNION__DEFAULT_PROPERTY) != null) {
 					itemPropertyDescriptors.remove(defaultPropertyPropertyDescriptor);				  					
