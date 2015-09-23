@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,11 +17,11 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.util.NLS;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.application.appstart.AbstractApplication;
 
-public class CommandLineApp implements IApplication {
+public class CommandLineApp extends AbstractApplication {
   private static final String POINT = "org.polarsys.capella.core.commandline.core.commandline"; //$NON-NLS-1$
 
   public static final String PLUGIN_ID = "org.polarsys.capella.core.commandline.core"; //$NON-NLS-1$
@@ -31,9 +31,10 @@ public class CommandLineApp implements IApplication {
    * {@inheritDoc}
    */
   @Override
-  public Object start(IApplicationContext context_p) throws Exception {
+  public Object start(IApplicationContext context) throws Exception {
+    super.start(context);
 
-    String[] args = CommandLineArgumentHelper.parseContext(context_p);
+    String[] args = CommandLineArgumentHelper.parseContext(context);
     CommandLineArgumentHelper.getInstance().parseArgs(args);
     __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
     String appToLaunch = CommandLineArgumentHelper.getInstance().getAppid();
@@ -54,35 +55,35 @@ public class CommandLineApp implements IApplication {
       return IApplication.EXIT_RELAUNCH;
     }
 
-    return launchApp(app, context_p);
+    return launchApp(app, context);
 
   }
 
   /**
-   * @param app_p
+   * @param app
    */
-  private Integer launchApp(ICommandLine app_p, IApplicationContext context_p) {
+  private Integer launchApp(ICommandLine app, IApplicationContext context) {
     Integer status = IApplication.EXIT_OK;
     try {
 
-      app_p.parseContext(context_p);
+      app.parseContext(context);
 
-      if (helpNeeded(context_p)) {
-        app_p.printHelp();
+      if (helpNeeded(context)) {
+        app.printHelp();
         return status;
       }
 
       // precondition: check parameters validity
-      app_p.checkArgs(context_p);
+      app.checkArgs(context);
 
       // prepare execution (e.g. import project into a specified workspace)
-      app_p.prepare(context_p);
+      app.prepare(context);
 
       // call execute
-      app_p.execute(context_p);
+      app.execute(context);
 
-    } catch (CommandLineException exception_p) {
-      __logger.error(exception_p.getMessage());
+    } catch (CommandLineException exception) {
+      __logger.error(exception.getMessage());
       status = IApplication.EXIT_RELAUNCH;
 
     } finally {
@@ -94,25 +95,26 @@ public class CommandLineApp implements IApplication {
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return
    */
-  private boolean helpNeeded(IApplicationContext context_p) {
+  private boolean helpNeeded(IApplicationContext context) {
     return CommandLineArgumentHelper.getInstance().isHelpNeeded();
   }
 
   /**
-   * @param configElt_p
+   * @param inputConfigElt
    * @return
    */
-  private ICommandLine geInstanceFromId(String id, IConfigurationElement[] configElt_p) {
-    for (IConfigurationElement configElt : configElt_p) {
+  private ICommandLine geInstanceFromId(String id, IConfigurationElement[] inputConfigElt) {
+    for (IConfigurationElement configElt : inputConfigElt) {
       String eltId = configElt.getAttribute(CommandLineExtensionConstants.ATT_ID);
       if (eltId.equals(id)) {
         try {
-          ICommandLine obj = (ICommandLine) configElt.createExecutableExtension(CommandLineExtensionConstants.ATT_CLASS);
+          ICommandLine obj = (ICommandLine) configElt
+              .createExecutableExtension(CommandLineExtensionConstants.ATT_CLASS);
           return obj;
-        } catch (CoreException exception_p) {
+        } catch (CoreException exception) {
           StringBuilder loggerMessage = new StringBuilder(Messages.could_not_create_exec);
           __logger.error(loggerMessage);
         }
@@ -126,6 +128,7 @@ public class CommandLineApp implements IApplication {
    */
   @Override
   public void stop() {
+    super.stop();
   }
 
 }

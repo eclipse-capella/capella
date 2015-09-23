@@ -22,5 +22,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.sirius.common.ui,
  org.eclipse.ui.intro,
- org.polarsys.capella.core.preferences
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.core.application
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

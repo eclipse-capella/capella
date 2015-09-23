@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2011 IBM Corporation and others.
+ * Copyright (c) 2003, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.service.datalocation.Location;
@@ -44,13 +43,14 @@ import org.eclipse.ui.internal.ide.ChooseWorkspaceDialog;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.misc.StatusUtil;
+import org.polarsys.capella.core.application.appstart.AbstractApplication;
 
 /**
  * @see {@link org.eclipse.ui.internal.ide.application.IDEApplication}
  * 
- * The "main program" for the Eclipse IDE.
+ *      The "main program" for the Eclipse IDE.
  */
-public class CapellaApplication implements IApplication, IExecutableExtension {
+public class CapellaApplication extends AbstractApplication implements IExecutableExtension {
 
   /**
    * The name of the folder containing metadata information for the workspace.
@@ -84,9 +84,12 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext context)
    */
   public Object start(IApplicationContext appContext) throws Exception {
+    super.start(appContext);
+
     Display display = createDisplay();
 
     try {
@@ -128,6 +131,7 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
 
   /**
    * Creates the display used by the application.
+   * 
    * @return the display used by the application
    */
   protected Display createDisplay() {
@@ -136,23 +140,27 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
 
   /*
    * (non-Javadoc)
-   * @see org.eclipse.core.runtime.IExecutableExtension#setInitializationData(org.eclipse.core.runtime.IConfigurationElement, java.lang.String,
-   * java.lang.Object)
+   * 
+   * @see
+   * org.eclipse.core.runtime.IExecutableExtension#setInitializationData(org.eclipse.core.runtime.IConfigurationElement,
+   * java.lang.String, java.lang.Object)
    */
   public void setInitializationData(IConfigurationElement config, String propertyName, Object data) {
     // There is nothing to do for IDEApplication
   }
 
   /**
-   * Return true if a valid workspace path has been set and false otherwise. Prompt for and set the path if possible and required.
+   * Return true if a valid workspace path has been set and false otherwise. Prompt for and set the path if possible and
+   * required.
+   * 
    * @return true if a valid instance location has been set and false otherwise
    */
   private boolean checkInstanceLocation(Shell shell) {
     // -data @none was specified but an ide requires workspace
     Location instanceLoc = Platform.getInstanceLocation();
     if (instanceLoc == null) {
-      MessageDialog
-          .openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceMandatoryTitle, IDEWorkbenchMessages.IDEApplication_workspaceMandatoryMessage);
+      MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceMandatoryTitle,
+          IDEWorkbenchMessages.IDEApplication_workspaceMandatoryMessage);
       return false;
     }
 
@@ -222,20 +230,24 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
 
       // by this point it has been determined that the workspace is
       // already in use -- force the user to choose again
-      MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceInUseTitle, IDEWorkbenchMessages.IDEApplication_workspaceInUseMessage);
+      MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceInUseTitle,
+          IDEWorkbenchMessages.IDEApplication_workspaceInUseMessage);
     }
   }
 
   /**
-   * Open a workspace selection dialog on the argument shell, populating the argument data with the user's selection. Perform first level validation on the
-   * selection by comparing the version information. This method does not examine the runtime state (e.g., is the workspace already locked?).
+   * Open a workspace selection dialog on the argument shell, populating the argument data with the user's selection.
+   * Perform first level validation on the selection by comparing the version information. This method does not examine
+   * the runtime state (e.g., is the workspace already locked?).
+   * 
    * @param shell
    * @param launchData
-   * @param force setting to true makes the dialog open regardless of the showDialog value
+   * @param force
+   *          setting to true makes the dialog open regardless of the showDialog value
    * @return An URL storing the selected workspace or null if the user has canceled the launch operation.
    */
-  private URL promptForWorkspace(Shell shell, ChooseWorkspaceData launchData, boolean force_p) {
-    boolean force = force_p;
+  private URL promptForWorkspace(Shell shell, ChooseWorkspaceData launchData, boolean inputForce) {
+    boolean force = inputForce;
     URL url = null;
     do {
       // don't use the parent shell to make the dialog a top-level
@@ -253,7 +265,8 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
 
       // don't accept empty input
       if (instancePath.length() <= 0) {
-        MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceEmptyTitle, IDEWorkbenchMessages.IDEApplication_workspaceEmptyMessage);
+        MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceEmptyTitle,
+            IDEWorkbenchMessages.IDEApplication_workspaceEmptyMessage);
         continue;
       }
 
@@ -269,7 +282,8 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
         String path = workspace.getAbsolutePath().replace(File.separatorChar, '/');
         url = new URL("file", null, path); //$NON-NLS-1$
       } catch (MalformedURLException e) {
-        MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceInvalidTitle, IDEWorkbenchMessages.IDEApplication_workspaceInvalidMessage);
+        MessageDialog.openError(shell, IDEWorkbenchMessages.IDEApplication_workspaceInvalidTitle,
+            IDEWorkbenchMessages.IDEApplication_workspaceInvalidMessage);
         continue;
       }
     } while (!checkValidWorkspace(shell, url));
@@ -278,8 +292,9 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
   }
 
   /**
-   * Return true if the argument directory is ok to use as a workspace and false otherwise. A version check will be performed, and a confirmation box may be
-   * displayed on the argument shell if an older version is detected.
+   * Return true if the argument directory is ok to use as a workspace and false otherwise. A version check will be
+   * performed, and a confirmation box may be displayed on the argument shell if an older version is detected.
+   * 
    * @return true if the argument URL is ok to use as a workspace and false otherwise.
    */
   private boolean checkValidWorkspace(Shell shell, URL url) {
@@ -349,8 +364,8 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
   }
 
   /**
-   * Write the version of the metadata into a known file overwriting any existing file contents. Writing the version file isn't really crucial, so the function
-   * is silent about failure
+   * Write the version of the metadata into a known file overwriting any existing file contents. Writing the version
+   * file isn't really crucial, so the function is silent about failure
    */
   private static void writeWorkspaceVersion() {
     Location instanceLoc = Platform.getInstanceLocation();
@@ -384,9 +399,11 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
   }
 
   /**
-   * The version file is stored in the metadata area of the workspace. This method returns an URL to the file or null if the directory or file does not exist
-   * (and the create parameter is false).
-   * @param create If the directory and file does not exist this parameter controls whether it will be created.
+   * The version file is stored in the metadata area of the workspace. This method returns an URL to the file or null if
+   * the directory or file does not exist (and the create parameter is false).
+   * 
+   * @param create
+   *          If the directory and file does not exist this parameter controls whether it will be created.
    * @return An url to the file or null if the version file does not exist or could not be created.
    */
   private static File getVersionFile(URL workspaceUrl, boolean create) {
@@ -416,9 +433,11 @@ public class CapellaApplication implements IApplication, IExecutableExtension {
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.equinox.app.IApplication#stop()
    */
   public void stop() {
+    super.stop();
     final IWorkbench workbench = PlatformUI.getWorkbench();
     if (workbench == null)
       return;
