@@ -77,5 +77,8 @@
     <steps xsi:type="buildstep:TestStep" xmi:id="_wf8aUK4IEeS3GsUDrEkAJA" name="BusinessQueryTestSuite" launchConfigurationPath="${launch_configs}/BusinessQueryTestSuite.launch"/>
     <steps xsi:type="buildstep:TestStep" xmi:id="_cZC20LHUEeS88vlh9a6VNQ" name="ValidationRulesTestSuite" launchConfigurationPath="${launch_configs}/ValidationRulesTestSuite.launch"/>
     <steps xsi:type="buildstep:TestStep" xmi:id="_BIrhISSMEeW_7seYpo_MPw" name="ModelTestSuite" launchConfigurationPath="${launch_configs}/ModelTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_RqcQQGXoEeWTmcZKvIux5w" name="RefinementTestSuite" launchConfigurationPath="${launch_configs}/RefinementTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_38jOYGXqEeWTmcZKvIux5w" name="TransitionTestSuite" launchConfigurationPath="${launch_configs}/TransitionTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_9RyNsGXqEeWTmcZKvIux5w" name="RecRplTestSuite" launchConfigurationPath="${launch_configs}/RecRplTestSuite.launch"/>
   </steps>
 </buildcore:StepContainer>

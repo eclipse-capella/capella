@@ -148,7 +148,11 @@ public class RefinementMultiple implements IProcessor {
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#getResult()
    */
   public Object getResult() {
-    return null;
+    List<Object> result = new ArrayList<Object>();
+    for (IProcessor processor : _refinements) {
+      result.add(processor.getResult());
+    }
+    return result;
   }
 
   /**
