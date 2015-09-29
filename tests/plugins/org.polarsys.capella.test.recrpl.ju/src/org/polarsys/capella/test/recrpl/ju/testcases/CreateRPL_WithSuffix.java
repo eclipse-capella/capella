@@ -24,7 +24,7 @@ public class CreateRPL_WithSuffix extends Re {
 
     // Create a REC
     CatalogElement REC = createREC(getObjects(LF1, LF2, FUNCTIONALEXCHANGE_1));
-    
+
     // a element should be suffixed
     EObject REC_LF1 = getObject(LF1);
     for (CatalogElementLink link : REC.getOwnedLinks()) {
@@ -36,13 +36,13 @@ public class CreateRPL_WithSuffix extends Re {
 
     String REC_elementName = ((LogicalFunction) REC_LF1).getName();
     String suffix = "_SUFFIX";
-    
+
     // Create a RPL with a suffix
     CatalogElement RPL = createReplica(getObjects(LF1, LF2, FUNCTIONALEXCHANGE_1), REC, suffix);
-    
+
     EObject RPL_LF1 = ReplicableElementExt.getReferencingElement(RPL, getObject(LF1));
     String RPL_elementName = ((LogicalFunction) RPL_LF1).getName();
-    
+
     // the RPL element name must be the REC element name + the suffix
     assertEquals(RPL_elementName, REC_elementName + suffix);
   }

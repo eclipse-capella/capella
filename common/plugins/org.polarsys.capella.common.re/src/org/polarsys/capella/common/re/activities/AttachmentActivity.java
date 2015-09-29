@@ -67,7 +67,6 @@ public class AttachmentActivity extends AbstractActivity {
     for (EObject object : targetAddedElements) {
       attachContainment(context, object, false, targetElement);
       updateElement(context, object, false, targetElement);
-      renameElement(context, object, false, targetElement);
     }
 
     String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
@@ -99,21 +98,12 @@ public class AttachmentActivity extends AbstractActivity {
 
     // Update user-modified features
     for (EObject custom : AttributesHandlerHelper.getInstance(context).getCustomNameElements(context)) {
-      if (custom instanceof CatalogElementLink) {
-        EObject target = ((CatalogElementLink) custom).getTarget();
-        if (target != null) {
-          EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
-          if (feature != null) {
-            target.eSet(feature, AttributesHandlerHelper.getInstance(context).getCustomName(custom, context));
-          }
-        }
-      }
       if (custom instanceof CatalogElement) {
         EObject target = custom;
         if (target != null) {
-          EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+          EStructuralFeature feature = AttributesHandlerHelper.getInstance(context).getSuffixableFeature(target, context);
           if (feature != null) {
-            target.eSet(target.eClass().getEStructuralFeature("name"), AttributesHandlerHelper.getInstance(context).getCustomName(custom, context));
+            target.eSet(feature, AttributesHandlerHelper.getInstance(context).getCustomName(custom, context));
           }
         }
       }
@@ -184,35 +174,6 @@ public class AttachmentActivity extends AbstractActivity {
           }
         }
 
-      }
-
-    }
-  }
-
-  /**
-   * @param context_p
-   * @param object_p
-   * @param b_p
-   * @param target_p
-   */
-  protected void renameElement(IContext context1, EObject object, boolean isSource, CatalogElement target1) {
-    if (object instanceof CatalogElementLink) {
-      EObject target = ((CatalogElementLink) object).getTarget();
-      if (target == null) {
-        return;
-      }
-      if (!context1.exists(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX)) {
-        return;
-      }
-
-      String suffix = (String) context1.get(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
-      if (((CatalogElementLink) object).getOrigin().isSuffixed()) {
-        EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
-        String name = (String) target.eGet(feature);
-        // if (!((name != null) && name.endsWith(suffix))) {
-        if (name != null) {
-          target.eSet(feature, name + suffix);
-        }
       }
 
     }

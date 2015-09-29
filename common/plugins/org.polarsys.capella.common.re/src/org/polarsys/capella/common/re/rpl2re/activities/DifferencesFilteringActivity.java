@@ -15,8 +15,8 @@ import org.eclipse.core.runtime.Status;
 
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.handlers.filter.CompoundFilteringItems;
-import org.polarsys.capella.common.re.handlers.filter.AvoidSuffixedItem;
 import org.polarsys.capella.common.re.handlers.filter.FilterFromTargetItem;
+import org.polarsys.capella.common.re.rpl2re.filters.AvoidSuffixesToRecItem;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -31,7 +31,7 @@ public class DifferencesFilteringActivity extends org.polarsys.capella.common.re
   protected IStatus initializeFilterItemHandlers(IContext context, CompoundFilteringItems handler, ActivityParameters activityParams) {
     super.initializeFilterItemHandlers(context, handler, activityParams);
     handler.addFilterItem(new FilterFromTargetItem(), context);
-    handler.addFilterItem(new AvoidSuffixedItem(), context);
+    handler.addFilterItem(new AvoidSuffixesToRecItem(), context);
     
     return Status.OK_STATUS;
   }

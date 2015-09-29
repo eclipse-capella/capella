@@ -21,6 +21,7 @@ import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -38,8 +39,7 @@ public class ReSourceScope extends ReScope {
    * @param elements
    * @param context
    */
-  public ReSourceScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements,
-      IContext context) {
+  public ReSourceScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements, IContext context) {
     super(element, handler, elements, context);
   }
 
@@ -53,7 +53,8 @@ public class ReSourceScope extends ReScope {
 
       // if this command is update RPL from REC:
       String commandValue = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
-      if (IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(commandValue)) {
+      if (IReConstants.COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE.equals(commandValue)
+          || IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(commandValue)) {
 
         // and if element is a REC
         if ((element.getKind() == CatalogElementKind.REC) || (element.getKind() == CatalogElementKind.REC_RPL)) {
@@ -64,22 +65,38 @@ public class ReSourceScope extends ReScope {
 
               // if the element is suffixed
               if (link.isSuffixed()) {
+                List<Object> newValues = new ArrayList<Object>();
+                if (AttributesHandlerHelper.getInstance(context).getCustomNameElements(context).contains(link)) {
+                  newValues.add(AttributesHandlerHelper.getInstance(context).getCustomName(link, context));
 
-                // get the RPL suffix
-                CatalogElement rpl = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
-                if (rpl != null) {
-                  String suffix = rpl.getSuffix();
-                  if (suffix != null) {
+                } else {
 
-                    // and add it on all values
-                    List<Object> newValues = new ArrayList<Object>();
-                    for (Object value : values) {
-                      newValues.add(value + suffix);
+                  // get the RPL suffix
+                  CatalogElement rpl = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
+                  if (rpl != null) {
+                    CatalogElementLink r2Link = null;
+                    for (CatalogElementLink rlink : rpl.getOwnedLinks()) {
+                      if ((rlink.getOrigin() != null) && rlink.getOrigin().equals(link)) {
+                        r2Link = rlink;
+                        break;
+                      }
                     }
 
-                    return Collections.unmodifiableList(newValues);
+                    String name = (String) values.iterator().next();
+                    if ((r2Link != null) && AttributesHandlerHelper.getInstance(context).getCustomNameElements(context).contains(r2Link)) {
+                      name = AttributesHandlerHelper.getInstance(context).getCustomName(r2Link, context);
+                    } else {
+                      String suffix = rpl.getSuffix();
+                      if (suffix != null) {
+                        name = values.iterator().next() + suffix;
+                      }
+                    }
+                    newValues.add(name);
                   }
                 }
+
+                return Collections.unmodifiableList(newValues);
+
               }
             }
           }
@@ -108,7 +125,7 @@ public class ReSourceScope extends ReScope {
                   for (Object object : values) {
                     if (object instanceof String) {
                       String currentValue = (String) object;
-                      
+
                       // if found
                       if (currentValue.endsWith(suffix)) {
 
