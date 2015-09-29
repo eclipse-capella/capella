@@ -60,9 +60,6 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_ZHUroJMLEeKKWIqJCUuOog" name="TestSuites">
     <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJtJMLEeKKWIqJCUuOog" name="Import Test Plugins">
-      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_2MNh8IIIEeSlQoYFN3Mlmg" folderName="releng/plugins">
-        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
-      </buildLocations>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_39468IIIEeSlQoYFN3Mlmg" folderName="tests/features">
         <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
       </buildLocations>
@@ -71,7 +68,6 @@
       </buildLocations>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJuZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
       <components xsi:type="buildstep:Feature" xmi:id="_axls8K4HEeS3GsUDrEkAJA" id="org.polarsys.capella.test.feature"/>
-      <components xsi:type="buildstep:Plugin" xmi:id="_ZphH0LELEeSLhv0uZvTdTQ" id="org.polarsys.capella.core.releng.junit"/>
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_N2E1sNhtEeS6DsvU5Dy2HA" name="" description="" component="_axls8K4HEeS3GsUDrEkAJA"/>
     <steps xsi:type="buildstep:TestStep" xmi:id="_wf8aUK4IEeS3GsUDrEkAJA" name="BusinessQueryTestSuite" launchConfigurationPath="${launch_configs}/BusinessQueryTestSuite.launch"/>
