@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,35 +15,32 @@ import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.transition.common.handlers.filter.AbstractFilterItem;
-import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.core.transition.common.handlers.filter.AbstractFilterItem;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  *
  */
-public class FilterFromReItem extends AbstractFilterItem {
+public class AvoidReAttributeItem extends AbstractFilterItem {
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(IDifference difference_p, Role role_p, IContext context_p) {
-    if (difference_p instanceof IElementRelativeDifference) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference_p;
+  public boolean isMergeable(IDifference difference, Role role, IContext context) {
+    if (difference instanceof IElementRelativeDifference) {
+      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
       if (diff instanceof IAttributeValuePresence) {
         if (RePackage.Literals.CATALOG_ELEMENT__KIND.equals(((IAttributeValuePresence) diff).getFeature())) {
           return false;
         }
         if (RePackage.Literals.RE_NAMED_ELEMENT__NAME.equals(((IAttributeValuePresence) diff).getFeature())) {
           return false;
+        }
       }
     }
-    }
 
     return true;
   }
@@ -52,15 +49,15 @@ public class FilterFromReItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    return super.getDestinationRole(difference_p, role_p, context_p);
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+    return super.getDestinationRole(difference, role, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isDisplayable(IDifference difference, Role role, IContext context) {
     return true;
   }
 
@@ -68,7 +65,7 @@ public class FilterFromReItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isApplicable(EClass differenceClass_p) {
+  public boolean isApplicable(EClass differenceClass) {
     return true;
   }
 
@@ -76,7 +73,7 @@ public class FilterFromReItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(EStructuralFeature feature_p, IContext context_p) {
+  public boolean isMergeable(EStructuralFeature feature, IContext context) {
     return true;
   }
 

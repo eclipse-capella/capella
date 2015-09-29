@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,14 +70,14 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
   protected void createTreeViewer(Composite parent_p, IRendererContext context_p) {
     super.createTreeViewer(parent_p, context_p);
 
-    //We allow renaming of elements in this dialog
+    // We allow renaming of elements in this dialog
     final TreeViewer viewer = getViewer().getClientViewer();
 
     viewer.setColumnProperties(new String[] { "name" });
     viewer.setCellModifier(new NameCellModifier(viewer, context_p));
     viewer.setCellEditors(new CellEditor[] { new TextCellEditor(viewer.getTree()) });
 
-    //Weird code used for TreeViewer
+    // Weird code used for TreeViewer
     TreeViewerFocusCellManager manager = new TreeViewerFocusCellManager(viewer, new FocusCellHighlighter(viewer) {});
     TreeViewerEditor.create(viewer, manager, new ColumnViewerEditorActivationStrategy(viewer) {
       @Override
@@ -144,12 +144,12 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
 
       @Override
       public void dragSetData(DragSourceEvent event_p) {
-        //Nothing here
+        // Nothing here
       }
 
       @Override
       public void dragFinished(DragSourceEvent event_p) {
-        //Nothing here
+        // Nothing here
       }
     });
 
@@ -195,7 +195,7 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
         @Override
         protected Object doGetParent(Object element_p) {
           if (element_p instanceof CatalogElement) {
-            //display all catalog elements as a root item
+            // display all catalog elements as a root item
             return null;
           }
 
@@ -293,9 +293,8 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
   @Override
   public void updatedValue(IProperty property_p, IRendererContext context_p, Object newValue_p) {
     if (!isDisposed()) {
-    super.updatedValue(property_p, context_p, newValue_p);
-    getViewer().getClientViewer().refresh();
-
+      super.updatedValue(property_p, context_p, newValue_p);
+      getViewer().getClientViewer().refresh();
     }
   }
 

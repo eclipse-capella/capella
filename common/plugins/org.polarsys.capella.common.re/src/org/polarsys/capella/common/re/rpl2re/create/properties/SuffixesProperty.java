@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -32,22 +31,23 @@ public class SuffixesProperty extends org.polarsys.capella.common.re.properties.
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    super.getValue(context_p);
+  public Object getValue(IPropertyContext context1) {
+    super.getValue(context1);
 
-    Collection<EObject> scope = (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
+    Collection<EObject> scope = (Collection) context1.getCurrentValue(context1.getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
     Collection<EObject> roots = new HashSet<EObject>();
 
     CatalogElement target =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+        (CatalogElement) context1.getCurrentValue(context1.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
 
-    //For all new elements (not yet linked thorugh a CEL, if it is a root element, we add it automatically as suffixable
-    IContext context = (IContext) context_p.getSource();
+    // For all new elements (not yet linked thorugh a CEL, if it is a root element, we add it automatically as suffixable
+    IContext context = (IContext) context1.getSource();
     if (target != null) {
       Collection<EObject> linkedElements = ReplicableElementHandlerHelper.getInstance(context).getElements(target);
 
       for (EObject object : scope) {
-        if (object.eClass().getEStructuralFeature("name") == null) {
+
+        if (AttributesHandlerHelper.getInstance(context).getSuffixableFeature(object, context) == null) {
           continue;
         }
 
@@ -65,7 +65,8 @@ public class SuffixesProperty extends org.polarsys.capella.common.re.properties.
         }
       }
 
-      //Remove automatic suffixing on childs of all suffixable elements. (it can happen when a parent has been added into the scope while some child were suffixed)
+      // Remove automatic suffixing on childs of all suffixable elements. (it can happen when a parent has been added into the scope while some child were
+      // suffixed)
       for (EObject object : scope) {
         if ((object != null) && !AttributesHandlerHelper.getInstance(context).isManualSuffixable(object, context)) {
           if (AttributesHandlerHelper.getInstance(context).isSuffixable(object, context)) {
@@ -97,7 +98,7 @@ public class SuffixesProperty extends org.polarsys.capella.common.re.properties.
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
+  public void updatedValue(IProperty property, IPropertyContext context) {
 
   }
 }

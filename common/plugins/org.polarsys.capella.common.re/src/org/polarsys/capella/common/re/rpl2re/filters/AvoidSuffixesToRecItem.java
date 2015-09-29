@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.common.re.handlers.filter;
+package org.polarsys.capella.common.re.rpl2re.filters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +27,13 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  * Avoid to merge unsynchronized features for RE 2 RPL
  */
-public class AvoidSuffixedItem extends AbstractFilterItem {
+public class AvoidSuffixesToRecItem extends AbstractFilterItem {
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public String getDescription(IDifference difference_p) {
+  public String getDescription(IDifference difference) {
     return "The feature 'name' is not synchronized with its REC because it contains a suffix";
   }
 
@@ -41,15 +41,14 @@ public class AvoidSuffixedItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    if (difference_p instanceof IAttributeValuePresence) {
-      IAttributeValuePresence diff = (IAttributeValuePresence) difference_p;
-      EObject sourceElement = diff.getElementMatch().get(role_p);
-
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+    if (difference instanceof IAttributeValuePresence) {
+      IAttributeValuePresence diff = (IAttributeValuePresence) difference;
+      EObject sourceElement = diff.getElementMatch().get(role);
       if (sourceElement != null) {
 
-        CatalogElement source = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-        CatalogElement target = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+        CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+        CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
         List<CatalogElementLink> links = new ArrayList<CatalogElementLink>();
         links.addAll(source.getOwnedLinks());
@@ -59,25 +58,24 @@ public class AvoidSuffixedItem extends AbstractFilterItem {
         for (CatalogElementLink link : links) {
           if (sourceElement.equals(link.getTarget())) {
 
-            String value = (String) context_p.get(IReConstants.COMMAND__CURRENT_VALUE);
+            String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
 
             if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
 
               // if (update replicableElement from replica)
-              if (role_p == Role.REFERENCE) {
-
+              if (role == Role.REFERENCE) {
                 CatalogElementLink linkedLink = link.getOrigin();
-
                 if (linkedLink.isSuffixed()) {
                   return FilterAction.NO_ACTION;
                 }
               }
             }
           }
+
         }
       }
     }
 
-    return super.getDestinationRole(difference_p, role_p, context_p);
+    return super.getDestinationRole(difference, role, context);
   }
 }

@@ -25,6 +25,7 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RecCatalog;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
@@ -61,6 +62,16 @@ import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 public abstract class RecRplTestCase extends BasicTestCase {
 
   protected Resource modelResource;
+
+  protected void setSuffixed(CatalogElement rec, String target) {
+    // a element should be suffixed
+    EObject REC_LF1 = getObject(target);
+    for (CatalogElementLink link : rec.getOwnedLinks()) {
+      if (link.getTarget() == REC_LF1) {
+        link.setSuffixed(true);
+      }
+    }
+  }
 
   @Override
   public void test() throws Exception {
@@ -119,7 +130,7 @@ public abstract class RecRplTestCase extends BasicTestCase {
   protected CatalogElement createReplica(Collection<EObject> elements, CatalogElement REC) {
     return createReplica(elements, REC, null);
   }
-  
+
   @SuppressWarnings({ "rawtypes", "unchecked" })
   protected CatalogElement createReplica(Collection<EObject> elements, CatalogElement REC, String suffix) {
     Collection<CatalogElement> RPLS = ReplicableElementExt.getReplicas(REC);
@@ -163,7 +174,7 @@ public abstract class RecRplTestCase extends BasicTestCase {
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
     executeCommand(command);
   }
-  
+
   @SuppressWarnings({ "rawtypes", "unchecked" })
   protected void updateReplica(Collection<EObject> elements, CatalogElement replica, String suffix) {
     ICommand command = new UpdateReplicaCommand((Collection) elements, new NullProgressMonitor());
