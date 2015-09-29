@@ -84,7 +84,7 @@ public class OrganisationalUnitCompositionItemProvider
 			// Process OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT
 			if (organisationalUnitPropertyDescriptor != null) {
 				Object organisationalUnitValue = eObject.eGet(OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT, true);
-				if (organisationalUnitValue != null && organisationalUnitValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) organisationalUnitValue)) {
+				if (organisationalUnitValue != null && organisationalUnitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) organisationalUnitValue)) {
 					itemPropertyDescriptors.remove(organisationalUnitPropertyDescriptor);
 				} else if (organisationalUnitValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION__ORGANISATIONAL_UNIT) != null) {
 					itemPropertyDescriptors.remove(organisationalUnitPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class OrganisationalUnitCompositionItemProvider
 			// Process OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY
 			if (participatingEntityPropertyDescriptor != null) {
 				Object participatingEntityValue = eObject.eGet(OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY, true);
-				if (participatingEntityValue != null && participatingEntityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) participatingEntityValue)) {
+				if (participatingEntityValue != null && participatingEntityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) participatingEntityValue)) {
 					itemPropertyDescriptors.remove(participatingEntityPropertyDescriptor);
 				} else if (participatingEntityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ORGANISATIONAL_UNIT_COMPOSITION__PARTICIPATING_ENTITY) != null) {
 					itemPropertyDescriptors.remove(participatingEntityPropertyDescriptor);				  					

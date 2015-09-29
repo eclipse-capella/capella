@@ -88,7 +88,7 @@ public class ObjectFlowItemProvider
 			// Process ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION
 			if (transformationPropertyDescriptor != null) {
 				Object transformationValue = eObject.eGet(ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION, true);
-				if (transformationValue != null && transformationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) transformationValue)) {
+				if (transformationValue != null && transformationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) transformationValue)) {
 					itemPropertyDescriptors.remove(transformationPropertyDescriptor);
 				} else if (transformationValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION) != null) {
 					itemPropertyDescriptors.remove(transformationPropertyDescriptor);				  					
@@ -99,7 +99,7 @@ public class ObjectFlowItemProvider
 			// Process ActivityPackage.Literals.OBJECT_FLOW__SELECTION
 			if (selectionPropertyDescriptor != null) {
 				Object selectionValue = eObject.eGet(ActivityPackage.Literals.OBJECT_FLOW__SELECTION, true);
-				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) selectionValue)) {
+				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) selectionValue)) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);
 				} else if (selectionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_FLOW__SELECTION) != null) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);				  					

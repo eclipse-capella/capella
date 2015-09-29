@@ -94,7 +94,7 @@ public class CommunicationLinkItemProvider
 			// Process CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS
 			if (statusPropertyDescriptor != null) {
 				Object statusValue = eObject.eGet(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS, true);
-				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) statusValue)) {
+				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) statusValue)) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);
 				} else if (statusValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS) != null) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);				  					
@@ -105,7 +105,7 @@ public class CommunicationLinkItemProvider
 			// Process CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM
 			if (exchangeItemPropertyDescriptor != null) {
 				Object exchangeItemValue = eObject.eGet(CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM, true);
-				if (exchangeItemValue != null && exchangeItemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) exchangeItemValue)) {
+				if (exchangeItemValue != null && exchangeItemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exchangeItemValue)) {
 					itemPropertyDescriptors.remove(exchangeItemPropertyDescriptor);
 				} else if (exchangeItemValue == null && ExtensionModelManager.getAnyType(eObject, CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM) != null) {
 					itemPropertyDescriptors.remove(exchangeItemPropertyDescriptor);				  					

@@ -77,7 +77,7 @@ public class AbstractCapabilityGeneralizationItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER
 			if (superPropertyDescriptor != null) {
 				Object superValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER, true);
-				if (superValue != null && superValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) superValue)) {
+				if (superValue != null && superValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) superValue)) {
 					itemPropertyDescriptors.remove(superPropertyDescriptor);
 				} else if (superValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER) != null) {
 					itemPropertyDescriptors.remove(superPropertyDescriptor);				  					

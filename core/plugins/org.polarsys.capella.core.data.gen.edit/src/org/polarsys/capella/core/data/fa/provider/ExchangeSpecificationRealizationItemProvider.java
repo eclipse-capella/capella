@@ -85,7 +85,7 @@ public class ExchangeSpecificationRealizationItemProvider
 			// Process FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION
 			if (realizedExchangeSpecificationPropertyDescriptor != null) {
 				Object realizedExchangeSpecificationValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION, true);
-				if (realizedExchangeSpecificationValue != null && realizedExchangeSpecificationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedExchangeSpecificationValue)) {
+				if (realizedExchangeSpecificationValue != null && realizedExchangeSpecificationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedExchangeSpecificationValue)) {
 					itemPropertyDescriptors.remove(realizedExchangeSpecificationPropertyDescriptor);
 				} else if (realizedExchangeSpecificationValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZED_EXCHANGE_SPECIFICATION) != null) {
 					itemPropertyDescriptors.remove(realizedExchangeSpecificationPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ExchangeSpecificationRealizationItemProvider
 			// Process FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION
 			if (realizingExchangeSpecificationPropertyDescriptor != null) {
 				Object realizingExchangeSpecificationValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION, true);
-				if (realizingExchangeSpecificationValue != null && realizingExchangeSpecificationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingExchangeSpecificationValue)) {
+				if (realizingExchangeSpecificationValue != null && realizingExchangeSpecificationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingExchangeSpecificationValue)) {
 					itemPropertyDescriptors.remove(realizingExchangeSpecificationPropertyDescriptor);
 				} else if (realizingExchangeSpecificationValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION_REALIZATION__REALIZING_EXCHANGE_SPECIFICATION) != null) {
 					itemPropertyDescriptors.remove(realizingExchangeSpecificationPropertyDescriptor);				  					

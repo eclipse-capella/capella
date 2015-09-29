@@ -89,7 +89,7 @@ public class SystemAnalysisItemProvider
 			// Process CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_CAPABILITY_PKG
 			if (containedCapabilityPkgPropertyDescriptor != null) {
 				Object containedCapabilityPkgValue = eObject.eGet(CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_CAPABILITY_PKG, true);
-				if (containedCapabilityPkgValue != null && containedCapabilityPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedCapabilityPkgValue)) {
+				if (containedCapabilityPkgValue != null && containedCapabilityPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedCapabilityPkgValue)) {
 					itemPropertyDescriptors.remove(containedCapabilityPkgPropertyDescriptor);
 				} else if (containedCapabilityPkgValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_CAPABILITY_PKG) != null) {
 					itemPropertyDescriptors.remove(containedCapabilityPkgPropertyDescriptor);				  					
@@ -100,7 +100,7 @@ public class SystemAnalysisItemProvider
 			// Process CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_SYSTEM_FUNCTION_PKG
 			if (containedSystemFunctionPkgPropertyDescriptor != null) {
 				Object containedSystemFunctionPkgValue = eObject.eGet(CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_SYSTEM_FUNCTION_PKG, true);
-				if (containedSystemFunctionPkgValue != null && containedSystemFunctionPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedSystemFunctionPkgValue)) {
+				if (containedSystemFunctionPkgValue != null && containedSystemFunctionPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedSystemFunctionPkgValue)) {
 					itemPropertyDescriptors.remove(containedSystemFunctionPkgPropertyDescriptor);
 				} else if (containedSystemFunctionPkgValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_SYSTEM_FUNCTION_PKG) != null) {
 					itemPropertyDescriptors.remove(containedSystemFunctionPkgPropertyDescriptor);				  					

@@ -82,7 +82,7 @@ public class EnumerationItemProvider
 			// Process DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE
 			if (domainTypePropertyDescriptor != null) {
 				Object domainTypeValue = eObject.eGet(DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE, true);
-				if (domainTypeValue != null && domainTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) domainTypeValue)) {
+				if (domainTypeValue != null && domainTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) domainTypeValue)) {
 					itemPropertyDescriptors.remove(domainTypePropertyDescriptor);
 				} else if (domainTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE) != null) {
 					itemPropertyDescriptors.remove(domainTypePropertyDescriptor);				  					

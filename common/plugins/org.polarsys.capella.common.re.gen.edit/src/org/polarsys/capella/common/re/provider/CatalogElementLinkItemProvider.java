@@ -90,7 +90,7 @@ public class CatalogElementLinkItemProvider extends
 			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class CatalogElementLinkItemProvider extends
 			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET
 			if (targetPropertyDescriptor != null) {
 				Object targetValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
@@ -112,7 +112,7 @@ public class CatalogElementLinkItemProvider extends
 			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN
 			if (originPropertyDescriptor != null) {
 				Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN, true);
-				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) originValue)) {
+				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) originValue)) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);
 				} else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN) != null) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);				  					

@@ -86,7 +86,7 @@ public class ComponentInstanceItemProvider
 			// Process DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					

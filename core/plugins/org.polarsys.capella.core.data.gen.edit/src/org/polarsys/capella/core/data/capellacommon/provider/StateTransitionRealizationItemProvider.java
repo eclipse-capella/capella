@@ -85,7 +85,7 @@ public class StateTransitionRealizationItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION
 			if (realizedStateTransitionPropertyDescriptor != null) {
 				Object realizedStateTransitionValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION, true);
-				if (realizedStateTransitionValue != null && realizedStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedStateTransitionValue)) {
+				if (realizedStateTransitionValue != null && realizedStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedStateTransitionValue)) {
 					itemPropertyDescriptors.remove(realizedStateTransitionPropertyDescriptor);
 				} else if (realizedStateTransitionValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION) != null) {
 					itemPropertyDescriptors.remove(realizedStateTransitionPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class StateTransitionRealizationItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION
 			if (realizingStateTransitionPropertyDescriptor != null) {
 				Object realizingStateTransitionValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION, true);
-				if (realizingStateTransitionValue != null && realizingStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingStateTransitionValue)) {
+				if (realizingStateTransitionValue != null && realizingStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingStateTransitionValue)) {
 					itemPropertyDescriptors.remove(realizingStateTransitionPropertyDescriptor);
 				} else if (realizingStateTransitionValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION) != null) {
 					itemPropertyDescriptors.remove(realizingStateTransitionPropertyDescriptor);				  					

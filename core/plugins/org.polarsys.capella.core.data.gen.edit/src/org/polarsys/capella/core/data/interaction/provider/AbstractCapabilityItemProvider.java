@@ -95,7 +95,7 @@ public class AbstractCapabilityItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION
 			if (preConditionPropertyDescriptor != null) {
 				Object preConditionValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION, true);
-				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) preConditionValue)) {
+				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) preConditionValue)) {
 					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
 				} else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION) != null) {
 					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
@@ -106,7 +106,7 @@ public class AbstractCapabilityItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION
 			if (postConditionPropertyDescriptor != null) {
 				Object postConditionValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION, true);
-				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) postConditionValue)) {
+				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) postConditionValue)) {
 					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
 				} else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION) != null) {
 					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					

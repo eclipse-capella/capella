@@ -77,7 +77,7 @@ public class RequiredInterfaceLinkItemProvider
 			// Process CsPackage.Literals.REQUIRED_INTERFACE_LINK__INTERFACE
 			if (interfacePropertyDescriptor != null) {
 				Object interfaceValue = eObject.eGet(CsPackage.Literals.REQUIRED_INTERFACE_LINK__INTERFACE, true);
-				if (interfaceValue != null && interfaceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) interfaceValue)) {
+				if (interfaceValue != null && interfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interfaceValue)) {
 					itemPropertyDescriptors.remove(interfacePropertyDescriptor);
 				} else if (interfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.REQUIRED_INTERFACE_LINK__INTERFACE) != null) {
 					itemPropertyDescriptors.remove(interfacePropertyDescriptor);				  					

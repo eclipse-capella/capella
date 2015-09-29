@@ -85,7 +85,7 @@ public class CommunicationLinkAllocationItemProvider
 			// Process CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK
 			if (allocatingLinkPropertyDescriptor != null) {
 				Object allocatingLinkValue = eObject.eGet(CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK, true);
-				if (allocatingLinkValue != null && allocatingLinkValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingLinkValue)) {
+				if (allocatingLinkValue != null && allocatingLinkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingLinkValue)) {
 					itemPropertyDescriptors.remove(allocatingLinkPropertyDescriptor);
 				} else if (allocatingLinkValue == null && ExtensionModelManager.getAnyType(eObject, CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK) != null) {
 					itemPropertyDescriptors.remove(allocatingLinkPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class CommunicationLinkAllocationItemProvider
 			// Process CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK
 			if (allocatedLinkPropertyDescriptor != null) {
 				Object allocatedLinkValue = eObject.eGet(CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK, true);
-				if (allocatedLinkValue != null && allocatedLinkValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedLinkValue)) {
+				if (allocatedLinkValue != null && allocatedLinkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedLinkValue)) {
 					itemPropertyDescriptors.remove(allocatedLinkPropertyDescriptor);
 				} else if (allocatedLinkValue == null && ExtensionModelManager.getAnyType(eObject, CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK) != null) {
 					itemPropertyDescriptors.remove(allocatedLinkPropertyDescriptor);				  					

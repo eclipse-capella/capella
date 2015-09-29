@@ -79,7 +79,7 @@ public class SendSignalActionItemProvider
 			// Process ActivityPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL
 			if (signalPropertyDescriptor != null) {
 				Object signalValue = eObject.eGet(ActivityPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL, true);
-				if (signalValue != null && signalValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) signalValue)) {
+				if (signalValue != null && signalValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) signalValue)) {
 					itemPropertyDescriptors.remove(signalPropertyDescriptor);
 				} else if (signalValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL) != null) {
 					itemPropertyDescriptors.remove(signalPropertyDescriptor);				  					

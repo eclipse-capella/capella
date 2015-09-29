@@ -73,7 +73,7 @@ public class AbstractCapabilityIncludeItemProvider extends RelationshipItemProvi
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED
 			if (includedPropertyDescriptor != null) {
 				Object includedValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED, true);
-				if (includedValue != null && includedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) includedValue)) {
+				if (includedValue != null && includedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) includedValue)) {
 					itemPropertyDescriptors.remove(includedPropertyDescriptor);
 				} else if (includedValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED) != null) {
 					itemPropertyDescriptors.remove(includedPropertyDescriptor);				  					

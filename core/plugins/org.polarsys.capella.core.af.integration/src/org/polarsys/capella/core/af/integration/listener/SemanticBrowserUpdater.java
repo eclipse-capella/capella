@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,17 +15,18 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionOverallListener;
 
 /**
  * 
  */
-public class SemanticBrowserUpdater implements ModelExtensionListener {
+public class SemanticBrowserUpdater implements ModelExtensionOverallListener {
 
-	public void modelEnabled(String nsURI) {
+	public void modelEnabled(Object ctx, String nsURI) {
 		refresh();
 	}
 
-	public void modelDisabled(String nsURI) {
+	public void modelDisabled(Object ctx, String nsURI) {
 		refresh();
 	}
 

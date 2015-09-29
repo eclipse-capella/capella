@@ -85,7 +85,7 @@ public class ActivityAllocationItemProvider
 			// Process OaPackage.Literals.ACTIVITY_ALLOCATION__ROLE
 			if (rolePropertyDescriptor != null) {
 				Object roleValue = eObject.eGet(OaPackage.Literals.ACTIVITY_ALLOCATION__ROLE, true);
-				if (roleValue != null && roleValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) roleValue)) {
+				if (roleValue != null && roleValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) roleValue)) {
 					itemPropertyDescriptors.remove(rolePropertyDescriptor);
 				} else if (roleValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ACTIVITY_ALLOCATION__ROLE) != null) {
 					itemPropertyDescriptors.remove(rolePropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ActivityAllocationItemProvider
 			// Process OaPackage.Literals.ACTIVITY_ALLOCATION__ACTIVITY
 			if (activityPropertyDescriptor != null) {
 				Object activityValue = eObject.eGet(OaPackage.Literals.ACTIVITY_ALLOCATION__ACTIVITY, true);
-				if (activityValue != null && activityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) activityValue)) {
+				if (activityValue != null && activityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) activityValue)) {
 					itemPropertyDescriptors.remove(activityPropertyDescriptor);
 				} else if (activityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ACTIVITY_ALLOCATION__ACTIVITY) != null) {
 					itemPropertyDescriptors.remove(activityPropertyDescriptor);				  					

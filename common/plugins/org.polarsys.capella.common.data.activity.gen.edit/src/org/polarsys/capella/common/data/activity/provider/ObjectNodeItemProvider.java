@@ -111,7 +111,7 @@ public class ObjectNodeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION
 			if (inActivityPartitionPropertyDescriptor != null) {
 				Object inActivityPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, true);
-				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
+				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);
 				} else if (inActivityPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION) != null) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);				  					
@@ -122,7 +122,7 @@ public class ObjectNodeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION
 			if (inInterruptibleRegionPropertyDescriptor != null) {
 				Object inInterruptibleRegionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, true);
-				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
+				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);
 				} else if (inInterruptibleRegionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION) != null) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);				  					
@@ -133,7 +133,7 @@ public class ObjectNodeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE
 			if (inStructuredNodePropertyDescriptor != null) {
 				Object inStructuredNodeValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true);
-				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
+				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);
 				} else if (inStructuredNodeValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE) != null) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);				  					
@@ -144,7 +144,7 @@ public class ObjectNodeItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
 			if (abstractTypePropertyDescriptor != null) {
 				Object abstractTypeValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, true);
-				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) abstractTypeValue)) {
+				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) abstractTypeValue)) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);
 				} else if (abstractTypeValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE) != null) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);				  					
@@ -155,7 +155,7 @@ public class ObjectNodeItemProvider
 			// Process ActivityPackage.Literals.OBJECT_NODE__SELECTION
 			if (selectionPropertyDescriptor != null) {
 				Object selectionValue = eObject.eGet(ActivityPackage.Literals.OBJECT_NODE__SELECTION, true);
-				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) selectionValue)) {
+				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) selectionValue)) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);
 				} else if (selectionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_NODE__SELECTION) != null) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);				  					

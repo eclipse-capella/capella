@@ -76,7 +76,7 @@ public class AbstractBooleanValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE
 			if (booleanTypePropertyDescriptor != null) {
 				Object booleanTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE, true);
-				if (booleanTypeValue != null && booleanTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) booleanTypeValue)) {
+				if (booleanTypeValue != null && booleanTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) booleanTypeValue)) {
 					itemPropertyDescriptors.remove(booleanTypePropertyDescriptor);
 				} else if (booleanTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE) != null) {
 					itemPropertyDescriptors.remove(booleanTypePropertyDescriptor);				  					

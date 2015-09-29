@@ -15,32 +15,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
-import java.util.HashMap;
-import java.util.HashMap;
-import java.util.HashMap;
-import java.util.HashMap;
-import java.util.HashMap;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map;
-import java.util.Map;
-import java.util.Map;
-import java.util.Map;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -54,11 +34,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
@@ -75,11 +50,6 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -102,11 +72,6 @@ import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
-import org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory;
-import org.polarsys.capella.core.data.fa.provider.FaItemProviderAdapterFactory;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -123,11 +88,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableLayout;
@@ -165,9 +125,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
-import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.common.data.activity.provider.ActivityItemProviderAdapterFactory;
 import org.polarsys.capella.common.data.behavior.provider.BehaviorItemProviderAdapterFactory;
 import org.polarsys.capella.common.data.modellingcore.provider.ModellingcoreItemProviderAdapterFactory;
@@ -192,6 +150,7 @@ import org.polarsys.capella.core.data.requirement.provider.RequirementItemProvid
 import org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderAdapterFactory;
 import org.polarsys.kitalpha.emde.extension.ExtendedModel;
 import org.polarsys.kitalpha.emde.extension.ExtensibleModel;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionDescriptor;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionManager;
@@ -791,7 +750,7 @@ public class FaEditor
 		adapterFactory.addAdapterFactory(new EmdeItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ActivityItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BehaviorItemProviderAdapterFactory());
-		for (AdapterFactory extendedAdapterFactory : ModelExtensionHelper.getInstance().getExtendedModelAdapterFactories(FaItemProviderAdapterFactory.class.getName())) {
+		for (AdapterFactory extendedAdapterFactory : ModelExtensionDescriptor.INSTANCE.getExtendedModelAdapterFactories(FaItemProviderAdapterFactory.class.getName())) {
 			adapterFactory.addAdapterFactory(extendedAdapterFactory);
 		}
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
@@ -835,9 +794,6 @@ public class FaEditor
 		//editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); 
    		// end-capella-code
 
-		// Register this editor for ExtendedModel state
-		//
-		ModelExtensionHelper.addListener(this);		
 	}
 
 	/**
@@ -1069,8 +1025,8 @@ public class FaEditor
 		// Create new extension actions
 		Collection<EmdeViewerFilterAction> extensionActions = new ArrayList<EmdeViewerFilterAction>();		
 		String extensibleModelURI = resource_p.getContents().get(0).eClass().getEPackage().getNsURI();
-		ModelExtensionManager helper = ModelExtensionHelper.getInstance();
-		ExtensibleModel extensibleModel = helper.getExtensibleModel(extensibleModelURI);
+		ModelExtensionManager helper = ModelExtensionHelper.getInstance(resource_p);
+		ExtensibleModel extensibleModel = ModelExtensionDescriptor.INSTANCE.getExtensibleModel(extensibleModelURI);
 		if (extensibleModel != null) {		
 			for (ExtendedModel extendedModel : extensibleModel.getAllExtendedModels()) {
 				EmdeViewerFilterAction filterAction = new EmdeViewerFilterAction(resource_p, extensibleModel, extendedModel) {
@@ -2117,7 +2073,7 @@ public class FaEditor
 		}
 		// Unregister this editor for ExtendedModel state
 		//
-		ModelExtensionHelper.removeListener(this);		
+		ModelExtensionHelper.getInstance(getEditingDomain().getResourceSet()).removeListener(this);		
 
 		if (getActionBarContributor().getActiveEditor() == this) {
 			getActionBarContributor().setActiveEditor(null);

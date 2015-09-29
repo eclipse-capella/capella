@@ -89,7 +89,7 @@ public class ExchangeItemAllocationItemProvider
 			// Process CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM
 			if (allocatedItemPropertyDescriptor != null) {
 				Object allocatedItemValue = eObject.eGet(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, true);
-				if (allocatedItemValue != null && allocatedItemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedItemValue)) {
+				if (allocatedItemValue != null && allocatedItemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedItemValue)) {
 					itemPropertyDescriptors.remove(allocatedItemPropertyDescriptor);
 				} else if (allocatedItemValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM) != null) {
 					itemPropertyDescriptors.remove(allocatedItemPropertyDescriptor);				  					
@@ -100,7 +100,7 @@ public class ExchangeItemAllocationItemProvider
 			// Process CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE
 			if (allocatingInterfacePropertyDescriptor != null) {
 				Object allocatingInterfaceValue = eObject.eGet(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE, true);
-				if (allocatingInterfaceValue != null && allocatingInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingInterfaceValue)) {
+				if (allocatingInterfaceValue != null && allocatingInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingInterfaceValue)) {
 					itemPropertyDescriptors.remove(allocatingInterfacePropertyDescriptor);
 				} else if (allocatingInterfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE) != null) {
 					itemPropertyDescriptors.remove(allocatingInterfacePropertyDescriptor);				  					

@@ -84,7 +84,7 @@ public class GeneralizationItemProvider
 			// Process CapellacorePackage.Literals.GENERALIZATION__SUPER
 			if (superPropertyDescriptor != null) {
 				Object superValue = eObject.eGet(CapellacorePackage.Literals.GENERALIZATION__SUPER, true);
-				if (superValue != null && superValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) superValue)) {
+				if (superValue != null && superValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) superValue)) {
 					itemPropertyDescriptors.remove(superPropertyDescriptor);
 				} else if (superValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.GENERALIZATION__SUPER) != null) {
 					itemPropertyDescriptors.remove(superPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class GeneralizationItemProvider
 			// Process CapellacorePackage.Literals.GENERALIZATION__SUB
 			if (subPropertyDescriptor != null) {
 				Object subValue = eObject.eGet(CapellacorePackage.Literals.GENERALIZATION__SUB, true);
-				if (subValue != null && subValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) subValue)) {
+				if (subValue != null && subValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) subValue)) {
 					itemPropertyDescriptors.remove(subPropertyDescriptor);
 				} else if (subValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.GENERALIZATION__SUB) != null) {
 					itemPropertyDescriptors.remove(subPropertyDescriptor);				  					

@@ -102,7 +102,7 @@ public class SequenceMessageValuationItemProvider
 			// Process CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS
 			if (statusPropertyDescriptor != null) {
 				Object statusValue = eObject.eGet(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS, true);
-				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) statusValue)) {
+				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) statusValue)) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);
 				} else if (statusValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS) != null) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);				  					
@@ -113,7 +113,7 @@ public class SequenceMessageValuationItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT
 			if (exchangeItemElementPropertyDescriptor != null) {
 				Object exchangeItemElementValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT, true);
-				if (exchangeItemElementValue != null && exchangeItemElementValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) exchangeItemElementValue)) {
+				if (exchangeItemElementValue != null && exchangeItemElementValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exchangeItemElementValue)) {
 					itemPropertyDescriptors.remove(exchangeItemElementPropertyDescriptor);
 				} else if (exchangeItemElementValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT) != null) {
 					itemPropertyDescriptors.remove(exchangeItemElementPropertyDescriptor);				  					
@@ -124,7 +124,7 @@ public class SequenceMessageValuationItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__VALUE
 			if (valuePropertyDescriptor != null) {
 				Object valueValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__VALUE, true);
-				if (valueValue != null && valueValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) valueValue)) {
+				if (valueValue != null && valueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) valueValue)) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);
 				} else if (valueValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__VALUE) != null) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);				  					

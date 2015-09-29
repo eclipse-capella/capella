@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20150211-1405
+//Generated with EGF 1.3.0.v20150507-0831
 package org.polarsys.capella.core.editor;
 
 import org.eclipse.egf.common.helper.*;
@@ -1256,19 +1256,14 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t//ExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);"
 			+ NL
 			+ "\t\t//editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); "
-			+ NL + "   \t\t// end-capella-code" + NL;
-	protected final String TEXT_140 = NL
-			+ "\t\t// Register this editor for ExtendedModel state" + NL
-			+ "\t\t//" + NL + "\t\t";
-	protected final String TEXT_141 = ".addListener(this);";
-	protected final String TEXT_142 = "\t\t" + NL + "\t}" + NL + "" + NL
-			+ "\t/**" + NL
+			+ NL + "   \t\t// end-capella-code" + NL + "" + NL + "\t}" + NL
+			+ "" + NL + "\t/**" + NL
 			+ "\t * This is here for the listener to be able to call it." + NL
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_143 = NL + "\t\t\t@Override";
-	protected final String TEXT_144 = NL
+	protected final String TEXT_140 = NL + "\t\t\t@Override";
+	protected final String TEXT_141 = NL
 			+ "\tprotected void firePropertyChange(int action)" + NL + "\t{"
 			+ NL + "\t\tsuper.firePropertyChange(action);" + NL + "\t}" + NL
 			+ "" + NL + "\t/**" + NL
@@ -1276,9 +1271,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL + "\tpublic void setSelectionToViewer(";
-	protected final String TEXT_145 = " collection)" + NL + "\t{" + NL
+	protected final String TEXT_142 = " collection)" + NL + "\t{" + NL
 			+ "\t\tfinal ";
-	protected final String TEXT_146 = " theSelection = collection;"
+	protected final String TEXT_143 = " theSelection = collection;"
 			+ NL
 			+ "\t\t// Make sure it's okay."
 			+ NL
@@ -1377,8 +1372,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "" + NL + "\t\t/**" + NL + "\t\t * <!-- begin-user-doc -->"
 			+ NL + "\t\t * <!-- end-user-doc -->" + NL + "\t\t * @generated"
 			+ NL + "\t\t */";
-	protected final String TEXT_147 = NL + "\t\t@Override";
-	protected final String TEXT_148 = NL
+	protected final String TEXT_144 = NL + "\t\t@Override";
+	protected final String TEXT_145 = NL
 			+ "\t\tpublic Object [] getElements(Object object)"
 			+ NL
 			+ "\t\t{"
@@ -1390,8 +1385,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t * <!-- begin-user-doc -->" + NL
 			+ "\t\t * <!-- end-user-doc -->" + NL + "\t\t * @generated" + NL
 			+ "\t\t */";
-	protected final String TEXT_149 = NL + "\t\t@Override";
-	protected final String TEXT_150 = NL
+	protected final String TEXT_146 = NL + "\t\t@Override";
+	protected final String TEXT_147 = NL
 			+ "\t\tpublic Object [] getChildren(Object object)"
 			+ NL
 			+ "\t\t{"
@@ -1403,19 +1398,19 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t * <!-- begin-user-doc -->" + NL
 			+ "\t\t * <!-- end-user-doc -->" + NL + "\t\t * @generated" + NL
 			+ "\t\t */";
-	protected final String TEXT_151 = NL + "\t\t@Override";
-	protected final String TEXT_152 = NL
+	protected final String TEXT_148 = NL + "\t\t@Override";
+	protected final String TEXT_149 = NL
 			+ "\t\tpublic boolean hasChildren(Object object)" + NL + "\t\t{"
 			+ NL + "\t\t\tObject parent = super.getParent(object);" + NL
 			+ "\t\t\treturn parent != null;" + NL + "\t\t}" + NL + "" + NL
 			+ "\t\t/**" + NL + "\t\t * <!-- begin-user-doc -->" + NL
 			+ "\t\t * <!-- end-user-doc -->" + NL + "\t\t * @generated" + NL
 			+ "\t\t */";
-	protected final String TEXT_153 = NL + "\t\t@Override";
-	protected final String TEXT_154 = NL
+	protected final String TEXT_150 = NL + "\t\t@Override";
+	protected final String TEXT_151 = NL
 			+ "\t\tpublic Object getParent(Object object)" + NL + "\t\t{" + NL
 			+ "\t\t\treturn null;" + NL + "\t\t}" + NL + "\t}";
-	protected final String TEXT_155 = NL + NL + "\t/**" + NL
+	protected final String TEXT_152 = NL + NL + "\t/**" + NL
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL
@@ -1427,7 +1422,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t\t}" + NL
 			+ "\t\tsetCurrentViewer(currentViewerPane.getViewer());" + NL
 			+ "\t}";
-	protected final String TEXT_156 = NL
+	protected final String TEXT_153 = NL
 			+ NL
 			+ "\t/**"
 			+ NL
@@ -1548,7 +1543,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL + "\tpublic Collection<Viewer> getViewers()" + NL
 			+ "\t{" + NL + "\t\treturn viewers;" + NL + "\t}\t";
-	protected final String TEXT_157 = NL
+	protected final String TEXT_154 = NL
 			+ NL
 			+ "\t/**"
 			+ NL
@@ -1593,8 +1588,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL + "\tprotected Collection<";
-	protected final String TEXT_158 = "> getEmdeViewerFilterActions(";
-	protected final String TEXT_159 = " resource_p) {"
+	protected final String TEXT_155 = "> getEmdeViewerFilterActions(";
+	protected final String TEXT_156 = " resource_p) {"
 			+ NL
 			+ "\t\tif (resource_p == null || resource_p.getContents().isEmpty()) {"
 			+ NL + "\t\t\treturn null;" + NL + "\t\t}" + NL
@@ -1603,22 +1598,23 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\treturn viewerFilterActions.get(resource_p);" + NL
 			+ "\t\t}\t" + NL + "\t\t// Create new extension actions" + NL
 			+ "\t\t";
-	protected final String TEXT_160 = "<";
-	protected final String TEXT_161 = "> extensionActions = new ";
-	protected final String TEXT_162 = "<EmdeViewerFilterAction>();\t\t"
+	protected final String TEXT_157 = "<";
+	protected final String TEXT_158 = "> extensionActions = new ";
+	protected final String TEXT_159 = "<EmdeViewerFilterAction>();\t\t"
 			+ NL
 			+ "\t\tString extensibleModelURI = resource_p.getContents().get(0).eClass().getEPackage().getNsURI();"
 			+ NL + "\t\t";
-	protected final String TEXT_163 = " helper = ";
-	protected final String TEXT_164 = ".getInstance();" + NL + "\t\t";
-	protected final String TEXT_165 = " extensibleModel = helper.getExtensibleModel(extensibleModelURI);"
+	protected final String TEXT_160 = " helper = ";
+	protected final String TEXT_161 = ".getInstance(resource_p);" + NL + "\t\t";
+	protected final String TEXT_162 = " extensibleModel = ";
+	protected final String TEXT_163 = ".INSTANCE.getExtensibleModel(extensibleModelURI);"
 			+ NL
 			+ "\t\tif (extensibleModel != null) {\t\t"
 			+ NL
 			+ "\t\t\tfor (";
-	protected final String TEXT_166 = " extendedModel : extensibleModel.getAllExtendedModels()) {"
+	protected final String TEXT_164 = " extendedModel : extensibleModel.getAllExtendedModels()) {"
 			+ NL + "\t\t\t\t";
-	protected final String TEXT_167 = " filterAction = new EmdeViewerFilterAction(resource_p, extensibleModel, extendedModel) {"
+	protected final String TEXT_165 = " filterAction = new EmdeViewerFilterAction(resource_p, extensibleModel, extendedModel) {"
 			+ NL
 			+ "\t\t\t\t\t@Override"
 			+ NL
@@ -1627,18 +1623,18 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t\t\tISelection selection = getSelection();"
 			+ NL
 			+ "\t\t\t\t\t\tif (selection instanceof ";
-	protected final String TEXT_168 = ") {" + NL
+	protected final String TEXT_166 = ") {" + NL
 			+ "\t\t\t\t\t\t\tif (selection.isEmpty() == false) {" + NL
 			+ "\t\t\t\t\t\t\t\tsetSelectionToViewer(((";
-	protected final String TEXT_169 = ") getSelection()).toList());" + NL
+	protected final String TEXT_167 = ") getSelection()).toList());" + NL
 			+ "\t\t\t\t\t\t\t} else {        " + NL
 			+ "\t\t\t\t\t\t\t\tif (getResource() != null) {" + NL
 			+ "\t\t\t\t\t\t\t\t\tif (getResource().getContents().isEmpty()) {"
 			+ NL + "\t\t\t\t\t\t\t\t\t\tsetSelectionToViewer((new ";
-	protected final String TEXT_170 = "(getResource())).toList());" + NL
+	protected final String TEXT_168 = "(getResource())).toList());" + NL
 			+ "\t\t\t\t\t\t\t\t\t} else {" + NL
 			+ "\t\t\t\t\t\t\t\t\t\tsetSelectionToViewer((new ";
-	protected final String TEXT_171 = "(getResource().getContents().get(0))).toList());"
+	protected final String TEXT_169 = "(getResource().getContents().get(0))).toList());"
 			+ NL
 			+ "\t\t\t\t\t\t\t\t\t}"
 			+ NL
@@ -1658,12 +1654,12 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\t\tfilterAction.setEnabled(helper.canDisableExtensionModel(extendedModel));\t\t"
 			+ NL + "\t\t\t\tfilterAction.addPropertyChangeListener((";
-	protected final String TEXT_172 = ") getActionBarContributor());\t\t\t\t"
+	protected final String TEXT_170 = ") getActionBarContributor());\t\t\t\t"
 			+ NL + "\t\t\t\textensionActions.add(filterAction);" + NL
 			+ "\t\t\t}" + NL + "\t\t}" + NL
 			+ "\t\tviewerFilterActions.put(resource_p, extensionActions);\t\t"
 			+ NL + "\t\treturn extensionActions;" + NL + "\t}\t  ";
-	protected final String TEXT_173 = "\t"
+	protected final String TEXT_171 = "\t"
 			+ NL
 			+ ""
 			+ NL
@@ -1676,20 +1672,20 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\tprotected void createContextMenuFor(StructuredViewer viewer)"
 			+ NL + "\t{" + NL
 			+ "\t\tMenuManager contextMenu = new MenuManager(\"#PopUp\");";
-	protected final String TEXT_174 = NL
+	protected final String TEXT_172 = NL
 			+ "\t\tcontextMenu.add(new Separator(\"additions\"));";
-	protected final String TEXT_175 = NL
+	protected final String TEXT_173 = NL
 			+ "\t\tcontextMenu.setRemoveAllWhenShown(true);"
 			+ NL
 			+ "\t\tcontextMenu.addMenuListener(this);"
 			+ NL
 			+ "\t\tMenu menu= contextMenu.createContextMenu(viewer.getControl());"
 			+ NL + "\t\tviewer.getControl().setMenu(menu);";
-	protected final String TEXT_176 = NL
+	protected final String TEXT_174 = NL
 			+ "\t\tgetSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));";
-	protected final String TEXT_177 = NL
+	protected final String TEXT_175 = NL
 			+ "\t\tgetSite().registerContextMenu(contextMenu, viewer);";
-	protected final String TEXT_178 = NL
+	protected final String TEXT_176 = NL
 			+ NL
 			+ "\t\tint dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;"
 			+ NL
@@ -1709,11 +1705,11 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL + "\tpublic void createModel()" + NL + "\t{";
-	protected final String TEXT_179 = NL
+	protected final String TEXT_177 = NL
 			+ "\t\tURI resourceURI = EditUIUtil.getURI(getEditorInput());";
-	protected final String TEXT_180 = NL
+	protected final String TEXT_178 = NL
 			+ "\t\tURI resourceURI = URI.createURI(getEditorInput().getName());";
-	protected final String TEXT_181 = NL
+	protected final String TEXT_179 = NL
 			+ "\t\t// Assumes that the input is a file object."
 			+ NL
 			+ "\t\t//"
@@ -1721,7 +1717,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\tIFileEditorInput modelFile = (IFileEditorInput)getEditorInput();"
 			+ NL
 			+ "\t\tURI resourceURI = URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString(), true);";
-	protected final String TEXT_182 = NL
+	protected final String TEXT_180 = NL
 			+ "\t\tException exception = null;"
 			+ NL
 			+ "\t\tResource resource = null;"
@@ -1788,12 +1784,12 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t\t{" + NL + "\t\t\tBasicDiagnostic basicDiagnostic ="
 			+ NL + "\t\t\t\tnew BasicDiagnostic" + NL
 			+ "\t\t\t\t\t(Diagnostic.ERROR," + NL + "\t\t\t\t\t \"";
-	protected final String TEXT_183 = "\",";
-	protected final String TEXT_184 = NL
+	protected final String TEXT_181 = "\",";
+	protected final String TEXT_182 = NL
 			+ "\t\t\t\t\t 0,"
 			+ NL
 			+ "\t\t\t\t\t getString(\"_UI_CreateModelError_message\", resource.getURI()),";
-	protected final String TEXT_185 = NL
+	protected final String TEXT_183 = NL
 			+ "\t\t\t\t\t new Object [] { exception == null ? (Object)resource : exception });"
 			+ NL
 			+ "\t\t\tbasicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));"
@@ -1801,12 +1797,12 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\telse if (exception != null)" + NL + "\t\t{" + NL
 			+ "\t\t\treturn" + NL + "\t\t\t\tnew BasicDiagnostic" + NL
 			+ "\t\t\t\t\t(Diagnostic.ERROR," + NL + "\t\t\t\t\t \"";
-	protected final String TEXT_186 = "\",";
-	protected final String TEXT_187 = NL
+	protected final String TEXT_184 = "\",";
+	protected final String TEXT_185 = NL
 			+ "\t\t\t\t\t 0,"
 			+ NL
 			+ "\t\t\t\t\t getString(\"_UI_CreateModelError_message\", resource.getURI()),";
-	protected final String TEXT_188 = NL
+	protected final String TEXT_186 = NL
 			+ "\t\t\t\t\t new Object[] { exception });"
 			+ NL
 			+ "\t\t}"
@@ -1829,8 +1825,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_189 = NL + "\t@Override";
-	protected final String TEXT_190 = NL
+	protected final String TEXT_187 = NL + "\t@Override";
+	protected final String TEXT_188 = NL
 			+ "\tpublic void createPages()"
 			+ NL
 			+ "\t{"
@@ -1853,8 +1849,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t//if (!getEditingDomain().getResourceSet().getResources().isEmpty() &&"
 			+ NL + "\t\t//\t!(";
-	protected final String TEXT_191 = "(Resource)";
-	protected final String TEXT_192 = "getEditingDomain().getResourceSet().getResources().get(0)).getContents().isEmpty())"
+	protected final String TEXT_189 = "(Resource)";
+	protected final String TEXT_190 = "getEditingDomain().getResourceSet().getResources().get(0)).getContents().isEmpty())"
 			+ NL
 			+ "\t\t// end-capella-code"
 			+ NL
@@ -1863,16 +1859,16 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t// Create a page for the selection tree view."
 			+ NL
 			+ "\t\t\t//";
-	protected final String TEXT_193 = NL + "\t\t\t{" + NL
+	protected final String TEXT_191 = NL + "\t\t\t{" + NL
 			+ "\t\t\t\tViewerPane viewerPane =" + NL
 			+ "\t\t\t\t\tnew ViewerPane(getSite().getPage(), ";
-	protected final String TEXT_194 = ".this)" + NL + "\t\t\t\t\t{";
-	protected final String TEXT_195 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_196 = NL
+	protected final String TEXT_192 = ".this)" + NL + "\t\t\t\t\t{";
+	protected final String TEXT_193 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_194 = NL
 			+ "\t\t\t\t\t\tpublic Viewer createViewer(Composite composite)"
 			+ NL + "\t\t\t\t\t\t{" + NL
 			+ "\t\t\t\t\t\t\tTree tree = new Tree(composite, SWT.MULTI);";
-	protected final String TEXT_197 = NL
+	protected final String TEXT_195 = NL
 			+ "                            // begin-extension-code"
 			+ NL
 			+ "                            TreeViewer newTreeViewer = new TreeViewer(tree) {"
@@ -1891,11 +1887,11 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "                            };" + NL
 			+ "                            return newTreeViewer;" + NL
 			+ "                            // end-extension-code";
-	protected final String TEXT_198 = NL
+	protected final String TEXT_196 = NL
 			+ "                            return new TreeViewer(tree);";
-	protected final String TEXT_199 = NL + "\t\t\t\t\t\t}";
-	protected final String TEXT_200 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_201 = NL
+	protected final String TEXT_197 = NL + "\t\t\t\t\t\t}";
+	protected final String TEXT_198 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_199 = NL
 			+ "\t\t\t\t\t\tpublic void requestActivation()" + NL
 			+ "\t\t\t\t\t\t{" + NL + "\t\t\t\t\t\t\tsuper.requestActivation();"
 			+ NL + "\t\t\t\t\t\t\tsetCurrentViewerPane(this);" + NL
@@ -1903,16 +1899,16 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tviewerPane.createControl(getContainer());" + NL + ""
 			+ NL
 			+ "\t\t\t\tselectionViewer = (TreeViewer)viewerPane.getViewer();";
-	protected final String TEXT_202 = NL
+	protected final String TEXT_200 = NL
 			+ "                // begin-extension-code" + NL
 			+ "                viewers.add(selectionViewer);" + NL
 			+ "                // end-extension-code";
-	protected final String TEXT_203 = NL
+	protected final String TEXT_201 = NL
 			+ "\t\t\t\tselectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "" + NL + "\t\t\t\tselectionViewer.setLabelProvider(new ";
-	protected final String TEXT_204 = "(adapterFactory";
-	protected final String TEXT_205 = ", selectionViewer";
-	protected final String TEXT_206 = "));"
+	protected final String TEXT_202 = "(adapterFactory";
+	protected final String TEXT_203 = ", selectionViewer";
+	protected final String TEXT_204 = "));"
 			+ NL
 			+ "\t\t\t\tselectionViewer.setInput(editingDomain.getResourceSet());"
 			+ NL
@@ -1931,18 +1927,18 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tint pageIndex = addPage(viewerPane.getControl());"
 			+ NL
 			+ "\t\t\t\tsetPageText(pageIndex, getString(\"_UI_SelectionPage_label\"));";
-	protected final String TEXT_207 = NL + "\t\t\t}" + NL + "" + NL
+	protected final String TEXT_205 = NL + "\t\t\t}" + NL + "" + NL
 			+ "\t\t\t// Create a page for the parent tree view." + NL
 			+ "\t\t\t//" + NL + "\t\t\t{" + NL
 			+ "\t\t\t\tViewerPane viewerPane =" + NL
 			+ "\t\t\t\t\tnew ViewerPane(getSite().getPage(), ";
-	protected final String TEXT_208 = ".this)" + NL + "\t\t\t\t\t{";
-	protected final String TEXT_209 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_210 = NL
+	protected final String TEXT_206 = ".this)" + NL + "\t\t\t\t\t{";
+	protected final String TEXT_207 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_208 = NL
 			+ "\t\t\t\t\t\tpublic Viewer createViewer(Composite composite)"
 			+ NL + "\t\t\t\t\t\t{" + NL
 			+ "\t\t\t\t\t\t\tTree tree = new Tree(composite, SWT.MULTI);";
-	protected final String TEXT_211 = NL
+	protected final String TEXT_209 = NL
 			+ "                            // begin-extension-code"
 			+ NL
 			+ "                            TreeViewer newTreeViewer = new TreeViewer(tree) {"
@@ -1961,29 +1957,29 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "                            };" + NL
 			+ "                            return newTreeViewer;" + NL
 			+ "                            // end-extension-code";
-	protected final String TEXT_212 = NL
+	protected final String TEXT_210 = NL
 			+ "                            return new TreeViewer(tree);";
-	protected final String TEXT_213 = NL + "\t\t\t\t\t\t}";
-	protected final String TEXT_214 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_215 = NL
+	protected final String TEXT_211 = NL + "\t\t\t\t\t\t}";
+	protected final String TEXT_212 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_213 = NL
 			+ "\t\t\t\t\t\tpublic void requestActivation()" + NL
 			+ "\t\t\t\t\t\t{" + NL + "\t\t\t\t\t\t\tsuper.requestActivation();"
 			+ NL + "\t\t\t\t\t\t\tsetCurrentViewerPane(this);" + NL
 			+ "\t\t\t\t\t\t}" + NL + "\t\t\t\t\t};" + NL
 			+ "\t\t\t\tviewerPane.createControl(getContainer());" + NL + ""
 			+ NL + "\t\t\t\tparentViewer = (TreeViewer)viewerPane.getViewer();";
-	protected final String TEXT_216 = NL
+	protected final String TEXT_214 = NL
 			+ "                // begin-extension-code" + NL
 			+ "                viewers.add(parentViewer);" + NL
 			+ "                // end-extension-code";
-	protected final String TEXT_217 = NL
+	protected final String TEXT_215 = NL
 			+ "\t\t\t\tparentViewer.setAutoExpandLevel(30);"
 			+ NL
 			+ "\t\t\t\tparentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "\t\t\t\tparentViewer.setLabelProvider(new ";
-	protected final String TEXT_218 = "(adapterFactory";
-	protected final String TEXT_219 = ", parentViewer";
-	protected final String TEXT_220 = "));"
+	protected final String TEXT_216 = "(adapterFactory";
+	protected final String TEXT_217 = ", parentViewer";
+	protected final String TEXT_218 = "));"
 			+ NL
 			+ ""
 			+ NL
@@ -1992,16 +1988,16 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tint pageIndex = addPage(viewerPane.getControl());"
 			+ NL
 			+ "\t\t\t\tsetPageText(pageIndex, getString(\"_UI_ParentPage_label\"));";
-	protected final String TEXT_221 = NL + "\t\t\t}" + NL + "" + NL
+	protected final String TEXT_219 = NL + "\t\t\t}" + NL + "" + NL
 			+ "\t\t\t// This is the page for the list viewer" + NL + "\t\t\t//"
 			+ NL + "\t\t\t{" + NL + "\t\t\t\tViewerPane viewerPane =" + NL
 			+ "\t\t\t\t\tnew ViewerPane(getSite().getPage(), ";
-	protected final String TEXT_222 = ".this)" + NL + "\t\t\t\t\t{";
-	protected final String TEXT_223 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_224 = NL
+	protected final String TEXT_220 = ".this)" + NL + "\t\t\t\t\t{";
+	protected final String TEXT_221 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_222 = NL
 			+ "\t\t\t\t\t\tpublic Viewer createViewer(Composite composite)"
 			+ NL + "\t\t\t\t\t\t{";
-	protected final String TEXT_225 = NL
+	protected final String TEXT_223 = NL
 			+ "                            // begin-extension-code"
 			+ NL
 			+ "                            ListViewer newListViewer = new ListViewer(composite) {"
@@ -2020,27 +2016,27 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "                            };" + NL
 			+ "                            return newListViewer;" + NL
 			+ "                            // end-extension-code";
-	protected final String TEXT_226 = NL
+	protected final String TEXT_224 = NL
 			+ "                            return new ListViewer(composite);";
-	protected final String TEXT_227 = "\t\t\t\t\t\t\t" + NL + "\t\t\t\t\t\t}";
-	protected final String TEXT_228 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_229 = NL
+	protected final String TEXT_225 = "\t\t\t\t\t\t\t" + NL + "\t\t\t\t\t\t}";
+	protected final String TEXT_226 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_227 = NL
 			+ "\t\t\t\t\t\tpublic void requestActivation()" + NL
 			+ "\t\t\t\t\t\t{" + NL + "\t\t\t\t\t\t\tsuper.requestActivation();"
 			+ NL + "\t\t\t\t\t\t\tsetCurrentViewerPane(this);" + NL
 			+ "\t\t\t\t\t\t}" + NL + "\t\t\t\t\t};" + NL
 			+ "\t\t\t\tviewerPane.createControl(getContainer());" + NL
 			+ "\t\t\t\tlistViewer = (ListViewer)viewerPane.getViewer();";
-	protected final String TEXT_230 = NL
+	protected final String TEXT_228 = NL
 			+ "                // begin-extension-code" + NL
 			+ "                viewers.add(listViewer);" + NL
 			+ "                // end-extension-code";
-	protected final String TEXT_231 = NL
+	protected final String TEXT_229 = NL
 			+ "\t\t\t\tlistViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "\t\t\t\tlistViewer.setLabelProvider(new ";
-	protected final String TEXT_232 = "(adapterFactory";
-	protected final String TEXT_233 = ", listViewer";
-	protected final String TEXT_234 = "));"
+	protected final String TEXT_230 = "(adapterFactory";
+	protected final String TEXT_231 = ", listViewer";
+	protected final String TEXT_232 = "));"
 			+ NL
 			+ ""
 			+ NL
@@ -2049,16 +2045,16 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tint pageIndex = addPage(viewerPane.getControl());"
 			+ NL
 			+ "\t\t\t\tsetPageText(pageIndex, getString(\"_UI_ListPage_label\"));";
-	protected final String TEXT_235 = NL + "\t\t\t}" + NL + "" + NL
+	protected final String TEXT_233 = NL + "\t\t\t}" + NL + "" + NL
 			+ "\t\t\t// This is the page for the tree viewer" + NL + "\t\t\t//"
 			+ NL + "\t\t\t{" + NL + "\t\t\t\tViewerPane viewerPane =" + NL
 			+ "\t\t\t\t\tnew ViewerPane(getSite().getPage(), ";
-	protected final String TEXT_236 = ".this)" + NL + "\t\t\t\t\t{";
-	protected final String TEXT_237 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_238 = NL
+	protected final String TEXT_234 = ".this)" + NL + "\t\t\t\t\t{";
+	protected final String TEXT_235 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_236 = NL
 			+ "\t\t\t\t\t\tpublic Viewer createViewer(Composite composite)"
 			+ NL + "\t\t\t\t\t\t{";
-	protected final String TEXT_239 = NL
+	protected final String TEXT_237 = NL
 			+ "                            // begin-extension-code"
 			+ NL
 			+ "                            TreeViewer newTreeViewer = new TreeViewer(composite) {"
@@ -2077,27 +2073,27 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "                            };" + NL
 			+ "                            return newTreeViewer;" + NL
 			+ "                            // end-extension-code";
-	protected final String TEXT_240 = NL
+	protected final String TEXT_238 = NL
 			+ "                            return new TreeViewer(composite);";
-	protected final String TEXT_241 = NL + "\t\t\t\t\t\t}";
-	protected final String TEXT_242 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_243 = NL
+	protected final String TEXT_239 = NL + "\t\t\t\t\t\t}";
+	protected final String TEXT_240 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_241 = NL
 			+ "\t\t\t\t\t\tpublic void requestActivation()" + NL
 			+ "\t\t\t\t\t\t{" + NL + "\t\t\t\t\t\t\tsuper.requestActivation();"
 			+ NL + "\t\t\t\t\t\t\tsetCurrentViewerPane(this);" + NL
 			+ "\t\t\t\t\t\t}" + NL + "\t\t\t\t\t};" + NL
 			+ "\t\t\t\tviewerPane.createControl(getContainer());" + NL
 			+ "\t\t\t\ttreeViewer = (TreeViewer)viewerPane.getViewer();";
-	protected final String TEXT_244 = NL
+	protected final String TEXT_242 = NL
 			+ "                // begin-extension-code" + NL
 			+ "                viewers.add(treeViewer);" + NL
 			+ "                // end-extension-code";
-	protected final String TEXT_245 = NL
+	protected final String TEXT_243 = NL
 			+ "\t\t\t\ttreeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "\t\t\t\ttreeViewer.setLabelProvider(new ";
-	protected final String TEXT_246 = "(adapterFactory";
-	protected final String TEXT_247 = ", treeViewer";
-	protected final String TEXT_248 = "));"
+	protected final String TEXT_244 = "(adapterFactory";
+	protected final String TEXT_245 = ", treeViewer";
+	protected final String TEXT_246 = "));"
 			+ NL
 			+ ""
 			+ NL
@@ -2110,17 +2106,17 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tint pageIndex = addPage(viewerPane.getControl());"
 			+ NL
 			+ "\t\t\t\tsetPageText(pageIndex, getString(\"_UI_TreePage_label\"));";
-	protected final String TEXT_249 = NL + "\t\t\t}" + NL + "" + NL
+	protected final String TEXT_247 = NL + "\t\t\t}" + NL + "" + NL
 			+ "\t\t\t// This is the page for the table viewer." + NL
 			+ "\t\t\t//" + NL + "\t\t\t{" + NL
 			+ "\t\t\t\tViewerPane viewerPane =" + NL
 			+ "\t\t\t\t\tnew ViewerPane(getSite().getPage(), ";
-	protected final String TEXT_250 = ".this)" + NL + "\t\t\t\t\t{";
-	protected final String TEXT_251 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_252 = NL
+	protected final String TEXT_248 = ".this)" + NL + "\t\t\t\t\t{";
+	protected final String TEXT_249 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_250 = NL
 			+ "\t\t\t\t\t\tpublic Viewer createViewer(Composite composite)"
 			+ NL + "\t\t\t\t\t\t{";
-	protected final String TEXT_253 = NL
+	protected final String TEXT_251 = NL
 			+ "                            // begin-extension-code"
 			+ NL
 			+ "                            TableViewer newTableViewer = new TableViewer(composite) {"
@@ -2139,22 +2135,22 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "                            };" + NL
 			+ "                            return newTableViewer;" + NL
 			+ "                            // end-extension-code";
-	protected final String TEXT_254 = NL
+	protected final String TEXT_252 = NL
 			+ "                            return new TableViewer(composite);";
-	protected final String TEXT_255 = NL + "\t\t\t\t\t\t}";
-	protected final String TEXT_256 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_257 = NL
+	protected final String TEXT_253 = NL + "\t\t\t\t\t\t}";
+	protected final String TEXT_254 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_255 = NL
 			+ "\t\t\t\t\t\tpublic void requestActivation()" + NL
 			+ "\t\t\t\t\t\t{" + NL + "\t\t\t\t\t\t\tsuper.requestActivation();"
 			+ NL + "\t\t\t\t\t\t\tsetCurrentViewerPane(this);" + NL
 			+ "\t\t\t\t\t\t}" + NL + "\t\t\t\t\t};" + NL
 			+ "\t\t\t\tviewerPane.createControl(getContainer());" + NL
 			+ "\t\t\t\ttableViewer = (TableViewer)viewerPane.getViewer();";
-	protected final String TEXT_258 = NL
+	protected final String TEXT_256 = NL
 			+ "                // begin-extension-code" + NL
 			+ "                viewers.add(tableViewer);" + NL
 			+ "                // end-extension-code";
-	protected final String TEXT_259 = NL
+	protected final String TEXT_257 = NL
 			+ NL
 			+ "\t\t\t\tTable table = tableViewer.getTable();"
 			+ NL
@@ -2173,7 +2169,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tlayout.addColumnData(new ColumnWeightData(3, 100, true));"
 			+ NL
 			+ "\t\t\t\tobjectColumn.setText(getString(\"_UI_ObjectColumn_label\"));";
-	protected final String TEXT_260 = NL
+	protected final String TEXT_258 = NL
 			+ "\t\t\t\tobjectColumn.setResizable(true);"
 			+ NL
 			+ ""
@@ -2183,18 +2179,18 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tlayout.addColumnData(new ColumnWeightData(2, 100, true));"
 			+ NL
 			+ "\t\t\t\tselfColumn.setText(getString(\"_UI_SelfColumn_label\"));";
-	protected final String TEXT_261 = NL
+	protected final String TEXT_259 = NL
 			+ "\t\t\t\tselfColumn.setResizable(true);"
 			+ NL
 			+ ""
 			+ NL
 			+ "\t\t\t\ttableViewer.setColumnProperties(new String [] {\"a\", \"b\"});";
-	protected final String TEXT_262 = NL
+	protected final String TEXT_260 = NL
 			+ "\t\t\t\ttableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "\t\t\t\ttableViewer.setLabelProvider(new ";
-	protected final String TEXT_263 = "(adapterFactory";
-	protected final String TEXT_264 = ", tableViewer";
-	protected final String TEXT_265 = "));"
+	protected final String TEXT_261 = "(adapterFactory";
+	protected final String TEXT_262 = ", tableViewer";
+	protected final String TEXT_263 = "));"
 			+ NL
 			+ ""
 			+ NL
@@ -2203,17 +2199,17 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tint pageIndex = addPage(viewerPane.getControl());"
 			+ NL
 			+ "\t\t\t\tsetPageText(pageIndex, getString(\"_UI_TablePage_label\"));";
-	protected final String TEXT_266 = NL + "\t\t\t}" + NL + "" + NL
+	protected final String TEXT_264 = NL + "\t\t\t}" + NL + "" + NL
 			+ "\t\t\t// This is the page for the table tree viewer." + NL
 			+ "\t\t\t//" + NL + "\t\t\t{" + NL
 			+ "\t\t\t\tViewerPane viewerPane =" + NL
 			+ "\t\t\t\t\tnew ViewerPane(getSite().getPage(), ";
-	protected final String TEXT_267 = ".this)" + NL + "\t\t\t\t\t{";
-	protected final String TEXT_268 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_269 = NL
+	protected final String TEXT_265 = ".this)" + NL + "\t\t\t\t\t{";
+	protected final String TEXT_266 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_267 = NL
 			+ "\t\t\t\t\t\tpublic Viewer createViewer(Composite composite)"
 			+ NL + "\t\t\t\t\t\t{";
-	protected final String TEXT_270 = NL
+	protected final String TEXT_268 = NL
 			+ "                            // begin-extension-code"
 			+ NL
 			+ "                            TreeViewer newTreeViewer = new TreeViewer(composite) {"
@@ -2232,11 +2228,11 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "                            };" + NL
 			+ "                            return newTreeViewer;" + NL
 			+ "                            // end-extension-code";
-	protected final String TEXT_271 = NL
+	protected final String TEXT_269 = NL
 			+ "                            return new TreeViewer(composite);";
-	protected final String TEXT_272 = NL + "\t\t\t\t\t\t}";
-	protected final String TEXT_273 = NL + "\t\t\t\t\t\t@Override";
-	protected final String TEXT_274 = NL
+	protected final String TEXT_270 = NL + "\t\t\t\t\t\t}";
+	protected final String TEXT_271 = NL + "\t\t\t\t\t\t@Override";
+	protected final String TEXT_272 = NL
 			+ "\t\t\t\t\t\tpublic void requestActivation()"
 			+ NL
 			+ "\t\t\t\t\t\t{"
@@ -2254,11 +2250,11 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ ""
 			+ NL
 			+ "\t\t\t\ttreeViewerWithColumns = (TreeViewer)viewerPane.getViewer();";
-	protected final String TEXT_275 = NL
+	protected final String TEXT_273 = NL
 			+ "                // begin-extension-code" + NL
 			+ "                viewers.add(treeViewerWithColumns);" + NL
 			+ "                // end-extension-code";
-	protected final String TEXT_276 = NL
+	protected final String TEXT_274 = NL
 			+ NL
 			+ "\t\t\t\tTree tree = treeViewerWithColumns.getTree();"
 			+ NL
@@ -2273,7 +2269,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tTreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);"
 			+ NL
 			+ "\t\t\t\tobjectColumn.setText(getString(\"_UI_ObjectColumn_label\"));";
-	protected final String TEXT_277 = NL
+	protected final String TEXT_275 = NL
 			+ "\t\t\t\tobjectColumn.setResizable(true);"
 			+ NL
 			+ "\t\t\t\tobjectColumn.setWidth(250);"
@@ -2283,7 +2279,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tTreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);"
 			+ NL
 			+ "\t\t\t\tselfColumn.setText(getString(\"_UI_SelfColumn_label\"));";
-	protected final String TEXT_278 = NL
+	protected final String TEXT_276 = NL
 			+ "\t\t\t\tselfColumn.setResizable(true);"
 			+ NL
 			+ "\t\t\t\tselfColumn.setWidth(200);"
@@ -2291,12 +2287,12 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ ""
 			+ NL
 			+ "\t\t\t\ttreeViewerWithColumns.setColumnProperties(new String [] {\"a\", \"b\"});";
-	protected final String TEXT_279 = NL
+	protected final String TEXT_277 = NL
 			+ "\t\t\t\ttreeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "\t\t\t\ttreeViewerWithColumns.setLabelProvider(new ";
-	protected final String TEXT_280 = "(adapterFactory";
-	protected final String TEXT_281 = ", treeViewerWithColumns";
-	protected final String TEXT_282 = "));"
+	protected final String TEXT_278 = "(adapterFactory";
+	protected final String TEXT_279 = ", treeViewerWithColumns";
+	protected final String TEXT_280 = "));"
 			+ NL
 			+ ""
 			+ NL
@@ -2305,10 +2301,10 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\tint pageIndex = addPage(viewerPane.getControl());"
 			+ NL
 			+ "\t\t\t\tsetPageText(pageIndex, getString(\"_UI_TreeWithColumnsPage_label\"));";
-	protected final String TEXT_283 = NL + "\t\t\t}";
-	protected final String TEXT_284 = NL
+	protected final String TEXT_281 = NL + "\t\t\t}";
+	protected final String TEXT_282 = NL
 			+ "\t\t\tTree tree = new Tree(getContainer(), SWT.MULTI);";
-	protected final String TEXT_285 = NL
+	protected final String TEXT_283 = NL
 			+ "            // begin-extension-code"
 			+ NL
 			+ "            selectionViewer = new TreeViewer(tree) {"
@@ -2325,9 +2321,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "            };" + NL
 			+ "            viewers.add(selectionViewer);" + NL
 			+ "            // end-extension-code";
-	protected final String TEXT_286 = NL
+	protected final String TEXT_284 = NL
 			+ "            selectionViewer = new TreeViewer(tree);";
-	protected final String TEXT_287 = "\t\t"
+	protected final String TEXT_285 = "\t\t"
 			+ NL
 			+ "\t\t\tsetCurrentViewer(selectionViewer);"
 			+ NL
@@ -2335,9 +2331,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\tselectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "\t\t\tselectionViewer.setLabelProvider(new ";
-	protected final String TEXT_288 = "(adapterFactory";
-	protected final String TEXT_289 = ", selectionViewer";
-	protected final String TEXT_290 = "));"
+	protected final String TEXT_286 = "(adapterFactory";
+	protected final String TEXT_287 = ", selectionViewer";
+	protected final String TEXT_288 = "));"
 			+ NL
 			+ "\t\t\tselectionViewer.setInput(editingDomain.getResourceSet());"
 			+ NL
@@ -2354,7 +2350,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\tint pageIndex = addPage(tree);"
 			+ NL
 			+ "\t\t\tsetPageText(pageIndex, getString(\"_UI_SelectionPage_label\"));";
-	protected final String TEXT_291 = NL
+	protected final String TEXT_289 = NL
 			+ NL
 			+ "\t\t\tgetSite().getShell().getDisplay().asyncExec"
 			+ NL
@@ -2381,8 +2377,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t//" + NL + "\t\tgetContainer().addControlListener" + NL
 			+ "\t\t\t(new ControlAdapter()" + NL + "\t\t\t {" + NL
 			+ "\t\t\t\tboolean guard = false;";
-	protected final String TEXT_292 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_293 = NL
+	protected final String TEXT_290 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_291 = NL
 			+ "\t\t\t\tpublic void controlResized(ControlEvent event)" + NL
 			+ "\t\t\t\t{" + NL + "\t\t\t\t\tif (!guard)" + NL + "\t\t\t\t\t{"
 			+ NL + "\t\t\t\t\t\tguard = true;" + NL + "\t\t\t\t\t\thideTabs();"
@@ -2400,7 +2396,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t */" + NL + "\tprotected void hideTabs()" + NL + "\t{" + NL
 			+ "\t\tif (getPageCount() <= 1)" + NL + "\t\t{" + NL
 			+ "\t\t\tsetPageText(0, \"\");";
-	protected final String TEXT_294 = NL
+	protected final String TEXT_292 = NL
 			+ "\t\t\tif (getContainer() instanceof CTabFolder)"
 			+ NL
 			+ "\t\t\t{"
@@ -2428,7 +2424,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t */" + NL + "\tprotected void showTabs()" + NL + "\t{" + NL
 			+ "\t\tif (getPageCount() > 1)" + NL + "\t\t{" + NL
 			+ "\t\t\tsetPageText(0, getString(\"_UI_SelectionPage_label\"));";
-	protected final String TEXT_295 = NL
+	protected final String TEXT_293 = NL
 			+ "\t\t\tif (getContainer() instanceof CTabFolder)" + NL
 			+ "\t\t\t{" + NL
 			+ "\t\t\t\t((CTabFolder)getContainer()).setTabHeight(SWT.DEFAULT);"
@@ -2439,8 +2435,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_296 = NL + "\t@Override";
-	protected final String TEXT_297 = NL
+	protected final String TEXT_294 = NL + "\t@Override";
+	protected final String TEXT_295 = NL
 			+ "\tprotected void pageChange(int pageIndex)"
 			+ NL
 			+ "\t{"
@@ -2467,12 +2463,12 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_298 = NL + "\t@SuppressWarnings(\"";
-	protected final String TEXT_299 = "rawtypes";
-	protected final String TEXT_300 = "unchecked";
-	protected final String TEXT_301 = "\")";
-	protected final String TEXT_302 = NL + "\t@Override";
-	protected final String TEXT_303 = NL
+	protected final String TEXT_296 = NL + "\t@SuppressWarnings(\"";
+	protected final String TEXT_297 = "rawtypes";
+	protected final String TEXT_298 = "unchecked";
+	protected final String TEXT_299 = "\")";
+	protected final String TEXT_300 = NL + "\t@Override";
+	protected final String TEXT_301 = NL
 			+ "\tpublic Object getAdapter(Class key)"
 			+ NL
 			+ "\t{"
@@ -2486,10 +2482,10 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\telse if (key.equals(IPropertySheetPage.class))" + NL
 			+ "\t\t{" + NL + "\t\t\treturn getPropertySheetPage();" + NL
 			+ "\t\t}";
-	protected final String TEXT_304 = NL
+	protected final String TEXT_302 = NL
 			+ "\t\telse if (key.equals(IGotoMarker.class))" + NL + "\t\t{" + NL
 			+ "\t\t\treturn this;" + NL + "\t\t}";
-	protected final String TEXT_305 = NL + "\t\telse" + NL + "\t\t{" + NL
+	protected final String TEXT_303 = NL + "\t\telse" + NL + "\t\t{" + NL
 			+ "\t\t\treturn super.getAdapter(key);" + NL + "\t\t}" + NL + "\t}"
 			+ NL + "" + NL + "\t/**" + NL
 			+ "\t * This accesses a cached version of the content outliner."
@@ -2502,8 +2498,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t//" + NL
 			+ "\t\t\tclass MyContentOutlinePage extends ContentOutlinePage"
 			+ NL + "\t\t\t{";
-	protected final String TEXT_306 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_307 = NL
+	protected final String TEXT_304 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_305 = NL
 			+ "\t\t\t\tpublic void createControl(Composite parent)"
 			+ NL
 			+ "\t\t\t\t{"
@@ -2513,18 +2509,18 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t\tcontentOutlineViewer = getTreeViewer();"
 			+ NL
 			+ "\t\t\t\t\tcontentOutlineViewer.addSelectionChangedListener(this);\t\t\t\t\t";
-	protected final String TEXT_308 = NL
+	protected final String TEXT_306 = NL
 			+ "                    // begin-extension-code" + NL
 			+ "                    viewers.add(contentOutlineViewer);" + NL
 			+ "                    // end-extension-code" + NL
 			+ "\t\t\t\t\tfor (";
-	protected final String TEXT_309 = " resource : viewerFilterActions.keySet()) {"
+	protected final String TEXT_307 = " resource : viewerFilterActions.keySet()) {"
 			+ NL + "\t\t\t\t\t\tfor (";
-	protected final String TEXT_310 = " filterAction : viewerFilterActions.get(resource)) {"
+	protected final String TEXT_308 = " filterAction : viewerFilterActions.get(resource)) {"
 			+ NL
 			+ "\t\t\t\t\t\t\tfilterAction.addViewer(contentOutlineViewer);"
 			+ NL + "\t\t\t\t\t\t}" + NL + "\t\t\t\t\t}  ";
-	protected final String TEXT_311 = "\t\t\t\t\t\t\t\t\t\t"
+	protected final String TEXT_309 = "\t\t\t\t\t\t\t\t\t\t"
 			+ NL
 			+ ""
 			+ NL
@@ -2534,9 +2530,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\t\t\tcontentOutlineViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));"
 			+ NL + "\t\t\t\t\tcontentOutlineViewer.setLabelProvider(new ";
-	protected final String TEXT_312 = "(adapterFactory";
-	protected final String TEXT_313 = ", contentOutlineViewer";
-	protected final String TEXT_314 = "));"
+	protected final String TEXT_310 = "(adapterFactory";
+	protected final String TEXT_311 = ", contentOutlineViewer";
+	protected final String TEXT_312 = "));"
 			+ NL
 			+ "\t\t\t\t\tcontentOutlineViewer.setInput(editingDomain.getResourceSet());"
 			+ NL
@@ -2560,8 +2556,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\t\t\t  contentOutlineViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);"
 			+ NL + "\t\t\t\t\t}" + NL + "\t\t\t\t}" + NL;
-	protected final String TEXT_315 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_316 = NL
+	protected final String TEXT_313 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_314 = NL
 			+ "\t\t\t\tpublic void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager)"
 			+ NL
 			+ "\t\t\t\t{"
@@ -2570,8 +2566,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\t\t\tcontentOutlineStatusLineManager = statusLineManager;"
 			+ NL + "\t\t\t\t}" + NL;
-	protected final String TEXT_317 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_318 = NL
+	protected final String TEXT_315 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_316 = NL
 			+ "\t\t\t\tpublic void setActionBars(IActionBars actionBars)"
 			+ NL
 			+ "\t\t\t\t{"
@@ -2580,21 +2576,21 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\t\t\tgetActionBarContributor().shareGlobalActions(this, actionBars);"
 			+ NL + "\t\t\t\t}" + NL + "\t\t\t\t";
-	protected final String TEXT_319 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_320 = NL + "\t\t\t\tpublic void dispose() {";
-	protected final String TEXT_321 = NL
+	protected final String TEXT_317 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_318 = NL + "\t\t\t\tpublic void dispose() {";
+	protected final String TEXT_319 = NL
 			+ "                    // begin-extension-code             "
 			+ NL
 			+ "                    viewers.remove(contentOutlineViewer);                   "
 			+ NL + "                    // end-extension-code\t\t\t\t\t" + NL
 			+ "\t\t\t\t\tfor (";
-	protected final String TEXT_322 = " resource : viewerFilterActions.keySet()) {"
+	protected final String TEXT_320 = " resource : viewerFilterActions.keySet()) {"
 			+ NL + "\t\t\t\t\t\tfor (";
-	protected final String TEXT_323 = " filterAction : viewerFilterActions.get(resource)) {"
+	protected final String TEXT_321 = " filterAction : viewerFilterActions.get(resource)) {"
 			+ NL
 			+ "\t\t\t\t\t\t\tfilterAction.removeViewer(contentOutlineViewer);"
 			+ NL + "\t\t\t\t\t\t}" + NL + "\t\t\t\t\t}";
-	protected final String TEXT_324 = "\t\t\t\t\t"
+	protected final String TEXT_322 = "\t\t\t\t\t"
 			+ NL
 			+ "\t\t\t\t\tsuper.dispose();"
 			+ NL
@@ -2633,9 +2629,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * @generated" + NL + "\t */" + NL
 			+ "\tpublic static final String PROPERTIES_CONTRIBUTOR =" + NL
 			+ "\t\t\"";
-	protected final String TEXT_325 = ".";
-	protected final String TEXT_326 = ".properties\"; ";
-	protected final String TEXT_327 = NL
+	protected final String TEXT_323 = ".";
+	protected final String TEXT_324 = ".properties\"; ";
+	protected final String TEXT_325 = NL
 			+ NL
 			+ "\t/**"
 			+ NL
@@ -2653,17 +2649,17 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\tpropertySheetPage =" + NL
 			+ "\t\t\t\tnew ExtendedPropertySheetPage(editingDomain)" + NL
 			+ "\t\t\t\t{";
-	protected final String TEXT_328 = NL + "\t\t\t\t\t@Override";
-	protected final String TEXT_329 = NL
+	protected final String TEXT_326 = NL + "\t\t\t\t\t@Override";
+	protected final String TEXT_327 = NL
 			+ "\t\t\t\t\tpublic void setSelectionToViewer(";
-	protected final String TEXT_330 = " selection)" + NL + "\t\t\t\t\t{" + NL
+	protected final String TEXT_328 = " selection)" + NL + "\t\t\t\t\t{" + NL
 			+ "\t\t\t\t\t\t";
-	protected final String TEXT_331 = ".this.setSelectionToViewer(selection);"
+	protected final String TEXT_329 = ".this.setSelectionToViewer(selection);"
 			+ NL + "\t\t\t\t\t\t";
-	protected final String TEXT_332 = ".this.setFocus();" + NL + "\t\t\t\t\t}"
+	protected final String TEXT_330 = ".this.setFocus();" + NL + "\t\t\t\t\t}"
 			+ NL;
-	protected final String TEXT_333 = NL + "\t\t\t\t\t@Override";
-	protected final String TEXT_334 = NL
+	protected final String TEXT_331 = NL + "\t\t\t\t\t@Override";
+	protected final String TEXT_332 = NL
 			+ "\t\t\t\t\tpublic void setActionBars(IActionBars actionBars)"
 			+ NL
 			+ "\t\t\t\t\t{"
@@ -2702,13 +2698,13 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\tpublic void handleContentOutlineSelection(ISelection selection)"
 			+ NL + "\t{";
-	protected final String TEXT_335 = NL
+	protected final String TEXT_333 = NL
 			+ "\t\tif (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection)";
-	protected final String TEXT_336 = NL
+	protected final String TEXT_334 = NL
 			+ "\t\tif (selectionViewer != null && !selection.isEmpty() && selection instanceof IStructuredSelection)";
-	protected final String TEXT_337 = NL + "\t\t{" + NL + "\t\t\tIterator";
-	protected final String TEXT_338 = "<?>";
-	protected final String TEXT_339 = " selectedElements = ((IStructuredSelection)selection).iterator();"
+	protected final String TEXT_335 = NL + "\t\t{" + NL + "\t\t\tIterator";
+	protected final String TEXT_336 = "<?>";
+	protected final String TEXT_337 = " selectedElements = ((IStructuredSelection)selection).iterator();"
 			+ NL
 			+ "\t\t\tif (selectedElements.hasNext())"
 			+ NL
@@ -2719,13 +2715,13 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t//"
 			+ NL
 			+ "\t\t\t\tObject selectedElement = selectedElements.next();" + NL;
-	protected final String TEXT_340 = NL
+	protected final String TEXT_338 = NL
 			+ "\t\t\t\t// If it's the selection viewer, then we want it to select the same selection as this selection."
 			+ NL + "\t\t\t\t//" + NL
 			+ "\t\t\t\tif (currentViewerPane.getViewer() == selectionViewer)"
 			+ NL + "\t\t\t\t{" + NL + "\t\t\t\t\t";
-	protected final String TEXT_341 = " selectionList = new ";
-	protected final String TEXT_342 = "();"
+	protected final String TEXT_339 = " selectionList = new ";
+	protected final String TEXT_340 = "();"
 			+ NL
 			+ "\t\t\t\t\tselectionList.add(selectedElement);"
 			+ NL
@@ -2762,9 +2758,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t\t\tcurrentViewerPane.getViewer().setInput(selectedElement);"
 			+ NL + "\t\t\t\t\t\tcurrentViewerPane.setTitle(selectedElement);"
 			+ NL + "\t\t\t\t\t}" + NL + "\t\t\t\t}";
-	protected final String TEXT_343 = NL + "\t\t\t\t";
-	protected final String TEXT_344 = " selectionList = new ";
-	protected final String TEXT_345 = "();"
+	protected final String TEXT_341 = NL + "\t\t\t\t";
+	protected final String TEXT_342 = " selectionList = new ";
+	protected final String TEXT_343 = "();"
 			+ NL
 			+ "\t\t\t\tselectionList.add(selectedElement);"
 			+ NL
@@ -2783,7 +2779,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t//"
 			+ NL
 			+ "\t\t\t\tselectionViewer.setSelection(new StructuredSelection(selectionList));";
-	protected final String TEXT_346 = NL
+	protected final String TEXT_344 = NL
 			+ "\t\t\t}"
 			+ NL
 			+ "\t\t}"
@@ -2798,8 +2794,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_347 = NL + "\t@Override";
-	protected final String TEXT_348 = NL
+	protected final String TEXT_345 = NL + "\t@Override";
+	protected final String TEXT_346 = NL
 			+ "\tpublic boolean isDirty()"
 			+ NL
 			+ "\t{"
@@ -2816,55 +2812,55 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_349 = NL + "\t@Override";
-	protected final String TEXT_350 = NL
+	protected final String TEXT_347 = NL + "\t@Override";
+	protected final String TEXT_348 = NL
 			+ "\tpublic void doSave(IProgressMonitor progressMonitor)" + NL
 			+ "\t{" + NL
 			+ "\t\t// Save only resources that have actually changed." + NL
 			+ "\t\t//" + NL + "\t\tfinal ";
-	protected final String TEXT_351 = " saveOptions = new ";
-	protected final String TEXT_352 = "();";
-	protected final String TEXT_353 = NL
+	protected final String TEXT_349 = " saveOptions = new ";
+	protected final String TEXT_350 = "();";
+	protected final String TEXT_351 = NL
 			+ "\t\tsaveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);";
-	protected final String TEXT_354 = NL
+	protected final String TEXT_352 = NL
 			+ NL
 			+ "\t\t// Do the work within an operation because this is a long running activity that modifies the workbench."
 			+ NL + "\t\t//" + NL + "\t\t";
-	protected final String TEXT_355 = " operation =" + NL + "\t\t\tnew ";
-	protected final String TEXT_356 = "()"
+	protected final String TEXT_353 = " operation =" + NL + "\t\t\tnew ";
+	protected final String TEXT_354 = "()"
 			+ NL
 			+ "\t\t\t{"
 			+ NL
 			+ "\t\t\t\t// This is the method that gets invoked when the operation runs."
 			+ NL + "\t\t\t\t//";
-	protected final String TEXT_357 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_358 = NL + "\t\t\t\tpublic void ";
-	protected final String TEXT_359 = "(IProgressMonitor monitor)" + NL
+	protected final String TEXT_355 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_356 = NL + "\t\t\t\tpublic void ";
+	protected final String TEXT_357 = "(IProgressMonitor monitor)" + NL
 			+ "\t\t\t\t{" + NL
 			+ "\t\t\t\t\t// Save the resources to the file system." + NL
 			+ "\t\t\t\t\t//" + NL + "\t\t\t\t\tboolean first = true;";
-	protected final String TEXT_360 = NL
+	protected final String TEXT_358 = NL
 			+ "\t\t\t\t\tfor (Resource resource : editingDomain.getResourceSet().getResources())";
-	protected final String TEXT_361 = NL
+	protected final String TEXT_359 = NL
 			+ "\t\t\t\t\tfor (Iterator i = editingDomain.getResourceSet().getResources().iterator(); i.hasNext(); )";
-	protected final String TEXT_362 = NL + "\t\t\t\t\t{";
-	protected final String TEXT_363 = NL
+	protected final String TEXT_360 = NL + "\t\t\t\t\t{";
+	protected final String TEXT_361 = NL
 			+ "\t\t\t\t\t\tResource resource = (Resource)i.next();";
-	protected final String TEXT_364 = NL
+	protected final String TEXT_362 = NL
 			+ "\t\t\t\t\t\tif ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource))"
 			+ NL + "\t\t\t\t\t\t{" + NL + "\t\t\t\t\t\t\ttry" + NL
 			+ "\t\t\t\t\t\t\t{";
-	protected final String TEXT_365 = NL
+	protected final String TEXT_363 = NL
 			+ "\t\t\t\t\t\t\t\tlong timeStamp = resource.getTimeStamp();" + NL
 			+ "\t\t\t\t\t\t\t\tresource.save(saveOptions);" + NL
 			+ "\t\t\t\t\t\t\t\tif (resource.getTimeStamp() != timeStamp)" + NL
 			+ "\t\t\t\t\t\t\t\t{" + NL
 			+ "\t\t\t\t\t\t\t\t\tsavedResources.add(resource);" + NL
 			+ "\t\t\t\t\t\t\t\t}";
-	protected final String TEXT_366 = NL
+	protected final String TEXT_364 = NL
 			+ "\t\t\t\t\t\t\t\tresource.save(saveOptions);" + NL
 			+ "\t\t\t\t\t\t\t\tsavedResources.add(resource);";
-	protected final String TEXT_367 = NL
+	protected final String TEXT_365 = NL
 			+ "\t\t\t\t\t\t\t}"
 			+ NL
 			+ "\t\t\t\t\t\t\tcatch (Exception exception)"
@@ -2910,7 +2906,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t}" + NL + "\t\tcatch (Exception exception)" + NL + "\t\t{"
 			+ NL + "\t\t\t// Something went wrong that shouldn't." + NL
 			+ "\t\t\t//" + NL + "\t\t\t";
-	protected final String TEXT_368 = ".INSTANCE.log(exception);"
+	protected final String TEXT_366 = ".INSTANCE.log(exception);"
 			+ NL
 			+ "\t\t}"
 			+ NL
@@ -2980,48 +2976,48 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_369 = NL + "\t@Override";
-	protected final String TEXT_370 = NL + "\tpublic boolean isSaveAsAllowed()"
+	protected final String TEXT_367 = NL + "\t@Override";
+	protected final String TEXT_368 = NL + "\tpublic boolean isSaveAsAllowed()"
 			+ NL + "\t{" + NL + "\t\treturn true;" + NL + "\t}" + NL + "" + NL
 			+ "\t/**" + NL + "\t * This also changes the editor's input." + NL
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_371 = NL + "\t@Override";
-	protected final String TEXT_372 = NL + "\tpublic void doSaveAs()" + NL
+	protected final String TEXT_369 = NL + "\t@Override";
+	protected final String TEXT_370 = NL + "\tpublic void doSaveAs()" + NL
 			+ "\t{";
-	protected final String TEXT_373 = NL + "\t\tnew ";
-	protected final String TEXT_374 = "(getSite().getShell(), null, SWT.NONE)"
+	protected final String TEXT_371 = NL + "\t\tnew ";
+	protected final String TEXT_372 = "(getSite().getShell(), null, SWT.NONE)"
 			+ NL + "\t\t\t{";
-	protected final String TEXT_375 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_376 = NL + "\t\t\t\tprotected boolean isSave()"
+	protected final String TEXT_373 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_374 = NL + "\t\t\t\tprotected boolean isSave()"
 			+ NL + "\t\t\t\t{" + NL + "\t\t\t\t\treturn true;" + NL
 			+ "\t\t\t\t}" + NL;
-	protected final String TEXT_377 = NL + "\t\t\t\t@Override";
-	protected final String TEXT_378 = NL
+	protected final String TEXT_375 = NL + "\t\t\t\t@Override";
+	protected final String TEXT_376 = NL
 			+ "\t\t\t\tprotected boolean processResources()" + NL + "\t\t\t\t{"
 			+ NL + "\t\t\t\t\t";
-	protected final String TEXT_379 = " uris = getURIs();" + NL
+	protected final String TEXT_377 = " uris = getURIs();" + NL
 			+ "\t\t\t\t\tif (uris.size() > 0)" + NL + "\t\t\t\t\t{" + NL
 			+ "\t\t\t\t\t\tURI uri = ";
-	protected final String TEXT_380 = "uris.get(0);" + NL
+	protected final String TEXT_378 = "uris.get(0);" + NL
 			+ "\t\t\t\t\t\tdoSaveAs(uri, new ";
-	protected final String TEXT_381 = "(uri));" + NL
+	protected final String TEXT_379 = "(uri));" + NL
 			+ "\t\t\t\t\t\treturn true;" + NL + "\t\t\t\t\t}" + NL
 			+ "\t\t\t\t\telse" + NL + "\t\t\t\t\t{" + NL
 			+ "\t\t\t\t\t\treturn false;" + NL + "\t\t\t\t\t}" + NL
 			+ "\t\t\t\t}" + NL + "\t\t\t}.open();";
-	protected final String TEXT_382 = NL + "\t\tString[] filters = ";
-	protected final String TEXT_383 = "(String[])";
-	protected final String TEXT_384 = "FILE_EXTENSION_FILTERS.toArray(new String[FILE_EXTENSION_FILTERS.size()]);"
+	protected final String TEXT_380 = NL + "\t\tString[] filters = ";
+	protected final String TEXT_381 = "(String[])";
+	protected final String TEXT_382 = "FILE_EXTENSION_FILTERS.toArray(new String[FILE_EXTENSION_FILTERS.size()]);"
 			+ NL + "\t\tString[] files = ";
-	protected final String TEXT_385 = ".openFilePathDialog(getSite().getShell(), ";
-	protected final String TEXT_386 = ".SAVE, filters);" + NL
+	protected final String TEXT_383 = ".openFilePathDialog(getSite().getShell(), ";
+	protected final String TEXT_384 = ".SAVE, filters);" + NL
 			+ "\t\tif (files.length > 0)" + NL + "\t\t{" + NL
 			+ "\t\t\tURI uri = URI.createFileURI(files[0]);" + NL
 			+ "\t\t\tdoSaveAs(uri, new ";
-	protected final String TEXT_387 = "(uri));" + NL + "\t\t}";
-	protected final String TEXT_388 = NL
+	protected final String TEXT_385 = "(uri));" + NL + "\t\t}";
+	protected final String TEXT_386 = NL
 			+ "\t\tSaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());"
 			+ NL
 			+ "\t\tsaveAsDialog.open();"
@@ -3040,14 +3036,14 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\t\tdoSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(file));"
 			+ NL + "\t\t\t}" + NL + "\t\t}";
-	protected final String TEXT_389 = NL + "\t}" + NL + "" + NL + "\t/**" + NL
+	protected final String TEXT_387 = NL + "\t}" + NL + "" + NL + "\t/**" + NL
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL
 			+ "\tprotected void doSaveAs(URI uri, IEditorInput editorInput)"
 			+ NL + "\t{" + NL + "\t\t(";
-	protected final String TEXT_390 = "(Resource)";
-	protected final String TEXT_391 = "editingDomain.getResourceSet().getResources().get(0)).setURI(uri);"
+	protected final String TEXT_388 = "(Resource)";
+	protected final String TEXT_389 = "editingDomain.getResourceSet().getResources().get(0)).setURI(uri);"
 			+ NL
 			+ "\t\tsetInputWithNotify(editorInput);"
 			+ NL
@@ -3059,9 +3055,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t\t\tgetActionBars().getStatusLineManager().getProgressMonitor() :"
 			+ NL + "\t\t\t\tnew ";
-	protected final String TEXT_392 = "();" + NL
+	protected final String TEXT_390 = "();" + NL
 			+ "\t\tdoSave(progressMonitor);" + NL + "\t}";
-	protected final String TEXT_393 = NL
+	protected final String TEXT_391 = NL
 			+ NL
 			+ "\t/**"
 			+ NL
@@ -3103,37 +3099,37 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL + "\t\t\t\t\t}" + NL + "\t\t\t\t}" + NL + "\t\t\t}" + NL
 			+ "\t\t}" + NL + "\t\tcatch (CoreException exception)" + NL
 			+ "\t\t{" + NL + "\t\t\t";
-	protected final String TEXT_394 = ".INSTANCE.log(exception);" + NL
+	protected final String TEXT_392 = ".INSTANCE.log(exception);" + NL
 			+ "\t\t}" + NL + "\t}";
-	protected final String TEXT_395 = NL + NL + "\t/**" + NL
+	protected final String TEXT_393 = NL + NL + "\t/**" + NL
 			+ "\t * This is called during startup." + NL
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_396 = NL + "\t@Override";
-	protected final String TEXT_397 = NL
+	protected final String TEXT_394 = NL + "\t@Override";
+	protected final String TEXT_395 = NL
 			+ "\tpublic void init(IEditorSite site, IEditorInput editorInput)"
 			+ NL + "\t{" + NL + "\t\tsetSite(site);" + NL
 			+ "\t\tsetInputWithNotify(editorInput);" + NL
 			+ "\t\tsetPartName(editorInput.getName());" + NL
 			+ "\t\tsite.setSelectionProvider(this);" + NL
 			+ "\t\tsite.getPage().addPartListener(partListener);";
-	protected final String TEXT_398 = NL
+	protected final String TEXT_396 = NL
 			+ "\t\tResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);";
-	protected final String TEXT_399 = NL + "\t}" + NL + "" + NL + "\t/**" + NL
+	protected final String TEXT_397 = NL + "\t}" + NL + "" + NL + "\t/**" + NL
 			+ "\t * <!-- begin-user-doc -->" + NL
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */";
-	protected final String TEXT_400 = NL + "\t@Override";
-	protected final String TEXT_401 = NL + "\tpublic void setFocus()" + NL
+	protected final String TEXT_398 = NL + "\t@Override";
+	protected final String TEXT_399 = NL + "\tpublic void setFocus()" + NL
 			+ "\t{";
-	protected final String TEXT_402 = NL + "\t\tif (currentViewerPane != null)"
+	protected final String TEXT_400 = NL + "\t\tif (currentViewerPane != null)"
 			+ NL + "\t\t{" + NL + "\t\t\tcurrentViewerPane.setFocus();" + NL
 			+ "\t\t}" + NL + "\t\telse" + NL + "\t\t{" + NL
 			+ "\t\t\tgetControl(getActivePage()).setFocus();" + NL + "\t\t}";
-	protected final String TEXT_403 = NL
+	protected final String TEXT_401 = NL
 			+ "\t\tgetControl(getActivePage()).setFocus();";
-	protected final String TEXT_404 = NL
+	protected final String TEXT_402 = NL
 			+ "\t}"
 			+ NL
 			+ ""
@@ -3212,14 +3208,14 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL + "\tpublic void setSelection(ISelection selection)"
 			+ NL + "\t{" + NL + "\t\teditorSelection = selection;" + NL;
-	protected final String TEXT_405 = NL
+	protected final String TEXT_403 = NL
 			+ "\t\tfor (ISelectionChangedListener listener : selectionChangedListeners)";
-	protected final String TEXT_406 = NL
+	protected final String TEXT_404 = NL
 			+ "\t\tfor (Iterator listeners = selectionChangedListeners.iterator(); listeners.hasNext(); )";
-	protected final String TEXT_407 = NL + "\t\t{";
-	protected final String TEXT_408 = NL
+	protected final String TEXT_405 = NL + "\t\t{";
+	protected final String TEXT_406 = NL
 			+ "\t\t\tISelectionChangedListener listener = (ISelectionChangedListener)listeners.next();";
-	protected final String TEXT_409 = NL
+	protected final String TEXT_407 = NL
 			+ "\t\t\tlistener.selectionChanged(new SelectionChangedEvent(this, selection));"
 			+ NL
 			+ "\t\t}"
@@ -3251,7 +3247,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t{" + NL
 			+ "\t\t\tif (selection instanceof IStructuredSelection)" + NL
 			+ "\t\t\t{" + NL + "\t\t\t\t";
-	protected final String TEXT_410 = " collection = ((IStructuredSelection)selection).toList();"
+	protected final String TEXT_408 = " collection = ((IStructuredSelection)selection).toList();"
 			+ NL
 			+ "\t\t\t\tswitch (collection.size())"
 			+ NL
@@ -3262,7 +3258,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t\t{"
 			+ NL
 			+ "\t\t\t\t\t\tstatusLineManager.setMessage(getString(\"_UI_NoObjectSelected\"));";
-	protected final String TEXT_411 = NL
+	protected final String TEXT_409 = NL
 			+ "\t\t\t\t\t\tbreak;"
 			+ NL
 			+ "\t\t\t\t\t}"
@@ -3274,7 +3270,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t\t\tString text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());"
 			+ NL
 			+ "\t\t\t\t\t\tstatusLineManager.setMessage(getString(\"_UI_SingleObjectSelected\", text));";
-	protected final String TEXT_412 = NL
+	protected final String TEXT_410 = NL
 			+ "\t\t\t\t\t\tbreak;"
 			+ NL
 			+ "\t\t\t\t\t}"
@@ -3284,11 +3280,11 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t\t\t\t\t{"
 			+ NL
 			+ "\t\t\t\t\t\tstatusLineManager.setMessage(getString(\"_UI_MultiObjectSelected\", Integer.toString(collection.size())));";
-	protected final String TEXT_413 = NL + "\t\t\t\t\t\tbreak;" + NL
+	protected final String TEXT_411 = NL + "\t\t\t\t\t\tbreak;" + NL
 			+ "\t\t\t\t\t}" + NL + "\t\t\t\t}" + NL + "\t\t\t}" + NL
 			+ "\t\t\telse" + NL + "\t\t\t{" + NL
 			+ "\t\t\t\tstatusLineManager.setMessage(\"\");";
-	protected final String TEXT_414 = NL
+	protected final String TEXT_412 = NL
 			+ "\t\t\t}"
 			+ NL
 			+ "\t\t}"
@@ -3304,7 +3300,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL + "\tprivate static String getString(String key)"
 			+ NL + "\t{" + NL + "\t\treturn ";
-	protected final String TEXT_415 = ".INSTANCE.getString(key);"
+	protected final String TEXT_413 = ".INSTANCE.getString(key);"
 			+ NL
 			+ "\t}"
 			+ NL
@@ -3318,7 +3314,7 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t */" + NL
 			+ "\tprivate static String getString(String key, Object s1)" + NL
 			+ "\t{" + NL + "\t\treturn ";
-	protected final String TEXT_416 = ".INSTANCE.getString(key, new Object [] { s1 });"
+	protected final String TEXT_414 = ".INSTANCE.getString(key, new Object [] { s1 });"
 			+ NL
 			+ "\t}"
 			+ NL
@@ -3415,27 +3411,27 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * @generated"
 			+ NL
 			+ "\t */";
-	protected final String TEXT_417 = NL + "\t@Override";
-	protected final String TEXT_418 = NL + "\tpublic void dispose()" + NL
+	protected final String TEXT_415 = NL + "\t@Override";
+	protected final String TEXT_416 = NL + "\tpublic void dispose()" + NL
 			+ "\t{" + NL + "\t\tupdateProblemIndication = false;" + NL;
-	protected final String TEXT_419 = NL
+	protected final String TEXT_417 = NL
 			+ "\t\tResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);"
 			+ NL;
-	protected final String TEXT_420 = NL
+	protected final String TEXT_418 = NL
 			+ "\t\tgetSite().getPage().removePartListener(partListener);" + NL
 			+ "" + NL + "\t\tadapterFactory.dispose();\t\t";
-	protected final String TEXT_421 = NL + NL
+	protected final String TEXT_419 = NL + NL
 			+ "\t\t// Clean and dispose viewerFilterActions" + NL + "\t\tfor (";
-	protected final String TEXT_422 = " resource : viewerFilterActions.keySet()) {"
+	protected final String TEXT_420 = " resource : viewerFilterActions.keySet()) {"
 			+ NL + "\t\t\tfor (";
-	protected final String TEXT_423 = " filterAction : viewerFilterActions.get(resource)) {"
+	protected final String TEXT_421 = " filterAction : viewerFilterActions.get(resource)) {"
 			+ NL + "\t\t\t\tfilterAction.removePropertyChangeListener((";
-	protected final String TEXT_424 = ") getActionBarContributor());" + NL
+	protected final String TEXT_422 = ") getActionBarContributor());" + NL
 			+ "\t\t\t\tfilterAction.dispose();" + NL + "\t\t\t}" + NL + "\t\t}"
 			+ NL + "\t\t// Unregister this editor for ExtendedModel state" + NL
 			+ "\t\t//" + NL + "\t\t";
-	protected final String TEXT_425 = ".removeListener(this);";
-	protected final String TEXT_426 = "\t\t"
+	protected final String TEXT_423 = ".getInstance(getEditingDomain().getResourceSet()).removeListener(this);";
+	protected final String TEXT_424 = "\t\t"
 			+ NL
 			+ ""
 			+ NL
@@ -3482,9 +3478,9 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
 			+ "\t */" + NL + "\tprotected boolean showOutlineView()" + NL
 			+ "\t{" + NL + "\t\treturn ";
-	protected final String TEXT_427 = ";" + NL + "\t}" + NL + "}";
-	protected final String TEXT_428 = NL;
-	protected final String TEXT_429 = NL;
+	protected final String TEXT_425 = ";" + NL + "\t}" + NL + "}";
+	protected final String TEXT_426 = NL;
+	protected final String TEXT_427 = NL;
 
 	public Editor() {
 		//Here is the constructor
@@ -3521,8 +3517,8 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 					OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
-		stringBuffer.append(TEXT_428);
-		stringBuffer.append(TEXT_429);
+		stringBuffer.append(TEXT_426);
+		stringBuffer.append(TEXT_427);
 		return stringBuffer.toString();
 	}
 
@@ -3967,81 +3963,85 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 		stringBuffer.append(TEXT_138);
 		stringBuffer.append(_HashMapOfResourceToBoolean);
 		stringBuffer.append(TEXT_139);
-		if (genPackage.isExtensibleProviderFactory()) {
+		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_140);
+		}
+		stringBuffer.append(TEXT_141);
+		stringBuffer.append(_CollectionOfAnything);
+		stringBuffer.append(TEXT_142);
+		stringBuffer.append(_CollectionOfAnything);
+		stringBuffer.append(TEXT_143);
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_144);
+		}
+		stringBuffer.append(TEXT_145);
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_146);
+		}
+		stringBuffer.append(TEXT_147);
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_148);
+		}
+		stringBuffer.append(TEXT_149);
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_150);
+		}
+		stringBuffer.append(TEXT_151);
+		if (genPackage.isMultipleEditorPages()) {
+			stringBuffer.append(TEXT_152);
+		}
+		stringBuffer.append(TEXT_153);
+		if (genPackage.isExtensibleProviderFactory()) {
+			stringBuffer.append(TEXT_154);
 			stringBuffer
 					.append(genModel
-							.getImportedName("org.polarsys.kitalpha.emde.extension.ModelExtensionHelper"));
-			stringBuffer.append(TEXT_141);
-		}
-		stringBuffer.append(TEXT_142);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_143);
-		}
-		stringBuffer.append(TEXT_144);
-		stringBuffer.append(_CollectionOfAnything);
-		stringBuffer.append(TEXT_145);
-		stringBuffer.append(_CollectionOfAnything);
-		stringBuffer.append(TEXT_146);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_147);
-		}
-		stringBuffer.append(TEXT_148);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_149);
-		}
-		stringBuffer.append(TEXT_150);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_151);
-		}
-		stringBuffer.append(TEXT_152);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_153);
-		}
-		stringBuffer.append(TEXT_154);
-		if (genPackage.isMultipleEditorPages()) {
+							.getImportedName("org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction"));
 			stringBuffer.append(TEXT_155);
-		}
-		stringBuffer.append(TEXT_156);
-		if (genPackage.isExtensibleProviderFactory()) {
+			stringBuffer
+					.append(genModel
+							.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
+			stringBuffer.append(TEXT_156);
+			stringBuffer.append(genModel
+					.getImportedName("java.util.Collection"));
 			stringBuffer.append(TEXT_157);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction"));
 			stringBuffer.append(TEXT_158);
 			stringBuffer
-					.append(genModel
-							.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
-			stringBuffer.append(TEXT_159);
-			stringBuffer.append(genModel
-					.getImportedName("java.util.Collection"));
-			stringBuffer.append(TEXT_160);
-			stringBuffer
-					.append(genModel
-							.getImportedName("org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction"));
-			stringBuffer.append(TEXT_161);
-			stringBuffer
 					.append(genModel.getImportedName("java.util.ArrayList"));
-			stringBuffer.append(TEXT_162);
+			stringBuffer.append(TEXT_159);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.extension.ModelExtensionManager"));
-			stringBuffer.append(TEXT_163);
+			stringBuffer.append(TEXT_160);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.extension.ModelExtensionHelper"));
-			stringBuffer.append(TEXT_164);
+			stringBuffer.append(TEXT_161);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.extension.ExtensibleModel"));
-			stringBuffer.append(TEXT_165);
+			stringBuffer.append(TEXT_162);
+			stringBuffer
+					.append(genModel
+							.getImportedName("org.polarsys.kitalpha.emde.extension.ModelExtensionDescriptor"));
+			stringBuffer.append(TEXT_163);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.extension.ExtendedModel"));
-			stringBuffer.append(TEXT_166);
+			stringBuffer.append(TEXT_164);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction"));
+			stringBuffer.append(TEXT_165);
+			stringBuffer
+					.append(genModel
+							.getImportedName("org.eclipse.jface.viewers.StructuredSelection"));
+			stringBuffer.append(TEXT_166);
+			stringBuffer
+					.append(genModel
+							.getImportedName("org.eclipse.jface.viewers.StructuredSelection"));
 			stringBuffer.append(TEXT_167);
 			stringBuffer
 					.append(genModel
@@ -4053,305 +4053,301 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			stringBuffer.append(TEXT_169);
 			stringBuffer
 					.append(genModel
-							.getImportedName("org.eclipse.jface.viewers.StructuredSelection"));
-			stringBuffer.append(TEXT_170);
-			stringBuffer
-					.append(genModel
-							.getImportedName("org.eclipse.jface.viewers.StructuredSelection"));
-			stringBuffer.append(TEXT_171);
-			stringBuffer
-					.append(genModel
 							.getImportedName("org.eclipse.jface.util.IPropertyChangeListener"));
-			stringBuffer.append(TEXT_172);
+			stringBuffer.append(TEXT_170);
 		}
+		stringBuffer.append(TEXT_171);
+		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(TEXT_172);
+		stringBuffer.append(genModel.getNonNLS());
 		stringBuffer.append(TEXT_173);
-		stringBuffer.append(genModel.getNonNLS());
-		stringBuffer.append(TEXT_174);
-		stringBuffer.append(genModel.getNonNLS());
-		stringBuffer.append(TEXT_175);
 		if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF23_VALUE) {
-			stringBuffer.append(TEXT_176);
+			stringBuffer.append(TEXT_174);
 		} else {
+			stringBuffer.append(TEXT_175);
+		}
+		stringBuffer.append(TEXT_176);
+		if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF23_VALUE) {
 			stringBuffer.append(TEXT_177);
-		}
-		stringBuffer.append(TEXT_178);
-		if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF23_VALUE) {
-			stringBuffer.append(TEXT_179);
 		} else if (genModel.isRichClientPlatform()) {
-			stringBuffer.append(TEXT_180);
+			stringBuffer.append(TEXT_178);
 		} else {
-			stringBuffer.append(TEXT_181);
+			stringBuffer.append(TEXT_179);
 		}
-		stringBuffer.append(TEXT_182);
+		stringBuffer.append(TEXT_180);
 		stringBuffer.append(genPackage.getGenModel().getEditorPluginID());
-		stringBuffer.append(TEXT_183);
+		stringBuffer.append(TEXT_181);
 		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(TEXT_182);
+		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(TEXT_183);
+		stringBuffer.append(genPackage.getGenModel().getEditorPluginID());
 		stringBuffer.append(TEXT_184);
 		stringBuffer.append(genModel.getNonNLS());
 		stringBuffer.append(TEXT_185);
-		stringBuffer.append(genPackage.getGenModel().getEditorPluginID());
+		stringBuffer.append(genModel.getNonNLS());
 		stringBuffer.append(TEXT_186);
-		stringBuffer.append(genModel.getNonNLS());
-		stringBuffer.append(TEXT_187);
-		stringBuffer.append(genModel.getNonNLS());
-		stringBuffer.append(TEXT_188);
 		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_187);
+		}
+		stringBuffer.append(TEXT_188);
+		if (!genModel.useGenerics()) {
 			stringBuffer.append(TEXT_189);
 		}
 		stringBuffer.append(TEXT_190);
-		if (!genModel.useGenerics()) {
-			stringBuffer.append(TEXT_191);
-		}
-		stringBuffer.append(TEXT_192);
 		if (genPackage.isMultipleEditorPages()) {
-			stringBuffer.append(TEXT_193);
+			stringBuffer.append(TEXT_191);
 			stringBuffer.append(genPackage.getEditorClassName());
-			stringBuffer.append(TEXT_194);
+			stringBuffer.append(TEXT_192);
 			if (genModel.useClassOverrideAnnotation()) {
-				stringBuffer.append(TEXT_195);
+				stringBuffer.append(TEXT_193);
 			}
-			stringBuffer.append(TEXT_196);
+			stringBuffer.append(TEXT_194);
 			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_197);
+				stringBuffer.append(TEXT_195);
 			} else {
+				stringBuffer.append(TEXT_196);
+			}
+			stringBuffer.append(TEXT_197);
+			if (genModel.useClassOverrideAnnotation()) {
 				stringBuffer.append(TEXT_198);
 			}
 			stringBuffer.append(TEXT_199);
-			if (genModel.useClassOverrideAnnotation()) {
+			if (genPackage.isExtensibleProviderFactory()) {
 				stringBuffer.append(TEXT_200);
 			}
 			stringBuffer.append(TEXT_201);
-			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_202);
-			}
-			stringBuffer.append(TEXT_203);
 			stringBuffer.append(_AdapterFactoryLabelProvider);
-			stringBuffer.append(TEXT_204);
+			stringBuffer.append(TEXT_202);
 			if (useExtendedLabelProvider) {
-				stringBuffer.append(TEXT_205);
+				stringBuffer.append(TEXT_203);
 			}
-			stringBuffer.append(TEXT_206);
+			stringBuffer.append(TEXT_204);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_207);
+			stringBuffer.append(TEXT_205);
 			stringBuffer.append(genPackage.getEditorClassName());
-			stringBuffer.append(TEXT_208);
+			stringBuffer.append(TEXT_206);
 			if (genModel.useClassOverrideAnnotation()) {
-				stringBuffer.append(TEXT_209);
+				stringBuffer.append(TEXT_207);
 			}
-			stringBuffer.append(TEXT_210);
+			stringBuffer.append(TEXT_208);
 			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_211);
+				stringBuffer.append(TEXT_209);
 			} else {
+				stringBuffer.append(TEXT_210);
+			}
+			stringBuffer.append(TEXT_211);
+			if (genModel.useClassOverrideAnnotation()) {
 				stringBuffer.append(TEXT_212);
 			}
 			stringBuffer.append(TEXT_213);
-			if (genModel.useClassOverrideAnnotation()) {
+			if (genPackage.isExtensibleProviderFactory()) {
 				stringBuffer.append(TEXT_214);
 			}
 			stringBuffer.append(TEXT_215);
-			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_216);
-			}
-			stringBuffer.append(TEXT_217);
 			stringBuffer.append(_AdapterFactoryLabelProvider);
-			stringBuffer.append(TEXT_218);
+			stringBuffer.append(TEXT_216);
 			if (useExtendedLabelProvider) {
-				stringBuffer.append(TEXT_219);
+				stringBuffer.append(TEXT_217);
 			}
-			stringBuffer.append(TEXT_220);
+			stringBuffer.append(TEXT_218);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_221);
+			stringBuffer.append(TEXT_219);
 			stringBuffer.append(genPackage.getEditorClassName());
-			stringBuffer.append(TEXT_222);
+			stringBuffer.append(TEXT_220);
 			if (genModel.useClassOverrideAnnotation()) {
-				stringBuffer.append(TEXT_223);
+				stringBuffer.append(TEXT_221);
 			}
-			stringBuffer.append(TEXT_224);
+			stringBuffer.append(TEXT_222);
 			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_225);
+				stringBuffer.append(TEXT_223);
 			} else {
+				stringBuffer.append(TEXT_224);
+			}
+			stringBuffer.append(TEXT_225);
+			if (genModel.useClassOverrideAnnotation()) {
 				stringBuffer.append(TEXT_226);
 			}
 			stringBuffer.append(TEXT_227);
-			if (genModel.useClassOverrideAnnotation()) {
+			if (genPackage.isExtensibleProviderFactory()) {
 				stringBuffer.append(TEXT_228);
 			}
 			stringBuffer.append(TEXT_229);
-			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_230);
-			}
-			stringBuffer.append(TEXT_231);
 			stringBuffer.append(_AdapterFactoryLabelProvider);
-			stringBuffer.append(TEXT_232);
+			stringBuffer.append(TEXT_230);
 			if (useExtendedLabelProvider) {
-				stringBuffer.append(TEXT_233);
+				stringBuffer.append(TEXT_231);
 			}
-			stringBuffer.append(TEXT_234);
+			stringBuffer.append(TEXT_232);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_235);
+			stringBuffer.append(TEXT_233);
 			stringBuffer.append(genPackage.getEditorClassName());
-			stringBuffer.append(TEXT_236);
+			stringBuffer.append(TEXT_234);
 			if (genModel.useClassOverrideAnnotation()) {
-				stringBuffer.append(TEXT_237);
+				stringBuffer.append(TEXT_235);
 			}
-			stringBuffer.append(TEXT_238);
+			stringBuffer.append(TEXT_236);
 			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_239);
+				stringBuffer.append(TEXT_237);
 			} else {
+				stringBuffer.append(TEXT_238);
+			}
+			stringBuffer.append(TEXT_239);
+			if (genModel.useClassOverrideAnnotation()) {
 				stringBuffer.append(TEXT_240);
 			}
 			stringBuffer.append(TEXT_241);
-			if (genModel.useClassOverrideAnnotation()) {
+			if (genPackage.isExtensibleProviderFactory()) {
 				stringBuffer.append(TEXT_242);
 			}
 			stringBuffer.append(TEXT_243);
-			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_244);
-			}
-			stringBuffer.append(TEXT_245);
 			stringBuffer.append(_AdapterFactoryLabelProvider);
-			stringBuffer.append(TEXT_246);
+			stringBuffer.append(TEXT_244);
 			if (useExtendedLabelProvider) {
-				stringBuffer.append(TEXT_247);
+				stringBuffer.append(TEXT_245);
 			}
-			stringBuffer.append(TEXT_248);
+			stringBuffer.append(TEXT_246);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_249);
+			stringBuffer.append(TEXT_247);
 			stringBuffer.append(genPackage.getEditorClassName());
-			stringBuffer.append(TEXT_250);
+			stringBuffer.append(TEXT_248);
 			if (genModel.useClassOverrideAnnotation()) {
-				stringBuffer.append(TEXT_251);
+				stringBuffer.append(TEXT_249);
 			}
-			stringBuffer.append(TEXT_252);
+			stringBuffer.append(TEXT_250);
 			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_253);
+				stringBuffer.append(TEXT_251);
 			} else {
+				stringBuffer.append(TEXT_252);
+			}
+			stringBuffer.append(TEXT_253);
+			if (genModel.useClassOverrideAnnotation()) {
 				stringBuffer.append(TEXT_254);
 			}
 			stringBuffer.append(TEXT_255);
-			if (genModel.useClassOverrideAnnotation()) {
+			if (genPackage.isExtensibleProviderFactory()) {
 				stringBuffer.append(TEXT_256);
 			}
 			stringBuffer.append(TEXT_257);
-			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_258);
-			}
+			stringBuffer.append(genModel.getNonNLS());
+			stringBuffer.append(TEXT_258);
+			stringBuffer.append(genModel.getNonNLS());
 			stringBuffer.append(TEXT_259);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_260);
-			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_261);
-			stringBuffer.append(genModel.getNonNLS());
 			stringBuffer.append(genModel.getNonNLS(2));
-			stringBuffer.append(TEXT_262);
+			stringBuffer.append(TEXT_260);
 			stringBuffer.append(_AdapterFactoryLabelProvider);
-			stringBuffer.append(TEXT_263);
+			stringBuffer.append(TEXT_261);
 			if (useExtendedLabelProvider) {
-				stringBuffer.append(TEXT_264);
+				stringBuffer.append(TEXT_262);
 			}
-			stringBuffer.append(TEXT_265);
+			stringBuffer.append(TEXT_263);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_266);
+			stringBuffer.append(TEXT_264);
 			stringBuffer.append(genPackage.getEditorClassName());
-			stringBuffer.append(TEXT_267);
+			stringBuffer.append(TEXT_265);
 			if (genModel.useClassOverrideAnnotation()) {
-				stringBuffer.append(TEXT_268);
+				stringBuffer.append(TEXT_266);
 			}
-			stringBuffer.append(TEXT_269);
+			stringBuffer.append(TEXT_267);
 			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_270);
+				stringBuffer.append(TEXT_268);
 			} else {
+				stringBuffer.append(TEXT_269);
+			}
+			stringBuffer.append(TEXT_270);
+			if (genModel.useClassOverrideAnnotation()) {
 				stringBuffer.append(TEXT_271);
 			}
 			stringBuffer.append(TEXT_272);
-			if (genModel.useClassOverrideAnnotation()) {
+			if (genPackage.isExtensibleProviderFactory()) {
 				stringBuffer.append(TEXT_273);
 			}
 			stringBuffer.append(TEXT_274);
-			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_275);
-			}
+			stringBuffer.append(genModel.getNonNLS());
+			stringBuffer.append(TEXT_275);
+			stringBuffer.append(genModel.getNonNLS());
 			stringBuffer.append(TEXT_276);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_277);
-			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_278);
-			stringBuffer.append(genModel.getNonNLS());
 			stringBuffer.append(genModel.getNonNLS(2));
-			stringBuffer.append(TEXT_279);
+			stringBuffer.append(TEXT_277);
 			stringBuffer.append(_AdapterFactoryLabelProvider);
+			stringBuffer.append(TEXT_278);
+			if (useExtendedLabelProvider) {
+				stringBuffer.append(TEXT_279);
+			}
 			stringBuffer.append(TEXT_280);
-			if (useExtendedLabelProvider) {
-				stringBuffer.append(TEXT_281);
-			}
-			stringBuffer.append(TEXT_282);
 			stringBuffer.append(genModel.getNonNLS());
-			stringBuffer.append(TEXT_283);
+			stringBuffer.append(TEXT_281);
 		} else {
-			stringBuffer.append(TEXT_284);
+			stringBuffer.append(TEXT_282);
 			if (genPackage.isExtensibleProviderFactory()) {
-				stringBuffer.append(TEXT_285);
+				stringBuffer.append(TEXT_283);
 			} else {
-				stringBuffer.append(TEXT_286);
+				stringBuffer.append(TEXT_284);
 			}
-			stringBuffer.append(TEXT_287);
+			stringBuffer.append(TEXT_285);
 			stringBuffer.append(_AdapterFactoryLabelProvider);
-			stringBuffer.append(TEXT_288);
+			stringBuffer.append(TEXT_286);
 			if (useExtendedLabelProvider) {
-				stringBuffer.append(TEXT_289);
+				stringBuffer.append(TEXT_287);
 			}
-			stringBuffer.append(TEXT_290);
+			stringBuffer.append(TEXT_288);
 			stringBuffer.append(genModel.getNonNLS());
+		}
+		stringBuffer.append(TEXT_289);
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_290);
 		}
 		stringBuffer.append(TEXT_291);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_292);
-		}
+		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(TEXT_292);
+		stringBuffer.append(genModel.getNonNLS());
 		stringBuffer.append(TEXT_293);
-		stringBuffer.append(genModel.getNonNLS());
-		stringBuffer.append(TEXT_294);
-		stringBuffer.append(genModel.getNonNLS());
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_294);
+		}
 		stringBuffer.append(TEXT_295);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_296);
-		}
-		stringBuffer.append(TEXT_297);
 		if (genModel.useGenerics()) {
-			stringBuffer.append(TEXT_298);
+			stringBuffer.append(TEXT_296);
 			if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE) {
-				stringBuffer.append(TEXT_299);
+				stringBuffer.append(TEXT_297);
 			} else {
-				stringBuffer.append(TEXT_300);
+				stringBuffer.append(TEXT_298);
 			}
-			stringBuffer.append(TEXT_301);
+			stringBuffer.append(TEXT_299);
 		}
 		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_300);
+		}
+		stringBuffer.append(TEXT_301);
+		if (!genModel.isRichClientPlatform()) {
 			stringBuffer.append(TEXT_302);
 		}
 		stringBuffer.append(TEXT_303);
-		if (!genModel.isRichClientPlatform()) {
+		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_304);
 		}
 		stringBuffer.append(TEXT_305);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_306);
-		}
-		stringBuffer.append(TEXT_307);
 		if (genPackage.isExtensibleProviderFactory()) {
-			stringBuffer.append(TEXT_308);
+			stringBuffer.append(TEXT_306);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
-			stringBuffer.append(TEXT_309);
+			stringBuffer.append(TEXT_307);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction"));
-			stringBuffer.append(TEXT_310);
+			stringBuffer.append(TEXT_308);
 		}
-		stringBuffer.append(TEXT_311);
+		stringBuffer.append(TEXT_309);
 		stringBuffer.append(_AdapterFactoryLabelProvider);
-		stringBuffer.append(TEXT_312);
+		stringBuffer.append(TEXT_310);
 		if (useExtendedLabelProvider) {
+			stringBuffer.append(TEXT_311);
+		}
+		stringBuffer.append(TEXT_312);
+		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_313);
 		}
 		stringBuffer.append(TEXT_314);
@@ -4363,63 +4359,63 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			stringBuffer.append(TEXT_317);
 		}
 		stringBuffer.append(TEXT_318);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_319);
-		}
-		stringBuffer.append(TEXT_320);
 		if (genPackage.isExtensibleProviderFactory()) {
-			stringBuffer.append(TEXT_321);
+			stringBuffer.append(TEXT_319);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
-			stringBuffer.append(TEXT_322);
+			stringBuffer.append(TEXT_320);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction"));
-			stringBuffer.append(TEXT_323);
+			stringBuffer.append(TEXT_321);
 		}
-		stringBuffer.append(TEXT_324);
+		stringBuffer.append(TEXT_322);
 		stringBuffer.append(genPackage.getBasePackage());
-		stringBuffer.append(TEXT_325);
+		stringBuffer.append(TEXT_323);
 		stringBuffer.append(genPackage.getPackageName());
-		stringBuffer.append(TEXT_326);
+		stringBuffer.append(TEXT_324);
 		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(TEXT_325);
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_326);
+		}
 		stringBuffer.append(TEXT_327);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_328);
-		}
-		stringBuffer.append(TEXT_329);
 		stringBuffer.append(_ListOfAnything);
+		stringBuffer.append(TEXT_328);
+		stringBuffer.append(genPackage.getEditorClassName());
+		stringBuffer.append(TEXT_329);
+		stringBuffer.append(genPackage.getEditorClassName());
 		stringBuffer.append(TEXT_330);
-		stringBuffer.append(genPackage.getEditorClassName());
-		stringBuffer.append(TEXT_331);
-		stringBuffer.append(genPackage.getEditorClassName());
-		stringBuffer.append(TEXT_332);
 		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_333);
+			stringBuffer.append(TEXT_331);
 		}
-		stringBuffer.append(TEXT_334);
+		stringBuffer.append(TEXT_332);
 		if (genPackage.isMultipleEditorPages()) {
-			stringBuffer.append(TEXT_335);
+			stringBuffer.append(TEXT_333);
 		} else {
+			stringBuffer.append(TEXT_334);
+		}
+		stringBuffer.append(TEXT_335);
+		if (genModel.useGenerics()) {
 			stringBuffer.append(TEXT_336);
 		}
 		stringBuffer.append(TEXT_337);
-		if (genModel.useGenerics()) {
-			stringBuffer.append(TEXT_338);
-		}
-		stringBuffer.append(TEXT_339);
 		if (genPackage.isMultipleEditorPages()) {
-			stringBuffer.append(TEXT_340);
+			stringBuffer.append(TEXT_338);
 			stringBuffer.append(_ArrayListOfObject);
+			stringBuffer.append(TEXT_339);
+			stringBuffer.append(_ArrayListOfObject);
+			stringBuffer.append(TEXT_340);
+		} else {
 			stringBuffer.append(TEXT_341);
 			stringBuffer.append(_ArrayListOfObject);
 			stringBuffer.append(TEXT_342);
-		} else {
+			stringBuffer.append(_ArrayListOfObject);
 			stringBuffer.append(TEXT_343);
-			stringBuffer.append(_ArrayListOfObject);
-			stringBuffer.append(TEXT_344);
-			stringBuffer.append(_ArrayListOfObject);
+		}
+		stringBuffer.append(TEXT_344);
+		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_345);
 		}
 		stringBuffer.append(TEXT_346);
@@ -4427,186 +4423,182 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			stringBuffer.append(TEXT_347);
 		}
 		stringBuffer.append(TEXT_348);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_349);
-		}
-		stringBuffer.append(TEXT_350);
 		stringBuffer.append(_MapOfObjectToObject);
-		stringBuffer.append(TEXT_351);
+		stringBuffer.append(TEXT_349);
 		stringBuffer.append(_HashMapOfObjectToObject);
-		stringBuffer.append(TEXT_352);
+		stringBuffer.append(TEXT_350);
 		if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF23_VALUE) {
-			stringBuffer.append(TEXT_353);
+			stringBuffer.append(TEXT_351);
 		}
+		stringBuffer.append(TEXT_352);
+		stringBuffer.append(importedOperationClassName);
+		stringBuffer.append(TEXT_353);
+		stringBuffer.append(importedOperationClassName);
 		stringBuffer.append(TEXT_354);
-		stringBuffer.append(importedOperationClassName);
-		stringBuffer.append(TEXT_355);
-		stringBuffer.append(importedOperationClassName);
-		stringBuffer.append(TEXT_356);
 		if (!genModel.isRichClientPlatform()
 				&& genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_357);
+			stringBuffer.append(TEXT_355);
 		}
-		stringBuffer.append(TEXT_358);
+		stringBuffer.append(TEXT_356);
 		stringBuffer.append(operationMethodName);
-		stringBuffer.append(TEXT_359);
+		stringBuffer.append(TEXT_357);
 		if (genModel.useGenerics()) {
-			stringBuffer.append(TEXT_360);
+			stringBuffer.append(TEXT_358);
 		} else {
+			stringBuffer.append(TEXT_359);
+		}
+		stringBuffer.append(TEXT_360);
+		if (!genModel.useGenerics()) {
 			stringBuffer.append(TEXT_361);
 		}
 		stringBuffer.append(TEXT_362);
-		if (!genModel.useGenerics()) {
-			stringBuffer.append(TEXT_363);
-		}
-		stringBuffer.append(TEXT_364);
 		if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF24_VALUE) {
-			stringBuffer.append(TEXT_365);
+			stringBuffer.append(TEXT_363);
 		} else {
-			stringBuffer.append(TEXT_366);
+			stringBuffer.append(TEXT_364);
 		}
-		stringBuffer.append(TEXT_367);
+		stringBuffer.append(TEXT_365);
 		stringBuffer.append(genPackage.getImportedEditorPluginClassName());
+		stringBuffer.append(TEXT_366);
+		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_367);
+		}
 		stringBuffer.append(TEXT_368);
 		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_369);
 		}
 		stringBuffer.append(TEXT_370);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_371);
-		}
-		stringBuffer.append(TEXT_372);
 		if (genModel.isRichClientPlatform()) {
 			if (genModel.isRichAjaxPlatform()) {
-				stringBuffer.append(TEXT_373);
+				stringBuffer.append(TEXT_371);
 				stringBuffer
 						.append(genModel
 								.getImportedName("org.eclipse.emf.common.ui.dialogs.ResourceDialog"));
+				stringBuffer.append(TEXT_372);
+				if (genModel.useClassOverrideAnnotation()) {
+					stringBuffer.append(TEXT_373);
+				}
 				stringBuffer.append(TEXT_374);
 				if (genModel.useClassOverrideAnnotation()) {
 					stringBuffer.append(TEXT_375);
 				}
 				stringBuffer.append(TEXT_376);
-				if (genModel.useClassOverrideAnnotation()) {
-					stringBuffer.append(TEXT_377);
-				}
-				stringBuffer.append(TEXT_378);
 				stringBuffer.append("List"
 						+ (genModel.useGenerics() ? "<URI>" : ""));
-				stringBuffer.append(TEXT_379);
+				stringBuffer.append(TEXT_377);
 				stringBuffer.append(genModel.useGenerics() ? "" : "(URI)");
-				stringBuffer.append(TEXT_380);
+				stringBuffer.append(TEXT_378);
 				stringBuffer
 						.append(genModel
 								.getImportedName("org.eclipse.emf.common.ui.URIEditorInput"));
-				stringBuffer.append(TEXT_381);
+				stringBuffer.append(TEXT_379);
 			} else {
-				stringBuffer.append(TEXT_382);
+				stringBuffer.append(TEXT_380);
 				if (!genModel.useGenerics()) {
-					stringBuffer.append(TEXT_383);
+					stringBuffer.append(TEXT_381);
 				}
-				stringBuffer.append(TEXT_384);
+				stringBuffer.append(TEXT_382);
 				stringBuffer.append(genModel.getImportedName(genModel
 						.getQualifiedEditorAdvisorClassName()));
-				stringBuffer.append(TEXT_385);
+				stringBuffer.append(TEXT_383);
 				stringBuffer.append(genModel
 						.getImportedName("org.eclipse.swt.SWT"));
-				stringBuffer.append(TEXT_386);
+				stringBuffer.append(TEXT_384);
 				stringBuffer
 						.append(genModel
 								.getImportedName("org.eclipse.emf.common.ui.URIEditorInput"));
-				stringBuffer.append(TEXT_387);
+				stringBuffer.append(TEXT_385);
 			}
 		} else {
+			stringBuffer.append(TEXT_386);
+		}
+		stringBuffer.append(TEXT_387);
+		if (!genModel.useGenerics()) {
 			stringBuffer.append(TEXT_388);
 		}
 		stringBuffer.append(TEXT_389);
-		if (!genModel.useGenerics()) {
-			stringBuffer.append(TEXT_390);
-		}
-		stringBuffer.append(TEXT_391);
 		stringBuffer
 				.append(genModel
 						.getImportedName("org.eclipse.core.runtime.NullProgressMonitor"));
-		stringBuffer.append(TEXT_392);
+		stringBuffer.append(TEXT_390);
 		if (!genModel.isRichClientPlatform()) {
-			stringBuffer.append(TEXT_393);
+			stringBuffer.append(TEXT_391);
 			stringBuffer.append(genPackage.getImportedEditorPluginClassName());
+			stringBuffer.append(TEXT_392);
+		}
+		stringBuffer.append(TEXT_393);
+		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_394);
 		}
 		stringBuffer.append(TEXT_395);
-		if (genModel.useClassOverrideAnnotation()) {
+		if (!genModel.isRichClientPlatform()) {
 			stringBuffer.append(TEXT_396);
 		}
 		stringBuffer.append(TEXT_397);
-		if (!genModel.isRichClientPlatform()) {
+		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_398);
 		}
 		stringBuffer.append(TEXT_399);
-		if (genModel.useClassOverrideAnnotation()) {
-			stringBuffer.append(TEXT_400);
-		}
-		stringBuffer.append(TEXT_401);
 		if (genPackage.isMultipleEditorPages()) {
-			stringBuffer.append(TEXT_402);
+			stringBuffer.append(TEXT_400);
 		} else {
-			stringBuffer.append(TEXT_403);
+			stringBuffer.append(TEXT_401);
 		}
-		stringBuffer.append(TEXT_404);
+		stringBuffer.append(TEXT_402);
 		if (genModel.useGenerics()) {
-			stringBuffer.append(TEXT_405);
+			stringBuffer.append(TEXT_403);
 		} else {
+			stringBuffer.append(TEXT_404);
+		}
+		stringBuffer.append(TEXT_405);
+		if (!genModel.useGenerics()) {
 			stringBuffer.append(TEXT_406);
 		}
 		stringBuffer.append(TEXT_407);
-		if (!genModel.useGenerics()) {
-			stringBuffer.append(TEXT_408);
-		}
-		stringBuffer.append(TEXT_409);
 		stringBuffer.append(_CollectionOfAnything);
+		stringBuffer.append(TEXT_408);
+		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(TEXT_409);
+		stringBuffer.append(genModel.getNonNLS());
 		stringBuffer.append(TEXT_410);
 		stringBuffer.append(genModel.getNonNLS());
 		stringBuffer.append(TEXT_411);
 		stringBuffer.append(genModel.getNonNLS());
 		stringBuffer.append(TEXT_412);
-		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(genPackage.getImportedEditorPluginClassName());
 		stringBuffer.append(TEXT_413);
-		stringBuffer.append(genModel.getNonNLS());
+		stringBuffer.append(genPackage.getImportedEditorPluginClassName());
 		stringBuffer.append(TEXT_414);
-		stringBuffer.append(genPackage.getImportedEditorPluginClassName());
-		stringBuffer.append(TEXT_415);
-		stringBuffer.append(genPackage.getImportedEditorPluginClassName());
-		stringBuffer.append(TEXT_416);
 		if (genModel.useClassOverrideAnnotation()) {
+			stringBuffer.append(TEXT_415);
+		}
+		stringBuffer.append(TEXT_416);
+		if (!genModel.isRichClientPlatform()) {
 			stringBuffer.append(TEXT_417);
 		}
 		stringBuffer.append(TEXT_418);
-		if (!genModel.isRichClientPlatform()) {
-			stringBuffer.append(TEXT_419);
-		}
-		stringBuffer.append(TEXT_420);
 		if (genPackage.isExtensibleProviderFactory()) {
-			stringBuffer.append(TEXT_421);
+			stringBuffer.append(TEXT_419);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
-			stringBuffer.append(TEXT_422);
+			stringBuffer.append(TEXT_420);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction"));
-			stringBuffer.append(TEXT_423);
+			stringBuffer.append(TEXT_421);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.eclipse.jface.util.IPropertyChangeListener"));
-			stringBuffer.append(TEXT_424);
+			stringBuffer.append(TEXT_422);
 			stringBuffer
 					.append(genModel
 							.getImportedName("org.polarsys.kitalpha.emde.extension.ModelExtensionHelper"));
-			stringBuffer.append(TEXT_425);
+			stringBuffer.append(TEXT_423);
 		}
-		stringBuffer.append(TEXT_426);
+		stringBuffer.append(TEXT_424);
 		stringBuffer.append(genPackage.isMultipleEditorPages());
-		stringBuffer.append(TEXT_427);
+		stringBuffer.append(TEXT_425);
 		genModel.emitSortedImports();
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
 		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate",

@@ -118,7 +118,7 @@ public class ActivityEdgeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION
 			if (inActivityPartitionPropertyDescriptor != null) {
 				Object inActivityPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION, true);
-				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
+				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);
 				} else if (inActivityPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION) != null) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);				  					
@@ -129,7 +129,7 @@ public class ActivityEdgeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION
 			if (inInterruptibleRegionPropertyDescriptor != null) {
 				Object inInterruptibleRegionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION, true);
-				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
+				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);
 				} else if (inInterruptibleRegionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION) != null) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);				  					
@@ -140,7 +140,7 @@ public class ActivityEdgeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE
 			if (inStructuredNodePropertyDescriptor != null) {
 				Object inStructuredNodeValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE, true);
-				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
+				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);
 				} else if (inStructuredNodeValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE) != null) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);				  					
@@ -151,7 +151,7 @@ public class ActivityEdgeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__TARGET
 			if (targetPropertyDescriptor != null) {
 				Object targetValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
@@ -162,7 +162,7 @@ public class ActivityEdgeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
@@ -173,7 +173,7 @@ public class ActivityEdgeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__INTERRUPTS
 			if (interruptsPropertyDescriptor != null) {
 				Object interruptsValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__INTERRUPTS, true);
-				if (interruptsValue != null && interruptsValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) interruptsValue)) {
+				if (interruptsValue != null && interruptsValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interruptsValue)) {
 					itemPropertyDescriptors.remove(interruptsPropertyDescriptor);
 				} else if (interruptsValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__INTERRUPTS) != null) {
 					itemPropertyDescriptors.remove(interruptsPropertyDescriptor);				  					

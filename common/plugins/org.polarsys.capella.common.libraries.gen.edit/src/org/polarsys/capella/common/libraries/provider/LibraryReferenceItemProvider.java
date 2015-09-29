@@ -87,7 +87,7 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 			// Process LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY
 			if (libraryPropertyDescriptor != null) {
 				Object libraryValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY, true);
-				if (libraryValue != null && libraryValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) libraryValue)) {
+				if (libraryValue != null && libraryValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) libraryValue)) {
 					itemPropertyDescriptors.remove(libraryPropertyDescriptor);
 				} else if (libraryValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY) != null) {
 					itemPropertyDescriptors.remove(libraryPropertyDescriptor);				  					
@@ -98,7 +98,7 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 			// Process LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION
 			if (versionPropertyDescriptor != null) {
 				Object versionValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION, true);
-				if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) versionValue)) {
+				if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) versionValue)) {
 					itemPropertyDescriptors.remove(versionPropertyDescriptor);
 				} else if (versionValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION) != null) {
 					itemPropertyDescriptors.remove(versionPropertyDescriptor);				  					

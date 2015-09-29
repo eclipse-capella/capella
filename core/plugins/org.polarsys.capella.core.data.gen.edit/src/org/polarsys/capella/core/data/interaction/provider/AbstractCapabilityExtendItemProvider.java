@@ -79,7 +79,7 @@ public class AbstractCapabilityExtendItemProvider extends RelationshipItemProvid
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED
 			if (extendedPropertyDescriptor != null) {
 				Object extendedValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, true);
-				if (extendedValue != null && extendedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) extendedValue)) {
+				if (extendedValue != null && extendedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) extendedValue)) {
 					itemPropertyDescriptors.remove(extendedPropertyDescriptor);
 				} else if (extendedValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED) != null) {
 					itemPropertyDescriptors.remove(extendedPropertyDescriptor);				  					
@@ -90,7 +90,7 @@ public class AbstractCapabilityExtendItemProvider extends RelationshipItemProvid
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION
 			if (extensionLocationPropertyDescriptor != null) {
 				Object extensionLocationValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, true);
-				if (extensionLocationValue != null && extensionLocationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) extensionLocationValue)) {
+				if (extensionLocationValue != null && extensionLocationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) extensionLocationValue)) {
 					itemPropertyDescriptors.remove(extensionLocationPropertyDescriptor);
 				} else if (extensionLocationValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION) != null) {
 					itemPropertyDescriptors.remove(extensionLocationPropertyDescriptor);				  					

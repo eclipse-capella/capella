@@ -84,7 +84,7 @@ public class EnumerationPropertyValueItemProvider
 			// Process CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class EnumerationPropertyValueItemProvider
 			// Process CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__VALUE
 			if (valuePropertyDescriptor != null) {
 				Object valueValue = eObject.eGet(CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__VALUE, true);
-				if (valueValue != null && valueValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) valueValue)) {
+				if (valueValue != null && valueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) valueValue)) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);
 				} else if (valueValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__VALUE) != null) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);				  					

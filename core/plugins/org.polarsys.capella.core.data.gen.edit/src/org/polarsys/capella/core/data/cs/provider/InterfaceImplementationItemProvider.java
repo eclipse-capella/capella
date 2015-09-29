@@ -85,7 +85,7 @@ public class InterfaceImplementationItemProvider
 			// Process CsPackage.Literals.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR
 			if (interfaceImplementorPropertyDescriptor != null) {
 				Object interfaceImplementorValue = eObject.eGet(CsPackage.Literals.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR, true);
-				if (interfaceImplementorValue != null && interfaceImplementorValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) interfaceImplementorValue)) {
+				if (interfaceImplementorValue != null && interfaceImplementorValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interfaceImplementorValue)) {
 					itemPropertyDescriptors.remove(interfaceImplementorPropertyDescriptor);
 				} else if (interfaceImplementorValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_IMPLEMENTATION__INTERFACE_IMPLEMENTOR) != null) {
 					itemPropertyDescriptors.remove(interfaceImplementorPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class InterfaceImplementationItemProvider
 			// Process CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE
 			if (implementedInterfacePropertyDescriptor != null) {
 				Object implementedInterfaceValue = eObject.eGet(CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE, true);
-				if (implementedInterfaceValue != null && implementedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) implementedInterfaceValue)) {
+				if (implementedInterfaceValue != null && implementedInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) implementedInterfaceValue)) {
 					itemPropertyDescriptors.remove(implementedInterfacePropertyDescriptor);
 				} else if (implementedInterfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE) != null) {
 					itemPropertyDescriptors.remove(implementedInterfacePropertyDescriptor);				  					

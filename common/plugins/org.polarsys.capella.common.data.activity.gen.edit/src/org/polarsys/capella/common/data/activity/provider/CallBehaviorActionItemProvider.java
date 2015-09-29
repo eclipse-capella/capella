@@ -77,7 +77,7 @@ public class CallBehaviorActionItemProvider
 			// Process ActivityPackage.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR
 			if (behaviorPropertyDescriptor != null) {
 				Object behaviorValue = eObject.eGet(ActivityPackage.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR, true);
-				if (behaviorValue != null && behaviorValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) behaviorValue)) {
+				if (behaviorValue != null && behaviorValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) behaviorValue)) {
 					itemPropertyDescriptors.remove(behaviorPropertyDescriptor);
 				} else if (behaviorValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR) != null) {
 					itemPropertyDescriptors.remove(behaviorPropertyDescriptor);				  					

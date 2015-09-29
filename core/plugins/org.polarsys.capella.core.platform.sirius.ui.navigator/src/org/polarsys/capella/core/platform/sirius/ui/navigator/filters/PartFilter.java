@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,26 +27,23 @@ public class PartFilter extends ViewerFilter {
     public Object[] filter(Viewer viewer, Object parent, Object[] elements) {
         int size = elements.length;
         List<Object> out = new ArrayList<Object>(size);
-        ModelExtensionManager mgr = ModelExtensionHelper.getInstance();
         
         for (int i = 0; i < size; ++i) {
             Object element = elements[i];
-            if (select(mgr, viewer, parent, element)) {
+            if (doSelect(viewer, parent, element)) {
 				out.add(element);
 			}
         }
         return out.toArray();
     }
 
-    private boolean select(ModelExtensionManager mgr, Viewer viewer,
-			Object parent, Object element) {
-    	 if (element instanceof Part)
-    	    {
-    		 Part part = (Part)element;
-    		 return part.getAbstractType() == null || !mgr.isExtensionModelDisabled(part.getAbstractType());
-    	    }
-		return true;
-	}
+    private boolean doSelect(Viewer viewer, Object parent, Object element) {
+        if (element instanceof Part) {
+          Part part = (Part) element;
+          return part.getAbstractType() == null || !ModelExtensionHelper.getInstance(part).isExtensionModelDisabled(part.getAbstractType());
+        }
+        return true;
+      }
 
 	/**
    * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
