@@ -17,7 +17,10 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.model.ju.detach.DetachTestSuite;
+import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecomposition;
+import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
+import org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite;
+import org.polarsys.capella.test.model.ju.testsuites.partial.LibrariesTestSuite;
 
 /**
  * @author Hakim Sellou
@@ -34,7 +37,10 @@ public class ModelTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new LCDecomposition());
+    tests.add(new ISMessage());
     tests.add(new DetachTestSuite());
+    tests.add(new LibrariesTestSuite());
     return tests;
   }
 

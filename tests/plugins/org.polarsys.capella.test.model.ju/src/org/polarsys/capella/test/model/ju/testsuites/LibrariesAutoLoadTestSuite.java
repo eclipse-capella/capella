@@ -10,35 +10,29 @@
  *******************************************************************************/
 package org.polarsys.capella.test.model.ju.testsuites;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Test;
 
-import org.polarsys.capella.test.framework.api.BasicTestArtefact;
-import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecomposition;
-import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
+import org.polarsys.capella.test.framework.api.AutoLoadTestSuite;
 
-public class ModelTestSuite extends BasicTestSuite {
+public class LibrariesAutoLoadTestSuite extends AutoLoadTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new ModelTestSuite();
+    return new LibrariesAutoLoadTestSuite();
   }
 
-  @Override
-  protected List<BasicTestArtefact> getTests() {
-    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new LCDecomposition());
-    tests.add(new ISMessage());
-    return tests;
-  }
+	@Override
+	public List<String> getRequiredTestModels() {
+		return null;
+	}
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return null;
-  }
+	@Override
+	protected String getTestCasesRootPackage() {		
+		return "org.polarsys.capella.test.model.ju.testcases.libraries";
+	}
+
 }

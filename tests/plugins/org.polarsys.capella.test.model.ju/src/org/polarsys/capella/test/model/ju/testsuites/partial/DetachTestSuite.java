@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.detach;
+package org.polarsys.capella.test.model.ju.testsuites.partial;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.model.ju.detach.Detach_versionOk;
 
 /**
  * @author Hakim Sellou
