@@ -358,9 +358,9 @@ public class AbstractCapabilityItemProvider
 				 getString("_UI_AbstractCapability_extending_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapability_extending_feature", "_UI_AbstractCapability_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -385,9 +385,9 @@ public class AbstractCapabilityItemProvider
 				 getString("_UI_AbstractCapability_subGeneralizations_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapability_subGeneralizations_feature", "_UI_AbstractCapability_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -412,9 +412,9 @@ public class AbstractCapabilityItemProvider
 				 getString("_UI_AbstractCapability_including_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapability_including_feature", "_UI_AbstractCapability_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

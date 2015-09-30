@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.DataType#isDiscrete <em>Discrete</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.DataType#isMinInclusive <em>Min Inclusive</em>}</li>
@@ -37,7 +38,6 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.DataType#getRealizedDataTypes <em>Realized Data Types</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.DataType#getRealizingDataTypes <em>Realizing Data Types</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType()
  * @model abstract="true"

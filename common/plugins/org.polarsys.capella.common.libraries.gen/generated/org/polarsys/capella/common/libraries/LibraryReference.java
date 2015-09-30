@@ -19,12 +19,12 @@ package org.polarsys.capella.common.libraries;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.libraries.LibraryReference#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.LibraryReference#getAccessPolicy <em>Access Policy</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.LibraryReference#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference()
  * @model

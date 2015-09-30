@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.RoleAllocation#getRole <em>Role</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.RoleAllocation#getEntity <em>Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAllocation()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Allocation link between an operational role and an operational entity\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

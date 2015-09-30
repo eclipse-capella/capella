@@ -101,6 +101,8 @@ public enum ElementKind implements Enumerator {
 	 * Returns the '<em><b>Element Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ElementKind get(String literal) {
@@ -117,6 +119,8 @@ public enum ElementKind implements Enumerator {
 	 * Returns the '<em><b>Element Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ElementKind getByName(String name) {
@@ -133,6 +137,8 @@ public enum ElementKind implements Enumerator {
 	 * Returns the '<em><b>Element Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ElementKind get(int value) {

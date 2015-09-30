@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.information.datatype.Enumeration;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.AbstractEnumerationValue#getEnumerationType <em>Enumeration Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getAbstractEnumerationValue()
  * @model abstract="true"

@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OrganisationalUnit#getOrganisationalUnitCompositions <em>Organisational Unit Compositions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OrganisationalUnit#getCommunityOfInterestMemberships <em>Community Of Interest Memberships</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOrganisationalUnit()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Structured set of operational entities.\r\nDescribes the high-level organizational decomposition of the system/enterprise, into organizational units.' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

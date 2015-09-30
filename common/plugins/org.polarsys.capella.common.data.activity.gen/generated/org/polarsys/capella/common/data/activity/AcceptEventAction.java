@@ -19,11 +19,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.AcceptEventAction#isIsUnmarshall <em>Is Unmarshall</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.AcceptEventAction#getResult <em>Result</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAcceptEventAction()
  * @model abstract="true"

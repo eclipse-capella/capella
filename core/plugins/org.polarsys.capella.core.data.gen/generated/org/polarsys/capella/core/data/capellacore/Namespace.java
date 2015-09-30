@@ -21,13 +21,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getContainedRequirementsTraces <em>Contained Requirements Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getNamingRules <em>Naming Rules</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace()
  * @model interface="true" abstract="true"

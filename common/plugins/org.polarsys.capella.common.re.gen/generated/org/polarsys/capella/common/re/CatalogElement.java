@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getAuthor <em>Author</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getReferencedElements <em>Referenced Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getReplicatedElements <em>Replicated Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.re.RePackage#getCatalogElement()
  * @model

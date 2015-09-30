@@ -417,7 +417,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -427,7 +427,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																			
+		   });
 	}
 
 	/**
@@ -437,7 +437,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -449,7 +449,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "This package depends on the model ModellingCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractBehaviorEClass, 
 		   source, 
@@ -461,7 +461,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "This element is a combination of UML2\'s Behavior from BasicBehavior package, and Behavior from CompleteBehavior package.\r\nIt has Parameters, and also has ParameterSets definition (e.g. specific groupings of some of the parameters)", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractBehavior_IsControlOperator(), 
 		   source, 
@@ -470,7 +470,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractBehavior_OwnedParameterSet(), 
 		   source, 
@@ -478,7 +478,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "description", "The ParameterSets owned by this Behavior\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractBehavior_OwnedParameter(), 
 		   source, 
@@ -486,7 +486,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "description", "References a list of parameters to the behavior that describes the order and type of arguments that can be given\r\nwhen the behavior is invoked and of the values that will be returned when the behavior completes its execution\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractSignalEClass, 
 		   source, 
@@ -498,7 +498,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "the UML2 definition of this element contains an attribute \"ownedAttribute [0..*]\", that is absent here, because the Capella version is a simplified one.\r\nThis element should be removed, since it is only used in Information package, (Signal and references to the Signal), no need for a decoupling class located here.", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractEventEClass, 
 		   source, 
@@ -510,7 +510,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractTimeEventEClass, 
 		   source, 
@@ -522,7 +522,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractTimeEvent_IsRelative(), 
 		   source, 
@@ -531,7 +531,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractTimeEvent_When(), 
 		   source, 
@@ -539,7 +539,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "description", "Specifies the corresponding time deadline\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractMessageEventEClass, 
 		   source, 
@@ -551,7 +551,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractSignalEventEClass, 
 		   source, 
@@ -563,7 +563,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractSignalEvent_Signal(), 
 		   source, 
@@ -571,7 +571,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "description", "The specific signal that is associated with this event\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeExpressionEClass, 
 		   source, 
@@ -583,7 +583,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getTimeExpression_Observations(), 
 		   source, 
@@ -591,7 +591,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "description", "Refers to the time and duration observations that are involved in expr\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "cardinality of TimeExpression::observations should be changed to [0..*]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getTimeExpression_Expression(), 
 		   source, 
@@ -599,7 +599,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "description", "The value of the time expression\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -609,22 +609,22 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractBehavior_IsControlOperator(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getAbstractTimeEvent_IsRelative(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });
 	}
 
 	/**
@@ -634,7 +634,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -644,7 +644,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																
+		   });
 	}
 
 	/**
@@ -654,7 +654,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractBehaviorEClass, 
 		   source, 
@@ -663,7 +663,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Behavior", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractBehavior_IsControlOperator(), 
 		   source, 
@@ -671,7 +671,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_ Maybye it can be mapped to uml::ObjectNode::isControlType...", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractBehavior_OwnedParameterSet(), 
 		   source, 
@@ -679,7 +679,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "UML/SysML semantic equivalences", "uml::Behavior::ownedParameterSet", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractBehavior_OwnedParameter(), 
 		   source, 
@@ -687,7 +687,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "UML/SysML semantic equivalences", "uml::Behavior::ownedParameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractSignalEClass, 
 		   source, 
@@ -696,7 +696,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Signal", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractEventEClass, 
 		   source, 
@@ -705,7 +705,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Event", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractTimeEventEClass, 
 		   source, 
@@ -714,7 +714,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::TimeEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractTimeEvent_IsRelative(), 
 		   source, 
@@ -722,7 +722,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractTimeEvent_When(), 
 		   source, 
@@ -730,7 +730,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "UML/SysML semantic equivalences", "uml::TimeEvent::when", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractMessageEventEClass, 
 		   source, 
@@ -739,7 +739,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::MessageEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractSignalEventEClass, 
 		   source, 
@@ -748,7 +748,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::SignalEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractSignalEvent_Signal(), 
 		   source, 
@@ -756,7 +756,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "UML/SysML semantic equivalences", "uml::SignalEvent::signal", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeExpressionEClass, 
 		   source, 
@@ -765,7 +765,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::TimeExpression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getTimeExpression_Observations(), 
 		   source, 
@@ -773,7 +773,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 			 "UML/SysML semantic equivalences", "uml::TimeExpression::observation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getTimeExpression_Expression(), 
 		   source, 

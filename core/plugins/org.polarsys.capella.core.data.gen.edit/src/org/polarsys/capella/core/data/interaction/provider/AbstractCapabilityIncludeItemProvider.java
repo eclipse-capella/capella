@@ -51,6 +51,13 @@ public class AbstractCapabilityIncludeItemProvider extends RelationshipItemProvi
 	protected IItemPropertyDescriptor includedPropertyDescriptor;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor inclusionPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,6 +88,17 @@ public class AbstractCapabilityIncludeItemProvider extends RelationshipItemProvi
 					itemPropertyDescriptors.add(includedPropertyDescriptor);
 				}
 			}
+			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION
+			if (inclusionPropertyDescriptor != null) {
+				Object inclusionValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION, true);
+				if (inclusionValue != null && inclusionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inclusionValue)) {
+					itemPropertyDescriptors.remove(inclusionPropertyDescriptor);
+				} else if (inclusionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION) != null) {
+					itemPropertyDescriptors.remove(inclusionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(inclusionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(inclusionPropertyDescriptor);
+				}
+			}
 		}		
 	}
 
@@ -96,6 +114,7 @@ public class AbstractCapabilityIncludeItemProvider extends RelationshipItemProvi
 			super.getPropertyDescriptors(object);
 
 			addIncludedPropertyDescriptor(object);
+			addInclusionPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -126,6 +145,32 @@ public class AbstractCapabilityIncludeItemProvider extends RelationshipItemProvi
 		// begin-extension-code
 				 null);
 		itemPropertyDescriptors.add(includedPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Inclusion feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInclusionPropertyDescriptor(Object object) {
+		// begin-extension-code
+		inclusionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractCapabilityInclude_inclusion_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapabilityInclude_inclusion_feature", "_UI_AbstractCapabilityInclude_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(inclusionPropertyDescriptor);
 		// end-extension-code
 	}
 

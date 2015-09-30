@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getExchange <em>Exchange</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getLink <em>Link</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeContainment()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ExchangeContainment'"

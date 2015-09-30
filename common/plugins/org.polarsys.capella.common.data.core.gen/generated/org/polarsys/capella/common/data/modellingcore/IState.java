@@ -19,11 +19,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.IState#getReferencedStates <em>Referenced States</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.IState#getExploitedStates <em>Exploited States</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState()
  * @model interface="true" abstract="true"

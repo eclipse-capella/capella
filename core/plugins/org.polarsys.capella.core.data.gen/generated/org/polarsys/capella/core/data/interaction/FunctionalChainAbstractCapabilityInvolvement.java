@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement#getCapability <em>Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement#getFunctionalChain <em>Functional Chain</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFunctionalChainAbstractCapabilityInvolvement()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A functional chain can be involved in capability\r\n[source: MBSD unified approach]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

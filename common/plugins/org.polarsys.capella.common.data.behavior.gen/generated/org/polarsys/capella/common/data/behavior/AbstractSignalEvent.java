@@ -18,10 +18,10 @@ package org.polarsys.capella.common.data.behavior;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.behavior.AbstractSignalEvent#getSignal <em>Signal</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractSignalEvent()
  * @model interface="true" abstract="true"

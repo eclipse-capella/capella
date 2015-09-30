@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.PortRealization#getRealizedPort <em>Realized Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.PortRealization#getRealizingPort <em>Realizing Port</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getPortRealization()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a PortRealization is a specific kind of allocation link between two Ports (typically of different design levels, or of different nature)\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='../img/usage_examples/port_realization.png' constraints='none' comment/notes='none' reference\040documentation='none'"

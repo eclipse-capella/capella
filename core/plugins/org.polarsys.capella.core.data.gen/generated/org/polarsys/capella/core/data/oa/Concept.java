@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.Concept#getCompliances <em>Compliances</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Concept#getCompositeLinks <em>Composite Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getConcept()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Describes how a range of (future and where necessary extant) capabilities is used in an operational context to solve a particular problem or achieve an operational goal according to applicable doctrines.' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

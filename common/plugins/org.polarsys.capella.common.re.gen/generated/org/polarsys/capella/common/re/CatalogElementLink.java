@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#getSource <em>Source</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#getTarget <em>Target</em>}</li>
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#getUnsynchronizedFeatures <em>Unsynchronized Features</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementLink#isSuffixed <em>Suffixed</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.re.RePackage#getCatalogElementLink()
  * @model

@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
-import org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
@@ -77,7 +76,6 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 			case CommunicationPackage.SIGNAL: return createSignal();
 			case CommunicationPackage.SIGNAL_INSTANCE: return createSignalInstance();
 			case CommunicationPackage.COMMUNICATION_LINK: return createCommunicationLink();
-			case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION: return createCommunicationLinkAllocation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -187,18 +185,6 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
     //begin-capella-code
     //end-capella-code
 		return communicationLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CommunicationLinkAllocation createCommunicationLinkAllocation() {
-		CommunicationLinkAllocationImpl communicationLinkAllocation = new CommunicationLinkAllocationImpl();
-    //begin-capella-code
-    //end-capella-code
-		return communicationLinkAllocation;
 	}
 
 	/**

@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedOperationalContext <em>Owned Operational Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedRolePkg <em>Owned Role Pkg</em>}</li>
@@ -30,7 +31,6 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getContainedOperationalActivityPkg <em>Contained Operational Activity Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getAllocatingSystemAnalyses <em>Allocating System Analyses</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Model describing operational need - organisations, actors, operational activities & related items - associated to (created during) a modelling phase' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -20,11 +20,11 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.behavior.TimeExpression#getObservations <em>Observations</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.behavior.TimeExpression#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getTimeExpression()
  * @model interface="true" abstract="true"

@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Involvement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemMissionInvolvement#getMission <em>Mission</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemMissionInvolvement#getSystem <em>System</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemMissionInvolvement()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='MissionSupplierLink'"

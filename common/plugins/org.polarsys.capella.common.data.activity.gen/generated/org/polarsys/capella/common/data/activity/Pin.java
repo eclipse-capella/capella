@@ -18,10 +18,10 @@ package org.polarsys.capella.common.data.activity;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.Pin#isIsControl <em>Is Control</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getPin()
  * @model interface="true" abstract="true"

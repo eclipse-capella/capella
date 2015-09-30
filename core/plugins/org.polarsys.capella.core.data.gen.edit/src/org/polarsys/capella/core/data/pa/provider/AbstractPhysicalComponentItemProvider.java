@@ -128,9 +128,9 @@ public class AbstractPhysicalComponentItemProvider
 				 getString("_UI_DeploymentTarget_deploymentLinks_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deploymentLinks_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

@@ -604,7 +604,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -614,7 +614,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																
+		   });
 	}
 
 	/**
@@ -624,7 +624,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -636,7 +636,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "This package depends on the model CapellaCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (requirementsPkgEClass, 
 		   source, 
@@ -648,7 +648,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_AdditionalInformation(), 
 		   source, 
@@ -657,7 +657,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_Level(), 
 		   source, 
@@ -666,7 +666,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirements(), 
 		   source, 
@@ -674,7 +674,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "description", "the Requirements contained in this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirementPkgs(), 
 		   source, 
@@ -682,7 +682,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "description", "the sub-(Requirement) packages contained in this requirement package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (requirementsTraceEClass, 
 		   source, 
@@ -694,7 +694,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (requirementEClass, 
 		   source, 
@@ -706,7 +706,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getRequirement_IsObsolete(), 
 		   source, 
@@ -715,7 +715,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_RequirementId(), 
 		   source, 
@@ -724,7 +724,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_AdditionalInformation(), 
 		   source, 
@@ -733,7 +733,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationMethod(), 
 		   source, 
@@ -742,7 +742,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationPhase(), 
 		   source, 
@@ -751,7 +751,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_ImplementationVersion(), 
 		   source, 
@@ -760,7 +760,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_Feature(), 
 		   source, 
@@ -769,7 +769,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (systemFunctionalInterfaceRequirementEClass, 
 		   source, 
@@ -781,7 +781,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemFunctionalRequirementEClass, 
 		   source, 
@@ -793,7 +793,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalInterfaceRequirementEClass, 
 		   source, 
@@ -805,7 +805,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalRequirementEClass, 
 		   source, 
@@ -817,7 +817,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemUserRequirementEClass, 
 		   source, 
@@ -829,7 +829,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -839,112 +839,112 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (requirementsPkgEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_AdditionalInformation(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_Level(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirements(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (requirementsTraceEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getRequirementsTrace_Source(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getRequirementsTrace_Target(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getRequirement_IsObsolete(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_RequirementId(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_AdditionalInformation(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationMethod(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationPhase(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_ImplementationVersion(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_Feature(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getRequirement_RelatedCapellaElements(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (systemFunctionalInterfaceRequirementEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (systemFunctionalRequirementEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalInterfaceRequirementEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalRequirementEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (systemUserRequirementEClass, 
 		   source, 
@@ -959,7 +959,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -969,7 +969,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																													
+		   });
 	}
 
 	/**
@@ -979,67 +979,67 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (requirementsPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "RequirementPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirements(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedRequirements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "subRequirementPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (requirementsTraceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "RequirementTrace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (requirementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Requirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																			
+		   });	
 		addAnnotation
 		  (systemFunctionalInterfaceRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemFunctionalRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalInterfaceRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemNonFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemNonFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemUserRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemUserRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });
 	}
 
 	/**
@@ -1049,7 +1049,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$								
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (requirementsPkgEClass, 
 		   source, 
@@ -1058,7 +1058,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_AdditionalInformation(), 
 		   source, 
@@ -1066,7 +1066,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_Level(), 
 		   source, 
@@ -1074,7 +1074,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirements(), 
 		   source, 
@@ -1082,7 +1082,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Requirement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirementPkgs(), 
 		   source, 
@@ -1090,7 +1090,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which RequirementPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (requirementsTraceEClass, 
 		   source, 
@@ -1099,7 +1099,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (requirementEClass, 
 		   source, 
@@ -1108,7 +1108,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getRequirement_IsObsolete(), 
 		   source, 
@@ -1116,7 +1116,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_RequirementId(), 
 		   source, 
@@ -1124,7 +1124,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "SysML::Requirements::Requirement::id", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_AdditionalInformation(), 
 		   source, 
@@ -1132,7 +1132,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationMethod(), 
 		   source, 
@@ -1140,7 +1140,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationPhase(), 
 		   source, 
@@ -1148,7 +1148,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_ImplementationVersion(), 
 		   source, 
@@ -1156,7 +1156,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_Feature(), 
 		   source, 
@@ -1164,7 +1164,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_RelatedCapellaElements(), 
 		   source, 
@@ -1172,7 +1172,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (systemFunctionalInterfaceRequirementEClass, 
 		   source, 
@@ -1181,7 +1181,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemFunctionalRequirementEClass, 
 		   source, 
@@ -1190,7 +1190,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalInterfaceRequirementEClass, 
 		   source, 
@@ -1199,7 +1199,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalRequirementEClass, 
 		   source, 
@@ -1208,7 +1208,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemUserRequirementEClass, 
 		   source, 
@@ -1217,7 +1217,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "base metaclass in UML/SysML profile ", "SysML::Requirements::Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -1227,7 +1227,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$										
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (getRequirementsPkg_AdditionalInformation(), 
 		   source, 
@@ -1235,7 +1235,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "additionalInformation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.RequirementPkg", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_Level(), 
 		   source, 
@@ -1243,35 +1243,35 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "level", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.RequirementPkg", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirements(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (requirementsTraceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.RequirementTrace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (requirementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Requirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirement_RequirementId(), 
 		   source, 
@@ -1279,7 +1279,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "requirementId", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_AdditionalInformation(), 
 		   source, 
@@ -1287,7 +1287,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "additionalInformation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationMethod(), 
 		   source, 
@@ -1295,7 +1295,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "verificationMethod", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_VerificationPhase(), 
 		   source, 
@@ -1303,7 +1303,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "verificationPhase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_ImplementationVersion(), 
 		   source, 
@@ -1311,7 +1311,7 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "implementationVersion", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequirement_Feature(), 
 		   source, 
@@ -1319,42 +1319,42 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 			 "featureName", "feature", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Requirement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (systemFunctionalInterfaceRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.SystemFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemFunctionalRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.SystemFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalInterfaceRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.SystemNonFunctionalInterfaceRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemNonFunctionalRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.SystemNonFunctionalRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemUserRequirementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.SystemUserRequirement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });
 	}
 
 	/**
@@ -1364,17 +1364,17 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																				
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirements(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getRequirementsPkg_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
-		   });																																																																								
+		   });
 	}
 
 	/**
@@ -1384,12 +1384,12 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (requirementsTraceEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																		
+		   });
 	}
 
 	/**
@@ -1399,22 +1399,22 @@ public class RequirementPackageImpl extends EPackageImpl implements RequirementP
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																																				
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getRequirementsTrace_Source(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getRequirementsTrace_Target(), 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });	
 		addAnnotation
 		  (getRequirement_RelatedCapellaElements(), 
 		   source, 
 		   new String[] {
-		   });																											
+		   });
 	}
 
 } //RequirementPackageImpl

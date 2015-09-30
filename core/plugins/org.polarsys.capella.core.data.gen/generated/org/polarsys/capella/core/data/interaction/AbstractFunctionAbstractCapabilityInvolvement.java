@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement#getCapability <em>Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement#getFunction <em>Function</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractFunctionAbstractCapabilityInvolvement()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A function can be involved in a capability.\r\n[source: MBSD unified approach]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

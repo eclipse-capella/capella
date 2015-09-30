@@ -21,13 +21,13 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getProtectedNode <em>Protected Node</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getHandlerBody <em>Handler Body</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getExceptionInput <em>Exception Input</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ExceptionHandler#getExceptionTypes <em>Exception Types</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getExceptionHandler()
  * @model abstract="true"

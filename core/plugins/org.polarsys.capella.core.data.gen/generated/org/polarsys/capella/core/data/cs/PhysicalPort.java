@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.information.Port;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalPort#getOwnedComponentPortAllocations <em>Owned Component Port Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalPort#getOwnedPhysicalPortRealizations <em>Owned Physical Port Realizations</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.information.Port;
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalPort#getRealizedPhysicalPorts <em>Realized Physical Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalPort#getRealizingPhysicalPorts <em>Realizing Physical Ports</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A port on a physical component\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

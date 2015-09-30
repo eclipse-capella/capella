@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.CommunicationMean#getSourceEntity <em>Source Entity</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.CommunicationMean#getTargetEntity <em>Target Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the mean by which two specific operational entities are able to exchange information\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

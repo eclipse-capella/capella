@@ -23,13 +23,13 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getSendProtocol <em>Send Protocol</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getReceiveProtocol <em>Receive Protocol</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getAllocatedItem <em>Allocated Item</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getAllocatingInterface <em>Allocating Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getExchangeItemAllocation()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Allocation link between exchange items and interface that support them' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.ctx.Actor;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getRoleAllocations <em>Role Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getOrganisationalUnitMemberships <em>Organisational Unit Memberships</em>}</li>
@@ -36,7 +37,6 @@ import org.polarsys.capella.core.data.ctx.Actor;
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getRealizingActors <em>Realizing Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An Operational Entity is a thing or entity that occurs in the real world of which information is required about fact that need to be known.\r\nAn Operational Entity can be for instance: A operational node, an actor, an equipment...' usage\040guideline='n/a' arcadia_description='An Operational Entity is a real world entity (other system, device, group or organisation...), interacting with the system (or software, equipment, hardware...) under study, or with its users.' used\040in\040levels='operational' usage\040examples='../img/usage_examples/example_operational_entities.png' constraints='none' comment/notes='none' reference\040documentation='none'"

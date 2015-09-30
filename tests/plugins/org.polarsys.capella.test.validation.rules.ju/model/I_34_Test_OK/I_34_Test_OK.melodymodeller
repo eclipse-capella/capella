@@ -75,7 +75,7 @@
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             href="fragments/SA-Capabilities-Capability_Fragmented.melodyfragment#c4f350d3-4e63-4599-ac6d-56f293c55e99"/>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
-            id="7700908f-a537-4ef3-9773-d4e77d3e4e4a" name="Capability 1" including="#ce12ffeb-de2e-4d0f-a0d8-bae56797951c">
+            id="7700908f-a537-4ef3-9773-d4e77d3e4e4a" name="Capability 1">
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
               id="84db4283-06c4-4842-a5bd-8a7265f82b90" involver="#7700908f-a537-4ef3-9773-d4e77d3e4e4a"
               involved="#2a7cb7b0-3776-4262-b603-dda0348f634d"/>

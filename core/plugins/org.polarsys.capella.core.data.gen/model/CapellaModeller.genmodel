@@ -1105,10 +1105,6 @@
         <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//communication/CommunicationLinkExchanger/acquire"/>
         <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//communication/CommunicationLinkExchanger/transmit"/>
       </genClasses>
-      <genClasses ecoreClass="Information.ecore#//communication/CommunicationLinkAllocation">
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//communication/CommunicationLinkAllocation/allocatingLink"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//communication/CommunicationLinkAllocation/allocatedLink"/>
-      </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Datatype" basePackage="org.polarsys.capella.core.data.information"
         resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
@@ -1403,7 +1399,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//DeployableElement/deployingLinks"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CompositeStructure.ecore#//DeploymentTarget">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//DeploymentTarget/deploymentLinks"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//DeploymentTarget/deploymentLinks"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CompositeStructure.ecore#//AbstractDeploymentLink">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//AbstractDeploymentLink/deployedElement"/>
@@ -1818,12 +1814,12 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/incomingCapabilityAllocation"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/outgoingCapabilityAllocation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/extends"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/extending"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/extending"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/abstractCapabilityExtensionPoints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/superGeneralizations"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/subGeneralizations"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/subGeneralizations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/includes"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/including"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/including"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/super"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/sub"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/includedAbstractCapabilities"/>
@@ -1839,20 +1835,20 @@
     </genClasses>
     <genClasses ecoreClass="Interaction.ecore#//AbstractCapabilityExtend">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityExtend/extended"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityExtend/extension"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityExtend/extension"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityExtend/extensionLocation"/>
     </genClasses>
     <genClasses ecoreClass="Interaction.ecore#//AbstractCapabilityExtensionPoint">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityExtensionPoint/abstractCapability"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityExtensionPoint/abstractCapability"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityExtensionPoint/extendLinks"/>
     </genClasses>
     <genClasses ecoreClass="Interaction.ecore#//AbstractCapabilityGeneralization">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityGeneralization/super"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityGeneralization/sub"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityGeneralization/sub"/>
     </genClasses>
     <genClasses ecoreClass="Interaction.ecore#//AbstractCapabilityInclude">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityInclude/included"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityInclude/inclusion"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityInclude/inclusion"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Interaction.ecore#//InteractionFragment">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//InteractionFragment/coveredInstanceRoles"/>

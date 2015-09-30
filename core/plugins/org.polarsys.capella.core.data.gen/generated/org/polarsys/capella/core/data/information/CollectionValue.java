@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.CollectionValue#getOwnedElements <em>Owned Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.CollectionValue#getOwnedDefaultElement <em>Owned Default Element</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getCollectionValue()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Caracterizes a value that represents a collection of elements\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

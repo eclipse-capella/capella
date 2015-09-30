@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Capability#getOwnedActorCapabilityInvolvements <em>Owned Actor Capability Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Capability#getOwnedSystemCapabilityInvolvement <em>Owned System Capability Involvement</em>}</li>
@@ -34,7 +35,6 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
  *   <li>{@link org.polarsys.capella.core.data.ctx.Capability#getRealizedOperationalCapabilities <em>Realized Operational Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Capability#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapability()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Capability'"

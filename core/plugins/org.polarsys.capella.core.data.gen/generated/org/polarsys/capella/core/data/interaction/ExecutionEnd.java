@@ -18,10 +18,10 @@ package org.polarsys.capella.core.data.interaction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.ExecutionEnd#getExecution <em>Execution</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getExecutionEnd()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ExecutionEnd'"

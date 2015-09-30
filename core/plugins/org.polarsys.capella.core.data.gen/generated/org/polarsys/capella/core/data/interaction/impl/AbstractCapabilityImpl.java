@@ -235,20 +235,6 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 
 
 	/**
-	 * The cached value of the '{@link #getExtending() <em>Extending</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtending()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractCapabilityExtend> extending;
-
-
-
-
-
-	/**
 	 * The cached value of the '{@link #getAbstractCapabilityExtensionPoints() <em>Abstract Capability Extension Points</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,20 +263,6 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 
 
 	/**
-	 * The cached value of the '{@link #getSubGeneralizations() <em>Sub Generalizations</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubGeneralizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractCapabilityGeneralization> subGeneralizations;
-
-
-
-
-
-	/**
 	 * The cached value of the '{@link #getIncludes() <em>Includes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,44 +271,6 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * @ordered
 	 */
 	protected EList<AbstractCapabilityInclude> includes;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getIncluding() <em>Including</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncluding()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractCapabilityInclude> including;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -856,7 +790,7 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	public EList<AbstractCapabilityExtend> getExtends() {
 
 		if (extends_ == null) {
-			extends_ = new EObjectContainmentWithInverseEList<AbstractCapabilityExtend>(AbstractCapabilityExtend.class, this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION);
+			extends_ = new EObjectContainmentEList<AbstractCapabilityExtend>(AbstractCapabilityExtend.class, this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS);
 		}
 		return extends_;
 	}
@@ -873,10 +807,39 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 
 	public EList<AbstractCapabilityExtend> getExtending() {
 
-		if (extending == null) {
-			extending = new EObjectWithInverseResolvingEList<AbstractCapabilityExtend>(AbstractCapabilityExtend.class, this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED);
-		}
-		return extending;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractCapabilityExtend> resultAsList = (Collection<AbstractCapabilityExtend>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractCapabilityExtend>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -892,7 +855,7 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	public EList<AbstractCapabilityExtensionPoint> getAbstractCapabilityExtensionPoints() {
 
 		if (abstractCapabilityExtensionPoints == null) {
-			abstractCapabilityExtensionPoints = new EObjectContainmentWithInverseEList<AbstractCapabilityExtensionPoint>(AbstractCapabilityExtensionPoint.class, this, InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY);
+			abstractCapabilityExtensionPoints = new EObjectContainmentEList<AbstractCapabilityExtensionPoint>(AbstractCapabilityExtensionPoint.class, this, InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS);
 		}
 		return abstractCapabilityExtensionPoints;
 	}
@@ -910,7 +873,7 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	public EList<AbstractCapabilityGeneralization> getSuperGeneralizations() {
 
 		if (superGeneralizations == null) {
-			superGeneralizations = new EObjectContainmentWithInverseEList<AbstractCapabilityGeneralization>(AbstractCapabilityGeneralization.class, this, InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS, InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB);
+			superGeneralizations = new EObjectContainmentEList<AbstractCapabilityGeneralization>(AbstractCapabilityGeneralization.class, this, InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS);
 		}
 		return superGeneralizations;
 	}
@@ -927,10 +890,39 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 
 	public EList<AbstractCapabilityGeneralization> getSubGeneralizations() {
 
-		if (subGeneralizations == null) {
-			subGeneralizations = new EObjectWithInverseEList<AbstractCapabilityGeneralization>(AbstractCapabilityGeneralization.class, this, InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS, InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER);
-		}
-		return subGeneralizations;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractCapabilityGeneralization> resultAsList = (Collection<AbstractCapabilityGeneralization>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractCapabilityGeneralization>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -946,7 +938,7 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	public EList<AbstractCapabilityInclude> getIncludes() {
 
 		if (includes == null) {
-			includes = new EObjectContainmentWithInverseEList<AbstractCapabilityInclude>(AbstractCapabilityInclude.class, this, InteractionPackage.ABSTRACT_CAPABILITY__INCLUDES, InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUSION);
+			includes = new EObjectContainmentEList<AbstractCapabilityInclude>(AbstractCapabilityInclude.class, this, InteractionPackage.ABSTRACT_CAPABILITY__INCLUDES);
 		}
 		return includes;
 	}
@@ -963,10 +955,39 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 
 	public EList<AbstractCapabilityInclude> getIncluding() {
 
-		if (including == null) {
-			including = new EObjectWithInverseResolvingEList<AbstractCapabilityInclude>(AbstractCapabilityInclude.class, this, InteractionPackage.ABSTRACT_CAPABILITY__INCLUDING, InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED);
-		}
-		return including;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractCapabilityInclude> resultAsList = (Collection<AbstractCapabilityInclude>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractCapabilityInclude>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -1424,33 +1445,6 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExtends()).basicAdd(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExtending()).basicAdd(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAbstractCapabilityExtensionPoints()).basicAdd(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSuperGeneralizations()).basicAdd(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSubGeneralizations()).basicAdd(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncludes()).basicAdd(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDING:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncluding()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1466,18 +1460,12 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 				return ((InternalEList<?>)getOwnedScenarios()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS:
 				return ((InternalEList<?>)getExtends()).basicRemove(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING:
-				return ((InternalEList<?>)getExtending()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS:
 				return ((InternalEList<?>)getAbstractCapabilityExtensionPoints()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS:
 				return ((InternalEList<?>)getSuperGeneralizations()).basicRemove(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS:
-				return ((InternalEList<?>)getSubGeneralizations()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDES:
 				return ((InternalEList<?>)getIncludes()).basicRemove(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDING:
-				return ((InternalEList<?>)getIncluding()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENTS:
 				return ((InternalEList<?>)getOwnedFunctionalChainAbstractCapabilityInvolvements()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENTS:
@@ -1615,10 +1603,6 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 				getExtends().clear();
 				getExtends().addAll((Collection<? extends AbstractCapabilityExtend>)newValue);
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING:
-				getExtending().clear();
-				getExtending().addAll((Collection<? extends AbstractCapabilityExtend>)newValue);
-				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS:
 				getAbstractCapabilityExtensionPoints().clear();
 				getAbstractCapabilityExtensionPoints().addAll((Collection<? extends AbstractCapabilityExtensionPoint>)newValue);
@@ -1627,17 +1611,9 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 				getSuperGeneralizations().clear();
 				getSuperGeneralizations().addAll((Collection<? extends AbstractCapabilityGeneralization>)newValue);
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS:
-				getSubGeneralizations().clear();
-				getSubGeneralizations().addAll((Collection<? extends AbstractCapabilityGeneralization>)newValue);
-				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDES:
 				getIncludes().clear();
 				getIncludes().addAll((Collection<? extends AbstractCapabilityInclude>)newValue);
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDING:
-				getIncluding().clear();
-				getIncluding().addAll((Collection<? extends AbstractCapabilityInclude>)newValue);
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENTS:
 				getOwnedFunctionalChainAbstractCapabilityInvolvements().clear();
@@ -1692,23 +1668,14 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS:
 				getExtends().clear();
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING:
-				getExtending().clear();
-				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS:
 				getAbstractCapabilityExtensionPoints().clear();
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS:
 				getSuperGeneralizations().clear();
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS:
-				getSubGeneralizations().clear();
-				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDES:
 				getIncludes().clear();
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDING:
-				getIncluding().clear();
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENTS:
 				getOwnedFunctionalChainAbstractCapabilityInvolvements().clear();
@@ -1763,17 +1730,17 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS:
 				return extends_ != null && !extends_.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING:
-				return extending != null && !extending.isEmpty();
+				return !getExtending().isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS:
 				return abstractCapabilityExtensionPoints != null && !abstractCapabilityExtensionPoints.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS:
 				return superGeneralizations != null && !superGeneralizations.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS:
-				return subGeneralizations != null && !subGeneralizations.isEmpty();
+				return !getSubGeneralizations().isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDES:
 				return includes != null && !includes.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__INCLUDING:
-				return including != null && !including.isEmpty();
+				return !getIncluding().isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__SUPER:
 				return !getSuper().isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__SUB:

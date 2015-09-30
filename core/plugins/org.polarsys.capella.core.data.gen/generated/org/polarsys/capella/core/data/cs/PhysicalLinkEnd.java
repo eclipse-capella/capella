@@ -18,11 +18,11 @@ package org.polarsys.capella.core.data.cs;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalLinkEnd#getPort <em>Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalLinkEnd#getPart <em>Part</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkEnd()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='PhysicalLinkEnd'"

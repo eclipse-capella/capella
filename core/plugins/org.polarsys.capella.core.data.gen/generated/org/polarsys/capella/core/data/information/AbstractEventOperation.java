@@ -21,10 +21,10 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.AbstractEventOperation#getInvokingSequenceMessages <em>Invoking Sequence Messages</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getAbstractEventOperation()
  * @model abstract="true"

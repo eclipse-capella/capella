@@ -19,6 +19,7 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.NumericType#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedDefaultValue <em>Owned Default Value</em>}</li>
@@ -26,7 +27,6 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedMinValue <em>Owned Min Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedMaxValue <em>Owned Max Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='NumericType'"

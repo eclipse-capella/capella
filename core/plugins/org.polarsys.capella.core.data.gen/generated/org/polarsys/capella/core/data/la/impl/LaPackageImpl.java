@@ -1154,7 +1154,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1164,7 +1164,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																
+		   });
 	}
 
 	/**
@@ -1174,7 +1174,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1186,7 +1186,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "This package depends on the model CompositeStructure.ecore\r\nThis package depends on the model Interaction.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (logicalArchitecturePkgEClass, 
 		   source, 
@@ -1198,7 +1198,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalArchitecturePkg_OwnedLogicalArchitectures(), 
 		   source, 
@@ -1206,7 +1206,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "Logical architectures set\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (logicalArchitectureEClass, 
 		   source, 
@@ -1218,7 +1218,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalContext(), 
 		   source, 
@@ -1226,7 +1226,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the set of parts that make the \"world\" (the system + the external parts) at the logical level\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponent(), 
 		   source, 
@@ -1234,7 +1234,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the logical component that represents the system (in the case where a single System is being designed)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
@@ -1242,7 +1242,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "Link to the package that contains logical components\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
@@ -1250,7 +1250,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "Link to the package that contains logical actors\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedSystemAnalysisRealizations(), 
 		   source, 
@@ -1258,7 +1258,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "Set of system analysis realization links that are owned/contained by the logical architecture\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalysisRealizations(), 
 		   source, 
@@ -1266,7 +1266,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) the realisation links from system analysis that point to this logical architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (logicalFunctionEClass, 
 		   source, 
@@ -1278,7 +1278,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_OwnedLogicalFunctionPkgs(), 
 		   source, 
@@ -1286,7 +1286,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "Set of subpackages that contain logical function elements", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (getLogicalFunction_ChildrenLogicalFunctions(), 
 		   source, 
@@ -1294,7 +1294,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "list of children logical functions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (logicalFunctionPkgEClass, 
 		   source, 
@@ -1306,7 +1306,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunctionPkg_OwnedLogicalFunctions(), 
 		   source, 
@@ -1314,7 +1314,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "logical function elements contained in this package\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunctionPkg_OwnedLogicalFunctionPkgs(), 
 		   source, 
@@ -1322,7 +1322,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "Set of subpackages that contain logical function elements\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (logicalComponentEClass, 
 		   source, 
@@ -1335,7 +1335,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponents(), 
 		   source, 
@@ -1343,7 +1343,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "children logical components of this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalArchitectures(), 
 		   source, 
@@ -1351,7 +1351,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the various logical architecture (alternatives) associated to this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponentPkgs(), 
 		   source, 
@@ -1359,7 +1359,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "logical component packages contained in this logical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedSystemRealizations(), 
 		   source, 
@@ -1367,7 +1367,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the system realization links that are contained in this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SystemRealizations(), 
 		   source, 
@@ -1375,7 +1375,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the system realization links that point to/from this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
@@ -1383,7 +1383,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) the children components of this logical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (logicalComponentPkgEClass, 
 		   source, 
@@ -1395,7 +1395,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponents(), 
 		   source, 
@@ -1403,7 +1403,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the logical components included in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponentPkgs(), 
 		   source, 
@@ -1411,7 +1411,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "sub-packages of this logical component package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (capabilityRealizationEClass, 
 		   source, 
@@ -1423,7 +1423,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
 		   source, 
@@ -1431,7 +1431,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the actor capability realization links that are contained in this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
 		   source, 
@@ -1439,7 +1439,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the system component realization links that are contained/owned by this capability realization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingActors(), 
 		   source, 
@@ -1447,7 +1447,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) direct references to the actors which capabilities are being realized by this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingSystemComponents(), 
 		   source, 
@@ -1455,7 +1455,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) direct references to the system components being realized by this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedActors(), 
 		   source, 
@@ -1463,7 +1463,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) references to the involvement links in ActorCapabilityRealizations\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedSystemComponents(), 
 		   source, 
@@ -1471,7 +1471,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) references to the involvement links in SystemComponentRealizations for this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (capabilityRealizationPkgEClass, 
 		   source, 
@@ -1483,7 +1483,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizations(), 
 		   source, 
@@ -1491,7 +1491,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the CapabilityRealizations contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizationPkgs(), 
 		   source, 
@@ -1499,7 +1499,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the sub-packages in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (systemAnalysisRealizationEClass, 
 		   source, 
@@ -1511,7 +1511,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (systemRealizationEClass, 
 		   source, 
@@ -1523,7 +1523,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (contextInterfaceRealizationEClass, 
 		   source, 
@@ -1535,7 +1535,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (logicalActorPkgEClass, 
 		   source, 
@@ -1547,7 +1547,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActorPkg_OwnedLogicalActorPkgs(), 
 		   source, 
@@ -1555,7 +1555,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "sub-(logical actor) packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActorPkg_OwnedLogicalActors(), 
 		   source, 
@@ -1563,7 +1563,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "logical actors contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (logicalActorEClass, 
 		   source, 
@@ -1575,7 +1575,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_OwnedSystemActorRealizations(), 
 		   source, 
@@ -1583,7 +1583,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "the list of realisation links to/from system-level actor(s) that this actor hosts/contains\r\n[source: Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_SystemActorRealizations(), 
 		   source, 
@@ -1591,7 +1591,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) the list of actor realization links where this logical actor is involved\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_ParticipationsInCapabilityRealizations(), 
 		   source, 
@@ -1599,7 +1599,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "description", "(automatically computed) the involvement links between this logical actor and actor capability realizations\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (systemActorRealizationEClass, 
 		   source, 
@@ -1611,7 +1611,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (logicalContextEClass, 
 		   source, 
@@ -1623,7 +1623,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -1633,254 +1633,254 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (logicalArchitectureEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalContext(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponent(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_ContainedCapabilityRealizationPkg(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_ContainedLogicalFunctionPkg(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalyses(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatingPhysicalArchitectures(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (logicalFunctionEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_OwnedLogicalFunctionPkgs(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getLogicalFunction_AllocatorLogicalActors(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_AllocatorLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_RealizedSystemFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_RealizingPhysicalFunctions(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_ContainedLogicalFunctions(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_ChildrenLogicalFunctions(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (logicalFunctionPkgEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunctionPkg_OwnedLogicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunctionPkg_OwnedLogicalFunctionPkgs(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (logicalComponentEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getLogicalComponent_AllocatedLogicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_RealizingPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_RealizedSystems(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (logicalComponentPkgEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (capabilityRealizationEClass, 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingActors(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingSystemComponents(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (capabilityRealizationPkgEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizationPkgs(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (logicalActorPkgEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActorPkg_OwnedLogicalActorPkgs(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActorPkg_OwnedLogicalActors(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (logicalActorEClass, 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getLogicalActor_AllocatedLogicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_RealizedSystemActors(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_RealizingPhysicalActors(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (logicalContextEClass, 
 		   source, 
@@ -1895,7 +1895,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1905,7 +1905,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																													
+		   });
 	}
 
 	/**
@@ -1915,157 +1915,157 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (logicalArchitecturePkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "LogicalArchitecturePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalArchitecturePkg_OwnedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedLogicalArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (logicalArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Logical Architecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponent(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedLogicalComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedLogicalComponentPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedActorPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalysisRealizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "allocatedLogicalArchitectureImplementations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																														
+		   });	
 		addAnnotation
 		  (logicalComponentEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "LogicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "subLogicalComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedLogicalArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedLogicalComponentPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "subActors" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																
+		   });	
 		addAnnotation
 		  (logicalComponentPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "LogicalComponentPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedLogicalComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "subLogicalComponentPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (capabilityRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "CapabilityRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedActorCapabilityRealizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedSystemComponentCapabilityRealizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingActors(), 
 		   source, 
 		   new String[] {
 			 "Label", "participatingActors" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingSystemComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "participatingSystemComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedActors(), 
 		   source, 
 		   new String[] {
 			 "Label", "involvedActors" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedSystemComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "involvedSystemComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (capabilityRealizationPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "CapabilityRealizationPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "capabilityRealizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizationPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedCapabilityRealizationPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																												
+		   });
 	}
 
 	/**
@@ -2075,161 +2075,161 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (logicalArchitecturePkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.LogicalArchitecturePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecturePkg_OwnedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (logicalArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.LogicalArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponent(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalysisRealizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																
+		   });	
 		addAnnotation
 		  (logicalComponentEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.LogicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																												
+		   });	
 		addAnnotation
 		  (logicalComponentPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.LogicalComponentPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (capabilityRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.CapabilityRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedActors(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedSystemComponents(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																	
+		   });	
 		addAnnotation
 		  (capabilityRealizationPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.CapabilityRealizationPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizationPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																													
+		   });
 	}
 
 	/**
@@ -2239,7 +2239,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (logicalArchitecturePkgEClass, 
 		   source, 
@@ -2248,7 +2248,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalArchitecturePkg_OwnedLogicalArchitectures(), 
 		   source, 
@@ -2256,7 +2256,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which LogicalArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (logicalArchitectureEClass, 
 		   source, 
@@ -2265,7 +2265,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalContext(), 
 		   source, 
@@ -2273,7 +2273,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which LogicalContext stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponent(), 
 		   source, 
@@ -2281,7 +2281,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which LogicalComponent stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
@@ -2289,7 +2289,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalComponentPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
@@ -2297,7 +2297,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalActorPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_ContainedCapabilityRealizationPkg(), 
 		   source, 
@@ -2305,7 +2305,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_ContainedLogicalFunctionPkg(), 
 		   source, 
@@ -2313,7 +2313,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedSystemAnalysisRealizations(), 
 		   source, 
@@ -2321,7 +2321,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ContextArchitectureRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalysisRealizations(), 
 		   source, 
@@ -2329,7 +2329,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalyses(), 
 		   source, 
@@ -2337,7 +2337,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatingPhysicalArchitectures(), 
 		   source, 
@@ -2345,7 +2345,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (logicalFunctionEClass, 
 		   source, 
@@ -2354,7 +2354,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "All functions are mapped to (empty) activities", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_OwnedLogicalFunctionPkgs(), 
 		   source, 
@@ -2362,7 +2362,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLogicalFunction_AllocatorLogicalActors(), 
 		   source, 
@@ -2370,7 +2370,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_AllocatorLogicalComponents(), 
 		   source, 
@@ -2378,7 +2378,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_RealizedSystemFunctions(), 
 		   source, 
@@ -2386,7 +2386,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_RealizingPhysicalFunctions(), 
 		   source, 
@@ -2394,7 +2394,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_ContainedLogicalFunctions(), 
 		   source, 
@@ -2402,7 +2402,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLogicalFunction_ChildrenLogicalFunctions(), 
 		   source, 
@@ -2410,7 +2410,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (logicalFunctionPkgEClass, 
 		   source, 
@@ -2419,7 +2419,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunctionPkg_OwnedLogicalFunctions(), 
 		   source, 
@@ -2427,7 +2427,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which LogicalFunction stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunctionPkg_OwnedLogicalFunctionPkgs(), 
 		   source, 
@@ -2435,7 +2435,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (logicalComponentEClass, 
 		   source, 
@@ -2444,7 +2444,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Blocks::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "cannot map to uml::Component since this mapping is for a SysML profile, and uml::Component is not part of UML4SysML", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponents(), 
 		   source, 
@@ -2452,7 +2452,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Class::nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "the nesting relation is just convenient to store sub-components under a component in the three, even though the hierachical relationship between componenets is not\r\nderived from this nesting : instead, it relies on the Parts present in the component, that are typed by the sub-components types.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Class::nestedClassifier elements on which LogicalComponent stereotype or any stereotype that inherits from it is applied\r\nOrder will not be preserved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalArchitectures(), 
 		   source, 
@@ -2460,7 +2460,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Blocks::Block cannot contain LogicalArchitecture\'s equivalent, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponentPkgs(), 
 		   source, 
@@ -2468,7 +2468,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Blocks::Block cannot contain packages, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedSystemRealizations(), 
 		   source, 
@@ -2476,7 +2476,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Blocks::Block cannot contain realizations, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SystemRealizations(), 
 		   source, 
@@ -2484,7 +2484,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
@@ -2492,7 +2492,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLogicalComponent_AllocatedLogicalFunctions(), 
 		   source, 
@@ -2500,7 +2500,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_RealizingPhysicalComponents(), 
 		   source, 
@@ -2508,7 +2508,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_RealizedSystems(), 
 		   source, 
@@ -2516,7 +2516,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (logicalComponentPkgEClass, 
 		   source, 
@@ -2525,7 +2525,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponents(), 
 		   source, 
@@ -2533,7 +2533,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which LogicalComponent stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponentPkgs(), 
 		   source, 
@@ -2541,7 +2541,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalComponentPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (capabilityRealizationEClass, 
 		   source, 
@@ -2550,7 +2550,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "needs to be mapped to UseCase since its parent is mapped to UseCase...and has many references mapped to UseCase\'s references", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
 		   source, 
@@ -2558,7 +2558,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ActorCapabilityRealizationInvolvement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
 		   source, 
@@ -2566,7 +2566,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which SystemComponentCapabilityRealizationInvolvement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingActors(), 
 		   source, 
@@ -2574,7 +2574,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingSystemComponents(), 
 		   source, 
@@ -2582,7 +2582,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedActors(), 
 		   source, 
@@ -2590,7 +2590,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedSystemComponents(), 
 		   source, 
@@ -2598,7 +2598,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilities(), 
 		   source, 
@@ -2606,7 +2606,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilityRealizations(), 
 		   source, 
@@ -2614,7 +2614,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizingCapabilityRealizations(), 
 		   source, 
@@ -2622,7 +2622,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (capabilityRealizationPkgEClass, 
 		   source, 
@@ -2631,7 +2631,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizations(), 
 		   source, 
@@ -2639,7 +2639,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which CapabilityRealization stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizationPkgs(), 
 		   source, 
@@ -2647,7 +2647,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which CapabilityRealizationPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (systemAnalysisRealizationEClass, 
 		   source, 
@@ -2656,7 +2656,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (systemRealizationEClass, 
 		   source, 
@@ -2665,7 +2665,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (contextInterfaceRealizationEClass, 
 		   source, 
@@ -2674,7 +2674,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (logicalActorPkgEClass, 
 		   source, 
@@ -2683,7 +2683,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActorPkg_OwnedLogicalActorPkgs(), 
 		   source, 
@@ -2691,7 +2691,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalActorPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActorPkg_OwnedLogicalActors(), 
 		   source, 
@@ -2699,7 +2699,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which LogicalActor stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (logicalActorEClass, 
 		   source, 
@@ -2708,7 +2708,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Blocks::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_OwnedSystemActorRealizations(), 
 		   source, 
@@ -2716,7 +2716,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "uml::BehavioredClassifier::interfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::BehavioredClassifier::interfaceRealization elements on which ActorRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_SystemActorRealizations(), 
 		   source, 
@@ -2724,7 +2724,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_ParticipationsInCapabilityRealizations(), 
 		   source, 
@@ -2732,7 +2732,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_AllocatedLogicalFunctions(), 
 		   source, 
@@ -2740,7 +2740,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_RealizedSystemActors(), 
 		   source, 
@@ -2748,7 +2748,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_RealizingPhysicalActors(), 
 		   source, 
@@ -2756,7 +2756,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (systemActorRealizationEClass, 
 		   source, 
@@ -2765,7 +2765,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::InterfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (logicalContextEClass, 
 		   source, 
@@ -2774,7 +2774,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -2784,102 +2784,102 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$												
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getLogicalArchitecturePkg_OwnedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponent(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalysisRealizations(), 
 		   source, 
 		   new String[] {
-		   });																																																				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponentPkgs(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingActors(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingSystemComponents(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedActors(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedSystemComponents(), 
 		   source, 
 		   new String[] {
-		   });																					
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizationPkgs(), 
 		   source, 
 		   new String[] {
-		   });																																											
+		   });
 	}
 
 	/**
@@ -2889,148 +2889,148 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																																									
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getLogicalArchitecture_ContainedCapabilityRealizationPkg(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_ContainedLogicalFunctionPkg(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalysisRealizations(), 
 		   source, 
 		   new String[] {
 			 "derive", "self.ownedPartitions.representedElement.oclIsKindOf(PhysicalComponent) -> oclAsType(PhysicalComponent)" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalyses(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatingPhysicalArchitectures(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getLogicalFunction_AllocatorLogicalActors(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_AllocatorLogicalComponents(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_RealizedSystemFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_RealizingPhysicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_ContainedLogicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalFunction_ChildrenLogicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });																																						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SystemRealizations(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getLogicalComponent_AllocatedLogicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_RealizingPhysicalComponents(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalComponent_RealizedSystems(), 
 		   source, 
 		   new String[] {
-		   });																																						
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingActors(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_ParticipatingSystemComponents(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedActors(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_InvolvedSystemComponents(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });																																									
+		   });	
 		addAnnotation
 		  (getLogicalActor_SystemActorRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_ParticipationsInCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_AllocatedLogicalFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_RealizedSystemActors(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getLogicalActor_RealizingPhysicalActors(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });
 	}
 
 } //LaPackageImpl

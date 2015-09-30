@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalActorPkg#getOwnedLogicalActorPkgs <em>Owned Logical Actor Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalActorPkg#getOwnedLogicalActors <em>Owned Logical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalActorPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Package that contains LogicalActor elements' usage\040guideline='n/a' used\040in\040levels='logical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

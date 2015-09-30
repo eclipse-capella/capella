@@ -84,15 +84,6 @@ public interface CommunicationFactory extends EFactory {
 	CommunicationLink createCommunicationLink();
 
 	/**
-	 * Returns a new object of class '<em>Link Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link Allocation</em>'.
-	 * @generated
-	 */
-	CommunicationLinkAllocation createCommunicationLinkAllocation();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

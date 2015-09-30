@@ -38,6 +38,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElementLink/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElementLink/origin"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElementLink/unsynchronizedFeatures"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElementLink/suffixed"/>
     </genClasses>
     <genClasses ecoreClass="re.ecore#//CatalogElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/kind"/>

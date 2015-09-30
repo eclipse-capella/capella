@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Involvement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement#getActor <em>Actor</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement#getMission <em>Mission</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getActorMissionInvolvement()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ActorMissionInvolvement'"

@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer#getOwnedFunctionalChains <em>Owned Functional Chains</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalChainContainer()
  * @model abstract="true"

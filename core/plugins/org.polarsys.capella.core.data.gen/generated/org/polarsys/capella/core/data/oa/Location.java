@@ -19,11 +19,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.Location#getLocationDescription <em>Location Description</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Location#getLocatedEntities <em>Located Entities</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getLocation()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a physical place where specific entities can be located.\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella 1.0.3' reference\040documentation='none'"

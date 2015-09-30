@@ -159,6 +159,8 @@ public enum ObjectNodeOrderingKind implements Enumerator {
 	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ObjectNodeOrderingKind get(String literal) {
@@ -175,6 +177,8 @@ public enum ObjectNodeOrderingKind implements Enumerator {
 	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ObjectNodeOrderingKind getByName(String name) {
@@ -191,6 +195,8 @@ public enum ObjectNodeOrderingKind implements Enumerator {
 	 * Returns the '<em><b>Object Node Ordering Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ObjectNodeOrderingKind get(int value) {

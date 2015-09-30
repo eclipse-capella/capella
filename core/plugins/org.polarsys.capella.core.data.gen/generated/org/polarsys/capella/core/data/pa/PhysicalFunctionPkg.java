@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg#getOwnedPhysicalFunctions <em>Owned Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunctionPkg#getOwnedPhysicalFunctionPkgs <em>Owned Physical Function Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunctionPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for physical functions\r\n[source: Capella study]' usage\040guideline='Used to structure the storage of physical function elements inside a physical architecture\r\n' used\040in\040levels='physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

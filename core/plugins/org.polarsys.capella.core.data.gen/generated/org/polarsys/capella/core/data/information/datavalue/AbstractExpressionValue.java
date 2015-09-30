@@ -19,12 +19,12 @@ import org.polarsys.capella.core.data.information.datatype.DataType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue#getUnparsedExpression <em>Unparsed Expression</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue#getExpressionType <em>Expression Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getAbstractExpressionValue()
  * @model abstract="true"

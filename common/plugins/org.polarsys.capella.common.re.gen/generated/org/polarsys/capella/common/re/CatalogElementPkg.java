@@ -20,10 +20,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElementPkg#getOwnedElementPkgs <em>Owned Element Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.re.RePackage#getCatalogElementPkg()
  * @model

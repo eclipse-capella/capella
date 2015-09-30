@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.capellacore.Type;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.DataValue#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.DataValue#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getDataValue()
  * @model abstract="true"

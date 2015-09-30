@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.la.LogicalFunction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getOwnedPhysicalFunctionPkgs <em>Owned Physical Function Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalActors <em>Allocator Physical Actors</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.la.LogicalFunction;
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getContainedPhysicalFunctions <em>Contained Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getChildrenPhysicalFunctions <em>Children Physical Functions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Function applied at physical level\r\n[source: Capella study]' usage\040guideline='this element is used in the \"functional approach\" usage, as the result of the flow down/refinement of the functions at the logical architecture level\r\n[source: Capella study]' used\040in\040levels='physical' usage\040examples='../img/usage_examples/example_physical_functions.png' constraints='none' comment/notes='none' reference\040documentation='none'"

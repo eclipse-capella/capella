@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.information.Port;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchange#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchange#isOriented <em>Oriented</em>}</li>
@@ -44,7 +45,6 @@ import org.polarsys.capella.core.data.information.Port;
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchange#getRealizedComponentExchanges <em>Realized Component Exchanges</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchange#getRealizingComponentExchanges <em>Realizing Component Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a specialized version of an exchange specification, dedicated to characterize exchanges between components\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none' arcadia_description='An Exchange is an interaction between some entities such as actors, the system, functions or components, which is likely to influence their behaviour. Example: tuning frequency, radio selection command...'"

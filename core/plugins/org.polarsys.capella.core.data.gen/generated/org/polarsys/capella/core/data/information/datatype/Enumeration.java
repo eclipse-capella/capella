@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.Enumeration#getOwnedLiterals <em>Owned Literals</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.Enumeration#getOwnedDefaultValue <em>Owned Default Value</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.Enumeration#getOwnedMaxValue <em>Owned Max Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.Enumeration#getDomainType <em>Domain Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getEnumeration()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Enumeration'"

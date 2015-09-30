@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.ctx.Actor;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalActor#getRealizingSystemActors <em>Realizing System Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActor()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A person or organization playing a role within an operational process.' usage\040guideline='n/a' arcadia_description='An actor is a [usually human] non-decomposable operational Entity. Example: User of a radio set; radio station...' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

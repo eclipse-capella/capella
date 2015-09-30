@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.AbstractState#getOwnedAbstractStateRealizations <em>Owned Abstract State Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.AbstractState#getRealizedAbstractStates <em>Realized Abstract States</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.AbstractState#getIncoming <em>Incoming</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.AbstractState#getInvolverRegions <em>Involver Regions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState()
  * @model abstract="true"

@@ -2967,15 +2967,13 @@
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="fca7517e-e295-4964-9d7d-0390efc13e55" name="Balloon" nature="NODE">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="167aca3c-f640-4574-bc42-2b0d84daeaea"
-              name="Embedded Computer" abstractType="#5b99f619-c607-4aeb-a475-439d6301d95a"
-              deploymentLinks="#f7f387a6-c086-408e-ba82-84df916cbf14">
+              name="Embedded Computer" abstractType="#5b99f619-c607-4aeb-a475-439d6301d95a">
             <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                 id="f7f387a6-c086-408e-ba82-84df916cbf14" deployedElement="#d51f2998-df78-49a0-ab5b-2cddf6dbeb89"
                 location="#167aca3c-f640-4574-bc42-2b0d84daeaea"/>
           </ownedFeatures>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="5acb5937-e957-4ccf-adc2-67c693111895"
-              name="Climatical Station" abstractType="#90f12ab4-854e-4348-a02a-c8674cb42a2c"
-              deploymentLinks="#8b2033da-8a42-4d75-ab42-ca57f15b07ac #933b743e-4d0f-4e94-b808-e516d3d2b32d #e1520648-c4ee-40d9-9f14-27322fe29ba3 #f7efe28a-bc22-4130-9065-e7e5a64dbdf1 #6e93a855-f804-4694-a498-968cc11f0d74">
+              name="Climatical Station" abstractType="#90f12ab4-854e-4348-a02a-c8674cb42a2c">
             <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                 id="8b2033da-8a42-4d75-ab42-ca57f15b07ac" deployedElement="#9f7a320e-6dc8-47cd-934b-cba895c2a33a"
                 location="#5acb5937-e957-4ccf-adc2-67c693111895"/>
@@ -3015,8 +3013,7 @@
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="8f99e67e-5f07-4af4-9c7b-cfbee1a2e642" name="Ground Station" nature="NODE">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="b52d1e95-edc1-476a-9a54-eaecabc7c2ca"
-              name="Ground Station Computer" abstractType="#0365ea81-9008-4388-941d-89cc405bf069"
-              deploymentLinks="#62888217-d158-46ec-8300-646941014af8 #7515d364-6f70-48e4-80ed-351941936dcf">
+              name="Ground Station Computer" abstractType="#0365ea81-9008-4388-941d-89cc405bf069">
             <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                 id="62888217-d158-46ec-8300-646941014af8" deployedElement="#91a8ecdc-671e-4733-b6de-5235e04d453f"
                 location="#b52d1e95-edc1-476a-9a54-eaecabc7c2ca"/>
@@ -8497,15 +8494,13 @@
             </ownedRegions>
           </ownedStateMachines>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="d5d7a75f-239f-425d-a1d0-63e553436e72"
-              name="Embedded Computer" abstractType="#dc862c14-6f86-4f57-83d0-92995ddae6ce"
-              deploymentLinks="#0fcd9921-12d4-4a60-975f-bd1cb19173ce">
+              name="Embedded Computer" abstractType="#dc862c14-6f86-4f57-83d0-92995ddae6ce">
             <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                 id="0fcd9921-12d4-4a60-975f-bd1cb19173ce" deployedElement="#f06ebbaf-87e5-4f0f-ae28-7e61d71fca4f"
                 location="#d5d7a75f-239f-425d-a1d0-63e553436e72"/>
           </ownedFeatures>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="7c24593f-016f-4bba-a65f-ad829d5de2d9"
-              name="Climatical Station" abstractType="#82556070-172c-4a1e-adae-77e3e9e55db2"
-              deploymentLinks="#0400a3a7-0f0e-4a2d-8772-f7526cb58864 #a48065f7-ef8a-4f96-819e-b8a77c406019 #a367a56c-e9ac-4490-9c03-5f5541115811 #01471ce5-b422-474a-8e8a-43ede7373a8a #28475e81-d9d0-498a-92d1-c9cdf70a2e79 #db20b564-3ecf-4b15-b748-2ed05b7703c8">
+              name="Climatical Station" abstractType="#82556070-172c-4a1e-adae-77e3e9e55db2">
             <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                 id="0400a3a7-0f0e-4a2d-8772-f7526cb58864" deployedElement="#f13049e2-d850-494e-bd11-67ae098220ef"
                 location="#7c24593f-016f-4bba-a65f-ad829d5de2d9"/>
@@ -8547,8 +8542,7 @@
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="fdcb8864-1413-4d51-a5bf-fd691a2385d1" name="Ground Station" nature="NODE">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2f0a6e40-be98-4d4a-af6d-b3e4e8d5bbc9"
-              name="Ground Station Computer" abstractType="#5d493693-21ae-4a9d-b58d-63fac0cbdf32"
-              deploymentLinks="#95fb60b8-0b30-49ac-9b30-73dd4546b065 #bd29c0b4-9284-41e8-aac3-56cf0920d426">
+              name="Ground Station Computer" abstractType="#5d493693-21ae-4a9d-b58d-63fac0cbdf32">
             <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                 id="95fb60b8-0b30-49ac-9b30-73dd4546b065" deployedElement="#ac9d8e35-b9f1-450b-b591-e4764cbf4dc8"
                 location="#2f0a6e40-be98-4d4a-af6d-b3e4e8d5bbc9"/>

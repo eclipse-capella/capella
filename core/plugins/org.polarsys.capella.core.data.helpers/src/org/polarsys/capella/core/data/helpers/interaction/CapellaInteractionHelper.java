@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,11 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElement
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedRelationshipHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
+import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityExtendHelper;
+import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityExtensionPointHelper;
+import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityGeneralizationHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityHelper;
+import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityIncludeHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityRealizationHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractFunctionAbstractCapabilityInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.CombinedFragmentHelper;
@@ -81,68 +85,70 @@ public class CapellaInteractionHelper implements IHelper {
    *      org.eclipse.emf.ecore.EAnnotation)
    */
   @Override
-  public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+  public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
     Object ret = null;
 
-    if (object_p instanceof AbstractCapabilityRealization) {
-      ret = AbstractCapabilityRealizationHelper.getInstance().doSwitch((AbstractCapabilityRealization) object_p, feature_p);
-    } else if (object_p instanceof AbstractCapability) {
-      ret = AbstractCapabilityHelper.getInstance().doSwitch((AbstractCapability) object_p, feature_p);
-    } else if (object_p instanceof Scenario) {
-      ret = ScenarioHelper.getInstance().doSwitch((Scenario) object_p, feature_p);
-    } else if (object_p instanceof InteractionOperand) {
-      ret = NamedElementHelper.getInstance().doSwitch((InteractionOperand) object_p, feature_p);
-    } else if (object_p instanceof InteractionState) {
-      ret = InteractionStateHelper.getInstance().doSwitch((InteractionState) object_p, feature_p);
-    } else if (object_p instanceof FragmentEnd) {
-      ret = FragmentEndHelper.getInstance().doSwitch((FragmentEnd) object_p, feature_p);
-    } else if (object_p instanceof Gate) {
-      ret = MessageEndHelper.getInstance().doSwitch((Gate) object_p, feature_p);
-    } else if (object_p instanceof MessageEnd) {
-      ret = MessageEndHelper.getInstance().doSwitch((MessageEnd) object_p, feature_p);
-    } else if (object_p instanceof ExecutionEnd) {
-      ret = ExecutionEndHelper.getInstance().doSwitch((ExecutionEnd) object_p, feature_p);
-    } else if (object_p instanceof InteractionUse) {
-      ret = InteractionUseHelper.getInstance().doSwitch((InteractionUse) object_p, feature_p);
-    } else if (object_p instanceof CombinedFragment) {
-      ret = CombinedFragmentHelper.getInstance().doSwitch((CombinedFragment) object_p, feature_p);
-    } else if (object_p instanceof StateFragment) {
-      ret = NamedElementHelper.getInstance().doSwitch((StateFragment) object_p, feature_p);
-    } else if (object_p instanceof SequenceMessage) {
-      ret = SequenceMessageHelper.getInstance().doSwitch((SequenceMessage) object_p, feature_p);
-    } else if (object_p instanceof InstanceRole) {
-      ret = InstanceRoleHelper.getInstance().doSwitch((InstanceRole) object_p, feature_p);
-    } else if (object_p instanceof Event) {
-      ret = EventHelper.getInstance().doSwitch((Event) object_p, feature_p);
-    } else if (object_p instanceof Execution) {
-      ret = ExecutionHelper.getInstance().doSwitch((Execution) object_p, feature_p);
-    } else if (object_p instanceof RefinementLink) {
-      ret = TraceHelper.getInstance().doSwitch((RefinementLink) object_p, feature_p);
-    } else if (object_p instanceof MergeLink) {
-      ret = TraceHelper.getInstance().doSwitch((MergeLink) object_p, feature_p);
-    } else if (object_p instanceof AbstractCapabilityExtensionPoint) {
-      ret = NamedRelationshipHelper.getInstance().doSwitch((AbstractCapabilityExtensionPoint) object_p, feature_p);
-    } else if (object_p instanceof AbstractCapabilityExtend) {
-      ret = RelationshipHelper.getInstance().doSwitch((AbstractCapabilityExtend) object_p, feature_p);
-    } else if (object_p instanceof AbstractCapabilityInclude) {
-      ret = RelationshipHelper.getInstance().doSwitch((AbstractCapabilityInclude) object_p, feature_p);
-    } else if (object_p instanceof AbstractCapabilityGeneralization) {
-      ret = RelationshipHelper.getInstance().doSwitch((AbstractCapabilityGeneralization) object_p, feature_p);
-    } else if (object_p instanceof AbstractFunctionAbstractCapabilityInvolvement) {
-      ret = AbstractFunctionAbstractCapabilityInvolvementHelper.getInstance().doSwitch((AbstractFunctionAbstractCapabilityInvolvement) object_p, feature_p);
-    } else if (object_p instanceof FunctionalChainAbstractCapabilityInvolvement) {
-      ret = FunctionalChainAbstractCapabilityInvolvementHelper.getInstance().doSwitch((FunctionalChainAbstractCapabilityInvolvement) object_p, feature_p);
-    } else if (object_p instanceof ScenarioRealization) {
-      ret = ScenarioRealizationHelper.getInstance().doSwitch((ScenarioRealization) object_p, feature_p);
-    } else if (object_p instanceof ConstraintDuration) {
-      ret = NamedElementHelper.getInstance().doSwitch((ConstraintDuration) object_p, feature_p);
-    } else if (object_p instanceof TimeLapse) {
-      ret = NamedElementHelper.getInstance().doSwitch((TimeLapse) object_p, feature_p);
-    } else if (object_p instanceof SequenceMessageValuation){
-      ret = CapellaElementHelper.getInstance().doSwitch((CapellaElement) object_p, feature_p);
+    if (object instanceof AbstractCapabilityRealization) {
+      ret = AbstractCapabilityRealizationHelper.getInstance().doSwitch((AbstractCapabilityRealization) object, feature);
+    } else if (object instanceof AbstractCapability) {
+      ret = AbstractCapabilityHelper.getInstance().doSwitch((AbstractCapability) object, feature);
+    } else if (object instanceof Scenario) {
+      ret = ScenarioHelper.getInstance().doSwitch((Scenario) object, feature);
+    } else if (object instanceof InteractionOperand) {
+      ret = NamedElementHelper.getInstance().doSwitch((InteractionOperand) object, feature);
+    } else if (object instanceof InteractionState) {
+      ret = InteractionStateHelper.getInstance().doSwitch((InteractionState) object, feature);
+    } else if (object instanceof FragmentEnd) {
+      ret = FragmentEndHelper.getInstance().doSwitch((FragmentEnd) object, feature);
+    } else if (object instanceof Gate) {
+      ret = MessageEndHelper.getInstance().doSwitch((Gate) object, feature);
+    } else if (object instanceof MessageEnd) {
+      ret = MessageEndHelper.getInstance().doSwitch((MessageEnd) object, feature);
+    } else if (object instanceof ExecutionEnd) {
+      ret = ExecutionEndHelper.getInstance().doSwitch((ExecutionEnd) object, feature);
+    } else if (object instanceof InteractionUse) {
+      ret = InteractionUseHelper.getInstance().doSwitch((InteractionUse) object, feature);
+    } else if (object instanceof CombinedFragment) {
+      ret = CombinedFragmentHelper.getInstance().doSwitch((CombinedFragment) object, feature);
+    } else if (object instanceof StateFragment) {
+      ret = NamedElementHelper.getInstance().doSwitch((StateFragment) object, feature);
+    } else if (object instanceof SequenceMessage) {
+      ret = SequenceMessageHelper.getInstance().doSwitch((SequenceMessage) object, feature);
+    } else if (object instanceof InstanceRole) {
+      ret = InstanceRoleHelper.getInstance().doSwitch((InstanceRole) object, feature);
+    } else if (object instanceof Event) {
+      ret = EventHelper.getInstance().doSwitch((Event) object, feature);
+    } else if (object instanceof Execution) {
+      ret = ExecutionHelper.getInstance().doSwitch((Execution) object, feature);
+    } else if (object instanceof RefinementLink) {
+      ret = TraceHelper.getInstance().doSwitch((RefinementLink) object, feature);
+    } else if (object instanceof MergeLink) {
+      ret = TraceHelper.getInstance().doSwitch((MergeLink) object, feature);
+    } else if (object instanceof AbstractCapabilityExtensionPoint) {
+      ret = AbstractCapabilityExtensionPointHelper.getInstance().doSwitch((AbstractCapabilityExtensionPoint) object, feature);
+    } else if (object instanceof AbstractCapabilityExtend) {
+      ret = AbstractCapabilityExtendHelper.getInstance().doSwitch((AbstractCapabilityExtend) object, feature);
+    } else if (object instanceof AbstractCapabilityInclude) {
+      ret = AbstractCapabilityIncludeHelper.getInstance().doSwitch((AbstractCapabilityInclude) object, feature);
+    } else if (object instanceof AbstractCapabilityGeneralization) {
+      ret = AbstractCapabilityGeneralizationHelper.getInstance().doSwitch((AbstractCapabilityGeneralization) object, feature);
+    } else if (object instanceof AbstractFunctionAbstractCapabilityInvolvement) {
+      ret = AbstractFunctionAbstractCapabilityInvolvementHelper.getInstance().doSwitch((AbstractFunctionAbstractCapabilityInvolvement) object, feature);
+    } else if (object instanceof FunctionalChainAbstractCapabilityInvolvement) {
+      ret = FunctionalChainAbstractCapabilityInvolvementHelper.getInstance().doSwitch((FunctionalChainAbstractCapabilityInvolvement) object, feature);
+    } else if (object instanceof ScenarioRealization) {
+      ret = ScenarioRealizationHelper.getInstance().doSwitch((ScenarioRealization) object, feature);
+    } else if (object instanceof ConstraintDuration) {
+      ret = NamedElementHelper.getInstance().doSwitch((ConstraintDuration) object, feature);
+    } else if (object instanceof TimeLapse) {
+      ret = NamedElementHelper.getInstance().doSwitch((TimeLapse) object, feature);
+    } else if (object instanceof SequenceMessageValuation){
+      ret = CapellaElementHelper.getInstance().doSwitch((CapellaElement) object, feature);
     }
+    
+    
 
-    if (null != ret || feature_p.getUpperBound() == 1)
+    if (null != ret || feature.getUpperBound() == 1)
       return ret;
 
     throw new HelperNotFoundException();

@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionOutputPort#getOutgoingExchangeItems <em>Outgoing Exchange Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionOutputPort#getOutgoingFunctionalExchanges <em>Outgoing Functional Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionOutputPort()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an output interface of its owning function, to be the origin of functional exchanges towards other functions\r\n[source: Capella study]' usage\040guideline='It is necessary to create a function output port on a function, to be able to set this function as the origin of a functional exchange. Note however that the Capella tool automatically creates a function output port on the origin function, when a functional exchange is created.\r\n[source: Capella study]' used\040in\040levels='system,logical,physical' usage\040examples='../img/usage_examples/ports_exchanges.png' constraints='none' comment/notes='none' reference\040documentation='none'"

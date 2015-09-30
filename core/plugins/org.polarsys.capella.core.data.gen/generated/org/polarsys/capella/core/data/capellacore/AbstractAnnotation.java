@@ -18,10 +18,10 @@ package org.polarsys.capella.core.data.capellacore;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.AbstractAnnotation#getContent <em>Content</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getAbstractAnnotation()
  * @model interface="true" abstract="true"

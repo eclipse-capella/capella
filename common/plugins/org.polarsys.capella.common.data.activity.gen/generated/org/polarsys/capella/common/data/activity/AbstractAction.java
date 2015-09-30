@@ -24,6 +24,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractAction#getLocalPrecondition <em>Local Precondition</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractAction#getLocalPostcondition <em>Local Postcondition</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractAction#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractAction#getOutputs <em>Outputs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAbstractAction()
  * @model abstract="true"

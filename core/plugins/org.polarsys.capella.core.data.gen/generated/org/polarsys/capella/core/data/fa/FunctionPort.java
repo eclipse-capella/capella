@@ -21,13 +21,13 @@ import org.polarsys.capella.core.data.information.Port;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionPort#getRepresentedComponentPort <em>Represented Component Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionPort#getAllocatorComponentPorts <em>Allocator Component Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionPort#getRealizedFunctionPorts <em>Realized Function Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionPort#getRealizingFunctionPorts <em>Realizing Function Ports</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPort()
  * @model abstract="true"

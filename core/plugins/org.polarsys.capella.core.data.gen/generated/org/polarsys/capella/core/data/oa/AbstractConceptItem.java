@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.cs.Component;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.AbstractConceptItem#getComposingLinks <em>Composing Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getAbstractConceptItem()
  * @model abstract="true"

@@ -373,6 +373,8 @@ public enum InteractionOperatorKind implements Enumerator {
 	 * Returns the '<em><b>Operator Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static InteractionOperatorKind get(String literal) {
@@ -389,6 +391,8 @@ public enum InteractionOperatorKind implements Enumerator {
 	 * Returns the '<em><b>Operator Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static InteractionOperatorKind getByName(String name) {
@@ -405,6 +409,8 @@ public enum InteractionOperatorKind implements Enumerator {
 	 * Returns the '<em><b>Operator Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static InteractionOperatorKind get(int value) {

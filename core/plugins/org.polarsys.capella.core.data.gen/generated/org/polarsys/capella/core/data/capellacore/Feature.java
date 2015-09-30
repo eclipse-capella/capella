@@ -18,12 +18,12 @@ package org.polarsys.capella.core.data.capellacore;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Feature#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Feature#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Feature#getVisibility <em>Visibility</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getFeature()
  * @model abstract="true"

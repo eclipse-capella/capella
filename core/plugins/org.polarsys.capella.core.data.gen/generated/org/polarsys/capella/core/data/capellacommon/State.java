@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getOwnedRegions <em>Owned Regions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getAvailableAbstractFunctions <em>Available Abstract Functions</em>}</li>
@@ -34,7 +35,6 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getExit <em>Exit</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.State#getStateInvariant <em>State Invariant</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A state models a situation during which some (usually implicit) invariant condition holds. \r\n[source: UML superstructure v2.2]\r\n\r\nA condition of a system or element, as defined by some of its properties, which can enable system behaviors and/or structure to occur. Note: The enabled behavior may include no actions, such as associated with a wait state. Also, the condition that defines the state may be dependent on one or more previous states\r\n[source: UML for SE RFP]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='../img/usage_examples/example_statemachine.png' constraints='none' comment/notes='none' reference\040documentation='none'"

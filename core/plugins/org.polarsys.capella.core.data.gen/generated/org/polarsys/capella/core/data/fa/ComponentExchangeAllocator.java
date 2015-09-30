@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocator#getOwnedComponentExchangeAllocations <em>Owned Component Exchange Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocator#getAllocatedComponentExchanges <em>Allocated Component Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocator()
  * @model abstract="true"

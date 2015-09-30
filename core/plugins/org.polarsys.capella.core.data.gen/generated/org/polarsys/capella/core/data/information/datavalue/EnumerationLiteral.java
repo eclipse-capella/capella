@@ -18,10 +18,10 @@ package org.polarsys.capella.core.data.information.datavalue;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral#getDomainValue <em>Domain Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getEnumerationLiteral()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='EnumerationLiteral'"

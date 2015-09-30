@@ -36,7 +36,6 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
 import org.polarsys.capella.core.data.information.communication.CommunicationItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
-import org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
@@ -135,13 +134,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	private EClass communicationLinkExchangerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass communicationLinkAllocationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -540,33 +532,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCommunicationLinkAllocation() {
-		return communicationLinkAllocationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCommunicationLinkAllocation_AllocatingLink() {
-		return (EReference)communicationLinkAllocationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCommunicationLinkAllocation_AllocatedLink() {
-		return (EReference)communicationLinkAllocationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getCommunicationLinkKind() {
 		return communicationLinkKindEEnum;
 	}
@@ -646,10 +611,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		createEReference(communicationLinkExchangerEClass, COMMUNICATION_LINK_EXCHANGER__ACQUIRE);
 		createEReference(communicationLinkExchangerEClass, COMMUNICATION_LINK_EXCHANGER__TRANSMIT);
 
-		communicationLinkAllocationEClass = createEClass(COMMUNICATION_LINK_ALLOCATION);
-		createEReference(communicationLinkAllocationEClass, COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK);
-		createEReference(communicationLinkAllocationEClass, COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK);
-
 		// Create enums
 		communicationLinkKindEEnum = createEEnum(COMMUNICATION_LINK_KIND);
 		communicationLinkProtocolEEnum = createEEnum(COMMUNICATION_LINK_PROTOCOL);
@@ -700,7 +661,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		signalEClass.getESuperTypes().add(theBehaviorPackage.getAbstractSignal());
 		signalInstanceEClass.getESuperTypes().add(theInformationPackage.getAbstractInstance());
 		communicationLinkEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
-		communicationLinkAllocationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(communicationItemEClass, CommunicationItem.class, "CommunicationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -740,10 +700,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		initEReference(getCommunicationLinkExchanger_Access(), this.getCommunicationLink(), null, "access", null, 0, -1, CommunicationLinkExchanger.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCommunicationLinkExchanger_Acquire(), this.getCommunicationLink(), null, "acquire", null, 0, -1, CommunicationLinkExchanger.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCommunicationLinkExchanger_Transmit(), this.getCommunicationLink(), null, "transmit", null, 0, -1, CommunicationLinkExchanger.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(communicationLinkAllocationEClass, CommunicationLinkAllocation.class, "CommunicationLinkAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getCommunicationLinkAllocation_AllocatingLink(), this.getCommunicationLink(), null, "allocatingLink", null, 0, 1, CommunicationLinkAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCommunicationLinkAllocation_AllocatedLink(), this.getCommunicationLink(), null, "allocatedLink", null, 0, 1, CommunicationLinkAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(communicationLinkKindEEnum, CommunicationLinkKind.class, "CommunicationLinkKind"); //$NON-NLS-1$
@@ -799,7 +755,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -809,7 +765,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																							
+		   });
 	}
 
 	/**
@@ -819,7 +775,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -831,7 +787,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (communicationItemEClass, 
 		   source, 
@@ -843,7 +799,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunicationItem_Visibility(), 
 		   source, 
@@ -852,7 +808,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to VisibilityKind definition\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationItem_OwnedStateMachines(), 
 		   source, 
@@ -860,7 +816,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "state machines associated to this communication item, as a mean to specify communication protocols\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getCommunicationItem_Properties(), 
 		   source, 
@@ -868,7 +824,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "attributes of the communication item\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (exceptionEClass, 
 		   source, 
@@ -880,7 +836,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageEClass, 
 		   source, 
@@ -892,7 +848,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (messageReferenceEClass, 
 		   source, 
@@ -904,7 +860,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMessageReference_Message(), 
 		   source, 
@@ -912,7 +868,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "The message being referenced\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageReferencePkgEClass, 
 		   source, 
@@ -924,7 +880,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMessageReferencePkg_OwnedMessageReferences(), 
 		   source, 
@@ -932,7 +888,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "the list of MessageReference elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (signalEClass, 
 		   source, 
@@ -944,7 +900,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSignal_SignalInstances(), 
 		   source, 
@@ -952,7 +908,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "list of signal instances associated with this Signal\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (signalInstanceEClass, 
 		   source, 
@@ -964,7 +920,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum, 
 		   source, 
@@ -972,7 +928,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "enumeration listing the various possibilities of communication links\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -980,7 +936,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink protocol is not yet set", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -988,7 +944,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a production of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -996,7 +952,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a comsumption of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -1004,7 +960,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a sending of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -1012,7 +968,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a reception of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(5), 
 		   source, 
@@ -1020,7 +976,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a call of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(6), 
 		   source, 
@@ -1028,7 +984,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe an execution of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(7), 
 		   source, 
@@ -1036,7 +992,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a writing of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(8), 
 		   source, 
@@ -1044,7 +1000,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe an access to the ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(9), 
 		   source, 
@@ -1052,7 +1008,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe an acquisition of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(10), 
 		   source, 
@@ -1060,7 +1016,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a transmission of ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum, 
 		   source, 
@@ -1068,7 +1024,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "enumeration listing the various possibilities for the protocol of the communication link", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(0), 
 		   source, 
@@ -1076,7 +1032,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink protocol is not yet set", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(1), 
 		   source, 
@@ -1084,7 +1040,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a sending of ExchangeItem using the unicast protocol", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(2), 
 		   source, 
@@ -1092,7 +1048,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a sending of ExchangeItem using the multicast protocol", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(3), 
 		   source, 
@@ -1100,7 +1056,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a sending of ExchangeItem using the broadcast protocol", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(4), 
 		   source, 
@@ -1108,7 +1064,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a call of ExchangeItem using the synchronous protocol", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(5), 
 		   source, 
@@ -1116,7 +1072,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a call of ExchangeItem using the asynchronous protocol", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(6), 
 		   source, 
@@ -1124,7 +1080,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a access to the ExchangeItem by reading it", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(7), 
 		   source, 
@@ -1132,7 +1088,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "used when the CommunicationLink is used to describe a access to the ExchangeItem by accepting it", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkEClass, 
 		   source, 
@@ -1140,7 +1096,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "describes a link of communication using exchange items", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_Kind(), 
 		   source, 
@@ -1149,7 +1105,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to CommunicationLinkKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_Protocol(), 
 		   source, 
@@ -1158,7 +1114,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to CommunicationLinkProtocol definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_ExchangeItem(), 
 		   source, 
@@ -1167,7 +1123,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to CommunicationLinkProtocol definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkExchangerEClass, 
 		   source, 
@@ -1175,7 +1131,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "describes an element which can communicate using ExchangeItems", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_OwnedCommunicationLinks(), 
 		   source, 
@@ -1183,7 +1139,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "list of all communication links owned by the communication exchanger", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Produce(), 
 		   source, 
@@ -1191,7 +1147,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all production CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Consume(), 
 		   source, 
@@ -1199,7 +1155,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all consumption CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Send(), 
 		   source, 
@@ -1207,7 +1163,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all sending CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Receive(), 
 		   source, 
@@ -1215,7 +1171,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all receiving CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Call(), 
 		   source, 
@@ -1223,7 +1179,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all calling CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Execute(), 
 		   source, 
@@ -1231,7 +1187,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all execution CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Write(), 
 		   source, 
@@ -1239,7 +1195,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all writing CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Access(), 
 		   source, 
@@ -1247,7 +1203,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all accessing CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Acquire(), 
 		   source, 
@@ -1255,7 +1211,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all acquiring CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Transmit(), 
 		   source, 
@@ -1263,35 +1219,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "description", "(automatically computed) list of all transmitting CommunicationLinks", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  (communicationLinkAllocationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "specific kind of allocation link, between two CommunicationLinks\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getCommunicationLinkAllocation_AllocatingLink(), 
-		   source, 
-		   new String[] {
-			 "description", "the \"source\" of the allocation link : the link that is allocating the other link", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getCommunicationLinkAllocation_AllocatedLink(), 
-		   source, 
-		   new String[] {
-			 "description", "the \"destination\" of the allocation link : the link that is being allocated by another link", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -1301,97 +1229,97 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getCommunicationItem_Visibility(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationItem_OwnedStateMachines(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (exceptionEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (messageEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (messageReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMessageReference_Message(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getMessageReferencePkg_OwnedMessageReferences(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (signalEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getSignal_SignalInstances(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (signalInstanceEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum, 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum, 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (communicationLinkEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_Kind(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_Protocol(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_ExchangeItem(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_OwnedCommunicationLinks(), 
 		   source, 
 		   new String[] {
-		   });																																						
+		   });
 	}
 
 	/**
@@ -1401,7 +1329,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1411,7 +1339,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																				
+		   });
 	}
 
 	/**
@@ -1421,79 +1349,79 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (communicationItemEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "CommunicationItem" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getCommunicationItem_Properties(), 
 		   source, 
 		   new String[] {
 			 "Label", "properties" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (exceptionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Exception" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "MessageReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getMessageReference_Message(), 
 		   source, 
 		   new String[] {
 			 "Label", "message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageReferencePkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "MessageReferencePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMessageReferencePkg_OwnedMessageReferences(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedMessageReferences" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (signalEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Signal" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSignal_SignalInstances(), 
 		   source, 
 		   new String[] {
 			 "Label", "signalInstances" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (signalInstanceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SignalInstance" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_OwnedCommunicationLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedCommunicationLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																									
+		   });
 	}
 
 	/**
@@ -1503,82 +1431,82 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (communicationItemEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getCommunicationItem_Properties(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (exceptionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Exception" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.MessageReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMessageReference_Message(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (messageReferencePkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMessageReferencePkg_OwnedMessageReferences(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (signalEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Signal", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Signal" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSignal_SignalInstances(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Signal" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (signalInstanceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.SignalInstance" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																							
+		   });
 	}
 
 	/**
@@ -1588,7 +1516,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (communicationItemEClass, 
 		   source, 
@@ -1597,7 +1525,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunicationItem_Visibility(), 
 		   source, 
@@ -1605,7 +1533,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationItem_OwnedStateMachines(), 
 		   source, 
@@ -1613,7 +1541,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which StateMachine stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getCommunicationItem_Properties(), 
 		   source, 
@@ -1621,7 +1549,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "no found equivalent since the three children (Exception, Signal, Message) have different hierarchies. The specific rule should  create a package, stored the Properties in this package, and finally create a packageImport under the NamedElement reference for the element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "elements inside the imported package on which a Property stereotype or any stereotype that inherits from it  is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (exceptionEClass, 
 		   source, 
@@ -1630,7 +1558,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageEClass, 
 		   source, 
@@ -1639,7 +1567,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "uml::Message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (messageReferenceEClass, 
 		   source, 
@@ -1648,7 +1576,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMessageReference_Message(), 
 		   source, 
@@ -1656,7 +1584,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageReferencePkgEClass, 
 		   source, 
@@ -1665,7 +1593,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMessageReferencePkg_OwnedMessageReferences(), 
 		   source, 
@@ -1673,7 +1601,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which MessageReference stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (signalEClass, 
 		   source, 
@@ -1682,7 +1610,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "uml::Signal", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSignal_SignalInstances(), 
 		   source, 
@@ -1690,7 +1618,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "uml::Signal::ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Signal::ownedAttribute elements on which SignalInstance stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (signalInstanceEClass, 
 		   source, 
@@ -1699,7 +1627,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum, 
 		   source, 
@@ -1707,7 +1635,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -1715,7 +1643,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -1723,7 +1651,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -1731,7 +1659,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -1739,7 +1667,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -1747,7 +1675,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(5), 
 		   source, 
@@ -1755,7 +1683,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(6), 
 		   source, 
@@ -1763,7 +1691,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(7), 
 		   source, 
@@ -1771,7 +1699,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(8), 
 		   source, 
@@ -1779,7 +1707,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(9), 
 		   source, 
@@ -1787,7 +1715,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkKindEEnum.getELiterals().get(10), 
 		   source, 
@@ -1795,7 +1723,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum, 
 		   source, 
@@ -1803,7 +1731,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(0), 
 		   source, 
@@ -1811,7 +1739,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(1), 
 		   source, 
@@ -1819,7 +1747,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(2), 
 		   source, 
@@ -1827,7 +1755,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(3), 
 		   source, 
@@ -1835,7 +1763,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(4), 
 		   source, 
@@ -1843,7 +1771,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(5), 
 		   source, 
@@ -1851,7 +1779,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(6), 
 		   source, 
@@ -1859,7 +1787,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkProtocolEEnum.getELiterals().get(7), 
 		   source, 
@@ -1867,7 +1795,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationLinkEClass, 
 		   source, 
@@ -1876,7 +1804,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_Kind(), 
 		   source, 
@@ -1884,7 +1812,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_Protocol(), 
 		   source, 
@@ -1892,7 +1820,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLink_ExchangeItem(), 
 		   source, 
@@ -1900,7 +1828,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (communicationLinkExchangerEClass, 
 		   source, 
@@ -1908,7 +1836,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_OwnedCommunicationLinks(), 
 		   source, 
@@ -1916,7 +1844,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Produce(), 
 		   source, 
@@ -1924,7 +1852,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Consume(), 
 		   source, 
@@ -1932,7 +1860,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Send(), 
 		   source, 
@@ -1940,7 +1868,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Receive(), 
 		   source, 
@@ -1948,7 +1876,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Call(), 
 		   source, 
@@ -1956,7 +1884,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Execute(), 
 		   source, 
@@ -1964,7 +1892,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Write(), 
 		   source, 
@@ -1972,7 +1900,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Access(), 
 		   source, 
@@ -1980,7 +1908,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Acquire(), 
 		   source, 
@@ -1988,38 +1916,13 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Transmit(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
-		addAnnotation
-		  (communicationLinkAllocationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getCommunicationLinkAllocation_AllocatingLink(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getCommunicationLinkAllocation_AllocatedLink(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
@@ -2031,27 +1934,27 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																		
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getCommunicationItem_Properties(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getMessageReference_Message(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getMessageReferencePkg_OwnedMessageReferences(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getSignal_SignalInstances(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																												
+		   });
 	}
 
 	/**
@@ -2061,72 +1964,62 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																			
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getCommunicationItem_Properties(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																		
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Produce(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Consume(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Send(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Receive(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Call(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Execute(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Write(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Access(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Acquire(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationLinkExchanger_Transmit(), 
 		   source, 
 		   new String[] {
-		   });						
-		addAnnotation
-		  (getCommunicationLinkAllocation_AllocatingLink(), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  (getCommunicationLinkAllocation_AllocatedLink(), 
-		   source, 
-		   new String[] {
-		   });		
+		   });
 	}
 
 	/**
@@ -2136,12 +2029,12 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																		
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (messageReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																							
+		   });
 	}
 
 } //CommunicationPackageImpl

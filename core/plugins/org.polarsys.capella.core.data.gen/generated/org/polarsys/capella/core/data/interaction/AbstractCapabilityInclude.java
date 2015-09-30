@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getIncluded <em>Included</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getInclusion <em>Inclusion</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityInclude()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractCapabilityInclude'"
@@ -40,7 +40,6 @@ public interface AbstractCapabilityInclude extends Relationship {
 
 	/**
 	 * Returns the value of the '<em><b>Included</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getIncluding <em>Including</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -51,8 +50,7 @@ public interface AbstractCapabilityInclude extends Relationship {
 	 * @return the value of the '<em>Included</em>' reference.
 	 * @see #setIncluded(AbstractCapability)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityInclude_Included()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getIncluding
-	 * @model opposite="including" required="true"
+	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='addition' featureOwner='Include'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='included'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being included\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -84,8 +82,7 @@ public interface AbstractCapabilityInclude extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Inclusion</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getIncludes <em>Includes</em>}'.
+	 * Returns the value of the '<em><b>Inclusion</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -93,11 +90,9 @@ public interface AbstractCapabilityInclude extends Relationship {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inclusion</em>' container reference.
-	 * @see #setInclusion(AbstractCapability)
+	 * @return the value of the '<em>Inclusion</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityInclude_Inclusion()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getIncludes
-	 * @model opposite="includes" required="true" transient="false"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='includingCase' featureOwner='Include'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inclusion'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability performing the inclusion of the other Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -106,21 +101,6 @@ public interface AbstractCapabilityInclude extends Relationship {
 	 */
 
 	AbstractCapability getInclusion();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getInclusion <em>Inclusion</em>}' container reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inclusion</em>' container reference.
-	 * @see #getInclusion()
-	 * @generated
-	 */
-
-	void setInclusion(AbstractCapability value);
 
 
 

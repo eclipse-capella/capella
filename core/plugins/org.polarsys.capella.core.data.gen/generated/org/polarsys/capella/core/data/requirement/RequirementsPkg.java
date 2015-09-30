@@ -20,13 +20,13 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.requirement.RequirementsPkg#getAdditionalInformation <em>Additional Information</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.RequirementsPkg#getLevel <em>Level</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.RequirementsPkg#getOwnedRequirements <em>Owned Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.RequirementsPkg#getOwnedRequirementPkgs <em>Owned Requirement Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirementsPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='RequirementPkg'"

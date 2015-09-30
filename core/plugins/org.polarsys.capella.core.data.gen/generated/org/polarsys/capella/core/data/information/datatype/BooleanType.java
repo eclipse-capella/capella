@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.BooleanType#getOwnedLiterals <em>Owned Literals</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.BooleanType#getOwnedDefaultValue <em>Owned Default Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getBooleanType()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='BooleanType'"

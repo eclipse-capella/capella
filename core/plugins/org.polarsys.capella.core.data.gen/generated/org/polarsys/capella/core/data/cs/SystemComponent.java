@@ -21,12 +21,12 @@ import org.polarsys.capella.core.data.capellacore.Classifier;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.SystemComponent#isDataComponent <em>Data Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.SystemComponent#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.SystemComponent#getParticipationsInCapabilityRealizations <em>Participations In Capability Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getSystemComponent()
  * @model abstract="true"

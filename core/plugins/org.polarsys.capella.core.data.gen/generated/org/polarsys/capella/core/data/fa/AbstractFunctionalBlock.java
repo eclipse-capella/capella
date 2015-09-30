@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.capellacore.ModellingBlock;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getOwnedFunctionalAllocation <em>Owned Functional Allocation</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getOwnedComponentExchanges <em>Owned Component Exchanges</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.capellacore.ModellingBlock;
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getInExchangeLinks <em>In Exchange Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getOutExchangeLinks <em>Out Exchange Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock()
  * @model abstract="true"

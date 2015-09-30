@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.information.datatype.BooleanType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.AbstractBooleanValue#getBooleanType <em>Boolean Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getAbstractBooleanValue()
  * @model abstract="true"

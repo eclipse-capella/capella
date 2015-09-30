@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getExchangeSpecifications <em>Exchange Specifications</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getInvolvingFunctionalChains <em>Involving Functional Chains</em>}</li>
@@ -41,7 +42,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getRealizedFunctionalExchanges <em>Realized Functional Exchanges</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getRealizingFunctionalExchanges <em>Realizing Functional Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Transition'"

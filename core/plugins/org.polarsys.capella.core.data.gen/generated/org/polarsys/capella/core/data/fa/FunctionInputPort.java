@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionInputPort#getIncomingExchangeItems <em>Incoming Exchange Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionInputPort#getIncomingFunctionalExchanges <em>Incoming Functional Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionInputPort()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an input interface of its owning function, to receive functional exchanges from other functions\r\n[source: Capella study]' usage\040guideline='It is necessary to create a function input port on a function, to be able to set this function as the receiving end of a functional exchange. Note however that the Capella tool automatically creates a function input port on the destination function, when a functional exchange is created.\r\n[source: Capella study]' used\040in\040levels='system,logical,physical' usage\040examples='../img/usage_examples/ports_exchanges.png' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.cs.SystemComponent;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getItemIdentifier <em>Item Identifier</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getKind <em>Kind</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.cs.SystemComponent;
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getOwnedPhysicalArtifactRealizations <em>Owned Physical Artifact Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getAllocatedPhysicalArtifacts <em>Allocated Physical Artifacts</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItem()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ConfigurationItem'"

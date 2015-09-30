@@ -22,13 +22,13 @@ import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance#getPortInstances <em>Port Instances</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance#getOwnedAbstractPhysicalInstances <em>Owned Abstract Physical Instances</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance#getOwnedInstanceDeploymentLinks <em>Owned Instance Deployment Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An instance of a component for deployment purposes.' usage\040guideline='none' used\040in\040levels='physical' usage\040examples='none' constraints='none' comment/notes='none' reference\040documentation='none'"

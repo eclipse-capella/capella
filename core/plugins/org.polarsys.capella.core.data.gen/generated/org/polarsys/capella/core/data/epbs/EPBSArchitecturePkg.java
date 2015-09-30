@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.EPBSArchitecturePkg#getOwnedEPBSArchitectures <em>Owned EPBS Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecturePkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='EPBSArchitecturePkg'"

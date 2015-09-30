@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfaceUse#getInterfaceUser <em>Interface User</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfaceUse#getUsedInterface <em>Used Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceUse()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='InterfaceUse'"

@@ -5138,7 +5138,7 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_EXTEND__EXTENDED = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' container reference.
+	 * The feature id for the '<em><b>Extension</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5382,7 +5382,7 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES = CapellacorePackage.NAMED_RELATIONSHIP__NAMING_RULES;
 
 	/**
-	 * The feature id for the '<em><b>Abstract Capability</b></em>' container reference.
+	 * The feature id for the '<em><b>Abstract Capability</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5617,7 +5617,7 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_GENERALIZATION__SUPER = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Sub</b></em>' container reference.
+	 * The feature id for the '<em><b>Sub</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5843,7 +5843,7 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_INCLUDE__INCLUDED = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Inclusion</b></em>' container reference.
+	 * The feature id for the '<em><b>Inclusion</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10337,10 +10337,10 @@ public interface InteractionPackage extends EPackage {
 	EReference getAbstractCapabilityExtend_Extended();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtension <em>Extension</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtension <em>Extension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Extension</em>'.
+	 * @return the meta object for the reference '<em>Extension</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtension()
 	 * @see #getAbstractCapabilityExtend()
 	 * @generated
@@ -10369,10 +10369,10 @@ public interface InteractionPackage extends EPackage {
 	EClass getAbstractCapabilityExtensionPoint();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability <em>Abstract Capability</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability <em>Abstract Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Abstract Capability</em>'.
+	 * @return the meta object for the reference '<em>Abstract Capability</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability()
 	 * @see #getAbstractCapabilityExtensionPoint()
 	 * @generated
@@ -10412,10 +10412,10 @@ public interface InteractionPackage extends EPackage {
 	EReference getAbstractCapabilityGeneralization_Super();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSub <em>Sub</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSub <em>Sub</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Sub</em>'.
+	 * @return the meta object for the reference '<em>Sub</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSub()
 	 * @see #getAbstractCapabilityGeneralization()
 	 * @generated
@@ -10444,10 +10444,10 @@ public interface InteractionPackage extends EPackage {
 	EReference getAbstractCapabilityInclude_Included();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getInclusion <em>Inclusion</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getInclusion <em>Inclusion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Inclusion</em>'.
+	 * @return the meta object for the reference '<em>Inclusion</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getInclusion()
 	 * @see #getAbstractCapabilityInclude()
 	 * @generated
@@ -11677,7 +11677,7 @@ public interface InteractionPackage extends EPackage {
 		EReference ABSTRACT_CAPABILITY_EXTEND__EXTENDED = eINSTANCE.getAbstractCapabilityExtend_Extended();
 
 		/**
-		 * The meta object literal for the '<em><b>Extension</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Extension</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -11703,7 +11703,7 @@ public interface InteractionPackage extends EPackage {
 		EClass ABSTRACT_CAPABILITY_EXTENSION_POINT = eINSTANCE.getAbstractCapabilityExtensionPoint();
 
 		/**
-		 * The meta object literal for the '<em><b>Abstract Capability</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Abstract Capability</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -11737,7 +11737,7 @@ public interface InteractionPackage extends EPackage {
 		EReference ABSTRACT_CAPABILITY_GENERALIZATION__SUPER = eINSTANCE.getAbstractCapabilityGeneralization_Super();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Sub</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -11763,7 +11763,7 @@ public interface InteractionPackage extends EPackage {
 		EReference ABSTRACT_CAPABILITY_INCLUDE__INCLUDED = eINSTANCE.getAbstractCapabilityInclude_Included();
 
 		/**
-		 * The meta object literal for the '<em><b>Inclusion</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Inclusion</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

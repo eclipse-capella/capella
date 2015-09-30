@@ -20,12 +20,12 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfaceAllocator#getOwnedInterfaceAllocations <em>Owned Interface Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfaceAllocator#getProvisionedInterfaceAllocations <em>Provisioned Interface Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfaceAllocator#getAllocatedInterfaces <em>Allocated Interfaces</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceAllocator()
  * @model interface="true" abstract="true"

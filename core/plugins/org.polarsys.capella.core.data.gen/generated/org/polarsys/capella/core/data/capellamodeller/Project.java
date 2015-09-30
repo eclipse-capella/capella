@@ -22,12 +22,12 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.Project#getKeyValuePairs <em>Key Value Pairs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.Project#getOwnedFolders <em>Owned Folders</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.Project#getOwnedModelRoots <em>Owned Model Roots</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getProject()
  * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Model' stereotype='core.Project'"

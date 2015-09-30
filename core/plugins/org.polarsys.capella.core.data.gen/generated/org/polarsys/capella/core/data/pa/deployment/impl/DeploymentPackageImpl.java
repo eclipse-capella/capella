@@ -612,7 +612,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -622,7 +622,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																											
+		   });
 	}
 
 	/**
@@ -632,7 +632,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -644,7 +644,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "This package depends on the model CompositeStructure.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentInstanceEClass, 
 		   source, 
@@ -656,7 +656,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (deploymentAspectEClass, 
 		   source, 
@@ -668,7 +668,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedConfigurations(), 
 		   source, 
@@ -676,7 +676,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "description", "the deployment configurations associated to this deployment aspect\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedDeploymentAspects(), 
 		   source, 
@@ -684,7 +684,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "description", "the sub packages contained under this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentConfigurationEClass, 
 		   source, 
@@ -696,7 +696,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeploymentConfiguration_OwnedDeploymentLinks(), 
 		   source, 
@@ -704,7 +704,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "description", "the deployment specifications that are part of this deployment configuration\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (instanceDeploymentLinkEClass, 
 		   source, 
@@ -716,7 +716,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partDeploymentLinkEClass, 
 		   source, 
@@ -728,7 +728,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractPhysicalInstanceEClass, 
 		   source, 
@@ -740,7 +740,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (typeDeploymentLinkEClass, 
 		   source, 
@@ -752,7 +752,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -762,103 +762,103 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (componentInstanceEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentInstance_PortInstances(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentInstance_OwnedAbstractPhysicalInstances(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentInstance_OwnedInstanceDeploymentLinks(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentInstance_Type(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (connectionInstanceEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getConnectionInstance_ConnectionEnds(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConnectionInstance_Type(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentAspectEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedConfigurations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedDeploymentAspects(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentConfigurationEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getDeploymentConfiguration_OwnedDeploymentLinks(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getDeploymentConfiguration_OwnedPhysicalInstances(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (portInstanceEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getPortInstance_Connections(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPortInstance_Component(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getPortInstance_Type(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });
 	}
 
 	/**
@@ -868,7 +868,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -878,7 +878,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																								
+		   });
 	}
 
 	/**
@@ -888,7 +888,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (componentInstanceEClass, 
 		   source, 
@@ -897,7 +897,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentInstance_PortInstances(), 
 		   source, 
@@ -905,7 +905,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentInstance_OwnedAbstractPhysicalInstances(), 
 		   source, 
@@ -913,7 +913,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentInstance_OwnedInstanceDeploymentLinks(), 
 		   source, 
@@ -921,7 +921,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentInstance_Type(), 
 		   source, 
@@ -929,7 +929,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (connectionInstanceEClass, 
 		   source, 
@@ -938,7 +938,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConnectionInstance_ConnectionEnds(), 
 		   source, 
@@ -946,7 +946,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConnectionInstance_Type(), 
 		   source, 
@@ -954,7 +954,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentAspectEClass, 
 		   source, 
@@ -963,7 +963,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedConfigurations(), 
 		   source, 
@@ -971,7 +971,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which DeploymentConfiguration stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedDeploymentAspects(), 
 		   source, 
@@ -979,7 +979,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which AbstractCapabilityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentConfigurationEClass, 
 		   source, 
@@ -988,7 +988,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeploymentConfiguration_OwnedDeploymentLinks(), 
 		   source, 
@@ -996,7 +996,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "uml::Namespace::elementImport", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Namespace::elementImport elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getDeploymentConfiguration_OwnedPhysicalInstances(), 
 		   source, 
@@ -1004,7 +1004,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (instanceDeploymentLinkEClass, 
 		   source, 
@@ -1013,7 +1013,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partDeploymentLinkEClass, 
 		   source, 
@@ -1022,7 +1022,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractPhysicalInstanceEClass, 
 		   source, 
@@ -1031,7 +1031,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (portInstanceEClass, 
 		   source, 
@@ -1040,7 +1040,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPortInstance_Connections(), 
 		   source, 
@@ -1048,7 +1048,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortInstance_Component(), 
 		   source, 
@@ -1056,7 +1056,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPortInstance_Type(), 
 		   source, 
@@ -1064,7 +1064,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (typeDeploymentLinkEClass, 
 		   source, 
@@ -1083,17 +1083,17 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getComponentInstance_PortInstances(), 
 		   source, 
 		   new String[] {
-		   });																																																													
+		   });	
 		addAnnotation
 		  (getPortInstance_Component(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });
 	}
 
 	/**
@@ -1103,61 +1103,61 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$																								
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (deploymentAspectEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DeploymentAspect" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedConfigurations(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConfigurations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedDeploymentAspects(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedAspects" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentConfigurationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DeploymentConfiguration" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentConfiguration_OwnedDeploymentLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "deployments" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (instanceDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "InstanceDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "PartDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractPhysicalInstanceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "PhysicalObject" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (typeDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "TypeDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });
 	}
 
 	/**
@@ -1167,70 +1167,70 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$																									
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (deploymentAspectEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.DeploymentAspect" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedConfigurations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedDeploymentAspects(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (deploymentConfigurationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.DeploymentConfiguration" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDeploymentConfiguration_OwnedDeploymentLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "elementImport", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (instanceDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.InstanceDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractPhysicalInstanceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "InstanceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.PhysicalObject" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (typeDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.TypeDeploymentLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -1240,17 +1240,17 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																															
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getDeploymentAspect_OwnedConfigurations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDeploymentAspect_OwnedDeploymentAspects(), 
 		   source, 
 		   new String[] {
-		   });																																								
+		   });
 	}
 
 } //DeploymentPackageImpl

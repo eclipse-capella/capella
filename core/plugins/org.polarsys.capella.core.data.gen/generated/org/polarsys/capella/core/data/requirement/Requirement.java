@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.requirement.Requirement#isIsObsolete <em>Is Obsolete</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.Requirement#getRequirementId <em>Requirement Id</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
  *   <li>{@link org.polarsys.capella.core.data.requirement.Requirement#getFeature <em>Feature</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.requirement.Requirement#getRelatedCapellaElements <em>Related Capella Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement()
  * @model abstract="true"

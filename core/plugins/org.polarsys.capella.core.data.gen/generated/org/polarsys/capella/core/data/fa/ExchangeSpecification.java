@@ -21,13 +21,13 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getContainingLink <em>Containing Link</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getLink <em>Link</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getOutgoingExchangeSpecificationRealizations <em>Outgoing Exchange Specification Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getIncomingExchangeSpecificationRealizations <em>Incoming Exchange Specification Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification()
  * @model abstract="true"

@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150507-0831
+//Generated with EGF 1.2.0.v20150211-1405
 package org.polarsys.capella.core.editor;
 
 import org.eclipse.egf.common.helper.*;

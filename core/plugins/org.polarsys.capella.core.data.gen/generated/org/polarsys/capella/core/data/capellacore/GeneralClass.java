@@ -21,12 +21,12 @@ import org.polarsys.capella.core.data.information.Operation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.GeneralClass#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.GeneralClass#getContainedOperations <em>Contained Operations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.GeneralClass#getNestedGeneralClasses <em>Nested General Classes</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralClass()
  * @model abstract="true"

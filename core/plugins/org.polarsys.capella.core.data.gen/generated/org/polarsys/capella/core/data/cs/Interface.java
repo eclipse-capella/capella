@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#getMechanism <em>Mechanism</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#isStructural <em>Structural</em>}</li>
@@ -43,7 +44,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#getRealizingPhysicalInterfaces <em>Realizing Physical Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#getRealizedLogicalInterfaces <em>Realized Logical Interfaces</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getInterface()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Interface'"

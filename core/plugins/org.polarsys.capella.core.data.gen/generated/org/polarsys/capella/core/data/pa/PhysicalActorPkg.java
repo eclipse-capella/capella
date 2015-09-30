@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalActorPkg#getOwnedPhysicalActorPkgs <em>Owned Physical Actor Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalActorPkg#getOwnedPhysicalActors <em>Owned Physical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActorPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='PhysicalActorPkg'"

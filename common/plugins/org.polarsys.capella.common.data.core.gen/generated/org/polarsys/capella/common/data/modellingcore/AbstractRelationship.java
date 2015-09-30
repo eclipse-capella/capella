@@ -18,10 +18,10 @@ package org.polarsys.capella.common.data.modellingcore;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractRelationship#getRealizedFlow <em>Realized Flow</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractRelationship()
  * @model abstract="true"

@@ -21,6 +21,7 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractActivity#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractActivity#isIsSingleExecution <em>Is Single Execution</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractActivity#getOwnedGroups <em>Owned Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.AbstractActivity#getOwnedStructuredNodes <em>Owned Structured Nodes</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAbstractActivity()
  * @model abstract="true"

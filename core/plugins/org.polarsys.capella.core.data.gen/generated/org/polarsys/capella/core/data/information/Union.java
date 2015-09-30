@@ -19,13 +19,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.Union#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Union#getDiscriminant <em>Discriminant</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Union#getDefaultProperty <em>Default Property</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Union#getContainedUnionProperties <em>Contained Union Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getUnion()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Union'"

@@ -18,10 +18,10 @@ package org.polarsys.capella.core.data.interaction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Execution#getCovered <em>Covered</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getExecution()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Execution'"

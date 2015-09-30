@@ -2308,11 +2308,11 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		initEReference(getDeployableElement_DeployingLinks(), this.getAbstractDeploymentLink(), null, "deployingLinks", null, 0, -1, DeployableElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(deploymentTargetEClass, DeploymentTarget.class, "DeploymentTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getDeploymentTarget_DeploymentLinks(), this.getAbstractDeploymentLink(), this.getAbstractDeploymentLink_Location(), "deploymentLinks", null, 0, -1, DeploymentTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDeploymentTarget_DeploymentLinks(), this.getAbstractDeploymentLink(), null, "deploymentLinks", null, 0, -1, DeploymentTarget.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractDeploymentLinkEClass, AbstractDeploymentLink.class, "AbstractDeploymentLink", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getAbstractDeploymentLink_DeployedElement(), this.getDeployableElement(), null, "deployedElement", null, 1, 1, AbstractDeploymentLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractDeploymentLink_Location(), this.getDeploymentTarget(), this.getDeploymentTarget_DeploymentLinks(), "location", null, 1, 1, AbstractDeploymentLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractDeploymentLink_Location(), this.getDeploymentTarget(), null, "location", null, 1, 1, AbstractDeploymentLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractPathInvolvedElementEClass, AbstractPathInvolvedElement.class, "AbstractPathInvolvedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -2405,7 +2405,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2415,7 +2415,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													
+		   });
 	}
 
 	/**
@@ -2425,7 +2425,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2437,7 +2437,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "This package depends on the model FunctionalAnalysis.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (blockArchitecturePkgEClass, 
 		   source, 
@@ -2449,7 +2449,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (blockArchitectureEClass, 
 		   source, 
@@ -2461,7 +2461,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedRequirementPkgs(), 
 		   source, 
@@ -2469,7 +2469,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to packages that contain requirements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedAbstractCapabilityPkg(), 
 		   source, 
@@ -2477,7 +2477,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to packages that contain capabilities\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedInterfacePkg(), 
 		   source, 
@@ -2485,7 +2485,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to packages that contain interfaces\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedDataPkg(), 
 		   source, 
@@ -2493,7 +2493,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to packages that contain data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_ProvisionedArchitectureAllocations(), 
 		   source, 
@@ -2501,7 +2501,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) list of allocation links to other architectures\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_ProvisioningArchitectureAllocations(), 
 		   source, 
@@ -2509,7 +2509,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) list of allocation links from other architectures to this one\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatedArchitectures(), 
 		   source, 
@@ -2517,7 +2517,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the BlockArchitectures that are allocated from this one\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatingArchitectures(), 
 		   source, 
@@ -2525,7 +2525,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to BlockArchitectures that allocate to this architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (blockEClass, 
 		   source, 
@@ -2537,7 +2537,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlock_OwnedAbstractCapabilityPkg(), 
 		   source, 
@@ -2545,7 +2545,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to packages that contain capabilities\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedInterfacePkg(), 
 		   source, 
@@ -2553,7 +2553,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to packages that contain interfaces\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedDataPkg(), 
 		   source, 
@@ -2561,7 +2561,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to packages that contain data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlock_OwnedStateMachines(), 
 		   source, 
@@ -2569,7 +2569,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Link to related state machines\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentArchitectureEClass, 
 		   source, 
@@ -2581,7 +2581,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentEClass, 
 		   source, 
@@ -2594,7 +2594,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_OwnedInterfaceUses(), 
 		   source, 
@@ -2602,7 +2602,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "InterfaceUse relationships that are stored/owned under this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
 		   source, 
@@ -2610,7 +2610,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) interfaceUse relationships that involve this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaces(), 
 		   source, 
@@ -2618,7 +2618,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the Interfaces being used by this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_OwnedInterfaceImplementations(), 
 		   source, 
@@ -2626,7 +2626,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Interface implementation relationships that are stored/owned under this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaceLinks(), 
 		   source, 
@@ -2634,7 +2634,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) list of InterfaceImplementation links that involve this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaces(), 
 		   source, 
@@ -2642,7 +2642,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the Interfaces being implemented by this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_ProvisionedComponentAllocations(), 
 		   source, 
@@ -2650,7 +2650,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) list of allocation links made from this component to other components\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ProvisioningComponentAllocations(), 
 		   source, 
@@ -2658,7 +2658,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) list of allocation links from other components, to this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_AllocatedComponents(), 
 		   source, 
@@ -2666,7 +2666,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the components being allocated from this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_AllocatingComponents(), 
 		   source, 
@@ -2674,7 +2674,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the components allocating this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
 		   source, 
@@ -2682,7 +2682,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the Interfaces being provided by this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_RequiredInterfaces(), 
 		   source, 
@@ -2690,7 +2690,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the Interfaces being required by this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalPath(), 
 		   source, 
@@ -2698,7 +2698,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the PhysicalPaths that are stored/owned by this physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalLinks(), 
 		   source, 
@@ -2706,7 +2706,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Physical links contained in / owned by this Physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalLinkCategories(), 
 		   source, 
@@ -2714,7 +2714,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractActorEClass, 
 		   source, 
@@ -2726,7 +2726,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partEClass, 
 		   source, 
@@ -2738,7 +2738,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 
 		   source, 
@@ -2746,7 +2746,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(computed) the provided interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component exposes to its environment.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getPart_RequiredInterfaces(), 
 		   source, 
@@ -2754,7 +2754,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(computed) the required interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component requires from other components in its environment in order to be able to offer\r\nits full set of provided functionality\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPart_OwnedDeploymentLinks(), 
 		   source, 
@@ -2762,7 +2762,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Deployment relationships that are stored/owned under this part", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (architectureAllocationEClass, 
 		   source, 
@@ -2774,7 +2774,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatedArchitecture(), 
 		   source, 
@@ -2782,7 +2782,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the allocated architecture\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatingArchitecture(), 
 		   source, 
@@ -2790,7 +2790,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the allocating architecture\r\n[source: Capella study]\r\n\r\nSpecifies the sources of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentAllocationEClass, 
 		   source, 
@@ -2802,7 +2802,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatedComponent(), 
 		   source, 
@@ -2810,7 +2810,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the allocated component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatingComponent(), 
 		   source, 
@@ -2818,7 +2818,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the allocating component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (systemComponentEClass, 
 		   source, 
@@ -2830,7 +2830,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSystemComponent_DataComponent(), 
 		   source, 
@@ -2838,7 +2838,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "specifies whether or not this is a data component\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemComponent_DataType(), 
 		   source, 
@@ -2846,7 +2846,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "data type(s) associated to this component\r\n[source: Capella light-light study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
@@ -2854,7 +2854,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) the involvement relationships between this SystemComponent and CapabilityRealization elements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (interfacePkgEClass, 
 		   source, 
@@ -2866,7 +2866,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfaces(), 
 		   source, 
@@ -2874,7 +2874,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the interfaces that are owned by this Package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfacePkgs(), 
 		   source, 
@@ -2882,7 +2882,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the packages of interfaces that are owned by this Package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceEClass, 
 		   source, 
@@ -2894,7 +2894,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_Mechanism(), 
 		   source, 
@@ -2903,7 +2903,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "_todo_reviewed : to be precised", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_Structural(), 
 		   source, 
@@ -2912,7 +2912,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -2920,7 +2920,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "references to the components that implement this interface\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_UserComponents(), 
 		   source, 
@@ -2928,7 +2928,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "references to the components that use this interface\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
@@ -2936,7 +2936,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "references to the InterfaceImplementation elements, that act as mediators between this interface and its implementers\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceUses(), 
 		   source, 
@@ -2944,7 +2944,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "references to the InterfaceUse elements, that act as mediator classes between this interface and its users\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_ProvisioningInterfaceAllocations(), 
 		   source, 
@@ -2952,7 +2952,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References to the InterfaceAllocation elements, acting as mediator classes between the interface and the elements to which/from which it is allocated\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_AllocatingInterfaces(), 
 		   source, 
@@ -2960,7 +2960,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References to the Interfaces that declare an allocation link to this Interface\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_AllocatingComponents(), 
 		   source, 
@@ -2968,7 +2968,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References to the components that declare an allocation link to this Interface\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ExchangeItems(), 
 		   source, 
@@ -2976,7 +2976,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References to all exchange items allocated by the interface", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_OwnedExchangeItemAllocations(), 
 		   source, 
@@ -2984,7 +2984,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References to allocations of exchange items", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																															
+		   });	
 		addAnnotation
 		  (interfaceImplementationEClass, 
 		   source, 
@@ -2996,7 +2996,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_InterfaceImplementor(), 
 		   source, 
@@ -3004,7 +3004,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References the Component that owns this Interface implementation.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_ImplementedInterface(), 
 		   source, 
@@ -3012,7 +3012,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References the Interface specifying the conformance contract\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceUseEClass, 
 		   source, 
@@ -3024,7 +3024,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceUse_InterfaceUser(), 
 		   source, 
@@ -3032,7 +3032,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Component that uses the interface\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInterfaceUse_UsedInterface(), 
 		   source, 
@@ -3040,7 +3040,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Supplied interface\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (providedInterfaceLinkEClass, 
 		   source, 
@@ -3052,7 +3052,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getProvidedInterfaceLink_Interface(), 
 		   source, 
@@ -3060,7 +3060,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "References the Interface specifying the conformance contract\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (requiredInterfaceLinkEClass, 
 		   source, 
@@ -3072,7 +3072,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getRequiredInterfaceLink_Interface(), 
 		   source, 
@@ -3080,7 +3080,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "The element(s) independent of the client element(s), in the same respect and the same dependency relationship\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceAllocationEClass, 
 		   source, 
@@ -3092,7 +3092,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatedInterface(), 
 		   source, 
@@ -3100,7 +3100,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the allocated interface\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatingInterfaceAllocator(), 
 		   source, 
@@ -3108,7 +3108,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Specifies the allocating interface\r\n[source: Capella study]\r\n\r\nSpecifies the sources of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interfaceAllocatorEClass, 
 		   source, 
@@ -3120,7 +3120,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_OwnedInterfaceAllocations(), 
 		   source, 
@@ -3128,7 +3128,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the interface allocation links that are stored/owned under this interface allocator\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_ProvisionedInterfaceAllocations(), 
 		   source, 
@@ -3136,7 +3136,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) the interface allocation links involving this interface allocator\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_AllocatedInterfaces(), 
 		   source, 
@@ -3144,7 +3144,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "(automatically computed) direct references to the Interfaces being allocated by this interface allocator\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (actorCapabilityRealizationInvolvementEClass, 
 		   source, 
@@ -3156,7 +3156,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemComponentCapabilityRealizationInvolvementEClass, 
 		   source, 
@@ -3168,7 +3168,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentContextEClass, 
 		   source, 
@@ -3180,7 +3180,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemAllocationEClass, 
 		   source, 
@@ -3192,7 +3192,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_SendProtocol(), 
 		   source, 
@@ -3201,7 +3201,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to CommunicationLinkProtocol definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_ReceiveProtocol(), 
 		   source, 
@@ -3210,7 +3210,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to CommunicationLinkProtocol definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_AllocatedItem(), 
 		   source, 
@@ -3218,7 +3218,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the exchange item that is being allocated by the interface", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_AllocatingInterface(), 
 		   source, 
@@ -3226,7 +3226,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the interface that allocated the given exchange item", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deployableElementEClass, 
 		   source, 
@@ -3238,7 +3238,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeployableElement_DeployingLinks(), 
 		   source, 
@@ -3246,7 +3246,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the list of deployment specifications associated to this element, e.g. associations between this element and a physical location to which it is to be deployed\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentTargetEClass, 
 		   source, 
@@ -3258,7 +3258,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeploymentTarget_DeploymentLinks(), 
 		   source, 
@@ -3266,7 +3266,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the list of deployment specifications involving this physical target as the destination of the deployment\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractDeploymentLinkEClass, 
 		   source, 
@@ -3278,7 +3278,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_DeployedElement(), 
 		   source, 
@@ -3286,7 +3286,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the physical element involved in this relationship, that is to be deployed on the target\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_Location(), 
 		   source, 
@@ -3294,7 +3294,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the host where the source element involved in this relationship will be deployed\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractPathInvolvedElementEClass, 
 		   source, 
@@ -3306,7 +3306,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractPhysicalArtifactEClass, 
 		   source, 
@@ -3318,7 +3318,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractPhysicalLinkEndEClass, 
 		   source, 
@@ -3330,7 +3330,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractPhysicalLinkEnd_InvolvedLinks(), 
 		   source, 
@@ -3338,7 +3338,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Physical links that come in or out of this physical port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractPhysicalPathLinkEClass, 
 		   source, 
@@ -3350,7 +3350,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalLinkEClass, 
 		   source, 
@@ -3362,7 +3362,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_LinkEnds(), 
 		   source, 
@@ -3370,7 +3370,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the source(s) and destination(s) of this physical link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_OwnedComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
@@ -3378,7 +3378,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the allocations between component exchanges and functional exchanges, that are owned by this physical link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalLink_OwnedPhysicalLinkEnds(), 
 		   source, 
@@ -3386,7 +3386,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the physical link endpoints involved in this link\r\n\r\nA connector consists of at least two connector ends, each representing the participation of instances of the classifiers\r\ntyping the connectable elements attached to this end. The set of connector ends is ordered.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_OwnedPhysicalLinkRealizations(), 
 		   source, 
@@ -3394,7 +3394,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizedPhysicalLinks(), 
 		   source, 
@@ -3402,7 +3402,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizingPhysicalLinks(), 
 		   source, 
@@ -3410,7 +3410,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (physicalLinkEndEClass, 
 		   source, 
@@ -3422,7 +3422,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Port(), 
 		   source, 
@@ -3430,7 +3430,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the port to which this communication endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Part(), 
 		   source, 
@@ -3438,7 +3438,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the part to which this connect endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (physicalLinkRealizationEClass, 
 		   source, 
@@ -3450,7 +3450,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalPathEClass, 
 		   source, 
@@ -3462,7 +3462,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPath_InvolvedLinks(), 
 		   source, 
@@ -3470,7 +3470,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "the list of steps of this physical path\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getPhysicalPath_OwnedPhysicalPathRealizations(), 
 		   source, 
@@ -3478,7 +3478,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizedPhysicalPaths(), 
 		   source, 
@@ -3486,7 +3486,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizingPhysicalPaths(), 
 		   source, 
@@ -3494,7 +3494,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (physicalPathRealizationEClass, 
 		   source, 
@@ -3506,7 +3506,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalPortEClass, 
 		   source, 
@@ -3518,7 +3518,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPort_OwnedPhysicalPortRealizations(), 
 		   source, 
@@ -3526,7 +3526,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizedPhysicalPorts(), 
 		   source, 
@@ -3534,7 +3534,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizingPhysicalPorts(), 
 		   source, 
@@ -3542,7 +3542,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalPortRealizationEClass, 
 		   source, 
@@ -3554,7 +3554,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -3564,417 +3564,417 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedAbstractCapabilityPkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getBlock_OwnedStateMachines(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getComponent_AllocatedComponents(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_AllocatingComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponent_ContainedComponentPorts(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ContainedParts(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ContainedPhysicalPorts(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalPath(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalLinks(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalLinkCategories(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (partEClass, 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getPart_DeployedParts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPart_DeployingParts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPart_OwnedAbstractType(), 
 		   source, 
 		   new String[] {
-		   });																														
+		   });	
 		addAnnotation
 		  (getSystemComponent_DataComponent(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (interfacePkgEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfacePkgs(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_Mechanism(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_UserComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });	
 		addAnnotation
 		  (getInterface_ExchangeItems(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_OwnedExchangeItemAllocations(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getInterface_RequiringComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RequiringComponentPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponentPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizingLogicalInterfaces(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizedContextInterfaces(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizingPhysicalInterfaces(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizedLogicalInterfaces(), 
 		   source, 
 		   new String[] {
-		   });																																																																																										
+		   });	
 		addAnnotation
 		  (exchangeItemAllocationEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_SendProtocol(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_ReceiveProtocol(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_AllocatedItem(), 
 		   source, 
 		   new String[] {
-		   });																																	
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_DeployedElement(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_Location(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractPhysicalArtifact_AllocatorConfigurationItems(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractPhysicalLinkEnd_InvolvedLinks(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (physicalLinkEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_LinkEnds(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPhysicalLink_OwnedPhysicalLinkEnds(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_Categories(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalLink_SourcePhysicalPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_TargetPhysicalPort(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizedPhysicalLinks(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizingPhysicalLinks(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (physicalLinkCategoryEClass, 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getPhysicalLinkCategory_Links(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (physicalLinkEndEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Port(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Part(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (physicalPathEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPhysicalPath_OwnedPhysicalPathInvolvements(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPath_FirstPhysicalPathInvolvements(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizedPhysicalPaths(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizingPhysicalPaths(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalPathInvolvementEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_NextInvolvements(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_PreviousInvolvements(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_InvolvedElement(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (physicalPathReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPathReference_ReferencedPhysicalPath(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (physicalPortEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalPort_AllocatedComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizedPhysicalPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizingPhysicalPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -3984,7 +3984,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -3994,7 +3994,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+		   });
 	}
 
 	/**
@@ -4004,7 +4004,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (blockArchitecturePkgEClass, 
 		   source, 
@@ -4013,7 +4013,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (blockArchitectureEClass, 
 		   source, 
@@ -4022,7 +4022,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedRequirementPkgs(), 
 		   source, 
@@ -4030,7 +4030,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which RequirementsPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedAbstractCapabilityPkg(), 
 		   source, 
@@ -4038,7 +4038,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which AbstractCapabilityPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedInterfacePkg(), 
 		   source, 
@@ -4046,7 +4046,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which InterfacePkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedDataPkg(), 
 		   source, 
@@ -4054,7 +4054,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_ProvisionedArchitectureAllocations(), 
 		   source, 
@@ -4062,7 +4062,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_ProvisioningArchitectureAllocations(), 
 		   source, 
@@ -4070,7 +4070,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatedArchitectures(), 
 		   source, 
@@ -4078,7 +4078,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatingArchitectures(), 
 		   source, 
@@ -4086,7 +4086,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (blockEClass, 
 		   source, 
@@ -4095,7 +4095,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::BehavioredClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlock_OwnedAbstractCapabilityPkg(), 
 		   source, 
@@ -4103,7 +4103,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Descendants are mapped to SysML::Blocks::Block, which cannot contain a Package.\r\nTherefore, store these AbstractCapabilityPackages in the nearest available package.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedInterfacePkg(), 
 		   source, 
@@ -4111,7 +4111,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which InterfacePkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedDataPkg(), 
 		   source, 
@@ -4119,7 +4119,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlock_OwnedStateMachines(), 
 		   source, 
@@ -4127,7 +4127,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::BehavioredClassifier::ownedBehavior", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::BehavioredClassifier::ownedBehavior elements on which StateMachine stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentArchitectureEClass, 
 		   source, 
@@ -4136,7 +4136,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentEClass, 
 		   source, 
@@ -4145,7 +4145,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_OwnedInterfaceUses(), 
 		   source, 
@@ -4153,7 +4153,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which InterfaceUse stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
 		   source, 
@@ -4161,7 +4161,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaces(), 
 		   source, 
@@ -4169,7 +4169,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_OwnedInterfaceImplementations(), 
 		   source, 
@@ -4177,7 +4177,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::BehavioredClassifier::interfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaceLinks(), 
 		   source, 
@@ -4185,7 +4185,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaces(), 
 		   source, 
@@ -4193,7 +4193,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_ProvisionedComponentAllocations(), 
 		   source, 
@@ -4201,7 +4201,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ProvisioningComponentAllocations(), 
 		   source, 
@@ -4209,7 +4209,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_AllocatedComponents(), 
 		   source, 
@@ -4217,7 +4217,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_AllocatingComponents(), 
 		   source, 
@@ -4225,7 +4225,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
 		   source, 
@@ -4233,7 +4233,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_RequiredInterfaces(), 
 		   source, 
@@ -4241,7 +4241,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_ContainedComponentPorts(), 
 		   source, 
@@ -4249,7 +4249,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ContainedParts(), 
 		   source, 
@@ -4257,7 +4257,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ContainedPhysicalPorts(), 
 		   source, 
@@ -4265,7 +4265,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalPath(), 
 		   source, 
@@ -4273,7 +4273,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Blocks::Block cannot contain PhysicalPath\'s equivalent, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_OwnedPhysicalLinks(), 
 		   source, 
@@ -4281,7 +4281,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::StructuredClassifier::ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "since PhysicalLink is mapped to uml::Connector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (abstractActorEClass, 
 		   source, 
@@ -4290,7 +4290,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Blocks::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partEClass, 
 		   source, 
@@ -4299,7 +4299,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "should be mapped to uml::Property, but one of its concrete ancestors already is (Property), so avoid redefining it\r\nat this level to avoid profile generation issue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "information::Property must have as base metaclass uml::Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 
 		   source, 
@@ -4307,7 +4307,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getPart_RequiredInterfaces(), 
 		   source, 
@@ -4315,7 +4315,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPart_OwnedDeploymentLinks(), 
 		   source, 
@@ -4323,7 +4323,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPart_DeployedParts(), 
 		   source, 
@@ -4331,7 +4331,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPart_DeployingParts(), 
 		   source, 
@@ -4339,7 +4339,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (architectureAllocationEClass, 
 		   source, 
@@ -4348,7 +4348,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatedArchitecture(), 
 		   source, 
@@ -4356,7 +4356,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatingArchitecture(), 
 		   source, 
@@ -4364,7 +4364,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentAllocationEClass, 
 		   source, 
@@ -4373,7 +4373,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ComponentRealization or uml::InterfaceRealization regarding the baseMetaClass of the realized element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatedComponent(), 
 		   source, 
@@ -4381,7 +4381,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatingComponent(), 
 		   source, 
@@ -4389,7 +4389,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (systemComponentEClass, 
 		   source, 
@@ -4398,7 +4398,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSystemComponent_DataComponent(), 
 		   source, 
@@ -4406,7 +4406,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemComponent_DataType(), 
 		   source, 
@@ -4414,7 +4414,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
@@ -4422,7 +4422,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (interfacePkgEClass, 
 		   source, 
@@ -4431,7 +4431,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfaces(), 
 		   source, 
@@ -4439,7 +4439,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which Interface stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfacePkgs(), 
 		   source, 
@@ -4447,7 +4447,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which InterfacePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceEClass, 
 		   source, 
@@ -4456,7 +4456,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Interface", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_Mechanism(), 
 		   source, 
@@ -4464,7 +4464,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -4472,7 +4472,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_UserComponents(), 
 		   source, 
@@ -4480,7 +4480,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
@@ -4488,7 +4488,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::InterfaceRealization::contract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedElement elements on which InterfaceImplementation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceUses(), 
 		   source, 
@@ -4496,7 +4496,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedElement elements on which InterfaceUse stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_ProvisioningInterfaceAllocations(), 
 		   source, 
@@ -4504,7 +4504,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_AllocatingInterfaces(), 
 		   source, 
@@ -4512,7 +4512,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_AllocatingComponents(), 
 		   source, 
@@ -4520,7 +4520,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ExchangeItems(), 
 		   source, 
@@ -4528,7 +4528,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_OwnedExchangeItemAllocations(), 
 		   source, 
@@ -4536,7 +4536,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_RequiringComponents(), 
 		   source, 
@@ -4544,7 +4544,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RequiringComponentPorts(), 
 		   source, 
@@ -4552,7 +4552,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponents(), 
 		   source, 
@@ -4560,7 +4560,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponentPorts(), 
 		   source, 
@@ -4568,7 +4568,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizingLogicalInterfaces(), 
 		   source, 
@@ -4576,7 +4576,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizedContextInterfaces(), 
 		   source, 
@@ -4584,7 +4584,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizingPhysicalInterfaces(), 
 		   source, 
@@ -4592,7 +4592,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizedLogicalInterfaces(), 
 		   source, 
@@ -4600,7 +4600,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceImplementationEClass, 
 		   source, 
@@ -4609,7 +4609,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::InterfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_InterfaceImplementor(), 
 		   source, 
@@ -4617,7 +4617,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_ImplementedInterface(), 
 		   source, 
@@ -4625,7 +4625,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::InterfaceRealization::contract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceUseEClass, 
 		   source, 
@@ -4634,7 +4634,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Usage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceUse_InterfaceUser(), 
 		   source, 
@@ -4642,7 +4642,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInterfaceUse_UsedInterface(), 
 		   source, 
@@ -4650,7 +4650,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (providedInterfaceLinkEClass, 
 		   source, 
@@ -4659,7 +4659,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::InterfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getProvidedInterfaceLink_Interface(), 
 		   source, 
@@ -4667,7 +4667,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::InterfaceRealization::contract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (requiredInterfaceLinkEClass, 
 		   source, 
@@ -4676,7 +4676,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Usage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getRequiredInterfaceLink_Interface(), 
 		   source, 
@@ -4684,7 +4684,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Dependency::supplier elements on which Interface stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceAllocationEClass, 
 		   source, 
@@ -4693,7 +4693,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatedInterface(), 
 		   source, 
@@ -4701,7 +4701,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatingInterfaceAllocator(), 
 		   source, 
@@ -4709,7 +4709,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interfaceAllocatorEClass, 
 		   source, 
@@ -4718,7 +4718,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Classifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_OwnedInterfaceAllocations(), 
 		   source, 
@@ -4726,7 +4726,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which InterfaceAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_ProvisionedInterfaceAllocations(), 
 		   source, 
@@ -4734,7 +4734,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_AllocatedInterfaces(), 
 		   source, 
@@ -4742,7 +4742,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (actorCapabilityRealizationInvolvementEClass, 
 		   source, 
@@ -4751,7 +4751,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemComponentCapabilityRealizationInvolvementEClass, 
 		   source, 
@@ -4760,7 +4760,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentContextEClass, 
 		   source, 
@@ -4769,7 +4769,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemAllocationEClass, 
 		   source, 
@@ -4778,7 +4778,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_SendProtocol(), 
 		   source, 
@@ -4786,7 +4786,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_ReceiveProtocol(), 
 		   source, 
@@ -4794,7 +4794,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_AllocatedItem(), 
 		   source, 
@@ -4802,7 +4802,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_AllocatingInterface(), 
 		   source, 
@@ -4810,7 +4810,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deployableElementEClass, 
 		   source, 
@@ -4819,7 +4819,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeployableElement_DeployingLinks(), 
 		   source, 
@@ -4827,7 +4827,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentTargetEClass, 
 		   source, 
@@ -4836,7 +4836,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::DeploymentTarget", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeploymentTarget_DeploymentLinks(), 
 		   source, 
@@ -4844,7 +4844,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::DeploymentTarget::deployment elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractDeploymentLinkEClass, 
 		   source, 
@@ -4853,7 +4853,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Dependency,could be mapped on uml::Deployment, but dependencies diagram allows to \"deploy\" more capella element types.", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_DeployedElement(), 
 		   source, 
@@ -4861,7 +4861,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_Location(), 
 		   source, 
@@ -4869,7 +4869,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Dependency::client elements on which DeploymentTarget stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractPathInvolvedElementEClass, 
 		   source, 
@@ -4878,7 +4878,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractPhysicalArtifactEClass, 
 		   source, 
@@ -4887,7 +4887,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractPhysicalArtifact_AllocatorConfigurationItems(), 
 		   source, 
@@ -4895,7 +4895,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractPhysicalLinkEndEClass, 
 		   source, 
@@ -4904,7 +4904,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractPhysicalLinkEnd_InvolvedLinks(), 
 		   source, 
@@ -4912,7 +4912,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractPhysicalPathLinkEClass, 
 		   source, 
@@ -4921,7 +4921,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalLinkEClass, 
 		   source, 
@@ -4930,7 +4930,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Connector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_LinkEnds(), 
 		   source, 
@@ -4938,7 +4938,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "first need to create ConnectorEnds pointing to the Ports, and then reference them in uml::Connector::end", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "cardinality must be [2..2]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_OwnedComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
@@ -4946,7 +4946,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "some elements on which ComponentFunctionalExchangeAllocation stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalLink_OwnedPhysicalLinkEnds(), 
 		   source, 
@@ -4954,7 +4954,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::Connector::end", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_OwnedPhysicalLinkRealizations(), 
 		   source, 
@@ -4962,7 +4962,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalLink_SourcePhysicalPort(), 
 		   source, 
@@ -4970,7 +4970,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_TargetPhysicalPort(), 
 		   source, 
@@ -4978,7 +4978,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (physicalLinkEndEClass, 
 		   source, 
@@ -4987,7 +4987,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::ConnectorEnd", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Port(), 
 		   source, 
@@ -4995,7 +4995,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorEnd::role", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::ConnectorEnd::role elements on which PhysicalPort stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Part(), 
 		   source, 
@@ -5003,7 +5003,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorEnd::partWithPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (physicalLinkRealizationEClass, 
 		   source, 
@@ -5012,7 +5012,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalPathEClass, 
 		   source, 
@@ -5021,7 +5021,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPath_InvolvedLinks(), 
 		   source, 
@@ -5029,7 +5029,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPath_OwnedPhysicalPathInvolvements(), 
 		   source, 
@@ -5037,7 +5037,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalPath_FirstPhysicalPathInvolvements(), 
 		   source, 
@@ -5045,7 +5045,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPath_OwnedPhysicalPathRealizations(), 
 		   source, 
@@ -5053,7 +5053,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (physicalPathInvolvementEClass, 
 		   source, 
@@ -5061,7 +5061,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_NextInvolvements(), 
 		   source, 
@@ -5070,7 +5070,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_PreviousInvolvements(), 
 		   source, 
@@ -5078,7 +5078,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_InvolvedElement(), 
 		   source, 
@@ -5086,7 +5086,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_InvolvedComponent(), 
 		   source, 
@@ -5094,7 +5094,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (physicalPathReferenceEClass, 
 		   source, 
@@ -5103,7 +5103,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalPathReference_ReferencedPhysicalPath(), 
 		   source, 
@@ -5111,7 +5111,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalPathRealizationEClass, 
 		   source, 
@@ -5120,7 +5120,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalPortEClass, 
 		   source, 
@@ -5129,7 +5129,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::PortAndFlows::FlowPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPort_OwnedPhysicalPortRealizations(), 
 		   source, 
@@ -5137,7 +5137,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPort_AllocatedComponentPorts(), 
 		   source, 
@@ -5145,7 +5145,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (physicalPortRealizationEClass, 
 		   source, 
@@ -5164,349 +5164,349 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$								
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (blockArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedRequirementPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedAbstractCapabilityPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedAspectPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedInterfacePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedDataPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (blockEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Block" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlock_OwnedAbstractCapabilityPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "aspectPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedInterfacePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedDataPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (componentArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ComponentArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_OwnedInterfaceUses(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedInterfaceUses" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "usedInterfaceLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaces(), 
 		   source, 
 		   new String[] {
 			 "Label", "usedInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaceLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "realizedInterfaceLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaces(), 
 		   source, 
 		   new String[] {
 			 "Label", "implementedInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
 			 "Label", "providedInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
 			 "Label", "requiredInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																								
+		   });	
 		addAnnotation
 		  (abstractActorEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractActor" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "PhysicalPart" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
 			 "Label", "providedInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getPart_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
 			 "Label", "requiredInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (architectureAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ArchitectureAllocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (componentAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ComponentAllocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (systemComponentEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "participationsInCapabilityRealizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfacePkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "InterfacePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfaces(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfacePkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "subInterfacePkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (interfaceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Interface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "implementorComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_UserComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "userComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
 		   new String[] {
 			 "Label", "interfaceImplementations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceUses(), 
 		   source, 
 		   new String[] {
 			 "Label", "interfaceUses" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																															
+		   });	
 		addAnnotation
 		  (interfaceImplementationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "InterfaceImplementation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_InterfaceImplementor(), 
 		   source, 
 		   new String[] {
 			 "Label", "Interface Implementor" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_ImplementedInterface(), 
 		   source, 
 		   new String[] {
 			 "Label", "realizedInterface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (interfaceUseEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "InterfaceUse" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceUse_InterfaceUser(), 
 		   source, 
 		   new String[] {
 			 "Label", "interfaceUser" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceUse_UsedInterface(), 
 		   source, 
 		   new String[] {
 			 "Label", "usedInterface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (providedInterfaceLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ProvidedInterfaceLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getProvidedInterfaceLink_Interface(), 
 		   source, 
 		   new String[] {
 			 "Label", "interface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (requiredInterfaceLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "RequiredInterfaceLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getRequiredInterfaceLink_Interface(), 
 		   source, 
 		   new String[] {
 			 "Label", "interface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (interfaceAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "InterfaceRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (actorCapabilityRealizationInvolvementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ActorCapabilityRealizationInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemComponentCapabilityRealizationInvolvementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemComponentCapabilityRealizationInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																							
+		   });	
 		addAnnotation
 		  (deployableElementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DeployableElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeployableElement_DeployingLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "deployingLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (deploymentTargetEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DeploymentTarget" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDeploymentTarget_DeploymentLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "deployments" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractDeployement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_DeployedElement(), 
 		   source, 
 		   new String[] {
 			 "Label", "deployedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_Location(), 
 		   source, 
 		   new String[] {
 			 "Label", "location" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																	
+		   });	
 		addAnnotation
 		  (physicalLinkEndEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "PhysicalLinkEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Port(), 
 		   source, 
 		   new String[] {
 			 "Label", "port" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Part(), 
 		   source, 
 		   new String[] {
 			 "Label", "part" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																												
+		   });
 	}
 
 	/**
@@ -5516,167 +5516,167 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (blockArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedAbstractCapabilityPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (blockEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBlock_OwnedAbstractCapabilityPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (componentArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_OwnedInterfaceUses(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaceLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "interfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "BehavioredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																									
+		   });	
 		addAnnotation
 		  (abstractActorEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (partEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.PhysicalPart" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
+		   });	
 		addAnnotation
 		  (architectureAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (componentAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (systemComponentEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (interfacePkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.InterfacePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfaces(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfacePkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (interfaceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Interface", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Interface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_Mechanism(), 
 		   source, 
@@ -5684,172 +5684,172 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "featureName", "mechanism", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Interface", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "contract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "InterfaceRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceUses(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																											
+		   });	
 		addAnnotation
 		  (interfaceImplementationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "InterfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.InterfaceImplementation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_InterfaceImplementor(), 
 		   source, 
 		   new String[] {
 			 "featureName", "implementingClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "InterfaceRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_ImplementedInterface(), 
 		   source, 
 		   new String[] {
 			 "featureName", "contract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "InterfaceRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (interfaceUseEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Usage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.InterfaceUse" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInterfaceUse_InterfaceUser(), 
 		   source, 
 		   new String[] {
 			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceUse_UsedInterface(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (providedInterfaceLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "InterfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.ProvidedInterfaceLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProvidedInterfaceLink_Interface(), 
 		   source, 
 		   new String[] {
 			 "featureName", "contract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "InterfaceRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (requiredInterfaceLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Usage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.RequiredInterfaceLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getRequiredInterfaceLink_Interface(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (interfaceAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.InterfaceRealization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (actorCapabilityRealizationInvolvementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.ActorCapabilityRealizationInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (systemComponentCapabilityRealizationInvolvementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.SystemComponentCapabilityRealizationInvolvement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																							
+		   });	
 		addAnnotation
 		  (deployableElementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDeployableElement_DeployingLinks(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (deploymentTargetEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDeploymentTarget_DeploymentLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractDeploymentLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_DeployedElement(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_Location(), 
 		   source, 
 		   new String[] {
 			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																						
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Port(), 
 		   source, 
 		   new String[] {
 			 "featureName", "role", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ConnectorEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Part(), 
 		   source, 
 		   new String[] {
 			 "featureName", "partWithPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ConnectorEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																													
+		   });
 	}
 
 	/**
@@ -5859,182 +5859,182 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$														
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getBlockArchitecture_OwnedRequirementPkgs(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedAbstractCapabilityPkg(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedAbstractCapabilityPkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedInterfacePkg(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBlock_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });	
 		addAnnotation
 		  (getComponent_OwnedInterfaceUses(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaceLinks(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });																					
+		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
-		   });																																	
+		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPart_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
-		   });																																															
+		   });	
 		addAnnotation
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfacePkg_OwnedInterfacePkgs(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_UserComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceUses(), 
 		   source, 
 		   new String[] {
-		   });																																																					
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_InterfaceImplementor(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_ImplementedInterface(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getInterfaceUse_InterfaceUser(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterfaceUse_UsedInterface(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getProvidedInterfaceLink_Interface(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getRequiredInterfaceLink_Interface(), 
 		   source, 
 		   new String[] {
-		   });																																																										
+		   });	
 		addAnnotation
 		  (getDeployableElement_DeployingLinks(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getDeploymentTarget_DeploymentLinks(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_DeployedElement(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractDeploymentLink_Location(), 
 		   source, 
 		   new String[] {
-		   });																																																						
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Port(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalLinkEnd_Part(), 
 		   source, 
 		   new String[] {
-		   });																																																											
+		   });
 	}
 
 	/**
@@ -6044,337 +6044,342 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																																			
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getBlockArchitecture_ProvisionedArchitectureAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_ProvisioningArchitectureAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatedArchitectures(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatingArchitectures(), 
 		   source, 
 		   new String[] {
-		   });																																													
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaceLinks(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_ProvisionedComponentAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ProvisioningComponentAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_AllocatedComponents(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_AllocatingComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponent_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getComponent_ContainedComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ContainedParts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponent_ContainedPhysicalPorts(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPart_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPart_DeployedParts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPart_DeployingParts(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatedArchitecture(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatingArchitecture(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatedComponent(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatingComponent(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });																																	
+		   });	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_UserComponents(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInterface_InterfaceUses(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getInterface_ProvisioningInterfaceAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_AllocatingInterfaces(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_AllocatingComponents(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getInterface_RequiringComponents(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RequiringComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponents(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizingLogicalInterfaces(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizedContextInterfaces(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizingPhysicalInterfaces(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterface_RealizedLogicalInterfaces(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getInterfaceImplementation_InterfaceImplementor(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getInterfaceUse_InterfaceUser(), 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatedInterface(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatingInterfaceAllocator(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_ProvisionedInterfaceAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getInterfaceAllocator_AllocatedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });																														
+		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_AllocatingInterface(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getDeployableElement_DeployingLinks(), 
 		   source, 
 		   new String[] {
-		   });																															
+		   });	
+		addAnnotation
+		  (getDeploymentTarget_DeploymentLinks(), 
+		   source, 
+		   new String[] {
+		   });	
 		addAnnotation
 		  (getAbstractPhysicalArtifact_AllocatorConfigurationItems(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractPhysicalLinkEnd_InvolvedLinks(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getPhysicalLink_SourcePhysicalPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_TargetPhysicalPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizedPhysicalLinks(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizingPhysicalLinks(), 
 		   source, 
 		   new String[] {
-		   });																																
+		   });	
 		addAnnotation
 		  (getPhysicalPath_FirstPhysicalPathInvolvements(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizedPhysicalPaths(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizingPhysicalPaths(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_PreviousInvolvements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_InvolvedElement(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_InvolvedComponent(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalPathReference_ReferencedPhysicalPath(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getPhysicalPort_AllocatedComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizedPhysicalPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizingPhysicalPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });
 	}
 
 	/**
@@ -6384,52 +6389,52 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																																																																																																																																																																								
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (architectureAllocationEClass, 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (componentAllocationEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																						
+		   });	
 		addAnnotation
 		  (interfaceImplementationEClass, 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (interfaceUseEClass, 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (providedInterfaceLinkEClass, 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (requiredInterfaceLinkEClass, 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (interfaceAllocationEClass, 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (actorCapabilityRealizationInvolvementEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (systemComponentCapabilityRealizationInvolvementEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																									
+		   });
 	}
 
 } //CsPackageImpl

@@ -20,12 +20,12 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.ActorPkg#getOwnedActors <em>Owned Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.ActorPkg#getOwnedActorPkgs <em>Owned Actor Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.ActorPkg#getOwnedSystemCommunication <em>Owned System Communication</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getActorPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ActorPkg'"

@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfaceImplementation#getInterfaceImplementor <em>Interface Implementor</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfaceImplementation#getImplementedInterface <em>Implemented Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceImplementation()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='InterfaceImplementation'"
