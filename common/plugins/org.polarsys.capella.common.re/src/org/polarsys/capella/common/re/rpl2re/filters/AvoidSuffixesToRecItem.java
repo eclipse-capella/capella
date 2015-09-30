@@ -17,9 +17,11 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.filter.AbstractFilterItem;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -42,33 +44,45 @@ public class AvoidSuffixesToRecItem extends AbstractFilterItem {
    */
   @Override
   public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+
+    // This rule is only applied when :
+    // - Update REC from RPL
+    // - merging from REFERENCE to TARGET
+    // We want to disable propagation of name if is suffixed. user have to check manually the propagation of name from RPL to REC
+
+    String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
+    if (!IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
+      return super.getDestinationRole(difference, role, context);
+    }
+    if (role != Role.REFERENCE) {
+      return super.getDestinationRole(difference, role, context);
+    }
+
     if (difference instanceof IAttributeValuePresence) {
       IAttributeValuePresence diff = (IAttributeValuePresence) difference;
       EObject sourceElement = diff.getElementMatch().get(role);
-      if (sourceElement != null) {
 
+      if (sourceElement != null) {
         CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
         CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
+
+        // This filter only applies on the suffixable feature
+        EStructuralFeature feature = AttributesHandlerHelper.getInstance(context).getSuffixableFeature(sourceElement, context);
+        if ((((IAttributeValuePresence) difference).getFeature() == null) || !((IAttributeValuePresence) difference).getFeature().equals(feature)) {
+          return super.getDestinationRole(difference, role, context);
+        }
 
         List<CatalogElementLink> links = new ArrayList<CatalogElementLink>();
         links.addAll(source.getOwnedLinks());
         links.addAll(target.getOwnedLinks());
 
-        // Unmodifiable element if linked to internal replicable elements of source / target
         for (CatalogElementLink link : links) {
           if (sourceElement.equals(link.getTarget())) {
 
-            String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
-
-            if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
-
-              // if (update replicableElement from replica)
-              if (role == Role.REFERENCE) {
-                CatalogElementLink linkedLink = link.getOrigin();
-                if (linkedLink.isSuffixed()) {
-                  return FilterAction.NO_ACTION;
-                }
-              }
+            // if (update replicableElement from replica)
+            CatalogElementLink linkedLink = link.getOrigin();
+            if (linkedLink.isSuffixed()) {
+              return FilterAction.NO_ACTION;
             }
           }
 

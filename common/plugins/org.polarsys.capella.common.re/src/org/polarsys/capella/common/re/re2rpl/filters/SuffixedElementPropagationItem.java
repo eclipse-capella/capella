@@ -63,7 +63,13 @@ public class SuffixedElementPropagationItem extends AbstractFilterItem {
       IAttributeValuePresence diff = (IAttributeValuePresence) difference;
       EObject sourceElement = diff.getElementMatch().get(role);
       EObject targetElement = diff.getElementMatch().get(role == Role.REFERENCE ? Role.TARGET : Role.REFERENCE);
-      if (sourceElement != null) {
+
+      if ((sourceElement != null) && (targetElement != null)) {
+        // This filter only applies on the suffixable feature
+        EStructuralFeature feature = AttributesHandlerHelper.getInstance(context).getSuffixableFeature(targetElement, context);
+        if ((((IAttributeValuePresence) difference).getFeature() == null) || !((IAttributeValuePresence) difference).getFeature().equals(feature)) {
+          return super.getDestinationRole(difference, role, context);
+        }
 
         CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
         CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
@@ -82,7 +88,6 @@ public class SuffixedElementPropagationItem extends AbstractFilterItem {
 
         if ((link != null) && link.getOrigin().isSuffixed()) {
           // if (update replicableElement from replica)
-          EStructuralFeature feature = AttributesHandlerHelper.getInstance(context).getSuffixableFeature(link.getTarget(), context);
           String name = (String) link.getTarget().eGet(feature);
           String originalSuffix = (String) context.get(IReConstants.ORIGINAL_SUFFIX);
           if ((originalSuffix != null) && !name.endsWith(originalSuffix)) {
