@@ -18,6 +18,7 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.helpers.SessionHelper;
 
 /**
  * @author Erwan Brottier
@@ -40,8 +41,11 @@ public class LibraryManager_removeReferenceToLibrary_cacheFocus extends BasicTes
     CapellaModel maLibrairie3 = (CapellaModel) getTestModel("libraries/MyLibrary3");
     // -- ORACLE -- //
     monProjet1.addReference(maLibrairie1);
+    SessionHelper.saveSession(monProjet1);
     maLibrairie1.addReference(maLibrairie2);
+    SessionHelper.saveSession(maLibrairie1);
     maLibrairie2.addReference(maLibrairie3);
+    SessionHelper.saveSession(maLibrairie2);
     Collection<IModel> libs = LibraryManagerExt.getAllReferences(monProjet1);
     assertTrue(libs.size() == 3);
     assertTrue(libs.contains(maLibrairie1));
@@ -57,6 +61,7 @@ public class LibraryManager_removeReferenceToLibrary_cacheFocus extends BasicTes
     libs = LibraryManagerExt.getAllReferences(maLibrairie3);
     assertTrue(libs.size() == 0);
     maLibrairie1.removeReference(maLibrairie2);
+    SessionHelper.saveSession(maLibrairie1);
     libs = LibraryManagerExt.getAllReferences(monProjet1);
     assertTrue(libs.size() == 1);
     assertTrue(libs.contains(maLibrairie1));
