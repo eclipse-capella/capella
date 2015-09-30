@@ -18,6 +18,7 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.helpers.SessionHelper;
 
 /**
  * @author Erwan Brottier
@@ -39,13 +40,19 @@ public class LibraryManager_setLibraryActiveState extends BasicTestCase {
     CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MyLibrary2");
     CapellaModel maLibrairie3 = (CapellaModel) getTestModel("libraries/MyLibrary3");
     monProjet1.addReference(maLibrairie1);
+    SessionHelper.saveSession(monProjet1);
     maLibrairie1.addReference(maLibrairie2);
+    SessionHelper.saveSession(maLibrairie1);
     maLibrairie2.addReference(maLibrairie3);
-    maLibrairie1.setActive(monProjet1, true);
-    maLibrairie2.setActive(monProjet1, false);
-    maLibrairie3.setActive(monProjet1, true);
-    maLibrairie2.setActive(maLibrairie1, true);
-    maLibrairie3.setActive(maLibrairie1, false);
+    SessionHelper.saveSession(maLibrairie2);
+    
+    monProjet1.setActive(maLibrairie1, true);
+    monProjet1.setActive(maLibrairie2, false);
+    monProjet1.setActive(maLibrairie3, true);
+    SessionHelper.saveSession(monProjet1);
+    maLibrairie1.setActive(maLibrairie2, true);
+    maLibrairie1.setActive(maLibrairie3, false);
+    SessionHelper.saveSession(maLibrairie1);
     // -- ORACLE -- //
     Collection<IModel> libs = LibraryManagerExt.getAllActivesReferences(monProjet1);
     assertTrue(libs.size() == 2);
