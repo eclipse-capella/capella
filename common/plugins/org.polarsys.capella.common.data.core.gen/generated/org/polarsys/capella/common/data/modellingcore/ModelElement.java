@@ -20,13 +20,13 @@ import org.polarsys.kitalpha.emde.model.ExtensibleElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getId <em>Id</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getSid <em>Sid</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getOwnedConstraints <em>Owned Constraints</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement()
  * @model abstract="true"

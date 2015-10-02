@@ -18,11 +18,11 @@ package org.polarsys.capella.core.data.capellacore;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.KeyValue#getKey <em>Key</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.KeyValue#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getKeyValue()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='KeyValue'"

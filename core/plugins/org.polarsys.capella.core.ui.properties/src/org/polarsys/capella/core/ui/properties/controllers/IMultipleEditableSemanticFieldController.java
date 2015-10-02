@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,9 +23,9 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public interface IMultipleEditableSemanticFieldController extends IMultipleSemanticFieldController {
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
+   * @param semanticElement
+   * @param semanticFeature
    * @return
    */
-  public List<EObject> addValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p);
+  public List<EObject> addValue(CapellaElement semanticElement, EStructuralFeature semanticFeature);
 }

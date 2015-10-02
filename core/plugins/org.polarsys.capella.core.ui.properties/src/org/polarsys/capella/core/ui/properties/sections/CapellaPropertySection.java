@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,41 +30,41 @@ import org.polarsys.capella.common.flexibility.wizards.ui.tabbed.PropertiesSecti
 public class CapellaPropertySection extends PropertiesSection implements IAbstractSection {
 
   /**
-   * @param context_p
-   * @param renderers_p
-   * @param group_p
+   * @param context
+   * @param renderers
+   * @param group
    */
-  public CapellaPropertySection(IPropertyContext context_p, IRendererContext renderers_p, IPropertyGroup group_p) {
-    super(context_p, renderers_p, group_p);
+  public CapellaPropertySection(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
+    super(context, renderers, group);
   }
 
   @Override
-  protected void initRendererContext(final IRendererContext rendererContext_p) {
+  protected void initRendererContext(final IRendererContext rendererContext) {
 
-    if (rendererContext_p instanceof IPolicifiedRendererContext) {
-      ((IPolicifiedRendererContext) rendererContext_p).addRendererPolicy(new AbstractRendererPolicy() {
+    if (rendererContext instanceof IPolicifiedRendererContext) {
+      ((IPolicifiedRendererContext) rendererContext).addRendererPolicy(new AbstractRendererPolicy() {
 
         @Override
-        public boolean match(IPropertyGroup group_p) {
+        public boolean match(IPropertyGroup group) {
           return true;
         }
 
         @Override
-        public IGroupRenderer createRenderer(IPropertyGroup group_p) {
+        public IGroupRenderer createRenderer(IPropertyGroup group) {
           //Sub groups should not use this renderer !
-          for (IPropertyGroup group : rendererContext_p.getPropertyContext().getProperties().getGroups(IPropertyGroup.EMPTY)) {
-            if (group.getId().equals(group_p.getParentId())) {
+          for (IPropertyGroup grp : rendererContext.getPropertyContext().getProperties().getGroups(IPropertyGroup.EMPTY)) {
+            if (grp.getId().equals(group.getParentId())) {
               return new FlatGroupRenderer();
             }
           }
           return new DefaultGroupRenderer() {
             @Override
-            protected boolean isDisplayLabel(IPropertyGroup group_p) {
+            protected boolean isDisplayLabel(IPropertyGroup group) {
               return true;
             }
 
             @Override
-            protected String getGroupName(IPropertyGroup group_p) {
+            protected String getGroupName(IPropertyGroup group) {
               return "";
             }
           };
@@ -78,7 +78,7 @@ public class CapellaPropertySection extends PropertiesSection implements IAbstra
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object toTest_p) {
+  public boolean select(Object toTest) {
     return true;
   }
 
@@ -86,15 +86,15 @@ public class CapellaPropertySection extends PropertiesSection implements IAbstra
    * {@inheritDoc}
    */
   @Override
-  public void loadData(EObject object_p) {
-    setInput(null, new StructuredSelection(object_p));
+  public void loadData(EObject object) {
+    setInput(null, new StructuredSelection(object));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setParentBackgroundColor(Color color_p) {
+  public void setParentBackgroundColor(Color color) {
     //Nothing here
   }
 

@@ -518,7 +518,7 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                                severity="ERROR"
                                statusCode="1">
                             <message>
-                               Type of {0} value of property {1} in class {2} is inconsistent with its type.
+                               Type of {0} value of property ({1}) in class {2} is inconsistent with its type.
                             </message>
                             <description>
                                For a property, type of the default (resp. null) value shall be Undefined (implicit typing) or the property’s datatype or a super type of the property’s datatype

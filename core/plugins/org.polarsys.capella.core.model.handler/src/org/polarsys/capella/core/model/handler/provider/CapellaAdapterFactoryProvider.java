@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.pa.deployment.provider.DeploymentItemProvi
 import org.polarsys.capella.core.data.pa.provider.PaItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.requirement.provider.RequirementItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.sharedmodel.provider.SharedmodelItemProviderAdapterFactory;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionDescriptor;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.EmdeItemProviderAdapterFactory;
 
@@ -111,7 +112,7 @@ public class CapellaAdapterFactoryProvider implements IAdapterFactoryProvider {
     adapterFactory.addAdapterFactory(new ActivityItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new BehaviorItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new EmdeItemProviderAdapterFactory());
-    for (AdapterFactory extendedAdapterFactory : ModelExtensionHelper.getInstance().getExtendedModelAdapterFactories(
+    for (AdapterFactory extendedAdapterFactory : ModelExtensionDescriptor.INSTANCE.getExtendedModelAdapterFactories(
         CtxItemProviderAdapterFactory.class.getName())) {
       adapterFactory.addAdapterFactory(extendedAdapterFactory);
     }

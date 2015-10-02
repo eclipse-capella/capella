@@ -84,7 +84,7 @@ public class CommunityOfInterestCompositionItemProvider
 			// Process OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST
 			if (communityOfInterestPropertyDescriptor != null) {
 				Object communityOfInterestValue = eObject.eGet(OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST, true);
-				if (communityOfInterestValue != null && communityOfInterestValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) communityOfInterestValue)) {
+				if (communityOfInterestValue != null && communityOfInterestValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) communityOfInterestValue)) {
 					itemPropertyDescriptors.remove(communityOfInterestPropertyDescriptor);
 				} else if (communityOfInterestValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION__COMMUNITY_OF_INTEREST) != null) {
 					itemPropertyDescriptors.remove(communityOfInterestPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class CommunityOfInterestCompositionItemProvider
 			// Process OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT
 			if (interestedOrganisationUnitPropertyDescriptor != null) {
 				Object interestedOrganisationUnitValue = eObject.eGet(OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT, true);
-				if (interestedOrganisationUnitValue != null && interestedOrganisationUnitValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) interestedOrganisationUnitValue)) {
+				if (interestedOrganisationUnitValue != null && interestedOrganisationUnitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interestedOrganisationUnitValue)) {
 					itemPropertyDescriptors.remove(interestedOrganisationUnitPropertyDescriptor);
 				} else if (interestedOrganisationUnitValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.COMMUNITY_OF_INTEREST_COMPOSITION__INTERESTED_ORGANISATION_UNIT) != null) {
 					itemPropertyDescriptors.remove(interestedOrganisationUnitPropertyDescriptor);				  					

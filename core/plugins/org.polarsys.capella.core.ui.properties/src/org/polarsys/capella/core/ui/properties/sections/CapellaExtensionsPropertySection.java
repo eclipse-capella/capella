@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,9 +69,9 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
      * {@inheritDoc}
      */
     @Override
-    public String getText(Object element_p) {
-      if (element_p instanceof AbstractNamedElement) {
-        return ((AbstractNamedElement) element_p).getName();
+    public String getText(Object element) {
+      if (element instanceof AbstractNamedElement) {
+        return ((AbstractNamedElement) element).getName();
       }
       return ICommonConstants.EMPTY_STRING;
     }
@@ -80,11 +80,11 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
      * {@inheritDoc}
      */
     @Override
-    public Image getImage(Object element_p) {
-      if (element_p instanceof EObject) {
-        return EObjectLabelProviderHelper.getImage((EObject) element_p);
+    public Image getImage(Object element) {
+      if (element instanceof EObject) {
+        return EObjectLabelProviderHelper.getImage((EObject) element);
       }
-      return super.getImage(element_p);
+      return super.getImage(element);
     }
   }
 
@@ -95,9 +95,9 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
      * {@inheritDoc}
      */
     @Override
-    public String getText(Object element_p) {
-      if (element_p instanceof CapellaElement) {
-        return ((CapellaElement) element_p).getSummary();
+    public String getText(Object element) {
+      if (element instanceof CapellaElement) {
+        return ((CapellaElement) element).getSummary();
       }
       return ICommonConstants.EMPTY_STRING;
     }
@@ -110,18 +110,18 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
      * {@inheritDoc}
      */
     @Override
-    public String getText(Object element_p) {
-      if (element_p instanceof BooleanPropertyValue) {
-        return Boolean.toString(((BooleanPropertyValue) element_p).isValue());
-      } else if (element_p instanceof EnumerationPropertyValue) {
-        EnumerationPropertyLiteral literal = ((EnumerationPropertyValue) element_p).getValue();
+    public String getText(Object element) {
+      if (element instanceof BooleanPropertyValue) {
+        return Boolean.toString(((BooleanPropertyValue) element).isValue());
+      } else if (element instanceof EnumerationPropertyValue) {
+        EnumerationPropertyLiteral literal = ((EnumerationPropertyValue) element).getValue();
         return (null != literal) ? literal.getName() : Messages.UndefinedValue;
-      } else if (element_p instanceof FloatPropertyValue) {
-        return Float.toString(((FloatPropertyValue) element_p).getValue());
-      } else if (element_p instanceof IntegerPropertyValue) {
-        return Integer.toString(((IntegerPropertyValue) element_p).getValue());
-      } else if (element_p instanceof StringPropertyValue) {
-        return ((StringPropertyValue) element_p).getValue();
+      } else if (element instanceof FloatPropertyValue) {
+        return Float.toString(((FloatPropertyValue) element).getValue());
+      } else if (element instanceof IntegerPropertyValue) {
+        return Integer.toString(((IntegerPropertyValue) element).getValue());
+      } else if (element instanceof StringPropertyValue) {
+        return ((StringPropertyValue) element).getValue();
       }
       return ICommonConstants.EMPTY_STRING;
     }
@@ -176,10 +176,10 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
          * {@inheritDoc}
          */
         @Override
-        protected void modifyElement(final EObject element_p, final int column_p, final Object value_p) {
+        protected void modifyElement(final EObject element, final int column, final Object value) {
           executeCommmand(new AbstractReadWriteCommand() {
             public void run() {
-              getCellEditorProvider().modifyElement(element_p, column_p, value_p);
+              getCellEditorProvider().modifyElement(element, column, value);
             }
           });
         }
@@ -216,10 +216,10 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
          * {@inheritDoc}
          */
         @Override
-        protected void modifyElement(final EObject element_p, final int column_p, final Object value_p) {
+        protected void modifyElement(final EObject element, final int column, final Object value) {
           executeCommmand(new AbstractReadWriteCommand() {
             public void run() {
-              getCellEditorProvider().modifyElement(element_p, column_p, value_p);
+              getCellEditorProvider().modifyElement(element, column, value);
             }
           });
         }
@@ -228,8 +228,8 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
          * {@inheritDoc}
          */
         @Override
-        protected boolean isSelectionValid(Object selection_p) {
-          return (selection_p instanceof PropertyValueGroup);
+        protected boolean isSelectionValid(Object selection) {
+          return (selection instanceof PropertyValueGroup);
         }
     };
     _appliedPropertyValueGroupsTableField.setDisplayedInWizard(displayedInWizard);
@@ -240,44 +240,44 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _appliedPropertyValuesTableField.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getCapellaElement_AppliedPropertyValues());
-    _appliedPropertyValueGroupsTableField.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getCapellaElement_AppliedPropertyValueGroups());
+    _appliedPropertyValuesTableField.loadData(capellaElement, CapellacorePackage.eINSTANCE.getCapellaElement_AppliedPropertyValues());
+    _appliedPropertyValueGroupsTableField.loadData(capellaElement, CapellacorePackage.eINSTANCE.getCapellaElement_AppliedPropertyValueGroups());
   }
 
   /**
    * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
    */
   @Override
-  public void setInput(IWorkbenchPart part_p, ISelection selection_p) {
-    if (selection_p instanceof StructuredSelection) {
-      EObject selection = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection_p).getFirstElement());
-      if (selection instanceof CapellaElement) {
-        if (selection.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) selection));
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    if (selection instanceof StructuredSelection) {
+      EObject selectedElement = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
+      if (selectedElement instanceof CapellaElement) {
+        if (selectedElement.eClass().equals(CsPackage.eINSTANCE.getPart())) {
+          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) selectedElement));
           if (!allowMultiplePart) {
-            AbstractType type = ((Part) selection).getAbstractType();
+            AbstractType type = ((Part) selectedElement).getAbstractType();
             if ((type != null) && !(type instanceof ConfigurationItem)) {
-              super.setInput(part_p, new StructuredSelection(type));
+              super.setInput(part, new StructuredSelection(type));
               loadData((CapellaElement) type);
               return;
             }
           }
         }
-        loadData((CapellaElement) selection);
+        loadData((CapellaElement) selectedElement);
       }
     }
-    super.setInput(part_p, selection_p);
+    super.setInput(part, selection);
   }
 
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
   @Override
-  public boolean select(Object toTest_p) {
-    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest_p);
+  public boolean select(Object toTest) {
+    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest);
     if (eObj instanceof CapellaElement) {
       return true;
     }

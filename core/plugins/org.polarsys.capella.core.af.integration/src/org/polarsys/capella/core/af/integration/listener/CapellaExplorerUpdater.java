@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,20 +16,23 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionOverallListener;
 
 /**
  * 
  */
-public class CapellaExplorerUpdater implements ModelExtensionListener {
+public class CapellaExplorerUpdater implements ModelExtensionOverallListener {
 
-	public void modelEnabled(String nsURI) {
-		refresh();
-	}
+    @Override
+    public void modelDisabled(Object ctx, String nsURI) {
+        refresh();
+    }
 
-	public void modelDisabled(String nsURI) {
-		refresh();
-	}
-
+    @Override
+    public void modelEnabled(Object ctx, String nsURI) {
+    	refresh();
+    }
+    
 	private void refresh() {
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		if (workbench == null)

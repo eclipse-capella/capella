@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.AbstractInstance#getRepresentingInstanceRoles <em>Representing Instance Roles</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getAbstractInstance()
  * @model abstract="true"

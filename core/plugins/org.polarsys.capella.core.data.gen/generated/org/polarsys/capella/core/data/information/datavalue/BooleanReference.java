@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.information.Property;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.BooleanReference#getReferencedValue <em>Referenced Value</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.BooleanReference#getReferencedProperty <em>Referenced Property</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getBooleanReference()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='BooleanReference'"

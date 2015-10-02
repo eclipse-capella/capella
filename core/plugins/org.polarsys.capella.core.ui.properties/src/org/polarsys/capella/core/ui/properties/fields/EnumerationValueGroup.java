@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,20 +39,20 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
   private Map<String, EObject> _items;
 
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
    */
-  public EnumerationValueGroup(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p, false);
+  public EnumerationValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory, false);
 
-    _widgetFactory.createCLabel(_parent, label_p);
+    _widgetFactory.createCLabel(_parent, label);
     _valueField = createValueComboField();
     _valueField.setEditable(false);
   }
 
   /**
-   * @param label_p
+   * @param label
    */
   protected CCombo createValueComboField() {
     CCombo valueField = _widgetFactory.createCCombo(_parent, SWT.BORDER);
@@ -66,8 +66,8 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    super.loadData(semanticElement_p, semanticFeature_p);
+  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    super.loadData(semanticElement, semanticFeature);
 
     loadComboValue();
   }
@@ -76,7 +76,7 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    * @see org.polarsys.capella.core.data.core.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
+  public void loadData(CapellaElement semanticElement) {
     loadComboValue();
   }
 
@@ -150,11 +150,11 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
   }
 
   /**
-   * @param comboField_p combo field to be filled
+   * @param comboField combo field to be filled
    */
   @Override
-  protected void fillComboField(CCombo comboField_p) {
-    if (comboField_p.equals(_valueField)) {
+  protected void fillComboField(CCombo comboField) {
+    if (comboField.equals(_valueField)) {
       String selecteditem = _valueField.getItem(_valueField.getSelectionIndex());
       setDataValue(_semanticElement, _semanticFeature, _items.get(selecteditem));
     }
@@ -164,9 +164,9 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != _valueField && !_valueField.isDisposed()) {
-      _valueField.setEnabled(enabled_p);
+      _valueField.setEnabled(enabled);
     }
   }
 }

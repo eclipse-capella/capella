@@ -64,20 +64,6 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * The cached value of the '{@link #getDeploymentLinks() <em>Deployment Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeploymentLinks()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractDeploymentLink> deploymentLinks;
-
-
-
-
-
-	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -232,10 +218,39 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 	public EList<AbstractDeploymentLink> getDeploymentLinks() {
 
-		if (deploymentLinks == null) {
-			deploymentLinks = new EObjectWithInverseResolvingEList<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION);
-		}
-		return deploymentLinks;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -413,26 +428,9 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeploymentLinks()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				return ((InternalEList<?>)getDeploymentLinks()).basicRemove(otherEnd, msgs);
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
 				return ((InternalEList<?>)getOwnedDeploymentLinks()).basicRemove(otherEnd, msgs);
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
@@ -475,10 +473,6 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				getDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
-				return;
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof PhysicalComponentKind) {
@@ -523,9 +517,6 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				return;
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
 				setKind(KIND_EDEFAULT);
 				return;
@@ -555,7 +546,7 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS:
 				return !getDeployingLinks().isEmpty();
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				return deploymentLinks != null && !deploymentLinks.isEmpty();
+				return !getDeploymentLinks().isEmpty();
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
 				return kind != KIND_EDEFAULT;
 			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:

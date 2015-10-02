@@ -152,7 +152,7 @@ public class CommunicationMeanItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
@@ -163,7 +163,7 @@ public class CommunicationMeanItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET
 			if (targetPropertyDescriptor != null) {
 				Object targetValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
@@ -174,7 +174,7 @@ public class CommunicationMeanItemProvider
 			// Process FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK
 			if (containingLinkPropertyDescriptor != null) {
 				Object containingLinkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK, true);
-				if (containingLinkValue != null && containingLinkValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containingLinkValue)) {
+				if (containingLinkValue != null && containingLinkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containingLinkValue)) {
 					itemPropertyDescriptors.remove(containingLinkPropertyDescriptor);
 				} else if (containingLinkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION__CONTAINING_LINK) != null) {
 					itemPropertyDescriptors.remove(containingLinkPropertyDescriptor);				  					
@@ -185,7 +185,7 @@ public class CommunicationMeanItemProvider
 			// Process FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK
 			if (linkPropertyDescriptor != null) {
 				Object linkValue = eObject.eGet(FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK, true);
-				if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) linkValue)) {
+				if (linkValue != null && linkValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) linkValue)) {
 					itemPropertyDescriptors.remove(linkPropertyDescriptor);
 				} else if (linkValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.EXCHANGE_SPECIFICATION__LINK) != null) {
 					itemPropertyDescriptors.remove(linkPropertyDescriptor);				  					
@@ -196,7 +196,7 @@ public class CommunicationMeanItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PORT
 			if (sourcePortPropertyDescriptor != null) {
 				Object sourcePortValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PORT, true);
-				if (sourcePortValue != null && sourcePortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourcePortValue)) {
+				if (sourcePortValue != null && sourcePortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourcePortValue)) {
 					itemPropertyDescriptors.remove(sourcePortPropertyDescriptor);
 				} else if (sourcePortValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PORT) != null) {
 					itemPropertyDescriptors.remove(sourcePortPropertyDescriptor);				  					
@@ -207,7 +207,7 @@ public class CommunicationMeanItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PART
 			if (sourcePartPropertyDescriptor != null) {
 				Object sourcePartValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PART, true);
-				if (sourcePartValue != null && sourcePartValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourcePartValue)) {
+				if (sourcePartValue != null && sourcePartValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourcePartValue)) {
 					itemPropertyDescriptors.remove(sourcePartPropertyDescriptor);
 				} else if (sourcePartValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PART) != null) {
 					itemPropertyDescriptors.remove(sourcePartPropertyDescriptor);				  					
@@ -218,7 +218,7 @@ public class CommunicationMeanItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE__TARGET_PORT
 			if (targetPortPropertyDescriptor != null) {
 				Object targetPortValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE__TARGET_PORT, true);
-				if (targetPortValue != null && targetPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetPortValue)) {
+				if (targetPortValue != null && targetPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetPortValue)) {
 					itemPropertyDescriptors.remove(targetPortPropertyDescriptor);
 				} else if (targetPortValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE__TARGET_PORT) != null) {
 					itemPropertyDescriptors.remove(targetPortPropertyDescriptor);				  					
@@ -229,7 +229,7 @@ public class CommunicationMeanItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE__TARGET_PART
 			if (targetPartPropertyDescriptor != null) {
 				Object targetPartValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE__TARGET_PART, true);
-				if (targetPartValue != null && targetPartValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetPartValue)) {
+				if (targetPartValue != null && targetPartValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetPartValue)) {
 					itemPropertyDescriptors.remove(targetPartPropertyDescriptor);
 				} else if (targetPartValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE__TARGET_PART) != null) {
 					itemPropertyDescriptors.remove(targetPartPropertyDescriptor);				  					
@@ -240,7 +240,7 @@ public class CommunicationMeanItemProvider
 			// Process OaPackage.Literals.COMMUNICATION_MEAN__SOURCE_ENTITY
 			if (sourceEntityPropertyDescriptor != null) {
 				Object sourceEntityValue = eObject.eGet(OaPackage.Literals.COMMUNICATION_MEAN__SOURCE_ENTITY, true);
-				if (sourceEntityValue != null && sourceEntityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceEntityValue)) {
+				if (sourceEntityValue != null && sourceEntityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceEntityValue)) {
 					itemPropertyDescriptors.remove(sourceEntityPropertyDescriptor);
 				} else if (sourceEntityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.COMMUNICATION_MEAN__SOURCE_ENTITY) != null) {
 					itemPropertyDescriptors.remove(sourceEntityPropertyDescriptor);				  					
@@ -251,7 +251,7 @@ public class CommunicationMeanItemProvider
 			// Process OaPackage.Literals.COMMUNICATION_MEAN__TARGET_ENTITY
 			if (targetEntityPropertyDescriptor != null) {
 				Object targetEntityValue = eObject.eGet(OaPackage.Literals.COMMUNICATION_MEAN__TARGET_ENTITY, true);
-				if (targetEntityValue != null && targetEntityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetEntityValue)) {
+				if (targetEntityValue != null && targetEntityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetEntityValue)) {
 					itemPropertyDescriptors.remove(targetEntityPropertyDescriptor);
 				} else if (targetEntityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.COMMUNICATION_MEAN__TARGET_ENTITY) != null) {
 					itemPropertyDescriptors.remove(targetEntityPropertyDescriptor);				  					

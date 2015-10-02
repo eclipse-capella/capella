@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.Role#getOwnedRoleAssemblyUsages <em>Owned Role Assembly Usages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Role#getOwnedActivityAllocations <em>Owned Activity Allocations</em>}</li>
@@ -28,7 +29,6 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
  *   <li>{@link org.polarsys.capella.core.data.oa.Role#getAllocatingEntities <em>Allocating Entities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Role#getAllocatedOperationalActivities <em>Allocated Operational Activities</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getRole()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Role is a set of activities allocated to an actor or a system against another actor or system.' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

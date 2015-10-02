@@ -20,6 +20,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityNode#getInActivityPartition <em>In Activity Partition</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityNode#getInInterruptibleRegion <em>In Interruptible Region</em>}</li>
@@ -27,7 +28,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityNode#getOutgoing <em>Outgoing</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityNode#getIncoming <em>Incoming</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityNode()
  * @model interface="true" abstract="true"

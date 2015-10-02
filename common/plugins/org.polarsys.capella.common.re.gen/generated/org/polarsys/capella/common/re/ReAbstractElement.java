@@ -20,10 +20,10 @@ import org.polarsys.kitalpha.emde.model.ExtensibleElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.ReAbstractElement#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.re.RePackage#getReAbstractElement()
  * @model abstract="true"

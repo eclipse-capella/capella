@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.ItemInConcept#getConcept <em>Concept</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.ItemInConcept#getItem <em>Item</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getItemInConcept()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Mediator class for a relationship between an operational concept and a concept item\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,47 +58,47 @@ public abstract class AbstractDelegatedViewer implements IDelegatedViewer {
   private List<ISelectionChangedListener> _listeners;
 
   /**
-   * @param widgetFactory_p
-   * @param cellEditorProvider_p
+   * @param widgetFactory
+   * @param cellEditorProvider
    */
-  public AbstractDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory_p, ICellEditorProvider cellEditorProvider_p) {
-    _widgetFactory = widgetFactory_p;
-    _cellEditorProvider = cellEditorProvider_p;
+  public AbstractDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory, ICellEditorProvider cellEditorProvider) {
+    _widgetFactory = widgetFactory;
+    _cellEditorProvider = cellEditorProvider;
   }
 
   /**
-   * @param composite_p
+   * @param composite
    */
-  public void createCellEditors(final Composite composite_p) {
+  public void createCellEditors(final Composite composite) {
     if (null == getCellEditorProvider()) {
       return;
     }
 
     final CellEditor[] cellEditors = new CellEditor[getColumnProperties().length];
     for (int i=0; i<getColumnProperties().length; i++) {
-      cellEditors[i] = getCellEditorProvider().getCellEditor(composite_p, i, null);
+      cellEditors[i] = getCellEditorProvider().getCellEditor(composite, i, null);
     }
     getColumnViewer().setCellEditors(cellEditors);
     getColumnViewer().setColumnProperties(getColumnProperties());
     getColumnViewer().setCellModifier(new ICellModifier() {
-      public boolean canModify(Object element_p, String property_p) {
-        if (getColumnProperties()[1].equals(property_p)) {
+      public boolean canModify(Object element, String property) {
+        if (getColumnProperties()[1].equals(property)) {
           // set the correct cell editor for this element
-          cellEditors[1] = getCellEditorProvider().getCellEditor(composite_p, 1, element_p);
+          cellEditors[1] = getCellEditorProvider().getCellEditor(composite, 1, element);
         }
-        return element_p instanceof AbstractPropertyValue;
+        return element instanceof AbstractPropertyValue;
       }
-      public Object getValue(Object element_p, String property_p) {
+      public Object getValue(Object element, String property) {
         for (int i=0; i<getColumnProperties().length; i++) {
-          if (getColumnProperties()[i].equals(property_p))
-            return getCellEditorProvider().getElementValue((EObject) element_p, i);
+          if (getColumnProperties()[i].equals(property))
+            return getCellEditorProvider().getElementValue((EObject) element, i);
         }
         return null;
       }
-      public void modify(Object element_p, String property_p, Object value_p) {
+      public void modify(Object element, String property, Object value) {
         for (int i=0; i<getColumnProperties().length; i++) {
-          if (getColumnProperties()[i].equals(property_p))
-            modifyElement((EObject) ((Item) element_p).getData(), i, value_p);
+          if (getColumnProperties()[i].equals(property))
+            modifyElement((EObject) ((Item) element).getData(), i, value);
         }
       }
     });
@@ -124,13 +124,13 @@ public abstract class AbstractDelegatedViewer implements IDelegatedViewer {
   protected void addViewerListeners() {
     if (null != _columnViewer) {
       _columnViewer.addDoubleClickListener(new IDoubleClickListener() {
-        public void doubleClick(DoubleClickEvent event_p) {
-          handleDoubleClick(event_p.getSelection());
+        public void doubleClick(DoubleClickEvent event) {
+          handleDoubleClick(event.getSelection());
         }
       });
       _columnViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-        public void selectionChanged(SelectionChangedEvent event_p) {
-          setSelection(event_p.getSelection());
+        public void selectionChanged(SelectionChangedEvent event) {
+          setSelection(event.getSelection());
         }
       });
     }
@@ -151,20 +151,20 @@ public abstract class AbstractDelegatedViewer implements IDelegatedViewer {
   }
 
   /**
-   * @param element_p
-   * @param column_p
-   * @param value_p
+   * @param element
+   * @param column
+   * @param value
    */
-  protected void modifyElement(EObject element_p, int column_p, Object value_p) {
+  protected void modifyElement(EObject element, int column, Object value) {
     // do nothing
   }
 
   /**
    * Create the composite that host the table with buttons to drive its content : add, remove, up and down actions.
    */
-  public Composite getViewerGroup(Composite parent_p) {
+  public Composite getViewerGroup(Composite parent) {
     if (null == _viewerGroup) {
-      _viewerGroup = new Composite(parent_p, SWT.NONE);
+      _viewerGroup = new Composite(parent, SWT.NONE);
       _viewerGroup.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
       GridLayout layout = new GridLayout(5 /* since 4 actions + 1 empty label */, false);
       layout.horizontalSpacing = 0;
@@ -176,13 +176,13 @@ public abstract class AbstractDelegatedViewer implements IDelegatedViewer {
 
   /**
    * Handle double click.
-   * @param selection_p current selection
+   * @param selection current selection
    */
-  protected void handleDoubleClick(ISelection selection_p) {
-    if (selection_p instanceof StructuredSelection) {
-      Object selection = ((StructuredSelection) selection_p).getFirstElement();
-      if (selection instanceof ModelElement) {
-        CapellaUIPropertiesPlugin.getDefault().openWizard((ModelElement) selection);
+  protected void handleDoubleClick(ISelection selection) {
+    if (selection instanceof StructuredSelection) {
+      Object selectedElement = ((StructuredSelection) selection).getFirstElement();
+      if (selectedElement instanceof ModelElement) {
+        CapellaUIPropertiesPlugin.getDefault().openWizard((ModelElement) selectedElement);
       }
     }
   }
@@ -190,11 +190,11 @@ public abstract class AbstractDelegatedViewer implements IDelegatedViewer {
   /**
    * {@inheritDoc}
    */
-  public void addSelectionChangedListener(ISelectionChangedListener listener_p) {
+  public void addSelectionChangedListener(ISelectionChangedListener listener) {
     if (null == _listeners) {
       _listeners = new ArrayList<ISelectionChangedListener>();
     }
-    _listeners.add(listener_p);
+    _listeners.add(listener);
   }
 
   /**
@@ -207,17 +207,17 @@ public abstract class AbstractDelegatedViewer implements IDelegatedViewer {
   /**
    * {@inheritDoc}
    */
-  public void removeSelectionChangedListener(ISelectionChangedListener listener_p) {
+  public void removeSelectionChangedListener(ISelectionChangedListener listener) {
     if (null != _listeners) {
-      _listeners.remove(listener_p);
+      _listeners.remove(listener);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void setSelection(ISelection selection_p) {
-    _selection = selection_p;
+  public void setSelection(ISelection selection) {
+    _selection = selection;
     for (ISelectionChangedListener listener : _listeners) {
       listener.selectionChanged(new SelectionChangedEvent(this, _selection));
     }

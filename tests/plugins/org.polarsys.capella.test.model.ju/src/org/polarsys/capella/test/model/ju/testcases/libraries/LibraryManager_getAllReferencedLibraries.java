@@ -18,6 +18,7 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.helpers.SessionHelper;
 
 /**
  * @author Erwan Brottier
@@ -39,7 +40,9 @@ public class LibraryManager_getAllReferencedLibraries extends BasicTestCase {
     CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MyLibrary2");
 
     monProjet1.addReference(maLibrairie1);
+    SessionHelper.saveSession(monProjet1);
     maLibrairie1.addReference(maLibrairie2);
+    SessionHelper.saveSession(maLibrairie1);
     // -- ORACLE -- //
     Collection<IModel> libs = monProjet1.getAvailableReferences();
     assertTrue(libs.size() == 1);

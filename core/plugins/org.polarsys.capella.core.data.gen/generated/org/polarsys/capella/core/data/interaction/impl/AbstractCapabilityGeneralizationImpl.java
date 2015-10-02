@@ -10,11 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.interaction.impl;
 
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IAdapterManager;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -118,39 +124,12 @@ public class AbstractCapabilityGeneralizationImpl extends RelationshipImpl imple
 	 * @generated
 	 */
 
-	public NotificationChain basicSetSuper(AbstractCapability newSuper, NotificationChain msgs) {
+	public void setSuper(AbstractCapability newSuper) {
 
 		AbstractCapability oldSuper = super_;
 		super_ = newSuper;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER, oldSuper, newSuper);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setSuper(AbstractCapability newSuper) {
-
-		if (newSuper != super_) {
-			NotificationChain msgs = null;
-			if (super_ != null)
-				msgs = ((InternalEObject)super_).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS, AbstractCapability.class, msgs);
-			if (newSuper != null)
-				msgs = ((InternalEObject)newSuper).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS, AbstractCapability.class, msgs);
-			msgs = basicSetSuper(newSuper, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER, newSuper, newSuper));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER, oldSuper, super_));
 
 	}
 
@@ -167,8 +146,8 @@ public class AbstractCapabilityGeneralizationImpl extends RelationshipImpl imple
 
 	public AbstractCapability getSub() {
 
-		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB) return null;
-		return (AbstractCapability)eContainer();
+		AbstractCapability sub = basicGetSub();
+		return sub != null && sub.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)sub) : sub;
 	}
 
 
@@ -180,103 +159,40 @@ public class AbstractCapabilityGeneralizationImpl extends RelationshipImpl imple
 
 	public AbstractCapability basicGetSub() {
 
-		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB) return null;
-		return (AbstractCapability)eInternalContainer();
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB, annotation);
+		
+		try {
+			return (AbstractCapability) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
 	}
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetSub(AbstractCapability newSub, NotificationChain msgs) {
-
-		msgs = eBasicSetContainer((InternalEObject)newSub, InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB, msgs);
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setSub(AbstractCapability newSub) {
-
-		if (newSub != eInternalContainer() || (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB && newSub != null)) {
-			if (EcoreUtil.isAncestor(this, newSub))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newSub != null)
-				msgs = ((InternalEObject)newSub).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS, AbstractCapability.class, msgs);
-			msgs = basicSetSub(newSub, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB, newSub, newSub));
-
-	}
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER:
-				if (super_ != null)
-					msgs = ((InternalEObject)super_).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS, AbstractCapability.class, msgs);
-				return basicSetSuper((AbstractCapability)otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetSub((AbstractCapability)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER:
-				return basicSetSuper(null, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB:
-				return basicSetSub(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB:
-				return eInternalContainer().eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS, AbstractCapability.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -313,15 +229,6 @@ public class AbstractCapabilityGeneralizationImpl extends RelationshipImpl imple
 				}
 				// end-extension-code
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapability) {
-				// end-extension-code
-					setSub((AbstractCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -337,9 +244,6 @@ public class AbstractCapabilityGeneralizationImpl extends RelationshipImpl imple
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER:
 				setSuper((AbstractCapability)null);
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION__SUB:
-				setSub((AbstractCapability)null);
 				return;
 		}
 		super.eUnset(featureID);

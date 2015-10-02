@@ -19,12 +19,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint#getConstrainedElements <em>Constrained Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint#getOwnedSpecification <em>Owned Specification</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint#getContext <em>Context</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractConstraint()
  * @model interface="true" abstract="true"

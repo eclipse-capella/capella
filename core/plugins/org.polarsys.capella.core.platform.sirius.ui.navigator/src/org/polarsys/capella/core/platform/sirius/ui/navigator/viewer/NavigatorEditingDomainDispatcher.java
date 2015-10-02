@@ -64,6 +64,7 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
   public void disposedEditingDomain(EditingDomain editingDomain) {
     _dataListener.unregisterFromDataNotifier((SemanticEditingDomain) editingDomain);
     _csListener.unregisterCommandStackListener((SemanticEditingDomain) editingDomain);
+    ActiveSessionManager.getInstance().remove((SemanticEditingDomain) editingDomain);
   }
 
   /**

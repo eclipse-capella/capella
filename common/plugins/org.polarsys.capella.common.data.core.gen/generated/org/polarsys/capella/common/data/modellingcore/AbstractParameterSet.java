@@ -19,12 +19,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getOwnedConditions <em>Owned Conditions</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getProbability <em>Probability</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractParameterSet#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameterSet()
  * @model abstract="true"

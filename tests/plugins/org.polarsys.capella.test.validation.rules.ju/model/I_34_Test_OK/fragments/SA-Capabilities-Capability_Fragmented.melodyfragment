@@ -3,9 +3,8 @@
 <!--Capella_Version_1.0.0-->
 <org.polarsys.capella.core.data.ctx:Capability xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.0.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.0.0"
     id="c4f350d3-4e63-4599-ac6d-56f293c55e99"
-    name="Capability_Fragmented" extending="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend ../I_34_Test_OK.melodymodeller#95be85bf-6665-4f86-be07-a26e56c1a7bc">
+    name="Capability_Fragmented">
   <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
       id="c1c4a78f-5960-4520-95e2-191a7baa2792" involver="#c4f350d3-4e63-4599-ac6d-56f293c55e99"
       involved="org.polarsys.capella.core.data.ctx:Actor ../I_34_Test_OK.melodymodeller#2a7cb7b0-3776-4262-b603-dda0348f634d"/>

@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealizationPkg#getOwnedCapabilityRealizations <em>Owned Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealizationPkg#getOwnedCapabilityRealizationPkgs <em>Owned Capability Realization Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealizationPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='CapabilityRealizationPkg'"

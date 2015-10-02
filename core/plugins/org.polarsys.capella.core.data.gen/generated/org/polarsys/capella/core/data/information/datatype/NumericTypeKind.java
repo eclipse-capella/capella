@@ -103,6 +103,8 @@ public enum NumericTypeKind implements Enumerator {
 	 * Returns the '<em><b>Numeric Type Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static NumericTypeKind get(String literal) {
@@ -119,6 +121,8 @@ public enum NumericTypeKind implements Enumerator {
 	 * Returns the '<em><b>Numeric Type Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static NumericTypeKind getByName(String name) {
@@ -135,6 +139,8 @@ public enum NumericTypeKind implements Enumerator {
 	 * Returns the '<em><b>Numeric Type Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static NumericTypeKind get(int value) {

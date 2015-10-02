@@ -1289,8 +1289,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
-        eType="#//AbstractCapabilityExtend" containment="true" resolveProxies="false"
-        eOpposite="#//AbstractCapabilityExtend/extension">
+        eType="#//AbstractCapabilityExtend" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="extend"/>
         <details key="featureOwner" value="UseCase"/>
@@ -1311,7 +1310,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extending" upperBound="-1"
-        eType="#//AbstractCapabilityExtend" eOpposite="#//AbstractCapabilityExtend/extended">
+        eType="#//AbstractCapabilityExtend" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="umlOppositeReference" value="extendedCase"/>
         <details key="umlOppositeReferenceOwner" value="Extend"/>
@@ -1330,10 +1330,11 @@
         <details key="explanation" value="Opposite reference of uml::Extend::extendedCase"/>
         <details key="constraints" value="Order must be computed"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstractCapabilityExtensionPoints"
         upperBound="-1" eType="#//AbstractCapabilityExtensionPoint" containment="true"
-        resolveProxies="false" eOpposite="#//AbstractCapabilityExtensionPoint/abstractCapability">
+        resolveProxies="false">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="extensionPoint"/>
         <details key="featureOwner" value="UseCase"/>
@@ -1354,8 +1355,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superGeneralizations" upperBound="-1"
-        eType="#//AbstractCapabilityGeneralization" containment="true" resolveProxies="false"
-        eOpposite="#//AbstractCapabilityGeneralization/sub">
+        eType="#//AbstractCapabilityGeneralization" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="generalization"/>
         <details key="featureOwner" value="Classifier"/>
@@ -1376,7 +1376,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subGeneralizations" upperBound="-1"
-        eType="#//AbstractCapabilityGeneralization" resolveProxies="false" eOpposite="#//AbstractCapabilityGeneralization/super">
+        eType="#//AbstractCapabilityGeneralization" changeable="false" volatile="true"
+        transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="generalization"/>
         <details key="featureOwner" value="Classifier"/>
@@ -1395,10 +1396,10 @@
         <details key="explanation" value="Opposite reference of uml::Generalization::general"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includes" upperBound="-1"
-        eType="#//AbstractCapabilityInclude" containment="true" resolveProxies="false"
-        eOpposite="#//AbstractCapabilityInclude/inclusion">
+        eType="#//AbstractCapabilityInclude" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="include"/>
         <details key="featureOwner" value="UseCase"/>
@@ -1419,7 +1420,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="including" upperBound="-1"
-        eType="#//AbstractCapabilityInclude" eOpposite="#//AbstractCapabilityInclude/included">
+        eType="#//AbstractCapabilityInclude" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="umlOppositeReference" value="addition"/>
         <details key="umlOppositeReferenceOwner" value="Include"/>
@@ -1438,6 +1440,7 @@
         <details key="explanation" value="Opposite reference of uml::Include::addition"/>
         <details key="constraints" value="Order must be computed"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="super" upperBound="-1"
         eType="#//AbstractCapability" changeable="false" volatile="true" transient="true"
@@ -1660,7 +1663,7 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extended" lowerBound="1"
-        eType="#//AbstractCapability" eOpposite="#//AbstractCapability/extending">
+        eType="#//AbstractCapability">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="extendedCase"/>
         <details key="featureOwner" value="Extend"/>
@@ -1681,7 +1684,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extension" lowerBound="1"
-        eType="#//AbstractCapability" eOpposite="#//AbstractCapability/extends">
+        eType="#//AbstractCapability" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="extension"/>
         <details key="featureOwner" value="Extend"/>
@@ -1700,6 +1704,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensionLocation" eType="#//AbstractCapabilityExtensionPoint"
         eOpposite="#//AbstractCapabilityExtensionPoint/extendLinks">
@@ -1748,7 +1753,8 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstractCapability" lowerBound="1"
-        eType="#//AbstractCapability" transient="true" eOpposite="#//AbstractCapability/abstractCapabilityExtensionPoints">
+        eType="#//AbstractCapability" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="useCase"/>
         <details key="featureOwner" value="ExtensionPoint"/>
@@ -1767,6 +1773,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendLinks" upperBound="-1"
         eType="#//AbstractCapabilityExtend" eOpposite="#//AbstractCapabilityExtend/extensionLocation">
@@ -1814,8 +1821,7 @@
       <details key="explanation" value="none"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="super" lowerBound="1" eType="#//AbstractCapability"
-        eOpposite="#//AbstractCapability/subGeneralizations">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="super" lowerBound="1" eType="#//AbstractCapability">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="general"/>
         <details key="featureOwner" value="Generalization"/>
@@ -1836,7 +1842,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sub" lowerBound="1" eType="#//AbstractCapability"
-        eOpposite="#//AbstractCapability/superGeneralizations">
+        changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="general"/>
         <details key="featureOwner" value="Generalization"/>
@@ -1855,6 +1861,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractCapabilityInclude" eSuperTypes="CapellaCore.ecore#//Relationship">
@@ -1882,7 +1889,7 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="included" lowerBound="1"
-        eType="#//AbstractCapability" eOpposite="#//AbstractCapability/including">
+        eType="#//AbstractCapability">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="addition"/>
         <details key="featureOwner" value="Include"/>
@@ -1903,7 +1910,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inclusion" lowerBound="1"
-        eType="#//AbstractCapability" eOpposite="#//AbstractCapability/includes">
+        eType="#//AbstractCapability" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="includingCase"/>
         <details key="featureOwner" value="Include"/>
@@ -1922,6 +1930,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ScenarioKind">

@@ -90,7 +90,7 @@ public class InteractionStateItemProvider
 			// Process InteractionPackage.Literals.INTERACTION_STATE__RELATED_ABSTRACT_STATE
 			if (relatedAbstractStatePropertyDescriptor != null) {
 				Object relatedAbstractStateValue = eObject.eGet(InteractionPackage.Literals.INTERACTION_STATE__RELATED_ABSTRACT_STATE, true);
-				if (relatedAbstractStateValue != null && relatedAbstractStateValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) relatedAbstractStateValue)) {
+				if (relatedAbstractStateValue != null && relatedAbstractStateValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) relatedAbstractStateValue)) {
 					itemPropertyDescriptors.remove(relatedAbstractStatePropertyDescriptor);
 				} else if (relatedAbstractStateValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INTERACTION_STATE__RELATED_ABSTRACT_STATE) != null) {
 					itemPropertyDescriptors.remove(relatedAbstractStatePropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class InteractionStateItemProvider
 			// Process InteractionPackage.Literals.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION
 			if (relatedAbstractFunctionPropertyDescriptor != null) {
 				Object relatedAbstractFunctionValue = eObject.eGet(InteractionPackage.Literals.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, true);
-				if (relatedAbstractFunctionValue != null && relatedAbstractFunctionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) relatedAbstractFunctionValue)) {
+				if (relatedAbstractFunctionValue != null && relatedAbstractFunctionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) relatedAbstractFunctionValue)) {
 					itemPropertyDescriptors.remove(relatedAbstractFunctionPropertyDescriptor);
 				} else if (relatedAbstractFunctionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION) != null) {
 					itemPropertyDescriptors.remove(relatedAbstractFunctionPropertyDescriptor);				  					
@@ -112,7 +112,7 @@ public class InteractionStateItemProvider
 			// Process InteractionPackage.Literals.INTERACTION_STATE__COVERED
 			if (coveredPropertyDescriptor != null) {
 				Object coveredValue = eObject.eGet(InteractionPackage.Literals.INTERACTION_STATE__COVERED, true);
-				if (coveredValue != null && coveredValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) coveredValue)) {
+				if (coveredValue != null && coveredValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) coveredValue)) {
 					itemPropertyDescriptors.remove(coveredPropertyDescriptor);
 				} else if (coveredValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INTERACTION_STATE__COVERED) != null) {
 					itemPropertyDescriptors.remove(coveredPropertyDescriptor);				  					

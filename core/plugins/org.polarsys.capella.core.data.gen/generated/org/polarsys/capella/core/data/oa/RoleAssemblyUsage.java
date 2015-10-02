@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.RoleAssemblyUsage#getChild <em>Child</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAssemblyUsage()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='mediator class supporting the relationship between two roles having a hierarchical dependence\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

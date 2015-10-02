@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.TimeLapse#getStart <em>Start</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.TimeLapse#getFinish <em>Finish</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getTimeLapse()
  * @model abstract="true"

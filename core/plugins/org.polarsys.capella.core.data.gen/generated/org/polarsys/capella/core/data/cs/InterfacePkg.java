@@ -22,11 +22,11 @@ import org.polarsys.capella.core.data.information.communication.MessageReference
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfacePkg#getOwnedInterfaces <em>Owned Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.InterfacePkg#getOwnedInterfacePkgs <em>Owned Interface Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfacePkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='InterfacePkg'"

@@ -19,10 +19,10 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.ValuePin#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getValuePin()
  * @model interface="true" abstract="true"

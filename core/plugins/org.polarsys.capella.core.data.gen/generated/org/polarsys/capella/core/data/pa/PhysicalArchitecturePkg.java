@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg#getOwnedPhysicalArchitecturePkgs <em>Owned Physical Architecture Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg#getOwnedPhysicalArchitectures <em>Owned Physical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalArchitecturePkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='PhysicalArchitecturePkg'"

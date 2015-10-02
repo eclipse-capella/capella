@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,14 +21,14 @@ import org.eclipse.swt.widgets.Composite;
  */
 public interface IDelegatedViewer extends ISelectionProvider {
   /**
-   * @param parent_p
+   * @param parent
    */
-  public void createContainer(Composite parent_p);
+  public void createContainer(Composite parent);
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  public void setEnabled(boolean enabled_p);
+  public void setEnabled(boolean enabled);
 
   /**
    * @return
@@ -36,13 +36,13 @@ public interface IDelegatedViewer extends ISelectionProvider {
   public ColumnViewer getColumnViewer();
 
   /**
-   * @param parent_p
+   * @param parent
    * @return
    */
-  public Composite getViewerGroup(Composite parent_p);
+  public Composite getViewerGroup(Composite parent);
 
   /**
-   * @param input_p
+   * @param input
    */
-  public void setInput(List<EObject> input_p);
+  public void setInput(List<EObject> input);
 }

@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedDataPkgs <em>Owned Data Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedClasses <em>Owned Classes</em>}</li>
@@ -39,7 +40,6 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedExceptions <em>Owned Exceptions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedStateEvents <em>Owned State Events</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='DataPkg'"

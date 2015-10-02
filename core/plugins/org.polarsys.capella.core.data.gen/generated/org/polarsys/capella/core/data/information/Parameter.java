@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.Parameter#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Parameter#getPassingMode <em>Passing Mode</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getParameter()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Parameter'"

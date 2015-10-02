@@ -86,7 +86,7 @@ public class ComponentInstanceItemProvider
 			// Process DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					
@@ -193,9 +193,9 @@ public class ComponentInstanceItemProvider
 				 getString("_UI_DeploymentTarget_deploymentLinks_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deploymentLinks_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.information.datatype.StringType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.AbstractStringValue#getStringType <em>String Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getAbstractStringValue()
  * @model abstract="true"

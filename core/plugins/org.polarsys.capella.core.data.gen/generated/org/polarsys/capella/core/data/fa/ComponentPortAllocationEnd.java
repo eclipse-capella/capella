@@ -21,12 +21,12 @@ import org.polarsys.capella.core.data.information.Port;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getPort <em>Port</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getPart <em>Part</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd#getOwningComponentPortAllocation <em>Owning Component Port Allocation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPortAllocationEnd()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

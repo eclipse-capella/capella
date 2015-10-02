@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalScenario#getContext <em>Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalScenario#getObjective <em>Objective</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalScenario()
  * @model abstract="true"

@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponentPkg#getOwnedLogicalComponents <em>Owned Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponentPkg#getOwnedLogicalComponentPkgs <em>Owned Logical Component Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponentPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='LogicalComponentPkg'"

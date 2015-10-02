@@ -37,6 +37,8 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.provider.RelationshipItemProvider;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -54,6 +56,13 @@ public class AbstractCapabilityExtensionPointItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor abstractCapabilityPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,6 +70,30 @@ public class AbstractCapabilityExtensionPointItemProvider
 	 */
 	public AbstractCapabilityExtensionPointItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY
+			if (abstractCapabilityPropertyDescriptor != null) {
+				Object abstractCapabilityValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY, true);
+				if (abstractCapabilityValue != null && abstractCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) abstractCapabilityValue)) {
+					itemPropertyDescriptors.remove(abstractCapabilityPropertyDescriptor);
+				} else if (abstractCapabilityValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY) != null) {
+					itemPropertyDescriptors.remove(abstractCapabilityPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(abstractCapabilityPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(abstractCapabilityPropertyDescriptor);
+				}
+			}
+		}		
 	}
 
 	/**
@@ -75,6 +108,7 @@ public class AbstractCapabilityExtensionPointItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addAbstractCapabilityPropertyDescriptor(object);
 			addExtendLinksPropertyDescriptor(object);
 		}
 		// begin-extension-code
@@ -107,6 +141,32 @@ public class AbstractCapabilityExtensionPointItemProvider
 				 null,
 		// begin-extension-code
 				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Abstract Capability feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAbstractCapabilityPropertyDescriptor(Object object) {
+		// begin-extension-code
+		abstractCapabilityPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractCapabilityExtensionPoint_abstractCapability_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapabilityExtensionPoint_abstractCapability_feature", "_UI_AbstractCapabilityExtensionPoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(abstractCapabilityPropertyDescriptor);
 		// end-extension-code
 	}
 

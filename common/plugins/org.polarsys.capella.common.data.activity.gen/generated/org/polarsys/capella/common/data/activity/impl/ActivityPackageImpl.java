@@ -1434,7 +1434,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1444,7 +1444,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																						
+		   });
 	}
 
 	/**
@@ -1454,7 +1454,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1466,7 +1466,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "This package depends on the model Behavior.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractActivityEClass, 
 		   source, 
@@ -1478,7 +1478,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractActivity_IsReadOnly(), 
 		   source, 
@@ -1487,7 +1487,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractActivity_IsSingleExecution(), 
 		   source, 
@@ -1496,7 +1496,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedNodes(), 
 		   source, 
@@ -1504,7 +1504,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Nodes coordinated by the activity.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedEdges(), 
 		   source, 
@@ -1512,7 +1512,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Edges expressing flow between nodes of the activity.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedGroups(), 
 		   source, 
@@ -1520,7 +1520,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Top-level groups in the activity\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "The groups of an activity have no supergroups\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedStructuredNodes(), 
 		   source, 
@@ -1528,7 +1528,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Nodes coordinated by the activity\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exceptionHandlerEClass, 
 		   source, 
@@ -1540,7 +1540,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_ProtectedNode(), 
 		   source, 
@@ -1548,7 +1548,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The node protected by the handler. The handler is examined if an exception propagates to the outside of the node\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_HandlerBody(), 
 		   source, 
@@ -1556,7 +1556,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "A node that is executed if the handler satisfies an uncaught exception\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_ExceptionInput(), 
 		   source, 
@@ -1564,7 +1564,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "An object node within the handler body. When the handler catches an exception, the exception token is placed in this\r\nnode, causing the body to execute\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_ExceptionTypes(), 
 		   source, 
@@ -1572,7 +1572,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set,\r\nthe handler catches the exception and executes its body\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityGroupEClass, 
 		   source, 
@@ -1584,7 +1584,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_SuperGroup(), 
 		   source, 
@@ -1592,7 +1592,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Group immediately containing the group\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "_todo_ If it is corresponding to UML, this attribute should be derived" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_SubGroups(), 
 		   source, 
@@ -1600,7 +1600,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Groups immediately contained in the group\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "_todo_ If it is corresponding to UML, this attribute should be derived" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_OwnedNodes(), 
 		   source, 
@@ -1608,7 +1608,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Nodes immediately contained in the group. This is a derived union\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "_todo_ If it is corresponding to UML, this attribute should be derived" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_OwnedEdges(), 
 		   source, 
@@ -1616,7 +1616,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Edges immediately contained in the group. This is a derived union\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "_todo_ If it is corresponding to UML, this attribute should be derived" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interruptibleActivityRegionEClass, 
 		   source, 
@@ -1628,7 +1628,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented in Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInterruptibleActivityRegion_InterruptingEdges(), 
 		   source, 
@@ -1636,7 +1636,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The edges leaving the region that will abort other tokens flowing in the region\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum, 
 		   source, 
@@ -1644,7 +1644,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "ObjectNodeOrderingKind is an enumeration indicating queuing order within a node\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -1652,7 +1652,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "First In First Out ordering", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -1660,7 +1660,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Last In First Out ordering", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -1668,7 +1668,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Indicates that object node tokens are ordered.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -1676,7 +1676,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Indicates that object node tokens are unordered.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum, 
 		   source, 
@@ -1684,7 +1684,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "specifies the type of behavior of the object node with respect to incoming data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -1692,7 +1692,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Used when incoming object node management policy is not precised", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -1700,7 +1700,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "When the \"nobuffer\" stereotype is applied to object nodes, tokens arriving at the node are discarded if they are refused by\r\noutgoing edges, or refused by actions for object nodes that are input pins\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -1708,7 +1708,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "When the \"overwrite\" stereotype is applied to object nodes, a token arriving at a full object node replaces the ones\r\nalready there (a full object node has as many tokens as allowed by its upper bound)\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityEdgeEClass, 
 		   source, 
@@ -1720,7 +1720,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityEdge_KindOfRate(), 
 		   source, 
@@ -1729,7 +1729,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "typically, \"discrete\" or \"continuous\"", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getActivityEdge_InActivityPartition(), 
 		   source, 
@@ -1737,7 +1737,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Partitions containing the edge\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_InInterruptibleRegion(), 
 		   source, 
@@ -1745,7 +1745,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "(automatically computed) Region containing this edge\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_InStructuredNode(), 
 		   source, 
@@ -1753,7 +1753,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Structured activity node containing the edge\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityEdge_Rate(), 
 		   source, 
@@ -1761,7 +1761,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "It specifies the expected value of the number of objects and\r\nvalues that traverse the edge per time interval, that is, the expected value rate at which they leave the source node and\r\narrive at the target node. It does not refer to the rate at which a value changes over time\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "The rate of a parameter must be less than or equal to rates on edges that come into or go out from pins and parameters nodes corresponding to the parameter.\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Probability(), 
 		   source, 
@@ -1769,7 +1769,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Likelihood that a value leaving the decision node or object node will traverse the edge.\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Shall be between 0 and 1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Target(), 
 		   source, 
@@ -1777,7 +1777,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Node to which tokens are put when they traverse the edge\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Source(), 
 		   source, 
@@ -1785,7 +1785,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Node from which tokens are taken when they traverse the edge\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Guard(), 
 		   source, 
@@ -1793,7 +1793,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Specification evaluated at runtime to determine if the edge can be traversed\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Weight(), 
 		   source, 
@@ -1801,7 +1801,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The minimum number of tokens that must traverse the edge at the same time\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Interrupts(), 
 		   source, 
@@ -1809,7 +1809,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Region that the edge can interrupt\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (controlFlowEClass, 
 		   source, 
@@ -1821,7 +1821,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectFlowEClass, 
 		   source, 
@@ -1833,7 +1833,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getObjectFlow_IsMulticast(), 
 		   source, 
@@ -1842,7 +1842,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectFlow_IsMultireceive(), 
 		   source, 
@@ -1851,7 +1851,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectFlow_Transformation(), 
 		   source, 
@@ -1859,7 +1859,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Changes or replaces data tokens flowing along edge\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getObjectFlow_Selection(), 
 		   source, 
@@ -1867,7 +1867,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Selects tokens from a source object node\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityPartitionEClass, 
 		   source, 
@@ -1879,7 +1879,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityPartition_IsDimension(), 
 		   source, 
@@ -1888,7 +1888,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_IsExternal(), 
 		   source, 
@@ -1897,7 +1897,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_RepresentedElement(), 
 		   source, 
@@ -1905,7 +1905,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "An element constraining behaviors invoked by nodes in the partition\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_SuperPartition(), 
 		   source, 
@@ -1913,7 +1913,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Partition immediately containing the partition.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_SubPartitions(), 
 		   source, 
@@ -1921,7 +1921,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Partitions immediately contained in the partition.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityExchangeEClass, 
 		   source, 
@@ -1933,7 +1933,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityExchange_RealizingActivityFlows(), 
 		   source, 
@@ -1941,7 +1941,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Determines which ActivityEdges will realize the specified flow.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityNodeEClass, 
 		   source, 
@@ -1953,7 +1953,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "Activity nodes can only be owned by activities or groups.\r\nActivity nodes may be owned by at most one structured node.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InActivityPartition(), 
 		   source, 
@@ -1961,7 +1961,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Partitions containing the node\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InInterruptibleRegion(), 
 		   source, 
@@ -1969,7 +1969,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Interruptible regions containing the node\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InStructuredNode(), 
 		   source, 
@@ -1977,7 +1977,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Structured activity node containing the node\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "node", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "node" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityNode_Outgoing(), 
 		   source, 
@@ -1985,7 +1985,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Edges that have the node as source\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getActivityNode_Incoming(), 
 		   source, 
@@ -1993,7 +1993,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Edges that have the node as target.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (executableNodeEClass, 
 		   source, 
@@ -2005,7 +2005,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExecutableNode_OwnedHandlers(), 
 		   source, 
@@ -2013,7 +2013,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable\r\nnode.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (structuredActivityNodeEClass, 
 		   source, 
@@ -2025,7 +2025,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "The edges owned by a structured node must have source and target nodes in the structured node, and vice versa\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractActionEClass, 
 		   source, 
@@ -2037,7 +2037,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_LocalPrecondition(), 
 		   source, 
@@ -2045,7 +2045,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The preconditions for an action define conditions that must be true when the action is invoked.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_LocalPostcondition(), 
 		   source, 
@@ -2053,7 +2053,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The postconditions for an action define conditions that will be true when the invocation of the action completes\r\nsuccessfully, assuming the preconditions were satisfied\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_Context(), 
 		   source, 
@@ -2061,7 +2061,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The classifier that owns the behavior of which this action is a part.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_Inputs(), 
 		   source, 
@@ -2069,7 +2069,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The ordered set of input pins connected to the Action. These are among the total set of inputs\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractAction_Outputs(), 
 		   source, 
@@ -2077,7 +2077,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The ordered set of output pins connected to the Action. The action places its results onto pins in this set\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (acceptEventActionEClass, 
 		   source, 
@@ -2089,7 +2089,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "- AcceptEventActions may have no input pins.\r\n- There are no output pins if the trigger events are only ChangeEvents, or if they are only CallEvents when this action is an\r\ninstance of AcceptEventAction and not an instance of a descendant of AcceptEventAction (such as AcceptCallAction).\r\n- If the trigger events are all TimeEvents, there is exactly one output pin.\r\nUML superstructure Specification, v2.2 235\r\n- If isUnmarshalled is true, there must be exactly one trigger for events of type SignalEvent. The number of result output\r\npins must be the same as the number of attributes of the signal. The type and ordering of each result output pin must be the\r\nsame as the corresponding attribute of the signal. The multiplicity of each result output pin must be compatible with the\r\nmultiplicity of the corresponding attribute\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAcceptEventAction_IsUnmarshall(), 
 		   source, 
@@ -2098,7 +2098,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAcceptEventAction_Result(), 
 		   source, 
@@ -2106,7 +2106,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity\r\nmight not be preserved\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (invocationActionEClass, 
 		   source, 
@@ -2118,7 +2118,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInvocationAction_Arguments(), 
 		   source, 
@@ -2126,7 +2126,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "port(s) of the receiver object on which the behavioral feature is invoked\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (sendSignalActionEClass, 
 		   source, 
@@ -2138,7 +2138,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "- The number and order of argument pins must be the same as the number and order of attributes in the signal.\r\n- The type, ordering, and multiplicity of an argument pin must be the same as the corresponding attribute of the signal.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSendSignalAction_Target(), 
 		   source, 
@@ -2146,7 +2146,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The target object to which the signal is sent.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSendSignalAction_Signal(), 
 		   source, 
@@ -2154,7 +2154,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The type of signal transmitted to the target object.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (callActionEClass, 
 		   source, 
@@ -2166,7 +2166,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "- Only synchronous call actions can have result pins.\r\n- The number and order of argument pins must be the same as the number and order of parameters of the invoked behavior\r\nor behavioral feature. Pins are matched to parameters by order.\r\n- The type, ordering, and multiplicity of an argument pin must be the same as the corresponding parameter of the behavior\r\nor behavioral feature.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCallAction_Results(), 
 		   source, 
@@ -2174,7 +2174,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "A list of output pins where the results of performing the invocation are placed\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (callBehaviorActionEClass, 
 		   source, 
@@ -2186,7 +2186,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "- The number of argument pins and the number of parameters of the behavior of type in and in-out must be equal.\r\n- The number of result pins and the number of parameters of the behavior of type return, out, and in-out must be equal.\r\n- The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding parameter of thebehavior.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCallBehaviorAction_Behavior(), 
 		   source, 
@@ -2194,7 +2194,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The invoked behavior. It must be capable of accepting and returning control\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeEClass, 
 		   source, 
@@ -2206,7 +2206,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "- All edges coming into or going out of object nodes must be object flow edges.\r\n- Object nodes are not unique typed elements.\r\nisUnique = false\r\n- If an object node has a selection behavior, then the ordering of the object node is ordered and vice versa.\r\n- A selection behavior has one input parameter and one output parameter. The input parameter must be a bag of elements of\r\nthe same type as the object node or a supertype of the type of object node. The output parameter must be the same or a\r\nsubtype of the type of object node. The behavior cannot have side effects.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "for the SysML profile, it will make sense to use the SysML stereotypes \"no buffer\" and \"overwrite\" over a UML ObjectNode (p99 and 100 of SysML spec)", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getObjectNode_IsControlType(), 
 		   source, 
@@ -2215,7 +2215,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_KindOfNode(), 
 		   source, 
@@ -2224,7 +2224,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to ObjectNodeKind enumeration", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "this field does not exist in UML but the related notion exists in SysML" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_Ordering(), 
 		   source, 
@@ -2233,7 +2233,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "Refer to ObjectNodeOrderingKind enumeration", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_UpperBound(), 
 		   source, 
@@ -2241,7 +2241,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is\r\nreached.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_InState(), 
 		   source, 
@@ -2249,7 +2249,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The required states of the object available at this point in the activity\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_Selection(), 
 		   source, 
@@ -2257,7 +2257,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Selects tokens for outgoing edges.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (pinEClass, 
 		   source, 
@@ -2269,7 +2269,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "If the action is an invocation action, the number and types of pins must be the same as the number of parameters and\r\ntypes of the invoked behavior or behavioral feature. Pins are matched to parameters by order\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPin_IsControl(), 
 		   source, 
@@ -2278,7 +2278,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (inputPinEClass, 
 		   source, 
@@ -2290,7 +2290,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInputPin_InputEvaluationAction(), 
 		   source, 
@@ -2298,7 +2298,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "The action used to provide values\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (valuePinEClass, 
 		   source, 
@@ -2310,7 +2310,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented, as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getValuePin_Value(), 
 		   source, 
@@ -2318,7 +2318,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "description", "Value that the pin will provide\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (outputPinEClass, 
 		   source, 
@@ -2330,7 +2330,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -2340,137 +2340,137 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractActivity_IsReadOnly(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractActivity_IsSingleExecution(), 
 		   source, 
 		   new String[] {
-		   });																																																									
+		   });	
 		addAnnotation
 		  (getActivityEdge_KindOfRate(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getActivityEdge_Rate(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Probability(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Target(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Source(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Guard(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Weight(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getObjectFlow_IsMulticast(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectFlow_IsMultireceive(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getActivityPartition_IsDimension(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_IsExternal(), 
 		   source, 
 		   new String[] {
-		   });																													
+		   });	
 		addAnnotation
 		  (getActivityNode_Outgoing(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getActivityNode_Incoming(), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });	
 		addAnnotation
 		  (getAbstractAction_Inputs(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractAction_Outputs(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAcceptEventAction_IsUnmarshall(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getObjectNode_IsControlType(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_KindOfNode(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_Ordering(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_UpperBound(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_InState(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_Selection(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPin_IsControl(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });
 	}
 
 	/**
@@ -2480,7 +2480,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2490,7 +2490,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																			
+		   });
 	}
 
 	/**
@@ -2500,7 +2500,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractActivityEClass, 
 		   source, 
@@ -2509,7 +2509,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractActivity_IsReadOnly(), 
 		   source, 
@@ -2517,7 +2517,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Activity::isReadOnly", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractActivity_IsSingleExecution(), 
 		   source, 
@@ -2525,7 +2525,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Activity::isSingleExecution", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedNodes(), 
 		   source, 
@@ -2533,7 +2533,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Activity::node", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedEdges(), 
 		   source, 
@@ -2541,7 +2541,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Activity::edge", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedGroups(), 
 		   source, 
@@ -2549,7 +2549,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Activity::group", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractActivity_OwnedStructuredNodes(), 
 		   source, 
@@ -2557,7 +2557,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exceptionHandlerEClass, 
 		   source, 
@@ -2566,7 +2566,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ExceptionHandler", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_ProtectedNode(), 
 		   source, 
@@ -2574,7 +2574,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ExceptionHandler::protectedNode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_HandlerBody(), 
 		   source, 
@@ -2582,7 +2582,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ExceptionHandler::handlerBody", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_ExceptionInput(), 
 		   source, 
@@ -2590,7 +2590,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ExceptionHandler::exceptionInput", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExceptionHandler_ExceptionTypes(), 
 		   source, 
@@ -2598,7 +2598,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ExceptionHandler::exceptionType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityGroupEClass, 
 		   source, 
@@ -2607,7 +2607,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ActivityGroup", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_SuperGroup(), 
 		   source, 
@@ -2615,7 +2615,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityGroup::superGroup#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_SubGroups(), 
 		   source, 
@@ -2623,7 +2623,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityGroup::subgroup#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_OwnedNodes(), 
 		   source, 
@@ -2631,7 +2631,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityGroup::containedNode#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityGroup_OwnedEdges(), 
 		   source, 
@@ -2639,7 +2639,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityGroup::containedEdge#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interruptibleActivityRegionEClass, 
 		   source, 
@@ -2648,7 +2648,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::InterruptibleActivityRegion", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInterruptibleActivityRegion_InterruptingEdges(), 
 		   source, 
@@ -2656,7 +2656,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::InterruptibleActivityRegion::interruptingEdge", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum, 
 		   source, 
@@ -2664,7 +2664,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNodeOrderingKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2672,7 +2672,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNodeOrderingKind::FIFO", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2680,7 +2680,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNodeOrderingKind::LIFO", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -2688,7 +2688,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNodeOrderingKind::ordered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeOrderingKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -2696,7 +2696,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNodeOrderingKind::unordered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum, 
 		   source, 
@@ -2704,7 +2704,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2712,7 +2712,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2720,7 +2720,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -2728,7 +2728,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityEdgeEClass, 
 		   source, 
@@ -2737,7 +2737,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ActivityEdge", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityEdge_KindOfRate(), 
 		   source, 
@@ -2745,7 +2745,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Application of stereotypes that inherits from the SysML::Activities::Rate stereotype.\r\nIt can be either SysML::Activities::Continuous or SysML::Activities::Discrete.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getActivityEdge_InActivityPartition(), 
 		   source, 
@@ -2753,7 +2753,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_InInterruptibleRegion(), 
 		   source, 
@@ -2761,7 +2761,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_InStructuredNode(), 
 		   source, 
@@ -2769,7 +2769,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityEdge_Rate(), 
 		   source, 
@@ -2777,7 +2777,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Application of the SysML::Activities::Rate stereotype.\r\nSysML::Activities::Rate::rate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Probability(), 
 		   source, 
@@ -2785,7 +2785,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Application of the SysML::Activities::Probability stereotype.\r\nSysML::Activities::Probability::probability", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Target(), 
 		   source, 
@@ -2793,7 +2793,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityEdge::target", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Source(), 
 		   source, 
@@ -2801,7 +2801,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityEdge::source", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Guard(), 
 		   source, 
@@ -2809,7 +2809,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityEdge::guard", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Weight(), 
 		   source, 
@@ -2817,7 +2817,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityEdge::weight", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_Interrupts(), 
 		   source, 
@@ -2825,7 +2825,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityEdge::interrupts", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (controlFlowEClass, 
 		   source, 
@@ -2834,7 +2834,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ControlFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectFlowEClass, 
 		   source, 
@@ -2843,7 +2843,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ObjectFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getObjectFlow_IsMulticast(), 
 		   source, 
@@ -2851,7 +2851,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectFlow:isMulticast", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "The cardinality of uml::ObjectFlow::isMulticast is [1..1]." //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectFlow_IsMultireceive(), 
 		   source, 
@@ -2859,7 +2859,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectFlow::isMultireceive", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Cardinality of uml::ObjectFlow::isMultiReceive is [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectFlow_Transformation(), 
 		   source, 
@@ -2867,7 +2867,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectFlow::transformation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getObjectFlow_Selection(), 
 		   source, 
@@ -2875,7 +2875,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectFlow::selection", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityPartitionEClass, 
 		   source, 
@@ -2884,7 +2884,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ActivityPartition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityPartition_IsDimension(), 
 		   source, 
@@ -2892,7 +2892,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityPartition::isDimension", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Cardinality of uml::ActivityPartition::isDimension is [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_IsExternal(), 
 		   source, 
@@ -2900,7 +2900,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityPartition::isExternal", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Cardinality of uml::ActivityPartition::isExternal is [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_RepresentedElement(), 
 		   source, 
@@ -2908,7 +2908,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityPartition::represents", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_SuperPartition(), 
 		   source, 
@@ -2916,7 +2916,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_SubPartitions(), 
 		   source, 
@@ -2924,7 +2924,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ActivityPartition::subpartition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityExchangeEClass, 
 		   source, 
@@ -2933,7 +2933,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityExchange_RealizingActivityFlows(), 
 		   source, 
@@ -2941,7 +2941,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (activityNodeEClass, 
 		   source, 
@@ -2950,7 +2950,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ActivityNode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InActivityPartition(), 
 		   source, 
@@ -2958,7 +2958,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InInterruptibleRegion(), 
 		   source, 
@@ -2966,7 +2966,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InStructuredNode(), 
 		   source, 
@@ -2974,7 +2974,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getActivityNode_Outgoing(), 
 		   source, 
@@ -2982,7 +2982,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getActivityNode_Incoming(), 
 		   source, 
@@ -2990,7 +2990,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (executableNodeEClass, 
 		   source, 
@@ -2999,7 +2999,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "should be on uml::ExecutableNode, but Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExecutableNode_OwnedHandlers(), 
 		   source, 
@@ -3007,7 +3007,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ExecutableNode::handler", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (structuredActivityNodeEClass, 
 		   source, 
@@ -3016,7 +3016,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::StructuredActivityNode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractActionEClass, 
 		   source, 
@@ -3025,7 +3025,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_LocalPrecondition(), 
 		   source, 
@@ -3033,7 +3033,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Behavior::precondition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_LocalPostcondition(), 
 		   source, 
@@ -3041,7 +3041,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Behavior::postcondition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_Context(), 
 		   source, 
@@ -3049,7 +3049,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Behavior::context#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractAction_Inputs(), 
 		   source, 
@@ -3057,7 +3057,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Activity::node", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "mapped to either InputPin or ActivityParameterNode, depending on whether the associated function is an Activity, or a callBehaviorAction to an Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Activity::node elements on which activity::InputPin stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractAction_Outputs(), 
 		   source, 
@@ -3065,7 +3065,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::Activity::node", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "mapped to either OutputPin or ActivityParameterNode, depending on whether the associated function is an Activity, or a callBehaviorAction to an Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Activity::node elements on which activity::OutputPin stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (acceptEventActionEClass, 
 		   source, 
@@ -3074,7 +3074,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::AcceptEventAction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAcceptEventAction_IsUnmarshall(), 
 		   source, 
@@ -3082,7 +3082,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::AcceptEventAction::isUnmarshall", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAcceptEventAction_Result(), 
 		   source, 
@@ -3090,7 +3090,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::AcceptEventAction::result", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (invocationActionEClass, 
 		   source, 
@@ -3099,7 +3099,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::InvocationAction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInvocationAction_Arguments(), 
 		   source, 
@@ -3107,7 +3107,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::InvocationAction::argument", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (sendSignalActionEClass, 
 		   source, 
@@ -3116,7 +3116,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::SendSignalAction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSendSignalAction_Target(), 
 		   source, 
@@ -3124,7 +3124,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::SendSignalAction::target", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSendSignalAction_Signal(), 
 		   source, 
@@ -3132,7 +3132,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::SendSignalAction::signal", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (callActionEClass, 
 		   source, 
@@ -3141,7 +3141,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::CallAction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCallAction_Results(), 
 		   source, 
@@ -3149,7 +3149,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::CallAction::result", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (callBehaviorActionEClass, 
 		   source, 
@@ -3158,7 +3158,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::CallBehaviorAction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCallBehaviorAction_Behavior(), 
 		   source, 
@@ -3166,7 +3166,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "cannot map to uml::CallBehaviorAction::behavior since it just does not match (refers to different things)", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (objectNodeEClass, 
 		   source, 
@@ -3175,7 +3175,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ObjectNode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getObjectNode_IsControlType(), 
 		   source, 
@@ -3183,7 +3183,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNode::isControlType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Cardinality of uml::ObjectNode::isControlType is [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_KindOfNode(), 
 		   source, 
@@ -3191,7 +3191,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_Ordering(), 
 		   source, 
@@ -3199,7 +3199,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNode::ordering", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Cardinality of uml::ObjectNode::ordering is [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_UpperBound(), 
 		   source, 
@@ -3207,7 +3207,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNode::upperBound", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Cardinality of uml::ObjectNode::upperBound is [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_InState(), 
 		   source, 
@@ -3215,7 +3215,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNode::inState", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getObjectNode_Selection(), 
 		   source, 
@@ -3223,7 +3223,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ObjectNode::selection", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (pinEClass, 
 		   source, 
@@ -3232,7 +3232,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Pin", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPin_IsControl(), 
 		   source, 
@@ -3240,7 +3240,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Cardinality of uml::Pin::isControl is [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (inputPinEClass, 
 		   source, 
@@ -3249,7 +3249,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::InputPin", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInputPin_InputEvaluationAction(), 
 		   source, 
@@ -3257,7 +3257,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "This association can be filled only if extended metaclass is ActionInputPin" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (valuePinEClass, 
 		   source, 
@@ -3266,7 +3266,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ValuePin", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getValuePin_Value(), 
 		   source, 
@@ -3274,7 +3274,7 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 			 "UML/SysML semantic equivalences", "uml::ValuePin::value", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (outputPinEClass, 
 		   source, 
@@ -3293,67 +3293,67 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																				
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getAbstractActivity_OwnedStructuredNodes(), 
 		   source, 
 		   new String[] {
-		   });																																																			
+		   });	
 		addAnnotation
 		  (getActivityEdge_InActivityPartition(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_InInterruptibleRegion(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityEdge_InStructuredNode(), 
 		   source, 
 		   new String[] {
-		   });																																																
+		   });	
 		addAnnotation
 		  (getActivityPartition_SuperPartition(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityPartition_SubPartitions(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getActivityExchange_RealizingActivityFlows(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getActivityNode_InActivityPartition(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InInterruptibleRegion(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityNode_InStructuredNode(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getActivityNode_Outgoing(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getActivityNode_Incoming(), 
 		   source, 
 		   new String[] {
-		   });																																																																																	
+		   });
 	}
 
 } //ActivityPackageImpl

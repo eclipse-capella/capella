@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getSummary <em>Summary</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getDescription <em>Description</em>}</li>
@@ -35,7 +36,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.CapellaElement#getAppliedRequirements <em>Applied Requirements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement()
  * @model interface="true" abstract="true"

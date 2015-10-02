@@ -358,7 +358,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -368,7 +368,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																
+		   });
 	}
 
 	/**
@@ -378,7 +378,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -390,7 +390,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "constraints", "This package depends on the model CapellaModeller.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (sharedPkgEClass, 
 		   source, 
@@ -402,7 +402,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedDataPkg(), 
 		   source, 
@@ -410,7 +410,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "description", "the data packages contained in this shared package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedGenericPkg(), 
 		   source, 
@@ -418,7 +418,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "description", "the generic packages contained in this shared package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (genericPkgEClass, 
 		   source, 
@@ -430,7 +430,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_SubGenericPkgs(), 
 		   source, 
@@ -438,7 +438,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "description", "sub-packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_CapellaElements(), 
 		   source, 
@@ -446,7 +446,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "description", "the Capella model elements stored directly under this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -456,17 +456,17 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (sharedPkgEClass, 
 		   source, 
 		   new String[] {
-		   });																								
+		   });
 	}
 
 	/**
@@ -476,7 +476,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -486,7 +486,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																													
+		   });
 	}
 
 	/**
@@ -496,43 +496,43 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (sharedPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SharedPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedDataPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedGenericPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "genericPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (genericPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "GenericPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_SubGenericPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "subGenericPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_CapellaElements(), 
 		   source, 
 		   new String[] {
 			 "Label", "capellaElements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });
 	}
 
 	/**
@@ -542,49 +542,49 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (sharedPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.SharedPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedGenericPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (genericPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.GenericPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getGenericPkg_SubGenericPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_CapellaElements(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });
 	}
 
 	/**
@@ -594,7 +594,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (sharedPkgEClass, 
 		   source, 
@@ -603,7 +603,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedDataPkg(), 
 		   source, 
@@ -611,7 +611,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedGenericPkg(), 
 		   source, 
@@ -619,7 +619,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which GenericPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (genericPkgEClass, 
 		   source, 
@@ -628,7 +628,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_SubGenericPkgs(), 
 		   source, 
@@ -636,7 +636,7 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which GenericPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_CapellaElements(), 
 		   source, 
@@ -654,27 +654,27 @@ public class SharedmodelPackageImpl extends EPackageImpl implements SharedmodelP
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$													
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getSharedPkg_OwnedDataPkg(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getSharedPkg_OwnedGenericPkg(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getGenericPkg_SubGenericPkgs(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericPkg_CapellaElements(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });
 	}
 
 } //SharedmodelPackageImpl

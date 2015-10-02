@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getOwnedInterfaceUses <em>Owned Interface Uses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getUsedInterfaceLinks <em>Used Interface Links</em>}</li>
@@ -42,7 +43,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getOwnedPhysicalLinks <em>Owned Physical Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getOwnedPhysicalLinkCategories <em>Owned Physical Link Categories</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent()
  * @model abstract="true"

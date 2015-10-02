@@ -22,13 +22,13 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getNextFunctionalChainInvolvements <em>Next Functional Chain Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getPreviousFunctionalChainInvolvements <em>Previous Functional Chain Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getExchangedItems <em>Exchanged Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getInvolvedElement <em>Involved Element</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvement()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the involvement of a model element in a functional chain\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

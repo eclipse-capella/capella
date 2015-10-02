@@ -18,12 +18,12 @@ package org.polarsys.capella.core.data.information.datavalue;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression#getOwnedLeftOperand <em>Owned Left Operand</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression#getOwnedRightOperand <em>Owned Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getBinaryExpression()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='BinaryExpression'"

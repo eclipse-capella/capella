@@ -93,7 +93,7 @@ public class ExecutableNodeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION
 			if (inActivityPartitionPropertyDescriptor != null) {
 				Object inActivityPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, true);
-				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
+				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);
 				} else if (inActivityPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION) != null) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);				  					
@@ -104,7 +104,7 @@ public class ExecutableNodeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION
 			if (inInterruptibleRegionPropertyDescriptor != null) {
 				Object inInterruptibleRegionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, true);
-				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
+				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);
 				} else if (inInterruptibleRegionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION) != null) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);				  					
@@ -115,7 +115,7 @@ public class ExecutableNodeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE
 			if (inStructuredNodePropertyDescriptor != null) {
 				Object inStructuredNodeValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true);
-				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
+				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);
 				} else if (inStructuredNodeValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE) != null) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);				  					

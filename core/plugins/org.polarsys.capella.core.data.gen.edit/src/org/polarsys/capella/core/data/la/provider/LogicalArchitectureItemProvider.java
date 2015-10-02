@@ -89,7 +89,7 @@ public class LogicalArchitectureItemProvider
 			// Process LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG
 			if (containedCapabilityRealizationPkgPropertyDescriptor != null) {
 				Object containedCapabilityRealizationPkgValue = eObject.eGet(LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG, true);
-				if (containedCapabilityRealizationPkgValue != null && containedCapabilityRealizationPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedCapabilityRealizationPkgValue)) {
+				if (containedCapabilityRealizationPkgValue != null && containedCapabilityRealizationPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedCapabilityRealizationPkgValue)) {
 					itemPropertyDescriptors.remove(containedCapabilityRealizationPkgPropertyDescriptor);
 				} else if (containedCapabilityRealizationPkgValue == null && ExtensionModelManager.getAnyType(eObject, LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG) != null) {
 					itemPropertyDescriptors.remove(containedCapabilityRealizationPkgPropertyDescriptor);				  					
@@ -100,7 +100,7 @@ public class LogicalArchitectureItemProvider
 			// Process LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_LOGICAL_FUNCTION_PKG
 			if (containedLogicalFunctionPkgPropertyDescriptor != null) {
 				Object containedLogicalFunctionPkgValue = eObject.eGet(LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_LOGICAL_FUNCTION_PKG, true);
-				if (containedLogicalFunctionPkgValue != null && containedLogicalFunctionPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedLogicalFunctionPkgValue)) {
+				if (containedLogicalFunctionPkgValue != null && containedLogicalFunctionPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedLogicalFunctionPkgValue)) {
 					itemPropertyDescriptors.remove(containedLogicalFunctionPkgPropertyDescriptor);
 				} else if (containedLogicalFunctionPkgValue == null && ExtensionModelManager.getAnyType(eObject, LaPackage.Literals.LOGICAL_ARCHITECTURE__CONTAINED_LOGICAL_FUNCTION_PKG) != null) {
 					itemPropertyDescriptors.remove(containedLogicalFunctionPkgPropertyDescriptor);				  					

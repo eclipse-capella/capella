@@ -2432,18 +2432,6 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CommunicationFactory.eINSTANCE.createCommunicationLinkAllocation());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          DatatypeFactory.eINSTANCE.createBooleanType());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      

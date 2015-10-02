@@ -1463,40 +1463,40 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "profileName", "Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractCapabilityPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (genericTraceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.GenericTrace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGenericTrace_KeyValuePairs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (transfoLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.TransfoLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																											
+		   });
 	}
 
 	/**
@@ -1506,7 +1506,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1516,7 +1516,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																			
+		   });
 	}
 
 	/**
@@ -1526,7 +1526,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1538,7 +1538,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "This package depends on the model CapellaCore.ecore\r\nThis package depends on the model Activity.ecore\r\nThis package depends on the model StateMachine.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractCapabilityPkgEClass, 
 		   source, 
@@ -1550,7 +1550,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (genericTraceEClass, 
 		   source, 
@@ -1562,7 +1562,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGenericTrace_KeyValuePairs(), 
 		   source, 
@@ -1570,7 +1570,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the list of key/value pairs that characterize this trace relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (transfoLinkEClass, 
 		   source, 
@@ -1582,7 +1582,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (justificationLinkEClass, 
 		   source, 
@@ -1594,7 +1594,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (capabilityRealizationInvolvementEClass, 
 		   source, 
@@ -1606,7 +1606,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationInvolvement_InvolvedCapabilityRealizationInvolvedElement(), 
 		   source, 
@@ -1614,7 +1614,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "(automatically computed) the involved element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (capabilityRealizationInvolvedElementEClass, 
 		   source, 
@@ -1626,7 +1626,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements(), 
 		   source, 
@@ -1634,7 +1634,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the capability realization involvement relationships in which this element is referenced\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (stateMachineEClass, 
 		   source, 
@@ -1646,7 +1646,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateMachine_OwnedRegions(), 
 		   source, 
@@ -1654,7 +1654,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "The regions owned directly by the state machine.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (regionEClass, 
 		   source, 
@@ -1666,7 +1666,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_OwnedStates(), 
 		   source, 
@@ -1674,7 +1674,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "The set of states owned by the region.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_OwnedTransitions(), 
 		   source, 
@@ -1682,7 +1682,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "The set of transitions owned by the region. Note that internal transitions are owned by a region, but applies to the\r\nsource state.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_InvolvedStates(), 
 		   source, 
@@ -1690,7 +1690,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the list of elements that are involved in this region", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateEClass, 
 		   source, 
@@ -1702,7 +1702,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_OwnedRegions(), 
 		   source, 
@@ -1710,7 +1710,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "The regions owned directly by the state.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getState_Entry(), 
 		   source, 
@@ -1718,7 +1718,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If\r\ndefined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the\r\nstate.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_DoActivity(), 
 		   source, 
@@ -1726,7 +1726,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops\r\neither by itself or when the state is exited whichever comes first.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_Exit(), 
 		   source, 
@@ -1734,7 +1734,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the\r\nstate. If defined, exit actions are always executed to completion only after all internal activities and transition actions have\r\ncompleted execution.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_StateInvariant(), 
 		   source, 
@@ -1742,7 +1742,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are\r\nadditional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modeEClass, 
 		   source, 
@@ -1754,7 +1754,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (finalStateEClass, 
 		   source, 
@@ -1766,7 +1766,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractStateEClass, 
 		   source, 
@@ -1778,7 +1778,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractState_OwnedAbstractStateRealizations(), 
 		   source, 
@@ -1786,7 +1786,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the realization links that are owned/contained in this AbstractState\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractState_Outgoing(), 
 		   source, 
@@ -1794,7 +1794,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "Specifies the transitions departing from this vertex.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractState_Incoming(), 
 		   source, 
@@ -1802,7 +1802,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "Specifies the transitions entering this vertex.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractState_InvolverRegions(), 
 		   source, 
@@ -1810,7 +1810,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateTransitionEClass, 
 		   source, 
@@ -1822,7 +1822,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Kind(), 
 		   source, 
@@ -1831,7 +1831,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to TransitionKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_TriggerDescription(), 
 		   source, 
@@ -1840,7 +1840,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Guard(), 
 		   source, 
@@ -1849,7 +1849,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Source(), 
 		   source, 
@@ -1857,7 +1857,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "Designates the originating vertex (state or pseudostate) of the transition.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Target(), 
 		   source, 
@@ -1865,7 +1865,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "Designates the target vertex that is reached when the transition is taken.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Effect(), 
 		   source, 
@@ -1873,7 +1873,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "The event to be triggered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Triggers(), 
 		   source, 
@@ -1881,7 +1881,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "Specifies the triggers that may fire the transition.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_OwnedStateTransitionRealizations(), 
 		   source, 
@@ -1889,7 +1889,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the realization links that are owned/contained in this StateTransition\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (pseudostateEClass, 
 		   source, 
@@ -1901,7 +1901,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (initialPseudoStateEClass, 
 		   source, 
@@ -1913,7 +1913,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (joinPseudoStateEClass, 
 		   source, 
@@ -1925,7 +1925,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (forkPseudoStateEClass, 
 		   source, 
@@ -1937,7 +1937,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (choicePseudoStateEClass, 
 		   source, 
@@ -1949,7 +1949,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (terminatePseudoStateEClass, 
 		   source, 
@@ -1961,7 +1961,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractStateRealizationEClass, 
 		   source, 
@@ -1973,7 +1973,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractStateRealization_RealizedAbstractState(), 
 		   source, 
@@ -1981,7 +1981,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "destination of the realization link : the abstract state that is being realized\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractStateRealization_RealizingAbstractState(), 
 		   source, 
@@ -1989,7 +1989,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the source of the realization link : the abstract state that is realizing another abstract state\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (stateTransitionRealizationEClass, 
 		   source, 
@@ -2001,7 +2001,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransitionRealization_RealizedStateTransition(), 
 		   source, 
@@ -2009,7 +2009,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "destination of the realization link : the state transition that is being realized\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransitionRealization_RealizingStateTransition(), 
 		   source, 
@@ -2017,7 +2017,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the source of the realization link : the state transition that is realizing another state transition\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum, 
 		   source, 
@@ -2025,7 +2025,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "TransitionKind is an enumeration type.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2033,7 +2033,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "kind=internal implies that the transition, if triggered, occurs without exiting or entering the source state. Thus, it does not\r\ncause a state change. This means that the entry or exit condition of the source state will not be invoked. An internal\r\ntransition can be taken even if the state machine is in one or more regions nested within this state.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2041,7 +2041,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "kind=local implies that the transition, if triggered, will not exit the composite (source) state, but it will apply to any state\r\nwithin the composite state, and these will be exited and entered.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -2049,7 +2049,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "kind=external implies that the transition, if triggered, will exit the composite (source) state.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (shallowHistoryPseudoStateEClass, 
 		   source, 
@@ -2060,7 +2060,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (deepHistoryPseudoStateEClass, 
 		   source, 
@@ -2071,7 +2071,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (entryPointPseudoStateEClass, 
 		   source, 
@@ -2082,7 +2082,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (exitPointPseudoStateEClass, 
 		   source, 
@@ -2093,7 +2093,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateEventRealizationEClass, 
 		   source, 
@@ -2105,7 +2105,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateEventRealization_RealizedEvent(), 
 		   source, 
@@ -2113,7 +2113,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "destination of the realization link : the state event that is being realized\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateEventRealization_RealizingEvent(), 
 		   source, 
@@ -2121,7 +2121,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the source of the realization link : the state event that is realizing another abstract state\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (stateEventEClass, 
 		   source, 
@@ -2133,7 +2133,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getStateEvent_OwnedStateEventRealizations(), 
 		   source, 
@@ -2141,7 +2141,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "the realization links that are owned/contained in this StateEvent\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (changeEventEClass, 
 		   source, 
@@ -2152,7 +2152,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getChangeEvent_Kind(), 
 		   source, 
@@ -2161,7 +2161,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to ChangeEventKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (timeEventEClass, 
 		   source, 
@@ -2172,7 +2172,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getTimeEvent_Kind(), 
 		   source, 
@@ -2181,7 +2181,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to TimeEventKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (timeEventKindEEnum, 
 		   source, 
@@ -2189,7 +2189,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "TimeEventKind is an enumeration type.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeEventKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2197,7 +2197,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeEventKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2205,7 +2205,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d \r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (changeEventKindEEnum, 
 		   source, 
@@ -2213,7 +2213,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "ChangeEventKind is an enumeration type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (changeEventKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2221,7 +2221,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "A change event occurs when a Boolean-valued expression becomes true.\r\n[source:UML Superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -2231,267 +2231,267 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (genericTraceEClass, 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getGenericTrace_Source(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getGenericTrace_Target(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (stateMachineEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateMachine_OwnedRegions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (regionEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_OwnedStates(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_OwnedTransitions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_InvolvedStates(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (stateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getState_OwnedRegions(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getState_AvailableAbstractFunctions(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getState_AvailableFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getState_AvailableAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getState_Entry(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getState_DoActivity(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getState_Exit(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (modeEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (finalStateEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractState_RealizedAbstractStates(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractState_RealizingAbstractStates(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractState_Outgoing(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractState_Incoming(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractState_InvolverRegions(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateTransitionEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Kind(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_TriggerDescription(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Guard(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Source(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Target(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Effect(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Triggers(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getStateTransition_RealizedStateTransitions(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getStateTransition_RealizingStateTransitions(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (pseudostateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (initialPseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (joinPseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (forkPseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (choicePseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (terminatePseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });																												
+		   });	
 		addAnnotation
 		  (shallowHistoryPseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (deepHistoryPseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (entryPointPseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (exitPointPseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (stateEventEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getStateEvent_Expression(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (changeEventEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getChangeEvent_Kind(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (timeEventEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getTimeEvent_Kind(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });
 	}
 
 	/**
@@ -2501,7 +2501,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2511,7 +2511,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																
+		   });
 	}
 
 	/**
@@ -2521,37 +2521,37 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractCapabilityPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Aspect" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (genericTraceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "GenericTrace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getGenericTrace_KeyValuePairs(), 
 		   source, 
 		   new String[] {
 			 "Label", "keyValuePairs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (transfoLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "TransfoLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (justificationLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "JustificationLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																							
+		   });
 	}
 
 	/**
@@ -2561,7 +2561,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$										
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractCapabilityPkgEClass, 
 		   source, 
@@ -2570,7 +2570,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (genericTraceEClass, 
 		   source, 
@@ -2579,7 +2579,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "coud be uml::Dependency, but left empty so that this element is not actually available/transformed for the end user.\r\nThis is a feature of Capella that is not available in Capella/MAX anyway.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGenericTrace_KeyValuePairs(), 
 		   source, 
@@ -2587,7 +2587,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedComment elements on which KeyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (transfoLinkEClass, 
 		   source, 
@@ -2596,7 +2596,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (justificationLinkEClass, 
 		   source, 
@@ -2605,7 +2605,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (capabilityRealizationInvolvementEClass, 
 		   source, 
@@ -2614,7 +2614,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationInvolvement_InvolvedCapabilityRealizationInvolvedElement(), 
 		   source, 
@@ -2622,7 +2622,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (capabilityRealizationInvolvedElementEClass, 
 		   source, 
@@ -2631,7 +2631,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements(), 
 		   source, 
@@ -2639,7 +2639,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (stateMachineEClass, 
 		   source, 
@@ -2648,7 +2648,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::StateMachine", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateMachine_OwnedRegions(), 
 		   source, 
@@ -2656,7 +2656,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::StateMachine::region", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (regionEClass, 
 		   source, 
@@ -2665,7 +2665,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Region", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_OwnedStates(), 
 		   source, 
@@ -2673,7 +2673,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::Region::subvertex", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_OwnedTransitions(), 
 		   source, 
@@ -2681,7 +2681,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::Region::transition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRegion_InvolvedStates(), 
 		   source, 
@@ -2689,7 +2689,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateEClass, 
 		   source, 
@@ -2698,7 +2698,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::State", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_OwnedRegions(), 
 		   source, 
@@ -2706,7 +2706,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::State::region", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getState_Entry(), 
 		   source, 
@@ -2714,7 +2714,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::State::entry", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_DoActivity(), 
 		   source, 
@@ -2722,7 +2722,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::State::doActivity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_Exit(), 
 		   source, 
@@ -2730,7 +2730,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::State::exit", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getState_StateInvariant(), 
 		   source, 
@@ -2738,7 +2738,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::State::stateInvariant", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modeEClass, 
 		   source, 
@@ -2747,7 +2747,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::State", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (finalStateEClass, 
 		   source, 
@@ -2756,7 +2756,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::FinalState", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractStateEClass, 
 		   source, 
@@ -2765,7 +2765,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractState_OwnedAbstractStateRealizations(), 
 		   source, 
@@ -2773,7 +2773,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which AbstractStateRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractState_Outgoing(), 
 		   source, 
@@ -2781,7 +2781,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Transition::source", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractState_Incoming(), 
 		   source, 
@@ -2789,7 +2789,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Transition::target", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractState_InvolverRegions(), 
 		   source, 
@@ -2797,7 +2797,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateTransitionEClass, 
 		   source, 
@@ -2806,7 +2806,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Transition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Kind(), 
 		   source, 
@@ -2814,7 +2814,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::Transition::kind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_TriggerDescription(), 
 		   source, 
@@ -2822,7 +2822,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Guard(), 
 		   source, 
@@ -2830,7 +2830,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Source(), 
 		   source, 
@@ -2838,7 +2838,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::Transition::source", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Target(), 
 		   source, 
@@ -2846,7 +2846,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::Transition::target", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Effect(), 
 		   source, 
@@ -2854,7 +2854,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_Triggers(), 
 		   source, 
@@ -2862,7 +2862,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::Transition::trigger", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransition_OwnedStateTransitionRealizations(), 
 		   source, 
@@ -2870,7 +2870,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which StateTransitionRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (pseudostateEClass, 
 		   source, 
@@ -2879,7 +2879,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (initialPseudoStateEClass, 
 		   source, 
@@ -2888,7 +2888,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is initial" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (joinPseudoStateEClass, 
 		   source, 
@@ -2897,7 +2897,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is join" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (forkPseudoStateEClass, 
 		   source, 
@@ -2906,7 +2906,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is fork" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (choicePseudoStateEClass, 
 		   source, 
@@ -2915,7 +2915,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is choice" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (terminatePseudoStateEClass, 
 		   source, 
@@ -2924,7 +2924,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is terminate" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractStateRealizationEClass, 
 		   source, 
@@ -2933,7 +2933,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractStateRealization_RealizedAbstractState(), 
 		   source, 
@@ -2941,7 +2941,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractStateRealization_RealizingAbstractState(), 
 		   source, 
@@ -2949,7 +2949,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (stateTransitionRealizationEClass, 
 		   source, 
@@ -2958,7 +2958,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransitionRealization_RealizedStateTransition(), 
 		   source, 
@@ -2966,7 +2966,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransitionRealization_RealizingStateTransition(), 
 		   source, 
@@ -2974,7 +2974,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum, 
 		   source, 
@@ -2982,7 +2982,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TransitionKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2990,7 +2990,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TransitionKind::internal", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2998,7 +2998,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TransitionKind::local", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (transitionKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3006,7 +3006,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TransitionKind::external", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (shallowHistoryPseudoStateEClass, 
 		   source, 
@@ -3015,7 +3015,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is shallowHistory" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (deepHistoryPseudoStateEClass, 
 		   source, 
@@ -3024,7 +3024,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is deepHistory" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (entryPointPseudoStateEClass, 
 		   source, 
@@ -3033,7 +3033,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is entry point" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (exitPointPseudoStateEClass, 
 		   source, 
@@ -3042,7 +3042,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Pseudostate elements for which kind is exit point" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateEventRealizationEClass, 
 		   source, 
@@ -3051,7 +3051,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateEventRealization_RealizedEvent(), 
 		   source, 
@@ -3059,7 +3059,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateEventRealization_RealizingEvent(), 
 		   source, 
@@ -3067,7 +3067,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (stateEventEClass, 
 		   source, 
@@ -3076,7 +3076,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getStateEvent_Expression(), 
 		   source, 
@@ -3085,7 +3085,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::ChangeEvent and uml::TimeEvent\r\n", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStateEvent_OwnedStateEventRealizations(), 
 		   source, 
@@ -3093,7 +3093,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which StateEventRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (changeEventEClass, 
 		   source, 
@@ -3102,7 +3102,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::ChangeEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getChangeEvent_Kind(), 
 		   source, 
@@ -3110,7 +3110,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (timeEventEClass, 
 		   source, 
@@ -3119,7 +3119,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "base metaclass in UML/SysML profile ", "uml::TimeEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getTimeEvent_Kind(), 
 		   source, 
@@ -3127,7 +3127,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (timeEventKindEEnum, 
 		   source, 
@@ -3135,7 +3135,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TransitionKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeEventKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3143,7 +3143,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative = false", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeEventKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3151,7 +3151,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative = true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (changeEventKindEEnum, 
 		   source, 
@@ -3159,7 +3159,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TransitionKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (changeEventKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3177,22 +3177,22 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$													
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (genericTraceEClass, 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (transfoLinkEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (justificationLinkEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																						
+		   });
 	}
 
 	/**
@@ -3202,12 +3202,12 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																			
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getGenericTrace_KeyValuePairs(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																																			
+		   });
 	}
 
 	/**
@@ -3217,97 +3217,97 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																						
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getGenericTrace_Source(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getGenericTrace_Target(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationInvolvement_InvolvedCapabilityRealizationInvolvedElement(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements(), 
 		   source, 
 		   new String[] {
-		   });																												
+		   });	
 		addAnnotation
 		  (getState_AvailableAbstractFunctions(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getState_AvailableFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getState_AvailableAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });																								
+		   });	
 		addAnnotation
 		  (getAbstractState_RealizedAbstractStates(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractState_RealizingAbstractStates(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractState_InvolverRegions(), 
 		   source, 
 		   new String[] {
-		   });																															
+		   });	
 		addAnnotation
 		  (getStateTransition_RealizedStateTransitions(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getStateTransition_RealizingStateTransitions(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getAbstractStateRealization_RealizedAbstractState(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractStateRealization_RealizingAbstractState(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getStateTransitionRealization_RealizedStateTransition(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateTransitionRealization_RealizingStateTransition(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getStateEventRealization_RealizedEvent(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStateEventRealization_RealizingEvent(), 
 		   source, 
 		   new String[] {
-		   });																															
+		   });
 	}
 
 } //CapellacommonPackageImpl

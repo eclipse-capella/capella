@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.KeyPart#getProperty <em>Property</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getKeyPart()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='KeyPart'"

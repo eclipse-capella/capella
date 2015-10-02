@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.Classifier;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.PartitionableElement#getOwnedPartitions <em>Owned Partitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.PartitionableElement#getRepresentingPartitions <em>Representing Partitions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getPartitionableElement()
  * @model abstract="true"

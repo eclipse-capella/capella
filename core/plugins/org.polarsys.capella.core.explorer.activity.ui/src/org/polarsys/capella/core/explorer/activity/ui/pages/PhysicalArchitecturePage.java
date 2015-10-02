@@ -14,21 +14,28 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 public class PhysicalArchitecturePage extends AbstractCapellaPage {
-	
+
   public static final String PAGE_ID = "org.polarsys.capella.core.explorer.activity.ui.page.physical.architecture";
 
-	@Override
-	public EClass getFilteringMetaClassForCommonViewpoint() {
-		return PaPackage.Literals.PHYSICAL_ARCHITECTURE;
-	}
+  @Override
+  protected String getHeaderTitle() {
+    return NamingConstants.CreatePhysicalArchCmd_name;
+  }
 
-	@Override
-	public Set<String> getHandledViewpoint() {
-		if (!handledViewpoint.contains(IViewpointNameConstants.PHYSICAL_ARCHITECTURE_VIEWPOINT_NAME))
-			handledViewpoint.add(IViewpointNameConstants.PHYSICAL_ARCHITECTURE_VIEWPOINT_NAME);
-		return handledViewpoint;
-	}
+  @Override
+  public EClass getFilteringMetaClassForCommonViewpoint() {
+    return PaPackage.Literals.PHYSICAL_ARCHITECTURE;
+  }
+
+  @Override
+  public Set<String> getHandledViewpoint() {
+    if (!handledViewpoint.contains(IViewpointNameConstants.PHYSICAL_ARCHITECTURE_VIEWPOINT_NAME)) {
+      handledViewpoint.add(IViewpointNameConstants.PHYSICAL_ARCHITECTURE_VIEWPOINT_NAME);
+    }
+    return handledViewpoint;
+  }
 }

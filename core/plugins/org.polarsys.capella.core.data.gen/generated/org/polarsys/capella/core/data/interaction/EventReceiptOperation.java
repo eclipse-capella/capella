@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.information.AbstractEventOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.EventReceiptOperation#getOperation <em>Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getEventReceiptOperation()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='EventReceiptOperation'"

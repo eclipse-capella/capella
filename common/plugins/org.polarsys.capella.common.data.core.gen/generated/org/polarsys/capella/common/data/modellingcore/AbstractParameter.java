@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsException <em>Is Exception</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#isIsStream <em>Is Stream</em>}</li>
@@ -29,7 +30,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getProbability <em>Probability</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractParameter#getParameterSet <em>Parameter Set</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractParameter()
  * @model abstract="true"

@@ -18,11 +18,11 @@ package org.polarsys.capella.core.data.fa;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation#getAllocatedFunctionalExchange <em>Allocated Functional Exchange</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation#getAllocatingComponentExchange <em>Allocating Component Exchange</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeFunctionalExchangeAllocation()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Component Functional Exchange Allocation'"

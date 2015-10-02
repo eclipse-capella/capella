@@ -18,11 +18,11 @@ package org.polarsys.capella.core.data.capellacore;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Involvement#getInvolver <em>Involver</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Involvement#getInvolved <em>Involved</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvement()
  * @model interface="true" abstract="true"

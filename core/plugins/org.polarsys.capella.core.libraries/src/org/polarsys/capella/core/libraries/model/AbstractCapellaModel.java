@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -125,6 +125,10 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
   }
 
   protected void calculateAccessPolicy(IModel model_p, IModel library_p, List<AccessInfo> policies, int level) {
+    calculateAccessPolicy(model_p, library_p, policies, level, AccessPolicy.READ_AND_WRITE);
+  }
+
+  protected void calculateAccessPolicy(IModel model_p, IModel library_p, List<AccessInfo> policies, int level, AccessPolicy policy) {
     IModel model = model_p;
     IModel library = library_p;
 
@@ -134,7 +138,7 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
     if ((source != null) && (target != null)) {
       for (LibraryReference reference : source.getOwnedReferences()) {
         if ((reference.getLibrary() != null) && reference.getLibrary().equals(target)) {
-          policies.add(new AccessInfo(level, reference.getAccessPolicy()));
+          policies.add(new AccessInfo(level, mergePolicies(policy, reference.getAccessPolicy())));
           return;
         }
       }
@@ -142,8 +146,12 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
 
     Collection<IModel> referencedLibraries = LibraryManagerExt.getReferences(model);
     for (IModel referencedLibrary : referencedLibraries) {
-      calculateAccessPolicy(referencedLibrary, library, policies, level + 1);
+      calculateAccessPolicy(referencedLibrary, library, policies, level + 1, mergePolicies(policy, model.getAccess(referencedLibrary)));
     }
+  }
+  
+  protected AccessPolicy mergePolicies(AccessPolicy p1, AccessPolicy p2) {
+    return (AccessPolicy.READ_ONLY.equals(p1) || AccessPolicy.READ_ONLY.equals(p2)) ? AccessPolicy.READ_ONLY : AccessPolicy.READ_AND_WRITE;
   }
 
   protected class AccessInfo {

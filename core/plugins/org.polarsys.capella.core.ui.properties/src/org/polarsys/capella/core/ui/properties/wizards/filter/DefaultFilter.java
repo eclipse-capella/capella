@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,17 +25,17 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
  */
 public class DefaultFilter extends Filter<EObject, EObject> {
   @Override
-  public EObject filter(EObject modelElement_p) {
-    EObject modelElement = modelElement_p;
-    if (modelElement instanceof Part) {
-      boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) modelElement_p));
+  public EObject filter(EObject modelElement) {
+    EObject element = modelElement;
+    if (element instanceof Part) {
+      boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) modelElement));
       if (!allowMultiplePart) {
-        AbstractType abstractType = ((Part) modelElement).getAbstractType();
+        AbstractType abstractType = ((Part) element).getAbstractType();
         if ((abstractType != null) && !(abstractType instanceof ConfigurationItem)) {
-          modelElement = abstractType;
+          element = abstractType;
         }
       }
     }
-    return modelElement;
+    return element;
   }
 }

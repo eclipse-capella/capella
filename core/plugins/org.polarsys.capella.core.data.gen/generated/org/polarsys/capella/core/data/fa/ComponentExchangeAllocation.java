@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation#getComponentExchangeAllocated <em>Component Exchange Allocated</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeAllocation#getComponentExchangeAllocator <em>Component Exchange Allocator</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocation()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Mediator class implementing an allocation relationship, between a component exchange, and the element that allocates it\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

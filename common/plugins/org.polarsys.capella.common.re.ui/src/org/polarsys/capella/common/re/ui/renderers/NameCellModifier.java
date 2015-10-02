@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.TreeItem;
-
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
@@ -43,7 +42,9 @@ public class NameCellModifier implements ICellModifier {
       return (target != null) && canModify(target, property);
     }
     if (element instanceof EObject) {
-      EStructuralFeature feature = ((EObject) element).eClass().getEStructuralFeature(property);
+      IPropertyContext pContext = context.getPropertyContext();
+      IContext iContext = (IContext) pContext.getSource();
+      EStructuralFeature feature = AttributesHandlerHelper.getInstance(iContext).getSuffixableFeature((EObject) element, iContext);
       return feature != null;
     }
     return false;
@@ -56,7 +57,9 @@ public class NameCellModifier implements ICellModifier {
       return AttributesHandlerHelper.getInstance(iContext).getCurrentName((EObject) element, iContext, pContext);
 
     } else if (element instanceof EObject) {
-      EStructuralFeature feature = ((EObject) element).eClass().getEStructuralFeature(property);
+      IPropertyContext pContext = context.getPropertyContext();
+      IContext iContext = (IContext) pContext.getSource();
+      EStructuralFeature feature = AttributesHandlerHelper.getInstance(iContext).getSuffixableFeature((EObject) element, iContext);
       return ((EObject) element).eGet(feature);
     }
     return element;

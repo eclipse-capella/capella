@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.InstanceRole#getAbstractEnds <em>Abstract Ends</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.InstanceRole#getRepresentedInstance <em>Represented Instance</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInstanceRole()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='InstanceRole'"

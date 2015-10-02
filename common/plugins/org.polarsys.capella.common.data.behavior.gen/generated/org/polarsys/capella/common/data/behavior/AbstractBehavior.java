@@ -22,12 +22,12 @@ import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.behavior.AbstractBehavior#isIsControlOperator <em>Is Control Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.behavior.AbstractBehavior#getOwnedParameterSet <em>Owned Parameter Set</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.behavior.AbstractBehavior#getOwnedParameter <em>Owned Parameter</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractBehavior()
  * @model interface="true" abstract="true"

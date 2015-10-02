@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllo
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalLink#getLinkEnds <em>Link Ends</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalLink#getOwnedComponentExchangeFunctionalExchangeAllocations <em>Owned Component Exchange Functional Exchange Allocations</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllo
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalLink#getRealizedPhysicalLinks <em>Realized Physical Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.PhysicalLink#getRealizingPhysicalLinks <em>Realizing Physical Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the representation of the physical medium connecting two physical interfaces\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

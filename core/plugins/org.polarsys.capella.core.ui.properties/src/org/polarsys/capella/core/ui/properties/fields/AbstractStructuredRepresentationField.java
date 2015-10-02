@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,43 +42,42 @@ import org.polarsys.capella.core.ui.properties.viewers.IDelegatedViewer;
  */
 public abstract class AbstractStructuredRepresentationField extends AbstractSemanticField implements ISelectionChangedListener {
   protected EReference _referencedFeature;
-
   private String _label;
   protected IDelegatedViewer _delegatedViewer;
   private Button _deleteBtn;
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param referencedFeature_p a feature that refers to another element from elements contained by the semantic feature.
-   * @param label_p the label displayed at the right top of the table.
-   * @param viewerType_p
+   * @param parent
+   * @param widgetFactory
+   * @param referencedFeature a feature that refers to another element from elements contained by the semantic feature.
+   * @param label the label displayed at the right top of the table.
+   * @param viewerType
    */
-  public AbstractStructuredRepresentationField(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-      EReference referencedFeature_p, String label_p, IDelegatedViewer delegatedViewer_p)
+  public AbstractStructuredRepresentationField(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory,
+      EReference referencedFeature, String label, IDelegatedViewer delegatedViewer)
   {
-    super(widgetFactory_p);
+    super(widgetFactory);
 
-    _referencedFeature = referencedFeature_p;
-    _label = label_p;
-    _delegatedViewer = delegatedViewer_p;
+    _referencedFeature = referencedFeature;
+    _label = label;
+    _delegatedViewer = delegatedViewer;
     _delegatedViewer.addSelectionChangedListener(this);
 
-    createActions(parent_p);
-    _delegatedViewer.createContainer(parent_p);
+    createActions(parent);
+    _delegatedViewer.createContainer(parent);
   }
 
   /**
    * Create the actions.
    */
-  private void createActions(Composite parent_p) {
-    CLabel label = _widgetFactory.createCLabel(_delegatedViewer.getViewerGroup(parent_p), _label);
+  private void createActions(Composite parent) {
+    CLabel label = _widgetFactory.createCLabel(_delegatedViewer.getViewerGroup(parent), _label);
     label.setLayoutData(new GridData(SWT.FILL, GridData.VERTICAL_ALIGN_FILL, true, false));
 
-    createCustomActions(parent_p);
+    createCustomActions(parent);
 
-    _deleteBtn = createTableButton(parent_p, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_DELETE_BUTTON), new Runnable() {
+    _deleteBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_DELETE_BUTTON), new Runnable() {
       public void run() {
         handleDelete();
       }
@@ -90,26 +89,26 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
   /**
    * Create the custom actions.
    */
-  protected abstract void createCustomActions(Composite parent_p);
+  protected abstract void createCustomActions(Composite parent);
 
   /**
    * Create a button located at the right top corner of the table.
-   * @param parent_p
-   * @param image_p
-   * @param runnable_p
+   * @param parent
+   * @param image
+   * @param runnable
    * @return a not <code>null</code> instance.
    */
-  protected Button createTableButton(Composite parent_p, Image image_p, final Runnable runnable_p) {
-    Button tableButton = _widgetFactory.createButton(_delegatedViewer.getViewerGroup(parent_p), null, SWT.PUSH);
-    tableButton.setImage(image_p);
+  protected Button createTableButton(Composite parent, Image image, final Runnable runnable) {
+    Button tableButton = _widgetFactory.createButton(_delegatedViewer.getViewerGroup(parent), null, SWT.PUSH);
+    tableButton.setImage(image);
     tableButton.setLayoutData(new GridData(GridData.END, GridData.VERTICAL_ALIGN_FILL, false, false));
     tableButton.addSelectionListener(new SelectionAdapter() {
       /**
        * {@inheritDoc}
        */
       @Override
-      public void widgetSelected(SelectionEvent e_p) {
-        runnable_p.run();
+      public void widgetSelected(SelectionEvent e) {
+        runnable.run();
       }
     });
     return tableButton;
@@ -124,16 +123,16 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, _semanticFeature);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, _semanticFeature);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    super.loadData(semanticElement_p, semanticFeature_p);
+  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    super.loadData(semanticElement, semanticFeature);
 
     // Get elements for the semantic feature.
     if (null != _delegatedViewer) {
@@ -163,7 +162,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
   }
 
   @SuppressWarnings("unchecked")
-  protected List<EObject> getContainedElementsfor(List<EObject> referencedElements_p) {
+  protected List<EObject> getContainedElementsfor(List<EObject> referencedElements) {
     List<EObject> result = new ArrayList<EObject>(0);
     Iterator<EObject> containedElements = ((List<EObject>) _semanticElement.eGet(_semanticFeature)).iterator();
     // Iterate over contained elements to delete the ones that refer selected referenced elements.
@@ -171,7 +170,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
       EObject containedElement = containedElements.next();
       // Get the referenced element of current element.
       EObject referencedObject = (_referencedFeature != null) ? (EObject) containedElement.eGet(_referencedFeature) : containedElement;
-      if (referencedElements_p.contains(referencedObject)) {
+      if (referencedElements.contains(referencedObject)) {
         result.add(containedElement);
       }
     }
@@ -189,10 +188,10 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
   /**
    * {@inheritDoc}
    */
-  public void selectionChanged(SelectionChangedEvent event_p) {
-    ISelectionProvider provider = event_p.getSelectionProvider();
+  public void selectionChanged(SelectionChangedEvent event) {
+    ISelectionProvider provider = event.getSelectionProvider();
     if (provider instanceof IDelegatedViewer) {
-      ISelection selection = event_p.getSelection();
+      ISelection selection = event.getSelection();
       if (selection instanceof IStructuredSelection) {
         Object obj = ((IStructuredSelection) selection).getFirstElement();
         if (isSelectionValid(obj)) {
@@ -205,10 +204,10 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
   }
 
   /**
-   * @param selection_p
+   * @param selection
    * @return
    */
-  protected boolean isSelectionValid(Object selection_p) {
+  protected boolean isSelectionValid(Object selection) {
     return true;
   }
   
@@ -216,12 +215,12 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != _delegatedViewer) {
-      _delegatedViewer.setEnabled(enabled_p);
+      _delegatedViewer.setEnabled(enabled);
     }
     if (null != _deleteBtn && !_deleteBtn.isDisposed()) {
-      _deleteBtn.setEnabled(enabled_p);
+      _deleteBtn.setEnabled(enabled);
     }
   }
 }

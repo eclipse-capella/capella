@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getOwnedPhysicalComponents <em>Owned Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getOwnedPhysicalComponentPkgs <em>Owned Physical Component Pkgs</em>}</li>
@@ -34,7 +35,6 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getDeployingPhysicalComponents <em>Deploying Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getDeployingPhysicalActors <em>Deploying Physical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='PhysicalComponent'"

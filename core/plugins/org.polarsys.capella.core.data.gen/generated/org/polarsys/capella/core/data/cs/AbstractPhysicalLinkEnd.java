@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd#getInvolvedLinks <em>Involved Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractPhysicalLinkEnd()
  * @model abstract="true"

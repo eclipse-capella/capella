@@ -169,6 +169,7 @@
       <migrationContribution class="org.polarsys.capella.core.data.migration.capella.HoldingResourceRemovalContribution" />
       <migrationContribution class="org.polarsys.capella.core.data.migration.capella.GradientBackgroundColorContribution" />
       <migrationContribution class="org.polarsys.capella.core.data.migration.capella.StateEventContribution" />
+      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.EOppositeMigrationContribution" />
 
    </extension>
    

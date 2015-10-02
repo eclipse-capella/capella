@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.capellacore.VisibilityKind;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.AssociationPkg#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.AssociationPkg#getOwnedAssociations <em>Owned Associations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getAssociationPkg()
  * @model abstract="true"

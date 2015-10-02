@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.capellacore.Feature;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.Operation#getOwnedParameters <em>Owned Parameters</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Operation#getAllocatingOperations <em>Allocating Operations</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.capellacore.Feature;
  *   <li>{@link org.polarsys.capella.core.data.information.Operation#getOwnedExchangeItemRealizations <em>Owned Exchange Item Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Operation#getRealizedExchangeItems <em>Realized Exchange Items</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getOperation()
  * @model abstract="true"

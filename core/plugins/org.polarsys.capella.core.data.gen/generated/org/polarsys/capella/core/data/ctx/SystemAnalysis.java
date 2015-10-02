@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystemContext <em>Owned System Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystem <em>Owned System</em>}</li>
@@ -34,7 +35,6 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatedOperationalAnalyses <em>Allocated Operational Analyses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatingLogicalArchitectures <em>Allocating Logical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='System Analysis'"

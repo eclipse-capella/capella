@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.cs.Component;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook#getCommunication <em>Communication</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemCommunicationHook#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunicationHook()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Property'"

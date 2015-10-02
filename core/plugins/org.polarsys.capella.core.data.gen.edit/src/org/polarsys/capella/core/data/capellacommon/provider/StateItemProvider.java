@@ -98,7 +98,7 @@ public class StateItemProvider
 			// Process CapellacommonPackage.Literals.STATE__ENTRY
 			if (entryPropertyDescriptor != null) {
 				Object entryValue = eObject.eGet(CapellacommonPackage.Literals.STATE__ENTRY, true);
-				if (entryValue != null && entryValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) entryValue)) {
+				if (entryValue != null && entryValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) entryValue)) {
 					itemPropertyDescriptors.remove(entryPropertyDescriptor);
 				} else if (entryValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE__ENTRY) != null) {
 					itemPropertyDescriptors.remove(entryPropertyDescriptor);				  					
@@ -109,7 +109,7 @@ public class StateItemProvider
 			// Process CapellacommonPackage.Literals.STATE__DO_ACTIVITY
 			if (doActivityPropertyDescriptor != null) {
 				Object doActivityValue = eObject.eGet(CapellacommonPackage.Literals.STATE__DO_ACTIVITY, true);
-				if (doActivityValue != null && doActivityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) doActivityValue)) {
+				if (doActivityValue != null && doActivityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) doActivityValue)) {
 					itemPropertyDescriptors.remove(doActivityPropertyDescriptor);
 				} else if (doActivityValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE__DO_ACTIVITY) != null) {
 					itemPropertyDescriptors.remove(doActivityPropertyDescriptor);				  					
@@ -120,7 +120,7 @@ public class StateItemProvider
 			// Process CapellacommonPackage.Literals.STATE__EXIT
 			if (exitPropertyDescriptor != null) {
 				Object exitValue = eObject.eGet(CapellacommonPackage.Literals.STATE__EXIT, true);
-				if (exitValue != null && exitValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) exitValue)) {
+				if (exitValue != null && exitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exitValue)) {
 					itemPropertyDescriptors.remove(exitPropertyDescriptor);
 				} else if (exitValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE__EXIT) != null) {
 					itemPropertyDescriptors.remove(exitPropertyDescriptor);				  					

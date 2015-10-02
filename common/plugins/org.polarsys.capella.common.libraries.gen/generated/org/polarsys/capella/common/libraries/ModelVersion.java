@@ -19,12 +19,12 @@ package org.polarsys.capella.common.libraries;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.libraries.ModelVersion#getMajorVersionNumber <em>Major Version Number</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.ModelVersion#getMinorVersionNumber <em>Minor Version Number</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.ModelVersion#getLastModifiedFileStamp <em>Last Modified File Stamp</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelVersion()
  * @model

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,26 +34,26 @@ public class TableDelegatedViewer extends AbstractDelegatedViewer {
 
   /**
    * Constructor.
-   * @param widgetFactory_p
+   * @param widgetFactory
    */
-  public TableDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(widgetFactory_p, null);
+  public TableDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(widgetFactory, null);
   }
 
   /**
    * Constructor.
-   * @param widgetFactory_p
-   * @param cellEditorProvider_p
+   * @param widgetFactory
+   * @param cellEditorProvider
    */
-  public TableDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory_p, ICellEditorProvider cellEditorProvider_p) {
-    super(widgetFactory_p, cellEditorProvider_p);
+  public TableDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory, ICellEditorProvider cellEditorProvider) {
+    super(widgetFactory, cellEditorProvider);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void createContainer(Composite parent_p) {
-    _table = _widgetFactory.createTable(getViewerGroup(parent_p), SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
+  public void createContainer(Composite parent) {
+    _table = _widgetFactory.createTable(getViewerGroup(parent), SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
     GridData tableLayoutData = new GridData(GridData.FILL, GridData.FILL, true, true);
     tableLayoutData.horizontalSpan = 5;
     _table.setLayoutData(tableLayoutData);
@@ -74,35 +74,35 @@ public class TableDelegatedViewer extends AbstractDelegatedViewer {
 
   /**
    * @param colNumber
-   * @param labelProvider_p
+   * @param labelProvider
    * @return
    */
-  protected TableViewerColumn createTableViewerColumn(int colNumber_p, ColumnLabelProvider labelProvider_p) {
+  protected TableViewerColumn createTableViewerColumn(int colNumber, ColumnLabelProvider labelProvider) {
     TableViewerColumn viewerColumn = new TableViewerColumn((TableViewer) getColumnViewer(), SWT.NONE);
     TableColumn column = viewerColumn.getColumn();
-    column.setText(getColumnProperties()[colNumber_p]);
+    column.setText(getColumnProperties()[colNumber]);
     column.setWidth(DEFAULT_COLUMN_BOUND);
     column.setResizable(true);
     column.setMoveable(true);
-    viewerColumn.setLabelProvider(labelProvider_p);
+    viewerColumn.setLabelProvider(labelProvider);
     return viewerColumn;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void setInput(List<EObject> input_p) {
+  public void setInput(List<EObject> input) {
     if (null != _columnViewer) {
-      _columnViewer.setInput(input_p);
+      _columnViewer.setInput(input);
     }
   }
 
   /**
    * {@inheritDoc}
    */
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != _table && !_table.isDisposed()) {
-      _table.setEnabled(enabled_p);
+      _table.setEnabled(enabled);
     }
   }
 }

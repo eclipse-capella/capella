@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.application;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.polarsys.capella.core.application.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common.mdsofa.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.core.application.appstart
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

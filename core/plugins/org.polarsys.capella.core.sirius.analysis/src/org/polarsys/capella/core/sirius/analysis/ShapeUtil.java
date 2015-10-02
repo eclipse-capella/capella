@@ -584,17 +584,14 @@ public class ShapeUtil {
     if ((currentNode != null) && (color != null)) {
       NodeStyle shape = currentNode.getOwnedStyle();
 
-      //RGBValues newValuesContent = null;
-
       if (shape instanceof Ellipse) {
-        //newValuesContent = ((Ellipse) shape).getColor();
         ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { DiagramPackage.Literals.ELLIPSE__COLOR });
+        ((Ellipse) shape).setColor(RGBValues.create(color.red, color.green, color.blue));
 
       } else if (shape instanceof Square) {
-        //newValuesContent = ((Square) shape).getColor();
         ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { DiagramPackage.Literals.SQUARE__COLOR });
+        ((Square) shape).setColor(RGBValues.create(color.red, color.green, color.blue));
       }
-      //newValuesContent = RGBValues.create(color.red, color.green, color.blue);
 
       getStyleHelper(currentNode).refreshStyle(shape);
     }
@@ -708,13 +705,13 @@ public class ShapeUtil {
    */
   public static void copyCustomStyle(DDiagramElement sourceElement, DDiagramElement targetElement) {
     EObject sourceStyle = null;
-    //EObject targetStyle = null;
+    // EObject targetStyle = null;
 
     if ((sourceElement instanceof DNodeContainer) && (targetElement instanceof DNodeContainer)) {
       DNodeContainer srcElement = (DNodeContainer) sourceElement;
       DNodeContainer tgtElement = (DNodeContainer) targetElement;
       sourceStyle = srcElement.getOwnedStyle();
-      //targetStyle = tgtElement.getOwnedStyle();
+      // targetStyle = tgtElement.getOwnedStyle();
 
       EObject style = EcoreUtil.copy(sourceStyle);
       tgtElement.setOwnedStyle((ContainerStyle) style);
@@ -723,7 +720,7 @@ public class ShapeUtil {
       DNode srcElement = (DNode) sourceElement;
       DNode tgtElement = (DNode) targetElement;
       sourceStyle = srcElement.getOwnedStyle();
-      //targetStyle = tgtElement.getOwnedStyle();
+      // targetStyle = tgtElement.getOwnedStyle();
 
       EObject style = EcoreUtil.copy(sourceStyle);
       tgtElement.setOwnedStyle((NodeStyle) style);
@@ -732,7 +729,7 @@ public class ShapeUtil {
       DEdge srcElement = (DEdge) sourceElement;
       DEdge tgtElement = (DEdge) targetElement;
       sourceStyle = srcElement.getOwnedStyle();
-      //targetStyle = tgtElement.getOwnedStyle();
+      // targetStyle = tgtElement.getOwnedStyle();
 
       EObject style = EcoreUtil.copy(sourceStyle);
       tgtElement.setOwnedStyle((EdgeStyle) style);

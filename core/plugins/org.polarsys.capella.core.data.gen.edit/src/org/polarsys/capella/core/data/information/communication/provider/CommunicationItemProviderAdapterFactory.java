@@ -231,29 +231,6 @@ public class CommunicationItemProviderAdapterFactory extends CommunicationAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CommunicationLinkAllocationItemProvider communicationLinkAllocationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCommunicationLinkAllocationAdapter() {
-		if (communicationLinkAllocationItemProvider == null) {
-			communicationLinkAllocationItemProvider = new CommunicationLinkAllocationItemProvider(this);
-		}
-
-		return communicationLinkAllocationItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -385,7 +362,6 @@ public class CommunicationItemProviderAdapterFactory extends CommunicationAdapte
 		if (signalItemProvider != null) signalItemProvider.dispose();
 		if (signalInstanceItemProvider != null) signalInstanceItemProvider.dispose();
 		if (communicationLinkItemProvider != null) communicationLinkItemProvider.dispose();
-		if (communicationLinkAllocationItemProvider != null) communicationLinkAllocationItemProvider.dispose();
 	}
 
 }

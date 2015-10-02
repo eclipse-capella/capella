@@ -162,6 +162,8 @@ public enum AggregationKind implements Enumerator {
 	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static AggregationKind get(String literal) {
@@ -178,6 +180,8 @@ public enum AggregationKind implements Enumerator {
 	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static AggregationKind getByName(String name) {
@@ -194,6 +198,8 @@ public enum AggregationKind implements Enumerator {
 	 * Returns the '<em><b>Aggregation Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static AggregationKind get(int value) {

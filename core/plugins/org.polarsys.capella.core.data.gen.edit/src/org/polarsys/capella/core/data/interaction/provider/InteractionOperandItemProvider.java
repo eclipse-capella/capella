@@ -76,7 +76,7 @@ public class InteractionOperandItemProvider
 			// Process InteractionPackage.Literals.INTERACTION_OPERAND__GUARD
 			if (guardPropertyDescriptor != null) {
 				Object guardValue = eObject.eGet(InteractionPackage.Literals.INTERACTION_OPERAND__GUARD, true);
-				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) guardValue)) {
+				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) guardValue)) {
 					itemPropertyDescriptors.remove(guardPropertyDescriptor);
 				} else if (guardValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INTERACTION_OPERAND__GUARD) != null) {
 					itemPropertyDescriptors.remove(guardPropertyDescriptor);				  					

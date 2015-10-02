@@ -19,10 +19,10 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.TypedElement#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getTypedElement()
  * @model abstract="true"

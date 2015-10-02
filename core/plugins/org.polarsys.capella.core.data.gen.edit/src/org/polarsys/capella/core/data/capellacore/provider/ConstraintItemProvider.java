@@ -83,7 +83,7 @@ public class ConstraintItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__CONTEXT
 			if (contextPropertyDescriptor != null) {
 				Object contextValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__CONTEXT, true);
-				if (contextValue != null && contextValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) contextValue)) {
+				if (contextValue != null && contextValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) contextValue)) {
 					itemPropertyDescriptors.remove(contextPropertyDescriptor);
 				} else if (contextValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__CONTEXT) != null) {
 					itemPropertyDescriptors.remove(contextPropertyDescriptor);				  					

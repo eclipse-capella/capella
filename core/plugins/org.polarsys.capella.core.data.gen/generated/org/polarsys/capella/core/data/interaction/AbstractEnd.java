@@ -18,11 +18,11 @@ package org.polarsys.capella.core.data.interaction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractEnd#getEvent <em>Event</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractEnd#getCovered <em>Covered</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractEnd()
  * @model abstract="true"

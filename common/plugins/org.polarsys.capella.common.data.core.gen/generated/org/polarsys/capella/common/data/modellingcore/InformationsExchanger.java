@@ -19,12 +19,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.InformationsExchanger#getIncomingInformationFlows <em>Incoming Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.InformationsExchanger#getOutgoingInformationFlows <em>Outgoing Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.InformationsExchanger#getInformationFlows <em>Information Flows</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getInformationsExchanger()
  * @model abstract="true"

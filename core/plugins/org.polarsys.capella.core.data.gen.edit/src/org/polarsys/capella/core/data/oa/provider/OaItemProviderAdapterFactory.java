@@ -950,7 +950,7 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -991,7 +991,7 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/1.0.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/oa/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

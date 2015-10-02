@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,31 +57,31 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
    * This allows the {@link ECrossReferenceAdapter} to find pending elements during a command, that are not yet attached to a valid model tree (ie another
    * semantic resource).
    */
-  //  public class HoldingResource extends ResourceImpl {
-  //    /**
-  //     * Constructor.
-  //     */
-  //    public HoldingResource() {
-  //      // Non-sense URI that is interpreted as a Capella one.
+  // public class HoldingResource extends ResourceImpl {
+  // /**
+  // * Constructor.
+  // */
+  // public HoldingResource() {
+  // // Non-sense URI that is interpreted as a Capella one.
   //      super(URI.createURI("capella://crossreference.melodymodeller")); //$NON-NLS-1$
-  //    }
+  // }
   //
-  //    /**
-  //     * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doSave(java.io.OutputStream, java.util.Map)
-  //     */
-  //    @Override
-  //    protected void doSave(OutputStream outputStream_p, Map<?, ?> options_p) throws IOException {
-  //      // Do nothing, this resource can not be saved.
-  //    }
+  // /**
+  // * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doSave(java.io.OutputStream, java.util.Map)
+  // */
+  // @Override
+  // protected void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException {
+  // // Do nothing, this resource can not be saved.
+  // }
   //
-  //    /**
-  //     * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#isLoaded()
-  //     */
-  //    @Override
-  //    public boolean isLoaded() {
-  //      return true;
-  //    }
-  //  }
+  // /**
+  // * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#isLoaded()
+  // */
+  // @Override
+  // public boolean isLoaded() {
+  // return true;
+  // }
+  // }
 
   /**
    * Adapter factories provider, that creates an adapter factory specific to the semantic model in use.<br>
@@ -103,34 +103,28 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * This one must limit its scope to semantic models.
      * @return
      */
-    public ECrossReferenceAdapter getCrossReferencer(EditingDomain editingDomain);
+    public SemanticCrossReferencer getCrossReferencer(EditingDomain editingDomain);
 
-    /**
-     * Get cross referencer for derived features computation.<br>
-     * This one also must limit its scope to semantic models.
-     * @return
-     */
-    public ECrossReferenceAdapter getDerivedCrossReferencer(EditingDomain editingDomain);
   }
 
   /**
    * Pre-commit listener provider, that creates a pre-commit listener specific to the semantic editing domain.<br>
    */
-  //  public interface IPreCommitListenerProvider {
-  //    /**
-  //     * Get the instance of pre-commit listener.
-  //     * @return must be a not <code>null</code> instance.
-  //     */
-  //    public ResourceSetListener getPreCommitListener();
-  //  }
+  // public interface IPreCommitListenerProvider {
+  // /**
+  // * Get the instance of pre-commit listener.
+  // * @return must be a not <code>null</code> instance.
+  // */
+  // public ResourceSetListener getPreCommitListener();
+  // }
 
   public interface IReadOnlyDelegationHandler {
     /**
      * Is given resource in RO ?
-     * @param resource_p
+     * @param resource
      * @return <code>true</code> means read only.
      */
-    public boolean isReadOnly(Resource resource_p);
+    public boolean isReadOnly(Resource resource);
   }
 
   /**
@@ -153,7 +147,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * Get a Pre commit listener provider.
      * @return <code>null</code> if not implemented.
      */
-    //    public IPreCommitListenerProvider getPreCommitListenerProvider();
+    // public IPreCommitListenerProvider getPreCommitListenerProvider();
 
     /**
      * Get read only delegation handler.
@@ -168,34 +162,33 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     public ITransactionChangeRecorderProvider getTransactionChangeRecorderProvider();
 
     /**
-     * @param resourceFactoryRegistry_p
+     * @param resourceFactoryRegistry
      * @return
      */
-    public Registry getResourceFactoryRegistry(Registry resourceFactoryRegistry_p);
+    public Registry getResourceFactoryRegistry(Registry resourceFactoryRegistry);
   }
 
   public interface ITransactionChangeRecorderProvider {
     /**
      * Get the instance of transaction change recorder.
-     * @param domain_p
-     * @param resourceSet_p
+     * @param domain
+     * @param resourceSet
      * @return must be a not <code>null</code> instance.
      */
-    public TransactionChangeRecorder getTransactionChangeRecorder(InternalTransactionalEditingDomain domain_p, ResourceSet resourceSet_p);
+    public TransactionChangeRecorder getTransactionChangeRecorder(InternalTransactionalEditingDomain domain, ResourceSet resourceSet);
   }
 
   /**
    * Implementation of a transactional command stack based on the one provided by org.eclipse.emf.workspace.<br>
-   * This command stack takes into account non dirtying EMF operations.
-   * This command stack is able to deal with GMF commands.
+   * This command stack takes into account non dirtying EMF operations. This command stack is able to deal with GMF commands.
    */
   protected class SemanticCommandStack extends WorkspaceCommandStackImpl {
     /**
      * Constructor.
-     * @param history_p
+     * @param history
      */
-    public SemanticCommandStack(IOperationHistory history_p) {
-      super(history_p);
+    public SemanticCommandStack(IOperationHistory history) {
+      super(history);
     }
 
     /**
@@ -210,14 +203,14 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     /**
      * {@inheritDoc}
      */
-    //    @SuppressWarnings("synthetic-access")
-    //    @Override
-    //    public void flush() {
-    //      if (null != ((SemanticEditingDomain) getDomain())._holdingResource) {
-    //        getOperationHistory().dispose(new ResourceUndoContext(getDomain(), ((SemanticEditingDomain) getDomain())._holdingResource), true, true, true);
-    //      }
-    //      super.flush();
-    //    }
+    // @SuppressWarnings("synthetic-access")
+    // @Override
+    // public void flush() {
+    // if (null != ((SemanticEditingDomain) getDomain())._holdingResource) {
+    // getOperationHistory().dispose(new ResourceUndoContext(getDomain(), ((SemanticEditingDomain) getDomain())._holdingResource), true, true, true);
+    // }
+    // super.flush();
+    // }
 
     /**
      * {@inheritDoc}
@@ -231,15 +224,15 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
 
     /**
      * Execute non dirtying command in a transactional context.
-     * @param command_p
-     * @param options_p
+     * @param command
+     * @param options
      */
     @SuppressWarnings("rawtypes")
-    protected void executeNonDirtyingCommand(Command command_p, Map options_p) throws InterruptedException, RollbackException {
-      InternalTransaction tx = createTransaction(command_p, options_p);
+    protected void executeNonDirtyingCommand(Command command, Map options) throws InterruptedException, RollbackException {
+      InternalTransaction tx = createTransaction(command, options);
 
       try {
-        basicExecute(command_p);
+        basicExecute(command);
 
         // commit the transaction now
         tx.commit();
@@ -251,12 +244,12 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
           // roll back (some exception, possibly being thrown now or
           // an operation cancel, has occurred)
           rollback(tx);
-          handleRollback(command_p, null);
+          handleRollback(command, null);
         } else {
           // the transaction has already incorporated the triggers
           // into its change description, so the recording command
           // doesn't need them again
-          // if (!(command_p instanceof RecordingCommand)) {
+          // if (!(command instanceof RecordingCommand)) {
           // Command triggerCommand = tx.getTriggers();
           //
           // if (triggerCommand != null) {
@@ -278,23 +271,23 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @see org.eclipse.emf.transaction.impl.AbstractTransactionalCommandStack#basicExecute(org.eclipse.emf.common.command.Command)
      */
     @Override
-    protected void basicExecute(Command command_p) {
+    protected void basicExecute(Command command) {
       // If the command is executable, execute it.
-      if (null != command_p) {
-        if (command_p.canExecute()) {
+      if (null != command) {
+        if (command.canExecute()) {
           try {
-            command_p.execute();
+            command.execute();
           } catch (RuntimeException exception) {
             handleError(exception);
-            command_p.dispose();
+            command.dispose();
           }
           // If executed command is a non dirtying one, DO NOT notify command stack listeners.
-          if (!(command_p instanceof NonDirtying)) {
+          if (!(command instanceof NonDirtying)) {
             // Notify listeners if any.
             notifyListeners();
           }
         } else {
-          command_p.dispose();
+          command.dispose();
         }
       }
     }
@@ -304,21 +297,21 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      */
     @SuppressWarnings("rawtypes")
     @Override
-    protected void doExecute(Command command_p, Map options_p) throws InterruptedException, RollbackException {
+    protected void doExecute(Command command, Map options) throws InterruptedException, RollbackException {
       try {
-        if (command_p instanceof NonDirtying) {
-          executeNonDirtyingCommand(command_p, options_p);
+        if (command instanceof NonDirtying) {
+          executeNonDirtyingCommand(command, options);
         } else {
-          super.doExecute(command_p, options_p);
+          super.doExecute(command, options);
         }
-      } catch (IllegalArgumentException exception_p) {
+      } catch (IllegalArgumentException exception) {
         // Illegal argument exceptions are thrown sometime in the rollback process.
         // Hopefully, the rollback is complete before this exception is thrown.
         // Log this exception as a warning.
         String message = "Error while executing a command:"; //$NON-NLS-1$
         PlatformSiriusTedActivator.getDefault().getLog()
-            .log(new Status(IStatus.WARNING, PlatformSiriusTedActivator.getDefault().getPluginId(), message, exception_p));
-        throw new RollbackException(new Status(IStatus.CANCEL, PlatformSiriusTedActivator.getDefault().getPluginId(), message, exception_p));
+            .log(new Status(IStatus.WARNING, PlatformSiriusTedActivator.getDefault().getPluginId(), message, exception));
+        throw new RollbackException(new Status(IStatus.CANCEL, PlatformSiriusTedActivator.getDefault().getPluginId(), message, exception));
       }
     }
   }
@@ -326,41 +319,41 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
   /**
    * A specific implementation of the composed adapter factory.<br>
    */
-  //  public class SemanticAdapterFactory extends ComposedAdapterFactory {
+  // public class SemanticAdapterFactory extends ComposedAdapterFactory {
   //
-  //    public SemanticAdapterFactory() {
-  //      super();
-  //    }
+  // public SemanticAdapterFactory() {
+  // super();
+  // }
   //
-  //    /**
-  //     * @param adapterFactory_p
-  //     */
-  //    public SemanticAdapterFactory(AdapterFactory adapterFactory_p) {
-  //      super(adapterFactory_p);
-  //    }
+  // /**
+  // * @param adapterFactory
+  // */
+  // public SemanticAdapterFactory(AdapterFactory adapterFactory) {
+  // super(adapterFactory);
+  // }
   //
-  //    /**
-  //     * @param adapterFactories_p
-  //     */
-  //    public SemanticAdapterFactory(AdapterFactory[] adapterFactories_p) {
-  //      super(adapterFactories_p);
-  //    }
+  // /**
+  // * @param adapterFactories
+  // */
+  // public SemanticAdapterFactory(AdapterFactory[] adapterFactories) {
+  // super(adapterFactories);
+  // }
   //
-  //    /**
-  //     * @param adapterFactories_p
-  //     */
-  //    public SemanticAdapterFactory(Collection<? extends AdapterFactory> adapterFactories_p) {
-  //      super(adapterFactories_p);
-  //    }
+  // /**
+  // * @param adapterFactories
+  // */
+  // public SemanticAdapterFactory(Collection<? extends AdapterFactory> adapterFactories) {
+  // super(adapterFactories);
+  // }
   //
-  //    /**
-  //     * @param adapterFactoryDescriptorRegistry_p
-  //     */
-  //    public SemanticAdapterFactory(org.eclipse.emf.edit.provider.ComposedAdapterFactory.Descriptor.Registry adapterFactoryDescriptorRegistry_p) {
-  //      super(adapterFactoryDescriptorRegistry_p);
-  //    }
+  // /**
+  // * @param adapterFactoryDescriptorRegistry
+  // */
+  // public SemanticAdapterFactory(org.eclipse.emf.edit.provider.ComposedAdapterFactory.Descriptor.Registry adapterFactoryDescriptorRegistry) {
+  // super(adapterFactoryDescriptorRegistry);
+  // }
   //
-  //  }
+  // }
 
   /**
    * A specific implementation of the transactional editing domain.<br>
@@ -376,16 +369,16 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * This allows for the cross referencer to find such elements, even if they are not yet attached to a persisted resource.<br>
      * This is used along with the derived cross referencer. If none is provided, there is no use for this resource.
      */
-    //    private HoldingResource _holdingResource;
+    // private HoldingResource _holdingResource;
 
     List<IEditingDomainListener> _editingDomainListeners = null;
 
     /**
      * Constructor.
-     * @param stack_p
+     * @param stack
      */
-    public SemanticEditingDomain(AdapterFactory adapterFactory_p, TransactionalCommandStack stack_p) {
-      super(adapterFactory_p, stack_p, new SemanticResourceSet());
+    public SemanticEditingDomain(AdapterFactory adapterFactory, TransactionalCommandStack stack) {
+      super(adapterFactory, stack, new SemanticResourceSet());
       // The cross referencer.
       SemanticResourceSet semanticResourceSet = getResourceSet();
       // Set editing domain.+
@@ -414,7 +407,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       // The Sirius Session calls dispose
       // when the session is closed.
       // @see also DAnalysisSessionImpl.setDisposeEditingDomainOnClose
-      //     
+      //
       // Remove all listeners
       for (ResourceSetListener listener : getPrecommitListeners()) {
         removeResourceSetListener(listener);
@@ -426,7 +419,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
         removeResourceSetListener(listener);
       }
 
-      //We dispose the workspace command stack, since it was created while the editing domain creation @see createEditingDomain()
+      // We dispose the workspace command stack, since it was created while the editing domain creation @see createEditingDomain()
       workspaceCommandStack.dispose();
 
       // Notify all editing domain listeners.
@@ -451,7 +444,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * Get general purpose cross referencer, that limits its scope to semantic models.
      * @return
      */
-    public ECrossReferenceAdapter getCrossReferencer() {
+    public SemanticCrossReferencer getCrossReferencer() {
       SemanticResourceSet semanticResourceSet = getResourceSet();
       if (semanticResourceSet != null) {
         return semanticResourceSet.getCrossReferencer();
@@ -467,40 +460,6 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     public DataNotifier getDataNotifier() {
       return getResourceSet().getDataNotifier();
     }
-
-    /**
-     * Get cross referencer that should be used for TIG helpers computation.
-     * @return
-     */
-    public ECrossReferenceAdapter getDerivedCrossReferencer() {
-      SemanticResourceSet semanticResourceSet = getResourceSet();
-      if (semanticResourceSet != null) {
-        return semanticResourceSet.getDerivedCrossReferencer();
-      }
-      return null;
-    }
-
-    /**
-     * Get cross holding resource.
-     * @return
-     */
-    //    public HoldingResource getHoldingResource() {
-    //      // There is no need for the holding resource, if no derived features cross referencer was found.
-    //      if ((null != getDerivedCrossReferencer()) && (null == _holdingResource)) {
-    //        // Create and attach cross referencer resource.
-    //        _holdingResource = new HoldingResource();
-    //        ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName()).execute(new AbstractNonDirtyingCommand() {
-    //          @SuppressWarnings("synthetic-access")
-    //          public void run() {
-    //            getResourceSet().getResources().add(_holdingResource);
-    //            // the 'resourceSet' attribute of the holding resource must
-    //            // be set, or the cross referencer won't work correctly !
-    //            _holdingResource.basicSetResourceSet(getResourceSet(), null);
-    //          }
-    //        });
-    //      }
-    //      return _holdingResource;
-    //    }
 
     /**
      * @see org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain#getResourceSet()
@@ -532,7 +491,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @see org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain#isReadOnly(org.eclipse.emf.ecore.resource.Resource)
      */
     @Override
-    public boolean isReadOnly(Resource resource_p) {
+    public boolean isReadOnly(Resource resource) {
       boolean result = true;
 
       // Make sure the result is always computed at every method call.
@@ -541,39 +500,39 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       if (providers != null) {
         IReadOnlyDelegationHandler readOnlyDelegationHandler = providers.getReadOnlyDelegationHandler();
         if (null != readOnlyDelegationHandler) {
-          result = readOnlyDelegationHandler.isReadOnly(resource_p);
+          result = readOnlyDelegationHandler.isReadOnly(resource);
         }
       }
-      return (result) ? super.isReadOnly(resource_p) : false;
+      return (result) ? super.isReadOnly(resource) : false;
     }
 
     /**
      * @see org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain#isReadOnlyURI(org.eclipse.emf.common.util.URI)
      */
-    //    @Override
-    //    protected boolean isReadOnlyURI(URI uri_p) {
-    //      boolean readOnlyURI = super.isReadOnlyURI(uri_p);
+    // @Override
+    // protected boolean isReadOnlyURI(URI uri) {
+    // boolean readOnlyURI = super.isReadOnlyURI(uri);
     //
-    //      HoldingResource holdingResource = getHoldingResource();
-    //      if ((holdingResource != null) && uri_p.equals(holdingResource.getURI())) {
-    //        // Phantom resource is not a read only one.
-    //        readOnlyURI = false;
-    //      }
+    // HoldingResource holdingResource = getHoldingResource();
+    // if ((holdingResource != null) && uri.equals(holdingResource.getURI())) {
+    // // Phantom resource is not a read only one.
+    // readOnlyURI = false;
+    // }
     //
-    //      return readOnlyURI;
-    //    }
+    // return readOnlyURI;
+    // }
 
     /**
      * @see org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl#createChangeRecorder(org.eclipse.emf.ecore.resource.ResourceSet)
      */
     @Override
-    protected TransactionChangeRecorder createChangeRecorder(ResourceSet rset_p) {
+    protected TransactionChangeRecorder createChangeRecorder(ResourceSet rset) {
       TransactionChangeRecorder result = null;
       ITransactionChangeRecorderProvider transactionChangeRecorderProvider = getSemanticEditingDomainProviders().getTransactionChangeRecorderProvider();
       if (null != transactionChangeRecorderProvider) {
-        result = transactionChangeRecorderProvider.getTransactionChangeRecorder(this, rset_p);
+        result = transactionChangeRecorderProvider.getTransactionChangeRecorder(this, rset);
       } else {
-        result = super.createChangeRecorder(rset_p);
+        result = super.createChangeRecorder(rset);
       }
       return result;
     }
@@ -594,11 +553,11 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     /**
      * Derived features cross referencer.
      */
-    private ECrossReferenceAdapter _derivedCrossReferencer;
+    private SemanticCrossReferencer _derivedCrossReferencer;
     /**
      * General purpose cross referencer.
      */
-    private ECrossReferenceAdapter _crossReferencer;
+    private SemanticCrossReferencer _crossReferencer;
     /**
      * Data notifier.
      */
@@ -611,7 +570,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
 
     /**
      * Constructor.
-     * @param adapter_p
+     * @param adapter
      */
     public SemanticResourceSet() {
       super();
@@ -621,12 +580,8 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       // Load (expectedly) unique cross referencer for derived features computation.
       // Also load general purpose cross referencer.
       loadCrossReferencers(getEditingDomain());
-      // Register it.
-      if (null != _derivedCrossReferencer) {
-        eAdapters().add(_derivedCrossReferencer);
-      }
       // Add general cross referencing cross referencer.
-      if ((null != _crossReferencer) && (_crossReferencer != _derivedCrossReferencer)) {
+      if (null != _crossReferencer) {
         eAdapters().add(_crossReferencer);
       }
       // Add the famous and useful data notifier.
@@ -638,14 +593,14 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @see org.eclipse.emf.ecore.resource.impl.ResourceSetImpl#getResource(org.eclipse.emf.common.util.URI, boolean)
      */
     @Override
-    public Resource getResource(URI uri_p, boolean loadOnDemand_p) {
-      if (loadOnDemand_p) {
+    public Resource getResource(URI uri, boolean loadOnDemand) {
+      if (loadOnDemand) {
         _ResourcesLoading++;
       }
       try {
-        return super.getResource(uri_p, loadOnDemand_p);
+        return super.getResource(uri, loadOnDemand);
       } finally {
-        if (loadOnDemand_p) {
+        if (loadOnDemand) {
           _ResourcesLoading--;
         }
       }
@@ -655,7 +610,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * Get general purpose cross referencer.
      * @return
      */
-    protected ECrossReferenceAdapter getCrossReferencer() {
+    protected SemanticCrossReferencer getCrossReferencer() {
       return _crossReferencer;
     }
 
@@ -665,14 +620,6 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      */
     DataNotifier getDataNotifier() {
       return _dataNotifier;
-    }
-
-    /**
-     * Get derived features cross referencer.
-     * @return
-     */
-    protected ECrossReferenceAdapter getDerivedCrossReferencer() {
-      return _derivedCrossReferencer;
     }
 
     /**
@@ -706,7 +653,6 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       if (null != semanticEditingDomainProviders) {
         ICrossReferencerProvider provider = semanticEditingDomainProviders.getCrossReferencerProvider();
         if (null != provider) {
-          _derivedCrossReferencer = provider.getDerivedCrossReferencer(editingDomain);
           _crossReferencer = provider.getCrossReferencer(editingDomain);
         }
       }
@@ -714,10 +660,10 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
 
     /**
      * Set the editing domain reference.
-     * @param editingDomain_p
+     * @param editingDomain
      */
-    protected void setEditingDomain(EditingDomain editingDomain_p) {
-      _editingDomain = editingDomain_p;
+    protected void setEditingDomain(EditingDomain editingDomain) {
+      _editingDomain = editingDomain;
     }
 
     /**
@@ -768,13 +714,12 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
 
   /**
    * Do create a custom transactional editing domain using newly created custom custom stack.
-   * 
-   * @param stack_p
+   * @param stack
    */
-  protected TransactionalEditingDomain doCreateEditingDomain(TransactionalCommandStack stack_p) {
+  protected TransactionalEditingDomain doCreateEditingDomain(TransactionalCommandStack stack) {
     AdapterFactory adapterFactory = getSemanticEditingDomainProviders().getAdapterFactoryProvider().getAdapterFactory();
-    SemanticEditingDomain semanticEditingDomain = new SemanticEditingDomain(adapterFactory, stack_p);
-    //    loadPreCommitListener(semanticEditingDomain);
+    SemanticEditingDomain semanticEditingDomain = new SemanticEditingDomain(adapterFactory, stack);
+    // loadPreCommitListener(semanticEditingDomain);
     return semanticEditingDomain;
   }
 
@@ -788,21 +733,21 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
 
   /**
    * Load and register pre-commit listener (if any).
-   * @param semanticEditingDomain_p
+   * @param semanticEditingDomain
    */
-  //  protected void loadPreCommitListener(SemanticEditingDomain semanticEditingDomain_p) {
-  //    ISemanticEditingDomainProviders semanticEditingDomainProviders = getSemanticEditingDomainProviders();
-  //    if (null != semanticEditingDomainProviders) {
-  //      IPreCommitListenerProvider provider = semanticEditingDomainProviders.getPreCommitListenerProvider();
-  //      if (null != provider) {
-  //        ResourceSetListener preCommitListener = provider.getPreCommitListener();
-  //        // Add it if not null.
-  //        if (null != preCommitListener) {
-  //          semanticEditingDomain_p.addResourceSetListener(preCommitListener);
-  //        }
-  //      }
-  //    }
-  //  }
+  // protected void loadPreCommitListener(SemanticEditingDomain semanticEditingDomain) {
+  // ISemanticEditingDomainProviders semanticEditingDomainProviders = getSemanticEditingDomainProviders();
+  // if (null != semanticEditingDomainProviders) {
+  // IPreCommitListenerProvider provider = semanticEditingDomainProviders.getPreCommitListenerProvider();
+  // if (null != provider) {
+  // ResourceSetListener preCommitListener = provider.getPreCommitListener();
+  // // Add it if not null.
+  // if (null != preCommitListener) {
+  // semanticEditingDomain.addResourceSetListener(preCommitListener);
+  // }
+  // }
+  // }
+  // }
 
   /**
    * Load the unique semantic editing domain providers.

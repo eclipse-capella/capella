@@ -19,10 +19,10 @@ package org.polarsys.capella.common.re;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.ReNamedElement#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.re.RePackage#getReNamedElement()
  * @model abstract="true"

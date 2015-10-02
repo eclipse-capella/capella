@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.DeploymentTarget#getDeploymentLinks <em>Deployment Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getDeploymentTarget()
  * @model abstract="true"
@@ -42,7 +42,6 @@ public interface DeploymentTarget extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Deployment Links</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getLocation <em>Location</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -52,8 +51,7 @@ public interface DeploymentTarget extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Deployment Links</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getDeploymentTarget_DeploymentLinks()
-	 * @see org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getLocation
-	 * @model opposite="location"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployments'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of deployment specifications involving this physical target as the destination of the deployment\r\n[source: Capella study]' constraints='none' comment/notes='none'"

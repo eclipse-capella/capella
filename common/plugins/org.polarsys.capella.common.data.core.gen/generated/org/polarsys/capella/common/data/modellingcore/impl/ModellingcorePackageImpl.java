@@ -1037,86 +1037,86 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "profileName", "ModellingCore" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (modelElementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (abstractNamedElementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "AbstractNamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractNamedElement_Name(), 
 		   source, 
 		   new String[] {
 			 "featureName", "name", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "AbstractNamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });	
 		addAnnotation
 		  (traceableElementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.TraceableElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getTraceableElement_IncomingTraces(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_OutgoingTraces(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (getAbstractTypedElement_AbstractType(), 
 		   source, 
 		   new String[] {
 			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractTraceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractTrace_TargetElement(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTrace_SourceElement(), 
 		   source, 
 		   new String[] {
 			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																									
+		   });
 	}
 
 	/**
@@ -1126,7 +1126,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1136,7 +1136,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																										
+		   });
 	}
 
 	/**
@@ -1146,7 +1146,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1158,7 +1158,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (modelElementEClass, 
 		   source, 
@@ -1170,7 +1170,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getModelElement_Id(), 
 		   source, 
@@ -1179,7 +1179,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getModelElement_Sid(), 
 		   source, 
@@ -1188,7 +1188,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getModelElement_Constraints(), 
 		   source, 
@@ -1196,7 +1196,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the list of constraints applying to this element of the model\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getModelElement_OwnedConstraints(), 
 		   source, 
@@ -1204,7 +1204,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the constraints that are stored/owned by this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
@@ -1216,7 +1216,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractRelationship_RealizedFlow(), 
 		   source, 
@@ -1224,7 +1224,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the information flow that this relationship realizes\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractNamedElementEClass, 
 		   source, 
@@ -1236,7 +1236,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "- If there is no name, or one of the containing namespaces has no name, there is no qualified name.\r\n- When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.\r\n- If a NamedElement is not owned by a Namespace, it does not have a visibility.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractNamedElement_Name(), 
 		   source, 
@@ -1245,7 +1245,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (informationsExchangerEClass, 
 		   source, 
@@ -1257,7 +1257,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_IncomingInformationFlows(), 
 		   source, 
@@ -1265,7 +1265,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "list of information flows coming towards this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_OutgoingInformationFlows(), 
 		   source, 
@@ -1273,7 +1273,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "list of information flows coming out of this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (traceableElementEClass, 
 		   source, 
@@ -1285,7 +1285,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_IncomingTraces(), 
 		   source, 
@@ -1293,7 +1293,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the list of trace relationships pointing towards this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_OutgoingTraces(), 
 		   source, 
@@ -1301,7 +1301,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the list of trace relationships starting from this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (finalizableElementEClass, 
 		   source, 
@@ -1310,7 +1310,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFinalizableElement_Final(), 
 		   source, 
@@ -1319,7 +1319,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (publishableElementEClass, 
 		   source, 
@@ -1328,7 +1328,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPublishableElement_VisibleInDoc(), 
 		   source, 
@@ -1337,7 +1337,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getPublishableElement_VisibleInLM(), 
 		   source, 
@@ -1346,7 +1346,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (abstractTypeEClass, 
 		   source, 
@@ -1358,7 +1358,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractType_AbstractTypedElements(), 
 		   source, 
@@ -1366,7 +1366,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the list of typed elements that reference this type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractTypedElementEClass, 
 		   source, 
@@ -1378,7 +1378,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTypedElement_AbstractType(), 
 		   source, 
@@ -1386,7 +1386,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the type associated to this model element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractTraceEClass, 
 		   source, 
@@ -1398,7 +1398,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTrace_TargetElement(), 
 		   source, 
@@ -1406,7 +1406,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the target/end of the trace link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTrace_SourceElement(), 
 		   source, 
@@ -1414,7 +1414,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the source/beginning of the trace link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractConstraintEClass, 
 		   source, 
@@ -1426,7 +1426,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "The value specification for a constraint must evaluate to a Boolean value.\r\n\r\nEvaluating the value specification for a constraint must not have side effects\r\n\r\nA constraint cannot be applied to itself.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractConstraint_ConstrainedElements(), 
 		   source, 
@@ -1434,19 +1434,19 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the model elements being involved in the definition of this constraint\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractConstraint_OwnedSpecification(), 
 		   source, 
 		   new String[] {
 			 "description", "A condition that must be true when evaluated in order for the constraint to be satisfied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractConstraint_Context(), 
 		   source, 
 		   new String[] {
 			 "description", "Specifies the element that is the context for evaluating this constraint, which is the Constraint\'s parent element." //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (valueSpecificationEClass, 
 		   source, 
@@ -1458,7 +1458,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractParameterEClass, 
 		   source, 
@@ -1470,7 +1470,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "- A parameter cannot be a stream and exception at the same time.\r\n- An input parameter cannot be an exception.\r\n- Reentrant behaviors cannot have stream parameters.\r\n- Only in and inout parameters may have a delete effect. Only out, inout, and return parameters may have a create effect.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsException(), 
 		   source, 
@@ -1479,7 +1479,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsStream(), 
 		   source, 
@@ -1488,7 +1488,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsOptional(), 
 		   source, 
@@ -1497,7 +1497,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_KindOfRate(), 
 		   source, 
@@ -1506,7 +1506,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to RateKind enumeration definition\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Effect(), 
 		   source, 
@@ -1515,7 +1515,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "see ParameterEffectKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Rate(), 
 		   source, 
@@ -1523,7 +1523,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the number of objects or values that flow in or out of the parameter per time interval while the behavior or operation is executing\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "this field only makes sense if the parameter is a streaming one.\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Probability(), 
 		   source, 
@@ -1531,7 +1531,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Likelihood that values will be output on a parameter set\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "the probability should be a number between 0 and 1", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_ParameterSet(), 
 		   source, 
@@ -1539,7 +1539,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "The parameter sets containing the parameter. See AbstractParameterSet\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum, 
 		   source, 
@@ -1547,7 +1547,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of\r\nits parameters\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -1555,7 +1555,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "referenced parameter value is being created upon behavior execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -1563,7 +1563,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "referenced parameter value is only being read upon behavior execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -1571,7 +1571,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "referenced parameter value is being updated upon behavior execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -1579,7 +1579,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "referenced parameter value is being deleted upon behavior execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractParameterSetEClass, 
 		   source, 
@@ -1591,7 +1591,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "- The parameters in a parameter set must all be inputs or all be outputs of the same parameterized entity, and the parameter set is owned by that entity.\r\n- If a behavior has input parameters that are in a parameter set, then any inputs that are not in a parameter set must be streaming. Same for output parameters.\r\n- Two parameter sets cannot have exactly the same set of parameters.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameterSet_OwnedConditions(), 
 		   source, 
@@ -1599,7 +1599,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using\r\nthe values provided for those parameters, or the owner of the parameters in an output parameter set to end execution\r\nproviding the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameterSet_Probability(), 
 		   source, 
@@ -1607,7 +1607,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the probability the parameter set will be given values at runtime\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "These must be between zero and one inclusive, and add up to one for output parameter sets of the\r\nsame behavior at the time the probabilities are used.\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameterSet_Parameters(), 
 		   source, 
@@ -1615,7 +1615,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Parameters in the parameter set.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rateKindEEnum, 
 		   source, 
@@ -1623,7 +1623,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "enumeration containing the possible caracterizations for the rate of a streaming parameter\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (rateKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -1631,7 +1631,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "used when the rate kind is not precised\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rateKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -1639,7 +1639,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "used when the rate characterizes a continuous flow\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rateKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -1647,7 +1647,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Used when the rate characterizes a discrete flow\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractInformationFlowEClass, 
 		   source, 
@@ -1659,7 +1659,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_Realizations(), 
 		   source, 
@@ -1667,7 +1667,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Determines which Relationship will realize the specified flow.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_ConvoyedInformations(), 
 		   source, 
@@ -1675,7 +1675,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Specifies the information items that may circulate on this information flow\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_Source(), 
 		   source, 
@@ -1683,7 +1683,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Defines from which source the conveyed information items are initiated\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_Target(), 
 		   source, 
@@ -1691,7 +1691,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "Defines to which target the conveyed information items are directed\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractExchangeItemEClass, 
 		   source, 
@@ -1703,7 +1703,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (iStateEClass, 
 		   source, 
@@ -1715,7 +1715,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getIState_ReferencedStates(), 
 		   source, 
@@ -1723,7 +1723,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getIState_ExploitedStates(), 
 		   source, 
@@ -1731,7 +1731,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -1741,115 +1741,115 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getModelElement_Id(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getModelElement_Sid(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getModelElement_Constraints(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getModelElement_OwnedConstraints(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getAbstractNamedElement_Name(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_IncomingInformationFlows(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_OutgoingInformationFlows(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																											
+		   });	
 		addAnnotation
 		  (getAbstractConstraint_ConstrainedElements(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractConstraint_OwnedSpecification(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsException(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsStream(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsOptional(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_KindOfRate(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Effect(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Rate(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Probability(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum, 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (rateKindEEnum, 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_ConvoyedInformations(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getIState_ReferencedStates(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getIState_ExploitedStates(), 
 		   source, 
@@ -1864,7 +1864,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1874,7 +1874,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																							
+		   });
 	}
 
 	/**
@@ -1884,74 +1884,74 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (modelElementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ModelElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Relationship" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (abstractNamedElementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractNamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractNamedElement_Name(), 
 		   source, 
 		   new String[] {
 			 "namingAttribute", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "Label", "name" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																	
+		   });	
 		addAnnotation
 		  (traceableElementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "TraceableElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getTraceableElement_IncomingTraces(), 
 		   source, 
 		   new String[] {
 			 "Label", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_OutgoingTraces(), 
 		   source, 
 		   new String[] {
 			 "Label", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (getAbstractTypedElement_AbstractType(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractTraceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractTrace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractTrace_TargetElement(), 
 		   source, 
 		   new String[] {
 			 "Label", "target" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTrace_SourceElement(), 
 		   source, 
 		   new String[] {
 			 "Label", "source" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																								
+		   });
 	}
 
 	/**
@@ -1961,7 +1961,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$										
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (modelElementEClass, 
 		   source, 
@@ -1970,7 +1970,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getModelElement_Id(), 
 		   source, 
@@ -1978,7 +1978,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getModelElement_Constraints(), 
 		   source, 
@@ -1986,7 +1986,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Constraint::constrainedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getModelElement_OwnedConstraints(), 
 		   source, 
@@ -1994,7 +1994,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some packaged elements of uml::Element::nearestPackage on which AbstractConstraint stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
@@ -2003,7 +2003,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Relationship", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractRelationship_RealizedFlow(), 
 		   source, 
@@ -2011,7 +2011,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::InformationFlow::realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractNamedElementEClass, 
 		   source, 
@@ -2020,7 +2020,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractNamedElement_Name(), 
 		   source, 
@@ -2028,7 +2028,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::NamedElement::name", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (informationsExchangerEClass, 
 		   source, 
@@ -2037,7 +2037,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::NamedElement in order to map Capella AbstractInformationFlow::source and  AbstractInformationFlow::target to uml::InformationFlow::source and uml::InformationFlow::target", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_IncomingInformationFlows(), 
 		   source, 
@@ -2045,7 +2045,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::InformationFlow::informationSource", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_OutgoingInformationFlows(), 
 		   source, 
@@ -2053,7 +2053,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::InformationFlow::informationTarget", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_InformationFlows(), 
 		   source, 
@@ -2061,7 +2061,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (traceableElementEClass, 
 		   source, 
@@ -2070,7 +2070,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_IncomingTraces(), 
 		   source, 
@@ -2078,7 +2078,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_OutgoingTraces(), 
 		   source, 
@@ -2086,7 +2086,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (finalizableElementEClass, 
 		   source, 
@@ -2094,7 +2094,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (publishableElementEClass, 
 		   source, 
@@ -2102,7 +2102,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractTypeEClass, 
 		   source, 
@@ -2111,7 +2111,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractType_AbstractTypedElements(), 
 		   source, 
@@ -2119,7 +2119,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractTypedElementEClass, 
 		   source, 
@@ -2128,7 +2128,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::TypedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTypedElement_AbstractType(), 
 		   source, 
@@ -2136,7 +2136,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::TypedElement::type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractTraceEClass, 
 		   source, 
@@ -2145,7 +2145,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTrace_TargetElement(), 
 		   source, 
@@ -2153,7 +2153,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Dependency::supplier elements on which TraceableElement stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]\r\n" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTrace_SourceElement(), 
 		   source, 
@@ -2161,7 +2161,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Dependency::client elements on which TraceableElement stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractConstraintEClass, 
 		   source, 
@@ -2170,7 +2170,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractConstraint_ConstrainedElements(), 
 		   source, 
@@ -2178,7 +2178,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Constraint::constrainedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (valueSpecificationEClass, 
 		   source, 
@@ -2187,7 +2187,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ValueSpecification,uml::InstanceSpecification\r\numl::InstanceSpecification in order to map Capella AbstractParameter::rate to SysML::Activities::Rate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractParameterEClass, 
 		   source, 
@@ -2196,7 +2196,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Parameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsException(), 
 		   source, 
@@ -2204,7 +2204,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Parameter::isException", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsStream(), 
 		   source, 
@@ -2212,7 +2212,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Parameter::isStream", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_IsOptional(), 
 		   source, 
@@ -2220,7 +2220,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Capella AbstractParameter::isOptional is true if stereotype SysML::Activities::Optional is applied, false if not applied", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_KindOfRate(), 
 		   source, 
@@ -2228,7 +2228,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Capella AbstractParameter::kindOfRate is Capella RateKind::Continuous if stereotype SysML::Activities::Continuous is applied\r\nCapella AbstractParameter::kindOfRate is Capella RateKind::Discrete if stereotype SysML::Activities::Discrete is applied\r\nIf none is applied, Capella AbstractParameter::kindOfRate is Capella RateKind::Unspecified", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Applied stereotype that inherits from SysML::Activities::Rate stereotype must be either SysML::Activities::Continuous or SysML::Activities::Discrete.\r\nIf none of both stereotypes are applied, kindOfRate is considered Unspecified" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Effect(), 
 		   source, 
@@ -2236,7 +2236,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Parameter::effect", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Rate(), 
 		   source, 
@@ -2244,7 +2244,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Activities::Probability does not extend uml::Parameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_Probability(), 
 		   source, 
@@ -2252,7 +2252,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Activities::Probability does not extend uml::Parameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractParameter_ParameterSet(), 
 		   source, 
@@ -2260,7 +2260,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Parameter::parameterSet", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum, 
 		   source, 
@@ -2268,7 +2268,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::ParameterEffectKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2276,7 +2276,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::ParameterEffectKind::create", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2284,7 +2284,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::ParameterEffectKind::read", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -2292,7 +2292,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::ParameterEffectKind::update", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterEffectKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -2300,7 +2300,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::ParameterEffectKind::delete", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractParameterSetEClass, 
 		   source, 
@@ -2309,7 +2309,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ParameterSet", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameterSet_OwnedConditions(), 
 		   source, 
@@ -2317,7 +2317,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::ParameterSet::condition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameterSet_Probability(), 
 		   source, 
@@ -2325,7 +2325,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "If SysML::Activities::Probability stereotype is applied, Capella AbstractParameterSet::probability is equal to SysML::Activities::Probability::probability.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractParameterSet_Parameters(), 
 		   source, 
@@ -2333,7 +2333,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::ParameterSet::parameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rateKindEEnum, 
 		   source, 
@@ -2341,7 +2341,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Stereotype that inherits from SysML::Activities::Rate (SysML::Activities::Continuous or SysML::Activities::Discrete)", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (rateKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2349,7 +2349,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Neither SysML::Activities::Continuous or SysML::Activities::Discrete stereotypes are applied", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rateKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2357,7 +2357,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "SysML::Activities::Continuous", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Activities::Continuous stereotype is applied", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rateKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -2365,7 +2365,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "SysML::Activities::Discrete", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Activities::Discrete", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractInformationFlowEClass, 
 		   source, 
@@ -2374,7 +2374,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::InformationFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_Realizations(), 
 		   source, 
@@ -2382,7 +2382,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::InformationFlow::realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_ConvoyedInformations(), 
 		   source, 
@@ -2390,7 +2390,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::InformationFlow::conveyed", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order will not be preserved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_Source(), 
 		   source, 
@@ -2398,7 +2398,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::InformationFlow::informationSource", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractInformationFlow_Target(), 
 		   source, 
@@ -2406,7 +2406,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::InformationFlow::informationTarget", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractExchangeItemEClass, 
 		   source, 
@@ -2415,7 +2415,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Classifier in order to map Capella AbstractInformationFlow::convoyedInformations to uml::InformationFlow::conveyed.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (iStateEClass, 
 		   source, 
@@ -2424,7 +2424,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Vertex", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getIState_ReferencedStates(), 
 		   source, 
@@ -2432,7 +2432,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getIState_ExploitedStates(), 
 		   source, 
@@ -2440,7 +2440,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -2450,47 +2450,47 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																						
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getModelElement_Constraints(), 
 		   source, 
 		   new String[] {
-		   });																											
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_IncomingInformationFlows(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_OutgoingInformationFlows(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getInformationsExchanger_InformationFlows(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getTraceableElement_IncomingTraces(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_OutgoingTraces(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getAbstractType_AbstractTypedElements(), 
 		   source, 
 		   new String[] {
-		   });																																	
+		   });	
 		addAnnotation
 		  (getAbstractConstraint_Context(), 
 		   source, 
 		   new String[] {
-		   });																																																																													
+		   });
 	}
 
 	/**
@@ -2500,17 +2500,17 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																													
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																
+		   });	
 		addAnnotation
 		  (abstractTraceEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																	
+		   });
 	}
 
 	/**
@@ -2520,32 +2520,32 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																																																													
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getTraceableElement_IncomingTraces(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getTraceableElement_OutgoingTraces(), 
 		   source, 
 		   new String[] {
-		   });																					
+		   });	
 		addAnnotation
 		  (getAbstractTypedElement_AbstractType(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getAbstractTrace_TargetElement(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractTrace_SourceElement(), 
 		   source, 
 		   new String[] {
-		   });																																																																																							
+		   });
 	}
 
 } //ModellingcorePackageImpl

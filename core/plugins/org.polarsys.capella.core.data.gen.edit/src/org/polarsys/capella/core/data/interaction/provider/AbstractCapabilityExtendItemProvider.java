@@ -54,6 +54,12 @@ public class AbstractCapabilityExtendItemProvider extends RelationshipItemProvid
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	protected IItemPropertyDescriptor extensionPropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected IItemPropertyDescriptor extensionLocationPropertyDescriptor;
 
 	/**
@@ -79,7 +85,7 @@ public class AbstractCapabilityExtendItemProvider extends RelationshipItemProvid
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED
 			if (extendedPropertyDescriptor != null) {
 				Object extendedValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, true);
-				if (extendedValue != null && extendedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) extendedValue)) {
+				if (extendedValue != null && extendedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) extendedValue)) {
 					itemPropertyDescriptors.remove(extendedPropertyDescriptor);
 				} else if (extendedValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED) != null) {
 					itemPropertyDescriptors.remove(extendedPropertyDescriptor);				  					
@@ -87,10 +93,21 @@ public class AbstractCapabilityExtendItemProvider extends RelationshipItemProvid
 					itemPropertyDescriptors.add(extendedPropertyDescriptor);
 				}
 			}
+			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION
+			if (extensionPropertyDescriptor != null) {
+				Object extensionValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION, true);
+				if (extensionValue != null && extensionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) extensionValue)) {
+					itemPropertyDescriptors.remove(extensionPropertyDescriptor);
+				} else if (extensionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION) != null) {
+					itemPropertyDescriptors.remove(extensionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(extensionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(extensionPropertyDescriptor);
+				}
+			}
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION
 			if (extensionLocationPropertyDescriptor != null) {
 				Object extensionLocationValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION, true);
-				if (extensionLocationValue != null && extensionLocationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) extensionLocationValue)) {
+				if (extensionLocationValue != null && extensionLocationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) extensionLocationValue)) {
 					itemPropertyDescriptors.remove(extensionLocationPropertyDescriptor);
 				} else if (extensionLocationValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION) != null) {
 					itemPropertyDescriptors.remove(extensionLocationPropertyDescriptor);				  					
@@ -113,6 +130,7 @@ public class AbstractCapabilityExtendItemProvider extends RelationshipItemProvid
 			super.getPropertyDescriptors(object);
 
 			addExtendedPropertyDescriptor(object);
+			addExtensionPropertyDescriptor(object);
 			addExtensionLocationPropertyDescriptor(object);
 		}
 		// begin-extension-code
@@ -144,6 +162,32 @@ public class AbstractCapabilityExtendItemProvider extends RelationshipItemProvid
 		// begin-extension-code
 				 null);
 		itemPropertyDescriptors.add(extendedPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Extension feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addExtensionPropertyDescriptor(Object object) {
+		// begin-extension-code
+		extensionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractCapabilityExtend_extension_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapabilityExtend_extension_feature", "_UI_AbstractCapabilityExtend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(extensionPropertyDescriptor);
 		// end-extension-code
 	}
 

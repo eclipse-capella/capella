@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#isMerged <em>Merged</em>}</li>
@@ -43,7 +44,6 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getRealizedScenarios <em>Realized Scenarios</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getRealizingScenarios <em>Realizing Scenarios</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Scenario'"

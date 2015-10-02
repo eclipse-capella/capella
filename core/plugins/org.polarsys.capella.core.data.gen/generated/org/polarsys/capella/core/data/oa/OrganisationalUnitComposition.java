@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition#getOrganisationalUnit <em>Organisational Unit</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OrganisationalUnitComposition#getParticipatingEntity <em>Participating Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOrganisationalUnitComposition()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='mediator element to implement the relationship between an organisational unit and the entities it contains\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

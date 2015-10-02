@@ -18,11 +18,11 @@ package org.polarsys.capella.common.data.behavior;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.behavior.AbstractTimeEvent#isIsRelative <em>Is Relative</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.behavior.AbstractTimeEvent#getWhen <em>When</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractTimeEvent()
  * @model interface="true" abstract="true"

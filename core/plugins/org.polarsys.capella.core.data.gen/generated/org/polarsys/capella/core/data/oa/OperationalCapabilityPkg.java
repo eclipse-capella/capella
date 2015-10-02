@@ -20,13 +20,13 @@ import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg#getOwnedOperationalCapabilities <em>Owned Operational Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg#getOwnedOperationalCapabilityPkgs <em>Owned Operational Capability Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg#getOwnedCapabilityConfigurations <em>Owned Capability Configurations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapabilityPkg#getOwnedConceptCompliances <em>Owned Concept Compliances</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapabilityPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for operational capabilities\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella 1.0.3' reference\040documentation='none'"

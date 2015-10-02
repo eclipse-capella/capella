@@ -95,7 +95,7 @@ public class AbstractCapabilityItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION
 			if (preConditionPropertyDescriptor != null) {
 				Object preConditionValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION, true);
-				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) preConditionValue)) {
+				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) preConditionValue)) {
 					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
 				} else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION) != null) {
 					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
@@ -106,7 +106,7 @@ public class AbstractCapabilityItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION
 			if (postConditionPropertyDescriptor != null) {
 				Object postConditionValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION, true);
-				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) postConditionValue)) {
+				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) postConditionValue)) {
 					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
 				} else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION) != null) {
 					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					
@@ -358,9 +358,9 @@ public class AbstractCapabilityItemProvider
 				 getString("_UI_AbstractCapability_extending_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapability_extending_feature", "_UI_AbstractCapability_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -385,9 +385,9 @@ public class AbstractCapabilityItemProvider
 				 getString("_UI_AbstractCapability_subGeneralizations_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapability_subGeneralizations_feature", "_UI_AbstractCapability_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -412,9 +412,9 @@ public class AbstractCapabilityItemProvider
 				 getString("_UI_AbstractCapability_including_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapability_including_feature", "_UI_AbstractCapability_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

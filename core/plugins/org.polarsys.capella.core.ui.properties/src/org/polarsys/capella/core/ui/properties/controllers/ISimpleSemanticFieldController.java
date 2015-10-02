@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,25 +23,25 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public interface ISimpleSemanticFieldController {
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
+   * @param semanticElement
+   * @param semanticFeature
    * @return
    */
-  public EObject loadValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p);
+  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature);
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
+   * @param semanticElement
+   * @param semanticFeature
    * @return
    */
-  public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p);
+  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature);
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
-   * @param defaultName_p
-   * @param value_p
+   * @param semanticElement
+   * @param semanticFeature
+   * @param defaultName
+   * @param value
    * @return
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value_p);
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value);
 }

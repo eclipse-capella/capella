@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.test.feature"
       label="%featureName"
-      version="0.8.0.qualifier"
+      version="1.0.0.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -85,6 +85,48 @@
 
    <plugin
          id="org.polarsys.capella.test.diagram.common.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.refinement.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.merge.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.recrpl.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.transition.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.suites.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.fastlinker.ju"
          download-size="0"
          install-size="0"
          version="0.0.0"

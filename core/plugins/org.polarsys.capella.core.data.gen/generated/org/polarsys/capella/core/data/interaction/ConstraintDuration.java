@@ -19,12 +19,12 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.ConstraintDuration#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.ConstraintDuration#getStart <em>Start</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.ConstraintDuration#getFinish <em>Finish</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getConstraintDuration()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' constraints='none' comment/notes='none'"

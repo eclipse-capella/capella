@@ -18,11 +18,11 @@ package org.polarsys.capella.common.data.modellingcore;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.PublishableElement#isVisibleInDoc <em>Visible In Doc</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.PublishableElement#isVisibleInLM <em>Visible In LM</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getPublishableElement()
  * @model abstract="true"

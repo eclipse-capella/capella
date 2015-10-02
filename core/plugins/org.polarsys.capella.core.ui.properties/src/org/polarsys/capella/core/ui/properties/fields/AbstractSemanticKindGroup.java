@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,47 +33,47 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param groupLabel_p
+   * @param parent
+   * @param widgetFactory
+   * @param groupLabel
    */
-  public AbstractSemanticKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, String groupLabel_p, int numColumns_p) {
-    super(widgetFactory_p);
+  public AbstractSemanticKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, String groupLabel, int numColumns) {
+    super(widgetFactory);
 
-    _group = createGroup(parent_p, groupLabel_p, numColumns_p);
+    _group = createGroup(parent, groupLabel, numColumns);
   }
 
   /**
    * Create a radio button.
-   * @param enumerated_p
+   * @param enumerated
    * @return a not <code>null</code> object.
    */
-  protected Button createButton(Enumerator enumerated_p) {
-    return createButton(enumerated_p, true);
+  protected Button createButton(Enumerator enumerated) {
+    return createButton(enumerated, true);
   }
 
   /**
    * Create a radio button.
-   * @param enumerated_p
-   * @param enabled_p
+   * @param enumerated
+   * @param enabled
    * @return a not <code>null</code> object.
    */
-  protected Button createButton(Enumerator enumerated_p, boolean enabled_p) {
-    return createButton(_group, enumerated_p.getLiteral(), enumerated_p, enabled_p, SWT.RADIO);
+  protected Button createButton(Enumerator enumerated, boolean enabled) {
+    return createButton(_group, enumerated.getLiteral(), enumerated, enabled, SWT.RADIO);
   }
 
   /**
    * Create a group.
-   * @param parent_p
-   * @param label_p
-   * @param numColumns_p
+   * @param parent
+   * @param label
+   * @param numColumns
    * @return a not <code>null</code> object.
    */
-  protected Group createGroup(Composite parent_p, String label_p, int numColumns_p) {
-    _group = _widgetFactory.createGroup(parent_p, label_p);
-    _group.setLayout(new GridLayout(numColumns_p, true));
+  protected Group createGroup(Composite parent, String label, int numColumns) {
+    _group = _widgetFactory.createGroup(parent, label);
+    _group.setLayout(new GridLayout(numColumns, true));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-    gd.horizontalSpan = ((GridLayout) parent_p.getLayout()).numColumns;
+    gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns;
     _group.setLayoutData(gd);
     return _group;
   }
@@ -82,16 +82,16 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, _semanticFeature);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, _semanticFeature);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p, EStructuralFeature feature_p) {
-    super.loadData(capellaElement_p, feature_p);
+  public void loadData(CapellaElement capellaElement, EStructuralFeature feature) {
+    super.loadData(capellaElement, feature);
 
     Object value = _semanticElement.eGet(_semanticFeature);
     if (null == value) {
@@ -111,19 +111,19 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
   /**
    * Select given radio button with specified enumerator.<br>
    * Specified enumerator is compared with button's data object.
-   * @param button_p
-   * @param enumerated_p
+   * @param button
+   * @param enumerated
    */
-  protected void selectButton(Button button_p, Enumerator enumerated_p) {
-    button_p.setSelection(enumerated_p.equals(button_p.getData()));
+  protected void selectButton(Button button, Enumerator enumerated) {
+    button.setSelection(enumerated.equals(button.getData()));
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#widgetSelected(org.eclipse.swt.events.SelectionEvent)
    */
   @Override
-  public void widgetSelected(SelectionEvent event_p) {
-    Button source = (Button) event_p.widget;
+  public void widgetSelected(SelectionEvent event) {
+    Button source = (Button) event.widget;
     // Take into account the new selection.
     if (source.getSelection()) {
       setValue(source.getData());
@@ -131,12 +131,12 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
   }
 
   /**
-   * @param value_p
+   * @param value
    */
-  protected void setValue(final Object value_p) {
+  protected void setValue(final Object value) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        _semanticElement.eSet(_semanticFeature, value_p);
+        _semanticElement.eSet(_semanticFeature, value);
       }
     };
     executeCommand(command);

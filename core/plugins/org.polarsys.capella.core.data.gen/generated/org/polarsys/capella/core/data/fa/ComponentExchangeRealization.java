@@ -18,11 +18,11 @@ package org.polarsys.capella.core.data.fa;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeRealization#getAllocatedComponentExchange <em>Allocated Component Exchange</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeRealization#getAllocatingComponentExchange <em>Allocating Component Exchange</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeRealization()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Connection Realization'"

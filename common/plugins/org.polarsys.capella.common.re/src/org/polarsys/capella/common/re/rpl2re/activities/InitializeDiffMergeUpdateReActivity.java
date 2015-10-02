@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,8 +46,8 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
   public static final String ID = InitializeDiffMergeUpdateReActivity.class.getCanonicalName();
 
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
 
     CatalogElement etarget = ReplicableElementHandlerHelper.getInstance(context).getInitialTarget(context);
     CatalogElement esource = ReplicableElementHandlerHelper.getInstance(context).getInitialSource(context);
@@ -55,47 +55,47 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
     ReplicableElementHandlerHelper.getInstance(context).setTarget(context, etarget);
     ReplicableElementHandlerHelper.getInstance(context).setSource(context, esource);
 
-    return super._run(activityParams_p);
+    return super._run(activityParams);
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
   @Override
-  protected IStatus initializeReferenceScope(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeReferenceScope(IContext context, ActivityParameters activityParams) {
 
-    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
     Collection<EObject> scopeElements = new HashSet<EObject>();
     //Scope is computed, we put it into Merge Scope
     scopeElements =
-        OptionsHandlerHelper.getInstance(context_p).getCollectionValue(context_p, (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE),
+        OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_SOURCE_SCOPE, (Collection) Collections.emptyList());
 
     //Ensure unwanted elements not in scope!
     scopeElements.remove(source);
     scopeElements.remove(target);
 
-    ITraceabilityHandler handler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    IEditableModelScope sourceScope = new ReSourceScope(source, handler, scopeElements, context_p);
-    context_p.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
-    ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context_p));
+    ITraceabilityHandler handler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
+    IEditableModelScope sourceScope = new ReSourceScope(source, handler, scopeElements, context);
+    context.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
+    ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context));
 
     if (source == null) {
       //Only if create a new RE or update current replica (not definition), we don't create new elements.
       //When we will want to promote it into library, it will be another story
 
-      Collection selection = (Collection) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+      Collection selection = (Collection) context.get(ITransitionConstants.TRANSITION_SOURCES);
 
       Object location =
-          OptionsHandlerHelper.getInstance(context_p).getValue(context_p, (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE),
+          OptionsHandlerHelper.getInstance(context).getValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
               IReConstants.PROPERTY__LOCATION_TARGET, null);
 
-      if (ReplicableElementHandlerHelper.getInstance(context_p).isDefaultLocation((EObject) location, context_p)) {
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(IReConstants.UNMERGEABLE_ELEMENTS, scopeElements, context_p);
+      if (ReplicableElementHandlerHelper.getInstance(context).isDefaultLocation((EObject) location, context)) {
+        ContextScopeHandlerHelper.getInstance(context).addAll(IReConstants.UNMERGEABLE_ELEMENTS, scopeElements, context);
       }
     }
 
@@ -103,53 +103,53 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
   @Override
-  protected IStatus initializeTargetScope(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeTargetScope(IContext context, ActivityParameters activityParams) {
 
-    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
     //Target is the ReplicableElement
     Collection<EObject> scopeElements = new HashSet<EObject>();
 
     //Scope is computed, we put it into Merge Scope
     scopeElements =
-        OptionsHandlerHelper.getInstance(context_p).getCollectionValue(context_p, (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE),
+        OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_TARGET_SCOPE, (Collection) Collections.emptyList());
 
     //Ensure unwanted elements not in scope!
     scopeElements.remove(source);
     scopeElements.remove(target);
 
-    ITraceabilityHandler handler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
-    IEditableModelScope targetScope = new ReTargetScope(target, handler, scopeElements, context_p);
-    context_p.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
-    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context_p));
+    ITraceabilityHandler handler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+    IEditableModelScope targetScope = new ReTargetScope(target, handler, scopeElements, context);
+    context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
+    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
 
     return Status.OK_STATUS;
   }
 
   @Override
-  protected IStatus initializeTraceabilitySourceHandler(IContext context_p, ActivityParameters activityParams_p) {
-    return super.initializeTraceabilitySourceHandler(context_p, activityParams_p);
+  protected IStatus initializeTraceabilitySourceHandler(IContext context, ActivityParameters activityParams) {
+    return super.initializeTraceabilitySourceHandler(context, activityParams);
   }
 
   @Override
-  protected IStatus initializeTraceabilityTargetHandler(IContext context_p, ActivityParameters activityParams_p) {
-    return super.initializeTraceabilityTargetHandler(context_p, activityParams_p);
+  protected IStatus initializeTraceabilityTargetHandler(IContext context, ActivityParameters activityParams) {
+    return super.initializeTraceabilityTargetHandler(context, activityParams);
   }
 
   /**
    * Create default traceability handler for source of diffMerge
    */
   @Override
-  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
-    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
+    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
     ITraceabilityConfiguration configuration = new ReConfiguration(source);
     return new CompoundTraceabilityHandler(configuration);
@@ -159,28 +159,28 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
    * Create default traceability handler for target of diffMerge
    */
   @Override
-  protected IHandler createDefaultTraceabilityTargetHandler(IContext context_p) {
-    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+  protected IHandler createDefaultTraceabilityTargetHandler(IContext context) {
+    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
     ITraceabilityConfiguration configuration = new ReConfiguration(source, target);
     return new CompoundTraceabilityHandler(configuration);
   }
 
   @Override
-  protected IModelScopeFilter getReferenceFilter(final IContext context_p) {
+  protected IModelScopeFilter getReferenceFilter(final IContext context) {
     return new IModelScopeFilter() {
-      public boolean accepts(EObject element_p) {
-        return ((ReSourceScope) (context_p.get(ITransitionConstants.MERGE_REFERENCE_SCOPE))).getInitialElements().contains(element_p);
+      public boolean accepts(EObject element) {
+        return ((ReSourceScope) (context.get(ITransitionConstants.MERGE_REFERENCE_SCOPE))).getInitialElements().contains(element);
       }
     };
   }
 
   @Override
-  protected IModelScopeFilter getTargetFilter(final IContext context_p) {
+  protected IModelScopeFilter getTargetFilter(final IContext context) {
     return new IModelScopeFilter() {
-      public boolean accepts(EObject element_p) {
-        return ((ReSourceScope) (context_p.get(ITransitionConstants.MERGE_TARGET_SCOPE))).getInitialElements().contains(element_p);
+      public boolean accepts(EObject element) {
+        return ((ReTargetScope) (context.get(ITransitionConstants.MERGE_TARGET_SCOPE))).getInitialElements().contains(element);
       }
     };
   }

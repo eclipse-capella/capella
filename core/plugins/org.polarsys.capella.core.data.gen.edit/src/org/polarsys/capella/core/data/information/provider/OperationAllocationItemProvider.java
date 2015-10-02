@@ -85,7 +85,7 @@ public class OperationAllocationItemProvider
 			// Process InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATED_OPERATION
 			if (allocatedOperationPropertyDescriptor != null) {
 				Object allocatedOperationValue = eObject.eGet(InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATED_OPERATION, true);
-				if (allocatedOperationValue != null && allocatedOperationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedOperationValue)) {
+				if (allocatedOperationValue != null && allocatedOperationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedOperationValue)) {
 					itemPropertyDescriptors.remove(allocatedOperationPropertyDescriptor);
 				} else if (allocatedOperationValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATED_OPERATION) != null) {
 					itemPropertyDescriptors.remove(allocatedOperationPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class OperationAllocationItemProvider
 			// Process InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATING_OPERATION
 			if (allocatingOperationPropertyDescriptor != null) {
 				Object allocatingOperationValue = eObject.eGet(InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATING_OPERATION, true);
-				if (allocatingOperationValue != null && allocatingOperationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingOperationValue)) {
+				if (allocatingOperationValue != null && allocatingOperationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingOperationValue)) {
 					itemPropertyDescriptors.remove(allocatingOperationPropertyDescriptor);
 				} else if (allocatingOperationValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.OPERATION_ALLOCATION__ALLOCATING_OPERATION) != null) {
 					itemPropertyDescriptors.remove(allocatingOperationPropertyDescriptor);				  					

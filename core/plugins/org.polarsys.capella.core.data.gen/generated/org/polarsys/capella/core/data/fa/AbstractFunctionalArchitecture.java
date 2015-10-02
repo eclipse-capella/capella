@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture#getOwnedFunctionPkg <em>Owned Function Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture#getOwnedComponentExchanges <em>Owned Component Exchanges</em>}</li>
@@ -28,7 +29,6 @@ import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture#getOwnedFunctionalAllocations <em>Owned Functional Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture#getOwnedComponentExchangeRealizations <em>Owned Component Exchange Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalArchitecture()
  * @model abstract="true"

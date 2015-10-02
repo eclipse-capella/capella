@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.information.Property;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.ValuePart#getReferencedProperty <em>Referenced Property</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.ValuePart#getOwnedValue <em>Owned Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getValuePart()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Used in the decomposition of complex values into smaller unitary elements\r\n[source: Capella light-light study]' usage\040guideline='n/a' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

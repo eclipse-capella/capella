@@ -18,11 +18,11 @@ package org.polarsys.capella.core.data.capellacore;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.ReuseLink#getReused <em>Reused</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.ReuseLink#getReuser <em>Reuser</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getReuseLink()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ReuseLink'"

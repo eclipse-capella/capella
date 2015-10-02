@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.GenericPkg#getSubGenericPkgs <em>Sub Generic Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.sharedmodel.GenericPkg#getCapellaElements <em>Capella Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage#getGenericPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='GenericPkg'"

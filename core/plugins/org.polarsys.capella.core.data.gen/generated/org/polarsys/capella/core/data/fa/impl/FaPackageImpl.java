@@ -2837,7 +2837,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2847,7 +2847,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+		   });
 	}
 
 	/**
@@ -2857,7 +2857,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2869,7 +2869,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "This package depends on the model CapellaCommon.ecore\r\nThis package depends on the model Information.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractFunctionalArchitectureEClass, 
 		   source, 
@@ -2881,7 +2881,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionPkg(), 
 		   source, 
@@ -2889,7 +2889,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the function packages contained in this functional architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchanges(), 
 		   source, 
@@ -2897,7 +2897,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the component exchanges contained directly under this functional architecture, e.g. exchanges between top level components\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchangeCategories(), 
 		   source, 
@@ -2905,7 +2905,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), 
 		   source, 
@@ -2913,7 +2913,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange links contained directly under this functional architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalAllocations(), 
 		   source, 
@@ -2921,7 +2921,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of component <=> functions allocation links contained directly under this functional architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations(), 
 		   source, 
@@ -2929,7 +2929,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of component exchange realizations contained directly under this functional architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractFunctionalStructureEClass, 
 		   source, 
@@ -2941,7 +2941,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
 		   source, 
@@ -2949,7 +2949,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the connections between components, contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchangeCategories(), 
 		   source, 
@@ -2957,7 +2957,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
 		   source, 
@@ -2965,7 +2965,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the (functional) exchange links defined in the context of this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedFunctionalAllocations(), 
 		   source, 
@@ -2973,7 +2973,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of component <=> function allocation links defined in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchangeRealizations(), 
 		   source, 
@@ -2981,7 +2981,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of realizations links between component exchanges, defined in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractFunctionalBlockEClass, 
 		   source, 
@@ -2993,7 +2993,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedFunctionalAllocation(), 
 		   source, 
@@ -3001,7 +3001,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "allocation relationships between Functions and Blocks, that are owned by this Block\r\n[source: Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchanges(), 
 		   source, 
@@ -3009,7 +3009,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the connections associated with this block\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchangeCategories(), 
 		   source, 
@@ -3017,7 +3017,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_FunctionalAllocations(), 
 		   source, 
@@ -3025,7 +3025,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the allocation links between this block, and the functions that are allocated to it.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_AllocatedFunctions(), 
 		   source, 
@@ -3033,7 +3033,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of functions allocated to this block\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_InExchangeLinks(), 
 		   source, 
@@ -3041,7 +3041,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the (functional) exchanges that have this block as their target/destination\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OutExchangeLinks(), 
 		   source, 
@@ -3049,7 +3049,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the (functional) exchanges that have this block as their source\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionPkgEClass, 
 		   source, 
@@ -3061,7 +3061,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedFunctionalLinks(), 
 		   source, 
@@ -3069,7 +3069,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the (functional) exchange links contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedExchanges(), 
 		   source, 
@@ -3077,7 +3077,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchanges specifications contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedExchangeSpecificationRealizations(), 
 		   source, 
@@ -3085,7 +3085,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange realization links contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedCategories(), 
 		   source, 
@@ -3093,7 +3093,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange categories (families) contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedFunctionSpecifications(), 
 		   source, 
@@ -3101,7 +3101,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functions (specifications) included in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionSpecificationEClass, 
 		   source, 
@@ -3113,7 +3113,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_InExchangeLinks(), 
 		   source, 
@@ -3121,7 +3121,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "inbound exchange links\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_OutExchangeLinks(), 
 		   source, 
@@ -3129,7 +3129,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "outbound exchange links\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_OwnedFunctionPorts(), 
 		   source, 
@@ -3137,7 +3137,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "flow ports owned by functions instanciating this function specification\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_SubFunctionSpecifications(), 
 		   source, 
@@ -3145,7 +3145,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) list of sub-specifications of this function specification \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeCategoryEClass, 
 		   source, 
@@ -3157,7 +3157,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeCategory_Exchanges(), 
 		   source, 
@@ -3165,7 +3165,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of functional exchanges that are part of this exchange category\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (exchangeLinkEClass, 
 		   source, 
@@ -3177,7 +3177,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Exchanges(), 
 		   source, 
@@ -3185,7 +3185,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the exchanges involved in this exchange link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_ExchangeContainmentLinks(), 
 		   source, 
@@ -3193,7 +3193,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange containments that are part of this exchange link \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_OwnedExchangeContainments(), 
 		   source, 
@@ -3201,7 +3201,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange containments that are owned by this exchange link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Sources(), 
 		   source, 
@@ -3209,7 +3209,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functions that are at the starting point(s) of this exchange link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Destinations(), 
 		   source, 
@@ -3217,7 +3217,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functions that are at the destination point(s) of this exchange link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (exchangeContainmentEClass, 
 		   source, 
@@ -3229,7 +3229,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Exchange(), 
 		   source, 
@@ -3237,7 +3237,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange (specification) involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Link(), 
 		   source, 
@@ -3245,7 +3245,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange link involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeSpecificationEClass, 
 		   source, 
@@ -3257,7 +3257,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_ContainingLink(), 
 		   source, 
@@ -3265,7 +3265,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange link associated with this exchange specification\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_Link(), 
 		   source, 
@@ -3273,7 +3273,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange containment associated with this exchange specification\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_OutgoingExchangeSpecificationRealizations(), 
 		   source, 
@@ -3281,7 +3281,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the realization links between exchange specifications, for which this exchange specification is the origin of the link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_IncomingExchangeSpecificationRealizations(), 
 		   source, 
@@ -3289,7 +3289,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the realization links between exchange specifications, for which this exchange specification is the destination of the link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (functionalExchangeSpecificationEClass, 
 		   source, 
@@ -3301,7 +3301,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeSpecification_FunctionalExchanges(), 
 		   source, 
@@ -3309,7 +3309,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional exchanges that fulfill this specification\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionalChainEClass, 
 		   source, 
@@ -3321,7 +3321,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_Kind(), 
 		   source, 
@@ -3330,7 +3330,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to FunctionalChainKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_OwnedFunctionalChainInvolvements(), 
 		   source, 
@@ -3338,7 +3338,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of involvement relationships owned by this functional chain", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_OwnedFunctionalChainRealizations(), 
 		   source, 
@@ -3346,7 +3346,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of realization relationships owned by this functional chain", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalChainInvolvements(), 
 		   source, 
@@ -3354,7 +3354,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the list of involvement relationships included in this functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctions(), 
 		   source, 
@@ -3362,7 +3362,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalExchanges(), 
 		   source, 
@@ -3370,7 +3370,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the functional exchanges involved in this functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedElements(), 
 		   source, 
@@ -3378,7 +3378,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the list of model elements involved in this functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctions(), 
 		   source, 
@@ -3386,7 +3386,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctionalBlocks(), 
 		   source, 
@@ -3394,7 +3394,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the functional blocks involved in this functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChain_AvailableInStates(), 
 		   source, 
@@ -3402,7 +3402,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of (system) states in which this functional chain is actually available\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilities(), 
 		   source, 
@@ -3410,7 +3410,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilityRealizations(), 
 		   source, 
@@ -3418,7 +3418,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum, 
 		   source, 
@@ -3426,7 +3426,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "Enumeration of the different functional chains\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3434,7 +3434,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "simple functional chain", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3442,7 +3442,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "composite functional chain", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3450,7 +3450,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "fragment functional chain", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractFunctionalChainContainerEClass, 
 		   source, 
@@ -3462,7 +3462,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalChainContainer_OwnedFunctionalChains(), 
 		   source, 
@@ -3470,7 +3470,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional chains associated to this function, e.g. functional chains that involve only sub-functions of this function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (functionalChainInvolvementEClass, 
 		   source, 
@@ -3482,7 +3482,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_NextFunctionalChainInvolvements(), 
 		   source, 
@@ -3490,7 +3490,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																
+		   });	
 		addAnnotation
 		  (functionInputPortEClass, 
 		   source, 
@@ -3502,7 +3502,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionInputPort_IncomingExchangeItems(), 
 		   source, 
@@ -3510,7 +3510,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange items that are declared as potential flowing into this port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (functionOutputPortEClass, 
 		   source, 
@@ -3522,7 +3522,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionOutputPort_OutgoingExchangeItems(), 
 		   source, 
@@ -3530,7 +3530,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange items that are declared as potentially flowing out of this port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (abstractFunctionAllocationEClass, 
 		   source, 
@@ -3542,7 +3542,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentFunctionalAllocationEClass, 
 		   source, 
@@ -3554,7 +3554,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Function(), 
 		   source, 
@@ -3562,7 +3562,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the function involved in this allocation link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Block(), 
 		   source, 
@@ -3570,7 +3570,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the block involved in this allocation link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainRealizationEClass, 
 		   source, 
@@ -3582,7 +3582,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (exchangeSpecificationRealizationEClass, 
 		   source, 
@@ -3594,7 +3594,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizedExchangeSpecification(), 
 		   source, 
@@ -3602,7 +3602,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange specification that is being realized by the other (typically lower level) exchange specification involved in this link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizingExchangeSpecification(), 
 		   source, 
@@ -3610,7 +3610,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange specification that performs the realization of the other exchange specification involved in this link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (functionalExchangeRealizationEClass, 
 		   source, 
@@ -3622,7 +3622,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizedFunctionalExchange(), 
 		   source, 
@@ -3630,7 +3630,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional exchange that is being realized by the other functional exchange involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizingFunctionalExchange(), 
 		   source, 
@@ -3638,7 +3638,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional exchange that is realising the other functional exchange involved in this relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionRealizationEClass, 
 		   source, 
@@ -3650,7 +3650,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatedFunction(), 
 		   source, 
@@ -3658,7 +3658,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the function that is being allocated by/from the other function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatingFunction(), 
 		   source, 
@@ -3666,7 +3666,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the function that allocates (to) the other function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (functionalExchangeEClass, 
 		   source, 
@@ -3678,7 +3678,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_ExchangeSpecifications(), 
 		   source, 
@@ -3686,7 +3686,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange specification(s) that this exchange complies to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_InvolvingFunctionalChains(), 
 		   source, 
@@ -3694,7 +3694,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional chains in which this exchange is involved\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_ExchangedItems(), 
 		   source, 
@@ -3702,7 +3702,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange items that are carried along this functional exchange\r\n[source: Capella study]\r\n\r\nSpecifies the information items that may circulate on this information flow.\r\n[source: UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_AllocatingComponentExchanges(), 
 		   source, 
@@ -3710,7 +3710,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the component exchanges associated to this functional exchange, e.g. the exchanges between the components to which the source/destination of this functional exchange are allocated.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingComponentExchangeFunctionalExchangeRealizations(), 
 		   source, 
@@ -3718,7 +3718,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the allocation links between component exchanges and functional exchanges, that have this functional exchange as their destination\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingFunctionalExchangeRealizations(), 
 		   source, 
@@ -3726,7 +3726,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the realization links between functional exchanges, that have this functional exchange as their destination\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_OutgoingFunctionalExchangeRealizations(), 
 		   source, 
@@ -3734,7 +3734,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the realization links between functional exchanges, that have this functional exchange as their origin\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_Categories(), 
 		   source, 
@@ -3742,7 +3742,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange categories (families) to which this functional exchange belongs\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_OwnedFunctionalExchangeRealizations(), 
 		   source, 
@@ -3750,7 +3750,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the realization links between functional exchanges, that are owned by this functional exchange\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																	
+		   });	
 		addAnnotation
 		  (abstractFunctionEClass, 
 		   source, 
@@ -3763,7 +3763,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OwnedFunctions(), 
 		   source, 
@@ -3771,7 +3771,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functions that are owned (in terms of model structure) by this function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OwnedFunctionRealizations(), 
 		   source, 
@@ -3779,7 +3779,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the function realisation links that are associated to this function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OwnedFunctionalExchanges(), 
 		   source, 
@@ -3787,7 +3787,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional exchanges that are owned by this function, e.g. that have their source and destination on sub-functions of this function.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_SubFunctions(), 
 		   source, 
@@ -3795,7 +3795,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the children functions of this function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OutFunctionRealizations(), 
 		   source, 
@@ -3803,7 +3803,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "function realization links that have this function as their origin\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InFunctionRealizations(), 
 		   source, 
@@ -3811,7 +3811,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the function realisation links that have this function as their destination\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_ComponentFunctionalAllocations(), 
 		   source, 
@@ -3819,7 +3819,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the mediator classes that implement the allocation of this function to/from components (blocks)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_AllocationBlocks(), 
 		   source, 
@@ -3827,7 +3827,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the blocks to/from which this function is allocated\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_AvailableInStates(), 
 		   source, 
@@ -3835,7 +3835,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of (system) states in which this function is actually available\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilities(), 
 		   source, 
@@ -3843,7 +3843,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilityRealizations(), 
 		   source, 
@@ -3851,7 +3851,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingFunctionalChains(), 
 		   source, 
@@ -3859,7 +3859,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional chains that involve this function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedStateMachine(), 
 		   source, 
@@ -3867,7 +3867,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the state machine associated to this function\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedFunctionSpecification(), 
 		   source, 
@@ -3875,7 +3875,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the function specification with which this function complies\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (functionPortEClass, 
 		   source, 
@@ -3887,7 +3887,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPort_RepresentedComponentPort(), 
 		   source, 
@@ -3895,7 +3895,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the ComponentPort that this function port represents\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum, 
 		   source, 
@@ -3903,7 +3903,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "ConnectorKind is an enumeration of the following literal values:\r\n- assembly\r\nIndicates that the connector is an assembly connector.\r\n- delegation\r\nIndicates that the connector is a delegation connector.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3911,7 +3911,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "Communication kind is not set\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3919,7 +3919,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "Indicates that the connector is a delegation connector.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3927,7 +3927,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "Indicates that the connector is an assembly connector.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -3935,7 +3935,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "Describes a flow communication", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentPortKindEEnum, 
 		   source, 
@@ -3943,7 +3943,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "ComponentPortKind is an enumeration of the following literal values:\r\nstandard:\r\nA port is an interaction point between a Block or sub-Block and its environment that supports Exchanges with other ports.\r\nflow:\r\nA FlowPorts is an interaction point through which input and/or output of items such as data, material, or energy may flow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3951,7 +3951,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "Describes a standard port : \r\nA port is an interaction point between a Block or sub-Block and its environment that supports Exchanges with other ports.\r\n[source: SysML glossary for SysML v1.0]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3959,7 +3959,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "Describes a flow port : \r\nA FlowPorts is an interaction point through which input and/or output of items such as data, material, or energy may flow\r\n[source: SysML specification v1.1]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum, 
 		   source, 
@@ -3967,7 +3967,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "ComponentPortKind is an enumeration of the following literal values:\r\nstandard:\r\nA port is an interaction point between a Block or sub-Block and its environment that supports Exchanges with other ports.\r\nflow:\r\nA FlowPorts is an interaction point through which input and/or output of items such as data, material, or energy may flow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3975,7 +3975,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "used when the port orientation is undefined", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3983,7 +3983,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "used when the port represents an input of the component it is used in", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3991,7 +3991,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "used when the port represents an output of the component it is used in", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -3999,7 +3999,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "used when the port represents both an input and on output of the component it is used in", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (componentExchangeEClass, 
 		   source, 
@@ -4012,7 +4012,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "arcadia_description", "An Exchange is an interaction between some entities such as actors, the system, functions or components, which is likely to influence their behaviour. Example: tuning frequency, radio selection command..." //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_Kind(), 
 		   source, 
@@ -4021,7 +4021,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to ConnectionKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_Oriented(), 
 		   source, 
@@ -4030,7 +4030,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to OrientationConnectionKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatedFunctionalExchanges(), 
 		   source, 
@@ -4038,7 +4038,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional exchanges associated with this component exchange (e.g. the functional exchanges that happen between functions allocated to the two components involved in this component exchange)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_IncomingComponentExchangeRealizations(), 
 		   source, 
@@ -4046,7 +4046,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the component exchange realization links that have this component exchange as their destination\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeRealizations(), 
 		   source, 
@@ -4054,7 +4054,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the component exchange realization links that have this component exchange as their source\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
@@ -4062,7 +4062,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) the allocation links between functional exchanges and component exchanges, for which this component exchange is the source\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
@@ -4070,7 +4070,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the allocation links between functional exchanges and component exchanges, owned by this component exchange\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeRealizations(), 
 		   source, 
@@ -4078,7 +4078,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the component exchange realization links that are owned by this component exchange\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeEnds(), 
 		   source, 
@@ -4086,7 +4086,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the connection endpoints involved in this link (potentially, an arbitrary number of them can be present)\r\n[source: Capella study]\r\n\r\nA connector consists of at least two connector ends, each representing the participation of instances of the classifiers\r\ntyping the connectable elements attached to this end. The set of connector ends is ordered.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																
+		   });	
 		addAnnotation
 		  (getComponentExchange_Categories(), 
 		   source, 
@@ -4094,7 +4094,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the exchange categories (families) to which this functional exchange belongs\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (componentExchangeAllocationEClass, 
 		   source, 
@@ -4106,7 +4106,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocated(), 
 		   source, 
@@ -4114,7 +4114,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "The connection being allocated\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocator(), 
 		   source, 
@@ -4122,7 +4122,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "The element that allocates the connection\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentExchangeAllocatorEClass, 
 		   source, 
@@ -4134,7 +4134,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocator_OwnedComponentExchangeAllocations(), 
 		   source, 
@@ -4142,7 +4142,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the component exchanges allocations contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocator_AllocatedComponentExchanges(), 
 		   source, 
@@ -4150,7 +4150,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "(automatically computed) direct references to the component exchanges being allocated by this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeCategoryEClass, 
 		   source, 
@@ -4162,7 +4162,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeCategory_Exchanges(), 
 		   source, 
@@ -4170,7 +4170,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the list of functional exchanges that are part of this exchange category\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentExchangeEndEClass, 
 		   source, 
@@ -4182,7 +4182,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Port(), 
 		   source, 
@@ -4190,7 +4190,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the port to which this communication endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Part(), 
 		   source, 
@@ -4198,7 +4198,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the part to which this connect endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentExchangeFunctionalExchangeAllocationEClass, 
 		   source, 
@@ -4210,7 +4210,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatedFunctionalExchange(), 
 		   source, 
@@ -4218,7 +4218,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the functional exchange involved in this allocation link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatingComponentExchange(), 
 		   source, 
@@ -4226,7 +4226,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the connection involved in this allocation relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeRealizationEClass, 
 		   source, 
@@ -4238,7 +4238,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatedComponentExchange(), 
 		   source, 
@@ -4246,7 +4246,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the connection that is being allocated by/from the other connection involved in this link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatingComponentExchange(), 
 		   source, 
@@ -4254,7 +4254,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the connection that is allocating that other connection involved in this link \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortEClass, 
 		   source, 
@@ -4262,7 +4262,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "A component port is the unification of the standard port and the flow port.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_Orientation(), 
 		   source, 
@@ -4270,7 +4270,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the orientation of a component port. ", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "should be set only when the component port is a flow port", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_Kind(), 
 		   source, 
@@ -4278,7 +4278,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "A component port is the unification of the standard port and the flow port.\r\nsee the ComponentPortKind enumeration.\r\n", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
+		   });	
 		addAnnotation
 		  (componentPortAllocationEClass, 
 		   source, 
@@ -4290,7 +4290,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_OwnedComponentPortAllocationEnds(), 
 		   source, 
@@ -4298,7 +4298,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the component port allocation endpoints involved in this link\r\n\r\nA connector consists of at least two connector ends, each representing the participation of instances of the classifiers\r\ntyping the connectable elements attached to this end. The set of connector ends is ordered.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatedPort(), 
 		   source, 
@@ -4306,7 +4306,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the \"destination\" of the allocation link : the port that is being allocated by another port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatingPort(), 
 		   source, 
@@ -4314,7 +4314,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the \"source\" of the allocation link : the port that is allocating the other port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortAllocationEndEClass, 
 		   source, 
@@ -4326,7 +4326,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Port(), 
 		   source, 
@@ -4334,7 +4334,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the port to which this communication endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Part(), 
 		   source, 
@@ -4342,7 +4342,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the part to which this connect endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_OwningComponentPortAllocation(), 
 		   source, 
@@ -4350,7 +4350,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the ComponentPortAllocation link that contains this endpoint\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -4360,433 +4360,433 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchangeCategories(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchangeCategories(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchangeCategories(), 
 		   source, 
 		   new String[] {
-		   });																															
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedCategories(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (exchangeCategoryEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeCategory_Exchanges(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																													
+		   });	
 		addAnnotation
 		  (functionalChainEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_Kind(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_OwnedFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
-		   });																								
+		   });	
 		addAnnotation
 		  (getFunctionalChain_AvailableInStates(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChain_FirstFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizedFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizingFunctionalChains(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalChainContainer_OwnedFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (functionalChainInvolvementEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_NextFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_InvolvedElement(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (functionalChainReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChainReference_ReferencedFunctionalChain(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (functionInputPortEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionInputPort_IncomingExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionInputPort_IncomingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionOutputPortEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionOutputPort_OutgoingExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionOutputPort_OutgoingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																						
+		   });	
 		addAnnotation
 		  (functionalExchangeEClass, 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_InvolvingFunctionalChains(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_ExchangedItems(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_AllocatingComponentExchanges(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_Categories(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_SourceFunctionOutputPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_TargetFunctionInputPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractFunction_Kind(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_Condition(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OwnedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_AvailableInStates(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingFunctionalChains(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedStateMachine(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getFunctionPort_AllocatorComponentPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPort_RealizedFunctionPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPort_RealizingFunctionPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																				
+		   });	
 		addAnnotation
 		  (componentExchangeEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_Kind(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_Oriented(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeEnds(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePart(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPart(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_Categories(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatorPhysicalLinks(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_RealizedComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_RealizingComponentExchanges(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocator_AllocatedComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeCategoryEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeCategory_Exchanges(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentExchangeEndEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Port(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Part(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (componentPortEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_Orientation(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_Kind(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentPort_ComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_AllocatedFunctionPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_DelegatedComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_DelegatingComponentPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_AllocatingPhysicalPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_RealizedComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_RealizingComponentPorts(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																												
+		   });
 	}
 
 	/**
@@ -4796,7 +4796,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -4806,7 +4806,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							
+		   });
 	}
 
 	/**
@@ -4816,7 +4816,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractFunctionalArchitectureEClass, 
 		   source, 
@@ -4825,7 +4825,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionPkg(), 
 		   source, 
@@ -4833,7 +4833,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which FunctionPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchanges(), 
 		   source, 
@@ -4841,7 +4841,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), 
 		   source, 
@@ -4849,7 +4849,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalAllocations(), 
 		   source, 
@@ -4857,7 +4857,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations(), 
 		   source, 
@@ -4865,7 +4865,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ComponentExchangeRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractFunctionalStructureEClass, 
 		   source, 
@@ -4874,7 +4874,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
 		   source, 
@@ -4882,7 +4882,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
 		   source, 
@@ -4890,7 +4890,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedFunctionalAllocations(), 
 		   source, 
@@ -4898,7 +4898,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchangeRealizations(), 
 		   source, 
@@ -4906,7 +4906,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ComponentExchangeRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractFunctionalBlockEClass, 
 		   source, 
@@ -4915,7 +4915,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedFunctionalAllocation(), 
 		   source, 
@@ -4923,7 +4923,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchanges(), 
 		   source, 
@@ -4931,7 +4931,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "In uml::Element::nearestPackage, exchanges between two elements contained by this block. Thoses exchanges are packaged elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_FunctionalAllocations(), 
 		   source, 
@@ -4939,7 +4939,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_AllocatedFunctions(), 
 		   source, 
@@ -4947,7 +4947,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_InExchangeLinks(), 
 		   source, 
@@ -4955,7 +4955,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OutExchangeLinks(), 
 		   source, 
@@ -4963,7 +4963,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionPkgEClass, 
 		   source, 
@@ -4972,7 +4972,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedFunctionalLinks(), 
 		   source, 
@@ -4980,7 +4980,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedExchanges(), 
 		   source, 
@@ -4988,7 +4988,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which FunctionalExchangeSpecification stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedExchangeSpecificationRealizations(), 
 		   source, 
@@ -4996,7 +4996,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ExchangeSpecificationRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedCategories(), 
 		   source, 
@@ -5004,7 +5004,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ExchangeCategory stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedFunctionSpecifications(), 
 		   source, 
@@ -5012,7 +5012,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which FunctionSpecification stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionSpecificationEClass, 
 		   source, 
@@ -5021,7 +5021,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "cannot be mapped to uml::Component since it is not part of UML4SysML", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_InExchangeLinks(), 
 		   source, 
@@ -5029,7 +5029,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_OutExchangeLinks(), 
 		   source, 
@@ -5037,7 +5037,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_OwnedFunctionPorts(), 
 		   source, 
@@ -5045,7 +5045,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::StructuredClassifier::ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::StructuredClassifier::ownedAttribute elements on which FlowPort stereotype or any stereotype that inherits from it is applied\r\nOrder will not be preserved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_SubFunctionSpecifications(), 
 		   source, 
@@ -5053,7 +5053,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeCategoryEClass, 
 		   source, 
@@ -5062,7 +5062,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeCategory_Exchanges(), 
 		   source, 
@@ -5070,7 +5070,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (exchangeLinkEClass, 
 		   source, 
@@ -5079,7 +5079,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::InformationFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Exchanges(), 
 		   source, 
@@ -5087,7 +5087,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_ExchangeContainmentLinks(), 
 		   source, 
@@ -5095,7 +5095,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which ExchangeContainment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_OwnedExchangeContainments(), 
 		   source, 
@@ -5103,7 +5103,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which ExchangeContainment stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Sources(), 
 		   source, 
@@ -5111,7 +5111,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::InformationFlow::informationSource", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Destinations(), 
 		   source, 
@@ -5119,7 +5119,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::InformationFlow::informationTarget", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (exchangeContainmentEClass, 
 		   source, 
@@ -5128,7 +5128,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Exchange(), 
 		   source, 
@@ -5136,7 +5136,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Link(), 
 		   source, 
@@ -5144,7 +5144,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeSpecificationEClass, 
 		   source, 
@@ -5153,7 +5153,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::InformationFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_ContainingLink(), 
 		   source, 
@@ -5161,7 +5161,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_Link(), 
 		   source, 
@@ -5169,7 +5169,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_OutgoingExchangeSpecificationRealizations(), 
 		   source, 
@@ -5177,7 +5177,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_IncomingExchangeSpecificationRealizations(), 
 		   source, 
@@ -5185,7 +5185,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (functionalExchangeSpecificationEClass, 
 		   source, 
@@ -5194,7 +5194,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::InformationFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeSpecification_FunctionalExchanges(), 
 		   source, 
@@ -5202,7 +5202,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionalChainEClass, 
 		   source, 
@@ -5211,7 +5211,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_Kind(), 
 		   source, 
@@ -5219,7 +5219,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_OwnedFunctionalChainInvolvements(), 
 		   source, 
@@ -5227,7 +5227,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency::keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which FunctionalChain stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_OwnedFunctionalChainRealizations(), 
 		   source, 
@@ -5235,7 +5235,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency::keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which FunctionalChainInvolvement stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalChainInvolvements(), 
 		   source, 
@@ -5243,7 +5243,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctions(), 
 		   source, 
@@ -5251,7 +5251,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalExchanges(), 
 		   source, 
@@ -5259,7 +5259,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedElements(), 
 		   source, 
@@ -5267,7 +5267,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctions(), 
 		   source, 
@@ -5275,7 +5275,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctionalBlocks(), 
 		   source, 
@@ -5283,7 +5283,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChain_AvailableInStates(), 
 		   source, 
@@ -5291,7 +5291,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChain_FirstFunctionalChainInvolvements(), 
 		   source, 
@@ -5299,7 +5299,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilities(), 
 		   source, 
@@ -5307,7 +5307,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilityRealizations(), 
 		   source, 
@@ -5315,7 +5315,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizedFunctionalChains(), 
 		   source, 
@@ -5323,7 +5323,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizingFunctionalChains(), 
 		   source, 
@@ -5331,7 +5331,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum, 
 		   source, 
@@ -5339,7 +5339,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5347,7 +5347,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5355,7 +5355,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5363,7 +5363,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractFunctionalChainContainerEClass, 
 		   source, 
@@ -5372,7 +5372,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalChainContainer_OwnedFunctionalChains(), 
 		   source, 
@@ -5380,7 +5380,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Class::nestedClassifier elements on which FunctionalChain stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (functionalChainInvolvementEClass, 
 		   source, 
@@ -5389,7 +5389,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_NextFunctionalChainInvolvements(), 
 		   source, 
@@ -5398,7 +5398,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements(), 
 		   source, 
@@ -5406,7 +5406,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_ExchangedItems(), 
 		   source, 
@@ -5415,7 +5415,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_InvolvedElement(), 
 		   source, 
@@ -5423,7 +5423,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (functionalChainReferenceEClass, 
 		   source, 
@@ -5432,7 +5432,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChainReference_ReferencedFunctionalChain(), 
 		   source, 
@@ -5440,7 +5440,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionInputPortEClass, 
 		   source, 
@@ -5449,7 +5449,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::ActivityParameterNode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "use ActivityParameterNodes, delegation will add uml::InputPin on callBeahviorAction\r\n", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionInputPort_IncomingExchangeItems(), 
 		   source, 
@@ -5457,7 +5457,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionInputPort_IncomingFunctionalExchanges(), 
 		   source, 
@@ -5465,7 +5465,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionOutputPortEClass, 
 		   source, 
@@ -5474,7 +5474,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::ActivityParameterNode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "use ActivityParameterNodes, delegation will add uml::OutputPin on call BehaviorAction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionOutputPort_OutgoingExchangeItems(), 
 		   source, 
@@ -5482,7 +5482,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionOutputPort_OutgoingFunctionalExchanges(), 
 		   source, 
@@ -5490,7 +5490,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractFunctionAllocationEClass, 
 		   source, 
@@ -5499,7 +5499,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentFunctionalAllocationEClass, 
 		   source, 
@@ -5508,7 +5508,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Function(), 
 		   source, 
@@ -5516,7 +5516,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Block(), 
 		   source, 
@@ -5524,7 +5524,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainRealizationEClass, 
 		   source, 
@@ -5533,7 +5533,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (exchangeSpecificationRealizationEClass, 
 		   source, 
@@ -5542,7 +5542,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizedExchangeSpecification(), 
 		   source, 
@@ -5550,7 +5550,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizingExchangeSpecification(), 
 		   source, 
@@ -5558,7 +5558,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (functionalExchangeRealizationEClass, 
 		   source, 
@@ -5567,7 +5567,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizedFunctionalExchange(), 
 		   source, 
@@ -5575,7 +5575,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizingFunctionalExchange(), 
 		   source, 
@@ -5583,7 +5583,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionRealizationEClass, 
 		   source, 
@@ -5592,7 +5592,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatedFunction(), 
 		   source, 
@@ -5600,7 +5600,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatingFunction(), 
 		   source, 
@@ -5608,7 +5608,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (functionalExchangeEClass, 
 		   source, 
@@ -5617,7 +5617,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::ObjectFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_ExchangeSpecifications(), 
 		   source, 
@@ -5625,7 +5625,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_InvolvingFunctionalChains(), 
 		   source, 
@@ -5633,7 +5633,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_ExchangedItems(), 
 		   source, 
@@ -5641,7 +5641,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_AllocatingComponentExchanges(), 
 		   source, 
@@ -5649,7 +5649,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingComponentExchangeFunctionalExchangeRealizations(), 
 		   source, 
@@ -5657,7 +5657,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingFunctionalExchangeRealizations(), 
 		   source, 
@@ -5665,7 +5665,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_OutgoingFunctionalExchangeRealizations(), 
 		   source, 
@@ -5673,7 +5673,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_Categories(), 
 		   source, 
@@ -5681,7 +5681,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_OwnedFunctionalExchangeRealizations(), 
 		   source, 
@@ -5689,7 +5689,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which FunctionalExchangeRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_SourceFunctionOutputPort(), 
 		   source, 
@@ -5697,7 +5697,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_TargetFunctionInputPort(), 
 		   source, 
@@ -5705,7 +5705,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizedFunctionalExchanges(), 
 		   source, 
@@ -5713,7 +5713,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizingFunctionalExchanges(), 
 		   source, 
@@ -5721,7 +5721,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractFunctionEClass, 
 		   source, 
@@ -5730,7 +5730,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getAbstractFunction_Kind(), 
 		   source, 
@@ -5738,7 +5738,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_Condition(), 
 		   source, 
@@ -5746,7 +5746,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OwnedFunctions(), 
 		   source, 
@@ -5754,7 +5754,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "the nesting relation is not representing the hierarchy of functions, but helps storing the functions in a structured way", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OwnedFunctionRealizations(), 
 		   source, 
@@ -5762,7 +5762,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which FunctionRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OwnedFunctionalExchanges(), 
 		   source, 
@@ -5770,7 +5770,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Activity::edge", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Activity::edge elements on which FunctionalExchange stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_SubFunctions(), 
 		   source, 
@@ -5778,7 +5778,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OutFunctionRealizations(), 
 		   source, 
@@ -5786,7 +5786,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InFunctionRealizations(), 
 		   source, 
@@ -5794,7 +5794,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_ComponentFunctionalAllocations(), 
 		   source, 
@@ -5802,7 +5802,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_AllocationBlocks(), 
 		   source, 
@@ -5810,7 +5810,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_AvailableInStates(), 
 		   source, 
@@ -5818,7 +5818,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilities(), 
 		   source, 
@@ -5826,7 +5826,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilityRealizations(), 
 		   source, 
@@ -5834,7 +5834,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingFunctionalChains(), 
 		   source, 
@@ -5842,7 +5842,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedStateMachine(), 
 		   source, 
@@ -5850,7 +5850,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedFunctionSpecification(), 
 		   source, 
@@ -5858,7 +5858,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (functionPortEClass, 
 		   source, 
@@ -5867,7 +5867,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionPort_RepresentedComponentPort(), 
 		   source, 
@@ -5875,7 +5875,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionPort_AllocatorComponentPorts(), 
 		   source, 
@@ -5883,7 +5883,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPort_RealizedFunctionPorts(), 
 		   source, 
@@ -5891,7 +5891,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPort_RealizingFunctionPorts(), 
 		   source, 
@@ -5899,7 +5899,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum, 
 		   source, 
@@ -5907,7 +5907,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5915,7 +5915,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "This value does not exist for uml::ConnectorKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5923,7 +5923,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorKind::delegation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5931,7 +5931,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorKind::assembly", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -5939,7 +5939,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "This value does not exist for uml::ConnectorKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentPortKindEEnum, 
 		   source, 
@@ -5947,7 +5947,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5955,7 +5955,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5963,7 +5963,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum, 
 		   source, 
@@ -5971,7 +5971,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5979,7 +5979,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5987,7 +5987,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5995,7 +5995,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (orientationPortKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -6003,7 +6003,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeEClass, 
 		   source, 
@@ -6012,7 +6012,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::InformationFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_Kind(), 
 		   source, 
@@ -6020,7 +6020,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_Oriented(), 
 		   source, 
@@ -6028,7 +6028,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatedFunctionalExchanges(), 
 		   source, 
@@ -6036,7 +6036,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_IncomingComponentExchangeRealizations(), 
 		   source, 
@@ -6044,7 +6044,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeRealizations(), 
 		   source, 
@@ -6052,7 +6052,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
@@ -6060,7 +6060,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
@@ -6068,7 +6068,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which ComponentFunctionalExchangeAllocation stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeRealizations(), 
 		   source, 
@@ -6076,7 +6076,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which ComponentExchangeRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeEnds(), 
 		   source, 
@@ -6084,7 +6084,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Connector::end", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePort(), 
 		   source, 
@@ -6092,7 +6092,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePart(), 
 		   source, 
@@ -6100,7 +6100,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPort(), 
 		   source, 
@@ -6108,7 +6108,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPart(), 
 		   source, 
@@ -6116,7 +6116,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchange_Categories(), 
 		   source, 
@@ -6124,7 +6124,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatorPhysicalLinks(), 
 		   source, 
@@ -6132,7 +6132,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_RealizedComponentExchanges(), 
 		   source, 
@@ -6140,7 +6140,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_RealizingComponentExchanges(), 
 		   source, 
@@ -6148,7 +6148,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentExchangeAllocationEClass, 
 		   source, 
@@ -6157,7 +6157,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocated(), 
 		   source, 
@@ -6165,7 +6165,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocator(), 
 		   source, 
@@ -6173,7 +6173,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentExchangeAllocatorEClass, 
 		   source, 
@@ -6182,7 +6182,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocator_OwnedComponentExchangeAllocations(), 
 		   source, 
@@ -6190,7 +6190,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which ConnectionAllocation stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocator_AllocatedComponentExchanges(), 
 		   source, 
@@ -6198,7 +6198,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeCategoryEClass, 
 		   source, 
@@ -6207,7 +6207,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeCategory_Exchanges(), 
 		   source, 
@@ -6215,7 +6215,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentExchangeEndEClass, 
 		   source, 
@@ -6224,7 +6224,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::ConnectorEnd", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Port(), 
 		   source, 
@@ -6232,7 +6232,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorEnd::role", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::ConnectorEnd::role elements on which StandardPort stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Part(), 
 		   source, 
@@ -6240,7 +6240,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorEnd::partWithPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (componentExchangeFunctionalExchangeAllocationEClass, 
 		   source, 
@@ -6249,7 +6249,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatedFunctionalExchange(), 
 		   source, 
@@ -6257,7 +6257,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatingComponentExchange(), 
 		   source, 
@@ -6265,7 +6265,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeRealizationEClass, 
 		   source, 
@@ -6274,7 +6274,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatedComponentExchange(), 
 		   source, 
@@ -6282,7 +6282,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatingComponentExchange(), 
 		   source, 
@@ -6290,7 +6290,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortEClass, 
 		   source, 
@@ -6299,7 +6299,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_Orientation(), 
 		   source, 
@@ -6307,7 +6307,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_Kind(), 
 		   source, 
@@ -6315,7 +6315,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentPort_ComponentExchanges(), 
 		   source, 
@@ -6323,7 +6323,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_AllocatedFunctionPorts(), 
 		   source, 
@@ -6331,7 +6331,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_DelegatedComponentPorts(), 
 		   source, 
@@ -6339,7 +6339,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_DelegatingComponentPorts(), 
 		   source, 
@@ -6347,7 +6347,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_AllocatingPhysicalPorts(), 
 		   source, 
@@ -6355,7 +6355,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_RealizedComponentPorts(), 
 		   source, 
@@ -6363,7 +6363,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_RealizingComponentPorts(), 
 		   source, 
@@ -6371,7 +6371,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortAllocationEClass, 
 		   source, 
@@ -6380,7 +6380,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_OwnedComponentPortAllocationEnds(), 
 		   source, 
@@ -6388,7 +6388,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::Connector::end", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatedPort(), 
 		   source, 
@@ -6396,7 +6396,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatingPort(), 
 		   source, 
@@ -6404,7 +6404,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (componentPortAllocationEndEClass, 
 		   source, 
@@ -6413,7 +6413,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::ConnectorEnd", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Port(), 
 		   source, 
@@ -6421,7 +6421,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorEnd::role", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::ConnectorEnd::role elements on which PhysicalPort stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Part(), 
 		   source, 
@@ -6429,7 +6429,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "uml::ConnectorEnd::partWithPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_OwningComponentPortAllocation(), 
 		   source, 
@@ -6447,268 +6447,268 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$								
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedComponentExchangeRealizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (functionPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.FunctionalAnalysis" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																
+		   });	
 		addAnnotation
 		  (functionSpecificationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_SubFunctionSpecifications(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (exchangeLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.FunctionalLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getExchangeLink_ExchangeContainmentLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_OwnedExchangeContainments(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Sources(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Destinations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (exchangeContainmentEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.ExchangeContainment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Exchange(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Link(), 
 		   source, 
 		   new String[] {
 			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_Link(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (functionalExchangeSpecificationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Connector", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Exchange" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (functionalChainEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "StructuredActivityNode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.FunctionalChain" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																													
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalChainContainer_OwnedFunctionalChains(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																												
+		   });	
 		addAnnotation
 		  (abstractFunctionAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentFunctionalAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.FunctionAllocationToLogicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (exchangeSpecificationRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.FunctionAllocationToLogicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																													
+		   });	
 		addAnnotation
 		  (functionalExchangeEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "ObjectFlow", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Transition" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																
+		   });	
 		addAnnotation
 		  (abstractFunctionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "OpaqueAction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Action" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																								
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum, 
 		   source, 
 		   new String[] {
 			 "enum", "ConnectorKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "DELEGATION" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum.getELiterals().get(2), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "ASSEMBLY" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																	
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeEnds(), 
 		   source, 
 		   new String[] {
 			 "featureName", "end", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Connector" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																									
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Port(), 
 		   source, 
 		   new String[] {
 			 "featureName", "role", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ConnectorEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Part(), 
 		   source, 
 		   new String[] {
 			 "featureName", "partWithPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ConnectorEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																			
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Port(), 
 		   source, 
 		   new String[] {
 			 "featureName", "role", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ConnectorEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Part(), 
 		   source, 
 		   new String[] {
 			 "featureName", "partWithPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ConnectorEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_OwningComponentPortAllocation(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "end", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Connector" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });
 	}
 
 	/**
@@ -6718,283 +6718,283 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_InExchangeLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "inFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OutExchangeLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "outFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "FunctionalAnalysis" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (functionSpecificationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Function Specification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_InExchangeLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "inFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_OutExchangeLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "outFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_SubFunctionSpecifications(), 
 		   source, 
 		   new String[] {
 			 "Label", "subFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (exchangeLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "FunctionalLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Exchanges(), 
 		   source, 
 		   new String[] {
 			 "Label", "exchanges" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getExchangeLink_ExchangeContainmentLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "exchangeContainmentLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_OwnedExchangeContainments(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedExchangeContainments" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Sources(), 
 		   source, 
 		   new String[] {
 			 "Label", "sources" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Destinations(), 
 		   source, 
 		   new String[] {
 			 "Label", "destinations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (exchangeContainmentEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ExchangeContainment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Exchange(), 
 		   source, 
 		   new String[] {
 			 "Label", "exchange" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Link(), 
 		   source, 
 		   new String[] {
 			 "Label", "link" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_ContainingLink(), 
 		   source, 
 		   new String[] {
 			 "Label", "containingLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_Link(), 
 		   source, 
 		   new String[] {
 			 "Label", "link" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (functionalExchangeSpecificationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Functional Exchange Specification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (functionalChainEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "FunctionalChain" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																															
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalChainContainer_OwnedFunctionalChains(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedFunctionalChains" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																										
+		   });	
 		addAnnotation
 		  (abstractFunctionAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "FunctionAllocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentFunctionalAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "FunctionAllocationToLogicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (exchangeSpecificationRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "FunctionAllocationToLogicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (functionalExchangeRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Functional Exchange Realization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (functionalExchangeEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Transition" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_ExchangeSpecifications(), 
 		   source, 
 		   new String[] {
 			 "Label", "exchanges" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																										
+		   });	
 		addAnnotation
 		  (abstractFunctionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Action" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																														
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedStateMachine(), 
 		   source, 
 		   new String[] {
 			 "Label", "linkedFunction" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedFunctionSpecification(), 
 		   source, 
 		   new String[] {
 			 "Label", "linkedFunctionSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (functionPortEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Function Port" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																
+		   });	
 		addAnnotation
 		  (componentExchangeKindEEnum, 
 		   source, 
 		   new String[] {
 			 "Label", "ConnectionKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (componentPortKindEEnum, 
 		   source, 
 		   new String[] {
 			 "Label", "ComponentPortKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																													
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeEnds(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConnectionEnds" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																				
+		   });	
 		addAnnotation
 		  (componentExchangeEndEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ConnectionEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Port(), 
 		   source, 
 		   new String[] {
 			 "Label", "port" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Part(), 
 		   source, 
 		   new String[] {
 			 "Label", "part" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (componentExchangeFunctionalExchangeAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Component Functional Exchange Allocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (componentExchangeRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Connection Realization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																					
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Port(), 
 		   source, 
 		   new String[] {
 			 "Label", "port" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Part(), 
 		   source, 
 		   new String[] {
 			 "Label", "part" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_OwningComponentPortAllocation(), 
 		   source, 
 		   new String[] {
 			 "Label", "owningComponentPortAllocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });
 	}
 
 	/**
@@ -7004,147 +7004,147 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$										
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionPkg(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_InExchangeLinks(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_OutExchangeLinks(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getFunctionPkg_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_InExchangeLinks(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_OutExchangeLinks(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_SubFunctionSpecifications(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getExchangeLink_Exchanges(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getExchangeLink_ExchangeContainmentLinks(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_OwnedExchangeContainments(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Sources(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeLink_Destinations(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Exchange(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getExchangeContainment_Link(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_ContainingLink(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_Link(), 
 		   source, 
 		   new String[] {
-		   });																																																																																	
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalChainContainer_OwnedFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });																																																																																														
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_ExchangeSpecifications(), 
 		   source, 
 		   new String[] {
-		   });																																																																																							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedStateMachine(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedFunctionSpecification(), 
 		   source, 
 		   new String[] {
-		   });																																																																															
+		   });	
 		addAnnotation
 		  (getComponentExchange_OwnedComponentExchangeEnds(), 
 		   source, 
 		   new String[] {
-		   });																																																									
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Port(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeEnd_Part(), 
 		   source, 
 		   new String[] {
-		   });																																																																			
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Port(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_Part(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_OwningComponentPortAllocation(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });
 	}
 
 	/**
@@ -7154,412 +7154,412 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																																																									
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getAbstractFunctionalBlock_FunctionalAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_AllocatedFunctions(), 
 		   source, 
 		   new String[] {
-		   });																																															
+		   });	
 		addAnnotation
 		  (getFunctionSpecification_SubFunctionSpecifications(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getExchangeLink_Exchanges(), 
 		   source, 
 		   new String[] {
-		   });																																											
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_ContainingLink(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_OutgoingExchangeSpecificationRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecification_IncomingExchangeSpecificationRealizations(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeSpecification_FunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedElements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctionalBlocks(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getFunctionalChain_FirstFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilities(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizedFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizingFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_InvolvedElement(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionalChainReference_ReferencedFunctionalChain(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getFunctionInputPort_IncomingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getFunctionOutputPort_OutgoingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Function(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Block(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizedExchangeSpecification(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizingExchangeSpecification(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizedFunctionalExchange(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizingFunctionalExchange(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatedFunction(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatingFunction(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_InvolvingFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_AllocatingComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingComponentExchangeFunctionalExchangeRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingFunctionalExchangeRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_OutgoingFunctionalExchangeRealizations(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_SourceFunctionOutputPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_TargetFunctionInputPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getAbstractFunction_SubFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_OutFunctionRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InFunctionRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_ComponentFunctionalAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractFunction_AllocationBlocks(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilities(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedStateMachine(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedFunctionSpecification(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getFunctionPort_AllocatorComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPort_RealizedFunctionPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionPort_RealizingFunctionPorts(), 
 		   source, 
 		   new String[] {
-		   });																																												
+		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getComponentExchange_IncomingComponentExchangeRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePart(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPart(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatorPhysicalLinks(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_RealizedComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchange_RealizingComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocated(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocator(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getComponentExchangeAllocator_AllocatedComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });																														
+		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatedFunctionalExchange(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatingComponentExchange(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatedComponentExchange(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatingComponentExchange(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getComponentPort_ComponentExchanges(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_AllocatedFunctionPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_DelegatedComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_DelegatingComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_AllocatingPhysicalPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_RealizedComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPort_RealizingComponentPorts(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatedPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatingPort(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });
 	}
 
 	/**
@@ -7569,42 +7569,42 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																																																																																																					
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (exchangeLinkEClass, 
 		   source, 
 		   new String[] {
-		   });																															
+		   });	
 		addAnnotation
 		  (exchangeContainmentEClass, 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });	
 		addAnnotation
 		  (functionalExchangeSpecificationEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																
+		   });	
 		addAnnotation
 		  (abstractFunctionAllocationEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (componentFunctionalAllocationEClass, 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (exchangeSpecificationRealizationEClass, 
 		   source, 
 		   new String[] {
-		   });																													
+		   });	
 		addAnnotation
 		  (functionalExchangeEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																																																																																																																																											
+		   });
 	}
 
 } //FaPackageImpl

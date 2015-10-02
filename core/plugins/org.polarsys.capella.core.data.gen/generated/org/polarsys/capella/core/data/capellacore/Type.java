@@ -20,10 +20,10 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Type#getTypedElements <em>Typed Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getType()
  * @model abstract="true"

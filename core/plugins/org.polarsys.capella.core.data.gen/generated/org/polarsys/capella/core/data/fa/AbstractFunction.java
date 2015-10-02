@@ -28,6 +28,7 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunction#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunction#getCondition <em>Condition</em>}</li>
@@ -46,7 +47,6 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunction#getLinkedStateMachine <em>Linked State Machine</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.AbstractFunction#getLinkedFunctionSpecification <em>Linked Function Specification</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction()
  * @model abstract="true"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,13 +44,13 @@ public class CustomWizardHandler implements ICustomWizardHandler {
 
   /** 
    * Create a CustomWizardHandler with a custom model element filter. 
-   * @param filter_p the filter you want to apply to model elements. pass null to use no filter.
+   * @param filter the filter you want to apply to model elements. pass null to use no filter.
    */
-  public CustomWizardHandler(Filter<EObject, EObject> filter_p) {
-    if (filter_p == null) {
+  public CustomWizardHandler(Filter<EObject, EObject> filter) {
+    if (filter == null) {
       this.filter = new IdentityFilter();
     } else {
-      this.filter = filter_p;
+      this.filter = filter;
     }
   }
 
@@ -58,20 +58,20 @@ public class CustomWizardHandler implements ICustomWizardHandler {
    * Open the wizard on a model element, previously applying the handler's filter.
    * {@inheritDoc}
    */
-  public boolean openWizard(EObject object_p) {
-    IDialog dialog = createWizardDialog(filter.filter(object_p));
+  public boolean openWizard(EObject object) {
+    IDialog dialog = createWizardDialog(filter.filter(object));
     return dialog.open() == Window.OK;
   }
 
   /**
    * Create the wizard dialog for the given model element. The filter
    * has already been applied at this point.
-   * @param modelElement_p
+   * @param modelElement
    * @return
    */
-  protected IDialog createWizardDialog(EObject object_p) {
+  protected IDialog createWizardDialog(EObject object) {
     Display display = PlatformUI.getWorkbench().getDisplay();
-    return new CapellaWizardDialog(display.getActiveShell(), new EditCapellaCustomPropertyWizard(object_p));
+    return new CapellaWizardDialog(display.getActiveShell(), new EditCapellaCustomPropertyWizard(object));
   }
 
 }

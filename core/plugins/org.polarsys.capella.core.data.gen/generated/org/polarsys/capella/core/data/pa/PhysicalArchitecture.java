@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalContext <em>Owned Physical Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalComponent <em>Owned Physical Component</em>}</li>
@@ -37,7 +38,6 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatedLogicalArchitectures <em>Allocated Logical Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getAllocatingEpbsArchitectures <em>Allocating Epbs Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalArchitecture()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Physical Architecture'"

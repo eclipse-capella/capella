@@ -20,12 +20,12 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractState <em>Related Abstract State</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.InteractionState#getRelatedAbstractFunction <em>Related Abstract Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.InteractionState#getCovered <em>Covered</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionState()
  * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"

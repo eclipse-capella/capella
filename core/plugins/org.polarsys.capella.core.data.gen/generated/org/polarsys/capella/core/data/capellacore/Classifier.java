@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.information.Property;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Classifier#getOwnedFeatures <em>Owned Features</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Classifier#getContainedProperties <em>Contained Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getClassifier()
  * @model abstract="true"

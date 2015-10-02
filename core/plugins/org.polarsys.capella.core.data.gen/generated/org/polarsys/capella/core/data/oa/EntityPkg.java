@@ -21,13 +21,13 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedEntityPkgs <em>Owned Entity Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedEntities <em>Owned Entities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedLocations <em>Owned Locations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedCommunicationMeans <em>Owned Communication Means</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getEntityPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Container for operational entities\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

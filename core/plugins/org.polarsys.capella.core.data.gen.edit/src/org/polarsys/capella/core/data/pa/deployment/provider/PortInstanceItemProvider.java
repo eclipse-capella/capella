@@ -84,7 +84,7 @@ public class PortInstanceItemProvider
 			// Process DeploymentPackage.Literals.PORT_INSTANCE__COMPONENT
 			if (componentPropertyDescriptor != null) {
 				Object componentValue = eObject.eGet(DeploymentPackage.Literals.PORT_INSTANCE__COMPONENT, true);
-				if (componentValue != null && componentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) componentValue)) {
+				if (componentValue != null && componentValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) componentValue)) {
 					itemPropertyDescriptors.remove(componentPropertyDescriptor);
 				} else if (componentValue == null && ExtensionModelManager.getAnyType(eObject, DeploymentPackage.Literals.PORT_INSTANCE__COMPONENT) != null) {
 					itemPropertyDescriptors.remove(componentPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class PortInstanceItemProvider
 			// Process DeploymentPackage.Literals.PORT_INSTANCE__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(DeploymentPackage.Literals.PORT_INSTANCE__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, DeploymentPackage.Literals.PORT_INSTANCE__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					

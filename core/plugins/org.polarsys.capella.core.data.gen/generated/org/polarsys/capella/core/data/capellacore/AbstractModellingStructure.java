@@ -19,11 +19,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.AbstractModellingStructure#getOwnedArchitectures <em>Owned Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.AbstractModellingStructure#getOwnedArchitecturePkgs <em>Owned Architecture Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getAbstractModellingStructure()
  * @model abstract="true"

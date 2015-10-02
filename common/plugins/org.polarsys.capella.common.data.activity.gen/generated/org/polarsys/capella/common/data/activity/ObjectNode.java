@@ -23,6 +23,7 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.ObjectNode#isIsControlType <em>Is Control Type</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ObjectNode#getKindOfNode <em>Kind Of Node</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
  *   <li>{@link org.polarsys.capella.common.data.activity.ObjectNode#getInState <em>In State</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ObjectNode#getSelection <em>Selection</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectNode()
  * @model abstract="true"

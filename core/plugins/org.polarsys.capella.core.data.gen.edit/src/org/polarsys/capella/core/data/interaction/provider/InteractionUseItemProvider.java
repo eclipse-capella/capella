@@ -76,7 +76,7 @@ public class InteractionUseItemProvider
 			// Process InteractionPackage.Literals.INTERACTION_USE__REFERENCED_SCENARIO
 			if (referencedScenarioPropertyDescriptor != null) {
 				Object referencedScenarioValue = eObject.eGet(InteractionPackage.Literals.INTERACTION_USE__REFERENCED_SCENARIO, true);
-				if (referencedScenarioValue != null && referencedScenarioValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) referencedScenarioValue)) {
+				if (referencedScenarioValue != null && referencedScenarioValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedScenarioValue)) {
 					itemPropertyDescriptors.remove(referencedScenarioPropertyDescriptor);
 				} else if (referencedScenarioValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INTERACTION_USE__REFERENCED_SCENARIO) != null) {
 					itemPropertyDescriptors.remove(referencedScenarioPropertyDescriptor);				  					

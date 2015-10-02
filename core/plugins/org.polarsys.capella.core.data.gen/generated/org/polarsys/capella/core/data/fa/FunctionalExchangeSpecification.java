@@ -19,10 +19,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification#getFunctionalExchanges <em>Functional Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeSpecification()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Functional Exchange Specification'"

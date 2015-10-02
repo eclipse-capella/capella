@@ -76,7 +76,7 @@ public class AbstractStringValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE
 			if (stringTypePropertyDescriptor != null) {
 				Object stringTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE, true);
-				if (stringTypeValue != null && stringTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) stringTypeValue)) {
+				if (stringTypeValue != null && stringTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) stringTypeValue)) {
 					itemPropertyDescriptors.remove(stringTypePropertyDescriptor);
 				} else if (stringTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_STRING_VALUE__STRING_TYPE) != null) {
 					itemPropertyDescriptors.remove(stringTypePropertyDescriptor);				  					

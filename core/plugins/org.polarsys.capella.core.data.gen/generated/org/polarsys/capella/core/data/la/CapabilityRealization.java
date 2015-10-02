@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getOwnedActorCapabilityRealizations <em>Owned Actor Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getOwnedSystemComponentCapabilityRealizations <em>Owned System Component Capability Realizations</em>}</li>
@@ -36,7 +37,6 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilityRealizations <em>Realized Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='CapabilityRealization'"

@@ -181,74 +181,17 @@ public abstract class AbstractDeploymentLinkImpl extends RelationshipImpl implem
 	 * @generated
 	 */
 
-	public NotificationChain basicSetLocation(DeploymentTarget newLocation, NotificationChain msgs) {
+	public void setLocation(DeploymentTarget newLocation) {
 
 		DeploymentTarget oldLocation = location;
 		location = newLocation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION, oldLocation, newLocation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setLocation(DeploymentTarget newLocation) {
-
-		if (newLocation != location) {
-			NotificationChain msgs = null;
-			if (location != null)
-				msgs = ((InternalEObject)location).eInverseRemove(this, CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, DeploymentTarget.class, msgs);
-			if (newLocation != null)
-				msgs = ((InternalEObject)newLocation).eInverseAdd(this, CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, DeploymentTarget.class, msgs);
-			msgs = basicSetLocation(newLocation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION, newLocation, newLocation));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION, oldLocation, location));
 
 	}
 
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION:
-				if (location != null)
-					msgs = ((InternalEObject)location).eInverseRemove(this, CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, DeploymentTarget.class, msgs);
-				return basicSetLocation((DeploymentTarget)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION:
-				return basicSetLocation(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

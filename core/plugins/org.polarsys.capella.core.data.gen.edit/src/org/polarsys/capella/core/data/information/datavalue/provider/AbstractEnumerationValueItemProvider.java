@@ -76,7 +76,7 @@ public class AbstractEnumerationValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE
 			if (enumerationTypePropertyDescriptor != null) {
 				Object enumerationTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE, true);
-				if (enumerationTypeValue != null && enumerationTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) enumerationTypeValue)) {
+				if (enumerationTypeValue != null && enumerationTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) enumerationTypeValue)) {
 					itemPropertyDescriptors.remove(enumerationTypePropertyDescriptor);
 				} else if (enumerationTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_ENUMERATION_VALUE__ENUMERATION_TYPE) != null) {
 					itemPropertyDescriptors.remove(enumerationTypePropertyDescriptor);				  					

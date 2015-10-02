@@ -385,14 +385,14 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -402,13 +402,13 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$	
 		addAnnotation
 		  (modelInformationEClass, 
 		   source, 
 		   new String[] {
 			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.0.0#//Project" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -418,7 +418,7 @@ public class LibrariesPackageImpl extends EPackageImpl implements LibrariesPacka
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (modelInformationEClass, 
 		   source, 

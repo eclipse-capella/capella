@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_AkGK4UHIEeG_UKzFyZlgCA" name="CapellaTestSuite">
+<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_AkGK4UHIEeG_UKzFyZlgCA" name="CapellaTestSuite" description="">
   <properties xmi:id="_p3uccEHOEeG_UKzFyZlgCA" key="usedTP" value="${publish}/CapellaTP" type="INLINED"/>
-  <properties xmi:id="_ASPhsEHPEeG_UKzFyZlgCA" key="launch_configs" value="org.polarsys.capella.core.releng.junit/launch_configs"/>
+  <properties xmi:id="_ASPhsEHPEeG_UKzFyZlgCA" key="launch_configs" value="org.polarsys.capella.test.suites.ju/launch_configs"/>
   <properties xmi:id="_v-IB4C1YEeWyY5IVKvheiA" key="eclipseCodeName" value="mars" type="INLINED"/>
   <steps xsi:type="buildcore:ReuseStep" xmi:id="_XJNb4F16EeGnJaeCI-TkHw" name="InitializeEnv">
     <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_NB1YMNRAEeK9L_VQW76S8A"/>

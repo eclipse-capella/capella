@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.RolePkg#getOwnedRolePkgs <em>Owned Role Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.RolePkg#getOwnedRoles <em>Owned Roles</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getRolePkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for operational roles\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

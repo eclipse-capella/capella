@@ -21,10 +21,10 @@ import org.polarsys.capella.core.data.epbs.ConfigurationItem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact#getAllocatorConfigurationItems <em>Allocator Configuration Items</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractPhysicalArtifact()
  * @model abstract="true"

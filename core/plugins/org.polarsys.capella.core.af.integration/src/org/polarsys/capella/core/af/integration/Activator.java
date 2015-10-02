@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,13 @@ import org.polarsys.capella.core.af.integration.listener.CapellaExplorerUpdater;
 import org.polarsys.capella.core.af.integration.listener.SemanticBrowserUpdater;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionOverallListener;
 
 public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
-	private final ModelExtensionListener[] listeners = { new CapellaExplorerUpdater(), new SemanticBrowserUpdater() };
+	private final ModelExtensionOverallListener[] listeners = { new CapellaExplorerUpdater(), new SemanticBrowserUpdater() };
 
 	/**
 	 * The constructor
@@ -37,8 +38,8 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		for (ModelExtensionListener l : listeners)
-			ModelExtensionHelper.addListener(l);
+	    for (ModelExtensionOverallListener l : listeners)
+	        ModelExtensionHelper.addOverallListener(l);
 	}
 
 	/*
@@ -48,8 +49,8 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		for (ModelExtensionListener l : listeners)
-			ModelExtensionHelper.removeListener(l);
+	    for (ModelExtensionOverallListener l : listeners)
+	        ModelExtensionHelper.removeOverallListener(l);
 		super.stop(context);
 	}
 

@@ -25,6 +25,7 @@ public abstract class AbstractUriModel implements IModel {
 
   @Override
   public AccessPolicy getDefaultAccess(IModel referencedLibrary_p) {
+    // see https://polarsys.org/bugs/show_bug.cgi?id=142
     return AccessPolicy.READ_AND_WRITE;
   }
 

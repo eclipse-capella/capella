@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItemPkg#getOwnedConfigurationItems <em>Owned Configuration Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItemPkg#getOwnedConfigurationItemPkgs <em>Owned Configuration Item Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItemPkg()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ConfigurationItemPkg'"

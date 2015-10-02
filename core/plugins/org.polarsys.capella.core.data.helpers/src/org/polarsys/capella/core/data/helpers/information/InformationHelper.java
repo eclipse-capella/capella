@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.polarsys.capella.core.data.helpers.information.delegates.BinaryExpres
 import org.polarsys.capella.core.data.helpers.information.delegates.ClassHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.CollectionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.CommunicationItemHelper;
-import org.polarsys.capella.core.data.helpers.information.delegates.CommunicationLinkAllocationHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.CommunicationLinkExchangerHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.CommunicationLinkHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.DataTypeHelper;
@@ -74,7 +73,6 @@ import org.polarsys.capella.core.data.information.Union;
 import org.polarsys.capella.core.data.information.Unit;
 import org.polarsys.capella.core.data.information.communication.CommunicationItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
-import org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.information.communication.MessageReference;
 import org.polarsys.capella.core.data.information.communication.MessageReferencePkg;
@@ -179,8 +177,6 @@ public class InformationHelper implements IHelper {
       ret = RelationshipHelper.getInstance().doSwitch((InformationRealization) object_p, feature_p);
     } else if (object_p instanceof CommunicationLink) {
       ret = CommunicationLinkHelper.getInstance().doSwitch((CommunicationLink) object_p, feature_p);
-    } else if (object_p instanceof CommunicationLinkAllocation) {
-      ret = CommunicationLinkAllocationHelper.getInstance().doSwitch((CommunicationLinkAllocation) object_p, feature_p);
     } else if (object_p instanceof CommunicationLinkExchanger) {
       ret = CommunicationLinkExchangerHelper.getInstance().doSwitch((CommunicationLinkExchanger) object_p, feature_p);
     } else if (object_p instanceof OpaqueExpression){

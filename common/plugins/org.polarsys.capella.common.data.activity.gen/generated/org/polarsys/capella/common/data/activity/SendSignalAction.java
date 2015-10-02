@@ -19,11 +19,11 @@ import org.polarsys.capella.common.data.behavior.AbstractSignal;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.SendSignalAction#getTarget <em>Target</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.SendSignalAction#getSignal <em>Signal</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getSendSignalAction()
  * @model abstract="true"

@@ -714,14 +714,14 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });
 	}
 
 	/**
@@ -731,77 +731,77 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (getReNamedElement_Name(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getReDescriptionElement_Description(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getReElementContainer_OwnedElements(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (catalogElementPkgEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (catalogElementEClass, 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_Kind(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_Author(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_Environment(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_Suffix(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_Purpose(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_Tags(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_Origin(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getCatalogElement_ReferencedElements(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getCatalogElement_ReplicatedElements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (compliancyDefinitionEClass, 
 		   source, 
@@ -816,19 +816,19 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$	
 		addAnnotation
 		  (recCatalogEClass, 
 		   source, 
 		   new String[] {
 			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.0.0#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (groupingElementPkgEClass, 
 		   source, 
 		   new String[] {
 			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.0.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/1.0.0#//BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });
 	}
 
 	/**
@@ -838,13 +838,13 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$								
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (recCatalogEClass, 
 		   source, 
 		   new String[] {
 			 "Mapping", "platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });
 	}
 
 	/**
@@ -854,17 +854,17 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																			
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getCatalogElement_ReferencedElements(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getCatalogElement_ReplicatedElements(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });
 	}
 
 	/**
@@ -874,13 +874,13 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$																						
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (getCatalogElement_ReplicatedElements(), 
 		   source, 
 		   new String[] {
 			 "description", "retrieve all referencing elements which have the current element as origin" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 } //RePackageImpl

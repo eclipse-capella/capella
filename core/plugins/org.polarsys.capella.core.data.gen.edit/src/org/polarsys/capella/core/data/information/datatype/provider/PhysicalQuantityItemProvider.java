@@ -73,7 +73,7 @@ public class PhysicalQuantityItemProvider extends NumericTypeItemProvider implem
 			// Process DatatypePackage.Literals.PHYSICAL_QUANTITY__UNIT
 			if (unitPropertyDescriptor != null) {
 				Object unitValue = eObject.eGet(DatatypePackage.Literals.PHYSICAL_QUANTITY__UNIT, true);
-				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) unitValue)) {
+				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) unitValue)) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);
 				} else if (unitValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.PHYSICAL_QUANTITY__UNIT) != null) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);				  					

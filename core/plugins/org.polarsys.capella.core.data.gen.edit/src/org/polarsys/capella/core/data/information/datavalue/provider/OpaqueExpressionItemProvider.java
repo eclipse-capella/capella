@@ -93,7 +93,7 @@ public class OpaqueExpressionItemProvider
 			// Process CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS
 			if (statusPropertyDescriptor != null) {
 				Object statusValue = eObject.eGet(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS, true);
-				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) statusValue)) {
+				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) statusValue)) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);
 				} else if (statusValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS) != null) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);				  					
@@ -104,7 +104,7 @@ public class OpaqueExpressionItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
 			if (abstractTypePropertyDescriptor != null) {
 				Object abstractTypeValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, true);
-				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) abstractTypeValue)) {
+				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) abstractTypeValue)) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);
 				} else if (abstractTypeValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE) != null) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);				  					

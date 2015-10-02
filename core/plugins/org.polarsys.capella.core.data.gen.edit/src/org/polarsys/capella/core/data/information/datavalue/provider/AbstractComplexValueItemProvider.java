@@ -76,7 +76,7 @@ public class AbstractComplexValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE
 			if (complexTypePropertyDescriptor != null) {
 				Object complexTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE, true);
-				if (complexTypeValue != null && complexTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) complexTypeValue)) {
+				if (complexTypeValue != null && complexTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) complexTypeValue)) {
 					itemPropertyDescriptors.remove(complexTypePropertyDescriptor);
 				} else if (complexTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_COMPLEX_VALUE__COMPLEX_TYPE) != null) {
 					itemPropertyDescriptors.remove(complexTypePropertyDescriptor);				  					

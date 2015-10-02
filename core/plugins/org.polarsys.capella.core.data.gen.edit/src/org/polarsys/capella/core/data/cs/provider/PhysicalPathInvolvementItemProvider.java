@@ -99,7 +99,7 @@ public class PhysicalPathInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVER
 			if (involverPropertyDescriptor != null) {
 				Object involverValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, true);
-				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involverValue)) {
+				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involverValue)) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);
 				} else if (involverValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER) != null) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);				  					
@@ -110,7 +110,7 @@ public class PhysicalPathInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVED
 			if (involvedPropertyDescriptor != null) {
 				Object involvedValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, true);
-				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involvedValue)) {
+				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedValue)) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);
 				} else if (involvedValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED) != null) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);				  					
@@ -121,7 +121,7 @@ public class PhysicalPathInvolvementItemProvider
 			// Process CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT
 			if (involvedElementPropertyDescriptor != null) {
 				Object involvedElementValue = eObject.eGet(CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT, true);
-				if (involvedElementValue != null && involvedElementValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involvedElementValue)) {
+				if (involvedElementValue != null && involvedElementValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedElementValue)) {
 					itemPropertyDescriptors.remove(involvedElementPropertyDescriptor);
 				} else if (involvedElementValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT) != null) {
 					itemPropertyDescriptors.remove(involvedElementPropertyDescriptor);				  					
@@ -132,7 +132,7 @@ public class PhysicalPathInvolvementItemProvider
 			// Process CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT
 			if (involvedComponentPropertyDescriptor != null) {
 				Object involvedComponentValue = eObject.eGet(CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT, true);
-				if (involvedComponentValue != null && involvedComponentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involvedComponentValue)) {
+				if (involvedComponentValue != null && involvedComponentValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedComponentValue)) {
 					itemPropertyDescriptors.remove(involvedComponentPropertyDescriptor);
 				} else if (involvedComponentValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_COMPONENT) != null) {
 					itemPropertyDescriptors.remove(involvedComponentPropertyDescriptor);				  					

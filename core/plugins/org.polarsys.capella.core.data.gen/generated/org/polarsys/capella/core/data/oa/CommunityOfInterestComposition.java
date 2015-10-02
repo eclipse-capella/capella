@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition#getCommunityOfInterest <em>Community Of Interest</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.CommunityOfInterestComposition#getInterestedOrganisationUnit <em>Interested Organisation Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunityOfInterestComposition()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Relationship between a community of interest and the organisational units\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella 1.0.3' reference\040documentation='none'"

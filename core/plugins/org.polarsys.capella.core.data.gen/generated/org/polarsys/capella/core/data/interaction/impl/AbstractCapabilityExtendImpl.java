@@ -10,11 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.interaction.impl;
 
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IAdapterManager;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -134,39 +140,12 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	 * @generated
 	 */
 
-	public NotificationChain basicSetExtended(AbstractCapability newExtended, NotificationChain msgs) {
+	public void setExtended(AbstractCapability newExtended) {
 
 		AbstractCapability oldExtended = extended;
 		extended = newExtended;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, oldExtended, newExtended);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setExtended(AbstractCapability newExtended) {
-
-		if (newExtended != extended) {
-			NotificationChain msgs = null;
-			if (extended != null)
-				msgs = ((InternalEObject)extended).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING, AbstractCapability.class, msgs);
-			if (newExtended != null)
-				msgs = ((InternalEObject)newExtended).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING, AbstractCapability.class, msgs);
-			msgs = basicSetExtended(newExtended, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, newExtended, newExtended));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED, oldExtended, extended));
 
 	}
 
@@ -183,8 +162,8 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 
 	public AbstractCapability getExtension() {
 
-		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION) return null;
-		return (AbstractCapability)eContainer();
+		AbstractCapability extension = basicGetExtension();
+		return extension != null && extension.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)extension) : extension;
 	}
 
 
@@ -196,53 +175,38 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 
 	public AbstractCapability basicGetExtension() {
 
-		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION) return null;
-		return (AbstractCapability)eInternalContainer();
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENSION, annotation);
+		
+		try {
+			return (AbstractCapability) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
 	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetExtension(AbstractCapability newExtension, NotificationChain msgs) {
-
-		msgs = eBasicSetContainer((InternalEObject)newExtension, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION, msgs);
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setExtension(AbstractCapability newExtension) {
-
-		if (newExtension != eInternalContainer() || (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION && newExtension != null)) {
-			if (EcoreUtil.isAncestor(this, newExtension))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newExtension != null)
-				msgs = ((InternalEObject)newExtension).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS, AbstractCapability.class, msgs);
-			msgs = basicSetExtension(newExtension, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION, newExtension, newExtension));
-
-	}
-
-
-
 
 
 
@@ -332,14 +296,6 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
-				if (extended != null)
-					msgs = ((InternalEObject)extended).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDING, AbstractCapability.class, msgs);
-				return basicSetExtended((AbstractCapability)otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetExtension((AbstractCapability)otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
 				if (extensionLocation != null)
 					msgs = ((InternalEObject)extensionLocation).eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, AbstractCapabilityExtensionPoint.class, msgs);
@@ -356,28 +312,10 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
-				return basicSetExtended(null, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
-				return basicSetExtension(null, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
 				return basicSetExtensionLocation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
-				return eInternalContainer().eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__EXTENDS, AbstractCapability.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -418,15 +356,6 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 				}
 				// end-extension-code
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapability) {
-				// end-extension-code
-					setExtension((AbstractCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof AbstractCapabilityExtensionPoint) {
@@ -451,9 +380,6 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENDED:
 				setExtended((AbstractCapability)null);
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION:
-				setExtension((AbstractCapability)null);
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION:
 				setExtensionLocation((AbstractCapabilityExtensionPoint)null);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -108,7 +108,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
          * {@inheritDoc}
          */
         @Override
-        public void widgetDisposed(DisposeEvent e_p) {
+        public void widgetDisposed(DisposeEvent e) {
           dispose();
         }
       });
@@ -208,21 +208,21 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * Handle background color.<br>
    * Default implementation set given color to specified parent.
-   * @param color_p
+   * @param color
    */
-  protected void handleParentBackground(Color color_p, Composite parent_p) {
-    parent_p.setBackground(color_p);
+  protected void handleParentBackground(Color color, Composite parent) {
+    parent.setBackground(color);
   }
 
   /**
    * @see org.eclipse.core.commands.operations.IOperationHistoryListener#historyNotification(org.eclipse.core.commands.operations.OperationHistoryEvent)
    */
   @Override
-  public void historyNotification(OperationHistoryEvent event_p) {
+  public void historyNotification(OperationHistoryEvent event) {
     // We only handle undo & redo operations to force a refresh.
-    int eventType = event_p.getEventType();
+    int eventType = event.getEventType();
     if ((OperationHistoryEvent.UNDONE == eventType) || (OperationHistoryEvent.REDONE == eventType)) {
-      IUndoableOperation operation = event_p.getOperation();
+      IUndoableOperation operation = event.getOperation();
       // Take into account the EMF command operation.
       if (operation instanceof EMFCommandOperation) {
         // Get the command.
@@ -248,13 +248,13 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * load the form data from given capella element.<br>
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
-  public void loadData(CapellaElement capellaElement_p) {
+  public void loadData(CapellaElement capellaElement) {
     // Register as operation history listener the first time capella element is set.
     if (null == _capellaElement) {
       // This operation history listener is used to force refreshes when undo / redo operations are performed.
       OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
     }
-    _capellaElement = capellaElement_p;
+    _capellaElement = capellaElement;
     // Register....
     register(_capellaElement);
 
@@ -272,11 +272,11 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
   @Override
-  public void loadData(EObject object_p) {
-    if (object_p instanceof CapellaElement) {
-      loadData((CapellaElement) object_p);
-    } else if (object_p instanceof DSemanticDecorator) {
-      DSemanticDecorator dsem = (DSemanticDecorator) object_p;
+  public void loadData(EObject object) {
+    if (object instanceof CapellaElement) {
+      loadData((CapellaElement) object);
+    } else if (object instanceof DSemanticDecorator) {
+      DSemanticDecorator dsem = (DSemanticDecorator) object;
       loadData((CapellaElement) dsem.getTarget());
     }
   }
@@ -296,44 +296,44 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
   @Override
-  public abstract boolean select(Object toTest_p);
+  public abstract boolean select(Object toTest);
 
   protected EObject selection(Object toTest) {
     return CapellaAdapterHelper.resolveSemanticObject(toTest);
   }
 
-  protected EObject setInputSelection(IWorkbenchPart part_p, ISelection selection_p) {
-    super.setInput(part_p, selection_p);
+  protected EObject setInputSelection(IWorkbenchPart part, ISelection selection) {
+    super.setInput(part, selection);
 
     // FIXME MA01 - CapellaCommonNavigator is not IEditingDomainProvider anymore ... check this commented code has no other side-effect
-    // if (!(selection_p instanceof IStructuredSelection)
-    // || !((part_p instanceof IEditingDomainProvider) || (((IAdaptable) part_p).getAdapter(IEditingDomainProvider.class) != null))) {
+    // if (!(selection instanceof IStructuredSelection)
+    // || !((part instanceof IEditingDomainProvider) || (((IAdaptable) part).getAdapter(IEditingDomainProvider.class) != null))) {
     // return null;
     // }
-    return CapellaAdapterHelper.resolveSemanticObject(((IStructuredSelection) selection_p).getFirstElement());
+    return CapellaAdapterHelper.resolveSemanticObject(((IStructuredSelection) selection).getFirstElement());
   }
 
   /**
    * Set parent background color.
-   * @param color_p
+   * @param color
    */
   @Override
-  public void setParentBackgroundColor(Color color_p) {
-    _parentBackgroundColor = color_p;
+  public void setParentBackgroundColor(Color color) {
+    _parentBackgroundColor = color;
   }
 
   /**
    * Set whether or not this section is enabled or not.<br>
-   * Enabled means all internal widgets are set to specified <code>enabled_p</code> value.
-   * @param enabled_p
+   * Enabled means all internal widgets are set to specified <code>enabled</code> value.
+   * @param enabled
    */
   @Override
-  public void setEnabled(final boolean enabled_p) {
+  public void setEnabled(final boolean enabled) {
     // Forward enablement to internal semantic fields.
     for (AbstractSemanticField semanticField : getSemanticFields()) {
       // FIXME We should not have null Object in this list
       if (null != semanticField) {
-        semanticField.setEnabled(enabled_p);
+        semanticField.setEnabled(enabled);
       }
     }
   }
@@ -348,7 +348,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
         Method refreshTitleMethod = TabbedPropertySheetPage.class.getDeclaredMethod("refreshTitleBar", new Class[] {}); //$NON-NLS-1$
         refreshTitleMethod.setAccessible(true);
         refreshTitleMethod.invoke(_propertySheetPage, new Object[] {});
-      } catch (Exception exception_p) {
+      } catch (Exception exception) {
         // Catch exception silently.
       }
     }
@@ -356,10 +356,10 @@ public abstract class AbstractSection extends AbstractPropertySection implements
 
   /**
    * Execute a command that modifies the model.
-   * @param command_p
+   * @param command
    */
-  protected void executeCommmand(ICommand command_p) {
-    getExecutionManager().execute(command_p);
+  protected void executeCommmand(ICommand command) {
+    getExecutionManager().execute(command);
   }
 
   /**
@@ -376,10 +376,10 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   public abstract List<AbstractSemanticField> getSemanticFields();
 
   /**
-   * @param element_p
+   * @param element
    * @return {@link IReadOnlySectionHandler}
    */
-  protected IReadOnlySectionHandler register(EObject element_p) {
-    return CapellaReadOnlyHelper.register(element_p, this);
+  protected IReadOnlySectionHandler register(EObject element) {
+    return CapellaReadOnlyHelper.register(element, this);
   }
 }

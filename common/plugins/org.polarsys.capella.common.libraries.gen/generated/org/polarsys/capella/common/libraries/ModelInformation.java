@@ -21,11 +21,11 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.libraries.ModelInformation#getOwnedReferences <em>Owned References</em>}</li>
  *   <li>{@link org.polarsys.capella.common.libraries.ModelInformation#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation()
  * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='http://www.polarsys.org/capella/core/modeller/1.0.0#//Project'"

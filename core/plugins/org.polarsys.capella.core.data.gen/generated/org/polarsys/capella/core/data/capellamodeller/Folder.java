@@ -21,11 +21,11 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.Folder#getOwnedFolders <em>Owned Folders</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.Folder#getOwnedModelRoots <em>Owned Model Roots</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getFolder()
  * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Package' stereotype='core.Folder'"

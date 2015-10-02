@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.Property#getAggregationKind <em>Aggregation Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Property#isIsDerived <em>Is Derived</em>}</li>
@@ -28,7 +29,6 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  *   <li>{@link org.polarsys.capella.core.data.information.Property#isIsPartOfKey <em>Is Part Of Key</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Property#getAssociation <em>Association</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Property'"

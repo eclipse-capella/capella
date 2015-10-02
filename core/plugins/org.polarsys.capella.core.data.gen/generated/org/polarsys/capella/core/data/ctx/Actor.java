@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.oa.OperationalActor;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Actor#getParticipationsInMissions <em>Participations In Missions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Actor#getParticipationsInCapabilities <em>Participations In Capabilities</em>}</li>
@@ -38,7 +39,6 @@ import org.polarsys.capella.core.data.oa.OperationalActor;
  *   <li>{@link org.polarsys.capella.core.data.ctx.Actor#getRealizedOperationalActors <em>Realized Operational Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Actor#getRealizingLogicalActors <em>Realizing Logical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getActor()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Actor'"

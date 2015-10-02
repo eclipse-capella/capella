@@ -20,10 +20,10 @@ import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityExchange#getRealizingActivityFlows <em>Realizing Activity Flows</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityExchange()
  * @model abstract="true"

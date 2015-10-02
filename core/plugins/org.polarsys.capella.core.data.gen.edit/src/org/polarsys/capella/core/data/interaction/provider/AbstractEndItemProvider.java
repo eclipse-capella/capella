@@ -83,7 +83,7 @@ public class AbstractEndItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_END__EVENT
 			if (eventPropertyDescriptor != null) {
 				Object eventValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_END__EVENT, true);
-				if (eventValue != null && eventValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) eventValue)) {
+				if (eventValue != null && eventValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) eventValue)) {
 					itemPropertyDescriptors.remove(eventPropertyDescriptor);
 				} else if (eventValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_END__EVENT) != null) {
 					itemPropertyDescriptors.remove(eventPropertyDescriptor);				  					
@@ -94,7 +94,7 @@ public class AbstractEndItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_END__COVERED
 			if (coveredPropertyDescriptor != null) {
 				Object coveredValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_END__COVERED, true);
-				if (coveredValue != null && coveredValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) coveredValue)) {
+				if (coveredValue != null && coveredValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) coveredValue)) {
 					itemPropertyDescriptors.remove(coveredPropertyDescriptor);
 				} else if (coveredValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_END__COVERED) != null) {
 					itemPropertyDescriptors.remove(coveredPropertyDescriptor);				  					

@@ -40,20 +40,19 @@
       </filters>
       <defaultLayer name="default layer Functional Mission">
         <nodeMappings name="MissionNode" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Mission']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Mission">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current == $container%>">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="ActorNode" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CM%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -72,7 +71,7 @@
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Interface%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -171,7 +170,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 </subModelOperations>
@@ -472,7 +471,7 @@
       </filters>
       <defaultLayer name="default layer Functional Missions 2">
         <nodeMappings name="ActorNode2" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit2']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -491,13 +490,13 @@
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Exchanges%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Interfaces%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario']"/>
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="MissionNode2" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Mission']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit2']" semanticCandidatesExpression="" createElements="false" domainClass="Mission">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -614,7 +613,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 </subModelOperations>
@@ -941,26 +940,25 @@
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Interface%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current == $container%>">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="ActorNode3" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CC%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit3']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="MissionNode3" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Mission']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit3']" semanticCandidatesExpression="" createElements="false" domainClass="Mission">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -1132,7 +1130,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 </subModelOperations>
@@ -1495,19 +1493,19 @@
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Function%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Interface%20Scenario']"/>
           <navigationDescriptions xsi:type="tool:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ActorNode4" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MCB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="MissionNode4" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Mission']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Mission">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -1695,7 +1693,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 </subModelOperations>
@@ -2150,11 +2148,10 @@
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current == $container%>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelFormat>bold</labelFormat>
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelFormat="bold" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%isControlNode%>">
@@ -2202,7 +2199,7 @@
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_1:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Functions">
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new System Function in the target Function" name="System Function" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new System Function in the target Function" name="System Function" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="System Function"/>
             </variable>
@@ -2218,7 +2215,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ControlNodes">
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Duplicate Function in the target Function" name="Duplicate" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Duplicate Function in the target Function" name="Duplicate" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2233,7 +2230,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Gather Function in the target Function" name="Gather" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Gather Function in the target Function" name="Gather" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2248,7 +2245,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Route Function in the target Function" name="Route" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Route Function in the target Function" name="Route" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2263,7 +2260,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Select Function in the target Function" name="Select" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Select Function in the target Function" name="Select" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2278,7 +2275,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Split Function in the target Function" name="Split" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Split Function in the target Function" name="Split" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2554,25 +2551,25 @@
         </edgeMappings>
         <containerMappings name="SDFB_Function" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Function%20Breakdown'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Data%20Flow%20Blank']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="SystemFunction" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20FunctionPort'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']" reusedNodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']" reusedContainerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']">
           <borderedNodeMappings name="SDFB_Pin" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="&lt;% getAvailablePins($viewpoint,$containerView) %>" semanticElements="" domainClass="ActivityNode">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;% current.isA(&quot;FunctionOutputPort&quot;) %>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="SDFB_InputPin by Categorie" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" semanticElements="&lt;%getInputPinCategorySemanticElements($view)%>" domainClass="ExchangeCategory">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="SDFB_OutputPin by Categorie" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" semanticElements="&lt;%getOutputPinCategorySemanticElements($view)%>" domainClass="ExchangeCategory">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -2584,31 +2581,31 @@
             <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%isDuplicateFunction%>">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="10" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="10" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%isGatherFunction%>">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%isRouteFunction%>">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%isSelectFunction%>">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%isSplitFunction%>">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -3021,7 +3018,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndDFFunctionPort($oldSemanticContainer, $newSemanticContainer)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD DF AbstractFunction" precondition="&lt;%$element.isValidDndDFBAbstractFunction($newViewContainer) %>" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" moveEdges="true">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD DF AbstractFunction" precondition="&lt;%$element.isValidDndDFBAbstractFunction($newViewContainer) %>" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3527,67 +3524,67 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <borderedNodeMappings name="CA Component Port" preconditionExpression="&lt;%isValidABComponentPort($containerView)%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="&lt;%getComponentType().ownedFeatures.filter(&quot;ComponentPort&quot;)%>" domainClass="ComponentPort">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%current.kind==&quot;STANDARD&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%current.kind==&quot;FLOW&quot; &amp;&amp; current.orientation==&quot;IN&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%current.kind==&quot;FLOW&quot; &amp;&amp; current.orientation==&quot;OUT&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%current.kind==&quot;FLOW&quot; &amp;&amp; current.orientation==&quot;INOUT&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="SAB_ComponentCategory_Pin" preconditionExpression="&lt;%isValidABComponentCategoryPort($containerView)%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" createElements="false" domainClass="ComponentExchangeCategory">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%isABComponentCategoryPortStandard($view)%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%isABComponentCategoryPortIn($view)%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%isABComponentCategoryPortOut($view)%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%isABComponentCategoryPortInOut($view)%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentCategoryLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="SAB_PhysicalPort" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="&lt;% abstractType.ownedFeatures.filter(&quot;PhysicalPort&quot;)%>" domainClass="PhysicalPort">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;% computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;% computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
@@ -3595,7 +3592,7 @@
           </borderedNodeMappings>
           <borderedNodeMappings name="SAB_PhysicalCategory_Pin" preconditionExpression="&lt;%isValidABPhysicalCategoryPort($containerView)%>" createElements="false" domainClass="PhysicalLinkCategory">
             <deletionDescription href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']"/>
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%computePhysicalCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%computePhysicalCategoryLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
@@ -3603,25 +3600,25 @@
           </borderedNodeMappings>
           <subNodeMappings name="CA System Function" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Function%20Breakdown'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Data%20Flow%20Blank']" preconditionExpression="&lt;% isAllocatedFunction(current, $container.getComponentType())%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="" createElements="false" domainClass="SystemFunction" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20FunctionPort']">
             <borderedNodeMappings name="CA Flow Port on System Function" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="&lt;% getAvailablePins($viewpoint,$containerView) %>" domainClass="ActivityNode">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
               <conditionnalStyles predicateExpression="&lt;% current.isA(&quot;FunctionOutputPort&quot;) %>">
-                <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png">
+                <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
             </borderedNodeMappings>
             <borderedNodeMappings name="CA_InputPin by Categorie" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="" createElements="false" semanticElements="&lt;%self + self.exchanges[target.ancestor.nContains($view.eContainer.target)]%>" domainClass="ExchangeCategory">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
             <borderedNodeMappings name="CA_OutputPin by Categorie" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="" createElements="false" semanticElements="&lt;%self + self.exchanges[source.ancestor.nContains($view.eContainer.target)]%>" domainClass="ExchangeCategory">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -3632,39 +3629,38 @@
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%isDuplicateFunction%>">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%isGatherFunction%>">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%isRouteFunction%>">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%isSplitFunction%>">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%isSelectFunction%>">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%!isLeaf()%>">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelFormat="italic" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
-                <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
               </style>
@@ -3689,7 +3685,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="&lt;%computePartLabel()%>" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="&lt;%computePartLabel()%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -3702,7 +3698,7 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="&lt;%computePartLabel()%>" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="&lt;%computePartLabel()%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -5002,16 +4998,15 @@
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;% abstract==true %>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="10" height="8">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelFormat="italic" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="10" height="8">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
-              <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
             </style>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="SC_Actor" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CSA%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Context%20Rename%20Part']" semanticCandidatesExpression="&lt;% eContainer(&quot;SystemAnalysis&quot;).ownedSystemContext.ownedPartitions.abstractType.filter(&quot;Actor&quot;) %>" domainClass="Actor">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -5035,7 +5030,7 @@
         <reusedMappings xsi:type="description_1:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Actor" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Actor" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -5087,7 +5082,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="ownedGeneralizations">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 </subModelOperations>

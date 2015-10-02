@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.IModelIdentifier;
@@ -28,7 +30,7 @@ import org.polarsys.capella.common.libraries.provider.ILibraryProviderListener;
 
 /**
  */
-public class LibraryManager extends ILibraryManager implements ILibraryProviderListener {
+public class LibraryManager extends ILibraryManager implements ILibraryProviderListener, IEditingDomainListener {
 
   private static final String PROVIDER_EXTENSION = "org.polarsys.capella.common.libraries.providers"; //$NON-NLS-1$
 
@@ -42,6 +44,11 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
    */
   Collection<IModelIdentifier> _models = null;
 
+  /**
+   * A stored version of model per editing domain.
+   */
+  HashMap<TransactionalEditingDomain, IModel> _modelsPerDomain = null;
+
   public Collection<ILibraryProvider> getProviders() {
 
     if (_providers == null) {
@@ -54,7 +61,7 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
             _providers.add(provider);
           }
         } catch (Exception exception_p) {
-          //nothing here, a provider can't be loaded
+          // nothing here, a provider can't be loaded
         }
       }
 
@@ -82,17 +89,18 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   }
 
   @Override
-  public void onLibraryProviderChanged(ILibraryProviderEvent event_p) {
-    //We should clear cache (maybe we could do less)
+  public void onLibraryProviderChanged(ILibraryProviderEvent event) {
+    // We should clear cache (maybe we could do less)
     _models = null;
+    _modelsPerDomain = null;
   }
 
   @Override
-  public Collection<IModel> getAllModels(TransactionalEditingDomain domain_p) {
+  public Collection<IModel> getAllModels(TransactionalEditingDomain domain) {
     HashMap<IModelIdentifier, IModel> models = new HashMap<IModelIdentifier, IModel>();
 
     for (IModelIdentifier identifier : getAvailableModels()) {
-      IModel model = getModel(domain_p, identifier);
+      IModel model = getModel(domain, identifier);
       if (model != null) {
         models.put(identifier, model);
       }
@@ -102,10 +110,10 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   }
 
   @Override
-  public IModel getModel(TransactionalEditingDomain domain_p, IModelIdentifier identifier_p) {
-    if (identifier_p != null) {
+  public IModel getModel(TransactionalEditingDomain domain, IModelIdentifier identifier) {
+    if (identifier != null) {
       for (ILibraryProvider provider : getProviders()) {
-        IModel model = provider.getModelDefinition(identifier_p, domain_p);
+        IModel model = provider.getModelDefinition(identifier, domain);
         if (model != null) {
           return model;
         }
@@ -115,9 +123,9 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   }
 
   @Override
-  public IModel getModel(EObject object_p) {
+  public IModel getModel(EObject object) {
     for (ILibraryProvider provider : getProviders()) {
-      IModel model = provider.getModel(object_p);
+      IModel model = provider.getModel(object);
       if (model != null) {
         return model;
       }
@@ -126,9 +134,31 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   }
 
   @Override
-  public IModel getModel(TransactionalEditingDomain domain_p) {
+  public IModel getModel(TransactionalEditingDomain domain) {
+
+    if (_modelsPerDomain != null) {
+      if (_modelsPerDomain.containsKey(domain)) {
+        return _modelsPerDomain.get(domain);
+      }
+    }
+
     for (ILibraryProvider provider : getProviders()) {
-      IModel model = provider.getModel(domain_p);
+      IModel model = provider.getModel(domain);
+      if (model != null) {
+        if (_modelsPerDomain == null) {
+          _modelsPerDomain = new HashMap<TransactionalEditingDomain, IModel>();
+        }
+        _modelsPerDomain.put(domain, model);
+        return model;
+      }
+    }
+    return null;
+  }
+
+  @Override
+  public IModelIdentifier getModelIdentifier(URI semanticUri) {
+    for (ILibraryProvider provider : getProviders()) {
+      IModelIdentifier model = provider.getModelIdentifier(semanticUri);
       if (model != null) {
         return model;
       }
@@ -137,14 +167,15 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   }
 
   @Override
-  public IModelIdentifier getModelIdentifier(URI semanticUri_p) {
-    for (ILibraryProvider provider : getProviders()) {
-      IModelIdentifier model = provider.getModelIdentifier(semanticUri_p);
-      if (model != null) {
-        return model;
-      }
+  public void createdEditingDomain(EditingDomain editingDomain) {
+    // Nothing here
+  }
+
+  @Override
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+    if (_modelsPerDomain != null) {
+      _modelsPerDomain.remove(editingDomain);
     }
-    return null;
   }
 
 }

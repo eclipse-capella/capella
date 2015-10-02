@@ -19,10 +19,10 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.CallBehaviorAction#getBehavior <em>Behavior</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getCallBehaviorAction()
  * @model abstract="true"

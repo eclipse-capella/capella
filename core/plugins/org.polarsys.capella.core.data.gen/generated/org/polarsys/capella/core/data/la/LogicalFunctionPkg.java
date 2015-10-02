@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunctionPkg#getOwnedLogicalFunctions <em>Owned Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunctionPkg#getOwnedLogicalFunctionPkgs <em>Owned Logical Function Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunctionPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Package that contains logical function elements\r\n[source:Capella study]' usage\040guideline='n/a' used\040in\040levels='logical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

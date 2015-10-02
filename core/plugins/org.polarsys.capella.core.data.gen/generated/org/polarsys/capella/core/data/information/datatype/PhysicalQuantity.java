@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.information.Unit;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datatype.PhysicalQuantity#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getPhysicalQuantity()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='PhysicalDimension'"

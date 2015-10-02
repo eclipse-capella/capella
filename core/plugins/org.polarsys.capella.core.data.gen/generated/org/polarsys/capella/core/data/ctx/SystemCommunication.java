@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemCommunication#getEnds <em>Ends</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemCommunication()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='SystemCommunication'"

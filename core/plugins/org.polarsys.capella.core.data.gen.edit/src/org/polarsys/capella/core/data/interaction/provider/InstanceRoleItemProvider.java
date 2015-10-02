@@ -77,7 +77,7 @@ public class InstanceRoleItemProvider
 			// Process InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE
 			if (representedInstancePropertyDescriptor != null) {
 				Object representedInstanceValue = eObject.eGet(InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE, true);
-				if (representedInstanceValue != null && representedInstanceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) representedInstanceValue)) {
+				if (representedInstanceValue != null && representedInstanceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) representedInstanceValue)) {
 					itemPropertyDescriptors.remove(representedInstancePropertyDescriptor);
 				} else if (representedInstanceValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE) != null) {
 					itemPropertyDescriptors.remove(representedInstancePropertyDescriptor);				  					

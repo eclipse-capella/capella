@@ -15,7 +15,7 @@
         <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
       </buildLocations>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_THW2wFn1EeSlpue7JHXw9A" url="${eclipse.download.prefix}/releases/mars"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_hldPEFqlEeSQoMAm1P90CA" url="${site_Kitalpha}"/>
+      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_hldPEFqlEeSQoMAm1P90CA" url="${site_Kitalpha_SDK}"/>
       <components xsi:type="buildstep:Feature" xmi:id="_QvPv4Fn1EeSlpue7JHXw9A" id="org.polarsys.capella.core.egf.feature"/>
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_EUyk4Fn2EeSlpue7JHXw9A" name="Publish EGF Platform" component="_QvPv4Fn1EeSlpue7JHXw9A"/>
@@ -95,7 +95,7 @@
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_f-HXYAyPEeKIGKNriwuyOw" url="${site_DiffMerge}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ypzboC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_Sirius}"/>
-        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_P2rDEAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_P2rDEAlfEeGYwPEIVo63QA" url="${site_Kitalpha_CTK}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_v9bQEDXkEeWcHcNqIIHNgA" url="${site_Amalgam}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_XCyCgKBoEeKMQb8Rddw1Vg" suffix="" url="${primary_eclipseUpdateSite}"/>
       </buildLocations>
@@ -144,7 +144,7 @@
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_TSa0wA7oEeKs5rrFu_4qSg" url="${site_DiffMerge}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_7ZSUQC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa36QlbEeGRT7uzWt0LYA" url="${site_Sirius}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_Re-doAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
+      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_Re-doAlfEeGYwPEIVo63QA" url="${site_Kitalpha_CTK}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_19SgwDXkEeWcHcNqIIHNgA" url="${site_Amalgam}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_VgIv4JMfEeO7u6f29_-yFQ" suffix="" url="${primary_eclipseUpdateSite}"/>
     </steps>
@@ -219,7 +219,7 @@
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_NGDOgF1yEeGnJaeCI-TkHw"/>
       </steps>
       <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _5ozugD27EeG0_cmFvR9Vkw _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
-        <updateSiteUrls>${site_Kitalpha}</updateSiteUrls>
+        <updateSiteUrls>${site_Kitalpha_CTK}</updateSiteUrls>
         <updateSiteUrls>${orbit.download.url}</updateSiteUrls>
         <updateSiteUrls>${site_QueryLegacy}</updateSiteUrls>
         <updateSiteUrls>${site_Sirius}</updateSiteUrls>

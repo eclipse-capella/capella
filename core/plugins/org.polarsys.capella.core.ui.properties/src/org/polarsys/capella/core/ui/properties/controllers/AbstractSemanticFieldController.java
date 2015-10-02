@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,10 +20,10 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 public abstract class AbstractSemanticFieldController {
 
   /**
-   * @param value_p
+   * @param value
    * @return
    */
-  protected boolean editValueWizard(EObject value_p) {
-    return CapellaUIPropertiesPlugin.getDefault().getCustomWizardHandler().openWizard((ModelElement) value_p);
+  protected boolean editValueWizard(EObject value) {
+    return CapellaUIPropertiesPlugin.getDefault().getCustomWizardHandler().openWizard((ModelElement) value);
   }
 }

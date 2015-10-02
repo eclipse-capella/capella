@@ -13,8 +13,18 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.data.interaction.properties
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.model.ju,
- org.polarsys.capella.test.model.ju.testcases.intermodelInconsistencies
+ org.polarsys.capella.test.model.ju.detach,
+ org.polarsys.capella.test.model.ju.model,
+ org.polarsys.capella.test.model.ju.rename,
+ org.polarsys.capella.test.model.ju.testcase.LCDecomposition,
+ org.polarsys.capella.test.model.ju.testcases.delete,
+ org.polarsys.capella.test.model.ju.testcases.interfacescenario.message,
+ org.polarsys.capella.test.model.ju.testcases.intermodelInconsistencies,
+ org.polarsys.capella.test.model.ju.testcases.libraries,
+ org.polarsys.capella.test.model.ju.testsuites,
+ org.polarsys.capella.test.model.ju.testsuites.main,
+ org.polarsys.capella.test.model.ju.testsuites.partial

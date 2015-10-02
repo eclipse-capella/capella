@@ -20,10 +20,10 @@ import org.polarsys.capella.common.data.behavior.AbstractSignal;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.Signal#getSignalInstances <em>Signal Instances</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getSignal()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Signal'"

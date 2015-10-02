@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.Structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.ConceptPkg#getOwnedConceptPkgs <em>Owned Concept Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.ConceptPkg#getOwnedConcepts <em>Owned Concepts</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getConceptPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for operational concepts\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -19,10 +19,10 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.MessageReference#getMessage <em>Message</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getMessageReference()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='MessageReference'"

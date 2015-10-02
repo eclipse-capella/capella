@@ -14,6 +14,7 @@ import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
@@ -32,7 +33,7 @@ public class GradientBackgroundColorContribution extends AbstractMigrationContri
     super.endElement(peekEObject, attribs, uri, localName, name, resource, context);
 
     if (isCustomBackground(peekEObject)) {
-      if (name.equals("backgroundColor")) {
+      if (DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR.getName().equals(name)) {
         filledBackground.add((FlatContainerStyle) peekEObject);
       }
     }
@@ -40,7 +41,8 @@ public class GradientBackgroundColorContribution extends AbstractMigrationContri
 
   protected boolean isCustomBackground(EObject object) {
     if (object instanceof FlatContainerStyle) {
-      if (((FlatContainerStyle) object).getCustomFeatures().contains("backgroundColor")) {
+
+      if (((FlatContainerStyle) object).getCustomFeatures().contains(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR.getName())) {
         return true;
       }
     }

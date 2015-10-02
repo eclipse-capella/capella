@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.information.datatype.NumericType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.NumericValue#getUnit <em>Unit</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.datavalue.NumericValue#getNumericType <em>Numeric Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getNumericValue()
  * @model abstract="true"

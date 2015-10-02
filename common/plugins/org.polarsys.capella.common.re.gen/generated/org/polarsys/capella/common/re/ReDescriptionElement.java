@@ -19,10 +19,10 @@ package org.polarsys.capella.common.re;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.re.ReDescriptionElement#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.re.RePackage#getReDescriptionElement()
  * @model abstract="true"
