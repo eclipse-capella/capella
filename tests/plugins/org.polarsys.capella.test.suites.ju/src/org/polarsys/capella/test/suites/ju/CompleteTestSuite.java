@@ -16,6 +16,7 @@ import java.util.List;
 import junit.framework.Test;
 
 import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
+import org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
@@ -45,6 +46,7 @@ public class CompleteTestSuite extends BasicTestSuite {
     tests.add(new AllRefinementTestSuites());
     tests.add(new TransitionTestSuite());
     tests.add(new RecRplTestSuite());
+    tests.add(new FastLinkerTestsSuite());
 		return tests;
 	}
 
