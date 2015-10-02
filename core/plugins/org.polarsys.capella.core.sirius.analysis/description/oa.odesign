@@ -5312,7 +5312,6 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
               </firstModelOperations>
             </initialOperation>
@@ -5806,7 +5805,6 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
               </firstModelOperations>
             </initialOperation>
