@@ -10738,7 +10738,7 @@
           </delete>
         </ownedSubLines>
         <ownedSubLines name="Sub Requirement Pkg" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" domainClass="RequirementsPkg" semanticCandidatesExpression="&lt;%ownedRequirementPkgs%>" headerLabelExpression="feature:name">
-          <create name="System User Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System User Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10748,7 +10748,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10758,7 +10758,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10768,7 +10768,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Non Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Non Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10778,7 +10778,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Non Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Non Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10788,7 +10788,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="Requirement Pkg" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']">
+          <create name="Requirement Pkg" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10810,7 +10810,7 @@
             </firstModelOperation>
           </delete>
         </ownedSubLines>
-        <create name="Requirement Pkg" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']">
+        <create name="Requirement Pkg" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10818,7 +10818,7 @@
             <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Req Pkg"/>
           </firstModelOperation>
         </create>
-        <create name="System User Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System User Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10828,7 +10828,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10838,7 +10838,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10848,7 +10848,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Non Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Non Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10858,7 +10858,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Non Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Non Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -11823,7 +11823,6 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
               </firstModelOperations>
             </initialOperation>
