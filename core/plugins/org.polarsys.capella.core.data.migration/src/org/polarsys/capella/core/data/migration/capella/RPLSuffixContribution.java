@@ -11,10 +11,10 @@
 package org.polarsys.capella.core.data.migration.capella;
 
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
 
@@ -30,6 +30,7 @@ public class RPLSuffixContribution extends AbstractMigrationContribution {
     // if this element is a RPL
     if (currentElement instanceof CatalogElement) {
       CatalogElement rpl = (CatalogElement) currentElement;
+
       if ((rpl.getKind() == CatalogElementKind.RPL) || (rpl.getKind() == CatalogElementKind.REC_RPL)) {
 
         // For each RPL element, compute if it must be suffixed:
@@ -41,50 +42,50 @@ public class RPLSuffixContribution extends AbstractMigrationContribution {
         }
 
         // its RPL suffix to find and set:
-        String rplSuffix = null;
+        if (rpl.getSuffix() == null) {
+          String rplSuffix = getCommonSuffix(rpl);
+          if (rplSuffix != null) {
+            rpl.setSuffix(rplSuffix);
+          }
+        }
 
-        // For each RPL element suffixed found
-        for (CatalogElementLink link : rpl.getOwnedLinks()) {
-          if (link.isSuffixed()) {
+      }
+    }
+  }
 
-            CatalogElementLink recLink = link.getOrigin();
-            if (recLink != null) {
-              EObject rplElement = link.getTarget();
-              EObject recElement = recLink.getTarget();
+  protected String getCommonSuffix(CatalogElement rpl) {
+    String suffix = null;
 
-              if (rplElement instanceof NamedElement && recElement instanceof NamedElement) {
-                String rplName = ((NamedElement) rplElement).getName();
-                String recName = ((NamedElement) recElement).getName();
+    // For each RPL element suffixed found, we check if they all ending with the same suffix
+    // if it is not equals, suffix is uncertain and set to empty
 
-                String elementSuffix = "";
+    for (CatalogElementLink link : rpl.getOwnedLinks()) {
+      if (link.isSuffixed()) {
+        CatalogElementLink recLink = link.getOrigin();
+        if (recLink != null) {
+          EObject rplElement = link.getTarget();
+          EObject recElement = recLink.getTarget();
 
-                // if the RPL element name starts with the name of its corresponding REC element
-                if (rplName != null && recName != null && rplName.startsWith(recName)) {
+          if ((rplElement instanceof AbstractNamedElement) && (recElement instanceof AbstractNamedElement)) {
+            String rplName = ((AbstractNamedElement) rplElement).getName();
+            String recName = ((AbstractNamedElement) recElement).getName();
 
-                  // then the element suffix is its element name minus its REC element name
-                  elementSuffix = rplName.substring(recName.length());
-                }
+            // if the RPL element name starts with the name of its corresponding REC element, retrieve suffix
+            if ((rplName != null) && (recName != null) && rplName.startsWith(recName)) {
+              String currentSuffix = rplName.substring(recName.length());
 
-                // if it is the first suffix find
-                if (rplSuffix == null) {
-                  rplSuffix = elementSuffix;
-                }
-                // if not, compare with the first suffix found
-                else if (!rplSuffix.equals(elementSuffix)) {
-                  // if it is not equals, the rplSuffix is uncertain and set to empty
-                  rplSuffix = "";
-                  break;
-                  // if it is equals, continue to next RPL element
-                }
+              if (suffix == null) {
+                suffix = currentSuffix;
+              } else if (!suffix.equals(currentSuffix)) {
+                suffix = null;
+                break;
               }
             }
           }
         }
-
-        if (rplSuffix != null) {
-          rpl.setSuffix(rplSuffix);
-        }
       }
     }
+
+    return suffix;
   }
 }
