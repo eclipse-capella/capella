@@ -47,6 +47,6 @@ public class AbstractCapabilityExtensionPointHelper {
 	}
 
 	protected AbstractCapability getAbstractCapability(AbstractCapabilityExtensionPoint element) {
-		return (AbstractCapability)element.eContainer();
+		return element.eContainer() instanceof AbstractCapability ? (AbstractCapability)element.eContainer() : null;
 	}
 }

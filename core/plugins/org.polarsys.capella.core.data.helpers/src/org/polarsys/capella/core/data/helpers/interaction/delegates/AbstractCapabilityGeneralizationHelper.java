@@ -47,6 +47,6 @@ public class AbstractCapabilityGeneralizationHelper {
 	}
 
 	protected AbstractCapability getSub(AbstractCapabilityGeneralization element) {
-		return (AbstractCapability)element.eContainer();
+		return element.eContainer() instanceof AbstractCapability ? (AbstractCapability)element.eContainer() : null;
 	}
 }
