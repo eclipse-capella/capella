@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,12 @@ import java.util.Collection;
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.gmf.GMFDiffPolicy;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
-import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
+import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 
@@ -42,6 +42,20 @@ public class SiriusDiffPolicy extends GMFDiffPolicy {
         DiagramPackage.eINSTANCE.getEdgeTarget_IncomingEdges(),
         DiagramPackage.eINSTANCE.getEdgeTarget_OutgoingEdges()
     );
+
+  /** The set of references that can be ignored */
+  private static final Collection<EReference> UNSIGNIFICANT_REFERENCES =
+      Arrays.asList(
+          ViewpointPackage.eINSTANCE.getDRepresentation_UiState()
+      );
+  
+  /** The set of types that can be ignored */
+  private static final Collection<EClass> UNSIGNIFICANT_TYPES =
+      Arrays.asList(
+          OrderingPackage.eINSTANCE.getEventEndsOrdering(),
+          OrderingPackage.eINSTANCE.getInstanceRolesOrdering(),
+          ViewpointPackage.eINSTANCE.getUIState()
+      );
   
   /** The set of String attributes for which the empty string value must not be
       distinguished from the null value */
@@ -52,15 +66,24 @@ public class SiriusDiffPolicy extends GMFDiffPolicy {
   
   
   /**
+   * @see org.eclipse.emf.diffmerge.impl.policies.DefaultDiffPolicy#coverFeature(org.eclipse.emf.ecore.EStructuralFeature)
+   */
+  @Override
+  public boolean coverFeature(EStructuralFeature feature_p) {
+    return !UNSIGNIFICANT_REFERENCES.contains(feature_p) && super.coverFeature(feature_p);
+  }
+  
+  /**
    * @see org.eclipse.emf.diffmerge.impl.policies.DefaultDiffPolicy#coverMatch(org.eclipse.emf.diffmerge.api.IMatch)
    */
   @Override
   public boolean coverMatch(IMatch match_p) {
     boolean result = super.coverMatch(match_p);
     if (result && match_p.isPartial()) {
-      // Ignore transient elements of sequence diagrams (OK because no cross-ref)
+      // Ignore certain transient elements (OK because no cross-ref)
       EObject element = match_p.get(match_p.getUncoveredRole().opposite());
-      result = !(element instanceof EventEndsOrdering || element instanceof InstanceRolesOrdering);
+      if (element != null)
+        result = !UNSIGNIFICANT_TYPES.contains(element.eClass());
     }
     return result;
   }

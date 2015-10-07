@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,24 +39,24 @@ public class SiriusScopeFactory extends GMFScopeDefinitionFactory {
   
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.specification.ext.FileScopeSpecificationFactory#createScopeSpecificationFromUri(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
+   * @see org.eclipse.emf.diffmerge.ui.gmf.GMFScopeDefinitionFactory#createScopeDefinitionFromURI(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
    */
   @Override
-  protected IModelScopeDefinition createScopeDefinitionFromURI(URI uri_p, String label_p,
-      boolean editable_p) {
-    return new URIScopeDefinition(uri_p, label_p, editable_p) {
+  protected IModelScopeDefinition createScopeDefinitionFromURI(URI uri, String label,
+      boolean editable) {
+    return new URIScopeDefinition(uri, label, editable) {
       /**
        * @see org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition#createScopeOnEditingDomain(org.eclipse.emf.edit.domain.EditingDomain)
        */
       @Override
-      protected IEditableModelScope createScopeOnEditingDomain(EditingDomain editingDomain_p) {
-        return new SiriusScope(getEntrypoint(), editingDomain_p, !isEditable());
+      protected IEditableModelScope createScopeOnEditingDomain(EditingDomain editingDomain) {
+        return new SiriusScope(getEntrypoint(), editingDomain, !isEditable());
       }
     };
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.specification.AbstractScopeSpecificationFactory#getOverridenClasses()
+   * @see org.eclipse.emf.diffmerge.ui.gmf.GMFScopeDefinitionFactory#getOverridenClasses()
    */
   @Override
   public Collection<? extends Class<?>> getOverridenClasses() {

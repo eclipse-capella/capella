@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,18 +24,18 @@ import org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFa
 public class CapellaComparisonMethodFactory extends SiriusComparisonMethodFactory {
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.specification.ext.DefaultComparisonSpecificationFactory#createComparisonSpecification(org.eclipse.emf.diffmerge.ui.specification.IScopeSpecification, org.eclipse.emf.diffmerge.ui.specification.IScopeSpecification, org.eclipse.emf.diffmerge.ui.specification.IScopeSpecification)
+   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFactory#createComparisonMethod(org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition)
    */
   @Override
   public IComparisonMethod createComparisonMethod(
-      IModelScopeDefinition leftScopeSpec_p, IModelScopeDefinition rightScopeSpec_p,
-      IModelScopeDefinition ancestorScopeSpec_p) {
+      IModelScopeDefinition leftScopeSpec, IModelScopeDefinition rightScopeSpec,
+      IModelScopeDefinition ancestorScopeSpec) {
     return new CapellaComparisonMethod(
-        leftScopeSpec_p, rightScopeSpec_p, ancestorScopeSpec_p);
+        leftScopeSpec, rightScopeSpec, ancestorScopeSpec);
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.specification.IComparisonSpecificationFactory#getLabel()
+   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFactory#getLabel()
    */
   @Override
   public String getLabel() {
@@ -43,7 +43,7 @@ public class CapellaComparisonMethodFactory extends SiriusComparisonMethodFactor
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.specification.ext.DefaultComparisonSpecificationFactory#getOverridenClasses()
+   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFactory#getOverridenClasses()
    */
   @Override
   public Collection<Class<?>> getOverridenClasses() {
