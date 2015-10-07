@@ -128,7 +128,7 @@ public interface IMigrationContribution {
   /**
    * This method is used to rename a given proxy to another
    */
-  public String getHandleProxy(InternalEObject proxy, String uriLiteral, Resource resource, MigrationContext context);
+  public String getHandleProxy(InternalEObject proxy, String uriLiteral, Resource resource, XMLHelper helper, MigrationContext context);
 
   /**
    * This method is used to change priority of a given EMF error
