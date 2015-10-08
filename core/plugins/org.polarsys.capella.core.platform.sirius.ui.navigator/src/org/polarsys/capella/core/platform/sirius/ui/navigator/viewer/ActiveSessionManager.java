@@ -22,6 +22,8 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 public class ActiveSessionManager {
   HashMap<TransactionalEditingDomain, Boolean> _activeSessions = new HashMap<TransactionalEditingDomain, Boolean>();
 
+  private boolean isFullDisabled = false;
+
   private ActiveSessionManager() {
   }
 
@@ -42,10 +44,10 @@ public class ActiveSessionManager {
   }
 
   public void disableContentNotifications() {
+    isFullDisabled = true;
     for (TransactionalEditingDomain key : _activeSessions.keySet()) {
       _activeSessions.put(key, Boolean.FALSE);
     }
-
   }
 
   /**
@@ -57,18 +59,24 @@ public class ActiveSessionManager {
   }
 
   public void enableContentNotifications() {
+    isFullDisabled = false;
     for (TransactionalEditingDomain key : _activeSessions.keySet()) {
       _activeSessions.put(key, Boolean.TRUE);
     }
-
   }
 
   /**
    * Returns whether notifications are enabled for the given domain
    */
   public boolean isEnabledContentNotifications(TransactionalEditingDomain editingDomain) {
+    if (isFullDisabled) {
+      return false;
+    }
+    if (editingDomain == null) {
+      return true;
+    }
     if (!_activeSessions.containsKey(editingDomain)) {
-      _activeSessions.put(editingDomain, Boolean.TRUE);
+      return true;
     }
     return _activeSessions.get(editingDomain);
   }

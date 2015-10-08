@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 
 /**
@@ -109,7 +110,12 @@ public class MigrationJobScheduler {
         job.addJobChangeListener(new JobChangeAdapter() {
           @Override
           public void done(IJobChangeEvent event) {
-            executeNextJob(event.getResult(), context, checkVersion);
+            IStatus jobStatus = event.getResult();
+            IStatus internalStatus = (IStatus) event.getJob().getProperty(MigrationJob.RESULT_PROPERTY);
+            if ((internalStatus != null) && !internalStatus.isOK()) {
+              jobStatus = internalStatus;
+            }
+            executeNextJob(jobStatus, context, checkVersion);
           }
         });
         context.setProgressMonitor(new SubProgressMonitor(_monitor, 1));
@@ -121,6 +127,9 @@ public class MigrationJobScheduler {
         } catch (InterruptedException exception) {
           exception.printStackTrace();
         }
+
+      } else {
+        MigrationHelpers.getInstance().dispose(context);
       }
 
     } else {
@@ -131,10 +140,13 @@ public class MigrationJobScheduler {
 
   }
 
-  private void logStatus(final MigrationContext context, final IStatus status) {
-    /*
-     * if (!context.isSkipConfirmation()) { context.getShell().getDisplay().asyncExec(new Runnable() {
-     * @Override public void run() { MessageDialog.openError(context.getShell(), context.getName(), status.getMessage()); } }); }
-     */
+  protected void logStatus(final MigrationContext context, final IStatus status) {
+    StatusManager.getManager().handle(status, StatusManager.LOG);
+
+    if (!context.isSkipConfirmation()) {
+      if ((status.getSeverity() == IStatus.ERROR) || (status.getSeverity() == IStatus.WARNING)) {
+        StatusManager.getManager().handle(status, StatusManager.BLOCK);
+      }
+    }
   }
 }

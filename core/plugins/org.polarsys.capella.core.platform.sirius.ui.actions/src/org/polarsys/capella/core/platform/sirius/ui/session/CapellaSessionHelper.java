@@ -22,12 +22,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
@@ -41,14 +41,11 @@ import org.eclipse.emf.ecore.xmi.PackageNotFoundException;
 import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -56,7 +53,6 @@ import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.IModelIdentifier;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -117,15 +113,13 @@ public class CapellaSessionHelper {
       IModel model = ILibraryManager.INSTANCE.getModel(ILibraryManager.DEFAULT_EDITING_DOMAIN, modelId);
       Collection<IModelIdentifier> unavailable = LibraryManagerExt.getAllUnavailableReferences(model);
       if (!unavailable.isEmpty()) {
-        StringBuffer buffer = new StringBuffer();
+        MultiStatus status =
+            new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR, Messages.CapellaSessionHelper_MissingLibraries_Message, null);
         for (IModelIdentifier identifier : unavailable) {
-          buffer.append(identifier);
-          buffer.append(ICommonConstants.COMMA_CHARACTER);
+          status.add(new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.toString()));
         }
-        buffer.deleteCharAt(buffer.length() - 1);
-        String message = NLS.bind(Messages.CapellaSessionHelper_MissingLibraries_Message, buffer);
-        reportError(message);
-        return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), message, null);
+        reportError(status);
+        return status;
       }
     }
     return Status.OK_STATUS; // at the end there is no error.
@@ -152,8 +146,9 @@ public class CapellaSessionHelper {
         if (handleLoadingErrors == null) {
           return Status.OK_STATUS; // at the end there is no error.
         }
-        reportError(handleLoadingErrors);
-        return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception);
+        IStatus status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception);
+        reportError(status);
+        return status;
       } finally {
         // Make sure all loaded resources in the temporary resourceSet are unloaded & removed.
         cleanResourceSet(resourceSet);
@@ -199,7 +194,10 @@ public class CapellaSessionHelper {
       if (handleLoadingErrors == null) {
         return Status.OK_STATUS; // at the end there is no error.
       }
-      return new Status(IStatus.ERROR, pluginId, handleLoadingErrors, exception);
+      IStatus status = new Status(IStatus.ERROR, pluginId, handleLoadingErrors, exception);
+      reportError(status);
+      return status;
+
     } finally {
       // Make sure all loaded resources in the temporary resourceSet are unloaded & removed.
       cleanResourceSet(tempResourceSet);
@@ -266,28 +264,31 @@ public class CapellaSessionHelper {
   /**
    * @param message
    */
-  private static void reportError(final String message) {
-    final Display display = PlatformUI.getWorkbench().getDisplay();
-    display.syncExec(new Runnable() {
-      @Override
-      public void run() {
-        MessageDialog.openError(display.getActiveShell(), Messages.CapellaSessionHelper_SemanticModel_ErrorDialog_Title, message);
-      }
-    });
+  private static void reportError(IStatus status) {
+    StatusManager.getManager().handle(status, StatusManager.BLOCK);
+
+    // Log exception...
+    if (status.getException() != null) {
+      status.getException().printStackTrace();
+    }
+    __logger.error(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.MODEL));
   }
 
   /**
    * @param diagnostic
    */
   private static void reportError(final Diagnostic diagnostic) {
-    final Display display = PlatformUI.getWorkbench().getDisplay();
-    display.syncExec(new Runnable() {
-      @Override
-      public void run() {
-        DiagnosticDialog.openProblem(display.getActiveShell(), Messages.CapellaSessionHelper_SemanticModel_ErrorDialog_Title,
-            "The session cannot be open.", diagnostic); //$NON-NLS-1$
+    IStatus status = Status.OK_STATUS;
+    if (diagnostic.getChildren().isEmpty()) {
+      status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), diagnostic.getMessage());
+
+    } else {
+      status = new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR, diagnostic.getMessage(), null);
+      for (Diagnostic identifier : diagnostic.getChildren()) {
+        ((MultiStatus) status).add(new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.getMessage()));
       }
-    });
+    }
+    reportError(status);
   }
 
   /**
@@ -296,7 +297,8 @@ public class CapellaSessionHelper {
   public static void reportException(Exception exception) {
     String handleLoadingErrors = handleLoadingErrors(exception);
     if (handleLoadingErrors != null) {
-      reportError(handleLoadingErrors);
+      IStatus error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), exception);
+      reportError(error);
     }
   }
 
@@ -306,8 +308,8 @@ public class CapellaSessionHelper {
    */
   public static String handleLoadingErrors(Exception exception) {
     String errorMsg = null;
-    if (exception instanceof WrappedException) {
-      Throwable cause = ((WrappedException) exception).getCause();
+    if (exception instanceof RuntimeException) {
+      Throwable cause = ((RuntimeException) exception).getCause();
       if (cause instanceof FeatureNotFoundException) {
         // we can only get this exception during the migration process. In the usual case (ie no migration) we will get a PackageNotFoundException
         return null;
@@ -335,20 +337,18 @@ public class CapellaSessionHelper {
       if (exception.getMessage().indexOf("org.eclipse.sirius") >= 0) { //$NON-NLS-1$
         errorMsg = Messages.CapellaSessionHelper_Repair_Migrate_Message;
       }
-    } else if (exception instanceof RuntimeException){
+    } else if (exception instanceof RuntimeException) {
       Throwable cause = ((RuntimeException) exception).getCause();
-        if(cause instanceof FeatureNotFoundException){
-          errorMsg = Messages.CapellaSessionHelper_Repair_Migrate_Project_Message;
-        }
+      if (cause instanceof FeatureNotFoundException) {
+        errorMsg = Messages.CapellaSessionHelper_Repair_Migrate_Project_Message;
+      }
     }
-    
+
     // Deal with unknown errors.
     if (null == errorMsg) {
       errorMsg = Messages.CapellaSessionHelper_UnknownError_Message;
     }
-    // Log exception...
-    __logger.debug(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.MODEL));
-    __logger.error(new EmbeddedMessage(errorMsg, IReportManagerDefaultComponents.MODEL));
+
     return errorMsg;
   }
 

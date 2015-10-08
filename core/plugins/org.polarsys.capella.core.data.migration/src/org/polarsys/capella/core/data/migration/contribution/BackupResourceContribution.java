@@ -36,7 +36,6 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
   /*
    * (non-Javadoc)
-   * 
    * @see org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution#dispose()
    */
   @Override
@@ -47,7 +46,6 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
   /**
    * Allow to check conditions before running the migration.
-   * 
    * @param fileToMigrate
    * @return <code>true</code> means OK to run the migration, <code>false</code> otherwise.
    */
@@ -67,9 +65,9 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
         @Override
         public void run() {
 
-          MessageDialogWithToggle dialog = MessageDialogWithToggle.openOkCancelConfirm(context.getShell(),
-              Messages.MigrationAction_ConfirmationDialog_Title, Messages.MigrationAction_ConfirmationDialog_Message,
-              Messages.MigrationAction_ConfirmationDialog_ToggleMessage, true, null, null);
+          MessageDialogWithToggle dialog =
+              MessageDialogWithToggle.openOkCancelConfirm(context.getShell(), Messages.MigrationAction_ConfirmationDialog_Title,
+                  Messages.MigrationAction_ConfirmationDialog_Message, Messages.MigrationAction_ConfirmationDialog_ToggleMessage, true, null, null);
           if (dialog.getReturnCode() != IDialogConstants.OK_ID) {
             result[0] = Status.CANCEL_STATUS;
           }
@@ -88,11 +86,8 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution#preSaveResource(org.polarsys
-   * .capella.common.ef.ExecutionManager, org.eclipse.emf.ecore.resource.Resource,
-   * org.polarsys.capella.core.data.migration.context.MigrationContext)
+   * @see org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution#preSaveResource(org.polarsys .capella.common.ef.ExecutionManager,
+   * org.eclipse.emf.ecore.resource.Resource, org.polarsys.capella.core.data.migration.context.MigrationContext)
    */
   @Override
   public void preSaveResource(ExecutionManager executionManager, Resource resource, MigrationContext context) {
@@ -103,9 +98,7 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
   /**
    * Creates a backup file of the resource.
-   * 
-   * @param resource
-   *          the resource.
+   * @param resource the resource.
    */
   protected void backupResource(Resource resource, IProgressMonitor monitor) {
     if (_backupModels == Boolean.TRUE) {
@@ -123,14 +116,10 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
   /**
    * Creates a backup file.
-   * 
-   * @param file
-   *          the source file.
-   * @param monitor
-   *          a progress monitor.
+   * @param file the source file.
+   * @param monitor a progress monitor.
    * @return backup file
-   * @throws CoreException
-   *           in case of while saving file error.
+   * @throws CoreException in case of while saving file error.
    */
   protected IFile createBackupFile(IFile file, IProgressMonitor monitor) throws CoreException {
     return createBackupFile(file, createTimestamp(), monitor);
@@ -138,23 +127,20 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
   /**
    * Creates a backup file.
-   * 
-   * @param file
-   *          the source file.
-   * @param monitor
-   *          a progress monitor.
+   * @param file the source file.
+   * @param monitor a progress monitor.
    * @return backup file
-   * @throws CoreException
-   *           in case of while saving file error.
+   * @throws CoreException in case of while saving file error.
    */
   protected IFile createBackupFile(IFile file, String timestamp, IProgressMonitor monitor) throws CoreException {
     // Computes a candidate name.
     int lastDotIndex = file.getName().lastIndexOf('.');
     String name = null;
     if (lastDotIndex > 0) {
-      name = file.getName().substring(0, lastDotIndex) + '-' + timestamp + ICommonConstants.POINT_CHARACTER
-          + file.getName().substring(lastDotIndex + ".".length()) //$NON-NLS-1$
-          + ".old"; //$NON-NLS-1$
+      name =
+          file.getName().substring(0, lastDotIndex) + '-' + timestamp + ICommonConstants.POINT_CHARACTER
+              + file.getName().substring(lastDotIndex + ".".length()) //$NON-NLS-1$
+              + ".old"; //$NON-NLS-1$
     } else {
       name = file.getName() + '-' + timestamp + ".old"; //$NON-NLS-1$
     }
@@ -182,7 +168,6 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
   /**
    * Create a timestamp.
-   * 
    * @return a not <code>null</code> string.
    */
   protected String createTimestamp() {

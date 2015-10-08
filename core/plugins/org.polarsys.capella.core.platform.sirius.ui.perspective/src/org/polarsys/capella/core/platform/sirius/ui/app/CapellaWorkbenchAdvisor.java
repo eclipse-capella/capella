@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,13 +27,17 @@ import org.eclipse.core.internal.registry.ExtensionRegistry;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.validation.service.ModelValidationService;
+import org.eclipse.jface.viewers.ILabelDecorator;
+import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.activities.IActivityManager;
 import org.eclipse.ui.activities.ICategory;
 import org.eclipse.ui.activities.IWorkbenchActivitySupport;
@@ -41,8 +45,12 @@ import org.eclipse.ui.activities.WorkbenchActivityHelper;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
+import org.eclipse.ui.internal.WorkbenchMessages;
+import org.eclipse.ui.internal.ide.IDEWorkbenchErrorHandler;
 import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
-
+import org.eclipse.ui.statushandlers.AbstractStatusHandler;
+import org.eclipse.ui.statushandlers.StatusAdapter;
+import org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.advisor.DelegateWorkbenchAdvisor;
@@ -80,6 +88,8 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
    * CapellaVersion Tag used in about.mappings.
    */
   private static final String BUILD_ID_TAG = "BuildId"; //$NON-NLS-1$
+
+  private AbstractStatusHandler ideWorkbenchErrorHandler;
 
   /**
    * @see org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor#createWorkbenchWindowAdvisor(org.eclipse.ui.application.IWorkbenchWindowConfigurer)
@@ -147,13 +157,13 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
     // Disable Sirius Pre-commit listener behavior since Capella has the same one.
     SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, false);
-    // force all workspace operations to be undoable 
+    // force all workspace operations to be undoable
     // That's the easiest way to avoid undo operation on a capella project creation from clipboard (copy/paste).
     IUndoContext workspaceUndoContext = WorkspaceUndoUtil.getWorkspaceUndoContext();
     OperationHistoryFactory.getOperationHistory().setLimit(workspaceUndoContext, 0);
     // Set Capella version env property based on the version of the plug-in that provides the Capella product i.e this current plug-in.
     // Don't use Capella Feature version as it is also used in persistence of semantic models to get something working for both 1.x & 2.x releases.
-    String bundleVersion = ((String) Platform.getProduct().getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
+    String bundleVersion = (Platform.getProduct().getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
     System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, 5));
     System.setProperty(BUILD_ID_TAG, bundleVersion.substring(6));
 
@@ -206,12 +216,12 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     super.postStartup();
     PreferencesHelper.removeEclipseProjectReferences(CapellaPerspective.PERSPECTIVE_ID);
     try {
-   	 //force start of EMF Validation plugin before initializing the default preferences scope
-       ModelValidationService.getInstance().loadXmlConstraintDeclarations();
-       PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
+      // force start of EMF Validation plugin before initializing the default preferences scope
+      ModelValidationService.getInstance().loadXmlConstraintDeclarations();
+      PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
@@ -250,5 +260,69 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     } catch (IllegalAccessException e) {
       e.printStackTrace();
     }
+  }
+
+  /**
+   * Override the default error message to avoid exception message in the main message. (it is already displayed in Details part)
+   */
+  @Override
+  public synchronized AbstractStatusHandler getWorkbenchErrorHandler() {
+    if (ideWorkbenchErrorHandler == null) {
+      ideWorkbenchErrorHandler = new IDEWorkbenchErrorHandler(getWorkbenchConfigurer()) {
+        @Override
+        protected void configureStatusDialog(WorkbenchStatusDialogManager statusDialog) {
+          statusDialog.setMessageDecorator(new ILabelDecorator() {
+
+            @Override
+            public String decorateText(String text, Object element) {
+              // We want to always display WorkbenchMessages.WorkbenchStatusDialog_SeeDetails, not the exception message
+              if (element instanceof StatusAdapter) {
+                if (text != null) {
+                  IStatus status = ((StatusAdapter) element).getStatus();
+                  if (status != null) {
+                    Throwable exception = status.getException();
+                    if ((exception != null) && (exception.getMessage() != null) && (status.getMessage() != null)
+                        && !status.getMessage().equals(exception.getMessage())) {
+                      if (text.equals(status.getException().getMessage())) {
+                        return WorkbenchMessages.WorkbenchStatusDialog_SeeDetails;
+                      }
+                    }
+                  }
+                }
+              }
+              return text;
+            }
+
+            @Override
+            public void removeListener(ILabelProviderListener listener) {
+              // Nothing here
+            }
+
+            @Override
+            public boolean isLabelProperty(Object element, String property) {
+              return false;
+            }
+
+            @Override
+            public void dispose() {
+              // Nothing here
+            }
+
+            @Override
+            public void addListener(ILabelProviderListener listener) {
+              // Nothing here
+            }
+
+            @Override
+            public Image decorateImage(Image image, Object element) {
+              return image;
+            }
+          });
+
+        }
+      };
+
+    }
+    return ideWorkbenchErrorHandler;
   }
 }

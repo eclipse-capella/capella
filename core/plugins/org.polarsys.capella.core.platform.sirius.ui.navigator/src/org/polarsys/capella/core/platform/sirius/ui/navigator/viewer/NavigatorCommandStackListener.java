@@ -29,8 +29,8 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 /**
- * A command stack listener used to retrieve elements created or relevant from the last command triggered on a command stack
- * This listener triggers an event on the registered ICommandStackSelectionProvider
+ * A command stack listener used to retrieve elements created or relevant from the last command triggered on a command stack This listener triggers an event on
+ * the registered ICommandStackSelectionProvider
  */
 public class NavigatorCommandStackListener implements CommandStackListener {
 
@@ -77,7 +77,6 @@ public class NavigatorCommandStackListener implements CommandStackListener {
     }
 
   }
-
   protected void selectionChanged(ISelection selection) {
     _callback.commandStackSelectionChanged(selection);
   }
@@ -151,7 +150,7 @@ public class NavigatorCommandStackListener implements CommandStackListener {
         }
       }
     } else if (mostRecentCommand instanceof RecordingCommand) {
-      //shouldHandleMostRecentCommand = shouldSelectAndReveal(mostRecentCommand);
+      // shouldHandleMostRecentCommand = shouldSelectAndReveal(mostRecentCommand);
     }
     return shouldHandleMostRecentCommand;
   }
