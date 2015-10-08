@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.migration;
+package org.polarsys.capella.patterns.migration.contribution;
 
 import org.eclipse.osgi.util.NLS;
 
@@ -16,16 +16,9 @@ import org.eclipse.osgi.util.NLS;
  * I18n support.
  */
 public class Messages extends NLS {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.migration.messages"; //$NON-NLS-1$
-  public static String ECore2ECoreMigrationAction_Migration_OutOfMemoryError_Title;
-  public static String ECore2ECoreMigrationAction_Migration_OutOfMemoryError_Description;
+  private static final String BUNDLE_NAME = "org.polarsys.capella.patterns.migration.contribution.messages"; //$NON-NLS-1$
 
-  public static String MigrationAction_Title;
-
-  public static String MigrationAction_Command_LoadResources;
-  public static String MigrationAction_Command_SaveResources;
-  public static String MigrationAction_Command_SaveResource;
-  public static String MigrationAction_Command_ProcessingMigration;
+  public static String MigrationAction_PatternMigration;
 
   static {
     // initialize resource bundle

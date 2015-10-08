@@ -36,6 +36,7 @@ import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.IUserEnforcedHelper;
@@ -65,6 +66,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
   public IStatus run(MigrationContext context, boolean checkVersion) {
 
     IStatus result = Status.OK_STATUS;
+    LongRunningListenersRegistry.getInstance().operationStarting(getClass());
 
     result = MigrationHelpers.getInstance().preMigrationExecute(_file, context, checkVersion);
     if (!result.isOK()) {
@@ -128,9 +130,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
   /**
    * Track modifications that set the related resource as modified.<br>
-   * This class is an EContentAdapter instance. Hence, add it to the resource set, will add it automatically to
-   * contained resources in the resource set.
-   * 
+   * This class is an EContentAdapter instance. Hence, add it to the resource set, will add it automatically to contained resources in the resource set.
    */
   class TrackingModificationAdapter extends EContentAdapter {
     /**
@@ -157,22 +157,21 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
       }
 
       switch (notification.getEventType()) {
-      case Notification.SET:
-      case Notification.UNSET:
-      case Notification.MOVE:
-      case Notification.ADD:
-      case Notification.REMOVE:
-      case Notification.ADD_MANY:
-      case Notification.REMOVE_MANY: {
-        setResourceAsModified(resource);
-        break;
-      }
+        case Notification.SET:
+        case Notification.UNSET:
+        case Notification.MOVE:
+        case Notification.ADD:
+        case Notification.REMOVE:
+        case Notification.ADD_MANY:
+        case Notification.REMOVE_MANY: {
+          setResourceAsModified(resource);
+          break;
+        }
       }
     }
 
     /**
      * Set given resource as modified.
-     * 
      * @param resource
      */
     private void setResourceAsModified(Resource resource) {
@@ -188,9 +187,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
   public abstract XMLResource doCreateResource(URI uri, MigrationContext context);
 
   /**
-   * Create a resource factory that delegates capella resource creation to
-   * {@link #doCreateResource(ExecutionManager, URI)}.
-   * 
+   * Create a resource factory that delegates capella resource creation to {@link #doCreateResource(ExecutionManager, URI)}.
    * @return a not <code>null</code> instance.
    */
   protected Registry createLocalResourceFactory(final MigrationContext context) {
@@ -241,14 +238,13 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
   /**
    * This method load all resources into a command
-   * 
    * @param executionManager
    * @param resourceSet
    * @param subProgressMonitor
    * @return
    */
-  protected IStatus performLoadResources(final IFile modelFileToMigrate, final ExecutionManager executionManager,
-      final ResourceSet resourceSet, final MigrationContext context) {
+  protected IStatus performLoadResources(final IFile modelFileToMigrate, final ExecutionManager executionManager, final ResourceSet resourceSet,
+      final MigrationContext context) {
     final IStatus[] result = new IStatus[] { Status.OK_STATUS };
 
     executionManager.execute(new AbstractReadWriteCommand() {
@@ -297,12 +293,10 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
   /**
    * This method calls the sub-method postMigrationExecute into a transaction command
-   * 
    * @param executionManager
    * @param resourceSet
    */
-  protected IStatus performPostMigrationExecute(final ExecutionManager executionManager, final ResourceSet resourceSet,
-      final MigrationContext context) {
+  protected IStatus performPostMigrationExecute(final ExecutionManager executionManager, final ResourceSet resourceSet, final MigrationContext context) {
     final IStatus[] result = new IStatus[] { Status.OK_STATUS };
 
     executionManager.execute(new AbstractReadWriteCommand() {
@@ -322,8 +316,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
           postMigrationExecute(executionManager, resourceSet, context);
           context.getProgressMonitor().worked(1);
         } catch (Exception exception) {
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1,
-              getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
+          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
         } finally {
           context.getProgressMonitor().done();
         }
@@ -337,14 +330,12 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
   /**
    * This method save all required resources into a command
-   * 
    * @param executionManager
    * @param resourceSet
    * @param subProgressMonitor
    * @return
    */
-  protected IStatus performSaveResources(final ExecutionManager executionManager, final ResourceSet resourceSet,
-      final MigrationContext context) {
+  protected IStatus performSaveResources(final ExecutionManager executionManager, final ResourceSet resourceSet, final MigrationContext context) {
     final IStatus[] result = new IStatus[] { Status.OK_STATUS };
     // Run the save operation within another command to make sure validateEdit prompt a dialog to make files writable
     // with an SCM.
@@ -356,8 +347,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
             return;
           }
 
-          context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_SaveResources,
-              resourceSet.getResources().size());
+          context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_SaveResources, resourceSet.getResources().size());
           context.getProgressMonitor().subTask(Messages.MigrationAction_Command_SaveResources);
           // No Error raised, let'save the modified resources.
           for (Resource resource : resourceSet.getResources()) {
@@ -368,8 +358,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
               // EObject as notifier.
               // Without that, files are made writable silently that is not consistent with .melodymodeller migration
               // process.
-              context.getProgressMonitor().subTask(
-                  NLS.bind(Messages.MigrationAction_Command_SaveResource, resource.getURI().toString()));
+              context.getProgressMonitor().subTask(NLS.bind(Messages.MigrationAction_Command_SaveResource, resource.getURI().toString()));
 
               MigrationHelpers.getInstance().preSaveResource(executionManager, resource, context);
 
@@ -381,8 +370,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
           }
 
         } catch (Exception exception) {
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1,
-              getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
+          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
 
         } finally {
           context.getProgressMonitor().done();
@@ -393,8 +381,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
     return result[0];
   }
 
-  protected void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet,
-      MigrationContext context) throws IOException {
+  protected void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) throws IOException {
 
     MigrationHelpers.getInstance().postMigrationExecute(executionManager, resourceSet, context);
 
@@ -429,14 +416,14 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
     // Don't put the unload loop in the dispose of the ED otherwise we will have memory leaks on Sirius session close
     // operation.
     editingDomain.dispose();
-    if ((editingDomain.getCommandStack() != null)
-        && (editingDomain.getCommandStack() instanceof InternalTransactionalCommandStack)) {
+    if ((editingDomain.getCommandStack() != null) && (editingDomain.getCommandStack() instanceof InternalTransactionalCommandStack)) {
       ((InternalTransactionalCommandStack) editingDomain.getCommandStack()).dispose();
     }
     // Finally clear the resource set.
     resources.clear();
 
     MigrationHelpers.getInstance().dispose(executionManager, resourceSet, context);
+    LongRunningListenersRegistry.getInstance().operationEnded(getClass());
   }
 
 }

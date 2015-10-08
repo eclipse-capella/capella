@@ -17,6 +17,8 @@ import java.io.StringWriter;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -95,8 +97,8 @@ import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 /**
  * The Capella common navigator.
  */
-public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPropertySheetPageContributor,
-    ICommandStackSelectionProvider, IPropertyChangeListener {
+public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPropertySheetPageContributor, ICommandStackSelectionProvider,
+    IPropertyChangeListener {
 
   /**
    * Capella common viewer.
@@ -110,7 +112,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
     /**
      * Constructor.
-     * 
      * @param aViewerId
      * @param aParent
      * @param aStyle
@@ -276,7 +277,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   protected class CapellaFilteredTree extends FilteredTree {
     /**
      * Constructor.
-     * 
      * @param parent
      */
     protected CapellaFilteredTree(Composite parent) {
@@ -286,7 +286,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
     /**
      * Constructor.
-     * 
      * @param parent
      * @param treeStyle
      * @param filter
@@ -342,9 +341,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
     /**
      * Create the button that triggers search in description.
-     * 
-     * @param parent
-     *          parent <code>Composite</code> of toolbar button
+     * @param parent parent <code>Composite</code> of toolbar button
      */
     private void createSearchDescriptionButton(Composite parent) {
       IAction searchInDescriptionAction = new Action(ICommonConstants.EMPTY_STRING, IAction.AS_PUSH_BUTTON) {
@@ -360,8 +357,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
         }
       };
       searchInDescriptionAction.setToolTipText(Messages.CapellaCommonNavigator_searchInDescriptionAction_Tooltip);
-      searchInDescriptionAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(
-          IImageKeys.IM_SEARCH_DESCRIPTION));
+      searchInDescriptionAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IM_SEARCH_DESCRIPTION));
       filterToolBar.add(searchInDescriptionAction);
     }
 
@@ -400,8 +396,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     }
 
     /**
-     * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#init(int,
-     *      org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter)
+     * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#init(int, org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter)
      */
     @Override
     protected void init(int treeStyle, PatternFilter filter) {
@@ -440,13 +435,11 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   }
 
   /**
-   * Specific pattern filter for the Capella Navigator to be able to search base on {@link LabelProvider} or on
-   * Description model element attribute.
+   * Specific pattern filter for the Capella Navigator to be able to search base on {@link LabelProvider} or on Description model element attribute.
    */
   protected class CapellaNavigatorPatternFilter extends TreePatternFilter {
     /**
-     * Flag to tell if we are searching in description {@link CapellaElement#getDescription()} rather than label
-     * provider.
+     * Flag to tell if we are searching in description {@link CapellaElement#getDescription()} rather than label provider.
      */
     private boolean _searchInDescription;
 
@@ -512,7 +505,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
     /**
      * Is searching is description.
-     * 
      * @return the searchInDescription
      */
     protected boolean isSearchingInDescription() {
@@ -533,9 +525,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
     /**
      * Set Search in description flag.
-     * 
-     * @param searchInDescription
-     *          the searchInDescription to set
+     * @param searchInDescription the searchInDescription to set
      */
     protected void setSearchInDescription(boolean searchInDescription) {
       _searchInDescription = searchInDescription;
@@ -648,8 +638,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       @Override
       public void propertyChange(PropertyChangeEvent event) {
         String propertyName = event.getProperty();
-        if (CommonPreferencesConstants.PREF_GROUP_ENABLE.equals(propertyName)
-            || CommonPreferencesConstants.PREF_GROUP_TRIGGER.equals(propertyName)
+        if (CommonPreferencesConstants.PREF_GROUP_ENABLE.equals(propertyName) || CommonPreferencesConstants.PREF_GROUP_TRIGGER.equals(propertyName)
             || CommonPreferencesConstants.PREF_GROUP_SIZE.equals(propertyName)) {
           commonViewer.refresh();
         }
@@ -700,8 +689,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       // Iterate over sessions to refresh their UI representations.
       while (iterator.hasNext()) {
         Session session = iterator.next();
-        if (PreferencesHelper.isNonReferencesCapellaProject(event.getSource(),
-            SessionHelper.getCapellaProject(session), session)) {
+        if (PreferencesHelper.isNonReferencesCapellaProject(event.getSource(), SessionHelper.getCapellaProject(session), session)) {
           if (null != _sessionManagerListener) {
             _sessionManagerListener.notifyUpdatedSession(session);
           }
@@ -806,7 +794,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
   /**
    * Return the content provider used by this view.
-   * 
    * @return
    */
   public CapellaNavigatorContentProvider getContentProvider() {
@@ -816,11 +803,9 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     // Get the navigator content service.
     INavigatorContentService navigatorContentService = getCommonViewer().getNavigatorContentService();
     // Get the content extension by id
-    INavigatorContentExtension contentExt = navigatorContentService
-        .getContentExtensionById(CapellaNavigatorContentProvider.CONTENT_EXTENSION_ID);
+    INavigatorContentExtension contentExt = navigatorContentService.getContentExtensionById(CapellaNavigatorContentProvider.CONTENT_EXTENSION_ID);
     ITreeContentProvider contentProvider = contentExt.getContentProvider();
-    _contentProvider = contentProvider instanceof CapellaNavigatorContentProvider ? (CapellaNavigatorContentProvider) contentProvider
-        : null;
+    _contentProvider = contentProvider instanceof CapellaNavigatorContentProvider ? (CapellaNavigatorContentProvider) contentProvider : null;
     return _contentProvider;
   }
 
@@ -833,7 +818,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
   /**
    * Get dialog settings for this view.
-   * 
    * @return
    */
   private IDialogSettings getDialogSettingsSection() {
@@ -849,7 +833,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
   /**
    * Return the pattern filter.
-   * 
    * @return the patternFilter
    */
   protected CapellaNavigatorPatternFilter getPatternFilter() {
@@ -990,7 +973,13 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    */
   @Override
   public void commandStackSelectionChanged(ISelection selection) {
-    selectReveal(selection);
+    boolean enabled = true;
+    if (selection instanceof IStructuredSelection) {
+      TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(((IStructuredSelection) selection).getFirstElement());
+      enabled = ActiveSessionManager.getInstance().isEnabledContentNotifications(domain);
+    }
+    if (enabled) {
+      selectReveal(selection);
+    }
   }
-
 }

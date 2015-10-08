@@ -14,6 +14,7 @@ package org.polarsys.capella.patterns.migration.contribution;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.diffmerge.patterns.repositories.catalogs.PatternCatalogResourceHelper;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.MigrationRunnable;
 import org.polarsys.capella.core.data.migration.capella.ModelMigrationRunnable;
@@ -28,6 +29,7 @@ public class PatternsMigrationContributor extends AbstractMigrationContributor {
    * @param member
    * @return
    */
+  @Override
   public boolean isValidResource(IResource member) {
     return PatternCatalogResourceHelper.isPatternCatalogResource(member);
   }
@@ -38,8 +40,13 @@ public class PatternsMigrationContributor extends AbstractMigrationContributor {
   }
 
   @Override
-  public MigrationRunnable getRunnable(IFile file) {
-    return new ModelMigrationRunnable(file);
+  public MigrationRunnable getRunnable(final IFile file) {
+    return new ModelMigrationRunnable(file) {
+      @Override
+      public String getName() {
+        return NLS.bind(Messages.MigrationAction_PatternMigration, getFile().getName());
+      }
+    };
   }
 
 }
