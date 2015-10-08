@@ -138,8 +138,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         IStatus status =
             new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$
         failedOpeningSessions.put(selectedFile, status);
-        logger.debug(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.UI));
-        CapellaSessionHelper.reportException(ex);
+        CapellaSessionHelper.reportError(status);
 
       } finally {
         // Notify action listeners

@@ -264,7 +264,8 @@ public class CapellaSessionHelper {
   /**
    * @param message
    */
-  private static void reportError(IStatus status) {
+  public static void reportError(IStatus status) {
+    StatusManager.getManager().handle(status, StatusManager.LOG);
     StatusManager.getManager().handle(status, StatusManager.BLOCK);
 
     // Log exception...
