@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.testsuites.main;
+package org.polarsys.capella.test.libraries.ju.testsuites.main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,28 +17,24 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecomposition;
-import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
-import org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite;
+import org.polarsys.capella.test.libraries.ju.testsuites.partial.LibrariesBasicTestSuite;
 
 /**
  * @author Hakim Sellou
  */
-public class ModelTestSuite extends BasicTestSuite {
+public class LibrariesTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new ModelTestSuite();
+    return new LibrariesTestSuite();
   }
 
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new LCDecomposition());
-    tests.add(new ISMessage());
-    tests.add(new DetachTestSuite());
+    tests.add(new LibrariesBasicTestSuite());
     return tests;
   }
 

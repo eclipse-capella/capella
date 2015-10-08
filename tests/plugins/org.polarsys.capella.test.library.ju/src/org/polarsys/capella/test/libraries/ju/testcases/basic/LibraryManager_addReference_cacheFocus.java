@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.testcases.libraries;
+package org.polarsys.capella.test.libraries.ju.testcases.basic;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,16 +18,17 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.helpers.SessionHelper;
 
 /**
  * @author Erwan Brottier
  */
-public class LibraryManager_removeReferenceToLibrary extends BasicTestCase {
+public class LibraryManager_addReference_cacheFocus extends BasicTestCase {
 
   @SuppressWarnings("nls")
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("libraries/MyProject1", "libraries/MyLibrary1");
+    return Arrays.asList("libraries/MyProject1", "libraries/MyLibrary1", "libraries/MyLibrary2", "libraries/MyLibrary3");
   }
 
   @SuppressWarnings("nls")
@@ -36,12 +37,30 @@ public class LibraryManager_removeReferenceToLibrary extends BasicTestCase {
     // -- SCENARIO -- //
     CapellaModel monProjet1 = getTestModel("libraries/MyProject1");
     CapellaModel maLibrairie1 = (CapellaModel) getTestModel("libraries/MyLibrary1");
-    monProjet1.addReference(maLibrairie1);
+    CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MyLibrary2");
+    CapellaModel maLibrairie3 = (CapellaModel) getTestModel("libraries/MyLibrary3");
     // -- ORACLE -- //
-    monProjet1.removeReference(maLibrairie1);
+    monProjet1.addReference(maLibrairie1);
+    SessionHelper.saveSession(monProjet1);
+    maLibrairie2.addReference(maLibrairie3);
+    SessionHelper.saveSession(maLibrairie2);
     Collection<IModel> libs = monProjet1.getAvailableReferences();
-    assertTrue(libs.size() == 0);
+    assertTrue(libs.size() == 1);
+    assertTrue(libs.contains(maLibrairie1));
+    libs = maLibrairie2.getAvailableReferences();
+    assertTrue(libs.size() == 1);
+    assertTrue(libs.contains(maLibrairie3));
+    maLibrairie1.addReference(maLibrairie2);
+    SessionHelper.saveSession(maLibrairie1);
+    libs = LibraryManagerExt.getAllReferences(maLibrairie1);
+    assertTrue(libs.size() == 2);
+    assertTrue(libs.contains(maLibrairie2));
+    assertTrue(libs.contains(maLibrairie3));
     libs = LibraryManagerExt.getAllReferences(monProjet1);
-    assertTrue(libs.size() == 0);
+    assertTrue(libs.size() == 3);
+    assertTrue(libs.contains(maLibrairie1));
+    assertTrue(libs.contains(maLibrairie2));
+    assertTrue(libs.contains(maLibrairie3));
   }
+
 }

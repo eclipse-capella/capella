@@ -19,6 +19,7 @@ import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQue
 import org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
 import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
@@ -43,6 +44,7 @@ public class CompleteTestSuite extends BasicTestSuite {
 		tests.add(new BusinessQueryTestSuite());
     tests.add(new ValidationRulesTestSuite());
     tests.add(new ModelTestSuite());
+    tests.add(new LibrariesTestSuite());
     tests.add(new AllRefinementTestSuites());
     tests.add(new TransitionTestSuite());
     tests.add(new RecRplTestSuite());

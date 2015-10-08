@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.testcases.libraries;
+package org.polarsys.capella.test.libraries.ju.testcases.basic;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ import org.polarsys.capella.test.framework.api.BasicTestCase;
 /**
  * @author Erwan Brottier
  */
-public class LibraryManager_isActiveLibrary extends BasicTestCase {
+public class LibraryManager_canReference extends BasicTestCase {
 
   @SuppressWarnings("nls")
   @Override
@@ -32,15 +32,11 @@ public class LibraryManager_isActiveLibrary extends BasicTestCase {
   public void test() {
     // -- SCENARIO -- //
     CapellaModel monProjet1 = getTestModel("libraries/MyProject1");
-    CapellaModel maLibrairie1 = (CapellaModel) getTestModel("libraries/MyLibrary1");
-    CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MyLibrary2");
+    CapellaModel maLibrairie1 = getTestModel("libraries/MyLibrary1");
+    CapellaModel maLibrairie2 = getTestModel("libraries/MyLibrary2");
     // -- ORACLE -- //
-    maLibrairie2.setActive(monProjet1, false);
-    assertFalse(maLibrairie2.isActive(monProjet1));
-    maLibrairie2.setActive(maLibrairie1, false);
-    assertFalse(maLibrairie2.isActive(maLibrairie1));
-    maLibrairie2.setActive(monProjet1, true);
-    assertTrue(maLibrairie2.isActive(monProjet1));
-    assertFalse(maLibrairie2.isActive(maLibrairie1));
+    assertTrue(monProjet1.canReference(maLibrairie1));
+    assertTrue(monProjet1.canReference(maLibrairie2));
+    assertTrue(!monProjet1.canReference(monProjet1));
   }
 }

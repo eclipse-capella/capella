@@ -8,20 +8,18 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.testcases.libraries;
+package org.polarsys.capella.test.libraries.ju.testcases.basic;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.polarsys.capella.common.libraries.ILibraryManager;
-import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 /**
  * @author Erwan Brottier
  */
-public class CapellaModel_unicity extends BasicTestCase {
+public class LibraryManager_isLibrary extends BasicTestCase {
 
   @SuppressWarnings("nls")
   @Override
@@ -37,15 +35,8 @@ public class CapellaModel_unicity extends BasicTestCase {
     CapellaModel maLibrairie1 = getTestModel("libraries/MyLibrary1");
     CapellaModel maLibrairie2 = getTestModel("libraries/MyLibrary2");
     // -- ORACLE -- //
-    testIModelEquivalence(monProjet1);
-    testIModelEquivalence(maLibrairie1);
-    testIModelEquivalence(maLibrairie2);
-  }
-  
-  private void testIModelEquivalence(CapellaModel model1) {
-  	CapellaModel model2 = (CapellaModel) ILibraryManager.INSTANCE.getModel(model1.getProject(model1.getEditingDomain()));
-  	Project p1 = model1.getProject(model1.getEditingDomain());
-  	Project p2 = model2.getProject(model2.getEditingDomain());
-  	assertTrue(p1 == p2);
+    assertTrue(!monProjet1.isLibrary());
+    assertTrue(maLibrairie1.isLibrary());
+    assertTrue(maLibrairie2.isLibrary());
   }
 }

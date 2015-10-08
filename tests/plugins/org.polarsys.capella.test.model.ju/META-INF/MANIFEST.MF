@@ -24,7 +24,6 @@ Export-Package: org.polarsys.capella.test.model.ju,
  org.polarsys.capella.test.model.ju.testcases.delete,
  org.polarsys.capella.test.model.ju.testcases.interfacescenario.message,
  org.polarsys.capella.test.model.ju.testcases.intermodelInconsistencies,
- org.polarsys.capella.test.model.ju.testcases.libraries,
  org.polarsys.capella.test.model.ju.testsuites,
  org.polarsys.capella.test.model.ju.testsuites.main,
  org.polarsys.capella.test.model.ju.testsuites.partial
