@@ -8,18 +8,20 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.testcases.libraries;
+package org.polarsys.capella.test.libraries.ju.testcases.basic;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 /**
  * @author Erwan Brottier
  */
-public class LibraryManager_isLibrary extends BasicTestCase {
+public class LibraryManager_getReferencedLibraries extends BasicTestCase {
 
   @SuppressWarnings("nls")
   @Override
@@ -34,9 +36,12 @@ public class LibraryManager_isLibrary extends BasicTestCase {
     CapellaModel monProjet1 = getTestModel("libraries/MyProject1");
     CapellaModel maLibrairie1 = getTestModel("libraries/MyLibrary1");
     CapellaModel maLibrairie2 = getTestModel("libraries/MyLibrary2");
+    monProjet1.addReference(maLibrairie1);
+    monProjet1.addReference(maLibrairie2);
     // -- ORACLE -- //
-    assertTrue(!monProjet1.isLibrary());
-    assertTrue(maLibrairie1.isLibrary());
-    assertTrue(maLibrairie2.isLibrary());
+    Collection<IModel> libs = monProjet1.getAvailableReferences();
+    assertTrue(libs.size() == 2);
+    assertTrue(libs.contains(maLibrairie1));
+    assertTrue(libs.contains(maLibrairie2));
   }
 }

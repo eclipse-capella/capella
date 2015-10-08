@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.testcases.libraries;
+package org.polarsys.capella.test.libraries.ju.testcases.basic;
 
 import java.util.Arrays;
 import java.util.Collection;
