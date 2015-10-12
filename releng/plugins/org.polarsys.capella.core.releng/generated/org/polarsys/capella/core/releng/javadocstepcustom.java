@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150608-0917
+//Generated with EGF 1.2.0.v20150211-1405
 package org.polarsys.capella.core.releng;
 
 import org.eclipse.egf.common.helper.*;
@@ -12,7 +12,8 @@ import org.eclipse.egf.portfolio.eclipse.build.buildstep.*;
 import org.eclipse.egf.portfolio.eclipse.build.buildscm.*;
 
 public class javadocstepcustom
-		extends org.eclipse.egf.portfolio.eclipse.build.buckminster.additions.buildxmljavadocStep {
+		extends
+		org.eclipse.egf.portfolio.eclipse.build.buckminster.additions.buildxmljavadocStep {
 	protected static String nl;
 
 	public static synchronized javadocstepcustom create(String lineSeparator) {
@@ -22,21 +23,30 @@ public class javadocstepcustom
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
+	public final String NL = nl == null ? (System.getProperties()
+			.getProperty("line.separator")) : nl;
 	protected final String TEXT_1 = "\t<target name=\"";
-	protected final String TEXT_2 = "\">" + NL + "\t\t<delete dir=\"${result}/javadoc\" />" + NL + "\t\t<javadoc" + NL
-			+ "\t\t\tdestdir=\"${result}/javadoc\"" + NL + "\t\t\tmaxmemory=\"1024m\"" + NL + "\t\t\tsource=\"1.5\""
-			+ NL + "\t\t\tuseexternalfile=\"true\"" + NL + "\t\t\tauthor=\"true\"" + NL + "\t\t\tversion=\"true\"" + NL
-			+ "\t\t\tuse=\"true\"" + NL + "\t\t\twindowtitle=\"Javadoc\">" + NL;
-	protected final String TEXT_3 = " " + NL + "\t\t<link offline=\"false\" href=\"";
+	protected final String TEXT_2 = "\">" + NL
+			+ "\t\t<delete dir=\"${result}/javadoc\" />" + NL + "\t\t<javadoc"
+			+ NL + "\t\t\tdestdir=\"${result}/javadoc\"" + NL
+			+ "\t\t\tmaxmemory=\"1024m\"" + NL + "\t\t\tsource=\"1.5\"" + NL
+			+ "\t\t\tuseexternalfile=\"true\"" + NL + "\t\t\tauthor=\"true\""
+			+ NL + "\t\t\tversion=\"true\"" + NL + "\t\t\tuse=\"true\"" + NL
+			+ "\t\t\twindowtitle=\"Javadoc\">" + NL;
+	protected final String TEXT_3 = " " + NL
+			+ "\t\t<link offline=\"false\" href=\"";
 	protected final String TEXT_4 = "\"/>";
-	protected final String TEXT_5 = NL + NL + "<!-- TODO better handling of dir parameter -->" + NL
+	protected final String TEXT_5 = NL
+			+ NL
+			+ "<!-- TODO better handling of dir parameter -->"
+			+ NL
 			+ "<!-- TODO better handling of SourceBuildLocation model extension -->";
 	protected final String TEXT_6 = NL;
 	protected final String TEXT_7 = NL + "\t\t<fileset dir=\"";
 	protected final String TEXT_8 = "\" defaultexcludes=\"true\">";
 	protected final String TEXT_9 = NL;
-	protected final String TEXT_10 = NL + "\t\t<fileset dir=\"${build.root}/svn/";
+	protected final String TEXT_10 = NL
+			+ "\t\t<fileset dir=\"${build.root}/svn/";
 	protected final String TEXT_11 = "/";
 	protected final String TEXT_12 = "\" defaultexcludes=\"true\">";
 	protected final String TEXT_13 = NL;
@@ -45,8 +55,10 @@ public class javadocstepcustom
 	protected final String TEXT_16 = " " + NL + "\t\t\t<exclude name=\"";
 	protected final String TEXT_17 = "\"/>";
 	protected final String TEXT_18 = NL + "\t\t</fileset>";
-	protected final String TEXT_19 = NL + NL + "<!-- TODO better handling of copyright (escape chars) -->" + NL
-			+ "<!-- <bottom>copyright</bottom> -->" + NL + "\t</javadoc>" + NL + "</target>" + NL + NL;
+	protected final String TEXT_19 = NL + NL
+			+ "<!-- TODO better handling of copyright (escape chars) -->" + NL
+			+ "<!-- <bottom>copyright</bottom> -->" + NL + "\t</javadoc>" + NL
+			+ "</target>" + NL + NL;
 	protected final String TEXT_20 = NL;
 	protected final String TEXT_21 = NL;
 
@@ -69,8 +81,8 @@ public class javadocstepcustom
 		paramDesc = new IQuery.ParameterDescription("javadocStep",
 				"http://www.eclipse.org/egf/1.0.2/buildstep#//JavadocStep");
 		queryCtx = new HashMap<String, String>();
-		List<Object> javadocStepList = QueryHelper
-				.load(ctx, "org.eclipse.egf.pattern.query.EObjectInjectedContextQuery")
+		List<Object> javadocStepList = QueryHelper.load(ctx,
+				"org.eclipse.egf.pattern.query.EObjectInjectedContextQuery")
 				.execute(paramDesc, queryCtx, ctx);
 
 		for (Object javadocStepParameter : javadocStepList) {
@@ -85,7 +97,8 @@ public class javadocstepcustom
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(
+					OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_20);
@@ -103,7 +116,8 @@ public class javadocstepcustom
 			parameterValues.put("javadocStep", this.javadocStep);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
+					parameterValues);
 		}
 		return null;
 	}
@@ -114,10 +128,12 @@ public class javadocstepcustom
 		return parameters;
 	}
 
-	protected void method_body(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
+	protected void method_body(final StringBuffer stringBuffer,
+			final PatternContext ctx) throws Exception {
 
 		stringBuffer.append(TEXT_1);
-		stringBuffer.append(new GenerationHelper().getNameOrGeneratedIdString(javadocStep));
+		stringBuffer.append(new GenerationHelper()
+				.getNameOrGeneratedIdString(javadocStep));
 		stringBuffer.append(TEXT_2);
 		for (String linkString : javadocStep.getLinks()) {
 			stringBuffer.append(TEXT_3);
@@ -129,13 +145,15 @@ public class javadocstepcustom
 			stringBuffer.append(TEXT_6);
 			if (sourceLocation instanceof LocalBuildLocation) {
 				stringBuffer.append(TEXT_7);
-				stringBuffer.append(((LocalBuildLocation) sourceLocation).getPath());
+				stringBuffer.append(((LocalBuildLocation) sourceLocation)
+						.getPath());
 				stringBuffer.append(TEXT_8);
 			}
 			stringBuffer.append(TEXT_9);
 			if (sourceLocation instanceof SVNBuildLocation) {
 				SVNBuildLocation svnBuildLocation = (SVNBuildLocation) sourceLocation;
-				SVNLocation svnLocation = (SVNLocation) svnBuildLocation.getSvnLocation();
+				SVNLocation svnLocation = (SVNLocation) svnBuildLocation
+						.getSvnLocation();
 				stringBuffer.append(TEXT_10);
 				stringBuffer.append(svnLocation.getLocalPath());
 				stringBuffer.append(TEXT_11);
@@ -157,6 +175,7 @@ public class javadocstepcustom
 		}
 		stringBuffer.append(TEXT_19);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "body", stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "body",
+				stringBuffer.toString());
 	}
 }
