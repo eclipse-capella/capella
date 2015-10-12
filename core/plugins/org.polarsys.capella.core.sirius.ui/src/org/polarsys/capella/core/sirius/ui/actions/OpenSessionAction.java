@@ -56,7 +56,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
   /**
    * Should open Activity Explorer ?
    */
-  private boolean shouldOpenActivityExplorer;
+  private static boolean shouldOpenActivityExplorer;
   /**
    * Whether or not this action should be ran within a progress service runnable ?
    */
@@ -241,14 +241,15 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
       public void run() {
         try {
           IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-          if (session.isOpen()) {
-            activePage.openEditor(new ActivityExplorerEditorInput(session, SessionHelper.getCapellaProject(session)), ACTIVITY_EXPLORER_EDITOR);
+          if (session.isOpen() || shouldOpenActivityExplorer) {
+            activePage.openEditor(new ActivityExplorerEditorInput(session, SessionHelper.getCapellaProject(session)),
+                ACTIVITY_EXPLORER_EDITOR);
           }
           result[0] = true;
-        } catch (PartInitException exception_p) {
+        } catch (PartInitException exception) {
           StringBuilder loggerMessage = new StringBuilder(".run(..) _ Activity Explorer not Found."); //$NON-NLS-1$
-          loggerMessage.append(exception_p.getMessage());
-          logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception_p);
+          loggerMessage.append(exception.getMessage());
+          logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception);
         }
       }
     };
