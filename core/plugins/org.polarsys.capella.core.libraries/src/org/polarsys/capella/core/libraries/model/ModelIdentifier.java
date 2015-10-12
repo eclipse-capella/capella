@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,21 +19,21 @@ public class ModelIdentifier implements IModelIdentifier {
 
   URI uri = null;
 
-  public ModelIdentifier(String identifier_p, URI uri_p) {
+  public ModelIdentifier(String paramIdentifier, URI paramUri) {
     super();
-    identifier = identifier_p;
-    uri = uri_p;
+    this.identifier = paramIdentifier;
+    this.uri = paramUri;
   }
 
   @Override
   public int hashCode() {
     return uri.hashCode();
   }
-  
+
   @Override
-  public boolean equals(Object object_p) {
-    if (object_p instanceof ModelIdentifier) {
-      return uri.equals(((ModelIdentifier) object_p).uri);
+  public boolean equals(Object object) {
+    if (object instanceof ModelIdentifier) {
+      return uri.equals(((ModelIdentifier) object).uri);
     }
     return false;
   }
@@ -49,7 +49,7 @@ public class ModelIdentifier implements IModelIdentifier {
 
   @Override
   public String toString() {
-    return uri.toPlatformString(false);
+    return uri.toString();
   }
 
   @Override
