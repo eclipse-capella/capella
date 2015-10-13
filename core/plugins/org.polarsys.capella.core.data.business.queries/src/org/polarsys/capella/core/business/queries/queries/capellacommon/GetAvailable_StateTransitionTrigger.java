@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -25,9 +26,9 @@ import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
-import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -40,8 +41,7 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) {
     List<Object> availableElements = getAvailableElements(input, context);
     CapellaElement inputElement = (CapellaElement) input;
-    List<CapellaElement> currentElements = QueryInterpretor.executeQuery(
-        "GetCurrent_StateTransitionTrigger", input, context);//$NON-NLS-1$
+    List<CapellaElement> currentElements = QueryInterpretor.executeQuery("GetCurrent_StateTransitionTrigger", input, context);//$NON-NLS-1$
     availableElements.removeAll(currentElements);
     return availableElements;
   }
@@ -61,13 +61,9 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
         }
       }
     }
-    EObject eContainer = inputElement.eContainer();
-    if (eContainer != null) {
-      while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
-        eContainer = eContainer.eContainer();
-      }
-
-      if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)) {
+    if ((inputElement instanceof StateTransition)) {
+      EObject eContainer = EcoreUtil2.getFirstContainer(inputElement, CsPackage.Literals.COMPONENT);
+      if (eContainer != null) {
         availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
       }
     }
