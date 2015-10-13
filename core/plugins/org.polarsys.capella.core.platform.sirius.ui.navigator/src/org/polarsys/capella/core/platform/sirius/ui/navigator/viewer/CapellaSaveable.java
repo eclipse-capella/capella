@@ -127,12 +127,18 @@ public class CapellaSaveable extends SessionSaveable {
    */
   @Override
   public boolean isDirty() {
-    Session currentSession = getSession();
-    if (currentSession != null) {
-      if (SessionManager.INSTANCE.getSessions().contains(currentSession)) {
-        return SessionStatus.DIRTY.equals(getSession().getStatus());
+
+    if (ActiveSessionManager.getInstance().isEnabledContentNotifications(
+        this.getSession().getTransactionalEditingDomain())) {
+
+      Session currentSession = getSession();
+      if (currentSession != null) {
+        if (SessionManager.INSTANCE.getSessions().contains(currentSession)) {
+          return SessionStatus.DIRTY.equals(getSession().getStatus());
+        }
       }
     }
+    
     return false;
   }
 }
