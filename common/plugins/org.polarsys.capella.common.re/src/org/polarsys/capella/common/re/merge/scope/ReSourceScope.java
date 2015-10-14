@@ -51,6 +51,10 @@ public class ReSourceScope extends ReScope {
     // if values is not empty
     if (!values.isEmpty()) {
 
+      if (!attribute.equals(AttributesHandlerHelper.getInstance(context).getSuffixableFeature(source, context))) {
+        return values;
+      }
+
       // if this command is update RPL from REC:
       String commandValue = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
       if (IReConstants.COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE.equals(commandValue)

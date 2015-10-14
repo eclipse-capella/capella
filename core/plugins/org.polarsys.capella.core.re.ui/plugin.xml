@@ -64,7 +64,7 @@
         
       </bindings>
             
-      <bindings properties="org.polarsys.capella.common.re.updateReplica">
+      <bindings properties="org.polarsys.capella.core.re.updateReplica">
       
         <propertyBinding 
             property="targetContentLocation"
