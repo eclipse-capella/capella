@@ -130,7 +130,11 @@ public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements
       for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
         if (project.isOpen()) {
           for (IModelIdentifier identifier : getModels(project)) {
-            _modelIds.add(identifier);
+            // FIXME in some cases (not systematic), it seems that '_modelIds' can be cleared by another thread...
+            // needs a deeper analysis to understand why
+            if (_modelIds != null) {
+              _modelIds.add(identifier);
+            }
           }
         }
       }
