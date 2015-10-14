@@ -139,10 +139,9 @@ public class AirdCommonActionProvider extends CommonActionProvider {
         // if the aird selected is not inside a Capella project, we don't open the dashboard
         if(!ProjectUtils.isProjectOfType(airdFile.getProject(), Arrays.asList(CapellaNature.ID, LibraryNature.ID))){
           openSessionAction.setOpenActivityExplorer(false);
-        }else{
-          openSessionAction.setOpenActivityExplorer(true);
-        }
-        
+        } else {
+        	boolean toOpen = org.eclipse.amalgam.explorer.activity.ui.api.actions.OpenSessionAction.getActivityExplorerPreference();
+        	openSessionAction.setOpenActivityExplorer(toOpen);        }
       }
     }
     openSessionAction.setEnabled(canOpen);

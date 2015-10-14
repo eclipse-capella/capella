@@ -15,15 +15,18 @@ import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 
 /**
  * Migration Job.
- * 
  */
 public class MigrationJob extends WorkspaceJob {
+
+  public static final QualifiedName RESULT_PROPERTY = new QualifiedName(Activator.PLUGIN_ID, "result"); //$NON-NLS-1$
+
   /**
    * Model file to migrate.
    */
@@ -63,7 +66,11 @@ public class MigrationJob extends WorkspaceJob {
         }
       }
 
-      return result;
+      // According to context.isSkipConfirmation(), we want to display or not the returned IStatus.
+      // If a job is returning an IStatus.ERROR, the message will be automatically displayed without a StatusManager.BLOCK state
+      // so we need to return an OK_STATUS and display it (or not) later (see MigrationJobScheduler.logStatus)
+      setProperty(RESULT_PROPERTY, result);
+      return Status.OK_STATUS;
 
     } finally {
       monitor.done();

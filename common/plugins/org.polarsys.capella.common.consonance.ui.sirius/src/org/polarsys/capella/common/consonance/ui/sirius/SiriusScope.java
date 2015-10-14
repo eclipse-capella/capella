@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,34 +44,34 @@ public class SiriusScope extends GMFScope {
   
   /**
    * Constructor
-   * @param uri_p a non-null URI
-   * @param domain_p a non-null editing domain
-   * @param readOnly_p whether the scope is read-only
+   * @param uri a non-null URI
+   * @param domain a non-null editing domain
+   * @param readOnly whether the scope is read-only
    */
-  public SiriusScope(URI uri_p, EditingDomain editingDomain_p, boolean readOnly_p) {
-    super(uri_p, editingDomain_p, readOnly_p);
+  public SiriusScope(URI uri, EditingDomain domain, boolean readOnly) {
+    super(uri, domain, readOnly);
   }
   
   /**
    * Constructor
-   * @param uri_p a non-null URI
-   * @param resourceSet_p a non-null resource set
-   * @param readOnly_p whether the scope is read-only
+   * @param uri a non-null URI
+   * @param resourceSet a non-null resource set
+   * @param readOnly whether the scope is read-only
    */
-  public SiriusScope(URI uri_p, ResourceSet resourceSet_p, boolean readOnly_p) {
-    super(uri_p, resourceSet_p, readOnly_p);
+  public SiriusScope(URI uri, ResourceSet resourceSet, boolean readOnly) {
+    super(uri, resourceSet, readOnly);
   }
   
   /**
    * @see org.eclipse.emf.diffmerge.impl.scopes.FragmentedModelScope#getCrossReferencesInScope(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected Collection<EReference> getCrossReferencesInScope(EObject element_p) {
-    Collection<EReference> result = super.getCrossReferencesInScope(element_p);
-    if (element_p instanceof DSemanticDecorator) {
+  protected Collection<EReference> getCrossReferencesInScope(EObject element) {
+    Collection<EReference> result = super.getCrossReferencesInScope(element);
+    if (element instanceof DSemanticDecorator) {
       // From Viewpoint to semantic
       result.add(ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target());
-    } else if (element_p instanceof DAnalysis) {
+    } else if (element instanceof DAnalysis) {
       // From Viewpoint analysis to referenced AIRD fragments
       result.add(ViewpointPackage.eINSTANCE.getDAnalysis_ReferencedAnalysis());
       // From Viewpoint analysis to semantic models
@@ -81,31 +81,31 @@ public class SiriusScope extends GMFScope {
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.FragmentedModelScope.MultiResourceModelScope#isSuitableFor(Resource, EObject)
+   * @see org.eclipse.emf.diffmerge.impl.scopes.FragmentedModelScope#isSuitableFor(org.eclipse.emf.ecore.resource.Resource, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected boolean isSuitableFor(Resource resource_p, EObject root_p) {
-    boolean result = isViewpointResource(resource_p) == isViewpointElement(root_p);
+  protected boolean isSuitableFor(Resource resource, EObject root) {
+    boolean result = isViewpointResource(resource) == isViewpointElement(root);
     return result;
   }
   
   /**
    * Return whether the given element can be included in a Viewpoint resource
-   * @param element_p a non-null element
+   * @param element a non-null element
    */
-  protected boolean isViewpointElement(EObject element_p) {
-    EPackage pack = element_p.eClass().getEPackage();
+  protected boolean isViewpointElement(EObject element) {
+    EPackage pack = element.eClass().getEPackage();
     return VIEWPOINT_PACKAGES.contains(pack);
   }
   
   /**
    * Return whether the given resource is a Viewpoint model or model fragment
-   * @param resource_p a non-null resource
+   * @param resource a non-null resource
    */
-  protected boolean isViewpointResource(Resource resource_p) {
+  protected boolean isViewpointResource(Resource resource) {
     boolean result = false;
-    if (resource_p.getURI() != null) {
-      String extension = resource_p.getURI().fileExtension();
+    if (resource.getURI() != null) {
+      String extension = resource.getURI().fileExtension();
       if (extension != null) {
         extension = extension.toLowerCase();
         result = SiriusScopeFactory.VIEWPOINT_FILE_EXTENSIONS.contains(extension);

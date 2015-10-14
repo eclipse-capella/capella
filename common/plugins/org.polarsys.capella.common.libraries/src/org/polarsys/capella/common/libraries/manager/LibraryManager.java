@@ -89,7 +89,7 @@ public class LibraryManager extends ILibraryManager implements ILibraryProviderL
   }
 
   @Override
-  public void onLibraryProviderChanged(ILibraryProviderEvent event) {
+  public void onLibraryProviderChanged(LibraryProviderEvent event) {
     // We should clear cache (maybe we could do less)
     _models = null;
     _modelsPerDomain = null;

@@ -28,7 +28,7 @@
    </license>
 
    <requires>
-      <import feature="org.polarsys.capella.core.data.merged.feature" version="0.8.0" match="greaterOrEqual"/>
+      <import feature="org.polarsys.capella.core.data.merged.feature"/>
    </requires>
 
    <plugin

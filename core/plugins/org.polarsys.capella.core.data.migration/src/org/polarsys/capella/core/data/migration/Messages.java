@@ -14,7 +14,6 @@ import org.eclipse.osgi.util.NLS;
 
 /**
  * I18n support.
- * 
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.migration.messages"; //$NON-NLS-1$
@@ -22,10 +21,6 @@ public class Messages extends NLS {
   public static String ECore2ECoreMigrationAction_Migration_OutOfMemoryError_Description;
 
   public static String MigrationAction_Title;
-
-  public static String MigrationAction_ErrorDialog_TooOldMessage;
-  public static String MigrationAction_ErrorDialog_CorruptedMessage;
-  public static String MigrationAction_ErrorDialog_LibrariesNotMigratedMessage;
 
   public static String MigrationAction_Command_LoadResources;
   public static String MigrationAction_Command_SaveResources;

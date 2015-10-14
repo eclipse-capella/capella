@@ -20,7 +20,6 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecomposition;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
 import org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite;
-import org.polarsys.capella.test.model.ju.testsuites.partial.LibrariesTestSuite;
 
 /**
  * @author Hakim Sellou
@@ -40,7 +39,6 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new LCDecomposition());
     tests.add(new ISMessage());
     tests.add(new DetachTestSuite());
-    tests.add(new LibrariesTestSuite());
     return tests;
   }
 

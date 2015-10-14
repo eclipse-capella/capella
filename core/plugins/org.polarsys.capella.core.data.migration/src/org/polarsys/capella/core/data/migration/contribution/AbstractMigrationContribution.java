@@ -149,7 +149,7 @@ public class AbstractMigrationContribution implements IMigrationContribution {
 
   }
 
-  public String getHandleProxy(InternalEObject proxy, String uriLiteral, Resource resource, MigrationContext context) {
+  public String getHandleProxy(InternalEObject proxy, String uriLiteral, Resource resource, XMLHelper helper, MigrationContext context) {
     return null;
   }
 

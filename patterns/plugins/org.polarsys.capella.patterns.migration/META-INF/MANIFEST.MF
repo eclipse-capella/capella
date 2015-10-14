@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Capella Migration
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.patterns.migration; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.migration.Activator
@@ -26,3 +26,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.polarsys.capella.patterns.migration
+Bundle-Vendor: %providerName

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,8 +81,11 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
     } else if (element_p instanceof DRepresentationContainer) {
       DRepresentationContainer representationContainer = (DRepresentationContainer)element_p;
       Viewpoint viewpoint = representationContainer.getViewpoint();
-      if (viewpoint != null)
-        result = viewpoint.getName();
+      if (viewpoint != null) {
+        result = viewpoint.getLabel();
+        if (result == null)
+          result = viewpoint.getName();
+      }
     } else if (element_p instanceof DRepresentationElement) {
       result = getRepresentationElementText((DRepresentationElement)element_p);
     } else if (element_p instanceof NodeStyle) {

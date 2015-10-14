@@ -22,10 +22,9 @@ import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
- * This class is a IEditingDomainListener which redirect required events on registered ICommandStackSelectionProvider and INotifyChangedListener
- * 
- * On created editing domain, it create a NavigatorCommandStackListener on it and a NavigatorModelDataListener on its DataNotifier.
- * On command stack events or on DataNotifier events, it dispatch it to registered ICommandStackSelectionProvider and INotifyChangedListener
+ * This class is a IEditingDomainListener which redirect required events on registered ICommandStackSelectionProvider and INotifyChangedListener On created
+ * editing domain, it create a NavigatorCommandStackListener on it and a NavigatorModelDataListener on its DataNotifier. On command stack events or on
+ * DataNotifier events, it dispatch it to registered ICommandStackSelectionProvider and INotifyChangedListener
  */
 public class NavigatorEditingDomainDispatcher implements IEditingDomainListener, INotifyChangedListener, ICommandStackSelectionProvider {
 
@@ -34,8 +33,8 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
   private static Collection<ICommandStackSelectionProvider> _commandStackListeners = new HashSet<ICommandStackSelectionProvider>();
 
   /**
-    * Add a listener on all editing domains to handle model element changes even if not displayed in the viewer.
-    */
+   * Add a listener on all editing domains to handle model element changes even if not displayed in the viewer.
+   */
   private NavigatorModelDataListener _dataListener;
 
   /**

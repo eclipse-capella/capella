@@ -46,6 +46,8 @@
  		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.capellacore.Involvement")%>) object).getInvolved();
 	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("Generalization")) {%>
  		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.capellacore.Generalization")%>) object).getSuper();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("AbstractCapabilityGeneralization")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization")%>) object).getSuper();
 	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("InterfaceUse")) {%>
  		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.cs.InterfaceUse")%>) object).getUsedInterface();
 	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("InterfaceImplementation")) {%>

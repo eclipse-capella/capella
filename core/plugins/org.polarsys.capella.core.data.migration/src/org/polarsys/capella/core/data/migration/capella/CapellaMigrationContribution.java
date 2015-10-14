@@ -57,7 +57,7 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
  */
 public class CapellaMigrationContribution extends AbstractMigrationContribution {
 
-  static HashMap<String, EPackage> prefixes = new HashMap<String, EPackage>();
+  public static HashMap<String, EPackage> prefixes = new HashMap<String, EPackage>();
 
   static {
 
@@ -86,7 +86,7 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     prefixes.put(XMLResource.XML_NS + ":" + MigrationConstants.RE_PREFIX, RePackage.eINSTANCE);
   }
 
-  static HashMap<String, EPackage> pkgs = new HashMap<String, EPackage>();
+  public static HashMap<String, EPackage> pkgs = new HashMap<String, EPackage>();
 
   static {
     pkgs.put(MigrationConstants.COMPOSITE_STRUCTURE_OLD_NSURI, CsPackage.eINSTANCE);

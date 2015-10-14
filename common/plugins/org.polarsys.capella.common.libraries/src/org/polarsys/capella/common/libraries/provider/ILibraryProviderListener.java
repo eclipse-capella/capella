@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,9 @@ package org.polarsys.capella.common.libraries.provider;
 
 public interface ILibraryProviderListener {
 
-  public void onLibraryProviderChanged(ILibraryProviderEvent event_p);
+  public void onLibraryProviderChanged(LibraryProviderEvent event);
 
-  public class ILibraryProviderEvent {
+  public class LibraryProviderEvent {
 
   }
 }

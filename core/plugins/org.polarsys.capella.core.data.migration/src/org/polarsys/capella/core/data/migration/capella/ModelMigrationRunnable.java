@@ -194,7 +194,7 @@ public class ModelMigrationRunnable extends MigrationRunnable {
           protected void handleProxy(InternalEObject proxy, String inputUriLiteral) {
 
             String uriLiteral = inputUriLiteral;
-            String migratedURI = MigrationHelpers.getInstance().getHandleProxy(proxy, inputUriLiteral, resource, context);
+            String migratedURI = MigrationHelpers.getInstance().getHandleProxy(proxy, inputUriLiteral, resource, xmlHelper, context);
             if (migratedURI != null) {
               uriLiteral = migratedURI;
             }

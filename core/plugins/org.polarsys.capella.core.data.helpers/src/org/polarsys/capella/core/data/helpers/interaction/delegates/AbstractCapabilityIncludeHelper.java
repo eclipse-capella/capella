@@ -48,6 +48,6 @@ public class AbstractCapabilityIncludeHelper {
 	}
 
 	protected AbstractCapability getInclusion(AbstractCapabilityInclude element) {
-		return (AbstractCapability)element.eContainer();
+		return element.eContainer() instanceof AbstractCapability? (AbstractCapability)element.eContainer() : null;
 	}
 }

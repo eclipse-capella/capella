@@ -95,8 +95,9 @@
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current == $container%>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelFormat="bold" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
             </style>
@@ -119,7 +120,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Entities">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -132,7 +133,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -827,8 +828,9 @@
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%!isLeaf()%>">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelFormat="italic" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+                <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
               </style>
@@ -1787,8 +1789,9 @@
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current == $container%>">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelFormat="bold" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
             </style>
@@ -1805,7 +1808,7 @@
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <toolSections name="Activities">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity in the target Operational Activity" name="Operational Activity" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity in the target Operational Activity" name="Operational Activity" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Operational Activity"/>
             </variable>
@@ -1973,8 +1976,9 @@
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%!isLeaf()%>">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelFormat="italic" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+                <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
               </style>
@@ -2367,7 +2371,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Interaction Scenario" label="Entity Scenario" titleExpression="[OES] &lt;%name%> - Operational Entity Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;%isValidEntityScenario %>" endsOrdering="&lt;% getOrderedInteractionFragments () &amp;&amp; $eventEnds %>" instanceRolesOrdering="&lt;% ownedInstanceRoles%>">
+    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Interaction Scenario" label="Entity Scenario" titleExpression="[OES] &lt;%current.name%> - Operational Entity Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;%isValidEntityScenario %>" endsOrdering="&lt;% getOrderedInteractionFragments () &amp;&amp; $eventEnds %>" instanceRolesOrdering="&lt;% ownedInstanceRoles%>">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']"/>
       </filters>
@@ -3944,7 +3948,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Activity Interaction Scenario" label="Activity Scenario" titleExpression="[OAS] &lt;%name%> - Operational Activity Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;%isValidActivityScenario %>" endsOrdering="&lt;% getOrderedInteractionFragments () &amp;&amp; $eventEnds %>" instanceRolesOrdering="&lt;% ownedInstanceRoles%>">
+    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Activity Interaction Scenario" label="Activity Scenario" titleExpression="[OAS] &lt;%current.name%> - Operational Activity Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;%isValidActivityScenario %>" endsOrdering="&lt;% getOrderedInteractionFragments () &amp;&amp; $eventEnds %>" instanceRolesOrdering="&lt;% ownedInstanceRoles%>">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='Execution%20AIS']"/>
       </filters>
@@ -5312,7 +5316,6 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
               </firstModelOperations>
             </initialOperation>
@@ -5640,8 +5643,9 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current == $container%>">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OperationalCapability.svg">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="7" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OperationalCapability.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
@@ -5806,7 +5810,6 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
               </firstModelOperations>
             </initialOperation>

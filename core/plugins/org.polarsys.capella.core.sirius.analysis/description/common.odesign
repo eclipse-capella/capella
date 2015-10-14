@@ -3768,7 +3768,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%name%> - Interface Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%current.name%> - Interface Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -3784,7 +3784,7 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Exchanges Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="[ES] feature:name - Echanges Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Exchanges Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="[ES] &lt;%current.name%> - Echanges Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -3815,7 +3815,7 @@
             <representationNameVariable name="tableName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Functional Scenario" precondition="&lt;%isInLib()%>" titleExpression="[FS] feature:name - Functional Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Functional Scenario" precondition="&lt;%isInLib()%>" titleExpression="[FS] &lt;%current.name%> - Functional Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -11823,7 +11823,6 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $source %>"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
               </firstModelOperations>
             </initialOperation>
@@ -12772,7 +12771,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Interfaces Scenario" label="Interface Scenario" titleExpression="[IS] &lt;%name%> - Interface Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;% isValidIS () %>" endsOrdering="&lt;% getOrderedInteractionFragments () &amp;&amp; $eventEnds %>" instanceRolesOrdering="feature:ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Interfaces Scenario" label="Interface Scenario" titleExpression="[IS] &lt;%current.name%> - Interface Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;% isValidIS () %>" endsOrdering="&lt;% getOrderedInteractionFragments () &amp;&amp; $eventEnds %>" instanceRolesOrdering="feature:ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']"/>
       </filters>
@@ -14816,7 +14815,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Exchanges Scenario" label="Exchange Scenario" titleExpression="[ES] &lt;%name%> - Exchange Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;% isValidES () %>" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="&lt;% ownedInteractionFragments &amp;&amp; $eventEnds%>" instanceRolesOrdering="feature:ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Exchanges Scenario" label="Exchange Scenario" titleExpression="[ES] &lt;%current.name%> - Exchange Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;% isValidES () %>" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="&lt;% ownedInteractionFragments &amp;&amp; $eventEnds%>" instanceRolesOrdering="feature:ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']"/>
       </filters>
@@ -16678,7 +16677,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Functional Scenario" label="Function Scenario" titleExpression="[FS] &lt;%name%> - Function Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;% isValidFS () %>" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="&lt;% ownedInteractionFragments &amp;&amp; $eventEnds %>" instanceRolesOrdering="feature:ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Functional Scenario" label="Function Scenario" titleExpression="[FS] &lt;%current.name%> - Function Scenario" domainClass="interaction.Scenario" preconditionExpression="&lt;% isValidFS () %>" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="&lt;% ownedInteractionFragments &amp;&amp; $eventEnds %>" instanceRolesOrdering="feature:ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']"/>
       </filters>

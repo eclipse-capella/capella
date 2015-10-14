@@ -48,8 +48,7 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
  */
 public class OpenSessionAction extends BaseSelectionListenerAction {
   // Log4j reference logger.
-  private static final Logger logger = ReportManagerRegistry.getInstance()
-      .subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
   /**
    * Activity Explorer editor. See org.eclipse.amalgam.explorer.activity.ui.api.editor.ActivityExplorerEditor.ID.<br>
    */
@@ -57,7 +56,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
   /**
    * Should open Activity Explorer ?
    */
-  private boolean shouldOpenActivityExplorer;
+  private static boolean shouldOpenActivityExplorer;
   /**
    * Whether or not this action should be ran within a progress service runnable ?
    */
@@ -80,7 +79,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
   /**
    * Open sessions.
    */
-  protected void doOpenSessions(IProgressMonitor monitor_p) {
+  protected void doOpenSessions(IProgressMonitor monitor) {
     failedOpeningSessions = new HashMap<IFile, IStatus>();
     // Go through selected elements.
     for (Object selectedElement : getStructuredSelection().toList()) {
@@ -103,11 +102,11 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           continue;
         }
         // Get session.
-        session = SessionManager.INSTANCE.getSession(selectedUri, monitor_p);
+        session = SessionManager.INSTANCE.getSession(selectedUri, monitor);
         if (null == session) {
           // Session is null : open session failed.
-          failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(),
-              "Session can't be opened (null session)")); //$NON-NLS-1$
+          failedOpeningSessions.put(selectedFile,
+              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "Session can't be opened (null session)")); //$NON-NLS-1$
           continue;
         }
 
@@ -118,7 +117,13 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
         }
 
         // Open session.
-        session.open(monitor_p);
+        session.open(monitor);
+        if (!session.isOpen()) {
+          failedOpeningSessions.put(selectedFile,
+              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("Session can't be opened (null session)", selectedFile))); //$NON-NLS-1$
+          continue;
+        }
+
         // initialize the corresponding model
         // should be done in a listener but event opened is triggered while the melodymodeller file has not been created
         // (in the case of a project creation)
@@ -130,11 +135,10 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           openActivityExplorer(session);
         }
       } catch (Exception ex) {
-        IStatus status = new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind(
-            "An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$
+        IStatus status =
+            new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$
         failedOpeningSessions.put(selectedFile, status);
-        logger.debug(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.UI));
-        CapellaSessionHelper.reportException(ex);
+        CapellaSessionHelper.reportError(status);
 
       } finally {
         // Notify action listeners
@@ -164,7 +168,6 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Get files that a session cannot be open for + a status to explain why.
-   * 
    * @return a not <code>null</code> Map.
    */
   public Map<IFile, IStatus> getFailedOpeningSessions() {
@@ -186,8 +189,8 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
     try {
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
         @Override
-        public void run(IProgressMonitor monitor_p) {
-          doOpenSessions(monitor_p);
+        public void run(IProgressMonitor monitor) {
+          doOpenSessions(monitor);
         }
       };
       if (shouldRunInProgressService) {
@@ -205,9 +208,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Set if the Activity Explorer should be open when running this action.
-   * 
-   * @param open
-   *          <code>true</code> means the Activity Explorer will be open after session open operation.
+   * @param open <code>true</code> means the Activity Explorer will be open after session open operation.
    */
   public void setOpenActivityExplorer(boolean open) {
     shouldOpenActivityExplorer = open;
@@ -215,9 +216,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Set if this action should be ran within a progress service runnable.
-   * 
-   * @param runInProgressService
-   *          <code>true</code> means this action should be ran within a progress service runnable.
+   * @param runInProgressService <code>true</code> means this action should be ran within a progress service runnable.
    */
   public void setRunInProgressService(boolean runInProgressService) {
     shouldRunInProgressService = runInProgressService;
@@ -225,7 +224,6 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
 
   /**
    * Open the Activity Explorer for specified session.
-   * 
    * @param session
    * @return
    */
@@ -243,15 +241,15 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
       public void run() {
         try {
           IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-          if (session.isOpen()) {
+          if (session.isOpen() || shouldOpenActivityExplorer) {
             activePage.openEditor(new ActivityExplorerEditorInput(session, SessionHelper.getCapellaProject(session)),
                 ACTIVITY_EXPLORER_EDITOR);
           }
           result[0] = true;
-        } catch (PartInitException exception_p) {
+        } catch (PartInitException exception) {
           StringBuilder loggerMessage = new StringBuilder(".run(..) _ Activity Explorer not Found."); //$NON-NLS-1$
-          loggerMessage.append(exception_p.getMessage());
-          logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception_p);
+          loggerMessage.append(exception.getMessage());
+          logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception);
         }
       }
     };

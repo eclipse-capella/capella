@@ -360,9 +360,9 @@ public class MigrationHelpers implements IMigrationContribution {
     }
   }
 
-  public String getHandleProxy(InternalEObject proxy, String uriLiteral, Resource resource, MigrationContext context) {
+  public String getHandleProxy(InternalEObject proxy, String uriLiteral, Resource resource, XMLHelper helper, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
-      String result = migration.getHandleProxy(proxy, uriLiteral, resource, context);
+      String result = migration.getHandleProxy(proxy, uriLiteral, resource, helper, context);
       if (result != null) {
         return result;
       }
