@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.project;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.platform.sirius.ui.project.CapellaProjectActivator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -21,7 +21,8 @@ Require-Bundle: org.polarsys.capella.core.sirius.ui;visibility:=reexport,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.preferences.project.configuration,
  org.polarsys.capella.common.libraries,
- org.eclipse.sirius.ext.base
+ org.eclipse.sirius.ext.base,
+ org.eclipse.amalgam.explorer.activity.ui
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.project,
  org.polarsys.capella.core.platform.sirius.ui.project.internal,
  org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences,

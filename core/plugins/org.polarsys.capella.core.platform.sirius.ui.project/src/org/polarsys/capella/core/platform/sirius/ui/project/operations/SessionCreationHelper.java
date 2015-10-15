@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
+import org.eclipse.amalgam.explorer.activity.ui.api.preferences.PreferenceConstants;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -62,9 +64,9 @@ public class SessionCreationHelper {
   /**
    * Create a default URI for aird file name for a project named projectName located in the given eclipse project
    */
-  public static URI buildAirdFileName(IProject eclipseProject_p, String projectName_p) {
-    IPath path = eclipseProject_p.getFullPath();
-    String airdFilename = projectName_p + ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.AIRD_FILE_EXTENSION;
+  public static URI buildAirdFileName(IProject eclipseProject, String projectName) {
+    IPath path = eclipseProject.getFullPath();
+    String airdFilename = projectName + ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.AIRD_FILE_EXTENSION;
     path = path.append(airdFilename);
     URI airdResourceURI = URI.createPlatformResourceURI(path.toString(), true);
     return airdResourceURI;
@@ -73,19 +75,19 @@ public class SessionCreationHelper {
   /**
    * Create an aird resource (and so on session) for the given semantic resource file
    */
-  protected Session createAirdResource(IProject eclipseProject_p, IFile semanticResource_p, String projectName_p, IProgressMonitor monitor_p) {
+  protected Session createAirdResource(IProject eclipseProject, IFile semanticResource, String projectName, IProgressMonitor monitor) {
     // Builds the .aird filename.
-    URI airdResourceURI = buildAirdFileName(eclipseProject_p, projectName_p);
-    return createAirdSession(Collections.singletonList(semanticResource_p), airdResourceURI, monitor_p);
+    URI airdResourceURI = buildAirdFileName(eclipseProject, projectName);
+    return createAirdSession(Collections.singletonList(semanticResource), airdResourceURI, monitor);
   }
 
   /**
    * Create an aird session with all given semantic files
    */
-  public Session createAirdSession(List<IFile> semanticFiles_p, URI airdResourceURI_p, IProgressMonitor monitor_p) {
+  public Session createAirdSession(List<IFile> semanticFiles, URI airdResourceURI, IProgressMonitor monitor) {
     Session session = null;
     try {
-      session = CapellaSessionHelper.createLocalSession(semanticFiles_p, airdResourceURI_p, monitor_p);
+      session = CapellaSessionHelper.createLocalSession(semanticFiles, airdResourceURI, monitor);
     } catch (InterruptedException ex) {
       // Do nothing.
     } catch (InvocationTargetException ex) {
@@ -98,16 +100,16 @@ public class SessionCreationHelper {
   /**
    * Create a new eclipse project stored in the given location
    */
-  public IProject createNewEclipseProject(String projectName_p, IPath location_p, Collection<IProject> referencedProjects_p, IProgressMonitor monitor_p) {
+  public IProject createNewEclipseProject(String projectName, IPath location, Collection<IProject> referencedProjects, IProgressMonitor monitor) {
     IProject project = null;
-    SubMonitor progress = SubMonitor.convert(monitor_p, 2);
+    SubMonitor progress = SubMonitor.convert(monitor, 2);
     try {
       IWorkspace workspace = ResourcesPlugin.getWorkspace();
       IWorkspaceRoot workspaceRoot = workspace.getRoot();
-      project = workspaceRoot.getProject(projectName_p);
+      project = workspaceRoot.getProject(projectName);
       if (!project.exists()) {
 
-        IProjectDescription description = createProjectDescription(project, location_p, referencedProjects_p);
+        IProjectDescription description = createProjectDescription(project, location, referencedProjects);
 
         // Creates project.
         project.create(description, progress.newChild(1));
@@ -116,7 +118,7 @@ public class SessionCreationHelper {
       // Ensure the progress monitor work remaining count.
       project.open(progress.newChild(1));
 
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
     } finally {
       progress.done();
     }
@@ -127,19 +129,19 @@ public class SessionCreationHelper {
   /**
    * Create a project description with given parameters
    */
-  protected IProjectDescription createProjectDescription(IProject project_p, IPath projectPath_p, Collection<IProject> referencedProjects_p) {
+  protected IProjectDescription createProjectDescription(IProject project, IPath projectPath, Collection<IProject> referencedProjects) {
     // Set project name and location.
     IWorkspace workspace = ResourcesPlugin.getWorkspace();
-    String name = project_p.getName();
+    String name = project.getName();
     IProjectDescription description = workspace.newProjectDescription(name);
 
     // Creates omitted path nodes & set the location into the description.
-    if (null != projectPath_p) {
-      description.setLocation(projectPath_p.append(name));
+    if (null != projectPath) {
+      description.setLocation(projectPath.append(name));
     }
 
-    setNatureProject(project_p, description);
-    description = addReferencedProjects(project_p, description, referencedProjects_p);
+    setNatureProject(project, description);
+    description = addReferencedProjects(project, description, referencedProjects);
 
     return description;
 
@@ -148,33 +150,33 @@ public class SessionCreationHelper {
   /**
    * Method to set nature of the given description while project description creation method 
    */
-  protected void setNatureProject(IProject project_p, IProjectDescription description_p) {
+  protected void setNatureProject(IProject project, IProjectDescription description) {
     // Add the project nature.
-    if (!description_p.hasNature(CapellaNature.ID)) {
+    if (!description.hasNature(CapellaNature.ID)) {
       String[] newNatures = new String[] { CapellaNature.ID };
-      description_p.setNatureIds(newNatures);
+      description.setNatureIds(newNatures);
     }
   }
 
   /**
    * Add referenced projects to the given description
    */
-  protected IProjectDescription addReferencedProjects(IProject project_p, IProjectDescription description, Collection<IProject> referencedProjects_p) {
+  protected IProjectDescription addReferencedProjects(IProject project, IProjectDescription description, Collection<IProject> referencedProjects) {
     IProject[] references = description.getReferencedProjects();
 
     int i = 0;
-    IProject[] referencedProjects = new IProject[references.length + referencedProjects_p.size()];
+    IProject[] returnReferencedProjects = new IProject[references.length + referencedProjects.size()];
     for (i = 0; i < references.length; i++) {
-      referencedProjects[i] = references[i];
+      returnReferencedProjects[i] = references[i];
     }
 
-    Iterator<IProject> projects = referencedProjects_p.iterator();
+    Iterator<IProject> projects = referencedProjects.iterator();
     while (projects.hasNext()) {
-      referencedProjects[i] = projects.next();
+      returnReferencedProjects[i] = projects.next();
       i++;
     }
 
-    description.setReferencedProjects(referencedProjects);
+    description.setReferencedProjects(returnReferencedProjects);
 
     return description;
 
@@ -183,9 +185,9 @@ public class SessionCreationHelper {
   /**
    * Create the semantic resource in the given project
    */
-  protected IFile createSemanticResource(final IProject eclipseProject_p, final IProgressMonitor monitor_p) {
+  protected IFile createSemanticResource(final IProject eclipseProject, final IProgressMonitor monitor) {
 
-    SubMonitor progress = SubMonitor.convert(monitor_p, 4);
+    SubMonitor progress = SubMonitor.convert(monitor, 4);
     ExecutionManager manager = ExecutionManagerRegistry.getInstance().addNewManager();
     TransactionalEditingDomain domain = manager.getEditingDomain();
 
@@ -194,18 +196,18 @@ public class SessionCreationHelper {
     try {
 
       progress.beginTask("Create an empty resource", 1);
-      Resource semanticResource = CapellaResourceHelper.createCapellaResource(eclipseProject_p, eclipseProject_p.getName(), domain);
+      Resource semanticResource = CapellaResourceHelper.createCapellaResource(eclipseProject, eclipseProject.getName(), domain);
       progress.worked(1);
 
       progress.beginTask("Create semantic root element", 1);
-      command = createInitialElementsCommand(semanticResource, eclipseProject_p.getName(), monitor_p);
+      command = createInitialElementsCommand(semanticResource, eclipseProject.getName(), monitor);
       if (command != null) {
         manager.execute(command);
       }
       progress.worked(1);
 
       progress.beginTask("Create initial skeletton", 1);
-      command = updateInitialElementsCommand(semanticResource, eclipseProject_p.getName(), monitor_p);
+      command = updateInitialElementsCommand(semanticResource, eclipseProject.getName(), monitor);
       if (command != null) {
         manager.execute(command);
       }
@@ -233,7 +235,7 @@ public class SessionCreationHelper {
   /**
    * Create root semantic element in the given resource
    */
-  protected ICommand createInitialElementsCommand(Resource semanticResource_p, String name_p, IProgressMonitor monitor_p) {
+  protected ICommand createInitialElementsCommand(Resource semanticResource, String name, IProgressMonitor monitor) {
     return null;
   }
 
@@ -241,33 +243,36 @@ public class SessionCreationHelper {
    * Update root semantic element in the given resource
    * (for instance, initialize sub elements)
    */
-  protected ICommand updateInitialElementsCommand(Resource semanticResource_p, String name_p, IProgressMonitor monitor_p) {
+  protected ICommand updateInitialElementsCommand(Resource semanticResource, String name, IProgressMonitor monitor) {
     return null;
   }
 
   /**
    * Create and open a new project
    */
-  public Session createFullProject(String projectName_p, IPath newPath_p, Collection<IProject> referencedProjects_p,
-      final Collection<Viewpoint> selectedViewpoints_p, IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+  public Session createFullProject(String projectName, IPath newPath, Collection<IProject> referencedProjects,
+      final Collection<Viewpoint> selectedViewpoints, IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
     try {
 
       int stepCount = 7;
-      SubMonitor progress = SubMonitor.convert(monitor_p, Messages.getString("NewProjectWizard.CreateProject_Title") + projectName_p, stepCount); //$NON-NLS-1$
+      SubMonitor progress = SubMonitor.convert(monitor, Messages.getString("NewProjectWizard.CreateProject_Title") + projectName, stepCount); //$NON-NLS-1$
 
       // 1 - Creates the Eclipse Project
       IProject eclipseProject = null;
 
-      eclipseProject = createNewEclipseProject(projectName_p, newPath_p, referencedProjects_p, progress.newChild(1));
+      eclipseProject = createNewEclipseProject(projectName, newPath, referencedProjects, progress.newChild(1));
 
       IFile semanticFile = createSemanticResource(eclipseProject, progress.newChild(1));
 
       // 4- Creates the aird resource.
-      Session session = createAirdResource(eclipseProject, semanticFile, projectName_p, progress.newChild(1));
+      Session session = createAirdResource(eclipseProject, semanticFile, projectName, progress.newChild(1));
       if (null == session) {
         throw new InterruptedException("Cannot create the session"); //$NON-NLS-1$
       }
+      
+      // Disable Activity Explorer before open session, because a refresh will occurs on each viewpoint activation
+      boolean backup = disableActivityExplorerOnOpenSession();
 
       //open session 
       session.open(progress.newChild(1));
@@ -278,9 +283,12 @@ public class SessionCreationHelper {
       ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
 
       // 5- Selected Viewpoints handling.
-      SessionHelper.activateViewpoints(session, selectedViewpoints_p);
+      SessionHelper.activateViewpoints(session, selectedViewpoints);
       progress.worked(1);
 
+      // Restore Activity Explore, it won't be opened at the end of this process. An explicit invocation is needed.
+      restoreActivityExplorerOnOpenSession(backup);
+      
       try {
         // 6- Save it to give a non dirty open project to the end-user.
         if (SessionStatus.DIRTY.equals(session.getStatus())) {
@@ -298,8 +306,18 @@ public class SessionCreationHelper {
       return session;
 
     } finally {
-      monitor_p.done();
+      monitor.done();
     }
+  }
+
+  protected boolean disableActivityExplorerOnOpenSession() {
+    boolean backup = ActivityExplorerActivator.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
+    ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, false);
+    return backup;
+  }
+  
+  protected void restoreActivityExplorerOnOpenSession(boolean backup) {
+    ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, backup);
   }
 
 }
