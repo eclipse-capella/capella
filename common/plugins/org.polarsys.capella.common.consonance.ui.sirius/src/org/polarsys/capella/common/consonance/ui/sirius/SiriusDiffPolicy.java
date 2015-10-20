@@ -46,7 +46,8 @@ public class SiriusDiffPolicy extends GMFDiffPolicy {
   /** The set of references that can be ignored */
   private static final Collection<EReference> UNSIGNIFICANT_REFERENCES =
       Arrays.asList(
-          ViewpointPackage.eINSTANCE.getDRepresentation_UiState()
+          ViewpointPackage.eINSTANCE.getDRepresentation_UiState(),
+          DiagramPackage.eINSTANCE.getDDiagram_HiddenElements()
       );
   
   /** The set of types that can be ignored */
