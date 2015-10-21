@@ -21,8 +21,8 @@ import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.NumericTypeKind;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.capella.core.data.oa.Role;
-import org.polarsys.capella.core.model.helpers.DataValueExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -73,7 +73,7 @@ public class PropertyMinimumCardinalityIsNaturalOrZero extends AbstractValidatio
       if (type == null || (type.getKind() == NumericTypeKind.INTEGER)) {
         try {
           // and its value must be parse to an integer
-          int integer = Integer.parseInt(DataValueExt.getCardValue(value));
+          int integer = Integer.parseInt(PropertyNamingHelper.getCardValue(value));
 
           // and positive or zero
           return integer >= 0;
