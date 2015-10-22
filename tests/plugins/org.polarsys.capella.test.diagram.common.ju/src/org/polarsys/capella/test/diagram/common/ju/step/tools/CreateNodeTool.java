@@ -12,16 +12,16 @@ package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
 import static org.junit.Assert.assertFalse;
 
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 
-public class CreateContainerTool extends CreateAbstractDNodeTool {
+public class CreateNodeTool extends CreateAbstractDNodeTool {
 
-  public CreateContainerTool(DiagramContext context, String toolName, String containerView) {
+  public CreateNodeTool(DiagramContext context, String toolName, String containerView) {
     super(context, toolName, containerView);
   }
 
-  public CreateContainerTool(DiagramContext context, String toolName, String newIdentifier, String containerView) {
+  public CreateNodeTool(DiagramContext context, String toolName, String newIdentifier, String containerView) {
     super(context, toolName, newIdentifier, containerView);
   }
 
@@ -29,9 +29,10 @@ public class CreateContainerTool extends CreateAbstractDNodeTool {
   protected void postRunTest() {
     super.postRunTest();
 
-    if (!(_newElements.iterator().next() instanceof DDiagramElementContainer)) {
+    if (!(_newElements.iterator().next() instanceof DNode)) {
       assertFalse(true);
     }
 
   }
+
 }

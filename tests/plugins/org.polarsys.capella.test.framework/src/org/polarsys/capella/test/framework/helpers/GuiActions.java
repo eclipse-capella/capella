@@ -10,21 +10,28 @@
  *******************************************************************************/
 package org.polarsys.capella.test.framework.helpers;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RenameResourceAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
+import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 
 /**
  * An API gathering together launchers for GUI capella actions. All these actions are headless (they do not block on GUI
@@ -45,6 +52,34 @@ public class GuiActions {
     olsa.selectionChanged(new StructuredSelection(airdFile));
     olsa.run();
     flushASyncGuiThread();
+  }
+
+  /**
+   * Close several sessions at the same time by using the capella action @see CloseSessionAction.
+   * @param sessions the list of sessions to close
+   */
+  public static void closeSessions(List<Session> sessions) {
+    HeadlessCloseSessionAction closeSessionAction = new HeadlessCloseSessionAction(sessions);
+    closeSessionAction.run();
+    flushASyncGuiThread();
+  }
+
+  public static void saveSession(Session session) {
+    session.save(new NullProgressMonitor());
+    flushASyncGuiThread();
+  }
+
+  public static void deleteEclipseProject(IProject eclipseProject) throws CoreException {
+    eclipseProject.delete(false, true, new NullProgressMonitor());
+    flushASyncGuiThread();
+  }
+
+  /**
+   * Close a session by using the capella action @see CloseSessionAction.
+   * @param session the session to close
+   */
+  public static void closeSession(Session session) {
+    closeSessions(Collections.singletonList(session));
   }
 
   /**

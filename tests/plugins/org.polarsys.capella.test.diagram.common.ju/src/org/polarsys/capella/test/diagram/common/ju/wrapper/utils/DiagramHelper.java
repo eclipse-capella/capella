@@ -44,7 +44,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
@@ -174,7 +173,9 @@ public class DiagramHelper {
     URI representationURI = representation.eResource().getURI();
     boolean containsRepresentation = representationURI.equals(FileHelper.getFileFullUri(filepath));
 
-    Assert.assertTrue(MessageFormat.format("The representation {0}  is not in  the resource {1}", representation, filepath), containsRepresentation);
+    Assert.assertTrue(
+        MessageFormat.format("The representation {0}  is not in  the resource {1}", representation, filepath),
+        containsRepresentation);
     // Assert.assertTrue(MessageFormat.format(HelperMessages.diagramNotContainedInSession, representation.getName(), file.getName()), containsRepresentation);
   }
 
@@ -186,13 +187,15 @@ public class DiagramHelper {
    * @param platformSpecificElementId
    * @return <code>null</code> if an error occurred.
    */
-  public static DRepresentation getDRepresentation(final Session session, final String name, final String platformSpecificElementId) {
+  public static DRepresentation getDRepresentation(final Session session, final String name,
+      final String platformSpecificElementId) {
     DRepresentation result = null;
     Collection<DRepresentation> dRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
     Iterator<DRepresentation> it = dRepresentations.iterator();
     while (it.hasNext()) {
       DRepresentation next = it.next();
-      if (next.getName().equalsIgnoreCase(name) && next.eResource().getURIFragment(next).equalsIgnoreCase(platformSpecificElementId)) {
+      if (next.getName().equalsIgnoreCase(name)
+          && next.eResource().getURIFragment(next).equalsIgnoreCase(platformSpecificElementId)) {
         result = next;
         break;
       }
@@ -243,7 +246,8 @@ public class DiagramHelper {
   public static DDiagramElement getOnDiagramByIDAndName(final DDiagram diagram, final String anID, final String aName) {
     List<DDiagramElement> elements = new LinkedList<DDiagramElement>(diagram.getDiagramElements());
     for (DDiagramElement element : elements) {
-      if (element.getTarget().eGet(ModellingcorePackage.Literals.MODEL_ELEMENT__ID).equals(anID) && element.getName().equals(aName)) {
+      if (element.getTarget().eGet(ModellingcorePackage.Literals.MODEL_ELEMENT__ID).equals(anID)
+          && element.getName().equals(aName)) {
         return element;
       }
     }
@@ -258,10 +262,12 @@ public class DiagramHelper {
    * @param semanticObject the semantic object to reach
    * @return null if not represented on the diagram
    */
-  public static DDiagramElement getOnDiagramByIDandContainer(final DDiagram diagram, final String anID, EObject container) {
+  public static DDiagramElement getOnDiagramByIDandContainer(final DDiagram diagram, final String anID,
+      EObject container) {
     List<DDiagramElement> elements = new LinkedList<DDiagramElement>(diagram.getDiagramElements());
     for (DDiagramElement element : elements) {
-      if (element.getTarget().eGet(ModellingcorePackage.Literals.MODEL_ELEMENT__ID).equals(anID) && element.eContainer().equals(container)) {
+      if (element.getTarget().eGet(ModellingcorePackage.Literals.MODEL_ELEMENT__ID).equals(anID)
+          && element.eContainer().equals(container)) {
         return element;
       }
     }
@@ -291,7 +297,8 @@ public class DiagramHelper {
    * @param expectedSemanticMetaClass the expected EClass of the found DDiagramElement
    * @return null if not represented on the diagram
    */
-  public static DDiagramElement getDDiagramElementByEClass(final DDiagram diagram, final EObject semanticObject, EClass expectedSemanticMetaClass) {
+  public static DDiagramElement getDDiagramElementByEClass(final DDiagram diagram, final EObject semanticObject,
+      EClass expectedSemanticMetaClass) {
     List<DDiagramElement> elements = new LinkedList<DDiagramElement>(diagram.getDiagramElements());
     for (DDiagramElement element : elements) {
       if ((element.getTarget() == semanticObject) && expectedSemanticMetaClass.isSuperTypeOf(element.eClass())) {
@@ -309,12 +316,14 @@ public class DiagramHelper {
    * @param target
    * @return
    */
-  public static DDiagramElement getDDiagramElementBySourceAndTarget(final DDiagram diagram, final EObject semanticObject, EObject source, EObject target) {
+  public static DDiagramElement getDDiagramElementBySourceAndTarget(final DDiagram diagram,
+      final EObject semanticObject, EObject source, EObject target) {
     List<DDiagramElement> elements = new LinkedList<DDiagramElement>(diagram.getDiagramElements());
     for (DDiagramElement element : elements) {
       if (element instanceof DEdge) {
         DEdge edge = (DEdge) element;
-        if ((element.getTarget() == semanticObject) && edge.getSourceNode().equals(source) && edge.getTargetNode().equals(target)) {
+        if ((element.getTarget() == semanticObject) && edge.getSourceNode().equals(source)
+            && edge.getTargetNode().equals(target)) {
           return element;
         }
       }
@@ -328,13 +337,15 @@ public class DiagramHelper {
    * @param semanticElement
    * @return
    */
-  public static List<RepresentationDescription> getMatchingRepresentationDescription(final Session session, final EObject semanticElement) {
+  public static List<RepresentationDescription> getMatchingRepresentationDescription(final Session session,
+      final EObject semanticElement) {
     List<RepresentationDescription> result = new ArrayList<RepresentationDescription>();
 
     // Get selected viewpoints.
     Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
     // Get descriptions.
-    Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(selectedViewpoints, semanticElement);
+    Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE
+        .getAvailableRepresentationDescriptions(selectedViewpoints, semanticElement);
     // Loop over representation descriptions, stop looping as soon as an
     // appropriate description is found.
     for (RepresentationDescription current : descriptions) {
@@ -352,7 +363,8 @@ public class DiagramHelper {
    * @param repDescName
    * @return null whether no matching {@link RepresentationDescription} are found
    */
-  public static RepresentationDescription getRepresentationDescription(final Session session, final EObject semanticElement, final String repDescName) {
+  public static RepresentationDescription getRepresentationDescription(final Session session,
+      final EObject semanticElement, final String repDescName) {
 
     RepresentationDescription result = null;
 
@@ -503,7 +515,7 @@ public class DiagramHelper {
     } else if (element instanceof DEdge) {
       DiagramServices.getDiagramServices().removeEdgeView((DEdge) element);
     } else if ((element instanceof DDiagram) || (element instanceof DDiagramElementContainer)) {
-      DiagramServices.getDiagramServices().removeContainerView((EObject) element);
+      DiagramServices.getDiagramServices().removeContainerView(element);
     } else if (element instanceof DNodeListElement) {
       DiagramServices.getDiagramServices().removeNodeListElementView((DNodeListElement) element);
     } else if (element instanceof DNode) {
@@ -671,10 +683,10 @@ public class DiagramHelper {
     List<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram);
     int expectedNumberOfContextualElements = expectedContextualElementsList.size();
     boolean sameSize = contextualElements.size() == expectedNumberOfContextualElements;
-    Assert.assertTrue(
-        MessageFormat.format(Messages.wrongNumberOfContextualElement, diagram.getName(), contextualElements.size(), expectedNumberOfContextualElements),
-        sameSize);
-    boolean sameElements = contextualElements.containsAll(expectedContextualElementsList) && expectedContextualElementsList.containsAll(contextualElements);
+    Assert.assertTrue(MessageFormat.format(Messages.wrongNumberOfContextualElement, diagram.getName(),
+        contextualElements.size(), expectedNumberOfContextualElements), sameSize);
+    boolean sameElements = contextualElements.containsAll(expectedContextualElementsList)
+        && expectedContextualElementsList.containsAll(contextualElements);
     Assert.assertTrue(Messages.wrongContextualElement, sameElements);
   }
 
@@ -684,12 +696,12 @@ public class DiagramHelper {
    */
   public static Diagram getDiagram(DDiagram seqDiagram) {
     EList<AnnotationEntry> ownedAnnotationEntries = seqDiagram.getOwnedAnnotationEntries();
-	EObject data = null;
+    EObject data = null;
     for (AnnotationEntry annotationEntry : ownedAnnotationEntries) {
-    	if ((annotationEntry!= null) && (annotationEntry.getData() instanceof Diagram)) {
-    		data = annotationEntry.getData();
-    	}
-	}
+      if ((annotationEntry != null) && (annotationEntry.getData() instanceof Diagram)) {
+        data = annotationEntry.getData();
+      }
+    }
     Assert.assertTrue(data instanceof Diagram);
     final Diagram diagram = (Diagram) data;
     return diagram;
@@ -737,14 +749,16 @@ public class DiagramHelper {
     String errMsg;
     EObject eObject = null;
 
-    errMsg =
-        shouldBeAvailable ? CommonTestMessages.objectRepresentationNotAvailableOnDiagram : CommonTestMessages.objectRepresentationStillAvailableOnDiagram;
+    errMsg = shouldBeAvailable ? CommonTestMessages.objectRepresentationNotAvailableOnDiagram
+        : CommonTestMessages.objectRepresentationStillAvailableOnDiagram;
 
     for (EObject current : list) {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
       Assert.assertTrue(
-          NLS.bind(errMsg, new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current.eClass().getName(),
-                                         diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+          NLS.bind(errMsg,
+              new Object[] {
+                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
+                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -753,14 +767,16 @@ public class DiagramHelper {
     String errMsg;
     EObject eObject = null;
 
-    errMsg =
-        shouldBeAvailable ? CommonTestMessages.objectRepresentationNotAvailableOnDiagram : CommonTestMessages.objectRepresentationStillAvailableOnDiagram;
+    errMsg = shouldBeAvailable ? CommonTestMessages.objectRepresentationNotAvailableOnDiagram
+        : CommonTestMessages.objectRepresentationStillAvailableOnDiagram;
 
     for (EObject current : list) {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
       Assert.assertTrue(
-          NLS.bind(errMsg, new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current.eClass().getName(),
-                                         diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+          NLS.bind(errMsg,
+              new Object[] {
+                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
+                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -769,11 +785,12 @@ public class DiagramHelper {
    * @return
    */
   public static Collection<DDiagramElement> getOwnedElements(DSemanticDecorator element) {
+
     if (element instanceof DDiagram) {
       return new ArrayList<DDiagramElement>(((DDiagram) element).getOwnedDiagramElements());
     }
-    if (element instanceof DNodeContainer) {
-      return new ArrayList<DDiagramElement>(((DNodeContainer) element).getOwnedDiagramElements());
+    if (element instanceof AbstractDNode) {
+      return DiagramServices.getDiagramServices().getOwnedAbstractNodes(element);
     }
     return null;
   }

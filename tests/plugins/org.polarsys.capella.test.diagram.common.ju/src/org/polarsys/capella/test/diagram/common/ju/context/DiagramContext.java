@@ -35,7 +35,7 @@ public class DiagramContext extends SessionContext {
    * Diagram to test.
    */
   protected DDiagram _diagram;
-  
+
   protected SessionContext _sessionContext;
 
   protected String diagramIdentifier;
@@ -73,20 +73,20 @@ public class DiagramContext extends SessionContext {
     return diagramIdentifier;
   }
 
-  public DSemanticDecorator getView(String semanticIdentifier_p) {
-    if (diagramIdentifier.equals(semanticIdentifier_p)) {
+  public DSemanticDecorator getView(String semanticIdentifier) {
+    if (getDiagramId().equals(semanticIdentifier)) {
       return (DSemanticDiagram) _diagram;
     }
-    if (getViewObjectMap().containsKey(semanticIdentifier_p)) {
-      DSemanticDecorator view = getViewObjectMap().get(semanticIdentifier_p);
+    if (getViewObjectMap().containsKey(semanticIdentifier)) {
+      DSemanticDecorator view = getViewObjectMap().get(semanticIdentifier);
       // view can be stored in the map but not present anymore on the diagram
       if (view.eContainer() == null) {
-        getViewObjectMap().remove(semanticIdentifier_p);
+        getViewObjectMap().remove(semanticIdentifier);
         view = null;
       }
       return view;
     }
-    return getView(getSemanticElement(semanticIdentifier_p));
+    return getView(getSemanticElement(semanticIdentifier));
   }
 
   public DDiagramElement getView(EObject semantic) {
@@ -97,25 +97,34 @@ public class DiagramContext extends SessionContext {
     getViewObjectMap().put(newIdentifier, view);
   }
 
-  public void hasView(String identifier_p) {
-    EObject eObject = getSemanticElement(identifier_p);
-    boolean result = getView(identifier_p) != null;
-    Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram, EObjectLabelProviderHelper.getText(eObject)), result);
+  public void hasView(String identifier) {
+    EObject eObject = getSemanticElement(identifier);
+    DSemanticDecorator view = getView(identifier);
+    boolean result = view != null;
+    Assert.assertTrue(
+        NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
+            EObjectLabelProviderHelper.getText(eObject)), result);
   }
 
-  public void hasntView(String identifier_p) {
-    EObject eObject = getSemanticElement(identifier_p);
-    boolean result = getView(identifier_p) == null;
-    Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram, EObjectLabelProviderHelper.getText(eObject)), result);
+  public void hasntView(String identifier) {
+    EObject eObject = getSemanticElement(identifier);
+    boolean result = getView(identifier) == null;
+    Assert.assertTrue(
+        NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
+            EObjectLabelProviderHelper.getText(eObject)), result);
   }
 
-  public void hasHiddenView(String identifier_p) {
-    EObject eObject = getSemanticElement(identifier_p);
-    if (getView(identifier_p) instanceof DDiagramElement) {
-      boolean result = (getView(identifier_p) != null) && DiagramServices.getDiagramServices().isHidden((DDiagramElement) getView(identifier_p));
-      Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram, EObjectLabelProviderHelper.getText(eObject)), result);
+  public void hasHiddenView(String identifier) {
+    EObject eObject = getSemanticElement(identifier);
+    if (getView(identifier) instanceof DDiagramElement) {
+      boolean result = (getView(identifier) != null)
+          && DiagramServices.getDiagramServices().isHidden((DDiagramElement) getView(identifier));
+      Assert.assertTrue(
+          NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
+              EObjectLabelProviderHelper.getText(eObject)), result);
+    } else {
+      Assert.assertTrue("view is diagram", false);
     }
-    Assert.assertTrue("view is diagram", false);
   }
 
 }

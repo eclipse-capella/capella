@@ -10171,90 +10171,30 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Communication Links" name="Show/Hide CommunicationLinks" label="Communication Links" precondition="&lt;%!$containerView.isA(&quot;DDiagram&quot;) &amp;&amp; $container.isA(&quot;Component&quot;)%>" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_ExchangeItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <filters precondition="feature:synchronized" elementsToListen="&lt;%current%>">
-              <listeners domainClass="DDiagram" featureName="synchronized"/>
-            </filters>
-            <variable name="container"/>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="&lt;%$containerView.getDiagramContainer().getAllAbstractNodes()%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedEdges" computationExpression="&lt;%$containerView.getDiagramContainer().getEdges()[target.isA(&quot;CommunicationLink&quot;) &amp;&amp; sourceNode.target==$containerView.target]%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="&lt;%$ownedEdges[visible].target%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="&lt;%$containerView.target.getRelatedCommunicationLinks()%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="Select communication link to show  in &lt;%$container.name%>."/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="&lt;%$containerView.target%>"/>
-            </viewVariable>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="showhide" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $context %>"/>
-                  <parameters name="scope" value="&lt;%$scope%>"/>
-                  <parameters name="initialSelection" value="&lt;% getIntersection($visibleTargets, $scope) %>"/>
-                  <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="&lt;%$message%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                    <subModelOperations xsi:type="tool_1:For" expression="&lt;% getIntersection($visibleTargets, $scope) - $selection %>">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $ownedEdges[target == $i] %>">
-                        <subModelOperations xsi:type="tool_1:DeleteView"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:For" expression="&lt;% $selection %>">
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                        <parameters name="context" value="&lt;% $container%>"/>
-                        <parameters name="variable" value="targetInterfaceView"/>
-                        <parameters name="value" value="&lt;% $ownedNodes[target == $i.exchangeItem]%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $targetInterfaceView!=null %>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $targetInterfaceView.show %>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $targetInterfaceView==null %>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $i.exchangeItem %>">
-                          <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                            <parameters name="context" value="&lt;% $container%>"/>
-                            <parameters name="variable" value="bestContainer"/>
-                            <parameters name="value" value="&lt;%$i.exchangeItem.getBestGraphicalContainer($containerView.getViewDiagram(), $container.eClass)%>"/>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_ExchangeItem']" containerViewExpression="&lt;%$bestContainer%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                        <parameters name="context" value="&lt;% $container%>"/>
-                        <parameters name="variable" value="targetView"/>
-                        <parameters name="value" value="&lt;% $ownedEdges[target == $i]%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $targetView!=null %>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $targetView.show %>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $targetView==null %>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container.ownedCommunicationLinks[current==$i] %>">
-                          <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_CommunicationLink']" containerViewExpression="&lt;%$containerView.getViewDiagram()%>" sourceExpression="&lt;%$container%>" targetExpression="&lt;%$i.exchangeItem%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="refreshElement" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.RefreshElement">
-                      <parameters name="context" value="&lt;% $containerView.getDiagramContainer() %>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%!$elementView.isA(&quot;DDiagram&quot;) &amp;&amp; (isA(&quot;Component&quot;) || isA(&quot;ComponentPort&quot;))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView%>">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" label="setVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                  <parameters name="context" value="var:elementView"/>
+                  <parameters name="variable" value="scope"/>
+                  <parameters name="value" value="service:getIDInsertRemoveRelationshipsScope"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" label="setVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                  <parameters name="context" value="var:elementView"/>
+                  <parameters name="variable" value="initialSelection"/>
+                  <parameters name="value" value="service:getIDInsertRemoveRelationshipsInitialSelection(scope)"/>
+                </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectInterfaces" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizardIDB">
                   <parameters name="context" value="&lt;% $elementView%>"/>
-                  <parameters name="scope" value="&lt;% getAvailableInterfacesAndLinksFromComponentToInsert ()  %>"/>
-                  <parameters name="initialSelection" value="&lt;%getExistingInterfacesAndLinksFromDiagram() %>"/>
+                  <parameters name="scope" value="var:scope"/>
+                  <parameters name="initialSelection" value="var:initialSelection"/>
                   <parameters name="resultVariable" value="selectedInterfaces"/>
                   <parameters name="wizardMessage" value="Select elements to show in &lt;%$element.name%>."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedInterfaces != &quot;WIZARD_CANCELED&quot;)%>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%showHideRelationShipFromIDB($selectedInterfaces)%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%insertRemoveIDRelationships($scope,$initialSelection,$selectedInterfaces)%>"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>

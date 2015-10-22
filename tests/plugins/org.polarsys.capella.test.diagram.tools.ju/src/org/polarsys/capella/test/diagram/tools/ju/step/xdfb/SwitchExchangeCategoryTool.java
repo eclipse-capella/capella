@@ -10,8 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.step.xdfb;
 
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
+import org.polarsys.capella.test.diagram.common.ju.headless.ILinksTransfertWizardResult;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
 public class SwitchExchangeCategoryTool extends InsertRemoveTool {
@@ -20,4 +25,15 @@ public class SwitchExchangeCategoryTool extends InsertRemoveTool {
     super(context, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES);
   }
 
+  @Override
+  protected IHeadlessResult createOperation() {
+    return new ILinksTransfertWizardResult() {
+
+      @Override
+      @SuppressWarnings({ "unchecked", "synthetic-access", "rawtypes" })
+      public Object getResult(java.util.Collection<? extends EObject> selections, Map<String, Object> parameters) {
+        return getExecutionContext().getSemanticElements(insertedElements);
+      }
+    };
+  }
 }

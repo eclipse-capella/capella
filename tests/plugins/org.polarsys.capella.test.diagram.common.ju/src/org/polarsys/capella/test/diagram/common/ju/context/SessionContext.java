@@ -46,22 +46,22 @@ public class SessionContext {
     return _semanticObjectMap;
   }
 
-  public <T extends EObject> Collection<T> getSemanticElements(String... objectIdentifiers_p) {
+  public <T extends EObject> Collection<T> getSemanticElements(String... objectIdentifiers) {
     Collection<T> result = new ArrayList<T>();
-    for (String value : objectIdentifiers_p) {
+    for (String value : objectIdentifiers) {
       result.add((T) getSemanticElement(value));
     }
     return result;
   }
 
-  public void putSemanticElement(String objectIdentifier_p, EObject object_p) {
-    getSemanticObjectMap().put(objectIdentifier_p, object_p);
+  public void putSemanticElement(String objectIdentifier, EObject object) {
+    getSemanticObjectMap().put(objectIdentifier, object);
   }
 
-  public <T extends EObject> T getSemanticElement(String objectIdentifier_p) {
+  public <T extends EObject> T getSemanticElement(String objectIdentifier) {
     Map<String, EObject> map = getSemanticObjectMap();
-    if (!map.containsKey(objectIdentifier_p)) {
-      EObject object = IdManager.getInstance().getEObject(objectIdentifier_p, new IScope() {
+    if (!map.containsKey(objectIdentifier)) {
+      EObject object = IdManager.getInstance().getEObject(objectIdentifier, new IScope() {
 
         @Override
         public List<Resource> getResources() {
@@ -69,9 +69,9 @@ public class SessionContext {
           return Collections.singletonList(semanticResource);
         }
       });
-      map.put(objectIdentifier_p, object);
+      map.put(objectIdentifier, object);
     }
-    return (T) map.get(objectIdentifier_p);
+    return (T) map.get(objectIdentifier);
   }
 
   /**

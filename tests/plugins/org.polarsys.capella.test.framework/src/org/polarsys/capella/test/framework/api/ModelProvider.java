@@ -30,6 +30,7 @@ import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.IFileRequestor;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
@@ -64,8 +65,9 @@ public class ModelProvider {
     System.out.println(">> require " + modelIdentifier);
     // load the model if it is not already the case
     if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
-      if (!sourceFolder.exists() || !sourceFolder.isDirectory())
+      if (!sourceFolder.exists() || !sourceFolder.isDirectory()) {
         throw new IllegalArgumentException("test model '" + relativeModelPath + "' does not exist");
+      }
       System.out.println(">> load " + modelIdentifier);
       String projectName = sourceFolder.getName();
       IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -91,22 +93,25 @@ public class ModelProvider {
     File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
     System.out.println(">> release " + modelIdentifier);
-    if (!modelIdentifier2Owner.containsKey(modelIdentifier))
+    if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
       throw new IllegalArgumentException("test model '" + relativeModelPath + "' has not been loaded");
+    }
     // if the test artefact is the owner of the test model, do actually the unload
     if (modelIdentifier2Owner.get(modelIdentifier) == artefact) {
       System.out.println(">> unload " + modelIdentifier);
       Session session = getExistingSessionForTestModel(relativeModelPath, artefact);
       if (session.isOpen()) {
-        session.save(new NullProgressMonitor());
-        session.close(new NullProgressMonitor());
+        GuiActions.saveSession(session);
+        GuiActions.closeSession(session);
       }
+
       IProject eclipseProject = getEclipseProjectForTestModel(relativeModelPath, artefact);
       try {
-        eclipseProject.delete(true, new NullProgressMonitor());
-      } catch (Exception e) {
+        GuiActions.deleteEclipseProject(eclipseProject);
+      } catch (CoreException e) {
         e.printStackTrace();
       }
+
       modelIdentifier2Owner.remove(modelIdentifier);
       modelIdentifier2ProjectNameInWorkspace.remove(modelIdentifier);
     }
@@ -146,8 +151,9 @@ public class ModelProvider {
   public static IProject getEclipseProjectForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
     File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
-    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier))
+    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)) {
       throw new IllegalArgumentException("No model has been loaded for identifier '" + relativeModelPath + "'");
+    }
     String projectName = modelIdentifier2ProjectNameInWorkspace.get(modelIdentifier);
     IProject project = IResourceHelpers.getEclipseProjectInWorkspace(projectName);
     normalizeEclipseProjectForTest(project);
@@ -171,8 +177,9 @@ public class ModelProvider {
    */
   public static Session getSessionForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
     Session session = getExistingSessionForTestModel(relativeModelPath, artefact);
-    if (!session.isOpen())
+    if (!session.isOpen()) {
       session.open(new NullProgressMonitor());
+    }
     return session;
   }
 
@@ -182,7 +189,7 @@ public class ModelProvider {
   public static Session getExistingSessionForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
     IProject project = getEclipseProjectForTestModel(relativeModelPath, artefact);
     IFile airdFile = new IFileRequestor().search(project, CapellaResourceHelper.AIRD_FILE_EXTENSION).get(0);
-    Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(airdFile), new NullProgressMonitor()); //$NON-NLS-1$
+    Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(airdFile), new NullProgressMonitor());
     return session;
   }
 

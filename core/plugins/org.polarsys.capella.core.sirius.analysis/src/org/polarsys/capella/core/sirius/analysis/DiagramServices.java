@@ -406,7 +406,7 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
     AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
@@ -420,7 +420,7 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
     AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, true);
@@ -434,7 +434,7 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
     AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false, -1);
@@ -448,8 +448,8 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
-    
+    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
+
     AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return (DNodeContainer) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
   }
@@ -476,7 +476,7 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
     AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, isBorderedNodeMapping(mapping));
@@ -493,9 +493,9 @@ public class DiagramServices {
     if ((sourceView == null) || (targetView == null)) {
       return null;
     }
-    
+
     final DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
-    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
     DEdgeCandidate edgeCandidate = new DEdgeCandidate(mapping, semanticObject, sourceView, targetView, rId);
 
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
