@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.misc;
+package org.polarsys.capella.test.validation.rules.ju.testsuites.partial;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,16 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.CheckAllRulesCodeTest;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.ComponentPortOrientationConsistencyTest;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.I25_MoreDescriptionValidationTests;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.NoDuplicateRuleIdsTest;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.NoStackoverflowErrorOnValidation;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle1Test;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle2Test;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle3Test;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle4Test;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle5Test;
 
 public class MiscTestSuite extends BasicTestSuite {
 
@@ -42,6 +52,7 @@ public class MiscTestSuite extends BasicTestSuite {
     tests.add(new PackageCycle3Test());
     tests.add(new PackageCycle4Test());
     tests.add(new PackageCycle5Test());
+    //tests.add(new PackageCycle6Test()); // FIXME to be activated later (related to https://polarsys.org/bugs/show_bug.cgi?id=596)
     //tests.add(new RulesCoverageTest());
     return tests;
   }
