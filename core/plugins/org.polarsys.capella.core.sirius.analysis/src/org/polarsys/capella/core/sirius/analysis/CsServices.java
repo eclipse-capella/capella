@@ -158,6 +158,7 @@ import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaFactory;
@@ -2894,7 +2895,7 @@ public class CsServices {
   public String computePartLabel(Part part) {
 
     if (isMultipartMode(part)) {
-      String mul = InformationServices.getService().multiplicityToStringDisplay(part);
+      String mul = PropertyNamingHelper.multiplicityToStringDisplay(part);
 
       NumericValue ownedMaxCard = part.getOwnedMaxCard();
       NumericValue ownedMinCard = part.getOwnedMinCard();
@@ -2921,7 +2922,7 @@ public class CsServices {
   public String computePartLabelMultiPartMode(Part part) {
 
     if (isMultipartMode(part)) {
-      String mul = InformationServices.getService().multiplicityToStringDisplay(part);
+      String mul = PropertyNamingHelper.multiplicityToStringDisplay(part);
 
       NumericValue ownedMaxCard = part.getOwnedMaxCard();
       NumericValue ownedMinCard = part.getOwnedMinCard();
@@ -2956,7 +2957,7 @@ public class CsServices {
   }
 
   private String getCardValue(Part part, NumericValue card) {
-    return InformationServices.getService().getCardValue(card);
+    return PropertyNamingHelper.getCardValue(card);
   }
 
   /**

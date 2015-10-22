@@ -129,8 +129,8 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
 import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
 import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
-import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 import org.polarsys.capella.core.data.information.impl.DataPkgImpl;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
@@ -160,7 +160,6 @@ import org.polarsys.capella.core.model.helpers.CollectionExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataTypeExt;
-import org.polarsys.capella.core.model.helpers.DataValueExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
@@ -539,8 +538,8 @@ public class InformationServices {
       return;
     }
 
-    String resultMin = getCardValue(parameter.getOwnedMinCard());
-    String resultMax = getCardValue(parameter.getOwnedMaxCard());
+    String resultMin = PropertyNamingHelper.getCardValue(parameter.getOwnedMinCard());
+    String resultMax = PropertyNamingHelper.getCardValue(parameter.getOwnedMaxCard());
 
     if (!((parameter.getOwnedMaxCard() instanceof LiteralNumericValue) && (parameter.getOwnedMinCard() instanceof LiteralNumericValue) && "1".equals(resultMin) && "1".equals(resultMax))) { //$NON-NLS-1$ //$NON-NLS-2$
       sb.append("["); //$NON-NLS-1$
@@ -620,76 +619,7 @@ public class InformationServices {
    * @return
    */
   public String multiplicityToString(MultiplicityElement element) {
-    return multiplicityToStringDisplay(element);
-  }
-
-  /**
-   * convert a multiplicity to a string used in common.odesign and context.odesign
-   * @param element
-   * @return
-   */
-  public String multiplicityToStringDisplay(MultiplicityElement element) {
-    NumericValue ownedMinCard = element.getOwnedMinCard();
-    NumericValue ownedMaxCard = element.getOwnedMaxCard();
-    if ((ownedMinCard == null) && (ownedMaxCard == null)) {
-      return "[undefined]"; //$NON-NLS-1$
-    }
-
-    String minCard = getCardValue(ownedMinCard);
-    String maxCard = getCardValue(ownedMaxCard);
-
-    // rule 1: if min = max display max only (except if min and max equals 1, display void)
-    boolean displayNothing = false;
-    boolean displayOnlyMax = false;
-    if (minCard.equalsIgnoreCase(maxCard) && !minCard.equals(ICommonConstants.EMPTY_STRING) && !maxCard.equals(ICommonConstants.EMPTY_STRING)) {
-      if (minCard.equalsIgnoreCase("1")) { //$NON-NLS-1$
-        displayNothing = true;
-      } else {
-        displayOnlyMax = true;
-      }
-    }
-
-    // rule 2: if min=0 and max=* display only max
-    if (minCard.equalsIgnoreCase("0") && maxCard.equalsIgnoreCase("*")) { //$NON-NLS-1$ //$NON-NLS-2$
-      displayOnlyMax = true;
-    }
-
-    // rule 3: if minCard or maxCard are named, display the names
-    String ownedminCardName = ownedMinCard.getName();
-    String ownedmaxCardName = ownedMaxCard.getName();
-    if ((null != ownedminCardName) && !ownedminCardName.equals(ICommonConstants.EMPTY_STRING)) {
-      minCard = ownedminCardName;
-      displayNothing = false;
-      displayOnlyMax = false;
-    }
-    if ((null != ownedmaxCardName) && !ownedmaxCardName.equals(ICommonConstants.EMPTY_STRING)) {
-      maxCard = ownedmaxCardName;
-      displayNothing = false;
-      displayOnlyMax = false;
-    }
-
-    if (displayNothing) {
-      return ICommonConstants.EMPTY_STRING;
-    } else if (displayOnlyMax) {
-      return "[" //$NON-NLS-1$
-             + maxCard + "]"; //$NON-NLS-1$
-    }
-
-    return "[" //$NON-NLS-1$
-           + minCard + ".." //$NON-NLS-1$
-           + maxCard + "]"; //$NON-NLS-1$
-
-  }
-
-  /**
-   * Return cardValue or cardName depending on the NumericValue if 'numericValue' Type is LiteralNumericValue - return its value if 'numericValue' Type is
-   * AbstractExpression - return its Name if 'numericValue' Type is NumericReference - return its Name [if referencedProperty - calculate cardName as
-   * (OwnerClass name :: referencedPropertyName)
-   * @param numericValue
-   * @return cardValue or cardName depending on the NumericValue
-   */
-  public String getCardValue(NumericValue numericValue) {
-    return DataValueExt.getCardValue(numericValue);
+    return PropertyNamingHelper.multiplicityToStringDisplay(element);
   }
 
   /**
@@ -732,21 +662,7 @@ public class InformationServices {
       // it will return it !!
       return computeLabel((Port) property);
     }
-    String result = multiplicityToStringDisplay(property) + " " + getSymbolIfPropertyIsDerived(property) + property.getName(); //$NON-NLS-1$
-    if (property.getType() != null) {
-      result += " : " + property.getType().getName(); //$NON-NLS-1$
-    }
-    return result;
-  }
-
-  public String getSymbolIfPropertyIsDerived(Property property) {
-    if (null != property) {
-      if (property.isIsDerived()) {
-        return String.valueOf(ICommonConstants.SLASH_CHARACTER);
-      }
-    }
-
-    return ICommonConstants.EMPTY_STRING;
+    return EObjectLabelProviderHelper.getText(property);
   }
 
   /**
@@ -777,7 +693,7 @@ public class InformationServices {
    * @return the String
    */
   public String computeLabelWithoutType(ExchangeItemElement element) {
-    String result = multiplicityToStringDisplay(element) + " " + element.getName(); //$NON-NLS-1$
+    String result = PropertyNamingHelper.multiplicityToStringDisplay(element) + " " + element.getName(); //$NON-NLS-1$
     EList<Property> referencedProperties = element.getReferencedProperties();
     if (!referencedProperties.isEmpty()) {
       result = result + " {"; //$NON-NLS-1$
@@ -2306,25 +2222,6 @@ public class InformationServices {
   }
 
   /**
-   * [Method used in common.odesign] return prefix of the property label
-   * @param context current Property
-   * @return prefix as string
-   */
-  public String prefixPropertyLabel(EObject context) {
-    String str = ICommonConstants.EMPTY_STRING;
-    if ((null != context) && (context instanceof Property)) {
-      Property pro = (Property) context;
-      if (pro.isIsPartOfKey()) {
-        str = str + "&" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
-      }
-      if (pro.isIsStatic()) {
-        str = str + "%" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
-      }
-    }
-    return str;
-  }
-
-  /**
    * used in common.odesign : ClassDiagram Return customized label for UnionProperty
    * @param context : an EObject
    * @param property : an UnionProperty
@@ -2476,7 +2373,7 @@ public class InformationServices {
 	         }
 	         // prefix
 	         if (!hideRoleLabelEnable) {
-	           beginLabel.append(prefixPropertyLabel(pro));
+	           beginLabel.append(PropertyNamingHelper.prefixPropertyLabel(pro));
 	         // isDerived
 	         if (pro.isIsDerived()) {
 	         	beginLabel.append(ICommonConstants.SLASH_CHARACTER);
@@ -2533,7 +2430,7 @@ public class InformationServices {
 	        }
 	 	    // prefix
 	 	    if (!hideRoleLabelEnable) {
-	 	      endLabel.append(prefixPropertyLabel(pro));
+	 	      endLabel.append(PropertyNamingHelper.prefixPropertyLabel(pro));
 	        // isDerived
 	        if (pro.isIsDerived()) {
 	        	endLabel.append(ICommonConstants.SLASH_CHARACTER);

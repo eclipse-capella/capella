@@ -16,7 +16,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
-import org.polarsys.capella.core.model.helpers.DataValueExt;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -40,7 +40,7 @@ public class PropertyKeyPartsCardinality extends AbstractValidationRule {
       if (property.isIsPartOfKey()) {
         // its max card
         NumericValue ownedMaxCard = property.getOwnedMaxCard();
-        String max = DataValueExt.getCardValue(ownedMaxCard);
+        String max = PropertyNamingHelper.getCardValue(ownedMaxCard);
 
         // must be "1"
         if (!MAX_CARD_KEYPART.equals(max)) {

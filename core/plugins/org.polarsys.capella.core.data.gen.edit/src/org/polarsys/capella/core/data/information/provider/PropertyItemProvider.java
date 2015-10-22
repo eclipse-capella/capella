@@ -38,7 +38,10 @@ import org.polarsys.capella.core.data.capellacore.provider.FeatureItemProvider;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
+import org.polarsys.capella.core.data.information.Unit;
+import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
@@ -558,18 +561,34 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
   public String getText(Object object) {
     String label = ((Property) object).getName();
     String typeName = ""; //$NON-NLS-1$
+
+    String prefix = PropertyNamingHelper.prefixPropertyLabel((Property) object);
+    String symbolIfPropertyIsDerived = PropertyNamingHelper.getSymbolIfPropertyIsDerived((Property) object);
+    String multiplicity = PropertyNamingHelper.multiplicityToStringDisplay((Property) object);
+
     AbstractType type = ((Property) object).getAbstractType();
     if (null != type) {
       typeName = type.getName();
       if (null == typeName || "" == typeName) { //$NON-NLS-1$
         typeName = "[" + type.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      } else {
+        if (type instanceof PhysicalQuantity) {
+          Unit unit = ((PhysicalQuantity) type).getUnit();
+          if (unit != null) {
+            String unitName = unit.getName();
+            if (unitName != null && !unitName.isEmpty()) {
+              typeName += " (" + unitName + ")";
+            }
+          }
+        }
       }
     } else {
       typeName = "<undefined>"; //$NON-NLS-1$
     }
     if (label == null || label.length() == 0)
       label = "[" + getString("_UI_Property_type") + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    label += ": " + typeName; //$NON-NLS-1$
+
+    label = prefix + multiplicity + " " + symbolIfPropertyIsDerived + label + " : " + typeName; //$NON-NLS-1$ //$NON-NLS-2$
 
     return (label == null || label.length() == 0) ? "[" + getString("_UI_Property_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
