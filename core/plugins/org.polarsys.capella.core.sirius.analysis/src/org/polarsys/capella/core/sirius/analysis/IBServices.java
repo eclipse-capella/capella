@@ -162,6 +162,7 @@ public class IBServices {
 
   /**
    * Crate interface view with proper mapping
+   * 
    * @param context
    * @param aOperation
    * @param diagram
@@ -411,6 +412,11 @@ public class IBServices {
       if (null != requitedInterfaces) {
         result.addAll(requitedInterfaces);
       }
+    } else if (target instanceof Interface) {
+      Interface itf = (Interface) target;
+      result.addAll(itf.getSuperGeneralizations());
+      result.addAll(itf.getSubGeneralizations());
+
     }
     return result;
   }
@@ -421,7 +427,7 @@ public class IBServices {
     EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
 
     if ((null != sourceTarget) && (null != diagramContainer)) {
-      if (sourceTarget instanceof Component) {
+      if ((sourceTarget instanceof Component) || (sourceTarget instanceof Interface)) {
         // add only implementation and use edges from diagram
         for (Object capellaElement : scope) {
           if (DiagramServices.getDiagramServices().isOnDiagram(diagramContainer, (EObject) capellaElement)) {
@@ -515,9 +521,12 @@ public class IBServices {
 
   /**
    * @used in common.odesign Remove views and Create views depending on the selected element list
-   * @param context : diagram context
-   * @param selectedInterfaces : list of element to be show in diagram
-   * @param diagram current diagram
+   * @param context
+   *          : diagram context
+   * @param selectedInterfaces
+   *          : list of element to be show in diagram
+   * @param diagram
+   *          current diagram
    * @return
    */
   public EObject showHideInterfaces(EObject context, List<CapellaElement> selectedInterfaces,
