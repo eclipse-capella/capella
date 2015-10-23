@@ -15,7 +15,10 @@ import java.util.Map;
 
 import junit.framework.Assert;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -24,6 +27,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.framework.api.CommonTestMessages;
 
 /**
@@ -127,4 +131,35 @@ public class DiagramContext extends SessionContext {
     }
   }
 
+  public DiagramContext open() {
+    new OpenDiagramStep(this).run();
+    return this;
+  }
+
+  public void mustBeInstanceOf(String objectId, EClass clazz) {
+    Assert.assertTrue(clazz.isInstance(getSemanticElement(objectId)));
+  }
+
+  public void mustBeLinkedTo(String objectId, String valueId, EStructuralFeature feature) {
+    EObject object = getSemanticElement(objectId);
+    EObject value = getSemanticElement(valueId);
+
+    if (feature.isMany()) {
+      Assert.assertTrue(((EList) object.eGet(feature)).contains(value));
+
+    } else {
+      Assert.assertTrue(object.eGet(feature).equals(value));
+
+    }
+  }
+
+  public void mustBeOwnedBy(String objectId, String containerId) {
+    EObject object = getSemanticElement(objectId);
+    EObject container = getSemanticElement(containerId);
+    Assert.assertTrue(object.eContainer().equals(container));
+  }
+
+  public void mustGraphicalOwnedBy(String s1, String s2) {
+    Assert.assertTrue(getView(s1).eContainer().equals(getView(s2)));
+  }
 }

@@ -41,14 +41,14 @@ public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
     _targetView = targetView;
   }
 
-  public CreateDEdgeTool(DiagramContext context, String toolName, String newIdentifier, String sourceView,
-      String targetView) {
+  public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView,
+      String newIdentifier) {
     this(context, toolName, sourceView, targetView);
     _newIdentifier = newIdentifier;
   }
 
-  public CreateDEdgeTool(DiagramContext context, String toolName, String newIdentifier, String newSourceIdentifier,
-      String newTargetIdentifier, String sourceView, String targetView) {
+  public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView,
+      String newIdentifier, String newSourceIdentifier, String newTargetIdentifier) {
     this(context, toolName, sourceView, targetView);
     _newIdentifier = newIdentifier;
     _newSourceIdentifier = newSourceIdentifier;

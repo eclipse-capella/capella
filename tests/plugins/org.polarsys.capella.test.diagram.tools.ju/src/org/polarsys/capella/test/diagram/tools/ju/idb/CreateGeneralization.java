@@ -11,16 +11,9 @@
 package org.polarsys.capella.test.diagram.tools.ju.idb;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.preferences.IInheritancePreferences;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.context.IDBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
-import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
 
@@ -31,89 +24,51 @@ public class CreateGeneralization extends EmptyProject {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    DiagramContext diagramContext = new CreateDiagramStep(context, LA__LOGICAL_SYSTEM,
-        IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME).run();
+    IDBDiagram idb = IDBDiagram.createDiagram(context, LA__LOGICAL_SYSTEM);
 
-    new OpenDiagramStep(diagramContext).run();
-
-    testInterfaces(diagramContext);
-
-    testComponents(diagramContext);
+    testInterfaces(idb);
+    testComponents(idb);
   }
 
   /**
    * Test basic preference generalization between components
    */
-  private void testComponents(DiagramContext diagramContext) {
+  private void testComponents(IDBDiagram idb) {
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_COMPONENT, GenericModel.LC_1,
-        diagramContext.getDiagramId()).run();
+    idb.createComponent(GenericModel.LC_1);
+    idb.createComponent(GenericModel.LC_2);
+    idb.createComponent(GenericModel.LC_3);
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_COMPONENT, GenericModel.LC_2,
-        diagramContext.getDiagramId()).run();
+    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, false);
+    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, false);
+    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_2);
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_COMPONENT, GenericModel.LC_3,
-        diagramContext.getDiagramId()).run();
+    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
+    idb.createGeneralization(GenericModel.LC_2, GenericModel.LC_1);
+    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_2);
+    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_3);
 
-    AbstractPreferencesInitializer.preferencesManager.setValue(
-        IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, false);
+    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
+    idb.createGeneralization(GenericModel.LC_3, GenericModel.LC_1);
+    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_3);
 
-    AbstractPreferencesInitializer.preferencesManager.setValue(
-        IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, false);
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION,
-        GenericModel.GENERALIZATION_1, GenericModel.LC_1, GenericModel.LC_2).cannotRun();
-
-    AbstractPreferencesInitializer.preferencesManager.setValue(
-        IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION,
-        GenericModel.GENERALIZATION_1, GenericModel.LC_1, GenericModel.LC_2).run();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION,
-        GenericModel.GENERALIZATION_1, GenericModel.LC_1, GenericModel.LC_2).cannotRun();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION,
-        GenericModel.GENERALIZATION_2, GenericModel.LC_1, GenericModel.LC_3).cannotRun();
-
-    AbstractPreferencesInitializer.preferencesManager.setValue(
-        IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION,
-        GenericModel.GENERALIZATION_1, GenericModel.LC_1, GenericModel.LC_3).run();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION,
-        GenericModel.GENERALIZATION_1, GenericModel.LC_1, GenericModel.LC_3).cannotRun();
   }
 
   /**
    * Test basic cycle generalization between interfaces
    */
-  private void testInterfaces(DiagramContext diagramContext) {
+  private void testInterfaces(IDBDiagram idb) {
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_INTERFACE, GenericModel.INTERFACE_1,
-        diagramContext.getDiagramId()).run();
+    idb.createInterface(GenericModel.INTERFACE_1);
+    idb.createInterface(GenericModel.INTERFACE_2);
+    idb.createInterface(GenericModel.INTERFACE_3);
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_INTERFACE, GenericModel.INTERFACE_2,
-        diagramContext.getDiagramId()).run();
+    idb.createGeneralization(GenericModel.INTERFACE_2, GenericModel.INTERFACE_1);
+    idb.createGeneralization(GenericModel.INTERFACE_3, GenericModel.INTERFACE_2);
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_INTERFACE, GenericModel.INTERFACE_3,
-        diagramContext.getDiagramId()).run();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION, GenericModel.INTERFACE_1,
-        GenericModel.INTERFACE_2).run();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION, GenericModel.INTERFACE_2,
-        GenericModel.INTERFACE_3).run();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION, GenericModel.INTERFACE_3,
-        GenericModel.INTERFACE_1).cannotRun();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION, GenericModel.INTERFACE_1,
-        GenericModel.INTERFACE_2).cannotRun();
-
-    new CreateDEdgeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_GENERALIZATION, GenericModel.INTERFACE_2,
-        GenericModel.INTERFACE_3).cannotRun();
+    idb.createGeneralizationNotEnabled(GenericModel.INTERFACE_3, GenericModel.INTERFACE_1);
+    idb.createGeneralizationNotEnabled(GenericModel.INTERFACE_1, GenericModel.INTERFACE_2);
+    idb.createGeneralizationNotEnabled(GenericModel.INTERFACE_2, GenericModel.INTERFACE_3);
 
   }
 }

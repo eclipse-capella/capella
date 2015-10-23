@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.step.cdb;
+package org.polarsys.capella.test.diagram.common.ju.step.tools.cdb;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;

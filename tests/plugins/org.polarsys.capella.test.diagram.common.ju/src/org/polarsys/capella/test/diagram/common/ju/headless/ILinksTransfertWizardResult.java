@@ -17,17 +17,20 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard;
 
 /**
- * Interface which have to be implemented by the classes with 
- * are used in order to short-cut GUI call to {@link SelectLinksFromTransferWizard}
+ * Interface which have to be implemented by the classes with are used in order to short-cut GUI call to
+ * {@link SelectLinksFromTransferWizard}
  */
 public interface ILinksTransfertWizardResult extends IHeadlessResult {
 
-	/** 
-	 * the simulated result. 
-	 * @param selections @see {@link SelectLinksFromTransferWizard}
-	 * @param parameters @see {@link SelectLinksFromTransferWizard}
-	 * @return the "left" list.
-	 * @see {@link SelectLinksFromTransferWizard}
-	 */
-	public Object getResult(Collection<? extends EObject> selections, Map<String, Object> parameters);
+  /**
+   * the simulated result.
+   * 
+   * @param selections
+   *          @see {@link SelectLinksFromTransferWizard}
+   * @param parameters
+   *          @see {@link SelectLinksFromTransferWizard}
+   * @return the "left" list.
+   * @see {@link SelectLinksFromTransferWizard}
+   */
+  public Object getResult(Collection<? extends EObject> selections, Map<String, Object> parameters);
 }

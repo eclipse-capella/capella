@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
@@ -87,9 +88,14 @@ public class SessionContext {
 
   /**
    * Get the Capella Execution manager.
+   * 
    * @return a not <code>null</code> execution manager.
    */
   public ExecutionManager getExecutionManager() {
     return TransactionHelper.getExecutionManager(_session);
+  }
+
+  public void setPreference(String key, boolean value) {
+    AbstractPreferencesInitializer.preferencesManager.setValue(key, value);
   }
 }
