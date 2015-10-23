@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.step.xdfb;
+package org.polarsys.capella.test.diagram.common.ju.step.tools.xdfb;
 
 import java.util.Map;
 

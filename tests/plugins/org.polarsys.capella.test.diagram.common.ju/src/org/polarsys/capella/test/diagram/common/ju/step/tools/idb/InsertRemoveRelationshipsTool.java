@@ -8,16 +8,16 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.step.idb;
+package org.polarsys.capella.test.diagram.common.ju.step.tools.idb;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
-public class InsertRemoveComponentTool extends InsertRemoveTool {
+public class InsertRemoveRelationshipsTool extends InsertRemoveTool {
 
-  public InsertRemoveComponentTool(DiagramContext context) {
-    super(context, IToolNameConstants.TOOL_IDB_INSERT_REMOVE_COMPONENTS);
+  public InsertRemoveRelationshipsTool(DiagramContext context, String container) {
+    super(context, IToolNameConstants.TOOL_IDB_INSERT_REMOVE_RELATIONSHIPS, container);
   }
 
 }

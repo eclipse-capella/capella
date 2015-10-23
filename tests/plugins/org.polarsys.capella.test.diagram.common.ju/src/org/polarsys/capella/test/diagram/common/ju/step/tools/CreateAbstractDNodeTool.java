@@ -34,7 +34,7 @@ public class CreateAbstractDNodeTool extends AbstractToolStep<AbstractDNode> {
     this.containerView = containerView;
   }
 
-  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String newIdentifier, String containerView) {
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     this(context, toolName, containerView);
     this.newIdentifier = newIdentifier;
   }

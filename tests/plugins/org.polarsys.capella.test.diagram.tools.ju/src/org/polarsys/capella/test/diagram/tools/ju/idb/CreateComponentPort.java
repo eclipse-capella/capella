@@ -12,14 +12,8 @@ package org.polarsys.capella.test.diagram.tools.ju.idb;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.context.IDBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
-import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.diagram.tools.ju.model.GenericModel;
 
@@ -30,18 +24,11 @@ public class CreateComponentPort extends EmptyProject {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    DiagramContext diagramContext = new CreateDiagramStep(context, LA__LOGICAL_SYSTEM,
-        IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME).run();
+    IDBDiagram idb = IDBDiagram.createDiagram(context, LA__LOGICAL_SYSTEM);
 
-    new OpenDiagramStep(diagramContext).run();
+    idb.createComponent(GenericModel.LC_1);
+    idb.createStandardPort(GenericModel.LC_1, GenericModel.COMPONENT_PORT_1);
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_COMPONENT, GenericModel.LC_1,
-        diagramContext.getDiagramId()).run();
-
-    new CreateNodeTool(diagramContext, IToolNameConstants.TOOL_IDB_CREATE_STANDARD_PORT, GenericModel.COMPONENT_PORT_1,
-        GenericModel.LC_1).run();
-
-    mustBeInstanceOf(diagramContext, GenericModel.COMPONENT_PORT_1, FaPackage.Literals.COMPONENT_PORT);
-
+    idb.mustBeInstanceOf(GenericModel.COMPONENT_PORT_1, FaPackage.Literals.COMPONENT_PORT);
   }
 }

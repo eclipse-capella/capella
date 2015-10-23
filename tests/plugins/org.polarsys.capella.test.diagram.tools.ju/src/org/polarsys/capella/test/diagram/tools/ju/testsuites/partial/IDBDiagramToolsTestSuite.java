@@ -46,7 +46,6 @@ public class IDBDiagramToolsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new InsertRelationship());
     tests.add(new CreateActor());
     tests.add(new CreateCommunicationLinkAcquire());
     tests.add(new CreateCommunicationLinkTransmit());
@@ -59,6 +58,7 @@ public class IDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateProvides());
     tests.add(new CreateRequires());
     tests.add(new CreateUses());
+    tests.add(new InsertRelationship());
     return tests;
   }
 

@@ -21,8 +21,8 @@ public class CreateContainerTool extends CreateAbstractDNodeTool {
     super(context, toolName, containerView);
   }
 
-  public CreateContainerTool(DiagramContext context, String toolName, String newIdentifier, String containerView) {
-    super(context, toolName, newIdentifier, containerView);
+  public CreateContainerTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
+    super(context, toolName, containerView, newIdentifier);
   }
 
   @Override

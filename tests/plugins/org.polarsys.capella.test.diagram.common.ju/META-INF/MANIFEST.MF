@@ -10,7 +10,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram.ui;visibility:=reexport,
  org.eclipse.sirius.ext.base;visibility:=reexport,
  org.eclipse.sirius.table;visibility:=reexport,
- org.polarsys.capella.test.framework;visibility:=reexport
+ org.polarsys.capella.test.framework;visibility:=reexport,
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.core.model.preferences
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.polarsys.capella.test.diagram.common.ju,
@@ -22,6 +24,7 @@ Export-Package: org.polarsys.capella.test.diagram.common.ju,
  org.polarsys.capella.test.diagram.common.ju.step.crud,
  org.polarsys.capella.test.diagram.common.ju.step.filters,
  org.polarsys.capella.test.diagram.common.ju.step.tools,
+ org.polarsys.capella.test.diagram.common.ju.step.tools.idb,
  org.polarsys.capella.test.diagram.common.ju.wrapper,
  org.polarsys.capella.test.diagram.common.ju.wrapper.factory,
  org.polarsys.capella.test.diagram.common.ju.wrapper.sequence,
