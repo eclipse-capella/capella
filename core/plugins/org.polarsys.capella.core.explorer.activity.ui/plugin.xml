@@ -42,6 +42,9 @@
          <Description>
             %capellaActivityExplorerWorkflowPageDescription
          </Description>
+         <Predicate
+               class="org.polarsys.capella.core.explorer.activity.ui.predicate.CapellaActivityExplorerPredicate">
+         </Predicate>
       </Page>
       <Page
             class="org.polarsys.capella.core.explorer.activity.ui.pages.OperationalAnalysisPage"
