@@ -39,9 +39,9 @@
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
       id="973a7bb5-ba82-441f-b794-cd81c2359704" name="PackageCycle6" appliedPropertyValues="#26cd7e52-2f82-4563-b70c-fc7bbdcb3b72">
     <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:StringPropertyValue"
-        id="26cd7e52-2f82-4563-b70c-fc7bbdcb3b72" name="cycle1" value="Class_A1 Class_B1 ComplexValue_1"/>
+        id="26cd7e52-2f82-4563-b70c-fc7bbdcb3b72" name="cycle1" value="Class_A1 Class_B1 Class_C1 ComplexValue_1"/>
     <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:StringPropertyValue"
-        id="bc375c24-e394-4225-a0d7-b4dbd929961d" name="cycle2" value="Class_A2 Class_B2 Collection_2 NumericType_2"/>
+        id="bc375c24-e394-4225-a0d7-b4dbd929961d" name="cycle2" value="Class_A2 Class_B2 Class_C2 Collection_2 NumericType_2"/>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="87d784a9-34e7-467c-aab4-4d58ebad78ee" name="Operational Analysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"

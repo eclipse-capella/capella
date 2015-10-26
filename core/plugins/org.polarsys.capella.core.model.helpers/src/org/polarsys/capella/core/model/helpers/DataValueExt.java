@@ -11,6 +11,8 @@
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +24,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -50,6 +53,28 @@ import org.polarsys.capella.core.data.information.datavalue.StringReference;
 /**
  */
 public class DataValueExt {
+
+  /**
+   * @see #getDataValueDependencies(DataValue)
+   */
+  public static Map<AbstractDependenciesPkg, Collection<EObject>> getDataValueDependencies2(DataValue dataValue) {
+
+    Map<AbstractDependenciesPkg, Collection<EObject>> result = new HashMap<AbstractDependenciesPkg, Collection<EObject>>();
+
+    // type of value
+    AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, dataValue.getType());
+
+    return result;
+  }
+
+  /**
+   * @param dataValue
+   * @return all dependent packages of the collection
+   */
+  public static Collection<AbstractDependenciesPkg> getDataValueDependencies(DataValue dataValue) {
+    return getDataValueDependencies2(dataValue).keySet();
+  }
+
   public static ComponentArchitecture getRootComponentArchitecture(DataValue dataValue) {
     ComponentArchitecture arch = null;
     if (dataValue != null) {

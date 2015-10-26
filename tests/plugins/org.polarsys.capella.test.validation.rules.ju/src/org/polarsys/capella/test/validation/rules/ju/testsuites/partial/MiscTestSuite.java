@@ -27,6 +27,7 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle3Test;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle4Test;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle5Test;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle6Test;
 
 public class MiscTestSuite extends BasicTestSuite {
 
@@ -52,7 +53,7 @@ public class MiscTestSuite extends BasicTestSuite {
     tests.add(new PackageCycle3Test());
     tests.add(new PackageCycle4Test());
     tests.add(new PackageCycle5Test());
-    //tests.add(new PackageCycle6Test()); // FIXME to be activated later (related to https://polarsys.org/bugs/show_bug.cgi?id=596)
+    tests.add(new PackageCycle6Test());
     //tests.add(new RulesCoverageTest());
     return tests;
   }
