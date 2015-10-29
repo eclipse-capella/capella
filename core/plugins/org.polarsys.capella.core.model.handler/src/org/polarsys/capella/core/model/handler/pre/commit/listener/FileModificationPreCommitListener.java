@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,18 +72,22 @@ import org.polarsys.capella.core.model.handler.pre.condition.IFileModificationPr
 /**
  * File Modification Pre Commit listener.<br>
  * When resources are in RO, a dialog is prompted to the end-user to make the file writable.<br>
- * If the resources are not writable, an {@link AbortedTransactionException} is thrown in order to roll back the transaction.
+ * If the resources are not writable, an {@link AbortedTransactionException} is thrown in order to roll back the
+ * transaction.
  */
-public class FileModificationPreCommitListener extends ResourceSetListenerImpl implements IEditingDomainListener, SessionManagerListener {
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+public class FileModificationPreCommitListener extends ResourceSetListenerImpl implements IEditingDomainListener,
+    SessionManagerListener {
+  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(
+      IReportManagerDefaultComponents.UI);
   /**
    * Disable the validate edit check.
    */
   private volatile boolean _disableValidateEdit;
   /**
-   * Flag to register this pre commit listener as session listener without direct dependencies to avoid {@link ClassCircularityError}.
+   * Flag to register this pre commit listener as session listener without direct dependencies to avoid
+   * {@link ClassCircularityError}.
    */
-//  private volatile boolean _needRegistration;
+  // private volatile boolean _needRegistration;
   /**
    * File modification precondition checker used before files are made writable.
    */
@@ -99,7 +103,7 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
    */
   public FileModificationPreCommitListener() {
     super();
-//    _needRegistration = true;
+    // _needRegistration = true;
     SessionManager.INSTANCE.addSessionsListener(this);
   }
 
@@ -123,28 +127,29 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
    * @see org.eclipse.emf.transaction.ResourceSetListenerImpl#transactionAboutToCommit(org.eclipse.emf.transaction.ResourceSetChangeEvent)
    */
   @Override
-  public Command transactionAboutToCommit(ResourceSetChangeEvent event_p) throws RollbackException {
-//    if (_needRegistration) {
-      // Used to avoid a ClassCircularityError: This class must not implement SessionListener.
-//      SessionsWatchDog.enableSessionMonitoring(this);
-      // Workaround
-//      SessionsWatchDog.getResourceAccessPolicyListener().transactionAboutToCommit(event_p);
-      // END Workaround
-//      _needRegistration = false;
-//    }
+  public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+    // if (_needRegistration) {
+    // Used to avoid a ClassCircularityError: This class must not implement SessionListener.
+    // SessionsWatchDog.enableSessionMonitoring(this);
+    // Workaround
+    // SessionsWatchDog.getResourceAccessPolicyListener().transactionAboutToCommit(event_p);
+    // END Workaround
+    // _needRegistration = false;
+    // }
     // Precondition.
-    if (event_p.getTransaction().isReadOnly()) {
+    if (event.getTransaction().isReadOnly()) {
       return null;
     }
     if (_disableValidateEdit) {
       return null;
     }
     // Use to check if resources that contain modified objects in given event are writable.
-    List<?> notifications = event_p.getNotifications();
+    List<?> notifications = event.getNotifications();
     Set<IFile> filesToMakeWritable = new HashSet<IFile>(0);
     Set<Resource> resourcesToMakeWritable = new HashSet<Resource>(0);
 
-    Map<ResourceSetSync, Set<Resource>> additionalResourcesToChangeStatus = new HashMap<ResourceSetSync, Set<Resource>>(0);
+    Map<ResourceSetSync, Set<Resource>> additionalResourcesToChangeStatus = new HashMap<ResourceSetSync, Set<Resource>>(
+        0);
     Map<EObject, Resource> removedElementFromResource = new HashMap<EObject, Resource>(0);
     // Collect all files that require to make them writable to be able to run the current transaction.
     for (Object currentNotification : notifications) {
@@ -156,11 +161,12 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
         if (notifier instanceof EObject) {
           // Mark dirty dependent resources if necessary.
           if (CapellaResourceHelper.isSemanticElement(notifier)) {
-            markDirtyDependentResources(resourcesToMakeWritable, additionalResourcesToChangeStatus, notification, (EObject) notifier,
-                removedElementFromResource);
+            markDirtyDependentResources(resourcesToMakeWritable, additionalResourcesToChangeStatus, notification,
+                (EObject) notifier, removedElementFromResource);
           }
           Resource resource = ((EObject) notifier).eResource();
-          if ((null != resource) && !new NotificationQuery((Notification) currentNotification).isTransientNotification()) {
+          if ((null != resource)
+              && !new NotificationQuery((Notification) currentNotification).isTransientNotification()) {
             // Check the notifier resource is writable.
             handleMakeResourceWritable(resourcesToMakeWritable, currentNotification, resource);
           }
@@ -168,24 +174,35 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
       }
     }
 
+    // List to store writable resources
+    Set<Resource> writableResources = new HashSet<Resource>();
+
     // Retrieve files of resources and make them writable if required.
     if (!resourcesToMakeWritable.isEmpty()) {
       for (Resource resource : resourcesToMakeWritable) {
         IFile file = EcoreUtil2.getFile(resource);
-        handleMakeFileWritable(filesToMakeWritable, file);
+        boolean fileAdded = handleMakeFileWritable(filesToMakeWritable, file);
+        if (!fileAdded)
+          writableResources.add(resource);
       }
     }
 
     // Make files writable (if any).
     if (!filesToMakeWritable.isEmpty()) {
       try {
-        makeFilesWritable(event_p.getEditingDomain(), filesToMakeWritable);
+        makeFilesWritable(event.getEditingDomain(), filesToMakeWritable);
       } catch (RollbackException re) {
         // We cannot clear readonly flag, may be the user has no write access
         // => check the user write access and report pb if any
         doCheckUserWritePermission(resourcesToMakeWritable);
       }
     }
+
+    // Check precondition for writable resources
+    if (!writableResources.isEmpty()) {
+      doCheckPrecondition(writableResources);
+    }
+
     // The readonly flags are cleared, now we need to check that users has write access
     if (!resourcesToMakeWritable.isEmpty()) {
       doCheckUserWritePermission(resourcesToMakeWritable);
@@ -203,13 +220,32 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
     return null;
   }
 
+  public void doCheckPrecondition(Set<Resource> resourcesToMakeWritable) throws AbortedTransactionException {
+    List<IFile> lstFile = new ArrayList<IFile>();
+    for (Resource res : resourcesToMakeWritable)
+      lstFile.add(EcoreUtil2.getFile(res));
+
+    final boolean[] result = { true };
+    // Get a file modification precondition delegator.
+    final IFileModificationPreconditionChecker preConditionChecker = getFileModificationPreconditionChecker();
+    if (null != preConditionChecker) {
+      result[0] = preConditionChecker.fulfillConditions(lstFile);
+    }
+    if (!result[0]) {
+      throw new AbortedTransactionException(Status.CANCEL_STATUS, "Pre-conditions are not satisfactory"); //$NON-NLS-1$
+    }
+  }
+
   /**
    * Check that current application has access to a set of resources.
+   * 
    * @param resourcesToMakeWritable
-   * @throws AbortedTransactionException if {@link #checkUserWritePermission(List)} does not return an OK status
+   * @throws AbortedTransactionException
+   *           if {@link #checkUserWritePermission(List)} does not return an OK status
    */
   private void doCheckUserWritePermission(Set<Resource> resourcesToMakeWritable) throws AbortedTransactionException {
-    // check that the file is accessible (e.g. the file can have a cleared readonly flag but if the user do not have write access the file is inaccessible)
+    // check that the file is accessible (e.g. the file can have a cleared readonly flag but if the user do not have
+    // write access the file is inaccessible)
     List<IFile> filesToCheck = new ArrayList<IFile>();
     for (Resource resource : resourcesToMakeWritable) {
       IFile file = EcoreUtil2.getFile(resource);
@@ -220,68 +256,72 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
     IStatus userWritePermissionStatus = checkUserWritePermission(new ArrayList<IFile>(filesToCheck));
 
     if (!userWritePermissionStatus.isOK()) {
-      throw new AbortedTransactionException(Status.CANCEL_STATUS, "End-user canceled to make the file writable or it failed to make it writable."); //$NON-NLS-1$
+      throw new AbortedTransactionException(Status.CANCEL_STATUS,
+          "End-user canceled to make the file writable or it failed to make it writable."); //$NON-NLS-1$
     }
   }
 
   /**
-   * Mark dirty dependent resources if the specified notification contains object that are moved from a resource to a new one.
+   * Mark dirty dependent resources if the specified notification contains object that are moved from a resource to a
+   * new one.
+   * 
    * @param filesToMakeWritable_p
-   * @param additionalResourcesToChangeStatus_p
-   * @param notification_p
-   * @param notifier_p
-   * @param removedElementFromResource_p
+   * @param additionalResourcesToChangeStatus
+   * @param notification
+   * @param notifier
+   * @param removedElementFromResource
    */
   @SuppressWarnings("unchecked")
-  protected void markDirtyDependentResources(final Set<Resource> resourcesToMakeWritable_p,
-      final Map<ResourceSetSync, Set<Resource>> additionalResourcesToChangeStatus_p, Notification notification_p, EObject notifier_p,
-      Map<EObject, Resource> removedElementFromResource_p) {
+  protected void markDirtyDependentResources(final Set<Resource> resourcesToMakeWritable,
+      final Map<ResourceSetSync, Set<Resource>> additionalResourcesToChangeStatus, Notification notification,
+      EObject notifier, Map<EObject, Resource> removedElementFromResource) {
     // Collect additional resources to check out for current EObject.
-    EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
+    EStructuralFeature feature = (EStructuralFeature) notification.getFeature();
     if (feature instanceof EReference) {
       // Search for a containment change where the eResource is modified.
       EReference reference = (EReference) feature;
-      if (reference.isContainment() && !notification_p.isTouch()) {
+      if (reference.isContainment() && !notification.isTouch()) {
         // New value objects collection.
         List<EObject> objectsToUpdate = new ArrayList<EObject>(1);
-        switch (notification_p.getEventType()) {
-          case Notification.REMOVE:
-          case Notification.UNSET:
-            Object oldValue = notification_p.getOldValue();
-            if (CapellaResourceHelper.isSemanticElement(oldValue)) {
-              EObject removedElement = (EObject) oldValue;
-              // Stored the removed object and its current resource to compare with another one in next future.
-              removedElementFromResource_p.put(removedElement, notifier_p.eResource());
-            }
-            return; // Force to exit this method.
-          case Notification.REMOVE_MANY:
+        switch (notification.getEventType()) {
+        case Notification.REMOVE:
+        case Notification.UNSET:
+          Object oldValue = notification.getOldValue();
+          if (CapellaResourceHelper.isSemanticElement(oldValue)) {
+            EObject removedElement = (EObject) oldValue;
+            // Stored the removed object and its current resource to compare with another one in next future.
+            removedElementFromResource.put(removedElement, notifier.eResource());
+          }
+          return; // Force to exit this method.
+        case Notification.REMOVE_MANY:
           break;
-          case Notification.SET:
-          case Notification.ADD:
-            objectsToUpdate.add((EObject) notification_p.getNewValue());
+        case Notification.SET:
+        case Notification.ADD:
+          objectsToUpdate.add((EObject) notification.getNewValue());
           break;
-          case Notification.ADD_MANY:
-            objectsToUpdate.addAll((Collection<? extends EObject>) notification_p.getNewValue());
+        case Notification.ADD_MANY:
+          objectsToUpdate.addAll((Collection<? extends EObject>) notification.getNewValue());
           break;
         }
-        Resource notifierResource = notifier_p.eResource();
+        Resource notifierResource = notifier.eResource();
         // Loop over all objects that need an update.
         for (EObject objectToUpdate : objectsToUpdate) {
           // Check if the resource of the object to update is the same as is its new container ?
-          Resource objectToUpdateResource = removedElementFromResource_p.get(objectToUpdate);
+          Resource objectToUpdateResource = removedElementFromResource.get(objectToUpdate);
           if ((null != objectToUpdateResource) && !notifierResource.equals(objectToUpdateResource)) {
             Collection<Resource> dependentResources = RepresentationHelper.collectDependentResources(objectToUpdate);
             for (Resource dependentResource : dependentResources) {
-              handleMakeResourceWritable(resourcesToMakeWritable_p, objectToUpdate, dependentResource);
+              handleMakeResourceWritable(resourcesToMakeWritable, objectToUpdate, dependentResource);
               // Get the resourceSetSync for current editing domain.
-              ResourceSetSync resourceSetSync =
-                  ResourceSetSync.getOrInstallResourceSetSync((TransactionalEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(objectToUpdate));
+              ResourceSetSync resourceSetSync = ResourceSetSync
+                  .getOrInstallResourceSetSync((TransactionalEditingDomain) AdapterFactoryEditingDomain
+                      .getEditingDomainFor(objectToUpdate));
               // Is it the container resource sync ?
               if (ResourceStatus.SYNC.equals(ResourceSetSync.getStatus(dependentResource))) {
-                Set<Resource> resources = additionalResourcesToChangeStatus_p.get(resourceSetSync);
+                Set<Resource> resources = additionalResourcesToChangeStatus.get(resourceSetSync);
                 if (null == resources) {
                   resources = new HashSet<Resource>(0);
-                  additionalResourcesToChangeStatus_p.put(resourceSetSync, resources);
+                  additionalResourcesToChangeStatus.put(resourceSetSync, resources);
                 }
                 // Add it to the ones to change.
                 resources.add(dependentResource);
@@ -295,11 +335,13 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
 
   /**
    * Handle make resource writable.
+   * 
    * @param filesToMakeWritable
    * @param notificationObject
    * @param file
    */
-  public void handleMakeResourceWritable(final Set<Resource> resourcesToMakeWritable, Object notificationObject, Resource resource) {
+  public void handleMakeResourceWritable(final Set<Resource> resourcesToMakeWritable, Object notificationObject,
+      Resource resource) {
     if ((null != resource)) {
       if (__logger.isDebugEnabled()) {
         // Avoid multi traces for the same file.
@@ -319,36 +361,42 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
 
   /**
    * Handle make file writable.
+   * 
    * @param filesToMakeWritable
    * @param notificationObject
    * @param file
+   * @return true if file is added to filesToMakeWritable, otherwise false
    */
-  public void handleMakeFileWritable(final Set<IFile> filesToMakeWritable, IFile file) {
+  public boolean handleMakeFileWritable(final Set<IFile> filesToMakeWritable, IFile file) {
     if ((null != file) && file.isReadOnly()) {
       if (__logger.isDebugEnabled()) {
         // Avoid multi traces for the same file.
         if (!filesToMakeWritable.contains(file)) {
           // Not I18n since it is debug traces.
-          __logger.debug(new EmbeddedMessage(StringHelper.formatMessage("Make File ''{0}'' Writable", new String[] { file.getFullPath().toString() }), //$NON-NLS-1$
+          __logger.debug(new EmbeddedMessage(StringHelper.formatMessage(
+              "Make File ''{0}'' Writable", new String[] { file.getFullPath().toString() }), //$NON-NLS-1$
               IReportManagerDefaultComponents.UI));
         }
       }
       // Add this RO resource to make it writable.
       filesToMakeWritable.add(file);
+      return true;
     }
+    return false;
   }
 
   /**
    * Get the file modification precondition checker.
+   * 
    * @return <code>null</code> if none.
    */
   private static IFileModificationPreconditionChecker getFileModificationPreconditionChecker() {
     if (!__alreadyLookup && (null == __fileModificationPrecondtionChecker)) {
-      IConfigurationElement[] configurationElements =
-          ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.model.handler", "fileModificationPreconditionChecker"); //$NON-NLS-1$ //$NON-NLS-2$
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(
+          "org.polarsys.capella.core.model.handler", "fileModificationPreconditionChecker"); //$NON-NLS-1$ //$NON-NLS-2$
       if (configurationElements.length > 0) {
-        __fileModificationPrecondtionChecker =
-            (IFileModificationPreconditionChecker) ExtensionPointHelper.createInstance(configurationElements[0], ExtensionPointHelper.ATT_CLASS);
+        __fileModificationPrecondtionChecker = (IFileModificationPreconditionChecker) ExtensionPointHelper
+            .createInstance(configurationElements[0], ExtensionPointHelper.ATT_CLASS);
       }
       __alreadyLookup = true; // Lookup through the platform is done.
     }
@@ -357,31 +405,33 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
 
   /**
    * Make files writable. If end-user turns down (or operation fails), an exception is thrown.
+   * 
    * @param event_p
-   * @param filesToMakeWritable_p
+   * @param filesToMakeWritable
    * @throws AbortedTransactionException
    */
-  public static void makeFilesWritable(TransactionalEditingDomain editingDomain_p, final Collection<IFile> filesToMakeWritable_p)
-      throws AbortedTransactionException {
+  public static void makeFilesWritable(TransactionalEditingDomain editingDomain,
+      final Collection<IFile> filesToMakeWritable) throws AbortedTransactionException {
     final boolean[] result = { true };
     // Get a file modification precondition delegator.
     final IFileModificationPreconditionChecker preConditionChecker = getFileModificationPreconditionChecker();
     final Display display = PlatformUI.getWorkbench().getDisplay();
     // Call to make file writable within the UI thread with a 'Privileged' runnable regarding transactions.
-    // Indeed, making the file writable with CC team adapter cause UI refreshes that run read-only transaction within the current RW transaction.
+    // Indeed, making the file writable with CC team adapter cause UI refreshes that run read-only transaction within
+    // the current RW transaction.
     // Without a 'Privileged' runnable, that causes dead locks.
-    display.syncExec(editingDomain_p.createPrivilegedRunnable(new Runnable() {
+    display.syncExec(editingDomain.createPrivilegedRunnable(new Runnable() {
       public void run() {
         if (null != preConditionChecker) {
-          result[0] = preConditionChecker.fulfillConditions(filesToMakeWritable_p);
+          result[0] = preConditionChecker.fulfillConditions(filesToMakeWritable);
         }
         if (result[0]) {
           IUserEnforcedHelper userEnforcedHelper = SolFaCommonActivator.getDefault().getUserEnforcedHelper();
           // Make the files writable.
           if (userEnforcedHelper instanceof IUserEnforcedHelper2) {
             // Preconditions are fulfilled, make files writables.
-            IStatus status =
-                ((IUserEnforcedHelper2) userEnforcedHelper).makeFilesWritable(filesToMakeWritable_p.toArray(new IFile[filesToMakeWritable_p.size()]));
+            IStatus status = ((IUserEnforcedHelper2) userEnforcedHelper).makeFilesWritable(filesToMakeWritable
+                .toArray(new IFile[filesToMakeWritable.size()]));
             if (!status.isOK()) {
               result[0] = false;
             }
@@ -390,28 +440,31 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
       }
     }));
     if (!result[0]) {
-      throw new AbortedTransactionException(Status.CANCEL_STATUS, "End-user canceled to make the file writable or it failed to make it writable."); //$NON-NLS-1$
+      throw new AbortedTransactionException(Status.CANCEL_STATUS,
+          "End-user canceled to make the file writable or it failed to make it writable."); //$NON-NLS-1$
     }
   }
 
   /**
    * Checks if the current application can access to filesToMakeWritable_p.
+   * 
    * @param filesToMakeWritable_p
    * @return CANCEL_STATUS if the current application cannot access to filesToMakeWritable_p and OK_STATUS otherwise.
    */
 
   /**
    * Checks if the current application can access to filesToMakeWritable_p.
-   * @param filesToMakeWritable_p
+   * 
+   * @param filesToMakeWritable
    * @return CANCEL_STATUS if the current application cannot access to filesToMakeWritable_p and OK_STATUS otherwise.
    */
 
-  protected static IStatus checkUserWritePermission(List<IFile> filesToMakeWritable_p) {
+  protected static IStatus checkUserWritePermission(List<IFile> filesToMakeWritable) {
 
     Set<File> filesWithNoWritePermission = new HashSet<File>();
 
     // collects file that has no write permission for the user
-    for (IFile file : filesToMakeWritable_p) {
+    for (IFile file : filesToMakeWritable) {
 
       IPath rawLocation = file.getRawLocation();
       if (null != rawLocation) {
@@ -439,7 +492,8 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
     // There is at least one inaccessible file => report error to the user and return cancel status
     final Display display = PlatformUI.isWorkbenchRunning() ? PlatformUI.getWorkbench().getDisplay() : null;
     final Shell shell = display.getActiveShell();
-    final StringBuilder sb = new StringBuilder("Following files are not accessible (may result from a write access denied)\n");
+    final StringBuilder sb = new StringBuilder(
+        "Following files are not accessible (may result from a write access denied)\n");
     for (File f : filesWithNoWritePermission) {
       sb.append(f.getAbsolutePath() + "\n");
     }
@@ -455,10 +509,11 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
 
   /**
    * Set whether or not valid edit is enabled or disabled.
-   * @param disableValidateEdit_p
+   * 
+   * @param disableValidateEdit
    */
-  public void setDisableValidateEdit(boolean disableValidateEdit_p) {
-    _disableValidateEdit = disableValidateEdit_p;
+  public void setDisableValidateEdit(boolean disableValidateEdit) {
+    _disableValidateEdit = disableValidateEdit;
   }
 
   /**
@@ -468,34 +523,35 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
   public void createdEditingDomain(EditingDomain editingDomain) {
     ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
   }
-	
+
   /**
    * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
    */
   @Override
   public void disposedEditingDomain(EditingDomain editingDomain) {
-	((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
+    ((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
   }
 
   /**
-   * Allows monitoring sessions to enable / disable the Capella pre commit listener on SessionListener.ABOUT_TO_BE_REPLACED / SessionListener.REPLACED
+   * Allows monitoring sessions to enable / disable the Capella pre commit listener on
+   * SessionListener.ABOUT_TO_BE_REPLACED / SessionListener.REPLACED
    * 
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(Session, int)
    */
   @Override
   public void notify(Session updated, int notification) {
     switch (notification) {
-      case SessionListener.ABOUT_TO_BE_REPLACED:
-        // Deactivate the validateEdit check as the session is unloading / reloading some fragments.
-        if (null != getTarget() && getTarget().equals(updated.getTransactionalEditingDomain())) {
-          setDisableValidateEdit(true);
-        }
+    case SessionListener.ABOUT_TO_BE_REPLACED:
+      // Deactivate the validateEdit check as the session is unloading / reloading some fragments.
+      if (null != getTarget() && getTarget().equals(updated.getTransactionalEditingDomain())) {
+        setDisableValidateEdit(true);
+      }
       break;
-      case SessionListener.REPLACED:
-        // Activate the validateEdit check as the session completed unloading / reloading some fragments.
-        if (null != getTarget() && getTarget().equals(updated.getTransactionalEditingDomain())) {
-          setDisableValidateEdit(false);
-        }
+    case SessionListener.REPLACED:
+      // Activate the validateEdit check as the session completed unloading / reloading some fragments.
+      if (null != getTarget() && getTarget().equals(updated.getTransactionalEditingDomain())) {
+        setDisableValidateEdit(false);
+      }
       break;
     }
   }
@@ -505,7 +561,7 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
    */
   @Override
   public void notifyAddSession(Session newSession) {
-	// unused
+    // unused
   }
 
   /**
@@ -513,7 +569,7 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
    */
   @Override
   public void notifyRemoveSession(Session removedSession) {
-	// unused
+    // unused
   }
 
   /**
@@ -521,7 +577,7 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
    */
   @Override
   public void viewpointSelected(Viewpoint selectedSirius) {
-	// unused
+    // unused
   }
 
   /**
@@ -529,6 +585,6 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl i
    */
   @Override
   public void viewpointDeselected(Viewpoint deselectedSirius) {
-	// unused
+    // unused
   }
 }
