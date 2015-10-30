@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,13 +32,13 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
   protected Text unparsedExpressionTextField;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public UnparsedExpressionGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(widgetFactory_p);
+  public UnparsedExpressionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(widgetFactory);
 
-    Group textGroup = _widgetFactory.createGroup(parent_p, ""); //$NON-NLS-1$
+    Group textGroup = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -49,14 +49,14 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createUnparsedExpressionField(Group textGroup_p) {
-    CLabel unparsedExpressionLabel = _widgetFactory.createCLabel(textGroup_p, Messages.getString("Expression.UnparsedExpressionLabel")); //$NON-NLS-1$
+  private void createUnparsedExpressionField(Group textGroup) {
+    CLabel unparsedExpressionLabel = _widgetFactory.createCLabel(textGroup, Messages.getString("Expression.UnparsedExpressionLabel")); //$NON-NLS-1$
     GridData gd = new GridData();
     gd.horizontalSpan = 2;
     unparsedExpressionLabel.setLayoutData(gd);
-    unparsedExpressionTextField = _widgetFactory.createText(textGroup_p, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+    unparsedExpressionTextField = _widgetFactory.createText(textGroup, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     gd.heightHint = 80;
@@ -69,8 +69,8 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, null);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, null);
 
     if (null != _semanticElement) {
       if (null != unparsedExpressionTextField)
@@ -79,11 +79,11 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField text field to be filled
    */
   @Override
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(unparsedExpressionTextField)) {
+  protected void fillTextField(Text textField) {
+    if (textField.equals(unparsedExpressionTextField)) {
       setDataValue(_semanticElement, DatavaluePackage.eINSTANCE.getAbstractExpressionValue_UnparsedExpression(), unparsedExpressionTextField.getText());
     }
   }
@@ -102,9 +102,9 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != unparsedExpressionTextField && !unparsedExpressionTextField.isDisposed()) {
-      unparsedExpressionTextField.setEnabled(enabled_p);
+      unparsedExpressionTextField.setEnabled(enabled);
     }
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,10 +38,10 @@ public abstract class CommunicationItemSection extends GeneralizableElementSecti
 
   /**
    * Constructor.
-   * @param showSuperTypes_p
+   * @param showSuperTypes
    */
-  public CommunicationItemSection(boolean showSuperTypes_p, boolean showIsAbstract_p) {
-    super(showSuperTypes_p, showIsAbstract_p);
+  public CommunicationItemSection(boolean showSuperTypes, boolean showIsAbstract) {
+    super(showSuperTypes, showIsAbstract);
   }
 
   /**
@@ -59,10 +59,10 @@ public abstract class CommunicationItemSection extends GeneralizableElementSecti
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    visibilityKindGroup.loadData(capellaElement_p, CommunicationPackage.eINSTANCE.getCommunicationItem_Visibility());
+    visibilityKindGroup.loadData(capellaElement, CommunicationPackage.eINSTANCE.getCommunicationItem_Visibility());
   }
 
   /**

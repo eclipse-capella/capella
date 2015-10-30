@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,11 +29,11 @@ public class NumericTypeKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public NumericTypeKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("NumericTypeKind.Label"), 2); //$NON-NLS-1$
+  public NumericTypeKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory, Messages.getString("NumericTypeKind.Label"), 2); //$NON-NLS-1$
 
     _numericTypeBtnFloat = createButton(NumericTypeKind.FLOAT);
     _numericTypeBtnInteger = createButton(NumericTypeKind.INTEGER);

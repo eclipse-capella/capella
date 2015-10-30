@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,10 +36,10 @@ public abstract class DataValueSection extends TypedElementSection {
     createControls(parent, aTabbedPropertySheetPage, true);
   }
 
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage, boolean showIsAbstract_p) {
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage, boolean showIsAbstract) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    if (showIsAbstract_p) {
+    if (showIsAbstract) {
       boolean displayedInWizard = isDisplayedInWizard();
       
       Group checkGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
@@ -49,7 +49,7 @@ public abstract class DataValueSection extends TypedElementSection {
       checkGroup.setLayoutData(gd);
       checkGroup.moveAbove(getReferencesGroup());
       
-      _propertiesCheckbox = new DataValueBooleanPropertiesCheckbox(checkGroup, getWidgetFactory(), showIsAbstract_p);
+      _propertiesCheckbox = new DataValueBooleanPropertiesCheckbox(checkGroup, getWidgetFactory(), showIsAbstract);
       _propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
     }
   }
@@ -58,11 +58,11 @@ public abstract class DataValueSection extends TypedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _propertiesCheckbox) {
-      _propertiesCheckbox.loadData(capellaElement_p);
+      _propertiesCheckbox.loadData(capellaElement);
     }
   }
 

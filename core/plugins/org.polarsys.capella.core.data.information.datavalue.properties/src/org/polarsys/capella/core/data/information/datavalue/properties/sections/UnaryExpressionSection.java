@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,10 +52,10 @@ public class UnaryExpressionSection extends DataValueSection {
        * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
        */
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        super.widgetSelected(event_p);
+      public void widgetSelected(SelectionEvent event) {
+        super.widgetSelected(event);
 
-        evaluateTextStatus((UnaryOperator) ((Button) event_p.getSource()).getData());
+        evaluateTextStatus((UnaryOperator) ((Button) event.getSource()).getData());
       }
     };
     operatorGroup.setDisplayedInWizard(displayedInWizard);
@@ -75,22 +75,22 @@ public class UnaryExpressionSection extends DataValueSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    unitField.loadData(capellaElement_p, DatavaluePackage.eINSTANCE.getNumericValue_Unit());
-    operatorGroup.loadData(capellaElement_p, DatavaluePackage.eINSTANCE.getUnaryExpression_Operator());
-    operandWidget.loadData(capellaElement_p, DatavaluePackage.Literals.UNARY_EXPRESSION__OWNED_OPERAND);
-    unparsedExpressionField.loadData(capellaElement_p);
+    unitField.loadData(capellaElement, DatavaluePackage.eINSTANCE.getNumericValue_Unit());
+    operatorGroup.loadData(capellaElement, DatavaluePackage.eINSTANCE.getUnaryExpression_Operator());
+    operandWidget.loadData(capellaElement, DatavaluePackage.Literals.UNARY_EXPRESSION__OWNED_OPERAND);
+    unparsedExpressionField.loadData(capellaElement);
 
-    evaluateTextStatus(((UnaryExpression) capellaElement_p).getOperator());
+    evaluateTextStatus(((UnaryExpression) capellaElement).getOperator());
   }
 
   /**
-   * @param operator_p
+   * @param operator
    */
-  protected void evaluateTextStatus(UnaryOperator operator_p) {
-    if (UnaryOperator.UNSET.equals(operator_p)) {
+  protected void evaluateTextStatus(UnaryOperator operator) {
+    if (UnaryOperator.UNSET.equals(operator)) {
       unparsedExpressionField.setEnabled(true);
     } else {
       unparsedExpressionField.setEnabled(false);

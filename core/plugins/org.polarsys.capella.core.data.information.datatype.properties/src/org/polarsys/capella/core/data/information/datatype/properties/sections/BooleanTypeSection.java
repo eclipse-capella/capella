@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,8 +62,8 @@ public class BooleanTypeSection extends DataTypeSection {
        * {@inheritDoc}
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
         refresh();
       }
     };
@@ -74,20 +74,20 @@ public class BooleanTypeSection extends DataTypeSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    defaultValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getBooleanType_OwnedDefaultValue());
+    defaultValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getBooleanType_OwnedDefaultValue());
 
-    evaluateButtonStatus((BooleanType) capellaElement_p);
+    evaluateButtonStatus((BooleanType) capellaElement);
   }
 
   /**
-   * @param booleanType_p
+   * @param booleanType
    */
-  protected void evaluateButtonStatus(BooleanType booleanType_p) {
-    if (booleanType_p != null) {
-      DataValue defaultValue = booleanType_p.getDefaultValue();
+  protected void evaluateButtonStatus(BooleanType booleanType) {
+    if (booleanType != null) {
+      DataValue defaultValue = booleanType.getDefaultValue();
       if (null == defaultValue) {
         defaultValueWidget.enableEditButton(false);
       } else {
