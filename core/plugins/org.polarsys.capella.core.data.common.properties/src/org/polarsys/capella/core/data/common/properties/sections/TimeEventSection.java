@@ -29,13 +29,12 @@ public class TimeEventSection extends StateEventSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     boolean displayedInWizard = isDisplayedInWizard();
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+    super.createControls(parent, aTabbedPropertySheetPage);
 
     _kindGroup = new TimeEventKindGroup(_rootParentComposite, getWidgetFactory(), true);
     _kindGroup.setDisplayedInWizard(displayedInWizard);
-
   }
 
   /**
@@ -56,17 +55,17 @@ public class TimeEventSection extends StateEventSection {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
-    _kindGroup.loadData(capellaElement_p, CapellacommonPackage.Literals.TIME_EVENT__KIND);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
+    _kindGroup.loadData(capellaElement, CapellacommonPackage.Literals.TIME_EVENT__KIND);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object toTest_p) {
-    EObject eObjectToTest = super.selection(toTest_p);
+  public boolean select(Object toTest) {
+    EObject eObjectToTest = super.selection(toTest);
     return ((eObjectToTest != null) && (eObjectToTest.eClass() == CapellacommonPackage.eINSTANCE.getTimeEvent()));
   }
 }

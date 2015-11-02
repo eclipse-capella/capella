@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,8 +75,8 @@ public class ConstraintSection extends NamedElementSection {
     _constrainedElementsField = new MultipleSemanticField(getReferencesGroup(), Messages.getString("Constraint.ConstrainedElements.Label"), //$NON-NLS-1$
         getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
           @Override
-          protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-            return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(),
+          protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+            return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(),
                 ModellingcorePackage.eINSTANCE.getAbstractConstraint_ConstrainedElements());
           }
         });
@@ -109,7 +109,7 @@ public class ConstraintSection extends NamedElementSection {
     _createSpecificationMenu.setRemoveAllWhenShown(true);
     _createSpecificationMenu.addMenuListener(new IMenuListener() {
 
-      public void menuAboutToShow(IMenuManager manager_p) {
+      public void menuAboutToShow(IMenuManager manager) {
         EditingDomain domain = AdapterFactoryEditingDomain.getEditingDomainFor(getSelectedConstraint());
         ISelection selection = new StructuredSelection(getSelectedConstraint());
         Collection<?> newChildDescriptors = domain.getNewChildDescriptors(getSelectedConstraint(), null);
@@ -126,7 +126,7 @@ public class ConstraintSection extends NamedElementSection {
     });
     _createSpecificationMenu.createContextMenu(_editSpecificationButton);
     _editSpecificationButton.addSelectionListener(new SelectionListener() {
-      public void widgetSelected(SelectionEvent e_p) {
+      public void widgetSelected(SelectionEvent e) {
         if (getSelectedConstraint().getOwnedSpecification() != null) {
           if (CapellaUIPropertiesPlugin.getDefault().openWizard(getSelectedConstraint().getOwnedSpecification())) {
             loadData(getSelectedConstraint()); // refresh
@@ -136,13 +136,13 @@ public class ConstraintSection extends NamedElementSection {
         }
       }
 
-      public void widgetDefaultSelected(SelectionEvent e_p) {
+      public void widgetDefaultSelected(SelectionEvent e) {
         /* nop */
       }
     });
 
     _deleteSpecificationButton.addSelectionListener(new SelectionListener() {
-      public void widgetSelected(SelectionEvent e_p) {
+      public void widgetSelected(SelectionEvent e) {
         if (getSelectedConstraint().getOwnedSpecification() != null) {
           CapellaDeleteCommand c =
               new CapellaDeleteCommand(TransactionHelper.getExecutionManager(getSelectedConstraint()), Collections.singletonList(getSelectedConstraint()
@@ -156,7 +156,7 @@ public class ConstraintSection extends NamedElementSection {
         }
       }
 
-      public void widgetDefaultSelected(SelectionEvent e_p) {
+      public void widgetDefaultSelected(SelectionEvent e) {
         /* nop */
       }
     });
@@ -167,9 +167,9 @@ public class ConstraintSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
-    _constraint = (Constraint) capellaElement_p;
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
+    _constraint = (Constraint) capellaElement;
     _constrainedElementsField.loadData(_constraint, ModellingcorePackage.eINSTANCE.getAbstractConstraint_ConstrainedElements());
     _specificationText.setText(CapellaEmbeddedLinkedTextEditorInput.getDefaultText(_constraint, null));
   }
@@ -207,8 +207,8 @@ public class ConstraintSection extends NamedElementSection {
    * Chains a new child creation action and an open wizard action together
    */
   private final static class CreateAndEditAction extends DynamicCreateChildAction {
-    public CreateAndEditAction(EditingDomain editingDomain_p, ISelection selection_p, Object descriptor_p) {
-      super(editingDomain_p, selection_p, descriptor_p);
+    public CreateAndEditAction(EditingDomain editingDomain, ISelection selection, Object descriptor) {
+      super(editingDomain, selection, descriptor);
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,29 +36,29 @@ public class TypedElementController implements ISimpleSemanticFieldController {
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
    */
-  public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
+  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> list = new ArrayList<EObject>();
 
     // query for 'abstractType'
     IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+        BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
     if (query != null) {
-      List<CapellaElement> list1 = query.getAvailableElements(semanticElement_p);
+      List<CapellaElement> list1 = query.getAvailableElements(semanticElement);
 
-      if (semanticElement_p.eContainer() instanceof ExchangeItem) {
+      if (semanticElement.eContainer() instanceof ExchangeItem) {
         // the container is an parameter : every element is acceptable as parameter
         list.addAll(list1);
 
-      } else if ((!(semanticElement_p instanceof Property)) && (!(semanticElement_p instanceof UnionProperty))) {
+      } else if ((!(semanticElement instanceof Property)) && (!(semanticElement instanceof UnionProperty))) {
         // if property eContainer is not an Association : add to list only Primitive class and all other elements
         for (CapellaElement capellaElement : list1) {
           if (capellaElement instanceof Class) {
             Class cls = (Class) capellaElement;
             // In the COLLECTIONS SPECIFIC CASE, always add the classes
             // In Complex type SPECIFIC CASE, always add the classes (non-primitive) (and primitives)
-            if ((semanticElement_p instanceof Collection)
-             || (semanticElement_p instanceof ComplexValue/* && !cls.isIsPrimitive()*/)
-             || (!(semanticElement_p instanceof Collection) && !(semanticElement_p instanceof ComplexValue) && cls.isIsPrimitive()))
+            if ((semanticElement instanceof Collection)
+             || (semanticElement instanceof ComplexValue/* && !cls.isIsPrimitive()*/)
+             || (!(semanticElement instanceof Collection) && !(semanticElement instanceof ComplexValue) && cls.isIsPrimitive()))
             {
               list.add(capellaElement);
             }
@@ -80,8 +80,8 @@ public class TypedElementController implements ISimpleSemanticFieldController {
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
-    semanticElement_p.eSet(semanticFeature_p, value);
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+    semanticElement.eSet(semanticFeature, value);
     return value;
   }
 
@@ -89,7 +89,7 @@ public class TypedElementController implements ISimpleSemanticFieldController {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#loadData(org.polarsys.capella.core.data.information.datatype.BooleanType,
    *      org.eclipse.emf.ecore.EReference)
    */
-  public EObject loadValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    return (EObject) semanticElement_p.eGet(semanticFeature_p);
+  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    return (EObject) semanticElement.eGet(semanticFeature);
   }
 }

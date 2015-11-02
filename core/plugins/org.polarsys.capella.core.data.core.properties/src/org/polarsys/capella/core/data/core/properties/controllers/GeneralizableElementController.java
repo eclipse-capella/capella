@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ public class GeneralizableElementController extends AbstractMultipleSemanticFiel
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery()
    */
   @Override
-  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(),
+  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(),
         CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS);
   }
 
@@ -38,8 +38,8 @@ public class GeneralizableElementController extends AbstractMultipleSemanticFiel
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    GeneralizableElementExt.addSuperGeneralizableElement((GeneralizableElement) semanticElement_p, (GeneralizableElement) object_p);
+  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    GeneralizableElementExt.addSuperGeneralizableElement((GeneralizableElement) semanticElement, (GeneralizableElement) object);
   }
 
   /**
@@ -47,7 +47,7 @@ public class GeneralizableElementController extends AbstractMultipleSemanticFiel
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    GeneralizableElementExt.removeSuperGeneralizableElement((GeneralizableElement) semanticElement_p, (GeneralizableElement) object_p);
+  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    GeneralizableElementExt.removeSuperGeneralizableElement((GeneralizableElement) semanticElement, (GeneralizableElement) object);
   }
 }

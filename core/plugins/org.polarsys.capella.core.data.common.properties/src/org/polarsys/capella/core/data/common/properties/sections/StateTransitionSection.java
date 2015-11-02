@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,14 +84,14 @@ public class StateTransitionSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _stateTransitionGroup.loadData(capellaElement_p);
-    _effectField.loadData(capellaElement_p, CapellacommonPackage.eINSTANCE.getStateTransition_Effect());
-    _guardGroup.loadData(capellaElement_p);
-    _triggerField.loadData(capellaElement_p, CapellacommonPackage.eINSTANCE.getStateTransition_Triggers());
-    _realizationsField.loadData(capellaElement_p, CapellacommonPackage.eINSTANCE.getStateTransition_OwnedStateTransitionRealizations());
+    _stateTransitionGroup.loadData(capellaElement);
+    _effectField.loadData(capellaElement, CapellacommonPackage.eINSTANCE.getStateTransition_Effect());
+    _guardGroup.loadData(capellaElement);
+    _triggerField.loadData(capellaElement, CapellacommonPackage.eINSTANCE.getStateTransition_Triggers());
+    _realizationsField.loadData(capellaElement, CapellacommonPackage.eINSTANCE.getStateTransition_OwnedStateTransitionRealizations());
   }
 
   /**
@@ -119,5 +119,4 @@ public class StateTransitionSection extends NamedElementSection {
 
     return fields;
   }
-
 }
