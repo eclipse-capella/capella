@@ -391,6 +391,11 @@ public class CsServices {
     return context;
   }
 
+  public EObject setInterpreterVariable(EObject context, String name, Collection<EObject> values) {
+    InterpreterUtil.getInterpreter(context).setVariable(name, values);
+    return context;
+  }
+
   /**
    * Allows to retrieve variable on the interpreter
    * 

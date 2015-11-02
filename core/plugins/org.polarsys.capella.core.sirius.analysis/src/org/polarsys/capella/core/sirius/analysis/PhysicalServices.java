@@ -116,7 +116,8 @@ public class PhysicalServices {
     // a link is not oriented, so return both bounds
     HashSet<EObject> result = new HashSet<EObject>();
 
-    for (PhysicalPathInvolvement anInvolvement : PhysicalPathExt.getFlatInvolvementsOf(path, CsPackage.Literals.PHYSICAL_LINK)) {
+    for (PhysicalPathInvolvement anInvolvement : PhysicalPathExt.getFlatInvolvementsOf(path,
+        CsPackage.Literals.PHYSICAL_LINK)) {
       PhysicalLink currentExchange = (PhysicalLink) anInvolvement.getInvolved();
       if ((currentExchange != null) && !currentExchange.eIsProxy()) {
         EObject source = PhysicalLinkExt.getSourcePort(currentExchange);
@@ -146,28 +147,26 @@ public class PhysicalServices {
    * @return
    */
   public List<CapellaElement> getAvailableComponentsToDeploy(PhysicalComponent context) {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(PaPackage.Literals.PHYSICAL_COMPONENT,
-            CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(PaPackage.Literals.PHYSICAL_COMPONENT,
+        CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getAvailableElements(context);
   }
 
   public List<CapellaElement> getAvailableComponentsToDeploy(Part context) {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
+        CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getAvailableElements(context);
   }
 
   public List<CapellaElement> getDeployedComponents(PhysicalComponent context) {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(PaPackage.Literals.PHYSICAL_COMPONENT,
-            CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(PaPackage.Literals.PHYSICAL_COMPONENT,
+        CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getCurrentElements(context, false);
   }
 
   public List<CapellaElement> getDeployedComponents(Part context) {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
+        CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
     return query.getCurrentElements(context, false);
   }
 
@@ -209,7 +208,8 @@ public class PhysicalServices {
     return context instanceof DDiagram;
   }
 
-  public boolean isValidPPDInvolvePhysicalLink(EObject context, PhysicalPathInvolvement source, PhysicalPathInvolvement target) {
+  public boolean isValidPPDInvolvePhysicalLink(EObject context, PhysicalPathInvolvement source,
+      PhysicalPathInvolvement target) {
     return isAnEdgeInvolvementAvailableInPPD(context, source, target);
   }
 
@@ -243,7 +243,8 @@ public class PhysicalServices {
         toAdd = false;
       }
       if (toAdd) {
-        for (PhysicalPathInvolvement involvement : PhysicalPathExt.getFlatInvolvementsOf(definedChain, CsPackage.Literals.PHYSICAL_PATH)) {
+        for (PhysicalPathInvolvement involvement : PhysicalPathExt.getFlatInvolvementsOf(definedChain,
+            CsPackage.Literals.PHYSICAL_PATH)) {
           if (chain.equals(involvement.getInvolved())) {
             toAdd = false;
             break;
@@ -384,6 +385,7 @@ public class PhysicalServices {
 
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
+   * 
    * @param context
    * @param sourceView
    * @param targetView
@@ -420,7 +422,8 @@ public class PhysicalServices {
       sourcePort = CsFactory.eINSTANCE.createPhysicalPort();
       ((Component) sourcePart.getType()).getOwnedFeatures().add(sourcePort);
       CapellaServices.getService().creationService(sourcePort);
-      nodeSource = CsServices.getService().createViewOrGetPhysicalPort((DNodeContainer) sourceView, sourcePort).getKey();
+      nodeSource = CsServices.getService().createViewOrGetPhysicalPort((DNodeContainer) sourceView, sourcePort)
+          .getKey();
     }
 
     // Create or retrieve targetPort
@@ -433,7 +436,8 @@ public class PhysicalServices {
       targetPort = CsFactory.eINSTANCE.createPhysicalPort();
       ((Component) targetPart.getType()).getOwnedFeatures().add(targetPort);
       CapellaServices.getService().creationService(targetPort);
-      nodeTarget = CsServices.getService().createViewOrGetPhysicalPort((DNodeContainer) targetView, targetPort).getKey();
+      nodeTarget = CsServices.getService().createViewOrGetPhysicalPort((DNodeContainer) targetView, targetPort)
+          .getKey();
     }
 
     // Create physical link
@@ -467,7 +471,9 @@ public class PhysicalServices {
     org.polarsys.capella.core.model.helpers.PhysicalLinkExt.attachToDefaultContainer(exchange);
 
     CapellaServices.getService().creationService(exchange);
-    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABPhysicalLink(diagram), nodeSource, nodeTarget, exchange);
+    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABPhysicalLink(diagram),
+        nodeSource, nodeTarget, exchange);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange);
     return context;
   }
 
@@ -500,7 +506,8 @@ public class PhysicalServices {
   }
 
   public boolean canHavePhysicalPort(EObject source) {
-    return ((source instanceof AbstractPhysicalComponent) || (source instanceof AbstractActor) || (source instanceof System) || ((source instanceof Component) && isLogicalSystemComponent(source)));
+    return ((source instanceof AbstractPhysicalComponent) || (source instanceof AbstractActor)
+        || (source instanceof System) || ((source instanceof Component) && isLogicalSystemComponent(source)));
   }
 
   private boolean isLogicalSystemComponent(EObject source) {
@@ -591,12 +598,15 @@ public class PhysicalServices {
         displayedPaths.put((PhysicalPath) aNode.getTarget(), aNode);
       }
     }
-    NodeMapping physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_PATH_END);
+    NodeMapping physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.PAB_PHYSICAL_PATH_END);
     if (null == physicalPathMapping) {
-      physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.SAB_PHYSICAL_PATH_END);
+      physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+          IMappingNameConstants.SAB_PHYSICAL_PATH_END);
     }
     if (null == physicalPathMapping) {
-      physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.LAB_PHYSICAL_PATH_END);
+      physicalPathMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+          IMappingNameConstants.LAB_PHYSICAL_PATH_END);
     }
     for (PhysicalPath aPath : selectedPaths) {
       if (!displayedPaths.containsKey(aPath)) {
@@ -657,12 +667,14 @@ public class PhysicalServices {
 
   /**
    * Manage allocation of PC deployment
+   * 
    * @param view
    * @param selectedElements
    * @param isBehaviour
    * @return
    */
-  public EObject manageComponentDeployments(DNodeContainer view, List<DeployableElement> selectedElements, boolean isBehaviour) {
+  public EObject manageComponentDeployments(DNodeContainer view, List<DeployableElement> selectedElements,
+      boolean isBehaviour) {
     Part currentPart = (Part) view.getTarget();
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(view);
     Map<Part, DNodeContainer> displayedDeployments = new HashMap<Part, DNodeContainer>();
@@ -709,7 +721,8 @@ public class PhysicalServices {
   }
 
   public ContainerMapping getDeploymentMapping(DDiagram diagram) {
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
   }
 
   public boolean isBehaviour(Part part) {
@@ -741,10 +754,18 @@ public class PhysicalServices {
   }
 
   public void updatePhysicalPathStyles(DDiagram diagram) {
-    HashMap<PhysicalPath, DNode> displayedPaths = new HashMap<PhysicalPath, DNode>(); // displayed physical paths
-    HashMap<PhysicalLink, DEdge> displayedPhysicalLinks = new HashMap<PhysicalLink, DEdge>(); // displayed physical links
-    HashMap<PhysicalPath, Set<DEdge>> displayedIL = new HashMap<PhysicalPath, Set<DEdge>>(); // displayed Internal Links
-    HashMap<DEdge, Set<PhysicalPath>> coloredLinks = new HashMap<DEdge, Set<PhysicalPath>>(); // colored physical Links
+    HashMap<PhysicalPath, DNode> displayedPaths = new HashMap<PhysicalPath, DNode>(); // displayed
+    // physical
+    // paths
+    HashMap<PhysicalLink, DEdge> displayedPhysicalLinks = new HashMap<PhysicalLink, DEdge>(); // displayed
+    // physical
+    // links
+    HashMap<PhysicalPath, Set<DEdge>> displayedIL = new HashMap<PhysicalPath, Set<DEdge>>(); // displayed
+    // Internal
+    // Links
+    HashMap<DEdge, Set<PhysicalPath>> coloredLinks = new HashMap<DEdge, Set<PhysicalPath>>(); // colored
+    // physical
+    // Links
     Set<DEdge> updatedInternalLinks = new HashSet<DEdge>();
     boolean hasResetNode = false;
 
@@ -891,8 +912,9 @@ public class PhysicalServices {
     return result;
   }
 
-  protected Set<DEdge> updatePhysicalPathInternalLinks(PhysicalPath path, HashMap<PhysicalLink, DEdge> displayedPhysicalLinks,
-      HashMap<PhysicalPath, Set<DEdge>> displayedIL, RGBValues color) {
+  protected Set<DEdge> updatePhysicalPathInternalLinks(PhysicalPath path,
+      HashMap<PhysicalLink, DEdge> displayedPhysicalLinks, HashMap<PhysicalPath, Set<DEdge>> displayedIL,
+      RGBValues color) {
     Set<DEdge> internalLinks = new HashSet<DEdge>();
 
     HashMapSet<AbstractDNode, DNode> mapsPorts = new HashMapSet<AbstractDNode, DNode>() {
@@ -940,15 +962,18 @@ public class PhysicalServices {
 
     };
 
-    // iterate over involved physical links. retrieve for each NodeContainer all ports related to the path
-    for (PhysicalPathInvolvement anInvolvement : PhysicalPathExt.getFlatInvolvementsOf(path, CsPackage.Literals.PHYSICAL_LINK)) {
+    // iterate over involved physical links. retrieve for each NodeContainer
+    // all ports related to the path
+    for (PhysicalPathInvolvement anInvolvement : PhysicalPathExt.getFlatInvolvementsOf(path,
+        CsPackage.Literals.PHYSICAL_LINK)) {
       PhysicalLink currentExchange = (PhysicalLink) anInvolvement.getInvolved();
       if (!displayedPhysicalLinks.containsKey(currentExchange)) {
         continue;
       }
 
       DEdge currentEdge = displayedPhysicalLinks.get(currentExchange);
-      if ((currentEdge == null) || !isValidNodeForInternalLink(currentEdge.getSourceNode()) || !isValidNodeForInternalLink(currentEdge.getTargetNode())) {
+      if ((currentEdge == null) || !isValidNodeForInternalLink(currentEdge.getSourceNode())
+          || !isValidNodeForInternalLink(currentEdge.getTargetNode())) {
         continue;
       }
 
@@ -988,7 +1013,8 @@ public class PhysicalServices {
 
     DEdge internalLink = null;
     for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceNode)) {
-      if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof PhysicalPath) && (anEdge.getTarget().equals(fc))) {
+      if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof PhysicalPath)
+          && (anEdge.getTarget().equals(fc))) {
 
         if ((anEdge.getSourceNode() != null) && (anEdge.getTargetNode() != null)) {
           if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)) {
@@ -1003,7 +1029,8 @@ public class PhysicalServices {
     }
 
     for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(sourceNode)) {
-      if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof PhysicalPath) && (anEdge.getTarget().equals(fc))) {
+      if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof PhysicalPath)
+          && (anEdge.getTarget().equals(fc))) {
 
         if ((anEdge.getSourceNode() != null) && (anEdge.getTargetNode() != null)) {
           if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)) {
@@ -1066,9 +1093,8 @@ public class PhysicalServices {
     // get default style size of an edge
     DiagramElementMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(edge);
     if (mapping != null) {
-      EdgeStyleDescription desc =
-          (EdgeStyleDescription) getMappingHelper(edge).getBestStyleDescription(mapping, edge.getTarget(), edge, edge.eContainer(),
-              CapellaServices.getService().getDiagramContainer(edge));
+      EdgeStyleDescription desc = (EdgeStyleDescription) getMappingHelper(edge).getBestStyleDescription(mapping,
+          edge.getTarget(), edge, edge.eContainer(), CapellaServices.getService().getDiagramContainer(edge));
       if (null != desc) {
         // assuming it is an integer value
         String defaultSize = desc.getSizeComputationExpression();
@@ -1171,16 +1197,17 @@ public class PhysicalServices {
     DiagramElementMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(aEdge);
     if (mapping != null) {
       // get default style size of an edge
-      EdgeStyleDescription desc =
-          (EdgeStyleDescription) getMappingHelper(aEdge).getBestStyleDescription(mapping, aEdge.getTarget(), aEdge, aEdge.eContainer(),
-              CapellaServices.getService().getDiagramContainer(aEdge));
+      EdgeStyleDescription desc = (EdgeStyleDescription) getMappingHelper(aEdge).getBestStyleDescription(mapping,
+          aEdge.getTarget(), aEdge, aEdge.eContainer(), CapellaServices.getService().getDiagramContainer(aEdge));
       String defaultStyleSize = desc.getSizeComputationExpression();
       // get current style size of an edge
       EdgeStyle edgeStyle = aEdge.getOwnedStyle();
       Integer currentSize = edgeStyle.getSize();
 
       if ((null != currentSize) && (null != defaultStyleSize)) {
-        // apply style & color : if currentSize is equal to default size + if current size is equal to default size of Functional Chain
+        // apply style & color : if currentSize is equal to default size
+        // + if current size is equal to default size of
+        // Functional Chain
         if (currentSize.equals(THICK_EDGE_PHYSICAL_PATH) || currentSize.equals(defaultStyleSize)) {
           if (ShapeUtil.resetEdgeThickStyle(aEdge, new Integer(defaultStyleSize))) {
             ShapeUtil.resetEdgeColorStyle(aEdge, ShapeUtil.getDefaultColor(aEdge, desc, desc.getStrokeColor()));
@@ -1193,13 +1220,16 @@ public class PhysicalServices {
   public EdgeMapping getPhysicalPathInternLinkEdgeMapping(DDiagram diagram) {
     EdgeMapping edgeMapping = null;
     if (IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
+      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+          IMappingNameConstants.PAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
     }
     if (IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.SAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
+      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+          IMappingNameConstants.SAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
     }
     if (IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.LAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
+      edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+          IMappingNameConstants.LAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME);
     }
     return edgeMapping;
   }
@@ -1214,14 +1244,15 @@ public class PhysicalServices {
     return returnedList;
   }
 
-  public boolean isAnEdgeInvolvementAvailableInPPD(final EObject context, final PhysicalPathInvolvement source, final PhysicalPathInvolvement target) {
+  public boolean isAnEdgeInvolvementAvailableInPPD(final EObject context, final PhysicalPathInvolvement source,
+      final PhysicalPathInvolvement target) {
     Collection<PhysicalLink> commonExchanges = getPPDCommonPhysicalLinks(source, target);
     boolean result = !commonExchanges.isEmpty();
     return (result && !findInvolvementInNext(target, source, new HashSet<PhysicalPathInvolvement>()));
   }
 
-  public boolean findInvolvementInNext(final PhysicalPathInvolvement currentInvolvement, final PhysicalPathInvolvement involvementToFind,
-      final Set<PhysicalPathInvolvement> visitedInvolvements) {
+  public boolean findInvolvementInNext(final PhysicalPathInvolvement currentInvolvement,
+      final PhysicalPathInvolvement involvementToFind, final Set<PhysicalPathInvolvement> visitedInvolvements) {
     if (visitedInvolvements.contains(currentInvolvement)) {
       // to avoid infinite loop (cycle)
       return false;
@@ -1299,8 +1330,10 @@ public class PhysicalServices {
       }
     }
     PhysicalPathInvolvement selectedInvolvement = (PhysicalPathInvolvement) node.getTarget();
-    List<AbstractPathInvolvedElement> involvedElements = PhysicalPathExt.getInvolvedElements((PhysicalPath) selectedInvolvement.eContainer());
-    for (PhysicalLink aLink : PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) selectedInvolvement.getInvolvedElement())) {
+    List<AbstractPathInvolvedElement> involvedElements = PhysicalPathExt
+        .getInvolvedElements((PhysicalPath) selectedInvolvement.eContainer());
+    for (PhysicalLink aLink : PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) selectedInvolvement
+        .getInvolvedElement())) {
       if (!existingInvolvedLinks.contains(aLink) && !involvedElements.contains(aLink)) {
         returnedList.add(aLink);
       }
@@ -1314,7 +1347,8 @@ public class PhysicalServices {
       return PhysicalLinkExt.getTargetPart(link);
     }
     if (involvedElement instanceof PhysicalPath) {
-      for (PhysicalPathInvolvement involvment : PhysicalPathExt.getFlatLastPhysicalPathInvolvments((PhysicalPath) involvedElement)) {
+      for (PhysicalPathInvolvement involvment : PhysicalPathExt
+          .getFlatLastPhysicalPathInvolvments((PhysicalPath) involvedElement)) {
         if (sourcePart.equals(involvment.getInvolvedElement())) {
           return PhysicalLinkExt.getTargetPart(link);
         }
@@ -1326,6 +1360,7 @@ public class PhysicalServices {
 
   /**
    * Don't use it, to remove after 2.3
+   * 
    * @param inv
    * @return true if the involvement is the source or the target of the physical path
    */
@@ -1335,24 +1370,29 @@ public class PhysicalServices {
   }
 
   private MappingHelper getMappingHelper(DSemanticDecorator semanticDecorator) {
-    return new MappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
+    return new MappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry()
+        .getInterpreter(semanticDecorator.getTarget()));
   }
 
   public Collection<PhysicalLink> getPPDInvolvePhysicalLinkScope(EObject context, EObject source, EObject target) {
     PhysicalPathInvolvement sourceInvolvment = (PhysicalPathInvolvement) source;
     PhysicalPathInvolvement targetInvolvment = (PhysicalPathInvolvement) target;
 
-    if ((sourceInvolvment.getInvolved() != null) && sourceInvolvment.getInvolved().equals(targetInvolvment.getInvolved())) {
+    if ((sourceInvolvment.getInvolved() != null)
+        && sourceInvolvment.getInvolved().equals(targetInvolvment.getInvolved())) {
       return Collections.emptyList();
     }
     Collection<PhysicalLink> commonExchanges = getPPDCommonPhysicalLinks(sourceInvolvment, targetInvolvment);
 
-    // We remove any already involved PhysicalLink in source/target PhysicalPath
+    // We remove any already involved PhysicalLink in source/target
+    // PhysicalPath
     if (sourceInvolvment.getInvolved() instanceof PhysicalPath) {
-      commonExchanges.removeAll(PhysicalPathExt.getFlatPhysicalLinks(((PhysicalPathReference) sourceInvolvment).getReferencedPhysicalPath()));
+      commonExchanges.removeAll(PhysicalPathExt.getFlatPhysicalLinks(((PhysicalPathReference) sourceInvolvment)
+          .getReferencedPhysicalPath()));
     }
     if (targetInvolvment.getInvolved() instanceof PhysicalPath) {
-      commonExchanges.removeAll(PhysicalPathExt.getFlatPhysicalLinks(((PhysicalPathReference) targetInvolvment).getReferencedPhysicalPath()));
+      commonExchanges.removeAll(PhysicalPathExt.getFlatPhysicalLinks(((PhysicalPathReference) targetInvolvment)
+          .getReferencedPhysicalPath()));
     }
 
     return commonExchanges;
@@ -1363,7 +1403,8 @@ public class PhysicalServices {
    * @param target
    * @return
    */
-  private Collection<PhysicalLink> getPPDCommonPhysicalLinks(PhysicalPathInvolvement source, PhysicalPathInvolvement target) {
+  private Collection<PhysicalLink> getPPDCommonPhysicalLinks(PhysicalPathInvolvement source,
+      PhysicalPathInvolvement target) {
     return PhysicalPathExt.getFlatCommonPhysicalLinks(source, target);
   }
 
@@ -1470,7 +1511,8 @@ public class PhysicalServices {
    * @param context
    * @return
    */
-  public HashMapSet<PhysicalLink, PhysicalPath> getInvolvePhysicalLinkAndPhysicalPathInitialSelection(AbstractDNode context) {
+  public HashMapSet<PhysicalLink, PhysicalPath> getInvolvePhysicalLinkAndPhysicalPathInitialSelection(
+      AbstractDNode context) {
     return new HashMapSet<PhysicalLink, PhysicalPath>();
   }
 
@@ -1511,35 +1553,38 @@ public class PhysicalServices {
         sourceFC.getOwnedPhysicalPathInvolvements().add(iChain);
         iExchange.getNextInvolvements().add(iChain);
 
-        AbstractNodeMapping nodeMapping =
-            DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram, IMappingNameConstants.PPD_PHYSICAL_PATH__MAPPING_NAME);
+        AbstractNodeMapping nodeMapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram,
+            IMappingNameConstants.PPD_PHYSICAL_PATH__MAPPING_NAME);
         if (nodeMapping == null) {
           return;
         }
-        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(nodeMapping, iChain, diagram, diagram);
+        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(nodeMapping, iChain, diagram,
+            diagram);
         if (node == null) {
           return;
         }
-        EdgeMapping edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.PPD_PHYSICAL_LINK__MAPPING_NAME);
+        EdgeMapping edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.PPD_PHYSICAL_LINK__MAPPING_NAME);
         if (edgeMapping == null) {
           return;
         }
-        DiagramServices.getDiagramServices().createEdge(edgeMapping, (EdgeTarget) context, (EdgeTarget) node, iExchange);
+        DiagramServices.getDiagramServices()
+            .createEdge(edgeMapping, (EdgeTarget) context, (EdgeTarget) node, iExchange);
       }
     }
   }
 
   public PhysicalComponent createPhysicalComponent(EObject container) {
-		
-	  PhysicalComponent component = PaFactory.eINSTANCE.createPhysicalComponent();
-		if (component != null) {
-		  if (container instanceof PhysicalComponent) {
-		    PhysicalComponent componentContainer = (PhysicalComponent) container;
-		    componentContainer.getOwnedPhysicalComponents().add(component);
-		  }
-		  CapellaServices.getService().creationService(component);
-		}
-		
-		return component;
+
+    PhysicalComponent component = PaFactory.eINSTANCE.createPhysicalComponent();
+    if (component != null) {
+      if (container instanceof PhysicalComponent) {
+        PhysicalComponent componentContainer = (PhysicalComponent) container;
+        componentContainer.getOwnedPhysicalComponents().add(component);
+      }
+      CapellaServices.getService().creationService(component);
+    }
+
+    return component;
   }
 }
