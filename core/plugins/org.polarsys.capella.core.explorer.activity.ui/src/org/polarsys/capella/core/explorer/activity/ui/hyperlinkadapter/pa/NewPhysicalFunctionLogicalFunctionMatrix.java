@@ -12,6 +12,7 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.PopupMenuLinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IMenuManager;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
@@ -26,9 +27,11 @@ public class NewPhysicalFunctionLogicalFunctionMatrix extends PopupMenuLinkAdapt
 
 	@Override
 	protected void fillPopupMenu(IMenuManager menuManager) {
-		Project capellaProject = (Project)ActivityExplorerManager.INSTANCE.getRootSemanticModel();
-		ModelElement modelElement = ModelQueryHelper.getPhysicalArchitecture(capellaProject);
-		menuManager.add(new PhysicalFunctionsLogicalFunctionsAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
+		EObject rootSemanticModel = ActivityExplorerManager.INSTANCE.getRootSemanticModel();
+		if(rootSemanticModel instanceof Project){
+		  Project capellaProject = (Project)rootSemanticModel;
+		  ModelElement modelElement = ModelQueryHelper.getPhysicalArchitecture(capellaProject);
+		  menuManager.add(new PhysicalFunctionsLogicalFunctionsAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
+		}
 	}
-
 }

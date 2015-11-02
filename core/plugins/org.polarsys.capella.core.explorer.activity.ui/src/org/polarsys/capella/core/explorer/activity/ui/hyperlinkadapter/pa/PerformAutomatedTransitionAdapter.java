@@ -32,18 +32,24 @@ public class PerformAutomatedTransitionAdapter extends AbstractHyperlinkAdapter 
 	 * @param session
 	 */
 	public PerformAutomatedTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		FunctionalTransitionAction action = new FunctionalTransitionAction();
-		action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(rootSemanticModel)));
-		action.run(TransitionAction.DEFAULT_ACTION);
+	  ModelElement modelElement = getModelElement(rootSemanticModel);
+	  if(modelElement != null){
+	    FunctionalTransitionAction action = new FunctionalTransitionAction();
+		  action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(modelElement));
+		  action.run(TransitionAction.DEFAULT_ACTION);
+		}
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getRootLogicalFunction((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getRootLogicalFunction((Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 }

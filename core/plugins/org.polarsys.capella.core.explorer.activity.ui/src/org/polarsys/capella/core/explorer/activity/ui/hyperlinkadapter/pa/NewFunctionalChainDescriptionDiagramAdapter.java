@@ -14,7 +14,6 @@ import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractNew
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
@@ -27,7 +26,7 @@ public class NewFunctionalChainDescriptionDiagramAdapter extends AbstractNewDiag
 	 * @param session
 	 */
 	public NewFunctionalChainDescriptionDiagramAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

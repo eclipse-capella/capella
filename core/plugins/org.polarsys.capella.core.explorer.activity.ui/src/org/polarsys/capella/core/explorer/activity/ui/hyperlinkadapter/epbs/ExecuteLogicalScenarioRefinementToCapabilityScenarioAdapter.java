@@ -30,16 +30,22 @@ public class ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter extends
 	 * Constructor.
 	 */
 	public ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		TransactionHelper.getExecutionManager(rootSemanticModel).execute(new ScenarioRefinementCommand(getModelElement(rootSemanticModel), new NullProgressMonitor()));
+		ModelElement modelElement = getModelElement(rootSemanticModel);
+		if(modelElement !=null){
+		  TransactionHelper.getExecutionManager(rootSemanticModel).execute(new ScenarioRefinementCommand(modelElement, new NullProgressMonitor()));
+		}
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getPACapabilityRealizationPkg((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getPACapabilityRealizationPkg((Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 }

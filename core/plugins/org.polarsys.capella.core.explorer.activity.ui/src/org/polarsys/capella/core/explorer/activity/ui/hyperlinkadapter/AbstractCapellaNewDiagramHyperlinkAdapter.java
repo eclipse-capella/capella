@@ -12,6 +12,7 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
@@ -36,7 +37,7 @@ public abstract class AbstractCapellaNewDiagramHyperlinkAdapter extends Abstract
 
 
 	protected static Project getCapellaProject() {
-		return (Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel();
+		EObject rootSemanticModel = ActivityExplorerManager.INSTANCE.getRootSemanticModel();
+    return  rootSemanticModel instanceof Project ? (Project)rootSemanticModel : null ;
 	}
-
 }

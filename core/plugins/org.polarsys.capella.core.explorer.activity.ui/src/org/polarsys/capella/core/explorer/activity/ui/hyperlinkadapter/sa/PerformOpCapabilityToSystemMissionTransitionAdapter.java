@@ -32,21 +32,26 @@ import org.polarsys.capella.core.transition.system.topdown.ui.actions.OC2SMTrans
 public class PerformOpCapabilityToSystemMissionTransitionAdapter extends AbstractHyperlinkAdapter {
 
 	public PerformOpCapabilityToSystemMissionTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getOperationalAnalysis((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getOperationalAnalysis((Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		List<OperationalCapability> operationalCapabilities = ModelSelectionHelper.selectOperationalCapabilities((Project) rootSemanticModel);
-		OC2SMTransitionAction action = new OC2SMTransitionAction();
-		action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(operationalCapabilities));
-		action.run(TransitionAction.DEFAULT_ACTION);
+	  if(rootSemanticModel instanceof Project){
+	    List<OperationalCapability> operationalCapabilities = ModelSelectionHelper.selectOperationalCapabilities((Project) rootSemanticModel);
+	    OC2SMTransitionAction action = new OC2SMTransitionAction();
+	    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(operationalCapabilities));
+	    action.run(TransitionAction.DEFAULT_ACTION);
+	  }
 	}
 }
