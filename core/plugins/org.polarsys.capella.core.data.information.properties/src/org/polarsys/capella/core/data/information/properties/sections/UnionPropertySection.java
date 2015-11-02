@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,12 +54,12 @@ public class UnionPropertySection extends PropertySection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _qualifierField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getUnionProperty_Qualifier());
+    _qualifierField.loadData(capellaElement, InformationPackage.eINSTANCE.getUnionProperty_Qualifier());
 
-    evaluateButtonStatus((UnionProperty) capellaElement_p);
+    evaluateButtonStatus((UnionProperty) capellaElement);
   }
   
   /**
@@ -67,14 +67,14 @@ public class UnionPropertySection extends PropertySection {
    * If the type of the discriminant of the owning Union is unset, then the qualifier buttons (ADD and BROWSE) shall be disabled<br>
    * If the type of the discriminant of the owning Union is BooleanType or Enumeration, then the qualifier button ADD shall be disabled<br>
    * 
-   * @param unionProperty_p
+   * @param unionProperty
    */
-  protected void evaluateButtonStatus(UnionProperty unionProperty_p) {
-    super.evaluateButtonStatus(unionProperty_p);
+  protected void evaluateButtonStatus(UnionProperty unionProperty) {
+    super.evaluateButtonStatus(unionProperty);
 
-    if (unionProperty_p != null) {
-      if (unionProperty_p.eContainer() instanceof Union) {
-        UnionProperty discriminant = ((Union) unionProperty_p.eContainer()).getDiscriminant();
+    if (unionProperty != null) {
+      if (unionProperty.eContainer() instanceof Union) {
+        UnionProperty discriminant = ((Union) unionProperty.eContainer()).getDiscriminant();
         if (discriminant != null) {
           Type discriminantType = discriminant.getType();
           if (discriminantType != null) {

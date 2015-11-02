@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,9 +45,9 @@ public class UnionPropertyController extends AbstractMultipleSemanticFieldContro
    *      org.eclipse.emf.ecore.EStructuralFeature)
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public List<EObject> addValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    if (semanticElement_p instanceof UnionProperty) {
-      Union union = (Union) semanticElement_p.eContainer();
+  public List<EObject> addValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    if (semanticElement instanceof UnionProperty) {
+      Union union = (Union) semanticElement.eContainer();
       if (union != null) {
         UnionProperty prop = union.getDiscriminant();
         if (prop != null) {
@@ -74,8 +74,8 @@ public class UnionPropertyController extends AbstractMultipleSemanticFieldContro
               newValue.eSet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, type);
 
               if (editValueWizard(newValue)) {
-                ((Collection) semanticElement_p.eGet(semanticFeature_p)).add(newValue);
-                return (List<EObject>) semanticElement_p.eGet(semanticFeature_p);
+                ((Collection) semanticElement.eGet(semanticFeature)).add(newValue);
+                return (List<EObject>) semanticElement.eGet(semanticFeature);
               }
               throw new EditableSemanticFieldException();
             }
@@ -91,7 +91,7 @@ public class UnionPropertyController extends AbstractMultipleSemanticFieldContro
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), InformationPackage.Literals.UNION_PROPERTY__QUALIFIER);
+  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), InformationPackage.Literals.UNION_PROPERTY__QUALIFIER);
   }
 }

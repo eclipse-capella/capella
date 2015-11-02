@@ -34,8 +34,8 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 public class ExchangeItemElementSection extends MultiplicityElementSection {
 
   private ExchangeItemElementBooleanPropertiesCheckbox exchangeItemElementBooleanPropertiesCheckbox;
-  private ElementKindGroup _elementKindGroup;
-  protected ParameterDirectionGroup _parameterDirectionGroup;
+  private ElementKindGroup elementKindGroup;
+  protected ParameterDirectionGroup parameterDirectionGroup;
 
   private MultipleSemanticField _referencedProperties;
 
@@ -63,7 +63,7 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
             Messages.getString("ExchangeItemElement_ReferencedProperties_Label"), getWidgetFactory(), new ExchangeItemElementController()); //$NON-NLS-1$
     _referencedProperties.setDisplayedInWizard(displayedInWizard);
 
-    _elementKindGroup = new ElementKindGroup(_rootParentComposite, getWidgetFactory()) {
+    elementKindGroup = new ElementKindGroup(_rootParentComposite, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -72,11 +72,11 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
         refresh();
       }
     };
-    _elementKindGroup.setEnabled(false);
-    _elementKindGroup.setDisplayedInWizard(displayedInWizard);
+    elementKindGroup.setEnabled(false);
+    elementKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    _parameterDirectionGroup = new ParameterDirectionGroup(_rootParentComposite, getWidgetFactory());
-    _parameterDirectionGroup.setDisplayedInWizard(displayedInWizard);
+    parameterDirectionGroup = new ParameterDirectionGroup(_rootParentComposite, getWidgetFactory());
+    parameterDirectionGroup.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -90,11 +90,11 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
 
     exchangeItemElementBooleanPropertiesCheckbox.loadData(element);
 
-    _elementKindGroup.loadData(element, InformationPackage.eINSTANCE.getExchangeItemElement_Kind());
+    elementKindGroup.loadData(element, InformationPackage.eINSTANCE.getExchangeItemElement_Kind());
     updateParameterGroup(element.getKind());
-	_elementKindGroup.setEnabled(false);
+	elementKindGroup.setEnabled(false);
 
-    _parameterDirectionGroup.loadData(element, InformationPackage.eINSTANCE.getExchangeItemElement_Direction());
+    parameterDirectionGroup.loadData(element, InformationPackage.eINSTANCE.getExchangeItemElement_Direction());
     _referencedProperties.loadData(element, InformationPackage.eINSTANCE.getExchangeItemElement_ReferencedProperties());
   }
 
@@ -103,9 +103,9 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
    */
   protected void updateParameterGroup(ElementKind kind) {
     if (ElementKind.MEMBER.equals(kind)) {
-    	_parameterDirectionGroup.setEnabled(true);
+    	parameterDirectionGroup.setEnabled(true);
     } else {
-    	_parameterDirectionGroup.setEnabled(false);
+    	parameterDirectionGroup.setEnabled(false);
     }
   }
 
@@ -126,8 +126,8 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_elementKindGroup);
-    fields.add(_parameterDirectionGroup);
+    fields.add(elementKindGroup);
+    fields.add(parameterDirectionGroup);
     fields.add(_referencedProperties);
     fields.add(exchangeItemElementBooleanPropertiesCheckbox);
 

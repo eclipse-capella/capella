@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,33 +31,33 @@ public class PropertyBooleanPropertiesCheckbox extends AbstractSemanticCheckboxG
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
+   * @param parent
+   * @param style
    */
-  public PropertyBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true, true, true);
+  public PropertyBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true, true, true);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param showIsDerived_p
-   * @param showIsPartOfKey_p
-   * @param showIsReadOnly_p
+   * @param parent
+   * @param widgetFactory
+   * @param showIsDerived
+   * @param showIsPartOfKey
+   * @param showIsReadOnly
    */
-  public PropertyBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showIsDerived_p,
-      boolean showIsPartOfKey_p, boolean showIsReadOnly_p) {
-    super(parent_p, widgetFactory_p);
+  public PropertyBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsDerived,
+      boolean showIsPartOfKey, boolean showIsReadOnly) {
+    super(parent, widgetFactory);
 
-    if (showIsPartOfKey_p) {
-      _isPartOfKeyBtn = createButton(InformationPackage.Literals.PROPERTY__IS_PART_OF_KEY, Messages.getString("Property.IsPartOfKeyLabel"), parent_p); //$NON-NLS-1$
+    if (showIsPartOfKey) {
+      _isPartOfKeyBtn = createButton(InformationPackage.Literals.PROPERTY__IS_PART_OF_KEY, Messages.getString("Property.IsPartOfKeyLabel"), parent); //$NON-NLS-1$
     }
-    if (showIsDerived_p) {
-      _isDerivedBtn = createButton(InformationPackage.Literals.PROPERTY__IS_DERIVED, Messages.getString("Property.IsDerivedlabel"), parent_p); //$NON-NLS-1$
+    if (showIsDerived) {
+      _isDerivedBtn = createButton(InformationPackage.Literals.PROPERTY__IS_DERIVED, Messages.getString("Property.IsDerivedlabel"), parent); //$NON-NLS-1$
     }
-    if (showIsReadOnly_p) {
-      _isReadOnlyBtn = createButton(InformationPackage.Literals.PROPERTY__IS_READ_ONLY, Messages.getString("Property.IsReadOnlyLabel"), parent_p); //$NON-NLS-1$ 
+    if (showIsReadOnly) {
+      _isReadOnlyBtn = createButton(InformationPackage.Literals.PROPERTY__IS_READ_ONLY, Messages.getString("Property.IsReadOnlyLabel"), parent); //$NON-NLS-1$ 
     }
   }
 

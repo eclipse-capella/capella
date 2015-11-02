@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -108,29 +108,29 @@ public class PropertySection extends MultiplicityElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    featureBooleanPropertiesCheckbox.loadData(capellaElement_p);
-    propertyBooleanPropertiesCheckbox.loadData(capellaElement_p);
-    visibilityKindGroup.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getFeature_Visibility());
-    aggregationKindGroup.loadData(capellaElement_p, InformationPackage.eINSTANCE.getProperty_AggregationKind());
-    minValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
-    maxValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
-    defaultValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
-    nullValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
-    minLengthField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinLength());
-    maxLengthField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxLength());
+    featureBooleanPropertiesCheckbox.loadData(capellaElement);
+    propertyBooleanPropertiesCheckbox.loadData(capellaElement);
+    visibilityKindGroup.loadData(capellaElement, CapellacorePackage.eINSTANCE.getFeature_Visibility());
+    aggregationKindGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getProperty_AggregationKind());
+    minValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
+    maxValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
+    defaultValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
+    nullValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
+    minLengthField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinLength());
+    maxLengthField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxLength());
 
-    evaluateButtonStatus((Property) capellaElement_p);
+    evaluateButtonStatus((Property) capellaElement);
   }
 
   /**
-   * @param property_p
+   * @param property
    */
-  protected void evaluateButtonStatus(Property property_p) {
-    if (property_p != null) {
-      AbstractType type = property_p.getAbstractType();
+  protected void evaluateButtonStatus(Property property) {
+    if (property != null) {
+      AbstractType type = property.getAbstractType();
       if (type != null) {
         if (type instanceof DataType) {
           aggregationKindGroup.setEnabled(false);

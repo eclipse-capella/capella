@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,14 +77,14 @@ public class ParameterSection extends MultiplicityElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    parameterDirectionGroup.loadData(capellaElement_p, InformationPackage.eINSTANCE.getParameter_Direction());
-    minValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
-    maxValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
-    defaultValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
-    nullValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
+    parameterDirectionGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getParameter_Direction());
+    minValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
+    maxValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
+    defaultValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
+    nullValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
   }
 
   /**

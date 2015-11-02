@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,32 +30,32 @@ public class ElementKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
+   * @param parent
+   * @param style
    */
-  public ElementKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("ElementKind.Label"), 2); //$NON-NLS-1$
+  public ElementKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory, Messages.getString("ElementKind.Label"), 2); //$NON-NLS-1$
 
     _elementBtnMember = createButton(ElementKind.MEMBER);
     _elementBtnMember.addSelectionListener(new SelectionListener() {
-      public void widgetDefaultSelected(SelectionEvent evt_p) {
+      public void widgetDefaultSelected(SelectionEvent evt) {
         // do nothing
       }
 
-      public void widgetSelected(SelectionEvent evt_p) {
-        if (((Button) evt_p.widget).getSelection()) {
+      public void widgetSelected(SelectionEvent evt) {
+        if (((Button) evt.widget).getSelection()) {
           selectionChanged(ElementKind.MEMBER);
         }
       }
     });
     _elementBtnType = createButton(ElementKind.TYPE);
     _elementBtnType.addSelectionListener(new SelectionListener() {
-      public void widgetDefaultSelected(SelectionEvent evt_p) {
+      public void widgetDefaultSelected(SelectionEvent evt) {
         // do nothing
       }
 
-      public void widgetSelected(SelectionEvent evt_p) {
-        if (((Button) evt_p.widget).getSelection()) {
+      public void widgetSelected(SelectionEvent evt) {
+        if (((Button) evt.widget).getSelection()) {
           selectionChanged(ElementKind.TYPE);
         }
       }
@@ -65,9 +65,9 @@ public class ElementKindGroup extends AbstractSemanticKindGroup {
   /**
    * This method will be called when selection has changed.
    * Shall be overloaded if a custom behavior is required.
-   * @param selection_p
+   * @param selection
    */
-  protected void selectionChanged(ElementKind selection_p) {
+  protected void selectionChanged(ElementKind selection) {
     // by default, do nothing
   }
 
