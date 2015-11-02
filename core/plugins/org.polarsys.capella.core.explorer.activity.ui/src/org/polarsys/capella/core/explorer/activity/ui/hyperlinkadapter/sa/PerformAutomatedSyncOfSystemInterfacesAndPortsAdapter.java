@@ -28,16 +28,22 @@ public class PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter extends Abstr
 	
 	
 	public PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getSystem((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getSystem((Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		TransactionHelper.getExecutionManager((Project) rootSemanticModel).execute(new GenerateInterfaceDelegationsCommand(getModelElement((Project) rootSemanticModel)));
+		ModelElement modelElement = getModelElement(rootSemanticModel);
+		if(modelElement !=null){
+		  TransactionHelper.getExecutionManager((Project) rootSemanticModel).execute(new GenerateInterfaceDelegationsCommand(modelElement));
+		}
 	}
 }

@@ -38,20 +38,29 @@ public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyper
 	 * @param session
 	 */
 	public PerformAutomatedCapabilitiesTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
-		BlockArchitecture sourceArchitecture = ModelQueryHelper.getSystemAnalysis((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
-		blockType = BlockArchitectureExt.getBlockArchitectureType(sourceArchitecture);
+	  super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		EObject rootSemanticModel = ActivityExplorerManager.INSTANCE.getRootSemanticModel();
+		if(rootSemanticModel instanceof Project){
+		  BlockArchitecture sourceArchitecture = ModelQueryHelper.getSystemAnalysis((Project) rootSemanticModel);
+		  blockType = BlockArchitectureExt.getBlockArchitectureType(sourceArchitecture);
+		}
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		CapabilityTransitionAction action = new CapabilityTransitionAction();
-		action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(rootSemanticModel)));
-		action.run(TransitionAction.DEFAULT_ACTION);
+	  ModelElement modelElement = getModelElement(rootSemanticModel);
+	  if(modelElement != null){
+	    CapabilityTransitionAction action = new CapabilityTransitionAction();
+	    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(modelElement));
+	    action.run(TransitionAction.DEFAULT_ACTION);
+	  }
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return BlockArchitectureExt.getBlockArchitecture(blockType, (Project) rootSemanticModel);
+	  if(blockType != null){
+	    return BlockArchitectureExt.getBlockArchitecture(blockType, (Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 }

@@ -32,18 +32,24 @@ public class PerformAutomatedTransitionOfLogicalComponentsAdapter extends Abstra
 	 * @param session
 	 */
 	public PerformAutomatedTransitionOfLogicalComponentsAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		LC2PCTransitionAction action = new LC2PCTransitionAction();
-		action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(rootSemanticModel)));
-		action.run(TransitionAction.DEFAULT_ACTION);
+	  ModelElement modelElement = getModelElement(rootSemanticModel);
+	  if(modelElement != null){
+	    LC2PCTransitionAction action = new LC2PCTransitionAction();
+	    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(modelElement));
+	    action.run(TransitionAction.DEFAULT_ACTION);
+	  }
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getLogicalArchitecture((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getLogicalArchitecture((Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 }

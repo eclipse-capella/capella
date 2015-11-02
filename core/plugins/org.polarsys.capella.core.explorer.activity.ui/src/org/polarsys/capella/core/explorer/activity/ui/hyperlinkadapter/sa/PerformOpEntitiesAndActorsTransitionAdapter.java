@@ -33,21 +33,26 @@ public class PerformOpEntitiesAndActorsTransitionAdapter extends AbstractHyperli
 
 
 	public PerformOpEntitiesAndActorsTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		List<Entity> entities = ModelSelectionHelper.selectEntities((Project) rootSemanticModel);
-		if ((entities != null) && !entities.isEmpty()) {
-			OE2ActorTransitionAction action = new OE2ActorTransitionAction();
-			action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(entities));
-			action.run(TransitionAction.DEFAULT_ACTION);
-		}
+	  if(rootSemanticModel instanceof Project){
+	    List<Entity> entities = ModelSelectionHelper.selectEntities((Project) rootSemanticModel);
+	    if ((entities != null) && !entities.isEmpty()) {
+	      OE2ActorTransitionAction action = new OE2ActorTransitionAction();
+	      action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(entities));
+	      action.run(TransitionAction.DEFAULT_ACTION);
+	    }	    
+	  }
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getOperationalAnalysis((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getOperationalAnalysis((Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 }

@@ -31,16 +31,22 @@ public class PerformAutomatedTransitionOfSystemAdapter extends AbstractHyperlink
 	 * @param session
 	 */
 	public PerformAutomatedTransitionOfSystemAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		TransactionHelper.getExecutionManager(rootSemanticModel).execute(new GenerateInterfaceDelegationsCommand(getModelElement(rootSemanticModel)));
+		ModelElement modelElement = getModelElement(rootSemanticModel);
+		if(modelElement != null){
+		  TransactionHelper.getExecutionManager(rootSemanticModel).execute(new GenerateInterfaceDelegationsCommand(modelElement));
+		}
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getLogicalSystem((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getLogicalSystem((Project) rootSemanticModel);	    
+	  }
+	  return null;
 	}
 }

@@ -23,5 +23,4 @@ public class CapellaActivityExplorerPredicate implements IPredicate {
 	public boolean isOk() {
 		return ActivityExplorerManager.INSTANCE.getRootSemanticModel() instanceof Project;
 	}
-
 }

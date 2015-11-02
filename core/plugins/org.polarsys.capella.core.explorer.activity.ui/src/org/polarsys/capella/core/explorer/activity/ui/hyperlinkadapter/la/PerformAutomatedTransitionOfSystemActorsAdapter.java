@@ -32,18 +32,24 @@ public class PerformAutomatedTransitionOfSystemActorsAdapter extends AbstractHyp
 	 * @param session
 	 */
 	public PerformAutomatedTransitionOfSystemActorsAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		ActorTransitionAction action = new ActorTransitionAction();
-		action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(rootSemanticModel)));
-		action.run(TransitionAction.DEFAULT_ACTION);
+	  ModelElement modelElement = getModelElement(rootSemanticModel);
+	  if(modelElement != null){
+	    ActorTransitionAction action = new ActorTransitionAction();
+	    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(modelElement));
+	    action.run(TransitionAction.DEFAULT_ACTION);
+	  }
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getSystemActorPkg((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getSystemActorPkg((Project) rootSemanticModel);	    
+	  }
+	  return null;
 	}
 }
