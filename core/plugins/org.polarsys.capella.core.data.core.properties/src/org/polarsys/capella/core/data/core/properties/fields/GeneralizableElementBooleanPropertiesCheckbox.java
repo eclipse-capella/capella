@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,24 +29,24 @@ public class GeneralizableElementBooleanPropertiesCheckbox extends AbstractSeman
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public GeneralizableElementBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true);
+  public GeneralizableElementBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param showIsAbstract_p
+   * @param parent
+   * @param widgetFactory
+   * @param showIsAbstract
    */
-  public GeneralizableElementBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showIsAbstract_p) {
-    super(parent_p, widgetFactory_p);
+  public GeneralizableElementBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsAbstract) {
+    super(parent, widgetFactory);
 
-    if (showIsAbstract_p) {
-      _isAbstractBtn = createButton(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT, Messages.getString("GeneralizableElement.IsAbstractLabel"), parent_p); //$NON-NLS-1$ 
+    if (showIsAbstract) {
+      _isAbstractBtn = createButton(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT, Messages.getString("GeneralizableElement.IsAbstractLabel"), parent); //$NON-NLS-1$ 
     }
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,11 +51,11 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
 
   /**
    * Constructor.
-   * @param showSuperTypes_p
+   * @param showSuperTypes
    */
-  public GeneralizableElementSection(boolean showSuperTypes_p, boolean showIsAbstract_p) {
-    _showSuperTypes = showSuperTypes_p;
-    _showIsAbstract = showIsAbstract_p;
+  public GeneralizableElementSection(boolean showSuperTypes, boolean showIsAbstract) {
+    _showSuperTypes = showSuperTypes;
+    _showIsAbstract = showIsAbstract;
   }
 
   /**
@@ -87,11 +87,11 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
          * {@inheritDoc}
          */
         @Override
-        protected List<EObject> openTransferDialog(Button button_p, List<EObject> currentElements_p, List<EObject> availableElements_p, String title_p, String message_p) {
+        protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements, List<EObject> availableElements, String title, String message) {
           if (CapellaModelPreferencesPlugin.getDefault().isMultipleInheritanceAllowed()) {
-            return super.openTransferDialog(button_p, currentElements_p, availableElements_p, title_p, message_p);
+            return super.openTransferDialog(button, currentElements, availableElements, title, message);
           }
-          EObject firstResult = SelectionDialogHelper.simplePropertySelectionDialogWizard(availableElements_p, button_p.getShell());
+          EObject firstResult = SelectionDialogHelper.simplePropertySelectionDialogWizard(availableElements, button.getShell());
           if (null != firstResult) {
             return Collections.singletonList(firstResult);
           }
@@ -106,15 +106,15 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _propertiesCheckbox) {
-      _propertiesCheckbox.loadData(capellaElement_p);
+      _propertiesCheckbox.loadData(capellaElement);
     }
 
     if (null != _superTypes) {
-      _superTypes.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(),
+      _superTypes.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(),
           CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
     }
   }

@@ -18,7 +18,7 @@ import org.polarsys.capella.common.ui.services.AbstractUIActivator;
  */
 public class CommonPropertiesPlugin extends AbstractUIActivator {
   // The shared instance
-  private static CommonPropertiesPlugin __plugin;
+  private static CommonPropertiesPlugin plugin;
 
   /**
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
@@ -26,7 +26,7 @@ public class CommonPropertiesPlugin extends AbstractUIActivator {
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
-    __plugin = this;
+    plugin = this;
   }
 
   /**
@@ -34,7 +34,7 @@ public class CommonPropertiesPlugin extends AbstractUIActivator {
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-    __plugin = null;
+    plugin = null;
     super.stop(context);
   }
 
@@ -43,7 +43,7 @@ public class CommonPropertiesPlugin extends AbstractUIActivator {
    * @return the shared instance
    */
   public static CommonPropertiesPlugin getDefault() {
-    return __plugin;
+    return plugin;
   }
 
 }

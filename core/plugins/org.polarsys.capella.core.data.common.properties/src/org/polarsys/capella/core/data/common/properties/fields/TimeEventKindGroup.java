@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,16 +28,16 @@ public class TimeEventKindGroup extends AbstractSemanticKindGroup {
   private Button _kindBtnAfter;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param groupLabel_p
-   * @param numColumns_p
+   * @param parent
+   * @param widgetFactory
+   * @param groupLabel
+   * @param numColumns
    */
-  public TimeEventKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, "Time Event Kind: ", 3); //$NON-NLS-1$
+  public TimeEventKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, "Time Event Kind: ", 3); //$NON-NLS-1$
 
-    _kindBtnAfter = createButton(TimeEventKind.AFTER, enabled_p);
-    _kindBtnAt = createButton(TimeEventKind.AT, enabled_p);
+    _kindBtnAfter = createButton(TimeEventKind.AFTER, enabled);
+    _kindBtnAt = createButton(TimeEventKind.AT, enabled);
   }
 
   /**
