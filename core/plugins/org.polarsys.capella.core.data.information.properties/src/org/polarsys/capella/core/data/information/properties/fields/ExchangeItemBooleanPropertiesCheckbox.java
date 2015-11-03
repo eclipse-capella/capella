@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,24 +26,24 @@ public class ExchangeItemBooleanPropertiesCheckbox extends GeneralizableElementB
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public ExchangeItemBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true, true);
+  public ExchangeItemBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true, true);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param showIsAbstract_p
-   * @param showIsFinal_p
+   * @param parent
+   * @param widgetFactory
+   * @param showIsAbstract
+   * @param showIsFinal
    */
-  public ExchangeItemBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showIsAbstract_p, boolean showIsFinal_p) {
-    super(parent_p, widgetFactory_p, false);
-    if (showIsFinal_p) {
-    	_isFinalBtn = createButton(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL, Messages.getString("Class.IsFinalLabel"), parent_p); //$NON-NLS-1$    	
+  public ExchangeItemBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsAbstract, boolean showIsFinal) {
+    super(parent, widgetFactory, false);
+    if (showIsFinal) {
+    	_isFinalBtn = createButton(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL, Messages.getString("Class.IsFinalLabel"), parent); //$NON-NLS-1$    	
     }
   }
 

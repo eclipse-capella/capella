@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,22 +34,22 @@ public class ParameterDirectionGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public ParameterDirectionGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("ParameterDirection.Label"), 5); //$NON-NLS-1$
+  public ParameterDirectionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory, Messages.getString("ParameterDirection.Label"), 5); //$NON-NLS-1$
 
     _directionBtnIn = createButton(ParameterDirection.IN);
     _directionBtnOut = createButton(ParameterDirection.OUT);
     _directionBtnInOut = createButton(ParameterDirection.INOUT);
     _directionBtnReturn = createButton(ParameterDirection.RETURN);
     _directionBtnReturn.addSelectionListener(new SelectionListener() {
-      public void widgetDefaultSelected(SelectionEvent evt_p) {
+      public void widgetDefaultSelected(SelectionEvent evt) {
         // do nothing
       }
-      public void widgetSelected(SelectionEvent evt_p) {
-        returnDirectionSelected(((Button) evt_p.widget).getSelection());
+      public void widgetSelected(SelectionEvent evt) {
+        returnDirectionSelected(((Button) evt.widget).getSelection());
       }
     });
     _directionBtnException = createButton(ParameterDirection.EXCEPTION);
@@ -58,9 +58,9 @@ public class ParameterDirectionGroup extends AbstractSemanticKindGroup {
   /**
    * This method will be called when 'return' choice is selected (or unselected).
    * Shall be overloaded if a custom behavior is required.
-   * @param selected_p
+   * @param selected
    */
-  protected void returnDirectionSelected(boolean selected_p) {
+  protected void returnDirectionSelected(boolean selected) {
     // by default, do nothing
   }
 

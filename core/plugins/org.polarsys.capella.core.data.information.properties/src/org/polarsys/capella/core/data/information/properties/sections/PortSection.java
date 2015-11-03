@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,8 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public abstract class PortSection extends NamedElementSection {
 
-  private MultipleSemanticField _providedInterfacesField;
-  private MultipleSemanticField _requiredInterfacesField;
+  private MultipleSemanticField providedInterfacesField;
+  private MultipleSemanticField requiredInterfacesField;
 
   /**
    * {@inheritDoc}
@@ -43,38 +43,38 @@ public abstract class PortSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _providedInterfacesField = new MultipleSemanticField(getReferencesGroup(), Messages.getString("PortSection_ProvidedInterfaces_Label"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
+    providedInterfacesField = new MultipleSemanticField(getReferencesGroup(), Messages.getString("PortSection_ProvidedInterfaces_Label"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
       /**
        * {@inheritDoc}
        */
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), InformationPackage.Literals.PORT__PROVIDED_INTERFACES);
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), InformationPackage.Literals.PORT__PROVIDED_INTERFACES);
       }
     });
-    _providedInterfacesField.setDisplayedInWizard(displayedInWizard);
+    providedInterfacesField.setDisplayedInWizard(displayedInWizard);
 
-    _requiredInterfacesField = new MultipleSemanticField(getReferencesGroup(), Messages.getString("PortSection_RequiredInterfaces_Label"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
+    requiredInterfacesField = new MultipleSemanticField(getReferencesGroup(), Messages.getString("PortSection_RequiredInterfaces_Label"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
       /**
        * {@inheritDoc}
        */
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), InformationPackage.Literals.PORT__REQUIRED_INTERFACES);
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), InformationPackage.Literals.PORT__REQUIRED_INTERFACES);
       }
     });
-    _requiredInterfacesField.setDisplayedInWizard(displayedInWizard);
+    requiredInterfacesField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _providedInterfacesField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getPort_ProvidedInterfaces());
-    _requiredInterfacesField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getPort_RequiredInterfaces());
+    providedInterfacesField.loadData(capellaElement, InformationPackage.eINSTANCE.getPort_ProvidedInterfaces());
+    requiredInterfacesField.loadData(capellaElement, InformationPackage.eINSTANCE.getPort_RequiredInterfaces());
   }
 
   /**
@@ -85,8 +85,8 @@ public abstract class PortSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_providedInterfacesField);
-    fields.add(_requiredInterfacesField);
+    fields.add(providedInterfacesField);
+    fields.add(requiredInterfacesField);
 
     return fields;
   }

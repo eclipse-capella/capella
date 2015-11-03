@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,11 +57,11 @@ public class EntitySection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _allocatedOperationalActivitiesField.loadData(capellaElement_p, FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedFunctionalAllocation());
-    _allocatedRolesField.loadData(capellaElement_p, OaPackage.eINSTANCE.getEntity_OwnedRoleAllocations());
+    _allocatedOperationalActivitiesField.loadData(capellaElement, FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedFunctionalAllocation());
+    _allocatedRolesField.loadData(capellaElement, OaPackage.eINSTANCE.getEntity_OwnedRoleAllocations());
   }
 
   /**

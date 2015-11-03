@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -89,9 +89,9 @@ public class CollectionSection extends MultiplicityElementSection {
            *      java.util.List, java.util.List, java.lang.String, java.lang.String)
            */
           @Override
-          protected List<EObject> openTransferDialog(Button button_p, List<EObject> currentElements_p, List<EObject> availableElements_p, String title_p,
-              String message_p) {
-            return SelectionDialogHelper.openOrderedTransferDialog(availableElements_p, currentElements_p, button_p.getShell(), title_p, message_p);
+          protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements, List<EObject> availableElements, String title,
+              String message) {
+            return SelectionDialogHelper.openOrderedTransferDialog(availableElements, currentElements, button.getShell(), title, message);
           }
         };
     indexField.setDisplayedInWizard(displayedInWizard);
@@ -117,20 +117,20 @@ public class CollectionSection extends MultiplicityElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    collectionBooleanPropertiesCheckbox.loadData(capellaElement_p);
-    visibilityKindGroup.loadData(capellaElement_p, InformationPackage.eINSTANCE.getCollection_Visibility());
-    collectionKindGroup.loadData(capellaElement_p, InformationPackage.eINSTANCE.getCollection_Kind());
-    aggregationKindGroup.loadData(capellaElement_p, InformationPackage.eINSTANCE.getCollection_AggregationKind());
-    superTypes.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(),
+    collectionBooleanPropertiesCheckbox.loadData(capellaElement);
+    visibilityKindGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_Visibility());
+    collectionKindGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_Kind());
+    aggregationKindGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_AggregationKind());
+    superTypes.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(),
         CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
-    indexField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getCollection_Index());
-    minValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
-    maxValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
-    defaultValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
-    nullValueField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
+    indexField.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_Index());
+    minValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
+    maxValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
+    defaultValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
+    nullValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
   }
 
   /**
