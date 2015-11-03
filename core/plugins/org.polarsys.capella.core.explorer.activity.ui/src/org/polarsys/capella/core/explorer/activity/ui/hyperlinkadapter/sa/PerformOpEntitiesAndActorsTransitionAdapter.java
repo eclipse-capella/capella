@@ -12,7 +12,6 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa;
 
 import java.util.List;
 
-import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -21,6 +20,7 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
 import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.ModelSelectionHelper;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
@@ -29,7 +29,7 @@ import org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2ActorTr
 /**
  * Perform an automated transition of Operational Entities and Actors.
  */
-public class PerformOpEntitiesAndActorsTransitionAdapter extends AbstractHyperlinkAdapter {
+public class PerformOpEntitiesAndActorsTransitionAdapter extends AbstractCapellaHyperlinkAdapter {
 
 
 	public PerformOpEntitiesAndActorsTransitionAdapter() {

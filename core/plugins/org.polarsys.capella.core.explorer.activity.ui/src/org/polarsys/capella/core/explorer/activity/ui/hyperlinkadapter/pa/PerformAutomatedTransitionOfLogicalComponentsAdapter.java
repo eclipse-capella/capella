@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 
-import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -18,18 +17,17 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
 import org.polarsys.capella.core.transition.system.topdown.ui.actions.LC2PCTransitionAction;
 
 /**
- * Perform an automated transition of Logical Components
+ * Perform an automated transition of Logical Components.
  */
-public class PerformAutomatedTransitionOfLogicalComponentsAdapter extends AbstractHyperlinkAdapter {
+public class PerformAutomatedTransitionOfLogicalComponentsAdapter extends AbstractCapellaHyperlinkAdapter {
 	/**
 	 * Constructor.
-	 * @param rootSemanticModel
-	 * @param session
 	 */
 	public PerformAutomatedTransitionOfLogicalComponentsAdapter() {
 		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());

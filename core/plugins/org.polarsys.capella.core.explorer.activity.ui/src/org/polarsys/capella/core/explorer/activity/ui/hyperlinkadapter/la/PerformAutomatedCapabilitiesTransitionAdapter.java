@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la;
 
-import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -19,23 +18,21 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
 import org.polarsys.capella.core.transition.system.topdown.ui.actions.CapabilityTransitionAction;
 
 /**
- * Perform an automated transition of Capabilities from source architecture to target architecture
+ * Perform an automated transition of Capabilities from source architecture to target architecture.
  */
-public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyperlinkAdapter {
+public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractCapellaHyperlinkAdapter {
 
 	protected BlockArchitectureExt.Type blockType;
 
 	/**
 	 * Constructor.
-	 * @param capellaproject
-	 * @param sourceArchitecture
-	 * @param session
 	 */
 	public PerformAutomatedCapabilitiesTransitionAdapter() {
 	  super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
