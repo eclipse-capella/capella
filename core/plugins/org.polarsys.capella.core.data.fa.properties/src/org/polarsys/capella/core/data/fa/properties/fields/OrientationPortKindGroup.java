@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,24 +24,24 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticKindGroup;
 /**
  */
 public class OrientationPortKindGroup extends AbstractSemanticKindGroup {
-  private Button _orientationPortKindBtnUnset;
-  private Button _orientationPortKindBtnIn;
-  private Button _orientationPortKindBtnOut;
-  private Button _orientationPortKindBtnInOut;
+  private Button orientationPortKindBtnUnset;
+  private Button orientationPortKindBtnIn;
+  private Button orientationPortKindBtnOut;
+  private Button orientationPortKindBtnInOut;
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public OrientationPortKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("OrientationPortKind.Label"), 4); //$NON-NLS-1$
+  public OrientationPortKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("OrientationPortKind.Label"), 4); //$NON-NLS-1$
 
-    _orientationPortKindBtnUnset = createButton(OrientationPortKind.UNSET, enabled_p);
-    _orientationPortKindBtnIn = createButton(OrientationPortKind.IN, enabled_p);
-    _orientationPortKindBtnOut = createButton(OrientationPortKind.OUT, enabled_p);
-    _orientationPortKindBtnInOut = createButton(OrientationPortKind.INOUT, enabled_p);
+    orientationPortKindBtnUnset = createButton(OrientationPortKind.UNSET, enabled);
+    orientationPortKindBtnIn = createButton(OrientationPortKind.IN, enabled);
+    orientationPortKindBtnOut = createButton(OrientationPortKind.OUT, enabled);
+    orientationPortKindBtnInOut = createButton(OrientationPortKind.INOUT, enabled);
   }
 
   /**
@@ -51,10 +51,10 @@ public class OrientationPortKindGroup extends AbstractSemanticKindGroup {
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<Button>();
 
-    fields.add(_orientationPortKindBtnUnset);
-    fields.add(_orientationPortKindBtnIn);
-    fields.add(_orientationPortKindBtnOut);
-    fields.add(_orientationPortKindBtnInOut);
+    fields.add(orientationPortKindBtnUnset);
+    fields.add(orientationPortKindBtnIn);
+    fields.add(orientationPortKindBtnOut);
+    fields.add(orientationPortKindBtnInOut);
 
     return fields;
   }
@@ -64,6 +64,6 @@ public class OrientationPortKindGroup extends AbstractSemanticKindGroup {
    */
   @Override
   public Button getDefaultSemanticField() {
-    return _orientationPortKindBtnUnset;
+    return orientationPortKindBtnUnset;
   }
 }

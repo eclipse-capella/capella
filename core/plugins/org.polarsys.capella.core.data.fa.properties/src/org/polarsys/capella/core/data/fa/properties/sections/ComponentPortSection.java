@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,10 +33,10 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class ComponentPortSection extends PortSection {
 
-  private MultipleSemanticField _allocatedPortsField;
-  private MultipleSemanticField _realizedPortsField;
-  private ComponentPortKindGroup _componentPortKindGroup;
-  private OrientationPortKindGroup _orientationPortKindGroup;
+  private MultipleSemanticField allocatedPortsField;
+  private MultipleSemanticField realizedPortsField;
+  private ComponentPortKindGroup componentPortKindGroup;
+  private OrientationPortKindGroup orientationPortKindGroup;
 
   /**
    * {@inheritDoc}
@@ -47,32 +47,32 @@ public class ComponentPortSection extends PortSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _allocatedPortsField = new MultipleSemanticField(getReferencesGroup(),
+    allocatedPortsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.ComponentPortSection_AllocatedPorts_Label, getWidgetFactory(), new Port_AllocatedPortsController());
-    _allocatedPortsField.setDisplayedInWizard(displayedInWizard);
+    allocatedPortsField.setDisplayedInWizard(displayedInWizard);
 
-    _realizedPortsField = new MultipleSemanticField(getReferencesGroup(),
+    realizedPortsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.ComponentPortSection_RealizedPorts_Label, getWidgetFactory(), new Port_RealizedPortsController());
-    _realizedPortsField.setDisplayedInWizard(displayedInWizard);
+    realizedPortsField.setDisplayedInWizard(displayedInWizard);
 
-    _componentPortKindGroup = new ComponentPortKindGroup(_rootParentComposite, getWidgetFactory(), true);
-    _componentPortKindGroup.setDisplayedInWizard(displayedInWizard);
+    componentPortKindGroup = new ComponentPortKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    componentPortKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    _orientationPortKindGroup = new OrientationPortKindGroup(_rootParentComposite, getWidgetFactory(), true);
-    _orientationPortKindGroup.setDisplayedInWizard(displayedInWizard);
+    orientationPortKindGroup = new OrientationPortKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    orientationPortKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _allocatedPortsField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getPort_OwnedPortAllocations());
-    _realizedPortsField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getPort_OwnedPortRealizations());
-    _componentPortKindGroup.loadData(capellaElement_p, FaPackage.eINSTANCE.getComponentPort_Kind());
-    _orientationPortKindGroup.loadData(capellaElement_p, FaPackage.eINSTANCE.getComponentPort_Orientation());
+    allocatedPortsField.loadData(capellaElement, InformationPackage.eINSTANCE.getPort_OwnedPortAllocations());
+    realizedPortsField.loadData(capellaElement, InformationPackage.eINSTANCE.getPort_OwnedPortRealizations());
+    componentPortKindGroup.loadData(capellaElement, FaPackage.eINSTANCE.getComponentPort_Kind());
+    orientationPortKindGroup.loadData(capellaElement, FaPackage.eINSTANCE.getComponentPort_Orientation());
   }
 
   /**
@@ -92,10 +92,10 @@ public class ComponentPortSection extends PortSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_allocatedPortsField);
-    fields.add(_componentPortKindGroup);
-    fields.add(_orientationPortKindGroup);
-    fields.add(_realizedPortsField);
+    fields.add(allocatedPortsField);
+    fields.add(componentPortKindGroup);
+    fields.add(orientationPortKindGroup);
+    fields.add(realizedPortsField);
 
     return fields;
   }

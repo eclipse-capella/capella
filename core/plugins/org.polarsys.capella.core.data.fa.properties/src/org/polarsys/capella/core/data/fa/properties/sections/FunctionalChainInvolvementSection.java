@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class FunctionalChainInvolvementSection extends CapellaElementSection {
 
-  private MultipleSemanticField _exchangedItemsField;
+  private MultipleSemanticField exchangedItemsField;
 
   /**
    * {@inheritDoc}
@@ -45,31 +45,31 @@ public class FunctionalChainInvolvementSection extends CapellaElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _exchangedItemsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainInvolvementSection_ExchangedItems_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
+    exchangedItemsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainInvolvementSection_ExchangedItems_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
       /**
        * {@inheritDoc}
        */
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), FaPackage.eINSTANCE.getFunctionalChainInvolvement_ExchangedItems());
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getFunctionalChainInvolvement_ExchangedItems());
       }
     });
-    _exchangedItemsField.setDisplayedInWizard(displayedInWizard);
+    exchangedItemsField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _exchangedItemsField.loadData(capellaElement_p, FaPackage.eINSTANCE.getFunctionalChainInvolvement_ExchangedItems());
-    InvolvedElement involvedElement = ((FunctionalChainInvolvement) capellaElement_p).getInvolved();
+    exchangedItemsField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalChainInvolvement_ExchangedItems());
+    InvolvedElement involvedElement = ((FunctionalChainInvolvement) capellaElement).getInvolved();
     if (involvedElement instanceof FunctionalExchange) {
-      _exchangedItemsField.setEnabled(true);
+      exchangedItemsField.setEnabled(true);
     } else {
-      _exchangedItemsField.setEnabled(false);
+      exchangedItemsField.setEnabled(false);
     }
   }
 
@@ -90,7 +90,7 @@ public class FunctionalChainInvolvementSection extends CapellaElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_exchangedItemsField);
+    fields.add(exchangedItemsField);
 
     return fields;
   }

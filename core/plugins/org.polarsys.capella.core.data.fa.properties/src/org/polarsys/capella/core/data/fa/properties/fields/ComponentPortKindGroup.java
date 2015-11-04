@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,20 +24,20 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticKindGroup;
 /**
  */
 public class ComponentPortKindGroup extends AbstractSemanticKindGroup {
-  private Button _componentPortKindBtnStandard;
-  private Button _componentPortKindBtnFlow;
+  private Button componentPortKindBtnStandard;
+  private Button componentPortKindBtnFlow;
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public ComponentPortKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("ComponentPortKind.Label"), 2); //$NON-NLS-1$
+  public ComponentPortKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("ComponentPortKind.Label"), 2); //$NON-NLS-1$
 
-    _componentPortKindBtnStandard = createButton(ComponentPortKind.STANDARD, enabled_p);
-    _componentPortKindBtnFlow = createButton(ComponentPortKind.FLOW, enabled_p);
+    componentPortKindBtnStandard = createButton(ComponentPortKind.STANDARD, enabled);
+    componentPortKindBtnFlow = createButton(ComponentPortKind.FLOW, enabled);
   }
 
   /**
@@ -47,8 +47,8 @@ public class ComponentPortKindGroup extends AbstractSemanticKindGroup {
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<Button>();
 
-    fields.add(_componentPortKindBtnStandard);
-    fields.add(_componentPortKindBtnFlow);
+    fields.add(componentPortKindBtnStandard);
+    fields.add(componentPortKindBtnFlow);
 
     return fields;
   }
@@ -58,6 +58,6 @@ public class ComponentPortKindGroup extends AbstractSemanticKindGroup {
    */
   @Override
   public Button getDefaultSemanticField() {
-    return _componentPortKindBtnStandard;
+    return componentPortKindBtnStandard;
   }
 }
