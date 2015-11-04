@@ -30,7 +30,6 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
-import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
@@ -362,8 +361,8 @@ public class MoveHelper {
         if (targetContainer instanceof State) {
           isSameType = targetContainer.eClass() == source.eClass();
         } else if (targetContainer instanceof StateMachine) {
-          isSameType = ((StateMachine) targetContainer).getOwnedRegions().get(0).getOwnedStates().size() > 0 ? ((StateMachine) targetContainer)
-              .getOwnedRegions().get(0).getOwnedStates().get(0).eClass() == source.eClass()
+          isSameType = getAllModeState(((StateMachine) targetContainer).getOwnedRegions().get(0)).size() > 0 ? getAllModeState(
+              ((StateMachine) targetContainer).getOwnedRegions().get(0)).get(0).eClass() == source.eClass()
               : true;
         }
         // Move is allowed only when source and target are not mixed
@@ -471,6 +470,26 @@ public class MoveHelper {
 
     // Add itself
     stateModeLst.add((State) state);
+    return stateModeLst;
+  }
+
+  /**
+   * This method returns all modes/states from a region
+   * 
+   * @param region
+   * @return list of Modes/States
+   */
+  public static List<State> getAllModeState(Region region) {
+    List<State> stateModeLst = new ArrayList<State>();
+    // Add contained modes/states only
+    Iterator<EObject> iter = EcoreUtil.getAllContents(region, true);
+
+    while (iter.hasNext()) {
+      EObject eObj = iter.next();
+      if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+        stateModeLst.add((State) eObj);
+    }
+
     return stateModeLst;
   }
 }
