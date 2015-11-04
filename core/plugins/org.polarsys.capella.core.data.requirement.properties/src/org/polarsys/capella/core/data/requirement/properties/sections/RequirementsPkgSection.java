@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,24 +28,24 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
  */
 public class RequirementsPkgSection extends StructureSection {
 
-  private RequirementsPkgGroup _requirementsPkgGroup;
+  private RequirementsPkgGroup requirementsPkgGroup;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    _requirementsPkgGroup = new RequirementsPkgGroup(_rootParentComposite, getWidgetFactory());
-    _requirementsPkgGroup.setDisplayedInWizard(isDisplayedInWizard());
+    requirementsPkgGroup = new RequirementsPkgGroup(_rootParentComposite, getWidgetFactory());
+    requirementsPkgGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _requirementsPkgGroup.loadData(capellaElement_p);
+    requirementsPkgGroup.loadData(capellaElement);
   }
 
   /**
@@ -65,7 +65,7 @@ public class RequirementsPkgSection extends StructureSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_requirementsPkgGroup);
+    fields.add(requirementsPkgGroup);
 
     return fields;
   }

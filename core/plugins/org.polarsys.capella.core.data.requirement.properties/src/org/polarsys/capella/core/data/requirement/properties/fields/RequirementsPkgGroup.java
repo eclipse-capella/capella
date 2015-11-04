@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,17 +28,17 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
  */
 public class RequirementsPkgGroup extends AbstractSemanticField {
 
-  private Text _levelField;
-  private Text _additionalInformationField;
+  private Text levelField;
+  private Text additionalInformationField;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public RequirementsPkgGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(widgetFactory_p);
+  public RequirementsPkgGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(widgetFactory);
 
-    Group textGroup = _widgetFactory.createGroup(parent_p, ""); //$NON-NLS-1$
+    Group textGroup = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -49,57 +49,57 @@ public class RequirementsPkgGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createLevelTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementsPkgGroup.Level.Label")); //$NON-NLS-1$
-    _levelField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
-    _levelField.addFocusListener(this);
-    _levelField.addKeyListener(this);
-    _levelField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+  private void createLevelTextField(Group textGroup) {
+    _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementsPkgGroup.Level.Label")); //$NON-NLS-1$
+    levelField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    levelField.addFocusListener(this);
+    levelField.addKeyListener(this);
+    levelField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createAdditionalInformationTextField(Group textGroup_p) {
-    CLabel label = _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementsPkgGroup.AdditionalInformation.Label")); //$NON-NLS-1$
+  private void createAdditionalInformationTextField(Group textGroup) {
+    CLabel label = _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementsPkgGroup.AdditionalInformation.Label")); //$NON-NLS-1$
     GridData gd = new GridData();
     gd.horizontalSpan = 2;
     label.setLayoutData(gd);
-    _additionalInformationField = _widgetFactory.createText(textGroup_p, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
-    _additionalInformationField.addFocusListener(this);
-    _additionalInformationField.addKeyListener(this);
+    additionalInformationField = _widgetFactory.createText(textGroup, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+    additionalInformationField.addFocusListener(this);
+    additionalInformationField.addKeyListener(this);
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     gd.heightHint = 80;
-    _additionalInformationField.setLayoutData(gd);
+    additionalInformationField.setLayoutData(gd);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, null);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, null);
 
     if (null != _semanticElement) {
-      if (null != _levelField)
-        setTextValue(_levelField, _semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_Level());
-      if (null != _additionalInformationField)
-        setTextValue(_additionalInformationField, _semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_AdditionalInformation());
+      if (null != levelField)
+        setTextValue(levelField, _semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_Level());
+      if (null != additionalInformationField)
+        setTextValue(additionalInformationField, _semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_AdditionalInformation());
     }
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField text field to be filled
    */
   @Override
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(_levelField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_Level(), _levelField.getText());
-    } else if (textField_p.equals(_additionalInformationField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_AdditionalInformation(), _additionalInformationField.getText());
+  protected void fillTextField(Text textField) {
+    if (textField.equals(levelField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_Level(), levelField.getText());
+    } else if (textField.equals(additionalInformationField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirementsPkg_AdditionalInformation(), additionalInformationField.getText());
     }
   }
 
@@ -107,12 +107,12 @@ public class RequirementsPkgGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    if (null != _levelField && !_levelField.isDisposed()) {
-      _levelField.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    if (null != levelField && !levelField.isDisposed()) {
+      levelField.setEnabled(enabled);
     }
-    if (null != _additionalInformationField && !_additionalInformationField.isDisposed()) {
-      _additionalInformationField.setEnabled(enabled_p);
+    if (null != additionalInformationField && !additionalInformationField.isDisposed()) {
+      additionalInformationField.setEnabled(enabled);
     }
   }
 }

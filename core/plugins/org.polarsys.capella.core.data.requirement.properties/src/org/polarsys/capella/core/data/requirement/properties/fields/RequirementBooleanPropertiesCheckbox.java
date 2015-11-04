@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,28 +25,28 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticCheckboxGr
  *
  */
 public class RequirementBooleanPropertiesCheckbox extends AbstractSemanticCheckboxGroup {
-  private Button _isObsoleteBtn;
+  private Button isObsoleteBtn;
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public RequirementBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true);
+  public RequirementBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param showIsObsolete_p
+   * @param parent
+   * @param widgetFactory
+   * @param showIsObsolete
    */
-  public RequirementBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showIsObsolete_p) {
-    super(parent_p, widgetFactory_p);
+  public RequirementBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsObsolete) {
+    super(parent, widgetFactory);
 
-    if (showIsObsolete_p) {
-      _isObsoleteBtn = createButton(RequirementPackage.Literals.REQUIREMENT__IS_OBSOLETE, Messages.getString("Requirement.IsObsolete.Label"), parent_p); //$NON-NLS-1$ 
+    if (showIsObsolete) {
+      isObsoleteBtn = createButton(RequirementPackage.Literals.REQUIREMENT__IS_OBSOLETE, Messages.getString("Requirement.IsObsolete.Label"), parent); //$NON-NLS-1$ 
     }
   }
 
@@ -57,7 +57,7 @@ public class RequirementBooleanPropertiesCheckbox extends AbstractSemanticCheckb
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<Button>();
 
-    fields.add(_isObsoleteBtn);
+    fields.add(isObsoleteBtn);
 
     return fields;
   }

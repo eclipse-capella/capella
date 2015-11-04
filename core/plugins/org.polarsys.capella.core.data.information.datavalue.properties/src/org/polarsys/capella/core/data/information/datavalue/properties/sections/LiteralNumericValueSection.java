@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,8 +30,8 @@ import org.polarsys.capella.core.ui.properties.fields.TextValueGroup;
  */
 public class LiteralNumericValueSection extends DataValueSection {
 
-  private TextValueGroup _valueGroup;
-  private SimpleSemanticField _unitField;
+  private TextValueGroup valueGroup;
+  private SimpleSemanticField unitField;
 
   /**
    * {@inheritDoc}
@@ -42,22 +42,22 @@ public class LiteralNumericValueSection extends DataValueSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _valueGroup = new TextValueGroup(_rootParentComposite, Messages.getString("StringValueGroup.ValueLabel"), getWidgetFactory(), true, false); //$NON-NLS-1$
-    _valueGroup.setDisplayedInWizard(isDisplayedInWizard());
+    valueGroup = new TextValueGroup(_rootParentComposite, Messages.getString("StringValueGroup.ValueLabel"), getWidgetFactory(), true, false); //$NON-NLS-1$
+    valueGroup.setDisplayedInWizard(isDisplayedInWizard());
 
-    _unitField = new SimpleSemanticField(getReferencesGroup(), Messages.getString("NumericValue.Unit.Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
-    _unitField.setDisplayedInWizard(displayedInWizard);
+    unitField = new SimpleSemanticField(getReferencesGroup(), Messages.getString("NumericValue.Unit.Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    unitField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _valueGroup.loadData(capellaElement_p, DatavaluePackage.eINSTANCE.getLiteralNumericValue_Value());
-    _unitField.loadData(capellaElement_p, DatavaluePackage.eINSTANCE.getNumericValue_Unit());
+    valueGroup.loadData(capellaElement, DatavaluePackage.eINSTANCE.getLiteralNumericValue_Value());
+    unitField.loadData(capellaElement, DatavaluePackage.eINSTANCE.getNumericValue_Unit());
   }
 
   /**
@@ -77,8 +77,8 @@ public class LiteralNumericValueSection extends DataValueSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_unitField);
-    fields.add(_valueGroup);
+    fields.add(unitField);
+    fields.add(valueGroup);
 
     return fields;
   }

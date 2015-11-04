@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,22 +24,22 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticKindGroup;
 /**
  */
 public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
-  private Button _pcNatureBtnUnset;
-  private Button _pcNatureBtnBehavior;
-  private Button _pcNatureBtnNode;
+  private Button pcNatureBtnUnset;
+  private Button pcNatureBtnBehavior;
+  private Button pcNatureBtnNode;
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public PhysicalComponentNatureGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("PhysicalComponentNature.Label"), 3); //$NON-NLS-1$
+  public PhysicalComponentNatureGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("PhysicalComponentNature.Label"), 3); //$NON-NLS-1$
 
-    _pcNatureBtnUnset = createButton(PhysicalComponentNature.UNSET, enabled_p);
-    _pcNatureBtnBehavior = createButton(PhysicalComponentNature.BEHAVIOR, enabled_p);
-    _pcNatureBtnNode = createButton(PhysicalComponentNature.NODE, enabled_p);
+    pcNatureBtnUnset = createButton(PhysicalComponentNature.UNSET, enabled);
+    pcNatureBtnBehavior = createButton(PhysicalComponentNature.BEHAVIOR, enabled);
+    pcNatureBtnNode = createButton(PhysicalComponentNature.NODE, enabled);
   }
 
   /**
@@ -49,9 +49,9 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<Button>();
 
-    fields.add(_pcNatureBtnUnset);
-    fields.add(_pcNatureBtnBehavior);
-    fields.add(_pcNatureBtnNode);
+    fields.add(pcNatureBtnUnset);
+    fields.add(pcNatureBtnBehavior);
+    fields.add(pcNatureBtnNode);
 
     return fields;
   }
@@ -61,6 +61,6 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
    */
   @Override
   public Button getDefaultSemanticField() {
-    return _pcNatureBtnUnset;
+    return pcNatureBtnUnset;
   }
 }
