@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,8 +30,8 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
  */
 public abstract class RequirementSection extends NamedElementSection {
 
-  private RequirementBooleanPropertiesCheckbox _propertiesCheckbox;
-  private RequirementGroup _requirementGroup;
+  private RequirementBooleanPropertiesCheckbox propertiesCheckbox;
+  private RequirementGroup requirementGroup;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -45,22 +45,22 @@ public abstract class RequirementSection extends NamedElementSection {
     gd.horizontalSpan = 2;
     checkGroup.setLayoutData(gd);
 
-    _propertiesCheckbox = new RequirementBooleanPropertiesCheckbox(checkGroup, getWidgetFactory());
-    _propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
+    propertiesCheckbox = new RequirementBooleanPropertiesCheckbox(checkGroup, getWidgetFactory());
+    propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
 
-    _requirementGroup = new RequirementGroup(_rootParentComposite, getWidgetFactory());
-    _requirementGroup.setDisplayedInWizard(displayedInWizard);
+    requirementGroup = new RequirementGroup(_rootParentComposite, getWidgetFactory());
+    requirementGroup.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _propertiesCheckbox.loadData(capellaElement_p);
-    _requirementGroup.loadData(capellaElement_p);
+    propertiesCheckbox.loadData(capellaElement);
+    requirementGroup.loadData(capellaElement);
   }
 
   /**
@@ -71,8 +71,8 @@ public abstract class RequirementSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_propertiesCheckbox);
-    fields.add(_requirementGroup);
+    fields.add(propertiesCheckbox);
+    fields.add(requirementGroup);
 
     return fields;
   }

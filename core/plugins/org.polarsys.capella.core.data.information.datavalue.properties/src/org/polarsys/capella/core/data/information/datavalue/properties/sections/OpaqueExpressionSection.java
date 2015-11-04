@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,10 +69,10 @@ import com.google.common.base.Objects;
 
 public class OpaqueExpressionSection extends NamedElementSection {
 
-  private OpaqueExpression _opaqueExpression;
-  private Composite _bodyEditorComposite;
+  private OpaqueExpression opaqueExpression;
+  private Composite bodyEditorComposite;
   private TableViewer languagesViewer;
-  private IObservableList _elements = new WritableList(new ArrayList<OpaqueExpressionElement>(), OpaqueExpressionElement.class); 
+  private IObservableList elements = new WritableList(new ArrayList<OpaqueExpressionElement>(), OpaqueExpressionElement.class); 
   private final PropertyChangeListener bodyListener = new PropertyChangeListener() {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
@@ -82,32 +82,32 @@ public class OpaqueExpressionSection extends NamedElementSection {
   
   static class OpaqueExpressionElement {
     
-    private final PropertyChangeSupport _propertyChangeSupport;
-    private final OpaqueExpression _opaqueExpression;
-    private final String _language;
-    private String _body;
+    private final PropertyChangeSupport propertyChangeSupport;
+    private final OpaqueExpression opaqueExpr;
+    private final String language;
+    private String body;
 
     OpaqueExpressionElement(OpaqueExpression opaqueExpression, String language, String body){
-      _language = language;
-      _body = body;
-      _propertyChangeSupport = new PropertyChangeSupport(this);
-      _opaqueExpression = opaqueExpression;
+      this.language = language;
+      this.body = body;
+      this.propertyChangeSupport = new PropertyChangeSupport(this);
+      this.opaqueExpr = opaqueExpression;
     }
 
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
-      _propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+      propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
     }
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
-      _propertyChangeSupport.removePropertyChangeListener(listener);
+      propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
     public OpaqueExpression getOpaqueExpression(){
-      return _opaqueExpression;
+      return opaqueExpr;
     }
     
     public String getLanguage(){
-      return _language;
+      return language;
     }
     
     public String getDisplayLanguage(){
@@ -119,7 +119,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
      * The language body. Never null.
      */
     public String getBody(){
-      return _body;
+      return body;
     }
 
     /**
@@ -127,8 +127,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
      * @param body
      */
     public void setBody(String body){
-      if (!Objects.equal(body, _body)){
-        _propertyChangeSupport.firePropertyChange("body", _body, _body = body); //$NON-NLS-1$
+      if (!Objects.equal(body, this.body)){
+        propertyChangeSupport.firePropertyChange("body", this.body, this.body = body); //$NON-NLS-1$
       }
     }
   }
@@ -142,16 +142,16 @@ public class OpaqueExpressionSection extends NamedElementSection {
   }
   
   private OpaqueExpression getOpaqueExpression(){
-    return _opaqueExpression;
+    return opaqueExpression;
   }
   
   private void setOpaqueExpression(OpaqueExpression expression){
-    _opaqueExpression = expression;
+    opaqueExpression = expression;
   }
   
   
   private IObservableList getElements(){
-    return _elements;
+    return elements;
   }
 
   @Override
@@ -202,8 +202,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
         }
 
         // Now, the trailing elements have to be removed: These are not in the model any more
-        while (_elements.size() > _opaqueExpression.getLanguages().size()){
-          _elements.remove(_opaqueExpression.getLanguages().size());
+        while (elements.size() > opaqueExpression.getLanguages().size()){
+          elements.remove(opaqueExpression.getLanguages().size());
         }
       }
 
@@ -211,7 +211,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
   }
 
   private void syncToModel() {
-    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(_opaqueExpression);
+    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(opaqueExpression);
     RecordingCommand c = new RecordingCommand(domain, "Edit OpaqueExpression") {
       
       final OpaqueExpression _affected = getOpaqueExpression();
@@ -288,9 +288,9 @@ public class OpaqueExpressionSection extends NamedElementSection {
     data.horizontalSpan=4;
     table.setLayoutData(data);
     
-    _bodyEditorComposite = getWidgetFactory().createComposite(opaqueExpressionGroup);
+    bodyEditorComposite = getWidgetFactory().createComposite(opaqueExpressionGroup);
     data = new GridData(SWT.FILL, SWT.FILL, true, true);
-    _bodyEditorComposite.setLayoutData(data);
+    bodyEditorComposite.setLayoutData(data);
     
     Button add = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
     add.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.ADD_ITEM_IMAGE_ID));
@@ -393,7 +393,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
     });
 
-    ViewerSupport.bind(languagesViewer, _elements, BeanProperties.value("displayLanguage"));
+    ViewerSupport.bind(languagesViewer, elements, BeanProperties.value("displayLanguage"));
 
   }
 
@@ -401,14 +401,14 @@ public class OpaqueExpressionSection extends NamedElementSection {
    * @param firstElement
    */
   protected void updateTextArea(OpaqueExpressionElement firstElement) {
-    for (Control c : _bodyEditorComposite.getChildren()){
+    for (Control c : bodyEditorComposite.getChildren()){
       c.dispose();
     }
-    _bodyEditorComposite.setLayout(null);
+    bodyEditorComposite.setLayout(null);
     if (firstElement != null){
-      LanguageProvider.Registry.INSTANCE.getProviderFor(firstElement.getOpaqueExpression(), firstElement).createControl(_bodyEditorComposite, getWidgetFactory());
+      LanguageProvider.Registry.INSTANCE.getProviderFor(firstElement.getOpaqueExpression(), firstElement).createControl(bodyEditorComposite, getWidgetFactory());
     }
-    _bodyEditorComposite.layout(true, true);
+    bodyEditorComposite.layout(true, true);
   }
 
   public static abstract class LanguageProvider {

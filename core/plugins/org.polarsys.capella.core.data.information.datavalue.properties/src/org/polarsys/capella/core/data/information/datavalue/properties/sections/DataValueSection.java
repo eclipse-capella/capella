@@ -29,7 +29,7 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
  */
 public abstract class DataValueSection extends TypedElementSection {
 
-  private DataValueBooleanPropertiesCheckbox _propertiesCheckbox;
+  private DataValueBooleanPropertiesCheckbox propertiesCheckbox;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -49,8 +49,8 @@ public abstract class DataValueSection extends TypedElementSection {
       checkGroup.setLayoutData(gd);
       checkGroup.moveAbove(getReferencesGroup());
       
-      _propertiesCheckbox = new DataValueBooleanPropertiesCheckbox(checkGroup, getWidgetFactory(), showIsAbstract);
-      _propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
+      propertiesCheckbox = new DataValueBooleanPropertiesCheckbox(checkGroup, getWidgetFactory(), showIsAbstract);
+      propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
     }
   }
 
@@ -61,8 +61,8 @@ public abstract class DataValueSection extends TypedElementSection {
   public void loadData(CapellaElement capellaElement) {
     super.loadData(capellaElement);
 
-    if (null != _propertiesCheckbox) {
-      _propertiesCheckbox.loadData(capellaElement);
+    if (null != propertiesCheckbox) {
+      propertiesCheckbox.loadData(capellaElement);
     }
   }
 
@@ -74,8 +74,8 @@ public abstract class DataValueSection extends TypedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    if (null != _propertiesCheckbox) {
-      fields.add(_propertiesCheckbox);
+    if (null != propertiesCheckbox) {
+      fields.add(propertiesCheckbox);
     }
 
     return fields;
