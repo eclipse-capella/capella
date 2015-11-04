@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true"
+            sort="true">
+      </toc>
+      <toc
+            file="toc-LIBS.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="toc-RE.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/08. Replicable Element (REC-RPL)/8.1. Introduction-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/08. Replicable Element (REC-RPL)/8.5. RPL Validation-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/09. Libraries/9.1. Introduction-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/09. Libraries/9.2. Basic Use Case-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/09. Libraries/9.3. Usage With Replicable Elements-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/09. Libraries/9.4. Usage Restrictions-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+   </extension>
+</plugin>

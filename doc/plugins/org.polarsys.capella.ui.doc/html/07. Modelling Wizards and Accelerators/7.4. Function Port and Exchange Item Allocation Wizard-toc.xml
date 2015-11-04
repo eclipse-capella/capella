@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc label="7.4. Function Port and Exchange Item Allocation Wizard" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-wiz.xml#contribution" topic="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html">
+	<topic href="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html" label="Function Port and Exchange Item Allocation Wizard">
+		<topic href="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html#Principles" label="Principles"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html#Source_Engineering_Phase_.28SEP.29" label="Source Engineering Phase (SEP)"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html#Target_Engineering_Phase_.28TEP.29" label="Target Engineering Phase (TEP)"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html#Features" label="Features"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html#Creation_of_Elements_in_the_TEP_.28Right_pane_of_the_wizard.29" label="Creation of Elements in the TEP (Right pane of the wizard)"></topic>
+		<topic href="html/07. Modelling Wizards and Accelerators/7.4. Function Port and Exchange Item Allocation Wizard.html#Validation_Rules_and_Resolutions" label="Validation Rules and Resolutions"></topic>
+	</topic>
+</toc>

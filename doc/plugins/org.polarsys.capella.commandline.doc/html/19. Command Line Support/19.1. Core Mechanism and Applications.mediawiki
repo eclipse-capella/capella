@@ -1,0 +1,365 @@
+            
+= Command Line Support =
+ 
+== Overview ==
+ 
+Capella provides the capacity to launch actions from command line. Potential actions are model validation, HTML production and XML export.
+
+ 
+The core mechanism provides the following parameters:
+
+ 
+Mandatory parameters:
+
+ 
+-appid: defines the id of the command line application to launch. Command line applications are plugins that extend the core mechanism (e.g. model validation).
+
+ 
+-filepath: defines the path to your aird file.
+
+ 
+-outputfolder: defines the path to the output folder.
+
+ 
+This behavior can be overridden by applications.
+
+ 
+<br>
+
+ 
+Optional parameters:
+
+ 
+-data: defines the path to the workspace.
+
+ 
+-import: defines a list of projects to import into the workspace before doing the actual job. List of projects is a '|' separated list.
+
+ 
+-forceoutputfoldercreation: create the output folder. If the folder already exists, it is deleted and a new output folder is created.
+
+ 
+-logfile: defines the path to the log file.
+
+ 
+-help: prints the help message
+
+ 
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/19.1.%20Core%20Mechanism%20&%20Applications_html_3c78e109.png|48x48px]]
+
+ 
+| 
+Default 				behaviour of command line support checks that the workspace 				specified for validation result and HTML report generation is not 				in use by another instance of Eclipse.
+
+ 
+|}  
+<br>
+
+ 
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/19.1.%20Core%20Mechanism%20&%20Applications_html_3c78e109.png|48x48px]]
+
+ 
+| 
+Melody 				installation should respect Orchestra recommendation for the 				runtime environment i.e. run Melody 32 bits on a 32 bits JVM and 				Melody 64 bits on 64 bits JVM.
+
+ 
+|}  
+<br>
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/19.1.%20Core%20Mechanism%20&%20Applications_html_3c78e109.png|48x48px]]
+
+ 
+| 
+If 				the path to the aird file or the path 				to the workspace or the path to the log file contains white 				space, it should be in quotes (eg: '''-data 				&ldquo;D: \Application Data\workspace&rdquo;)'''
+
+ 
+|}  
+== Command Line Application Examples ==
+ 
+=== Model Validation ===
+ 
+<u>'''Simple use case:'''</u>
+
+ 
+''&lt;''''CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+
+ 
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+ 
+''-appid ''''org.polarsys.capella.core.validation.commandline''
+
+ 
+''-data &lt;workspacePath&gt; ''
+
+ 
+''-filepath /EOLE_AF/EOLE_AF.aird''
+
+ 
+''-outputfolder /Doc/validation''
+
+ 
+''-logfile D:\CommandLineLog\log.html''
+
+ 
+This command validates the model corresponding to the ''&lt;workspacePath&gt;''/EOLE_AF/EOLE_AF.aird file and generates a report to the output folder ''&lt;workspacePath&gt;''/Doc/validation. The two projects ''EOLE_AF'' and ''Doc'' are existing projects into the specified workspace. If the &ldquo;''validation''&rdquo; folder does not exist, the parameter ''forceoutputfoldercreation'' has to be used. A log file is also specified.
+
+ 
+<br>
+<br>
+
+ 
+<u>'''Complex use case:'''</u>
+
+ 
+''&lt;CapellaInstallationPath&gt;/''''eclipse.exe -nosplash ''
+
+ 
+''-application ''''org.polarsys.capella.core.commandline.core''
+
+ 
+''-appid ''''org.polarsys.capella.core.validation.commandline''
+
+ 
+''-filepath /EOLE_AF/EOLE_AF.aird ''
+
+ 
+''-outputfolder /Doc/validation''
+
+ 
+''-validationruleset D:/EPF/exportall.epf''
+
+ 
+''-validationcontext &quot;EOLE_AF/EOLE_AF.melodymodeller#971d9934-9780-4e41-b02e-312d0eac3223 ''''| ''
+
+ 
+''EOLE_AF'''' EOLE_AF/fragments/OA-Operational%20Context-Operational%20Entity.melodyfragment#c6aebe52-c8a4-4d35-8105-177c87470bef &quot; ''
+
+ 
+''-data ''''&lt;workspacePath&gt; ''
+
+ 
+''-forceoutputfoldercreation ''
+
+ 
+''-logfile D:\CommandLineLog\log.html''
+
+ 
+This new command uses a ''validationruleset'' parameter to specify the path to an Eclipse Property File (epf file) and a ''validationcontext ''parameter to specify the set of URIs of model elements to validate. The set of rule to validate against are stored into the exported epf file. A log file is also specified.
+
+ 
+<br>
+<br>
+
+ 
+=== HTML Production ===
+ 
+<br>
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/19.1.%20Core%20Mechanism%20&%20Applications_html_3c78e109.png|48x48px]]
+
+ 
+| 
+<u>Prerequisites</u>: 				 XHTML Add-on has to be installed.
+
+ 
+|}  
+<br>
+<br>
+
+ 
+<u>'''Simple use case:'''</u>
+
+ 
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+
+ 
+''-application org.polarsys.capella.core.commandline.core''
+
+ 
+''-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline''
+
+ 
+''-data &lt;workspacePath&gt;''
+
+ 
+''-filepath /EOLE_AF/EOLE_AF.aird''
+
+ 
+''-forceoutputfoldercreation''
+
+ 
+''-outputfolder /Doc/HTML ''
+
+ 
+This command will generate ''HTML'' report from the EOLE-AF aird file specified to the output folder ''HTML'' present into ''Doc'' project.
+
+ 
+<br>
+<br>
+
+ 
+<u>'''Complex use case:'''</u>
+
+ 
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+
+ 
+''-application org.polarsys.capella.core.commandline.core''
+
+ 
+''-appid org.polarsys.kitalpha.doc.gen.business.capella.commandline''
+
+ 
+''-data &lt;targetWorkspacePath&gt;''
+
+ 
+''-import &lt;workspacePath&gt;/EOLE_AF | &lt;workspacePath&gt;/Doc ''
+
+ 
+''-forceoutputfoldercreation -filepath /EOLE_AF/EOLE_AF.aird ''
+
+ 
+''-outputfolder /Doc/HTML ''
+
+ 
+''-logfile D:/CommandLineLog/log.html''
+
+ 
+This command will import two projects (EOLE_AF and Doc) from ''&lt;workspacePath&gt;'' workspace into ''&lt;targetWorkspacePath&gt; ''workspace before generating the HTML report.
+
+ 
+'''NOTE''': the source and target workspaces have to be different
+
+ 
+<br>
+<br>
+
+ 
+=== XML Export ===
+ 
+<br>
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/19.1.%20Core%20Mechanism%20&%20Applications_html_3c78e109.png|48x48px]]
+
+ 
+| 
+<u>Prerequisites</u>: 				 XML Pivot Add-on has to be installed.
+
+ 
+|}  
+<br>
+<br>
+
+ 
+Another Capella headless commandline application is the XML export. The following command runs an export in headless mode:
+
+ 
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog &ndash;nosplash -application org.polarsys.capella.core.commandline.core -appid xmlpivot.export -filepath &lt;Path&gt; ''
+
+ 
+The filepath argument may either be a relative or an absolute path. If it is a relative path, it is interpreted relative to the workspace. To specify an explicit workspace, you can use the '''''&ndash;data''''' parameter.
+
+ 
+''&lt;CapellaInstallationPath&gt;/eclipse.exe &ndash;data &lt;Path to Workspace&gt; -consoleLog &ndash;nosplash -application org.polarsys.capella.core.commandline.core -appid xmlpivot.export - filepath &lt;Path&gt;''
+
+ 
+<u>'''Examples:'''</u>
+
+ 
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog &ndash;nosplash -application org.polarsys.capella.core.commandline.core -appid xmlpivot.export - filepath C:/EOLE_AF/EOLE_AF.melodymodeller''
+
+ 
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog &ndash;nosplash -application org.polarsys.capella.core.commandline.core -appid xmlpivot.export - filepath EOLE_AF/EOLE_AF.melodymodeller''
+
+ 
+This command exports a melody model into an xml file stored at ''filepath'' path.
+
+ 
+<br>
+<br>
+
+ 
+=== Export as ZIP ===
+ 
+<br>
+
+ 
+This command will export selected project to the given zip filename
+
+ 
+Mandatory parameters:
+
+ 
+-export: defines the project name to export as zip
+
+ 
+-exportZipName: a relative path to the output zip (path must be a relative path into the given ''data ''parameter)
+
+ 
+<br>
+
+ 
+(usage of &ldquo;qualifier&rdquo; in the output file name will be replaced by current date/time)
+
+ 
+<u>'''Simple use case:'''</u>
+
+ 
+''&lt;CapellaInstallationPath&gt;/eclipse.exe -nosplash ''
+
+ 
+''-application org.polarsys.capella.core.commandline.core''
+
+ 
+''-appid org.polarsys.capella.core.commandline.core.exportZip''
+
+ 
+''-data &lt;workspacePath&gt; ''
+
+ 
+''-export &quot;EOLE_AF&quot;''
+
+ 
+''-exportZipName &quot;/EOLE_AF/EOLE_qualifier.zip&quot;''
+
+ 
+''-filepath &quot;/EOLE_AF/EOLE_AF.aird&quot; ''
+
+ 
+''-forceoutputfoldercreation''
+
+ 
+''-outputfolder &quot;/EOLE_AF/output&quot;''
+
+ 
+''-logfile &quot;D:\ CommandLineLog \log.html&quot;''
+
+   

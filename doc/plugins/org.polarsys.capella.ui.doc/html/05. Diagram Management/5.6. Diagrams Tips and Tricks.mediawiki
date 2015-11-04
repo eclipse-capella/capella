@@ -1,0 +1,501 @@
+            
+= Diagrams Tips and Tricks =
+ 
+== Setting Default Style for Links: Oblique or Rectilinear ==
+ 
+By default in Capella, most of the diagrams have oblique links.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7613115c.png|408x152px]]
+
+ 
+'''Figure 1: Oblique connections'''
+
+ 
+It is possible to change these links from a diagram so that they use a rectilinear style. From the diagram toolbar, select all connectors and apply the style change.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m72f203f0.png|413x152px]]
+
+ 
+'''Figure 2: Rectilinear connections'''
+
+ 
+It is also possible to set the rectilinear style as a global default for Capella. To do so, use the dedicated Preferences as shown below.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_5c4b92b6.png|513x360px]]
+
+ 
+'''Figure 3: Preference to select default style for connectors'''
+
+ 
+== Uniform Distribution Tools ==
+ 
+Distribute tools propose to separate the selected elements homogeneously. It proposes to harmonize the distances between elements considering the distance between their center, or the gap between their borders, vertically or horizontally. This is why four tools are proposed, either in the toolbar, in the contextual menu or in the diagram menu. To be available those tools need at least two distances, i.e. at least three elements selected of the same architectural level.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_6e4109f3.png|259x120px]]
+
+ 
+'''Figure 4: Distribute tools in the diagram editor toolbar'''
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_a38ed9a.png|571x345px]]
+
+ 
+'''Figure 5: Distribute tools in the contextual menu'''
+
+ 
+<br>
+<br>
+
+ 
+For instance, distribute tools will adjust the layout in the following diagram:
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_51b05f77.png|998x305px]]
+
+ 
+'''Figure 6: Distribute tools in action'''
+
+ 
+== Reset Origin ==
+ 
+Reset origin tools are useful when some elements are not visible because their layout is not centered. Reset origin tools will automatically adjust the layout in order to have the origin at the top left of the container or editor. The origin is calculated using the position of the element at the top of the selection and the position of the one in the left.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_77868a11.png|254x211px]]
+
+ 
+'''Figure 7: Not centered diagram for test'''
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m6d14d040.png|377x235px]]
+
+ 
+'''Figure 8: Reset Origin in the Contextual Menu'''
+
+ 
+The origin is now on the top left of Logical System, which result in a better layout for the user.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3dedd8b1.png|253x212px]]
+
+ 
+'''Figure 9: New layout after the reset origin action'''
+
+ 
+== Advanced Automated Layout ==
+ 
+Capella editor enable to simplify layout of complex diagram and reorganize it simply by following the direction of the connection between elements. Then, those connections can be followed from &ldquo;Left to Right&rdquo;, from &ldquo;Bottom to Top&rdquo; or &ldquo;From Top to Bottom&rdquo; with the advanced automated layout tools.
+
+ 
+The following model used of this test is interesting because the Functional Chain highlight the fact that connectors flow are going in all directions.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m386ae1c8.png|641x447px]]
+
+ 
+'''Figure 10: Test model (PAB in EOLE) with flows going in all directions'''
+
+ 
+Using the advanced automated layout, the previous model can be reorganized in three different ways.
+
+ 
+Right click on the editor of this diagram:
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_c34b73b.png|384x226px]]
+
+ 
+'''Figure 11: Advanced Automated Layout in Contextual Menu'''
+
+ 
+- From Left to right:
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_33d30936.png|696x295px]]
+
+ 
+'''Figure 12: Left to Right layout result'''
+
+ 
+- From Bottom to top:
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m27cfbd5f.png|464x598px]]
+
+ 
+'''Figure 13: Bottom to Top layout result'''
+
+ 
+<br>
+<br>
+
+ 
+- From Top to Bottom:
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_730643e2.png|437x628px]]
+
+ 
+'''Figure 14: Top to Bottom layout result'''
+
+ 
+== Select All ==
+ 
+Trying to select all the connectors (edge) or all the Shapes (Nodes) in a big diagram can be tedious. The select all tool provide a way to easily select all the elements, all the connector or all the shapes in just one click. This is particularly useful when we want to modify the appearance of all the elements at the same time or to perform an action (show hide, delete &hellip;) only on connectors or only on nodes.
+
+ 
+Select all actions can be accessed in the editor toolbar or in the contextual menu of the editor.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_mec122fe.png|188x81px]]
+
+ 
+'''Figure 15: Select all tools in the diagram editor toolbar'''
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m2d5cddf5.png|603x392px]]
+
+ 
+'''Figure 16: Select all Shapes result'''
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m5bd4aef6.png|554x366px]]
+
+ 
+'''Figure 17: Select all connectors result'''
+
+ 
+== Auto Size ==
+ 
+Auto size tool propose to resize all selected elements. The size is automatically adjust in order to optimize the space to avoid the diagram to be too big but keep enough space to show all the information (sub elements, labels, etc.) without modifying the original layout.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_38b9a3a9.png|531x63px]]
+
+ 
+'''Figure 18: Auto size tool in the diagram editor toolbar'''
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_114912fa.png|461x301px]]
+
+ 
+'''Figure 19: Before the resize tool'''
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_4387d6d2.png|492x302px]]
+
+ 
+'''Figure 20: After the auto size on all elements'''
+
+ 
+<br>
+<br>
+
+ 
+== Make Same Width / Height ==
+ 
+To have a better looking diagram, it is important that elements which have the same role or importance are represented with the same size. To adjust easily the size of a set of element, it is recommended to use the Make height and width same size tools. To perform this action, the selected elements must contain at least two nodes. This tool will automatically adjust the size of the first selected element to fit with the last selected one.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_740f48ce.png|487x456px]]
+
+ 
+'''Figure 21: Make same width/length tool in toolbar and in contextual menu'''
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m4b0b0804.png|487x181px]]
+
+ 
+'''Figure 22: Set of selected elements before application of this tool'''
+
+ 
+Note that the selection appears differently for the last selected element which will give its size to the other one.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_13b01b21.png|450x191px]]
+
+ 
+'''Figure 23: Result of the make same width/length tools'''
+
+ 
+All the selected elements have the size of DataAcquisitionMgt.
+
+ 
+== Grid Visible ==
+ 
+During diagram creation, grid can be visible or not according to the following preference:
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_5ce27242.png|616x377px]]
+
+ 
+'''Figure 24: Grid visible preference'''
+
+ 
+Note that the grid spacing can also be set (here it is set at 10 pixels). Once this preference is checked, the newly created diagram will display a grid as in the following pictures.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m215c821.png|427x206px]]
+
+ 
+'''Figure 25: Diagram editor with a visible grid'''
+
+ 
+== Snap to Grid ==
+ 
+Capella provides a preference to activate or deactivate the snap to grid behavior.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m3d5aebbe.png|520x319px]]
+
+ 
+'''Figure 26: Snap to grid preference'''
+
+ 
+When this preference is active, new diagrams behavior will be to align the border of element with the grid (which can be visible or not).
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_45a14775.png|257x112px]]
+
+ 
+'''Figure 27: Drag and Drop with snap to grid preference activated'''
+
+ 
+This behavior can be modify on an existing diagram via the Snap To Grid options in the Rulers and Grid tab of the diagram Properties view.,
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m217db488.gif|319x167px]]
+
+ 
+'''Figure 28: Snap to grid option'''
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m262394d3.png|45x45px]]
+
+ 
+| 
+This behavior can be override by using the Alt key during the 				drag and drop or resize actions to ignore the grid as if the 				preference was disabled.
+
+ 
+Restore defaults in 				the Rulers and Grid Tab will automatically initialize these 				options according to the Sirius preferences.
+
+ 
+|}  
+== Snap to Shapes ==
+ 
+Snap to shapes options aims to ease diagram elements alignment at the creation or during a drag and drop of existing element.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_47f32841.gif|412x360px]]
+
+ 
+'''Figure 29: Snap to Shapes in Sirius preference for new diagrams'''
+
+ 
+When this preference is active, new diagrams will display a line to compare alignment with other existing elements (borders and centers). This preference is set to initialize the Snap To Shapes properties in the Rulers and Grid tab of the diagram Property View. This property activates or deactivates this behavior in real time in the editor.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_6f217e35.gif|301x160px]]
+
+ 
+'''Figure 30: Snap To Shapes option for current diagram'''
+
+ 
+While active, palette creation tools and drag and drop actions will display lines which are close to the current cursor.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_5e595306.png|346x159px]]
+
+ 
+'''Figure 31: Snap to Shapes activated for element creation with the palette'''
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m5505d461.gif|488x188px]]
+
+ 
+'''Figure 32: Snap to Shapes activated for element during a Drag and Drop action'''
+
+ 
+<br>
+<br>
+
+ 
+== Copy / Paste Layout ==
+ 
+To initialize the layout of a diagram from an existing diagram, Capella provides copy / paste layout tools. Those tools can only be used for two diagrams which represent the same elements. The tool to copy the layout of selected element is only available in the diagram editor toolbar when at least one element is selected. And the paste layout tool is available on the diagram editor when there is no current selection.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m1cfa7de5.gif|333x40px]]
+
+ 
+'''Figure 33: Copy layout tool'''
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_79d54579.gif|346x41px]]
+
+ 
+'''Figure 34: Paste layout tool'''
+
+ 
+<br>
+<br>
+
+ 
+Copy the layout of the selected elements will only remember the layout for the current selection.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_277295ca.gif|546x290px]]
+
+ 
+'''Figure 35: Layout model'''
+
+ 
+Now we can initialize a new model and all the information we want to represent (or work on an existing one).
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m275755e7.gif|513x270px]]
+
+ 
+'''Figure 36: New diagram with a default layout'''
+
+ 
+To initialize the layout of this diagram we can &ldquo;paste the layout&rdquo; of the first diagram.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m3a4a06e5.gif|629x339px]]
+
+ 
+'''Figure 37: New diagram with the layout copied from the model'''
+
+ 
+== Selection ==
+ 
+=== Left to right ===
+ 
+When the selection is performed from left to right, the selected elements are the elements which are entirely contained by the selection rectangle.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3c70f94e.gif|472x203px]]
+
+ 
+'''Figure 38: Left to right selection action'''
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_4a5941a0.png|481x196px]]
+
+ 
+'''Figure 39: Left to right selection result'''
+
+ 
+=== Right to Left ===
+ 
+<br>
+<br>
+
+ 
+When the selection is performed from right to left, the selected elements are the one which touched by the selection rectangle.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3c70f94e.gif|472x203px]]
+
+ 
+'''Figure 40: Right to left selection action'''
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7899e751.gif|475x199px]]
+
+ 
+'''Figure 41: Right to left selection result'''
+
+ 
+<br>
+<br>
+
+ 
+== Copy Paste of Notes ==
+ 
+To quickly copy paste Notes on a diagram, '''click on CTRL and move the Notes''': new Notes are created.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7dd84077.png|434x126px]]
+
+ 
+'''Figure 42: Duplicate note with shortcut.'''
+
+ 
+<br>
+<br>
+
+ 
+== Create Several Elements in Row ==
+ 
+When creating elements with the palette of a diagram, '''holding the CTRL key allows keeping the current creation tool active''' for another creation.
+
+ 
+== Quick Search ==
+ 
+'''CTRL-O on a diagram opens a pop up listing all elements on the diagram'''. Selecting one of these elements brings the focus on this element and centers the diagram on this element.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m10775b3b.png|563x353px]]
+
+ 
+'''Figure 43: Quick search in diagram.'''
+
+ 
+Hidden elements are displayed in italic in this quick search. Selecting a visible element in this list will automatically do a focus on this element.
+
+ 
+== Export as Images ==
+ 
+Each diagram can be exported as image (jpg, png, svg, bmp or gif format) using diagram toolbar. '''All diagrams''' '''can be extracted at once''', right clicking '''on Aird analysis''' and choosing '''contextual menu &quot;Export representations as images&quot;'''.
+
+ 
+Note: right clicking on a Cross Table and choosing contextual menu &quot;Export/CSV&quot; provides a CSV file.
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m76e8132a.png|397x155px]]
+
+ 
+'''Figure 44: Export configuration.'''
+
+ 
+<br>
+<br>
+
+ 
+<br>
+<br>
+
+ 
+<br>
+<br>
+
+   

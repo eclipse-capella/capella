@@ -15,9 +15,19 @@
    <extension
          point="org.eclipse.help.toc">
       <toc
-            file="Patterns-toc.xml"
-            primary="false">
+            file="toc.xml"
+            primary="true"
+            sort="true">
+      </toc>
+      <toc
+            file="html/10. Patterns/10.1. Introduction to patterns-toc.xml"
+            primary="false"
+            sort="true">
+      </toc>
+      <toc
+            file="html/10. Patterns/10.3. Collaborating with patterns-toc.xml"
+            primary="false"
+            sort="true">
       </toc>
    </extension>
-
 </plugin>

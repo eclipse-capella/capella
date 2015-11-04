@@ -18,9 +18,5 @@
             file="toc.xml"
             primary="true">
       </toc>
-      <toc
-            file="Intro-toc.xml"
-            primary="false">
-      </toc>
    </extension>
 </plugin>
