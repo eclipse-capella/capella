@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc label="6.1. Configurability and Validation Profile" link_to="PLUGINS_ROOT/org.polarsys.capella.preferences.doc/toc.xml#contribution" topic="html/06. Preferences/6.1. Configurability and Validation Profile.html">
+	<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html" label="Capella Configurability and Validation Profiles">
+		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Principles" label="Principles"></topic>
+		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Workspace_Preferences" label="Workspace Preferences">
+			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Setting_Workspace_Preferences" label="Setting Workspace Preferences"></topic>
+			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Importing.2FExporting_Workspace_Preferences_from_workbench" label="Importing/Exporting Workspace Preferences from workbench">
+				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Exporting_Workspace_Preferences" label="Exporting Workspace Preferences"></topic>
+				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Exporting_Validation_Preferences" label="Exporting Validation Preferences"></topic>
+				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Importing_Workspace_Preferences" label="Importing Workspace Preferences"></topic>
+				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Example_of_export.2Fimport_mechanism" label="Example of export/import mechanism"></topic>
+				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Initializing_Workspace_Preferences_with_launch_arguments_.28-EPF.29" label="Initializing Workspace Preferences with launch arguments (-EPF)"></topic>
+				<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Example_of_initialization_with_-EPF" label="Example of initialization with -EPF"></topic>
+			</topic>
+		</topic>
+		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Project_specific_preferences" label="Melody Project specific preferences"></topic>
+		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Melody_Configuration_Project" label="Melody Configuration Project">
+			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Creating_Melody_Configuration_Project" label="Creating Melody Configuration Project"></topic>
+			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Referencing_Melody_Configuration_Project" label="Referencing Melody Configuration Project"></topic>
+		</topic>
+		<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Validation_Profiles" label="Validation Profiles">
+			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Creating_Validation_Profiles" label="Creating Validation Profiles"></topic>
+			<topic href="html/06. Preferences/6.1. Configurability and Validation Profile.html#Using_Validation_Profiles" label="Using Validation Profiles"></topic>
+		</topic>
+	</topic>
+</toc>

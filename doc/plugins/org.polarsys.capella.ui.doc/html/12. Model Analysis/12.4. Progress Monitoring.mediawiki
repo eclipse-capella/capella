@@ -1,0 +1,48 @@
+            
+= Progress Monitoring =
+ 
+== Steps for Creating Project-Specific Progress Status ==
+ 
+Configure the Capella browser so that the ''Project'' element is displayed (see ''Project Explorer ''section of Preferences).
+
+ 
+[[Image:Images/12.4.%20Progress%20Monitoring_html_4f09dd6.png|539x298px]]
+
+ 
+Using the contextual menu on this ''Project'' element, create a new ''EnumerationPropertyType'' element and name it &quot;ProgressStatus&quot;.
+
+ 
+[[Image:Images/12.4.%20Progress%20Monitoring_html_73c7c6df.png|404x208px]]
+
+ 
+Under &quot;ProgressStatus&quot;, create as many ''EnumerationPropertyLiteral'' elements as needed. Rename these literals with the appropriate values using ''F2'' in the project explorer or using the dedicated editors.
+
+ 
+[[Image:Images/12.4.%20Progress%20Monitoring_html_1366c180.png|437x569px]]
+
+ 
+It is recommended to hide again the ''Project'' element in the project explorer so that end-users will not be tempted to modify it
+
+ 
+== Setting Progress Status on Elements ==
+ 
+Two means to tag elements with a given progress status: using the Editors or using a dedicated command in the contextual menu of any element (Progress Monitoring / Set Progress)
+
+ 
+[[Image:Images/12.4.%20Progress%20Monitoring_html_72c054c0.png|801x466px]]
+
+ 
+== Visualization of Progress Monitoring Information ==
+ 
+A dedicated dialog is available from the contextual menu (Progress Monitoring / Progress Overview)
+
+ 
+[[Image:Images/12.4.%20Progress%20Monitoring_html_34e72a1c.jpg|384x464px]]
+
+ 
+From this dialog, it is possible to export the results as CSV files.
+
+ 
+[[Image:Images/12.4.%20Progress%20Monitoring_html_27a38b50.jpg|708x233px]]
+
+   

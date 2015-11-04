@@ -1,0 +1,54 @@
+            
+= Introduction to Capella =
+ 
+== Overview ==
+ 
+Capella is the Model Driven Engineering (MDE) solution provided by CST/EPM in Orchestra. It is a Tooled-Up-Process solution, enacting Sys-EM and Arcadia, supporting Systems Engineering and Software Architecture Engineering. The Capella primary objectives are to define a unified engineering language across Thales, to provide a seamless engineering workflow framework, to automate engineering tasks ensuring modelling productivity and quality, to manage information consistency, to capitalise and reuse engineering know-how and best practices and to ensure collaborative modelling work.
+
+ 
+Thales Units and Areas, through the Deployment Committee and the Ochestra Key Projects, manage the Capella strategy and roadmap.
+
+ 
+== System and Software Architecture Definition in a Tool ==
+ 
+Defining a system architecture means
+
+ 
+* Performing 	and refining a '''functional 	analysis'''
+* Defining and 	'''refining 	use cases'''
+* '''Defining 	components''' 	realizing the functions of the system
+* '''Defining 	the interfaces''' 	between these components
+* '''Model the 	dynamics of the system''' 	with scenarios
+* Take into 	account '''non-functional 	constraints''' 	(Performance, Safety, Human Factors, etc.)
+ 
+== A Methodological Guide in a Tool ==
+ 
+In Thales, methodologies exist to help and guide the various actors of the engineering process. It is notably the case of
+
+ 
+* '''Sys-EM''', 	which defines the successive stages of the engineering process
+* '''Arcadia''', 	which compliments Sys-EM with a brick specifically dedicated to the 	functional analysis and architecture definition.
+ 
+'''Capella leverages these methodologies and embeds them in a tool, which is helping and guiding the system engineer in its activity'''.
+
+ 
+Is also provides Thales-wide language and tools, very close to (and interoperable with) industry standards such as UML and Sys-ML. This ensures a better understanding between Thales engineers from all domains.
+
+ 
+Read more about modeling strategies: [[Modeling Strategies]]
+
+ 
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/1.1.%20Introduction%20to%20Melody%20Advance_html_3c78e109.png|48x48px]]
+
+ 
+| 
+Capella 				provides tools '''facilitating the daily work of the system 				engineer''' (transitions between architectures, filters and 				layers on diagrams, modeling acceleration tools, synthetic 				business view of relationships between model elements, etc.) and 				'''guarantying the quality of the designed architectures '''(impact 				analysis, model validation, etc.)
+
+ 
+|}     

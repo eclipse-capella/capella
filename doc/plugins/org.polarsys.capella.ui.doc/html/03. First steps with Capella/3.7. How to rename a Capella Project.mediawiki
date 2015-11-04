@@ -1,0 +1,59 @@
+            
+= How to rename a Capella Project? =
+ 
+The first step is to close the session, if it&rsquo;s opened.
+
+ 
+Then, the following sequence must be respected:
+
+ 
+# On the project, type F2 (or contextual menu &ldquo;Rename&rdquo;): 	this action will rename the folder of the project and modify the 	&ldquo;.project&rdquo; file inside this folder.
+# On the &ldquo;.melodymodeller&rdquo; file, type F2 (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodymodeller&rdquo; file, the Project root element of the 	model and update all references from the &ldquo;.aird&rdquo; files 	to the &ldquo;.melodymodeller&rdquo; file.
+# On the &ldquo;.aird&rdquo; file, type F2 (or contextual menu 	&ldquo;Rename&rdquo;): this action will rename the &ldquo;.aird&rdquo; 	file.
+# On the &ldquo;.melodyconnector&rdquo; file, type F2 (or contextual 	menu &ldquo;Rename&rdquo;): this action will rename the 	&ldquo;.melodyconnector&rdquo; file.
+ 
+<br>
+<br>
+
+ 
+The same process can be applied on Libraries projects.
+
+ 
+<br>
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/3.7.%20How%20to%20rename%20a%20Melody%20Advance%20Project_html_723ed3f9.png|34x34px]]
+
+ 
+| 
+If 				you rename a Library project, all the references to this library 				will be lost. Libraries renaming must be done very carefully.
+
+ 
+|}  
+<br>
+<br>
+
+         
+{| border="1"
+|-
+| 
+[[Image:Images/3.7.%20How%20to%20rename%20a%20Melody%20Advance%20Project_html_723ed3f9.png|34x34px]]
+
+ 
+| 
+If you 				rename a Melody project or a Library project, all your Orchestra 				links might be broken. Projects renaming in Orchestra environment 				must be done very carefully.
+
+ 
+|}  
+<br>
+<br>
+
+ 
+<br>
+<br>
+
+   

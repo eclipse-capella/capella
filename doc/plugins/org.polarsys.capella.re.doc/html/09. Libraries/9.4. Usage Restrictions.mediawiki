@@ -1,0 +1,48 @@
+            
+= Usage Restrictions =
+ 
+== Libraries Usage Restriction ==
+ 
+* In Orchestra 5.4, using Libraries with Melody Team or Melody 	Connector is supported.
+* Try to open a model (library or project) while 	one of its referenced libraries is not present in the workspace is 	not possible.<br>
+If you want to use a project without referenced 	libraries you can use the Detach tool to remove references of 	missing libraries
+* Downgraded use cases are not properly supported. Please be aware of 	the constraints described in the following section.
+ 
+<br>
+<br>
+
+ 
+== Nominal Case vs Downgraded Case ==
+ 
+Violation of one of these rules might shift the user into downgraded use cases:
+
+ 
+* Replace a library by another version while a referencing project is 	opened (for instance through an update from Clearcase)
+* Perform a fragmentation or an unfragmentation of a library while a 	referencing project is opened.
+* Perform action that creates a reference between two objects from 	different models M1, M2 (project or library) where M2 is referencing 	M1. For instance, if a project is referencing a library, create a 	generalization from a class in the library to a class in the 	project. Such a situation can be obtained when moving graphically 	elements between diagrams. Future version of Capella will provide an 	automatic check to prevent such a situation. <br>
+See ''prod00125911:'' ''Provides an automatic check to detect inter-model references 	that break library references'' and ''prod00125461: Provide a way 	to roll back modification in case the library is modified with 	cycles (opposite dependency)''.
+ 
+<br>
+<br>
+
+ 
+== Use Cases Changes between Melody Advance 3.0 and 4.0 ==
+ 
+* In Melody Advance 4.0, working sessions on 	models are now fully separated
+** In Melody Advance 3.0.x,<br>
+If you had 		a session opened on a library and another session opened on a 		project referencing the same library, a modification made on an 		element on session of the library will automatically appears on the 		element appearing in the session of the project, even if you hadn&rsquo;t 		save your library.<br>
+For instance, if 		you had renamed an interface in the session of the library, the 		interface from the library in session of the project will be 		automatically renamed.
+** In Capella 4.0.x, sessions are now separated, and 		modifications made on a library will not appear on the project 		until session library is saved.
+*
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/9.4.%20Usage%20Restrictions_html_m9524248.png|266x498px]]<br>
+(note the (*) on the Library when the element has been renamed. It doesn&rsquo;t appears on the Project_1 until the session of A_Library will be saved)
+
+ 
+[[Image:Images/9.4.%20Usage%20Restrictions_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/9.4.%20Usage%20Restrictions_html_733c5d5d.jpg|92x92px]]
+
+   

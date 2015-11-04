@@ -12,17 +12,10 @@
 -->
 <toc label="Capella" topic="html/toc.html" sort="false">
    <topic label="User Manual">
-   		<anchor id="intro"/>
    		<anchor id="contribution"/>
-   		<topic label="User Interfaces">
-      		<anchor id="UI"/>
-   		</topic>
-   		<topic label="Model Editors">
-     		<anchor id="ModelEditors"/>
-   		</topic>
    </topic>
    <topic label="Diagrams">
-      <anchor id="diagrams"/>
+      <anchor id="diagram"/>
    </topic>
    <topic label="Validation Rules">
       <anchor id="validation"/>

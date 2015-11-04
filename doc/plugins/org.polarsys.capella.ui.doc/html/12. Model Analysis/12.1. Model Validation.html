@@ -1,0 +1,82 @@
+<!--
+ Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+ 	Thales - initial API and implementation
+-->
+<!--?xml version='1.0' encoding='utf-8' ?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+ </head> 
+ <body> 
+  <h1 id="Model_Validation">Model Validation</h1> 
+  <p>Model validation is essential in MDE:</p> 
+  <ul> 
+   <li>Because it helps ensuring there is no hole in the system design</li> 
+   <li>Because models are likely to be directly used for the production of other engineering artifacts (code, configuration files, etc.)</li> 
+  </ul> 
+  <p>Model validation should be run on a regular basis.</p> 
+  <h2 id="Topology_of_Validation_Rules">Topology of Validation Rules</h2> 
+  <p>Because different modeling phases have different objectives, validating the model with a specific goal in essential. Therefore, Capella validation rules are organized in different categories.</p> 
+  <p> <img height="444" width="924" border="0" src="Images/12.1.%20Model%20Validation_html_m1179e445.png" /> </p> 
+  <h3 id="Structural_conformance_to_core_model">Structural conformance to core model</h3> 
+  <p>These checks are technical and are provided by the underlying environment Capella is running on. The error messages of this category have no Rule ID’s.</p> 
+  <h3 id="Integrity">Integrity</h3> 
+  <p>This category contains Capella additional rules about the model integrity. For example,</p> 
+  <ul> 
+   <li>Verification that two distinct elements have distinct IDs</li> 
+   <li>Verification of naming conflicts</li> 
+  </ul> 
+  <h3 id="Quality">Quality</h3> 
+  <p>Quality-related rules check for example that most important elements have descriptions.</p> 
+  <h3 id="Design">Design</h3> 
+  <p>Design-related rules gather all business rules within an engineering phase (System Analysis, Logical Architecture, etc.). This set of rules does take into account what is modeled in the previous or following engineering phase.</p> 
+  <p>This category is divided in four sub categories:</p> 
+  <ul> 
+   <li> <b>Well-formedness.</b> For example, a Join Function has only one outgoing Functional Exchange, a Class Property is typed, etc. </li> 
+   <li> <b>Consistency.</b> For example, the Interface usage/implementation by a sub component requires the same Interface usage/implementation by/from the parent component </li> 
+   <li> <b>Completeness.</b> For example, a leaf Function has to be allocated to one Component, an Interface references at least one Exchange Item, etc. </li> 
+   <li> <b>Coverage.</b> For example, an Actor is involved in at least one Capability, a Component appears on at least one Scenario, etc. </li> 
+  </ul> 
+  <p>The difference between Completeness and Coverage can appear subtle. Completeness is close to being inconsistent (a leaf Function really HAS to be allocated to a Component). But according to the current objectives of the system engineer, this “almost inconsistence” might not be important for the moment. Coverage is more about the risk of forgetting things is the system design, or not to be precise enough.</p> 
+  <h2 id="Usage_and_Validation_Scopes">Usage and Validation Scopes</h2> 
+  <p>It is possible to launch contextually the validation command on any Capella element.</p> 
+  <p> <img height="366" width="363" border="0" src="Images/12.1.%20Model%20Validation_html_48b94bdc.png" /> </p> 
+  <p>Setting a specific objective when validating the model requires both:</p> 
+  <ol> 
+   <li>To select the scope of the validation (i.e. the root element on which the command is launched)</li> 
+   <li>To activate / deactivate the current rules category in the Preferences (as shown in the windows hereunder).</li> 
+  </ol> 
+  <p>Activating / deactivating a rule or a rule category is possible from the Preferences window, under the section Model Validation / Constraints / Capella.</p> 
+  <p> <img height="474" width="668" border="0" src="Images/12.1.%20Model%20Validation_html_mf186e68.png" /> </p> 
+  <p> <br /> <br /> </p> 
+  <p>For example, it might not be wise to have the Transition Category active or to launch the validation from the root project element if the current work objective is to only focus on Logical Architecture without taking into consideration the System Analysis or the Physical Architecture.</p> 
+  <h2 id="Validation_Results">Validation Results</h2> 
+  <p>Results are displayed in the Information View.</p> 
+  <ul> 
+   <li>A tooltip reminds the description of the broken rule</li> 
+   <li>The ID and the category of the broken rule is displayed</li> 
+  </ul> 
+  <p>Some of the rules come with Quick Fixes (automated actions allowing easily solving the issue). The small bulb preceding the rule ID indicates the availability of a Quick Fix for a given rule. The small bulb with a gray repository icon indicates that a multiple quick fix is available. Multiple Quick Fixes can be applied on multiple selected problems (of the same type) at once.</p> 
+  <p> <br /> <br /> </p> 
+  <p> <img height="222" width="1129" border="0" src="Images/12.1.%20Model%20Validation_html_7e7d7622.png" /> </p> 
+  <p> <br /> <br /> </p> 
+  <p>It is possible to export the content of the Information View in an html file, using the Save button ( <img height="24" width="24" border="0" src="Images/12.1.%20Model%20Validation_html_m12fc73d3.png" />) in the Information View toolbar. </p> 
+  <p> <br /> <br /> </p> 
+  <p>The html export of the Information View looks like the following example.</p> 
+  <p> <img height="452" width="842" border="0" src="Images/12.1.%20Model%20Validation_html_2ca1937.png" /> </p> 
+  <p> <br /> <br /> </p> 
+  <h2 id="Example_of_Quick_Fix">Example of Quick Fix</h2> 
+  <p>For example, rule DCOM_3 checks that all leaf Function are correctly allocated to one Component (System, Actor, Logical Component, etc.).</p> 
+  <p> <img height="231" width="1278" border="0" src="Images/12.1.%20Model%20Validation_html_f42b8bc.png" /> </p> 
+  <p>The associated Quick Fix simply consists in opening the contextual allocation dialog.</p> 
+  <p> <img height="567" width="438" border="0" src="Images/12.1.%20Model%20Validation_html_3c9a54b9.png" /> </p> 
+  <p> <br /> <br /> </p>   
+ </body>
+</html>

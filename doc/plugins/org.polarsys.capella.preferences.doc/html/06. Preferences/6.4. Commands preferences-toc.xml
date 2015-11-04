@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc label="6.4. Commands preferences" link_to="PLUGINS_ROOT/org.polarsys.capella.preferences.doc/toc.xml#contribution" topic="html/06. Preferences/6.4. Commands preferences.html">
+	<topic href="html/06. Preferences/6.4. Commands preferences.html" label="Commands &amp; User Profiles">
+		<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_Commands_Preferences" label="Capella Commands Preferences"></topic>
+		<topic href="html/06. Preferences/6.4. Commands preferences.html#Capella_User_Profiles_Management" label="Capella User Profiles Management"></topic>
+	</topic>
+</toc>
