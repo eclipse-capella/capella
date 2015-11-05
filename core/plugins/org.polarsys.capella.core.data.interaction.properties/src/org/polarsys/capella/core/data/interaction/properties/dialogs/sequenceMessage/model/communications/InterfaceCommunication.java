@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,10 +21,10 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 
 public class InterfaceCommunication extends AbstractCommunication implements ExchangeItemAllocation {
 	
-	public InterfaceCommunication(ExchangeItemAllocation exchangeItemAllocation_p, Interface interfaze_p, boolean isPartial_p) {
-		super(exchangeItemAllocation_p.getAllocatedItem(), isPartial_p);
-		this.exchangeItemAllocation = exchangeItemAllocation_p;
-		this.interfaze = interfaze_p;		
+	public InterfaceCommunication(ExchangeItemAllocation exchangeItemAllocation, Interface interfaze, boolean isPartial) {
+		super(exchangeItemAllocation.getAllocatedItem(), isPartial);
+		this.exchangeItemAllocation = exchangeItemAllocation;
+		this.interfaze = interfaze;		
 	}
 
 	@Override

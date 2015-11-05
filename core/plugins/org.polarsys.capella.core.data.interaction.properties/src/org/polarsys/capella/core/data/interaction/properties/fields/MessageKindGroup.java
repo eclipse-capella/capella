@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,20 +34,20 @@ public class MessageKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public MessageKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("MessageKind.Label"), 3); //$NON-NLS-1$
+  public MessageKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("MessageKind.Label"), 3); //$NON-NLS-1$
 
-    _messageKindBtnUnset = createButton(MessageKind.UNSET, enabled_p);
-    _messageKindBtnSynchronous = createButton(MessageKind.SYNCHRONOUS_CALL, enabled_p);
-    _messageKindBtnAsynchronous = createButton(MessageKind.ASYNCHRONOUS_CALL, enabled_p);
-    _messageKindBtnReply = createButton(MessageKind.REPLY, enabled_p);
-    _messageKindBtnCreate = createButton(MessageKind.CREATE, enabled_p);
-    _messageKindBtnDelete = createButton(MessageKind.DELETE, enabled_p);
-    _messageKindBtnTimer = createButton(MessageKind.TIMER, enabled_p);
+    _messageKindBtnUnset = createButton(MessageKind.UNSET, enabled);
+    _messageKindBtnSynchronous = createButton(MessageKind.SYNCHRONOUS_CALL, enabled);
+    _messageKindBtnAsynchronous = createButton(MessageKind.ASYNCHRONOUS_CALL, enabled);
+    _messageKindBtnReply = createButton(MessageKind.REPLY, enabled);
+    _messageKindBtnCreate = createButton(MessageKind.CREATE, enabled);
+    _messageKindBtnDelete = createButton(MessageKind.DELETE, enabled);
+    _messageKindBtnTimer = createButton(MessageKind.TIMER, enabled);
   }
 
   /**

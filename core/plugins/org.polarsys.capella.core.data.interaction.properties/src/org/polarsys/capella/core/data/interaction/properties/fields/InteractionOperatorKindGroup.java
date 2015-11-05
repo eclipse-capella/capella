@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,24 +38,24 @@ public class InteractionOperatorKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public InteractionOperatorKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("InteractionOperatorKind.Label"), 6); //$NON-NLS-1$
+  public InteractionOperatorKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("InteractionOperatorKind.Label"), 6); //$NON-NLS-1$
 
-    _messageKindBtnAlt = createButton(InteractionOperatorKind.ALT, enabled_p);
-    _messageKindBtnAssert = createButton(InteractionOperatorKind.ASSERT, enabled_p);
-    _messageKindBtnConsider = createButton(InteractionOperatorKind.CONSIDER, enabled_p);
-    _messageKindBtnCritical = createButton(InteractionOperatorKind.CRITICAL, enabled_p);
-    _messageKindBtnIgnore = createButton(InteractionOperatorKind.IGNORE, enabled_p);
-    _messageKindBtnLoop = createButton(InteractionOperatorKind.LOOP, enabled_p);
-    _messageKindBtnNeg = createButton(InteractionOperatorKind.NEG, enabled_p);
-    _messageKindBtnOpt = createButton(InteractionOperatorKind.OPT, enabled_p);
-    _messageKindBtnPar = createButton(InteractionOperatorKind.PAR, enabled_p);
-    _messageKindBtnSeq = createButton(InteractionOperatorKind.SEQ, enabled_p);
-    _messageKindBtnStrict = createButton(InteractionOperatorKind.STRICT, enabled_p);
+    _messageKindBtnAlt = createButton(InteractionOperatorKind.ALT, enabled);
+    _messageKindBtnAssert = createButton(InteractionOperatorKind.ASSERT, enabled);
+    _messageKindBtnConsider = createButton(InteractionOperatorKind.CONSIDER, enabled);
+    _messageKindBtnCritical = createButton(InteractionOperatorKind.CRITICAL, enabled);
+    _messageKindBtnIgnore = createButton(InteractionOperatorKind.IGNORE, enabled);
+    _messageKindBtnLoop = createButton(InteractionOperatorKind.LOOP, enabled);
+    _messageKindBtnNeg = createButton(InteractionOperatorKind.NEG, enabled);
+    _messageKindBtnOpt = createButton(InteractionOperatorKind.OPT, enabled);
+    _messageKindBtnPar = createButton(InteractionOperatorKind.PAR, enabled);
+    _messageKindBtnSeq = createButton(InteractionOperatorKind.SEQ, enabled);
+    _messageKindBtnStrict = createButton(InteractionOperatorKind.STRICT, enabled);
   }
 
   /**

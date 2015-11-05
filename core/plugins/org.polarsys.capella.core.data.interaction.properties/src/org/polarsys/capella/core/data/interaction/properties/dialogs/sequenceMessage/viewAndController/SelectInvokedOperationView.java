@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,26 +76,26 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
   protected SelectInvokedOperationController controller;
 
 	public SelectInvokedOperationView(
-			Shell parentShell_p, 
-			TransactionalEditingDomain editingDomain_p, 
-			AdapterFactory adapterFactory_p, 
-			String dialogTitle_p, 
-			String dialogMessage_p, 
-			ISelectInvokedOperationModel model_p,
-			SelectInvokedOperationController controller_p
+			Shell parentShell, 
+			TransactionalEditingDomain editingDomain, 
+			AdapterFactory adapterFactory, 
+			String dialogTitle, 
+			String dialogMessage, 
+			ISelectInvokedOperationModel model,
+			SelectInvokedOperationController controller
 		) {
 		super(
-				parentShell_p, 
+				parentShell, 
 				new DataContentProvider(),
-				new SelectInvokedOperationLabelProvider(editingDomain_p, adapterFactory_p, model_p),	
-				dialogTitle_p, 
-				dialogMessage_p, 
-				model_p.getPossibleElements(),
+				new SelectInvokedOperationLabelProvider(editingDomain, adapterFactory, model),	
+				dialogTitle, 
+				dialogMessage, 
+				model.getPossibleElements(),
 				false,
 				null, 
 				AbstractTreeViewer.ALL_LEVELS);
-		model = model_p;
-		controller = controller_p;
+		this.model = model;
+		this.controller = controller;
 	}
 	
 	// Getter for the controller
@@ -113,9 +113,9 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
   // It is called when the selection changes.
   // We redirect this information to the controller
   @Override
-  protected void updateButtons(ISelection selection_p) {
+  protected void updateButtons(ISelection selection) {
   	if (controller != null) {
-  		controller.selectionHasChanged(selection_p);
+  		controller.selectionHasChanged(selection);
   	}
   }
     
@@ -149,21 +149,21 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
 	}
 
   @Override
-  protected void doCreateDialogArea(Composite parent_p) {
+  protected void doCreateDialogArea(Composite parent) {
  // add the GUI group for defining the sequence message kind
-  	createSequenceMessageKind_area(parent_p);
+  	createSequenceMessageKind_area(parent);
   	// add the GUI group for the creation choice
-  	createElementCreation_area(parent_p);
+  	createElementCreation_area(parent);
     // add the GUI group for interface choice and renaming
-  	createInterface_area(parent_p);    
+  	createInterface_area(parent);    
     // add the tree viewer
-    super.doCreateDialogArea(parent_p);
+    super.doCreateDialogArea(parent);
     TreeAndListViewer viewer = getViewer();
     viewer.getClientViewer().addFilter(new SelectInvokedOperationFilter(viewer, model));
   	// add the GUI group for the selection options  
-    createSelectionOptions_area(parent_p);
+    createSelectionOptions_area(parent);
   	// add the GUI group for the creation options
-    createCreationOptions_area(parent_p);     
+    createCreationOptions_area(parent);     
     // initialize controllers
     controller.initControlOnView(this);
   }
@@ -174,18 +174,18 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
   }
   
   @Override
-  protected void createTreeViewerPart(Composite parent_p) {
+  protected void createTreeViewerPart(Composite parent) {
     // Add a group surrounding the tree viewer part.
-    Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_SelectExistingOperationGroup_Title);
     treeViewerPartGroup.setLayout(new GridLayout());
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
     super.createTreeViewerPart(treeViewerPartGroup);
   }  
     
-  private void createSequenceMessageKind_area(Composite parent_p) {
+  private void createSequenceMessageKind_area(Composite parent) {
   	// define GUI
-  	Group messageKindGroup = new Group(parent_p, SWT.NONE);
+  	Group messageKindGroup = new Group(parent, SWT.NONE);
   	messageKindGroup.setText(Messages.SelectOperationDialog_SequenceMessageKind);
   	messageKindGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
   	messageKindGroup.setLayout(new GridLayout(2, false)); 
@@ -202,11 +202,11 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
   
   /**
    * Create creation operation widgets.
-   * @param parent_p
+   * @param parent
    */
-  private void createElementCreation_area(Composite parent_p) {
+  private void createElementCreation_area(Composite parent) {
     // Add a group surrounding the create operation part.
-    final Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    final Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
     treeViewerPartGroup.setLayout(new GridLayout(3, false)); // 3 columns one for the label, one the text and the last one for the button
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateNewExchangeItem);
@@ -244,11 +244,11 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
   
   /**
    * Create creation operation widgets.
-   * @param parent_p
+   * @param parent
    */
-  private void createInterface_area(Composite parent_p) {
+  private void createInterface_area(Composite parent) {
     // Add a group surrounding the create operation part.
-    final Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    final Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateOrSelectInterface);
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
     treeViewerPartGroup.setLayout(new GridLayout(3, false)); // 3 columns one for the label, one the text and the last one for the button
@@ -266,7 +266,7 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
   	getViewer().getClientViewer().refresh();
   }
     
-  private void createSelectionOptions_area(final Composite parent_p) {
+  private void createSelectionOptions_area(final Composite parent) {
     // add option A
   	optionSelectionA_button = new Button(getViewer().getControl(), SWT.CHECK);
   	optionSelectionA_button.setText(Messages.SelectOperationDialog_HideTechnicalInterfaceNamesButton_Title);    
@@ -281,15 +281,15 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
     optionSelectionC_button.setSelection(model.doesAllowSelectionOfExistingExchangeItems());
   }
   
-  private void createCreationOptions_area(final Composite parent_p) {
-    optionCreationA_button = new Button(parent_p, SWT.CHECK);
+  private void createCreationOptions_area(final Composite parent) {
+    optionCreationA_button = new Button(parent, SWT.CHECK);
     optionCreationA_button.setText(Messages.SelectOperationDialog_0);
     GridData layoutData = new GridData(GridData.FILL, GridData.BEGINNING, false, false);
     layoutData.horizontalSpan = 3;
     optionCreationA_button.setLayoutData(layoutData);
     optionCreationA_button.setSelection(model.doesPortsMustBeCreated());
 
-    optionCreationB_button = new Button(parent_p, SWT.CHECK);
+    optionCreationB_button = new Button(parent, SWT.CHECK);
     optionCreationB_button.setText(Messages.SelectOperationDialog_8);
     layoutData = new GridData(GridData.FILL, GridData.BEGINNING, false, false);
     layoutData.horizontalSpan = 3;

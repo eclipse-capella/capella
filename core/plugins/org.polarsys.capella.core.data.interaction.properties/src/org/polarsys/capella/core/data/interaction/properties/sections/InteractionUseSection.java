@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,40 +61,40 @@ public class InteractionUseSection extends NamedElementSection {
     coveredInstanceRolesField = new MultipleSemanticField(main, Messages.getString("InteractionUseSection_CoveredInstanceRoles_Label"), getWidgetFactory(), //$NON-NLS-1$
         new IMultipleSemanticFieldController() {
           @Override
-          public List<EObject> writeOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, List<EObject> values_p) {
-            InteractionFragment start = ((InteractionUse) semanticElement_p).getStart();
+          public List<EObject> writeOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
+            InteractionFragment start = ((InteractionUse) semanticElement).getStart();
             if (start != null) {
               start.getCoveredInstanceRoles().clear();
-              for (EObject value : values_p) {
+              for (EObject value : values) {
                 start.getCoveredInstanceRoles().add((InstanceRole) value);
               }
             }
-            InteractionFragment finish = ((InteractionUse) semanticElement_p).getFinish();
+            InteractionFragment finish = ((InteractionUse) semanticElement).getFinish();
             if (start != null) {
               finish.getCoveredInstanceRoles().clear();
-              for (EObject value : values_p) {
+              for (EObject value : values) {
                 finish.getCoveredInstanceRoles().add((InstanceRole) value);
               }
             }
             UIUtil.getInstance().refreshActiveDiagram(null);
-            return values_p;
+            return values;
           }
 
           @Override
-          public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, boolean available_p) {
+          public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, boolean available) {
             List<EObject> result = new ArrayList<EObject>();
-            if (available_p) {
-              result.addAll(((Scenario) semanticElement_p.eContainer()).getOwnedInstanceRoles());
+            if (available) {
+              result.addAll(((Scenario) semanticElement.eContainer()).getOwnedInstanceRoles());
             } else {
-              result.addAll(loadValues(semanticElement_p, semanticFeature_p));
+              result.addAll(loadValues(semanticElement, semanticFeature));
             }
             return result;
           }
 
           @Override
-          public List<EObject> loadValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
+          public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
             List<EObject> result = new ArrayList<EObject>();
-            result.addAll(((InteractionUse) semanticElement_p).getStart().getCoveredInstanceRoles());
+            result.addAll(((InteractionUse) semanticElement).getStart().getCoveredInstanceRoles());
             return result;
           }
         }) {
@@ -102,12 +102,12 @@ public class InteractionUseSection extends NamedElementSection {
        * {@inheritDoc}
        */
       @Override
-      protected void doDeleteCommand(EObject element_p, EStructuralFeature feature_p) {
-        InteractionFragment start = ((InteractionUse) element_p).getStart();
+      protected void doDeleteCommand(EObject element, EStructuralFeature feature) {
+        InteractionFragment start = ((InteractionUse) element).getStart();
         if (start != null) {
           start.getCoveredInstanceRoles().clear();
         }
-        InteractionFragment finish = ((InteractionUse) element_p).getFinish();
+        InteractionFragment finish = ((InteractionUse) element).getFinish();
         if (start != null) {
           finish.getCoveredInstanceRoles().clear();
         }
@@ -127,11 +127,11 @@ public class InteractionUseSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    coveredInstanceRolesField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getInteractionFragment_CoveredInstanceRoles());
-    referencedScenarioField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getInteractionUse_ReferencedScenario());
+    coveredInstanceRolesField.loadData(capellaElement, InteractionPackage.eINSTANCE.getInteractionFragment_CoveredInstanceRoles());
+    referencedScenarioField.loadData(capellaElement, InteractionPackage.eINSTANCE.getInteractionUse_ReferencedScenario());
   }
 
   /**

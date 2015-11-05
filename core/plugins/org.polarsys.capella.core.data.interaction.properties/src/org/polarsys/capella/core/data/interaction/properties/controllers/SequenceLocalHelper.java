@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,15 +18,15 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 
 public class SequenceLocalHelper {
-	static SequenceMessage getOppositeSequenceMessage (SequenceMessage msg_p) {
-	  MessageKind kind = msg_p.getKind();
-		Scenario sc = (Scenario) msg_p.eContainer();
+	static SequenceMessage getOppositeSequenceMessage (SequenceMessage msg) {
+	  MessageKind kind = msg.getKind();
+		Scenario sc = (Scenario) msg.eContainer();
 
 		if (MessageKind.UNSET.equals(kind)
 	    || MessageKind.SYNCHRONOUS_CALL.equals(kind)
 		  || MessageKind.ASYNCHRONOUS_CALL.equals(kind))
 		{
-			MessageEnd execEnd = msg_p.getReceivingEnd();
+			MessageEnd execEnd = msg.getReceivingEnd();
 			for (TimeLapse exec : sc.getOwnedTimeLapses()) {
 				if (exec.getStart() == execEnd) {
 				  InteractionFragment fragment = exec.getFinish();
@@ -36,7 +36,7 @@ public class SequenceLocalHelper {
 				}
 			}
 		} else if (MessageKind.REPLY.equals(kind)){
-			MessageEnd execEnd = msg_p.getSendingEnd();
+			MessageEnd execEnd = msg.getSendingEnd();
 			for (TimeLapse exec : sc.getOwnedTimeLapses()) {
 				if (exec.getFinish() == execEnd) {
           InteractionFragment fragment = exec.getStart();

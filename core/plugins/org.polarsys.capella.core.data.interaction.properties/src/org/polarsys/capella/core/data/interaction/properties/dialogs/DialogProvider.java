@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,10 +47,10 @@ public class DialogProvider {
   public static final String FUNCTIONAL_EXCHANGE_TYPE = "FE"; //$NON-NLS-1$
   public static final String COMPONENT_EXCHANGE_TYPE = "CE"; //$NON-NLS-1$
 
-  private static boolean _portStrategie;
+  private static boolean portStrategie;
 
   public static boolean getPortStrategie() {
-    return _portStrategie;
+    return portStrategie;
   }
 
   public static EObject openOperationDialog(SequenceMessage message) {
@@ -61,23 +61,23 @@ public class DialogProvider {
   }
 
   /**
-   * @param targetOnExchangeItem_p
-   * @param targetOnExchangeItem2_p 
-   * @param targetIR_p 
-   * @param messageEndAfter_p 
-   * @param messageEndBefore_p 
+   * @param targetOnExchangeItem
+   * @param targetOnExchangeItem2 
+   * @param targetIR 
+   * @param messageEndAfter 
+   * @param messageEndBefore 
    * @throws Exception 
    */
-  public static EObject openOperationDialog(SequenceMessage message, InstanceRole sourceIR_p, InstanceRole targetIR_p, Object targetOnExchangeItem_p, MessageKind messageKind) {
+  public static EObject openOperationDialog(SequenceMessage message, InstanceRole sourceIR, InstanceRole targetIR, Object targetOnExchangeItem, MessageKind messageKind) {
 	// Open a selection dialog to get the related operation.
-  	if (sourceIR_p.getRepresentedInstance() instanceof ExchangeItemInstance || targetIR_p.getRepresentedInstance() instanceof ExchangeItemInstance) {
+  	if (sourceIR.getRepresentedInstance() instanceof ExchangeItemInstance || targetIR.getRepresentedInstance() instanceof ExchangeItemInstance) {
   		// case 1 : one of the sequence message end is an exchange item instance
   		boolean isSynchronous = messageKind == MessageKind.SYNCHRONOUS_CALL;
-  		List<CapellaElement> available = SelectInvokedOperationModelForSharedDataAndEvent.getAvailableExchangeItems(sourceIR_p, targetIR_p, isSynchronous);
-  		available.addAll(SelectInvokedOperationModelForSharedDataAndEvent.getRestrictedExchangeItems(sourceIR_p, targetIR_p, isSynchronous));
+  		List<CapellaElement> available = SelectInvokedOperationModelForSharedDataAndEvent.getAvailableExchangeItems(sourceIR, targetIR, isSynchronous);
+  		available.addAll(SelectInvokedOperationModelForSharedDataAndEvent.getRestrictedExchangeItems(sourceIR, targetIR, isSynchronous));
   		
-  		if (InterfaceHelper.isSharedDataAccess(sourceIR_p, targetIR_p)) {
-  			List<CapellaElement> filtered = InterfaceHelper.getInstance().filterExchangeItemAllocations(available, sourceIR_p, targetIR_p, messageKind);
+  		if (InterfaceHelper.isSharedDataAccess(sourceIR, targetIR)) {
+  			List<CapellaElement> filtered = InterfaceHelper.getInstance().filterExchangeItemAllocations(available, sourceIR, targetIR, messageKind);
   			// we remove the duplicate EI/EIA, we keep only EIA. 
   			// If the EIA exists, this means that this EIA is already selected, so we keep the EIA and we remove the EI.
   			List<ExchangeItem> exchangeItemsToRemove = new ArrayList<ExchangeItem>();
@@ -91,31 +91,31 @@ public class DialogProvider {
   			filtered.removeAll(exchangeItemsToRemove);
   			available = filtered;
   		}
-  		List<CapellaElement> whole = InterfaceHelper.getInstance().getAllExchangeItems(sourceIR_p, targetIR_p, messageKind);
+  		List<CapellaElement> whole = InterfaceHelper.getInstance().getAllExchangeItems(sourceIR, targetIR, messageKind);
   		// Open a selection dialog to get the related operation.
   		SelectOperationDialogForSharedDataAndEvent dialog =
   				new SelectOperationDialogForSharedDataAndEvent(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
   						TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(available, whole)),
   						CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-  						Messages.SelectionDialogHelper_MessageCreation_Title, Messages.AffectToMessage_SelectionOperationDialog_Message, whole, available, sourceIR_p, targetIR_p,
+  						Messages.SelectionDialogHelper_MessageCreation_Title, Messages.AffectToMessage_SelectionOperationDialog_Message, whole, available, sourceIR, targetIR,
   						messageKind, ElementSupportedType.OPERATION);
   		if (Window.OK == dialog.open()) {
   			// End-user has selected an operation, handle it.
   			if (dialog.getResult().size() == 0)
   				return null;  			
   			EObject selectedOperation = dialog.getResult().get(0);
-  			_portStrategie = dialog.isPortStrategy();
+  			portStrategie = dialog.isPortStrategy();
   			return selectedOperation;
   		}  		
   	} else {
   	  // case 2 : all message end are components
   		boolean withReturn = messageKind == MessageKind.SYNCHRONOUS_CALL;
-  		SelectInvokedOperationModel model = new SelectInvokedOperationModel(sourceIR_p, targetIR_p, withReturn);
+  		SelectInvokedOperationModel model = new SelectInvokedOperationModel(sourceIR, targetIR, withReturn);
   		String dialogTitleAddition = model.doesTheMessageReturnAValue() ? " with return" : " without return";  //$NON-NLS-1$//$NON-NLS-2$
   		SelectInvokedOperationController controller = new SelectInvokedOperationController(model);
   		SelectElementsDialog dialog =
   				new SelectInvokedOperationView(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-  						TransactionHelper.getEditingDomain(sourceIR_p),
+  						TransactionHelper.getEditingDomain(sourceIR),
   						CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
   						Messages.SelectionDialogHelper_MessageCreation_Title + dialogTitleAddition,
   						Messages.AffectToMessage_SelectionOperationDialog_Message, 
@@ -123,7 +123,7 @@ public class DialogProvider {
   						controller);
   		if (Window.OK == dialog.open()) {
   			if (dialog.getResult().size() != 0) {
-  				_portStrategie = model.doesPortsMustBeCreated();
+  				portStrategie = model.doesPortsMustBeCreated();
   				EObject selectedOperation = dialog.getResult().get(0);
   				return selectedOperation;  				
   			}
@@ -133,15 +133,15 @@ public class DialogProvider {
   }
 
   /**
-   * @param echangeType_p
-   * @param messageEndAfter_p 
-   * @param messageEndBefore_p 
+   * @param echangeType
+   * @param messageEndAfter 
+   * @param messageEndBefore 
    */
-  public static EObject openFunctionalExchangeDialog(SequenceMessage message, InstanceRole sourceIR_p, InstanceRole targetIR_p, String echangeType_p) {
+  public static EObject openFunctionalExchangeDialog(SequenceMessage message, InstanceRole sourceIR, InstanceRole targetIR, String echangeType) {
     String selectionExchangeMessage = Messages.AffectToMessage_SelectionExchangeDialog_Message;
-    if (sourceIR_p!= null && CapellaLayerCheckingExt.isInOperationalAnalysisLayer(sourceIR_p)) {
+    if (sourceIR!= null && CapellaLayerCheckingExt.isInOperationalAnalysisLayer(sourceIR)) {
       selectionExchangeMessage = Messages.AffectToMessage_SelectionInteractionDialog_Message;
-    } else if (targetIR_p!= null &&CapellaLayerCheckingExt.isInOperationalAnalysisLayer(targetIR_p)){
+    } else if (targetIR!= null &&CapellaLayerCheckingExt.isInOperationalAnalysisLayer(targetIR)){
       selectionExchangeMessage = Messages.AffectToMessage_SelectionInteractionDialog_Message;
     }
     
@@ -150,36 +150,36 @@ public class DialogProvider {
 
     SelectFunctionalExchangeDialog dialog = null;
 
-    if (FUNCTIONAL_EXCHANGE_TYPE.equals(echangeType_p)) {
-      availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchanges(sourceIR_p, targetIR_p));
+    if (FUNCTIONAL_EXCHANGE_TYPE.equals(echangeType)) {
+      availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchanges(sourceIR, targetIR));
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
               TransactionHelper.getEditingDomain(availableExchanges),
               CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
+              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR, targetIR,
               DataflowDialogCreationType.FUNCTIONAL_EXCHANGE);
-    } else if (COMPONENT_EXCHANGE_TYPE.equals(echangeType_p)) {
+    } else if (COMPONENT_EXCHANGE_TYPE.equals(echangeType)) {
       selectionExchangeMessage = Messages.AffectToMessage_SelectionComponentExchangeDialog_Message;
-      if (CapellaLayerCheckingExt.isInOperationalAnalysisLayer(sourceIR_p!=null?sourceIR_p:targetIR_p)) {
+      if (CapellaLayerCheckingExt.isInOperationalAnalysisLayer(sourceIR!=null?sourceIR:targetIR)) {
         selectionExchangeMessage = Messages.AffectToMessage_SelectionCommunicationMeanDialog_Message;
       }
       
-      availableExchanges.addAll(DataFlowHelper.getAvailableComponentExchanges(sourceIR_p, targetIR_p));
+      availableExchanges.addAll(DataFlowHelper.getAvailableComponentExchanges(sourceIR, targetIR));
       
         
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
               TransactionHelper.getEditingDomain(availableExchanges),
               CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
+              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR, targetIR,
               DataflowDialogCreationType.COMPONENT_EXCHANGE);
-    } else if (FUNCTIONAL_EXCHANGE_FUNCTION.equals(echangeType_p)) {      
-      availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchangesFromFunctions(sourceIR_p, targetIR_p));
+    } else if (FUNCTIONAL_EXCHANGE_FUNCTION.equals(echangeType)) {      
+      availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchangesFromFunctions(sourceIR, targetIR));
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
               TransactionHelper.getEditingDomain(availableExchanges),
               CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
+              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR, targetIR,
               DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO);
     }
     if (Window.OK == dialog.open()) {
@@ -193,13 +193,13 @@ public class DialogProvider {
   }
 
   /**
-   * @param semanticElement_p
-   * @param componentExchangeType_p
+   * @param semanticElement
+   * @param componentExchangeType
    */
-  public static EObject openFunctionalExchangeDialog(SequenceMessage message, String componentExchangeType_p) {
+  public static EObject openFunctionalExchangeDialog(SequenceMessage message, String componentExchangeType) {
     InstanceRole source = message.getSendingEnd()!=null?message.getSendingEnd().getCovered():null;
     InstanceRole target = message.getReceivingEnd()!=null?message.getReceivingEnd().getCovered():null;
 
-    return openFunctionalExchangeDialog(message, source, target, componentExchangeType_p);
+    return openFunctionalExchangeDialog(message, source, target, componentExchangeType);
   }
 }

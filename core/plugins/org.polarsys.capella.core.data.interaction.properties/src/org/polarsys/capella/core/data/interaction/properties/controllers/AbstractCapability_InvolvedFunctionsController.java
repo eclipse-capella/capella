@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,18 +34,18 @@ public class AbstractCapability_InvolvedFunctionsController extends AbstractMult
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENTS);
+  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENTS);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#loadValues(org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.emf.ecore.EStructuralFeature)
    */
   @Override
-  public List<EObject> loadValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
+  public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> values = new ArrayList<EObject>();
 
-    Object lst = semanticElement_p.eGet(semanticFeature_p);
+    Object lst = semanticElement.eGet(semanticFeature);
     if (lst instanceof Collection<?>) {
       for (Object obj : (Collection<?>) lst) {
         if (obj instanceof AbstractFunctionAbstractCapabilityInvolvement) {
@@ -62,31 +62,31 @@ public class AbstractCapability_InvolvedFunctionsController extends AbstractMult
    */
   @SuppressWarnings("unchecked")
   @Override
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
+  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
     AbstractFunctionAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
-    link.setInvolver((InvolverElement) semanticElement_p);
-    link.setInvolved((InvolvedElement) object_p);
-    ((List<EObject>) semanticElement_p.eGet(semanticFeature_p)).add(link);
+    link.setInvolver((InvolverElement) semanticElement);
+    link.setInvolved((InvolvedElement) object);
+    ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
   }
 
   /**
    * Do the remove operation in {@link #writeOpenValues(CapellaElement, EStructuralFeature, List)}
-   * @param semanticElement_p
-   * @param semanticFeature_p
-   * @param object_p
+   * @param semanticElement
+   * @param semanticFeature
+   * @param object
    */
   @SuppressWarnings("unchecked")
   @Override
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
+  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
     EObject linkToRemove = null;
-    for (EObject obj : (List<EObject>) semanticElement_p.eGet(semanticFeature_p)) {
+    for (EObject obj : (List<EObject>) semanticElement.eGet(semanticFeature)) {
       if ((obj instanceof AbstractFunctionAbstractCapabilityInvolvement)
-        && ((AbstractFunctionAbstractCapabilityInvolvement) obj).getInvolved().equals(object_p))
+        && ((AbstractFunctionAbstractCapabilityInvolvement) obj).getInvolved().equals(object))
       {
         linkToRemove = obj;
       }
     }
     if (linkToRemove != null)
-      super.doRemoveOperationInWriteOpenValues(semanticElement_p, semanticFeature_p, linkToRemove);
+      super.doRemoveOperationInWriteOpenValues(semanticElement, semanticFeature, linkToRemove);
   }
 }

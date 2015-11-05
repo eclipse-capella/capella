@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,18 +79,18 @@ public class SelectInvokedOperationModel implements ISelectInvokedOperationModel
   protected List<Interface> restrictedStructuralInterfaces;
   protected List<Interface> allTechnicalInterfaces;
 
-  public SelectInvokedOperationModel(InstanceRole sourceIR_p, InstanceRole targetIR_p, boolean withReturn_p) {
-    sourceIR = sourceIR_p;
-    targetIR = targetIR_p;
-    source = (Component) sourceIR.getRepresentedInstance().getAbstractType();
-    target = (Component) targetIR.getRepresentedInstance().getAbstractType();
-    withReturn = withReturn_p;
-    messageKind = SelectionAlgorithms.getDefaultMessageKind(withReturn);
-    selectedExchangeMechanism = getCompatibleExchangeMechanism().get(0);
+  public SelectInvokedOperationModel(InstanceRole sourceIR, InstanceRole targetIR, boolean withReturn) {
+    this.sourceIR = sourceIR;
+    this.targetIR = targetIR;
+    this.source = (Component) this.sourceIR.getRepresentedInstance().getAbstractType();
+    this.target = (Component) this.targetIR.getRepresentedInstance().getAbstractType();
+    this.withReturn = withReturn;
+    this.messageKind = SelectionAlgorithms.getDefaultMessageKind(this.withReturn);
+    this.selectedExchangeMechanism = getCompatibleExchangeMechanism().get(0);
     initializeModel();
     computePossibleElements();
     computeSelectableElements();
-    elementMustBeCreated = elementMustBeCreated && (selectableElements.size() == 0);
+    this.elementMustBeCreated = this.elementMustBeCreated && (this.selectableElements.size() == 0);
   }
 
   @Override
@@ -105,8 +105,8 @@ public class SelectInvokedOperationModel implements ISelectInvokedOperationModel
     return selectedElement;
   }
 
-  public void setSelectedElement(AbstractCommunication selectedElement_p) {
-    selectedElement = selectedElement_p;
+  public void setSelectedElement(AbstractCommunication selectedElement) {
+    this.selectedElement = selectedElement;
     if ((selectedElement != oldSelectedElement) || elementMustBeCreated) {
       // port creation option
       portsMustBeCreated = optionsDefinition.getDefaultValueForOptionD(selectedElement);
@@ -288,8 +288,8 @@ public class SelectInvokedOperationModel implements ISelectInvokedOperationModel
     return restrictToExistingStaticCommunicationCompatibility;
   }
 
-  public void setMessageKind(MessageKind messageKind_p) {
-    messageKind = messageKind_p;
+  public void setMessageKind(MessageKind messageKind) {
+    this.messageKind = messageKind;
     computeSelectableElements();
   }
 
@@ -308,16 +308,16 @@ public class SelectInvokedOperationModel implements ISelectInvokedOperationModel
     computeSelectableElements();
   }
 
-  public void setCreatedElementName(String createdElementName_p) {
-    createdElementName = createdElementName_p;
+  public void setCreatedElementName(String createdElementName) {
+    this.createdElementName = createdElementName;
   }
 
-  public void setSelectedExchangeMechanism(ExchangeMechanism selectedExchangeMechanism_p) {
-    selectedExchangeMechanism = selectedExchangeMechanism_p;
+  public void setSelectedExchangeMechanism(ExchangeMechanism selectedExchangeMechanism) {
+    this.selectedExchangeMechanism = selectedExchangeMechanism;
   }
 
-  public void setSelectedInterfaceName(String selectedInterfaceName_p) {
-    selectedInterfaceName = selectedInterfaceName_p;
+  public void setSelectedInterfaceName(String selectedInterfaceName) {
+    this.selectedInterfaceName = selectedInterfaceName;
     if ((selectedInterface != null) && !selectedInterfaceName.equals(selectedInterface.getName())) {
       selectedInterface = null;
     }
@@ -336,8 +336,8 @@ public class SelectInvokedOperationModel implements ISelectInvokedOperationModel
     return selectedInterfaceName;
   }
 
-  public void setSelectedInterface(Interface selectedInterface_p) {
-    selectedInterface = selectedInterface_p;
+  public void setSelectedInterface(Interface selectedInterface) {
+    this.selectedInterface = selectedInterface;
   }
 
   @Override

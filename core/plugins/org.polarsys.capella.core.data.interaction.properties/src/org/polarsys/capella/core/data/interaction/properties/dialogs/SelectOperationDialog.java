@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -135,32 +135,32 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Constructor.
-   * @param parentShell_p
-   * @param editingDomain_p
-   * @param adapterFactory_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param wholeElements_p
-   * @param restrictedElements_p
-   * @param sourceIR_p
-   * @param targetIR_p
+   * @param parentShell
+   * @param editingDomain
+   * @param adapterFactory
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param wholeElements
+   * @param restrictedElements
+   * @param sourceIR
+   * @param targetIR
    * @param messageKind
-   * @param type_p
+   * @param type
    */
-  public SelectOperationDialog(Shell parentShell_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p, String dialogTitle_p,
-      String dialogMessage_p, List<? extends EObject> wholeElements_p, List<? extends EObject> restrictedElements_p, InstanceRole sourceIR_p,
-      InstanceRole targetIR_p, MessageKind messageKind, ElementSupportedType type_p) {
-    super(parentShell_p, editingDomain_p, adapterFactory_p, dialogTitle_p, dialogMessage_p, wholeElements_p);
-    _sourceIR = sourceIR_p;
-    _targetIR = targetIR_p;
-    _elementSupportedType = type_p;
-    _restrictedElements = restrictedElements_p;
+  public SelectOperationDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle,
+      String dialogMessage, List<? extends EObject> wholeElements, List<? extends EObject> restrictedElements, InstanceRole sourceIR,
+      InstanceRole targetIR, MessageKind messageKind, ElementSupportedType type) {
+    super(parentShell, editingDomain, adapterFactory, dialogTitle, dialogMessage, wholeElements);
+    _sourceIR = sourceIR;
+    _targetIR = targetIR;
+    _elementSupportedType = type;
+    _restrictedElements = restrictedElements;
     _messageKind = messageKind;
   }
 
   /**
    * Configure a handler for the button that enable / disable the creation operation button.
-   * @param enableCreationButton_p
+   * @param enableCreationButton
    */
   private void configureEnableCreationButtonHandler() {
     SelectionAdapter listener = new SelectionAdapter() {
@@ -168,7 +168,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
        * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
        */
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
+      public void widgetSelected(SelectionEvent event) {
         updateWindow();
       }
 
@@ -230,10 +230,10 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Updates radio button following the message type
-   * @param enabledCreationOperation_p
+   * @param enabledCreationOperation
    */
-  private void updateRadioButtons(boolean enabledCreationOperation_p) {
-    if (enabledCreationOperation_p) {
+  private void updateRadioButtons(boolean enabledCreationOperation) {
+    if (enabledCreationOperation) {
       if (_messageKind == MessageKind.ASYNCHRONOUS_CALL) {
         _eventRadioButton.setEnabled(true);
         _sharedRadioButton.setEnabled(true);
@@ -272,7 +272,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
+      public void widgetSelected(SelectionEvent event) {
     	Collection<CapellaElement> interfaces = getAvailableInterfaces();
         SelectElementsDialog selectInterfaceDialog =
             new SelectElementsDialog(getParentShell(), TransactionHelper.getEditingDomain(interfaces), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
@@ -289,11 +289,11 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Create creation operation widgets.
-   * @param parent_p
+   * @param parent
    */
-  private void createCreationOperationPart(Composite parent_p) {
+  private void createCreationOperationPart(Composite parent) {
     // Add a group surrounding the create operation part.
-    final Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    final Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
     treeViewerPartGroup.setLayout(new GridLayout(3, false)); /*
                                                               * 3 columns one for the label, one the text and the last one for the button
@@ -319,7 +319,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
        * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
        */
       @SuppressWarnings("synthetic-access")
-      public void modifyText(ModifyEvent e_p) {
+      public void modifyText(ModifyEvent e) {
         updateButtons(null);
       }
     };
@@ -352,11 +352,11 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Create creation operation widgets.
-   * @param parent_p
+   * @param parent
    */
-  private void createInterfacePart(Composite parent_p) {
+  private void createInterfacePart(Composite parent) {
     // Add a group surrounding the create operation part.
-    final Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    final Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateOrSelectInterface);
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
     treeViewerPartGroup.setLayout(new GridLayout(3, false)); /*
@@ -373,7 +373,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
        * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
        */
       @SuppressWarnings("synthetic-access")
-      public void modifyText(ModifyEvent e_p) {
+      public void modifyText(ModifyEvent e) {
         updateButtons(null);
       }
     };
@@ -446,11 +446,11 @@ public class SelectOperationDialog extends SelectElementsDialog {
   }
 
   /**
-   * @param capellaElement_p
+   * @param capellaElement
    * @return
    */
-  private boolean isGoodInterface(CapellaElement capellaElement_p) {
-    Interface interf = (Interface) capellaElement_p;
+  private boolean isGoodInterface(CapellaElement capellaElement) {
+    Interface interf = (Interface) capellaElement;
     AbstractType src = _sourceIR == null ? null : _sourceIR.getRepresentedInstance().getAbstractType();
     AbstractType tgt = _targetIR == null ? null : _targetIR.getRepresentedInstance().getAbstractType();
     Component srcComp = null;
@@ -483,10 +483,10 @@ public class SelectOperationDialog extends SelectElementsDialog {
   }
 
   /**
-   * @param parent_p
+   * @param parent
    */
-  private void createCreatePortButton(final Composite parent_p) {
-    _createPortsButton = new Button(parent_p, SWT.CHECK);
+  private void createCreatePortButton(final Composite parent) {
+    _createPortsButton = new Button(parent, SWT.CHECK);
     _createPortsButton.setText(Messages.SelectOperationDialog_0);
     GridData layoutData = new GridData(GridData.FILL, GridData.BEGINNING, false, false);
     layoutData.horizontalSpan = 3;
@@ -495,11 +495,11 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Create an {@link Interface} for related to given sequence message with specified name.
-   * @param sequenceMessage_p
-   * @param interfaceName_p
+   * @param sequenceMessage
+   * @param interfaceName
    */
-  private Interface createInterface(String interfaceName_p) {
-    Interface result = CsFactory.eINSTANCE.createInterface(interfaceName_p);
+  private Interface createInterface(String interfaceName) {
+    Interface result = CsFactory.eINSTANCE.createInterface(interfaceName);
 
     EObject src = _sourceIR != null ? _sourceIR.getRepresentedInstance().eContainer() : null;
     EObject tgt = _targetIR != null ? _targetIR.getRepresentedInstance().eContainer() : null;
@@ -534,7 +534,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
     pkg.getOwnedInterfaces().add(result);
 
     org.polarsys.capella.core.model.helpers.CapellaElementExt.creationService(result);
-    result.setName(interfaceName_p);
+    result.setName(interfaceName);
 
     return result;
   }
@@ -592,14 +592,14 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Allocate the exchange item to the interface selected
-   * @param getAnExchangeItemSelected_p
+   * @param getAnExchangeItemSelected
    * @return
    */
-  private ExchangeItemAllocation allocateExchangeItem(ExchangeItem exchangeItem_p) {
+  private ExchangeItemAllocation allocateExchangeItem(ExchangeItem exchangeItem) {
     Interface selectedInterface = getOrCreateInterface();
-    ExchangeItemAllocation result = InterfaceExt.addExchangeItem(selectedInterface, exchangeItem_p);
+    ExchangeItemAllocation result = InterfaceExt.addExchangeItem(selectedInterface, exchangeItem);
     if (_operationText == null) {
-      return allocateExchangeItemForSharedData(exchangeItem_p, result);
+      return allocateExchangeItemForSharedData(exchangeItem, result);
     }
     if (_messageKind == MessageKind.SYNCHRONOUS_CALL) {
       result.setSendProtocol(CommunicationLinkProtocol.SYNCHRONOUS);
@@ -616,11 +616,11 @@ public class SelectOperationDialog extends SelectElementsDialog {
   /**
    * Initialize given ExchangeItemAllocation with information from the CommunicationLink (if one is available) or with information deduced from the message
    * itself.
-   * @param exchangeItem_p
-   * @param result_p
+   * @param exchangeItem
+   * @param result
    * @return
    */
-  private ExchangeItemAllocation allocateExchangeItemForSharedData(ExchangeItem exchangeItem_p, ExchangeItemAllocation result_p) {
+  private ExchangeItemAllocation allocateExchangeItemForSharedData(ExchangeItem exchangeItem, ExchangeItemAllocation result) {
 
     Component component;
     ExchangeItem ei;
@@ -645,14 +645,14 @@ public class SelectOperationDialog extends SelectElementsDialog {
       // No communication link found -> modeling exclusively from the sequence diagram.
       // in this case, the initialization depends of the message itself;
       if (_messageKind == MessageKind.CREATE) {
-        result_p.setReceiveProtocol(CommunicationLinkProtocol.UNSET);
+        result.setReceiveProtocol(CommunicationLinkProtocol.UNSET);
       } else if (_messageKind == MessageKind.SYNCHRONOUS_CALL) {
         if (ei.getExchangeMechanism() == ExchangeMechanism.SHARED_DATA) {
-          result_p.setReceiveProtocol(CommunicationLinkProtocol.READ);
+          result.setReceiveProtocol(CommunicationLinkProtocol.READ);
         }
       } else if (_messageKind == MessageKind.ASYNCHRONOUS_CALL) {
         if (_sourceIR.getRepresentedInstance().getAbstractType() instanceof ExchangeItem) {
-          result_p.setReceiveProtocol(CommunicationLinkProtocol.ACCEPT);
+          result.setReceiveProtocol(CommunicationLinkProtocol.ACCEPT);
         }
       }
     } else {
@@ -663,37 +663,37 @@ public class SelectOperationDialog extends SelectElementsDialog {
           || (CommunicationLinkKind.CALL == communicationLinkKind) || (CommunicationLinkKind.WRITE == communicationLinkKind)
           || (CommunicationLinkKind.TRANSMIT == communicationLinkKind)) {
         // Actually, only WRITE should be tested since we are in a SharedData case.
-        result_p.setSendProtocol(communicationLinkProtocol);
+        result.setSendProtocol(communicationLinkProtocol);
       } else if ((CommunicationLinkKind.RECEIVE == communicationLinkKind) || (CommunicationLinkKind.CONSUME == communicationLinkKind)
                  || (CommunicationLinkKind.EXECUTE == communicationLinkKind) || (CommunicationLinkKind.ACCESS == communicationLinkKind)
                  || (CommunicationLinkKind.ACQUIRE == communicationLinkKind)) {
         // Actually, only ACCESS should be tested since we are in a SharedData case.
-        result_p.setReceiveProtocol(communicationLinkProtocol);
+        result.setReceiveProtocol(communicationLinkProtocol);
       }
       // Case UNSET -> nothing to do...
     }
-    return result_p;
+    return result;
   }
 
   /**
    * Create the restricted tree viewer button to display or not restricted interfaces.
-   * @param control_p
+   * @param control
    */
-  private void createRestrictedTreeViewerButton(Composite parent_p) {
+  private void createRestrictedTreeViewerButton(Composite parent) {
     _restrictedInterfaceFilter = new ViewerFilter() {
       /**
        * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
-        if ((element_p instanceof ExchangeItemAllocation) || (element_p instanceof ExchangeItem)) {
-          return _restrictedElements.contains(element_p);
-        } else if (element_p instanceof AbstractEventOperation) {
+      public boolean select(Viewer viewer, Object parentElement, Object element) {
+        if ((element instanceof ExchangeItemAllocation) || (element instanceof ExchangeItem)) {
+          return _restrictedElements.contains(element);
+        } else if (element instanceof AbstractEventOperation) {
           return true; // this is not the filter which decides
-        } else if (element_p instanceof CapellaElement) {
+        } else if (element instanceof CapellaElement) {
           // Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of _restrictedElement
-          TreeIterator<EObject> iterator = ((CapellaElement) element_p).eAllContents();
+          TreeIterator<EObject> iterator = ((CapellaElement) element).eAllContents();
           while (iterator.hasNext()) {
             EObject obj = iterator.next();
             if (_restrictedElements.contains(obj)) {
@@ -707,7 +707,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
       }
     };
 
-    _restrictedTreeViewerButton = new Button(parent_p, SWT.CHECK);
+    _restrictedTreeViewerButton = new Button(parent, SWT.CHECK);
     _restrictedTreeViewerButton.setText(Messages.SelectOperationDialog_RestrictedInterfacesButton_Title);
     _restrictedTreeViewerButton.addSelectionListener(new SelectionAdapter() {
       /**
@@ -715,9 +715,9 @@ public class SelectOperationDialog extends SelectElementsDialog {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
+      public void widgetSelected(SelectionEvent event) {
 
-        if (((Button) event_p.widget).getSelection()) {
+        if (((Button) event.widget).getSelection()) {
           // Add a viewer filter to filter out restricted
           // interface.
           if (null != _restrictedInterfaceFilter) {
@@ -735,7 +735,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
     getViewer().getClientViewer().addSelectionChangedListener(new ISelectionChangedListener() {
 
-      public void selectionChanged(SelectionChangedEvent event_p) {
+      public void selectionChanged(SelectionChangedEvent event) {
         updateWindow();
       }
     });
@@ -754,9 +754,9 @@ public class SelectOperationDialog extends SelectElementsDialog {
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog#createTreeViewerPart(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void createTreeViewerPart(Composite parent_p) {
+  protected void createTreeViewerPart(Composite parent) {
     // Add a group surrounding the tree viewer part.
-    Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_SelectExistingOperationGroup_Title);
     treeViewerPartGroup.setLayout(new GridLayout());
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -770,7 +770,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#doCreateDialogArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void doCreateDialogArea(Composite parent_p) {
+  protected void doCreateDialogArea(Composite parent) {
     // Create Operation creation part.
     if (_elementSupportedType == ElementSupportedType.OPERATION) {
       // don't have the "create exchangeItem" part if the source or target
@@ -779,19 +779,19 @@ public class SelectOperationDialog extends SelectElementsDialog {
       // interface part
       // to allow creation of a exchangeItemAllocation
       if (!InterfaceHelper.isSharedDataAccess(_sourceIR, _targetIR)) {
-        createCreationOperationPart(parent_p);
+        createCreationOperationPart(parent);
       }
 
-      createInterfacePart(parent_p);
-      super.doCreateDialogArea(parent_p);
+      createInterfacePart(parent);
+      super.doCreateDialogArea(parent);
 
       // create a button to show/hide exchange items
-      createShowCEButton(parent_p);
+      createShowCEButton(parent);
 
       // Add a selection handler to all the selection of an existing
       // interface.
       configureSelectInterfaceButtonHandler();
-      createCreatePortButton(parent_p);
+      createCreatePortButton(parent);
 
       // Add a selection handler to enable / disable creation of an
       // Operation.
@@ -799,26 +799,26 @@ public class SelectOperationDialog extends SelectElementsDialog {
       configureEnableCreationButtonHandler();
     } else {
 
-      super.doCreateDialogArea(parent_p);
+      super.doCreateDialogArea(parent);
     }
   }
 
   /**
-   * @param parent_p
+   * @param parent
    */
-  private void createShowCEButton(Composite parent_p) {
+  private void createShowCEButton(Composite parent) {
     _showComponentExchangeFilter = new ViewerFilter() {
 
       @SuppressWarnings("synthetic-access")
       @Override
-      public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
-        if (element_p instanceof ExchangeItemAllocation) {
+      public boolean select(Viewer viewer, Object parentElement, Object element) {
+        if (element instanceof ExchangeItemAllocation) {
           return true; // this is not the filter which decides
-        } else if (element_p instanceof AbstractEventOperation) {
-          return _restrictedElements.contains(element_p);
-        } else if (element_p instanceof CapellaElement) {
+        } else if (element instanceof AbstractEventOperation) {
+          return _restrictedElements.contains(element);
+        } else if (element instanceof CapellaElement) {
           //Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of _restrictedElement
-          TreeIterator<EObject> iterator = ((CapellaElement) element_p).eAllContents();
+          TreeIterator<EObject> iterator = ((CapellaElement) element).eAllContents();
           while (iterator.hasNext()) {
             EObject obj = iterator.next();
             if (_restrictedElements.contains(obj)) {
@@ -842,8 +842,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        if (((Button) event_p.widget).getSelection()) {
+      public void widgetSelected(SelectionEvent event) {
+        if (((Button) event.widget).getSelection()) {
           // Add a viewer filter to filter view component exchanges.
           if (null != _showComponentExchangeFilter) {
             getViewer().getClientViewer().removeFilter(_showComponentExchangeFilter);
@@ -922,14 +922,14 @@ public class SelectOperationDialog extends SelectElementsDialog {
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog#isOkToClose(org.eclipse.jface.viewers.ISelection)
    */
   @Override
-  protected boolean isOkToClose(ISelection selection_p) {
+  protected boolean isOkToClose(ISelection selection) {
     CapellaElement getAnExchangeItemSelected = getAnExchangeItemSelected();
 
     // If not checked, or no selection of exchangeItem in the list, the
     // end-user has selected an existing allocation.
     if ((_elementSupportedType == ElementSupportedType.EXCHANGE)
         || ((_enableCreationButton != null) && !_enableCreationButton.getSelection() && (getAnExchangeItemSelected == null))) {
-      return super.isOkToClose(selection_p);
+      return super.isOkToClose(selection);
     }
 
     boolean interfaceSet = !_interfaceText.getText().equals(ICommonConstants.EMPTY_STRING);

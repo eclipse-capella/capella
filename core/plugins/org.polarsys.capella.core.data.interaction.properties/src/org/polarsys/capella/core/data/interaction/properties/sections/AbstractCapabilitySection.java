@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,8 +55,8 @@ public abstract class AbstractCapabilitySection extends NamedElementSection {
   /**
    * Constructor
    */
-  public AbstractCapabilitySection(boolean showRealizedCapabilitiesField_p) {
-    _showRealizedCapabilitiesField = showRealizedCapabilitiesField_p;
+  public AbstractCapabilitySection(boolean showRealizedCapabilitiesField) {
+    _showRealizedCapabilitiesField = showRealizedCapabilitiesField;
   }
 
   /**
@@ -113,30 +113,30 @@ public abstract class AbstractCapabilitySection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _prePostConditions.loadData(capellaElement_p);
+    _prePostConditions.loadData(capellaElement);
 
     if (null != _superTypes) {
-      _superTypes.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getAbstractCapability_Super(),
+      _superTypes.loadData(capellaElement, InteractionPackage.eINSTANCE.getAbstractCapability_Super(),
           InteractionPackage.eINSTANCE.getAbstractCapability_SuperGeneralizations());
     }
 
     if (null != _availableInStatesField) {
-      _availableInStatesField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getAbstractCapability_AvailableInStates());
+      _availableInStatesField.loadData(capellaElement, InteractionPackage.eINSTANCE.getAbstractCapability_AvailableInStates());
     }
 
     if (null != _realizedFunctionsField) {
-      _realizedFunctionsField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getAbstractCapability_OwnedAbstractFunctionAbstractCapabilityInvolvements());
+      _realizedFunctionsField.loadData(capellaElement, InteractionPackage.eINSTANCE.getAbstractCapability_OwnedAbstractFunctionAbstractCapabilityInvolvements());
     }
 
     if (null != _realizedFunctionalChainsField) {
-      _realizedFunctionalChainsField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getAbstractCapability_OwnedFunctionalChainAbstractCapabilityInvolvements());
+      _realizedFunctionalChainsField.loadData(capellaElement, InteractionPackage.eINSTANCE.getAbstractCapability_OwnedFunctionalChainAbstractCapabilityInvolvements());
     }
 
     if (null != _realizedCapabilitiesField) {
-      _realizedCapabilitiesField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getAbstractCapability_OwnedAbstractCapabilityRealizations());
+      _realizedCapabilitiesField.loadData(capellaElement, InteractionPackage.eINSTANCE.getAbstractCapability_OwnedAbstractCapabilityRealizations());
     }
   }
 

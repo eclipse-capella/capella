@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,29 +27,29 @@ public class SelectInvokedOperationLabelProvider extends DataLabelProvider {
 
 	protected ISelectInvokedOperationModel model;
 	
-	public SelectInvokedOperationLabelProvider(TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p, ISelectInvokedOperationModel model_p) {
-		super(editingDomain_p, adapterFactory_p);
-		model = model_p;
+	public SelectInvokedOperationLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, ISelectInvokedOperationModel model) {
+		super(editingDomain, adapterFactory);
+		this.model = model;
 	}
 	
   @Override
-  public Image getImage(Object object_p) {
-  	if (object_p instanceof AbstractCommunication) {
-  		return super.getImage(((AbstractCommunication) object_p).getRepresentativeElement());
+  public Image getImage(Object object) {
+  	if (object instanceof AbstractCommunication) {
+  		return super.getImage(((AbstractCommunication) object).getRepresentativeElement());
   	}
-  	return super.getImage(object_p);
+  	return super.getImage(object);
   }
 		
   @Override
-  public String getText(Object object_p) {
+  public String getText(Object object) {
     // we  hide the name of technical interfaces if the option is active
-		if (object_p instanceof Interface) {
-			Interface interfaze = (Interface) object_p;
+		if (object instanceof Interface) {
+			Interface interfaze = (Interface) object;
 			if (!interfaze.isStructural() && model.doesHideTechnicalInterfaceNames()) {
 				return ""; //$NON-NLS-1$				
 			}
-		} else if (object_p instanceof LinkCommunication) {
-			LinkCommunication com = (LinkCommunication) object_p;
+		} else if (object instanceof LinkCommunication) {
+			LinkCommunication com = (LinkCommunication) object;
 			String senderProtocolString = null;
 			String receiverProtocolString = null;
 			if (com.senderLink != null) {
@@ -67,6 +67,6 @@ public class SelectInvokedOperationLabelProvider extends DataLabelProvider {
 			CommunicationLink link = (CommunicationLink) com.getRepresentativeElement();
 			return super.getText(link)+" ("+link.getExchangeItem().getExchangeMechanism()+") ["+senderProtocolString+"/"+receiverProtocolString+"]";  //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		}
-		return super.getText(object_p);
+		return super.getText(object);
 	}
 }

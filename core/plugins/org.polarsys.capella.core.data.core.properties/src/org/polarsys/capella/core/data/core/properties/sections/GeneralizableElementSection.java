@@ -37,10 +37,10 @@ import org.polarsys.capella.core.ui.properties.fields.CompositionMultipleSemanti
  */
 public abstract class GeneralizableElementSection extends NamedElementSection {
 
-  private boolean _showIsAbstract;
-  private boolean _showSuperTypes;
-  private CompositionMultipleSemanticField _superTypes;
-  private GeneralizableElementBooleanPropertiesCheckbox _propertiesCheckbox;
+  private boolean showIsAbstract;
+  private boolean showSuperTypes;
+  private CompositionMultipleSemanticField superTypes;
+  private GeneralizableElementBooleanPropertiesCheckbox propertiesCheckbox;
 
   /**
    * Default constructor.
@@ -54,8 +54,8 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
    * @param showSuperTypes
    */
   public GeneralizableElementSection(boolean showSuperTypes, boolean showIsAbstract) {
-    _showSuperTypes = showSuperTypes;
-    _showIsAbstract = showIsAbstract;
+    this.showSuperTypes = showSuperTypes;
+    this.showIsAbstract = showIsAbstract;
   }
 
   /**
@@ -67,19 +67,19 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    if (_showIsAbstract) {
+    if (showIsAbstract) {
       Group checkGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
       checkGroup.setLayout(new GridLayout(5, true));
       GridData gd = new GridData(GridData.FILL_HORIZONTAL);
       gd.horizontalSpan = 2;
       checkGroup.setLayoutData(gd);
       
-      _propertiesCheckbox = new GeneralizableElementBooleanPropertiesCheckbox(checkGroup, getWidgetFactory());
-      _propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
+      propertiesCheckbox = new GeneralizableElementBooleanPropertiesCheckbox(checkGroup, getWidgetFactory());
+      propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
     }
 
-    if (_showSuperTypes) {
-      _superTypes = new CompositionMultipleSemanticField(getReferencesGroup(),
+    if (showSuperTypes) {
+      superTypes = new CompositionMultipleSemanticField(getReferencesGroup(),
           Messages.getString("GeneralizableElementSection_SuperType_Label"), getWidgetFactory(), //$NON-NLS-1$
           new GeneralizableElementController())
       {
@@ -98,7 +98,7 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
           return null;
         }
       };
-      _superTypes.setDisplayedInWizard(displayedInWizard);
+      superTypes.setDisplayedInWizard(displayedInWizard);
     }
   }
 
@@ -109,12 +109,12 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
   public void loadData(CapellaElement capellaElement) {
     super.loadData(capellaElement);
 
-    if (null != _propertiesCheckbox) {
-      _propertiesCheckbox.loadData(capellaElement);
+    if (null != propertiesCheckbox) {
+      propertiesCheckbox.loadData(capellaElement);
     }
 
-    if (null != _superTypes) {
-      _superTypes.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(),
+    if (null != superTypes) {
+      superTypes.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(),
           CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
     }
   }
@@ -127,8 +127,8 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_propertiesCheckbox);
-    fields.add(_superTypes);
+    fields.add(propertiesCheckbox);
+    fields.add(superTypes);
 
     return fields;
   }
