@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,8 +56,8 @@ public abstract class TypedElementSection extends NamedElementSection {
        * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.SimpleSemanticField#handleOpenButtonClicked(org.eclipse.swt.widgets.Button)
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
         // force the update of the enable status
         refresh();
       }
@@ -77,13 +77,13 @@ public abstract class TypedElementSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    if (capellaElement_p instanceof AbstractTypedElement) {
-      _abstractTypeField.loadData(capellaElement_p, ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType());
-    } else if (capellaElement_p instanceof Collection) {
-      _abstractTypeField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getCollection_Type());
+    if (capellaElement instanceof AbstractTypedElement) {
+      _abstractTypeField.loadData(capellaElement, ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType());
+    } else if (capellaElement instanceof Collection) {
+      _abstractTypeField.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_Type());
     }
   }
 

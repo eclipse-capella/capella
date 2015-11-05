@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,31 +30,31 @@ public class AbstractParameterBooleanPropertiesCheckbox extends AbstractSemantic
   private Button _isStreamBtn;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public AbstractParameterBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true, true, true);
+  public AbstractParameterBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true, true, true);
   }
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param showIsException_p
-   * @param showIsOptional_p
-   * @param showIsStream_p
+   * @param parent
+   * @param widgetFactory
+   * @param showIsException
+   * @param showIsOptional
+   * @param showIsStream
    */
-  public AbstractParameterBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showIsException_p, boolean showIsOptional_p, boolean showIsStream_p) {
-    super(parent_p, widgetFactory_p);
+  public AbstractParameterBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsException, boolean showIsOptional, boolean showIsStream) {
+    super(parent, widgetFactory);
 
-    if (showIsException_p) {
-      _isExceptionBtn = createButton(ModellingcorePackage.eINSTANCE.getAbstractParameter_IsException(), Messages.getString("AbstractParameter.IsExceptionLabel"), parent_p); //$NON-NLS-1$
+    if (showIsException) {
+      _isExceptionBtn = createButton(ModellingcorePackage.eINSTANCE.getAbstractParameter_IsException(), Messages.getString("AbstractParameter.IsExceptionLabel"), parent); //$NON-NLS-1$
     }
-    if (showIsOptional_p) {
-      _isOptionalBtn = createButton(ModellingcorePackage.eINSTANCE.getAbstractParameter_IsOptional(), Messages.getString("AbstractParameter.IsOptionalLabel"), parent_p); //$NON-NLS-1$
+    if (showIsOptional) {
+      _isOptionalBtn = createButton(ModellingcorePackage.eINSTANCE.getAbstractParameter_IsOptional(), Messages.getString("AbstractParameter.IsOptionalLabel"), parent); //$NON-NLS-1$
     }
-    if (showIsStream_p) {
-      _isStreamBtn = createButton(ModellingcorePackage.eINSTANCE.getAbstractParameter_IsStream(), Messages.getString("AbstractParameter.IsStreamLabel"), parent_p); //$NON-NLS-1$
+    if (showIsStream) {
+      _isStreamBtn = createButton(ModellingcorePackage.eINSTANCE.getAbstractParameter_IsStream(), Messages.getString("AbstractParameter.IsStreamLabel"), parent); //$NON-NLS-1$
     }
   }
 

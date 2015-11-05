@@ -39,8 +39,8 @@ public class DragAndDropStates extends EmptyProject {
 
     new OpenDiagramStep(diagramContext).run();
 
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_MS_CREATE_STATE, GenericModel.STATE_1, diagramContext.getDiagramId()).run();
-    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_MS_CREATE_STATE, GenericModel.STATE_2, diagramContext.getDiagramId()).run();
+    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_MS_CREATE_STATE, diagramContext.getDiagramId(), GenericModel.STATE_1).run();
+    new CreateContainerTool(diagramContext, IToolNameConstants.TOOL_MS_CREATE_STATE, diagramContext.getDiagramId(), GenericModel.STATE_2).run();
 
     new DragAndDropTool(diagramContext, "D&D ModeState from Diagram", GenericModel.STATE_1, GenericModel.STATE_2).run();
 

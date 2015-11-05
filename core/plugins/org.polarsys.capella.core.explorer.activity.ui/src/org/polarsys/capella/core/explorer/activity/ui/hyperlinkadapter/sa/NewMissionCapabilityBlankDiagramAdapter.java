@@ -12,6 +12,7 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.PopupMenuLinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IMenuManager;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
@@ -27,14 +28,16 @@ public class NewMissionCapabilityBlankDiagramAdapter extends PopupMenuLinkAdapte
 
 	@Override
 	protected void fillPopupMenu(IMenuManager menuManager) {
-		//Add Mission Blank Diagram action.
-		Project capellaProject = (Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel();
-		ModelElement modelElement = ModelQueryHelper.getSAMissionPkg(capellaProject);
-		menuManager.add(new MissionBlankAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
-		
-		// Add Mission Capabilities Blank diagram action.
-		modelElement = ModelQueryHelper.getSACapabilityPkg((Project) capellaProject);
-		menuManager.add(new MissionCapabilitiesBlankAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
+		EObject rootSemanticModel = ActivityExplorerManager.INSTANCE.getRootSemanticModel();
+		if(rootSemanticModel instanceof Project){
+		  //Add Mission Blank Diagram action.
+		  Project capellaProject = (Project) rootSemanticModel;
+		  ModelElement modelElement = ModelQueryHelper.getSAMissionPkg(capellaProject);
+		  menuManager.add(new MissionBlankAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
+		  
+		  // Add Mission Capabilities Blank diagram action.
+		  modelElement = ModelQueryHelper.getSACapabilityPkg((Project) capellaProject);
+		  menuManager.add(new MissionCapabilitiesBlankAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
+		}
 	}
-
 }

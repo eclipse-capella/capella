@@ -133,7 +133,8 @@ public class ABServices {
     return ((source instanceof ComponentPort) || (source instanceof PhysicalPort));
   }
 
-  public boolean isValidABCreationPortAllocation(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public boolean isValidABCreationPortAllocation(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
 
     if ((sourceView == null) || (targetView == null)) {
       return false;
@@ -163,7 +164,8 @@ public class ABServices {
     return (source instanceof PhysicalPort);
   }
 
-  public boolean isValidABCreationComponentPortAllocation(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public boolean isValidABCreationComponentPortAllocation(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
 
     if ((sourceView == null) || (targetView == null)) {
       return false;
@@ -274,10 +276,12 @@ public class ABServices {
    * @param oldNode
    * @param newNode
    */
-  public EObject reconnectABComponentExchangeSource(EObject componentExchange, DSemanticDecorator edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+  public EObject reconnectABComponentExchangeSource(EObject componentExchange, DSemanticDecorator edge,
+      DSemanticDecorator oldNode, DSemanticDecorator newNode) {
     if (edge instanceof DEdge) {
       if (componentExchange instanceof ComponentExchange) {
-        reconnectABComponentExchange((ComponentExchange) componentExchange, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, (DEdge) edge, oldNode, newNode);
+        reconnectABComponentExchange((ComponentExchange) componentExchange,
+            ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, (DEdge) edge, oldNode, newNode);
       }
     }
     return componentExchange;
@@ -291,10 +295,12 @@ public class ABServices {
    * @param oldNode
    * @param newNode
    */
-  public EObject reconnectABComponentExchangeTarget(EObject componentExchange, DSemanticDecorator edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+  public EObject reconnectABComponentExchangeTarget(EObject componentExchange, DSemanticDecorator edge,
+      DSemanticDecorator oldNode, DSemanticDecorator newNode) {
     if (edge instanceof DEdge) {
       if (componentExchange instanceof ComponentExchange) {
-        reconnectABComponentExchange((ComponentExchange) componentExchange, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, (DEdge) edge, oldNode, newNode);
+        reconnectABComponentExchange((ComponentExchange) componentExchange,
+            ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, (DEdge) edge, oldNode, newNode);
       }
     }
     return componentExchange;
@@ -308,11 +314,12 @@ public class ABServices {
    * @param oldNode
    * @param newNode
    */
-  public void reconnectABComponentExchange(ComponentExchange componentExchange, EReference bound, DEdge edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+  public void reconnectABComponentExchange(ComponentExchange componentExchange, EReference bound, DEdge edge,
+      DSemanticDecorator oldNode, DSemanticDecorator newNode) {
     EObject relatedPart = CsServices.getService().getRelatedPart(newNode);
 
-    if (!(componentExchange instanceof CommunicationMean) && CsServices.getService().isMultipartMode(componentExchange) && (newNode.getTarget() instanceof Port)
-        && (relatedPart instanceof Part)) {
+    if (!(componentExchange instanceof CommunicationMean) && CsServices.getService().isMultipartMode(componentExchange)
+        && (newNode.getTarget() instanceof Port) && (relatedPart instanceof Part)) {
       ComponentExchangeEnd end = null;
       Object boundValue = componentExchange.eGet(bound);
       if (boundValue instanceof ComponentExchangeEnd) {
@@ -388,7 +395,8 @@ public class ABServices {
    * @param oldNode
    * @param newNode
    */
-  public EObject reconnectABPhysicalLinkSource(EObject physicalLink, DSemanticDecorator edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+  public EObject reconnectABPhysicalLinkSource(EObject physicalLink, DSemanticDecorator edge,
+      DSemanticDecorator oldNode, DSemanticDecorator newNode) {
     if (edge instanceof DEdge) {
       if (physicalLink instanceof PhysicalLink) {
         reconnectABPhysicalLink((PhysicalLink) physicalLink, (DEdge) edge, oldNode, newNode);
@@ -405,7 +413,8 @@ public class ABServices {
    * @param oldNode
    * @param newNode
    */
-  public EObject reconnectABPhysicalLinkTarget(EObject physicalLink, DSemanticDecorator edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+  public EObject reconnectABPhysicalLinkTarget(EObject physicalLink, DSemanticDecorator edge,
+      DSemanticDecorator oldNode, DSemanticDecorator newNode) {
     if (edge instanceof DEdge) {
       if (physicalLink instanceof PhysicalLink) {
         reconnectABPhysicalLink((PhysicalLink) physicalLink, (DEdge) edge, oldNode, newNode);
@@ -422,7 +431,8 @@ public class ABServices {
    * @param oldNode
    * @param newNode
    */
-  public void reconnectABPhysicalLink(PhysicalLink physicalLink, DEdge edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+  public void reconnectABPhysicalLink(PhysicalLink physicalLink, DEdge edge, DSemanticDecorator oldNode,
+      DSemanticDecorator newNode) {
 
     EObject oldTarget = oldNode.getTarget();
     EObject newTarget = newNode.getTarget();
@@ -614,6 +624,7 @@ public class ABServices {
     ActivityNode targetTarget = FaServices.getFaServices().getRelatedActivityNode(targetView);
     FunctionalExchange exchange = FunctionalExchangeExt.createFunctionalExchange(sourceTarget, targetTarget);
     FaServices.getFaServices().createViewFunctionalExchange(exchange, sourceView, targetView, diagram);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange);
     return exchange;
   }
 
@@ -634,7 +645,8 @@ public class ABServices {
     if (target != null) {
       // Retrieve all available states
       BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(target);
-      for (AbstractFunction function : FunctionPkgExt.getAllAbstractFunctions(BlockArchitectureExt.getFunctionPkg(architecture))) {
+      for (AbstractFunction function : FunctionPkgExt.getAllAbstractFunctions(BlockArchitectureExt
+          .getFunctionPkg(architecture))) {
         availableStates.addAll(function.getAvailableInStates());
       }
 
@@ -643,7 +655,8 @@ public class ABServices {
         boolean addElement = false;
         for (EObject function : getABInsertStateModesRelatedElements(state, architecture)) {
           if (function instanceof AbstractFunction) {
-            if (!content.containsView(function, FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) function, diagram))) {
+            if (!content.containsView(function,
+                FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) function, diagram))) {
               addElement = true;
               break;
             }
@@ -726,9 +739,11 @@ public class ABServices {
       for (Scenario scenario : AbstractCapabilityPkgExt.getAllScenarios(pkg)) {
 
         boolean addElement = false;
-        for (EObject element : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario, sourceArchitecture)) {
+        for (EObject element : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario,
+            sourceArchitecture)) {
           if (element instanceof AbstractFunction) {
-            if (!content.containsView(element, FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) element, diagram))) {
+            if (!content.containsView(element,
+                FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) element, diagram))) {
               addElement = true;
               break;
             }
@@ -804,7 +819,8 @@ public class ABServices {
         if (object instanceof Scenario) {
           Scenario scenario = (Scenario) object;
 
-          for (EObject related : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario, sourceArchitecture)) {
+          for (EObject related : ContextualDiagramHelper.getService().getInsertScenariosRelatedElements(scenario,
+              sourceArchitecture)) {
 
             if (related instanceof AbstractFunction) {
               functionsToShow.add(related);
@@ -858,14 +874,17 @@ public class ABServices {
           if (unallocatedFunctions.size() > 0) {
             unallocatedFunctions.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
-            logger.info(new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedFunctions, EObjectLabelProviderHelper.getText(scenario)),
-                IReportManagerDefaultComponents.MODEL, unallocatedFunctions));
+            logger.info(new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedFunctions,
+                EObjectLabelProviderHelper.getText(scenario)), IReportManagerDefaultComponents.MODEL,
+                unallocatedFunctions));
           }
           if (unallocatedRoles.size() > 0) {
             unallocatedRoles.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
-            logger.info(new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectLabelProviderHelper.getText(scenario)), IReportManagerDefaultComponents.MODEL,
-                unallocatedRoles));
+            logger
+                .info(new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedRoles,
+                    EObjectLabelProviderHelper.getText(scenario)), IReportManagerDefaultComponents.MODEL,
+                    unallocatedRoles));
           }
         }
       }
@@ -937,14 +956,16 @@ public class ABServices {
   /**
    * Display given component exchanges
    */
-  public EObject showABComponentExchange(Collection<EObject> elements, DDiagramContents content, DSemanticDecorator currentElementView) {
+  public EObject showABComponentExchange(Collection<EObject> elements, DDiagramContents content,
+      DSemanticDecorator currentElementView) {
 
     AbstractShowHide shService = new ShowHideABComponentExchange(content);
 
     for (EObject element : elements) {
       DiagramContext context = shService.new DiagramContext();
       if (currentElementView instanceof DDiagramElement) {
-        context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(currentElementView));
+        context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS,
+            Collections.singletonList(currentElementView));
       }
       shService.show(element, context);
     }
@@ -993,7 +1014,8 @@ public class ABServices {
     return true;
   }
 
-  public boolean isValidABPhysicalCategoryEdge(PhysicalLinkCategory category, DSemanticDecorator source, DSemanticDecorator target) {
+  public boolean isValidABPhysicalCategoryEdge(PhysicalLinkCategory category, DSemanticDecorator source,
+      DSemanticDecorator target) {
 
     if ((category == null) || (source == null) || (target == null)) {
       return false;
@@ -1011,7 +1033,8 @@ public class ABServices {
     EObject sourceTarget = source.getTarget();
     EObject targetTarget = target.getTarget();
 
-    if (((sourceTarget instanceof Port) && (targetTarget instanceof PhysicalLinkCategory)) || ((targetTarget instanceof Port) && (sourceTarget instanceof PhysicalLinkCategory))) {
+    if (((sourceTarget instanceof Port) && (targetTarget instanceof PhysicalLinkCategory))
+        || ((targetTarget instanceof Port) && (sourceTarget instanceof PhysicalLinkCategory))) {
 
       // Retrieve both category ports on parts
       for (AbstractDNode node : sourceView.getOwnedBorderedNodes()) {
@@ -1071,7 +1094,8 @@ public class ABServices {
       if ((delegationTargetPort != null) && (delegationSourcePart != null)) {
         // A delegation must exist between both port/parts
         if (delegationTargetPort instanceof PhysicalPort) {
-          Collection<PhysicalLink> delegations = PortExt.getDelegationPhysicalLinks((PhysicalPort) delegationTargetPort);
+          Collection<PhysicalLink> delegations = PortExt
+              .getDelegationPhysicalLinks((PhysicalPort) delegationTargetPort);
           for (PhysicalLink delegation : delegations) {
             if (delegationTargetPort.equals(PhysicalLinkExt.getTargetPort(delegation))) {
               if (PhysicalLinkExt.getSourceParts(delegation).contains(delegationSourcePart)) {
@@ -1087,7 +1111,8 @@ public class ABServices {
           }
         } else if (delegationTargetPort instanceof ComponentPort) {
           // A delegation (without category) must exist between both port/parts
-          Collection<ComponentPortAllocation> delegations = PortExt.getIncomingComponentPortAllocations((ComponentPort) delegationTargetPort);
+          Collection<ComponentPortAllocation> delegations = PortExt
+              .getIncomingComponentPortAllocations((ComponentPort) delegationTargetPort);
           for (ComponentPortAllocation delegation : delegations) {
             if (delegationTargetPort.equals(ComponentPortAllocationExt.getTargetPort(delegation))) {
               if (ComponentPortAllocationExt.getSourceParts(delegation).contains(delegationSourcePart)) {
@@ -1139,11 +1164,13 @@ public class ABServices {
 
         // Test if valid for source/target and target/source (category are not oriented)
         if ((sourceParts.contains(sourcePart) && targetParts.contains(targetPart))) {
-          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getPhysicalLinkWrapper(exchange), sourcePartView, targetPartView, false)) {
+          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getPhysicalLinkWrapper(exchange),
+              sourcePartView, targetPartView, false)) {
             return true;
           }
         } else if (sourceParts.contains(targetPart) && targetParts.contains(sourcePart)) {
-          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getPhysicalLinkWrapper(exchange), targetPartView, sourcePartView, false)) {
+          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getPhysicalLinkWrapper(exchange),
+              targetPartView, sourcePartView, false)) {
             return true;
           }
         }
@@ -1154,7 +1181,8 @@ public class ABServices {
 
   }
 
-  public boolean isValidABFunctionalExchangeEdge(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public boolean isValidABFunctionalExchangeEdge(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
     if (!(context instanceof FunctionalExchange) || (sourceView == targetView)) {
       return false;
     }
@@ -1267,11 +1295,14 @@ public class ABServices {
     return true;
   }
 
-  public boolean isValidABFunctionalChainInternalLinkEdge(FunctionalChain chain, DSemanticDecorator source, DSemanticDecorator target) {
-    return FunctionalChainServices.getFunctionalChainServices().isValidInternalLinkEdge(chain, (EdgeTarget) source, (EdgeTarget) target);
+  public boolean isValidABFunctionalChainInternalLinkEdge(FunctionalChain chain, DSemanticDecorator source,
+      DSemanticDecorator target) {
+    return FunctionalChainServices.getFunctionalChainServices().isValidInternalLinkEdge(chain, (EdgeTarget) source,
+        (EdgeTarget) target);
   }
 
-  public boolean isValidABPhysicalPathInternalLinkEdge(PhysicalPath path, DSemanticDecorator source, DSemanticDecorator target) {
+  public boolean isValidABPhysicalPathInternalLinkEdge(PhysicalPath path, DSemanticDecorator source,
+      DSemanticDecorator target) {
     if (source instanceof EdgeTarget) {
       HashSet<DEdge> edges = new HashSet<DEdge>();
       EdgeTarget src = (EdgeTarget) source;
@@ -1294,7 +1325,8 @@ public class ABServices {
     return true;
   }
 
-  public boolean isValidFunctionalExchangeCategoryEdge(ExchangeCategory category, DSemanticDecorator source, DSemanticDecorator target) {
+  public boolean isValidFunctionalExchangeCategoryEdge(ExchangeCategory category, DSemanticDecorator source,
+      DSemanticDecorator target) {
 
     if ((category == null) || (source == null) || (target == null)) {
       return false;
@@ -1310,7 +1342,8 @@ public class ABServices {
 
   }
 
-  public boolean isSourceTargetCategoryFunction(AbstractFunction source, AbstractFunction target, ExchangeCategory category) {
+  public boolean isSourceTargetCategoryFunction(AbstractFunction source, AbstractFunction target,
+      ExchangeCategory category) {
     Collection<EObject> cSource = new ArrayList<EObject>(category.getExchanges());
 
     List<FunctionalExchange> allSourceExchanges = new ArrayList<FunctionalExchange>();
@@ -1358,7 +1391,8 @@ public class ABServices {
 
   }
 
-  public boolean isValidABComponentCategoryEdge(ComponentExchangeCategory category, DSemanticDecorator source, DSemanticDecorator target) {
+  public boolean isValidABComponentCategoryEdge(ComponentExchangeCategory category, DSemanticDecorator source,
+      DSemanticDecorator target) {
 
     if ((category == null) || (source == null) || (target == null)) {
       return false;
@@ -1490,11 +1524,13 @@ public class ABServices {
 
         // Test if valid for source/target and target/source (category are not oriented)
         if ((sourceParts.contains(sourcePart) && targetParts.contains(targetPart))) {
-          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getComponentExchangeWrapper(exchange), sourcePartView, targetPartView, false)) {
+          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getComponentExchangeWrapper(exchange),
+              sourcePartView, targetPartView, false)) {
             return true;
           }
         } else if (sourceParts.contains(targetPart) && targetParts.contains(sourcePart)) {
-          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getComponentExchangeWrapper(exchange), targetPartView, sourcePartView, false)) {
+          if (CsServices.getService().isValidLinkEdge(CsServices.getService().getComponentExchangeWrapper(exchange),
+              targetPartView, sourcePartView, false)) {
             return true;
           }
         }
@@ -1526,8 +1562,8 @@ public class ABServices {
     return containerView instanceof DDiagram;
   }
 
-  public EObject showABPhysicalCategories(DSemanticDecorator context, HashMapSet<EObject, EObject> scope, HashMapSet<EObject, EObject> initialSelection,
-      final HashMapSet<EObject, EObject> selectedElements) {
+  public EObject showABPhysicalCategories(DSemanticDecorator context, HashMapSet<EObject, EObject> scope,
+      HashMapSet<EObject, EObject> initialSelection, final HashMapSet<EObject, EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
     EObject source = context.getTarget();
@@ -1549,8 +1585,10 @@ public class ABServices {
 
             for (PhysicalLink exchange : getRelatedPhysicalLinks(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), false, shService);
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), false, shService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+                    (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), false, shService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+                    (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), false, shService);
               }
             }
 
@@ -1568,8 +1606,10 @@ public class ABServices {
 
       for (PhysicalLink exchange : getRelatedPhysicalLinks(source)) {
         if (exchange.getCategories().contains(key)) {
-          displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), true, shService);
-          displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), true, shService);
+          displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+              (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), true, shService);
+          displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+              (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), true, shService);
         }
       }
     }
@@ -1587,8 +1627,8 @@ public class ABServices {
    * @param selectedElements
    * @return
    */
-  public EObject showABComponentCategories(DSemanticDecorator context, HashMapSet<EObject, EObject> scope, HashMapSet<EObject, EObject> initialSelection,
-      final HashMapSet<EObject, EObject> selectedElements) {
+  public EObject showABComponentCategories(DSemanticDecorator context, HashMapSet<EObject, EObject> scope,
+      HashMapSet<EObject, EObject> initialSelection, final HashMapSet<EObject, EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
     EObject source = context.getTarget();
@@ -1609,8 +1649,10 @@ public class ABServices {
 
             for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false, shService);
-                displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false, shService);
+                displayABComponentCategoryPortDelegation(ctx, category, exchange,
+                    (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false, shService);
+                displayABComponentCategoryPortDelegation(ctx, category, exchange,
+                    (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false, shService);
               }
             }
 
@@ -1628,8 +1670,10 @@ public class ABServices {
 
       for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
         if (exchange.getCategories().contains(key)) {
-          displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), true, shService);
-          displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), true, shService);
+          displayABComponentCategoryPortDelegation(ctx, category, exchange,
+              (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), true, shService);
+          displayABComponentCategoryPortDelegation(ctx, category, exchange,
+              (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), true, shService);
         }
       }
     }
@@ -1639,13 +1683,15 @@ public class ABServices {
     return context;
   }
 
-  public EObject switchABPhysicalCategories(DSemanticDecorator context, Collection<EObject> scope, Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
+  public EObject switchABPhysicalCategories(DSemanticDecorator context, Collection<EObject> scope,
+      Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
     return switchABPhysicalCategories(content, context, selectedElements, true);
   }
 
-  public EObject switchABPhysicalCategories(DDiagramContents content, DSemanticDecorator context, Collection<EObject> selectedElements, boolean showPhysicalExchanges) {
+  public EObject switchABPhysicalCategories(DDiagramContents content, DSemanticDecorator context,
+      Collection<EObject> selectedElements, boolean showPhysicalExchanges) {
     ABServices.getService().updateABPhysicalCategories(content);
 
     DDiagram currentDiagram = content.getDDiagram();
@@ -1656,14 +1702,18 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context);
     }
     if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
+      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(
+          CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
         sourceViews.add(element);
       }
-      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
+      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(
+          CsPackage.Literals.COMPONENT, currentDiagram))) {
         sourceViews.add(element);
       }
-      if (currentDiagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABDeployedElement(currentDiagram))) {
+      if (currentDiagram.getDescription().getName()
+          .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices()
+            .getMappingABDeployedElement(currentDiagram))) {
           sourceViews.add(element);
         }
       }
@@ -1709,16 +1759,20 @@ public class ABServices {
           if (selectedElements.contains(key)) {
             for (PhysicalLink exchange : getRelatedPhysicalLinks(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), true, categories);
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), true, categories);
+                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+                    (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), true, categories);
+                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+                    (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), true, categories);
                 categories.hide(exchange, ctx);
               }
             }
           } else if (showPhysicalExchanges) {
             for (PhysicalLink exchange : getRelatedPhysicalLinks(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), false, categories);
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange, (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), false, categories);
+                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+                    (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), false, categories);
+                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
+                    (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), false, categories);
                 categories.show(exchange, ctx);
               }
             }
@@ -1733,7 +1787,8 @@ public class ABServices {
     return context;
   }
 
-  public EObject switchABComponentCategories(DSemanticDecorator context, Collection<EObject> scope, Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
+  public EObject switchABComponentCategories(DSemanticDecorator context, Collection<EObject> scope,
+      Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
     return switchABComponentCategories(content, context, selectedElements);
@@ -1748,7 +1803,8 @@ public class ABServices {
    * @param selectedElements
    * @return
    */
-  public EObject switchABComponentCategories(DDiagramContents content, DSemanticDecorator context, Collection<EObject> selectedElements) {
+  public EObject switchABComponentCategories(DDiagramContents content, DSemanticDecorator context,
+      Collection<EObject> selectedElements) {
 
     ABServices.getService().updateABComponentCategories(content);
 
@@ -1758,14 +1814,18 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context);
     }
     if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
+      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(
+          CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
         sourceViews.add(element);
       }
-      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
+      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABComponent(
+          CsPackage.Literals.COMPONENT, currentDiagram))) {
         sourceViews.add(element);
       }
-      if (currentDiagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingABDeployedElement(currentDiagram))) {
+      if (currentDiagram.getDescription().getName()
+          .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices()
+            .getMappingABDeployedElement(currentDiagram))) {
           sourceViews.add(element);
         }
       }
@@ -1808,16 +1868,20 @@ public class ABServices {
           if (selectedElements.contains(key)) {
             for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), true, categories);
-                displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), true, categories);
+                displayABComponentCategoryPortDelegation(ctx, category, exchange,
+                    (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), true, categories);
+                displayABComponentCategoryPortDelegation(ctx, category, exchange,
+                    (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), true, categories);
                 categories.hide(exchange, ctx);
               }
             }
           } else {
             for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false, categories);
-                displayABComponentCategoryPortDelegation(ctx, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false, categories);
+                displayABComponentCategoryPortDelegation(ctx, category, exchange,
+                    (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false, categories);
+                displayABComponentCategoryPortDelegation(ctx, category, exchange,
+                    (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false, categories);
                 categories.show(exchange, ctx);
               }
             }
@@ -1841,7 +1905,8 @@ public class ABServices {
    * @param b
    *          show or hide according to this parameter
    */
-  private void showABPhysicalCategory(AbstractShowHide categories, DiagramContext context, PhysicalLinkCategory key, EObject source, EObject target, boolean b) {
+  private void showABPhysicalCategory(AbstractShowHide categories, DiagramContext context, PhysicalLinkCategory key,
+      EObject source, EObject target, boolean b) {
 
     context.setVariable(ShowHideABComponent.SOURCE_PARTS, Collections.singletonList(source));
     context.setVariable(ShowHideABComponent.TARGET_PARTS, Collections.singletonList(target));
@@ -1887,7 +1952,8 @@ public class ABServices {
    * @param source
    * @param target
    */
-  private void showABComponentCategory(AbstractShowHide categories, DiagramContext context, ComponentExchangeCategory key, EObject source, EObject target, boolean b) {
+  private void showABComponentCategory(AbstractShowHide categories, DiagramContext context,
+      ComponentExchangeCategory key, EObject source, EObject target, boolean b) {
 
     context.setVariable(ShowHideABComponent.SOURCE_PARTS, Collections.singletonList(source));
     context.setVariable(ShowHideABComponent.TARGET_PARTS, Collections.singletonList(target));
@@ -1933,8 +1999,8 @@ public class ABServices {
    * @param b
    * @param categories
    */
-  protected void displayABPhysicalCategoryPortDelegation(DiagramContext context, PhysicalLinkCategory category, PhysicalLink exchange, PhysicalPort sourcePort,
-      boolean b, AbstractShowHide service) {
+  protected void displayABPhysicalCategoryPortDelegation(DiagramContext context, PhysicalLinkCategory category,
+      PhysicalLink exchange, PhysicalPort sourcePort, boolean b, AbstractShowHide service) {
 
     if (sourcePort == null) {
       return;
@@ -1946,10 +2012,12 @@ public class ABServices {
         PhysicalLink delegation = (PhysicalLink) element;
 
         if (PhysicalLinkExt.getSourcePort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.TARGET_PORTS, Collections.singletonList(PhysicalLinkExt.getTargetPort(delegation)));
+          context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
+              Collections.singletonList(PhysicalLinkExt.getTargetPort(delegation)));
         }
         if (PhysicalLinkExt.getTargetPort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS, Collections.singletonList(PhysicalLinkExt.getSourcePort(delegation)));
+          context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
+              Collections.singletonList(PhysicalLinkExt.getSourcePort(delegation)));
         }
 
         context.setVariable(ShowHideABComponent.SOURCE_PARTS, PhysicalLinkExt.getSourceParts(delegation));
@@ -1971,10 +2039,12 @@ public class ABServices {
         ComponentPortAllocation delegation = (ComponentPortAllocation) element;
 
         if (ComponentPortAllocationExt.getSourcePort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.TARGET_PORTS, Collections.singletonList(ComponentPortAllocationExt.getTargetPort(delegation)));
+          context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
+              Collections.singletonList(ComponentPortAllocationExt.getTargetPort(delegation)));
         }
         if (ComponentPortAllocationExt.getTargetPort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS, Collections.singletonList(ComponentPortAllocationExt.getSourcePort(delegation)));
+          context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
+              Collections.singletonList(ComponentPortAllocationExt.getSourcePort(delegation)));
         }
 
         context.setVariable(ShowHideABComponent.SOURCE_PARTS, ComponentPortAllocationExt.getSourceParts(delegation));
@@ -2002,8 +2072,8 @@ public class ABServices {
    * @param b
    * @param categories
    */
-  protected void displayABComponentCategoryPortDelegation(DiagramContext context, ComponentExchangeCategory category, ComponentExchange exchange, ComponentPort sourcePort,
-      boolean b, AbstractShowHide service) {
+  protected void displayABComponentCategoryPortDelegation(DiagramContext context, ComponentExchangeCategory category,
+      ComponentExchange exchange, ComponentPort sourcePort, boolean b, AbstractShowHide service) {
 
     if (sourcePort == null) {
       return;
@@ -2013,10 +2083,12 @@ public class ABServices {
     for (ComponentExchange delegation : getComponentExchangeDelegationsForCategory(sourcePort, category)) {
 
       if (ComponentExchangeExt.getSourcePort(delegation).equals(sourcePort)) {
-        context.setVariable(ShowHideABComponentCategory.TARGET_PORTS, Collections.singletonList(ComponentExchangeExt.getTargetPort(delegation)));
+        context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
+            Collections.singletonList(ComponentExchangeExt.getTargetPort(delegation)));
       }
       if (ComponentExchangeExt.getTargetPort(delegation).equals(sourcePort)) {
-        context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS, Collections.singletonList(ComponentExchangeExt.getSourcePort(delegation)));
+        context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
+            Collections.singletonList(ComponentExchangeExt.getSourcePort(delegation)));
       }
 
       context.setVariable(ShowHideABComponent.SOURCE_PARTS, ComponentExchangeExt.getSourcePartsAndEntities(delegation));
@@ -2065,7 +2137,8 @@ public class ABServices {
    * @param key
    * @return
    */
-  protected Collection<ComponentExchange> getComponentExchangeDelegationsForCategory(ComponentPort port, ComponentExchangeCategory category) {
+  protected Collection<ComponentExchange> getComponentExchangeDelegationsForCategory(ComponentPort port,
+      ComponentExchangeCategory category) {
     Collection<ComponentExchange> result = new ArrayList<ComponentExchange>();
 
     if (port != null) {
@@ -2104,7 +2177,8 @@ public class ABServices {
     return Collections.emptyList();
   }
 
-  public Collection<ComponentExchange> getRelatedComponentExchanges(EObject sourcePart, EObject targetPart, ComponentExchangeCategory category) {
+  public Collection<ComponentExchange> getRelatedComponentExchanges(EObject sourcePart, EObject targetPart,
+      ComponentExchangeCategory category) {
     Collection<ComponentExchange> result = new ArrayList<ComponentExchange>();
 
     for (ComponentExchange element : getRelatedComponentExchanges(sourcePart)) {
@@ -2209,8 +2283,10 @@ public class ABServices {
         for (DDiagramElement elementView : ctx.getDiagramElements(key, edgeMapping)) {
           if (elementView instanceof DEdge) {
             DEdge ve = (DEdge) elementView;
-            DSemanticDecorator edgeSourcePartView = CsServices.getService().getRelatedPartView((DSemanticDecorator) ve.getSourceNode());
-            DSemanticDecorator edgeTargetPartView = CsServices.getService().getRelatedPartView((DSemanticDecorator) ve.getTargetNode());
+            DSemanticDecorator edgeSourcePartView = CsServices.getService().getRelatedPartView(
+                (DSemanticDecorator) ve.getSourceNode());
+            DSemanticDecorator edgeTargetPartView = CsServices.getService().getRelatedPartView(
+                (DSemanticDecorator) ve.getTargetNode());
             EObject edgeSourcePart = CsServices.getService().getRelatedPart((DSemanticDecorator) ve.getSourceNode());
             EObject edgeTargetPart = CsServices.getService().getRelatedPart((DSemanticDecorator) ve.getTargetNode());
 
@@ -2255,8 +2331,10 @@ public class ABServices {
         for (DDiagramElement elementView : ctx.getDiagramElements(key, edgeMapping)) {
           if (elementView instanceof DEdge) {
             DEdge ve = (DEdge) elementView;
-            DSemanticDecorator edgeSourcePartView = CsServices.getService().getRelatedPartView((DSemanticDecorator) ve.getSourceNode());
-            DSemanticDecorator edgeTargetPartView = CsServices.getService().getRelatedPartView((DSemanticDecorator) ve.getTargetNode());
+            DSemanticDecorator edgeSourcePartView = CsServices.getService().getRelatedPartView(
+                (DSemanticDecorator) ve.getSourceNode());
+            DSemanticDecorator edgeTargetPartView = CsServices.getService().getRelatedPartView(
+                (DSemanticDecorator) ve.getTargetNode());
             EObject edgeSourcePart = CsServices.getService().getRelatedPart((DSemanticDecorator) ve.getSourceNode());
             EObject edgeTargetPart = CsServices.getService().getRelatedPart((DSemanticDecorator) ve.getTargetNode());
 
@@ -2284,7 +2362,8 @@ public class ABServices {
     if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
-      Iterable<DDiagramElement> diagramElements = ctx.getDiagramElements(FaServices.getFaServices().getMappingABPhysicalLink(ctx.getDDiagram()));
+      Iterable<DDiagramElement> diagramElements = ctx.getDiagramElements(FaServices.getFaServices()
+          .getMappingABPhysicalLink(ctx.getDDiagram()));
       for (DDiagramElement element : diagramElements) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof PhysicalLink)) {
           values.addAll(((PhysicalLink) element.getTarget()).getCategories());
@@ -2306,7 +2385,8 @@ public class ABServices {
     if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
-      for (DDiagramElement element : ctx.getDiagramElements(FaServices.getFaServices().getMappingABConnection(ctx.getDDiagram()))) {
+      for (DDiagramElement element : ctx.getDiagramElements(FaServices.getFaServices().getMappingABConnection(
+          ctx.getDDiagram()))) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof ComponentExchange)) {
           values.addAll(((ComponentExchange) element.getTarget()).getCategories());
         }
@@ -2394,7 +2474,8 @@ public class ABServices {
     return Collections.singletonList(context);
   }
 
-  public boolean isABComponentCategoryPortIsA(EObject context, DSemanticDecorator containerView, ComponentPortKind kind, OrientationPortKind orientation) {
+  public boolean isABComponentCategoryPortIsA(EObject context, DSemanticDecorator containerView,
+      ComponentPortKind kind, OrientationPortKind orientation) {
     if ((containerView != null) && (containerView instanceof AbstractDNode)) {
       EObject sourcePart = CsServices.getService().getRelatedPart(containerView);
       // retrieve all CE for the related category
@@ -2466,8 +2547,8 @@ public class ABServices {
 
             if (unionParts.contains(sourcePart) && unionParts.contains(targetPart)) {
               if (exchange.isOriented()) {
-                if (!(ComponentExchangeExt.getSourcePartsAndEntities(exchange).contains(targetPart) && ComponentExchangeExt.getTargetPartsAndEntities(exchange)
-                    .contains(sourcePart))) {
+                if (!(ComponentExchangeExt.getSourcePartsAndEntities(exchange).contains(targetPart) && ComponentExchangeExt
+                    .getTargetPartsAndEntities(exchange).contains(sourcePart))) {
                   result = false;
                   break;
                 }
@@ -2514,8 +2595,8 @@ public class ABServices {
 
             if (unionParts.contains(sourcePart) && unionParts.contains(targetPart)) {
               if (exchange.isOriented()) {
-                if (!(ComponentExchangeExt.getSourcePartsAndEntities(exchange).contains(sourcePart) && ComponentExchangeExt.getTargetPartsAndEntities(exchange)
-                    .contains(targetPart))) {
+                if (!(ComponentExchangeExt.getSourcePartsAndEntities(exchange).contains(sourcePart) && ComponentExchangeExt
+                    .getTargetPartsAndEntities(exchange).contains(targetPart))) {
                   result = false;
                   break;
                 }
@@ -2551,8 +2632,8 @@ public class ABServices {
         }
         DEdge edge = (DEdge) element;
 
-        boolean isValidEdge = isValidABComponentCategoryEdge((ComponentExchangeCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(),
-            (DSemanticDecorator) edge.getTargetNode());
+        boolean isValidEdge = isValidABComponentCategoryEdge((ComponentExchangeCategory) element.getTarget(),
+            (DSemanticDecorator) edge.getSourceNode(), (DSemanticDecorator) edge.getTargetNode());
         if (!isValidEdge) {
           toRemoveEdges.add(edge);
         }
@@ -2659,8 +2740,8 @@ public class ABServices {
         }
         DEdge edge = (DEdge) element;
 
-        boolean isValidEdge = isValidABPhysicalCategoryEdge((PhysicalLinkCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(),
-            (DSemanticDecorator) edge.getTargetNode());
+        boolean isValidEdge = isValidABPhysicalCategoryEdge((PhysicalLinkCategory) element.getTarget(),
+            (DSemanticDecorator) edge.getSourceNode(), (DSemanticDecorator) edge.getTargetNode());
         if (!isValidEdge) {
           toRemoveEdges.add(edge);
         }
@@ -2770,7 +2851,8 @@ public class ABServices {
    * @param targetView
    * @return
    */
-  public EObject createABComponentPortAllocation(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public EObject createABComponentPortAllocation(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
     EObject sourceTarget = sourceView.getTarget();
     EObject targetTarget = targetView.getTarget();
 
@@ -2838,7 +2920,8 @@ public class ABServices {
     ComponentPortAllocationExt.attachToDefaultContainer(exchange);
 
     CapellaServices.getService().creationService(exchange);
-    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABComponentPortAllocation(diagram), nodeSource, nodeTarget, exchange);
+    DiagramServices.getDiagramServices().createEdge(
+        FaServices.getFaServices().getMappingABComponentPortAllocation(diagram), nodeSource, nodeTarget, exchange);
     return context;
   }
 
@@ -2851,16 +2934,20 @@ public class ABServices {
   public EdgeMapping getMappingABComponentCategory(DDiagram diagram) {
     String mappingName = null;
 
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAB_COMPONENT_CATEGORY_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_COMPONENT_CATEGORY_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_COMPONENT_CATEGORY_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_MAPPING_NAME;
     }
     return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
@@ -2874,13 +2961,16 @@ public class ABServices {
    */
   public EdgeMapping getMappingABPhysicalCategory(DDiagram diagram) {
     String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_PHYSICAL_CATEGORY_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_PHYSICAL_CATEGORY_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICAL_CATEGORY_MAPPING_NAME;
     }
     return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
@@ -2894,13 +2984,16 @@ public class ABServices {
    */
   public NodeMapping getMappingABComponentCategoryPin(DDiagram diagram) {
     String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
     }
     return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
@@ -2914,13 +3007,16 @@ public class ABServices {
    */
   public List<NodeMapping> getMappingABPhysicalCategoryPin(DDiagram diagram) {
     List<String> mappingNames = new ArrayList<String>();
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.SAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME);
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.LAB_PHYSICAL_CATEGORY_PIN_NAME);
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.PAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME);
     }
     return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingNames);
@@ -2934,13 +3030,16 @@ public class ABServices {
    */
   public NodeMapping getMappingABPhysicalCategoryPin(DDiagram diagram, EObject semantic) {
     String mappingName = null;
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_PHYSICAL_CATEGORY_PIN_NAME;
     }
-    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME;
     }
     return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);

@@ -26,6 +26,6 @@ Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.refmap,
  org.polarsys.capella.core.model.utils,
  org.polarsys.capella.core.model.utils.saxparser
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

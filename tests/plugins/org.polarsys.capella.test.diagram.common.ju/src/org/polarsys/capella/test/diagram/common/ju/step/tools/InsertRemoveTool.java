@@ -15,42 +15,49 @@ import static org.junit.Assert.assertFalse;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
+import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.headless.ITransfertWizardResult;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper.ArgumentData;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
-
 
 public class InsertRemoveTool extends AbstractToolStep {
 
   boolean initialized = false;
 
-  String[] toInsert;
-  String[] toRemove;
-  String[] insertedElements;
-  String[] removedElements;
+  protected String container;
+  protected String[] toInsert;
+  protected String[] toRemove;
+  protected String[] insertedElements;
+  protected String[] removedElements;
 
   public InsertRemoveTool(DiagramContext context, String toolName) {
     super(context, toolName);
   }
 
-  protected void initialize(String[] toInsert_p, String[] toRemove_p, String[] insertedElements_p, String[] removedElements_p) {
-    toInsert = toInsert_p;
+  public InsertRemoveTool(DiagramContext context, String toolName, String container) {
+    super(context, toolName);
+    this.container = container;
+  }
+
+  protected void initialize(String[] toInsert, String[] toRemove, String[] insertedElements, String[] removedElements) {
+    this.toInsert = toInsert;
     if (toInsert == null) {
-      toInsert = new String[0];
+      this.toInsert = new String[0];
     }
-    toRemove = toRemove_p;
+    this.toRemove = toRemove;
     if (toRemove == null) {
-      toRemove = new String[0];
+      this.toRemove = new String[0];
     }
-    insertedElements = insertedElements_p;
+    this.insertedElements = insertedElements;
     if (insertedElements == null) {
-      insertedElements = new String[0];
+      this.insertedElements = new String[0];
     }
-    removedElements = removedElements_p;
+    this.removedElements = removedElements;
     if (removedElements == null) {
-      removedElements = new String[0];
+      this.removedElements = new String[0];
     }
     initialized = true;
   }
@@ -63,28 +70,28 @@ public class InsertRemoveTool extends AbstractToolStep {
     return super.run();
   }
 
-  public void insert(String... toInsert_p) {
-    initialize(toInsert_p, null, toInsert_p, null);
+  public void insert(String... toInsert) {
+    initialize(toInsert, null, toInsert, null);
     run();
   }
 
-  public void insert(String[] toInsert_p, String[] insertedElements_p, String[] removedElements_p) {
-    initialize(toInsert_p, null, insertedElements_p, removedElements_p);
+  public void insert(String[] toInsert, String[] insertedElements, String[] removedElements) {
+    initialize(toInsert, null, insertedElements, removedElements);
     run();
   }
 
-  public void remove(String... toRemove_p) {
-    initialize(null, toRemove_p, null, toRemove_p);
+  public void remove(String... toRemove) {
+    initialize(null, toRemove, null, toRemove);
     run();
   }
 
-  public void remove(String[] toRemove_p, String[] insertedElements_p, String[] removedElements_p) {
-    initialize(null, toRemove_p, insertedElements_p, removedElements_p);
+  public void remove(String[] toRemove, String[] insertedElements, String[] removedElements) {
+    initialize(null, toRemove, insertedElements, removedElements);
     run();
   }
 
-  public void insertRemove(String[] toInsert_p, String[] toRemove_p, String[] insertedElements_p, String[] removedElements_p) {
-    initialize(null, toRemove_p, insertedElements_p, removedElements_p);
+  public void insertRemove(String[] toInsert, String[] toRemove, String[] insertedElements, String[] removedElements) {
+    initialize(null, toRemove, insertedElements, removedElements);
     run();
   }
 
@@ -93,17 +100,22 @@ public class InsertRemoveTool extends AbstractToolStep {
    */
   @Override
   protected void preRunTest() {
-    ITransfertWizardResult op = new ITransfertWizardResult() {
+    HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
+    super.preRunTest();
+  }
+
+  /**
+   * @return
+   */
+  protected IHeadlessResult createOperation() {
+    return new ITransfertWizardResult() {
 
       @Override
       @SuppressWarnings({ "unchecked", "synthetic-access", "rawtypes" })
-      public Object getResult(java.util.Collection<? extends EObject> selections_p, Map<String, Object> parameters_p) {
+      public Object getResult(java.util.Collection<? extends EObject> selections, Map<String, Object> parameters) {
         return getExecutionContext().getSemanticElements(insertedElements);
       }
     };
-
-    HeadlessResultOpProvider.INSTANCE.setCurrentOp(op);
-    super.preRunTest();
   }
 
   /**
@@ -111,8 +123,19 @@ public class InsertRemoveTool extends AbstractToolStep {
    */
   @Override
   protected void initToolArguments() {
-    DDiagram container = getExecutionContext().getDiagram();
-    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, container);
+    DSemanticDecorator containerView = (DSemanticDecorator) getExecutionContext().getDiagram();
+    if (this.container != null) {
+      containerView = getExecutionContext().getView(this.container);
+    }
+
+    for (ArgumentData data : _toolWrapper.getArgumentTypes()) {
+      if (data.getType().equals(ArgumentType.CONTAINER)) {
+        _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
+      }
+      if (data.getType().equals(ArgumentType.CONTAINER_VIEW)) {
+        _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
+      }
+    }
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -50,29 +51,29 @@ public class CollectionExt {
    * @param context a Capella Element
    * @return all the collections contained in the current and previous architectures
    */
-  public static java.util.Collection<Collection> getAllCollections(EObject context_p) {
+  public static java.util.Collection<Collection> getAllCollections(EObject context) {
     // OLD CODE
     java.util.Collection<Collection> returnedCollections = new ArrayList<Collection>();
-    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context_p)) {
+    for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures(context)) {
       for (EObject aCollection : EObjectExt.getAll(aBlockArchitecture, InformationPackage.Literals.COLLECTION)) {
         returnedCollections.add((Collection) aCollection);
       }
     }
     // NEW CODE
-    returnedCollections = (List) QueryDebugger.executeQueryWithEqualityDebug(QueryIdentifierConstants.GET_ALL_COLLECTIONS, context_p, returnedCollections);
+    returnedCollections = (List) QueryDebugger.executeQueryWithEqualityDebug(QueryIdentifierConstants.GET_ALL_COLLECTIONS, context, returnedCollections);
     // END CODE REFACTOR
     return returnedCollections;
   }
 
   /**
    * Gets all types for a collection
-   * @param collection_p the collection
+   * @param collection the collection
    * @return list of all the available types (from DataPkg) and Interfaces
    */
-  static public List<CapellaElement> getAllTypes(Collection collection_p) {
+  static public List<CapellaElement> getAllTypes(Collection collection) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != collection_p) {
-      Structure structure = (Structure) collection_p.eContainer();
+    if (null != collection) {
+      Structure structure = (Structure) collection.eContainer();
 
       if (structure != null) {
         BlockArchitecture arch = StructureExt.getRootBlockArchitecture(structure);
@@ -92,7 +93,7 @@ public class CollectionExt {
           }
         }
         // ComponentArchitecture is null; Get the SystemEngineering
-        SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(collection_p);
+        SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(collection);
 
         // FIXME : update to SystemAnalysis
         SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
@@ -111,15 +112,20 @@ public class CollectionExt {
   /**
    * @see #getCollectionDependencies(Collection)
    */
-  public static Map<AbstractDependenciesPkg, java.util.Collection<EObject>> getCollectionDependencies2(Collection collection_p) {
+  public static Map<AbstractDependenciesPkg, java.util.Collection<EObject>> getCollectionDependencies2(Collection collection) {
 
     Map<AbstractDependenciesPkg, java.util.Collection<EObject>> result = new HashMap<AbstractDependenciesPkg, java.util.Collection<EObject>>();
 
     // type of collection
-    AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, collection_p.getType());
+    AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, collection.getType());
+
+    // index of collection
+    for (DataType dataType : collection.getIndex()) {
+      AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, dataType);
+    }
 
     // superCollections
-    for (Generalization aGeneralization : collection_p.getSuperGeneralizations()) {
+    for (Generalization aGeneralization : collection.getSuperGeneralizations()) {
       AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, aGeneralization.getSuper());
     }
 
@@ -127,21 +133,21 @@ public class CollectionExt {
   }
 
   /**
-   * @param collection_p
+   * @param collection
    * @return all dependent packages of the collection
    */
-  public static java.util.Collection<AbstractDependenciesPkg> getCollectionDependencies(Collection collection_p) {
-    return getCollectionDependencies2(collection_p).keySet();
+  public static java.util.Collection<AbstractDependenciesPkg> getCollectionDependencies(Collection collection) {
+    return getCollectionDependencies2(collection).keySet();
   }
 
   /**
-   * @param structure_p
+   * @param structure
    * @return
    */
-  static public DataPkg getDataPkg(Structure structure_p) {
+  static public DataPkg getDataPkg(Structure structure) {
     DataPkg dataPkg = null;
-    if (null != structure_p) {
-      Object container = structure_p.eContainer();
+    if (null != structure) {
+      Object container = structure.eContainer();
       if (container instanceof DataPkg) {
         dataPkg = (DataPkg) container;
       } else if (container instanceof Structure) {
@@ -154,13 +160,13 @@ public class CollectionExt {
   /**
    * Gets all the DataPkgs from the Parent Hierarchy of the root component/component architecture of the current collection according to layer visibility and
    * multiple decomposition rules
-   * @param collection_p the collection
+   * @param collection the collection
    * @return list of DataPkgs
    */
-  static public List<DataPkg> getDataPkgsFromParentHierarchy(Collection collection_p) {
+  static public List<DataPkg> getDataPkgsFromParentHierarchy(Collection collection) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    if (null != collection_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(collection_p);
+    if (null != collection) {
+      BlockArchitecture compArch = getRootBlockArchitecture(collection);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -172,7 +178,7 @@ public class CollectionExt {
         }
         list.addAll(DataPkgExt.getDataPkgsFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(collection_p);
+      Component parentComp = getRootComponent(collection);
       if (null != parentComp) {
         if (parentComp instanceof LogicalComponent) {
           DataPkg dataPkg = ((LogicalComponent) parentComp).getOwnedDataPkg();
@@ -189,13 +195,13 @@ public class CollectionExt {
   /**
    * Gets all the Interfaces from the Parent Hierarchy of the root component/component architecture of the current operation according to layer visibility and
    * multiple decomposition rules
-   * @param collection_p the collection
+   * @param collection the collection
    * @return list of Interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromParentHierarchy(Collection collection_p) {
+  static public List<Interface> getOwnedInterfacesFromParentHierarchy(Collection collection) {
     List<Interface> list = new ArrayList<Interface>(1);
-    if (null != collection_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(collection_p);
+    if (null != collection) {
+      BlockArchitecture compArch = getRootBlockArchitecture(collection);
       if (null != compArch) {
         list.addAll(InterfacePkgExt.getAllInterfaces(compArch.getOwnedInterfacePkg()));
         // Layer visibility is there
@@ -204,7 +210,7 @@ public class CollectionExt {
         }
         list.addAll(InterfacePkgExt.getOwnedInterfacesFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(collection_p);
+      Component parentComp = getRootComponent(collection);
       if (null != parentComp) {
         if (parentComp instanceof LogicalComponent) {
           list.addAll(InterfacePkgExt.getAllInterfaces(((LogicalComponent) parentComp).getOwnedInterfacePkg()));
@@ -216,13 +222,13 @@ public class CollectionExt {
   }
 
   /**
-   * @param modelElement_p : any 'ModelElement'
+   * @param modelElement : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
-  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement_p) {
+  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
     BlockArchitecture arch = null;
-    if (modelElement_p != null) {
-      EObject container = modelElement_p.eContainer();
+    if (modelElement != null) {
+      EObject container = modelElement.eContainer();
       if (container instanceof BlockArchitecture) {
         return (BlockArchitecture) container;
       } else if (container instanceof Component) {
@@ -242,13 +248,13 @@ public class CollectionExt {
   }
 
   /**
-   * @param collection_p
+   * @param collection
    * @return
    */
-  public static Component getRootComponent(Collection collection_p) {
+  public static Component getRootComponent(Collection collection) {
     Component comp = null;
-    if (null != collection_p) {
-      Structure structure = (Structure) collection_p.eContainer();
+    if (null != collection) {
+      Structure structure = (Structure) collection.eContainer();
       if (null != structure) {
         comp = StructureExt.getRootComponent(structure);
       }
@@ -257,13 +263,13 @@ public class CollectionExt {
   }
 
   /**
-   * @param collection_p
+   * @param collection
    * @return
    */
-  public static ComponentArchitecture getRootComponentArchitecture(Collection collection_p) {
+  public static ComponentArchitecture getRootComponentArchitecture(Collection collection) {
     ComponentArchitecture arch = null;
-    if (null != collection_p) {
-      Structure structure = (Structure) collection_p.eContainer();
+    if (null != collection) {
+      Structure structure = (Structure) collection.eContainer();
       if (null != structure) {
         arch = StructureExt.getRootComponentArchitecture(structure);
       }
@@ -272,13 +278,13 @@ public class CollectionExt {
   }
 
   /**
-   * @param collection_p
+   * @param collection
    * @return
    */
-  static public DataPkg getRootDataPkg(Collection collection_p) {
+  static public DataPkg getRootDataPkg(Collection collection) {
     DataPkg dataPkg = null;
-    if (null != collection_p) {
-      Object container = collection_p.eContainer();
+    if (null != collection) {
+      Object container = collection.eContainer();
       if (container instanceof DataPkg) {
         dataPkg = (DataPkg) container;
       } else if (container instanceof Structure) {

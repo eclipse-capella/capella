@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,13 +29,13 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
   private Text _itemIdentifierField;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public ConfigurationItemIdGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(widgetFactory_p);
+  public ConfigurationItemIdGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(widgetFactory);
 
-    Group textGroup = widgetFactory_p.createGroup(parent_p, ""); //$NON-NLS-1$
+    Group textGroup = widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -45,11 +45,11 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createConfigurationItemIdTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("ConfigurationItemIdentifier.Label")); //$NON-NLS-1$
-    _itemIdentifierField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
+  private void createConfigurationItemIdTextField(Group textGroup) {
+    _widgetFactory.createCLabel(textGroup, Messages.getString("ConfigurationItemIdentifier.Label")); //$NON-NLS-1$
+    _itemIdentifierField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
     _itemIdentifierField.addFocusListener(this);
     _itemIdentifierField.addKeyListener(this);
     _itemIdentifierField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -59,8 +59,8 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, null);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, null);
 
     if (null != _semanticElement) {
       if (null != _itemIdentifierField)
@@ -69,11 +69,11 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField text field to be filled
    */
   @Override
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(_itemIdentifierField)) {
+  protected void fillTextField(Text textField) {
+    if (textField.equals(_itemIdentifierField)) {
       setDataValue(_semanticElement, EpbsPackage.eINSTANCE.getConfigurationItem_ItemIdentifier(), _itemIdentifierField.getText());
     }
   }
@@ -82,9 +82,9 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != _itemIdentifierField && !_itemIdentifierField.isDisposed()) {
-      _itemIdentifierField.setEnabled(enabled_p);
+      _itemIdentifierField.setEnabled(enabled);
     }
   }
 }

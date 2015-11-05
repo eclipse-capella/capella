@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,24 +33,24 @@ public class StringTypeController extends AbstractSimpleEditableSemanticFieldCon
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
     DataValue ref = null;
     if (value instanceof Property) {
-      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedProperty(), value);
     }
     else if (value instanceof NumericValue) {
-      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue(), value);
     }
     else if (value instanceof AbstractStringValue) {
-      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue(), value);
-      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement_p);
+      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
 
     if (ref != null) {
-      semanticElement_p.eSet(semanticFeature_p, ref);
+      semanticElement.eSet(semanticFeature, ref);
       return ref;
     }
 
@@ -60,25 +60,25 @@ public class StringTypeController extends AbstractSimpleEditableSemanticFieldCon
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
    */
-  public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-    if (semanticElement_p != null) {
-      DataValue currentValue = (DataValue) semanticElement_p.eGet(semanticFeature_p);
+  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+    if (semanticElement != null) {
+      DataValue currentValue = (DataValue) semanticElement.eGet(semanticFeature);
       if (currentValue != null) {
         editValueWizard(currentValue);
       } else {
         DataValue newValue = null;
-        if (semanticFeature_p.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_MIN_LENGTH)
-         || semanticFeature_p.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_MAX_LENGTH))
+        if (semanticFeature.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_MIN_LENGTH)
+         || semanticFeature.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_MAX_LENGTH))
         {
-          newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName_p);
+          newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName);
         }
-        else if (semanticFeature_p.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_NULL_VALUE)
-              || semanticFeature_p.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_DEFAULT_VALUE))
+        else if (semanticFeature.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_NULL_VALUE)
+              || semanticFeature.equals(DatatypePackage.Literals.STRING_TYPE__OWNED_DEFAULT_VALUE))
         {
-          newValue = DatavalueFactory.eINSTANCE.createLiteralStringValue(defaultName_p);
-          newValue.setAbstractType((StringType) semanticElement_p);
+          newValue = DatavalueFactory.eINSTANCE.createLiteralStringValue(defaultName);
+          newValue.setAbstractType((StringType) semanticElement);
         }
-        semanticElement_p.eSet(semanticFeature_p, newValue);
+        semanticElement.eSet(semanticFeature, newValue);
         if (editValueWizard(newValue)) {
           currentValue = newValue;
         } else {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,9 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class FunctionalExchangeSection extends NamedElementSection {
 
-  private MultipleSemanticField _exchangedItemsField;
-  private MultipleSemanticField _categoriesField;
-  private MultipleSemanticField _realizedExchangesField;
+  private MultipleSemanticField exchangedItemsField;
+  private MultipleSemanticField categoriesField;
+  private MultipleSemanticField realizedExchangesField;
 
   /**
    * {@inheritDoc}
@@ -45,43 +45,43 @@ public class FunctionalExchangeSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _exchangedItemsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalExchangeSection_ExchangedItems_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
+    exchangedItemsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalExchangeSection_ExchangedItems_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
       /**
        * {@inheritDoc}
        */
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), FaPackage.eINSTANCE.getFunctionalExchange_ExchangedItems());
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getFunctionalExchange_ExchangedItems());
       }
     });
-    _exchangedItemsField.setDisplayedInWizard(displayedInWizard);
+    exchangedItemsField.setDisplayedInWizard(displayedInWizard);
 
-    _categoriesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalExchangeSection_Categories_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
+    categoriesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalExchangeSection_Categories_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
       /**
        * {@inheritDoc}
        */
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), FaPackage.eINSTANCE.getFunctionalExchange_Categories());
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getFunctionalExchange_Categories());
       }
     });
-    _categoriesField.setDisplayedInWizard(displayedInWizard);
+    categoriesField.setDisplayedInWizard(displayedInWizard);
 
-    _realizedExchangesField = new MultipleSemanticField(getReferencesGroup(),
+    realizedExchangesField = new MultipleSemanticField(getReferencesGroup(),
         Messages.FunctionalExchangeSection_RealizedExchanges_Label, getWidgetFactory(), new FunctionalExchange_RealizedExchangesController());
-    _realizedExchangesField.setDisplayedInWizard(displayedInWizard);
+    realizedExchangesField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _exchangedItemsField.loadData(capellaElement_p, FaPackage.eINSTANCE.getFunctionalExchange_ExchangedItems());
-    _categoriesField.loadData(capellaElement_p, FaPackage.eINSTANCE.getFunctionalExchange_Categories());
-    _realizedExchangesField.loadData(capellaElement_p, FaPackage.eINSTANCE.getFunctionalExchange_OwnedFunctionalExchangeRealizations());
+    exchangedItemsField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalExchange_ExchangedItems());
+    categoriesField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalExchange_Categories());
+    realizedExchangesField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalExchange_OwnedFunctionalExchangeRealizations());
   }
 
   /**
@@ -101,9 +101,9 @@ public class FunctionalExchangeSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_categoriesField);
-    fields.add(_exchangedItemsField);
-    fields.add(_realizedExchangesField);
+    fields.add(categoriesField);
+    fields.add(exchangedItemsField);
+    fields.add(realizedExchangesField);
 
     return fields;
   }

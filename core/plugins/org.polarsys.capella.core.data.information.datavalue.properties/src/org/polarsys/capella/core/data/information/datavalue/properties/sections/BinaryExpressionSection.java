@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,10 +53,10 @@ public class BinaryExpressionSection extends DataValueSection {
        * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
        */
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        super.widgetSelected(event_p);
+      public void widgetSelected(SelectionEvent event) {
+        super.widgetSelected(event);
 
-        evaluateTextStatus((BinaryOperator) ((Button) event_p.getSource()).getData());
+        evaluateTextStatus((BinaryOperator) ((Button) event.getSource()).getData());
       }
     };
     operatorGroup.setDisplayedInWizard(displayedInWizard);
@@ -86,23 +86,23 @@ public class BinaryExpressionSection extends DataValueSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    unitField.loadData(capellaElement_p, DatavaluePackage.eINSTANCE.getNumericValue_Unit());
-    operatorGroup.loadData(capellaElement_p, DatavaluePackage.eINSTANCE.getBinaryExpression_Operator());
-    leftOperandWidget.loadData(capellaElement_p, DatavaluePackage.Literals.BINARY_EXPRESSION__OWNED_LEFT_OPERAND);
-    rightOperandWidget.loadData(capellaElement_p, DatavaluePackage.Literals.BINARY_EXPRESSION__OWNED_RIGHT_OPERAND);
-    unparsedExpressionField.loadData(capellaElement_p);
+    unitField.loadData(capellaElement, DatavaluePackage.eINSTANCE.getNumericValue_Unit());
+    operatorGroup.loadData(capellaElement, DatavaluePackage.eINSTANCE.getBinaryExpression_Operator());
+    leftOperandWidget.loadData(capellaElement, DatavaluePackage.Literals.BINARY_EXPRESSION__OWNED_LEFT_OPERAND);
+    rightOperandWidget.loadData(capellaElement, DatavaluePackage.Literals.BINARY_EXPRESSION__OWNED_RIGHT_OPERAND);
+    unparsedExpressionField.loadData(capellaElement);
 
-    evaluateTextStatus(((BinaryExpression) capellaElement_p).getOperator());
+    evaluateTextStatus(((BinaryExpression) capellaElement).getOperator());
   }
 
   /**
-   * @param expression_p
+   * @param expression
    */
-  protected void evaluateTextStatus(BinaryOperator operator_p) {
-    if (BinaryOperator.UNSET.equals(operator_p)) {
+  protected void evaluateTextStatus(BinaryOperator operator) {
+    if (BinaryOperator.UNSET.equals(operator)) {
       unparsedExpressionField.setEnabled(true);
     } else {
       unparsedExpressionField.setEnabled(false);

@@ -65,6 +65,23 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
   }
   
   /**
+   * Return a label for the given RGBValues element
+   * @param element_p a non-null RGBValues element
+   * @return a non-null string
+   */
+  protected String getRGBValuesText(RGBValues element_p) {
+    StringBuilder builder = new StringBuilder();
+    builder.append('(');
+    builder.append(element_p.getRed());
+    builder.append(',');
+    builder.append(element_p.getGreen());
+    builder.append(',');
+    builder.append(element_p.getBlue());
+    builder.append(')');
+    return builder.toString();
+  }
+  
+  /**
    * @see org.eclipse.emf.diffmerge.ui.util.DiffMergeLabelProvider#getText(java.lang.Object)
    */
   @Override
@@ -95,7 +112,7 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
         element_p instanceof BasicLabelStyle) {
       result = getManyQualifiedElementText((EObject)element_p);
     } else if (element_p instanceof RGBValues) {
-      result = getContainmentText((EObject)element_p);
+      result = getRGBValuesText((RGBValues)element_p);
     }
     if (result == null)
       result = super.getText(element_p);

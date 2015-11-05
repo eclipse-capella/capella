@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,10 +53,10 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
    */
   @Override
-  public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    List<EObject> list = super.readOpenValues(semanticElement_p, semanticFeature_p);
+  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    List<EObject> list = super.readOpenValues(semanticElement, semanticFeature);
 
-    AbstractType abstractType = ((AbstractTypedElement) semanticElement_p).getAbstractType();
+    AbstractType abstractType = ((AbstractTypedElement) semanticElement).getAbstractType();
     if (abstractType instanceof Enumeration) {
       Enumeration enumer = (Enumeration) abstractType;
       EList<EnumerationLiteral> ownedLiterals = enumer.getOwnedLiterals();
@@ -66,25 +66,25 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
     } else {
       IBusinessQuery query =
           BusinessQueriesProvider.getInstance()
-              .getContribution(semanticElement_p.eClass(), ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+              .getContribution(semanticElement.eClass(), ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
       if (query != null) {
-        List<CapellaElement> availableElements = query.getAvailableElements(semanticElement_p);
+        List<CapellaElement> availableElements = query.getAvailableElements(semanticElement);
         for (CapellaElement capellaElement : availableElements) {
           if (capellaElement instanceof AbstractType) {
             if (capellaElement instanceof Classifier) {
               EList<Feature> ownedFeatures = ((Classifier) capellaElement).getOwnedFeatures();
               for (Feature feature : ownedFeatures) {
                 if (feature instanceof Property) {
-                  if (semanticElement_p instanceof TypedElement) {
-                    AbstractType abstractType2 = ((TypedElement) semanticElement_p).getAbstractType();
+                  if (semanticElement instanceof TypedElement) {
+                    AbstractType abstractType2 = ((TypedElement) semanticElement).getAbstractType();
                     AbstractType abstractType3 = ((Property) feature).getAbstractType();
                     if (abstractType2 != null && abstractType3 != null) {
-                      if (abstractType2.eClass().equals(abstractType3.eClass()) && !feature.equals(semanticElement_p)) {
+                      if (abstractType2.eClass().equals(abstractType3.eClass()) && !feature.equals(semanticElement)) {
                         list.add(feature);
                       }
                     }
                   } else {
-                    if (!feature.equals(semanticElement_p))
+                    if (!feature.equals(semanticElement))
                       list.add(feature);
                   }
                 }
@@ -101,28 +101,28 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
     DataValue ref = null;
     if (value instanceof Property) {
       AbstractType abstractType = ((Property) value).getAbstractType();
       if (abstractType instanceof Class) {
-        ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+        ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
         ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedProperty(), value);
         ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
       } else if (abstractType instanceof BooleanType) {
-        ref = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName_p);
+        ref = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName);
         ref.eSet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedProperty(), value);
         ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
       } else if (abstractType instanceof NumericType) {
-        ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+        ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
         ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedProperty(), value);
         ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
       } else if (abstractType instanceof PhysicalQuantity) {
-        ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+        ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
         ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedProperty(), value);
         ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
       } else if (abstractType instanceof StringType) {
-        ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName_p);
+        ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName);
         ref.eSet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedProperty(), value);
         ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
       }
@@ -131,21 +131,21 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
       ref.eSet(DatavaluePackage.eINSTANCE.getEnumerationReference_ReferencedValue(), value);
       ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
     } else if (value instanceof AbstractBooleanValue) {
-      ref = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue(), value);
       ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
     } else if (value instanceof NumericValue) {
-      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue(), value);
       ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
     } else if (value instanceof AbstractStringValue) {
-      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue(), value);
       ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
     }
 
     if (ref != null) {
-      semanticElement_p.eSet(semanticFeature_p, ref);
+      semanticElement.eSet(semanticFeature, ref);
       return ref;
     }
 
@@ -155,32 +155,32 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
    */
-  public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-    if (semanticElement_p instanceof MultiplicityElement && semanticElement_p instanceof AbstractTypedElement) {
-      DataValue currentValue = (DataValue) semanticElement_p.eGet(semanticFeature_p);
+  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+    if (semanticElement instanceof MultiplicityElement && semanticElement instanceof AbstractTypedElement) {
+      DataValue currentValue = (DataValue) semanticElement.eGet(semanticFeature);
       if (currentValue != null) {
         editValueWizard(currentValue);
       } else {
         DataValue newValue = null;
-        AbstractType abstractType = ((AbstractTypedElement) semanticElement_p).getAbstractType();
+        AbstractType abstractType = ((AbstractTypedElement) semanticElement).getAbstractType();
         if (abstractType instanceof StringType) {
-          newValue = DatavalueFactory.eINSTANCE.createLiteralStringValue(defaultName_p);
+          newValue = DatavalueFactory.eINSTANCE.createLiteralStringValue(defaultName);
         } else if (abstractType instanceof BooleanType) {
-          newValue = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName_p);
+          newValue = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName);
         } else if (abstractType instanceof Enumeration) {
-          newValue = DatavalueFactory.eINSTANCE.createEnumerationReference(defaultName_p);
+          newValue = DatavalueFactory.eINSTANCE.createEnumerationReference(defaultName);
         } else if (abstractType instanceof NumericType) {
-          newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName_p);
+          newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName);
         } else if (abstractType instanceof PhysicalQuantity) {
-          newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName_p);
+          newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName);
         } else if (abstractType instanceof Union) {
-          newValue = DatavalueFactory.eINSTANCE.createComplexValue(defaultName_p);
+          newValue = DatavalueFactory.eINSTANCE.createComplexValue(defaultName);
         }
 
         if ((newValue != null) && (abstractType != null)) {
           newValue.setAbstractType(abstractType);
           
-          semanticElement_p.eSet(semanticFeature_p, newValue);
+          semanticElement.eSet(semanticFeature, newValue);
           if (editValueWizard(newValue)) {
             currentValue = newValue;
           } else {

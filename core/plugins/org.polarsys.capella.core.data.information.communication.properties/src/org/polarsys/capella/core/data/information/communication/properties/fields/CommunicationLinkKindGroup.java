@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,11 +38,11 @@ public class CommunicationLinkKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public CommunicationLinkKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("CommunicationLinkKind.Label"), 5); //$NON-NLS-1$
+  public CommunicationLinkKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory, Messages.getString("CommunicationLinkKind.Label"), 5); //$NON-NLS-1$
 
     _communicationLinkBtnSend = createButton(CommunicationLinkKind.SEND);
     _communicationLinkBtnProduce = createButton(CommunicationLinkKind.PRODUCE);
@@ -57,11 +57,11 @@ public class CommunicationLinkKindGroup extends AbstractSemanticKindGroup {
   }
 
   /**
-   * @param exchangeMechanism_p
+   * @param exchangeMechanism
    */
-  public void synchronizeKindsStatus(ExchangeMechanism exchangeMechanism_p) {
-    if (exchangeMechanism_p != null) {
-      switch (exchangeMechanism_p.getValue()) {
+  public void synchronizeKindsStatus(ExchangeMechanism exchangeMechanism) {
+    if (exchangeMechanism != null) {
+      switch (exchangeMechanism.getValue()) {
         case ExchangeMechanism.FLOW_VALUE:
           enableFlowKinds(true);
           enableEventKinds(false);
@@ -109,43 +109,43 @@ public class CommunicationLinkKindGroup extends AbstractSemanticKindGroup {
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableFlowKinds(boolean enabled_p) {
-    enableButton(_communicationLinkBtnProduce, enabled_p);
-    enableButton(_communicationLinkBtnConsume, enabled_p);
+  protected void enableFlowKinds(boolean enabled) {
+    enableButton(_communicationLinkBtnProduce, enabled);
+    enableButton(_communicationLinkBtnConsume, enabled);
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableEventKinds(boolean enabled_p) {
-    enableButton(_communicationLinkBtnSend, enabled_p);
-    enableButton(_communicationLinkBtnReceive, enabled_p);
+  protected void enableEventKinds(boolean enabled) {
+    enableButton(_communicationLinkBtnSend, enabled);
+    enableButton(_communicationLinkBtnReceive, enabled);
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableOperationKinds(boolean enabled_p) {
-    enableButton(_communicationLinkBtnCall, enabled_p);
-    enableButton(_communicationLinkBtnExecute, enabled_p);
+  protected void enableOperationKinds(boolean enabled) {
+    enableButton(_communicationLinkBtnCall, enabled);
+    enableButton(_communicationLinkBtnExecute, enabled);
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableSharedDataKinds(boolean enabled_p) {
-    enableButton(_communicationLinkBtnWrite, enabled_p);
-    enableButton(_communicationLinkBtnAccess, enabled_p);
+  protected void enableSharedDataKinds(boolean enabled) {
+    enableButton(_communicationLinkBtnWrite, enabled);
+    enableButton(_communicationLinkBtnAccess, enabled);
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableUnsetKinds(boolean enabled_p) {
-    enableButton(_communicationLinkBtnAcquire, enabled_p);
-    enableButton(_communicationLinkBtnTransmit, enabled_p);
+  protected void enableUnsetKinds(boolean enabled) {
+    enableButton(_communicationLinkBtnAcquire, enabled);
+    enableButton(_communicationLinkBtnTransmit, enabled);
   }
 
   /**

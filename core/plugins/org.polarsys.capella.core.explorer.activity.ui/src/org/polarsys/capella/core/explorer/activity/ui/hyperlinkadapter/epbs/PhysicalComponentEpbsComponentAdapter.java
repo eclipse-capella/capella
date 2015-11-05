@@ -12,6 +12,7 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.epbs;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.PopupMenuLinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IMenuManager;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
@@ -27,11 +28,11 @@ public class PhysicalComponentEpbsComponentAdapter extends PopupMenuLinkAdapter 
 	@Override
 	protected void fillPopupMenu(IMenuManager menuManager) {
 
-		Project capellaProject = (Project)ActivityExplorerManager.INSTANCE.getRootSemanticModel();
-		ModelElement modelElement = ModelQueryHelper.getEPBSArchitecture(capellaProject);
-
-		menuManager.add(new PhysicalComponentEpbsComponentAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
-
+		EObject rootSemanticModel = ActivityExplorerManager.INSTANCE.getRootSemanticModel();
+		if(rootSemanticModel instanceof Project){
+		  Project capellaProject = (Project)rootSemanticModel;
+		  ModelElement modelElement = ModelQueryHelper.getEPBSArchitecture(capellaProject);
+		  menuManager.add(new PhysicalComponentEpbsComponentAction(modelElement, ActivityExplorerManager.INSTANCE.getSession()));
+		}
 	}
-
 }

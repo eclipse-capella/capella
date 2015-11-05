@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,9 +47,9 @@ public abstract class DataTypeSection extends NamedElementSection {
     this(true, true);
   }
 
-  public DataTypeSection(boolean showPatternField_p, boolean showInclusiveFields_p) {
-    _showPatternField = showPatternField_p;
-    _showInclusiveFields = showInclusiveFields_p;
+  public DataTypeSection(boolean showPatternField, boolean showInclusiveFields) {
+    _showPatternField = showPatternField;
+    _showInclusiveFields = showInclusiveFields;
   }
 
   /**
@@ -83,16 +83,16 @@ public abstract class DataTypeSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _dataTypeComposite) {
-      _dataTypeComposite.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getDataType_Pattern());
+      _dataTypeComposite.loadData(capellaElement, DatatypePackage.eINSTANCE.getDataType_Pattern());
     }
-    _dataTypeBooleanPropertiesCheckbox.loadData(capellaElement_p);
-    _superTypeWidget.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(), CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
-    _realizedInformationWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getDataType_OwnedInformationRealizations());
-    _visibilityKindGroup.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getDataType_Visibility());
+    _dataTypeBooleanPropertiesCheckbox.loadData(capellaElement);
+    _superTypeWidget.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(), CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
+    _realizedInformationWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getDataType_OwnedInformationRealizations());
+    _visibilityKindGroup.loadData(capellaElement, DatatypePackage.eINSTANCE.getDataType_Visibility());
   }
 
   /**

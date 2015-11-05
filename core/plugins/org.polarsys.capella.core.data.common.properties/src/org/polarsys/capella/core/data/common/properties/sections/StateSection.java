@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,9 +69,9 @@ public class StateSection extends AbstractStateSection {
            */
           @SuppressWarnings("unchecked")
           @Override
-          protected void removeAllDataValue(EObject object_p, EStructuralFeature feature_p) {
-            for (EObject referencer : EObjectExt.getReferencers(object_p, (EReference) feature_p)) {
-              ((List<EObject>) referencer.eGet(feature_p)).remove(object_p);
+          protected void removeAllDataValue(EObject object, EStructuralFeature feature) {
+            for (EObject referencer : EObjectExt.getReferencers(object, (EReference) feature)) {
+              ((List<EObject>) referencer.eGet(feature)).remove(object);
             }
           }
         };
@@ -83,14 +83,14 @@ public class StateSection extends AbstractStateSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    activityField.loadData(capellaElement_p, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
-    entryField.loadData(capellaElement_p, CapellacommonPackage.Literals.STATE__ENTRY);
-    exitField.loadData(capellaElement_p, CapellacommonPackage.Literals.STATE__EXIT);
+    activityField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
+    entryField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__ENTRY);
+    exitField.loadData(capellaElement, CapellacommonPackage.Literals.STATE__EXIT);
 
-    functionsField.loadData(capellaElement_p, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
+    functionsField.loadData(capellaElement, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
   }
 
   /**

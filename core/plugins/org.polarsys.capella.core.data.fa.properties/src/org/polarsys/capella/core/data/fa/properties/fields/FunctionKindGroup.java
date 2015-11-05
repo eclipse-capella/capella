@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,28 +24,28 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticKindGroup;
 /**
  */
 public class FunctionKindGroup extends AbstractSemanticKindGroup {
-  private Button _componentExchangeKindBtnDuplicate;
-  private Button _componentExchangeKindBtnFunction;
-  private Button _componentExchangeKindBtnGather;
-  private Button _componentExchangeKindBtnRoute;
-  private Button _componentExchangeKindBtnSelect;
-  private Button _componentExchangeKindBtnSplit;
+  private Button componentExchangeKindBtnDuplicate;
+  private Button componentExchangeKindBtnFunction;
+  private Button componentExchangeKindBtnGather;
+  private Button componentExchangeKindBtnRoute;
+  private Button componentExchangeKindBtnSelect;
+  private Button componentExchangeKindBtnSplit;
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public FunctionKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("FunctionKind.Label"), 6); //$NON-NLS-1$
+  public FunctionKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("FunctionKind.Label"), 6); //$NON-NLS-1$
 
-    _componentExchangeKindBtnDuplicate = createButton(FunctionKind.DUPLICATE, enabled_p);
-    _componentExchangeKindBtnFunction = createButton(FunctionKind.FUNCTION, enabled_p);
-    _componentExchangeKindBtnGather = createButton(FunctionKind.GATHER, enabled_p);
-    _componentExchangeKindBtnRoute = createButton(FunctionKind.ROUTE, enabled_p);
-    _componentExchangeKindBtnSelect = createButton(FunctionKind.SELECT, enabled_p);
-    _componentExchangeKindBtnSplit = createButton(FunctionKind.SPLIT, enabled_p);
+    componentExchangeKindBtnDuplicate = createButton(FunctionKind.DUPLICATE, enabled);
+    componentExchangeKindBtnFunction = createButton(FunctionKind.FUNCTION, enabled);
+    componentExchangeKindBtnGather = createButton(FunctionKind.GATHER, enabled);
+    componentExchangeKindBtnRoute = createButton(FunctionKind.ROUTE, enabled);
+    componentExchangeKindBtnSelect = createButton(FunctionKind.SELECT, enabled);
+    componentExchangeKindBtnSplit = createButton(FunctionKind.SPLIT, enabled);
   }
 
   /**
@@ -55,12 +55,12 @@ public class FunctionKindGroup extends AbstractSemanticKindGroup {
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<Button>();
 
-    fields.add(_componentExchangeKindBtnDuplicate);
-    fields.add(_componentExchangeKindBtnFunction);
-    fields.add(_componentExchangeKindBtnGather);
-    fields.add(_componentExchangeKindBtnRoute);
-    fields.add(_componentExchangeKindBtnSelect);
-    fields.add(_componentExchangeKindBtnSplit);
+    fields.add(componentExchangeKindBtnDuplicate);
+    fields.add(componentExchangeKindBtnFunction);
+    fields.add(componentExchangeKindBtnGather);
+    fields.add(componentExchangeKindBtnRoute);
+    fields.add(componentExchangeKindBtnSelect);
+    fields.add(componentExchangeKindBtnSplit);
 
     return fields;
   }
@@ -70,6 +70,6 @@ public class FunctionKindGroup extends AbstractSemanticKindGroup {
    */
   @Override
   public Button getDefaultSemanticField() {
-    return _componentExchangeKindBtnFunction;
+    return componentExchangeKindBtnFunction;
   }
 }

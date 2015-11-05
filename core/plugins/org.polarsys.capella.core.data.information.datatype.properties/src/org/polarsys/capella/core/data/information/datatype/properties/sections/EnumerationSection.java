@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,8 +65,8 @@ public class EnumerationSection extends DataTypeSection {
        * {@inheritDoc}
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
         refresh();
       }
     };
@@ -87,8 +87,8 @@ public class EnumerationSection extends DataTypeSection {
        * {@inheritDoc}
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
         refresh();
       }
     };
@@ -109,8 +109,8 @@ public class EnumerationSection extends DataTypeSection {
        * {@inheritDoc}
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
         refresh();
       }
     };
@@ -131,8 +131,8 @@ public class EnumerationSection extends DataTypeSection {
        * {@inheritDoc}
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
         refresh();
       }
     };
@@ -143,42 +143,42 @@ public class EnumerationSection extends DataTypeSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    domainTypeWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getEnumeration_DomainType());
-    minValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getEnumeration_OwnedMinValue());
-    maxValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getEnumeration_OwnedMaxValue());
-    defaultValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getEnumeration_OwnedDefaultValue());
-    nullValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getEnumeration_OwnedNullValue());
+    domainTypeWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getEnumeration_DomainType());
+    minValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getEnumeration_OwnedMinValue());
+    maxValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getEnumeration_OwnedMaxValue());
+    defaultValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getEnumeration_OwnedDefaultValue());
+    nullValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getEnumeration_OwnedNullValue());
 
-    evaluateButtonStatus((Enumeration) capellaElement_p);
+    evaluateButtonStatus((Enumeration) capellaElement);
   }
 
   /**
-   * @param enumeration_p
+   * @param enumeration
    */
-  protected void evaluateButtonStatus(Enumeration enumeration_p) {
-    if (enumeration_p != null) {
-      DataValue value = enumeration_p.getDefaultValue();
+  protected void evaluateButtonStatus(Enumeration enumeration) {
+    if (enumeration != null) {
+      DataValue value = enumeration.getDefaultValue();
       if (null == value) {
         defaultValueWidget.enableEditButton(false);
       } else {
         defaultValueWidget.enableEditButton(true);
       }
-      value = enumeration_p.getNullValue();
+      value = enumeration.getNullValue();
       if (null == value) {
         nullValueWidget.enableEditButton(false);
       } else {
         nullValueWidget.enableEditButton(true);
       }
-      value = enumeration_p.getOwnedMinValue();
+      value = enumeration.getOwnedMinValue();
       if (null == value) {
         minValueWidget.enableEditButton(false);
       } else {
         minValueWidget.enableEditButton(true);
       }
-      value = enumeration_p.getOwnedMaxValue();
+      value = enumeration.getOwnedMaxValue();
       if (null == value) {
         maxValueWidget.enableEditButton(false);
       } else {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,9 +34,9 @@ public class DataTypeController extends AbstractMultipleSemanticFieldController 
    *      org.eclipse.emf.ecore.EReference)
    */
   @Override
-  public List<EObject> loadValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
+  public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> result = new ArrayList<EObject>();
-    List<EObject> values = super.loadValues(semanticElement_p, semanticFeature_p);
+    List<EObject> values = super.loadValues(semanticElement, semanticFeature);
     if (null != values) {
       for (Object value : values) {
         result.add(((InformationRealization) value).getTargetElement());
@@ -50,8 +50,8 @@ public class DataTypeController extends AbstractMultipleSemanticFieldController 
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(),
+  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(),
       DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS);
   }
 
@@ -60,8 +60,8 @@ public class DataTypeController extends AbstractMultipleSemanticFieldController 
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    DataTypeExt.addRealizedInformation((DataType) semanticElement_p, (CapellaElement) object_p);
+  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    DataTypeExt.addRealizedInformation((DataType) semanticElement, (CapellaElement) object);
   }
 
   /**
@@ -69,7 +69,7 @@ public class DataTypeController extends AbstractMultipleSemanticFieldController 
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    DataTypeExt.removeRealizedInformation((DataType) semanticElement_p, (CapellaElement) object_p);
+  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    DataTypeExt.removeRealizedInformation((DataType) semanticElement, (CapellaElement) object);
   }
 }

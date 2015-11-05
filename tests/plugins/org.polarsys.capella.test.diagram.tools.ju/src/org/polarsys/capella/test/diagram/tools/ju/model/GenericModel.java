@@ -15,10 +15,30 @@ package org.polarsys.capella.test.diagram.tools.ju.model;
  */
 public class GenericModel {
 
+  public static String OBJECT_1 = "OBJECT 1";
+  public static String OBJECT_2 = "OBJECT 2";
+  public static String OBJECT_3 = "OBJECT 3";
+  public static String OBJECT_4 = "OBJECT 4";
+
   public static String CLASS_1 = "Class 1";
   public static String CLASS_2 = "Class 2";
   public static String CLASS_3 = "Class 3";
   public static String CLASS_4 = "Class 4";
+
+  public static String INTERFACE_1 = "Interface 1";
+  public static String INTERFACE_2 = "Interface 2";
+  public static String INTERFACE_3 = "Interface 3";
+  public static String INTERFACE_4 = "Interface 4";
+
+  public static String EXCHANGE_ITEM_1 = "Exchange Item 1";
+  public static String EXCHANGE_ITEM_2 = "Exchange Item 2";
+  public static String EXCHANGE_ITEM_3 = "Exchange Item 3";
+  public static String EXCHANGE_ITEM_4 = "Exchange Item 4";
+
+  public static String GENERALIZATION_1 = "GENERALIZATION 1";
+  public static String GENERALIZATION_2 = "GENERALIZATION 2";
+  public static String GENERALIZATION_3 = "GENERALIZATION 3";
+  public static String GENERALIZATION_4 = "GENERALIZATION 4";
 
   public static String FUNCTION_1 = "Function 1";
   public static String FUNCTION_2 = "Function 2";
@@ -30,9 +50,47 @@ public class GenericModel {
   public static String FUNCTION_1_3 = "Function 1_3";
   public static String FUNCTION_1_4 = "Function 1_4";
 
+  public static String COMPONENT_PORT_1 = "COMPONENT_PORT_1";
+  public static String COMPONENT_PORT_2 = "COMPONENT_PORT_2";
+  public static String COMPONENT_PORT_3 = "COMPONENT_PORT_3";
+  public static String COMPONENT_PORT_4 = "COMPONENT_PORT_4";
+
   public static String STATE_1 = "State 1";
   public static String STATE_2 = "State 2";
   public static String STATE_3 = "State 3";
   public static String STATE_4 = "State 4";
 
+  public static String LC_1 = "LC 1";
+  public static String LC_2 = "LC 2";
+  public static String LC_3 = "LC 3";
+  public static String LC_4 = "LC 4";
+
+  public static String LA_1 = "LA 1";
+  public static String LA_2 = "LA 2";
+  public static String LA_3 = "LA 3";
+  public static String LA_4 = "LA 4";
+
+  public static String INTERFACE_USE_1 = "INTERFACE_USE_1";
+  public static String INTERFACE_USE_2 = "INTERFACE_USE_2";
+  public static String INTERFACE_USE_3 = "INTERFACE_USE_3";
+  public static String INTERFACE_USE_4 = "INTERFACE_USE_4";
+
+  public static String INTERFACE_IMPLEMENTS_1 = "INTERFACE_USE_1";
+  public static String INTERFACE_IMPLEMENTS_2 = "INTERFACE_IMPLEMENTS_2";
+  public static String INTERFACE_IMPLEMENTS_3 = "INTERFACE_IMPLEMENTS_3";
+  public static String INTERFACE_IMPLEMENTS_4 = "INTERFACE_IMPLEMENTS_4";
+
+  public static String INTERFACE_REQUIRE_1 = "INTERFACE_REQUIRE_1";
+  public static String INTERFACE_REQUIRE_2 = "INTERFACE_REQUIRE_2";
+  public static String INTERFACE_REQUIRE_3 = "INTERFACE_REQUIRE_3";
+  public static String INTERFACE_REQUIRE_4 = "INTERFACE_REQUIRE_4";
+
+  public static String INTERFACE_PROVIDES_1 = "INTERFACE_USE_1";
+  public static String INTERFACE_PROVIDES_2 = "INTERFACE_PROVIDES_2";
+  public static String INTERFACE_PROVIDES_3 = "INTERFACE_PROVIDES_3";
+  public static String INTERFACE_PROVIDES_4 = "INTERFACE_PROVIDES_4";
+  public static String CL_1 = "CL_1";
+  public static String CL_2 = "CL_2";
+  public static String CL_3 = "CL_3";
+  public static String CL_4 = "CL_4";
 }

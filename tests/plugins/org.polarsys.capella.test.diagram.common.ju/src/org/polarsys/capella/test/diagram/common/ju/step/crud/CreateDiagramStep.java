@@ -54,7 +54,8 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
     super(executionContext);
     target = target_p;
     _isSynchronized = true;
-    description = org.polarsys.capella.core.diagram.helpers.DiagramHelper.getService().getDescription(executionContext.getSession(), diagramDescription);
+    description = org.polarsys.capella.core.diagram.helpers.DiagramHelper.getService().getDescription(
+        executionContext.getSession(), diagramDescription);
   }
 
   /**
@@ -75,9 +76,8 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
   protected void runTest() {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
       public void run() {
-        _diagram =
-            (DDiagram) DialectManager.INSTANCE.createRepresentation(description.getName(), target, description, getExecutionContext().getSession(),
-                new NullProgressMonitor());
+        _diagram = (DDiagram) DialectManager.INSTANCE.createRepresentation(description.getName(), target, description,
+            getExecutionContext().getSession(), new NullProgressMonitor());
 
         // synchronization of this diagram
         if ((null != _diagram) && (_diagram instanceof DDiagram)) {
@@ -89,7 +89,9 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
     // Let's perform the job
     getExecutionContext().getExecutionManager().execute(cmd);
 
-    Assert.assertNotNull(NLS.bind(Messages.failToCreateDriagram, new Object[] { description.getName(), EObjectLabelProviderHelper.getText(target) }), _diagram);
+    Assert.assertNotNull(
+        NLS.bind(Messages.failToCreateDriagram,
+            new Object[] { description.getName(), EObjectLabelProviderHelper.getText(target) }), _diagram);
 
     // If the diagram was created, we notify the session manager about it.
     SessionManager.INSTANCE.notifyRepresentationCreated(getExecutionContext().getSession());
@@ -100,9 +102,6 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
    */
   @Override
   public DiagramContext getResult() {
-    if (getExecutionContext() instanceof DiagramContext) {
-      return (DiagramContext) getExecutionContext();
-    }
     return new DiagramContext(getExecutionContext(), _diagram);
   }
 }

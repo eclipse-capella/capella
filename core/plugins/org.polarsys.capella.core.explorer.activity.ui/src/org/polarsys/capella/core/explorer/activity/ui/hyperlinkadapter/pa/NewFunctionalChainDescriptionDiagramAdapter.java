@@ -13,8 +13,13 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
@@ -23,11 +28,17 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 public class NewFunctionalChainDescriptionDiagramAdapter extends AbstractNewDiagramHyperlinkAdapter {
 	/**
 	 * Constructor.
-	 * @param rootSemanticModel
-	 * @param session
 	 */
 	public NewFunctionalChainDescriptionDiagramAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+	}
+	
+	@Override
+	public void linkActivated(HyperlinkEvent event) {
+	  Session session = ActivityExplorerManager.INSTANCE.getSession();
+	  IModel model = ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
+	  Project project = ((ICapellaModel) model).getProject(session.getTransactionalEditingDomain());
+	  linkPressed(event, project, session);
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,9 +29,9 @@ public class ChangeEventSection extends StateEventSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     boolean displayedInWizard = isDisplayedInWizard();
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+    super.createControls(parent, aTabbedPropertySheetPage);
 
     _kindGroup = new ChangeEventKindGroup(_rootParentComposite, getWidgetFactory(), true);
     _kindGroup.setDisplayedInWizard(displayedInWizard);
@@ -53,17 +53,17 @@ public class ChangeEventSection extends StateEventSection {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
-    _kindGroup.loadData(capellaElement_p, CapellacommonPackage.Literals.CHANGE_EVENT__KIND);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
+    _kindGroup.loadData(capellaElement, CapellacommonPackage.Literals.CHANGE_EVENT__KIND);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object toTest_p) {
-    EObject eObjectToTest = super.selection(toTest_p);
+  public boolean select(Object toTest) {
+    EObject eObjectToTest = super.selection(toTest);
     return ((eObjectToTest != null) && (eObjectToTest.eClass() == CapellacommonPackage.Literals.CHANGE_EVENT));
   }
 

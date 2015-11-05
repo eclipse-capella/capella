@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.fields;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.events.SelectionEvent;
@@ -20,9 +21,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
-import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 
 /**
  */
@@ -175,6 +175,7 @@ public class TextValueGroup extends AbstractSemanticGroup {
    */
   protected void handleResetButtonClicked(Button button) {
     setDataValue(_semanticElement, _semanticFeature, null);
+    setTextValue(_valueField, _semanticElement, _semanticFeature);
   }
 
   /**
@@ -184,5 +185,17 @@ public class TextValueGroup extends AbstractSemanticGroup {
     if (null != _valueResetBtn) {
       _valueResetBtn.setEnabled(_semanticElement.eGet(_semanticFeature) != null);
     }
+  }
+  
+  /**
+   * Set data value i.e change given object for given feature with specified value.
+   * @param object
+   * @param feature
+   * @param value
+   */
+  protected void setDataValue(EObject object, EStructuralFeature feature, Object value) {
+    super.setDataValue(object, feature, value);
+    
+    updateResetBtnStatus();
   }
 }

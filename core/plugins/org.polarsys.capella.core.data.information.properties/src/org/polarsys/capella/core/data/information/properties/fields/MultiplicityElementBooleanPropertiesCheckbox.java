@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,45 +32,45 @@ public class MultiplicityElementBooleanPropertiesCheckbox extends AbstractSemant
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public MultiplicityElementBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true, true, true, true);
+  public MultiplicityElementBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true, true, true, true);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param showIsOrdered_p
-   * @param showIsUnique_p
-   * @param showIsMinInclusive_p
-   * @param showIsMaxInclusive_p
+   * @param parent
+   * @param widgetFactory
+   * @param showIsOrdered
+   * @param showIsUnique
+   * @param showIsMinInclusive
+   * @param showIsMaxInclusive
    */
-  public MultiplicityElementBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showIsOrdered_p,
-      boolean showIsUnique_p, boolean showIsMinInclusive_p, boolean showIsMaxInclusive_p) {
-    super(parent_p, widgetFactory_p);
+  public MultiplicityElementBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsOrdered,
+      boolean showIsUnique, boolean showIsMinInclusive, boolean showIsMaxInclusive) {
+    super(parent, widgetFactory);
 
-    if (showIsOrdered_p) {
+    if (showIsOrdered) {
       _isOrderededBtn =
           createButton(InformationPackage.Literals.MULTIPLICITY_ELEMENT__ORDERED,
-              Messages.getString("MultiplicityElement.IsOrderedLabel"), parent_p); //$NON-NLS-1$  
+              Messages.getString("MultiplicityElement.IsOrderedLabel"), parent); //$NON-NLS-1$  
     }
-    if (showIsUnique_p) {
+    if (showIsUnique) {
       _isUniqueBtn =
           createButton(InformationPackage.Literals.MULTIPLICITY_ELEMENT__UNIQUE,
-              Messages.getString("MultiplicityElement.IsUniqueLabel"), parent_p); //$NON-NLS-1$ 
+              Messages.getString("MultiplicityElement.IsUniqueLabel"), parent); //$NON-NLS-1$ 
     }
-    if (showIsMinInclusive_p) {
+    if (showIsMinInclusive) {
       _isMinInclusiveBtn =
           createButton(InformationPackage.Literals.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE,
-              Messages.getString("MultiplicityElement.IsMinInclusiveLabel"), parent_p); //$NON-NLS-1$ 
+              Messages.getString("MultiplicityElement.IsMinInclusiveLabel"), parent); //$NON-NLS-1$ 
     }
-    if (showIsMaxInclusive_p) {
+    if (showIsMaxInclusive) {
       _isMaxInclusiveBtn =
           createButton(InformationPackage.Literals.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE,
-              Messages.getString("MultiplicityElement.IsMaxInclusiveLabel"), parent_p); //$NON-NLS-1$ 
+              Messages.getString("MultiplicityElement.IsMaxInclusiveLabel"), parent); //$NON-NLS-1$ 
     }
   }
 

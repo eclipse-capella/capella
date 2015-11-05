@@ -360,8 +360,7 @@ public interface IToolNameConstants {
   String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE = "Involve Functional Exchange"; //$NON-NLS-1$
   String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_CHAIN = "Involve Functional Chain"; //$NON-NLS-1$
   String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTION = "Involve Functional Exchange & Target Function"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTIONAL_CHAIN =
-      "Involve Functional Exchange & Target Functional Chain"; //$NON-NLS-1$
+  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTIONAL_CHAIN = "Involve Functional Exchange & Target Functional Chain"; //$NON-NLS-1$
   String TOOL_FCD_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_FCD_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_FCD_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
@@ -433,13 +432,17 @@ public interface IToolNameConstants {
   String TOOL_IDB_CREATE_TRANSMIT = "Transmit"; //$NON-NLS-1$
   String TOOL_IDB_CREATE_ACQUIRE = "Acquire"; //$NON-NLS-1$
   String TOOL_IDB_MANAGE_EXCHANGE_ITEM_ALLOCATIONS = "Manage Exchange Item Allocations"; //$NON-NLS-1$
-  String TOOL_IDB_INSERT_REMOVE_COMPONENTS = "Components"; //$NON-NLS-1$
+  String TOOL_IDB_INSERT_REMOVE_COMPONENTS = "Show/Hide Components"; //$NON-NLS-1$
   String TOOL_IDB_INSERT_REMOVE_ACTORS = "Actors"; //$NON-NLS-1$
   String TOOL_IDB_INSERT_REMOVE_INTERFACES = "Interfaces"; //$NON-NLS-1$
-  String TOOL_IDB_INSERT_REMOVE_RELATIONSHIPS = "Relationships"; //$NON-NLS-1$
+  String TOOL_IDB_INSERT_REMOVE_RELATIONSHIPS = "Show/Hide Relationships"; //$NON-NLS-1$
   String TOOL_IDB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_IDB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_IDB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
+
+  String TOOL_IDB_INSERT_REMOVE_COMPONENTS__LABEL = "Components"; //$NON-NLS-1$
+  String TOOL_IDB_INSERT_REMOVE_RELATIONSHIPS__LABEL = "Relationships"; //$NON-NLS-1$
+
   // Accelerators
   String TOOL_IDB_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram"; //$NON-NLS-1$
   // Unsynchronized tools
@@ -1396,7 +1399,6 @@ public interface IToolNameConstants {
   String TOOL_SIDB_SHOW_HIDE_EXCHANGE_ITEMS = "Show/Hide Exchange Items"; //$NON-NLS-1$
   String TOOL_SIDB_SHOW_HIDE_ITEM_ALLOCATIONS = "Show/Hide Exchange Item Allocations"; //$NON-NLS-1$
   String TOOL_SIDB_SHOW_HIDE_EXCHANGE_ITEM_ELEMENTS = "Show/Hide Exchange Item Elements"; //$NON-NLS-1$
-  String TOOL_SIDB_SHOW_HIDE_COMMUNICATION_LINKS = "Show/Hide CommunicationLinks"; //$NON-NLS-1$
   String TOOL_SIDB_CREATE_EXCHANGE_ITEM_ELEMENT = "Exchange Item Element"; //$NON-NLS-1$
 
   // Common diagram tools id of LAB, PAB and SAB

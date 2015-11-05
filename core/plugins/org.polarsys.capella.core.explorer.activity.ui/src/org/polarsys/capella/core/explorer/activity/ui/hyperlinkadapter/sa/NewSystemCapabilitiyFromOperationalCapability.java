@@ -12,6 +12,7 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.PopupMenuLinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IMenuManager;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.explorer.activity.ui.actions.sa.PerformOpCapabilityToSystemCapabilityAction;
@@ -25,9 +26,11 @@ public class NewSystemCapabilitiyFromOperationalCapability extends PopupMenuLink
 
 	@Override
 	protected void fillPopupMenu(IMenuManager menuManager) {
-		Project capellaProject = (Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel();
-		menuManager.add(new PerformOpCapabilityToSystemCapabilityAction(capellaProject, ActivityExplorerManager.INSTANCE.getSession()));
-		menuManager.add(new PerformOpCapabilityToSystemMissionAction(capellaProject, ActivityExplorerManager.INSTANCE.getSession()));
+		EObject rootSemanticModel = ActivityExplorerManager.INSTANCE.getRootSemanticModel();
+		if(rootSemanticModel instanceof Project){
+		  Project capellaProject = (Project) rootSemanticModel;
+		  menuManager.add(new PerformOpCapabilityToSystemCapabilityAction(capellaProject, ActivityExplorerManager.INSTANCE.getSession()));
+		  menuManager.add(new PerformOpCapabilityToSystemMissionAction(capellaProject, ActivityExplorerManager.INSTANCE.getSession()));
+		}
 	}
-
 }

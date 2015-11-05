@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class ComponentExchangeCategorySection extends NamedElementSection {
 
-  private MultipleSemanticField _exchangesField;
+  private MultipleSemanticField exchangesField;
 
   /**
    * {@inheritDoc}
@@ -42,26 +42,26 @@ public class ComponentExchangeCategorySection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _exchangesField = new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeCategorySection_Exchanges_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
+    exchangesField = new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeCategorySection_Exchanges_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
       /**
        * {@inheritDoc}
        */
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), FaPackage.eINSTANCE.getComponentExchangeCategory_Exchanges());
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getComponentExchangeCategory_Exchanges());
       }
     });
-    _exchangesField.setDisplayedInWizard(displayedInWizard);
+    exchangesField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _exchangesField.loadData(capellaElement_p, FaPackage.eINSTANCE.getComponentExchangeCategory_Exchanges());
+    exchangesField.loadData(capellaElement, FaPackage.eINSTANCE.getComponentExchangeCategory_Exchanges());
   }
 
   /**
@@ -81,7 +81,7 @@ public class ComponentExchangeCategorySection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_exchangesField);
+    fields.add(exchangesField);
 
     return fields;
   }

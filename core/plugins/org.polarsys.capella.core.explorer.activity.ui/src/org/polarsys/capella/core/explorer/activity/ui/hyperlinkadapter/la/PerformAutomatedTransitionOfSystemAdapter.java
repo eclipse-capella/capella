@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la;
 
-import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -18,29 +17,34 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.refinement.commands.GenerateInterfaceDelegationsCommand;
 
 /**
  * Perform an automated transition of System Interfaces and Ports.
  */
-public class PerformAutomatedTransitionOfSystemAdapter extends AbstractHyperlinkAdapter {
+public class PerformAutomatedTransitionOfSystemAdapter extends AbstractCapellaHyperlinkAdapter {
 	/**
 	 * Constructor.
-	 * @param capellaproject
-	 * @param session
 	 */
 	public PerformAutomatedTransitionOfSystemAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		TransactionHelper.getExecutionManager(rootSemanticModel).execute(new GenerateInterfaceDelegationsCommand(getModelElement(rootSemanticModel)));
+		ModelElement modelElement = getModelElement(rootSemanticModel);
+		if(modelElement != null){
+		  TransactionHelper.getExecutionManager(rootSemanticModel).execute(new GenerateInterfaceDelegationsCommand(modelElement));
+		}
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getLogicalSystem((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getLogicalSystem((Project) rootSemanticModel);	    
+	  }
+	  return null;
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,11 +31,11 @@ public class ParameterEffectKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public ParameterEffectKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("ParameterEffectKind.Label"), 4); //$NON-NLS-1$
+  public ParameterEffectKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory, Messages.getString("ParameterEffectKind.Label"), 4); //$NON-NLS-1$
 
     _effectBtnRead = createButton(ParameterEffectKind.READ);
     _effectBtnUpdate = createButton(ParameterEffectKind.UPDATE);

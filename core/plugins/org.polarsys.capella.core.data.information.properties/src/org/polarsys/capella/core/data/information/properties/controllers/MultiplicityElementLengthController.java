@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,15 +32,15 @@ public class MultiplicityElementLengthController extends AbstractSimpleEditableS
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
-    DataValue ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+    DataValue ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
     if (value instanceof Property) {
         ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedProperty(), value);
 	} else {
 		ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue(), value);
 	}
     ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) value).getAbstractType());
-    semanticElement_p.eSet(semanticFeature_p, ref);
+    semanticElement.eSet(semanticFeature, ref);
 
     return ref;
   }
@@ -48,14 +48,14 @@ public class MultiplicityElementLengthController extends AbstractSimpleEditableS
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
    */
-  public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-    if (semanticElement_p != null) {
-      NumericValue currentValue = (NumericValue) semanticElement_p.eGet(semanticFeature_p);
+  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+    if (semanticElement != null) {
+      NumericValue currentValue = (NumericValue) semanticElement.eGet(semanticFeature);
       if (currentValue != null) {
         editValueWizard(currentValue);
       } else {
-        LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName_p);
-        semanticElement_p.eSet(semanticFeature_p, newValue);
+        LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName);
+        semanticElement.eSet(semanticFeature, newValue);
         if (editValueWizard(newValue)) {
           currentValue = newValue;
         } else {

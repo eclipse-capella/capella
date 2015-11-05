@@ -21,8 +21,6 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 public class NewFunctionalChainDescriptionDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
 	/**
 	 * Constructor.
-	 * @param capellaproject
-	 * @param session
 	 */
 	public NewFunctionalChainDescriptionDiagramAdapter() {
 		super();

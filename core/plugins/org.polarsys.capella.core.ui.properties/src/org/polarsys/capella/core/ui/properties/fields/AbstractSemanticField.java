@@ -272,12 +272,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    */
   @Override
   public void keyPressed(KeyEvent event) {
-    if ((event != null) && (event.character == SWT.CR)) {
-      Object source = event.getSource();
-      if ((source != null) && (source instanceof Text)) {
-        fillTextField((Text) source);
-      }
-    }
+    // Do nothing.
   }
 
   /**
@@ -285,7 +280,17 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    */
   @Override
   public void keyReleased(KeyEvent event) {
-    // Do nothing.
+    if (event != null) {
+      // this field can be used in two different contexts:
+      //  - in the property view: we don't want to create a command for each modification (unless it's a CR character)
+      //  - in a wizard dialog: all the modifications will be embedded in a single command
+      if (_displayedInWizard || (!_displayedInWizard && (event.character == SWT.CR))) {
+        Object source = event.getSource();
+        if ((source != null) && (source instanceof Text)) {
+          fillTextField((Text) source);
+        }
+      }
+    }
   }
 
   /**

@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -20,7 +21,7 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
  * This class manages active sessions, mainly used to enable/disable notification when the session is active/closed.
  */
 public class ActiveSessionManager {
-  HashMap<TransactionalEditingDomain, Boolean> _activeSessions = new HashMap<TransactionalEditingDomain, Boolean>();
+  final Map<TransactionalEditingDomain, Boolean> _activeSessions = new HashMap<TransactionalEditingDomain, Boolean>();
 
   private boolean isFullDisabled = false;
 

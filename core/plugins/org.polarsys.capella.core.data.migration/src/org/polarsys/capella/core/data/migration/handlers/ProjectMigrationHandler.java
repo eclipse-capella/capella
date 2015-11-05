@@ -17,6 +17,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesRepairValidator;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
@@ -34,13 +37,17 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
       skipConfirmation = true;
     }
     for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {
-      if (selected instanceof IResource) {
-        MigrationHelpers.getInstance().trigger((IResource) selected, HandlerUtil.getActiveShell(event),
-            skipConfirmation, true, MigrationConstants.DEFAULT_KIND_ORDER);
+      if (selected instanceof IResource && selected instanceof IProject) {
+			IProject project = (IProject) selected;
+			@SuppressWarnings("restriction")
+			IStatus validationStatus = new RepresentationFilesRepairValidator().validate(null);
+			if (validationStatus.isOK()) {
+				MigrationHelpers.getInstance().trigger((IResource) selected, HandlerUtil.getActiveShell(event),
+						skipConfirmation, true, MigrationConstants.DEFAULT_KIND_ORDER);
+			}
       }
     }
-
-    return event;
+    	return event;
   }
 
   @Override

@@ -60,13 +60,13 @@ public class StringTypeSection extends DataTypeSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    minLengthWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getStringType_OwnedMinLength());
-    maxLengthWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getStringType_OwnedMaxLength());
-    defaultValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getStringType_OwnedDefaultValue());
-    nullValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getStringType_OwnedNullValue());
+    minLengthWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getStringType_OwnedMinLength());
+    maxLengthWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getStringType_OwnedMaxLength());
+    defaultValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getStringType_OwnedDefaultValue());
+    nullValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getStringType_OwnedNullValue());
   }
 
   /**

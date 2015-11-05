@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,57 +90,57 @@ public class InterfaceHelper {
     return false;
   }
 
-  public static void affectExchangeItem(SequenceMessage sequenceMessage_p, AbstractEventOperation operation_p) {
-    if (operation_p != null) {
+  public static void affectExchangeItem(SequenceMessage sequenceMessage, AbstractEventOperation operation) {
+    if (operation != null) {
 
       String operationName =
-          (operation_p instanceof ExchangeItemAllocation) ? ((ExchangeItemAllocation) operation_p).getAllocatedItem().getName() : operation_p.getName();
+          (operation instanceof ExchangeItemAllocation) ? ((ExchangeItemAllocation) operation).getAllocatedItem().getName() : operation.getName();
 
-      MessageEnd receive = sequenceMessage_p.getReceivingEnd();
+      MessageEnd receive = sequenceMessage.getReceivingEnd();
       if (receive != null) {
         EventReceiptOperation eventReceiptOperation = getOrCreateReceiptEvent(receive);
-        eventReceiptOperation.setOperation(operation_p);
-        eventReceiptOperation.setName("rcvOp_" + operationName + "_" + sequenceMessage_p.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
-        sequenceMessage_p.getReceivingEnd().setName("rcvMsgEnd_" + operationName + "_" + sequenceMessage_p.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
+        eventReceiptOperation.setOperation(operation);
+        eventReceiptOperation.setName("rcvOp_" + operationName + "_" + sequenceMessage.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
+        sequenceMessage.getReceivingEnd().setName("rcvMsgEnd_" + operationName + "_" + sequenceMessage.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
       }
-      MessageEnd send = sequenceMessage_p.getSendingEnd();
+      MessageEnd send = sequenceMessage.getSendingEnd();
       if (send != null) {
         EventSentOperation eventSentOperation = getOrCreateSentEvent(send);
-        eventSentOperation.setOperation(operation_p);
-        eventSentOperation.setName("sndOp_" + operation_p.getName() + "_" + sequenceMessage_p.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
-        sequenceMessage_p.getSendingEnd().setName("sndMsgEnd_" + operationName + "_" + sequenceMessage_p.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
-        sequenceMessage_p.setName(operationName);
+        eventSentOperation.setOperation(operation);
+        eventSentOperation.setName("sndOp_" + operation.getName() + "_" + sequenceMessage.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
+        sequenceMessage.getSendingEnd().setName("sndMsgEnd_" + operationName + "_" + sequenceMessage.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
+        sequenceMessage.setName(operationName);
       }
-      SequenceMessage reply = SequenceLocalHelper.getOppositeSequenceMessage(sequenceMessage_p);
+      SequenceMessage reply = SequenceLocalHelper.getOppositeSequenceMessage(sequenceMessage);
       if (reply != null) {
         MessageEnd receiveReply = reply.getReceivingEnd();
         EventReceiptOperation eventReceiptOperationReply = getOrCreateReceiptEvent(receiveReply);
-        eventReceiptOperationReply.setOperation(operation_p);
+        eventReceiptOperationReply.setOperation(operation);
         eventReceiptOperationReply.setName("rcvOp_" + operationName + "_" + reply.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
         reply.getReceivingEnd().setName("rcvMsgEnd_" + operationName + "_" + reply.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
 
         MessageEnd sendReply = reply.getSendingEnd();
         EventSentOperation eventSentOperationReply = getOrCreateSentEvent(sendReply);
-        eventSentOperationReply.setOperation(operation_p);
+        eventSentOperationReply.setOperation(operation);
         eventSentOperationReply.setName("sndOp_" + operationName + "_" + reply.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
         reply.getSendingEnd().setName("sndMsgEnd_" + operationName + "_" + reply.getKind().getName()); //$NON-NLS-1$ //$NON-NLS-2$
         reply.setName(operationName);
       }
     }
 
-    if (operation_p instanceof ExchangeItemAllocation) {
-      ExchangeItemAllocation allocation = (ExchangeItemAllocation) operation_p;
+    if (operation instanceof ExchangeItemAllocation) {
+      ExchangeItemAllocation allocation = (ExchangeItemAllocation) operation;
       ExchangeItem item = allocation.getAllocatedItem();
       if (ExchangeMechanism.OPERATION.equals(item.getExchangeMechanism())) {
-        MessageKind kind = sequenceMessage_p.getKind();
+        MessageKind kind = sequenceMessage.getKind();
         if (!MessageKind.CREATE.equals(kind) && !MessageKind.DELETE.equals(kind)) {
           CommunicationLinkProtocol protocol = allocation.getSendProtocol();
           if (CommunicationLinkProtocol.UNSET.equals(protocol) && !MessageKind.UNSET.equals(kind)) {
-            sequenceMessage_p.setKind(MessageKind.UNSET);
+            sequenceMessage.setKind(MessageKind.UNSET);
           } else if (CommunicationLinkProtocol.SYNCHRONOUS.equals(protocol) && !MessageKind.SYNCHRONOUS_CALL.equals(kind)) {
-            sequenceMessage_p.setKind(MessageKind.SYNCHRONOUS_CALL);
+            sequenceMessage.setKind(MessageKind.SYNCHRONOUS_CALL);
           } else if (CommunicationLinkProtocol.ASYNCHRONOUS.equals(protocol) && !MessageKind.ASYNCHRONOUS_CALL.equals(kind)) {
-            sequenceMessage_p.setKind(MessageKind.ASYNCHRONOUS_CALL);
+            sequenceMessage.setKind(MessageKind.ASYNCHRONOUS_CALL);
           }
         }
       }
@@ -174,11 +174,11 @@ public class InterfaceHelper {
     return result;
   }
 
-  private List<Interface> getUsedAndRequiredInterfaces(Component component_p) {
+  private List<Interface> getUsedAndRequiredInterfaces(Component component) {
     List<Interface> result = new ArrayList<Interface>();
-    result.addAll(component_p.getUsedInterfaces());
-    result.addAll(component_p.getRequiredInterfaces());
-    for (Feature f : component_p.getOwnedFeatures()) {
+    result.addAll(component.getUsedInterfaces());
+    result.addAll(component.getRequiredInterfaces());
+    for (Feature f : component.getOwnedFeatures()) {
       if (f instanceof ComponentPort) {
         ComponentPort p = (ComponentPort) f;
         result.addAll(p.getRequiredInterfaces());
@@ -188,11 +188,11 @@ public class InterfaceHelper {
     return result;
   }
 
-  private List<Interface> getImplementedAndProvidedInterfaces(Component component_p) {
+  private List<Interface> getImplementedAndProvidedInterfaces(Component component) {
     List<Interface> result = new ArrayList<Interface>();
-    result.addAll(component_p.getImplementedInterfaces());
-    result.addAll(component_p.getProvidedInterfaces());
-    for (Feature f : component_p.getOwnedFeatures()) {
+    result.addAll(component.getImplementedInterfaces());
+    result.addAll(component.getProvidedInterfaces());
+    for (Feature f : component.getOwnedFeatures()) {
       if (f instanceof ComponentPort) {
         ComponentPort p = (ComponentPort) f;
         result.addAll(p.getProvidedInterfaces());
@@ -204,18 +204,18 @@ public class InterfaceHelper {
 
   /**
    * Filter given ExchangeItemAllocations regarding CommunicationLink(s) or information on the message to create.
-   * @param elements_p
-   * @param sourceIR_p
-   * @param targetIR_p
+   * @param elements
+   * @param sourceIR
+   * @param targetIR
    * @param messageKind
    * @return
    */
-  public List<CapellaElement> filterExchangeItemAllocations(List<CapellaElement> elements_p, InstanceRole sourceIR_p, InstanceRole targetIR_p,
+  public List<CapellaElement> filterExchangeItemAllocations(List<CapellaElement> elements, InstanceRole sourceIR, InstanceRole targetIR,
       MessageKind messageKind) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     // Get involved Component and ExchangeItem.
-    AbstractType sourceType = sourceIR_p.getRepresentedInstance().getAbstractType();
-    AbstractType targetType = targetIR_p.getRepresentedInstance().getAbstractType();
+    AbstractType sourceType = sourceIR.getRepresentedInstance().getAbstractType();
+    AbstractType targetType = targetIR.getRepresentedInstance().getAbstractType();
     Component component = null;
     ExchangeItem exchangeItem = null;
     if ((sourceType instanceof Component) && (targetType instanceof ExchangeItem)) {
@@ -237,7 +237,7 @@ public class InterfaceHelper {
     // Filter ExchangeItemAllocations.
     if (!communicationLinks.isEmpty()) {
       // CommunicationLink(s) is/are found, select only EchangeItemAllocations corresponding to it/them.
-      for (CapellaElement element : elements_p) {
+      for (CapellaElement element : elements) {
         if (!(element instanceof ExchangeItemAllocation)) {
           result.add(element);
           continue;
@@ -260,7 +260,7 @@ public class InterfaceHelper {
     } else {
       // No CommunicationLink(s) found, we have to "guess" what the user wants to do and select valid ExchangeItemAllocations.
       boolean isSynchronous = MessageKind.SYNCHRONOUS_CALL == messageKind;
-      for (CapellaElement element : elements_p) {
+      for (CapellaElement element : elements) {
         if (!(element instanceof ExchangeItemAllocation)) {
           result.add(element);
           continue;
@@ -417,16 +417,16 @@ public class InterfaceHelper {
 		}
 	}
 
-  public List<CapellaElement> getAllExchangeItems(InstanceRole source, InstanceRole target, MessageKind messageKind_p) {
+  public List<CapellaElement> getAllExchangeItems(InstanceRole source, InstanceRole target, MessageKind messageKind) {
     if ((source != null) && (target != null)) {
-      return ScenarioExt.getAvailableExchangeItemsBetweenInstances(source.getRepresentedInstance(), target.getRepresentedInstance(), messageKind_p);
+      return ScenarioExt.getAvailableExchangeItemsBetweenInstances(source.getRepresentedInstance(), target.getRepresentedInstance(), messageKind);
     }
     return new ArrayList<CapellaElement>();
   }
 
   /**
    * Resolves ExchangeItemAllocatons using CommunicationLinks.
-   * @param message_p
+   * @param message
    * @return
    */
   public List<CapellaElement> getRestrictedExchangeItemsFromCommunicationLinks(InstanceRole source, InstanceRole target, boolean isSynchronous) {
@@ -534,17 +534,17 @@ public class InterfaceHelper {
   }
 
   /**
-   * @param message_p
+   * @param message
    * @return
    */
-  public static boolean isSharedDataAccess(SequenceMessage message_p) {
-    if (message_p.getSendingEnd() == null) {
+  public static boolean isSharedDataAccess(SequenceMessage message) {
+    if (message.getSendingEnd() == null) {
       return false;
     }
-    if (message_p.getReceivingEnd() == null) {
+    if (message.getReceivingEnd() == null) {
       return false;
     }
-    return isSharedDataAccess(message_p.getSendingEnd().getCovered(), message_p.getReceivingEnd().getCovered());
+    return isSharedDataAccess(message.getSendingEnd().getCovered(), message.getReceivingEnd().getCovered());
   }
 
 

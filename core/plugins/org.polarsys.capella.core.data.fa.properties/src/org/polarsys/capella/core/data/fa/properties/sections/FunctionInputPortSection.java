@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,8 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class FunctionInputPortSection extends NamedElementSection {
 
-  private MultipleSemanticField _incomingExchangeItemsField;
-  private MultipleSemanticField _realizedFunctionInputPortsField;
+  private MultipleSemanticField incomingExchangeItemsField;
+  private MultipleSemanticField realizedFunctionInputPortsField;
 
   /**
    * {@inheritDoc}
@@ -45,31 +45,31 @@ public class FunctionInputPortSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _incomingExchangeItemsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionInputPortSection_IncomingExchangeItems_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
+    incomingExchangeItemsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionInputPortSection_IncomingExchangeItems_Label, getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
       /**
        * {@inheritDoc}
        */
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), FaPackage.eINSTANCE.getFunctionInputPort_IncomingExchangeItems());
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getFunctionInputPort_IncomingExchangeItems());
       }
     });
-    _incomingExchangeItemsField.setDisplayedInWizard(displayedInWizard);
+    incomingExchangeItemsField.setDisplayedInWizard(displayedInWizard);
 
-    _realizedFunctionInputPortsField = new MultipleSemanticField(getReferencesGroup(),
+    realizedFunctionInputPortsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.FunctionInputPortSection_RealizedFunctionInputPorts_Label, getWidgetFactory(), new Port_RealizedPortsController());
-    _realizedFunctionInputPortsField.setDisplayedInWizard(displayedInWizard);
+    realizedFunctionInputPortsField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _incomingExchangeItemsField.loadData(capellaElement_p, FaPackage.eINSTANCE.getFunctionInputPort_IncomingExchangeItems());
-    _realizedFunctionInputPortsField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getPort_OwnedPortRealizations());
+    incomingExchangeItemsField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionInputPort_IncomingExchangeItems());
+    realizedFunctionInputPortsField.loadData(capellaElement, InformationPackage.eINSTANCE.getPort_OwnedPortRealizations());
   }
 
   /**
@@ -89,8 +89,8 @@ public class FunctionInputPortSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_incomingExchangeItemsField);
-    fields.add(_realizedFunctionInputPortsField);
+    fields.add(incomingExchangeItemsField);
+    fields.add(realizedFunctionInputPortsField);
 
     return fields;
   }

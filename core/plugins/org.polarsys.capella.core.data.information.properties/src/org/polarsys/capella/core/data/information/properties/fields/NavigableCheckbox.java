@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,21 +38,21 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public NavigableCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p);
+  public NavigableCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory);
 
-    _isNavigableBtn = createButton(null, Messages.getString("Property.IsNavigablelabel"), parent_p); //$NON-NLS-1$
+    _isNavigableBtn = createButton(null, Messages.getString("Property.IsNavigablelabel"), parent); //$NON-NLS-1$
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement property_p) {
-    loadData(property_p, null);
+  public void loadData(CapellaElement property) {
+    loadData(property, null);
 
     EObject assoc = _semanticElement.eContainer();
     if (assoc instanceof Classifier) {
@@ -72,7 +72,7 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#widgetSelected(org.eclipse.swt.events.SelectionEvent)
    */
   @Override
-  public void widgetSelected(SelectionEvent event_p) {
+  public void widgetSelected(SelectionEvent event) {
     EObject ownerElement = _semanticElement.eContainer();
     EObject typeElement = (EObject) _semanticElement.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
 
@@ -103,15 +103,15 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
   }
 
   /**
-   * @param association_p
-   * @param member_p
+   * @param association
+   * @param member
    * @return
    */
-  private Property getOppositeMember(Association association_p, Property member_p) {
+  private Property getOppositeMember(Association association, Property member) {
     List<Property> members = new ArrayList<Property>();
-    members.addAll(association_p.getOwnedMembers());
-    members.addAll(association_p.getNavigableMembers());
-    members.remove(member_p);
+    members.addAll(association.getOwnedMembers());
+    members.addAll(association.getNavigableMembers());
+    members.remove(member);
     return members.get(0);
   }
 

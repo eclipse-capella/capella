@@ -1,0 +1,18 @@
+            
+= Capella Ecosystem =
+ 
+== Capella Tool Suite ==
+ 
+In addition to Capella, other tools are provided, in particular tools enabling development of
+
+ 
+* '''Modeling Extensions '''dedicated to specific domain needs and 	viewpoints, that support specific formalisms (Domain Specific 	Languages-DSL), presentations and modeling rule
+* '''Bridges '''with specific target tools (''using Kitalpha and EGF technologies: Software factory dedicated to 	models transformation'')
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/1.2.%20Ecosystem_html_2d1b6334.jpg|1014x669px]]
+
+   

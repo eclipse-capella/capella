@@ -142,14 +142,9 @@ public class LiteralStringValueItemProvider extends AbstractStringValueItemProvi
     String label = val.getName();
     String value = val.getValue();
     if (null == value) {
-      // if null value
       value = "<undefined>"; //$NON-NLS-1$
-    } else if (value.equals("")) {
-      // if empty
-      value = "\"\""; //$NON-NLS-1$
-    } else if (value.equals(" ")) {
-      // if blank
-      value = "\" \""; //$NON-NLS-1$
+    } else {
+      value = "\"" + value + "\""; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     if (label == null) {

@@ -62,13 +62,13 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   private IMultipleSemanticFieldController _controller;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param referencerFeature_p
-   * @param referencedFeature_p
-   * @param referencedFeatureType_p
-   * @param label_p
-   * @param selectionElementDialogMessage_p
+   * @param parent
+   * @param widgetFactory
+   * @param referencerFeature
+   * @param referencedFeature
+   * @param referencedFeatureType
+   * @param label
+   * @param selectionElementDialogMessage
    */
   public StateTransitionTriggerField(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, EReference referencerFeature,
       EReference referencedFeature, EClass referencedFeatureType, String label, String selectionElementDialogMessage) {
@@ -167,7 +167,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   }
 
   /**
-   * @param openBtn_p
+   * @param openBtn
    */
   @SuppressWarnings("synthetic-access")
   protected void handleOpenButtonClick(final Button button) {
@@ -241,7 +241,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
 
   static class CustomDelegatedViewer extends TableDelegatedViewer {
     /**
-     * @param widgetFactory_p
+     * @param widgetFactory
      */
     CustomDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory) {
       super(widgetFactory);
@@ -251,8 +251,8 @@ public class StateTransitionTriggerField extends ContainmentTableField {
      * {@inheritDoc}
      */
     @Override
-    public void createContainer(Composite sub_parent) {
-      super.createContainer(sub_parent);
+    public void createContainer(Composite subarent) {
+      super.createContainer(subarent);
       _columnViewer.setLabelProvider(new CapellaElementLabelProvider() {
         /**
          * {@inheritDoc}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,19 +61,19 @@ public class PhysicalPortSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _realizedPhysicalPortsField) {
-      _realizedPhysicalPortsField.loadData(capellaElement_p, CsPackage.eINSTANCE.getPhysicalPort_OwnedPhysicalPortRealizations());
+      _realizedPhysicalPortsField.loadData(capellaElement, CsPackage.eINSTANCE.getPhysicalPort_OwnedPhysicalPortRealizations());
     }
     if (null != _allocatedComponentPorts) {
-      _allocatedComponentPorts.loadData(capellaElement_p, CsPackage.Literals.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS);
+      _allocatedComponentPorts.loadData(capellaElement, CsPackage.Literals.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS);
     }
     if (null != _allocatedFunctionPorts) {
-      EObject owner = capellaElement_p.eContainer();
+      EObject owner = capellaElement.eContainer();
       if (owner instanceof PhysicalActor) {
-        _allocatedFunctionPorts.loadData(capellaElement_p, InformationPackage.Literals.PORT__OWNED_PORT_ALLOCATIONS);
+        _allocatedFunctionPorts.loadData(capellaElement, InformationPackage.Literals.PORT__OWNED_PORT_ALLOCATIONS);
         _allocatedFunctionPorts.setVisible(true);
       } else {
         _allocatedFunctionPorts.setVisible(false);

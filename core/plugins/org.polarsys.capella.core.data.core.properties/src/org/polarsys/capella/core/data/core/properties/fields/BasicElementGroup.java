@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,46 +33,46 @@ public class BasicElementGroup extends AbstractSemanticField {
   protected Text summaryTextField;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public BasicElementGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true, true);
+  public BasicElementGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true, true);
   }
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param hasNameField_p
-   * @param hasSummaryField_p
+   * @param parent
+   * @param widgetFactory
+   * @param hasNameField
+   * @param hasSummaryField
    */
-  public BasicElementGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean hasNameField_p, boolean hasSummaryField_p) {
-    super(widgetFactory_p);
+  public BasicElementGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean hasNameField, boolean hasSummaryField) {
+    super(widgetFactory);
 
-    Group textGroup = _widgetFactory.createGroup(parent_p, ""); //$NON-NLS-1$
+    Group textGroup = _widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     textGroup.setLayoutData(gd);
 
     // Name
-    if (hasNameField_p) {
+    if (hasNameField) {
       nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel")); //$NON-NLS-1$
     }
     // Summary
-    if (hasSummaryField_p) {
+    if (hasSummaryField) {
       summaryTextField = createTextField(textGroup, Messages.getString("NamedElement.SummaryLabel")); //$NON-NLS-1$
     }
   }
 
   /**
-   * @param textGroup_p
-   * @param textLabel_p
+   * @param textGroup
+   * @param textLabel
    */
-  private Text createTextField(Group textGroup_p, String textLabel_p) {
-    _widgetFactory.createCLabel(textGroup_p, textLabel_p);
+  private Text createTextField(Group textGroup, String textLabel) {
+    _widgetFactory.createCLabel(textGroup, textLabel);
 
-    Text textField = _widgetFactory.createText(textGroup_p, ICommonConstants.EMPTY_STRING);
+    Text textField = _widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
     textField.addFocusListener(this);
     textField.addKeyListener(this);
     textField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -84,8 +84,8 @@ public class BasicElementGroup extends AbstractSemanticField {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, null);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, null);
 
     if (null != _semanticElement) {
       if (null != nameTextField)
@@ -96,13 +96,13 @@ public class BasicElementGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField text field to be filled
    */
   @Override
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(nameTextField)) {
+  protected void fillTextField(Text textField) {
+    if (textField.equals(nameTextField)) {
       setDataValue(_semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), nameTextField.getText());
-    } else if (textField_p.equals(summaryTextField)) {
+    } else if (textField.equals(summaryTextField)) {
       setDataValue(_semanticElement, CapellacorePackage.eINSTANCE.getCapellaElement_Summary(), summaryTextField.getText());
     }
   }
@@ -118,20 +118,20 @@ public class BasicElementGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param enabled_p whether or not the name text field is enabled
+   * @param enabled whether or not the name text field is enabled
    */
-  public void enableNameField(boolean enabled_p) {
+  public void enableNameField(boolean enabled) {
     if (null != nameTextField && !nameTextField.isDisposed()) {
-      nameTextField.setEnabled(enabled_p);
+      nameTextField.setEnabled(enabled);
     }
   }
 
   /**
-   * @param enabled_p whether or not the summary text field is enabled
+   * @param enabled whether or not the summary text field is enabled
    */
-  public void enableSummaryField(boolean enabled_p) {
+  public void enableSummaryField(boolean enabled) {
     if (null != summaryTextField && !summaryTextField.isDisposed()) {
-      summaryTextField.setEnabled(enabled_p);
+      summaryTextField.setEnabled(enabled);
     }
   }
 
@@ -139,8 +139,8 @@ public class BasicElementGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    LockHelper.getInstance().enable(nameTextField, enabled_p);
-    LockHelper.getInstance().enable(summaryTextField, enabled_p);
+  public void setEnabled(boolean enabled) {
+    LockHelper.getInstance().enable(nameTextField, enabled);
+    LockHelper.getInstance().enable(summaryTextField, enabled);
   }
 }

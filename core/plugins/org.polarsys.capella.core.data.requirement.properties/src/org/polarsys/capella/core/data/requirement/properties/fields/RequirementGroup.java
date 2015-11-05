@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,21 +28,21 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
  */
 public class RequirementGroup extends AbstractSemanticField {
 
-  private Text _requirementIdField;
-  private Text _additionalInformationField;
-  private Text _verificationMethodField;
-  private Text _verificationPhaseField;
-  private Text _implementationVersionField;
-  private Text _featureField;
+  private Text requirementIdField;
+  private Text additionalInformationField;
+  private Text verificationMethodField;
+  private Text verificationPhaseField;
+  private Text implementationVersionField;
+  private Text featureField;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public RequirementGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(widgetFactory_p);
+  public RequirementGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(widgetFactory);
 
-    Group textGroup = widgetFactory_p.createGroup(parent_p, ""); //$NON-NLS-1$
+    Group textGroup = widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -57,117 +57,117 @@ public class RequirementGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createRequirementIdTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementGroup.RequirementId.Label")); //$NON-NLS-1$
-    _requirementIdField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
-    _requirementIdField.addFocusListener(this);
-    _requirementIdField.addKeyListener(this);
-    _requirementIdField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+  private void createRequirementIdTextField(Group textGroup) {
+    _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementGroup.RequirementId.Label")); //$NON-NLS-1$
+    requirementIdField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    requirementIdField.addFocusListener(this);
+    requirementIdField.addKeyListener(this);
+    requirementIdField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createAdditionalInformationTextField(Group textGroup_p) {
-    CLabel label = _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementGroup.AdditionalInformation.Label")); //$NON-NLS-1$
+  private void createAdditionalInformationTextField(Group textGroup) {
+    CLabel label = _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementGroup.AdditionalInformation.Label")); //$NON-NLS-1$
     GridData gd = new GridData();
     gd.horizontalSpan = 2;
     label.setLayoutData(gd);
-    _additionalInformationField = _widgetFactory.createText(textGroup_p, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
-    _additionalInformationField.addFocusListener(this);
-    _additionalInformationField.addKeyListener(this);
+    additionalInformationField = _widgetFactory.createText(textGroup, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+    additionalInformationField.addFocusListener(this);
+    additionalInformationField.addKeyListener(this);
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     gd.heightHint = 80;
-    _additionalInformationField.setLayoutData(gd);
+    additionalInformationField.setLayoutData(gd);
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createVerificationMethodTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementGroup.VerificationMethod.Label")); //$NON-NLS-1$
-    _verificationMethodField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
-    _verificationMethodField.addFocusListener(this);
-    _verificationMethodField.addKeyListener(this);
-    _verificationMethodField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+  private void createVerificationMethodTextField(Group textGroup) {
+    _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementGroup.VerificationMethod.Label")); //$NON-NLS-1$
+    verificationMethodField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    verificationMethodField.addFocusListener(this);
+    verificationMethodField.addKeyListener(this);
+    verificationMethodField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createVerificationPhaseTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementGroup.VerificationPhase.Label")); //$NON-NLS-1$
-    _verificationPhaseField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
-    _verificationPhaseField.addFocusListener(this);
-    _verificationPhaseField.addKeyListener(this);
-    _verificationPhaseField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+  private void createVerificationPhaseTextField(Group textGroup) {
+    _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementGroup.VerificationPhase.Label")); //$NON-NLS-1$
+    verificationPhaseField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    verificationPhaseField.addFocusListener(this);
+    verificationPhaseField.addKeyListener(this);
+    verificationPhaseField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createImplementationVersionTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementGroup.ImplementationVersion.Label")); //$NON-NLS-1$
-    _implementationVersionField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
-    _implementationVersionField.addFocusListener(this);
-    _implementationVersionField.addKeyListener(this);
-    _implementationVersionField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+  private void createImplementationVersionTextField(Group textGroup) {
+    _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementGroup.ImplementationVersion.Label")); //$NON-NLS-1$
+    implementationVersionField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    implementationVersionField.addFocusListener(this);
+    implementationVersionField.addKeyListener(this);
+    implementationVersionField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
   }
 
   /**
-   * @param textGroup_p
+   * @param textGroup
    */
-  private void createFeatureTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("RequirementGroup.Feature.Label")); //$NON-NLS-1$
-    _featureField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
-    _featureField.addFocusListener(this);
-    _featureField.addKeyListener(this);
-    _featureField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+  private void createFeatureTextField(Group textGroup) {
+    _widgetFactory.createCLabel(textGroup, Messages.getString("RequirementGroup.Feature.Label")); //$NON-NLS-1$
+    featureField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    featureField.addFocusListener(this);
+    featureField.addKeyListener(this);
+    featureField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, null);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, null);
 
     if (null != _semanticElement) {
-      if (null != _requirementIdField)
-        setTextValue(_requirementIdField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_RequirementId());
-      if (null != _additionalInformationField)
-        setTextValue(_additionalInformationField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_AdditionalInformation());
-      if (null != _verificationMethodField)
-        setTextValue(_verificationMethodField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationMethod());
-      if (null != _verificationPhaseField)
-        setTextValue(_verificationPhaseField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationPhase());
-      if (null != _implementationVersionField)
-        setTextValue(_implementationVersionField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_ImplementationVersion());
-      if (null != _featureField)
-        setTextValue(_featureField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_Feature());
+      if (null != requirementIdField)
+        setTextValue(requirementIdField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_RequirementId());
+      if (null != additionalInformationField)
+        setTextValue(additionalInformationField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_AdditionalInformation());
+      if (null != verificationMethodField)
+        setTextValue(verificationMethodField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationMethod());
+      if (null != verificationPhaseField)
+        setTextValue(verificationPhaseField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationPhase());
+      if (null != implementationVersionField)
+        setTextValue(implementationVersionField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_ImplementationVersion());
+      if (null != featureField)
+        setTextValue(featureField, _semanticElement, RequirementPackage.eINSTANCE.getRequirement_Feature());
     }
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField text field to be filled
    */
   @Override
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(_requirementIdField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_RequirementId(), _requirementIdField.getText());
-    } else if (textField_p.equals(_additionalInformationField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_AdditionalInformation(), _additionalInformationField.getText());
-    } else if (textField_p.equals(_verificationMethodField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationMethod(), _verificationMethodField.getText());
-    } else if (textField_p.equals(_verificationPhaseField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationPhase(), _verificationPhaseField.getText());
-    } else if (textField_p.equals(_implementationVersionField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_ImplementationVersion(), _implementationVersionField.getText());
-    } else if (textField_p.equals(_featureField)) {
-      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_Feature(), _featureField.getText());
+  protected void fillTextField(Text textField) {
+    if (textField.equals(requirementIdField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_RequirementId(), requirementIdField.getText());
+    } else if (textField.equals(additionalInformationField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_AdditionalInformation(), additionalInformationField.getText());
+    } else if (textField.equals(verificationMethodField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationMethod(), verificationMethodField.getText());
+    } else if (textField.equals(verificationPhaseField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_VerificationPhase(), verificationPhaseField.getText());
+    } else if (textField.equals(implementationVersionField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_ImplementationVersion(), implementationVersionField.getText());
+    } else if (textField.equals(featureField)) {
+      setDataValue(_semanticElement, RequirementPackage.eINSTANCE.getRequirement_Feature(), featureField.getText());
     }
   }
 
@@ -175,24 +175,24 @@ public class RequirementGroup extends AbstractSemanticField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    if (null != _requirementIdField && !_requirementIdField.isDisposed()) {
-      _requirementIdField.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    if (null != requirementIdField && !requirementIdField.isDisposed()) {
+      requirementIdField.setEnabled(enabled);
     }
-    if (null != _additionalInformationField && !_additionalInformationField.isDisposed()) {
-      _additionalInformationField.setEnabled(enabled_p);
+    if (null != additionalInformationField && !additionalInformationField.isDisposed()) {
+      additionalInformationField.setEnabled(enabled);
     }
-    if (null != _verificationMethodField && !_verificationMethodField.isDisposed()) {
-      _verificationMethodField.setEnabled(enabled_p);
+    if (null != verificationMethodField && !verificationMethodField.isDisposed()) {
+      verificationMethodField.setEnabled(enabled);
     }
-    if (null != _verificationPhaseField && !_verificationPhaseField.isDisposed()) {
-      _verificationPhaseField.setEnabled(enabled_p);
+    if (null != verificationPhaseField && !verificationPhaseField.isDisposed()) {
+      verificationPhaseField.setEnabled(enabled);
     }
-    if (null != _implementationVersionField && !_implementationVersionField.isDisposed()) {
-      _implementationVersionField.setEnabled(enabled_p);
+    if (null != implementationVersionField && !implementationVersionField.isDisposed()) {
+      implementationVersionField.setEnabled(enabled);
     }
-    if (null != _featureField && !_featureField.isDisposed()) {
-      _featureField.setEnabled(enabled_p);
+    if (null != featureField && !featureField.isDisposed()) {
+      featureField.setEnabled(enabled);
     }
   }
 }

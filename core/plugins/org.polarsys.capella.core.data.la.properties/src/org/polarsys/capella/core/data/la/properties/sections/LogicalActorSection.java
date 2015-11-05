@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class LogicalActorSection extends ComponentSection {
 
-  private MultipleSemanticField _realizedActors;
+  private MultipleSemanticField realizedActors;
 
   /**
    * {@inheritDoc}
@@ -41,19 +41,19 @@ public class LogicalActorSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _realizedActors = new MultipleSemanticField(getReferencesGroup(),
+    realizedActors = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("LogicalActorSection_RealizedActors_Label"), getWidgetFactory(), new LogicalActor_RealizedActorsController()); //$NON-NLS-1$
-    _realizedActors.setDisplayedInWizard(displayedInWizard);
+    realizedActors.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _realizedActors.loadData(capellaElement_p, LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
+    realizedActors.loadData(capellaElement, LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
   }
 
   /**
@@ -73,7 +73,7 @@ public class LogicalActorSection extends ComponentSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_realizedActors);
+    fields.add(realizedActors);
 
     return fields;
   }

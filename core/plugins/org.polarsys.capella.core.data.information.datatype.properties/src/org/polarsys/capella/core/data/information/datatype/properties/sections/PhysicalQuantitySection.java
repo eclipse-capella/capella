@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,8 +48,8 @@ public class PhysicalQuantitySection extends DataTypeSection {
 
     numericTypeKindGroup = new NumericTypeKindGroup(_rootParentComposite, getWidgetFactory()) {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        super.widgetSelected(event_p);
+      public void widgetSelected(SelectionEvent event) {
+        super.widgetSelected(event);
         _dataTypeComposite.loadData(_semanticElement);
       }
     };
@@ -81,15 +81,15 @@ public class PhysicalQuantitySection extends DataTypeSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    numericTypeKindGroup.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getNumericType_Kind());
-    minValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getNumericType_OwnedMinValue());
-    maxValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getNumericType_OwnedMaxValue());
-    defaultValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getNumericType_OwnedDefaultValue());
-    nullValueWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getNumericType_OwnedNullValue());
-    unitWidget.loadData(capellaElement_p, DatatypePackage.eINSTANCE.getPhysicalQuantity_Unit());
+    numericTypeKindGroup.loadData(capellaElement, DatatypePackage.eINSTANCE.getNumericType_Kind());
+    minValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getNumericType_OwnedMinValue());
+    maxValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getNumericType_OwnedMaxValue());
+    defaultValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getNumericType_OwnedDefaultValue());
+    nullValueWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getNumericType_OwnedNullValue());
+    unitWidget.loadData(capellaElement, DatatypePackage.eINSTANCE.getPhysicalQuantity_Unit());
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,26 +30,26 @@ public class CollectionBooleanPropertiesCheckbox extends GeneralizableElementBoo
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
+   * @param parent
+   * @param style
    */
-  public CollectionBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true, true);
+  public CollectionBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true, true);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param showIsAbstract_p
-   * @param showIsPrimitive_p
+   * @param parent
+   * @param widgetFactory
+   * @param showIsAbstract
+   * @param showIsPrimitive
    */
-  public CollectionBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showIsAbstract_p, boolean showIsPrimitive_p) {
-    super(parent_p, widgetFactory_p, showIsAbstract_p);
+  public CollectionBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsAbstract, boolean showIsPrimitive) {
+    super(parent, widgetFactory, showIsAbstract);
 
-    _isFinalBtn = createButton(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL, Messages.getString("Collection.IsFinalLabel"), parent_p); //$NON-NLS-1$
-    if (showIsPrimitive_p) {
-      _isPrimitiveBtn = createButton(InformationPackage.Literals.COLLECTION__IS_PRIMITIVE, Messages.getString("Collection.IsPrimitiveLabel"), parent_p); //$NON-NLS-1$
+    _isFinalBtn = createButton(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL, Messages.getString("Collection.IsFinalLabel"), parent); //$NON-NLS-1$
+    if (showIsPrimitive) {
+      _isPrimitiveBtn = createButton(InformationPackage.Literals.COLLECTION__IS_PRIMITIVE, Messages.getString("Collection.IsPrimitiveLabel"), parent); //$NON-NLS-1$
     }
   }
 

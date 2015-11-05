@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,9 @@ public class DataFlowController extends SequenceMessageController {
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
    */
   @Override
-  public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
+  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> list = new ArrayList<EObject>();
-    for (FunctionalExchange exchange : DataFlowHelper.getAvailableFonctionalExchanges((SequenceMessage) semanticElement_p)) {
+    for (FunctionalExchange exchange : DataFlowHelper.getAvailableFonctionalExchanges((SequenceMessage) semanticElement)) {
       list.add(exchange);
     }
     return list;
@@ -41,21 +41,21 @@ public class DataFlowController extends SequenceMessageController {
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
-    DataFlowHelper.affectDataflowToMessageAndOpposite((SequenceMessage) semanticElement_p, (FunctionalExchange) value);
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+    DataFlowHelper.affectDataflowToMessageAndOpposite((SequenceMessage) semanticElement, (FunctionalExchange) value);
     return value;
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
    */
-  public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-    if (semanticElement_p instanceof SequenceMessage) {
-      AbstractEventOperation currentValue = SequenceMessageExt.getFunctionalExchange((SequenceMessage) semanticElement_p);
+  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+    if (semanticElement instanceof SequenceMessage) {
+      AbstractEventOperation currentValue = SequenceMessageExt.getFunctionalExchange((SequenceMessage) semanticElement);
       if (currentValue != null) {
         editValueWizard(currentValue);
         // to synchronize names
-        DataFlowHelper.affectDataflowToMessageAndOpposite((SequenceMessage) semanticElement_p, currentValue);
+        DataFlowHelper.affectDataflowToMessageAndOpposite((SequenceMessage) semanticElement, currentValue);
         return currentValue;
       }
     }
@@ -66,9 +66,9 @@ public class DataFlowController extends SequenceMessageController {
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.ISimpleEditableSemanticFieldController#loadValue(org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.emf.ecore.EStructuralFeature)
    */
   @Override
-  public EObject loadValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    if (semanticElement_p instanceof SequenceMessage) {
-      return SequenceMessageExt.getFunctionalExchange((SequenceMessage) semanticElement_p);
+  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    if (semanticElement instanceof SequenceMessage) {
+      return SequenceMessageExt.getFunctionalExchange((SequenceMessage) semanticElement);
     }
     return null;
   }

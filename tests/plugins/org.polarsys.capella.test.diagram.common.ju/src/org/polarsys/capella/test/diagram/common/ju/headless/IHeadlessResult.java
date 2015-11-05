@@ -10,11 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.headless;
 
+import java.util.Collection;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * internal use.
+ * 
  * @see {@link HeadlessResultOpProvider}
  */
 public interface IHeadlessResult {
-	// nothing
+
+  public Object getResult(Collection<? extends EObject> selections, Map<String, Object> parameters);
+
 }

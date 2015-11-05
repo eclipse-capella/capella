@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,11 +35,11 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class ComponentExchangeSection extends NamedElementSection {
 
-  private MultipleSemanticField _allocatedExchangeItemsField;
-  private MultipleSemanticField _allocatedFunctionalExchangesField;
-  private MultipleSemanticField _realizedComponentExchangesField;
-  private ComponentExchangeKindGroup _componentExchangeKindGroup;
-  private MultipleSemanticField _categoriesField;
+  private MultipleSemanticField allocatedExchangeItemsField;
+  private MultipleSemanticField allocatedFunctionalExchangesField;
+  private MultipleSemanticField realizedComponentExchangesField;
+  private ComponentExchangeKindGroup componentExchangeKindGroup;
+  private MultipleSemanticField categoriesField;
 
   /**
    * {@inheritDoc}
@@ -50,25 +50,25 @@ public class ComponentExchangeSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _componentExchangeKindGroup = new ComponentExchangeKindGroup(_rootParentComposite, getWidgetFactory(), true);
-    _componentExchangeKindGroup.setDisplayedInWizard(displayedInWizard);
+    componentExchangeKindGroup = new ComponentExchangeKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    componentExchangeKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    _allocatedExchangeItemsField =
+    allocatedExchangeItemsField =
         new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeSection_AllocatedExchangeItems_Label, getWidgetFactory(),
             new AbstractMultipleSemanticFieldController() {
               /**
                * {@inheritDoc}
                */
               @Override
-              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-                return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(),
+              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+                return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(),
                     ModellingcorePackage.eINSTANCE.getAbstractInformationFlow_ConvoyedInformations());
               }
             });
-    _allocatedExchangeItemsField.setDisplayedInWizard(displayedInWizard);
+    allocatedExchangeItemsField.setDisplayedInWizard(displayedInWizard);
 
     final ComponentExchange_AllocatedFunctionalExchangesController controller = new ComponentExchange_AllocatedFunctionalExchangesController();
-    _allocatedFunctionalExchangesField =
+    allocatedFunctionalExchangesField =
         new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeSection_AllocatedFunctionalExchanges_Label, getWidgetFactory(), controller) {
           /**
            * {@inheritDoc}
@@ -85,40 +85,40 @@ public class ComponentExchangeSection extends NamedElementSection {
             });
           }
         };
-    _allocatedFunctionalExchangesField.setDisplayedInWizard(displayedInWizard);
+    allocatedFunctionalExchangesField.setDisplayedInWizard(displayedInWizard);
 
-    _categoriesField =
+    categoriesField =
         new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeSection_Categories_Label, getWidgetFactory(),
             new AbstractMultipleSemanticFieldController() {
               /**
                * {@inheritDoc}
                */
               @Override
-              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-                return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), FaPackage.eINSTANCE.getComponentExchange_Categories());
+              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+                return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), FaPackage.eINSTANCE.getComponentExchange_Categories());
               }
             });
-    _categoriesField.setDisplayedInWizard(displayedInWizard);
+    categoriesField.setDisplayedInWizard(displayedInWizard);
 
-    _realizedComponentExchangesField =
+    realizedComponentExchangesField =
         new MultipleSemanticField(getReferencesGroup(), Messages.ComponentExchangeSection_RealizedComponentExchanges_Label, getWidgetFactory(),
             new ComponentExchange_RealizedComponentExchangesController());
-    _realizedComponentExchangesField.setDisplayedInWizard(displayedInWizard);
+    realizedComponentExchangesField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _componentExchangeKindGroup.loadData(capellaElement_p, FaPackage.eINSTANCE.getComponentExchange_Kind());
-    _allocatedExchangeItemsField.loadData(capellaElement_p, ModellingcorePackage.eINSTANCE.getAbstractInformationFlow_ConvoyedInformations());
-    _allocatedFunctionalExchangesField.loadData(capellaElement_p,
+    componentExchangeKindGroup.loadData(capellaElement, FaPackage.eINSTANCE.getComponentExchange_Kind());
+    allocatedExchangeItemsField.loadData(capellaElement, ModellingcorePackage.eINSTANCE.getAbstractInformationFlow_ConvoyedInformations());
+    allocatedFunctionalExchangesField.loadData(capellaElement,
         FaPackage.eINSTANCE.getComponentExchange_OwnedComponentExchangeFunctionalExchangeAllocations());
-    _categoriesField.loadData(capellaElement_p, FaPackage.eINSTANCE.getComponentExchange_Categories());
-    _realizedComponentExchangesField.loadData(capellaElement_p, FaPackage.eINSTANCE.getComponentExchange_OwnedComponentExchangeRealizations());
+    categoriesField.loadData(capellaElement, FaPackage.eINSTANCE.getComponentExchange_Categories());
+    realizedComponentExchangesField.loadData(capellaElement, FaPackage.eINSTANCE.getComponentExchange_OwnedComponentExchangeRealizations());
   }
 
   /**
@@ -138,11 +138,11 @@ public class ComponentExchangeSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_allocatedExchangeItemsField);
-    fields.add(_allocatedFunctionalExchangesField);
-    fields.add(_componentExchangeKindGroup);
-    fields.add(_categoriesField);
-    fields.add(_realizedComponentExchangesField);
+    fields.add(allocatedExchangeItemsField);
+    fields.add(allocatedFunctionalExchangesField);
+    fields.add(componentExchangeKindGroup);
+    fields.add(categoriesField);
+    fields.add(realizedComponentExchangesField);
 
     return fields;
   }

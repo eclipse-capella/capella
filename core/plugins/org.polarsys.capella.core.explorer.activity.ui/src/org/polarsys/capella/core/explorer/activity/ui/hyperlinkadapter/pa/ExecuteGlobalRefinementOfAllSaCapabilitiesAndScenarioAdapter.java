@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 
-import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -19,29 +18,34 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.refinement.commands.ScenarioRefinementCommand;
 
 /**
  * Execute a global refinement of all System Analysis Capabilities and Scenarios.
  */
-public class ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter extends AbstractHyperlinkAdapter {
+public class ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter extends AbstractCapellaHyperlinkAdapter {
 	/**
 	 * Constructor.
-	 * @param rootSemanticModel
-	 * @param session
 	 */
 	public ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
+		super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
 	protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
-		TransactionHelper.getExecutionManager(rootSemanticModel).execute(new ScenarioRefinementCommand(getModelElement(rootSemanticModel), new NullProgressMonitor()));
+		ModelElement modelElement = getModelElement(rootSemanticModel);
+		if(modelElement !=null){
+		  TransactionHelper.getExecutionManager(rootSemanticModel).execute(new ScenarioRefinementCommand(modelElement, new NullProgressMonitor()));
+		}
 	}
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getLACapabilityRealizationPkg((Project) rootSemanticModel);
+	  if(rootSemanticModel instanceof Project){
+	    return ModelQueryHelper.getLACapabilityRealizationPkg((Project) rootSemanticModel);
+	  }
+	  return null;
 	}
 }

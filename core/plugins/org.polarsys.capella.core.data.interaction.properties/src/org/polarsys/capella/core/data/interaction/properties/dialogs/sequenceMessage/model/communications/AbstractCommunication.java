@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,9 +57,9 @@ public abstract class AbstractCommunication implements EObject, CapellaElement {
 	public Component source;
 	public Component target;
 	
-	public AbstractCommunication(ExchangeItem exchangeItem_p, boolean isPartial_p) {
-		this.exchangeItem = exchangeItem_p;
-		this.isPartial = isPartial_p;
+	public AbstractCommunication(ExchangeItem exchangeItem, boolean isPartial) {
+		this.exchangeItem = exchangeItem;
+		this.isPartial = isPartial;
 	}
 	
 	public abstract CommunicationInfo toCommunicationInfo();

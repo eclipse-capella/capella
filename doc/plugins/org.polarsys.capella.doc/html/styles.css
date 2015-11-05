@@ -27,12 +27,12 @@ H1 {
 	LINE-HEIGHT: normal;
 	PADDING-TOP: 2px;
 	BORDER-BOTTOM: #336699 1px solid;
-	TEXT-TRANSFORM: lowercase;
+	/* TEXT-TRANSFORM: lowercase; */
 }
 
-H1:FIRST-LETTER {
+/* H1:FIRST-LETTER {
 	TEXT-TRANSFORM: capitalize;
-}
+} */
 
 H2 {
 	PADDING-RIGHT: 2px;

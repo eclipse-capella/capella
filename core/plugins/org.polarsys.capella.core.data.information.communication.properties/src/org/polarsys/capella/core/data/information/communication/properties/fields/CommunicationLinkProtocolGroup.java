@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,36 +37,36 @@ public class CommunicationLinkProtocolGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public CommunicationLinkProtocolGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, Messages.getString("CommunicationLinkProtocol.Label"), widgetFactory_p, true, true, true); //$NON-NLS-1$
+  public CommunicationLinkProtocolGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, Messages.getString("CommunicationLinkProtocol.Label"), widgetFactory, true, true, true); //$NON-NLS-1$
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param text_p
-   * @param widgetFactory_p
-   * @param showCallProtocols_p
-   * @param showSendProtocols_p
-   * @param showAccessProtocols_p
+   * @param parent
+   * @param text
+   * @param widgetFactory
+   * @param showCallProtocols
+   * @param showSendProtocols
+   * @param showAccessProtocols
    */
-  public CommunicationLinkProtocolGroup(Composite parent_p, String text_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showCallProtocols_p, boolean showSendProtocols_p, boolean showAccessProtocols_p) {
-    super(parent_p, widgetFactory_p, text_p, getNumColumns(showCallProtocols_p, showSendProtocols_p, showAccessProtocols_p));
+  public CommunicationLinkProtocolGroup(Composite parent, String text, TabbedPropertySheetWidgetFactory widgetFactory, boolean showCallProtocols, boolean showSendProtocols, boolean showAccessProtocols) {
+    super(parent, widgetFactory, text, getNumColumns(showCallProtocols, showSendProtocols, showAccessProtocols));
 
     _communicationLinkBtnUnset = createButton(CommunicationLinkProtocol.UNSET);
-    if (showCallProtocols_p) {
+    if (showCallProtocols) {
       _communicationLinkBtnSynchronous = createButton(CommunicationLinkProtocol.SYNCHRONOUS);
       _communicationLinkBtnAsynchronous = createButton(CommunicationLinkProtocol.ASYNCHRONOUS);
     }
-    if (showSendProtocols_p) {
+    if (showSendProtocols) {
       _communicationLinkBtnUnicast = createButton(CommunicationLinkProtocol.UNICAST);
       _communicationLinkBtnMulticast = createButton(CommunicationLinkProtocol.MULTICAST);
       _communicationLinkBtnBroadcast = createButton(CommunicationLinkProtocol.BROADCAST);
     }
-    if (showAccessProtocols_p) {
+    if (showAccessProtocols) {
       _communicationLinkBtnRead = createButton(CommunicationLinkProtocol.READ);
       _communicationLinkBtnAccept = createButton(CommunicationLinkProtocol.ACCEPT);
     }
@@ -75,16 +75,16 @@ public class CommunicationLinkProtocolGroup extends AbstractSemanticKindGroup {
   /**
    * 
    */
-  private static int getNumColumns(boolean showCallProtocols_p, boolean showSendProtocols_p, boolean showAccessProtocols_p) {
-    return 1 + (showCallProtocols_p ? 2 : 0) + (showSendProtocols_p ? 3 : 0) + (showAccessProtocols_p ? 2 : 0);
+  private static int getNumColumns(boolean showCallProtocols, boolean showSendProtocols, boolean showAccessProtocols) {
+    return 1 + (showCallProtocols ? 2 : 0) + (showSendProtocols ? 3 : 0) + (showAccessProtocols ? 2 : 0);
   }
 
   /**
-   * @param exchangeMechanism_p
+   * @param exchangeMechanism
    */
-  public void synchronizeProtocolsStatus(ExchangeMechanism exchangeMechanism_p) {
-    if (exchangeMechanism_p != null) {
-      switch (exchangeMechanism_p.getValue()) {
+  public void synchronizeProtocolsStatus(ExchangeMechanism exchangeMechanism) {
+    if (exchangeMechanism != null) {
+      switch (exchangeMechanism.getValue()) {
         case ExchangeMechanism.OPERATION_VALUE:
           enableCallProtocols(true);
           enableSendProtocols(false);
@@ -119,11 +119,11 @@ public class CommunicationLinkProtocolGroup extends AbstractSemanticKindGroup {
   }
 
   /**
-   * @param communicationLinkKind_p
+   * @param communicationLinkKind
    */
-  public void synchronizeProtocolsStatus(CommunicationLinkKind communicationLinkKind_p) {
-    if (communicationLinkKind_p != null) {
-      switch (communicationLinkKind_p.getValue()) {
+  public void synchronizeProtocolsStatus(CommunicationLinkKind communicationLinkKind) {
+    if (communicationLinkKind != null) {
+      switch (communicationLinkKind.getValue()) {
         case CommunicationLinkKind.CALL_VALUE:
           enableCallProtocols(true);
           enableSendProtocols(false);
@@ -158,35 +158,35 @@ public class CommunicationLinkProtocolGroup extends AbstractSemanticKindGroup {
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableAccessProtocols(boolean enabled_p) {
-    enableButton(_communicationLinkBtnRead, enabled_p);
-    enableButton(_communicationLinkBtnAccept, enabled_p);
+  protected void enableAccessProtocols(boolean enabled) {
+    enableButton(_communicationLinkBtnRead, enabled);
+    enableButton(_communicationLinkBtnAccept, enabled);
   }
   
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableCallProtocols(boolean enabled_p) {
-    enableButton(_communicationLinkBtnSynchronous, enabled_p);
-    enableButton(_communicationLinkBtnAsynchronous, enabled_p);
+  protected void enableCallProtocols(boolean enabled) {
+    enableButton(_communicationLinkBtnSynchronous, enabled);
+    enableButton(_communicationLinkBtnAsynchronous, enabled);
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableSendProtocols(boolean enabled_p) {
-    enableButton(_communicationLinkBtnUnicast, enabled_p);
-    enableButton(_communicationLinkBtnMulticast, enabled_p);
-    enableButton(_communicationLinkBtnBroadcast, enabled_p);
+  protected void enableSendProtocols(boolean enabled) {
+    enableButton(_communicationLinkBtnUnicast, enabled);
+    enableButton(_communicationLinkBtnMulticast, enabled);
+    enableButton(_communicationLinkBtnBroadcast, enabled);
   }
 
   /**
-   * @param enabled_p
+   * @param enabled
    */
-  protected void enableUnsetProtocols(boolean enabled_p) {
-    enableButton(_communicationLinkBtnUnset, enabled_p);
+  protected void enableUnsetProtocols(boolean enabled) {
+    enableButton(_communicationLinkBtnUnset, enabled);
   }
 
   /**

@@ -36,7 +36,7 @@ public class RepairSiriusRunnable extends AbstractMigrationRunnable {
 
     try {
       LongRunningListenersRegistry.getInstance().operationStarting(getClass());
-      doRepairMigrate(getName(), getFile(), true, context);
+      doRepairMigrate(getName(), getFile(), context.isSkipConfirmation(), context);
 
     } catch (InterruptedException e) {
       LongRunningListenersRegistry.getInstance().operationAborted(getClass());

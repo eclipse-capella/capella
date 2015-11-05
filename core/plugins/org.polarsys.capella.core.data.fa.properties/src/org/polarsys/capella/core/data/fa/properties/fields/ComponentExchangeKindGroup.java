@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,24 +24,24 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticKindGroup;
 /**
  */
 public class ComponentExchangeKindGroup extends AbstractSemanticKindGroup {
-  private Button _componentExchangeKindBtnUnset;
-  private Button _componentExchangeKindBtnAssembly;
-  private Button _componentExchangeKindBtnDelegation;
-  private Button _componentExchangeKindBtnFlow;
+  private Button componentExchangeKindBtnUnset;
+  private Button componentExchangeKindBtnAssembly;
+  private Button componentExchangeKindBtnDelegation;
+  private Button componentExchangeKindBtnFlow;
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public ComponentExchangeKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("ComponentExchangeKind.Label"), 4); //$NON-NLS-1$
+  public ComponentExchangeKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("ComponentExchangeKind.Label"), 4); //$NON-NLS-1$
 
-    _componentExchangeKindBtnUnset = createButton(ComponentExchangeKind.UNSET, enabled_p);
-    _componentExchangeKindBtnAssembly = createButton(ComponentExchangeKind.ASSEMBLY, enabled_p);
-    _componentExchangeKindBtnDelegation = createButton(ComponentExchangeKind.DELEGATION, enabled_p);
-    _componentExchangeKindBtnFlow = createButton(ComponentExchangeKind.FLOW, enabled_p);
+    componentExchangeKindBtnUnset = createButton(ComponentExchangeKind.UNSET, enabled);
+    componentExchangeKindBtnAssembly = createButton(ComponentExchangeKind.ASSEMBLY, enabled);
+    componentExchangeKindBtnDelegation = createButton(ComponentExchangeKind.DELEGATION, enabled);
+    componentExchangeKindBtnFlow = createButton(ComponentExchangeKind.FLOW, enabled);
   }
 
   /**
@@ -51,10 +51,10 @@ public class ComponentExchangeKindGroup extends AbstractSemanticKindGroup {
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<Button>();
 
-    fields.add(_componentExchangeKindBtnUnset);
-    fields.add(_componentExchangeKindBtnAssembly);
-    fields.add(_componentExchangeKindBtnDelegation);
-    fields.add(_componentExchangeKindBtnFlow);
+    fields.add(componentExchangeKindBtnUnset);
+    fields.add(componentExchangeKindBtnAssembly);
+    fields.add(componentExchangeKindBtnDelegation);
+    fields.add(componentExchangeKindBtnFlow);
 
     return fields;
   }
@@ -64,6 +64,6 @@ public class ComponentExchangeKindGroup extends AbstractSemanticKindGroup {
    */
   @Override
   public Button getDefaultSemanticField() {
-    return _componentExchangeKindBtnUnset;
+    return componentExchangeKindBtnUnset;
   }
 }

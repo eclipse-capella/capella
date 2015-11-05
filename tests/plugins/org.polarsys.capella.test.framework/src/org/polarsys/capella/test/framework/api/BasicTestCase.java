@@ -103,11 +103,13 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   }
 
   protected IFile getAirdFileForLoadedModel(String modelName) {
-    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(modelName + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
+    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(
+        modelName + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
   }
 
   protected IFile getCapellaFileForLoadedModel(String modelName) {
-    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(modelName + "." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION); //$NON-NLS-1$
+    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(
+        modelName + "." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION); //$NON-NLS-1$
   }
 
   // /**
@@ -187,7 +189,8 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     }
   }
 
-  protected void copyTestDataFolderInWorkspace(String relativeFolderInTestPluginToCopy, IContainer target) throws IOException {
+  protected void copyTestDataFolderInWorkspace(String relativeFolderInTestPluginToCopy, IContainer target)
+      throws IOException {
     //    URL fileURL = FileHelper.getFileFullUrl(getPluginId() + "/" + relativeFolderInTestPluginToCopy + "/"); //$NON-NLS-1$ //$NON-NLS-2$
     // File sourceFile = new File(fileURL.getFile());
     File sourceFile = new File(getPluginFolder().toString() + "/" + relativeFolderInTestPluginToCopy + "/"); //$NON-NLS-1$ //$NON-NLS-2$

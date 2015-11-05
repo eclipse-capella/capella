@@ -24,6 +24,9 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 import org.polarsys.capella.core.data.information.datavalue.BooleanReference;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationReference;
+import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
+import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
+import org.polarsys.capella.core.data.information.datavalue.LiteralStringValue;
 import org.polarsys.capella.core.data.information.datavalue.NumericReference;
 import org.polarsys.capella.core.data.information.datavalue.StringReference;
 import org.polarsys.capella.core.data.information.datavalue.ValuePart;
@@ -87,6 +90,10 @@ public class NavigatorModelDataListener extends CapellaModelDataListener {
       __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.ENUMERATION_REFERENCE__REFERENCED_PROPERTY);
       // Value Part.
       __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.VALUE_PART__REFERENCED_PROPERTY);
+      // Literals Value.
+      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.LITERAL_BOOLEAN_VALUE__VALUE);
+      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE);
+      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.LITERAL_STRING_VALUE__VALUE);
     }
   }
 
@@ -102,6 +109,9 @@ public class NavigatorModelDataListener extends CapellaModelDataListener {
         dataNotifier.addAdapter(StringReference.class, this);
         dataNotifier.addAdapter(EnumerationReference.class, this);
         dataNotifier.addAdapter(ValuePart.class, this);
+        dataNotifier.addAdapter(LiteralBooleanValue.class, this);
+        dataNotifier.addAdapter(LiteralNumericValue.class, this);
+        dataNotifier.addAdapter(LiteralStringValue.class, this);
       }
     }
   }
