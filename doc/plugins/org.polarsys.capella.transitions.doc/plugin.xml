@@ -16,23 +16,19 @@
          point="org.eclipse.help.toc">
       <toc
             file="toc.xml"
-            primary="true"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/11. Iterative Transitions/11.1. Concepts-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/11. Iterative Transitions/11.2. Transitions Between Engineering Phases-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/11. Iterative Transitions/11.3. Examples-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
    </extension>
 </plugin>

@@ -16,68 +16,55 @@
          point="org.eclipse.help.toc">
       <toc
             file="toc.xml"
-            primary="true"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="toc-LIBS.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="toc-RE.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/08. Replicable Element (REC-RPL)/8.1. Introduction-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/08. Replicable Element (REC-RPL)/8.5. RPL Validation-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/09. Libraries/9.1. Introduction-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/09. Libraries/9.2. Basic Use Case-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/09. Libraries/9.3. Usage With Replicable Elements-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/09. Libraries/9.4. Usage Restrictions-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
    </extension>
 </plugin>
