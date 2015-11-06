@@ -16,18 +16,15 @@
          point="org.eclipse.help.toc">
       <toc
             file="toc.xml"
-            primary="true"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/10. Patterns/10.1. Introduction to patterns-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/10. Patterns/10.3. Collaborating with patterns-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
    </extension>
 </plugin>

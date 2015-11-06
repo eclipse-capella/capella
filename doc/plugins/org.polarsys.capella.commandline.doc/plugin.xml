@@ -16,13 +16,11 @@
          point="org.eclipse.help.toc">
       <toc
             file="toc.xml"
-            primary="true"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/19. Command Line Support/19.1. Core Mechanism and Applications-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
    </extension>
 </plugin>

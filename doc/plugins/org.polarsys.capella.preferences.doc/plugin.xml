@@ -16,28 +16,23 @@
          point="org.eclipse.help.toc">
       <toc
             file="toc.xml"
-            primary="true"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/06. Preferences/6.1. Configurability and Validation Profile-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/06. Preferences/6.2. Model preferences-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
       <toc
             file="html/06. Preferences/6.4. Commands preferences-toc.xml"
-            primary="false"
-            sort="true">
+            primary="false">
       </toc>
    </extension>
 </plugin>
