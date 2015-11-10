@@ -13,23 +13,25 @@ package org.polarsys.capella.test.framework.helpers;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IActionDelegate;
+import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RenameResourceAction;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerService;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 
@@ -56,7 +58,9 @@ public class GuiActions {
 
   /**
    * Close several sessions at the same time by using the capella action @see CloseSessionAction.
-   * @param sessions the list of sessions to close
+   * 
+   * @param sessions
+   *          the list of sessions to close
    */
   public static void closeSessions(List<Session> sessions) {
     HeadlessCloseSessionAction closeSessionAction = new HeadlessCloseSessionAction(sessions);
@@ -76,7 +80,9 @@ public class GuiActions {
 
   /**
    * Close a session by using the capella action @see CloseSessionAction.
-   * @param session the session to close
+   * 
+   * @param session
+   *          the session to close
    */
   public static void closeSession(Session session) {
     closeSessions(Collections.singletonList(session));
@@ -111,45 +117,51 @@ public class GuiActions {
   }
 
   /**
-   * Simulate a click on model detachment button. Do NOT perform a model detach, it's just to evaluate detach
-   * preconditions.
+   * Simulate a model detachment. Do NOT perform a model detach, it's just to evaluate detach preconditions.
    * 
    * @param airdFile
    * @throws RuntimeException
    *           if one precondition is false
    */
-  public static void lauchDetachModelAction(IFile airdFile) throws RuntimeException {
-    IActionDelegate modelDetachAction = retrieveActionFromRegistry("org.polarsys.kitalpha.model.detachment.ui",
-        "Model Detachment");
-    Action nullAction = new Action() {
-    };
-    modelDetachAction.selectionChanged(nullAction, new StructuredSelection(airdFile));
-    modelDetachAction.run(nullAction);
+  public static void lauchDetachModelAction(IFile airdFile) throws RuntimeException, Exception {
+    String dettachCommandId = "org.polarsys.kitalpha.model.detachment.ui.command.a";
+    executeEclipseCommand(dettachCommandId, airdFile);
   }
 
-  private static IActionDelegate retrieveActionFromRegistry(String nameSpaceIdentifier, String label) {
-    IExtensionRegistry registry = Platform.getExtensionRegistry();
-    IConfigurationElement[] confElts = registry.getConfigurationElementsFor("org.eclipse.ui.popupMenus");
+  /**
+   * Execute an Eclipse command with the file as current selection
+   * 
+   * @param commandId
+   * @param file
+   *          is a Capella file
+   * @throws Exception
+   */
+  protected static void executeEclipseCommand(String commandId, IFile file) throws Exception {
+    Command command = ((ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class))
+        .getCommand(commandId);
+    IHandlerService hservice = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
 
-    for (IConfigurationElement elt : confElts) {
-      if (!elt.getNamespaceIdentifier().equals(nameSpaceIdentifier)) {
-        continue;
-      }
+    setCurrentSelection(file);
 
-      IConfigurationElement[] children = elt.getChildren("action");
-      for (IConfigurationElement child : children) {
+    hservice.executeCommandInContext(ParameterizedCommand.generateCommand(command, null), null,
+        hservice.createContextSnapshot(true));
 
-        if (!child.getAttribute("label").equals(label)) {
-          continue;
-        }
+  }
 
-        try {
-          return (IActionDelegate) child.createExecutableExtension("class");
-        } catch (CoreException e) {
-          e.printStackTrace();
-        }
-      }
-    }
-    return null;
+  /**
+   * Set current selection on IFile file
+   * @param file
+   * @throws PartInitException
+   */
+  protected static void setCurrentSelection(IFile file) throws PartInitException {
+    IWorkbenchPartSite site = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart()
+        .getSite();
+
+    StructuredSelection selection = new StructuredSelection(file);
+    CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
+        .getActiveWorkbenchWindow().getActivePage().showView("capella.project.explorer");
+
+    site.setSelectionProvider(capellaProjectView.getCommonViewer());
+    site.getSelectionProvider().setSelection(selection);
   }
 }
