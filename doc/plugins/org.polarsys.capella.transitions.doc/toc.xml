@@ -11,7 +11,7 @@
        Thales - initial API and implementation
 -->
 <toc label="Iterative Transitions" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
-   <topic label="Iterative Transitions">
+   <topic label="Iterative Transitions" sort="true">
       <anchor id="contribution"/>
    </topic>
 </toc>

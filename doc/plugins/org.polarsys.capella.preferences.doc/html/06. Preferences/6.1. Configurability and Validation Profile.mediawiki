@@ -715,7 +715,7 @@ Exported preferences (Validation profiles) can be stored into a Capella Configur
  
 === Using Validation Profiles ===
  
-Validation profiles (preferences files stored into Capella Configuration Project) can be used during validation of Capella model elements. To enable this usage on a Capella project, a Capella Configuration Project containing at least one preferences file has to be referenced (see <u>[[Referencing Capella Configuration Project]]</u>). All referenced validation profiles are then available during validation.
+Validation profiles (preferences files stored into Capella Configuration Project) can be used during validation of Capella model elements. To enable this usage on a Capella project, a Capella Configuration Project containing at least one preferences file has to be referenced. All referenced validation profiles are then available during validation.
 
  
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_352efd77.png|643x612px]]

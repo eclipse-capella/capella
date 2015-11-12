@@ -16,7 +16,7 @@ This project can be stored:
 
  
 * In a shared directory (problem: no versioning and no change 	control),
-* In a ClearCase view. In this case, to avoid concurrent 	modifications, all users should share the same UCM stream (see [[Capella Model Configuration Management Guide]] for more details).
+* In a ClearCase view. In this case, to avoid concurrent 	modifications, all users should share the same UCM stream.
  
 <br>
 <br>

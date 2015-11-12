@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <toc label="11.3. Examples" link_to="PLUGINS_ROOT/org.polarsys.capella.transitions.doc/toc.xml#contribution" topic="html/11. Iterative Transitions/11.3. Examples.html">
-	<topic href="html/11. Iterative Transitions/11.3. Examples.html" label="Examples of Iterative Transitions Between Engineering Phases">
+	<topic href="html/11. Iterative Transitions/11.3. Examples.html" label="Some Examples">
 		<topic href="html/11. Iterative Transitions/11.3. Examples.html#Basics_.28Containment_and_Property_Changes.29" label="Basics (Containment and Property Changes)">
 			<topic href="html/11. Iterative Transitions/11.3. Examples.html#Overview" label="Overview"></topic>
 			<topic href="html/11. Iterative Transitions/11.3. Examples.html#Performing_the_First_Transition" label="Performing the First Transition"></topic>
