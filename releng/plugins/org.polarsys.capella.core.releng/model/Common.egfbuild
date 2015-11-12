@@ -122,8 +122,6 @@
       <components xsi:type="buildstep:Feature" xmi:id="_Rbul8O_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.base.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_SUW3EO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.dependencies.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_R8z5wO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.model.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_j80jMT27EeG0_cmFvR9Vkw" id="org.polarsys.capella.core.doc.developer.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_kzFc0D27EeG0_cmFvR9Vkw" id="org.polarsys.capella.core.doc.user.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_s61GoC0YEeSpNZCH09tG3Q" id="org.polarsys.capella.patterns.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_N2hU4JZyEeS4v-7NYpWHgw" id="org.polarsys.capella.detachment.version.precondition.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_c_rJMJo_EeSestiG7b7wRQ" id="org.polarsys.capella.core.properties.description.feature"/>
@@ -158,8 +156,8 @@
       <steps xsi:type="buildstep:PublishStep" xmi:id="_BAOtwO_5EeCIP56Yzwc9FQ" name="Publish Capella" description="" component="_F7efwO_5EeCIP56Yzwc9FQ"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_HxX5IH_-EeGTdLgtIFdaLw" name="org.polarsys.capella.core.compare.feature" component="_1_rZIH_9EeGTdLgtIFdaLw"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_O3IjoPAvEeCsV7GIvIT8ig" name="Publish Data Merged" description="" component="_4o96dO9UEeCKw7_91ITV8w"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_5ozugD27EeG0_cmFvR9Vkw" name="Publish Doc Developer" component="_j80jMT27EeG0_cmFvR9Vkw"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_DvQaED28EeG0_cmFvR9Vkw" name="Publish Doc User" component="_kzFc0D27EeG0_cmFvR9Vkw"/>
+      <steps xsi:type="buildstep:PublishStep" xmi:id="_5ozugD27EeG0_cmFvR9Vkw" name="Publish Doc Developer"/>
+      <steps xsi:type="buildstep:PublishStep" xmi:id="_DvQaED28EeG0_cmFvR9Vkw" name="Publish Doc User"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_jkp5IJo_EeSestiG7b7wRQ" name="Publish Description Properties" component="_c_rJMJo_EeSestiG7b7wRQ"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_Rbzf0PAvEeCsV7GIvIT8ig" name="Publish Shared" description="" component="_Qt-vIO_wEeC6vvY4iAtS4w"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_UMYxEPAvEeCsV7GIvIT8ig" name="Publish Shared Base" component="_Rbul8O_wEeC6vvY4iAtS4w"/>
