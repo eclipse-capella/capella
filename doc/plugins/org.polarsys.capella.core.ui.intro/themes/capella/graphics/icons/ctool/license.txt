@@ -1,0 +1,74 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/themes/capella/graphics/icons/ctool/overview_bottomhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/overview_bottomhov.gif
+/themes/capella/graphics/icons/ctool/ov_nav_rightedgehov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/ov_nav_rightedgehov.gif
+/themes/capella/graphics/icons/ctool/fs_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/fs_nav_hover.gif
+/themes/capella/graphics/icons/ctool/samples_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/samples_tophov.gif
+/themes/capella/graphics/icons/ctool/ov_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/ov_nav.png
+/themes/capella/graphics/icons/ctool/firststeps.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/firststeps.gif
+/themes/capella/graphics/icons/ctool/fs_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/fs_nav.png
+/themes/capella/graphics/icons/ctool/wn_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wn_nav.png
+/themes/capella/graphics/icons/ctool/tutorials.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/tutorials.png
+/themes/capella/graphics/icons/ctool/tutorials_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/tutorials_tophov.gif
+/themes/capella/graphics/icons/ctool/whatsnew_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/whatsnew_tophov.gif
+/themes/capella/graphics/icons/ctool/workbench_bottomhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/workbench_bottomhov.gif
+/themes/capella/graphics/icons/ctool/root_bottomhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/root_bottomhov.gif
+/themes/capella/graphics/icons/ctool/content_nav_bar.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/content_nav_bar.gif
+/themes/capella/graphics/icons/ctool/ov_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/ov_nav_hover.gif
+/themes/capella/graphics/icons/ctool/sa_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/sa_nav.png
+/themes/capella/graphics/icons/ctool/tu_nav_64.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/tu_nav_64.gif
+/themes/capella/graphics/icons/ctool/whatsnew.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/whatsnew.gif
+/themes/capella/graphics/icons/ctool/overview_midhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/overview_midhov.gif
+/themes/capella/graphics/icons/ctool/cpt_midhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/cpt_midhov.gif
+/themes/capella/graphics/icons/ctool/wn_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wn_nav_hover.gif
+/themes/capella/graphics/icons/ctool/ov_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/ov_nav_32.gif
+/themes/capella/graphics/icons/ctool/sa_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/sa_nav_hover.gif
+/themes/capella/graphics/icons/ctool/wb_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wb_nav_32.gif
+/themes/capella/graphics/icons/ctool/ov_nav_midhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/ov_nav_midhov.gif
+/themes/capella/graphics/icons/ctool/samples.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/samples.png
+/themes/capella/graphics/icons/ctool/tu_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/tu_nav.png
+/themes/capella/graphics/icons/ctool/tutorials.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/tutorials.gif
+/themes/capella/graphics/icons/ctool/firststeps.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/firststeps.png
+/themes/capella/graphics/icons/ctool/fs_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/fs_nav_32.gif
+/themes/capella/graphics/icons/ctool/migrate.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/migrate.gif
+/themes/capella/graphics/icons/ctool/wn_nav_64.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wn_nav_64.gif
+/themes/capella/graphics/icons/ctool/sa_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/sa_nav_32.gif
+/themes/capella/graphics/icons/ctool/migrate.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/migrate.png
+/themes/capella/graphics/icons/ctool/workbench.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/workbench.gif
+/themes/capella/graphics/icons/ctool/nav_rightedgehov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/nav_rightedgehov.gif
+/themes/capella/graphics/icons/ctool/wn_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wn_nav_32.gif
+/themes/capella/graphics/icons/ctool/wb_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wb_nav.png
+/themes/capella/graphics/icons/ctool/workbench_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/workbench_tophov.gif
+/themes/capella/graphics/icons/ctool/tu_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/tu_nav_hover.gif
+/themes/capella/graphics/icons/ctool/wr_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wr_nav_hover.gif
+/themes/capella/graphics/icons/ctool/wr_nav_64.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wr_nav_64.gif
+/themes/capella/graphics/icons/ctool/fs_nav_64.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/fs_nav_64.gif
+/themes/capella/graphics/icons/ctool/wb_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wb_nav_hover.gif
+/themes/capella/graphics/icons/ctool/mi_nav_hover.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/mi_nav_hover.gif
+/themes/capella/graphics/icons/ctool/overview_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/overview_tophov.gif
+/themes/capella/graphics/icons/ctool/wr_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wr_nav.png
+/themes/capella/graphics/icons/ctool/firststeps_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/firststeps_tophov.gif
+/themes/capella/graphics/icons/ctool/ov_nav_64.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/ov_nav_64.gif
+/themes/capella/graphics/icons/ctool/samples.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/samples.gif
+/themes/capella/graphics/icons/ctool/webresources_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/webresources_tophov.gif
+/themes/capella/graphics/icons/ctool/mi_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/mi_nav_32.gif
+/themes/capella/graphics/icons/ctool/overview.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/overview.gif
+/themes/capella/graphics/icons/ctool/root_midhov2.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/root_midhov2.gif
+/themes/capella/graphics/icons/ctool/tu_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/tu_nav_32.gif
+/themes/capella/graphics/icons/ctool/mi_nav.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/mi_nav.png
+/themes/capella/graphics/icons/ctool/mi_nav_64.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/mi_nav_64.gif
+/themes/capella/graphics/icons/ctool/root_midhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/root_midhov.gif
+/themes/capella/graphics/icons/ctool/nav_midhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/nav_midhov.gif
+/themes/capella/graphics/icons/ctool/workbench.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/workbench.png
+/themes/capella/graphics/icons/ctool/webresources.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/webresources.gif
+/themes/capella/graphics/icons/ctool/sa_nav_64.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/sa_nav_64.gif
+/themes/capella/graphics/icons/ctool/wr_nav_32.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/wr_nav_32.gif
+/themes/capella/graphics/icons/ctool/workbench_midhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/workbench_midhov.gif
+/themes/capella/graphics/icons/ctool/cpt_bottomhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/cpt_bottomhov.gif
+/themes/capella/graphics/icons/ctool/webresources.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/webresources.png
+/themes/capella/graphics/icons/ctool/sa_onesample48.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/sa_onesample48.gif
+/themes/capella/graphics/icons/ctool/migrate_tophov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/icons/ctool/migrate_tophov.gif

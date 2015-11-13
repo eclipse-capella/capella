@@ -1,0 +1,13 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/themes/capella/graphics/launchbar/tutorials16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/tutorials16.png
+/themes/capella/graphics/launchbar/firststeps16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/firststeps16.png
+/themes/capella/graphics/launchbar/webresources16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/webresources16.png
+/themes/capella/graphics/launchbar/migrate16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/migrate16.png
+/themes/capella/graphics/launchbar/overview16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/overview16.png
+/themes/capella/graphics/launchbar/samples16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/samples16.png
+/themes/capella/graphics/launchbar/whatsnew16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/whatsnew16.png

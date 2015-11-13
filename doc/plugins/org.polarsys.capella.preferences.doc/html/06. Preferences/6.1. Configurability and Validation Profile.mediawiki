@@ -344,7 +344,7 @@ DCOM_16
 <br>
 
  
-You can choose to import only MA preferences and not validation ones to let the latter unchanged. You can also use a validation profile (see. <u>[[Validation Profiles]]</u>) to get exactly the validation preferences that was exported.
+You can choose to import only MA preferences and not validation ones to let the latter unchanged. You can also use a validation profile to get exactly the validation preferences that was exported.
 
  
 <br>

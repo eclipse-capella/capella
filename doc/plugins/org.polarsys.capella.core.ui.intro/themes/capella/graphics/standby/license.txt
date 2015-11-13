@@ -1,0 +1,22 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/themes/capella/graphics/standby/fs_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/fs_standby.gif
+/themes/capella/graphics/standby/tu_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/tu_standby.gif
+/themes/capella/graphics/standby/sa_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/sa_standby.gif
+/themes/capella/graphics/standby/wr_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/wr_standbyhov.gif
+/themes/capella/graphics/standby/ov_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/ov_standby.gif
+/themes/capella/graphics/standby/wn_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/wn_standby.gif
+/themes/capella/graphics/standby/wb_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/wb_standbyhov.gif
+/themes/capella/graphics/standby/wr_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/wr_standby.gif
+/themes/capella/graphics/standby/mi_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/mi_standbyhov.gif
+/themes/capella/graphics/standby/sa_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/sa_standbyhov.gif
+/themes/capella/graphics/standby/tu_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/tu_standbyhov.gif
+/themes/capella/graphics/standby/fs_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/fs_standbyhov.gif
+/themes/capella/graphics/standby/ov_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/ov_standbyhov.gif
+/themes/capella/graphics/standby/wb_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/wb_standby.gif
+/themes/capella/graphics/standby/wn_standbyhov.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/wn_standbyhov.gif
+/themes/capella/graphics/standby/mi_standby.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/standby/mi_standby.gif
