@@ -81,7 +81,7 @@ public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements
     ExecutionManager manager = ExecutionManagerRegistry.getInstance().addNewManager();
     TransactionalEditingDomain domain = manager.getEditingDomain();
 
-    domain.setID(CapellaWorkspaceProvider.class.getCanonicalName());
+    domain.setID(getWorkspaceEditingDomainID());
     domain.getResourceSet().setResourceFactoryRegistry(new ResourceFactoryRegistryImpl() {
       @Override
       protected Factory delegatedGetFactory(URI uri, String contentTypeIdentifier) {
@@ -258,6 +258,17 @@ public class CapellaWorkspaceProvider extends AbstractCapellaProvider implements
       }
     }
     return null;
+  }
+
+  /**
+   * Is the given editing domain the workspace editing domain?
+   */
+  public boolean isWorkspaceDomain(TransactionalEditingDomain domain){
+    return getWorkspaceEditingDomainID().equals(domain.getID());
+  }
+
+  private static String getWorkspaceEditingDomainID(){
+    return CapellaWorkspaceProvider.class.getCanonicalName();
   }
 
   @Override
