@@ -553,7 +553,7 @@ To see 				.settings folder containing these local preferences, filtered by 				
 
  
 | 
-Melody 				Project specific preferences will 				'''override''' 				Workspace preferences.
+Capella 				Project specific preferences will 				'''override''' 				Workspace preferences.
 
  
 | 

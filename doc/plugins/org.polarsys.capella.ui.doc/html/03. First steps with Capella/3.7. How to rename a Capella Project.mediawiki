@@ -45,7 +45,7 @@ If 				you rename a Library project, all the references to this library 				will
 
  
 | 
-If you 				rename a Melody project or a Library project, all your Orchestra 				links might be broken. Projects renaming in Orchestra environment 				must be done very carefully.
+If you 				rename a Capella project or a Library project, all your Orchestra 				links might be broken. Projects renaming in Orchestra environment 				must be done very carefully.
 
  
 |}  

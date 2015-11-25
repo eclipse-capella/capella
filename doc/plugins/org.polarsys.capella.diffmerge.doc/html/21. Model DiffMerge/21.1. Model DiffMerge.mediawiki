@@ -121,7 +121,7 @@ As indicated in the message, if the purpose of the comparison is to merge models
 This subsection is only for users who have models under SVN control.
 
  
-A new preference entry has been added in the SVN preferences named '''&lsquo;Diff Merge for Melody&rsquo;'''
+A new preference entry has been added in the SVN preferences named '''&lsquo;Diff Merge for Capella&rsquo;'''
 
  
 <br>
@@ -291,7 +291,7 @@ Note that when a filter is active, the &ldquo;&#91;filtered&#93;&rdquo; warning 
 
  
 * &ldquo;Support undo/redo&rdquo;: 	when active, the user has the possibility to undo/redo his actions 	via the usual shortcuts &lt;Ctrl-Z&gt; and &lt;Ctrl-Y&gt; or via the 	&ldquo;Edit&rdquo; menu. This feature is more appropriate when the 	models have a limited size; otherwise, undoing a merge on a large 	model may be a long-running operation.
-* &ldquo;Log changes to models&rdquo;: 	when active, all modifications made to the models are logged in an 	HTML file. This file is named &ldquo;ModelComparisonLog.htm&rdquo; 	and is located near the usual &ldquo;.log&rdquo; file in the 	&ldquo;.metadata&rdquo; sub-folder of the current workspace folder. 	If the current workspace folder is unknown, right-click a Melody 	project that has been created from scratch, click the &ldquo;Properties&rdquo; 	menu item and look for the &ldquo;Location&rdquo; line in the 	&ldquo;Resource&rdquo; category.
+* &ldquo;Log changes to models&rdquo;: 	when active, all modifications made to the models are logged in an 	HTML file. This file is named &ldquo;ModelComparisonLog.htm&rdquo; 	and is located near the usual &ldquo;.log&rdquo; file in the 	&ldquo;.metadata&rdquo; sub-folder of the current workspace folder. 	If the current workspace folder is unknown, right-click a Capella 	project that has been created from scratch, click the &ldquo;Properties&rdquo; 	menu item and look for the &ldquo;Location&rdquo; line in the 	&ldquo;Resource&rdquo; category.
  
 '''Important notice''': the last 3 features (&ldquo;show merge impact&rdquo;, &ldquo;support undo/redo&rdquo;, &ldquo;log changes to models&rdquo;) have a cost in performance. Merging differences typically takes longer and requires more memory if they are enabled. It may thus be relevant to disable them when performing large merges. Note that undo/redo is the most expensive feature and logging the least expensive.
 
@@ -321,7 +321,7 @@ Additional features are available via a click on the triangle-shaped button.
  
 * &ldquo;Show values on differences&rdquo;: 	when selected, only the values which are different are displayed in 	the Value sections.
 * &ldquo;Show all values&rdquo;: when 	selected, all the values of the current attribute or reference are 	shown in the Value sections. Those that are different are 	highlighted.
-* &ldquo;&rsquo;Show all values and 	features&rdquo;: when selected, all the features (attributes and 	references) of the current element are shown in the Details section. 	The features that have differences are highlighted as in the 	snapshot below. It is thus possible to see all the contents of a 	model element, although it is generally advised to use the Melody 	Semantic Browser view instead.
+* &ldquo;&rsquo;Show all values and 	features&rdquo;: when selected, all the features (attributes and 	references) of the current element are shown in the Details section. 	The features that have differences are highlighted as in the 	snapshot below. It is thus possible to see all the contents of a 	model element, although it is generally advised to use the Capella 	Semantic Browser view instead.
  
 [[Image:Images/21.1.%20Model%20DiffMerge_html_7eb489c7.png|334x126px]]
 

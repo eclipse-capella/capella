@@ -72,7 +72,7 @@ Default 				behaviour of command line support checks that the workspace 				spec
 
  
 | 
-Melody 				installation should respect Orchestra recommendation for the 				runtime environment i.e. run Melody 32 bits on a 32 bits JVM and 				Melody 64 bits on 64 bits JVM.
+Capella 				installation should respect Orchestra recommendation for the 				runtime environment i.e. run Capella 32 bits on a 32 bits JVM and 				Capella 64 bits on 64 bits JVM.
 
  
 |}  
@@ -300,7 +300,7 @@ The filepath argument may either be a relative or an absolute path. If it is a r
 ''&lt;CapellaInstallationPath&gt;/eclipse.exe -consoleLog &ndash;nosplash -application org.polarsys.capella.core.commandline.core -appid xmlpivot.export - filepath EOLE_AF/EOLE_AF.melodymodeller''
 
  
-This command exports a melody model into an xml file stored at ''filepath'' path.
+This command exports a capella model into an xml file stored at ''filepath'' path.
 
  
 <br>
