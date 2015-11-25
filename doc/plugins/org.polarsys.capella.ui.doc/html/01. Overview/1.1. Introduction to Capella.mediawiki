@@ -35,7 +35,6 @@ In Thales, methodologies exist to help and guide the various actors of the engin
 Is also provides Thales-wide language and tools, very close to (and interoperable with) industry standards such as UML and Sys-ML. This ensures a better understanding between Thales engineers from all domains.
 
  
-Read more about modeling strategies: [[Modeling Strategies]]
 
  
 <br>

@@ -10,7 +10,7 @@
   Contributors:
        Thales - initial API and implementation
 -->
-<toc label="Capella" topic="html/toc.html" sort="false">
+<toc label="Capella Guide" topic="html/toc.html" sort="false">
    <topic label="User Manual">
    		<anchor id="contribution"/>
    </topic>

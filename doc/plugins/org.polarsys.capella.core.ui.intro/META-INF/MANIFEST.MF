@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.intro;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
@@ -10,7 +10,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.intro,
  org.eclipse.ui.intro.universal,
  org.polarsys.capella.core.platform.sirius.ui.project,
- org.eclipse.ui.forms,
- org.polarsys.capella.core.doc.user
+ org.eclipse.ui.forms
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

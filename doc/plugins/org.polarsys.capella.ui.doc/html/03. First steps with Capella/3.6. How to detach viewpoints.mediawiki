@@ -1,7 +1,7 @@
             
 = How to Detach Viewpoints from Capella Project? =
  
-Since version 2.4.0, Capella enforces the presence of all the Viewpoints used by a project. Thus it is mandatory to install all these Viewpoints in Melody advance in order to migrate or to open a project.
+Since version 2.4.0, Capella enforces the presence of all the Viewpoints used by a project. Thus it is mandatory to install all these Viewpoints in Capella in order to migrate or to open a project.
 
  
 When all the Viewpoints previously used by the project are installed in the Capella target version, the migration will work as expected. In this scenario, the Detachment tool is not needed.

@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.provider.RelationshipItemProvider;
+import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
@@ -204,6 +205,8 @@ public class AbstractCapabilityGeneralizationItemProvider
         String targetName = ""; //$NON-NLS-1$
         EObject target = null;
 
+ 		target = ((AbstractCapabilityGeneralization) object).getSuper();
+	
 	 	if (null != target) {
 			if (target instanceof AbstractNamedElement) {
 				targetName = ((AbstractNamedElement) target).getName();

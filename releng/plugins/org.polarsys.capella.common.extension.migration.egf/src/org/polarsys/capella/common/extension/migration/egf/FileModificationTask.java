@@ -61,13 +61,15 @@ public class FileModificationTask implements ITaskProduction {
 	protected String readFile(File file) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		StringBuilder stringBuilder = new StringBuilder();
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			stringBuilder.append(line);
-			stringBuilder.append("\n");
+		char[] buffer = new char[1024];
+		int numChars;
+		try {
+			while ((numChars = reader.read(buffer)) != -1){
+				stringBuilder.append(buffer, 0, numChars);
+			}
+		} finally {
+			reader.close();
 		}
-		reader.close();
-		
 		return stringBuilder.toString();
 	}
 

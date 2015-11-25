@@ -121,8 +121,6 @@
       <components xsi:type="buildstep:Feature" xmi:id="_Rbul8O_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.base.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_SUW3EO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.dependencies.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_R8z5wO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.model.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_j80jMT27EeG0_cmFvR9Vkw" id="org.polarsys.capella.core.doc.developer.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_kzFc0D27EeG0_cmFvR9Vkw" id="org.polarsys.capella.core.doc.user.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_s61GoC0YEeSpNZCH09tG3Q" id="org.polarsys.capella.patterns.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_N2hU4JZyEeS4v-7NYpWHgw" id="org.polarsys.capella.detachment.version.precondition.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_c_rJMJo_EeSestiG7b7wRQ" id="org.polarsys.capella.core.properties.description.feature"/>
@@ -156,8 +154,6 @@
       <steps xsi:type="buildstep:PublishStep" xmi:id="_BAOtwO_5EeCIP56Yzwc9FQ" name="Publish Capella" description="" component="_F7efwO_5EeCIP56Yzwc9FQ"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_HxX5IH_-EeGTdLgtIFdaLw" name="org.polarsys.capella.core.compare.feature" component="_1_rZIH_9EeGTdLgtIFdaLw"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_O3IjoPAvEeCsV7GIvIT8ig" name="Publish Data Merged" description="" component="_4o96dO9UEeCKw7_91ITV8w"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_5ozugD27EeG0_cmFvR9Vkw" name="Publish Doc Developer" component="_j80jMT27EeG0_cmFvR9Vkw"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_DvQaED28EeG0_cmFvR9Vkw" name="Publish Doc User" component="_kzFc0D27EeG0_cmFvR9Vkw"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_jkp5IJo_EeSestiG7b7wRQ" name="Publish Description Properties" component="_c_rJMJo_EeSestiG7b7wRQ"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_Rbzf0PAvEeCsV7GIvIT8ig" name="Publish Shared" description="" component="_Qt-vIO_wEeC6vvY4iAtS4w"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_UMYxEPAvEeCsV7GIvIT8ig" name="Publish Shared Base" component="_Rbul8O_wEeC6vvY4iAtS4w"/>
@@ -166,7 +162,7 @@
       <steps xsi:type="buildstep:PublishStep" xmi:id="_hS4tYDRnEeWZJ6pwcp_y_g" name="Publish Capella embedded documentation" component="_d0TtsTRnEeWZJ6pwcp_y_g"/>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_Y3638IOvEeGEKpWdrghARA" name="Archive Update Site">
-      <steps xsi:type="buildstep:AggregateStep" xmi:id="_aFZ-wIOvEeGEKpWdrghARA" name="Capella Update Site" id="org.polarsys.capella" publishSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _5ozugD27EeG0_cmFvR9Vkw _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g"/>
+      <steps xsi:type="buildstep:AggregateStep" xmi:id="_aFZ-wIOvEeGEKpWdrghARA" name="Capella Update Site" id="org.polarsys.capella" publishSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g"/>
       <steps xsi:type="buildfile:ZipStep" xmi:id="_PxpxgIoGEeGSbqNfjJWsgA" name="Archive Capella Update Site" description="" enabled="false" baseDir="${publish}/org.polarsys.capella/site.p2" destinationFilePath="${publish}/capella-${archiveSuffix}.zip"/>
     </steps>
   </steps>
@@ -218,7 +214,7 @@
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_SQQb0F1tEeGnJaeCI-TkHw" name="PrepareCleanTP">
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_NGDOgF1yEeGnJaeCI-TkHw"/>
       </steps>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _5ozugD27EeG0_cmFvR9Vkw _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
         <updateSiteUrls>${site_Kitalpha_CTK}</updateSiteUrls>
         <updateSiteUrls>${orbit.download.url}</updateSiteUrls>
         <updateSiteUrls>${site_QueryLegacy}</updateSiteUrls>
@@ -228,6 +224,8 @@
         <updateSiteUrls>${site_Amalgam}</updateSiteUrls>
         <featureNames>org.eclipse.sirius.query.legacy.feature.source</featureNames>
         <featureNames>org.eclipse.sirius.runtime.source</featureNames>
+        <featureNames>org.eclipse.sirius.runtime.ide.ui.source</featureNames>
+        <featureNames>org.eclipse.sirius.doc.feature</featureNames>
         <featureNames>org.polarsys.kitalpha.emde.ui.feature</featureNames>
         <featureNames>org.polarsys.kitalpha.emde.ui.source.feature</featureNames>
         <featureNames>org.polarsys.kitalpha.emde.source.feature</featureNames>

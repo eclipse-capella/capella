@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-SymbolicName: org.polarsys.capella.core.doc.developer; singleton:=true
-Bundle-Version: 0.8.0.qualifier
-Bundle-Vendor: %providerName
-Eclipse-LazyStart: true
-Bundle-Localization: plugin
