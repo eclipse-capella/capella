@@ -30,6 +30,9 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.ConfigurationScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -51,9 +54,11 @@ import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
 import org.eclipse.ui.statushandlers.AbstractStatusHandler;
 import org.eclipse.ui.statushandlers.StatusAdapter;
 import org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager;
+import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.advisor.DelegateWorkbenchAdvisor;
+import org.polarsys.capella.core.platform.sirius.ui.PerspectivePlugin;
 import org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective;
 
 /**
@@ -152,7 +157,21 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   @Override
   public void preStartup() {
     super.preStartup();
-    disableNonCapellaActivities();
+
+    // Disable capabilities during the first start of capella
+    // See https://bugs.polarsys.org/show_bug.cgi?id=155
+    IEclipsePreferences prefs = ConfigurationScope.INSTANCE.getNode(PerspectivePlugin.PLUGIN_ID);
+    String key = "disableCapabilitiesOnStartUp";
+    if (prefs.getBoolean(key, true)) {
+      disableNonCapellaActivities();
+      prefs.putBoolean(key, false);
+      try {
+        prefs.flush();
+      } catch (BackingStoreException e) {
+        PerspectivePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, PerspectivePlugin.PLUGIN_ID, e.getMessage(), e));
+      }
+    }
+
     // Load SiriusEdit
     SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
     // Disable Sirius Pre-commit listener behavior since Capella has the same one.
