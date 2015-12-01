@@ -21,6 +21,10 @@ import org.polarsys.capella.core.data.information.datavalue.NumericReference;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 
 public class PropertyNamingHelper {
+	
+  private static final String UNDEFINED = "undefined"; //$NON-NLS-1$
+  private static final String SQUARE_BRACKETS_FORMAT = "[%s]";
+  private static final String SQUARE_BRACKETS_WITH_DOTS_FORMAT ="[%s..%s]";
 
   public static String getSymbolIfPropertyIsDerived(Property property) {
     if (null != property) {
@@ -32,25 +36,31 @@ public class PropertyNamingHelper {
     return ICommonConstants.EMPTY_STRING;
   }
 
-  /**
-   * convert a multiplicity to a string used in common.odesign and context.odesign
-   * @param element
-   * @return
-   */
+	/**
+	 * Convert a {@link MultiplicityElement} to a String used in common.odesign
+	 * and context.odesign.
+	 * 
+	 * @param element
+	 *            the MultiplicityElement to be converted to String
+	 * @return As specified above.
+	 */
   public static String multiplicityToStringDisplay(MultiplicityElement element) {
     NumericValue ownedMinCard = element.getOwnedMinCard();
     NumericValue ownedMaxCard = element.getOwnedMaxCard();
     if ((ownedMinCard == null) && (ownedMaxCard == null)) {
-      return "[undefined]"; //$NON-NLS-1$
+      return String.format(SQUARE_BRACKETS_FORMAT, UNDEFINED);
     }
 
-    String minCard = getCardValue(ownedMinCard);
-    String maxCard = getCardValue(ownedMaxCard);
+    String tmpMinCardValue = getCardValue(ownedMinCard);
+    String tmpMaxCardValue = getCardValue(ownedMaxCard);
+	
+    String minCard = tmpMinCardValue.isEmpty() ? UNDEFINED : tmpMinCardValue;
+	String maxCard = tmpMaxCardValue.isEmpty() ? UNDEFINED : tmpMaxCardValue;
 
-    // rule 1: if min = max display max only (except if min and max equals 1, display void)
+    // Rule 1: if min == max => display max only (except if min == max == 1, nothing to display)
     boolean displayNothing = false;
     boolean displayOnlyMax = false;
-    if (minCard.equalsIgnoreCase(maxCard) && !minCard.equals(ICommonConstants.EMPTY_STRING) && !maxCard.equals(ICommonConstants.EMPTY_STRING)) {
+    if (minCard.equalsIgnoreCase(maxCard) && !minCard.isEmpty() && !maxCard.isEmpty()) {
       if (minCard.equalsIgnoreCase("1")) { //$NON-NLS-1$
         displayNothing = true;
       } else {
@@ -58,20 +68,20 @@ public class PropertyNamingHelper {
       }
     }
 
-    // rule 2: if min=0 and max=* display only max
+    // Rule 2: if min == 0 and max == * => display max only
     if (minCard.equalsIgnoreCase("0") && maxCard.equalsIgnoreCase("*")) { //$NON-NLS-1$ //$NON-NLS-2$
       displayOnlyMax = true;
     }
 
-    // rule 3: if minCard or maxCard are named, display the names
-    String ownedminCardName = ownedMinCard.getName();
-    String ownedmaxCardName = ownedMaxCard.getName();
-    if ((null != ownedminCardName) && !ownedminCardName.equals(ICommonConstants.EMPTY_STRING)) {
+    // Rule 3: if minCard or maxCard are named, display the names
+    String ownedminCardName = ownedMinCard != null ? ownedMinCard.getName() : ICommonConstants.EMPTY_STRING;
+    String ownedmaxCardName = ownedMaxCard != null ? ownedMaxCard.getName() : ICommonConstants.EMPTY_STRING;
+    if (null != ownedminCardName && !ownedminCardName.isEmpty()) {
       minCard = ownedminCardName;
       displayNothing = false;
       displayOnlyMax = false;
     }
-    if ((null != ownedmaxCardName) && !ownedmaxCardName.equals(ICommonConstants.EMPTY_STRING)) {
+    if ((null != ownedmaxCardName) && !ownedmaxCardName.isEmpty()) {
       maxCard = ownedmaxCardName;
       displayNothing = false;
       displayOnlyMax = false;
@@ -80,13 +90,10 @@ public class PropertyNamingHelper {
     if (displayNothing) {
       return ICommonConstants.EMPTY_STRING;
     } else if (displayOnlyMax) {
-      return "[" //$NON-NLS-1$
-             + maxCard + "]"; //$NON-NLS-1$
+      return String.format(SQUARE_BRACKETS_FORMAT, maxCard);
     }
 
-    return "[" //$NON-NLS-1$
-           + minCard + ".." //$NON-NLS-1$
-           + maxCard + "]"; //$NON-NLS-1$
+    return String.format(SQUARE_BRACKETS_WITH_DOTS_FORMAT, minCard, maxCard);
   }
 
   /**
