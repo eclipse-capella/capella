@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.utils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ScopeModelWrapper implements IScope {
   @Override
   public List<Resource> getResources() {
     if (_model instanceof CapellaModel) {
-      return ((CapellaModel) _model).getEditingDomain().getResourceSet().getResources();
+    	return Collections.unmodifiableList(new ArrayList<Resource>(((CapellaModel) _model).getEditingDomain().getResourceSet().getResources()));
     }
     return Collections.emptyList();
   }

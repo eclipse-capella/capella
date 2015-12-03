@@ -44,7 +44,7 @@ public abstract class ValidationRulePartialTestCase extends ValidationRuleTestCa
     List<EObject> scope = new ArrayList<EObject>();
     IScope resourceScope = new IScope() {
       public List<Resource> getResources() {
-        return getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain().getResourceSet().getResources();
+        return new ArrayList<Resource>(getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain().getResourceSet().getResources());
       }
     };
     for (String id : getScopeDefinition()) {

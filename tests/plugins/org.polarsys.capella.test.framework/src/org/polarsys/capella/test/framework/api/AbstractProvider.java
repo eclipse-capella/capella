@@ -12,12 +12,12 @@ package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -26,27 +26,17 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.libraries.ILibraryManager;
-import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
-import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.IFileRequestor;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
-import org.polarsys.capella.test.framework.helpers.TestHelper;
 
-/**
- * Manages input models for test. Called by @see BasicTestCase and @see BasicTestSuite to load and unload models used in
- * test cases.<br>
- * This class handles read-only check for models that are used by several test cases without being unloaded.
- * 
- * @author Erwan Brottier
- */
-public class ModelProvider {
+
+public abstract class AbstractProvider implements IModelProvider{
 
   protected static HashMap<String, BasicTestArtefact> modelIdentifier2Owner = new HashMap<String, BasicTestArtefact>();
   protected static HashMap<String, ChangeLocker> modelIdentifier2ChangeLocker = new HashMap<String, ChangeLocker>();
   protected static HashMap<String, String> modelIdentifier2ProjectNameInWorkspace = new HashMap<String, String>();
+  protected static HashMap<BasicTestArtefact, List<String>> lstSetUpArtefacts = new HashMap<BasicTestArtefact, List<String>>();
 
   /**
    * Create an eclipse project in the workspace and feed it with data stored in the test case model repository. Open the
@@ -59,7 +49,8 @@ public class ModelProvider {
    *          the context where data to add in the new project are stored
    * @throws IOException
    */
-  public static void requireTestModel(String relativeModelPath, BasicTestArtefact artefact) throws IOException {
+  @Override
+  public void requireTestModel(String relativeModelPath, BasicTestArtefact artefact) throws IOException {
     File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
     System.out.println(">> require " + modelIdentifier);
@@ -69,17 +60,31 @@ public class ModelProvider {
         throw new IllegalArgumentException("test model '" + relativeModelPath + "' does not exist");
       }
       System.out.println(">> load " + modelIdentifier);
-      String projectName = sourceFolder.getName();
-      IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-      File targetFolder = new File(root.getRawLocation().toString() + "/" + projectName + "/"); //$NON-NLS-1$ //$NON-NLS-2$
-      TestHelper.copy(sourceFolder, targetFolder);
-      IProject project = TestHelper.createCapellaProject(projectName);
-      normalizeEclipseProjectForTest(project);
-      ProjectHelper.refreshProject(project, new NullProgressMonitor());
+      
+      BasicTestArtefact startArtefact = getSetupArtefact(artefact);
+      if (startArtefact == null)  {
+        try {
+          setUp();
+          List<String> loadedModels = new ArrayList<String>();
+          loadedModels.add(modelIdentifier);
+          lstSetUpArtefacts.put(artefact, loadedModels);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else {
+        List<String> loadedModels = lstSetUpArtefacts.get(startArtefact);
+        if (!loadedModels.contains(modelIdentifier)) {
+          loadedModels.add(modelIdentifier);
+        }
+      }
+      
+      importCapellaProject(relativeModelPath, artefact);
+      
       modelIdentifier2Owner.put(modelIdentifier, artefact);
-      modelIdentifier2ProjectNameInWorkspace.put(modelIdentifier, projectName);
+      modelIdentifier2ProjectNameInWorkspace.put(modelIdentifier, sourceFolder.getName());
     }
-    // add a change lock on the test model if the artefact is not the owner of the test model
+    // add a change lock on the test model if the artefact is not the owner
+    // of the test model
     if (modelIdentifier2Owner.get(modelIdentifier) != artefact) {
       Session session = getSessionForTestModel(relativeModelPath, artefact);
       TransactionalEditingDomain ted = TransactionHelper.getEditingDomain(session);
@@ -88,32 +93,53 @@ public class ModelProvider {
       ted.addResourceSetListener(changeLocker);
     }
   }
+  
+  BasicTestArtefact getSetupArtefact(BasicTestArtefact artefact) {
+    BasicTestArtefact result = lstSetUpArtefacts.containsKey(artefact) ? artefact : null;
+    if (result == null) {
+      BasicTestArtefact parent = artefact.getParentTestSuite();
+      if (parent != null) {
+        result = getSetupArtefact(parent);
+      }
+    }
+    return result;
+  }
 
-  public static void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact) {
+  protected abstract void importCapellaProject(String relativeModelPath, BasicTestArtefact artefact);
+  protected abstract void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject);
+
+  public void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact) {
+    releaseTestModel(relativeModelPath, artefact, false);
+  }
+
+  protected void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
     File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
     System.out.println(">> release " + modelIdentifier);
     if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
       throw new IllegalArgumentException("test model '" + relativeModelPath + "' has not been loaded");
     }
-    // if the test artefact is the owner of the test model, do actually the unload
+    // if the test artefact is the owner of the test model, do actually the
+    // unload
     if (modelIdentifier2Owner.get(modelIdentifier) == artefact) {
       System.out.println(">> unload " + modelIdentifier);
-      Session session = getExistingSessionForTestModel(relativeModelPath, artefact);
-      if (session.isOpen()) {
-        GuiActions.saveSession(session);
-        GuiActions.closeSession(session);
-      }
-
-      IProject eclipseProject = getEclipseProjectForTestModel(relativeModelPath, artefact);
-      try {
-        GuiActions.deleteEclipseProject(eclipseProject);
-      } catch (CoreException e) {
-        e.printStackTrace();
-      }
-
+      removeCapellaProject(relativeModelPath, artefact, eraseProject);
+  
       modelIdentifier2Owner.remove(modelIdentifier);
       modelIdentifier2ProjectNameInWorkspace.remove(modelIdentifier);
+      
+      BasicTestArtefact startArtefact = getSetupArtefact(artefact);
+      if (startArtefact != null)  {
+        lstSetUpArtefacts.get(startArtefact).remove(modelIdentifier);
+        if (lstSetUpArtefacts.get(startArtefact).isEmpty()) {
+          try {
+            tearDown();
+            lstSetUpArtefacts.remove(startArtefact);
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+        }
+      }
     }
     // remove the change locker if any
     else if (modelIdentifier2ChangeLocker.containsKey(modelIdentifier)) {
@@ -124,7 +150,8 @@ public class ModelProvider {
       ted.removeResourceSetListener(changeLocker);
     }
     // BEGIN To be delete when the following bug will be solved :
-    // Bug 261 - Testability issue due to creation of async GUI jobs during session state changes
+    // Bug 261 - Testability issue due to creation of async GUI jobs during
+    // session state changes
     flushASyncGuiThread();
     // END
   }
@@ -133,7 +160,7 @@ public class ModelProvider {
    * Aims at forcing execution of remaining GUI thread in the pool. Result not guaranted ...
    */
   // Should be not use anymore when bug 261 will be solved
-  public static void flushASyncGuiThread() {
+  protected void flushASyncGuiThread() {
     try {
       Display.getCurrent().update();
       while (Display.getCurrent().readAndDispatch()) {
@@ -142,45 +169,6 @@ public class ModelProvider {
     } catch (Exception e) {
       // do nothing
     }
-  }
-
-  /**
-   * @return the eclipse project in the workspace that corresponds to the given identifiers.<br>
-   *         Notice that the test model should have been required previously (@see method requireTestModel)
-   */
-  public static IProject getEclipseProjectForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
-    String modelIdentifier = sourceFolder.toString();
-    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)) {
-      throw new IllegalArgumentException("No model has been loaded for identifier '" + relativeModelPath + "'");
-    }
-    String projectName = modelIdentifier2ProjectNameInWorkspace.get(modelIdentifier);
-    IProject project = IResourceHelpers.getEclipseProjectInWorkspace(projectName);
-    normalizeEclipseProjectForTest(project);
-    return project;
-  }
-
-  /**
-   * @return the test model that corresponds to the given identifiers.<br>
-   *         Notice that the test model should have been required previously (@see method requireTestModel)
-   */
-  public static CapellaModel getTestModel(String relativeModelPath, BasicTestCase artefact) {
-    Session session = getSessionForTestModel(relativeModelPath, artefact);
-    CapellaModel model = (CapellaModel) ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
-    return model;
-  }
-
-  /**
-   * @return the session of the test model that corresponds to the given identifiers.<br>
-   *         Notice that the test model should have been required previously (@see method requireTestModel).<br>
-   *         Open the session if it was closed.
-   */
-  public static Session getSessionForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
-    Session session = getExistingSessionForTestModel(relativeModelPath, artefact);
-    if (!session.isOpen()) {
-      session.open(new NullProgressMonitor());
-    }
-    return session;
   }
 
   /**
@@ -193,7 +181,7 @@ public class ModelProvider {
     return session;
   }
 
-  private static void normalizeEclipseProjectForTest(IProject project) {
+  protected static void normalizeEclipseProjectForTest(IProject project) {
     if (!project.isOpen()) {
       try {
         project.open(new NullProgressMonitor());
@@ -202,5 +190,29 @@ public class ModelProvider {
       }
     }
   }
-
+  
+  /**
+   * @return the eclipse project in the workspace that corresponds to the given identifiers.<br>
+   *         Notice that the test model should have been required previously (@see method requireTestModel)
+   */
+  public static IProject getEclipseProjectForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
+    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+    String modelIdentifier = sourceFolder.toString();
+    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)/*hasModelIdentifier2Owner(modelIdentifier)*/) {
+      throw new IllegalArgumentException("No model has been loaded for identifier '" + relativeModelPath + "'");
+    }
+    String projectName = getModelIdentifier2ProjectNameInWorkspace(modelIdentifier);
+    IProject project = IResourceHelpers.getEclipseProjectInWorkspace(projectName);
+    normalizeEclipseProjectForTest(project);
+    return project;
+  }
+  
+  protected static IFile getAirdFileForLoadedModel(String modelName) {
+    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(
+        modelName + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
+  }
+  
+  public static String getModelIdentifier2ProjectNameInWorkspace(String modelIdentifier) {
+    return modelIdentifier2ProjectNameInWorkspace.get(modelIdentifier);
+  }
 }

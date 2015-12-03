@@ -20,7 +20,6 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.ChangeLocker;
-import org.polarsys.capella.test.framework.api.ModelProvider;
 
 /**
  * Checks that the change lock mechanism provided by the model provider works.<br>
