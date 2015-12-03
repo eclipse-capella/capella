@@ -18390,6 +18390,7 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.DiagramServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.IBServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.data.information.util.PropertyNamingHelper"/>
   </ownedViewpoints>
   <userColorsPalettes name="Migration Palette">
     <entries xsi:type="description:UserFixedColor" red="238" green="221" blue="251" name="color1"/>
