@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalPath_RealizedPhysicalPaths-getAvailableElements
 inputId = ca56c4ee-77f8-4fc4-86b7-c256bc6a7f4f
 resultIds = {

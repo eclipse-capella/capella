@@ -8,12 +8,12 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_UsedInterfaces-getAvailableElements
 inputId = 3865e169-2fa4-47de-a673-a1493d810915
 resultIds = {
-    042ea71d-f30b-433d-b3ce-8ba59be4ee2e
     ae866af2-8602-4f28-9503-707c4f2b1e18
+    042ea71d-f30b-433d-b3ce-8ba59be4ee2e
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_UsedInterfaces-getCurrentElements

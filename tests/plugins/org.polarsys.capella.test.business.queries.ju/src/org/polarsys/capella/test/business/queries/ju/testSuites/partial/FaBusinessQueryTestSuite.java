@@ -19,6 +19,8 @@ import junit.framework.Test;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentExchangeCategory_Exchanges;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentExchange_Categories;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_AllocatedPort;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_MaxCardinality;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_MinCardinality;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_ProvidedInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_RealizedComponentPort;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_RequiredInterfaces;
@@ -62,6 +64,8 @@ public class FaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new ComponentExchange_Categories());
     tests.add(new ComponentExchangeCategory_Exchanges());
     tests.add(new ComponentPort_AllocatedPort());
+    tests.add(new ComponentPort_MaxCardinality());
+    tests.add(new ComponentPort_MinCardinality());
     tests.add(new ComponentPort_ProvidedInterfaces());
     tests.add(new ComponentPort_RealizedComponentPort());
     tests.add(new ComponentPort_RequiredInterfaces());
