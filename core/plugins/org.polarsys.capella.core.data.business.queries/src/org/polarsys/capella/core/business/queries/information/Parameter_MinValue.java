@@ -17,44 +17,43 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
-import org.polarsys.capella.core.business.abstractqueries.CapellaElement_AbstractCardinality;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.InformationPackage;
 
 /**
- * This is the query allowing to get the min cardinality of a property
+ * Query for parameter null value
  */
-public class Collection_MinCardinality extends CapellaElement_AbstractCardinality implements IBusinessQuery {
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-   */
-  @Override
-  public EClass getEClass() {
-    return InformationPackage.Literals.COLLECTION;
-  }
+public class Parameter_MinValue extends AbstractMultiplicityElement_NullValue implements IBusinessQuery {
 
   /**
    * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
    */
   @Override
   public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD);
+    return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE);
+  }
+
+  /**
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+   */
+  @Override
+  public EClass getEClass() {
+    return InformationPackage.Literals.PARAMETER;
   }
 
   @Override
   public List<CapellaElement> getAvailableElements(CapellaElement element) {
     QueryContext context = new QueryContext();
     context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PROPERTY__CARDINALITY___LIB, element, context);
+    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PROPERTY__NULL_VALUE___LIB, element, context);
   }
 
   @Override
   public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     QueryContext context = new QueryContext();
     context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COLLECTION__MIN_CARDINALITY, element, context);
+    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PARAMETER__MIN_VALUE, element, context);
   }
 }

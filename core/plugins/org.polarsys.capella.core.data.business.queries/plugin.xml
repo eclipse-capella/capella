@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -164,6 +164,8 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_NullValue" id="org.polarsys.capella.core.business.queries.information.Property_NullValue" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_DefaultValue" id="org.polarsys.capella.core.business.queries.information.Parameter_DefaultValue" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_NullValue" id="org.polarsys.capella.core.business.queries.information.Parameter_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_MaxValue" id="org.polarsys.capella.core.business.queries.information.Parameter_MaxValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_MinValue" id="org.polarsys.capella.core.business.queries.information.Parameter_MinValue" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanType_Property" id="org.polarsys.capella.core.business.queries.information.BooleanType_Property" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_Property" id="org.polarsys.capella.core.business.queries.information.NumericType_Property" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_Property" id="org.polarsys.capella.core.business.queries.information.PhysicalDimension_Property" />
@@ -704,23 +706,14 @@
     <querySpecification queryIdentifier="GetCurrent_UnionProperty_MaxCardinality">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MaxCardinality" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_UnionProperty_MinValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_UnionProperty_MinValue" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_UnionProperty_MinValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MinValue" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_UnionProperty_MaxValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_UnionProperty_MaxValue" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_UnionProperty_MaxValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MaxValue" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_UnionProperty_NullValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_NullValue" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_UnionProperty_DefaultValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_UnionProperty_DefaultValue" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_UnionProperty_DefaultValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_DefaultValue" />
@@ -839,14 +832,8 @@
     <querySpecification queryIdentifier="GetCurrent_AbstractStateProperties">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_AbstractStateProperties" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Part_MaxCardinality">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_MaxCardinality" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Part_MaxCardinality">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_MaxCardinality" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Part_MinCardinality">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_MinCardinality" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Part_MinCardinality">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_MinCardinality" />
@@ -1433,9 +1420,6 @@
     <querySpecification queryIdentifier="GetCurrent_Collection_Index">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_Index" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Collection_MaxCardinality">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_MaxCardinality" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Collection_MaxCardinality">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_MaxCardinality" />
     </querySpecification>
@@ -1444,9 +1428,6 @@
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Collection_MaxValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_MaxValue" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Collection_MinCardinality">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_MinCardinality" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Collection_MinCardinality">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_MinCardinality" />
@@ -1487,14 +1468,8 @@
     <querySpecification queryIdentifier="GetCurrent_Exception_InheritedException">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Exception_InheritedException" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_ExchangeItemElementMaxCard">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItemElementMaxCard" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_ExchangeItemElementMaxCard">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItemElementMaxCard" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_ExchangeItemElementMinCard">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItemElementMinCard" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_ExchangeItemElementMinCard">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItemElementMinCard" />
@@ -1541,29 +1516,23 @@
     <querySpecification queryIdentifier="GetCurrent_NumericValue_Type">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericValue_Type" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Parameter_DefaultValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_DefaultValue" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Parameter_DefaultValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_DefaultValue" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Parameter_MaxCardinality">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_MaxCardinality" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Parameter_MaxCardinality">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_MaxCardinality" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Parameter_MinCardinality">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_MinCardinality" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Parameter_MinCardinality">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_MinCardinality" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Parameter_NullValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_NullValue" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Parameter_NullValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Parameter_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Parameter_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_MinValue" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_Parameter_Type">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_Type" />
@@ -1583,20 +1552,11 @@
     <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_RealizedPhysicalQuantity">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_RealizedPhysicalQuantity" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Property_DefaultValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_DefaultValue" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Property_DefaultValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_DefaultValue" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Property_MaxValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_MaxValue" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Property_MaxValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MaxValue" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Property_MinValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_MinValue" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Property_MinValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MinValue" />
