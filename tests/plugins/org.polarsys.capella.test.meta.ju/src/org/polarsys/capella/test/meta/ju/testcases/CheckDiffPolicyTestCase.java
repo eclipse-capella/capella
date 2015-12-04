@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.meta.ju.testcases;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,8 +33,9 @@ import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.test.framework.TestConstants;
+import org.polarsys.capella.test.framework.api.AbstractProvider;
 import org.polarsys.capella.test.framework.api.BasicTestCaseWithoutTestModel;
-import org.polarsys.capella.test.framework.api.ModelProvider;
+import org.polarsys.capella.test.framework.api.ModelProviderHelper;
 import org.polarsys.capella.test.framework.helpers.ComparisonHelper;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 import org.polarsys.capella.test.framework.helpers.diffModel.StructureDiffComparison;
@@ -50,7 +50,7 @@ public class CheckDiffPolicyTestCase extends BasicTestCaseWithoutTestModel {
 	private static final String MODEL_PATH = "model";
 	
   @Override
-  public void test() throws IOException {
+  public void test() throws Exception {
   	// -- SCENARIO -- //    
     File relativeModelsFolder = getFileOrFolderInTestPlugin(MODEL_PATH); //$NON-NLS-1$
     List<String> projectNames = new ArrayList<String>();
@@ -59,8 +59,8 @@ public class CheckDiffPolicyTestCase extends BasicTestCaseWithoutTestModel {
 				projectNames.add(file.getName());
     for (String projectName : projectNames) {
     	// copy the project in the workspace
-    	ModelProvider.requireTestModel(projectName, this);
-    	IProject eclipseProject = ModelProvider.getEclipseProjectForTestModel(projectName, this); 
+    	ModelProviderHelper.getInstance().getModelProvider().requireTestModel(projectName, this);
+    	IProject eclipseProject = AbstractProvider.getEclipseProjectForTestModel(projectName, this); 
       IFile melodyModellerFile = eclipseProject.getFile(projectName + "." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION); //$NON-NLS-1$
       Project project = TestHelper.getProjectFromMelodyModeller(melodyModellerFile);
       StructureDiffComparison compOp = new StructureDiffComparison();

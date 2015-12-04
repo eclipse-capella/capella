@@ -17,7 +17,9 @@ public interface BasicTestArtefact extends Test {
   
   /** @return the execution duration of this test artefact (setUp and tearDown are not in the scope) */
   public long getExcutionDuration();
-	
+  
+  public BasicTestSuite getParentTestSuite();
+
 	public void setParentTestSuite(BasicTestSuite basicTestSuite);
 
 	public File getFileOrFolderInTestModelRepository(String relativeModelPath);
