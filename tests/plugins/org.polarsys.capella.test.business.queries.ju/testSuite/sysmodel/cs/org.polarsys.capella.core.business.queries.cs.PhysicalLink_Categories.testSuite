@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_Categories-getAvailableElements
 inputId = e8ba8d88-f527-4b2e-add2-eb717daa6839
 resultIds = {

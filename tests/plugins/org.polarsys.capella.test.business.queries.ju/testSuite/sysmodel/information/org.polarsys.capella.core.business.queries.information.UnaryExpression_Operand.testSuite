@@ -12,16 +12,16 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.information.UnaryExpression_Operand-getAvailableElements
 inputId = 8229787c-0a36-4f47-8161-9b54bae038b9
 resultIds = {
-    8229787c-0a36-4f47-8161-9b54bae038b9
-    5f3a48bb-0b80-4dc1-86cb-532c239b710c
-    b35dbae3-5367-45bc-b6d7-739b63a1a36d
-    e4adb38b-1fe2-4034-bfe1-c38ac24a2a77
     01a45677-1e98-4584-8d2e-6a5cde44dba0
-    dc184197-b31c-4853-9ebf-79a766ffcd04
+    5f3a48bb-0b80-4dc1-86cb-532c239b710c
     9a30d725-b78a-440a-a5d8-272e5cb27fb8
-    1183e03c-ecc0-4d6d-adad-78499853da97
     1b445311-4460-4a11-8c5b-f51b999771dd
     67e0f99b-9fb7-4f56-9b18-940ff78af248
+    e4adb38b-1fe2-4034-bfe1-c38ac24a2a77
+    8229787c-0a36-4f47-8161-9b54bae038b9
+    1183e03c-ecc0-4d6d-adad-78499853da97
+    b35dbae3-5367-45bc-b6d7-739b63a1a36d
+    dc184197-b31c-4853-9ebf-79a766ffcd04
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.UnaryExpression_Operand-getCurrentElements
