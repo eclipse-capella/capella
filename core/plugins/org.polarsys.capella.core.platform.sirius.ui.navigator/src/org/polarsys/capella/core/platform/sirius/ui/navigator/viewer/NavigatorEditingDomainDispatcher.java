@@ -13,20 +13,26 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
- * This class is a IEditingDomainListener which redirect required events on registered ICommandStackSelectionProvider and INotifyChangedListener On created
- * editing domain, it create a NavigatorCommandStackListener on it and a NavigatorModelDataListener on its DataNotifier. On command stack events or on
- * DataNotifier events, it dispatch it to registered ICommandStackSelectionProvider and INotifyChangedListener
+ * This class is a IEditingDomainListener which redirect required events on registered ICommandStackSelectionProvider
+ * and INotifyChangedListener On created editing domain, it create a NavigatorCommandStackListener on it and a
+ * NavigatorModelDataListener on its DataNotifier. On command stack events or on DataNotifier events, it dispatch it to
+ * registered ICommandStackSelectionProvider and INotifyChangedListener
  */
-public class NavigatorEditingDomainDispatcher implements IEditingDomainListener, INotifyChangedListener, ICommandStackSelectionProvider {
+public class NavigatorEditingDomainDispatcher implements IEditingDomainListener, INotifyChangedListener,
+    ICommandStackSelectionProvider {
 
   private static Collection<INotifyChangedListener> _notifyListeners = new HashSet<INotifyChangedListener>();
 
@@ -81,14 +87,19 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
    */
   @Override
   public void commandStackSelectionChanged(final ISelection selection) {
-    PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+
+    UIJob job = new UIJob(PlatformUI.getWorkbench().getDisplay(), NavigatorEditingDomainDispatcher.this.getClass()
+        .getName()) {
       @Override
-      public void run() {
+      public IStatus runInUIThread(IProgressMonitor monitor_p) {
         for (final ICommandStackSelectionProvider provider : _commandStackListeners) {
           provider.commandStackSelectionChanged(selection);
         }
+        return Status.OK_STATUS;
       }
-    });
+    };
+    job.schedule();
+
   }
 
   public static void registerNotifyChangedListener(INotifyChangedListener listener) {
