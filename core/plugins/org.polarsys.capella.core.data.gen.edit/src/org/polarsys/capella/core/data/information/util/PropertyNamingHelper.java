@@ -24,7 +24,7 @@ public class PropertyNamingHelper {
 	
   private static final String UNDEFINED = "undefined"; //$NON-NLS-1$
   private static final String SQUARE_BRACKETS_FORMAT = "[%s]";
-  private static final String SQUARE_BRACKETS_WITH_DOTS_FORMAT ="[%s..%s]";
+  private static final String SQUARE_BRACKETS_WITH_DOTS_FORMAT = "[%s..%s]";
 
   public static String getSymbolIfPropertyIsDerived(Property property) {
     if (null != property) {
@@ -36,14 +36,13 @@ public class PropertyNamingHelper {
     return ICommonConstants.EMPTY_STRING;
   }
 
-	/**
-	 * Convert a {@link MultiplicityElement} to a String used in common.odesign
-	 * and context.odesign.
-	 * 
-	 * @param element
-	 *            the MultiplicityElement to be converted to String
-	 * @return As specified above.
-	 */
+  /**
+   * Convert a {@link MultiplicityElement} to a String used in common.odesign and context.odesign.
+   * 
+   * @param element
+   *          the MultiplicityElement to be converted to String
+   * @return As specified above.
+   */
   public static String multiplicityToStringDisplay(MultiplicityElement element) {
     NumericValue ownedMinCard = element.getOwnedMinCard();
     NumericValue ownedMaxCard = element.getOwnedMaxCard();
@@ -53,11 +52,11 @@ public class PropertyNamingHelper {
 
     String tmpMinCardValue = getCardValue(ownedMinCard);
     String tmpMaxCardValue = getCardValue(ownedMaxCard);
-	
-    String minCard = tmpMinCardValue.isEmpty() ? UNDEFINED : tmpMinCardValue;
-	String maxCard = tmpMaxCardValue.isEmpty() ? UNDEFINED : tmpMaxCardValue;
 
     // Rule 1: if min == max => display max only (except if min == max == 1, nothing to display)
+    String minCard = tmpMinCardValue.isEmpty() ? UNDEFINED : tmpMinCardValue;
+    String maxCard = tmpMaxCardValue.isEmpty() ? UNDEFINED : tmpMaxCardValue;
+
     boolean displayNothing = false;
     boolean displayOnlyMax = false;
     if (minCard.equalsIgnoreCase(maxCard) && !minCard.isEmpty() && !maxCard.isEmpty()) {
@@ -97,9 +96,10 @@ public class PropertyNamingHelper {
   }
 
   /**
-   * Return cardValue or cardName depending on the NumericValue if 'numericValue' Type is LiteralNumericValue - return its value if 'numericValue' Type is
-   * AbstractExpression - return its Name if 'numericValue' Type is NumericReference - return its Name [if referencedProperty - calculate cardName as
-   * (OwnerClass name :: referencedPropertyName)
+   * Return cardValue or cardName depending on the NumericValue if 'numericValue' Type is LiteralNumericValue - return
+   * its value if 'numericValue' Type is AbstractExpression - return its Name if 'numericValue' Type is NumericReference
+   * - return its Name [if referencedProperty - calculate cardName as (OwnerClass name :: referencedPropertyName)
+   * 
    * @param numericValue
    * @return cardValue or cardName depending on the NumericValue
    */
@@ -136,7 +136,6 @@ public class PropertyNamingHelper {
         }
       }
     }
-
     return cardValue;
   }
 
@@ -173,7 +172,9 @@ public class PropertyNamingHelper {
 
   /**
    * return prefix of the property label
-   * @param context current Property
+   * 
+   * @param context
+   *          current Property
    * @return prefix as string
    */
   public static String prefixPropertyLabel(EObject context) {

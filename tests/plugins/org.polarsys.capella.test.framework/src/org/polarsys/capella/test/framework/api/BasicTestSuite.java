@@ -37,7 +37,12 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
 	public void setParentTestSuite(BasicTestSuite parentTestSuite) {
 		this.parentTestSuite = parentTestSuite;
 	}
-	
+	 
+  @Override
+  public BasicTestSuite getParentTestSuite() {
+    return this.parentTestSuite;
+  }
+
   protected BasicTestSuite() {
     // Add all contained test cases.
     for (BasicTestArtefact testArtefact : getTests()) {
@@ -91,7 +96,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null)
 	    for (String modelName : projectNamesToLoad)
-	    	ModelProvider.requireTestModel(modelName, this); //$NON-NLS-1$
+	      ModelProviderHelper.getInstance().getModelProvider().requireTestModel(modelName, this); //$NON-NLS-1$
   }
   
   /**
@@ -103,7 +108,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null) {
     	for (String modelName : projectNamesToLoad) {
-    		ModelProvider.releaseTestModel(modelName, this);
+    	  ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
     	}
     }
   }  

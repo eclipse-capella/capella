@@ -25,7 +25,7 @@ public class BQTestConstants {
 	public static final String TEST_SUITE_FILE_EXTENSION = "testSuite"; //$NON-NLS-1$
 	public static final String TEST_SUITES_RELATIVE_FOLDER = "testSuite"; //$NON-NLS-1$
 	public static final String BQ_PLUGIN_NAME = "org.polarsys.capella.core.business.queries"; //$NON-NLS-1$
-	public static final String TEST_CASES_RELATIVE_FOLDER = "src/org/polarsys/capella/test/business/queries/ju/testcases/"; //$NON-NLS-1$
+	public static final String TEST_CASES_RELATIVE_FOLDER = "src-gen/org/polarsys/capella/test/business/queries/ju/testcases/"; //$NON-NLS-1$
 	public static final String GET_AVAILABLE_METHOD_NAME = "getAvailableElements"; //$NON-NLS-1$
 	public static final String GET_CURRENT_METHOD_NAME = "getCurrentElements"; //$NON-NLS-1$
 	public static final String DISCARDED_BQ_CONFIGURATION_FILE_RELATIVE_PATH = "config/discardedBusinessQuery.conf"; //$NON-NLS-1$

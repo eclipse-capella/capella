@@ -36,132 +36,142 @@ import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 
 /**
- * An API gathering together launchers for GUI capella actions. All these actions are headless (they do not block on GUI
- * windows and does not need user interaction).
+ * An API gathering together launchers for GUI capella actions. All these
+ * actions are headless (they do not block on GUI windows and does not need user
+ * interaction).
  * 
  * @author Erwan Brottier
  */
 public class GuiActions {
 
-  /**
-   * Open a session by using the capella action @see OpenSessionAction.
-   * 
-   * @param airdFile
-   *          the aird file
-   */
-  public static void openSession(IFile airdFile) {
-    OpenSessionAction olsa = new OpenSessionAction();
-    olsa.selectionChanged(new StructuredSelection(airdFile));
-    olsa.run();
-    flushASyncGuiThread();
-  }
+	/**
+	 * Open a session by using the capella action @see OpenSessionAction.
+	 * 
+	 * @param airdFile
+	 *            the aird file
+	 */
+	public static void openSession(IFile airdFile) {
+		OpenSessionAction olsa = new OpenSessionAction();
+		olsa.selectionChanged(new StructuredSelection(airdFile));
+		olsa.run();
+		flushASyncGuiThread();
+	}
 
-  /**
-   * Close several sessions at the same time by using the capella action @see CloseSessionAction.
-   * 
-   * @param sessions
-   *          the list of sessions to close
-   */
-  public static void closeSessions(List<Session> sessions) {
-    HeadlessCloseSessionAction closeSessionAction = new HeadlessCloseSessionAction(sessions);
-    closeSessionAction.run();
-    flushASyncGuiThread();
-  }
+	/**
+	 * Close several sessions at the same time by using the capella action @see
+	 * CloseSessionAction.
+	 * 
+	 * @param sessions
+	 *            the list of sessions to close
+	 */
+	public static void closeSessions(List<Session> sessions) {
+		HeadlessCloseSessionAction closeSessionAction = new HeadlessCloseSessionAction(sessions);
+		closeSessionAction.run();
+		flushASyncGuiThread();
+	}
 
-  public static void saveSession(Session session) {
-    session.save(new NullProgressMonitor());
-    flushASyncGuiThread();
-  }
+	public static void saveSession(Session session) {
+		session.save(new NullProgressMonitor());
+		flushASyncGuiThread();
+	}
 
-  public static void deleteEclipseProject(IProject eclipseProject) throws CoreException {
-    eclipseProject.delete(false, true, new NullProgressMonitor());
-    flushASyncGuiThread();
-  }
+	public static void deleteEclipseProject(IProject eclipseProject) throws CoreException {
+		eclipseProject.delete(false, true, new NullProgressMonitor());
+		flushASyncGuiThread();
+	}
 
-  /**
-   * Close a session by using the capella action @see CloseSessionAction.
-   * 
-   * @param session
-   *          the session to close
-   */
-  public static void closeSession(Session session) {
-    closeSessions(Collections.singletonList(session));
-  }
+	public static void eraseEclipseProject(IProject eclipseProject) throws CoreException {
+		eclipseProject.delete(true, true, new NullProgressMonitor());
+		flushASyncGuiThread();
+	}
 
-  /**
-   * Prevents that all async thread on UI Thread has been executed before returning. FIXME It is the best implementation
-   * to date. May be insufficient.
-   */
-  public static void flushASyncGuiThread() {
-    try {
-      Display.getCurrent().update();
-      while (Display.getCurrent().readAndDispatch()) {
-        // do nothing
-      }
-    } catch (Exception e) {
-      // do nothing
-    }
-  }
+	/**
+	 * Close a session by using the capella action @see CloseSessionAction.
+	 * 
+	 * @param session
+	 *            the session to close
+	 */
+	public static void closeSession(Session session) {
+		closeSessions(Collections.singletonList(session));
+	}
 
-  public static void renameModelFile(IFile modelFile_p, final String newName_p) {
-    Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    RenameResourceAction renameAction = new RenameResourceAction(activeShell) {
-      @Override
-      protected String queryNewResourceName(final IResource resource) {
-        return newName_p;
-      }
-    };
-    IStructuredSelection selection = new StructuredSelection(modelFile_p);
-    renameAction.selectionChanged(selection);
-    renameAction.run();
-  }
+	/**
+	 * Prevents that all async thread on UI Thread has been executed before
+	 * returning. FIXME It is the best implementation to date. May be
+	 * insufficient.
+	 */
+	public static void flushASyncGuiThread() {
+		try {
+			Display.getCurrent().update();
+			while (Display.getCurrent().readAndDispatch()) {
+				// do nothing
+			}
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
 
-  /**
-   * Simulate a model detachment. Do NOT perform a model detach, it's just to evaluate detach preconditions.
-   * 
-   * @param airdFile
-   * @throws RuntimeException
-   *           if one precondition is false
-   */
-  public static void lauchDetachModelAction(IFile airdFile) throws RuntimeException, Exception {
-    String dettachCommandId = "org.polarsys.kitalpha.model.detachment.ui.command.a";
-    executeEclipseCommand(dettachCommandId, airdFile);
-  }
+	public static void renameModelFile(IFile modelFile_p, final String newName_p) {
+		Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+		RenameResourceAction renameAction = new RenameResourceAction(activeShell) {
+			@Override
+			protected String queryNewResourceName(final IResource resource) {
+				return newName_p;
+			}
+		};
+		IStructuredSelection selection = new StructuredSelection(modelFile_p);
+		renameAction.selectionChanged(selection);
+		renameAction.run();
+	}
 
-  /**
-   * Execute an Eclipse command with the file as current selection
-   * 
-   * @param commandId
-   * @param file
-   *          is a Capella file
-   * @throws Exception
-   */
-  protected static void executeEclipseCommand(String commandId, IFile file) throws Exception {
-    Command command = ((ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class))
-        .getCommand(commandId);
-    IHandlerService hservice = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+	/**
+	 * Simulate a model detachment. Do NOT perform a model detach, it's just to
+	 * evaluate detach preconditions.
+	 * 
+	 * @param airdFile
+	 * @throws RuntimeException
+	 *             if one precondition is false
+	 */
+	public static void lauchDetachModelAction(IFile airdFile) throws RuntimeException, Exception {
+		String dettachCommandId = "org.polarsys.kitalpha.model.detachment.ui.command.a";
+		executeEclipseCommand(dettachCommandId, airdFile);
+	}
 
-    setCurrentSelection(file);
+	/**
+	 * Execute an Eclipse command with the file as current selection
+	 * 
+	 * @param commandId
+	 * @param file
+	 *            is a Capella file
+	 * @throws Exception
+	 */
+	protected static void executeEclipseCommand(String commandId, IFile file) throws Exception {
+		Command command = ((ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class))
+				.getCommand(commandId);
+		IHandlerService hservice = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
 
-    hservice.executeCommandInContext(ParameterizedCommand.generateCommand(command, null), null,
-        hservice.createContextSnapshot(true));
+		setCurrentSelection(file);
 
-  }
+		hservice.executeCommandInContext(ParameterizedCommand.generateCommand(command, null), null,
+				hservice.createContextSnapshot(true));
 
-  /**
-   * Set current selection on IFile file
-   * @param file
-   * @throws PartInitException
-   */
-  protected static void setCurrentSelection(IFile file) throws PartInitException {
-    IWorkbenchPartSite site = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart()
-        .getSite();
+	}
 
-    StructuredSelection selection = new StructuredSelection(file);
-    CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
-        .getActiveWorkbenchWindow().getActivePage().showView("capella.project.explorer");
+	/**
+	 * Set current selection on IFile file
+	 * 
+	 * @param file
+	 * @throws PartInitException
+	 */
+	protected static void setCurrentSelection(IFile file) throws PartInitException {
+		IWorkbenchPartSite site = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart()
+				.getSite();
 
-    site.setSelectionProvider(capellaProjectView.getCommonViewer());
-    site.getSelectionProvider().setSelection(selection);
-  }
+		StructuredSelection selection = new StructuredSelection(file);
+		CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().showView("capella.project.explorer");
+
+		site.setSelectionProvider(capellaProjectView.getCommonViewer());
+		site.getSelectionProvider().setSelection(selection);
+	}
 }

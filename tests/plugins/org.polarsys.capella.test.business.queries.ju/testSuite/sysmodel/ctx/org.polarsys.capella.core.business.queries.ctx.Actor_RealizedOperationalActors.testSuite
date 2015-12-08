@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.ctx.Actor_RealizedOperationalActors-getAvailableElements
 inputId = 7b8aa28d-cd04-4e96-b580-609605af9143
 resultIds = {

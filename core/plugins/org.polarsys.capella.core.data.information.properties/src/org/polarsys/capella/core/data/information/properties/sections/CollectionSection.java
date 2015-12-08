@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.controllers.GeneralizableElementController;
 import org.polarsys.capella.core.data.core.properties.fields.VisibilityKindGroup;
 import org.polarsys.capella.core.data.information.InformationPackage;
@@ -28,12 +28,11 @@ import org.polarsys.capella.core.data.information.properties.controllers.Collect
 import org.polarsys.capella.core.data.information.properties.fields.AggregationKindGroup;
 import org.polarsys.capella.core.data.information.properties.fields.CollectionBooleanPropertiesCheckbox;
 import org.polarsys.capella.core.data.information.properties.fields.CollectionKindGroup;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.CompositionMultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleEditableSemanticField;
+import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 /**
  * The Collection section.
@@ -52,7 +51,6 @@ public class CollectionSection extends MultiplicityElementSection {
   private SimpleEditableSemanticField minValueField;
   private SimpleEditableSemanticField maxValueField;
   private SimpleEditableSemanticField defaultValueField;
-  private SimpleEditableSemanticField nullValueField;
 
   /**
    * Default constructor.
@@ -84,30 +82,26 @@ public class CollectionSection extends MultiplicityElementSection {
     superTypes.setDisplayedInWizard(displayedInWizard);
 
     indexField = new MultipleSemanticField(getReferencesGroup(), Messages.getString("Collection.IndexLabel"), getWidgetFactory(), new Collection_IndexController()) { //$NON-NLS-1$
-          /**
-           * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.MultipleSemanticField#openTransferDialog(org.eclipse.swt.widgets.Button,
-           *      java.util.List, java.util.List, java.lang.String, java.lang.String)
-           */
-          @Override
-          protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements, List<EObject> availableElements, String title,
-              String message) {
-            return SelectionDialogHelper.openOrderedTransferDialog(availableElements, currentElements, button.getShell(), title, message);
-          }
-        };
+      /**
+       * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.MultipleSemanticField#openTransferDialog(org.eclipse.swt.widgets.Button,
+       *      java.util.List, java.util.List, java.lang.String, java.lang.String)
+       */
+      @Override
+      protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements, List<EObject> availableElements, String title, String message) {
+        return SelectionDialogHelper.openOrderedTransferDialog(availableElements, currentElements, button.getShell(), title, message);
+      }
+    };
     indexField.setDisplayedInWizard(displayedInWizard);
 
     minValueField = new SimpleEditableSemanticField(getReferencesGroup(),
-      Messages.getString("MultiplicityElement.MinValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+        Messages.getString("MultiplicityElement.MinValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
     minValueField.setDisplayedInWizard(displayedInWizard);
-    maxValueField =  new SimpleEditableSemanticField(getReferencesGroup(),
-      Messages.getString("MultiplicityElement.MaxValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    maxValueField = new SimpleEditableSemanticField(getReferencesGroup(),
+        Messages.getString("MultiplicityElement.MaxValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
     maxValueField.setDisplayedInWizard(displayedInWizard);
     defaultValueField = new SimpleEditableSemanticField(getReferencesGroup(),
-      Messages.getString("MultiplicityElement.DefaultValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+        Messages.getString("MultiplicityElement.DefaultValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
     defaultValueField.setDisplayedInWizard(displayedInWizard);
-    nullValueField = new SimpleEditableSemanticField(getReferencesGroup(),
-      Messages.getString("MultiplicityElement.NullValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
-    nullValueField.setDisplayedInWizard(displayedInWizard);
 
     visibilityKindGroup = new VisibilityKindGroup(_rootParentComposite, getWidgetFactory());
     visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
@@ -124,13 +118,11 @@ public class CollectionSection extends MultiplicityElementSection {
     visibilityKindGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_Visibility());
     collectionKindGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_Kind());
     aggregationKindGroup.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_AggregationKind());
-    superTypes.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(),
-        CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
+    superTypes.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(), CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
     indexField.loadData(capellaElement, InformationPackage.eINSTANCE.getCollection_Index());
     minValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
     maxValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
     defaultValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
-    nullValueField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
   }
 
   /**
@@ -157,7 +149,6 @@ public class CollectionSection extends MultiplicityElementSection {
     fields.add(indexField);
     fields.add(maxValueField);
     fields.add(minValueField);
-    fields.add(nullValueField);
     fields.add(superTypes);
     fields.add(visibilityKindGroup);
 

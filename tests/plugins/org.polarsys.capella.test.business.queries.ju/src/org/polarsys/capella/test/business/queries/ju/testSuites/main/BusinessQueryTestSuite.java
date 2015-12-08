@@ -18,6 +18,7 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CapellaCommonBusinessQueryTestSuite;
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CapellaCoreBusinessQueryTestSuite;
+import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CapellaModellerBusinessQueryTestSuite;
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CsBusinessQueryTestSuite;
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CtxBusinessQueryTestSuite;
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.EpbsBusinessQueryTestSuite;
@@ -47,6 +48,7 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
 		tests.add(new CapellaCommonBusinessQueryTestSuite());
 		tests.add(new CapellaCoreBusinessQueryTestSuite());
+		tests.add(new CapellaModellerBusinessQueryTestSuite());
 		tests.add(new CsBusinessQueryTestSuite());
 		tests.add(new CtxBusinessQueryTestSuite());
 		tests.add(new EpbsBusinessQueryTestSuite());
@@ -63,5 +65,4 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
 	public List<String> getRequiredTestModels() {
 		return Arrays.asList("sysmodel");
 	}
-
 }

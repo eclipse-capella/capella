@@ -16,8 +16,8 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.test.framework.api.AbstractProvider;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
-import org.polarsys.capella.test.framework.api.ModelProvider;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.IFileRequestor;
 
@@ -36,7 +36,7 @@ public class Detach_versionOk extends BasicTestCase {
   @Override
   public void test() throws Exception {
 
-    final IProject model = ModelProvider.getEclipseProjectForTestModel(modelName, this);
+    final IProject model = AbstractProvider.getEclipseProjectForTestModel(modelName, this);
     IFile airdFile = new IFileRequestor().search(model, CapellaResourceHelper.AIRD_FILE_EXTENSION).get(0);
 
     try {

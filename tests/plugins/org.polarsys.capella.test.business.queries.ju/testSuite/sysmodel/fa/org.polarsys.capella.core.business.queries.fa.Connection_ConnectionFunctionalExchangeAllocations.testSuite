@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.Connection_ConnectionFunctionalExchangeAllocations-getAvailableElements
 inputId = 0df5c9fd-14bb-4694-b112-f1f2c034dc56
 resultIds = {
@@ -480,8 +480,8 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.Connection_ConnectionFunctionalExchangeAllocations-getAvailableElements
 inputId = e5274eb2-84e4-4c2a-8818-9dad8ee095ca
 resultIds = {
-    7ead29f6-2bd6-4598-a1cd-364ec3cea476
     c3e6da97-98a2-4a16-982d-7deb0d564918
+    7ead29f6-2bd6-4598-a1cd-364ec3cea476
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.Connection_ConnectionFunctionalExchangeAllocations-getCurrentElements
