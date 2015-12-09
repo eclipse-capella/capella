@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -39,55 +40,86 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
  *
  */
 public abstract class PropertyPropagator {
-
+  
   /**
-   * @param root_p
+   * @param literals
+   * @param semanticObjects
    */
-  public void applyPropertiesOn(List<? extends EObject> literals_p, EObject root_p) {
+  public void applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> semanticObjects) {
+   applyPropertiesOn(literals, semanticObjects, false, false);
+  }
+  
+  /**
+   * @param literals
+   * @param semanticObjects
+   * @param propagateWithoutFiltering
+   *          Indicates whether to propagate the status without filtering.
+   * @param propagteToRepresentations
+   *          Indicates whether to propagate the status to the referenced {@link DRepresentation}
+   * 
+   * @return the collection of modified objects
+   */
+  public Collection<EObject> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> semanticObjects,
+      boolean propagateWithoutFiltering, boolean propagteToRepresentations) {
     //
     // First of all, let's obtain target eObjects.
     //
-    TreeIterator<EObject> it = root_p.eAllContents();
-    EObject current = null;
     Collection<EObject> tgts = new HashSet<EObject>();
+    for (EObject obj : semanticObjects) {
+      if (!tgts.contains(obj)) {
+        TreeIterator<EObject> it = obj.eAllContents();
+        EObject current = null;
 
-    if (isTaggableElement(root_p)) {
-      tgts.add(root_p);
-    }
+        if (propagateWithoutFiltering) {
+          tgts.add(obj);
+        }else if(isTaggableElement(obj)){
+          tgts.add(obj);
+        }
 
-    while (it.hasNext()) {
-      current = it.next();
-      if (isTaggableElement(current)) {
-        tgts.add(current);
+        while (it.hasNext()) {
+          current = it.next();
+          if(propagateWithoutFiltering){
+            tgts.add(current);
+          }
+          else if (isTaggableElement(current)) {
+            tgts.add(current);
+          }
+        }
       }
+    }
+    
+    // Handle DRepresentation
+    if(propagteToRepresentations){
+      tgts.addAll(RepresentationHelper.getAllRepresentationsTargetedBy(semanticObjects));
     }
 
     //
     // On a second hand, let's tag target eObjects.
     //
     for (EObject eobj : tgts) {
-      tagElement(literals_p, eobj);
+      tagElement(literals, eobj);
     }
+    return tgts;
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isTaggableElement(EObject element_p) {
-    return isDirectElement(element_p) || isWithSpecializedElement(element_p);
+  public boolean isTaggableElement(EObject element) {
+    return isDirectElement(element) || isWithSpecializedElement(element);
   }
 
   /**
-   * @param literals_p
-   * @param eObject_p
+   * @param literals
+   * @param eObject
    * @return
    */
-  private boolean tagElement(List<? extends EObject> literals_p, EObject eObject_p) {
+  private boolean tagElement(List<? extends EObject> literals, EObject eObject) {
     boolean result = true;
-    for (EObject literal : literals_p) {
-      if (literal instanceof EnumerationPropertyLiteral) {
-        result &= tagElement((EnumerationPropertyLiteral) literal, eObject_p);
+    for (EObject literal : literals) {
+      if (literal == null || literal instanceof EnumerationPropertyLiteral) {
+        result &= tagElement((EnumerationPropertyLiteral) literal, eObject);
       } else {
         result &= false;
       }
@@ -137,23 +169,23 @@ public abstract class PropertyPropagator {
   }
 
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  protected abstract boolean isTagged(EObject eObject_p);
+  protected abstract boolean isTagged(EObject eObject);
   
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  protected abstract boolean isTaggedRepresentation(EObject eObject_p);
+  protected abstract boolean isTaggedRepresentation(EObject eObject);
   
   /**
-   * @param literal_p
-   * @param eObject_p
+   * @param literal
+   * @param eObject
    * @return
    */
-  protected abstract boolean tagElement(EnumerationPropertyLiteral literal_p, EObject eObject_p);
+  protected abstract boolean tagElement(EnumerationPropertyLiteral literal, EObject eObject);
 
   /**
    * @return
@@ -161,12 +193,12 @@ public abstract class PropertyPropagator {
   protected abstract String getKeyword();
 
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  private boolean isDirectElement(EObject eObject_p) {
-    if (null != eObject_p) {
-      EClass eclass = eObject_p.eClass();
+  private boolean isDirectElement(EObject eObject) {
+    if (null != eObject) {
+      EClass eclass = eObject.eClass();
       for (EClass current : getDirectTypes()) {
         if (current == eclass) {
           return true;
@@ -177,12 +209,12 @@ public abstract class PropertyPropagator {
   }
 
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  private boolean isWithSpecializedElement(EObject eObject_p) {
-    if (null != eObject_p) {
-      EClass eclass = eObject_p.eClass();
+  private boolean isWithSpecializedElement(EObject eObject) {
+    if (null != eObject) {
+      EClass eclass = eObject.eClass();
       for (EClass current : getWithSpecializationType()) {
         if (current.isSuperTypeOf(eclass)) {
           return true;
@@ -193,27 +225,27 @@ public abstract class PropertyPropagator {
   }
 
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  public boolean isEnumerationPropertyTypeDefinedForProject(EObject eObject_p) {
-    return (null != CapellaProjectHelper.getEnumerationPropertyType(eObject_p, getKeyword()));
+  public boolean isEnumerationPropertyTypeDefinedForProject(EObject eObject) {
+    return (null != CapellaProjectHelper.getEnumerationPropertyType(eObject, getKeyword()));
   }
 
   /**
-   * @param root_p
+   * @param root
    * @return
    */
-  public List<EObject> getTaggedObjects(EObject root_p) {
+  public List<EObject> getTaggedObjects(EObject root) {
     List<EObject> result = new ArrayList<EObject>();
-    Session session = SessionManager.INSTANCE.getSession(root_p);
+    Session session = SessionManager.INSTANCE.getSession(root);
 
-    if (null != root_p) {
-      if (isTagged(root_p)) {
-        result.add(root_p);
+    if (null != root) {
+      if (isTagged(root)) {
+        result.add(root);
       }
       
-      TreeIterator<EObject> it = root_p.eAllContents();
+      TreeIterator<EObject> it = root.eAllContents();
       EObject current = null;
       EObject currentDiagram = null ;
       while (it.hasNext()) {
@@ -221,13 +253,13 @@ public abstract class PropertyPropagator {
         if (isTagged(current)) {
           result.add(current);
             }
-        for (Iterator iter = DialectManager.INSTANCE.getRepresentations(current, session ).iterator(); iter.hasNext();) {
+        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(current, session ).iterator(); iter.hasNext();) {
     		currentDiagram=(EObject) iter.next();
     		if (isTaggedRepresentation(currentDiagram)) {
     			result.add(currentDiagram);
     		}
         }
-        for (Iterator iter = DialectManager.INSTANCE.getRepresentations(root_p, session ).iterator(); iter.hasNext();) {
+        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(root, session ).iterator(); iter.hasNext();) {
     		currentDiagram=(EObject) iter.next();
     		if (isTaggedRepresentation(currentDiagram)) {
     			result.add(currentDiagram);
@@ -237,5 +269,4 @@ public abstract class PropertyPropagator {
     }
     return result;
   }
-
 }
