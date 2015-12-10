@@ -75,15 +75,18 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.ICapellaNavigatorPreferences;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 /**
  * The Capella navigator content provider.
  */
-public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryContentProvider implements IResourceChangeListener, IAdaptable {
+public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryContentProvider implements
+    IResourceChangeListener, IAdaptable {
   // Log4j reference logger.
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(
+      IReportManagerDefaultComponents.UI);
   /**
    * Keep synchronized with the plugin.xml extension declaration.
    */
@@ -106,6 +109,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   class CustomizedSessionWrapperContentProvider extends SessionWrapperContentProvider {
     /**
      * Constructor.
+     * 
      * @param wrapped
      */
     public CustomizedSessionWrapperContentProvider(ITreeContentProvider wrapped) {
@@ -114,9 +118,11 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
     /**
      * Return children of the given element.<br>
-     * A specific behavior is implemented for ViewpointItem: RepresentationDescriptionItems which contain no diagram are removed from the children list.<br>
-     * Why don't use a filter ? Model Content view handles that case with a filter. The disadvantage of the filter is : an expandable icon is displayed because
-     * hasChildren is based on doGetChildren().length. Thus, after clicking on the expandable nothing is displayed, this is a weird behavior for the end-user.
+     * A specific behavior is implemented for ViewpointItem: RepresentationDescriptionItems which contain no diagram are
+     * removed from the children list.<br>
+     * Why don't use a filter ? Model Content view handles that case with a filter. The disadvantage of the filter is :
+     * an expandable icon is displayed because hasChildren is based on doGetChildren().length. Thus, after clicking on
+     * the expandable nothing is displayed, this is a weird behavior for the end-user.
      */
     @Override
     public Object[] getChildren(Object parentElement) {
@@ -128,7 +134,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         // Only RepresentationDescriptionItem with children are
         // considered.
         for (Object child : children) {
-          if ((child instanceof RepresentationDescriptionItem) && !((RepresentationDescriptionItem) child).getChildren().isEmpty()) {
+          if ((child instanceof RepresentationDescriptionItem)
+              && !((RepresentationDescriptionItem) child).getChildren().isEmpty()) {
             selectedChildren.add(child);
           }
         }
@@ -162,11 +169,12 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     // CloseAction.
 
     // Instantiate a customized session content provider.
-    CustomizedSessionWrapperContentProvider customizedSessionWrapperContentProvider =
-        new CustomizedSessionWrapperContentProvider(new AdapterFactoryContentProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()));
+    CustomizedSessionWrapperContentProvider customizedSessionWrapperContentProvider = new CustomizedSessionWrapperContentProvider(
+        new AdapterFactoryContentProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()));
 
     // Put it in a grouping content provider.
-    SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, true);
+    SiriusTransPlugin.getPlugin().getPreferenceStore()
+        .setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, true);
     _sessionContentProvider = new GroupingContentProvider(customizedSessionWrapperContentProvider);
 
     // Create saveable provider.
@@ -215,8 +223,15 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       // Parent for a semantic resource is the parent of its session as
       // the session node is no longer displayed in the viewer.
       parent = getParent(session);
-    } else if ((element instanceof Project) || ((element instanceof SystemEngineering) && !isCapellaProjectDisplayed())) {
-      // In the CapellaProjectExplorer, parent of a Project/Library or of the SystemEngineering is actually the .aird file (depending of preferences).
+    } else if ((element instanceof Project) && !isCapellaProjectDisplayed((Project) element)) {
+      // In the CapellaProjectExplorer, parent of a Project/Library is actually the .aird
+      // file (depending of preferences).
+      Resource mmResource = ((EObject) element).eResource();
+      parent = getParent(mmResource);
+    } else if ((element instanceof SystemEngineering)
+        && !isCapellaProjectDisplayed(ProjectExt.getProject((EObject) element))) {
+      // In the CapellaProjectExplorer, parent of a the SystemEngineering is actually the .aird file (depending of
+      // preferences).
       Resource mmResource = ((EObject) element).eResource();
       parent = getParent(mmResource);
     } else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
@@ -310,7 +325,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           // for any other children from sirius, we add it to the end
           for (Object child : _sessionContentProvider.getChildren(element)) {
 
-            if ((child instanceof Resource) && !resourcesDone.contains(child) && (!((Resource) child).getContents().isEmpty())) {
+            if ((child instanceof Resource) && !resourcesDone.contains(child)
+                && (!((Resource) child).getContents().isEmpty())) {
 
               // Don't handle semantic fragments as theirs
               // contents are displayed as children of model
@@ -348,7 +364,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         }
         return _sessionContentProvider.getChildren(element);
 
-      } else if ((element instanceof Part) && isImplicitView(element) && (((Part) element).getOwnedAbstractType() != null)) {
+      } else if ((element instanceof Part) && isImplicitView(element)
+          && (((Part) element).getOwnedAbstractType() != null)) {
         ArrayList<Object> merged = new ArrayList<Object>();
         merged.addAll(Arrays.asList(_sessionContentProvider.getChildren(element)));
         merged.addAll(Arrays.asList(getChildren(((Part) element).getOwnedAbstractType())));
@@ -370,33 +387,41 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @return
    */
   protected boolean isImplicitView(Object part) {
-    boolean explicit = AbstractPreferencesInitializer.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, true);
+    boolean explicit = AbstractPreferencesInitializer.getBoolean(
+        ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, true);
     return !explicit;
   }
 
   /**
    * Answer whether or not capella project should be hidden.<br>
    * Answer is based on an end-user preference.
+   * 
+   * This method is based on current selection, it should be not used in a content provider
+   * 
    * @return
    */
+  @Deprecated
   protected boolean isCapellaProjectDisplayed() {
-    return AbstractPreferencesInitializer.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, false);
+    return AbstractPreferencesInitializer.getBoolean(
+        ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, false);
   }
 
   /**
    * @param contentChild
+   *          a Project
    * @return
    */
-  private boolean isCapellaProjectDisplayed(EObject contentChild) {
+  protected boolean isCapellaProjectDisplayed(EObject contentChild) {
     if (contentChild instanceof Project) {
-      return AbstractPreferencesInitializer.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, contentChild);
-
+      return AbstractPreferencesInitializer.getBoolean(
+          ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, contentChild);
     }
     return isCapellaProjectDisplayed();
   }
 
   /**
    * Get aird file children.
+   * 
    * @param file
    * @return
    */
@@ -443,6 +468,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
   /**
    * Get the children of given {@link IProject}.
+   * 
    * @param project
    * @return a not <code>null</code> array is returned.
    */
@@ -484,26 +510,26 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   @Override
   public void resourceChanged(IResourceChangeEvent event) {
     switch (event.getType()) {
-      case IResourceChangeEvent.PRE_DELETE: {
-        if (null != event.getResource()) {
-          IProject project = (IProject) event.getResource();
-          // We are not called in the UI thread. The code below handles
-          // that case.
-          Object[] children = getChildren(project);
-          for (Object object : children) {
-            if (object instanceof Session) {
-              Session session = (Session) object;
-              IEditingSession sessionUI = SessionUIManager.INSTANCE.getUISession(session);
-              boolean saveSession = false;
-              if (SessionStatus.DIRTY.equals(session.getStatus())) {
-                saveSession = (ISaveablePart2.YES == SWTUtil.showSaveDialog(session, "Session", true)); //$NON-NLS-1$
-              }
-              sessionUI.close(saveSession);
+    case IResourceChangeEvent.PRE_DELETE: {
+      if (null != event.getResource()) {
+        IProject project = (IProject) event.getResource();
+        // We are not called in the UI thread. The code below handles
+        // that case.
+        Object[] children = getChildren(project);
+        for (Object object : children) {
+          if (object instanceof Session) {
+            Session session = (Session) object;
+            IEditingSession sessionUI = SessionUIManager.INSTANCE.getUISession(session);
+            boolean saveSession = false;
+            if (SessionStatus.DIRTY.equals(session.getStatus())) {
+              saveSession = (ISaveablePart2.YES == SWTUtil.showSaveDialog(session, "Session", true)); //$NON-NLS-1$
             }
+            sessionUI.close(saveSession);
           }
         }
-        break;
       }
+      break;
+    }
     }
   }
 
@@ -555,12 +581,13 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         }
       }
 
-      if ((notifier instanceof Project) && !isCapellaProjectDisplayed()) {
+      if ((notifier instanceof Project) && !isCapellaProjectDisplayed((EObject) notifier)) {
         // Capella Project is not refresh, forward the notification on
         // Capella Project parent.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
-      if (((notifier instanceof Component) && (((EObject) notifier).eContainer() instanceof Part)) && isImplicitView(notifier)) {
+      if (((notifier instanceof Component) && (((EObject) notifier).eContainer() instanceof Part))
+          && isImplicitView(notifier)) {
         // Capella Project is not refresh, forward the notification on
         // parent part.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
@@ -571,7 +598,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       // Search for additional updates, indeed elements that reference an
       // element, whose name changed, might be refreshed too.
       if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(localNotification.getFeature())) {
-        SemanticEditingDomain editingDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain((EObject) notifier);
+        SemanticEditingDomain editingDomain = (SemanticEditingDomain) TransactionHelper
+            .getEditingDomain((EObject) notifier);
         if (null != editingDomain) {
           // Get the cross referencer.
           ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
