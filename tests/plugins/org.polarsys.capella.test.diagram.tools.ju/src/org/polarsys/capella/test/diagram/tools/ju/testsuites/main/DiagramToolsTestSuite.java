@@ -15,28 +15,30 @@ import java.util.List;
 
 import junit.framework.Test;
 
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.LABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SFDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 public class DiagramToolsTestSuite extends BasicTestSuite {
 
-	/**
-	 * Returns the suite. This is required to unary launch this test.
-	 */
-	public static Test suite() {
-		return new DiagramToolsTestSuite();
-	}
+  /**
+   * Returns the suite. This is required to unary launch this test.
+   */
+  public static Test suite() {
+    return new DiagramToolsTestSuite();
+  }
 
-	@Override
-	protected List<BasicTestArtefact> getTests() {
-		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-		tests.add(new SFDBDiagramToolsTestSuite());
-		return tests;
-	}
+  @Override
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new SFDBDiagramToolsTestSuite());
+    tests.add(new LABDiagramToolsTestSuite());
+    return tests;
+  }
 
-	@Override
-	public List<String> getRequiredTestModels() {
-		return null;
-	}
+  @Override
+  public List<String> getRequiredTestModels() {
+    return null;
+  }
 }

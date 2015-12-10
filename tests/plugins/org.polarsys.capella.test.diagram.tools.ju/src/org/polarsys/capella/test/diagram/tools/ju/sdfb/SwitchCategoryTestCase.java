@@ -17,14 +17,14 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.SwitchTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.SwitchCategory;
 
 /**
- * Test the case when a category is displayed at the parent function level. Then The switch category/functional exchange tool should display the functional
- * exchange of the children functions at the parent function.
+ * Test the case when a category is displayed at the parent function level. Then The switch category/functional exchange
+ * tool should display the functional exchange of the children functions at the parent function.
  */
-public class SwitchCategoryTestSuite extends SwitchCategory {
+public class SwitchCategoryTestCase extends SwitchCategory {
 
   @Override
   public void test() throws Exception {
@@ -33,13 +33,15 @@ public class SwitchCategoryTestSuite extends SwitchCategory {
 
     DiagramContext diagramContext = new OpenDiagramStep(context, SDFB_ROOT_SYSTEM_FUNCTION).run();
 
-    new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES).insert(SA__FUNCTIONPKG__CATEGORY1);
+    new SwitchTool(diagramContext, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES)
+        .remove(SA__FUNCTIONPKG__CATEGORY1);
 
-    diagramContext.hasHiddenView(SA__FUNCTIONPKG__SF__FUNTIONALEXCHANGE1);
+    diagramContext.hasntView(SA__FUNCTIONPKG__CATEGORY1);
+    diagramContext.hasView(SA__FUNCTIONPKG__SF__FUNTIONALEXCHANGE1);
 
   }
 
   public static Test suite() {
-    return new SwitchCategoryTestSuite();
+    return new SwitchCategoryTestCase();
   }
 }

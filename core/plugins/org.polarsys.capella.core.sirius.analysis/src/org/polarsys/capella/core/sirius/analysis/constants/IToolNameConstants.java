@@ -360,8 +360,7 @@ public interface IToolNameConstants {
   public final static String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE = "Involve Functional Exchange"; //$NON-NLS-1$
   public final static String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_CHAIN = "Involve Functional Chain"; //$NON-NLS-1$
   public final static String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTION = "Involve Functional Exchange & Target Function"; //$NON-NLS-1$
-  public final static String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTIONAL_CHAIN =
-      "Involve Functional Exchange & Target Functional Chain"; //$NON-NLS-1$
+  public final static String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTIONAL_CHAIN = "Involve Functional Exchange & Target Functional Chain"; //$NON-NLS-1$
   public final static String TOOL_FCD_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   public final static String TOOL_FCD_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   public final static String TOOL_FCD_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
@@ -528,6 +527,7 @@ public interface IToolNameConstants {
   public final static String TOOL_LAB_INSERT_REMOVE_PHYSICAL_LINKS = "Physical Links"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_REMOVE_PHYSICAL_PATH = "Physical Path"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_REMOVE_ACTORS = "Actors"; //$NON-NLS-1$
+  public final static String TOOL_LAB_INSERT_ACTOR = "Show/Hide Actors"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_REMOVE_COMPONENT_EXCHANGES = "Component Exchanges"; //$NON-NLS-1$
   public final static String TOOL_LAB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES = "Switch Physical Links / Categories"; //$NON-NLS-1$
