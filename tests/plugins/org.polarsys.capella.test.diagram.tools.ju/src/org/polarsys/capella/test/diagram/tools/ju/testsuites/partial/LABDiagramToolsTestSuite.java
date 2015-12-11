@@ -15,31 +15,31 @@ import java.util.List;
 
 import junit.framework.Test;
 
-import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.lab.ShowHideComponentTestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
+public class LABDiagramToolsTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new SFDBDiagramToolsTestSuite();
+    return new LABDiagramToolsTestSuite();
   }
 
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
-	@Override
-	protected List<BasicTestArtefact> getTests() {
-		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new SwitchCategoryTestCase());
-		return tests;
-	}
+  @Override
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new ShowHideComponentTestCase());
+    return tests;
+  }
 
-	@Override
-	public List<String> getRequiredTestModels() {		
-		return null;
-	}
+  @Override
+  public List<String> getRequiredTestModels() {
+    return null;
+  }
 }
