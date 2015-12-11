@@ -148,7 +148,12 @@ public class TestHelper {
 		if (!models.isEmpty()) {
 			EObject semanticElementRoot = models.get(0);
 			semanticResource = semanticElementRoot.eResource();
-		}
+		} else {
+      for (Resource resource : session_p.getSemanticResources()) {
+        semanticResource = resource;
+        break;
+      }
+    }
 		return semanticResource;
 	}
 

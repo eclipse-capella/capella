@@ -27,15 +27,15 @@ public class LibraryManager_removeReferenceToLibrary extends BasicTestCase {
   @SuppressWarnings("nls")
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("libraries/MyProject1", "libraries/MyLibrary1");
+    return Arrays.asList("MyProject1", "MyLibrary1");
   }
 
   @SuppressWarnings("nls")
   @Override
   public void test() {
     // -- SCENARIO -- //
-    CapellaModel monProjet1 = getTestModel("libraries/MyProject1");
-    CapellaModel maLibrairie1 = (CapellaModel) getTestModel("libraries/MyLibrary1");
+    CapellaModel monProjet1 = getTestModel("MyProject1");
+    CapellaModel maLibrairie1 = (CapellaModel) getTestModel("MyLibrary1");
     monProjet1.addReference(maLibrairie1);
     // -- ORACLE -- //
     monProjet1.removeReference(maLibrairie1);
