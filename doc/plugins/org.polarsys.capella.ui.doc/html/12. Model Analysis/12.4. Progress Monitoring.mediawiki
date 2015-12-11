@@ -25,12 +25,35 @@ It is recommended to hide again the ''Project'' element in the project explorer 
 
  
 == Setting Progress Status on Elements ==
- 
-Two means to tag elements with a given progress status: using the Editors or using a dedicated command in the contextual menu of any element (Progress Monitoring / Set Progress)
 
+To tag elements with a given progress status, use from the contextual menu of any element the command Progress Monitoring -> Set Progress.
  
-[[Image:Images/12.4.%20Progress%20Monitoring_html_72c054c0.png|801x466px]]
+ 
+[[Image:Images/12.4.%20Progress%20Monitoring_html_72c054c1.png|656x603px]]
 
+
+  === Propagate Progress Status to all Capella Elements ===
+  
+  To propagate the progress status to all Capella elements in the scope of the selection and without any filtering, you can check the corresponding button in the wizard as shown in the picture below. 
+  
+  
+  [[Image:Images/12.4.%20Progress%20Monitoring_html_12d478a0.png|298x197px]]
+  
+  
+  === Propagate Progress Status to Sub Representations ===
+  
+  It's also possible to propagate the progress status to all Sub Representations under the selected elements by checking the corresponding button in the wizard as shown in the picture below.
+  
+  
+  [[Image:Images/12.4.%20Progress%20Monitoring_html_81b291e7.png|300x198px]]
+  
+  
+== Clear Progress Status on Elements ==
+ 
+ To clear the progress status, you can select in the combo of the set progress wizard the empty value as shown in the picture below.
+ 
+ [[Image:Images/12.4.%20Progress%20Monitoring_html_32a787d3.png|299x202px]]
+ 
  
 == Visualization of Progress Monitoring Information ==
  

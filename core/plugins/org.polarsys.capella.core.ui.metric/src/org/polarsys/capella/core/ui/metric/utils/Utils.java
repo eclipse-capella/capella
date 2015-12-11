@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
@@ -35,20 +38,20 @@ public class Utils {
 
   /**
    * Return instance of a given layer. suppose that multiplicity of each layer is one
-   * @param se_p the target {@link SystemEngineering}
-   * @param eClassLayer_p eClass of target layer
+   * @param se the target {@link SystemEngineering}
+   * @param eClassLayer eClass of target layer
    * @return <code>null</code> if not found or if input is null
    */
-  public static EObject getLayer(SystemEngineering se_p, EClass eClassLayer_p) {
+  public static EObject getLayer(SystemEngineering se, EClass eClassLayer) {
 
-    if (null == se_p) {
+    if (null == se) {
       return null;
     }
 
     EObject result = null;
 
-    for (EObject current : se_p.getOwnedArchitectures()) {
-      if (current.eClass() == eClassLayer_p) {
+    for (EObject current : se.getOwnedArchitectures()) {
+      if (current.eClass() == eClassLayer) {
         result = current;
         break;
       }
@@ -72,14 +75,14 @@ public class Utils {
 
   /**
    * Get image for specified {@link EObject}
-   * @param eObject_p
+   * @param eObject
    * @return <code>null</code> if not found.
    */
-  public static Image getImage(EObject eObject_p) {
+  public static Image getImage(EObject eObject) {
     Image result = null;
-    ItemProviderAdapter itemProvider = getIItemLabelProvider(eObject_p);
+    ItemProviderAdapter itemProvider = getIItemLabelProvider(eObject);
     if (null != itemProvider) {
-      result = EObjectLabelProviderHelper.getImageFromObject(itemProvider.getImage(eObject_p));
+      result = EObjectLabelProviderHelper.getImageFromObject(itemProvider.getImage(eObject));
       itemProvider.dispose();
     }
     return result;
@@ -87,14 +90,14 @@ public class Utils {
 
   /**
    * Get text for specified {@link EObject}
-   * @param eObject_p
+   * @param eObject
    * @return <code>null</code> if not found.
    */
-  public static String getText(EObject eObject_p) {
+  public static String getText(EObject eObject) {
     String result = ICommonConstants.EMPTY_STRING;
-    ItemProviderAdapter itemProvider = getIItemLabelProvider(eObject_p);
+    ItemProviderAdapter itemProvider = getIItemLabelProvider(eObject);
     if (null != itemProvider) {
-      result = itemProvider.getText(eObject_p);
+      result = itemProvider.getText(eObject);
       itemProvider.dispose();
     }
     return result;
@@ -104,9 +107,18 @@ public class Utils {
    * Get a generic item provider.
    * @return an {@link ItemProviderAdapter} if any.
    */
-  private static ItemProviderAdapter getIItemLabelProvider(EObject object_p) {
+  private static ItemProviderAdapter getIItemLabelProvider(EObject object) {
     IItemLabelProvider provider =
-        (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
+        (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(object, IItemLabelProvider.class);
     return (ItemProviderAdapter) provider;
+  }
+  
+  public static EObject getTarget(DRepresentation representation){
+    if(representation instanceof DSemanticDecorator){
+      return ((DSemanticDecorator)representation).getTarget();
+    }else if(representation instanceof DTable){
+      return ((DTable)representation).getTarget();
+    }
+    return null;
   }
 }

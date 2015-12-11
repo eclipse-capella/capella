@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,8 +42,11 @@ public class MetricMessages extends NLS {
   
   public static String progressMonitoring_setAction_dialog_title;
   public static String progressMonitoring_setAction_dialog_main_lbl;
+  public static String progressMonitoring_setAction_dialog_clear_lbl;
   public static String progressMonitoring_setAction_dialog_combo_lbl;
   public static String progressMonitoring_setAction_cmd_lbl;
+  public static String progressMonitoring_setAction_nochanges_info;
+  public static String progressMonitoring_setAction_changes_info;
 
   public static String progressMonitoring_dialog_title;
   public static String progressMonitoring_dialog_msg;
@@ -53,6 +56,12 @@ public class MetricMessages extends NLS {
   
   public static String progressMonitoring_dialog_header_col0;
   public static String progressMonitoring_dialog_header_col1;
+  
+  public static String progressMonitoring_dialog_propagate_button_lbl;
+  public static String progressMonitoring_dialog_propagate_button_tooltip;
+  
+  public static String progressMonitoring_dialog_propagate_to_representation_button_lbl;
+  public static String progressMonitoring_dialog_propagate_to_representation_button_tooltip;
   
 	static {
 		// initialize resource bundle
