@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,12 +26,13 @@ public abstract class AbstractMoveHandler extends AbstractUiHandler {
   /**
    * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
    */
-  public Object execute(ExecutionEvent arg0_p) throws ExecutionException {
+  public Object execute(ExecutionEvent arg0) throws ExecutionException {
     // Get the selection for this handler.
-    List<EObject> selectedObjects = getSelection(arg0_p, EObject.class);
+    List<EObject> selectedObjects = getSelection(arg0, EObject.class);
     // Create the move action.
     AbstractMoveAction moveAction = createMoveAction();
     // Update the move action selection.
+    moveAction.selectionChanged(new StructuredSelection(selectedObjects));
     boolean cr = moveAction.updateSelection(new StructuredSelection(selectedObjects));
     if (cr) {
       // Run it.
@@ -42,6 +43,7 @@ public abstract class AbstractMoveHandler extends AbstractUiHandler {
 
   /**
    * Create a move action.
+   * 
    * @param domain_p
    * @return must be not <code>null</code>.
    */
