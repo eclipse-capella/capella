@@ -13,7 +13,12 @@ package org.polarsys.capella.test.framework.helpers;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
+import org.eclipse.amalgam.explorer.activity.ui.api.preferences.PreferenceConstants;
+import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -24,13 +29,14 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RenameResourceAction;
 import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
+import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
@@ -48,17 +54,30 @@ public class GuiActions {
 	 * Open a session by using the capella action @see OpenSessionAction.
 	 * 
 	 * @param airdFile
-	 *            the aird file
+	 *           the aird file
+	 * @param openActivityExplorer
+	 *           Open the ActivityExplorer on open session     
 	 */
-	public static void openSession(IFile airdFile) {
-		OpenSessionAction olsa = new OpenSessionAction();
+	public static void openSession(IFile airdFile, boolean openActivityExplorer) {
+	  // Set the corresponding preference to the expected value
+	  boolean originalPrefValue = ActivityExplorerActivator.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
+	  if (originalPrefValue != openActivityExplorer) {
+	    ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, openActivityExplorer);  
+	  }
+	  OpenSessionAction olsa = new OpenSessionAction();
+		olsa.setOpenActivityExplorer(openActivityExplorer);
 		olsa.selectionChanged(new StructuredSelection(airdFile));
 		olsa.run();
+		// Reset the original value of the preference
+    if (originalPrefValue != openActivityExplorer) {
+      ActivityExplorerActivator.getDefault().getPreferenceStore().setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, originalPrefValue);  
+    }
+		
 		flushASyncGuiThread();
 	}
 
 	/**
-	 * Close several sessions at the same time by using the capella action @see
+	 * Close several sessions at the same time by using the Capella action @see
 	 * CloseSessionAction.
 	 * 
 	 * @param sessions
@@ -111,18 +130,35 @@ public class GuiActions {
 		}
 	}
 
-	public static void renameModelFile(IFile modelFile_p, final String newName_p) {
-		Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-		RenameResourceAction renameAction = new RenameResourceAction(activeShell) {
-			@Override
-			protected String queryNewResourceName(final IResource resource) {
-				return newName_p;
-			}
-		};
-		IStructuredSelection selection = new StructuredSelection(modelFile_p);
-		renameAction.selectionChanged(selection);
-		renameAction.run();
-	}
+  public static void renameModelFile(IFile modelFile_p, final String newName_p) {
+
+    IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+
+    // Replace default handler by a dummy one (we do not want to display the rename dialog)
+    // See LTKLauncher.LTK_RENAME_ID (private)
+    String renameResourceCommandID = "org.eclipse.ltk.ui.refactoring.commands.renameResource";
+    IHandlerActivation dummyHandlerActivation = handlerService.activateHandler(renameResourceCommandID, new AbstractHandler() {
+      @Override
+      public Object execute(ExecutionEvent event) throws ExecutionException {
+        return null;
+      }
+    });
+    try {
+      // Execute the rename action
+      RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()) {
+        @Override
+        protected String queryNewResourceName(final IResource resource) {
+          return newName_p;
+        }
+      };
+      IStructuredSelection selection = new StructuredSelection(modelFile_p);
+      renameAction.selectionChanged(selection);
+      renameAction.run();
+    } finally {
+      // Deactivate dummy handler
+      handlerService.deactivateHandler(dummyHandlerActivation);
+    }
+  }
 
 	/**
 	 * Simulate a model detachment. Do NOT perform a model detach, it's just to
@@ -156,7 +192,19 @@ public class GuiActions {
 				hservice.createContextSnapshot(true));
 
 	}
-
+	
+  /**
+   * Open ActivityExplorersession by using the Capella action @see OpenActivityExplorerAction
+   * 
+   * @param airdFile
+   *            the aird file
+   */
+	public static void launchOpenActivityExplorerAction(IFile airdFile) {
+	  OpenActivityExplorerAction oaea = new OpenActivityExplorerAction();
+	  oaea.selectionChanged(new StructuredSelection(airdFile));
+	  oaea.run();
+	}
+	
 	/**
 	 * Set current selection on IFile file
 	 * 
