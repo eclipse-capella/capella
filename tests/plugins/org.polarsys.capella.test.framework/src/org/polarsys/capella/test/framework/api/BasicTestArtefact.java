@@ -16,7 +16,7 @@ public interface BasicTestArtefact extends Test {
   public List<String> getRequiredTestModels();
   
   /** @return the execution duration of this test artefact (setUp and tearDown are not in the scope) */
-  public long getExcutionDuration();
+  public long getExecutionDuration();
   
   public BasicTestSuite getParentTestSuite();
 

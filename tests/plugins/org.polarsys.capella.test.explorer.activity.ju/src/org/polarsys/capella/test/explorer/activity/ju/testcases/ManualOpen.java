@@ -10,11 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.explorer.activity.ju.testcases;
 
-import java.util.Collection;
-
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.ActivityExplorerEditor;
-import org.eclipse.amalgam.explorer.activity.ui.api.editor.Messages;
-import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.CommonActivityExplorerPage;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.IEditorPart;
@@ -36,24 +32,21 @@ public class ManualOpen extends AbstractActivityExplorerTestCase {
   public void test() throws Exception {
     // Hypothesis: project already imported in workspace (by setUp()), but session not open.
     
-    // Open session using Capella's OpenSessionAction.
+    // Open session using Capella's OpenSessionAction (but do not open Activity Explorer).
     IFile airdFile = getAirdFileForLoadedModel(TEST_PROJECT_NAME);
     GuiActions.openSession(airdFile, false);
-    // No editor (i.e. ActivityExplorer is not open).
+    // No editor (i.e. AE is not open).
     assertNull(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
-    // Call Open Activity Explore action.
+    // Call Open AE action.
     GuiActions.launchOpenActivityExplorerAction(airdFile);
     
-    // Check ActivityExplorer Editor is open.
+    // Check AE Editor is open.
     IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
     assertTrue(activeEditor instanceof ActivityExplorerEditor);
     
     // Check ActivityExplorer content is valid.
     ActivityExplorerEditor activityExplorerEditor = (ActivityExplorerEditor) activeEditor;
-    Collection<CommonActivityExplorerPage> activityExpolrerPages = activityExplorerEditor.getPages();
-    assertTrue(activityExplorerEditor.getPartName().contains(Messages.ActivityExplorerEditor_Title_Suffix));
-    assertTrue(activityExplorerEditor.getPartName().contains(TEST_PROJECT_NAME));
-    assertEquals(NB_ACTIVITY_EXPLORER_TABS, activityExpolrerPages.size());
+    checkActivityExploreContent(activityExplorerEditor, TEST_PROJECT_NAME);
 
     // Close session.
     Session session = SessionHelper.getSession(airdFile);
@@ -61,5 +54,13 @@ public class ManualOpen extends AbstractActivityExplorerTestCase {
 
     // No editor (i.e. ActivityExplorer is not open).
     assertNull(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
+  }
+  
+  @Override
+  protected void tearDown() throws Exception {
+    super.tearDown();
+    // Check test execution duration (30s).
+    long durationLimit = 30000;
+    assertTrue("Test execution took more than " + 30000 / 10 + " seconds.", getExecutionDuration() <= durationLimit);
   }
 }

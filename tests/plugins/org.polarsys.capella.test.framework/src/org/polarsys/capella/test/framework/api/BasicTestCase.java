@@ -52,7 +52,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 	protected BasicTestSuite parentTestSuite;
 
 	@Override
-	public void setParentTestSuite(BasicTestSuite parentTestSuite) {
+	public void setParentTestSuite(@SuppressWarnings("hiding") BasicTestSuite parentTestSuite) {
 		this.parentTestSuite = parentTestSuite;
 	}
   
@@ -101,7 +101,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 	}
 
 	@Override
-	public long getExcutionDuration() {
+	public long getExecutionDuration() {
 		return executionDurationInMillis;
 	}
 
@@ -245,6 +245,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 		return new File(getPluginFolder().toString() + "/" + relativePath); //$NON-NLS-1$
 	}
 
+	@Override
 	public File getFileOrFolderInTestModelRepository(String relativePath) {
 		return getFileOrFolderInTestPlugin(getRelativeModelsFolderName() + "/" + relativePath);//$NON-NLS-1$
 	}
