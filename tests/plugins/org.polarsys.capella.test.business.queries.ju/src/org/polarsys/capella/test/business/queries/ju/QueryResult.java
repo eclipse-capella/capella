@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.business.queries.ju;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -19,7 +18,6 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
 /**
  * @author Erwan Brottier
@@ -179,9 +177,8 @@ public class QueryResult {
   			}
   		}  		
   		return current;
-  	} else {
+  	} 
   		return null;
-  	}
   }
   
   public boolean equals(QueryResult queryResult) {

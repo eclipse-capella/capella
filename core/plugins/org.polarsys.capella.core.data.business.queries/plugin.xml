@@ -86,8 +86,6 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_RealizedComponentPort" id="org.polarsys.capella.core.business.queries.fa.ComponentPorts_RealizedComponentPort" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_ConnectedPorts" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_ConnectedPorts" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_AllocatedPort" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_AllocatedPort" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_MaxCardinality" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_MaxCardinality" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_MinCardinality" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_MinCardinality" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_RequiredInterfaces" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_RequiredInterfaces" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_Type" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_Type" />
