@@ -90,6 +90,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__ENUMERATION_LITERAL_ABSTRACT_TYPE = "GetAvailable_EnumerationLiteralAbstractType"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION_LITERAL_DOMAIN_VALUE___LIB = "GetAvailable_EnumerationLiteralDomainValue__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__TYPE = "GetAvailable_EnumerationPropertyValue_Type"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE_TYPE__LIB = "GetAvailable_EnumerationPropertyValue_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__VALUE = "GetAvailable_EnumerationPropertyValue_Value"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION__DEFAULT_VALUE___LIB = "GetAvailable_Enumeration_DefaultValue__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION__DOMAIN_TYPE___LIB = "GetAvailable_Enumeration_DomainType__Lib"; //$NON-NLS-1$
