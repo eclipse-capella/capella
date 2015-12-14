@@ -27,13 +27,6 @@
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="id" type="string">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-            </annotation>
-         </attribute>
          <attribute name="name" type="string">
             <annotation>
                <documentation>
@@ -49,6 +42,13 @@
 
    <element name="modelprovider">
       <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
@@ -57,6 +57,13 @@
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.polarsys.capella.test.framework.api.IModelProvider"/>
                </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="override" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
             </annotation>
          </attribute>
       </complexType>

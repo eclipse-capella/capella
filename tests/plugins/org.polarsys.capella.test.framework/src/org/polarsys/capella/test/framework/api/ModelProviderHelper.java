@@ -12,6 +12,8 @@ package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -28,12 +30,13 @@ import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 public class ModelProviderHelper {
+  private static final String ATT_OVERRIDE = "override";
   private IModelProvider modelProvider;
-  
+
   private ModelProviderHelper() {
     initExtensionListeners();
   }
-  
+
   private static class SingletonHolder {
     private static final ModelProviderHelper INSTANCE = new ModelProviderHelper();
   }
@@ -41,22 +44,36 @@ public class ModelProviderHelper {
   public static ModelProviderHelper getInstance() {
     return SingletonHolder.INSTANCE;
   }
-  
+
   public static String MODEL_PROVIDER_EXT_POINT = "modelprovider";
-  
+
   /**
    * Build the extension listener list.
    */
   private void initExtensionListeners() {
+    Map<String, IModelProvider> providers = new HashMap<String, IModelProvider>();
+
     for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements(
         CapellaTestFrameworkPlugin.PLUGIN_ID, MODEL_PROVIDER_EXT_POINT)) {
-      modelProvider = (IModelProvider) ExtensionPointHelper.createInstance(configElement,
+
+      String id = configElement.getAttribute(ExtensionPointHelper.ATT_ID);
+      String override_id = configElement.getAttribute(ATT_OVERRIDE);
+      IModelProvider modelProviderInstance = (IModelProvider) ExtensionPointHelper.createInstance(configElement,
           ExtensionPointHelper.ATT_CLASS);
+
+      if (override_id != null) {
+        providers.put(override_id, modelProviderInstance);
+      } else {
+        if (!providers.containsKey(id)) {
+          providers.put(id, modelProviderInstance);
+        }
+      }
     }
+
+    modelProvider = providers.values().iterator().next();
   }
-  
-  public IModelProvider getModelProvider()
-  {
+
+  public IModelProvider getModelProvider() {
     return modelProvider;
   }
 
@@ -92,7 +109,7 @@ public class ModelProviderHelper {
       e.printStackTrace();
     }
   }
-  
+
   public void removeCapellaProject(String relativeModelPath) {
     String projectName = new File(relativeModelPath).getName();
     IProject eclipseProject = IResourceHelpers.getEclipseProjectInWorkspace(projectName);

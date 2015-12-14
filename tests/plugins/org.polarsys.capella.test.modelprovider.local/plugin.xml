@@ -14,8 +14,8 @@
    <extension
          point="org.polarsys.capella.test.framework.modelprovider">
       <modelprovider
-            class="org.polarsys.capella.test.modelprovider.local.ModelProvider"
-            type="org.polarsys.capella.test.modelprovider.local.modelprovider1">
+      		id="org.polarsys.capella.test.modelprovider.local"
+            class="org.polarsys.capella.test.modelprovider.local.ModelProvider">
       </modelprovider>
    </extension>
 

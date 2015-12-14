@@ -17,7 +17,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -99,8 +98,8 @@ public class HoldingResourceHelper {
     if ((newContainer != null) && (newContainer.eResource() != null) && (element != null) && (element.eResource() != null)) {
       if (HoldingResourceHelper.isHoldByHoldingResource(element)) {
         if (!HoldingResourceHelper.isHoldByHoldingResource(newContainer)) {
-          ((ResourceImpl) element.eResource()).getContents().remove(element);
-          ((ResourceImpl) newContainer.eResource()).attached(element);
+          ((Resource.Internal) element.eResource()).getContents().remove(element);
+          ((Resource.Internal) newContainer.eResource()).attached(element);
 
           // the elements of the sub-tree shall also be moved
           for (EObject o : element.eContents()) {
