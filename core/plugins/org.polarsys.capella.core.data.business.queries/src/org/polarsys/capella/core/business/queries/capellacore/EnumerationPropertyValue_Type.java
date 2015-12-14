@@ -26,33 +26,35 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  */
 public class EnumerationPropertyValue_Type implements IBusinessQuery {
 
-	/**
-	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEClass()
-	 */
-	@Override
-	public EClass getEClass() {
-		return CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE;
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEClass()
+   */
+  @Override
+  public EClass getEClass() {
+    return CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE;
+  }
 
-	/**
-	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEStructuralFeatures()
-	 */
-	@Override
-	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__TYPE);
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEStructuralFeatures()
+   */
+  @Override
+  public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__TYPE);
+  }
 
-	@Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__TYPE, element, context);
-	}
+  @Override
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE_TYPE__LIB, element,
+        context);
+  }
 
-	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ENUMERATION_PROPERTY_VALUE__TYPE, element, context);
-	}
+  @Override
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor
+        .executeQuery(QueryConstants.GET_CURRENT__ENUMERATION_PROPERTY_VALUE__TYPE, element, context);
+  }
 }
