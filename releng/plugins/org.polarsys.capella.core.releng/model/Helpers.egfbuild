@@ -70,6 +70,7 @@
       <components xsi:type="buildstep:Feature" xmi:id="_axls8K4HEeS3GsUDrEkAJA" id="org.polarsys.capella.test.feature"/>
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_N2E1sNhtEeS6DsvU5Dy2HA" name="" description="" component="_axls8K4HEeS3GsUDrEkAJA"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_wf8aUK4IEeS3GsUDrEkAJA" name="CompleteTestSuite" launchConfigurationPath="${launch_configs}/CompleteTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_wf8aUK4IEeS3GsUDrEkAJA" name="RunInUITestSuite" launchConfigurationPath="${launch_configs}/RunInUITestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_ms-jQKJfEeWkV-pZPUXXZQ" name="RunInNotUITestSuite" launchConfigurationPath="${launch_configs}/RunInNotUITestSuite.launch"/>
   </steps>
 </buildcore:StepContainer>
