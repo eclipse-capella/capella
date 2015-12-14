@@ -15,31 +15,31 @@ import java.util.List;
 
 import junit.framework.Test;
 
-import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite;
 
 /**
  *
  */
-public class MinimalTestSuite extends BasicTestSuite {
+public class RunInNotUITestSuite extends BasicTestSuite {
 
-	/**
-	 * Returns the suite. This is required to unary launch this test.
-	 */
-	public static Test suite() {
-		return new MinimalTestSuite();
-	}
+  /**
+   * Returns the suite. This is required to unary launch this test.
+   */
+  public static Test suite() {
+    return new RunInNotUITestSuite();
+  }
 
-	@Override
-	protected List<BasicTestArtefact> getTests() {
-		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-		tests.add(new BusinessQueryTestSuite());
-		return tests;
-	}
+  @Override
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new NavigatorTestSuite());
+    return tests;
+  }
 
-	@Override
-	public List<String> getRequiredTestModels() {
-		return null;
-	}
+  @Override
+  public List<String> getRequiredTestModels() {
+    return null;
+  }
 }
