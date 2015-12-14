@@ -536,6 +536,7 @@ public interface IToolNameConstants {
   String TOOL_LAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES = "Switch Physical Links / Categories"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_LAB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$    
+  String TOOL_LAB_INSERT_ACTOR = "Show/Hide Actors"; //$NON-NLS-1$
   // Functions
   String TOOL_LAB_CREATE_LOGICAL_FUNCTION = "Logical Function"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_DUPLICATE = "Duplicate"; //$NON-NLS-1$

@@ -73,7 +73,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   public void test() {    
   	session = getSessionForTestModel(projectTestName);  	
   	IFile airdFile = getAirdFileForLoadedModel(projectTestName);
-  	GuiActions.openSession(airdFile);
+  	GuiActions.openSession(airdFile, true);
   	DDiagram diagram = (DDiagram) DiagramHelper.getDRepresentation(session, diagramName);
   	Assert.assertNotNull(MessageFormat.format(HelperMessages.diagramNotContainedInSession, diagramName, airdFile), diagram);// test case check
   	// initialize a matching table to get semantic object IDs from diagram elements

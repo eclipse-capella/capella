@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.annotations;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -49,6 +53,12 @@ public class RepresentationAnnotationHelper {
     }
     return ICommonConstants.EMPTY_STRING;
   }
+  
+  public static void setProgressStatus(DRepresentation representation, String value){
+    if(representation != null){
+      setAnnotation(representation, IRepresentationAnnotationConstants.ProgressStatus, IRepresentationAnnotationConstants.PROGRESS_VALUE_KEYVALUE, value);
+    }
+  }
 
   /**
    * @param representation
@@ -86,14 +96,19 @@ public class RepresentationAnnotationHelper {
    * @param value
    */
   public static void setAnnotation(DRepresentation representation, String source, String key, String value) {
+    DAnnotation annotation = RepresentationHelper.getAnnotation(source, representation);
     if (null != value) {
-      DAnnotation annotation = RepresentationHelper.getAnnotation(source, representation);
       if (null == annotation) {
         annotation = RepresentationHelper.createAnnotation(source, representation);
       }
+      String oldValue = annotation.getDetails().get(key);
       annotation.getDetails().put(key, value);
+      // Send just a fake notification to enable UI update
+      representation.eNotify(new ENotificationImpl((InternalEObject)representation, Notification.SET, ViewpointPackage.DREPRESENTATION__NAME, oldValue, value));
     } else {
       RepresentationHelper.removeAnnotation(source, representation);
+      // Send just a fake notification to enable UI update
+      representation.eNotify(new ENotificationImpl((InternalEObject)representation, Notification.UNSET, ViewpointPackage.DREPRESENTATION__NAME, null, null));
     }
   }
 }

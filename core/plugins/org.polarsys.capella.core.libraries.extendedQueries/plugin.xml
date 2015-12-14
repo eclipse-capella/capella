@@ -340,6 +340,13 @@
           queryIdentifier="GetAvailable_AbstractStateProperties__Lib">
        <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_AbstractStateProperties__Lib">
        </queryAlgorithm>
+    </querySpecification>
+    <querySpecification
+          extendedQueryIdentifier="GetAvailable_EnumerationPropertyValue_Type"
+          queryIdentifier="GetAvailable_EnumerationPropertyValue_Type__Lib">
+       <queryAlgorithm
+             algorithm="org.polarsys.capella.core.libraries.extendedqueries.information.GetAvailable_EnumerationPropertyValue_Type__Lib">
+       </queryAlgorithm>
     </querySpecification>    
   </extension>
 </plugin>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -34,11 +36,13 @@ import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
 import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
@@ -49,11 +53,8 @@ import org.polarsys.capella.core.ui.metric.dialog.MetricDialog;
 
 public class MetricAction extends BaseSelectionListenerAction {
 
-  /** the root semantic object selected */
-  private EObject _rootSemanticObject;
-
   /** result of the metrics (unrefined) */
-  MetricTree<EObject> _results;
+  MetricTree<EObject> results;
 
   /**
    * Constructor for Action1.
@@ -68,11 +69,10 @@ public class MetricAction extends BaseSelectionListenerAction {
    */
   @Override
   public void run() {
-    EObject rootSemanticObject = ProgressMonitoringActionsHelper.getSelectedEObject(getStructuredSelection());
+    final EObject rootSemanticObject = ProgressMonitoringActionsHelper.getSelectedEObject(getStructuredSelection());
     if (null == rootSemanticObject) {
       return;
     }
-    _rootSemanticObject = rootSemanticObject;
 
     IRunnableWithProgress runnable = new IRunnableWithProgress() {
       /**
@@ -87,19 +87,19 @@ public class MetricAction extends BaseSelectionListenerAction {
         // Build the tree data (to refactor)
         //
 
-        _results = new MetricTree<EObject>(_rootSemanticObject, null, null);
+        results = new MetricTree<EObject>(rootSemanticObject, null, null);
 
         ArrayList<MetricTree<EObject>> nodeWithSes = new ArrayList<MetricTree<EObject>>();
 
-        EClass eRoot = _rootSemanticObject.eClass();
+        EClass eRoot = rootSemanticObject.eClass();
         if ( // Project and SystemEngineering cases
         eRoot == CapellamodellerPackage.Literals.PROJECT) {
-          Project project = (Project) _rootSemanticObject;
+          Project project = (Project) rootSemanticObject;
           MetricTree<EObject> tree = null;
           MetricTree<EObject> tree1 = null;
           for (ModelRoot mr : project.getOwnedModelRoots()) {
-            tree = new MetricTree<EObject>(mr, null, _results);
-            _results.addChild(tree);
+            tree = new MetricTree<EObject>(mr, null, results);
+            results.addChild(tree);
             for (ModellingArchitecture ma : ((SystemEngineering) mr).getOwnedArchitectures()) {
               tree1 = new MetricTree<EObject>(ma, null, tree);
               tree.addChild(tree1);
@@ -107,16 +107,16 @@ public class MetricAction extends BaseSelectionListenerAction {
             }
           }
         } else if (eRoot == CapellamodellerPackage.Literals.SYSTEM_ENGINEERING) {
-          SystemEngineering se = (SystemEngineering) _rootSemanticObject;
+          SystemEngineering se = (SystemEngineering) rootSemanticObject;
           MetricTree<EObject> tree = null;
           for (ModellingArchitecture ma : se.getOwnedArchitectures()) {
-            tree = new MetricTree<EObject>(ma, null, _results);
-            _results.addChild(tree);
+            tree = new MetricTree<EObject>(ma, null, results);
+            results.addChild(tree);
             nodeWithSes.add(tree);
           }
 
         } else if (CapellacorePackage.Literals.MODELLING_ARCHITECTURE.isSuperTypeOf(eRoot)) {
-          nodeWithSes.add(_results);
+          nodeWithSes.add(results);
         }
 
         //
@@ -142,7 +142,7 @@ public class MetricAction extends BaseSelectionListenerAction {
                 metric.update(current.eClass());
               }
               if (progressMonitor_p.isCanceled()) {
-                _results.clear();
+                results.clear();
                 return;
               }
             }
@@ -200,17 +200,14 @@ public class MetricAction extends BaseSelectionListenerAction {
     // Let's display result and allow user.
     //
 
-    if ((null != _results) && _results.hasChildren()) {
-      openMetricsDialog();
+    if ((null != results) && results.hasChildren()) {
+      openMetricsDialog(rootSemanticObject);
     } else { // action was canceled
       // Do nothing
     }
 
     // clean everything to avoid any memory leaks.
-    _results.clear();
-    _rootSemanticObject = null;
-
-    return;
+    results.clear();
   }
 
   private List<EClass> sort(Set<EClass> keySet_p) {
@@ -231,7 +228,7 @@ public class MetricAction extends BaseSelectionListenerAction {
   /**
    * Open the metrics window.
    */
-  protected void openMetricsDialog() {
+  protected void openMetricsDialog(EObject rootSemanticObject) {
 
     String title = MetricMessages.metricDialogDefaultTitle;
     String resourceName = ICommonConstants.EMPTY_STRING;
@@ -246,10 +243,10 @@ public class MetricAction extends BaseSelectionListenerAction {
       if (selectedObject instanceof NamedElement) {
         objectName = ((NamedElement) selectedObject).getName();
       } else {
-        objectName = _rootSemanticObject.eClass().getName();
+        objectName = rootSemanticObject.eClass().getName();
       }
 
-      resourceName = _rootSemanticObject.eResource().getURI().lastSegment();
+      resourceName = rootSemanticObject.eResource().getURI().lastSegment();
 
       title =
           NLS.bind(MetricMessages.metricDialogTitleFromEObj,
@@ -258,11 +255,28 @@ public class MetricAction extends BaseSelectionListenerAction {
 
     MetricDialog dialog =
         new MetricDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), title, ICommonConstants.EMPTY_STRING, MetricMessages.metricDialogShellTitle);
-    dialog.setData(_results);
+    dialog.setData(results);
     dialog.setResourceName(resourceName);
     dialog.open();
 
     return;
   }
-
+  
+  @Override
+  protected boolean updateSelection(IStructuredSelection selection) {
+    if(selection != null && selection.size() == 1){
+      Object selectedObj = selection.getFirstElement();
+      if (selectedObj instanceof IFile) {
+        Session session = SessionHelper.getSession((IFile) selectedObj);
+        return (null != session && session.isOpen()); 
+      } else if (selectedObj instanceof EObject) {
+        EObject eObject = (EObject) selectedObj;
+        EClass eclass = eObject.eClass();
+        if (CapellamodellerPackage.Literals.SYSTEM_ENGINEERING.isSuperTypeOf(eclass) || CsPackage.Literals.BLOCK_ARCHITECTURE.isSuperTypeOf(eclass)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
