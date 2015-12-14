@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.test.explorer.activity.ju
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.polarsys.capella.test.explorer.activity.ju.TestActivityExplorerPlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.polarsys.capella.test.framework,
+ org.eclipse.amalgam.explorer.activity.ui
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.test.explorer.activity.ju,
+ org.polarsys.capella.test.explorer.activity.ju.testcases,
+ org.polarsys.capella.test.explorer.activity.ju.testsuites

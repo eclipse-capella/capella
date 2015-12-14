@@ -17,5 +17,6 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju,
  org.polarsys.capella.test.recrpl.ju,
  org.polarsys.capella.test.refinement.ju,
  org.polarsys.capella.test.transition.ju,
- org.polarsys.capella.test.validation.rules.ju
+ org.polarsys.capella.test.validation.rules.ju,
+ org.polarsys.capella.test.explorer.activity.ju
 Export-Package: org.polarsys.capella.test.suites.ju
