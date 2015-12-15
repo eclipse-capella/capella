@@ -15,6 +15,7 @@ import java.util.List;
 
 import junit.framework.Test;
 
+import org.polarsys.capella.test.explorer.activity.ju.testcases.AutoOpen;
 import org.polarsys.capella.test.explorer.activity.ju.testcases.ManualOpen;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -30,7 +31,7 @@ public class ActivityExplorerTestsSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    //tests.add(new AutoOpen());
+    tests.add(new AutoOpen());
     tests.add(new ManualOpen());
     return tests;
   }
