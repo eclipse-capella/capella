@@ -65,6 +65,7 @@ public abstract class AutoLoadTestSuite extends BasicTestSuite {
   private File pluginFolder;
   
   /** Return the root folder of the current test plugin */
+  @Override
   protected File getPluginFolder() {
     if (pluginFolder == null) {
   		Bundle bundle = FrameworkUtil.getBundle(getClass());

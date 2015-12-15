@@ -34,7 +34,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
 	private long executionDurationInMillis;
 	
 	@Override
-	public void setParentTestSuite(BasicTestSuite parentTestSuite) {
+	public void setParentTestSuite(@SuppressWarnings("hiding") BasicTestSuite parentTestSuite) {
 		this.parentTestSuite = parentTestSuite;
 	}
 	 
@@ -82,7 +82,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
 	}
 	
   @Override
-  public long getExcutionDuration() {
+  public long getExecutionDuration() {
   	return executionDurationInMillis;
   }
 
@@ -134,6 +134,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     return new File(getPluginFolder().toString() + "/" + relativePath); //$NON-NLS-1$
   }
   
+  @Override
   public File getFileOrFolderInTestModelRepository(String relativePath) {
     return getFileOrFolderInTestPlugin(getRelativeModelsFolderName()+ "/" + relativePath);//$NON-NLS-1$
   }

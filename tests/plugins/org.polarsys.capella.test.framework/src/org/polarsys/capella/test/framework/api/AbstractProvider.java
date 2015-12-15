@@ -108,6 +108,7 @@ public abstract class AbstractProvider implements IModelProvider{
   protected abstract void importCapellaProject(String relativeModelPath, BasicTestArtefact artefact);
   protected abstract void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject);
 
+  @Override
   public void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact) {
     releaseTestModel(relativeModelPath, artefact, false);
   }

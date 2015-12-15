@@ -10,11 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.explorer.activity.ju.testcases;
 
-import java.util.Collection;
-
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.ActivityExplorerEditor;
-import org.eclipse.amalgam.explorer.activity.ui.api.editor.Messages;
-import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.CommonActivityExplorerPage;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.IEditorPart;
@@ -44,10 +40,7 @@ public class AutoOpen extends AbstractActivityExplorerTestCase {
     
     // Check ActivityExplorer content is valid.
     ActivityExplorerEditor activityExplorerEditor = (ActivityExplorerEditor) activeEditor;
-    Collection<CommonActivityExplorerPage> activityExpolrerPages = activityExplorerEditor.getPages();
-    assertTrue(activityExplorerEditor.getPartName().contains(Messages.ActivityExplorerEditor_Title_Suffix));
-    assertTrue(activityExplorerEditor.getPartName().contains(TEST_PROJECT_NAME));
-    assertEquals(NB_ACTIVITY_EXPLORER_TABS, activityExpolrerPages.size());
+    checkActivityExploreContent(activityExplorerEditor, TEST_PROJECT_NAME);
 
     // Close session.
     Session session = SessionHelper.getSession(airdFile);
@@ -55,5 +48,13 @@ public class AutoOpen extends AbstractActivityExplorerTestCase {
     
     // No editor (i.e. ActivityExplorer is closed).
     assertNull(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
+  }
+  
+  @Override
+  protected void tearDown() throws Exception {
+    super.tearDown();
+    // Check test execution duration (30s).
+    long durationLimit = 30000;
+    assertTrue("Test execution took more than " + 30000 / 10 + " seconds.", getExecutionDuration() <= durationLimit);
   }
 }
