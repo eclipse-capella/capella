@@ -16,10 +16,12 @@ import java.util.List;
 import junit.framework.Test;
 
 import org.polarsys.capella.test.business.queries.ju.testSuites.main.BusinessQueryTestSuite;
+import org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplorerTestsSuite;
 import org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite;
+import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
 import org.polarsys.capella.test.refinement.ju.testsuites.main.AllRefinementTestSuites;
@@ -49,6 +51,8 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new TransitionTestSuite());
     tests.add(new RecRplTestSuite());
     tests.add(new FastLinkerTestsSuite());
+    tests.add(new ActivityExplorerTestsSuite());
+    tests.add(new RenameModelTestSuite());
     return tests;
   }
 
