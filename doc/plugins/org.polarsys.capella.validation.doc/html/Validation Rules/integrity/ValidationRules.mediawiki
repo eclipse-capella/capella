@@ -1,0 +1,300 @@
+      
+= > Validation Rules > capella.category > integrity =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that an association has a name. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|NOTE: This constraint is replaced by "I_19 - Name conflict" and thus disabled by default.  This rule checks that an element doesn't contain a naming conflict between different types of elements in the same package. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule Ensures that Logical Actor always realizes a Sytem Actor. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule Ensures that System Actor always realizes an Entity (that is aslo an Operational Actor). 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule ensures that Operational Entities Realizations always have Actor or System instances as source and Operational Entity instances as target. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule Ensures that Physical Actor always realizes a Logical Actor. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks  that a diagram doesn't contain a naming conflict. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|NOTE: This constraint is replaced by "I_19 - Name conflict" and thus disabled by default.  This rule checks that an element doesn't contain a naming conflict. Usually this means that two elements in the same container cannot have the same name, e.g. one cannot create two classes in a package and assign them identical names. Below we list the special cases:  ExchangeItems Two exchange items that share a common container have conflicting names if both have the same name, and the order, number and type of their ExchangeItemElements is identical. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that an element doesn't contain a naming conflict. This rule only applies to exchanges (Component Exchanges, Physical Links and Functional Exchanges) which have the same source (Component / function), the same target (Component / function) and the same name. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that an element has a name and does not contain a naming conflict. This rule does not check ExchangeItemAllocations and DataValues. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that all Requirements have a unique ID attribute. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This test checks the realization consistency between functions. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Functional Chain Involvement involver is its owning Functional Chain. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks the realization consistency between functional exchanges. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks the realization consistency between Functional Exchanges and Component Exchange. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule allows to ensure that a component cannot implement the same interface several times or use the same interface several times. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that context packages contain at least one component (the root component) of the correct level. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule Finds name conflicts.                     NOTE: This constraint include all Naming conflict detection and it is enabled by default.  This rule checks that an capella element doesn't contain any naming conflict. Usually this means that two elements in the same container cannot have the same name 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule cheks that source and target port orientations of a ComponentExchange are consistent, i.e.  - A source port cannot have orientation'IN' - A target port cannot have orientation 'OUT'  In Case the ComponentExchange is of kind DELEGATION - "source port/target Port" can only have orientation 'IN/IN' or 'OUT/OUT' 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that all capella elements have a unique ID. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule ensures that hyperLinks to capella elements or diagrams names are up to date. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule ensures that Operational Analysis Realization links targeting Operational Analysis instances have System Analysis instances as source. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks whether the description of a model element is well formed XML. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|Checks that there are no equivalent trace elements. Two trace elements are equivalent if they have identical types and identical source and target elements. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (not empty) 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (contained by the same functional chain) 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (not empty) 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (contained by the same physical path) 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Component Exchange / Physical Link End doesn't have a part Null. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that Component Exchange / Physical Link Ends are restricted to reusable mode defined in Key Value"projectApproach". 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that reused parts are not used when the project approach is in default mode (not in reusable mode). 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule detects inter-model inconsistencies (dependency violations and inter-model cycles). 
+|-
+|- 
+|}   

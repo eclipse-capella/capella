@@ -1,0 +1,125 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+org.polarsys.capella.glossary.doc/html/Glossary/Images
+
+1. Actor_html_1e1f4151.png
+1. Actor_html_m16fb01c8.png
+1. Actor_html_m4fe49c3e.png
+10. Collection Value_html_10a52fd4.png
+11. Collection_html_m39889998.png
+12. Combined Fragment_html_m73d3b16d.png
+13. Commmunication Link_html_348edf84.png
+14. Commmunication Mean_html_m70d9f5b1.png
+15. Complex Value_html_m21a5ba2b.png
+16. Component Exchange_html_m70d9f5b1.png
+17. Component Port_html_119cf761.png
+19. Configuration Item_html_6d6dd934.png
+2. Association_html_m7606379b.png
+20. Constraint_html_6b154bbc.png
+21. Decision_html_390f2d5b.png
+22. End Product Breakdown Structure_html_m5da03533.png
+23. Enumeration Literal_html_244473aa.png
+24. Enumeration Property Literal_html_62aa8504.png
+25. Enumeration Property Type_html_m606a1e97.png
+26. Enumeration_html_4ed18dd0.png
+27. Event_html_67e2c224.png
+28. Exchange Catergory_html_m46e1ade.png
+29. Exchange Item Element_html_45672387.png
+3. Behavioral Physical Component_html_m116e0dfc.png
+30. Exchange Item_html_168cf700.png
+31. Final State_html_m7babe2f3.png
+32. Flow_html_m42dd1bee.png
+33. Fork Function_html_330e3f20.png
+34. Fork Pseudo State_html_330e3f20.png
+35. Function Port_html_e035d14.png
+35. Function Port_html_mb471f13.png
+36. Function_html_12f54f40.png
+36. Function_html_159223fa.png
+36. Function_html_2709aa19.png
+36. Function_html_2c7fd338.png
+36. Function_html_32921c88.png
+36. Function_html_35daebe4.png
+36. Function_html_4903588a.png
+36. Function_html_4d4fd6d3.png
+36. Function_html_57cea38e.png
+36. Function_html_79978ef6.png
+36. Function_html_7d99c09f.png
+36. Function_html_m4c7482fa.png
+36. Function_html_m4f0e1fe3.png
+37. Functional Chain_html_m16f5d009.png
+38. Functional Exchange_html_2669ce0f.png
+39. In Flow Port_html_6a420f4d.png
+4. Binary Expression_html_m45e40b.png
+40. In-Out Flow Port_html_m7c18ed19.png
+41. Initial Pseudo State_html_3c430ed9.png
+42. Input Function Port_html_e035d14.png
+43. Interaction Use_html_7d1144e4.png
+44. Interaction_html_m38bb0f2f.png
+45. Interface_html_m74e85df2.png
+46. Join Function_html_m6a30a3fb.png
+47. Join Pseudo State_html_m6a30a3fb.png
+48. Literal_html_244473aa.png
+49. Logical Architecture_html_m5da03533.png
+5. Boolean Type_html_m6e2f03c2.png
+50. Logical Component_html_m46dfecb5.png
+51. Logical Function_html_m1e9c8035.png
+52. Merge Function_html_m41b489c1.png
+53. Mission_html_m41b489c1.png
+54. Mode_html_771ef661.png
+55. Node Physical Component_html_1bc67289.png
+56. Numeric Type_html_m4dd00f4f.png
+57. Operation_html_b03f329.png
+58. Operational Activity_html_m49ab9de3.png
+59. Operational Actor_html_56848ae4.png
+6. Capability Realization_html_7f1a85e8.png
+60. Operational Analysis_html_m5da03533.png
+61. Operational Entity_html_m62fa6ae5.png
+62. Operational Process_html_m44054298.png
+63. Out Flow Port_html_50dcece3.png
+64. Output Function Port_html_mb471f13.png
+65. Part_html_19bbfed7.png
+65. Part_html_282e0220.png
+65. Part_html_m4d022fd7.png
+65. Part_html_m79fce328.png
+66. Physical Architecture_html_m5da03533.png
+67. Physical Function_html_m1592649.png
+68. Physical Link_html_1bf0b94.png
+69. Physical Path_html_m4bff5742.png
+7. Capability_html_461a4db.png
+7. Capability_html_m23cf2fa5.png
+70. Physical Port_html_3dae1090.png
+71. Physical Quantity_html_m75d49d64.png
+72. Property Value Group_html_bdfb489.png
+73. Property Value_html_79e23142.png
+74. Property_html_69efa2f4.png
+75. Reference_html_38970915.png
+76. Region_html_m11df52e6.png
+77. Requirement_html_5137769a.png
+77. Requirement_html_m3b3f0acf.png
+77. Requirement_html_m42c93e4.png
+77. Requirement_html_m4ddc5e60.png
+77. Requirement_html_m69473d7e.png
+78. Role_html_6d44413b.png
+79. Scenario_html_c2a9337.png
+8. Choice Pseudo State_html_m3e95ad1e.png
+80. Sequence Message_html_3603fde4.png
+81. Shared Data_html_20e9f6d0.png
+82. Standard Port_html_m6baea051.png
+83. State Machine_html_2612dab2.png
+84. State_html_mcba3911.png
+85. String Type_html_53d9e6d8.png
+88. System Analysis_html_m5da03533.png
+89. System Function_html_54e33068.png
+9. Class_html_40ee2677.png
+90. System_html_45e9fcbb.png
+91. Terminate Pseudo State_html_36dc4faf.png
+92. Transition_html_m34489713.png
+93. Unary Expression_html_342e6f4d.png
+94. Union Property_html_m34623b5c.png
+95. Union_html_3b1d8b05.png
+96. Unit_html_m2645e1ea.png
+97. Value Part_html_69c1ea97.png

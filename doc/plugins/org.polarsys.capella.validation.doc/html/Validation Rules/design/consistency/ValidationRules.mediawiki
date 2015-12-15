@@ -1,0 +1,18 @@
+      
+= > Validation Rules > capella.category > design > consistency =
+
+<br>         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DCON_01 - Pattern Conformance  
+|-
+| colspan="2"|The rule checks that model elements which are bound to a pattern conform to the pattern.  
+|}     
+<br>  
+
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DCON_02 - RPL to REC conformance  
+|-
+| colspan="2"|This rule check if a RPL is up to date compared to its origin REC.  
+|} 

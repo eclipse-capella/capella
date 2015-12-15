@@ -1,0 +1,30 @@
+      
+= > Validation Rules > capella.category > transition > consistency > scenarios =
+            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that sequence messages are correctly ordered between scenarios from different levels. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that sequence messages are linked by refinement traceability between scenarios from different levels. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that Scenario element is realized by below layer.  Example: If Scenario resides in SystemAnalysis layer. It should be relalized by a Scenario from Logical layer. 
+|-
+|- 
+|}   

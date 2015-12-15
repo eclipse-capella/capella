@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" /></head>
+	<body>
+		<h1 id="FUNCTION_.28GENERIC.29">FUNCTION (GENERIC)</h1>
+		<h3 id="DEFINITION">DEFINITION</h3>
+		<p>A System/Logical/Physical Function is an action, an operation or a service fulfilled by one Component or Actor. It has input and output Ports, respectively targets and sources of Functional Exchanges (information, data, material, fluid, etc.).</p>
+		<p>The behavior of a Function itself can be defined in a recursive manner using Sub-Functions and internal Functional Exchanges. These Sub-Functions are represented &quot;inside&quot; the Function itself. When splitting a Function into Sub-Functions, Input and output Ports shall be moved / allocated to the Sub-Functions.</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>Some particular functional computation nodes are defined:</p>
+		<p><u>
+			<b>Duplicate:</b></u>
+		</p>
+		<p>
+			<img height="163" width="528" border="0" src="Images/36.%20Function_html_12f54f40.png"/>
+		</p>
+		<p>This figure depicts a case where both Function 2 and 3 depend on the same result produced by Function 1 (Two data dependencies). Operator 
+			<b>duplicate</b> is purely functional and simply duplicates the data provided by Function 1. It has no value of synchronization but only, as all the functions presented here, a purpose to capture data dependencies.
+		</p>
+		<p>The behavior of this computation node can be simply described in terms of sequence of actions:</p>
+		<p>
+			<b>iterate</b> &#91;true&#93;			
+			<i>// repeating infinitely often</i>
+		</p>
+		<p>&#9474;	in = 
+			<b>Read</b> input		
+			<i>// read data from the input port and store it in variable in</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output1 in	
+			<i>// write the data on the first output port</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output2 in	
+			<i>// write the data on the second output port</i>
+		</p>
+		<p>&#9492;</p>
+		<p>
+			<br/>
+		</p>
+		<p><u>
+			<b>Gather:</b></u>
+		</p>
+		<p>
+			<img height="163" width="528" border="0" src="Images/36.%20Function_html_57cea38e.png"/>
+		</p>
+		<p>This figure shows a pure data flow with a purely functional computation node: 
+			<b>gather</b>. It depicts a case where Function3 needs data from both Functions 1 and 2 to execute. There is no need for an explicit join operator in a pure dataflow graph.
+		</p>
+		<p>
+			<b>iterate</b> &#91;true&#93;				
+			<i>// repeating infinitely often</i>
+		</p>
+		<p>&#9474;	re = 
+			<b>Read</b> input1		
+			<i>// read data from the first input port and store it in variable re</i>
+		</p>
+		<p>&#9474;	im = 
+			<b>Read</b> input2		
+			<i>// read data from the second input port and store it in variable im</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output Complex(re, im)	
+			<i>// write the data on the output port</i>
+		</p>
+		<p>&#9492;</p>
+		<p>
+			<br/>
+		</p>
+		<p><u>
+			<b>Route:</b></u>
+		</p>
+		<p>
+			<img height="163" width="528" border="0" src="Images/36.%20Function_html_4903588a.png"/>
+		</p>
+		<p>This figure shows a pure data flow node called 
+			<b>route</b>. Function3 depends on the data produced by Function 1 and Function 2. However only one of the two functions produces a data for each computation of Function3. The choice of the branch must not depend on the availability of the data on an input port and must only depend on a local condition.
+		</p>
+		<p>
+			<b>iterate</b> &#91;true&#93;			
+			<i>// repeating infinitely often</i>
+		</p>
+		<p>&#9474;	in = 
+			<b>Read</b> input1	
+			<i>// read data from the first input port and store it in variable in</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output in		
+			<i>// write the data on the output port</i>
+		</p>
+		<p>&#9474;	in = 
+			<b>Read</b> input2	
+			<i>// read data from the second input port and store it in variable in</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output in		
+			<i>// write the data on the output port</i>
+		</p>
+		<p>&#9492;</p>
+		<p>
+			<br/>
+		</p>
+		<p><u>
+			<b>Select:</b></u>
+		</p>
+		<p>
+			<img height="163" width="528" border="0" src="Images/36.%20Function_html_7d99c09f.png"/>
+		</p>
+		<p>This figure shows a pure data flow with a predefined computation node called 
+			<b>select</b>. It depicts a case where both Functions 2 and 3 depend on the same result produced by Function 1 (Two data dependencies). The choice operator is purely functional and simply routes the data provided by Function 1. It has no value of synchronization but only, as all the functions presented here, a purpose to capture data dependencies. It differs from duplicate since only one of the two functions uses the data produced by Function1 during one single computation. Different executions of Function1 lead to either the execution of Function2 or Function3. The choice of the branch must not depend on the availability of the data on an input port and must only depend on a local condition.
+		</p>
+		<p>
+			<b>iterate</b> &#91;true&#93;			
+			<i>// repeating infinitely often</i>
+		</p>
+		<p>&#9474;	in = 
+			<b>Read</b> input		
+			<i>// read data from the input port and store it in variable in</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output1 in	
+			<i>// write the data on the first output port</i>
+		</p>
+		<p>&#9474;	in = 
+			<b>Read</b> input		
+			<i>// read data from the input port and store it in variable in</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output2 in	
+			<i>// write the data on the second output port</i>
+		</p>
+		<p>&#9492;</p>
+		<p><u>
+			<b>Split:</b></u>
+		</p>
+		<p>
+			<img height="163" width="528" border="0" src="Images/36.%20Function_html_m4f0e1fe3.png"/>
+		</p>
+		<p>This figure shows a pure data flow with a fork computation node. It depicts a case where both Functions 2 and 3 depend on the same result produced by Function1 (Two data dependencies). The main difference with the duplicate is that each function uses only one part of the structured data produced by Function1. It has no value of synchronization but only, as all the functions presented here, a purpose to capture data dependencies.</p>
+		<p>The behavior of this computation node can be simply described in terms of sequence of actions:</p>
+		<p>
+			<b>iterate</b> &#91;true&#93;				
+			<i>// repeating infinitely often</i>
+		</p>
+		<p>&#9474;	in = 
+			<b>Read</b> input			
+			<i>// read data from the input port and store it in variable in</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output1 in.real		
+			<i>// write the data on the first output port</i>
+		</p>
+		<p>&#9474; 
+			<b>Write</b> output2 in.imaginary	
+			<i>// write the data on the second output port</i>
+		</p>
+		<p>&#9492;</p>
+		<p>This example assumes that the data produced by Function1 is a structured data of type Complex and that Function2 and 3 use part of this data (the real and imaginary parts)</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h3 id="ICONS">ICONS</h3>
+		<p>
+			<img height="53" width="75" border="0" src="Images/36.%20Function_html_159223fa.png"/>
+			<img height="51" width="75" border="0" src="Images/36.%20Function_html_4d4fd6d3.png"/>
+			<img height="51" width="75" border="0" src="Images/36.%20Function_html_2c7fd338.png"/>
+			<img height="54" width="75" border="0" src="Images/36.%20Function_html_32921c88.png"/>
+			<img height="54" width="75" border="0" src="Images/36.%20Function_html_m4c7482fa.png"/>
+			<img height="54" width="75" border="0" src="Images/36.%20Function_html_79978ef6.png"/>
+			<img height="54" width="75" border="0" src="Images/36.%20Function_html_2709aa19.png"/>
+			<img height="54" width="75" border="0" src="Images/36.%20Function_html_35daebe4.png"/>
+		</p>
+		<p>
+			<br/>
+		</p>
+	</body>
+</html>

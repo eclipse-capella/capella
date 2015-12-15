@@ -1,0 +1,30 @@
+      
+= > Validation Rules > capella.category > transition > justification > epbs =
+            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks the realization consistency between physical architecture and EPBS architecture. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Capability Realization in PhysicalArchitecture layer is refined toward a CapabilityRealization in EPBS layer. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Configuration Item realizes at least one Physical Artifact. 
+|-
+|- 
+|}   
