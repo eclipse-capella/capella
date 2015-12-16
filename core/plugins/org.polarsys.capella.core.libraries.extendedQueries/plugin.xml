@@ -336,16 +336,20 @@
     <querySpecification queryIdentifier="GetAvailable_ExchangeItem_InheritedExchangeItem__Lib" extendedQueryIdentifier="GetAvailable_ExchangeItem_InheritedExchangeItem">
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
-    <querySpecification extendedQueryIdentifier="GetAvailable_AbstractStateProperties"
-          queryIdentifier="GetAvailable_AbstractStateProperties__Lib">
+    <querySpecification extendedQueryIdentifier="GetAvailable_AbstractStateProperties" queryIdentifier="GetAvailable_AbstractStateProperties__Lib">
        <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_AbstractStateProperties__Lib">
        </queryAlgorithm>
     </querySpecification>
-    <querySpecification
-          extendedQueryIdentifier="GetAvailable_EnumerationPropertyValue_Type"
-          queryIdentifier="GetAvailable_EnumerationPropertyValue_Type__Lib">
-       <queryAlgorithm
-             algorithm="org.polarsys.capella.core.libraries.extendedqueries.information.GetAvailable_EnumerationPropertyValue_Type__Lib">
+    <querySpecification extendedQueryIdentifier="GetAvailable_EnumerationPropertyValue_Type" queryIdentifier="GetAvailable_EnumerationPropertyValue_Type__Lib">
+       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.information.GetAvailable_EnumerationPropertyValue_Type__Lib">
+       </queryAlgorithm>
+    </querySpecification>
+    <querySpecification extendedQueryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValueGroups" queryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValueGroups_Lib">
+       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_CapellaElement_AppliedPropertyValueGroups_Lib">
+       </queryAlgorithm>
+    </querySpecification>
+    <querySpecification extendedQueryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValues" queryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValues_Lib">
+       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_CapellaElement_AppliedPropertyValues_Lib">
        </queryAlgorithm>
     </querySpecification>    
   </extension>

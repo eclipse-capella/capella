@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,8 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
-public class GetAvailable_CapellaElement_AppliedPropertyValues extends AbstractQuery {
+public class GetAvailable_CapellaElement_AppliedPropertyValues extends
+		AbstractQuery {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -32,14 +33,16 @@ public class GetAvailable_CapellaElement_AppliedPropertyValues extends AbstractQ
 		return (List) availableElements;
 	}
 
-	/** 
+	/**
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance()
+				.getRootQueries().getSystemEngineering(element);
 		if (null != systemEngineering) {
-			for (EObject elt : EObjectExt.getAll(systemEngineering, CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE)) {
+			for (EObject elt : EObjectExt.getAll(systemEngineering,
+					CapellacorePackage.Literals.ABSTRACT_PROPERTY_VALUE)) {
 				availableElements.add((CapellaElement) elt);
 			}
 		}
