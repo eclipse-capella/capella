@@ -22,22 +22,21 @@ import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.PerformanceHelper;
 
 /**
-  * Generic implementation of a test suite. This implementation supports
-  * libraries as test models.
-  * 
-  * @author Erwan Brottier
-  */
+ * Generic implementation of a test suite. This implementation supports libraries as test models.
+ * 
+ * @author Erwan Brottier
+ */
 public abstract class BasicTestSuite extends TestSuite implements BasicTestArtefact {
 
-	protected BasicTestSuite parentTestSuite;
-	private File pluginFolder;
-	private long executionDurationInMillis;
-	
-	@Override
-	public void setParentTestSuite(@SuppressWarnings("hiding") BasicTestSuite parentTestSuite) {
-		this.parentTestSuite = parentTestSuite;
-	}
-	 
+  protected BasicTestSuite parentTestSuite;
+  private File pluginFolder;
+  private long executionDurationInMillis;
+
+  @Override
+  public void setParentTestSuite(@SuppressWarnings("hiding") BasicTestSuite parentTestSuite) {
+    this.parentTestSuite = parentTestSuite;
+  }
+
   @Override
   public BasicTestSuite getParentTestSuite() {
     return this.parentTestSuite;
@@ -47,7 +46,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     // Add all contained test cases.
     for (BasicTestArtefact testArtefact : getTests()) {
       addTest(testArtefact);
-      testArtefact.setParentTestSuite(this);   
+      testArtefact.setParentTestSuite(this);
     }
   }
 
@@ -56,37 +55,36 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     return getClass().getName();
   }
 
-	/**
-	 * Runs the tests and collects their result in a TestResult.
-	 */
-	@Override
-  public void run(TestResult result) {
-		try {
-			setUp();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new InternalError(e.toString());
-		}
-		try {
-			executionDurationInMillis = PerformanceHelper.getTimeInMillis();			
-			super.run(result);
-			executionDurationInMillis = PerformanceHelper.getTimeInMillis() - executionDurationInMillis;
-		} finally {
-			try {
-				tearDown();
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new InternalError(e.toString());
-			}			
-		}
-	}
-	
+  /**
+   * Runs the tests and collects their result in a TestResult.
+   */
   @Override
-  public long getExecutionDuration() {
-  	return executionDurationInMillis;
+  public void run(TestResult result) {
+    try {
+      setUp();
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError(e.toString());
+    }
+    try {
+      executionDurationInMillis = PerformanceHelper.getTimeInMillis();
+      super.run(result);
+      executionDurationInMillis = PerformanceHelper.getTimeInMillis() - executionDurationInMillis;
+    } finally {
+      try {
+        tearDown();
+      } catch (Exception e) {
+        e.printStackTrace();
+        throw new InternalError(e.toString());
+      }
+    }
   }
 
-  
+  @Override
+  public long getExecutionDuration() {
+    return executionDurationInMillis;
+  }
+
   /**
    * Set up this test suite during test execution.<br>
    * Default implementation does nothing
@@ -94,11 +92,11 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
   protected void setUp() throws Exception {
     // require test models
     List<String> projectNamesToLoad = getRequiredTestModels();
-    if (projectNamesToLoad != null)
-	    for (String modelName : projectNamesToLoad)
-	      ModelProviderHelper.getInstance().getModelProvider().requireTestModel(modelName, this); //$NON-NLS-1$
+    if (projectNamesToLoad != null) {
+      ModelProviderHelper.getInstance().getModelProvider().requireTestModel(projectNamesToLoad, this); //$NON-NLS-1$
+    }
   }
-  
+
   /**
    * Dispose the test suite environment after its run.<br>
    * Default implementation does nothing
@@ -107,49 +105,48 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
     // release test models
     List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null) {
-    	for (String modelName : projectNamesToLoad) {
-    	  ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
-    	}
+      for (String modelName : projectNamesToLoad) {
+        ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
+      }
     }
-  }  
+  }
 
-  /** 
+  /**
    * @return description about this test suite
    */
   public String getDescription() {
     return CommonTestMessages.noDescriptionAvailable;
-  }	
-	
-  /** load all the test cases in test cases root package and sub ones. */
-  protected abstract List<BasicTestArtefact> getTests();
-  
-  private static final String INPUT_MODEL_FOLDER_NAME = "model"; //$NON-NLS-1$
-  
-  protected String getRelativeModelsFolderName() {
-  	return INPUT_MODEL_FOLDER_NAME; //$NON-NLS-1$
   }
 
-  
+  /** load all the test cases in test cases root package and sub ones. */
+  protected abstract List<BasicTestArtefact> getTests();
+
+  private static final String INPUT_MODEL_FOLDER_NAME = "model"; //$NON-NLS-1$
+
+  protected String getRelativeModelsFolderName() {
+    return INPUT_MODEL_FOLDER_NAME; //$NON-NLS-1$
+  }
+
   protected File getFileOrFolderInTestPlugin(String relativePath) {
     return new File(getPluginFolder().toString() + "/" + relativePath); //$NON-NLS-1$
   }
-  
+
   @Override
   public File getFileOrFolderInTestModelRepository(String relativePath) {
-    return getFileOrFolderInTestPlugin(getRelativeModelsFolderName()+ "/" + relativePath);//$NON-NLS-1$
+    return getFileOrFolderInTestPlugin(getRelativeModelsFolderName() + "/" + relativePath);//$NON-NLS-1$
   }
-  
+
   /** Return the root folder of the current test plugin */
   protected File getPluginFolder() {
     if (pluginFolder == null) {
-  		try {
-  			pluginFolder = IResourceHelpers.getFileInPlugin(getClass(), "/"); //$NON-NLS-1$
-			} catch (URISyntaxException e1) {
-			    e1.printStackTrace();
-			} catch (IOException e1) {
-			    e1.printStackTrace();
-			}
-  		//pluginFolder = new File(FileHelper.getFileFullUrl(getPluginId() + "/").getFile()); //$NON-NLS-1$
+      try {
+        pluginFolder = IResourceHelpers.getFileInPlugin(getClass(), "/"); //$NON-NLS-1$
+      } catch (URISyntaxException e1) {
+        e1.printStackTrace();
+      } catch (IOException e1) {
+        e1.printStackTrace();
+      }
+      //pluginFolder = new File(FileHelper.getFileFullUrl(getPluginId() + "/").getFile()); //$NON-NLS-1$
     }
     return pluginFolder;
   }

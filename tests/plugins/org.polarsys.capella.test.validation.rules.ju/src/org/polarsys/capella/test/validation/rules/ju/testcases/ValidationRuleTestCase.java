@@ -24,7 +24,9 @@ import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.emf.validation.service.IConstraintFilter;
 import org.eclipse.emf.validation.service.ModelValidationService;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.re.ReAbstractElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
@@ -58,7 +60,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   protected IConstraintFilter filter;
   protected IBatchValidator validator;
   protected Hashtable<String, OracleDefinition> objectID2OracleDefinition = new Hashtable<String, OracleDefinition>();
-  
+
   // stores the status of the rule before to launch the test
   private boolean _ruleWasDisabled;
 
@@ -90,12 +92,12 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
       if (ruleDescriptor == null) {
         throw new InternalError("rule for ID " + ruleID + " does not exist. Test can not be performed"); //$NON-NLS-1$//$NON-NLS-2$
       }
-      
+
       if (!ruleDescriptor.isEnabled()) {
         ruleDescriptor.setEnabled(true);
         _ruleWasDisabled = true;
       }
-      
+
       // create the filter and add it to the validator
       filter = new IConstraintFilter() {
         @SuppressWarnings("synthetic-access")
@@ -124,7 +126,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     }
     return scope;
   }
-  
+
   public void test() throws Exception {
     // get the objects to validate (only CapellaElement because the oracle is based on object ID)
     ICapellaModel model = getTestModel(getRequiredTestModel());
@@ -141,10 +143,12 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
         String objectID = getId(object);
         OracleDefinition oracleDef = objectID2OracleDefinition.get(objectID);
         Diagnostic diagnostic = diagnostician.validate(object);
+
         if ((diagnostic.getSeverity() == Diagnostic.OK) && (oracleDef != null)) {
-          assertTrue("Validation rule " + ruleID + " has not detected an error on object " + objectID + " while it must be the case", false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+          fail("Validation rule " + ruleID + " has not detected an error on object " + objectID + " while it must be the case"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         } else {
           if (diagnostic.getSeverity() != Diagnostic.OK) {
+            assertExpectedRuleHasBeenThrown(diagnostic, object);
             if (oracleDef != null) {
               oracleDef.countOneError();
             } else {
@@ -160,31 +164,49 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
           message += " - " + getId(elt) + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
         }
         message += "while it must not be the case.";
-        assertTrue(message, false);
+        fail(message);
       }
-      // check that some errors has not been detected according to the number of error occurences for each object in error
+      // check that some errors has not been detected according to the number of error occurences for each object in
+      // error
       for (OracleDefinition oracleDef : oracleDefinitions) {
         int nbExpectedErrors = oracleDef.getNbExpectedErrors();
         int nbFoundErrors = oracleDef.getNbFoundErrors();
         if (nbFoundErrors < nbExpectedErrors) {
-          assertTrue(
-              "Validation rule " + ruleID + " has only detected " + nbFoundErrors + " of " + nbExpectedErrors + " expected error(s) on object " + oracleDef.getObjectID(), false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+          fail("Validation rule " + ruleID + " has only detected " + nbFoundErrors + " of " + nbExpectedErrors + " expected error(s) on object " + oracleDef.getObjectID()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         } else if (nbFoundErrors > nbExpectedErrors) {
-          assertTrue(
-              "Validation rule " + ruleID + " has detected " + nbFoundErrors + " error(s) instead of " + nbExpectedErrors + " error(s) on object " + oracleDef.getObjectID(), false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+          fail("Validation rule " + ruleID + " has detected " + nbFoundErrors + " error(s) instead of " + nbExpectedErrors + " error(s) on object " + oracleDef.getObjectID()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         }
+
       }
     }
   }
 
+  protected void assertExpectedRuleHasBeenThrown(Diagnostic diagnostic, EObject object) {
+    assertFalse(diagnostic.getChildren().isEmpty());
+    Diagnostic nestedDiag = diagnostic.getChildren().get(0);
+    
+    assertTrue("Validation rule " + ruleID
+        + " has detected another kind of error, please check EMF integrity of the model: "+ getAirdURI(object),
+        nestedDiag instanceof ConstraintStatusDiagnostic);
+
+    String ruleIdThrown = ((ConstraintStatusDiagnostic) nestedDiag).getConstraintStatus().getConstraint()
+        .getDescriptor().getId();
+    assertEquals("Validation rule " + ruleIdThrown + " has detected an error but " + ruleID + " expected",
+        ruleIdThrown, ruleID);
+  }
+
+  protected String getAirdURI(EObject object) {
+    return SessionManager.INSTANCE.getSession(object).getSessionResource().getURI().toPlatformString(true);
+  }
+
   protected String getId(EObject object) {
-    if(object instanceof CapellaElement){
-      return ((CapellaElement)object).getId();
+    if (object instanceof CapellaElement) {
+      return ((CapellaElement) object).getId();
     }
-    if(object instanceof ReAbstractElement){
-      return ((ReAbstractElement)object).getId();
+    if (object instanceof ReAbstractElement) {
+      return ((ReAbstractElement) object).getId();
     }
-    throw new IllegalArgumentException(object.eClass().getName() +"is not supported as a validation targeted EClass");
+    throw new IllegalArgumentException(object.eClass().getName() + "is not supported as a validation targeted EClass");
   }
 
   @Override
@@ -205,7 +227,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     ruleDescriptor = null;
     filter = null;
     validator = null;
-    objectID2OracleDefinition = null;    
+    objectID2OracleDefinition = null;
   }
 
 }

@@ -14,7 +14,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -30,8 +32,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.test.framework.helpers.IFileRequestor;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
-
-public abstract class AbstractProvider implements IModelProvider{
+public abstract class AbstractProvider implements IModelProvider {
 
   protected static HashMap<String, BasicTestArtefact> modelIdentifier2Owner = new HashMap<String, BasicTestArtefact>();
   protected static HashMap<String, ChangeLocker> modelIdentifier2ChangeLocker = new HashMap<String, ChangeLocker>();
@@ -50,50 +51,68 @@ public abstract class AbstractProvider implements IModelProvider{
    * @throws IOException
    */
   @Override
-  public void requireTestModel(String relativeModelPath, BasicTestArtefact artefact) throws IOException {
+  public void requireTestModel(List<String> relativeModelsPath, BasicTestArtefact artefact) throws IOException {
+    Set<String> toImport = new HashSet<String>();
+    for (String relativeModelPath : relativeModelsPath) {
+      String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
+      System.out.println(">> require " + modelIdentifier);
+      // load the model if it is not already the case
+      if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
+        File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+        if (!sourceFolder.exists() || !sourceFolder.isDirectory()) {
+          throw new IllegalArgumentException("test model '" + relativeModelPath + "' does not exist");
+        }
+        System.out.println(">> load " + modelIdentifier);
+
+        BasicTestArtefact startArtefact = getSetupArtefact(artefact);
+        if (startArtefact == null) {
+          try {
+            setUp();
+            List<String> loadedModels = new ArrayList<String>();
+            loadedModels.add(modelIdentifier);
+            lstSetUpArtefacts.put(artefact, loadedModels);
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+        } else {
+          List<String> loadedModels = lstSetUpArtefacts.get(startArtefact);
+          if (!loadedModels.contains(modelIdentifier)) {
+            loadedModels.add(modelIdentifier);
+          }
+        }
+
+        toImport.add(relativeModelPath);
+
+        modelIdentifier2Owner.put(modelIdentifier, artefact);
+        modelIdentifier2ProjectNameInWorkspace.put(modelIdentifier, sourceFolder.getName());
+      }
+
+    }
+
+    importCapellaProject(toImport, artefact);
+
+    for (String relativeModelPath : relativeModelsPath) {
+      String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
+      // add a change lock on the test model if the artefact is not the owner
+      // of the test model
+      if (modelIdentifier2Owner.get(modelIdentifier) != artefact) {
+        Session session = getSessionForTestModel(relativeModelPath, artefact);
+        TransactionalEditingDomain ted = TransactionHelper.getEditingDomain(session);
+        ChangeLocker changeLocker = new ChangeLocker();
+        modelIdentifier2ChangeLocker.put(modelIdentifier, changeLocker);
+        ted.addResourceSetListener(changeLocker);
+      }
+
+    }
+
+  }
+
+  protected static String getModelIdentifier(BasicTestArtefact artefact, String relativeModelPath) {
     File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
-    System.out.println(">> require " + modelIdentifier);
-    // load the model if it is not already the case
-    if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
-      if (!sourceFolder.exists() || !sourceFolder.isDirectory()) {
-        throw new IllegalArgumentException("test model '" + relativeModelPath + "' does not exist");
-      }
-      System.out.println(">> load " + modelIdentifier);
-      
-      BasicTestArtefact startArtefact = getSetupArtefact(artefact);
-      if (startArtefact == null)  {
-        try {
-          setUp();
-          List<String> loadedModels = new ArrayList<String>();
-          loadedModels.add(modelIdentifier);
-          lstSetUpArtefacts.put(artefact, loadedModels);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      } else {
-        List<String> loadedModels = lstSetUpArtefacts.get(startArtefact);
-        if (!loadedModels.contains(modelIdentifier)) {
-          loadedModels.add(modelIdentifier);
-        }
-      }
-      
-      importCapellaProject(relativeModelPath, artefact);
-      
-      modelIdentifier2Owner.put(modelIdentifier, artefact);
-      modelIdentifier2ProjectNameInWorkspace.put(modelIdentifier, sourceFolder.getName());
-    }
-    // add a change lock on the test model if the artefact is not the owner
-    // of the test model
-    if (modelIdentifier2Owner.get(modelIdentifier) != artefact) {
-      Session session = getSessionForTestModel(relativeModelPath, artefact);
-      TransactionalEditingDomain ted = TransactionHelper.getEditingDomain(session);
-      ChangeLocker changeLocker = new ChangeLocker();
-      modelIdentifier2ChangeLocker.put(modelIdentifier, changeLocker);
-      ted.addResourceSetListener(changeLocker);
-    }
+    return modelIdentifier;
   }
-  
+
   BasicTestArtefact getSetupArtefact(BasicTestArtefact artefact) {
     BasicTestArtefact result = lstSetUpArtefacts.containsKey(artefact) ? artefact : null;
     if (result == null) {
@@ -105,8 +124,10 @@ public abstract class AbstractProvider implements IModelProvider{
     return result;
   }
 
-  protected abstract void importCapellaProject(String relativeModelPath, BasicTestArtefact artefact);
-  protected abstract void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject);
+  protected abstract void importCapellaProject(Set<String> toImport, BasicTestArtefact artefact);
+
+  protected abstract void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact,
+      boolean eraseProject);
 
   @Override
   public void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact) {
@@ -114,8 +135,7 @@ public abstract class AbstractProvider implements IModelProvider{
   }
 
   protected void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
-    String modelIdentifier = sourceFolder.toString();
+    String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
     System.out.println(">> release " + modelIdentifier);
     if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
       throw new IllegalArgumentException("test model '" + relativeModelPath + "' has not been loaded");
@@ -125,12 +145,12 @@ public abstract class AbstractProvider implements IModelProvider{
     if (modelIdentifier2Owner.get(modelIdentifier) == artefact) {
       System.out.println(">> unload " + modelIdentifier);
       removeCapellaProject(relativeModelPath, artefact, eraseProject);
-  
+
       modelIdentifier2Owner.remove(modelIdentifier);
       modelIdentifier2ProjectNameInWorkspace.remove(modelIdentifier);
-      
+
       BasicTestArtefact startArtefact = getSetupArtefact(artefact);
-      if (startArtefact != null)  {
+      if (startArtefact != null) {
         lstSetUpArtefacts.get(startArtefact).remove(modelIdentifier);
         if (lstSetUpArtefacts.get(startArtefact).isEmpty()) {
           try {
@@ -191,15 +211,14 @@ public abstract class AbstractProvider implements IModelProvider{
       }
     }
   }
-  
+
   /**
    * @return the eclipse project in the workspace that corresponds to the given identifiers.<br>
    *         Notice that the test model should have been required previously (@see method requireTestModel)
    */
   public static IProject getEclipseProjectForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
-    String modelIdentifier = sourceFolder.toString();
-    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)/*hasModelIdentifier2Owner(modelIdentifier)*/) {
+    String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
+    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)/* hasModelIdentifier2Owner(modelIdentifier) */) {
       throw new IllegalArgumentException("No model has been loaded for identifier '" + relativeModelPath + "'");
     }
     String projectName = getModelIdentifier2ProjectNameInWorkspace(modelIdentifier);
@@ -207,12 +226,12 @@ public abstract class AbstractProvider implements IModelProvider{
     normalizeEclipseProjectForTest(project);
     return project;
   }
-  
+
   protected static IFile getAirdFileForLoadedModel(String modelName) {
     return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(
         modelName + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
   }
-  
+
   public static String getModelIdentifier2ProjectNameInWorkspace(String modelIdentifier) {
     return modelIdentifier2ProjectNameInWorkspace.get(modelIdentifier);
   }
