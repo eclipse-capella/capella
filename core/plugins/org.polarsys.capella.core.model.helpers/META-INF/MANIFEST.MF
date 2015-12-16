@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.polarsys.capella.core.model.helpers;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
+ org.eclipse.emf.codegen.ecore,
  org.polarsys.capella.common.helpers;visibility:=reexport,
  org.polarsys.capella.common.menu.dynamic;visibility:=reexport,
  org.polarsys.capella.common.queries,
@@ -24,6 +25,7 @@ Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.query,
  org.polarsys.capella.core.model.helpers.query.impl,
  org.polarsys.capella.core.model.helpers.refmap,
+ org.polarsys.capella.core.model.helpers.registry,
  org.polarsys.capella.core.model.utils,
  org.polarsys.capella.core.model.utils.saxparser
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
