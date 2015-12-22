@@ -120,7 +120,9 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
    */
   @Override
   protected boolean isTagged(EObject eObject) {
-    return ((eObject instanceof CapellaElement) && (null != ((CapellaElement) eObject).getStatus()));
+    return ((eObject instanceof CapellaElement) && 
+    		((null != ((CapellaElement) eObject).getStatus())
+    		||(null != ((CapellaElement) eObject).getReview())));
   }
   
   /**
@@ -129,11 +131,18 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
    */
   @Override
   protected boolean isTaggedRepresentation(EObject eObject) {
-	String eAnnot= IRepresentationAnnotationConstants.ProgressStatus;
-	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eObject);
-	if (eObject instanceof DRepresentation && dAnnotation!=null) {
-    return (null != dAnnotation.getDetails().get("value"));
-	}
+	  if (eObject instanceof DRepresentation) {
+		  String eAnnotStatus = IRepresentationAnnotationConstants.ProgressStatus;
+		  DAnnotation dAnnotationStatus = RepresentationHelper.getAnnotation(
+				  eAnnotStatus, (DRepresentation) eObject);
+
+		  String eAnnotReview = IRepresentationAnnotationConstants.StatusReview;
+		  DAnnotation dAnnotationReview = RepresentationHelper.getAnnotation(
+				  eAnnotReview, (DRepresentation) eObject);
+
+		  return ((null != dAnnotationStatus) && (null != dAnnotationStatus.getDetails().get("value")) 
+				  || (null != dAnnotationReview) && (null != dAnnotationReview.getDetails().get("value")));
+	  }
 	return false;
   }
 }

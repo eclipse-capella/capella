@@ -126,11 +126,13 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
           EnumerationPropertyLiteral lit = (EnumerationPropertyLiteral) combo.getData(String.valueOf(idx));
           list = new ArrayList<EObject>();
           for (EObject eobj: allTaggedElements) {
-            if ( (eobj instanceof CapellaElement) && ((CapellaElement)eobj).getStatus().equals(lit) ) {
-              list.add(eobj);
+            if (eobj instanceof CapellaElement) {
+            	if(null != ((CapellaElement)eobj).getStatus() && ((CapellaElement)eobj).getStatus().equals(lit) ) {
+              		list.add(eobj); 
+              }
             } else if (eobj instanceof DRepresentation) {
             	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eobj);
-            	if (dAnnotation.getDetails().get("value").equals(lit.getName())) {
+            	if (null != dAnnotation && dAnnotation.getDetails().get("value").equals(lit.getName())) {
             	list.add(eobj);
             	}
             }
@@ -158,7 +160,12 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
     columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
     column = columnViewer.getColumn();
     column.setText(MetricMessages.progressMonitoring_dialog_header_col1);
-    column.setWidth(100);
+    column.setWidth(150);
+    
+    columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
+    column = columnViewer.getColumn();
+    column.setText(MetricMessages.progressMonitoring_dialog_header_col2);
+    column.setWidth(300);
     
     viewer.getTree().setLinesVisible(true);
     viewer.getTree().setHeaderVisible(true);
@@ -184,18 +191,25 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
     for (EObject current : allTaggedElements) {
       if (current instanceof CapellaElement) {
         CapellaElement ce = (CapellaElement) current;
-        result.add(new String[] { ce.eClass().getName(), ce.getFullLabel(), ce.getLabel(), ce.getStatus().getLabel() });
+        result.add(new String[] { ce.eClass().getName(), ce.getFullLabel(), ce.getLabel(), 
+        		null == ce.getStatus() ? "" : ce.getStatus().getLabel(),
+    			null == ce.getReview() ? "" : ce.getReview() });
       } else if (current instanceof DRepresentation) {
-        DRepresentation dRepresentation = (DRepresentation) current;
+    	  DRepresentation dRepresentation = (DRepresentation) current;
 
-        String eAnnotStatus = IRepresentationAnnotationConstants.ProgressStatus;
-        DAnnotation dAnnotationStatus = RepresentationHelper.getAnnotation(eAnnotStatus, (DRepresentation) current);
-        EObject target = Utils.getTarget(dRepresentation);
-        if (target != null) {
-          result.add(new String[] { dRepresentation.getName(),
-              ((CapellaElement) target).getFullLabel() + "/" + dRepresentation.getName(), dRepresentation.getName(),
-              dAnnotationStatus.getDetails().get("value") });
-        }
+    	  String eAnnotStatus= IRepresentationAnnotationConstants.ProgressStatus;
+    	  DAnnotation dAnnotationStatus= RepresentationHelper.getAnnotation(eAnnotStatus, (DRepresentation) current);
+
+    	  String eAnnotReview= IRepresentationAnnotationConstants.StatusReview;
+    	  DAnnotation dAnnotationReview= RepresentationHelper.getAnnotation(eAnnotReview, (DRepresentation) current);
+
+    	  EObject target = Utils.getTarget(dRepresentation);
+    	  if (target != null) {
+    		  result.add(new String[] { dRepresentation.getName(),
+    						  ((CapellaElement) target).getFullLabel() + "/" + dRepresentation.getName(),	dRepresentation.getName(),
+    						  null == dAnnotationStatus ? "" : dAnnotationStatus.getDetails().get("value"),
+    						  null == dAnnotationReview ? "" : dAnnotationReview.getDetails().get("value") });
+    	  }
       }
     }
     return result;

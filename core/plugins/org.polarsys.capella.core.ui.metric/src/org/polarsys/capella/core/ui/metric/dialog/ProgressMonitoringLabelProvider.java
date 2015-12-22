@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,6 +103,20 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
     		 if (dAnnotation!=null) {
     	    text= dAnnotation.getDetails().get("value");
     		 }
+      } }else if (2 == columnIndex_p) {
+    	  if (element_p instanceof CapellaElement) {
+    		  String review = ((CapellaElement) element_p).getReview();
+    		  if (null != review) {
+    			  text = review;
+    		  }
+    	  }
+    	  if (element_p instanceof DRepresentation) {
+    		  String eAnnot= IRepresentationAnnotationConstants.StatusReview;
+    		  DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) element_p);
+    		  if (dAnnotation!=null) {
+    			  text= dAnnotation.getDetails().get("value");
+    		  }
+    	  
       }
     }
     return text;

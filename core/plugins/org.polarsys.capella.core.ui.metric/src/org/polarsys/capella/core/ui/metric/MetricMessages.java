@@ -56,6 +56,7 @@ public class MetricMessages extends NLS {
   
   public static String progressMonitoring_dialog_header_col0;
   public static String progressMonitoring_dialog_header_col1;
+  public static String progressMonitoring_dialog_header_col2;
   
   public static String progressMonitoring_dialog_propagate_button_lbl;
   public static String progressMonitoring_dialog_propagate_button_tooltip;
