@@ -30,110 +30,124 @@ import org.polarsys.capella.core.ui.properties.annotations.RepresentationAnnotat
  */
 public class ProgressMonitoringPropagator extends PropertyPropagator {
 
-  /**
+	/**
    * 
    */
-  private static ProgressMonitoringPropagator instance;
+	private static ProgressMonitoringPropagator instance;
 
-  /**
+	/**
    * 
    */
-  static private Collection<EClass> directTypes = null;
-  static private Collection<EClass> withSpecializationTypes = null;
+	static private Collection<EClass> directTypes = null;
+	static private Collection<EClass> withSpecializationTypes = null;
 
-  /**
-   * @return a unique instance of this class
-   */
-  public static ProgressMonitoringPropagator getInstance() {
-    if (null == instance) {
-      instance = new ProgressMonitoringPropagator();
-    }
-    return instance;
-  }
-
-  /**
-   * Constructor is private because it's a singleton
-   */
-  private ProgressMonitoringPropagator() {
-    // do nothing
-  }
-
-  /**
-   * @return
-   */
-  @Override
-  protected Collection<EClass> getDirectTypes() {
-    if ( null == directTypes ) {
-      directTypes = super.getDirectTypes();
-    }
-    return directTypes;
-  }
-
-  /**
-   * @return
-   */
-  @Override
-  protected Collection<EClass> getWithSpecializationType() {
-    if (null == withSpecializationTypes) {
-      withSpecializationTypes = super.getWithSpecializationType();
-    }
-    return withSpecializationTypes;
-  }
-
-  /**
-   * @return
-   */
-  @Override
-  protected String getKeyword() {
-    return CapellaProjectHelper.PROGRESS_STATUS_KEYWORD;
-  }
-  
-  public boolean isTaggableElement(EObject element) {
-    return element instanceof DRepresentation || super.isTaggableElement(element);
-  }
-
-  /**
-   * @param literal
-   * @param eObject
-   * @return
-   */
-  @Override
-  protected boolean tagElement(EnumerationPropertyLiteral literal, EObject eObject) {
-    if (eObject instanceof CapellaElement) {
-      if(literal == null){
-        ((CapellaElement) eObject).eUnset(CapellacorePackage.eINSTANCE.getCapellaElement_Status());        
-      }else{
-        ((CapellaElement) eObject).setStatus(literal);        
-      }
-      return true;
-    }else if(eObject instanceof DRepresentation){
-      String value = literal == null ? null:literal.getLabel();
-      RepresentationAnnotationHelper.setProgressStatus(((DRepresentation)eObject), value);
-      return true;
-    }
-    return false;
-  }
-
-  /**
-   * @param eObject
-   * @return
-   */
-  @Override
-  protected boolean isTagged(EObject eObject) {
-    return ((eObject instanceof CapellaElement) && (null != ((CapellaElement) eObject).getStatus()));
-  }
-  
-  /**
-   * @param eObject
-   * @return
-   */
-  @Override
-  protected boolean isTaggedRepresentation(EObject eObject) {
-	String eAnnot= IRepresentationAnnotationConstants.ProgressStatus;
-	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eObject);
-	if (eObject instanceof DRepresentation && dAnnotation!=null) {
-    return (null != dAnnotation.getDetails().get("value"));
+	/**
+	 * @return a unique instance of this class
+	 */
+	public static ProgressMonitoringPropagator getInstance() {
+		if (null == instance) {
+			instance = new ProgressMonitoringPropagator();
+		}
+		return instance;
 	}
-	return false;
-  }
+
+	/**
+	 * Constructor is private because it's a singleton
+	 */
+	private ProgressMonitoringPropagator() {
+		// do nothing
+	}
+
+	/**
+	 * @return
+	 */
+	@Override
+	protected Collection<EClass> getDirectTypes() {
+		if (null == directTypes) {
+			directTypes = super.getDirectTypes();
+		}
+		return directTypes;
+	}
+
+	/**
+	 * @return
+	 */
+	@Override
+	protected Collection<EClass> getWithSpecializationType() {
+		if (null == withSpecializationTypes) {
+			withSpecializationTypes = super.getWithSpecializationType();
+		}
+		return withSpecializationTypes;
+	}
+
+	/**
+	 * @return
+	 */
+	@Override
+	protected String getKeyword() {
+		return CapellaProjectHelper.PROGRESS_STATUS_KEYWORD;
+	}
+
+	public boolean isTaggableElement(EObject element) {
+		return element instanceof DRepresentation
+				|| super.isTaggableElement(element);
+	}
+
+	/**
+	 * @param literal
+	 * @param eObject
+	 * @return
+	 */
+	@Override
+	protected boolean tagElement(EnumerationPropertyLiteral literal,
+			EObject eObject) {
+		if (eObject instanceof CapellaElement) {
+			if (literal == null) {
+				((CapellaElement) eObject).eUnset(CapellacorePackage.eINSTANCE
+						.getCapellaElement_Status());
+			} else {
+				((CapellaElement) eObject).setStatus(literal);
+			}
+			return true;
+		} else if (eObject instanceof DRepresentation) {
+			String value = literal == null ? null : literal.getLabel();
+			RepresentationAnnotationHelper.setProgressStatus(
+					((DRepresentation) eObject), value);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	@Override
+	protected boolean isTagged(EObject eObject) {
+		return ((eObject instanceof CapellaElement) && ((null != ((CapellaElement) eObject)
+				.getStatus()) || (null != ((CapellaElement) eObject)
+				.getReview())));
+	}
+
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	@Override
+	protected boolean isTaggedRepresentation(EObject eObject) {
+		if (eObject instanceof DRepresentation) {
+			String eAnnotStatus = IRepresentationAnnotationConstants.ProgressStatus;
+			DAnnotation dAnnotationStatus = RepresentationHelper.getAnnotation(
+					eAnnotStatus, (DRepresentation) eObject);
+
+			String eAnnotReview = IRepresentationAnnotationConstants.StatusReview;
+			DAnnotation dAnnotationReview = RepresentationHelper.getAnnotation(
+					eAnnotReview, (DRepresentation) eObject);
+
+			return ((null != dAnnotationStatus)
+					&& (null != dAnnotationStatus.getDetails().get("value")) || (null != dAnnotationReview)
+					&& (null != dAnnotationReview.getDetails().get("value")));
+		}
+		return false;
+	}
 }
