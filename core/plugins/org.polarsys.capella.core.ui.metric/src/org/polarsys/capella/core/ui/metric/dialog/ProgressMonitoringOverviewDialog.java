@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -43,173 +41,201 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
+import org.polarsys.capella.core.ui.metric.utils.Utils;
 import org.polarsys.capella.core.ui.properties.annotations.IRepresentationAnnotationConstants;
 
 /**
  */
 public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
 
-  private CCombo _combo;
-  private EObject _root = null;
+	private CCombo combo;
+	private EObject root = null;
 
-  /**
-   * @param parentShell
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param root_p
-   * @param elements_p
-   */
-  public ProgressMonitoringOverviewDialog(Shell parentShell, String dialogTitle_p, String dialogMessage_p, EObject root_p, List<? extends EObject> elements_p) {
-    super(parentShell, dialogTitle_p, dialogMessage_p, dialogTitle_p);
+	/**
+	 * @param parentShell
+	 * @param dialogTitle
+	 * @param dialogMessage
+	 * @param root
+	 * @param elements
+	 */
+	public ProgressMonitoringOverviewDialog(Shell parentShell,
+			String dialogTitle, String dialogMessage, EObject root,
+			List<? extends EObject> elements) {
+		super(parentShell, dialogTitle, dialogMessage, dialogTitle);
 
-    _root = root_p;
-    setData(new TreeData(elements_p, null));
-  }
+		this.root = root;
+		setData(new TreeData(elements, null));
+	}
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#doCreateDialogArea(org.eclipse.swt.widgets.Composite)
-   */
-  @Override
-  protected void doCreateDialogArea(Composite parent_p) {
-    // Create a composing composite.
-    Composite containingComposite = new Composite(parent_p, SWT.NONE);
-    containingComposite.setLayout(new GridLayout(1, true));
-    containingComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
-    
-    createStatusArea(containingComposite);
-    
-    // Create the viewer area.
-    super.doCreateDialogArea(containingComposite);
-  }
+	/**
+	 * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#doCreateDialogArea(org.eclipse.swt.widgets.Composite)
+	 */
+	@Override
+	protected void doCreateDialogArea(Composite parent) {
+		// Create a composing composite.
+		Composite containingComposite = new Composite(parent, SWT.NONE);
+		containingComposite.setLayout(new GridLayout(1, true));
+		containingComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-  /**
-   * @param parent_p
-   */
-  protected void createStatusArea(Composite parent_p) {
-    final int initialSelection = 0;
+		createStatusArea(containingComposite);
 
-    Composite comp = new Composite(parent_p, SWT.NONE);
-    comp.setLayout(new GridLayout(2, false));
-    comp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-    
-    Label lbl = new Label(comp, SWT.NONE);
-    lbl.setText(MetricMessages.progressMonitoring_dialog_combo_lbl);
-    
-    _combo = new CCombo(comp, SWT.NONE | SWT.READ_ONLY | SWT.BORDER);
+		// Create the viewer area.
+		super.doCreateDialogArea(containingComposite);
+	}
 
-    GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
-    _combo.setLayoutData(gd);
-    _combo.add(MetricMessages.progressMonitoring_dialog_combo_allStatus);
-    _combo.setData(String.valueOf(initialSelection), getData());
+	/**
+	 * @param parent
+	 */
+	protected void createStatusArea(Composite parent) {
+		final int initialSelection = 0;
 
-    EnumerationPropertyType ept = CapellaProjectHelper.getEnumerationPropertyType(_root, CapellaProjectHelper.PROGRESS_STATUS_KEYWORD);
+		Composite comp = new Composite(parent, SWT.NONE);
+		comp.setLayout(new GridLayout(2, false));
+		comp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-    int i = 0;
-    int i0 = 0;
-    for (EnumerationPropertyLiteral enumz: ept.getOwnedLiterals()) {
-      _combo.add(enumz.getLabel());
-      _combo.setData(String.valueOf(++i), enumz);
-    }
-    
-    _combo.select(i0);
-    _combo.addSelectionListener(new SelectionAdapter() {
-      @SuppressWarnings({ "synthetic-access", "unchecked" })
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        int idx = _combo.getSelectionIndex();
-        List<? extends EObject> allTaggedElements = (List<? extends EObject>) ((TreeData) getData()).getValidElements();
-        List<EObject> list = null;
-        String eAnnot= IRepresentationAnnotationConstants.ProgressStatus;
-        
-        if ( 0 == idx ) {
-          list = (List<EObject>) allTaggedElements;
-        } else {
-          EnumerationPropertyLiteral lit = (EnumerationPropertyLiteral) _combo.getData(String.valueOf(idx));
-          list = new ArrayList<EObject>();
-          for (EObject eobj: allTaggedElements) {
-            if ( (eobj instanceof CapellaElement) && ((CapellaElement)eobj).getStatus().equals(lit) ) {
-              list.add(eobj);
-            } else if (eobj instanceof DRepresentation) {
-            	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eobj);
-            	if (dAnnotation.getDetails().get("value").equals(lit.getName())) {
-            	list.add(eobj);
-            	}
-            }
-          }
-        }
-        getViewer().setInput( new TreeData(list, null) );
-      }
-    });
-  }
-  
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewer(org.eclipse.swt.widgets.Composite)
-   */
-  @Override
-  protected AbstractRegExpViewer createViewer(Composite parent_p) {
-    // Create tree viewer.
-    // Don't use the status bar of the viewer b
-    TreeAndListViewer treeViewer = new TreeAndListViewer(parent_p, false, IViewerStyle.SHOW_STATUS_BAR);
-    TreeViewer viewer = treeViewer.getClientViewer();
-    TreeViewerColumn columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
-    TreeColumn column = columnViewer.getColumn();
-    column.setText(MetricMessages.progressMonitoring_dialog_header_col0);
-    column.setWidth(300);
-    
-    columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
-    column = columnViewer.getColumn();
-    column.setText(MetricMessages.progressMonitoring_dialog_header_col1);
-    column.setWidth(100);
-    
-    viewer.getTree().setLinesVisible(true);
-    viewer.getTree().setHeaderVisible(true);
-    viewer.setContentProvider(new DataContentProvider());
-    viewer.setLabelProvider(new ProgressMonitoringLabelProvider(viewer, SWT.COLOR_BLUE));
-    // Set layout data.
-    viewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
-    viewer.setSorter(new ProgressMonitoringSorter());
+		Label lbl = new Label(comp, SWT.NONE);
+		lbl.setText(MetricMessages.progressMonitoring_dialog_combo_lbl);
 
-    return treeViewer;
-  }
-  
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected List<String[]> getExportableData() {  	
-    List<String[]> result = super.getExportableData(ProjectExt.getProject(_root).getName());
+		combo = new CCombo(comp, SWT.NONE | SWT.READ_ONLY | SWT.BORDER);
 
-    @SuppressWarnings("unchecked")
-    List<? extends EObject> allTaggedElements = (List<? extends EObject>) ((TreeData) getData()).getValidElements();
+		GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
+		combo.setLayoutData(gd);
+		combo.add(MetricMessages.progressMonitoring_dialog_combo_allStatus);
+		combo.setData(String.valueOf(initialSelection), getData());
 
-    for (EObject current: allTaggedElements) {
-      if (current instanceof CapellaElement) {
-    	CapellaElement ce = (CapellaElement) current;
-    	result.add(
-    		new String[] {
-    			ce.eClass().getName(),
-    			ce.getFullLabel(),
-    			ce.getLabel(),
-    			ce.getStatus().getLabel()
-    			}
-    		);
-      } else if (current instanceof DRepresentation) {
-    	  DRepresentation dRepresentation= (DRepresentation) current;
+		EnumerationPropertyType ept = CapellaProjectHelper
+				.getEnumerationPropertyType(root,
+						CapellaProjectHelper.PROGRESS_STATUS_KEYWORD);
 
-    	String eAnnotStatus= IRepresentationAnnotationConstants.ProgressStatus;
-    	DAnnotation dAnnotationStatus= RepresentationHelper.getAnnotation(eAnnotStatus, (DRepresentation) current);
-    	if (dRepresentation instanceof DSemanticDecorator) {
-    		result.add(
-    		new String[] {
-    				dRepresentation.getName(),
-           		((CapellaElement)((DSemanticDecorator)dRepresentation).getTarget()).getFullLabel()+"/"+dRepresentation.getName(),
-           		dRepresentation.getName(),
-       			dAnnotationStatus.getDetails().get("value")
-    		}
-    	 );
-    	}
-      }
-    }
-    return result;
-  }
+		int i = 0;
+		int i0 = 0;
+		for (EnumerationPropertyLiteral enumz : ept.getOwnedLiterals()) {
+			combo.add(enumz.getLabel());
+			combo.setData(String.valueOf(++i), enumz);
+		}
+
+		combo.select(i0);
+		combo.addSelectionListener(new SelectionAdapter() {
+			@SuppressWarnings({ "synthetic-access", "unchecked" })
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				int idx = combo.getSelectionIndex();
+				List<? extends EObject> allTaggedElements = (List<? extends EObject>) ((TreeData) getData())
+						.getValidElements();
+				List<EObject> list = null;
+				String eAnnot = IRepresentationAnnotationConstants.ProgressStatus;
+
+				if (0 == idx) {
+					list = (List<EObject>) allTaggedElements;
+				} else {
+					EnumerationPropertyLiteral lit = (EnumerationPropertyLiteral) combo
+							.getData(String.valueOf(idx));
+					list = new ArrayList<EObject>();
+					for (EObject eobj : allTaggedElements) {
+						if (eobj instanceof CapellaElement) {
+							if (null != ((CapellaElement) eobj).getStatus()
+									&& ((CapellaElement) eobj).getStatus()
+											.equals(lit)) {
+								list.add(eobj);
+							}
+						} else if (eobj instanceof DRepresentation) {
+							DAnnotation dAnnotation = RepresentationHelper
+									.getAnnotation(eAnnot,
+											(DRepresentation) eobj);
+							if (null != dAnnotation
+									&& dAnnotation.getDetails().get("value")
+											.equals(lit.getName())) {
+								list.add(eobj);
+							}
+						}
+					}
+				}
+				getViewer().setInput(new TreeData(list, null));
+			}
+		});
+	}
+
+	/**
+	 * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewer(org.eclipse.swt.widgets.Composite)
+	 */
+	@Override
+	protected AbstractRegExpViewer createViewer(Composite parent) {
+		// Create tree viewer.
+		// Don't use the status bar of the viewer b
+		TreeAndListViewer treeViewer = new TreeAndListViewer(parent, false,
+				IViewerStyle.SHOW_STATUS_BAR);
+		TreeViewer viewer = treeViewer.getClientViewer();
+		TreeViewerColumn columnViewer = new TreeViewerColumn(viewer, SWT.LEFT
+				| SWT.FILL);
+		TreeColumn column = columnViewer.getColumn();
+		column.setText(MetricMessages.progressMonitoring_dialog_header_col0);
+		column.setWidth(300);
+
+		columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
+		column = columnViewer.getColumn();
+		column.setText(MetricMessages.progressMonitoring_dialog_header_col1);
+		column.setWidth(150);
+
+		columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
+		column = columnViewer.getColumn();
+		column.setText(MetricMessages.progressMonitoring_dialog_header_col2);
+		column.setWidth(300);
+
+		viewer.getTree().setLinesVisible(true);
+		viewer.getTree().setHeaderVisible(true);
+		viewer.setContentProvider(new DataContentProvider());
+		viewer.setLabelProvider(new ProgressMonitoringLabelProvider(viewer,
+				SWT.COLOR_BLUE));
+		// Set layout data.
+		viewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
+		viewer.setSorter(new ProgressMonitoringSorter());
+
+		return treeViewer;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected List<String[]> getExportableData() {
+		List<String[]> result = super.getExportableData(ProjectExt.getProject(
+				root).getName());
+
+		@SuppressWarnings("unchecked")
+		List<? extends EObject> allTaggedElements = (List<? extends EObject>) ((TreeData) getData())
+				.getValidElements();
+
+		for (EObject current : allTaggedElements) {
+			if (current instanceof CapellaElement) {
+				CapellaElement ce = (CapellaElement) current;
+				result.add(new String[] {
+						ce.eClass().getName(),
+						ce.getFullLabel(),
+						ce.getLabel(),
+						null == ce.getStatus() ? "" : ce.getStatus().getLabel(),
+						null == ce.getReview() ? "" : ce.getReview() });
+			} else if (current instanceof DRepresentation) {
+				DRepresentation dRepresentation = (DRepresentation) current;
+				String eAnnotStatus = IRepresentationAnnotationConstants.ProgressStatus;
+				DAnnotation dAnnotationStatus = RepresentationHelper
+						.getAnnotation(eAnnotStatus, (DRepresentation) current);
+				String eAnnotReview = IRepresentationAnnotationConstants.StatusReview;
+				DAnnotation dAnnotationReview = RepresentationHelper
+						.getAnnotation(eAnnotReview, (DRepresentation) current);
+				EObject target = Utils.getTarget(dRepresentation);
+				if (target != null) {
+					result.add(new String[] {
+							dRepresentation.getName(),
+							((CapellaElement) target).getFullLabel() + "/"
+									+ dRepresentation.getName(),
+							dRepresentation.getName(),
+							null == dAnnotationStatus ? "" : dAnnotationStatus
+									.getDetails().get("value"),
+							null == dAnnotationReview ? "" : dAnnotationReview
+									.getDetails().get("value") });
+				}
+			}
+		}
+		return result;
+	}
 }
