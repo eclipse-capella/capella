@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
 import org.polarsys.capella.core.validation.ui.ide.internal.quickfix.MarkerResolutionCache;
@@ -108,8 +107,9 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
 
     // this is for backwards compatibility
     if (markers.length == 1) {
-      if (canResolve(markers[0]))
+      if (canResolve(markers[0])) {
         return new IMarker[] { markers[0] };
+      }
     }
 
     Collection<IMarker> otherMarkers = new ArrayList<IMarker>();
@@ -130,7 +130,7 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
    * @return
    */
   protected boolean canResolve(IMarker marker) {
-    String ruleId = marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
+    String ruleId = MarkerViewHelper.getRuleId(marker);
     if (isEMFRule(ruleId)) {
       return true;
     }
