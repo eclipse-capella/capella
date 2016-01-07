@@ -123,23 +123,25 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
 
   /**
    * Check if this resolution can resolve the given marker. Used to compute the resolvable markers during
-   * findOtherMarkers. This implementation checks if the ruleId stored in the marker is one of the ids that's returned
-   * by getResolvableRuleIds.
+   * findOtherMarkers. This implementation checks if the unqualified ruleId stored in the marker is one of the ids
+   * that's returned by getResolvableRuleIds.
    * 
    * @param marker
    * @return
    */
   protected boolean canResolve(IMarker marker) {
     String ruleId = MarkerViewHelper.getRuleID(marker, true);
-    if (isEMFRule(ruleId)) {
-      return true;
-    }
-    String fqnRule[] = ruleId.split("\\.");
-    String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
-    if (shortRuleId != null) {
-      for (String id : getResolvableRuleIds()) {
-        if (shortRuleId.equals(id)) {
-          return true;
+    if (ruleId != null) {
+      if (isEMFRule(ruleId)) {
+        return true;
+      }
+      String fqnRule[] = ruleId.split("\\.");
+      String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
+      if (shortRuleId != null) {
+        for (String id : getResolvableRuleIds()) {
+          if (shortRuleId.equals(id)) {
+            return true;
+          }
         }
       }
     }
