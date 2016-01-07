@@ -1,0 +1,48 @@
+      
+= > Validation Rules > capella.category > transition > justification > generic =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that an Component Port is realized by at least one Component Port. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Component Exchange is realized by at least one Component Exchange 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Functional Exchange is realized by at least one Functional Exchange. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Functional Exchange is transitioned from the upper Level. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that abstract trace's source and target element names are same. 
+|-
+|- 
+|}   

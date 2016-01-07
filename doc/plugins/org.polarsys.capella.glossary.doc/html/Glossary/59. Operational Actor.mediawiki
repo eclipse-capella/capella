@@ -1,0 +1,13 @@
+            
+= OPERATIONAL ACTOR =
+ 
+=== DEFINITION ===
+ 
+An Operational Actor is a &#91;usually human&#93; Operational Entity, frequently associated to a human resource. Operational Actors cannot be broken down into sub Entities.
+
+ 
+=== ICONS ===
+ 
+[[Image:Images/59.%20Operational%20Actor_html_56848ae4.png|62x54px]]
+
+   

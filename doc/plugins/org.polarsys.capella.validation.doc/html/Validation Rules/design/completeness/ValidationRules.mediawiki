@@ -1,0 +1,170 @@
+      
+= > Validation Rules > capella.category > design > completeness =
+
+<br>         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DCOM_01 - Logical component used interfaces delegation check 
+|-
+| colspan="2"|This rule checks that a Logical Component delegates its used Interface. 
+|}     
+<br>      
+
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DCOM_02 - Logical component implemented interfaces delegation check 
+|-
+| colspan="2"|This rule checks that a Logical Component delegates its implemented Interface. 
+|}    
+<br>
+  
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DCOM_03 - Terminating Function and ControlNode Allocation 
+|-
+| colspan="2"|This rule ensures that a leaf Function and ControlNode should be allocated by a Component. 
+|}     
+<br>  
+       
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/error.gif|ERROR]]
+|DCOM_04 - Activity Allocation 
+|-
+| colspan="2"|This rule checks the allocation consistency between operational activities and Operational Entities / Roles. 
+|}   
+<br>    
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/error.gif|ERROR]]
+|DCOM_05 - Scenario components capability involvement check 
+|-
+| colspan="2"|This rule checks that a scenario component involves in a capability. 
+|}      
+<br>    
+      
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DCOM_06 - Interface implementation 1 
+|-
+| colspan="2"|This rule checks that an Interface is implemented by at least one Component. 
+|}   
+<br>
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DCOM_07 - Interface used one sub component at least 
+|-
+| colspan="2"|This rule checks that an interface is used by one of the sub Logical Component 
+|}   
+<br>
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_08 - Interface implemented by one component 
+|-
+| colspan="2"|This rule checks that an Interface is implemented by one of the sub Logical Component. 
+|}  
+<br>
+          
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_09 - Interface operations number check 
+|-
+| colspan="2"|This rule checks that an Interface contains at least one operation. 
+|}    
+<br>
+        
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_10 - Used interface delegation 
+|-
+| colspan="2"|This rule checks that a System delegates its used Interface 
+|}    
+<br>
+        
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/error.gif|ERROR]]
+| DCOM_11 - Activity Allocation Consistency 
+|-
+| colspan="2"|This rule checks the activity allocations consistency. 
+|}    
+<br>
+        
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_13 - Exchange items allocation on Function Ports check 
+|-
+| colspan="2"|This rule generates a warning if the Function Exchange conveys some Exchange Items which are not allocated to its source ({1}) and/or its target port ({2}). 
+|}    
+<br>
+        
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_14 - Implemented interface delegation 
+|-
+| colspan="2"|This rule checks that a System delegates its Implemented Interface. 
+|}   
+<br>
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_15 - Exchange item allocation consistency 
+|-
+| colspan="2"|This rule is applied to a Component   1) Checks that all Exchange Items allocated by its Interfaces are allocated to one of Function Ports of its allocated Functions.  2) Checks that all Exchange Items allocated by Function Ports of its allocated Functions are allocated to one of its Interfaces(used/implemented/provided/required). 
+|}   
+<br>
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_16 - Interface Exchange item allocation consistency 
+|-
+| colspan="2"|This rule is applied to an Interface and checks that all Exchange Items allocated by an Interface of a Component are allocated to one of Function Ports of its allocated Functions. 
+|}   
+<br>
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_17 - Function Port Exchange item allocation consistency 
+|-
+| colspan="2"|This rule is applied to a Function Port and checks that all Exchange Items allocated by a Function Port are allocated to one of Interfaces of its allocating Component 
+|}   
+<br>
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_18 - Component provided interface delegation check 
+|-
+| colspan="2"|This rule checks that provided interfaces are delegated to one or many subcomponents (if they exist). 
+|}   
+<br>
+         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_19 - Component required interface delegation check 
+|-
+| colspan="2"|This rule checks that required interfaces are delegated to one or many  subcomponents (if they exist). 
+|}  
+<br>
+          
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DCOM_20 - Functional Exchange delegation check 
+|-
+| colspan="2"|This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function. 
+|}    
+<br>
+        
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DC_CL_01 Communication Link is delegated by one subcomponent at least 
+|-
+| colspan="2"|Model Validation shall check that Exchange Items referenced by a Communication Link is delegated to one or many subcomponents of the source Component. 
+|}  
+<br>
+          
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! [[Image:../../../Images/warning.gif|WARNING]]
+| DC_CL_02 Communication Link for a component is defined in its parent 
+|-
+| colspan="2"|Model Validation shall check that an Exchange Item referenced by a Communication Link from a SubComponent is also referenced by a Communication Link from owning Components. 
+|}   

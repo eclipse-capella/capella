@@ -1,0 +1,30 @@
+      
+= > Validation Rules > capella.category > transition > justification > system_analysis =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that an Operational Activity is realized by at least one System Function. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that an Actor Realizes at least one Entity. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that an Entity is realized by at least one System Actor. 
+|-
+|- 
+|}   

@@ -1,0 +1,75 @@
+      
+= > Validation Rules > capella.category > design > well-formedness > dataflows =
+            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that a duplicate or a split function have only one incoming exchange. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that a gather function must have only one outgoing exchange. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a FunctionalChain is valid. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange. 
+|-
+|- 
+|}   

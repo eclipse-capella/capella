@@ -1,0 +1,30 @@
+      
+= > Validation Rules > capella.category > quality =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges must have a summary. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges have a description. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that review field of an element is always empty. 
+|-
+|- 
+|}   

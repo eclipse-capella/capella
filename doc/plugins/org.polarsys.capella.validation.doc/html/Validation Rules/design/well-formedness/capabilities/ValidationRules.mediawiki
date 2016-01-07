@@ -1,0 +1,51 @@
+      
+= > Validation Rules > capella.category > design > well-formedness > capabilities =
+            
+<br>         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/error.gif|ERROR]]
+|DWF_CA_01 - Capability location 
+|-
+| colspan="2"|This rule checks that an Capability can only be located in System Context. 
+|}     
+<br> 
+
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/error.gif|ERROR]]
+|DWF_CA_02 - Capability self extension  
+|-
+| colspan="2"|This rule ensures that a capability cannot extend itself.  
+|}     
+<br> 
+
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/error.gif|ERROR]]
+|DWF_CA_03 - Capability self generalization 
+|-
+| colspan="2"|This rule ensures that a capability cannot generalize itself.  
+|}     
+<br> 
+
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/error.gif|ERROR]]
+|DWF_CA_04 - Capability self inclusion 
+|-
+| colspan="2"|This rule ensures that a capability does not include itself.  
+|}     
+<br> 
+
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/error.gif|ERROR]]
+|DWF_CA_05 - Actor self generalization  
+|-
+| colspan="2"|This rule ensures that an actor cannot generalize itself.  
+|}     
+<br> 
+
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+![[Image:../../../Images/warning.gif|WARNING]]
+|DWF_CA_06 - Actor involvement in capabilities related to a mission in which it is involved check  
+|-
+| colspan="2"|This rule checks that the current Actor is involved with the Mission, and then involved in any of its Capabilities. 
+|}     
+<br> 
