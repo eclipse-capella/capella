@@ -72,8 +72,10 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
    */
   private void loadDataListenerForAbstractStates(SemanticEditingDomain editingDomain) {
     if (_dataListenerForAbstractStates == null) {
-      _dataListenerForAbstractStates = new CapellaModelDataListenerForAbstractStates();
-      editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForAbstractStates);
+      if (editingDomain.getDataNotifier() != null) {
+        _dataListenerForAbstractStates = new CapellaModelDataListenerForAbstractStates();
+        editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForAbstractStates);
+      }
     }
   }
 
@@ -82,8 +84,10 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
    */
   private void loadDataListenerForSequenceMessages(SemanticEditingDomain editingDomain) {
     if (_dataListenerForSequenceMessages == null) {
-      _dataListenerForSequenceMessages = new CapellaModelDataListenerForSequenceMessages();
-      editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForSequenceMessages);
+      if (editingDomain.getDataNotifier() != null) {
+        _dataListenerForSequenceMessages = new CapellaModelDataListenerForSequenceMessages();
+        editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForSequenceMessages);
+      }
     }
   }
 
@@ -92,8 +96,10 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
    */
   private void loadDataListenerForPartsAndComponents(SemanticEditingDomain editingDomain) {
     if (_dataListenerForPartsAndComponents == null) {
-      _dataListenerForPartsAndComponents = new CapellaModelDataListenerForPartsAndComponents();
-      editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForPartsAndComponents);
+      if (editingDomain.getDataNotifier() != null) {
+        _dataListenerForPartsAndComponents = new CapellaModelDataListenerForPartsAndComponents();
+        editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForPartsAndComponents);
+      }
     }
   }
 
@@ -102,8 +108,11 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
    */
   private void loadDataListenerForExchangeItemsAndCommunicationLinks(SemanticEditingDomain editingDomain) {
     if (_dataListenerForExchangeItemsAndCommunicationLinks == null) {
-      _dataListenerForExchangeItemsAndCommunicationLinks = new CapellaModelDataListenerForExchangeItemsAndCommunicationLinks();
-      editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForExchangeItemsAndCommunicationLinks);
+      if (editingDomain.getDataNotifier() != null) {
+        _dataListenerForExchangeItemsAndCommunicationLinks = new CapellaModelDataListenerForExchangeItemsAndCommunicationLinks();
+        editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class,
+            _dataListenerForExchangeItemsAndCommunicationLinks);
+      }
     }
   }
 }

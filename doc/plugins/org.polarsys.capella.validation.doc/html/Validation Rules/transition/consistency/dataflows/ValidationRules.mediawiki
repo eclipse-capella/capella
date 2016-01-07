@@ -1,0 +1,129 @@
+      
+= > Validation Rules > capella.category > transition > consistency > dataflows =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Component Exchange realizing a Component Exchange from a previous level has bounds consistent with realized Component Exchange bounds. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule generates a warning if a port isn't defined in a function or a sub-function realizing the function  containing the port which has been realized. A warning can be raised if you have performed a drag and drop of the port to another function but this function is  not a sub-function of the function containing the port which has been realized and there is no traceability  link from the current function and the function containing the port which has been realized. You should add manually a traceability link from the parent function of the realized port and the function  containing the port which has been realized. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule generates a warning if a FunctionalChainInvolvement doesn't involves a function or a sub-function of the function which is involved by the FunctionalChainInvolvement which has been realized. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Component Exchange conveying ExchangeItems doesn't convey an ExchangeItem from a previous level whereas it is realized in the same level than the Component Exchange. Component Exchange should convey the realized ExchangeItem. A warning can be raised if you have performed a transition of the Component Exchange before performing a transition of the conveyed ExchangeItem.  You should perform another transition of the Component Exchange from the lower level to use the realized ExchangeItem. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule generates a warning if a bound of the FunctionalExchange doesn't realize a bound of the realized FunctionalExchange. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule generates a warning if a bound of FunctionalExchange isn't defined in a function or a sub-function  of the function containing the bound which has been realized. A warning can be raised if you have performed a drag and drop of the bound to another function but this function  is not a sub-function realizing the function containing the bound which has been realized and there is no  traceability link from the current function and the function containing the bound which has been realized. You should add manually a traceability link from the parent function of the realized bound and the  function containing the bound which has been realized. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a FunctionalExchange isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the FunctionalExchange. FunctionalExchange should be linked to the realized ExchangeItem. A warning can be raised if you have performed a transition of the FunctionalExchange before performing a transition of the linked ExchangeItem. You should perform another transition of the FunctionalExchange from the lower level to use the realized ExchangeItem. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Function realizing a Function from a previous level has same kind. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|The rule ensure that Funtion of kind ROUTE and SELECT can only have Condition set. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule generates a warning if a function port is not realized by a lower level function port. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that considering a Function F1 containing this Function Port P1 that carries an Exchange Item E1. If E1 is carried by another Function Port P2 contained by a Function F2 and F2 is realized by F1, then a warning is generated if P2 is not realized by P1. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that considering a Function F1 containing this Function Port P1 that carries an Exchange Item E1. If E1 is carried by another Function Port P2 contained by a Function F2 and F2 realizes F1, then a warning is generated if P2 doesn't realize P1. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule verifies that all exchange items allocated by a function port are allocated by one of its realizing function ports. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule verifies that a realization link exists between two functions containing a function port having a realization link. 
+|-
+|- 
+|}   

@@ -46,7 +46,9 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS = "GetAvailable_Capability_InvolvedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY__REALIZED_CAPABILITIES = "GetAvailable_Capability_RealizedCapabilities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS = "GetAvailable_CapellaElement_AppliedPropertyValueGroups"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS_LIB = "GetAvailable_CapellaElement_AppliedPropertyValueGroups_Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES = "GetAvailable_CapellaElement_AppliedPropertyValues"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES_LIB = "GetAvailable_CapellaElement_AppliedPropertyValues_Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPELLA_ELEMENT__STATUS = "GetAvailable_CapellaElement_Status"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CHANGE_EVENT__EXPRESSION = "GetAvailable_ChangeEvent_Expression"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CHOICE_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_ChoicePseudoState_StateRealizations"; //$NON-NLS-1$

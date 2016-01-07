@@ -1,0 +1,21 @@
+      
+= > Validation Rules > capella.category > transition > consistency > state_machines =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a StateTransition realizing a StateTransition from a previous level is consistent with the realized StateTransition and the Bounds of the StateTransition realize both bounds of the realized StateTransition. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule check that region have unique history state. 
+|-
+|- 
+|}   

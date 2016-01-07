@@ -1,0 +1,138 @@
+      
+= > Validation Rules > capella.category > design > well-formedness > state_machines =
+            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that a state machine have only one initial state 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that an initial state have only one outgoing transition. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that referenced  States in a State are the sum of all involved States of sub regions. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that a decision or a fork have only one entering transition. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that a join connector have only one outgoing transition. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule depends on the Preference option "Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that  a state is not in a mode hierarchy or a mode is not in a state hierarchy. In this case, hierarchy includes siblings. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensure that Join/Fork states are used in concurrent region context. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule check if doActivity/Entry/Exit reference only functions associated to the component owning the state Machine or allocated to one of its subcomponents. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule check that Functions or Functional Exchanges which triggers the StateTransition are allocated on the Component or one of its subcomponents. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule check that source and target of StateTransition are not stored in concurrent region. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule check that EntryPoint have only one outgoing transition and one or more incoming transition. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule check that ExitPoint have only one incoming transition and one or more outgoing transition. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule check that Shallow/Deep History state has only incoming transitions. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule check that Functions referenced as DoActivity, Entry or Exit of a Mode/State are available via the Operational Activities/Functions reference of this State. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule depends on the Preference option"Mode/State mixed hierarchy allowed". If this option is set to false, the rule checks that a state does not reuse a mode or a mode does not reuse a state. 
+|-
+|- 
+|}   
