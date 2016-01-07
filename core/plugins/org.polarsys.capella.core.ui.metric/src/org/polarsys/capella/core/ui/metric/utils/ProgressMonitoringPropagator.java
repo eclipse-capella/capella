@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -149,5 +149,26 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
 					&& (null != dAnnotationReview.getDetails().get("value")));
 		}
 		return false;
+  }
+
+  @Override
+  protected String getElementTag(EObject eObject) {
+    if (eObject instanceof CapellaElement) {
+      EnumerationPropertyLiteral status = ((CapellaElement) eObject).getStatus();
+      return status != null ? status.getLabel() : null;
+    } else if (eObject instanceof DRepresentation) {
+      String value = RepresentationAnnotationHelper.getProgressStatus((((DRepresentation) eObject)));
+      return value == "" ? null : value;
+    }
+    return null;
+  }
+  
+  @Override
+  protected void cleanReview(EObject eobj) {
+    if (eobj instanceof CapellaElement) {
+      eobj.eUnset(CapellacorePackage.eINSTANCE.getCapellaElement_Review());
+    } else if (eobj instanceof DRepresentation) {
+      RepresentationHelper.removeAnnotation(IRepresentationAnnotationConstants.StatusReview, (DRepresentation) eobj);
+    }
 	}
 }
