@@ -12,6 +12,7 @@ package org.polarsys.capella.core.ui.metric.utils;
 
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -99,19 +100,30 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
    */
   @Override
   protected boolean tagElement(EnumerationPropertyLiteral literal, EObject eObject) {
-    if (eObject instanceof CapellaElement) {
-      if (literal == null) {
-        ((CapellaElement) eObject).eUnset(CapellacorePackage.eINSTANCE.getCapellaElement_Status());
-      } else {
-        ((CapellaElement) eObject).setStatus(literal);
-      }
-      return true;
-    } else if (eObject instanceof DRepresentation) {
-      String value = literal == null ? null : literal.getLabel();
-      RepresentationAnnotationHelper.setProgressStatus(((DRepresentation) eObject), value);
-      return true;
-    }
-    return false;
+	  if (eObject instanceof CapellaElement) {
+		  EnumerationPropertyLiteral previousLiteral = ((CapellaElement) eObject).getStatus();
+		  if ((null == previousLiteral && null == literal) || (previousLiteral!= null && previousLiteral.equals(literal))) {
+			  // Don't update if value unchanged.
+			  return false;
+		  }
+
+		  if (literal == null) {
+			  ((CapellaElement) eObject).eUnset(CapellacorePackage.eINSTANCE.getCapellaElement_Status());
+		  } else {
+			  ((CapellaElement) eObject).setStatus(literal);
+		  }
+		  return true;
+	  } else if (eObject instanceof DRepresentation) {
+		  String previousLiteral = RepresentationAnnotationHelper.getProgressStatus(((DRepresentation) eObject));
+		  if ((null == previousLiteral && null == literal) || (previousLiteral!= null && previousLiteral.equals(literal.getLabel()))) {
+			  // Don't update if value unchanged.
+			  return false;
+		  }
+		  String value = literal == null ? null : literal.getLabel();
+		  RepresentationAnnotationHelper.setProgressStatus(((DRepresentation) eObject), value);
+		  return true;
+	  }
+	  return false;
   }
 
   /**
@@ -120,8 +132,8 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
    */
   @Override
   protected boolean isTagged(EObject eObject) {
-    return ((eObject instanceof CapellaElement) && ((null != ((CapellaElement) eObject).getStatus()) || (null != ((CapellaElement) eObject)
-        .getReview())));
+    return ((eObject instanceof CapellaElement) && ((null != ((CapellaElement) eObject).getStatus()) || ((null != ((CapellaElement) eObject)
+        .getReview()) && (!((CapellaElement) eObject).getReview().isEmpty()))));
   }
 
   /**
@@ -156,11 +168,20 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
   }
   
   @Override
-  protected void cleanReview(EObject eobj) {
+  protected boolean cleanReview(EObject eobj) {
     if (eobj instanceof CapellaElement) {
-      eobj.eUnset(CapellacorePackage.eINSTANCE.getCapellaElement_Review());
+    	EAttribute reviewFeature = CapellacorePackage.eINSTANCE.getCapellaElement_Review();
+    	if (eobj.eIsSet(reviewFeature)) {
+    		eobj.eUnset(reviewFeature);
+    		return true;
+    	}
     } else if (eobj instanceof DRepresentation) {
-      RepresentationHelper.removeAnnotation(IRepresentationAnnotationConstants.StatusReview, (DRepresentation) eobj);
+    	String statusReview = IRepresentationAnnotationConstants.StatusReview;
+    	if (null!=RepresentationHelper.getAnnotation(statusReview, (DRepresentation) eobj)) {
+    		RepresentationHelper.removeAnnotation(statusReview, (DRepresentation) eobj);
+    		return true;
+    	}
     }
+    return false;
   }
 }
