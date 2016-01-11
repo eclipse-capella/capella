@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_vgvWoJ84EeW8LPGeVws47A" name="CapellaRcpttTestSuite">
-  <properties xmi:id="_2Xa6kJ84EeW8LPGeVws47A" key="src.job" value="https://hudson.polarsys.org/capella/job/capella-v1.0.x/lastSuccessfulBuild/"/>
+  <properties xmi:id="_2Xa6kJ84EeW8LPGeVws47A" key="src.job" value="https://hudson.polarsys.org/capella/job/capella-v1.1.x/lastSuccessfulBuild/"/>
   <properties xmi:id="_dypHwJ85EeW8LPGeVws47A" key="runner-path" value="${tools}/rcptt/eclipse"/>
   <properties xmi:id="_FWTtAJ8_EeW8LPGeVws47A" key="usedTP" value="${result}/CapellaTP"/>
   <properties xmi:id="_mosicJ85EeW8LPGeVws47A" key="aut-path" value="${usedTP}/capella/eclipse"/>
