@@ -9,7 +9,7 @@ When not fragmented, a Capella model is composed of one file containing the mode
 It can also contain additional resources such as images.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_m50c8ab23.png|213x200px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_m50c8ab23.png|213x200px]]</center>
 
  
 Double-clicking on the AIRD file opens the model. While the AIRD file technically contains the diagrams, once opened, it also shows the hierarchical view of the semantic model.
@@ -18,32 +18,32 @@ Double-clicking on the AIRD file opens the model. While the AIRD file technicall
 This hierarchy represents how the model elements are organized in terms of containment. Diagrams attached to a specific element are located under this element.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_m3aa67aa3.png|303x372px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_m3aa67aa3.png|303x372px]]</center>
 
  
 An additional folder shows all diagrams sorted by categories.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_301b63e9.png|346x421px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_301b63e9.png|346x421px]]</center>
 
  
 Optionally, another folder displaying diagrams sorted by resources is available. Viewing diagrams sorted by resources can be helpful when models are fragmented or when several AIRD files are referencing a unique semantic model. as a folder in which diagrams are sorted by categories.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x122px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x122px]]</center>
 
  
 Clicking on &ldquo;Customize View&rdquo; opens a dialog where &ldquo;Representations per category&rdquo; can be hidden.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_29fa7af3.png|362x353px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_29fa7af3.png|362x353px]]</center>
 
  
 <br>
 <br>
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_m5da49805.png|237x207px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_m5da49805.png|237x207px]]</center>
 
  
 '''Fig'''. Project explorer with a filtered &laquo; Representations per category &raquo; element.
@@ -52,7 +52,7 @@ Clicking on &ldquo;Customize View&rdquo; opens a dialog where &ldquo;Representat
 On an opened AIRD file, the contextual menu allows to close the model, activate or deactivate viewpoints.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_m2437a528.png|358x523px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_m2437a528.png|358x523px]]</center>
 
  
 Saving the model can be performed from the toolbar or using the CTRL+S shortcut.
@@ -61,7 +61,7 @@ Saving the model can be performed from the toolbar or using the CTRL+S shortcut.
 {| border="1"
 |-
 | 
-[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
  
 | 
@@ -69,7 +69,7 @@ The * character in 				front of the project explorer View title indicates the mo
 
  
 |}  
-[[Image:Images/4.04.%20Project%20Explorer_html_2a59bdef.png|300x214px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_2a59bdef.png|300x214px]]</center>
 
  
 <br>
@@ -81,16 +81,16 @@ The * character in 				front of the project explorer View title indicates the mo
 It is possible to filter some of the elements displayed in the hierarchical view of the model. This can be particularly useful for hiding &ldquo;technical&rdquo; model elements such as transformation links, etc.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x122px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3a7d651e.png|348x122px]]</center>
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_dd6dd4d.png|239x420px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_dd6dd4d.png|239x420px]]</center>
 
  
 For example, when masking Trace elements, the difference is the following. The Project Explorer get clearer when &ldquo;technical&rdquo; elements are hidden. Dedicated Properties View and Diagrams usually allow to see in a more ergonomic way the same information.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_116eb088.png|691x342px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_116eb088.png|691x342px]]</center>
 
  
 Note that the Component and Functional Exchanges are hidden by default with Capella.
@@ -104,34 +104,43 @@ In the hierarchical view of the model, a contextual menu allows launching all ki
 The functionality of each of these applicative commands is described in other sections of this documentation.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_5ec4b59f.png|479x436px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_5ec4b59f.png|479x436px]]</center>
+
+
+The &ldquo;Sort Content&rdquo; command alphabetically sorts the children of an element taking into account capitalized letters and spaces in element name.
+
+
+The &ldquo;Sort Selection&rdquo; command sorts the list of selected elements which have the same parent and the same type.
+
+
+<center>[[Image:Images/4.04.%20Project%20Explorer_Sort%20Selection.png|627x324px]]</center>
 
  
 The &ldquo;Add Capella Element&rdquo; command creates new semantic elements.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_m2bcc91e2.png|627x324px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_m2bcc91e2.png|627x324px]]</center>
 
  
 The &ldquo;New Diagram / Table&rdquo; command creates new diagrams or matrices.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_40cc432b.png|627x194px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_40cc432b.png|627x194px]]</center>
 
  
 The &ldquo;Go To&rdquo; command provides a quick navigation shortcut towards related elements. For example, the type of a property, the allocated functions of a component, etc.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_eb48749.png|416x137px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_eb48749.png|416x137px]]</center>
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_632d88ac.png|434x102px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_632d88ac.png|434x102px]]</center>
 
  
 The contextual menu on a diagram allows to rename or clone an existing diagram (a new diagram is initiated with the same content and layout, which can be very helpful).
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_m6179049.png|516x176px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_m6179049.png|516x176px]]</center>
 
  
 <br>
@@ -146,7 +155,7 @@ Some other views, such as the Semantic Browser and the Properties view, are auto
 {| border="1"
 |-
 | 
-[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
  
 | 
@@ -159,7 +168,7 @@ From 				the Diagram Editor, the Semantic Browser and the Information 				View, 
 A research field based on regular expressions is available on the top of the Project Explorer. It is convenient to quickly locate elements in the hierarchy, based on just a part of their name.
 
  
-[[Image:Images/4.04.%20Project%20Explorer_html_14f2f514.png|400x370px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_14f2f514.png|400x370px]]</center>
 
  
 <br>
@@ -169,7 +178,7 @@ A research field based on regular expressions is available on the top of the Pro
 {| border="1"
 |-
 | 
-[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
  
 | 
@@ -184,7 +193,7 @@ Clicking 				on the small magnifier next to the search field allows searching 		
 {| border="1"
 |-
 | 
-[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
 
  
 | 
