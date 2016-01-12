@@ -30,15 +30,20 @@ logo_capella_big.png
 12.2. Impact Analysis_html_723ed3f9.png
 12.2. Impact Analysis_html_m69ba39ad.png
 12.3. Metrics Computation_html_5d121ae0.png
+12.4 Progress Monitoring_Change_.png
+12.4 Progress Monitoring_Clear Review.png
+12.4. Progress Monitoring Overview.png
+12.4. Progress Monitoring_Change_.png
 12.4. Progress Monitoring_html_12d478a0.png
 12.4. Progress Monitoring_html_1366c180.png
-12.4. Progress Monitoring_html_27a38b50.jpg
+12.4. Progress Monitoring_html_27a38b50.png
 12.4. Progress Monitoring_html_32a787d3.png
-12.4. Progress Monitoring_html_34e72a1c.jpg
+12.4. Progress Monitoring_html_34e72a1c.png
 12.4. Progress Monitoring_html_4f09dd6.png
 12.4. Progress Monitoring_html_72c054c1.png
 12.4. Progress Monitoring_html_73c7c6df.png
 12.4. Progress Monitoring_html_81b291e7.png
+12.4. Progress Monitoring_InformationView.png
 
 7.1. Modeling accelerators_html_1a7918c9.png
 7.1. Modeling accelerators_html_1cf7543e.png
