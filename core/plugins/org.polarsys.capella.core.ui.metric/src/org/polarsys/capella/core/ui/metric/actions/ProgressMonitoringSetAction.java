@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -44,13 +45,11 @@ import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
 import org.polarsys.capella.core.ui.metric.utils.Utils;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-
 public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
 
   private static final Logger logger = ReportManagerRegistry.getInstance().subscribe("Progress Monitoring"); //$NON-NLS-1$
+  private static final String strStatus = "Status";
+  private static final String strReview = "Review";
 
   /**
    * Constructor.
@@ -60,6 +59,21 @@ public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
     setImageDescriptor(MetricActivator.getDefault().getImageDescriptor(IImageKeys.IMG_PROGRESS_MONITORING));
   }
 
+  
+  @SuppressWarnings("rawtypes")
+private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) {
+	  int nb = 0;
+	  for (EObject eo : inCollection ) {
+		  if (clazz.isInstance(eo)) {
+			  nb+=1;
+		  }
+	  }
+	  
+	  
+	  return nb;
+  }
+  
+  
   /**
    * @see org.eclipse.jface.action.Action#run()
    */
@@ -77,35 +91,36 @@ public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
       TransactionHelper.getExecutionManager(selectedObjects.iterator().next()).execute(new AbstractReadWriteCommand() {
         @SuppressWarnings("synthetic-access")
         public void run() {
-          Collection<EObject> result = ProgressMonitoringPropagator.getInstance().applyPropertiesOn(
+          List<Collection<EObject>> result = ProgressMonitoringPropagator.getInstance().applyPropertiesOn(
               Collections.singletonList(dialog.getSelectedEnum()), selectedObjects,
               dialog.isPropagateWithoutFiltering(), dialog.isPropagateToRepresentations(),
-              dialog.useFilterStatus(), getLabel(dialog), dialog.mustCleanReview());
+              dialog.useFilterStatus(), getLabel(dialog), dialog.mustCleanReview(),dialog.mustPropagateStatus());
 
-          // Capella Elements
-          Collection<EObject> capellaElements = Collections2.filter(result, new Predicate<EObject>() {
-            public boolean apply(EObject input) {
-              return input instanceof CapellaElement;
-            }
-          });
-          if (capellaElements.size() == 0) {
-            logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, "Capella"));
+          // Compute the number of modified elements
+          int nbCapellaElementTagged = getNbElementsOfType((Collection<EObject>)result.get(0),CapellaElement.class);
+          int nbDRepresentationTagged = getNbElementsOfType((Collection<EObject>)result.get(0),DRepresentation.class);
+          
+          int nbCapellaElementReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),CapellaElement.class);
+          int nbDRepresentationReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),DRepresentation.class);
+
+          if (nbCapellaElementTagged+nbDRepresentationTagged == 0) {
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strStatus));
           } else {
-            logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_changes_info, capellaElements.size(),
-                "Capella"));
+        	  String[] arguments = new String[3];
+        	  arguments[0] = strStatus;
+        	  arguments[1] = Integer.toString(nbCapellaElementTagged);
+        	  arguments[2] = Integer.toString(nbDRepresentationTagged);
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_changes_info, arguments));
           }
 
-          // DRepresentation Elements
-          Collection<EObject> representationElements = Collections2.filter(result, new Predicate<EObject>() {
-            public boolean apply(EObject input) {
-              return input instanceof DRepresentation;
-            }
-          });
-          if (representationElements.size() == 0) {
-            logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, "Representation"));
+          if (nbCapellaElementReviewedCleared+nbDRepresentationReviewedCleared == 0) {
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strReview));
           } else {
-            logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_changes_info, capellaElements.size(),
-                "Representation"));
+        	  String[] arguments = new String[3];
+        	  arguments[0] = strReview;
+        	  arguments[1] = Integer.toString(nbCapellaElementReviewedCleared);
+        	  arguments[2] = Integer.toString(nbDRepresentationReviewedCleared);
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_changes_info, arguments));
           }
         }
 

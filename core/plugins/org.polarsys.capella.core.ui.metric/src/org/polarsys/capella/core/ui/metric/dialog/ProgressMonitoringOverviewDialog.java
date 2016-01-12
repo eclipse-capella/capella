@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
@@ -224,8 +226,18 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
 						.getAnnotation(eAnnotReview, (DRepresentation) current);
 				EObject target = Utils.getTarget(dRepresentation);
 				if (target != null) {
+					String className = "";
+					if (dRepresentation instanceof DSemanticDiagram) {
+						DSemanticDiagram diagram = (DSemanticDiagram) dRepresentation;
+						className = diagram.getDescription().getName().replace(" ", "");
+					}else if (dRepresentation instanceof DTable) {
+						DTable table = (DTable) dRepresentation;
+						className = table.getDescription().getName().replace(" ", "");
+					} else {
+						className = dRepresentation.getName();
+					}
 					result.add(new String[] {
-							dRepresentation.getName(),
+							className,
 							((CapellaElement) target).getFullLabel() + "/"
 									+ dRepresentation.getName(),
 							dRepresentation.getName(),

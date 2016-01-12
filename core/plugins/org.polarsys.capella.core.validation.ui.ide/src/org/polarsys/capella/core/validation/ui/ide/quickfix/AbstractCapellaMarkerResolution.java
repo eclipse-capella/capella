@@ -67,26 +67,26 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
   }
 
   /** Write accessor on label */
-  public final void setLabel(String label_p) {
-    _label = label_p;
+  public final void setLabel(String label) {
+    _label = label;
     return;
   }
 
   /** Write accessor on description */
-  public final void setDescription(String desc_p) {
-    _desc = desc_p;
+  public final void setDescription(String desc) {
+    _desc = desc;
     return;
   }
 
   /** Write accessor on imageKey */
-  public final void setImgKey(String key_p) {
-    _imgKey = key_p;
+  public final void setImgKey(String key) {
+    _imgKey = key;
     return;
   }
 
   /** Write accessor on contributorId */
-  public final void setContributorId(String id_p) {
-    _contributorId = id_p;
+  public final void setContributorId(String id) {
+    _contributorId = id;
     return;
   }
 
@@ -94,8 +94,8 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
     return _contributorId;
   }
 
-  public List<EObject> getModelElements(IMarker marker_p) {
-    return MarkerViewHelper.getModelElementsFromMarker(marker_p);
+  public List<EObject> getModelElements(IMarker marker) {
+    return MarkerViewHelper.getModelElementsFromMarker(marker);
   }
 
   @Override

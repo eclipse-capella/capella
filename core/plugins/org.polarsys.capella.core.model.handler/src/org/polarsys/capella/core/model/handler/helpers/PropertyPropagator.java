@@ -51,9 +51,9 @@ public abstract class PropertyPropagator {
    * 
    * @return the collection of modified objects
    */
-  public Collection<EObject> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> semanticObjects,
+  public List<Collection<EObject>> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> semanticObjects,
       boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus,
-      String filterStatus, boolean mustCleanReview) {
+      String filterStatus, boolean mustCleanReview, boolean mustPropagateStatus) {
     //
     // First of all, let's obtain target eObjects.
     //
@@ -93,13 +93,27 @@ public abstract class PropertyPropagator {
     //
     // On a second hand, let's tag target eObjects.
     //
+    Collection<EObject> tagChangedElements = new HashSet<EObject>();
+    Collection<EObject> reviewChangedElements = new HashSet<EObject>();
     for (EObject eobj : tgts) {
-      tagElement(literals, eobj);
-      if (mustCleanReview) {
-        cleanReview(eobj);
-      }
+    	Boolean result = false;
+    	if (mustPropagateStatus) {
+    		result = tagElement(literals, eobj);
+    		if (result) {
+    			tagChangedElements.add(eobj);
+    		}
+    	}
+    	if (mustCleanReview) {
+    		result = cleanReview(eobj);
+    		if (result) {
+    			reviewChangedElements.add(eobj);
+    		}
+    	}
     }
-    return tgts;
+    List<Collection<EObject>> colOut = new ArrayList<Collection<EObject>>();
+    colOut.add(tagChangedElements);
+    colOut.add(reviewChangedElements);
+    return colOut;
   }
 
   protected void handleFilterStatus(boolean technicalElementPropagation, boolean useFilterStatus, String filterStatus,
@@ -220,7 +234,7 @@ public abstract class PropertyPropagator {
    * Clean review
    * @param eobj
    */
-  protected abstract void cleanReview(EObject eobj);
+  protected abstract boolean cleanReview(EObject eobj);
 
   /**
    * 
