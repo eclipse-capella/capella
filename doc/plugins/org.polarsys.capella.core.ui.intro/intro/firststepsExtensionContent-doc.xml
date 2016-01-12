@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@
                 <text>Watch "how-to" and demonstration screencasts, learn more about the next evolutions and roadmaps, access to development resources, etc.</text>
             </link>
             <link style-id="content-link" label="Visit the Capella Forum"
-                url="http://org.eclipse.ui.intro/openBrowser?url=https://polarsys.org/forums/index.php/f/10/" id="documentation">
+                url="http://org.eclipse.ui.intro/openBrowser?url=https://polarsys.org/forums/index.php" id="documentation">
                 <text>
                 Access the discussion board and post a general question about Capella tooling, Sys-EM / Arcadia methodology, about how to model some specific parts of your system, etc.
                 </text>
