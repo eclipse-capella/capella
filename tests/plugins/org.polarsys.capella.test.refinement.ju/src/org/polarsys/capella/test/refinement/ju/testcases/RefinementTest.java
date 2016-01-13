@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,6 +99,9 @@ public abstract class RefinementTest extends BasicTestCase {
   @Override
   protected void tearDown() throws Exception {
     super.tearDown();
+    // Do some clean up to avoid memory leaks
+    _semanticObjectMap.clear();
+    _semanticObjectMap = null;
   }
 
   /**
@@ -170,6 +173,7 @@ public abstract class RefinementTest extends BasicTestCase {
           }
           return Collections.singleton(result);
         }
+        @Override
         public void run() {
           try {
             refinement = new RefinementMultiple(scenario) {
@@ -276,7 +280,7 @@ public abstract class RefinementTest extends BasicTestCase {
     IResolverResult result = new IResolverResult() {
       private int _counter1 = 0;
       private int _counter2 = 0;
-
+      @Override
       public List<AbstractInstance> getAttemptedAbstractInstances() {
         List<AbstractInstance> attemptedList = new ArrayList<AbstractInstance>();
         List<String> attemptedIds = _ambiguitiesProposalsId.get(_counter2++);
@@ -289,6 +293,7 @@ public abstract class RefinementTest extends BasicTestCase {
         return attemptedList;
       }
 
+      @Override
       public List<AbstractInstance> getSelectedAbstractInstances() {
         List<AbstractInstance> selection = new ArrayList<AbstractInstance>();
         String id = _ambiguityChoicesId.get(_counter1++);

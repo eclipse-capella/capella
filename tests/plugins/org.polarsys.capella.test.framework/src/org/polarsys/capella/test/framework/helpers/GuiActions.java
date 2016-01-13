@@ -284,7 +284,7 @@ public class GuiActions {
 
     StructuredSelection selection = new StructuredSelection(file);
     CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
-        .getActiveWorkbenchWindow().getActivePage().showView("capella.project.explorer");
+        .getActiveWorkbenchWindow().getActivePage().showView(CapellaCommonNavigator.ID);
 
     site.setSelectionProvider(capellaProjectView.getCommonViewer());
     site.getSelectionProvider().setSelection(selection);
