@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,10 +72,11 @@ public class ControlAction extends CommandActionHandler {
 
   /**
    * Constructor.
-   * @param domain_p
+   * @param domain
    */
-  public ControlAction(EditingDomain domain_p) {
-    super(domain_p, Messages.ControlAction__UI_Control_menu_item);
+  @SuppressWarnings("hiding")
+  public ControlAction(EditingDomain domain) {
+    super(domain, Messages.ControlAction__UI_Control_menu_item);
   }
 
   /**
@@ -84,12 +85,16 @@ public class ControlAction extends CommandActionHandler {
    * @see org.eclipse.emf.edit.ui.action.CommandActionHandler#updateSelection(org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
-  public boolean updateSelection(IStructuredSelection selection_p) {
+  public boolean updateSelection(IStructuredSelection selection) {
+    _selection = selection;
 
-    if (1 != selection_p.size()) {
+    // Empty selection: do some clean up to avoid memory leak
+    if (_selection.isEmpty()) {
+      domain = null;
+      _eObject = null;
+      command = null;
       return false;
     }
-    _selection = selection_p;
 
     Object object = AdapterFactoryEditingDomain.unwrap(_selection.getFirstElement());
     
@@ -162,21 +167,22 @@ public class ControlAction extends CommandActionHandler {
   }
 
   /**
-   * @param workbenchPart_p
+   * @param workbenchPart
    */
-  public void setActiveWorkbenchPart(IWorkbenchPart workbenchPart_p) {
-    if (workbenchPart_p instanceof IEditingDomainProvider) {
-      domain = ((IEditingDomainProvider) workbenchPart_p).getEditingDomain();
+  public void setActiveWorkbenchPart(IWorkbenchPart workbenchPart) {
+    if (workbenchPart instanceof IEditingDomainProvider) {
+      domain = ((IEditingDomainProvider) workbenchPart).getEditingDomain();
     }
   }
 
   protected class SelfAffectingCommand extends CommandWrapper {
     /**
-     * @param label_p
-     * @param command_p
+     * @param label
+     * @param command
      */
-    public SelfAffectingCommand(String label_p, Command command_p) {
-      super(label_p, command_p);
+    @SuppressWarnings("hiding")
+    public SelfAffectingCommand(String label, Command command) {
+      super(label, command);
     }
 
     @Override
@@ -201,27 +207,27 @@ public class ControlAction extends CommandActionHandler {
     protected EObject _controledObject;
 
     /**
-     * @param parent_p
-     * @param domain_p
-     * @param currentResource_p
+     * @param parent
+     * @param domain
+     * @param currentResource
      */
-    public ControlResourceDialog(Shell parent_p, EditingDomain domain_p, Resource currentResource_p, final EObject controledObject) {
-      super(parent_p, Messages.ControlAction_Window_Title, SWT.SAVE);
-      _domain = domain_p;
-      _currentResource = currentResource_p;
+    public ControlResourceDialog(Shell parent, EditingDomain domain, Resource currentResource, final EObject controledObject) {
+      super(parent, Messages.ControlAction_Window_Title, SWT.SAVE);
+      _domain = domain;
+      _currentResource = currentResource;
       _controledObject = controledObject;
     }
 
     /**
      * Create the content of this dialog.<br>
      * The code is copied from {@link #createDialogArea(Composite)} super method.
-     * @param parent_p
+     * @param parent
      * @return
      */
-    protected Control doCreateDialogArea(Composite parent_p) {
+    protected Control doCreateDialogArea(Composite parent) {
       // Code from Dialog.createDialogArea.
       // Create a composite with standard margins and spacing
-      Composite composite = new Composite(parent_p, SWT.NONE);
+      Composite composite = new Composite(parent, SWT.NONE);
       GridLayout layout = new GridLayout();
       layout.marginHeight = convertVerticalDLUsToPixels(IDialogConstants.VERTICAL_MARGIN);
       layout.marginWidth = convertHorizontalDLUsToPixels(IDialogConstants.HORIZONTAL_MARGIN);
