@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,20 +35,21 @@ public abstract class AbstractMoveAction extends AbstractCommandActionHandler {
 
   /**
    * Constructor.
-   * @param text_p
+   * 
+   * @param text
    */
-  protected AbstractMoveAction(String text_p) {
-    super(text_p);
+  protected AbstractMoveAction(String text) {
+    super(text);
   }
 
   /**
    * @see org.eclipse.ui.actions.BaseSelectionListenerAction#updateSelection(org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
-  public boolean updateSelection(IStructuredSelection selection_p) {
+  public boolean updateSelection(IStructuredSelection selection) {
     boolean result = true;
-    if (!selection_p.isEmpty()) {
-      Iterator<?> iterator = selection_p.iterator();
+    if (!selection.isEmpty()) {
+      Iterator<?> iterator = selection.iterator();
       EObject parent = null;
       while (iterator.hasNext() && result) {
         Object selectedObject = iterator.next();
@@ -71,10 +72,10 @@ public abstract class AbstractMoveAction extends AbstractCommandActionHandler {
     }
     if (result) {
       // Take into account created command criteria.
-      result = super.updateSelection(selection_p);
+      result = super.updateSelection(selection);
 
     } else {
-      //If selection is invalid, free current command to avoid memory leak
+      // If selection is invalid, free current command to avoid memory leak
       setCommand(createUnexecutableCommand());
     }
     return result;
@@ -107,11 +108,11 @@ public abstract class AbstractMoveAction extends AbstractCommandActionHandler {
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
         @SuppressWarnings("unchecked")
-        public int compare(Object o1_p, Object o2_p) {
+        public int compare(Object o1, Object o2) {
           int result = 0;
-          if ((o1_p instanceof EObject) && (o2_p instanceof EObject)) {
-            EObject object1 = (EObject) o1_p;
-            EObject object2 = (EObject) o2_p;
+          if ((o1 instanceof EObject) && (o2 instanceof EObject)) {
+            EObject object1 = (EObject) o1;
+            EObject object2 = (EObject) o2;
             // Get the container of 1st object. 2nd object has the same one, this condition has been checked earlier.
             EObject container = object1.eContainer();
             // Get the containing feature.
@@ -136,19 +137,20 @@ public abstract class AbstractMoveAction extends AbstractCommandActionHandler {
 
     /**
      * Constructor.
-     * @param domain_p
-     * @param label_p
-     * @param collection_p
-     * @param isMovingUp_p
+     * 
+     * @param label
+     * @param collection
+     * @param isMovingUp
      */
-    public CapellaMoveCommand(String label_p, Collection<EObject> collection_p, boolean isMovingUp_p) {
-      super(MERGE_COMMAND_ALL, label_p, Messages.AbstractMoveAction_MoveCommand_Description);
-      _collection = new ArrayList<EObject>(collection_p);
-      _isMovingUp = isMovingUp_p;
+    public CapellaMoveCommand(String label, Collection<EObject> collection, boolean isMovingUp) {
+      super(MERGE_COMMAND_ALL, label, Messages.AbstractMoveAction_MoveCommand_Description);
+      _collection = new ArrayList<EObject>(collection);
+      _isMovingUp = isMovingUp;
     }
 
     /**
      * Override this method to postpone nested commands creation.
+     * 
      * @see org.eclipse.emf.common.command.CompoundCommand#prepare()
      */
     @SuppressWarnings("unchecked")
@@ -187,6 +189,7 @@ public abstract class AbstractMoveAction extends AbstractCommandActionHandler {
     /**
      * Override this method because nested move commands are instantiated just before their execution.<br>
      * That ensures all indexes are up-to-date when a move command is run.
+     * 
      * @see org.eclipse.emf.common.command.CompoundCommand#execute()
      */
     @SuppressWarnings("unchecked")
