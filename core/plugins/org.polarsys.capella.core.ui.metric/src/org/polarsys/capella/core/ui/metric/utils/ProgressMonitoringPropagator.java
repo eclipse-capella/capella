@@ -115,7 +115,7 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
 		  return true;
 	  } else if (eObject instanceof DRepresentation) {
 		  String previousLiteral = RepresentationAnnotationHelper.getProgressStatus(((DRepresentation) eObject));
-		  if ((null == previousLiteral && null == literal) || (previousLiteral!= null && previousLiteral.equals(literal.getLabel()))) {
+		  if ((null == previousLiteral && null == literal) || (previousLiteral != null && literal != null && previousLiteral.equals(literal.getLabel()))) {
 			  // Don't update if value unchanged.
 			  return false;
 		  }
