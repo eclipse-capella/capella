@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,25 +23,25 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public interface IMultipleSemanticFieldController {
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
+   * @param semanticElement
+   * @param semanticFeature
    * @return
    */
-  public List<EObject> loadValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p);
+  public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature);
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
-   * @param available_p
+   * @param semanticElement
+   * @param semanticFeature
+   * @param available
    * @return
    */
-  public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, boolean available_p);
+  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, boolean available);
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
-   * @param values_p
+   * @param semanticElement
+   * @param semanticFeature
+   * @param values
    * @return
    */
-  public List<EObject> writeOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, List<EObject> values_p);
+  public List<EObject> writeOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, List<EObject> values);
 }

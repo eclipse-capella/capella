@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,14 +72,14 @@ public class DataPkgExt {
 
   /**
    * Gets all the classes recursively from the class package
-   * @param dataPkg_p the ClassPkg
+   * @param dataPkg the ClassPkg
    * @return list of classes.
    */
-  static public List<Class> getAllClasses(DataPkg dataPkg_p) {
+  static public List<Class> getAllClasses(DataPkg dataPkg) {
     List<Class> list = new ArrayList<Class>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedClasses());
-      for (DataPkg subDataPkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedClasses());
+      for (DataPkg subDataPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllClasses(subDataPkg));
       }
     }
@@ -88,12 +88,12 @@ public class DataPkgExt {
 
   /**
    * Gets all the associations outgoing or incoming to ownedclasses
-   * @param dataPkg_p the ClassPkg
+   * @param dataPkg the ClassPkg
    * @return list of associations.
    */
-  static public Set<Association> getAllInvolvedAssociations(DataPkg dataPkg_p) {
+  static public Set<Association> getAllInvolvedAssociations(DataPkg dataPkg) {
     Set<Association> set = new HashSet<Association>();
-    List<Class> allClasses = getAllClasses(dataPkg_p);
+    List<Class> allClasses = getAllClasses(dataPkg);
     for (Class clazz : allClasses) {
       set.addAll(ClassExt.getAllAssociations(clazz));
     }
@@ -102,14 +102,14 @@ public class DataPkgExt {
 
   /**
    * Gets all the associations recursively from the class package
-   * @param dataPkg_p the ClassPkg
+   * @param dataPkg the ClassPkg
    * @return list of associations.
    */
-  static public List<Association> getAllAssociations(DataPkg dataPkg_p) {
+  static public List<Association> getAllAssociations(DataPkg dataPkg) {
     List<Association> list = new ArrayList<Association>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedAssociations());
-      for (DataPkg subDataPkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedAssociations());
+      for (DataPkg subDataPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllAssociations(subDataPkg));
       }
     }
@@ -118,13 +118,13 @@ public class DataPkgExt {
 
   /**
    */
-  static public List<CapellaElement> getAllClassifierFromDataPkg(DataPkg dataPkg_p) {
+  static public List<CapellaElement> getAllClassifierFromDataPkg(DataPkg dataPkg) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
-      list.addAll(DataPkgExt.getAllClasses(dataPkg_p));
-      list.addAll(DataPkgExt.getAllMessages(dataPkg_p));
-      list.addAll(DataPkgExt.getAllDataTypes(dataPkg_p));
-      list.addAll(DataPkgExt.getAllExceptions(dataPkg_p));
+    if (null != dataPkg) {
+      list.addAll(DataPkgExt.getAllClasses(dataPkg));
+      list.addAll(DataPkgExt.getAllMessages(dataPkg));
+      list.addAll(DataPkgExt.getAllDataTypes(dataPkg));
+      list.addAll(DataPkgExt.getAllExceptions(dataPkg));
       list = ListExt.removeDuplicates(list);
     }
     return list;
@@ -132,16 +132,16 @@ public class DataPkgExt {
 
   /**
    * Gets all the collections recursively from a DataPkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of collections
    */
   static public List<org.polarsys.capella.core.data.information.Collection> getAllCollections(
-      DataPkg dataPkg_p) {
+      DataPkg dataPkg) {
     List<org.polarsys.capella.core.data.information.Collection> list =
         new ArrayList<org.polarsys.capella.core.data.information.Collection>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedCollections());
-      for (DataPkg subDataTypePkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedCollections());
+      for (DataPkg subDataTypePkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllCollections(subDataTypePkg));
       }
     }
@@ -164,16 +164,16 @@ public class DataPkgExt {
 
   /**
    * Gets all the funded generalization from the given DataPkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return Set of generalization
    */
-  static public Set<Generalization> getAllGeneralization(DataPkg dataPkg_p) {
+  static public Set<Generalization> getAllGeneralization(DataPkg dataPkg) {
     Set<Generalization> generalizations = new HashSet<Generalization>();
     List<GeneralizableElement> classifiers = new ArrayList<GeneralizableElement>();
-    classifiers.addAll(dataPkg_p.getOwnedClasses());
-    classifiers.addAll(dataPkg_p.getOwnedCollections());
-    classifiers.addAll(dataPkg_p.getOwnedDataTypes());
-    if (null != dataPkg_p) {
+    classifiers.addAll(dataPkg.getOwnedClasses());
+    classifiers.addAll(dataPkg.getOwnedCollections());
+    classifiers.addAll(dataPkg.getOwnedDataTypes());
+    if (null != dataPkg) {
       for (GeneralizableElement generalizableElement : classifiers) {
         generalizations.addAll(generalizableElement.getOwnedGeneralizations());
       }
@@ -182,15 +182,15 @@ public class DataPkgExt {
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return all DataPkgs which are in current or previous architectures
    */
   @SuppressWarnings({ "rawtypes", "unchecked" })
-public static List<DataPkg> getAllDataPkgs(EObject context_p) {
+public static List<DataPkg> getAllDataPkgs(EObject context) {
     // OLD CODE
     List<DataPkg> returnedList = new ArrayList<DataPkg>();
     for (BlockArchitecture anArchitecture : BlockArchitectureExt
-        .getRootAndPreviousBlockArchitectures(context_p)) {
+        .getRootAndPreviousBlockArchitectures(context)) {
       for (EObject aDataPkg : EObjectExt.getAll(anArchitecture,
           InformationPackage.Literals.DATA_PKG)) {
         returnedList.add((DataPkg) aDataPkg);
@@ -199,18 +199,18 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
     // NEW CODE
     returnedList =
         (List) QueryDebugger.executeQueryWithInclusionDebug(
-            QueryIdentifierConstants.GET_ALL_DATA_PCK, context_p, returnedList);
+            QueryIdentifierConstants.GET_ALL_DATA_PCK, context, returnedList);
     // END CODE REFACTOR
     return returnedList;
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return all DataPkgs which are in current block architectures
    */
-  public static List<DataPkg> getAllDataPkgsInCurrentBlockArchitectures(EObject context_p) {
+  public static List<DataPkg> getAllDataPkgsInCurrentBlockArchitectures(EObject context) {
     List<DataPkg> returnedList = new ArrayList<DataPkg>();
-    BlockArchitecture aArchitecture = BlockArchitectureExt.getRootBlockArchitecture(context_p);
+    BlockArchitecture aArchitecture = BlockArchitectureExt.getRootBlockArchitecture(context);
     for (EObject aDataPkg : EObjectExt.getAll(aArchitecture, InformationPackage.Literals.DATA_PKG)) {
       returnedList.add((DataPkg) aDataPkg);
     }
@@ -220,14 +220,14 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the datatypes recursively from a DataPkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of datatypes
    */
-  static public List<DataType> getAllDataTypes(DataPkg dataPkg_p) {
+  static public List<DataType> getAllDataTypes(DataPkg dataPkg) {
     List<DataType> list = new ArrayList<DataType>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedDataTypes());
-      for (DataPkg subDataTypePkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedDataTypes());
+      for (DataPkg subDataTypePkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllDataTypes(subDataTypePkg));
       }
     }
@@ -236,25 +236,25 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all DataTypes in DataTypePkg of the parent component architecture / system engineering
-   * @param dataPkg_p the DataTypePkg whose parent is to be found
+   * @param dataPkg the DataTypePkg whose parent is to be found
    * @return list of datatypes
    */
-  static public List<DataType> getAllDataTypesFromParent(DataPkg dataPkg_p) {
+  static public List<DataType> getAllDataTypesFromParent(DataPkg dataPkg) {
     List<DataType> list = new ArrayList<DataType>();
-    if (null != dataPkg_p) {
-      BlockArchitecture arch = StructureExt.getRootBlockArchitecture(dataPkg_p);// get it from the Structure
+    if (null != dataPkg) {
+      BlockArchitecture arch = StructureExt.getRootBlockArchitecture(dataPkg);// get it from the Structure
       if (null != arch) {
-        DataPkg dataPkg = getDataPkgOfBlockArchitecture(arch);
-        if (null != dataPkg) {
-          list.addAll(DataPkgExt.getAllDataTypes(dataPkg));
+        DataPkg pkg = getDataPkgOfBlockArchitecture(arch);
+        if (null != pkg) {
+          list.addAll(DataPkgExt.getAllDataTypes(pkg));
         }
       }
 
       // ComponentArchitecture is null; Get the SharedPkg
       SystemEngineering sysEng =
-          CapellaQueries.getInstance().getRootQueries().getSystemEngineering(dataPkg_p);
+          CapellaQueries.getInstance().getRootQueries().getSystemEngineering(dataPkg);
       if (null != sysEng) {
-        for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(dataPkg_p)) {
+        for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(dataPkg)) {
           if (sharedPkg.getOwnedDataPkg() != null) {
             list.addAll(DataPkgExt.getAllDataTypes(sharedPkg.getOwnedDataPkg()));
           }
@@ -266,14 +266,14 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the datavalues recursively from a DataTypePkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of datavalues
    */
-  static public List<DataValue> getAllDataValues(DataPkg dataPkg_p) {
+  static public List<DataValue> getAllDataValues(DataPkg dataPkg) {
     List<DataValue> list = new ArrayList<DataValue>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedDataValues());
-      for (DataPkg subPkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedDataValues());
+      for (DataPkg subPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllDataValues(subPkg));
       }
     }
@@ -282,25 +282,25 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all DataValues in DataTypePkg of the parent component architecture / system engineering
-   * @param dataPkg_p the DataTypePkg whose parent is to be found
+   * @param dataPkg the DataTypePkg whose parent is to be found
    * @return list of datavalues
    */
-  static public List<DataValue> getAllDataValuesFromParent(DataPkg dataPkg_p) {
+  static public List<DataValue> getAllDataValuesFromParent(DataPkg dataPkg) {
     List<DataValue> list = new ArrayList<DataValue>();
-    if (null != dataPkg_p) {
-      BlockArchitecture arch = StructureExt.getRootBlockArchitecture(dataPkg_p);// get it from the Structure
+    if (null != dataPkg) {
+      BlockArchitecture arch = StructureExt.getRootBlockArchitecture(dataPkg);// get it from the Structure
       if (null != arch) {
-        DataPkg dataPkg = getDataPkgOfBlockArchitecture(arch);
-        if (null != dataPkg) {
-          list.addAll(DataPkgExt.getAllDataValues(dataPkg));
+        DataPkg pkg = getDataPkgOfBlockArchitecture(arch);
+        if (null != pkg) {
+          list.addAll(DataPkgExt.getAllDataValues(pkg));
         }
       }
 
       // ComponentArchitecture is null; Get the SharedPkg
       SystemEngineering sysEng =
-          CapellaQueries.getInstance().getRootQueries().getSystemEngineering(dataPkg_p);
+          CapellaQueries.getInstance().getRootQueries().getSystemEngineering(dataPkg);
       if (null != sysEng) {
-        for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(dataPkg_p)) {
+        for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(dataPkg)) {
           list.addAll(DataPkgExt.getAllDataValues(sharedPkg.getOwnedDataPkg()));
         }
       }
@@ -310,11 +310,11 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    */
-  static public List<Exception> getAllExceptions(DataPkg dataPkg_p) {
+  static public List<Exception> getAllExceptions(DataPkg dataPkg) {
     List<Exception> list = new ArrayList<Exception>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedExceptions());
-      for (DataPkg subDataPkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedExceptions());
+      for (DataPkg subDataPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllExceptions(subDataPkg));
       }
     }
@@ -323,14 +323,14 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the messages from a data package
-   * @param dataPkg_p the {@link DataPkg}
+   * @param dataPkg the {@link DataPkg}
    * @return list of Messages
    */
-  static public List<Message> getAllMessages(DataPkg dataPkg_p) {
+  static public List<Message> getAllMessages(DataPkg dataPkg) {
     List<Message> list = new ArrayList<Message>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedMessages());
-      for (DataPkg subDataPkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedMessages());
+      for (DataPkg subDataPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllMessages(subDataPkg));
       }
     }
@@ -339,14 +339,14 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the signals recursively from a DataPkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of signals
    */
-  static public List<Signal> getAllSignals(DataPkg dataPkg_p) {
+  static public List<Signal> getAllSignals(DataPkg dataPkg) {
     List<Signal> list = new ArrayList<Signal>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedSignals());
-      for (DataPkg subDataPkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedSignals());
+      for (DataPkg subDataPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllSignals(subDataPkg));
       }
     }
@@ -355,15 +355,15 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all DataTypes from DataPkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of all data types
    */
-  static public List<CapellaElement> getAllTypesFromDataPkg(DataPkg dataPkg_p) {
+  static public List<CapellaElement> getAllTypesFromDataPkg(DataPkg dataPkg) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
-      list.addAll(DataPkgExt.getAllClasses(dataPkg_p));
-      list.addAll(DataPkgExt.getAllCollections(dataPkg_p));
-      list.addAll(DataPkgExt.getAllDataTypes(dataPkg_p));
+    if (null != dataPkg) {
+      list.addAll(DataPkgExt.getAllClasses(dataPkg));
+      list.addAll(DataPkgExt.getAllCollections(dataPkg));
+      list.addAll(DataPkgExt.getAllDataTypes(dataPkg));
       list = ListExt.removeDuplicates(list);
     }
     return list;
@@ -371,15 +371,15 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all DataTypes from DataPkg, except signals
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of all data types
    */
-  static public List<CapellaElement> getAllTypesFromDataPkgForPropsNParams(DataPkg dataPkg_p) {
+  static public List<CapellaElement> getAllTypesFromDataPkgForPropsNParams(DataPkg dataPkg) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
-      list.addAll(DataPkgExt.getAllClasses(dataPkg_p));
-      list.addAll(DataPkgExt.getAllCollections(dataPkg_p));
-      list.addAll(DataPkgExt.getAllDataTypes(dataPkg_p));
+    if (null != dataPkg) {
+      list.addAll(DataPkgExt.getAllClasses(dataPkg));
+      list.addAll(DataPkgExt.getAllCollections(dataPkg));
+      list.addAll(DataPkgExt.getAllDataTypes(dataPkg));
       list = ListExt.removeDuplicates(list);
     }
     return list;
@@ -387,30 +387,30 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the unions recursively from the Data package
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of unions.
    */
-  static public List<Union> getAllUnions(DataPkg dataPkg_p) {
+  static public List<Union> getAllUnions(DataPkg dataPkg) {
     List<Union> list = new ArrayList<Union>();
-    if (null != dataPkg_p) {
-      EList<Class> ownedClasses = dataPkg_p.getOwnedClasses();
+    if (null != dataPkg) {
+      EList<Class> ownedClasses = dataPkg.getOwnedClasses();
       for (Class class1 : ownedClasses) {
         if (class1 instanceof Union) {
           list.add((Union) class1);
         }
       }
-      for (DataPkg subDataPkg : dataPkg_p.getOwnedDataPkgs()) {
+      for (DataPkg subDataPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllUnions(subDataPkg));
       }
     }
     return list;
   }
 
-  static public List<Unit> getAllUnits(DataPkg dataPkg_p) {
+  static public List<Unit> getAllUnits(DataPkg dataPkg) {
     List<Unit> list = new ArrayList<Unit>();
-    if (null != dataPkg_p) {
-      list.addAll(dataPkg_p.getOwnedUnits());
-      for (DataPkg subDataPkg : dataPkg_p.getOwnedDataPkgs()) {
+    if (null != dataPkg) {
+      list.addAll(dataPkg.getOwnedUnits());
+      for (DataPkg subDataPkg : dataPkg.getOwnedDataPkgs()) {
         list.addAll(getAllUnits(subDataPkg));
       }
     }
@@ -419,12 +419,12 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the classes from the parent block architecture and its hierarchy
-   * @param compArch_p the Parent BlockArchitecture
+   * @param compArch the Parent BlockArchitecture
    * @return list of classes
    */
-  static private List<Class> getClassesFromBlockArchitectureParent(BlockArchitecture compArch_p) {
+  static private List<Class> getClassesFromBlockArchitectureParent(BlockArchitecture compArch) {
     List<Class> list = new ArrayList<Class>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
     if (container instanceof Component) {
       Component parentComp = (Component) container;
       DataPkg dataPkg = parentComp.getOwnedDataPkg();
@@ -434,8 +434,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
       list.addAll(getClassesFromComponentParent((Component) container));
     }
     else if (container instanceof BlockArchitecture) {
-      BlockArchitecture compArch = (BlockArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
+      BlockArchitecture arch = (BlockArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(arch);
       if (null != dataPkg) {
         list.addAll(getAllClasses(dataPkg));
       }
@@ -446,13 +446,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the classes from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of classes
    */
   static private List<Class> getClassesFromComponentArchitectureParent(
-      ComponentArchitecture compArch_p) {
+      ComponentArchitecture compArch) {
     List<Class> list = new ArrayList<Class>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
     if (container instanceof Component) {
       Component parentComp = (Component) container;
       DataPkg dataPkg = parentComp.getOwnedDataPkg();
@@ -462,8 +462,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
       list.addAll(getClassesFromComponentParent((Component) container));
     }
     else if (container instanceof ComponentArchitecture) {
-      ComponentArchitecture compArch = (ComponentArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
+      ComponentArchitecture arch = (ComponentArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
       if (null != dataPkg) {
         list.addAll(getAllClasses(dataPkg));
       }
@@ -474,12 +474,12 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the classes from the parent component and its hierarchy
-   * @param component_p the Parent Component
+   * @param component the Parent Component
    * @return list of classes
    */
-  static private List<Class> getClassesFromComponentParent(Component component_p) {
+  static private List<Class> getClassesFromComponentParent(Component component) {
     List<Class> list = new ArrayList<Class>(1);
-    Object container = component_p.eContainer();
+    Object container = component.eContainer();
     if (container instanceof Component) {
       Component parentComp = (Component) container;
       DataPkg dataPkg = parentComp.getOwnedDataPkg();
@@ -501,13 +501,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the classes from the Parent Hierarchy of the class package
-   * @param classPkg_p the ClassPkg
+   * @param classPkg the ClassPkg
    * @return list of classes
    */
-  static public List<Class> getClassesFromParentHierarchy(DataPkg classPkg_p) {
+  static public List<Class> getClassesFromParentHierarchy(DataPkg classPkg) {
     List<Class> list = new ArrayList<Class>(1);
-    if (null != classPkg_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(classPkg_p);
+    if (null != classPkg) {
+      BlockArchitecture compArch = getRootBlockArchitecture(classPkg);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -515,7 +515,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(getClassesFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(classPkg_p);
+      Component parentComp = getRootComponent(classPkg);
       if (null != parentComp) {
         DataPkg dataPkg = parentComp.getOwnedDataPkg();
         if (null != dataPkg) {
@@ -528,16 +528,16 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
   }
 
   /**
-   * @param dataPkg_p
-   * @return all the packages that depends on dataPkg_p
+   * @param dataPkg
+   * @return all the packages that depends on dataPkg
    */
-  public static Collection<AbstractDependenciesPkg> getDataPkgDependencies(DataPkg dataPkg_p) {
+  public static Collection<AbstractDependenciesPkg> getDataPkgDependencies(DataPkg dataPkg) {
     Collection<AbstractDependenciesPkg> returnedDependencies =
         new HashSet<AbstractDependenciesPkg>();
-    if (dataPkg_p.eContainer() instanceof DataPkg) {
-      return getDataPkgDependenciesHierarchy(dataPkg_p, 0);
+    if (dataPkg.eContainer() instanceof DataPkg) {
+      return getDataPkgDependenciesHierarchy(dataPkg, 0);
     }
-    for (AbstractDependenciesPkg aDependentPackage : getDataPkgDependenciesHierarchy(dataPkg_p, 0)) {
+    for (AbstractDependenciesPkg aDependentPackage : getDataPkgDependenciesHierarchy(dataPkg, 0)) {
       AbstractDependenciesPkg currentDependentPkg = aDependentPackage;
       returnedDependencies.add(currentDependentPkg);
       while (aDependentPackage.eContainer() instanceof DataPkg) {
@@ -550,24 +550,24 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
   }
 
   /** for internal use */
-  private static void addToResultMap(EObject tgt_p,
-      Map<AbstractDependenciesPkg, Collection<EObject>> map_p,
-      Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result_p) {
+  private static void addToResultMap(EObject tgt,
+      Map<AbstractDependenciesPkg, Collection<EObject>> map,
+      Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result) {
 
     Couple<EObject, Collection<EObject>> couple = null;
 
     Set<Couple<EObject, Collection<EObject>>> col = null;
 
-    if (null != map_p) {
-      for (AbstractDependenciesPkg pkg : map_p.keySet()) {
+    if (null != map) {
+      for (AbstractDependenciesPkg pkg : map.keySet()) {
 
-        if (!result_p.containsKey(pkg)) {
+        if (!result.containsKey(pkg)) {
           col = new HashSet<Couple<EObject, Collection<EObject>>>();
-          result_p.put(pkg, col);
+          result.put(pkg, col);
         }
 
-        couple = new Couple<EObject, Collection<EObject>>(tgt_p, map_p.get(pkg));
-        result_p.get(pkg).add(couple);
+        couple = new Couple<EObject, Collection<EObject>>(tgt, map.get(pkg));
+        result.get(pkg).add(couple);
       }
 
     }
@@ -580,42 +580,46 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
    * @return < dependent package, Collection < object introducing the dependencies, Collection of pointed object > >
    */
   public static Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> getDataPkgDependenciesHierarchy2(
-      DataPkg dataPkg_p) {
+      DataPkg dataPkg) {
 
     Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> result =
         new HashMap<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>>();
 
     // classes
-    for (Class aClass : dataPkg_p.getOwnedClasses()) {
+    for (Class aClass : dataPkg.getOwnedClasses()) {
       addToResultMap(aClass, ClassExt.getClassDependencies2(aClass), result);
     }
 
     // signals
-    for (Signal aSignal : dataPkg_p.getOwnedSignals()) {
+    for (Signal aSignal : dataPkg.getOwnedSignals()) {
       addToResultMap(aSignal, SignalExt.getSignalDependencies2(aSignal), result);
     }
 
     // Datatypes
-    for (DataType aDataType : dataPkg_p.getOwnedDataTypes()) {
+    for (DataType aDataType : dataPkg.getOwnedDataTypes()) {
       addToResultMap(aDataType, DataTypeExt.getDataTypeDependencies2(aDataType), result);
     }
 
+    // Datavalues
+    for (DataValue aDataValue : dataPkg.getOwnedDataValues()) {
+      addToResultMap(aDataValue, DataValueExt.getDataValueDependencies2(aDataValue), result);
+    }
+
     // ExchangeItem
-    for (ExchangeItem anExchangeItem : dataPkg_p.getOwnedExchangeItems()) {
+    for (ExchangeItem anExchangeItem : dataPkg.getOwnedExchangeItems()) {
       addToResultMap(anExchangeItem, ExchangeItemExt.getExchangeItemDependencies2(anExchangeItem),
           result);
     }
 
     // Collection
-    for (org.polarsys.capella.core.data.information.Collection aCollection : dataPkg_p
-        .getOwnedCollections()) {
+    for (org.polarsys.capella.core.data.information.Collection aCollection : dataPkg.getOwnedCollections()) {
       addToResultMap(aCollection, CollectionExt.getCollectionDependencies2(aCollection), result);
     }
 
     // sub dependencies
     Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> tmp = null;
 
-    for (DataPkg aSubPkg : dataPkg_p.getOwnedDataPkgs()) {
+    for (DataPkg aSubPkg : dataPkg.getOwnedDataPkgs()) {
       tmp = getDataPkgDependenciesHierarchy2(aSubPkg);
       for (AbstractDependenciesPkg pkg : tmp.keySet()) {
         if (result.containsKey(pkg)) {
@@ -629,30 +633,32 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
     return result;
   }
 
-  private static Collection<AbstractDependenciesPkg> getDataPkgDependenciesHierarchy(
-      DataPkg dataPkg_p, int hierarchy) {
+  private static Collection<AbstractDependenciesPkg> getDataPkgDependenciesHierarchy(DataPkg dataPkg, int hierarchy) {
     Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>(); // dependencies
     Collection<AbstractDependenciesPkg> dependenciesHierarchy =
-        new HashSet<AbstractDependenciesPkg>(); // dependencies of dataPkg_p ancestors
+        new HashSet<AbstractDependenciesPkg>(); // dependencies of dataPkg ancestors
     // classes
-    for (Class aClass : dataPkg_p.getOwnedClasses()) {
+    for (Class aClass : dataPkg.getOwnedClasses()) {
       dependencies.addAll(ClassExt.getClassDependencies(aClass));
     }
     // signals
-    for (Signal aSignal : dataPkg_p.getOwnedSignals()) {
+    for (Signal aSignal : dataPkg.getOwnedSignals()) {
       dependencies.addAll(SignalExt.getSignalDependencies(aSignal));
     }
     // Datatypes
-    for (DataType aDataType : dataPkg_p.getOwnedDataTypes()) {
+    for (DataType aDataType : dataPkg.getOwnedDataTypes()) {
       dependencies.addAll(DataTypeExt.getDataTypeDependencies(aDataType));
     }
+    // Datavalues
+    for (DataValue aDataValue : dataPkg.getOwnedDataValues()) {
+      dependencies.addAll(DataValueExt.getDataValueDependencies(aDataValue));
+    }
     // ExchangeItem
-    for (ExchangeItem anExchangeItem : dataPkg_p.getOwnedExchangeItems()) {
+    for (ExchangeItem anExchangeItem : dataPkg.getOwnedExchangeItems()) {
       dependencies.addAll(ExchangeItemExt.getExchangeItemDependencies(anExchangeItem));
     }
     // Collection
-    for (org.polarsys.capella.core.data.information.Collection aCollection : dataPkg_p
-        .getOwnedCollections()) {
+    for (org.polarsys.capella.core.data.information.Collection aCollection : dataPkg .getOwnedCollections()) {
       dependencies.addAll(CollectionExt.getCollectionDependencies(aCollection));
     }
 
@@ -660,7 +666,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
     for (AbstractDependenciesPkg aPackage : dependencies) {
       int i = hierarchy;
       AbstractDependenciesPkg dependentPackage = aPackage;
-      AbstractDependenciesPkg currentPackage = dataPkg_p;
+      AbstractDependenciesPkg currentPackage = dataPkg;
       while ((i > 0)
              && (dependentPackage.eContainer() instanceof DataPkg)
              && (!(EcoreUtil.isAncestor(dependentPackage.eContainer(), currentPackage) || EcoreUtil
@@ -680,7 +686,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
       }
     }
     // Retrieving the dependencies of the sub-packages.
-    for (DataPkg aSubPkg : dataPkg_p.getOwnedDataPkgs()) {
+    for (DataPkg aSubPkg : dataPkg.getOwnedDataPkgs()) {
       dependenciesHierarchy.addAll(getDataPkgDependenciesHierarchy(aSubPkg, hierarchy + 1));
     }
     return dependenciesHierarchy;
@@ -688,20 +694,20 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the datavalues recursively from a DataTypePkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return list of datavalues
    */
-  public static DataPkg getDataPkgOfBlockArchitecture(BlockArchitecture architecture_p) {
-    if (architecture_p instanceof OperationalAnalysis) {
-      return ((OperationalAnalysis) architecture_p).getOwnedDataPkg();
-    } else if (architecture_p instanceof SystemAnalysis) {
-      return ((SystemAnalysis) architecture_p).getOwnedDataPkg();
-    } else if (architecture_p instanceof LogicalArchitecture) {
-      return ((LogicalArchitecture) architecture_p).getOwnedDataPkg();
-    } else if (architecture_p instanceof PhysicalArchitecture) {
-      return ((PhysicalArchitecture) architecture_p).getOwnedDataPkg();
-    } else if (architecture_p instanceof EPBSArchitecture) {
-      return ((EPBSArchitecture) architecture_p).getOwnedDataPkg();
+  public static DataPkg getDataPkgOfBlockArchitecture(BlockArchitecture architecture) {
+    if (architecture instanceof OperationalAnalysis) {
+      return ((OperationalAnalysis) architecture).getOwnedDataPkg();
+    } else if (architecture instanceof SystemAnalysis) {
+      return ((SystemAnalysis) architecture).getOwnedDataPkg();
+    } else if (architecture instanceof LogicalArchitecture) {
+      return ((LogicalArchitecture) architecture).getOwnedDataPkg();
+    } else if (architecture instanceof PhysicalArchitecture) {
+      return ((PhysicalArchitecture) architecture).getOwnedDataPkg();
+    } else if (architecture instanceof EPBSArchitecture) {
+      return ((EPBSArchitecture) architecture).getOwnedDataPkg();
     }
     return null;
   }
@@ -709,32 +715,32 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
   /**
    */
   public static DataPkg getDataPkgOfComponentArchitecture(
-      ComponentArchitecture componentArchitecture_p) {
+      ComponentArchitecture componentArchitecture) {
     DataPkg dataPkg = null;
-    if (componentArchitecture_p instanceof SystemEngineering) {
+    if (componentArchitecture instanceof SystemEngineering) {
       SystemAnalysis ca =
-          SystemEngineeringExt.getOwnedSystemAnalysis((SystemEngineering) componentArchitecture_p);
+          SystemEngineeringExt.getOwnedSystemAnalysis((SystemEngineering) componentArchitecture);
       dataPkg = ca.getOwnedDataPkg();
-    } else if (componentArchitecture_p instanceof SystemAnalysis) {
-      dataPkg = ((SystemAnalysis) componentArchitecture_p).getOwnedDataPkg();
-    } else if (componentArchitecture_p instanceof LogicalArchitecture) {
-      dataPkg = ((LogicalArchitecture) componentArchitecture_p).getOwnedDataPkg();
-    } else if (componentArchitecture_p instanceof PhysicalArchitecture) {
-      dataPkg = ((PhysicalArchitecture) componentArchitecture_p).getOwnedDataPkg();
-    } else if (componentArchitecture_p instanceof EPBSArchitecture) {
-      dataPkg = ((EPBSArchitecture) componentArchitecture_p).getOwnedDataPkg();
+    } else if (componentArchitecture instanceof SystemAnalysis) {
+      dataPkg = ((SystemAnalysis) componentArchitecture).getOwnedDataPkg();
+    } else if (componentArchitecture instanceof LogicalArchitecture) {
+      dataPkg = ((LogicalArchitecture) componentArchitecture).getOwnedDataPkg();
+    } else if (componentArchitecture instanceof PhysicalArchitecture) {
+      dataPkg = ((PhysicalArchitecture) componentArchitecture).getOwnedDataPkg();
+    } else if (componentArchitecture instanceof EPBSArchitecture) {
+      dataPkg = ((EPBSArchitecture) componentArchitecture).getOwnedDataPkg();
     }
     return dataPkg;
   }
 
   /**
    * Gets all the DataPkgs from the parent block architecture and its hierarchy
-   * @param blockArch_p the Parent BlockArchitecture
+   * @param blockArch the Parent BlockArchitecture
    * @return list of DataPkgs
    */
-  static public List<DataPkg> getDataPkgsFromBlockArchitectureParent(BlockArchitecture blockArch_p) {
+  static public List<DataPkg> getDataPkgsFromBlockArchitectureParent(BlockArchitecture blockArch) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    Object container = blockArch_p.eContainer();
+    Object container = blockArch.eContainer();
     if (container instanceof Component) {
       Component parentComp = (Component) container;
       DataPkg dataPkg = parentComp.getOwnedDataPkg();
@@ -759,13 +765,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the DataPkgs from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of DataPkgs
    */
   static public List<DataPkg> getDataPkgsFromComponentArchitectureParent(
-      ComponentArchitecture compArch_p) {
+      ComponentArchitecture compArch) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
     if (container instanceof Component) {
       Component parentComp = (Component) container;
       DataPkg dataPkg = parentComp.getOwnedDataPkg();
@@ -775,8 +781,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
       list.addAll(getDataPkgsFromComponentParent((Component) container));
     }
     if (container instanceof ComponentArchitecture) {
-      ComponentArchitecture compArch = (ComponentArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
+      ComponentArchitecture arch = (ComponentArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
       if (null != dataPkg) {
         list.add(dataPkg);
       }
@@ -790,12 +796,12 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the DataPkg from the parent component and its hierarchy
-   * @param component_p the Parent Component
+   * @param component the Parent Component
    * @return list of DataPkgs
    */
-  static public List<DataPkg> getDataPkgsFromComponentParent(Component component_p) {
+  static public List<DataPkg> getDataPkgsFromComponentParent(Component component) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    Object container = component_p.eContainer();
+    Object container = component.eContainer();
     if (container instanceof Component) {
       Component parentComp = (Component) container;
       DataPkg dataPkg = parentComp.getOwnedDataPkg();
@@ -821,17 +827,17 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
   /**
    * Gets all the DataPkgs from the Parent Hierarchy of the root component/component architecture of the current DataTypePkg according to layer visibility and
    * multiple decomposition rules
-   * @param dataPkg_p the DataTypePkg
+   * @param dataPkg the DataTypePkg
    * @return list of DataPkgs
    */
-  static public List<DataPkg> getDataPkgsFromParentHierarchy(DataPkg dataPkg_p) {
+  static public List<DataPkg> getDataPkgsFromParentHierarchy(DataPkg dataPkg) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    if (null != dataPkg_p) {
-      BlockArchitecture blockArch = getRootBlockArchitecture(dataPkg_p);
+    if (null != dataPkg) {
+      BlockArchitecture blockArch = getRootBlockArchitecture(dataPkg);
       if (null != blockArch) {
-        DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(blockArch);
-        if (null != dataPkg) {
-          list.add(dataPkg);
+        DataPkg pkg = DataPkgExt.getDataPkgOfBlockArchitecture(blockArch);
+        if (null != pkg) {
+          list.add(pkg);
         }
         // if the layer visibility is there
         if (blockArch instanceof SystemEngineering) {
@@ -839,11 +845,11 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(DataPkgExt.getDataPkgsFromBlockArchitectureParent(blockArch));
       }
-      Component parentComp = getRootComponent(dataPkg_p);
+      Component parentComp = getRootComponent(dataPkg);
       if (null != parentComp) {
-        DataPkg dataPkg = parentComp.getOwnedDataPkg();
-        if (null != dataPkg) {
-          list.add(dataPkg);
+        DataPkg pkg = parentComp.getOwnedDataPkg();
+        if (null != pkg) {
+          list.add(pkg);
         }
         list.addAll(DataPkgExt.getDataPkgsFromComponentParent(parentComp));
       }
@@ -853,13 +859,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the Exception from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of Exception
    */
   static private List<Exception> getExceptionsFromBlockArchitectureParent(
-      BlockArchitecture compArch_p) {
+      BlockArchitecture compArch) {
     List<Exception> list = new ArrayList<Exception>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
     if (container instanceof System) {
       return list;// return if System has come in the recursion level
     } else if (container instanceof Component) {
@@ -871,8 +877,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
     } else if (container instanceof SystemEngineering) {
       return list; // return if SystemEngineering has come in the recursion
     } else if (container instanceof BlockArchitecture) {
-      BlockArchitecture compArch = (BlockArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
+      BlockArchitecture arch = (BlockArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(arch);
       if (null != dataPkg) {
         list.addAll(getAllExceptions(dataPkg));
       }
@@ -883,13 +889,42 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the Exception from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of Exception
    */
   static private List<Exception> getExceptionsFromComponentArchitectureParent(
-      ComponentArchitecture compArch_p) {
+      ComponentArchitecture compArch) {
     List<Exception> list = new ArrayList<Exception>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
+    if (container instanceof System) {
+      return list;// return if System has come in the recursion level
+    } else if (container instanceof Component) {
+      if (container instanceof LogicalComponent) {
+        LogicalComponent parentComp = (LogicalComponent) container;
+        DataPkg dataPkg = parentComp.getOwnedDataPkg();
+        if (null != dataPkg) {
+          list.addAll(getAllExceptions(dataPkg));
+        }
+      }
+      list.addAll(getExceptionsFromComponentParent((Component) container));
+    } else if (container instanceof SystemEngineering) {
+      return list; // return if SystemEngineering has come in the recursion
+    } else if (container instanceof ComponentArchitecture) {
+      ComponentArchitecture arch = (ComponentArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
+      if (null != dataPkg) {
+        list.addAll(getAllExceptions(dataPkg));
+      }
+      list.addAll(getExceptionsFromComponentArchitectureParent((ComponentArchitecture) container));
+    }
+    return list;
+  }
+
+  /**
+   */
+  static private List<Exception> getExceptionsFromComponentParent(Component component) {
+    List<Exception> list = new ArrayList<Exception>(1);
+    Object container = component.eContainer();
     if (container instanceof System) {
       return list;// return if System has come in the recursion level
     } else if (container instanceof Component) {
@@ -916,39 +951,10 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    */
-  static private List<Exception> getExceptionsFromComponentParent(Component component_p) {
+  static public List<Exception> getExceptionsFromParentHierarchy(DataPkg exceptionPkg) {
     List<Exception> list = new ArrayList<Exception>(1);
-    Object container = component_p.eContainer();
-    if (container instanceof System) {
-      return list;// return if System has come in the recursion level
-    } else if (container instanceof Component) {
-      if (container instanceof LogicalComponent) {
-        LogicalComponent parentComp = (LogicalComponent) container;
-        DataPkg dataPkg = parentComp.getOwnedDataPkg();
-        if (null != dataPkg) {
-          list.addAll(getAllExceptions(dataPkg));
-        }
-      }
-      list.addAll(getExceptionsFromComponentParent((Component) container));
-    } else if (container instanceof SystemEngineering) {
-      return list; // return if SystemEngineering has come in the recursion
-    } else if (container instanceof ComponentArchitecture) {
-      ComponentArchitecture compArch = (ComponentArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
-      if (null != dataPkg) {
-        list.addAll(getAllExceptions(dataPkg));
-      }
-      list.addAll(getExceptionsFromComponentArchitectureParent((ComponentArchitecture) container));
-    }
-    return list;
-  }
-
-  /**
-   */
-  static public List<Exception> getExceptionsFromParentHierarchy(DataPkg exceptionPkg_p) {
-    List<Exception> list = new ArrayList<Exception>(1);
-    if (null != exceptionPkg_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(exceptionPkg_p);
+    if (null != exceptionPkg) {
+      BlockArchitecture compArch = getRootBlockArchitecture(exceptionPkg);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -959,7 +965,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(getExceptionsFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(exceptionPkg_p);
+      Component parentComp = getRootComponent(exceptionPkg);
       if (null != parentComp) {
         DataPkg dataPkg = parentComp.getOwnedDataPkg();
         if (null != dataPkg) {
@@ -973,13 +979,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the Exception from the Parent Hierarchy of the InterfacePkg (Service->Owning Interface->InterfacePkg)
-   * @param interfacePkg_p the InterfacePkg
+   * @param interfacePkg the InterfacePkg
    * @return list of Exception
    */
-  static public List<Exception> getExceptionsFromParentHierarchy(InterfacePkg interfacePkg_p) {
+  static public List<Exception> getExceptionsFromParentHierarchy(InterfacePkg interfacePkg) {
     List<Exception> list = new ArrayList<Exception>(1);
-    if (null != interfacePkg_p) {
-      BlockArchitecture compArch = InterfacePkgExt.getRootBlockArchitecture(interfacePkg_p);
+    if (null != interfacePkg) {
+      BlockArchitecture compArch = InterfacePkgExt.getRootBlockArchitecture(interfacePkg);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -990,7 +996,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(getExceptionsFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = InterfacePkgExt.getRootComponent(interfacePkg_p);
+      Component parentComp = InterfacePkgExt.getRootComponent(interfacePkg);
       if (null != parentComp) {
         DataPkg dataPkg = parentComp.getOwnedDataPkg();
         if (null != dataPkg) {
@@ -1004,12 +1010,12 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the messages from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of messages
    */
-  static private List<Message> getMessagesFromBlockArchitectureParent(BlockArchitecture compArch_p) {
+  static private List<Message> getMessagesFromBlockArchitectureParent(BlockArchitecture compArch) {
     List<Message> list = new ArrayList<Message>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
     if (container instanceof System) {
       return list;// return if System has come in the recursion level
     } else if (container instanceof Component) {
@@ -1021,8 +1027,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
     } else if (container instanceof SystemEngineering) {
       return list; // return if SystemEngineering has come in the recursion
     } else if (container instanceof BlockArchitecture) {
-      BlockArchitecture compArch = (BlockArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
+      BlockArchitecture arch = (BlockArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(arch);
       if (null != dataPkg) {
         list.addAll(getAllMessages(dataPkg));
       }
@@ -1033,13 +1039,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the messages from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of messages
    */
   static private List<Message> getMessagesFromComponentArchitectureParent(
-      ComponentArchitecture compArch_p) {
+      ComponentArchitecture compArch) {
     List<Message> list = new ArrayList<Message>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
     if (container instanceof System) {
       return list;// return if System has come in the recursion level
     } else if (container instanceof Component) {
@@ -1054,8 +1060,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
     } else if (container instanceof SystemEngineering) {
       return list; // return if SystemEngineering has come in the recursion
     } else if (container instanceof ComponentArchitecture) {
-      ComponentArchitecture compArch = (ComponentArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
+      ComponentArchitecture arch = (ComponentArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
       if (null != dataPkg) {
         list.addAll(getAllMessages(dataPkg));
       }
@@ -1066,12 +1072,12 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the messages from the parent component and its hierarchy
-   * @param component_p the Parent Component
+   * @param component the Parent Component
    * @return list of messages
    */
-  static private List<Message> getMessagesFromComponentParent(Component component_p) {
+  static private List<Message> getMessagesFromComponentParent(Component component) {
     List<Message> list = new ArrayList<Message>(1);
-    Object container = component_p.eContainer();
+    Object container = component.eContainer();
     if (container instanceof System) {
       return list;// return if System has come in the recursion level
     } else if (container instanceof Component) {
@@ -1098,13 +1104,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the messages from the Parent Hierarchy of the message package
-   * @param messagePkg_p the MessagePkg
+   * @param messagePkg the MessagePkg
    * @return list of messages
    */
-  static public List<Message> getMessagesFromParentHierarchy(DataPkg messagePkg_p) {
+  static public List<Message> getMessagesFromParentHierarchy(DataPkg messagePkg) {
     List<Message> list = new ArrayList<Message>(1);
-    if (null != messagePkg_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(messagePkg_p);
+    if (null != messagePkg) {
+      BlockArchitecture compArch = getRootBlockArchitecture(messagePkg);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -1115,7 +1121,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(getMessagesFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(messagePkg_p);
+      Component parentComp = getRootComponent(messagePkg);
       if (null != parentComp) {
         DataPkg dataPkg = parentComp.getOwnedDataPkg();
         if (null != dataPkg) {
@@ -1129,13 +1135,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the messages from the Parent Hierarchy of the InterfacePkg (Service->Owning Interface->InterfacePkg)
-   * @param interfacePkg_p the InterfacePkg
+   * @param interfacePkg the InterfacePkg
    * @return list of messages
    */
-  static public List<Message> getMessagesFromParentHierarchy(InterfacePkg interfacePkg_p) {
+  static public List<Message> getMessagesFromParentHierarchy(InterfacePkg interfacePkg) {
     List<Message> list = new ArrayList<Message>(1);
-    if (null != interfacePkg_p) {
-      BlockArchitecture compArch = InterfacePkgExt.getRootBlockArchitecture(interfacePkg_p);
+    if (null != interfacePkg) {
+      BlockArchitecture compArch = InterfacePkgExt.getRootBlockArchitecture(interfacePkg);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -1146,7 +1152,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(getMessagesFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = InterfacePkgExt.getRootComponent(interfacePkg_p);
+      Component parentComp = InterfacePkgExt.getRootComponent(interfacePkg);
       if (null != parentComp) {
         DataPkg dataPkg = parentComp.getOwnedDataPkg();
         if (null != dataPkg) {
@@ -1159,26 +1165,26 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
   }
 
   /**
-   * @param dataPkg_p current Data Package
+   * @param dataPkg current Data Package
    * @return recursively all sub Data Packages
    */
-  public static List<DataPkg> getRecursiveSubDataPkgs(DataPkg dataPkg_p) {
+  public static List<DataPkg> getRecursiveSubDataPkgs(DataPkg dataPkg) {
     List<DataPkg> returnedList = new ArrayList<DataPkg>();
-    returnedList.addAll(dataPkg_p.getOwnedDataPkgs());
-    for (DataPkg aSubPkg : dataPkg_p.getOwnedDataPkgs()) {
+    returnedList.addAll(dataPkg.getOwnedDataPkgs());
+    for (DataPkg aSubPkg : dataPkg.getOwnedDataPkgs()) {
       returnedList.addAll(getRecursiveSubDataPkgs(aSubPkg));
     }
     return returnedList;
   }
 
   /**
-   * @param modelElement_p : any 'ModelElement'
+   * @param modelElement : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
-  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement_p) {
+  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
     BlockArchitecture arch = null;
-    if (modelElement_p != null) {
-      EObject container = modelElement_p.eContainer();
+    if (modelElement != null) {
+      EObject container = modelElement.eContainer();
       if (container instanceof BlockArchitecture) {
         return (BlockArchitecture) container;
       } else if (container instanceof Component) {
@@ -1199,13 +1205,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets the root component of the current DataPkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return the component
    */
-  static public Component getRootComponent(DataPkg dataPkg_p) {
+  static public Component getRootComponent(DataPkg dataPkg) {
     Component comp = null;
-    if (null != dataPkg_p) {
-      Object container = dataPkg_p.eContainer();
+    if (null != dataPkg) {
+      Object container = dataPkg.eContainer();
       if (container instanceof DataPkg) {
         comp = getRootComponent((DataPkg) container);
       } else if (container instanceof Structure) {
@@ -1219,13 +1225,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets the root component architecture of the current DataPkg
-   * @param dataPkg_p the DataPkg
+   * @param dataPkg the DataPkg
    * @return the component architecture
    */
-  static public ComponentArchitecture getRootComponentArchitecture(DataPkg dataPkg_p) {
+  static public ComponentArchitecture getRootComponentArchitecture(DataPkg dataPkg) {
     ComponentArchitecture compArchitecture = null;
-    if (null != dataPkg_p) {
-      Object container = dataPkg_p.eContainer();
+    if (null != dataPkg) {
+      Object container = dataPkg.eContainer();
       if (container instanceof ComponentArchitecture) {
         compArchitecture = (ComponentArchitecture) container;
       } else if (container instanceof DataPkg) {
@@ -1241,14 +1247,14 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    */
-  static public DataPkg getRootDataPkg(DataPkg exceptionPkg_p) {
+  static public DataPkg getRootDataPkg(DataPkg exceptionPkg) {
     DataPkg rootPkg = null;
-    if (null != exceptionPkg_p) {
-      Object container = exceptionPkg_p.eContainer();
+    if (null != exceptionPkg) {
+      Object container = exceptionPkg.eContainer();
       if (container instanceof DataPkg) {
         rootPkg = getRootDataPkg((DataPkg) container);
       } else {
-        return exceptionPkg_p;
+        return exceptionPkg;
       }
     }
     return rootPkg;
@@ -1256,18 +1262,18 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the signals from the parent component architecture and its hierarchy
-   * @param compArch_p the Parent ComponentArchitecture
+   * @param compArch the Parent ComponentArchitecture
    * @return list of signals
    */
   static private List<Signal> getSignalsFromComponentArchitectureParent(
-      ComponentArchitecture compArch_p) {
-    return getSignalsFromComponentArchitectureParent(compArch_p, false);
+      ComponentArchitecture compArch) {
+    return getSignalsFromComponentArchitectureParent(compArch, false);
   }
 
   static private List<Signal> getSignalsFromComponentArchitectureParent(
-      ComponentArchitecture compArch_p, boolean isLayerVisibilityRequired) {
+      ComponentArchitecture compArch, boolean isLayerVisibilityRequired) {
     List<Signal> list = new ArrayList<Signal>(1);
-    Object container = compArch_p.eContainer();
+    Object container = compArch.eContainer();
     if (isLayerVisibilityRequired) {
       if (container instanceof System) {
         return list;// return if System has come in the recursion level
@@ -1285,8 +1291,8 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
       }
       list.addAll(getSignalsFromComponentParent((Component) container, isLayerVisibilityRequired));
     } else if (container instanceof ComponentArchitecture) {
-      ComponentArchitecture compArch = (ComponentArchitecture) container;
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
+      ComponentArchitecture arch = (ComponentArchitecture) container;
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
       if (null != dataPkg) {
         list.addAll(getAllSignals(dataPkg));
       }
@@ -1298,19 +1304,19 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the signals from the parent component and its hierarchy
-   * @param component_p the Parent Component
+   * @param component the Parent Component
    * @return list of signals
    */
-  static private List<Signal> getSignalsFromComponentParent(Component component_p) {
-    return getSignalsFromComponentParent(component_p, false);
+  static private List<Signal> getSignalsFromComponentParent(Component component) {
+    return getSignalsFromComponentParent(component, false);
   }
 
   /**
    */
-  static private List<Signal> getSignalsFromComponentParent(Component component_p,
+  static private List<Signal> getSignalsFromComponentParent(Component component,
       boolean isLayerVisibilityRequired) {
     List<Signal> list = new ArrayList<Signal>(1);
-    Object container = component_p.eContainer();
+    Object container = component.eContainer();
     if (isLayerVisibilityRequired) {
       if (container instanceof System) {
         return list;// return if System has come in the recursion level
@@ -1341,13 +1347,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the signals from the Parent Hierarchy of the signal package
-   * @param signalPkg_p the SignalPkg
+   * @param signalPkg the SignalPkg
    * @return list of signals
    */
-  static public List<Signal> getSignalsFromParentHierarchy(DataPkg signalPkg_p) {
+  static public List<Signal> getSignalsFromParentHierarchy(DataPkg signalPkg) {
     List<Signal> list = new ArrayList<Signal>(1);
-    if (null != signalPkg_p) {
-      ComponentArchitecture compArch = getRootComponentArchitecture(signalPkg_p);
+    if (null != signalPkg) {
+      ComponentArchitecture compArch = getRootComponentArchitecture(signalPkg);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
         if (null != dataPkg) {
@@ -1355,7 +1361,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(getSignalsFromComponentArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(signalPkg_p);
+      Component parentComp = getRootComponent(signalPkg);
       if (null != parentComp) {
         if (parentComp instanceof LogicalComponent) {
           DataPkg dataPkg = ((LogicalComponent) parentComp).getOwnedDataPkg();
@@ -1371,13 +1377,13 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Gets all the signals from the Parent Hierarchy of the class package
-   * @param interfacePkg_p the InterfacePkg
+   * @param interfacePkg the InterfacePkg
    * @return list of signals
    */
-  static public List<Signal> getSignalsFromParentHierarchy(InterfacePkg interfacePkg_p) {
+  static public List<Signal> getSignalsFromParentHierarchy(InterfacePkg interfacePkg) {
     List<Signal> list = new ArrayList<Signal>(1);
-    if (null != interfacePkg_p) {
-      ComponentArchitecture compArch = InterfacePkgExt.getRootComponentArchitecture(interfacePkg_p);
+    if (null != interfacePkg) {
+      ComponentArchitecture compArch = InterfacePkgExt.getRootComponentArchitecture(interfacePkg);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
         if (null != dataPkg) {
@@ -1388,7 +1394,7 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
         }
         list.addAll(getSignalsFromComponentArchitectureParent(compArch, true));
       }
-      Component parentComp = InterfacePkgExt.getRootComponent(interfacePkg_p);
+      Component parentComp = InterfacePkgExt.getRootComponent(interfacePkg);
       if (null != parentComp) {
         if (parentComp instanceof LogicalComponent) {
           DataPkg dataPkg = ((LogicalComponent) parentComp).getOwnedDataPkg();
@@ -1403,14 +1409,14 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
   }
 
   /**
-   * Check if elt2_p element is belong to Data package and same layer than elt1_p
+   * Check if elt2 element is belong to Data package and same layer than elt1
    */
-  public static boolean isBelongToSameDataPkgLayer(ModelElement elt1_p, ModelElement elt2_p) {
-    if ((elt1_p instanceof CapellaElement) && (elt2_p instanceof CapellaElement)) {
-      if ((null != elt2_p)
-          && EcoreUtil2.isContainedBy(elt2_p, InformationPackage.Literals.DATA_PKG)
-          && (CapellaLayerCheckingExt.getLayersName((CapellaElement) elt1_p) == CapellaLayerCheckingExt
-              .getLayersName((CapellaElement) elt2_p))) {
+  public static boolean isBelongToSameDataPkgLayer(ModelElement elt1, ModelElement elt2) {
+    if ((elt1 instanceof CapellaElement) && (elt2 instanceof CapellaElement)) {
+      if ((null != elt2)
+          && EcoreUtil2.isContainedBy(elt2, InformationPackage.Literals.DATA_PKG)
+          && (CapellaLayerCheckingExt.getLayersName((CapellaElement) elt1) == CapellaLayerCheckingExt
+              .getLayersName((CapellaElement) elt2))) {
         return true;
       }
     }
@@ -1419,15 +1425,15 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Return parent DataPkg if any
-   * @param capellaElement_p : capella element
+   * @param capellaElement : capella element
    * @return data pkg
    */
-  public static DataPkg getParentDataPkg(CapellaElement capellaElement_p) {
-    if (null != capellaElement_p) {
-      if (capellaElement_p instanceof DataPkg) {
-        return (DataPkg) capellaElement_p;
+  public static DataPkg getParentDataPkg(CapellaElement capellaElement) {
+    if (null != capellaElement) {
+      if (capellaElement instanceof DataPkg) {
+        return (DataPkg) capellaElement;
       }
-      EObject eContainer = capellaElement_p.eContainer();
+      EObject eContainer = capellaElement.eContainer();
       if ((null != eContainer) && (eContainer instanceof CapellaElement)) {
         return getParentDataPkg((CapellaElement) eContainer);
       }
@@ -1437,12 +1443,12 @@ public static List<DataPkg> getAllDataPkgs(EObject context_p) {
 
   /**
    * Return first dataPkg of Root architecture
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  static public DataPkg getFirstDataPkgOfRootBlockArchitecture(EObject eObject_p) {
-    if (null != eObject_p) {
-      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(eObject_p);
+  static public DataPkg getFirstDataPkgOfRootBlockArchitecture(EObject eObject) {
+    if (null != eObject) {
+      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(eObject);
       DataPkgExt.getDataPkgOfBlockArchitecture(arch);
     }
     return null;
@@ -1512,10 +1518,10 @@ public static List<DataValue> getDataValues(EObject semanticsObject) {
     return result;
   }
 
-  public static boolean isPredefinedDataType(EObject element_p) {
+  public static boolean isPredefinedDataType(EObject element) {
     // We allow differences of dataPkg
     EObject parentDataPkg =
-        EcoreUtil2.getFirstContainer(element_p, InformationPackage.Literals.DATA_PKG);
+        EcoreUtil2.getFirstContainer(element, InformationPackage.Literals.DATA_PKG);
     if (parentDataPkg != null) {
       if (((DataPkg) parentDataPkg).getName().equals(
           NamingConstants.PredefinedTypesCmd_predefinedDataTypePkg_name)) {
@@ -1527,37 +1533,39 @@ public static List<DataValue> getDataValues(EObject semanticsObject) {
   
   /**
    * Check if the dependency between a data package and a package is primitive
-   * @param src_p
-   * @param tar_p
+   * @param src
+   * @param tar
    * @return
    */
-	public static boolean isPrimitiveDependency(DataPkg src_p, AbstractDependenciesPkg tar_p) {
+	public static boolean isPrimitiveDependency(DataPkg src, AbstractDependenciesPkg tar) {
 		// classes
-		for (Class aClass : src_p.getOwnedClasses()) {
-			if (ClassExt.getClassDependencies(aClass).contains(tar_p))
+		for (Class aClass : src.getOwnedClasses()) {
+			if (ClassExt.getClassDependencies(aClass).contains(tar))
 				return true;
 		}
 		// signals
-		for (Signal aSignal : src_p.getOwnedSignals()) {
-			if (SignalExt.getSignalDependencies(aSignal).contains(tar_p))
+		for (Signal aSignal : src.getOwnedSignals()) {
+			if (SignalExt.getSignalDependencies(aSignal).contains(tar))
 				return true;
 		}
 		// Datatypes
-		for (DataType aDataType : src_p.getOwnedDataTypes()) {
-			if (DataTypeExt.getDataTypeDependencies(aDataType).contains(tar_p))
+		for (DataType aDataType : src.getOwnedDataTypes()) {
+			if (DataTypeExt.getDataTypeDependencies(aDataType).contains(tar))
 				return true;
 		}
+    // Datavalues
+    for (DataValue aDataValue : src.getOwnedDataValues()) {
+      if (DataValueExt.getDataValueDependencies(aDataValue).contains(tar))
+        return true;
+    }
 		// ExchangeItem
-		for (ExchangeItem anExchangeItem : src_p.getOwnedExchangeItems()) {
-			if (ExchangeItemExt.getExchangeItemDependencies(anExchangeItem)
-					.contains(tar_p))
+		for (ExchangeItem anExchangeItem : src.getOwnedExchangeItems()) {
+			if (ExchangeItemExt.getExchangeItemDependencies(anExchangeItem).contains(tar))
 				return true;
 		}
 		// Collection
-		for (org.polarsys.capella.core.data.information.Collection aCollection : src_p
-				.getOwnedCollections()) {
-			if (CollectionExt.getCollectionDependencies(aCollection).contains(
-					tar_p))
+		for (org.polarsys.capella.core.data.information.Collection aCollection : src.getOwnedCollections()) {
+			if (CollectionExt.getCollectionDependencies(aCollection).contains(tar))
 				return true;
 		}
 
@@ -1566,41 +1574,41 @@ public static List<DataValue> getDataValues(EObject semanticsObject) {
 
 	/**
 	 * Get all the dependencies of a package, including ancestor's dependencies
-	 * @param dataPkg_p
+	 * @param dataPkg
 	 * @return
 	 */
-	public static Collection<AbstractDependenciesPkg> getDataPkgDependenciesHierarchy(
-			DataPkg dataPkg_p) {
+	public static Collection<AbstractDependenciesPkg> getDataPkgDependenciesHierarchy(DataPkg dataPkg) {
 		Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>(); // dependencies
 
 		// classes
-		for (Class aClass : dataPkg_p.getOwnedClasses()) {
+		for (Class aClass : dataPkg.getOwnedClasses()) {
 			dependencies.addAll(ClassExt.getClassDependencies(aClass));
 		}
 		// signals
-		for (Signal aSignal : dataPkg_p.getOwnedSignals()) {
+		for (Signal aSignal : dataPkg.getOwnedSignals()) {
 			dependencies.addAll(SignalExt.getSignalDependencies(aSignal));
 		}
 		// Datatypes
-		for (DataType aDataType : dataPkg_p.getOwnedDataTypes()) {
+		for (DataType aDataType : dataPkg.getOwnedDataTypes()) {
 			dependencies.addAll(DataTypeExt.getDataTypeDependencies(aDataType));
 		}
+    // Datavalues
+    for (DataValue aDataValue : dataPkg.getOwnedDataValues()) {
+      dependencies.addAll(DataValueExt.getDataValueDependencies(aDataValue));
+    }
 		// ExchangeItem
-		for (ExchangeItem anExchangeItem : dataPkg_p.getOwnedExchangeItems()) {
-			dependencies.addAll(ExchangeItemExt
-					.getExchangeItemDependencies(anExchangeItem));
+		for (ExchangeItem anExchangeItem : dataPkg.getOwnedExchangeItems()) {
+			dependencies.addAll(ExchangeItemExt.getExchangeItemDependencies(anExchangeItem));
 		}
 		// Collection
-		for (org.polarsys.capella.core.data.information.Collection aCollection : dataPkg_p
-				.getOwnedCollections()) {
-			dependencies.addAll(CollectionExt
-					.getCollectionDependencies(aCollection));
+		for (org.polarsys.capella.core.data.information.Collection aCollection : dataPkg.getOwnedCollections()) {
+			dependencies.addAll(CollectionExt.getCollectionDependencies(aCollection));
 		}
 
 		// Retrieving the dependencies for the ancestors.
 		for (AbstractDependenciesPkg aPackage : dependencies) {
 			AbstractDependenciesPkg dependentPackage = aPackage;
-			AbstractDependenciesPkg currentPackage = dataPkg_p;
+			AbstractDependenciesPkg currentPackage = dataPkg;
 			while ((dependentPackage instanceof AbstractDependenciesPkg)
 					&& (!(EcoreUtil.isAncestor(dependentPackage,
 							currentPackage) || EcoreUtil.isAncestor(
@@ -1616,7 +1624,7 @@ public static List<DataValue> getDataValues(EObject semanticsObject) {
 			}
 		}
 		// Retrieving the dependencies of the sub-packages.
-		for (DataPkg aSubPkg : dataPkg_p.getOwnedDataPkgs()) {
+		for (DataPkg aSubPkg : dataPkg.getOwnedDataPkgs()) {
 			dependencies.addAll(getDataPkgDependenciesHierarchy(aSubPkg));
 		}
 		return dependencies;

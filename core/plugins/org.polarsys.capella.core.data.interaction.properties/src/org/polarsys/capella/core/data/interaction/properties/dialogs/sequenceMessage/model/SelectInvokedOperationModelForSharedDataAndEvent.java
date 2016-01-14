@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -127,11 +127,11 @@ public class SelectInvokedOperationModelForSharedDataAndEvent {
   }
 
   
-  private static List<Interface> getUsedAndRequiredInterfaces(Component component_p) {
+  private static List<Interface> getUsedAndRequiredInterfaces(Component component) {
     List<Interface> result = new ArrayList<Interface>();
-    result.addAll(component_p.getUsedInterfaces());
-    result.addAll(component_p.getRequiredInterfaces());
-    for (Feature f : component_p.getOwnedFeatures()) {
+    result.addAll(component.getUsedInterfaces());
+    result.addAll(component.getRequiredInterfaces());
+    for (Feature f : component.getOwnedFeatures()) {
       if (f instanceof ComponentPort) {
         ComponentPort p = (ComponentPort) f;
         result.addAll(p.getRequiredInterfaces());
@@ -141,11 +141,11 @@ public class SelectInvokedOperationModelForSharedDataAndEvent {
     return result;
   }
 
-  private static List<Interface> getImplementedAndProvidedInterfaces(Component component_p) {
+  private static List<Interface> getImplementedAndProvidedInterfaces(Component component) {
     List<Interface> result = new ArrayList<Interface>();
-    result.addAll(component_p.getImplementedInterfaces());
-    result.addAll(component_p.getProvidedInterfaces());
-    for (Feature f : component_p.getOwnedFeatures()) {
+    result.addAll(component.getImplementedInterfaces());
+    result.addAll(component.getProvidedInterfaces());
+    for (Feature f : component.getOwnedFeatures()) {
       if (f instanceof ComponentPort) {
         ComponentPort p = (ComponentPort) f;
         result.addAll(p.getProvidedInterfaces());

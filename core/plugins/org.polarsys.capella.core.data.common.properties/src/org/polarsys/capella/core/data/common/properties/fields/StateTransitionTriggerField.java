@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,43 +62,43 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   private IMultipleSemanticFieldController _controller;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param referencerFeature_p
-   * @param referencedFeature_p
-   * @param referencedFeatureType_p
-   * @param label_p
-   * @param selectionElementDialogMessage_p
+   * @param parent
+   * @param widgetFactory
+   * @param referencerFeature
+   * @param referencedFeature
+   * @param referencedFeatureType
+   * @param label
+   * @param selectionElementDialogMessage
    */
-  public StateTransitionTriggerField(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, EReference referencerFeature_p,
-      EReference referencedFeature_p, EClass referencedFeatureType_p, String label_p, String selectionElementDialogMessage_p) {
-    super(parent_p, widgetFactory_p, referencerFeature_p, referencedFeature_p, referencedFeatureType_p, label_p, selectionElementDialogMessage_p,
-          new CustomDelegatedViewer(widgetFactory_p));
+  public StateTransitionTriggerField(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, EReference referencerFeature,
+      EReference referencedFeature, EClass referencedFeatureType, String label, String selectionElementDialogMessage) {
+    super(parent, widgetFactory, referencerFeature, referencedFeature, referencedFeatureType, label, selectionElementDialogMessage,
+          new CustomDelegatedViewer(widgetFactory));
 
     _controller = new AbstractMultipleSemanticFieldController() {
       @Override
-      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-        return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), CapellacommonPackage.eINSTANCE.getStateTransition_Triggers());
+      protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+        return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CapellacommonPackage.eINSTANCE.getStateTransition_Triggers());
       }
     };
   }
 
-  protected static String getCustomText(Object object_p, int columnIndex_p) {
-    if (object_p instanceof ChangeEvent) {
-      ChangeEvent changeEvent = (ChangeEvent) object_p;
+  protected static String getCustomText(Object object, int columnIndex) {
+    if (object instanceof ChangeEvent) {
+      ChangeEvent changeEvent = (ChangeEvent) object;
       String res = "[" + changeEvent.getKind() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-      if (changeEvent.getCondition() != null) {
-        res += " " + getConstraintLabel(changeEvent.getCondition()); //$NON-NLS-1$
+      if (changeEvent.getExpression() != null) {
+        res += " " + getConstraintLabel(changeEvent.getExpression()); //$NON-NLS-1$
       } else {
         res += " " + changeEvent.getName();
       }
       return res;
     }
-    if (object_p instanceof TimeEvent) {
-      TimeEvent timeEvent = (TimeEvent) object_p;
+    if (object instanceof TimeEvent) {
+      TimeEvent timeEvent = (TimeEvent) object;
       String res = "[" + timeEvent.getKind() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-      if (timeEvent.getCondition() != null) {
-        res += " " + getConstraintLabel(timeEvent.getCondition()); //$NON-NLS-1$
+      if (timeEvent.getExpression() != null) {
+        res += " " + getConstraintLabel(timeEvent.getExpression()); //$NON-NLS-1$
       } else {
         res += " " + timeEvent.getName();
       }
@@ -113,9 +113,9 @@ public class StateTransitionTriggerField extends ContainmentTableField {
    */
   @Override
   @SuppressWarnings("synthetic-access")
-  protected void createCustomActions(Composite parent_p) {
+  protected void createCustomActions(Composite parent) {
 
-    _timeEventBtn = createTableButton(parent_p, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.TIME_EVENT_IMG_16), new Runnable() {
+    _timeEventBtn = createTableButton(parent, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.TIME_EVENT_IMG_16), new Runnable() {
       @Override
       public void run() {
         handleStateEventButtonClick(CapellacommonPackage.Literals.TIME_EVENT);
@@ -123,7 +123,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
     });
     _timeEventBtn.setToolTipText("Create a Time Event");
 
-    _changeEventBtn = createTableButton(parent_p, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
+    _changeEventBtn = createTableButton(parent, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
       @Override
       public void run() {
         handleStateEventButtonClick(CapellacommonPackage.Literals.CHANGE_EVENT);
@@ -133,7 +133,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
 
     ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
     Image openImage = imgRegistry.get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID);
-    _openBtn = createTableButton(parent_p, openImage, new Runnable() {
+    _openBtn = createTableButton(parent, openImage, new Runnable() {
       @Override
       public void run() {
         handleOpenButtonClick(_openBtn);
@@ -167,10 +167,10 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   }
 
   /**
-   * @param openBtn_p
+   * @param openBtn
    */
   @SuppressWarnings("synthetic-access")
-  protected void handleOpenButtonClick(final Button button_p) {
+  protected void handleOpenButtonClick(final Button button) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       @Override
       public void run() {
@@ -182,7 +182,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
         String message = NamingHelper.getDefaultMessage(_semanticElement, (_semanticFeature != null) ? _semanticFeature.getName() : ""); //$NON-NLS-1$
 
         // calling selection wizard
-        List<EObject> allResults = DialogHelper.openTransferDialog(button_p, currentElements, availableElements, title, message);
+        List<EObject> allResults = DialogHelper.openTransferDialog(button, currentElements, availableElements, title, message);
         if (null != allResults) {
           _controller.writeOpenValues(_semanticElement, _semanticFeature, allResults);
         }
@@ -227,45 +227,45 @@ public class StateTransitionTriggerField extends ContainmentTableField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    super.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
 
     if ((null != _timeEventBtn) && !_timeEventBtn.isDisposed()) {
-      _timeEventBtn.setEnabled(enabled_p);
+      _timeEventBtn.setEnabled(enabled);
     }
 
     if ((null != _changeEventBtn) && !_changeEventBtn.isDisposed()) {
-      _changeEventBtn.setEnabled(enabled_p);
+      _changeEventBtn.setEnabled(enabled);
     }
   }
 
   static class CustomDelegatedViewer extends TableDelegatedViewer {
     /**
-     * @param widgetFactory_p
+     * @param widgetFactory
      */
-    CustomDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory_p) {
-      super(widgetFactory_p);
+    CustomDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory) {
+      super(widgetFactory);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void createContainer(Composite sub_parent_p) {
-      super.createContainer(sub_parent_p);
+    public void createContainer(Composite subarent) {
+      super.createContainer(subarent);
       _columnViewer.setLabelProvider(new CapellaElementLabelProvider() {
         /**
          * {@inheritDoc}
          */
         @Override
-        public final String getColumnText(final Object object_p, final int columnIndex_p) {
-          final String customText = getCustomText(object_p, columnIndex_p);
+        public final String getColumnText(final Object object, final int columnIndex) {
+          final String customText = getCustomText(object, columnIndex);
 
           if (customText == null) {
-            return super.getColumnText(object_p, columnIndex_p);
+            return super.getColumnText(object, columnIndex);
           }
 
-          return run(object_p, new RunnableWithResult.Impl<String>() {
+          return run(object, new RunnableWithResult.Impl<String>() {
             @Override
             public void run() {
               setResult(customText);
@@ -276,7 +276,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
     }
   }
 
-  private static String getConstraintLabel(Constraint constraint_p) {
-    return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint_p, constraint_p.getName());
+  private static String getConstraintLabel(Constraint constraint) {
+    return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint, constraint.getName());
   }
 }

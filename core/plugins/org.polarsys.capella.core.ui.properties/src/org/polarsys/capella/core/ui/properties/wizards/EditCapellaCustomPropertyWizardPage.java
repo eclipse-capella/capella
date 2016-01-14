@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,17 +57,17 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
   /**
    * Constructor.
-   * @param pageName_p
-   * @param element_p
-   * @param metaclassLabel_p
+   * @param pageName
+   * @param element
+   * @param metaclassLabel
    */
-  public EditCapellaCustomPropertyWizardPage(String pageName_p, EObject element_p, String metaclassLabel_p) {
-    super(pageName_p);
+  public EditCapellaCustomPropertyWizardPage(String pageName, EObject element, String metaclassLabel) {
+    super(pageName);
     // Configure page title and description.
-    setTitle(metaclassLabel_p);
-    setDescription(Messages.EditCapellaCustomPropertyWizardPage_Description + metaclassLabel_p);
+    setTitle(metaclassLabel);
+    setDescription(Messages.EditCapellaCustomPropertyWizardPage_Description + metaclassLabel);
 
-    ImageDescriptor imageDescriptor = CapellaUIResourcesPlugin.getDefault().getPNGImage(element_p);
+    ImageDescriptor imageDescriptor = CapellaUIResourcesPlugin.getDefault().getPNGImage(element);
     if (imageDescriptor != null) {
       setImageDescriptor(imageDescriptor);
     }
@@ -75,12 +75,12 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
   /**
    * Create a default composite to host page widgets.
-   * @param parent_p
-   * @param numColumns_p
+   * @param parent
+   * @param numColumns
    * @return
    */
-  private Composite createComposite(Composite parent_p, FormToolkit toolkit_p) {
-    _scrolledContainer = toolkit_p.createScrolledForm(parent_p);
+  private Composite createComposite(Composite parent, FormToolkit toolkit) {
+    _scrolledContainer = toolkit.createScrolledForm(parent);
     setControl(_scrolledContainer);
     // Get the content of this scrolled form.
     Composite content = _scrolledContainer.getBody();
@@ -92,11 +92,11 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
-  public void createControl(Composite parent_p) {
-    _toolkit = new FormToolkit(parent_p.getDisplay());
-    _toolkit.setBackground(parent_p.getBackground());
+  public void createControl(Composite parent) {
+    _toolkit = new FormToolkit(parent.getDisplay());
+    _toolkit.setBackground(parent.getBackground());
     // Create parent composite.
-    Composite content = createComposite(parent_p, _toolkit);
+    Composite content = createComposite(parent, _toolkit);
     // Initialize dialog units.
     initializeDialogUnits(content);
     // Create a Tab folder to store each section per tab.
@@ -130,7 +130,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
         // Set tab item name with value got from section extension.
         tabItem.setText(entry.getKey());
         // Set appropriate background color.
-        section.setParentBackgroundColor(parent_p.getDisplay().getSystemColor(SWT.COLOR_WHITE));
+        section.setParentBackgroundColor(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
         section.createControls(tabItemContent, null);
         section.loadData(object);
       }
@@ -152,11 +152,11 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
         return checkIfHelpIsAvailable(eclass);
       }
 
-      protected boolean checkIfHelpIsAvailable(EClass eclass_p) {
-        return ((null != eclass_p) && (null != HelpSystem.getHelpContent(generateHTMLLink(eclass_p))));
+      protected boolean checkIfHelpIsAvailable(EClass eclass) {
+        return ((null != eclass) && (null != HelpSystem.getHelpContent(generateHTMLLink(eclass))));
       }
 
-      public void helpRequested(HelpEvent e_p) {
+      public void helpRequested(HelpEvent e) {
         IContext c = new IContext() {
           @SuppressWarnings("synthetic-access")
           public String getText() {
@@ -188,15 +188,15 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
         helpSystem.displayContext(c, 0, 0);
       }
 
-      protected String generateHTMLLink(EClass eclass_p) {
+      protected String generateHTMLLink(EClass eclass) {
         String result = "/org.polarsys.capella.core.doc.user/html/editors/" + //$NON-NLS-1$
-                        eclass_p.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass_p.getName() + ICommonConstants.POINT_CHARACTER + "html" //$NON-NLS-1$
+                        eclass.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass.getName() + ICommonConstants.POINT_CHARACTER + "html" //$NON-NLS-1$
         ;
         return result;
       }
     };
 
-    _comp = parent_p;
+    _comp = parent;
     _comp.addHelpListener(_helpListener);
   }
 

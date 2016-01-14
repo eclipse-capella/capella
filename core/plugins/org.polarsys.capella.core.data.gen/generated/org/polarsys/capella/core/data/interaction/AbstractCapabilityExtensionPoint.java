@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.capellacore.NamedRelationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability <em>Abstract Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getExtendLinks <em>Extend Links</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtensionPoint()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractCapabilityExtensionPoint'"
@@ -40,8 +40,7 @@ public interface AbstractCapabilityExtensionPoint extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Abstract Capability</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getAbstractCapabilityExtensionPoints <em>Abstract Capability Extension Points</em>}'.
+	 * Returns the value of the '<em><b>Abstract Capability</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -49,11 +48,9 @@ public interface AbstractCapabilityExtensionPoint extends NamedRelationship {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Abstract Capability</em>' container reference.
-	 * @see #setAbstractCapability(AbstractCapability)
+	 * @return the value of the '<em>Abstract Capability</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtensionPoint_AbstractCapability()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getAbstractCapabilityExtensionPoints
-	 * @model opposite="abstractCapabilityExtensionPoints" required="true"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='useCase' featureOwner='ExtensionPoint'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractCapability'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability to which this extension point belongs\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -62,24 +59,6 @@ public interface AbstractCapabilityExtensionPoint extends NamedRelationship {
 	 */
 
 	AbstractCapability getAbstractCapability();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability <em>Abstract Capability</em>}' container reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Abstract Capability</em>' container reference.
-	 * @see #getAbstractCapability()
-	 * @generated
-	 */
-
-	void setAbstractCapability(AbstractCapability value);
-
-
-
 
 
 

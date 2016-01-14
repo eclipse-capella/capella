@@ -18,15 +18,20 @@ import org.polarsys.capella.core.sirius.analysis.actions.extensions.AffectToMess
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard;
 
 /**
- * Interface which have to be implemented by the classes with are used in order to short-cut GUI call from {@link AffectToMessageDialogBox}
+ * Interface which have to be implemented by the classes with are used in order to short-cut GUI call from
+ * {@link AffectToMessageDialogBox}
  */
 public interface IAffectToMessageResult extends IHeadlessResult {
   /**
    * the simulated result.
-   * @param selections @see {@link AffectToMessageDialogBox}
-   * @param parameters @see {@link AffectToMessageDialogBox}
+   * 
+   * @param selections
+   *          @see {@link AffectToMessageDialogBox}
+   * @param parameters
+   *          @see {@link AffectToMessageDialogBox}
    * @return the "left" list.
    * @see {@link SelectLinksFromTransferWizard}
    */
+  @Override
   public Object getResult(Collection<? extends EObject> selections, Map<String, Object> parameters);
 }

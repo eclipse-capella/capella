@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1888,86 +1888,86 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "profileName", "Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (capellaElementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																									
+		   });	
 		addAnnotation
 		  (namespaceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNamespace_OwnedTraces(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (getNamespace_NamingRules(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (namedRelationshipEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Relationship" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNamedRelationship_NamingRules(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (structureEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (typeEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (traceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractAnnotation_Content(), 
 		   source, 
 		   new String[] {
 			 "featureName", "body", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Comment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (namingRuleEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.NamingRule" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNamingRule_TargetType(), 
 		   source, 
@@ -1975,14 +1975,14 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "featureName", "targetType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.NamingRule", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (keyValueEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.KeyValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Key(), 
 		   source, 
@@ -1990,123 +1990,123 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "featureName", "key", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.KeyValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Value(), 
 		   source, 
 		   new String[] {
 			 "featureName", "body", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Comment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (reuseLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.ReuseLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getReuseLink_Reused(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseLink_Reuser(), 
 		   source, 
 		   new String[] {
 			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getReuseableStructure_ReuseLinks(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getReuserStructure_ReuseLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuserStructure_OwnedReuseLinks(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Abstract(), 
 		   source, 
 		   new String[] {
 			 "featureName", "isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_OwnedGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SuperGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });	
 		addAnnotation
 		  (classifierEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (generalClassEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "GeneralClass" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getGeneralClass_NestedGeneralClasses(), 
 		   source, 
 		   new String[] {
 			 "featureName", "nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Class" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (generalizationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralization_Super(), 
 		   source, 
 		   new String[] {
 			 "featureName", "general", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });	
 		addAnnotation
 		  (allocationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																													
+		   });
 	}
 
 	/**
@@ -2116,7 +2116,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2126,7 +2126,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																			
+		   });
 	}
 
 	/**
@@ -2136,7 +2136,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2148,7 +2148,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "This package depends on the model ModellingCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (capellaElementEClass, 
 		   source, 
@@ -2160,7 +2160,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCapellaElement_Summary(), 
 		   source, 
@@ -2169,7 +2169,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Description(), 
 		   source, 
@@ -2178,7 +2178,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Review(), 
 		   source, 
@@ -2187,7 +2187,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedPropertyValues(), 
 		   source, 
@@ -2195,7 +2195,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the property values that are contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedEnumerationPropertyTypes(), 
 		   source, 
@@ -2203,7 +2203,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the enumeration property types that are contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedPropertyValues(), 
 		   source, 
@@ -2211,7 +2211,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the property values that are applied on this element (whether they are actually stored under this element or not)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedPropertyValueGroups(), 
 		   source, 
@@ -2219,7 +2219,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the property value groups that are stored/contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedPropertyValueGroups(), 
 		   source, 
@@ -2227,7 +2227,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the property value groups that apply to this element (whether or not they are actually stored under this element)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Status(), 
 		   source, 
@@ -2235,7 +2235,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the enumeration property literal that applies to this element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (namedElementEClass, 
 		   source, 
@@ -2247,7 +2247,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (relationshipEClass, 
 		   source, 
@@ -2259,7 +2259,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (namespaceEClass, 
 		   source, 
@@ -2271,7 +2271,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getNamespace_OwnedTraces(), 
 		   source, 
@@ -2279,7 +2279,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the trace link contained/stored in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedGenericTraces(), 
 		   source, 
@@ -2287,7 +2287,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedRequirementsTraces(), 
 		   source, 
@@ -2295,7 +2295,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getNamespace_NamingRules(), 
 		   source, 
@@ -2303,7 +2303,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "specifications of constraints on the naming of the element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (namedRelationshipEClass, 
 		   source, 
@@ -2315,7 +2315,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getNamedRelationship_NamingRules(), 
 		   source, 
@@ -2323,7 +2323,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "specifications of constraints applying to the naming of the relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (structureEClass, 
 		   source, 
@@ -2335,7 +2335,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getStructure_OwnedPropertyValuePkgs(), 
 		   source, 
@@ -2343,7 +2343,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to packages that contain light extensions property values\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractModellingStructureEClass, 
 		   source, 
@@ -2355,7 +2355,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractModellingStructure_OwnedArchitectures(), 
 		   source, 
@@ -2363,7 +2363,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the modeling architectures contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractModellingStructure_OwnedArchitecturePkgs(), 
 		   source, 
@@ -2371,7 +2371,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the architecture packages contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modellingBlockEClass, 
 		   source, 
@@ -2383,7 +2383,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modellingArchitectureEClass, 
 		   source, 
@@ -2395,7 +2395,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modellingArchitecturePkgEClass, 
 		   source, 
@@ -2407,7 +2407,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (typeEClass, 
 		   source, 
@@ -2419,7 +2419,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getType_TypedElements(), 
 		   source, 
@@ -2427,7 +2427,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (typedElementEClass, 
 		   source, 
@@ -2439,7 +2439,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getTypedElement_Type(), 
 		   source, 
@@ -2447,7 +2447,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "The type of the TypedElement\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (traceEClass, 
 		   source, 
@@ -2459,7 +2459,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractAnnotationEClass, 
 		   source, 
@@ -2471,7 +2471,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractAnnotation_Content(), 
 		   source, 
@@ -2480,7 +2480,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (namingRuleEClass, 
 		   source, 
@@ -2492,7 +2492,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNamingRule_TargetType(), 
 		   source, 
@@ -2501,7 +2501,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (constraintEClass, 
 		   source, 
@@ -2513,7 +2513,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (keyValueEClass, 
 		   source, 
@@ -2525,7 +2525,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Key(), 
 		   source, 
@@ -2534,7 +2534,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Value(), 
 		   source, 
@@ -2543,7 +2543,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (reuseLinkEClass, 
 		   source, 
@@ -2555,7 +2555,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseLink_Reused(), 
 		   source, 
@@ -2563,7 +2563,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the structure that is reused\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseLink_Reuser(), 
 		   source, 
@@ -2571,7 +2571,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "description", "Link to the structure that reuses\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (reuseableStructureEClass, 
 		   source, 
@@ -2583,7 +2583,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseableStructure_ReuseLinks(), 
 		   source, 
@@ -2591,7 +2591,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the set of reused links of this structure\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (reuserStructureEClass, 
 		   source, 
@@ -2603,7 +2603,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuserStructure_ReuseLinks(), 
 		   source, 
@@ -2611,7 +2611,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the reuse links that involve this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuserStructure_OwnedReuseLinks(), 
 		   source, 
@@ -2619,7 +2619,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the reuse links that are stored in this structure (may or may not involve it)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (generalizableElementEClass, 
 		   source, 
@@ -2631,7 +2631,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Abstract(), 
 		   source, 
@@ -2640,7 +2640,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_OwnedGeneralizations(), 
 		   source, 
@@ -2648,7 +2648,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the links to this classifier\'s parent(s)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SuperGeneralizations(), 
 		   source, 
@@ -2656,7 +2656,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "(automatically computed) the links to this classifier\'s parent(s)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SubGeneralizations(), 
 		   source, 
@@ -2664,7 +2664,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "(automatically computed) the links to this classifier\'s child(ren)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Super(), 
 		   source, 
@@ -2672,7 +2672,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "(automatically computed) parent classifiers\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Sub(), 
 		   source, 
@@ -2680,7 +2680,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "(automatically computed) children classifiers\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (classifierEClass, 
 		   source, 
@@ -2692,7 +2692,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getClassifier_OwnedFeatures(), 
 		   source, 
@@ -2700,7 +2700,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the features contained in this classifier\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (generalClassEClass, 
 		   source, 
@@ -2712,7 +2712,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getGeneralClass_Visibility(), 
 		   source, 
@@ -2721,7 +2721,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
 		   source, 
@@ -2729,7 +2729,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "The operations owned by the general class. The association is ordered\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGeneralClass_NestedGeneralClasses(), 
 		   source, 
@@ -2737,7 +2737,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the classes contained/nested into this class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (generalizationEClass, 
 		   source, 
@@ -2749,7 +2749,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGeneralization_Super(), 
 		   source, 
@@ -2757,7 +2757,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Same as UML Generalization general association : References the general classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getGeneralization_Sub(), 
 		   source, 
@@ -2765,7 +2765,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Same as UML Generalization specific association : References the specializing classifier in the Generalization relationship.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (featureEClass, 
 		   source, 
@@ -2777,7 +2777,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFeature_IsAbstract(), 
 		   source, 
@@ -2786,7 +2786,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "true is Feature is abstract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFeature_IsStatic(), 
 		   source, 
@@ -2795,7 +2795,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "true if Feature is static", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFeature_Visibility(), 
 		   source, 
@@ -2804,7 +2804,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractExchangeItemPkgEClass, 
 		   source, 
@@ -2816,7 +2816,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractExchangeItemPkg_OwnedExchangeItems(), 
 		   source, 
@@ -2824,7 +2824,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the exchange items contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (allocationEClass, 
 		   source, 
@@ -2836,7 +2836,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "Allocation is an abstract concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (involvementEClass, 
 		   source, 
@@ -2848,7 +2848,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInvolvement_Involver(), 
 		   source, 
@@ -2856,7 +2856,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the element that involves\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInvolvement_Involved(), 
 		   source, 
@@ -2864,7 +2864,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the element that is involved\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (involverElementEClass, 
 		   source, 
@@ -2876,7 +2876,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInvolverElement_InvolvedInvolvements(), 
 		   source, 
@@ -2884,7 +2884,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the set of involvement relationships for which the element is involved with the role of the element which is involved\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (involvedElementEClass, 
 		   source, 
@@ -2896,7 +2896,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInvolvedElement_InvolvingInvolvements(), 
 		   source, 
@@ -2904,7 +2904,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "Link to the set of involvement relationships for which the element is involved with the role of the element which involves another one\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractPropertyValueEClass, 
 		   source, 
@@ -2916,7 +2916,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractPropertyValue_InvolvedElements(), 
 		   source, 
@@ -2924,7 +2924,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the model elements involved by this property value\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractPropertyValue_ValuedElements(), 
 		   source, 
@@ -2932,7 +2932,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the model elements to which this property value is applied\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (stringPropertyValueEClass, 
 		   source, 
@@ -2944,7 +2944,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStringPropertyValue_Value(), 
 		   source, 
@@ -2953,7 +2953,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (integerPropertyValueEClass, 
 		   source, 
@@ -2965,7 +2965,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getIntegerPropertyValue_Value(), 
 		   source, 
@@ -2974,7 +2974,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (booleanPropertyValueEClass, 
 		   source, 
@@ -2986,7 +2986,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBooleanPropertyValue_Value(), 
 		   source, 
@@ -2995,7 +2995,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (floatPropertyValueEClass, 
 		   source, 
@@ -3007,7 +3007,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFloatPropertyValue_Value(), 
 		   source, 
@@ -3016,7 +3016,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyValueEClass, 
 		   source, 
@@ -3028,7 +3028,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyValue_Type(), 
 		   source, 
@@ -3037,7 +3037,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyValue_Value(), 
 		   source, 
@@ -3046,7 +3046,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyTypeEClass, 
 		   source, 
@@ -3058,7 +3058,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyType_OwnedLiterals(), 
 		   source, 
@@ -3067,7 +3067,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyLiteralEClass, 
 		   source, 
@@ -3079,7 +3079,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (propertyValueGroupEClass, 
 		   source, 
@@ -3091,7 +3091,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPropertyValueGroup_ValuedElements(), 
 		   source, 
@@ -3099,7 +3099,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "the model elements to which this property group is applied\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (propertyValuePkgEClass, 
 		   source, 
@@ -3111,7 +3111,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractDependenciesPkgEClass, 
 		   source, 
@@ -3123,7 +3123,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum, 
 		   source, 
@@ -3131,7 +3131,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "enumeration listing the various possibilities regarding the visibility of a feature of a class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3139,7 +3139,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "used when visibility is not precised\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3147,7 +3147,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "used when the feature offers public access\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3155,7 +3155,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "used when the feature offers restricted visibility, only to children of the class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -3163,7 +3163,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "used when the feature is only visible/accessible from the class itself\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -3171,7 +3171,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "used when the feature is accessible from any element stored within the same package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -3181,268 +3181,268 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getCapellaElement_Summary(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Description(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Review(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedPropertyValues(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedEnumerationPropertyTypes(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedPropertyValues(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedPropertyValueGroups(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedPropertyValueGroups(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Status(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getCapellaElement_Features(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedRequirements(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedGenericTraces(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedRequirementsTraces(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (getStructure_OwnedPropertyValuePkgs(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getTypedElement_Type(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getAbstractAnnotation_Content(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getNamingRule_TargetType(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (constraintEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (keyValueEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Key(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Value(), 
 		   source, 
 		   new String[] {
-		   });																																									
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Abstract(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Super(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Sub(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getClassifier_ContainedProperties(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getGeneralClass_Visibility(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGeneralClass_NestedGeneralClasses(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });	
 		addAnnotation
 		  (getFeature_IsAbstract(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFeature_IsStatic(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFeature_Visibility(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractExchangeItemPkg_OwnedExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });																														
+		   });	
 		addAnnotation
 		  (getAbstractPropertyValue_ValuedElements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (stringPropertyValueEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getStringPropertyValue_Value(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (integerPropertyValueEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getIntegerPropertyValue_Value(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (booleanPropertyValueEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getBooleanPropertyValue_Value(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (floatPropertyValueEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFloatPropertyValue_Value(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyValueEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyValue_Type(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyValue_Value(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyTypeEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyType_OwnedLiterals(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyLiteralEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (propertyValueGroupEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getPropertyValueGroup_ValuedElements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (propertyValuePkgEClass, 
 		   source, 
 		   new String[] {
-		   });														
+		   });
 	}
 
 	/**
@@ -3452,7 +3452,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -3462,7 +3462,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																
+		   });
 	}
 
 	/**
@@ -3472,175 +3472,175 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (capellaElementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "CapellaElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																									
+		   });	
 		addAnnotation
 		  (namespaceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Namespace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getNamespace_OwnedTraces(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (getNamespace_NamingRules(), 
 		   source, 
 		   new String[] {
 			 "Label", "namingRules" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (namedRelationshipEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "NamedRelationship" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getNamedRelationship_NamingRules(), 
 		   source, 
 		   new String[] {
 			 "Label", "namingRules" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (structureEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Structure" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (typeEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (traceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Trace" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractAnnotationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractAnnotation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (namingRuleEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "NamingRule" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (keyValueEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "KeyValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (reuseLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ReuseLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getReuseLink_Reused(), 
 		   source, 
 		   new String[] {
 			 "Label", "sharedPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseLink_Reuser(), 
 		   source, 
 		   new String[] {
 			 "Label", "systemEngineering" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getReuseableStructure_ReuseLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "reuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getReuserStructure_ReuseLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "reuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuserStructure_OwnedReuseLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedReuseLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_OwnedGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "superGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SuperGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "superGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																	
+		   });	
 		addAnnotation
 		  (classifierEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (generalClassEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "GeneralClass" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
 		   source, 
 		   new String[] {
 			 "Label", "operations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getGeneralClass_NestedGeneralClasses(), 
 		   source, 
 		   new String[] {
 			 "Label", "nestedGeneralClasses" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (generalizationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGeneralization_Super(), 
 		   source, 
 		   new String[] {
 			 "Label", "super" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (featureEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Feature" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (allocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Allocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																														
+		   });
 	}
 
 	/**
@@ -3650,7 +3650,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$										
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (capellaElementEClass, 
 		   source, 
@@ -3659,7 +3659,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCapellaElement_Summary(), 
 		   source, 
@@ -3667,7 +3667,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Description(), 
 		   source, 
@@ -3675,7 +3675,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Review(), 
 		   source, 
@@ -3683,7 +3683,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedPropertyValues(), 
 		   source, 
@@ -3691,7 +3691,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedComment elements on which AbstractPropertyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedEnumerationPropertyTypes(), 
 		   source, 
@@ -3699,7 +3699,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "elements on which EnumerationPropertyType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedPropertyValues(), 
 		   source, 
@@ -3707,7 +3707,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_OwnedPropertyValueGroups(), 
 		   source, 
@@ -3715,7 +3715,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedComment elements on which PropertyValueGroup stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedPropertyValueGroups(), 
 		   source, 
@@ -3723,7 +3723,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCapellaElement_Status(), 
 		   source, 
@@ -3731,7 +3731,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCapellaElement_Features(), 
 		   source, 
@@ -3739,7 +3739,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCapellaElement_AppliedRequirements(), 
 		   source, 
@@ -3747,7 +3747,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (namedElementEClass, 
 		   source, 
@@ -3756,7 +3756,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (relationshipEClass, 
 		   source, 
@@ -3765,7 +3765,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (namespaceEClass, 
 		   source, 
@@ -3774,7 +3774,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Namespace", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getNamespace_OwnedTraces(), 
 		   source, 
@@ -3782,7 +3782,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some packaged elements of the nearest package on which Trace stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedGenericTraces(), 
 		   source, 
@@ -3790,7 +3790,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedRequirementsTraces(), 
 		   source, 
@@ -3798,7 +3798,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getNamespace_NamingRules(), 
 		   source, 
@@ -3806,7 +3806,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (namedRelationshipEClass, 
 		   source, 
@@ -3815,7 +3815,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Relationship", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getNamedRelationship_NamingRules(), 
 		   source, 
@@ -3823,7 +3823,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (structureEClass, 
 		   source, 
@@ -3832,7 +3832,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getStructure_OwnedPropertyValuePkgs(), 
 		   source, 
@@ -3840,7 +3840,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which PropertyValuePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractModellingStructureEClass, 
 		   source, 
@@ -3849,7 +3849,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractModellingStructure_OwnedArchitectures(), 
 		   source, 
@@ -3857,7 +3857,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which ModellingArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractModellingStructure_OwnedArchitecturePkgs(), 
 		   source, 
@@ -3865,7 +3865,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which ModellingArchitecturePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modellingBlockEClass, 
 		   source, 
@@ -3874,7 +3874,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modellingArchitectureEClass, 
 		   source, 
@@ -3883,7 +3883,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (modellingArchitecturePkgEClass, 
 		   source, 
@@ -3892,7 +3892,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (typeEClass, 
 		   source, 
@@ -3901,7 +3901,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getType_TypedElements(), 
 		   source, 
@@ -3909,7 +3909,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (typedElementEClass, 
 		   source, 
@@ -3918,7 +3918,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getTypedElement_Type(), 
 		   source, 
@@ -3926,7 +3926,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (traceEClass, 
 		   source, 
@@ -3935,7 +3935,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractAnnotationEClass, 
 		   source, 
@@ -3944,7 +3944,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractAnnotation_Content(), 
 		   source, 
@@ -3952,7 +3952,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Comment::body or creation of an Expression as specification of a uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (namingRuleEClass, 
 		   source, 
@@ -3961,7 +3961,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNamingRule_TargetType(), 
 		   source, 
@@ -3969,7 +3969,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (constraintEClass, 
 		   source, 
@@ -3978,7 +3978,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (keyValueEClass, 
 		   source, 
@@ -3987,7 +3987,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Key(), 
 		   source, 
@@ -3995,7 +3995,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getKeyValue_Value(), 
 		   source, 
@@ -4003,7 +4003,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Comment::body", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (reuseLinkEClass, 
 		   source, 
@@ -4012,7 +4012,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseLink_Reused(), 
 		   source, 
@@ -4020,7 +4020,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseLink_Reuser(), 
 		   source, 
@@ -4028,7 +4028,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (reuseableStructureEClass, 
 		   source, 
@@ -4037,7 +4037,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseableStructure_ReuseLinks(), 
 		   source, 
@@ -4045,7 +4045,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (reuserStructureEClass, 
 		   source, 
@@ -4054,7 +4054,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuserStructure_ReuseLinks(), 
 		   source, 
@@ -4062,7 +4062,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which ReuseLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getReuserStructure_OwnedReuseLinks(), 
 		   source, 
@@ -4070,7 +4070,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ReuseLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (generalizableElementEClass, 
 		   source, 
@@ -4079,7 +4079,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::RedefinableElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Abstract(), 
 		   source, 
@@ -4087,7 +4087,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Classifier::isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_OwnedGeneralizations(), 
 		   source, 
@@ -4095,7 +4095,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Classifier::generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SuperGeneralizations(), 
 		   source, 
@@ -4103,7 +4103,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Classifier::generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SubGeneralizations(), 
 		   source, 
@@ -4111,7 +4111,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Super(), 
 		   source, 
@@ -4119,7 +4119,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Sub(), 
 		   source, 
@@ -4127,7 +4127,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (classifierEClass, 
 		   source, 
@@ -4136,7 +4136,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Classifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getClassifier_OwnedFeatures(), 
 		   source, 
@@ -4144,7 +4144,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Classifier::feature#keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getClassifier_ContainedProperties(), 
 		   source, 
@@ -4152,7 +4152,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (generalClassEClass, 
 		   source, 
@@ -4161,7 +4161,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getGeneralClass_Visibility(), 
 		   source, 
@@ -4169,7 +4169,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
 		   source, 
@@ -4177,7 +4177,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Class:ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient but mapped to ease the transformation : pick the corresponding containment reference that stores Operations, in uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getGeneralClass_NestedGeneralClasses(), 
 		   source, 
@@ -4185,7 +4185,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Class::nestedClassifier || uml::Interface::nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (generalizationEClass, 
 		   source, 
@@ -4194,7 +4194,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getGeneralization_Super(), 
 		   source, 
@@ -4202,7 +4202,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getGeneralization_Sub(), 
 		   source, 
@@ -4210,7 +4210,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Generalization::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (featureEClass, 
 		   source, 
@@ -4219,7 +4219,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Feature", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getFeature_IsAbstract(), 
 		   source, 
@@ -4227,7 +4227,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::BehavioralFeature::isAbstract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFeature_IsStatic(), 
 		   source, 
@@ -4235,7 +4235,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Feature::isStatic", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getFeature_Visibility(), 
 		   source, 
@@ -4243,7 +4243,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractExchangeItemPkgEClass, 
 		   source, 
@@ -4252,7 +4252,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractExchangeItemPkg_OwnedExchangeItems(), 
 		   source, 
@@ -4260,7 +4260,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which AbstractExchangeItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (allocationEClass, 
 		   source, 
@@ -4269,7 +4269,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (involvementEClass, 
 		   source, 
@@ -4278,7 +4278,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInvolvement_Involver(), 
 		   source, 
@@ -4286,7 +4286,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInvolvement_Involved(), 
 		   source, 
@@ -4294,7 +4294,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (involverElementEClass, 
 		   source, 
@@ -4303,7 +4303,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInvolverElement_InvolvedInvolvements(), 
 		   source, 
@@ -4311,7 +4311,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (involvedElementEClass, 
 		   source, 
@@ -4320,7 +4320,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInvolvedElement_InvolvingInvolvements(), 
 		   source, 
@@ -4328,7 +4328,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and Transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractPropertyValueEClass, 
 		   source, 
@@ -4337,7 +4337,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractPropertyValue_InvolvedElements(), 
 		   source, 
@@ -4345,7 +4345,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Comment:annotatedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Comment::annotatedElement elements on which CapellaElement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractPropertyValue_ValuedElements(), 
 		   source, 
@@ -4353,7 +4353,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (stringPropertyValueEClass, 
 		   source, 
@@ -4362,7 +4362,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getStringPropertyValue_Value(), 
 		   source, 
@@ -4370,7 +4370,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "value will be stored as a stereotype-specific property, of type String", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (integerPropertyValueEClass, 
 		   source, 
@@ -4379,7 +4379,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getIntegerPropertyValue_Value(), 
 		   source, 
@@ -4387,7 +4387,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "value will be stored as a stereotype-specific property, of type Int", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (booleanPropertyValueEClass, 
 		   source, 
@@ -4396,7 +4396,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBooleanPropertyValue_Value(), 
 		   source, 
@@ -4404,7 +4404,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "value will be stored as a stereotype-specific property, of type Boolean", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (floatPropertyValueEClass, 
 		   source, 
@@ -4413,7 +4413,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFloatPropertyValue_Value(), 
 		   source, 
@@ -4421,7 +4421,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "value will be stored as a stereotype-specific property, of type Float", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyValueEClass, 
 		   source, 
@@ -4430,7 +4430,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyValue_Type(), 
 		   source, 
@@ -4438,7 +4438,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyValue_Value(), 
 		   source, 
@@ -4446,7 +4446,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "value will be stored as a stereotype-specific property, as a reference to an EnumerationPropertyLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyTypeEClass, 
 		   source, 
@@ -4455,7 +4455,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Enumeration", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationPropertyType_OwnedLiterals(), 
 		   source, 
@@ -4463,7 +4463,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::Enumeration::ownedLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationPropertyLiteralEClass, 
 		   source, 
@@ -4472,7 +4472,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (propertyValueGroupEClass, 
 		   source, 
@@ -4481,7 +4481,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPropertyValueGroup_ValuedElements(), 
 		   source, 
@@ -4489,7 +4489,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (propertyValuePkgEClass, 
 		   source, 
@@ -4498,7 +4498,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractDependenciesPkgEClass, 
 		   source, 
@@ -4507,7 +4507,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum, 
 		   source, 
@@ -4515,7 +4515,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::VisibilityKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -4523,7 +4523,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -4531,7 +4531,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::VisibilityKind::public", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -4539,7 +4539,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::VisibilityKind::protected", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -4547,7 +4547,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "uml::VisibilityKind::private", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (visibilityKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -4565,82 +4565,82 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																																								
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getCapellaElement_AppliedRequirements(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedGenericTraces(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getNamespace_ContainedRequirementsTraces(), 
 		   source, 
 		   new String[] {
-		   });																																								
+		   });	
 		addAnnotation
 		  (getType_TypedElements(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getTypedElement_Type(), 
 		   source, 
 		   new String[] {
-		   });																																																																																											
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SuperGeneralizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SubGeneralizations(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Super(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_Sub(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getClassifier_ContainedProperties(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
 		   source, 
 		   new String[] {
-		   });																																																					
+		   });	
 		addAnnotation
 		  (getInvolverElement_InvolvedInvolvements(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getInvolvedElement_InvolvingInvolvements(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getAbstractPropertyValue_ValuedElements(), 
 		   source, 
 		   new String[] {
-		   });																																																		
+		   });	
 		addAnnotation
 		  (getPropertyValueGroup_ValuedElements(), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });
 	}
 
 	/**
@@ -4650,62 +4650,62 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																																																					
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getNamespace_OwnedTraces(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																			
+		   });	
 		addAnnotation
 		  (getReuseLink_Reused(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getReuseLink_Reuser(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getReuseableStructure_ReuseLinks(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getReuserStructure_ReuseLinks(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getReuserStructure_OwnedReuseLinks(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_OwnedGeneralizations(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getGeneralizableElement_SuperGeneralizations(), 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });	
 		addAnnotation
 		  (getGeneralClass_ContainedOperations(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getGeneralClass_NestedGeneralClasses(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getGeneralization_Super(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																				
+		   });
 	}
 
 	/**
@@ -4715,27 +4715,27 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																																																																																														
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (traceEClass, 
 		   source, 
 		   new String[] {
-		   });																																					
+		   });	
 		addAnnotation
 		  (reuseLinkEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																												
+		   });	
 		addAnnotation
 		  (generalizationEClass, 
 		   source, 
 		   new String[] {
-		   });																														
+		   });	
 		addAnnotation
 		  (allocationEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																												
+		   });
 	}
 
 } //CapellacorePackageImpl

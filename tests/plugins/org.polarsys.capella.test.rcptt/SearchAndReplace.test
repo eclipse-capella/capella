@@ -1,0 +1,78 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_0alKwJ6FEeWcU-ojRg-Rxw,_9ikm0J6BEeWcU-ojRg-Rxw
+Element-Name: SearchAndReplace
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _yFxMUJ6BEeWcU-ojRg-Rxw
+Runtime-Version: 2.0.1.201508250612
+Save-Time: 12/9/15 5:00 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "EOLE_AF/EOLE_AF.aird" | double-click
+    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis" | key-type "M1+M2+f"
+}
+
+with [get-window "Selection Dialog"] {
+    get-combo -after [get-label "Find:"] | set-text "a*"
+    get-group Options | get-button Wildcards | check
+    get-button "Preview impact" | click
+    with [get-window "Preview Impact"] {
+        get-button OK | click
+    }
+}
+get-window "Selection Dialog" | get-group Impacts | get-label 19 | get-property caption | equals 19 | verify-true
+
+with [get-window "Selection Dialog"] {
+    get-group Scope | get-button "Whole model" | click
+    get-button "Preview impact" | click
+    with [get-window "Preview Impact"] {
+        get-button OK | click
+    }
+}
+get-window "Selection Dialog" | get-group Impacts | get-label 52 | get-property caption | equals 52 | verify-true
+
+with [get-window "Selection Dialog"] {
+    get-group "Search for" | get-button Name | uncheck
+    get-button "Preview impact" | click
+}
+get-window "Search and replace" | get-label "No matching elements" | get-property caption 
+    | equals "No matching elements" | verify-true
+get-window "Search and replace" | get-button OK | click
+
+with [get-window "Selection Dialog"] {
+    get-group "Search for" | get-button Name | check
+    get-group Options | get-button "Case sensitive" | check
+    get-button "Preview impact" | click
+    with [get-window "Preview Impact"] {
+        get-button OK | click
+    }
+}
+get-window "Selection Dialog" | get-group Impacts | get-label 5 | get-property caption | equals 5 | verify-true
+
+with [get-window "Selection Dialog"] {
+    get-combo -after [get-label "Replace with:"] | set-text water
+    get-button "Replace All" | click
+}
+get-window "Selection Dialog" | get-button OK | click
+with [get-view Information | get-tree] {
+    get-property itemCount | equals 3 | verify-true
+    get-item "Impacted element names: 5" | get-property caption | equals "Impacted element names: 5" | verify-true
+}
+
+get-view "Capella Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/System Analysis" 
+    | key-type "M1+M2+f"
+with [get-window "Selection Dialog"] {
+    get-combo -after [get-label "Find:"] | set-text "a*"
+    get-combo -after [get-label "Replace with:"] | set-text water
+    get-button "Preview impact" | click
+}
+get-window "Search and replace" | get-label "No matching elements" | get-property caption 
+    | equals "No matching elements" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

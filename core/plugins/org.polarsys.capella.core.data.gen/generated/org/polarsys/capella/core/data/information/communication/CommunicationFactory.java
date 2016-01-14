@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,15 +82,6 @@ public interface CommunicationFactory extends EFactory {
 	 * @generated
 	 */
 	CommunicationLink createCommunicationLink();
-
-	/**
-	 * Returns a new object of class '<em>Link Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link Allocation</em>'.
-	 * @generated
-	 */
-	CommunicationLinkAllocation createCommunicationLinkAllocation();
 
 	/**
 	 * Returns the package supported by this factory.

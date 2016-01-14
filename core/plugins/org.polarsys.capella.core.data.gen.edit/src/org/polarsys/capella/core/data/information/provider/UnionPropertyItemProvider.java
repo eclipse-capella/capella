@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,9 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.UnionProperty;
+import org.polarsys.capella.core.data.information.Unit;
+import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.information.UnionProperty} object.
@@ -139,18 +142,34 @@ public class UnionPropertyItemProvider extends PropertyItemProvider implements I
   public String getText(Object object) {
     String label = ((UnionProperty) object).getName();
     String typeName = ""; //$NON-NLS-1$
+
+    String prefix = PropertyNamingHelper.prefixPropertyLabel((UnionProperty) object);
+    String symbolIfPropertyIsDerived = PropertyNamingHelper.getSymbolIfPropertyIsDerived((UnionProperty) object);
+    String multiplicity = PropertyNamingHelper.multiplicityToStringDisplay((UnionProperty) object);
+
     AbstractType type = ((UnionProperty) object).getAbstractType();
     if (null != type) {
       typeName = type.getName();
       if (null == typeName || "" == typeName) { //$NON-NLS-1$
         typeName = "[" + type.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      } else {
+        if (type instanceof PhysicalQuantity) {
+          Unit unit = ((PhysicalQuantity) type).getUnit();
+          if (unit != null) {
+            String unitName = unit.getName();
+            if (unitName != null && !unitName.isEmpty()) {
+              typeName += " (" + unitName + ")";
+            }
+          }
+        }
       }
     } else {
       typeName = "<undefined>"; //$NON-NLS-1$
     }
     if (label == null || label.length() == 0)
       label = "[" + getString("_UI_UnionProperty_type") + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    label += ": " + typeName; //$NON-NLS-1$
+
+    label = prefix + multiplicity + " " + symbolIfPropertyIsDerived + label + " : " + typeName; //$NON-NLS-1$ //$NON-NLS-2$
 
     return (label == null || label.length() == 0) ? "[" + getString("_UI_UnionProperty_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }

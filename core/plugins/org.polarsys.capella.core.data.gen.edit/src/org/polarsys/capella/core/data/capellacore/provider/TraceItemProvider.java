@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class TraceItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT
 			if (targetElementPropertyDescriptor != null) {
 				Object targetElementValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT, true);
-				if (targetElementValue != null && targetElementValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetElementValue)) {
+				if (targetElementValue != null && targetElementValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetElementValue)) {
 					itemPropertyDescriptors.remove(targetElementPropertyDescriptor);
 				} else if (targetElementValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT) != null) {
 					itemPropertyDescriptors.remove(targetElementPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class TraceItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT
 			if (sourceElementPropertyDescriptor != null) {
 				Object sourceElementValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT, true);
-				if (sourceElementValue != null && sourceElementValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceElementValue)) {
+				if (sourceElementValue != null && sourceElementValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceElementValue)) {
 					itemPropertyDescriptors.remove(sourceElementPropertyDescriptor);
 				} else if (sourceElementValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT) != null) {
 					itemPropertyDescriptors.remove(sourceElementPropertyDescriptor);				  					

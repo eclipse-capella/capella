@@ -123,14 +123,14 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
 
   /**
    * Check if this resolution can resolve the given marker. Used to compute the resolvable markers during
-   * findOtherMarkers. This implementation checks if the unqualified ruleId stored in the marker is one of the ids that's returned
-   * by getResolvableRuleIds.
+   * findOtherMarkers. This implementation checks if the unqualified ruleId stored in the marker is one of the ids
+   * that's returned by getResolvableRuleIds.
    * 
    * @param marker
    * @return
    */
   protected boolean canResolve(IMarker marker) {
-    String ruleId = MarkerViewHelper.getRuleId(marker);
+    String ruleId = MarkerViewHelper.getRuleID(marker, true);
     if (ruleId != null) {
       if (isEMFRule(ruleId)) {
         return true;
@@ -174,5 +174,4 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
     return !(getResolvableRuleIds().length == noRuleIds.length);
 
   }
-
 }

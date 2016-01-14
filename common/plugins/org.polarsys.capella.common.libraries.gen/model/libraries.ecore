@@ -8,7 +8,7 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="ModelInformation" eSuperTypes="#//LibraryAbstractElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/0.8.0#//Project"/>
+      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/1.0.0#//Project"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
       <details key="Mapping" value="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project"/>

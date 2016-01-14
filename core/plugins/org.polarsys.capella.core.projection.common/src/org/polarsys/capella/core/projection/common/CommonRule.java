@@ -347,7 +347,7 @@ public abstract class CommonRule extends TransfoRule implements IRuleTransformat
   protected void notifyMessage(String message, Object affectedObject, String priority, ITransfo transfo_p) {
     if (_logger.isEnabledFor(Level.toLevel(priority))){
       EmbeddedMessage mess = new EmbeddedMessage(message, _logger.getName(), affectedObject);
-      mess.setInfo(getClass().getSimpleName());
+      mess.setSource(getClass().getSimpleName());
       _logger.log(Level.toLevel(priority), mess);       
     }
   }

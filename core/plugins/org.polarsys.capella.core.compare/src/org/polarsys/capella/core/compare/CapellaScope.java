@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,23 +56,23 @@ public class CapellaScope extends SiriusScope {
   
   /**
    * Constructor
-   * @param uri_p a non-null URI
-   * @param domain_p a non-null editing domain
-   * @param readOnly_p whether the scope is read-only
+   * @param uri a non-null URI
+   * @param domain a non-null editing domain
+   * @param readOnly whether the scope is read-only
    */
-  public CapellaScope(URI uri_p, EditingDomain editingDomain_p, boolean readOnly_p) {
-    super(uri_p, editingDomain_p, readOnly_p);
+  public CapellaScope(URI uri, EditingDomain domain, boolean readOnly) {
+    super(uri, domain, readOnly);
     // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
   }
   
   /**
    * Constructor
-   * @param uri_p a non-null URI
-   * @param resourceSet_p a non-null resource set
-   * @param readOnly_p whether the scope is read-only
+   * @param uri a non-null URI
+   * @param resourceSet a non-null resource set
+   * @param readOnly whether the scope is read-only
    */
-  public CapellaScope(URI uri_p, ResourceSet resourceSet_p, boolean readOnly_p) {
-    super(uri_p, resourceSet_p, readOnly_p);
+  public CapellaScope(URI uri, ResourceSet resourceSet, boolean readOnly) {
+    super(uri, resourceSet, readOnly);
     // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
   }
   
@@ -80,28 +80,28 @@ public class CapellaScope extends SiriusScope {
    * @see org.eclipse.emf.diffmerge.impl.scopes.FragmentedModelScope#addNewResource(org.eclipse.emf.ecore.resource.Resource)
    */
   @Override
-  protected void addNewResource(Resource resource_p) {
+  protected void addNewResource(Resource resource) {
     if (!_ignoreCapellaVersions) // Automatically initialized to false
-      checkCapellaVersion(resource_p);
-    super.addNewResource(resource_p);
-    if (!resource_p.isTrackingModification())
-      resource_p.setTrackingModification(true);
+      checkCapellaVersion(resource);
+    super.addNewResource(resource);
+    if (!resource.isTrackingModification())
+      resource.setTrackingModification(true);
   }
   
   /**
    * Return whether models made with either version of the tool can be loaded
    * in the tool of the other given version
-   * @param toolVersion1_p a potentially null short version (in format "X.Y.Z")
-   * @param toolVersion2_p a potentially null short version (in format "X.Y.Z")
+   * @param toolVersion1 a potentially null short version (in format "X.Y.Z")
+   * @param toolVersion2 a potentially null short version (in format "X.Y.Z")
    */
-  protected boolean areCompatible(String toolVersion1_p, String toolVersion2_p) {
+  protected boolean areCompatible(String toolVersion1, String toolVersion2) {
     boolean result = true;
-    if (toolVersion1_p != null && toolVersion2_p != null) {
+    if (toolVersion1 != null && toolVersion2 != null) {
       result = false;
       String pattern = Pattern.quote(
           ICommonConstants.EMPTY_STRING + ICommonConstants.POINT_CHARACTER);
-      String[] segments1 = toolVersion1_p.split(pattern);
-      String[] segments2 = toolVersion2_p.split(pattern);
+      String[] segments1 = toolVersion1.split(pattern);
+      String[] segments2 = toolVersion2.split(pattern);
       if (segments1.length >= 2 && segments2.length >=2) {
         if (segments1[0].equals(segments2[0]))
           result = segments1[1].equals(segments2[1]);
@@ -113,12 +113,12 @@ public class CapellaScope extends SiriusScope {
   /**
    * Throw an exception if the given resource is a Capella resource with an
    * incorrect version and the user does not confirm that comparison must be carried out
-   * @param resource_p a potentially null resource
+   * @param resource a potentially null resource
    */
-  protected void checkCapellaVersion(final Resource resource_p) {
-    if (resource_p != null && CapellaResourceHelper.isCapellaResource(resource_p)) {
+  protected void checkCapellaVersion(final Resource resource) {
+    if (resource != null && CapellaResourceHelper.isCapellaResource(resource)) {
       // Checking Capella version of Capella resource
-      final IFile capellaFile = getFileFor(resource_p);
+      final IFile capellaFile = getFileFor(resource);
       if (capellaFile != null) {
         String capellaVersion =
           FeatureHelper.getCapellaVersion(false);
@@ -199,11 +199,11 @@ public class CapellaScope extends SiriusScope {
   
   /**
    * Find and return a transactional editing domain from a list of resources, if possible
-   * @param resources_p a non-null set of resources
+   * @param resources a non-null set of resources
    * @return a potentially null editing domain
    */
-  protected TransactionalEditingDomain findEditingDomain(Collection<Resource> resources_p) {
-    for (Resource resource : resources_p) {
+  protected TransactionalEditingDomain findEditingDomain(Collection<Resource> resources) {
+    for (Resource resource : resources) {
       TransactionalEditingDomain result = TransactionUtil.getEditingDomain(resource);
       if (result != null)
         return result;
@@ -215,9 +215,9 @@ public class CapellaScope extends SiriusScope {
    * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusScope#getCrossReferencesInScope(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected Collection<EReference> getCrossReferencesInScope(EObject element_p) {
-    Collection<EReference> result = super.getCrossReferencesInScope(element_p);
-    if (element_p instanceof LibraryReference) {
+  protected Collection<EReference> getCrossReferencesInScope(EObject element) {
+    Collection<EReference> result = super.getCrossReferencesInScope(element);
+    if (element instanceof LibraryReference) {
       // From Model/Library to referenced Libraries
       result.add(LibrariesPackage.eINSTANCE.getLibraryReference_Library());
     }
@@ -227,28 +227,30 @@ public class CapellaScope extends SiriusScope {
   /**
    * Return the Eclipse file that holds the given resource, if any.
    * If the file is outside the workspace, create a link to it in a dedicated Eclipse project.
-   * @param resource_p a non-null resource
+   * @param resource a non-null resource
    * @return a potentially null Eclipse file
    */
-  protected IFile getFileFor(Resource resource_p) {
+  protected IFile getFileFor(Resource resource) {
     IFile result = null;
-    URI uri = resource_p.getURI();
-    if (uri != null && uri.isPlatformResource()) {
-      // Resource in workspace
-      String platformResourcePath = uri.toPlatformString(true);
-      result = ResourcesPlugin.getWorkspace().getRoot().getFile(
-          new Path(platformResourcePath));
-    } else {
-      // Resource from external file
-      IPath path = new Path(uri.toFileString());
-      IProject proxyProject = CapellaComparePlugin.getDefault().getProxyProject(this, path);
-      if (proxyProject != null) {
-        try {
-          String linkName = makeLinkName(uri);
-          result = proxyProject.getFile(linkName);
-          result.createLink(path, IResource.REPLACE, null);
-        } catch (CoreException e) {
-          // Just proceed
+    URI uri = resource.getURI();
+    if (uri != null) {
+      if (uri.isPlatformResource()) {
+        // Resource in workspace
+        String platformResourcePath = uri.toPlatformString(true);
+        result = ResourcesPlugin.getWorkspace().getRoot().getFile(
+            new Path(platformResourcePath));
+      } else {
+        // Resource from external file
+        IPath path = new Path(uri.toFileString());
+        IProject proxyProject = CapellaComparePlugin.getDefault().getProxyProject(this, path);
+        if (proxyProject != null) {
+          try {
+            String linkName = makeLinkName(uri);
+            result = proxyProject.getFile(linkName);
+            result.createLink(path, IResource.REPLACE, null);
+          } catch (CoreException e) {
+            // Just proceed
+          }
         }
       }
     }
@@ -259,10 +261,10 @@ public class CapellaScope extends SiriusScope {
    * @see org.eclipse.emf.diffmerge.impl.scopes.FragmentedModelScope#getRelevantReferencedResources(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected final List<Resource> getRelevantReferencedResources(EObject element_p) {
+  protected final List<Resource> getRelevantReferencedResources(EObject element) {
     // Filter out metamodels because of Sirius bug that adds eMDE.ecore to the models
     // referenced by DAnalysis (DAnalysis_Models)
-    List<Resource> result = super.getRelevantReferencedResources(element_p);
+    List<Resource> result = super.getRelevantReferencedResources(element);
     for (Resource resource : new ArrayList<Resource>(result)) {
       if (EcorePackage.eNAME.equals(resource.getURI().fileExtension()))
         result.remove(resource);
@@ -272,12 +274,12 @@ public class CapellaScope extends SiriusScope {
   
   /**
    * Return a file link name for this scope
-   * @param uri_p a non-null URI
+   * @param uri a non-null URI
    * @return a non-null string
    */
-  protected String makeLinkName(URI uri_p) {
-    URI truncated = uri_p.trimFileExtension();
-    String extension = uri_p.fileExtension();
+  protected String makeLinkName(URI uri) {
+    URI truncated = uri.trimFileExtension();
+    String extension = uri.fileExtension();
     String segment = truncated.lastSegment();
     // A suffix could be added to segment, which is why we decompose so much
     URI result = truncated.trimSegments(1).appendSegment(segment);

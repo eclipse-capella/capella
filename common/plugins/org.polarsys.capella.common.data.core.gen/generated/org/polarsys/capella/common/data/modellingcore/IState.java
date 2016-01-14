@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.IState#getReferencedStates <em>Referenced States</em>}</li>
- *   <li>{@link org.polarsys.capella.common.data.modellingcore.IState#getAvailableInStates <em>Available In States</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.data.modellingcore.IState#getExploitedStates <em>Exploited States</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState()
  * @model interface="true" abstract="true"
@@ -57,23 +57,23 @@ public interface IState extends AbstractNamedElement {
 	EList<IState> getReferencedStates();
 
 	/**
-	 * Returns the value of the '<em><b>Available In States</b></em>' reference list.
+	 * Returns the value of the '<em><b>Exploited States</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.IState}.
 
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Available In States</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Available In States</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_AvailableInStates()
+   * <p>
+   * If the meaning of the '<em>Exploited States</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+	 * @return the value of the '<em>Exploited States</em>' reference list.
+	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getIState_ExploitedStates()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
 	 * @generated
 	 */
 
-	EList<IState> getAvailableInStates();
+  EList<IState> getExploitedStates();
 
 
 

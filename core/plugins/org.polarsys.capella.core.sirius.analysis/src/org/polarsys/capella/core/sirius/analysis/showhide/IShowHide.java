@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,12 +19,12 @@ import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.Diagr
 /**
  *
  */
-public interface IShowHide {
+interface IShowHide {
 
-  public Collection<DSemanticDecorator> showWithResult(EObject semantic_p, DiagramContext context_p);
+  Collection<DSemanticDecorator> showWithResult(EObject semantic, DiagramContext context);
 
-  public void show(EObject semantic_p, DiagramContext context_p);
+  void show(EObject semantic, DiagramContext context);
 
-  public void hide(EObject semantic_p, DiagramContext context_p);
+  void hide(EObject semantic, DiagramContext context);
 
 }

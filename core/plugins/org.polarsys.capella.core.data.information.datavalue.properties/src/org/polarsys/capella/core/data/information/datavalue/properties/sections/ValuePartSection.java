@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,23 +63,23 @@ public class ValuePartSection extends CapellaElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    referencedPropertyField.loadData(capellaElement_p, DatavaluePackage.eINSTANCE.getValuePart_ReferencedProperty());
+    referencedPropertyField.loadData(capellaElement, DatavaluePackage.eINSTANCE.getValuePart_ReferencedProperty());
 
-    evaluateButtonStatus((ValuePart) capellaElement_p);
+    evaluateButtonStatus((ValuePart) capellaElement);
   }
   
   /**
    * If the type of the owning ComplexValue is unset, then the referencedProperty buttons (ADD and BROWSE) shall be disabled<br>
    * If the type of the owning ComplexValue is Collection, then the referencedProperty button ADD shall be disabled<br>
    * 
-   * @param unionProperty_p
+   * @param unionProperty
    */
-  private void evaluateButtonStatus(ValuePart valuePart_p) {
-    if (valuePart_p.eContainer() instanceof ComplexValue) {
-      AbstractType type = ((ComplexValue) valuePart_p.eContainer()).getAbstractType();
+  private void evaluateButtonStatus(ValuePart valuePart) {
+    if (valuePart.eContainer() instanceof ComplexValue) {
+      AbstractType type = ((ComplexValue) valuePart.eContainer()).getAbstractType();
       if (type != null) {
         boolean enable = !(type instanceof Collection);
         referencedPropertyField.enableOpenButton(enable);

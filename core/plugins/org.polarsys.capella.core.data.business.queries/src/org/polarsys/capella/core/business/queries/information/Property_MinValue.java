@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,33 +26,33 @@ import org.polarsys.capella.core.data.information.InformationPackage;
  * This is the query for the Properties min values
  */
 public class Property_MinValue extends AbstractMultiplicityElement_MinValue implements IBusinessQuery {
-	/**
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
-	 */
-	@Override
-	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE);
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
+   */
+  @Override
+  public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE);
+  }
 
-	/**
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-	 */
-	@Override
-	public EClass getEClass() {
-		return InformationPackage.Literals.PROPERTY;
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+   */
+  @Override
+  public EClass getEClass() {
+    return InformationPackage.Literals.PROPERTY;
+  }
 
-	@Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PROPERTY__MIN_VALUE, element_p, context);
-	}
+  @Override
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PROPERTY__NULL_VALUE___LIB, element, context);
+  }
 
-	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PROPERTY__MIN_VALUE, element_p, context);
-	}
+  @Override
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PROPERTY__MIN_VALUE, element, context);
+  }
 }

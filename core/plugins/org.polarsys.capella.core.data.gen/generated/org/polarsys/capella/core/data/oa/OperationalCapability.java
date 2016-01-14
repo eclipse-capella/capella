@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapability#getCompliances <em>Compliances</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapability#getConfigurations <em>Configurations</em>}</li>
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapability#getRealizingCapabilities <em>Realizing Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalCapability#getInvolvedEntities <em>Involved Entities</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Ability of an organisation, system or process to to provide a service that supports the achievement of high-level operational goals\r\n\r\nAt the organisation level: Ability of an organisation, system or process to realise a product that will fulfill the requirements for that product.\r\n[source: ISO 9000]\r\n\r\nAt the program level: An operational outcome or effect that users of equipment need to achieve. \r\n[source: Smart Procurement - Edition 3 - June 2000]\r\n\r\nAt the system level: Set of functions that characterise an Operational service provided by a system, it is required against one or several requirements: functional and not functional (performance, constraint, ...).\r\n[source: MIST]\r\n' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella 1.0.3' reference\040documentation='none'"

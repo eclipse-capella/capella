@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -87,7 +87,7 @@ public class StateEventRealizationItemProvider
 			// Process CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZED_EVENT
 			if (realizedEventPropertyDescriptor != null) {
 				Object realizedEventValue = eObject.eGet(CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZED_EVENT, true);
-				if (realizedEventValue != null && realizedEventValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedEventValue)) {
+				if (realizedEventValue != null && realizedEventValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedEventValue)) {
 					itemPropertyDescriptors.remove(realizedEventPropertyDescriptor);
 				} else if (realizedEventValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZED_EVENT) != null) {
 					itemPropertyDescriptors.remove(realizedEventPropertyDescriptor);				  					
@@ -98,7 +98,7 @@ public class StateEventRealizationItemProvider
 			// Process CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZING_EVENT
 			if (realizingEventPropertyDescriptor != null) {
 				Object realizingEventValue = eObject.eGet(CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZING_EVENT, true);
-				if (realizingEventValue != null && realizingEventValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingEventValue)) {
+				if (realizingEventValue != null && realizingEventValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingEventValue)) {
 					itemPropertyDescriptors.remove(realizingEventPropertyDescriptor);
 				} else if (realizingEventValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZING_EVENT) != null) {
 					itemPropertyDescriptors.remove(realizingEventPropertyDescriptor);				  					

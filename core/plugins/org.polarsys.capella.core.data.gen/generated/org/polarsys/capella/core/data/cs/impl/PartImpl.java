@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,32 +69,6 @@ import org.polarsys.capella.core.data.information.impl.AbstractInstanceImpl;
  * @generated
  */
 public class PartImpl extends AbstractInstanceImpl implements Part {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getDeploymentLinks() <em>Deployment Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeploymentLinks()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractDeploymentLink> deploymentLinks;
 
 
 
@@ -368,10 +342,39 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 
 	public EList<AbstractDeploymentLink> getDeploymentLinks() {
 
-		if (deploymentLinks == null) {
-			deploymentLinks = new EObjectWithInverseResolvingEList<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, CsPackage.PART__DEPLOYMENT_LINKS, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION);
-		}
-		return deploymentLinks;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -720,26 +723,9 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.PART__DEPLOYMENT_LINKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeploymentLinks()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CsPackage.PART__DEPLOYMENT_LINKS:
-				return ((InternalEList<?>)getDeploymentLinks()).basicRemove(otherEnd, msgs);
 			case CsPackage.PART__OWNED_DEPLOYMENT_LINKS:
 				return ((InternalEList<?>)getOwnedDeploymentLinks()).basicRemove(otherEnd, msgs);
 			case CsPackage.PART__OWNED_ABSTRACT_TYPE:
@@ -794,10 +780,6 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CsPackage.PART__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				getDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
-				return;
 			case CsPackage.PART__OWNED_DEPLOYMENT_LINKS:
 				getOwnedDeploymentLinks().clear();
 				getOwnedDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
@@ -824,9 +806,6 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CsPackage.PART__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				return;
 			case CsPackage.PART__OWNED_DEPLOYMENT_LINKS:
 				getOwnedDeploymentLinks().clear();
 				return;
@@ -856,7 +835,7 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 			case CsPackage.PART__DEPLOYING_LINKS:
 				return !getDeployingLinks().isEmpty();
 			case CsPackage.PART__DEPLOYMENT_LINKS:
-				return deploymentLinks != null && !deploymentLinks.isEmpty();
+				return !getDeploymentLinks().isEmpty();
 			case CsPackage.PART__INVOLVING_INVOLVEMENTS:
 				return !getInvolvingInvolvements().isEmpty();
 			case CsPackage.PART__PROVIDED_INTERFACES:

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			// Process RePackage.Literals.CATALOG_ELEMENT__ORIGIN
 			if (originPropertyDescriptor != null) {
 				Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__ORIGIN, true);
-				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) originValue)) {
+				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) originValue)) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);
 				} else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__ORIGIN) != null) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			// Process RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY
 			if (currentCompliancyPropertyDescriptor != null) {
 				Object currentCompliancyValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY, true);
-				if (currentCompliancyValue != null && currentCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) currentCompliancyValue)) {
+				if (currentCompliancyValue != null && currentCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) currentCompliancyValue)) {
 					itemPropertyDescriptors.remove(currentCompliancyPropertyDescriptor);
 				} else if (currentCompliancyValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY) != null) {
 					itemPropertyDescriptors.remove(currentCompliancyPropertyDescriptor);				  					
@@ -112,7 +112,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			// Process RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY
 			if (defaultReplicaCompliancyPropertyDescriptor != null) {
 				Object defaultReplicaCompliancyValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY, true);
-				if (defaultReplicaCompliancyValue != null && defaultReplicaCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) defaultReplicaCompliancyValue)) {
+				if (defaultReplicaCompliancyValue != null && defaultReplicaCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) defaultReplicaCompliancyValue)) {
 					itemPropertyDescriptors.remove(defaultReplicaCompliancyPropertyDescriptor);
 				} else if (defaultReplicaCompliancyValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY) != null) {
 					itemPropertyDescriptors.remove(defaultReplicaCompliancyPropertyDescriptor);				  					
@@ -137,6 +137,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			addKindPropertyDescriptor(object);
 			addAuthorPropertyDescriptor(object);
 			addEnvironmentPropertyDescriptor(object);
+			addSuffixPropertyDescriptor(object);
 			addPurposePropertyDescriptor(object);
 			addTagsPropertyDescriptor(object);
 			addOriginPropertyDescriptor(object);
@@ -222,6 +223,33 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 				 getString("_UI_CatalogElement_environment_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_environment_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 RePackage.Literals.CATALOG_ELEMENT__ENVIRONMENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+  /**
+	 * This adds a property descriptor for the Suffix feature.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  protected void addSuffixPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElement_suffix_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_suffix_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT__SUFFIX,
 				 true,
 				 false,
 				 false,
@@ -511,6 +539,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
 			case RePackage.CATALOG_ELEMENT__KIND:
 			case RePackage.CATALOG_ELEMENT__AUTHOR:
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
 			case RePackage.CATALOG_ELEMENT__PURPOSE:
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

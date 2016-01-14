@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,27 +31,27 @@ public abstract class AbstractSimpleSemanticFieldController extends AbstractSema
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.ISimpleSemanticFieldController#loadValue(org.polarsys.capella.core.data.capellacore.CapellaElement, org.eclipse.emf.ecore.EStructuralFeature)
    */
   @Override
-  public EObject loadValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    return (EObject) semanticElement_p.eGet(semanticFeature_p);
+  public EObject loadValue(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    return (EObject) semanticElement.eGet(semanticFeature);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#readOpenValues()
    */
   @Override
-  public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
+  public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
     List<EObject> list = new ArrayList<EObject>();
-    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), semanticFeature_p);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), semanticFeature);
     if (null != query) {
-      List<CapellaElement> availableElements = query.getAvailableElements(semanticElement_p);
+      List<CapellaElement> availableElements = query.getAvailableElements(semanticElement);
       list.addAll(availableElements);
     } else {
-      EditingDomain domain = AdapterFactoryEditingDomain.getEditingDomainFor(semanticElement_p);
+      EditingDomain domain = AdapterFactoryEditingDomain.getEditingDomainFor(semanticElement);
       if (domain instanceof AdapterFactoryEditingDomain){
-        IItemPropertySource source = (IItemPropertySource) ((AdapterFactoryEditingDomain) domain).getAdapterFactory().adapt(semanticElement_p, IItemPropertySource.class);
+        IItemPropertySource source = (IItemPropertySource) ((AdapterFactoryEditingDomain) domain).getAdapterFactory().adapt(semanticElement, IItemPropertySource.class);
         if (source != null){
-          IItemPropertyDescriptor descriptor = source.getPropertyDescriptor(semanticElement_p, semanticFeature_p);
-          for (Object e : descriptor.getChoiceOfValues(semanticElement_p)){
+          IItemPropertyDescriptor descriptor = source.getPropertyDescriptor(semanticElement, semanticFeature);
+          for (Object e : descriptor.getChoiceOfValues(semanticElement)){
             if (e instanceof EObject){
               list.add((EObject) e);
             }

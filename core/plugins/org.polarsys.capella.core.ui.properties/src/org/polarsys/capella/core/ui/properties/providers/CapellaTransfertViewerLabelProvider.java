@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,28 +62,28 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    * {@inheritDoc}
    */
   @Override
-  public Image getImage(Object object_p) {
-    if (object_p instanceof DView) { //Sirius-2822
-      Viewpoint viewpoint = ((DView) object_p).getViewpoint();
+  public Image getImage(Object object) {
+    if (object instanceof DView) { //Sirius-2822
+      Viewpoint viewpoint = ((DView) object).getViewpoint();
       if (viewpoint != null) {
         return getImage(viewpoint);
       }
     }
-    return super.getImage(object_p);
+    return super.getImage(object);
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getText(java.lang.Object)
    */
   @Override
-  public String getText(Object object_p) {
+  public String getText(Object object) {
     NamedElement sourceElement = null;
     NamedElement targetElement = null;
     String sourceLabel = null;
     String targetLabel = null;
 
-    if ((object_p instanceof ComponentExchange) && !(object_p instanceof CommunicationMean)) {
-      ComponentExchange connection = (ComponentExchange) object_p;
+    if ((object instanceof ComponentExchange) && !(object instanceof CommunicationMean)) {
+      ComponentExchange connection = (ComponentExchange) object;
       if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(connection))) {
         Collection<Part> sourceParts = ComponentExchangeExt.getSourceParts(connection);
         Collection<Part> targetParts = ComponentExchangeExt.getTargetParts(connection);
@@ -93,22 +93,22 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         sourceElement = ComponentExchangeExt.getSourceComponent(connection);
         targetElement = ComponentExchangeExt.getTargetComponent(connection);
       }
-    } else if (object_p instanceof CommunicationMean) {
+    } else if (object instanceof CommunicationMean) {
       // Communication mean @OA level
       // assuming this link is always between Entities
-      ComponentExchange connection = (ComponentExchange) object_p;
+      ComponentExchange connection = (ComponentExchange) object;
       InformationsExchanger source = connection.getSource();
       InformationsExchanger target = connection.getTarget();
       if ((source instanceof Entity) && (target instanceof Entity)) {
         sourceElement = (Entity) source;
         targetElement = (Entity) target;
       }
-    } else if (object_p instanceof FunctionalExchange) {
-      FunctionalExchange exchange = (FunctionalExchange) object_p;
+    } else if (object instanceof FunctionalExchange) {
+      FunctionalExchange exchange = (FunctionalExchange) object;
       sourceElement = FunctionExt.getIncomingAbstractFunction(exchange);
       targetElement = FunctionExt.getOutGoingAbstractFunction(exchange);
-    } else if (object_p instanceof PhysicalLink) {
-      PhysicalLink link = (PhysicalLink) object_p;
+    } else if (object instanceof PhysicalLink) {
+      PhysicalLink link = (PhysicalLink) object;
       if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(link))) {
         sourceElement = PhysicalLinkExt.getSourcePart(link);
         targetElement = PhysicalLinkExt.getTargetPart(link);
@@ -117,14 +117,14 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
         targetElement = PhysicalLinkExt.getTargetComponent(link);
       }
 
-    } else if (object_p instanceof DAnalysis) { //Sirius-2822
-      Resource resource = ((DAnalysis) object_p).eResource();
+    } else if (object instanceof DAnalysis) { //Sirius-2822
+      Resource resource = ((DAnalysis) object).eResource();
       if ((resource != null) && (resource.getURI() != null)) {
         return resource.getURI().lastSegment();
       }
 
-    } else if (object_p instanceof DView) { //Sirius-2822
-      Viewpoint viewpoint = ((DView) object_p).getViewpoint();
+    } else if (object instanceof DView) { //Sirius-2822
+      Viewpoint viewpoint = ((DView) object).getViewpoint();
       if ((viewpoint != null)) {
         if (viewpoint.eIsProxy()) {
           return ((InternalEObject) viewpoint).eProxyURI().toString();
@@ -134,7 +134,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
     } else {
       // Default case
-      return super.getText(object_p);
+      return super.getText(object);
     }
 
     if ((sourceElement == null) || sourceElement.getName().equals(ICommonConstants.EMPTY_STRING)) {
@@ -147,6 +147,6 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     } else {
       targetLabel = targetElement.getName();
     }
-    return super.getText(object_p) + MessageFormat.format(PATTERN1, new Object[] { sourceLabel, targetLabel });
+    return super.getText(object) + MessageFormat.format(PATTERN1, new Object[] { sourceLabel, targetLabel });
   }
 }

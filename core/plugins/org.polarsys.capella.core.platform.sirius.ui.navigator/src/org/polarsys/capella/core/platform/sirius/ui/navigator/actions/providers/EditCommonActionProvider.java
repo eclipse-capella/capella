@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaPasteAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveDownAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
@@ -48,6 +49,7 @@ public class EditCommonActionProvider extends CommonActionProvider {
   private BaseSelectionListenerAction _moveDown;
   private BaseSelectionListenerAction _moveUp;
   private BaseSelectionListenerAction _sortContent;
+  private BaseSelectionListenerAction _sortSelection;
 
   private BaseSelectionListenerAction _pasteAction;
   private RenameAction _renameAction;
@@ -98,6 +100,10 @@ public class EditCommonActionProvider extends CommonActionProvider {
       selectionProvider.removeSelectionChangedListener(_sortContent);
       _sortContent = null;
     }
+    if (null != _sortSelection) {
+      selectionProvider.removeSelectionChangedListener(_sortSelection);
+      _sortSelection = null;
+    }
     if (null != _renameAction) {
       selectionProvider.removeSelectionChangedListener(_renameAction);
       _renameAction = null;
@@ -106,15 +112,15 @@ public class EditCommonActionProvider extends CommonActionProvider {
   }
 
   @Override
-  public void fillActionBars(IActionBars actionBars_p) {
-    actionBars_p.setGlobalActionHandler(ActionFactory.CUT.getId(), _cutAction);
-    actionBars_p.setGlobalActionHandler(ActionFactory.COPY.getId(), _copyAction);
-    actionBars_p.setGlobalActionHandler(ActionFactory.PASTE.getId(), _pasteAction);
-    actionBars_p.setGlobalActionHandler(ActionFactory.DELETE.getId(), _deleteAction);
-    actionBars_p.setGlobalActionHandler(ActionFactory.RENAME.getId(), _renameAction);
+  public void fillActionBars(IActionBars actionBars) {
+    actionBars.setGlobalActionHandler(ActionFactory.CUT.getId(), _cutAction);
+    actionBars.setGlobalActionHandler(ActionFactory.COPY.getId(), _copyAction);
+    actionBars.setGlobalActionHandler(ActionFactory.PASTE.getId(), _pasteAction);
+    actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), _deleteAction);
+    actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), _renameAction);
 
     // Handle Rename action with delegation for Cut, Copy, Paste...
-    TextActionHandler textActionHandler = new TextActionHandler(actionBars_p); // hook handlers
+    TextActionHandler textActionHandler = new TextActionHandler(actionBars); // hook handlers
     textActionHandler.setCutAction(_cutAction);
     textActionHandler.setCopyAction(_copyAction);
     textActionHandler.setPasteAction(_pasteAction);
@@ -126,16 +132,17 @@ public class EditCommonActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
    */
   @Override
-  public void fillContextMenu(IMenuManager menu_p) {
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _cutAction);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _copyAction);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _pasteAction);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _deleteAction);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, new Separator());
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _moveUp);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _sortContent);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _moveDown);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_EDIT, new Separator());
+  public void fillContextMenu(IMenuManager menu) {
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _cutAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _copyAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _pasteAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _deleteAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, new Separator());
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _moveUp);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _sortContent);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _sortSelection);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, _moveDown);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, new Separator());
 
   }
 
@@ -143,9 +150,9 @@ public class EditCommonActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
    */
   @Override
-  public void init(ICommonActionExtensionSite site_p) {
-    super.init(site_p);
-    ICommonViewerSite commonViewSite = site_p.getViewSite();
+  public void init(ICommonActionExtensionSite site) {
+    super.init(site);
+    ICommonViewerSite commonViewSite = site.getViewSite();
     if (!(commonViewSite instanceof ICommonViewerWorkbenchSite)) {
       return;
     }
@@ -158,12 +165,12 @@ public class EditCommonActionProvider extends CommonActionProvider {
     ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
     ISelectionProvider selectionProvider = commonViewSite.getSelectionProvider();
 
-    _cutAction = new CapellaCutAction(site_p.getStructuredViewer());
+    _cutAction = new CapellaCutAction(site.getStructuredViewer());
     _cutAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.CUT);
     _cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
     _cutAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT_DISABLED));
     SelectionHelper.registerToSelectionChanges(_cutAction, selectionProvider);
-    _copyAction = new CapellaCopyAction(site_p.getStructuredViewer()) {
+    _copyAction = new CapellaCopyAction(site.getStructuredViewer()) {
       /**
        * {@inheritDoc}
        */
@@ -171,7 +178,8 @@ public class EditCommonActionProvider extends CommonActionProvider {
       @Override
       public void run() {
         super.run();
-        // Force to refresh the paste action, to be able to paste the copied selection into the clipboard, directly without changing the selection.
+        // Force to refresh the paste action, to be able to paste the copied selection into the clipboard, directly
+        // without changing the selection.
         _pasteAction.selectionChanged(getStructuredSelection());
       }
     };
@@ -204,6 +212,13 @@ public class EditCommonActionProvider extends CommonActionProvider {
     _sortContent.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_DISABLED_IMG_16));
     SelectionHelper.registerToSelectionChanges(_sortContent, selectionProvider);
+
+    _sortSelection = new SortSelectionAction();
+    _sortSelection.setImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+        org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_IMG_16));
+    _sortSelection.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+        org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_DISABLED_IMG_16));
+    SelectionHelper.registerToSelectionChanges(_sortSelection, selectionProvider);
 
     // Initialize the rename action.
     _renameAction = new RenameAction(activePart);

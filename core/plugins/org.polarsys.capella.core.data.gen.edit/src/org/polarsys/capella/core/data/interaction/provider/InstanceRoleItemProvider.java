@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class InstanceRoleItemProvider
 			// Process InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE
 			if (representedInstancePropertyDescriptor != null) {
 				Object representedInstanceValue = eObject.eGet(InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE, true);
-				if (representedInstanceValue != null && representedInstanceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) representedInstanceValue)) {
+				if (representedInstanceValue != null && representedInstanceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) representedInstanceValue)) {
 					itemPropertyDescriptors.remove(representedInstancePropertyDescriptor);
 				} else if (representedInstanceValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE) != null) {
 					itemPropertyDescriptors.remove(representedInstancePropertyDescriptor);				  					

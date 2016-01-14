@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,7 @@ public class NumericValueItemProvider
 			// Process DatavaluePackage.Literals.NUMERIC_VALUE__UNIT
 			if (unitPropertyDescriptor != null) {
 				Object unitValue = eObject.eGet(DatavaluePackage.Literals.NUMERIC_VALUE__UNIT, true);
-				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) unitValue)) {
+				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) unitValue)) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);
 				} else if (unitValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.NUMERIC_VALUE__UNIT) != null) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);				  					
@@ -94,7 +94,7 @@ public class NumericValueItemProvider
 			// Process DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE
 			if (numericTypePropertyDescriptor != null) {
 				Object numericTypeValue = eObject.eGet(DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE, true);
-				if (numericTypeValue != null && numericTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) numericTypeValue)) {
+				if (numericTypeValue != null && numericTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) numericTypeValue)) {
 					itemPropertyDescriptors.remove(numericTypePropertyDescriptor);
 				} else if (numericTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE) != null) {
 					itemPropertyDescriptors.remove(numericTypePropertyDescriptor);				  					

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,7 +54,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.ComputedColor;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
@@ -74,15 +73,11 @@ public class ShapeUtil {
    * @param RGB color
    * @return RGBValues
    */
-  static public RGBValues convertRGBtoRGBValues(RGB color) {
+  public static RGBValues convertRGBtoRGBValues(RGB color) {
     if (color == null) {
       return null;
     }
-    RGBValues newValuesContent = ViewpointFactory.eINSTANCE.createRGBValues();
-
-    newValuesContent.setRed(color.red);
-    newValuesContent.setGreen(color.green);
-    newValuesContent.setBlue(color.blue);
+    RGBValues newValuesContent = RGBValues.create(color.red, color.green, color.blue);
 
     return newValuesContent;
   }
@@ -164,12 +159,12 @@ public class ShapeUtil {
 
   /**
    * get the color of the node
-   * @param node_p
+   * @param node
    * @return get the color of the node
    */
-  public static RGBValues getNodeColorStyle(DNode node_p) {
+  public static RGBValues getNodeColorStyle(DNode node) {
 
-    NodeStyle shape = node_p.getOwnedStyle();
+    NodeStyle shape = node.getOwnedStyle();
     if (shape instanceof Ellipse) {
       return ((Ellipse) shape).getColor();
     } else if (shape instanceof Square) {
@@ -262,29 +257,29 @@ public class ShapeUtil {
     return ((color.getRed() == 255) && (color.getGreen() == 0) && (color.getBlue() == 0));
   }
 
-  public static boolean isSameColor(RGBValues color1_p, RGB color2_p) {
-    return isSameColor(color1_p, convertRGBtoRGBValues(color2_p));
+  public static boolean isSameColor(RGBValues color1, RGB color2) {
+    return isSameColor(color1, convertRGBtoRGBValues(color2));
   }
 
-  public static boolean isSameColor(RGBValues color1_p, RGBValues color2_p) {
-    if ((color1_p == null) && (color2_p == null)) {
+  public static boolean isSameColor(RGBValues color1, RGBValues color2) {
+    if ((color1 == null) && (color2 == null)) {
       return true;
     }
-    if ((color1_p == null) || (color2_p == null)) {
+    if ((color1 == null) || (color2 == null)) {
       return false;
     }
-    return ((color1_p.getGreen() == color2_p.getGreen()) && (color1_p.getBlue() == color2_p.getBlue()) && (color1_p.getRed() == color2_p.getRed()));
+    return ((color1.getGreen() == color2.getGreen()) && (color1.getBlue() == color2.getBlue()) && (color1.getRed() == color2.getRed()));
   }
 
-  public static void removeColorFromList(RGBValues colorToRemove_p, Collection<RGB> colorList_p) {
+  public static void removeColorFromList(RGBValues colorToRemove, Collection<RGB> colorList) {
     RGB toRemove = null;
-    for (RGB aColor : colorList_p) {
-      if (isSameColor(colorToRemove_p, aColor)) {
+    for (RGB aColor : colorList) {
+      if (isSameColor(colorToRemove, aColor)) {
         toRemove = aColor;
       }
     }
     if (toRemove != null) {
-      colorList_p.remove(toRemove);
+      colorList.remove(toRemove);
     }
   }
 
@@ -376,16 +371,13 @@ public class ShapeUtil {
    * @param DEdge currentEdge
    * @param color
    */
-  public static void setEdgeColorStyle(DEdge currentEdge, RGB color_p) {
-
-    if ((currentEdge != null) && (color_p != null)) {
+  public static void setEdgeColorStyle(DEdge currentEdge, RGB color) {
+    if ((currentEdge != null) && (color != null)) {
       EdgeStyle edgeStyle = currentEdge.getOwnedStyle();
-      RGBValues color = convertRGBtoRGBValues(color_p);
-      if ((edgeStyle != null) && !isSameColor(color, edgeStyle.getStrokeColor())) {
-
-        edgeStyle.setStrokeColor(color);
+      RGBValues c = convertRGBtoRGBValues(color);
+      if ((edgeStyle != null) && !isSameColor(c, edgeStyle.getStrokeColor())) {
+        edgeStyle.setStrokeColor(c);
         ShapeUtil.addCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
-
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
       }
     }
@@ -396,13 +388,12 @@ public class ShapeUtil {
    * @param DEdge currentEdge
    * @param color
    */
-  public static void resetEdgeColorStyle(DEdge currentEdge, RGB color_p) {
-
-    if ((currentEdge != null) && (color_p != null)) {
+  public static void resetEdgeColorStyle(DEdge currentEdge, RGB color) {
+    if ((currentEdge != null) && (color != null)) {
       EdgeStyle edgeStyle = currentEdge.getOwnedStyle();
-      RGBValues color = convertRGBtoRGBValues(color_p);
-      if ((edgeStyle != null) && !isSameColor(color, edgeStyle.getStrokeColor())) {
-        edgeStyle.setStrokeColor(color);
+      RGBValues c = convertRGBtoRGBValues(color);
+      if ((edgeStyle != null) && !isSameColor(c, edgeStyle.getStrokeColor())) {
+        edgeStyle.setStrokeColor(c);
         ShapeUtil.removeCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
       }
@@ -475,8 +466,8 @@ public class ShapeUtil {
 
     GraphicalEditPart gep = getEditPart(currentNode);
 
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), new Integer(pX));
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(), new Integer(pY));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pX));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(), Integer.valueOf(pY));
 
     gep.refresh();
   }
@@ -488,14 +479,10 @@ public class ShapeUtil {
    * @return
    */
   public static void setLocation(Node currentNode, Point pPoint) {
-
     GraphicalEditPart gep = getEditPart(currentNode);
-
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), new Integer(pPoint.x));
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(), new Integer(pPoint.y));
-
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pPoint.x));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(), Integer.valueOf(pPoint.y));
     gep.refresh();
-
   }
 
   /**
@@ -597,37 +584,31 @@ public class ShapeUtil {
     if ((currentNode != null) && (color != null)) {
       NodeStyle shape = currentNode.getOwnedStyle();
 
-      RGBValues newValuesContent = null;
-
       if (shape instanceof Ellipse) {
-        newValuesContent = ((Ellipse) shape).getColor();
         ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { DiagramPackage.Literals.ELLIPSE__COLOR });
+        ((Ellipse) shape).setColor(RGBValues.create(color.red, color.green, color.blue));
 
       } else if (shape instanceof Square) {
-        newValuesContent = ((Square) shape).getColor();
         ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { DiagramPackage.Literals.SQUARE__COLOR });
+        ((Square) shape).setColor(RGBValues.create(color.red, color.green, color.blue));
       }
-
-      newValuesContent.setRed(color.red);
-      newValuesContent.setGreen(color.green);
-      newValuesContent.setBlue(color.blue);
 
       getStyleHelper(currentNode).refreshStyle(shape);
     }
   }
 
-  public static Style getCurrentStyle(DDiagramElement element_p) {
-    if (element_p instanceof DNodeContainer) {
-      return ((DNodeContainer) element_p).getOwnedStyle();
+  public static Style getCurrentStyle(DDiagramElement element) {
+    if (element instanceof DNodeContainer) {
+      return ((DNodeContainer) element).getOwnedStyle();
 
-    } else if (element_p instanceof DNodeList) {
-      return ((DNodeList) element_p).getOwnedStyle();
+    } else if (element instanceof DNodeList) {
+      return ((DNodeList) element).getOwnedStyle();
 
-    } else if (element_p instanceof DNode) {
-      return ((DNode) element_p).getOwnedStyle();
+    } else if (element instanceof DNode) {
+      return ((DNode) element).getOwnedStyle();
 
-    } else if (element_p instanceof DEdge) {
-      return ((DEdge) element_p).getOwnedStyle();
+    } else if (element instanceof DEdge) {
+      return ((DEdge) element).getOwnedStyle();
     }
     return null;
   }
@@ -638,11 +619,8 @@ public class ShapeUtil {
    * @return
    */
   public static void setNodeHeight(Node currentNode, int pHeight) {
-
     GraphicalEditPart gep = getEditPart(currentNode);
-
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Height(), new Integer(pHeight));
-
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Height(), Integer.valueOf(pHeight));
     gep.refresh();
   }
 
@@ -653,9 +631,7 @@ public class ShapeUtil {
    */
   public static void setNodeWidth(Node currentNode, int pWidth) {
     GraphicalEditPart gep = getEditPart(currentNode);
-
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Width(), new Integer(pWidth));
-
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Width(), Integer.valueOf(pWidth));
     gep.refresh();
   }
 
@@ -680,10 +656,8 @@ public class ShapeUtil {
    * @return
    */
   public static void setXLocation(Node currentNode, int pX) {
-
     GraphicalEditPart gep = getEditPart(currentNode);
-
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), new Integer(pX));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pX));
   }
 
   /**
@@ -693,31 +667,28 @@ public class ShapeUtil {
    * @return
    */
   public static void setYLocation(Node currentNode, int pY) {
-
     GraphicalEditPart gep = getEditPart(currentNode);
-
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), new Integer(pY));
-
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pY));
     gep.refresh();
   }
 
   /**
-   * @param aEdge_p
-   * @param desc_p
+   * @param aEdge
+   * @param desc
    * @return
    */
-  public static RGB getDefaultColor(DSemanticDecorator aEdge_p, EObject desc_p, ColorDescription descColor_p) {
+  public static RGB getDefaultColor(DSemanticDecorator aEdge, EObject desc, ColorDescription descColor) {
     RGBValues color = null;
-    if (descColor_p != null) {
+    if (descColor != null) {
       RGBValuesProvider colors = new RGBValuesProvider();
-      if (descColor_p instanceof FixedColor) {
-        color = colors.getRGBValues((FixedColor) descColor_p);
+      if (descColor instanceof FixedColor) {
+        color = colors.getRGBValues((FixedColor) descColor);
 
-      } else if (descColor_p instanceof ComputedColor) {
-        color = colors.getRGBValues((ComputedColor) descColor_p, aEdge_p.getTarget(), InterpreterUtil.getInterpreter(aEdge_p.getTarget()));
+      } else if (descColor instanceof ComputedColor) {
+        color = colors.getRGBValues((ComputedColor) descColor, aEdge.getTarget(), InterpreterUtil.getInterpreter(aEdge.getTarget()));
 
-      } else if (descColor_p instanceof InterpolatedColor) {
-        color = colors.getRGBValues((InterpolatedColor) descColor_p, aEdge_p.getTarget(), InterpreterUtil.getInterpreter(aEdge_p.getTarget()));
+      } else if (descColor instanceof InterpolatedColor) {
+        color = colors.getRGBValues((InterpolatedColor) descColor, aEdge.getTarget(), InterpreterUtil.getInterpreter(aEdge.getTarget()));
       }
     }
 
@@ -729,58 +700,57 @@ public class ShapeUtil {
   }
 
   /**
-   * @param element_p
-   * @param targetView_p
+   * @param element
+   * @param targetView
    */
-  public static void copyCustomStyle(DDiagramElement sourceElement_p, DDiagramElement targetElement_p) {
+  public static void copyCustomStyle(DDiagramElement sourceElement, DDiagramElement targetElement) {
     EObject sourceStyle = null;
-    EObject targetStyle = null;
+    // EObject targetStyle = null;
 
-    if ((sourceElement_p instanceof DNodeContainer) && (targetElement_p instanceof DNodeContainer)) {
-      DNodeContainer sourceElement = (DNodeContainer) sourceElement_p;
-      DNodeContainer targetElement = (DNodeContainer) targetElement_p;
-      sourceStyle = sourceElement.getOwnedStyle();
-      targetStyle = targetElement.getOwnedStyle();
-
-      EObject style = EcoreUtil.copy(sourceStyle);
-      targetElement.setOwnedStyle((ContainerStyle) style);
-
-    } else if ((sourceElement_p instanceof DNode) && (targetElement_p instanceof DNode)) {
-      DNode sourceElement = (DNode) sourceElement_p;
-      DNode targetElement = (DNode) targetElement_p;
-      sourceStyle = sourceElement.getOwnedStyle();
-      targetStyle = targetElement.getOwnedStyle();
+    if ((sourceElement instanceof DNodeContainer) && (targetElement instanceof DNodeContainer)) {
+      DNodeContainer srcElement = (DNodeContainer) sourceElement;
+      DNodeContainer tgtElement = (DNodeContainer) targetElement;
+      sourceStyle = srcElement.getOwnedStyle();
+      // targetStyle = tgtElement.getOwnedStyle();
 
       EObject style = EcoreUtil.copy(sourceStyle);
-      targetElement.setOwnedStyle((NodeStyle) style);
+      tgtElement.setOwnedStyle((ContainerStyle) style);
 
-    } else if ((sourceElement_p instanceof DEdge) && (targetElement_p instanceof DEdge)) {
-      DEdge sourceElement = (DEdge) sourceElement_p;
-      DEdge targetElement = (DEdge) targetElement_p;
-      sourceStyle = sourceElement.getOwnedStyle();
-      targetStyle = targetElement.getOwnedStyle();
+    } else if ((sourceElement instanceof DNode) && (targetElement instanceof DNode)) {
+      DNode srcElement = (DNode) sourceElement;
+      DNode tgtElement = (DNode) targetElement;
+      sourceStyle = srcElement.getOwnedStyle();
+      // targetStyle = tgtElement.getOwnedStyle();
 
       EObject style = EcoreUtil.copy(sourceStyle);
-      targetElement.setOwnedStyle((EdgeStyle) style);
+      tgtElement.setOwnedStyle((NodeStyle) style);
+
+    } else if ((sourceElement instanceof DEdge) && (targetElement instanceof DEdge)) {
+      DEdge srcElement = (DEdge) sourceElement;
+      DEdge tgtElement = (DEdge) targetElement;
+      sourceStyle = srcElement.getOwnedStyle();
+      // targetStyle = tgtElement.getOwnedStyle();
+
+      EObject style = EcoreUtil.copy(sourceStyle);
+      tgtElement.setOwnedStyle((EdgeStyle) style);
     }
-
   }
 
-  private static StyleHelper getStyleHelper(DSemanticDecorator semanticDecorator_p) {
-    return new StyleHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator_p.getTarget()));
+  private static StyleHelper getStyleHelper(DSemanticDecorator semanticDecorator) {
+    return new StyleHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
   }
 
   /**
    * API changes
    */
-  public static void removeCustomisation(Style style_p, EStructuralFeature[] features) {
+  public static void removeCustomisation(Style style, EStructuralFeature[] features) {
     for (EStructuralFeature feature : features) {
-      style_p.getCustomFeatures().remove(feature.getName());
+      style.getCustomFeatures().remove(feature.getName());
     }
   }
 
-  public static boolean isCustomisation(Style style_p, EStructuralFeature feature) {
-    for (String name : style_p.getCustomFeatures()) {
+  public static boolean isCustomisation(Style style, EStructuralFeature feature) {
+    for (String name : style.getCustomFeatures()) {
       if (name.equals(feature.getName())) {
         return true;
       }
@@ -788,26 +758,25 @@ public class ShapeUtil {
     return false;
   }
 
-  public static void addCustomisation(Style style_p, EStructuralFeature[] features) {
+  public static void addCustomisation(Style style, EStructuralFeature[] features) {
     for (EStructuralFeature feature : features) {
-      style_p.getCustomFeatures().add(feature.getName());
+      style.getCustomFeatures().add(feature.getName());
     }
   }
 
   /**
    * API changes
    */
-  public static void setCustom(Style style_p, boolean value_p) {
-    if (!value_p) {
-      style_p.getCustomFeatures().clear();
+  public static void setCustom(Style style, boolean value) {
+    if (!value) {
+      style.getCustomFeatures().clear();
     }
   }
 
   /**
    * API changes
    */
-  public static boolean isCustom(Style style_p) {
-    return !style_p.getCustomFeatures().isEmpty();
+  public static boolean isCustom(Style style) {
+    return !style.getCustomFeatures().isEmpty();
   }
-
 }

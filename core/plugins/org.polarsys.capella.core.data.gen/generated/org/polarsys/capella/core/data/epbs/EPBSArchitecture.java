@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.epbs.EPBSArchitecture#getOwnedEPBSContext <em>Owned EPBS Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.EPBSArchitecture#getOwnedConfigurationItem <em>Owned Configuration Item</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  *   <li>{@link org.polarsys.capella.core.data.epbs.EPBSArchitecture#getAllocatedPhysicalArchitectureRealizations <em>Allocated Physical Architecture Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.EPBSArchitecture#getAllocatedPhysicalArchitectures <em>Allocated Physical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getEPBSArchitecture()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='EPBSArchitecture'"

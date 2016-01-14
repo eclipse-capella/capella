@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,54 +70,54 @@ public class CombinedFragmentSection extends NamedElementSection {
 
     coveredInstanceRolesWidget = new MultipleSemanticField(main, Messages.getString("CombinedFragmentSection_CoveredInstanceRoles_Label"), getWidgetFactory(), //$NON-NLS-1$
       new IMultipleSemanticFieldController() {
-        public List<EObject> writeOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, List<EObject> values_p) {
-          Set<InstanceRole> minima = AbstractFragmentExt.getMinimalCoveredInstanceRoles((CombinedFragment) semanticElement_p);
+        public List<EObject> writeOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, List<EObject> values) {
+          Set<InstanceRole> minima = AbstractFragmentExt.getMinimalCoveredInstanceRoles((CombinedFragment) semanticElement);
           for (InstanceRole instanceRole : minima) {
-      			if (!values_p.contains(instanceRole)) {
-      				values_p.add(instanceRole);
+      			if (!values.contains(instanceRole)) {
+      				values.add(instanceRole);
       				// log !
       				final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
       				__logger.info(new EmbeddedMessage("Unable to remove covered instance role : "+ instanceRole.getName(), "Validation")); //$NON-NLS-1$ //$NON-NLS-2$
       			}
     		  }
-          for (InteractionOperand operand : ((CombinedFragment) semanticElement_p).getReferencedOperands()) {
+          for (InteractionOperand operand : ((CombinedFragment) semanticElement).getReferencedOperands()) {
             operand.getCoveredInstanceRoles().clear();
-            for (EObject value : values_p) {
+            for (EObject value : values) {
               operand.getCoveredInstanceRoles().add((InstanceRole) value);
             }
           }
-          InteractionFragment start = ((CombinedFragment) semanticElement_p).getStart();
+          InteractionFragment start = ((CombinedFragment) semanticElement).getStart();
           if (start != null) {
             start.getCoveredInstanceRoles().clear();
-            for (EObject value : values_p) {
+            for (EObject value : values) {
               start.getCoveredInstanceRoles().add((InstanceRole) value);
             }
           }
-          InteractionFragment finish = ((CombinedFragment) semanticElement_p).getFinish();
+          InteractionFragment finish = ((CombinedFragment) semanticElement).getFinish();
           if (start != null) {
             finish.getCoveredInstanceRoles().clear();
-            for (EObject value : values_p) {
+            for (EObject value : values) {
               finish.getCoveredInstanceRoles().add((InstanceRole) value);
             }
           }
           UIUtil.getInstance().refreshActiveDiagram(null);
-          return values_p;
+          return values;
         }
-        public List<EObject> readOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, boolean available_p) {
+        public List<EObject> readOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, boolean available) {
           List<EObject> result = new ArrayList<EObject>();
-          if (available_p) {
-            result.addAll(((Scenario) semanticElement_p.eContainer()).getOwnedInstanceRoles());
+          if (available) {
+            result.addAll(((Scenario) semanticElement.eContainer()).getOwnedInstanceRoles());
           } else {
-            result.addAll(loadValues(semanticElement_p, semanticFeature_p));
+            result.addAll(loadValues(semanticElement, semanticFeature));
           }
           return result;
         }
-        public List<EObject> loadValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
+        public List<EObject> loadValues(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
           List<EObject> result = new ArrayList<EObject>();
           result.addAll(AbstractFragmentExt.getCoveredInstanceRoles(
-              (FragmentEnd) ((CombinedFragment) semanticElement_p).getStart(),
-              (FragmentEnd) ((CombinedFragment) semanticElement_p).getFinish(),
-              (Scenario) semanticElement_p.eContainer()));
+              (FragmentEnd) ((CombinedFragment) semanticElement).getStart(),
+              (FragmentEnd) ((CombinedFragment) semanticElement).getFinish(),
+              (Scenario) semanticElement.eContainer()));
           return result;
         }
       }) {
@@ -125,22 +125,22 @@ public class CombinedFragmentSection extends NamedElementSection {
        * {@inheritDoc}
        */
       @Override
-      protected void doDeleteCommand(EObject element_p, EStructuralFeature feature_p) {
+      protected void doDeleteCommand(EObject element, EStructuralFeature feature) {
        
         // clear action lead to set the covering to its minimal usage for model correctness : 
         // just keeping instance roles with messages within the combined fragment.
-        Set<InstanceRole> covered = AbstractFragmentExt.getMinimalCoveredInstanceRoles((CombinedFragment)element_p);
+        Set<InstanceRole> covered = AbstractFragmentExt.getMinimalCoveredInstanceRoles((CombinedFragment)element);
         
-        for (InteractionOperand operand : ((CombinedFragment) element_p).getReferencedOperands()) {
+        for (InteractionOperand operand : ((CombinedFragment) element).getReferencedOperands()) {
           operand.getCoveredInstanceRoles().clear();
           operand.getCoveredInstanceRoles().addAll(covered);
         }
-        InteractionFragment start = ((CombinedFragment) element_p).getStart();
+        InteractionFragment start = ((CombinedFragment) element).getStart();
         if (start != null) {
           start.getCoveredInstanceRoles().clear();
           start.getCoveredInstanceRoles().addAll(covered);
         }
-        InteractionFragment finish = ((CombinedFragment) element_p).getFinish();
+        InteractionFragment finish = ((CombinedFragment) element).getFinish();
         if (start != null) {
           finish.getCoveredInstanceRoles().clear();
           finish.getCoveredInstanceRoles().addAll(covered);
@@ -157,11 +157,11 @@ public class CombinedFragmentSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    interactionOperatorKindGroup.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getCombinedFragment_Operator());
-    coveredInstanceRolesWidget.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getInteractionFragment_CoveredInstanceRoles());
+    interactionOperatorKindGroup.loadData(capellaElement, InteractionPackage.eINSTANCE.getCombinedFragment_Operator());
+    coveredInstanceRolesWidget.loadData(capellaElement, InteractionPackage.eINSTANCE.getInteractionFragment_CoveredInstanceRoles());
   }
 
   /**

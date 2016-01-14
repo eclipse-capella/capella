@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,14 +29,14 @@ public class ExchangeItemElementBooleanPropertiesCheckbox extends AbstractSemant
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public ExchangeItemElementBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(parent_p, widgetFactory_p);
+  public ExchangeItemElementBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(parent, widgetFactory);
 
     _isCompositeBtn = createButton(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__COMPOSITE,
-      Messages.getString("ExchangeItemElement.IsCompositeLabel"), parent_p); //$NON-NLS-1$  
+      Messages.getString("ExchangeItemElement.IsCompositeLabel"), parent); //$NON-NLS-1$  
   }
 
   /**

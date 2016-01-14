@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,16 @@ package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IAdapterManager;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.EcoreEList;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -37,19 +44,6 @@ import org.polarsys.capella.core.data.cs.DeploymentTarget;
  * @generated
  */
 public abstract class DeploymentTargetImpl extends NamedElementImpl implements DeploymentTarget {
-
-	/**
-	 * The cached value of the '{@link #getDeploymentLinks() <em>Deployment Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeploymentLinks()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractDeploymentLink> deploymentLinks;
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,42 +78,42 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 
 	public EList<AbstractDeploymentLink> getDeploymentLinks() {
 
-		if (deploymentLinks == null) {
-			deploymentLinks = new EObjectWithInverseResolvingEList<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION);
-		}
-		return deploymentLinks;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeploymentLinks()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS:
-				return ((InternalEList<?>)getDeploymentLinks()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,46 +134,11 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				getDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS:
-				return deploymentLinks != null && !deploymentLinks.isEmpty();
+				return !getDeploymentLinks().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

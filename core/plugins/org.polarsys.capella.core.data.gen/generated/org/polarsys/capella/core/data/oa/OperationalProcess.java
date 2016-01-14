@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalProcess#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalProcess()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='An Operational Process is a logical organization of activities to fulfill an operational capability.' usage\040guideline='defining an Operational Process is similar to defining a functional chain at System Analysis level : it is composed of an ordered set of operational activities.\r\n[source: Capella study]' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella' reference\040documentation='none'"

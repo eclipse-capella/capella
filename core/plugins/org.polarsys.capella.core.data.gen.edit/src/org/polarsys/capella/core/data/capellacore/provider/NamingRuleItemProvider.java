@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class NamingRuleItemProvider
 			// Process CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS
 			if (statusPropertyDescriptor != null) {
 				Object statusValue = eObject.eGet(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS, true);
-				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) statusValue)) {
+				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) statusValue)) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);
 				} else if (statusValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS) != null) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);				  					

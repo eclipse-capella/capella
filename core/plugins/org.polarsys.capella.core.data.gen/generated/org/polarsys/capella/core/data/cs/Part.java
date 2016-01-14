@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.information.Partition;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.Part#getProvidedInterfaces <em>Provided Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Part#getRequiredInterfaces <em>Required Interfaces</em>}</li>
@@ -30,7 +31,6 @@ import org.polarsys.capella.core.data.information.Partition;
  *   <li>{@link org.polarsys.capella.core.data.cs.Part#getDeployingParts <em>Deploying Parts</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Part#getOwnedAbstractType <em>Owned Abstract Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getPart()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='PhysicalPart'"

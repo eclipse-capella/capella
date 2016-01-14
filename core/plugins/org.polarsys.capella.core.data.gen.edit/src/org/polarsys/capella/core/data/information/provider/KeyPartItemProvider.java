@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class KeyPartItemProvider
 			// Process InformationPackage.Literals.KEY_PART__PROPERTY
 			if (propertyPropertyDescriptor != null) {
 				Object propertyValue = eObject.eGet(InformationPackage.Literals.KEY_PART__PROPERTY, true);
-				if (propertyValue != null && propertyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) propertyValue)) {
+				if (propertyValue != null && propertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) propertyValue)) {
 					itemPropertyDescriptors.remove(propertyPropertyDescriptor);
 				} else if (propertyValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.KEY_PART__PROPERTY) != null) {
 					itemPropertyDescriptors.remove(propertyPropertyDescriptor);				  					

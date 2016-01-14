@@ -1,0 +1,190 @@
+<!--
+ Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+ 	Thales - initial API and implementation
+-->
+<!--?xml version='1.0' encoding='utf-8' ?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+ </head> 
+ <body> 
+  <h1 id="Diagrams_Tips_and_Tricks">Diagrams Tips and Tricks</h1> 
+  <h2 id="Setting_Default_Style_for_Links:_Oblique_or_Rectilinear">Setting Default Style for Links: Oblique or Rectilinear</h2> 
+  <p>By default in Capella, most of the diagrams have oblique links.</p> 
+  <p> <img height="152" width="408" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7613115c.png" /> </p> 
+  <p> <b>Figure 1: Oblique connections</b> </p> 
+  <p>It is possible to change these links from a diagram so that they use a rectilinear style. From the diagram toolbar, select all connectors and apply the style change.</p> 
+  <p> <img height="152" width="413" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m72f203f0.png" /> </p> 
+  <p> <b>Figure 2: Rectilinear connections</b> </p> 
+  <p>It is also possible to set the rectilinear style as a global default for Capella. To do so, use the dedicated Preferences as shown below.</p> 
+  <p> <img height="360" width="513" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_5c4b92b6.png" /> </p> 
+  <p> <b>Figure 3: Preference to select default style for connectors</b> </p> 
+  <h2 id="Uniform_Distribution_Tools">Uniform Distribution Tools</h2> 
+  <p>Distribute tools propose to separate the selected elements homogeneously. It proposes to harmonize the distances between elements considering the distance between their center, or the gap between their borders, vertically or horizontally. This is why four tools are proposed, either in the toolbar, in the contextual menu or in the diagram menu. To be available those tools need at least two distances, i.e. at least three elements selected of the same architectural level.</p> 
+  <p> <img height="120" width="259" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_6e4109f3.png" /> </p> 
+  <p> <b>Figure 4: Distribute tools in the diagram editor toolbar</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p> <img height="345" width="571" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_a38ed9a.png" /> </p> 
+  <p> <b>Figure 5: Distribute tools in the contextual menu</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p>For instance, distribute tools will adjust the layout in the following diagram:</p> 
+  <p> <img height="305" width="998" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_51b05f77.png" /> </p> 
+  <p> <b>Figure 6: Distribute tools in action</b> </p> 
+  <h2 id="Reset_Origin">Reset Origin</h2> 
+  <p>Reset origin tools are useful when some elements are not visible because their layout is not centered. Reset origin tools will automatically adjust the layout in order to have the origin at the top left of the container or editor. The origin is calculated using the position of the element at the top of the selection and the position of the one in the left.</p> 
+  <p> <img height="211" width="254" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_77868a11.png" /> </p> 
+  <p> <b>Figure 7: Not centered diagram for test</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p> <img height="235" width="377" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m6d14d040.png" /> </p> 
+  <p> <b>Figure 8: Reset Origin in the Contextual Menu</b> </p> 
+  <p>The origin is now on the top left of Logical System, which result in a better layout for the user.</p> 
+  <p> <img height="212" width="253" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3dedd8b1.png" /> </p> 
+  <p> <b>Figure 9: New layout after the reset origin action</b> </p> 
+  <h2 id="Advanced_Automated_Layout">Advanced Automated Layout</h2> 
+  <p>Capella editor enable to simplify layout of complex diagram and reorganize it simply by following the direction of the connection between elements. Then, those connections can be followed from “Left to Right”, from “Bottom to Top” or “From Top to Bottom” with the advanced automated layout tools.</p> 
+  <p>The following model used of this test is interesting because the Functional Chain highlight the fact that connectors flow are going in all directions.</p> 
+  <p> <img height="447" width="641" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m386ae1c8.png" /> </p> 
+  <p> <b>Figure 10: Test model (PAB in EOLE) with flows going in all directions</b> </p> 
+  <p>Using the advanced automated layout, the previous model can be reorganized in three different ways.</p> 
+  <p>Right click on the editor of this diagram:</p> 
+  <p> <img height="226" width="384" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_c34b73b.png" /> </p> 
+  <p> <b>Figure 11: Advanced Automated Layout in Contextual Menu</b> </p> 
+  <p>- From Left to right:</p> 
+  <p> <img height="295" width="696" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_33d30936.png" /> </p> 
+  <p> <b>Figure 12: Left to Right layout result</b> </p> 
+  <p>- From Bottom to top:</p> 
+  <p> <img height="598" width="464" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m27cfbd5f.png" /> </p> 
+  <p> <b>Figure 13: Bottom to Top layout result</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p>- From Top to Bottom:</p> 
+  <p> <img height="628" width="437" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_730643e2.png" /> </p> 
+  <p> <b>Figure 14: Top to Bottom layout result</b> </p> 
+  <h2 id="Select_All">Select All</h2> 
+  <p>Trying to select all the connectors (edge) or all the Shapes (Nodes) in a big diagram can be tedious. The select all tool provide a way to easily select all the elements, all the connector or all the shapes in just one click. This is particularly useful when we want to modify the appearance of all the elements at the same time or to perform an action (show hide, delete …) only on connectors or only on nodes.</p> 
+  <p>Select all actions can be accessed in the editor toolbar or in the contextual menu of the editor.</p> 
+  <p> <img height="81" width="188" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_mec122fe.png" /> </p> 
+  <p> <b>Figure 15: Select all tools in the diagram editor toolbar</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p> <img height="392" width="603" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m2d5cddf5.png" /> </p> 
+  <p> <b>Figure 16: Select all Shapes result</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p> <img height="366" width="554" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m5bd4aef6.png" /> </p> 
+  <p> <b>Figure 17: Select all connectors result</b> </p> 
+  <h2 id="Auto_Size">Auto Size</h2> 
+  <p>Auto size tool propose to resize all selected elements. The size is automatically adjust in order to optimize the space to avoid the diagram to be too big but keep enough space to show all the information (sub elements, labels, etc.) without modifying the original layout.</p> 
+  <p> <img height="63" width="531" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_38b9a3a9.png" /> </p> 
+  <p> <b>Figure 18: Auto size tool in the diagram editor toolbar</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p> <img height="301" width="461" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_114912fa.png" /> </p> 
+  <p> <b>Figure 19: Before the resize tool</b> </p> 
+  <p> <img height="302" width="492" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_4387d6d2.png" /> </p> 
+  <p> <b>Figure 20: After the auto size on all elements</b> </p> 
+  <p> <br /> <br /> </p> 
+  <h2 id="Make_Same_Width_.2F_Height">Make Same Width / Height</h2> 
+  <p>To have a better looking diagram, it is important that elements which have the same role or importance are represented with the same size. To adjust easily the size of a set of element, it is recommended to use the Make height and width same size tools. To perform this action, the selected elements must contain at least two nodes. This tool will automatically adjust the size of the first selected element to fit with the last selected one.</p> 
+  <p> <img height="456" width="487" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_740f48ce.png" /> </p> 
+  <p> <b>Figure 21: Make same width/length tool in toolbar and in contextual menu</b> </p> 
+  <p> <img height="181" width="487" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m4b0b0804.png" /> </p> 
+  <p> <b>Figure 22: Set of selected elements before application of this tool</b> </p> 
+  <p>Note that the selection appears differently for the last selected element which will give its size to the other one.</p> 
+  <p> <img height="191" width="450" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_13b01b21.png" /> </p> 
+  <p> <b>Figure 23: Result of the make same width/length tools</b> </p> 
+  <p>All the selected elements have the size of DataAcquisitionMgt.</p> 
+  <h2 id="Grid_Visible">Grid Visible</h2> 
+  <p>During diagram creation, grid can be visible or not according to the following preference:</p> 
+  <p> <img height="377" width="616" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_5ce27242.png" /> </p> 
+  <p> <b>Figure 24: Grid visible preference</b> </p> 
+  <p>Note that the grid spacing can also be set (here it is set at 10 pixels). Once this preference is checked, the newly created diagram will display a grid as in the following pictures.</p> 
+  <p> <img height="206" width="427" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m215c821.png" /> </p> 
+  <p> <b>Figure 25: Diagram editor with a visible grid</b> </p> 
+  <h2 id="Snap_to_Grid">Snap to Grid</h2> 
+  <p>Capella provides a preference to activate or deactivate the snap to grid behavior.</p> 
+  <p> <img height="319" width="520" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m3d5aebbe.png" /> </p> 
+  <p> <b>Figure 26: Snap to grid preference</b> </p> 
+  <p>When this preference is active, new diagrams behavior will be to align the border of element with the grid (which can be visible or not).</p> 
+  <p> <img height="112" width="257" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_45a14775.png" /> </p> 
+  <p> <b>Figure 27: Drag and Drop with snap to grid preference activated</b> </p> 
+  <p>This behavior can be modify on an existing diagram via the Snap To Grid options in the Rulers and Grid tab of the diagram Properties view.,</p> 
+  <p> <img height="167" width="319" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m217db488.gif" /> </p> 
+  <p> <b>Figure 28: Snap to grid option</b> </p> 
+  <table border="1"> 
+   <tbody>
+    <tr> 
+     <td> <p> <img height="45" width="45" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m262394d3.png" /> </p> </td> 
+     <td> <p>This behavior can be override by using the Alt key during the drag and drop or resize actions to ignore the grid as if the preference was disabled.</p> <p>Restore defaults in the Rulers and Grid Tab will automatically initialize these options according to the Sirius preferences.</p> </td> 
+    </tr> 
+   </tbody>
+  </table> 
+  <h2 id="Snap_to_Shapes">Snap to Shapes</h2> 
+  <p>Snap to shapes options aims to ease diagram elements alignment at the creation or during a drag and drop of existing element.</p> 
+  <p> <img height="360" width="412" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_47f32841.gif" /> </p> 
+  <p> <b>Figure 29: Snap to Shapes in Sirius preference for new diagrams</b> </p> 
+  <p>When this preference is active, new diagrams will display a line to compare alignment with other existing elements (borders and centers). This preference is set to initialize the Snap To Shapes properties in the Rulers and Grid tab of the diagram Property View. This property activates or deactivates this behavior in real time in the editor.</p> 
+  <p> <img height="160" width="301" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_6f217e35.gif" /> </p> 
+  <p> <b>Figure 30: Snap To Shapes option for current diagram</b> </p> 
+  <p>While active, palette creation tools and drag and drop actions will display lines which are close to the current cursor.</p> 
+  <p> <img height="159" width="346" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_5e595306.png" /> </p> 
+  <p> <b>Figure 31: Snap to Shapes activated for element creation with the palette</b> </p> 
+  <p> <img height="188" width="488" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m5505d461.gif" /> </p> 
+  <p> <b>Figure 32: Snap to Shapes activated for element during a Drag and Drop action</b> </p> 
+  <p> <br /> <br /> </p> 
+  <h2 id="Copy_.2F_Paste_Layout">Copy / Paste Layout</h2> 
+  <p>To initialize the layout of a diagram from an existing diagram, Capella provides copy / paste layout tools. Those tools can only be used for two diagrams which represent the same elements. The tool to copy the layout of selected element is only available in the diagram editor toolbar when at least one element is selected. And the paste layout tool is available on the diagram editor when there is no current selection.</p> 
+  <p> <img height="40" width="333" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m1cfa7de5.gif" /> </p> 
+  <p> <b>Figure 33: Copy layout tool</b> </p> 
+  <p> <img height="41" width="346" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_79d54579.gif" /> </p> 
+  <p> <b>Figure 34: Paste layout tool</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p>Copy the layout of the selected elements will only remember the layout for the current selection.</p> 
+  <p> <img height="290" width="546" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_277295ca.gif" /> </p> 
+  <p> <b>Figure 35: Layout model</b> </p> 
+  <p>Now we can initialize a new model and all the information we want to represent (or work on an existing one).</p> 
+  <p> <img height="270" width="513" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m275755e7.gif" /> </p> 
+  <p> <b>Figure 36: New diagram with a default layout</b> </p> 
+  <p>To initialize the layout of this diagram we can “paste the layout” of the first diagram.</p> 
+  <p> <img height="339" width="629" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m3a4a06e5.gif" /> </p> 
+  <p> <b>Figure 37: New diagram with the layout copied from the model</b> </p> 
+  <h2 id="Selection">Selection</h2> 
+  <h3 id="Left_to_right">Left to right</h3> 
+  <p>When the selection is performed from left to right, the selected elements are the elements which are entirely contained by the selection rectangle.</p> 
+  <p> <img height="203" width="472" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3c70f94e.gif" /> </p> 
+  <p> <b>Figure 38: Left to right selection action</b> </p> 
+  <p> <img height="196" width="481" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_4a5941a0.png" /> </p> 
+  <p> <b>Figure 39: Left to right selection result</b> </p> 
+  <h3 id="Right_to_Left">Right to Left</h3> 
+  <p> <br /> <br /> </p> 
+  <p>When the selection is performed from right to left, the selected elements are the one which touched by the selection rectangle.</p> 
+  <p> <img height="203" width="472" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3c70f94e.gif" /> </p> 
+  <p> <b>Figure 40: Right to left selection action</b> </p> 
+  <p> <img height="199" width="475" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7899e751.gif" /> </p> 
+  <p> <b>Figure 41: Right to left selection result</b> </p> 
+  <p> <br /> <br /> </p> 
+  <h2 id="Copy_Paste_of_Notes">Copy Paste of Notes</h2> 
+  <p>To quickly copy paste Notes on a diagram, <b>click on CTRL and move the Notes</b>: new Notes are created. </p> 
+  <p> <img height="126" width="434" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7dd84077.png" /> </p> 
+  <p> <b>Figure 42: Duplicate note with shortcut.</b> </p> 
+  <p> <br /> <br /> </p> 
+  <h2 id="Create_Several_Elements_in_Row">Create Several Elements in Row</h2> 
+  <p>When creating elements with the palette of a diagram, <b>holding the CTRL key allows keeping the current creation tool active</b> for another creation. </p> 
+  <h2 id="Quick_Search">Quick Search</h2> 
+  <p> <b>CTRL-O on a diagram opens a pop up listing all elements on the diagram</b>. Selecting one of these elements brings the focus on this element and centers the diagram on this element. </p> 
+  <p> <img height="353" width="563" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m10775b3b.png" /> </p> 
+  <p> <b>Figure 43: Quick search in diagram.</b> </p> 
+  <p>Hidden elements are displayed in italic in this quick search. Selecting a visible element in this list will automatically do a focus on this element.</p> 
+  <h2 id="Export_as_Images">Export as Images</h2> 
+  <p>Each diagram can be exported as image (jpg, png, svg, bmp or gif format) using diagram toolbar. <b>All diagrams</b> <b>can be extracted at once</b>, right clicking <b>on Aird analysis</b> and choosing <b>contextual menu &quot;Export representations as images&quot;</b>. </p> 
+  <p>Note: right clicking on a Cross Table and choosing contextual menu &quot;Export/CSV&quot; provides a CSV file.</p> 
+  <p> <img height="155" width="397" border="0" src="Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m76e8132a.png" /> </p> 
+  <p> <b>Figure 44: Export configuration.</b> </p> 
+  <p> <br /> <br /> </p> 
+  <p> <br /> <br /> </p> 
+  <p> <br /> <br /> </p>   
+ </body>
+</html>

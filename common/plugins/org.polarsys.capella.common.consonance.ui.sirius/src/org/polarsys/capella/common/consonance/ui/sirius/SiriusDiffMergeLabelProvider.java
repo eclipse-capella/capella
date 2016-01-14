@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,6 +65,23 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
   }
   
   /**
+   * Return a label for the given RGBValues element
+   * @param element_p a non-null RGBValues element
+   * @return a non-null string
+   */
+  protected String getRGBValuesText(RGBValues element_p) {
+    StringBuilder builder = new StringBuilder();
+    builder.append('(');
+    builder.append(element_p.getRed());
+    builder.append(',');
+    builder.append(element_p.getGreen());
+    builder.append(',');
+    builder.append(element_p.getBlue());
+    builder.append(')');
+    return builder.toString();
+  }
+  
+  /**
    * @see org.eclipse.emf.diffmerge.ui.util.DiffMergeLabelProvider#getText(java.lang.Object)
    */
   @Override
@@ -81,8 +98,11 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
     } else if (element_p instanceof DRepresentationContainer) {
       DRepresentationContainer representationContainer = (DRepresentationContainer)element_p;
       Viewpoint viewpoint = representationContainer.getViewpoint();
-      if (viewpoint != null)
-        result = viewpoint.getName();
+      if (viewpoint != null) {
+        result = viewpoint.getLabel();
+        if (result == null)
+          result = viewpoint.getName();
+      }
     } else if (element_p instanceof DRepresentationElement) {
       result = getRepresentationElementText((DRepresentationElement)element_p);
     } else if (element_p instanceof NodeStyle) {
@@ -92,7 +112,7 @@ public class SiriusDiffMergeLabelProvider extends GMFDiffMergeLabelProvider {
         element_p instanceof BasicLabelStyle) {
       result = getManyQualifiedElementText((EObject)element_p);
     } else if (element_p instanceof RGBValues) {
-      result = getContainmentText((EObject)element_p);
+      result = getRGBValuesText((RGBValues)element_p);
     }
     if (result == null)
       result = super.getText(element_p);

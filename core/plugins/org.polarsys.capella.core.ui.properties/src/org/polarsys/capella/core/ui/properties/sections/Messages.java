@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ public class Messages extends NLS {
   public static String RepresentationSection_SetCommand_Representation_Name_Label;
   public static String RepresentationSection_Command_Representation_Publication_Label;
   public static String VisibleInDocGroup_Label;
-  public static String VisibleInLMGroup_Label;
+  public static String VisibleForTraceabilityGroup_Label;
   public static String ProgressStatus_Label;
   public static String AppliedPropertyValues_Label;
   public static String AppliedPropertyValueGroups_Label;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,7 +79,7 @@ public class AbstractActionItemProvider
 			// Process ActivityPackage.Literals.ABSTRACT_ACTION__CONTEXT
 			if (contextPropertyDescriptor != null) {
 				Object contextValue = eObject.eGet(ActivityPackage.Literals.ABSTRACT_ACTION__CONTEXT, true);
-				if (contextValue != null && contextValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) contextValue)) {
+				if (contextValue != null && contextValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) contextValue)) {
 					itemPropertyDescriptors.remove(contextPropertyDescriptor);
 				} else if (contextValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ABSTRACT_ACTION__CONTEXT) != null) {
 					itemPropertyDescriptors.remove(contextPropertyDescriptor);				  					

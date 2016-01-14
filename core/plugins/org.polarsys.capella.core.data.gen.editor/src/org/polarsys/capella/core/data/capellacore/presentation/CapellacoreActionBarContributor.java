@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,6 +88,43 @@ import org.polarsys.kitalpha.emde.ui.i18n.Messages;
 public class CapellacoreActionBarContributor
 	extends EditingDomainActionBarContributor
 	implements ISelectionChangedListener, IPropertyChangeListener {
+	private final class RefreshViewerAction extends Action {
+		private RefreshViewerAction() {
+			super(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")); //$NON-NLS-1$
+		}
+
+			@Override
+		public boolean isEnabled() {
+			return activeEditorPart instanceof IViewerProvider;
+		}
+
+			@Override
+		public void run() {
+			if (activeEditorPart instanceof IViewerProvider) {
+				Viewer viewer = ((IViewerProvider) activeEditorPart)
+						.getViewer();
+				if (viewer != null) {
+					viewer.refresh();
+				}
+			}
+		}
+	}
+
+	private final class ShowPropertiesViewAction extends Action {
+		private ShowPropertiesViewAction() {
+			super(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")); //$NON-NLS-1$
+		}
+
+			@Override
+		public void run() {
+			try {
+				getPage().showView("org.eclipse.ui.views.PropertySheet");  //$NON-NLS-1$
+			} catch (PartInitException exception) {
+				CapellaModellerEditorPlugin.INSTANCE.log(exception);
+			}
+		}
+	}
+
 	/**
 	 * ExtendedLoadResourceAction.
 	 * <!-- begin-user-doc -->
@@ -262,18 +299,7 @@ public class CapellacoreActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction =
-		new Action(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
-		{
-			@Override
-			public void run() {
-				try {
-					getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
-				}
-				catch (PartInitException exception) {
-					CapellaModellerEditorPlugin.INSTANCE.log(exception);
-				}
-			}
-		};
+		new ShowPropertiesViewAction();
 
 	/**
 	 * This action refreshes the viewer of the current editor if the editor
@@ -283,23 +309,7 @@ public class CapellacoreActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction =
-		new Action(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
-		{
-			@Override
-			public boolean isEnabled() {
-				return activeEditorPart instanceof IViewerProvider;
-			}
-
-			@Override
-			public void run() {
-				if (activeEditorPart instanceof IViewerProvider) {
-					Viewer viewer = ((IViewerProvider)activeEditorPart).getViewer();
-					if (viewer != null) {
-						viewer.refresh();
-					}
-				}
-			}
-		};
+		new RefreshViewerAction();
 
 	/**
 	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor

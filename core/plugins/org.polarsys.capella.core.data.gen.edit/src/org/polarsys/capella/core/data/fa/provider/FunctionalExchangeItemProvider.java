@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
-import org.polarsys.capella.common.data.modellingcore.ModellingcoreFactory;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -153,7 +152,7 @@ public class FunctionalExchangeItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW
 			if (realizedFlowPropertyDescriptor != null) {
 				Object realizedFlowValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW, true);
-				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedFlowValue)) {
+				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedFlowValue)) {
 					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);
 				} else if (realizedFlowValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW) != null) {
 					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);				  					
@@ -164,7 +163,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION
 			if (inActivityPartitionPropertyDescriptor != null) {
 				Object inActivityPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION, true);
-				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
+				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);
 				} else if (inActivityPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION) != null) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);				  					
@@ -175,7 +174,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION
 			if (inInterruptibleRegionPropertyDescriptor != null) {
 				Object inInterruptibleRegionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION, true);
-				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
+				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);
 				} else if (inInterruptibleRegionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION) != null) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);				  					
@@ -186,7 +185,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE
 			if (inStructuredNodePropertyDescriptor != null) {
 				Object inStructuredNodeValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE, true);
-				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
+				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);
 				} else if (inStructuredNodeValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE) != null) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);				  					
@@ -197,7 +196,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__TARGET
 			if (targetPropertyDescriptor != null) {
 				Object targetValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
@@ -208,7 +207,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
@@ -219,7 +218,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_EDGE__INTERRUPTS
 			if (interruptsPropertyDescriptor != null) {
 				Object interruptsValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_EDGE__INTERRUPTS, true);
-				if (interruptsValue != null && interruptsValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) interruptsValue)) {
+				if (interruptsValue != null && interruptsValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interruptsValue)) {
 					itemPropertyDescriptors.remove(interruptsPropertyDescriptor);
 				} else if (interruptsValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_EDGE__INTERRUPTS) != null) {
 					itemPropertyDescriptors.remove(interruptsPropertyDescriptor);				  					
@@ -230,7 +229,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION
 			if (transformationPropertyDescriptor != null) {
 				Object transformationValue = eObject.eGet(ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION, true);
-				if (transformationValue != null && transformationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) transformationValue)) {
+				if (transformationValue != null && transformationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) transformationValue)) {
 					itemPropertyDescriptors.remove(transformationPropertyDescriptor);
 				} else if (transformationValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION) != null) {
 					itemPropertyDescriptors.remove(transformationPropertyDescriptor);				  					
@@ -241,7 +240,7 @@ public class FunctionalExchangeItemProvider
 			// Process ActivityPackage.Literals.OBJECT_FLOW__SELECTION
 			if (selectionPropertyDescriptor != null) {
 				Object selectionValue = eObject.eGet(ActivityPackage.Literals.OBJECT_FLOW__SELECTION, true);
-				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) selectionValue)) {
+				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) selectionValue)) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);
 				} else if (selectionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_FLOW__SELECTION) != null) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);				  					
@@ -252,7 +251,7 @@ public class FunctionalExchangeItemProvider
 			// Process FaPackage.Literals.FUNCTIONAL_EXCHANGE__SOURCE_FUNCTION_OUTPUT_PORT
 			if (sourceFunctionOutputPortPropertyDescriptor != null) {
 				Object sourceFunctionOutputPortValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_EXCHANGE__SOURCE_FUNCTION_OUTPUT_PORT, true);
-				if (sourceFunctionOutputPortValue != null && sourceFunctionOutputPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceFunctionOutputPortValue)) {
+				if (sourceFunctionOutputPortValue != null && sourceFunctionOutputPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceFunctionOutputPortValue)) {
 					itemPropertyDescriptors.remove(sourceFunctionOutputPortPropertyDescriptor);
 				} else if (sourceFunctionOutputPortValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_EXCHANGE__SOURCE_FUNCTION_OUTPUT_PORT) != null) {
 					itemPropertyDescriptors.remove(sourceFunctionOutputPortPropertyDescriptor);				  					
@@ -263,7 +262,7 @@ public class FunctionalExchangeItemProvider
 			// Process FaPackage.Literals.FUNCTIONAL_EXCHANGE__TARGET_FUNCTION_INPUT_PORT
 			if (targetFunctionInputPortPropertyDescriptor != null) {
 				Object targetFunctionInputPortValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_EXCHANGE__TARGET_FUNCTION_INPUT_PORT, true);
-				if (targetFunctionInputPortValue != null && targetFunctionInputPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetFunctionInputPortValue)) {
+				if (targetFunctionInputPortValue != null && targetFunctionInputPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetFunctionInputPortValue)) {
 					itemPropertyDescriptors.remove(targetFunctionInputPortPropertyDescriptor);
 				} else if (targetFunctionInputPortValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_EXCHANGE__TARGET_FUNCTION_INPUT_PORT) != null) {
 					itemPropertyDescriptors.remove(targetFunctionInputPortPropertyDescriptor);				  					

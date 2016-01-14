@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.common.libraries.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.polarsys.capella.common.libraries.*;
-
+import org.polarsys.capella.common.libraries.LibrariesPackage;
+import org.polarsys.capella.common.libraries.LibraryAbstractElement;
+import org.polarsys.capella.common.libraries.LibraryReference;
+import org.polarsys.capella.common.libraries.ModelInformation;
+import org.polarsys.capella.common.libraries.ModelVersion;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
@@ -61,7 +61,7 @@ public class LibrariesSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ public abstract class ITransfoEngine
 
   public abstract String getName();
   
-  public abstract void execute(ITransfo transfo_p) throws TransfoException;
+  public abstract void execute(ITransfo transfo) throws TransfoException;
 
   /**
    * @see java.lang.Runnable#run()
@@ -28,18 +28,18 @@ public abstract class ITransfoEngine
   public abstract void run();
 
   /**
-   * @param transfo_p the transfo to set
+   * @param transfo the transfo to set
    */
-  public abstract void setTransfo(ITransfo transfo_p);
+  public abstract void setTransfo(ITransfo transfo);
 
   protected abstract void generateUid();
   
   /**
    * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
    */
-  public abstract void update(Observable o_p, Object arg_p);  
+  public abstract void update(Observable o, Object arg);  
   
-  public abstract void initialize(ITransfo transfo_p) throws TransfoException; 
+  public abstract void initialize(ITransfo transfo) throws TransfoException; 
   
   public abstract String generateReport();
 }

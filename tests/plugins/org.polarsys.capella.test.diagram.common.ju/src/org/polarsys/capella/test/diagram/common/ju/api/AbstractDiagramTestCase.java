@@ -26,4 +26,5 @@ public abstract class AbstractDiagramTestCase extends BasicTestCase {
   }
 
   protected abstract String getRequiredTestModel();
+
 }

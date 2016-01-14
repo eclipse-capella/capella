@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,16 +42,16 @@ public class ConfigurationItemServices {
 
   /**
    * get all the available PhyscialComponent, PhysicalLinks, and PhysicalPorts from PhyscialArchitecture
-   * @param context_p : is a CongurationItem
+   * @param context : is a CongurationItem
    * @return list of Eobject
    */
-  public List<EObject> getAllRealizablePhysicalArtefacts(CapellaElement context_p) {
-    return QueryInterpretor.executeQuery("GetAllRealizablePhysicalArtefacts__Lib", context_p, new QueryContext());//$NON-NLS-1$
+  public List<EObject> getAllRealizablePhysicalArtefacts(CapellaElement context) {
+    return QueryInterpretor.executeQuery("GetAllRealizablePhysicalArtefacts__Lib", context, new QueryContext());//$NON-NLS-1$
   }  
 
-  public boolean isParentContainedInDiagram(PhysicalPort context_p, List<PhysicalComponent> allPhysicalComponentInDiagram) {
+  public boolean isParentContainedInDiagram(PhysicalPort context, List<PhysicalComponent> allPhysicalComponentInDiagram) {
 
-    EObject container = context_p.eContainer();
+    EObject container = context.eContainer();
     if ((null != container) && allPhysicalComponentInDiagram.contains(container)) {
       return true;
     }
@@ -60,45 +60,45 @@ public class ConfigurationItemServices {
   }
 
   /**
-   * @param context_p
-   * @param aOperation_p
-   * @param diagram_p
+   * @param context
+   * @param aOperation
+   * @param diagram
    */
-  public ConfigurationItem createConfigurationItem(EObject container_p, ConfigurationItemKind kind_p) {
+  public ConfigurationItem createConfigurationItem(EObject container, ConfigurationItemKind kind) {
     ConfigurationItem item = null;
-    EObject container = null;
+    EObject owner = null;
 
-    if ((container_p instanceof ConfigurationItem)) {
-      container = container_p;
-    } else if ((container_p instanceof ConfigurationItemPkg)) {
-      container = container_p;
-    } else if (container_p instanceof Part) {
-      EObject componentType = CsServices.getService().getComponentType((Part) container_p);
+    if ((container instanceof ConfigurationItem)) {
+      owner = container;
+    } else if ((container instanceof ConfigurationItemPkg)) {
+      owner = container;
+    } else if (container instanceof Part) {
+      EObject componentType = CsServices.getService().getComponentType((Part) container);
       if (componentType instanceof ConfigurationItem) {
-        container = componentType;
+        owner = componentType;
       }
     }
 
-    if (null == container) {
-      EPBSArchitecture architecture = ((EPBSArchitecture) BlockArchitectureExt.getRootBlockArchitecture(container_p));
+    if (null == owner) {
+      EPBSArchitecture architecture = ((EPBSArchitecture) BlockArchitectureExt.getRootBlockArchitecture(container));
       if (architecture.getOwnedConfigurationItem() != null) {
-        container = architecture.getOwnedConfigurationItem();
+        owner = architecture.getOwnedConfigurationItem();
       } else {
-        container = architecture;
+        owner = architecture;
       }
     }
 
-    if (container != null) {
+    if (owner != null) {
       item = EpbsFactory.eINSTANCE.createConfigurationItem();
-      item.setKind(kind_p);
+      item.setKind(kind);
 
       if (item != null) {
-        if (container instanceof ConfigurationItem) {
-          ((ConfigurationItem) container).getOwnedConfigurationItems().add(item);
-        } else if (container instanceof ConfigurationItemPkg) {
-          ((ConfigurationItemPkg) container).getOwnedConfigurationItems().add(item);
-        } else if (container instanceof EPBSArchitecture) {
-          ((EPBSArchitecture) container).setOwnedConfigurationItem(item);
+        if (owner instanceof ConfigurationItem) {
+          ((ConfigurationItem) owner).getOwnedConfigurationItems().add(item);
+        } else if (owner instanceof ConfigurationItemPkg) {
+          ((ConfigurationItemPkg) owner).getOwnedConfigurationItems().add(item);
+        } else if (owner instanceof EPBSArchitecture) {
+          ((EPBSArchitecture) owner).setOwnedConfigurationItem(item);
         }
         CapellaServices.getService().creationService(item);
       }
@@ -106,38 +106,38 @@ public class ConfigurationItemServices {
     return item;
   }
 
-  public ConfigurationItem createSystemCI(EObject container_p) {
-    ConfigurationItem ci = createConfigurationItem(container_p, ConfigurationItemKind.SYSTEM_CI);
+  public ConfigurationItem createSystemCI(EObject container) {
+    ConfigurationItem ci = createConfigurationItem(container, ConfigurationItemKind.SYSTEM_CI);
     return ci;
   }
 
-  public ConfigurationItem createPrimeItemCI(EObject container_p) {
-    ConfigurationItem ci = createConfigurationItem(container_p, ConfigurationItemKind.PRIME_ITEM_CI);
+  public ConfigurationItem createPrimeItemCI(EObject container) {
+    ConfigurationItem ci = createConfigurationItem(container, ConfigurationItemKind.PRIME_ITEM_CI);
     return ci;
   }
 
-  public ConfigurationItem createNDICI(EObject container_p) {
-    ConfigurationItem ci = createConfigurationItem(container_p, ConfigurationItemKind.NDICI);
+  public ConfigurationItem createNDICI(EObject container) {
+    ConfigurationItem ci = createConfigurationItem(container, ConfigurationItemKind.NDICI);
     return ci;
   }
 
-  public ConfigurationItem createInterfaceCI(EObject container_p) {
-    ConfigurationItem ci = createConfigurationItem(container_p, ConfigurationItemKind.INTERFACE_CI);
+  public ConfigurationItem createInterfaceCI(EObject container) {
+    ConfigurationItem ci = createConfigurationItem(container, ConfigurationItemKind.INTERFACE_CI);
     return ci;
   }
 
-  public ConfigurationItem createHWCI(EObject container_p) {
-    ConfigurationItem ci = createConfigurationItem(container_p, ConfigurationItemKind.HWCI);
+  public ConfigurationItem createHWCI(EObject container) {
+    ConfigurationItem ci = createConfigurationItem(container, ConfigurationItemKind.HWCI);
     return ci;
   }
 
-  public ConfigurationItem createCSCI(EObject container_p) {
-    ConfigurationItem ci = createConfigurationItem(container_p, ConfigurationItemKind.CSCI);
+  public ConfigurationItem createCSCI(EObject container) {
+    ConfigurationItem ci = createConfigurationItem(container, ConfigurationItemKind.CSCI);
     return ci;
   }
 
-  public ConfigurationItem createCOTSCI(EObject container_p) {
-    ConfigurationItem ci = createConfigurationItem(container_p, ConfigurationItemKind.COTSCI);
+  public ConfigurationItem createCOTSCI(EObject container) {
+    ConfigurationItem ci = createConfigurationItem(container, ConfigurationItemKind.COTSCI);
     return ci;
   }
 }

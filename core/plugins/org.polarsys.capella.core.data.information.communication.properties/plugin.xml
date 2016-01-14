@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -13,14 +13,6 @@
 <plugin>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
-         <propertySection
-               class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               tab="Base">
-            <input
-                  type="org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation">
-            </input>
-         </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
@@ -75,12 +67,6 @@
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
 	  <propertySections contributorId="org.eclipse.sirius.diagram.ui">
          <propertySection
-               class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               tab="Base">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
@@ -120,12 +106,6 @@
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
 	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
-         <propertySection
-               class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkAllocationSection"
-               tab="Base">
-         </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"

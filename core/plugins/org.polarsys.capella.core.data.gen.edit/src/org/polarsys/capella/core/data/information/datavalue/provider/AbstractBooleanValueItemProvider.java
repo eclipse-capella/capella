@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class AbstractBooleanValueItemProvider
 			// Process DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE
 			if (booleanTypePropertyDescriptor != null) {
 				Object booleanTypeValue = eObject.eGet(DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE, true);
-				if (booleanTypeValue != null && booleanTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) booleanTypeValue)) {
+				if (booleanTypeValue != null && booleanTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) booleanTypeValue)) {
 					itemPropertyDescriptors.remove(booleanTypePropertyDescriptor);
 				} else if (booleanTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE) != null) {
 					itemPropertyDescriptors.remove(booleanTypePropertyDescriptor);				  					

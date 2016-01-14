@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,7 +78,7 @@ public class RoleAssemblyUsageItemProvider
 			// Process OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD
 			if (childPropertyDescriptor != null) {
 				Object childValue = eObject.eGet(OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD, true);
-				if (childValue != null && childValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) childValue)) {
+				if (childValue != null && childValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) childValue)) {
 					itemPropertyDescriptors.remove(childPropertyDescriptor);
 				} else if (childValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ROLE_ASSEMBLY_USAGE__CHILD) != null) {
 					itemPropertyDescriptors.remove(childPropertyDescriptor);				  					

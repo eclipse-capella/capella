@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.pa.deployment.ComponentInstance;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
@@ -87,7 +86,7 @@ public class ComponentInstanceItemProvider
 			// Process DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, DeploymentPackage.Literals.COMPONENT_INSTANCE__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					
@@ -194,9 +193,9 @@ public class ComponentInstanceItemProvider
 				 getString("_UI_DeploymentTarget_deploymentLinks_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deploymentLinks_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,10 +20,10 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentExchangeCategory#getExchanges <em>Exchanges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeCategory()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='defines a family of exchanges, all associated to a common applicative criteria\r\n[source: Capella study]' usage\040guideline='could for example be used to declare a grouping of all physical exchanges sharing the same communication medium\r\n[source: Capella study]' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

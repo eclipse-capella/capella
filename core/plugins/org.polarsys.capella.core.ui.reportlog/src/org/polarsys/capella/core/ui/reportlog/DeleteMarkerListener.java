@@ -25,6 +25,10 @@ import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMar
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.model.handler.post.commit.listener.DeleteElementListener;
 
+/**
+ * Upon deletion of a model element, this listener deletes all markers 
+ * that reference the deleted model element.
+ */
 public class DeleteMarkerListener extends DeleteElementListener {
 
   @Override

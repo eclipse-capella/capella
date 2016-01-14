@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class ComponentAllocationItemProvider
 			// Process CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT
 			if (allocatedComponentPropertyDescriptor != null) {
 				Object allocatedComponentValue = eObject.eGet(CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT, true);
-				if (allocatedComponentValue != null && allocatedComponentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedComponentValue)) {
+				if (allocatedComponentValue != null && allocatedComponentValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedComponentValue)) {
 					itemPropertyDescriptors.remove(allocatedComponentPropertyDescriptor);
 				} else if (allocatedComponentValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT) != null) {
 					itemPropertyDescriptors.remove(allocatedComponentPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ComponentAllocationItemProvider
 			// Process CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT
 			if (allocatingComponentPropertyDescriptor != null) {
 				Object allocatingComponentValue = eObject.eGet(CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT, true);
-				if (allocatingComponentValue != null && allocatingComponentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingComponentValue)) {
+				if (allocatingComponentValue != null && allocatingComponentValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingComponentValue)) {
 					itemPropertyDescriptors.remove(allocatingComponentPropertyDescriptor);
 				} else if (allocatingComponentValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT) != null) {
 					itemPropertyDescriptors.remove(allocatingComponentPropertyDescriptor);				  					

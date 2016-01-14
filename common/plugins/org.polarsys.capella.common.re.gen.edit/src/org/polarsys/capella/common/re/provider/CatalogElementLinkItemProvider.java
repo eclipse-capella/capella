@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,8 +29,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
@@ -90,7 +90,7 @@ public class CatalogElementLinkItemProvider extends
 			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class CatalogElementLinkItemProvider extends
 			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET
 			if (targetPropertyDescriptor != null) {
 				Object targetValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
@@ -112,7 +112,7 @@ public class CatalogElementLinkItemProvider extends
 			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN
 			if (originPropertyDescriptor != null) {
 				Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN, true);
-				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) originValue)) {
+				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) originValue)) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);
 				} else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN) != null) {
 					itemPropertyDescriptors.remove(originPropertyDescriptor);				  					
@@ -139,6 +139,7 @@ public class CatalogElementLinkItemProvider extends
 			addTargetPropertyDescriptor(object);
 			addOriginPropertyDescriptor(object);
 			addUnsynchronizedFeaturesPropertyDescriptor(object);
+			addSuffixedPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -252,6 +253,34 @@ public class CatalogElementLinkItemProvider extends
 	}
 
 	/**
+	 * This adds a property descriptor for the Suffixed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuffixedPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElementLink_suffixed_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElementLink_suffixed_feature", "_UI_CatalogElementLink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT_LINK__SUFFIXED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+
+	/**
 	 * This returns CatalogElementLink.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,6 +328,7 @@ public class CatalogElementLinkItemProvider extends
 
 		switch (notification.getFeatureID(CatalogElementLink.class)) {
 			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
+			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

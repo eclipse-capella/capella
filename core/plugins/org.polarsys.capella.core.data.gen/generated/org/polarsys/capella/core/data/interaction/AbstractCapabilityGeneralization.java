@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSuper <em>Super</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSub <em>Sub</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractCapabilityGeneralization'"
@@ -40,7 +40,6 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 
 	/**
 	 * Returns the value of the '<em><b>Super</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getSubGeneralizations <em>Sub Generalizations</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -51,8 +50,7 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 	 * @return the value of the '<em>Super</em>' reference.
 	 * @see #setSuper(AbstractCapability)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization_Super()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getSubGeneralizations
-	 * @model opposite="subGeneralizations" required="true"
+	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the parent Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -84,8 +82,7 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getSuperGeneralizations <em>Super Generalizations</em>}'.
+	 * Returns the value of the '<em><b>Sub</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -93,11 +90,9 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub</em>' container reference.
-	 * @see #setSub(AbstractCapability)
+	 * @return the value of the '<em>Sub</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityGeneralization_Sub()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getSuperGeneralizations
-	 * @model opposite="superGeneralizations" required="true" transient="false"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='general' featureOwner='Generalization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the child Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -106,21 +101,6 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 	 */
 
 	AbstractCapability getSub();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSub <em>Sub</em>}' container reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sub</em>' container reference.
-	 * @see #getSub()
-	 * @generated
-	 */
-
-	void setSub(AbstractCapability value);
 
 
 

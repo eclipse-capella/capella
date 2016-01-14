@@ -1,0 +1,372 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+org.polarsys.capella.doc/html/*/Images
+
+logo_capella_big.png
+
+20.1. Basic Search & Replace_html_165f01ea.png
+20.1. Basic Search & Replace_html_5fd250d2.png
+20.1. Basic Search & Replace_html_m20afcd41.png
+20.1. Basic Search & Replace_html_m2ea67ac6.png
+20.1. Basic Search & Replace_html_m55039b91.png
+20.1. Basic Search & Replace_html_m58a01ebe.png
+20.1. Basic Search & Replace_html_m7a0d8e38.png
+20.1. Basic Search & Replace_html_md895f0a.png
+
+12.1. Model Validation_html_2ca1937.png
+12.1. Model Validation_html_3c9a54b9.png
+12.1. Model Validation_html_48b94bdc.png
+12.1. Model Validation_html_7e7d7622.png
+12.1. Model Validation_html_f42b8bc.png
+12.1. Model Validation_html_m1179e445.png
+12.1. Model Validation_html_m12fc73d3.png
+12.1. Model Validation_html_mf186e68.png
+12.2. Impact Analysis_html_26fcb91a.png
+12.2. Impact Analysis_html_597b3feb.png
+12.2. Impact Analysis_html_723ed3f9.png
+12.2. Impact Analysis_html_m69ba39ad.png
+12.3. Metrics Computation_html_5d121ae0.png
+12.4 Progress Monitoring_Change_.png
+12.4 Progress Monitoring_Clear Review.png
+12.4. Progress Monitoring Overview.png
+12.4. Progress Monitoring_Change_.png
+12.4. Progress Monitoring_html_12d478a0.png
+12.4. Progress Monitoring_html_1366c180.png
+12.4. Progress Monitoring_html_27a38b50.png
+12.4. Progress Monitoring_html_32a787d3.png
+12.4. Progress Monitoring_html_34e72a1c.png
+12.4. Progress Monitoring_html_4f09dd6.png
+12.4. Progress Monitoring_html_72c054c1.png
+12.4. Progress Monitoring_html_73c7c6df.png
+12.4. Progress Monitoring_html_81b291e7.png
+12.4. Progress Monitoring_InformationView.png
+
+7.1. Modeling accelerators_html_1a7918c9.png
+7.1. Modeling accelerators_html_1cf7543e.png
+7.1. Modeling accelerators_html_2dcaeafb.png
+7.1. Modeling accelerators_html_3a3b835f.png
+7.1. Modeling accelerators_html_5e22a0cd.png
+7.1. Modeling accelerators_html_5f97dea6.png
+7.1. Modeling accelerators_html_67e6a41c.png
+7.1. Modeling accelerators_html_77412d6b.png
+7.1. Modeling accelerators_html_a37b1aa.png
+7.1. Modeling accelerators_html_m34764e20.png
+7.1. Modeling accelerators_html_m437e70f8.png
+7.1. Modeling accelerators_html_m4ca6bbc5.png
+7.1. Modeling accelerators_html_m52977986.png
+7.1. Modeling accelerators_html_m6212ede3.png
+7.1. Modeling accelerators_html_m652c731a.png
+7.1. Modeling accelerators_html_m662553b3.png
+7.1. Modeling accelerators_html_m665442c6.png
+7.1. Modeling accelerators_html_m7eccf2be.png
+7.1. Modeling accelerators_html_md0f733b.png
+7.2. Contextual Allocations_html_3b72ac99.png
+7.2. Contextual Allocations_html_3fa439ce.png
+7.2. Contextual Allocations_html_m189f0de5.png
+7.2. Contextual Allocations_html_m481776f5.png
+7.3. Modeling Wizards_html_1052ecae.png
+7.3. Modeling Wizards_html_20372dd4.png
+7.3. Modeling Wizards_html_2a4469c8.png
+7.3. Modeling Wizards_html_2fe6c3a7.png
+7.3. Modeling Wizards_html_34b702bc.png
+7.3. Modeling Wizards_html_371dbcf8.png
+7.3. Modeling Wizards_html_3b8ac738.png
+7.3. Modeling Wizards_html_3c16a2da.png
+7.3. Modeling Wizards_html_3c78e109.png
+7.3. Modeling Wizards_html_3e5a6208.png
+7.3. Modeling Wizards_html_4f6cb139.png
+7.3. Modeling Wizards_html_52b2765f.png
+7.3. Modeling Wizards_html_5cde59bb.png
+7.3. Modeling Wizards_html_6b0bb32.png
+7.3. Modeling Wizards_html_70097a10.png
+7.3. Modeling Wizards_html_7cc837b4.png
+7.3. Modeling Wizards_html_86ec03b.png
+7.3. Modeling Wizards_html_d1af40e.png
+7.3. Modeling Wizards_html_m1460320e.png
+7.3. Modeling Wizards_html_m1bb276f1.png
+7.3. Modeling Wizards_html_m2823bc7.png
+7.3. Modeling Wizards_html_m32233f16.png
+7.3. Modeling Wizards_html_m32ab2f86.png
+7.3. Modeling Wizards_html_m417c4c64.png
+7.3. Modeling Wizards_html_m481de745.png
+7.3. Modeling Wizards_html_m6dc3155c.png
+7.3. Modeling Wizards_html_m7817c5f8.png
+7.3. Modeling Wizards_html_m7cfae2ea.png
+7.3. Modeling Wizards_html_m7ed31874.png
+7.3. Modeling Wizards_html_m904ea44.png
+7.3. Modeling Wizards_html_m95137e6.png
+7.3. Modeling Wizards_html_md5d81bf.png
+7.3. Modeling Wizards_html_mf319315.png
+7.4. Function Port and Exchange Item Allocation Wizard_html_5cde59bb.png
+7.4. Function Port and Exchange Item Allocation Wizard_html_d1af40e.png
+7.4. Function Port and Exchange Item Allocation Wizard_html_m7817c5f8.png
+7.4. Function Port and Exchange Item Allocation Wizard_html_m7cfae2ea.png
+7.4. Function Port and Exchange Item Allocation Wizard_html_md5d81bf.png
+7.5. Categories Management_html_63b85f83.png
+7.5. Categories Management_html_m1baf1be6.png
+7.5. Categories Management_html_m3bb20f50.png
+7.5. Categories Management_html_m40dbbf55.png
+7.5. Categories Management_html_m46cfd1d4.png
+7.5. Categories Management_html_m54efebb1.png
+7.5. Categories Management_html_m70b69cf1.png
+7.5. Categories Management_html_m799e9436.png
+7.5. Categories Management_html_mb71576b.png
+7.5. Categories Management_html_me1f6095.png
+
+5.1. Diagram concepts_html_2651df52.png
+5.1. Diagram concepts_html_35899bf3.png
+5.1. Diagram concepts_html_3638aa88.png
+5.1. Diagram concepts_html_3c78e109.png
+5.1. Diagram concepts_html_44f68dc3.png
+5.1. Diagram concepts_html_4bcfe8db.png
+5.1. Diagram concepts_html_5a167562.png
+5.1. Diagram concepts_html_68c21683.png
+5.1. Diagram concepts_html_m12b23fb.png
+5.1. Diagram concepts_html_m17eb4be9.png
+5.1. Diagram concepts_html_m1fd6c4f8.png
+5.1. Diagram concepts_html_m4244975a.png
+5.1. Diagram concepts_html_m67259d01.png
+5.2. Advanced Managenement of Diagrams_html_20ac0b99.png
+5.2. Advanced Managenement of Diagrams_html_26d60da9.png
+5.2. Advanced Managenement of Diagrams_html_30547e9b.png
+5.2. Advanced Managenement of Diagrams_html_34821f4c.png
+5.2. Advanced Managenement of Diagrams_html_3c78e109.png
+5.2. Advanced Managenement of Diagrams_html_5ad072f.png
+5.2. Advanced Managenement of Diagrams_html_607b747c.png
+5.2. Advanced Managenement of Diagrams_html_7ea48f9f.png
+5.2. Advanced Managenement of Diagrams_html_93bd649.png
+5.2. Advanced Managenement of Diagrams_html_m12e8ea27.png
+5.2. Advanced Managenement of Diagrams_html_m18897851.png
+5.2. Advanced Managenement of Diagrams_html_m1f9a28ae.png
+5.2. Advanced Managenement of Diagrams_html_m3f7bce52.png
+5.2. Advanced Managenement of Diagrams_html_m42fd3f45.png
+5.2. Advanced Managenement of Diagrams_html_m5af8c4ec.png
+5.2. Advanced Managenement of Diagrams_html_m5ff89f63.png
+5.2. Advanced Managenement of Diagrams_html_m64a62184.png
+5.2. Advanced Managenement of Diagrams_html_m686bc252.png
+5.2. Advanced Managenement of Diagrams_html_me90e433.png
+5.3. Diagram Business Copy Paste_html_20311ae1.png
+5.3. Diagram Business Copy Paste_html_33db2eed.png
+5.3. Diagram Business Copy Paste_html_m4a16833b.png
+5.3. Diagram Business Copy Paste_html_m51ff35d9.png
+5.3. Diagram Business Copy Paste_html_m597582b4.png
+5.3. Diagram Business Copy Paste_html_m5e9522c.png
+5.4. Typologie of Melody Diagrams_html_2b3dfb13.png
+5.4. Typologie of Melody Diagrams_html_479f9bb0.png
+5.4. Typologie of Melody Diagrams_html_57102121.png
+5.4. Typologie of Melody Diagrams_html_77fa1253.png
+5.4. Typologie of Melody Diagrams_html_m4bdfca4a.png
+5.4. Typologie of Melody Diagrams_html_m58700682.png
+5.4. Typologie of Melody Diagrams_html_m5d9f02c6.png
+5.5. Creation of Functional Chains and Physical Paths_html_32613eaf.png
+5.5. Creation of Functional Chains and Physical Paths_html_3267dbc1.png
+5.5. Creation of Functional Chains and Physical Paths_html_3e1821f9.png
+5.5. Creation of Functional Chains and Physical Paths_html_52c61c52.png
+5.5. Creation of Functional Chains and Physical Paths_html_6efdb628.png
+5.5. Creation of Functional Chains and Physical Paths_html_cd38218.png
+5.5. Creation of Functional Chains and Physical Paths_html_m262394d3.png
+5.5. Creation of Functional Chains and Physical Paths_html_m447a782f.png
+5.5. Creation of Functional Chains and Physical Paths_html_m5845eb00.png
+5.5. Creation of Functional Chains and Physical Paths_html_mdab6cc9.png
+5.6. Diagrams Tips and Tricks_html_114912fa.png
+5.6. Diagrams Tips and Tricks_html_13b01b21.png
+5.6. Diagrams Tips and Tricks_html_277295ca.gif
+5.6. Diagrams Tips and Tricks_html_33d30936.png
+5.6. Diagrams Tips and Tricks_html_38b9a3a9.png
+5.6. Diagrams Tips and Tricks_html_3c70f94e.gif
+5.6. Diagrams Tips and Tricks_html_3dedd8b1.png
+5.6. Diagrams Tips and Tricks_html_4387d6d2.png
+5.6. Diagrams Tips and Tricks_html_45a14775.png
+5.6. Diagrams Tips and Tricks_html_47f32841.gif
+5.6. Diagrams Tips and Tricks_html_4a5941a0.png
+5.6. Diagrams Tips and Tricks_html_51b05f77.png
+5.6. Diagrams Tips and Tricks_html_5c4b92b6.png
+5.6. Diagrams Tips and Tricks_html_5ce27242.png
+5.6. Diagrams Tips and Tricks_html_5e595306.png
+5.6. Diagrams Tips and Tricks_html_6e4109f3.png
+5.6. Diagrams Tips and Tricks_html_6f217e35.gif
+5.6. Diagrams Tips and Tricks_html_730643e2.png
+5.6. Diagrams Tips and Tricks_html_740f48ce.png
+5.6. Diagrams Tips and Tricks_html_77868a11.png
+5.6. Diagrams Tips and Tricks_html_79d54579.gif
+5.6. Diagrams Tips and Tricks_html_a38ed9a.png
+5.6. Diagrams Tips and Tricks_html_c34b73b.png
+5.6. Diagrams Tips and Tricks_html_m10775b3b.png
+5.6. Diagrams Tips and Tricks_html_m1cfa7de5.gif
+5.6. Diagrams Tips and Tricks_html_m215c821.png
+5.6. Diagrams Tips and Tricks_html_m217db488.gif
+5.6. Diagrams Tips and Tricks_html_m262394d3.png
+5.6. Diagrams Tips and Tricks_html_m275755e7.gif
+5.6. Diagrams Tips and Tricks_html_m27cfbd5f.png
+5.6. Diagrams Tips and Tricks_html_m2d5cddf5.png
+5.6. Diagrams Tips and Tricks_html_m386ae1c8.png
+5.6. Diagrams Tips and Tricks_html_m3a4a06e5.gif
+5.6. Diagrams Tips and Tricks_html_m3d5aebbe.png
+5.6. Diagrams Tips and Tricks_html_m4b0b0804.png
+5.6. Diagrams Tips and Tricks_html_m5505d461.gif
+5.6. Diagrams Tips and Tricks_html_m5bd4aef6.png
+5.6. Diagrams Tips and Tricks_html_m6d14d040.png
+5.6. Diagrams Tips and Tricks_html_m72f203f0.png
+5.6. Diagrams Tips and Tricks_html_m7613115c.png
+5.6. Diagrams Tips and Tricks_html_m76e8132a.png
+5.6. Diagrams Tips and Tricks_html_m7899e751.gif
+5.6. Diagrams Tips and Tricks_html_m7dd84077.png
+5.6. Diagrams Tips and Tricks_html_mec122fe.png
+
+4.01. Melody Advance Perspective_html_m226282b1.png
+4.02. Tips and Tricks_html_22ef5f2.png
+4.02. Tips and Tricks_html_29213549.png
+4.02. Tips and Tricks_html_3297b071.png
+4.02. Tips and Tricks_html_3c78e109.png
+4.02. Tips and Tricks_html_52c4b770.png
+4.02. Tips and Tricks_html_72049881.png
+4.02. Tips and Tricks_html_752d5868.png
+4.02. Tips and Tricks_html_m194516d0.png
+4.02. Tips and Tricks_html_m24d0f72a.png
+4.02. Tips and Tricks_html_m32c62d15.png
+4.02. Tips and Tricks_html_m4752b235.png
+4.02. Tips and Tricks_html_m4a1c7e6.png
+4.02. Tips and Tricks_html_m4abcd89a.png
+4.02. Tips and Tricks_html_m50cb0206.png
+4.02. Tips and Tricks_html_m51be7e90.png
+4.02. Tips and Tricks_html_m52904c17.png
+4.02. Tips and Tricks_html_m7ecbe661.png
+4.03. Activity Browser_html_1e4d9238.png
+4.03. Activity Browser_html_20069444.png
+4.03. Activity Browser_html_2a49622d.png
+4.03. Activity Browser_html_3c78e109.png
+4.03. Activity Browser_html_6ba230e7.png
+4.03. Activity Browser_html_m66708e1c.png
+4.03. Activity Browser_html_m773def8a.png
+4.04. Project Explorer_Sort Selection.png
+4.04. Project Explorer_html_116eb088.png
+4.04. Project Explorer_html_14f2f514.png
+4.04. Project Explorer_html_29fa7af3.png
+4.04. Project Explorer_html_2a59bdef.png
+4.04. Project Explorer_html_301b63e9.png
+4.04. Project Explorer_html_3a7d651e.png
+4.04. Project Explorer_html_3c78e109.png
+4.04. Project Explorer_html_40cc432b.png
+4.04. Project Explorer_html_5ec4b59f.png
+4.04. Project Explorer_html_632d88ac.png
+4.04. Project Explorer_html_dd6dd4d.png
+4.04. Project Explorer_html_eb48749.png
+4.04. Project Explorer_html_m2437a528.png
+4.04. Project Explorer_html_m2bcc91e2.png
+4.04. Project Explorer_html_m3aa67aa3.png
+4.04. Project Explorer_html_m50c8ab23.png
+4.04. Project Explorer_html_m5da49805.png
+4.04. Project Explorer_html_m6179049.png
+4.05. Diagram Editor_html_39791356.png
+4.05. Diagram Editor_html_3a2f0e04.jpg
+4.05. Diagram Editor_html_3c78e109.png
+4.05. Diagram Editor_html_507951c5.png
+4.05. Diagram Editor_html_684687b7.png
+4.05. Diagram Editor_html_723ed3f9.png
+4.05. Diagram Editor_html_a4de74b.png
+4.05. Diagram Editor_html_m1ec848c1.png
+4.05. Diagram Editor_html_m1f9f7ba3.png
+4.05. Diagram Editor_html_m2017f59a.png
+4.05. Diagram Editor_html_m35738deb.png
+4.05. Diagram Editor_html_m4ecd8e82.png
+4.05. Diagram Editor_html_m5de5d199.png
+4.05. Diagram Editor_html_m61b99006.png
+4.05. Diagram Editor_html_m65836cbf.png
+4.05. Diagram Editor_html_m77e9f963.png
+4.05. Diagram Editor_html_m7c4f8528.jpg
+4.06. Properties View_html_2468c0f3.png
+4.06. Properties View_html_2939276.png
+4.06. Properties View_html_3563deb8.png
+4.06. Properties View_html_35d5a95e.png
+4.06. Properties View_html_3a2738b6.png
+4.06. Properties View_html_598f5164.png
+4.06. Properties View_html_685fadcb.png
+4.06. Properties View_html_6e4a98ee.png
+4.06. Properties View_html_82fa288.png
+4.06. Properties View_html_m602830a9.png
+4.06. Properties View_html_m6b8df94e.png
+4.07. Semantic Browser_html_111420cd.png
+4.07. Semantic Browser_html_19afb6d3.png
+4.07. Semantic Browser_html_1b801b62.png
+4.07. Semantic Browser_html_3c78e109.png
+4.07. Semantic Browser_html_508676fd.png
+4.07. Semantic Browser_html_fbc69c2.png
+4.07. Semantic Browser_html_m2d24d060.png
+4.07. Semantic Browser_html_m5a6e68c9.png
+4.07. Semantic Browser_html_m7ad4cfca.png
+4.08. Information View_html_219f74e.png
+4.08. Information View_html_232a7c9e.png
+4.08. Information View_html_2ca1937.png
+4.08. Information View_html_3a378b57.png
+4.08. Information View_html_3c78e109.png
+4.08. Information View_html_3f913b29.png
+4.08. Information View_html_6b21981f.png
+4.08. Information View_html_m12fc73d3.png
+4.08. Information View_html_m50e2c89c.png
+4.09. Outline_html_723ed3f9.png
+4.09. Outline_html_m69cb5c97.png
+4.10. Change Recorder View_html_55cbf3ec.png
+4.10. Change Recorder View_html_7013e309.png
+4.10. Change Recorder View_html_723ed3f9.png
+4.10. Change Recorder View_html_m5f59ba78.png
+4.11. FastLinker_html_32990aa2.png
+4.11. FastLinker_html_44c9048d.png
+4.11. FastLinker_html_m2597ecec.png
+4.11. FastLinker_html_m262394d3.png
+4.11. FastLinker_html_m302607fc.png
+4.11. FastLinker_html_m3bb8b649.png
+4.11. FastLinker_html_m46b0819d.png
+4.11. FastLinker_html_m6358d111.png
+4.11. FastLinker_html_m77521b19.png
+
+
+3.1. Starting Capella_html_15a02c99.png
+3.1. Starting Capella_html_59ef72a4.png
+3.1. Starting Capella_html_m292ffacc.png
+3.1. Starting Capella_html_m39d6061f.png
+3.1. Starting Capella_html_m73a6ba84.png
+3.2. How to create a new Capella Project_html_19372ef5.png
+3.2. How to create a new Capella Project_html_1c3d37be.png
+3.2. How to create a new Capella Project_html_3c78e109.png
+3.2. How to create a new Capella Project_html_7de602d5.png
+3.2. How to create a new Capella Project_html_a409509.png
+3.2. How to create a new Capella Project_html_m156d26b.png
+3.2. How to create a new Capella Project_html_m2f6e72b2.png
+3.2. How to create a new Capella Project_html_m873f5a6.png
+3.3. How to import an existing Capella Project_html_1e9ba319.png
+3.3. How to import an existing Capella Project_html_78863ecb.png
+3.3. How to import an existing Capella Project_html_m2c1e06a6.png
+3.3. How to import an existing Capella Project_html_m43239c7f.png
+3.3. How to import an existing Capella Project_html_m618030b9.png
+3.4. How to copy or export a Capella Project_html_124dd150.png
+3.4. How to copy or export a Capella Project_html_156e45ae.png
+3.4. How to copy or export a Capella Project_html_5a54683d.png
+3.4. How to copy or export a Capella Project_html_66c97782.png
+3.4. How to copy or export a Capella Project_html_723ed3f9.png
+3.4. How to copy or export a Capella Project_html_m2db46078.png
+3.4. How to copy or export a Capella Project_html_m2e64895e.png
+3.4. How to copy or export a Capella Project_html_m3e0740fc.png
+3.5. How to migrate Capella projects_html_3c78e109.png
+3.5. How to migrate Capella projects_html_m381b2efb.png
+3.5. How to migrate Capella projects_html_m55692da5.png
+3.6. How to detach viewpoints_html_187c5aee.png
+3.6. How to detach viewpoints_html_723ed3f9.png
+3.6. How to detach viewpoints_html_m5a4bf1ab.png
+3.7. How to rename a Melody Advance Project_html_723ed3f9.png
+warning.png
+
+2.1. Definitions_html_3c78e109.png
+2.2. Understanding the difference between Models Projects and Workspaces_html_2e93d00b.png
+2.2. Understanding the difference between Models Projects and Workspaces_html_32efc2f5.png
+2.2. Understanding the difference between Models Projects and Workspaces_html_723ed3f9.png
+2.2. Understanding the difference between Models Projects and Workspaces_html_7bdda0fe.png
+2.2. Understanding the difference between Models Projects and Workspaces_html_m7438dc9.png
+2.2. Understanding the difference between Models Projects and Workspaces_html_m78be4302.png
+warning.png
+
+1.1. Introduction to Melody Advance_html_3c78e109.png
+1.2. Ecosystem_html_2d1b6334.jpg

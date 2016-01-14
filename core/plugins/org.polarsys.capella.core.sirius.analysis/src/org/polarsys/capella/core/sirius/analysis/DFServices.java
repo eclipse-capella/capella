@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,14 +57,14 @@ public class DFServices {
 
   /**
    * Returns whether creation of a Function[FunctionKind==FUNCTION] is allowed on the given view
-   * @param containerView_p
+   * @param containerView
    * @return
    */
-  public boolean isValidCreationDFFunction(DSemanticDecorator containerView_p) {
-    if (containerView_p == null) {
+  public boolean isValidCreationDFFunction(DSemanticDecorator containerView) {
+    if (containerView == null) {
       return false;
     }
-    EObject target = containerView_p.getTarget();
+    EObject target = containerView.getTarget();
     if ((target == null) || target.eIsProxy()) {
       return false;
     }
@@ -87,79 +87,79 @@ public class DFServices {
 
   /**
    * Returns whether creation of a Function[FunctionKind!=FUNCTION] is allowed on the given view
-   * @param containerView_p
+   * @param containerView
    * @return
    */
-  public boolean isValidCreationDFControlNode(DSemanticDecorator containerView_p) {
-    return isValidCreationDFFunction(containerView_p);
+  public boolean isValidCreationDFControlNode(DSemanticDecorator containerView) {
+    return isValidCreationDFFunction(containerView);
   }
 
   /**
    * Move the given function from oldContainer to the newContainer
-   * @param function_p
+   * @param function
    * @param oldContainer
    * @param newContainer
    * @return
    */
-  public EObject dndDFBAbstractFunction(AbstractFunction node_p, NamedElement oldContainer, NamedElement newContainer) {
-    return dndDFAbstractFunction(node_p, oldContainer, newContainer);
+  public EObject dndDFBAbstractFunction(AbstractFunction node, NamedElement oldContainer, NamedElement newContainer) {
+    return dndDFAbstractFunction(node, oldContainer, newContainer);
   }
 
   /**
    * Move the given function from oldContainer to the newContainer
-   * @param function_p
+   * @param function
    * @param oldContainer
    * @param newContainer
    * @return
    */
-  public EObject dndDFAbstractFunction(AbstractFunction function_p, NamedElement oldContainer, NamedElement newContainer) {
+  public EObject dndDFAbstractFunction(AbstractFunction function, NamedElement oldContainer, NamedElement newContainer) {
 
     // move function in the new container
     if (newContainer instanceof AbstractFunction) {
       AbstractFunction newFunction = (AbstractFunction) newContainer;
       // fix for bug when dnd function A in a diagram related to A
-      if (newContainer == function_p) {
+      if (newContainer == function) {
         if ((newFunction.eContainer() != null) && (newFunction.eContainer() != null) && (newFunction.eContainer().eContainer() != null)
             && (newFunction.eContainer().eContainer() instanceof AbstractFunction)) {
-          ((AbstractFunction) (newFunction.eContainer().eContainer())).getOwnedFunctions().add(function_p);
+          ((AbstractFunction) (newFunction.eContainer().eContainer())).getOwnedFunctions().add(function);
         } else {
-          return function_p;
+          return function;
         }
       } else {
-        newFunction.getOwnedFunctions().add(function_p);
+        newFunction.getOwnedFunctions().add(function);
       }
     }
 
-    for (FunctionalExchange exchange : FunctionExt.getIncomingExchange(function_p)) {
+    for (FunctionalExchange exchange : FunctionExt.getIncomingExchange(function)) {
       FunctionalExchangeExt.attachToDefaultContainer(exchange);
     }
-    for (FunctionalExchange exchange : FunctionExt.getOutGoingExchange(function_p)) {
+    for (FunctionalExchange exchange : FunctionExt.getOutGoingExchange(function)) {
       FunctionalExchangeExt.attachToDefaultContainer(exchange);
     }
 
-    return function_p;
+    return function;
 
   }
 
   /**
    * Returns whether FunctionalExchange edge is valid between both sourceView/targetView
-   * @param context_p
-   * @param sourceView_p
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public boolean isValidDFFunctionalExchangeEdge(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    if (context_p instanceof FunctionalExchange) {
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
-      return !diagram.isSynchronized() || !FaServices.getFaServices().isACategoryDisplayed(context_p, sourceView_p, targetView_p);
+  public boolean isValidDFFunctionalExchangeEdge(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+    if (context instanceof FunctionalExchange) {
+      DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
+      return !diagram.isSynchronized() || !FaServices.getFaServices().isACategoryDisplayed(context, sourceView, targetView);
     }
     // Context can be FunctionInputPort while tool creation of Functional Exchange (sirius weird behavior), so we return false in this case.
     return false;
   }
 
-  public boolean isValidDFFunctionalExchangeEdgeFromInternalTool(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    if (context_p instanceof FunctionalExchange) {
-      return !FaServices.getFaServices().isACategoryDisplayed(context_p, sourceView_p, targetView_p);
+  public boolean isValidDFFunctionalExchangeEdgeFromInternalTool(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+    if (context instanceof FunctionalExchange) {
+      return !FaServices.getFaServices().isACategoryDisplayed(context, sourceView, targetView);
     }
     // Context can be FunctionInputPort while tool creation of Functional Exchange (sirius weird behavior), so we return false in this case.
     return false;
@@ -168,14 +168,14 @@ public class DFServices {
   /**
    * Returns whether the given part can be drop into the target element view
    */
-  public boolean isValidDndDFBAbstractFunction(AbstractFunction semanticObjectToDrop_p, EObject targetContainerView_p) {
-    EObject target = ((DSemanticDecorator) targetContainerView_p).getTarget();
+  public boolean isValidDndDFBAbstractFunction(AbstractFunction semanticObjectToDrop, EObject targetContainerView) {
+    EObject target = ((DSemanticDecorator) targetContainerView).getTarget();
     if (target instanceof AbstractFunction) {
       if (!FunctionExt.isActorFunction((AbstractFunction) target)) {
-        if (EcoreUtil2.isContainedBy(target, semanticObjectToDrop_p)) {
+        if (EcoreUtil2.isContainedBy(target, semanticObjectToDrop)) {
           return false;
         }
-        if (target.equals(semanticObjectToDrop_p)) {
+        if (target.equals(semanticObjectToDrop)) {
           return false;
         }
 
@@ -185,31 +185,31 @@ public class DFServices {
     return false;
   }
 
-  public boolean isValidDFFunctionalChainInternalLinkEdge(FunctionalChain chain_p, DSemanticDecorator source_p, DSemanticDecorator target_p) {
-    return FunctionalChainServices.getFunctionalChainServices().isValidInternalLinkEdge(chain_p, (EdgeTarget) source_p, (EdgeTarget) target_p);
+  public boolean isValidDFFunctionalChainInternalLinkEdge(FunctionalChain chain, DSemanticDecorator source, DSemanticDecorator target) {
+    return FunctionalChainServices.getFunctionalChainServices().isValidInternalLinkEdge(chain, (EdgeTarget) source, (EdgeTarget) target);
   }
 
   /**
    * Create a functional exchange between both views
-   * @param context_p
-   * @param sourceView_p
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createDFFunctionalExchange(EObject context_p, AbstractDNode sourceView_p, AbstractDNode targetView_p) {
-    return ABServices.getService().createABFunctionalExchange(context_p, sourceView_p, targetView_p);
+  public EObject createDFFunctionalExchange(EObject context, AbstractDNode sourceView, AbstractDNode targetView) {
+    return ABServices.getService().createABFunctionalExchange(context, sourceView, targetView);
   }
 
   /**
    * Returns available states/modes to insert in given diagram
-   * @param containerView_p
+   * @param containerView
    * @return
    */
-  public Collection<EObject> getDFInsertStateModesScope(DSemanticDecorator containerView_p) {
+  public Collection<EObject> getDFInsertStateModesScope(DSemanticDecorator containerView) {
     HashSet<State> availableStates = new HashSet<State>();
     HashSet<EObject> result = new HashSet<EObject>();
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView);
     DDiagramContents content = new DDiagramContents(diagram);
 
     EObject target = ((DSemanticDecorator) diagram).getTarget();
@@ -241,19 +241,19 @@ public class DFServices {
 
   /**
    * Display related elements of given states modes in the current diagram
-   * @param containerView_p
-   * @param elements_p
+   * @param containerView
+   * @param elements
    */
-  public void showDFStateModes(DSemanticDecorator containerView_p, Collection<EObject> elements_p) {
+  public void showDFStateModes(DSemanticDecorator containerView, Collection<EObject> elements) {
 
     HashSet<EObject> functionsToShow = new HashSet<EObject>();
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView);
     DDiagramContents content = new DDiagramContents(diagram);
 
     EObject target = ((DSemanticDecorator) diagram).getTarget();
     if (target != null) {
       BlockArchitecture sourceArchitecture = BlockArchitectureExt.getRootBlockArchitecture(target);
-      for (EObject object : elements_p) {
+      for (EObject object : elements) {
         if (object instanceof State) {
           State mode = (State) object;
           functionsToShow.addAll(getDFInsertStateModesRelatedElements(mode, sourceArchitecture));
@@ -269,21 +269,21 @@ public class DFServices {
 
   /**
    * Retrieve related elements for a mode and a given architecture (functions)
-   * @param mode_p
-   * @param sourceArchitecture_p
+   * @param mode
+   * @param sourceArchitecture
    * @return
    */
-  public Collection<EObject> getDFInsertStateModesRelatedElements(State mode_p, BlockArchitecture sourceArchitecture_p) {
-    return ABServices.getService().getABInsertStateModesRelatedElements(mode_p, sourceArchitecture_p);
+  public Collection<EObject> getDFInsertStateModesRelatedElements(State mode, BlockArchitecture sourceArchitecture) {
+    return ABServices.getService().getABInsertStateModesRelatedElements(mode, sourceArchitecture);
   }
 
-  public boolean isValidDndDFFunctionPort(EObject element_p, DSemanticDecorator newContainer_p) {
-    if ((newContainer_p == null) || (newContainer_p.getTarget() == null) || newContainer_p.getTarget().eIsProxy()) {
+  public boolean isValidDndDFFunctionPort(EObject element, DSemanticDecorator newContainer) {
+    if ((newContainer == null) || (newContainer.getTarget() == null) || newContainer.getTarget().eIsProxy()) {
       return false;
     }
 
-    EObject targetContainer = newContainer_p.getTarget();
-    if (targetContainer.equals(element_p.eContainer())) {
+    EObject targetContainer = newContainer.getTarget();
+    if (targetContainer.equals(element.eContainer())) {
       return false;
     }
 
@@ -294,11 +294,11 @@ public class DFServices {
     AbstractFunction targetFunction = FunctionExt.getRelatedFunction((ActivityNode) targetContainer);
 
     if (FunctionExt.isControlNodeOneOutput(targetFunction)) {
-      if (element_p instanceof FunctionOutputPort) {
+      if (element instanceof FunctionOutputPort) {
         if (!targetFunction.getOutputs().isEmpty()) {
           return false;
         }
-        if (((FunctionOutputPort) element_p).getOutgoingFunctionalExchanges().size() > 1) {
+        if (((FunctionOutputPort) element).getOutgoingFunctionalExchanges().size() > 1) {
           return false;
         }
         return true;
@@ -306,33 +306,33 @@ public class DFServices {
     }
 
     if (FunctionExt.isControlNodeOneInput(targetFunction)) {
-      if (element_p instanceof FunctionInputPort) {
+      if (element instanceof FunctionInputPort) {
         if (!targetFunction.getInputs().isEmpty()) {
           return false;
         }
-        if (((FunctionInputPort) element_p).getIncomingFunctionalExchanges().size() > 1) {
+        if (((FunctionInputPort) element).getIncomingFunctionalExchanges().size() > 1) {
           return false;
         }
         return true;
       }
     }
 
-    return newContainer_p != null;
+    return newContainer != null;
   }
 
   /**
    * Returns whether the tool insert states/modes is available in the given context
-   * @param containerView_p
+   * @param containerView
    * @return
    */
-  public boolean isValidDFInsertStateModes(DSemanticDecorator containerView_p) {
-    return containerView_p instanceof DDiagram;
+  public boolean isValidDFInsertStateModes(DSemanticDecorator containerView) {
+    return containerView instanceof DDiagram;
   }
 
-  public Collection<EObject> getDFInsertScenariosScope(DSemanticDecorator containerView_p) {
+  public Collection<EObject> getDFInsertScenariosScope(DSemanticDecorator containerView) {
     HashSet<EObject> result = new HashSet<EObject>();
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView);
     DDiagramContents content = new DDiagramContents(diagram);
 
     EObject target = ((DSemanticDecorator) diagram).getTarget();
@@ -372,21 +372,21 @@ public class DFServices {
 
   /**
    * Display related elements of given states modes in the current diagram
-   * @param containerView_p
-   * @param elements_p
+   * @param containerView
+   * @param elements
    */
-  public void showDFScenarios(DSemanticDecorator containerView_p, Collection<EObject> elements_p) {
+  public void showDFScenarios(DSemanticDecorator containerView, Collection<EObject> elements) {
 
     HashSet<AbstractFunction> functionsToShow = new HashSet<AbstractFunction>();
     HashSet<FunctionalExchange> exchangesToShow = new HashSet<FunctionalExchange>();
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView);
     DDiagramContents content = new DDiagramContents(diagram);
 
     EObject target = ((DSemanticDecorator) diagram).getTarget();
     if (target != null) {
 
       BlockArchitecture sourceArchitecture = BlockArchitectureExt.getRootBlockArchitecture(target);
-      for (EObject object : elements_p) {
+      for (EObject object : elements) {
         if (object instanceof Scenario) {
           Scenario scenario = (Scenario) object;
 
@@ -414,38 +414,38 @@ public class DFServices {
 
   /**
    * Returns whether the tool insert scenario is available in the given context
-   * @param containerView_p
+   * @param containerView
    * @return
    */
-  public boolean isValidDFInsertScenarios(DSemanticDecorator containerView_p) {
-    return containerView_p instanceof DDiagram;
+  public boolean isValidDFInsertScenarios(DSemanticDecorator containerView) {
+    return containerView instanceof DDiagram;
   }
 
   /**
    * Gets the AB target.
    */
-  public EObject getDFTarget(DSemanticDecorator decorator_p) {
-    if (decorator_p instanceof DDiagram) {
-      EObject diagramTarget = decorator_p.getTarget();
-      ContainerMapping aMapping = FaServices.getFaServices().getMappingDFFunction(null, (DDiagram) decorator_p);
+  public EObject getDFTarget(DSemanticDecorator decorator) {
+    if (decorator instanceof DDiagram) {
+      EObject diagramTarget = decorator.getTarget();
+      ContainerMapping aMapping = FaServices.getFaServices().getMappingDFFunction(null, (DDiagram) decorator);
 
-      for (DDiagramElement element : ((DDiagram) decorator_p).getOwnedDiagramElements()) {
+      for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
         if ((DiagramServices.getDiagramServices().isMapping(element, aMapping))) {
           // check if diagram target is in the diagram
           // return parent container
           if ((element.getTarget() == diagramTarget)) {
-            return FaServices.getFaServices().getParentFunctionContainer(decorator_p.getTarget());
+            return FaServices.getFaServices().getParentFunctionContainer(decorator.getTarget());
           }
         }
       }
       // if diagram target is AbstractCapabilty : return function root
       if (diagramTarget instanceof AbstractCapability) {
-        return FaServices.getFaServices().getParentFunctionContainer(decorator_p.getTarget());
+        return FaServices.getFaServices().getParentFunctionContainer(decorator.getTarget());
       }
 
-      return decorator_p.getTarget();
+      return decorator.getTarget();
     }
-    return decorator_p.getTarget();
+    return decorator.getTarget();
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,13 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionSpecification#getInExchangeLinks <em>In Exchange Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionSpecification#getOutExchangeLinks <em>Out Exchange Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionSpecification#getOwnedFunctionPorts <em>Owned Function Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionSpecification#getSubFunctionSpecifications <em>Sub Function Specifications</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionSpecification()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Function Specification'"

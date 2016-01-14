@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id=".3E_Validation_Rules_.3E_capella.category_.3E_transition_.3E_consistency_.3E_interfaces">&gt; Validation Rules &gt; capella.category &gt; transition &gt; consistency &gt; interfaces</h1>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an ExchangeItem realizing an ExchangeItem has the same mechanism than the realized ExchangeItem. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an ExchangeItemElement isn't linked to a Type from a previous level whereas it is realized in the same level than the ExchangeItemElement. ExchangeItemElement should be linked to the realized Type. A warning can be raised if you have performed a transition of the ExchangeItemElement before performing a transition of the linked Type. You should perform another transition of the ExchangeItemElement from the lower level to use the realized Type </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an Interface isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the Interface. A warning can be raised if you have performed a transition of the Interface before performing a transition of the allocated ExchangeItem. You should perform another transition of the Interface from the lower level to use the realized ExchangeItem.  Interface should be linked to the realized ExchangeItem. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that a CommunicationLink realizing a CommunicationLink has the same protocol and kind than the realized CommunicationLink. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that a CommunicationLink isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the CommunicationLink. CommunicationLink should be linked to the realized ExchangeItem. A warning can be raised if you have performed a transition of the Component before performing a transition of the linked ExchangeItem.  You should perform another transition of the Component from the lower level to use the realized ExchangeItem. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="ERROR" alt="ERROR" border="0" src="Images/error.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for ExchangeItem's of PA Layer and ExchangeItem's of other layers if referred by any elements of PA Layer  *PA=Physical Architecture </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="ERROR" alt="ERROR" border="0" src="Images/error.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of Operational Analysis Layer. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="ERROR" alt="ERROR" border="0" src="Images/error.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of System Analysis Layer. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="ERROR" alt="ERROR" border="0" src="Images/error.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of Logical Architecture Layer. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="ERROR" alt="ERROR" border="0" src="Images/error.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of EPBS Architecture Layer. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that Exchange Items with an inheritance relationship have the same exchange mechanism. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that an Exchange Item (EI 2) with Exchange Item Element (EIE 2) of Type T2, which inherits from an Exchange Item EI (EI 1) with an Exchange Item Element (EIE 1) of Type T1,verifies that T2 inherits from T1. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+		<table border="1">
+			<tr>
+				<td>
+					<img title="WARNING" alt="WARNING" border="0" src="Images/warning.gif"/>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>This rule checks that two exchange items involved in an inheritance relationship must define an exchange item element. </td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
+	</body>
+</html>

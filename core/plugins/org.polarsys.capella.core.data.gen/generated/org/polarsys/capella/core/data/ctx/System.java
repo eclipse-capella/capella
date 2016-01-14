@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.polarsys.capella.core.data.oa.Entity;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.System#getContributedCapabilities <em>Contributed Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.System#getParticipationsInCapabilities <em>Participations In Capabilities</em>}</li>
@@ -35,7 +36,6 @@ import org.polarsys.capella.core.data.oa.Entity;
  *   <li>{@link org.polarsys.capella.core.data.ctx.System#getRealizedEntities <em>Realized Entities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.System#getRealizingLogicalComponents <em>Realizing Logical Components</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystem()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='System'"

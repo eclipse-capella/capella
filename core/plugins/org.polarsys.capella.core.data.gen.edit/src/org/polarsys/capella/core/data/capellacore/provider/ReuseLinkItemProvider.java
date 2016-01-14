@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,7 @@ public class ReuseLinkItemProvider
 			// Process CapellacorePackage.Literals.REUSE_LINK__REUSED
 			if (reusedPropertyDescriptor != null) {
 				Object reusedValue = eObject.eGet(CapellacorePackage.Literals.REUSE_LINK__REUSED, true);
-				if (reusedValue != null && reusedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) reusedValue)) {
+				if (reusedValue != null && reusedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) reusedValue)) {
 					itemPropertyDescriptors.remove(reusedPropertyDescriptor);
 				} else if (reusedValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.REUSE_LINK__REUSED) != null) {
 					itemPropertyDescriptors.remove(reusedPropertyDescriptor);				  					
@@ -94,7 +94,7 @@ public class ReuseLinkItemProvider
 			// Process CapellacorePackage.Literals.REUSE_LINK__REUSER
 			if (reuserPropertyDescriptor != null) {
 				Object reuserValue = eObject.eGet(CapellacorePackage.Literals.REUSE_LINK__REUSER, true);
-				if (reuserValue != null && reuserValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) reuserValue)) {
+				if (reuserValue != null && reuserValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) reuserValue)) {
 					itemPropertyDescriptors.remove(reuserPropertyDescriptor);
 				} else if (reuserValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.REUSE_LINK__REUSER) != null) {
 					itemPropertyDescriptors.remove(reuserPropertyDescriptor);				  					

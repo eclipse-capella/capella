@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class AbstractDeploymentLinkItemProvider
 			// Process CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT
 			if (deployedElementPropertyDescriptor != null) {
 				Object deployedElementValue = eObject.eGet(CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT, true);
-				if (deployedElementValue != null && deployedElementValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) deployedElementValue)) {
+				if (deployedElementValue != null && deployedElementValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) deployedElementValue)) {
 					itemPropertyDescriptors.remove(deployedElementPropertyDescriptor);
 				} else if (deployedElementValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT) != null) {
 					itemPropertyDescriptors.remove(deployedElementPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class AbstractDeploymentLinkItemProvider
 			// Process CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__LOCATION
 			if (locationPropertyDescriptor != null) {
 				Object locationValue = eObject.eGet(CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__LOCATION, true);
-				if (locationValue != null && locationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) locationValue)) {
+				if (locationValue != null && locationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) locationValue)) {
 					itemPropertyDescriptors.remove(locationPropertyDescriptor);
 				} else if (locationValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__LOCATION) != null) {
 					itemPropertyDescriptors.remove(locationPropertyDescriptor);				  					

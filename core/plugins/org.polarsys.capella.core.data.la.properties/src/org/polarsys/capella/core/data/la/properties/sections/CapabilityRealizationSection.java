@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,8 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class CapabilityRealizationSection extends AbstractCapabilitySection {
 
-  private MultipleSemanticField _involvedActorsField;
-  private MultipleSemanticField _involvedComponentsField;
+  private MultipleSemanticField involvedActorsField;
+  private MultipleSemanticField involvedComponentsField;
 
   /**
    * {@inheritDoc}
@@ -43,24 +43,24 @@ public class CapabilityRealizationSection extends AbstractCapabilitySection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _involvedActorsField = new MultipleSemanticField(getReferencesGroup(),
+    involvedActorsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("CapabilityRealizationSection_InvolvedActors_Label"), getWidgetFactory(), new CapabilityRealization_InvolvedActorsController()); //$NON-NLS-1$
-    _involvedActorsField.setDisplayedInWizard(displayedInWizard);
+    involvedActorsField.setDisplayedInWizard(displayedInWizard);
 
-    _involvedComponentsField = new MultipleSemanticField(getReferencesGroup(),
+    involvedComponentsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("CapabilityRealizationSection_InvolvedComponents_Label"), getWidgetFactory(), new CapabilityRealization_InvolvedComponentsController()); //$NON-NLS-1$
-    _involvedComponentsField.setDisplayedInWizard(displayedInWizard);
+    involvedComponentsField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _involvedActorsField.loadData(capellaElement_p, LaPackage.eINSTANCE.getCapabilityRealization_OwnedActorCapabilityRealizations());
-    _involvedComponentsField.loadData(capellaElement_p, LaPackage.eINSTANCE.getCapabilityRealization_OwnedSystemComponentCapabilityRealizations());
+    involvedActorsField.loadData(capellaElement, LaPackage.eINSTANCE.getCapabilityRealization_OwnedActorCapabilityRealizations());
+    involvedComponentsField.loadData(capellaElement, LaPackage.eINSTANCE.getCapabilityRealization_OwnedSystemComponentCapabilityRealizations());
   }
 
   /**
@@ -80,8 +80,8 @@ public class CapabilityRealizationSection extends AbstractCapabilitySection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_involvedActorsField);
-    fields.add(_involvedComponentsField);
+    fields.add(involvedActorsField);
+    fields.add(involvedComponentsField);
 
     return fields;
   }

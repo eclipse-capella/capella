@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,26 +36,26 @@ public class TreeDelegatedViewer extends AbstractDelegatedViewer {
 
   /**
    * Constructor.
-   * @param widgetFactory_p
+   * @param widgetFactory
    */
-  public TreeDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(widgetFactory_p, null);
+  public TreeDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(widgetFactory, null);
   }
 
   /**
    * Constructor.
-   * @param widgetFactory_p
-   * @param cellEditorProvider_p
+   * @param widgetFactory
+   * @param cellEditorProvider
    */
-  public TreeDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory_p, ICellEditorProvider cellEditorProvider_p) {
-    super(widgetFactory_p, cellEditorProvider_p);
+  public TreeDelegatedViewer(TabbedPropertySheetWidgetFactory widgetFactory, ICellEditorProvider cellEditorProvider) {
+    super(widgetFactory, cellEditorProvider);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void createContainer(Composite parent_p) {
-    _tree = _widgetFactory.createTree(getViewerGroup(parent_p), SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
+  public void createContainer(Composite parent) {
+    _tree = _widgetFactory.createTree(getViewerGroup(parent), SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
     GridData tableLayoutData = new GridData(GridData.FILL, GridData.FILL, true, true);
     tableLayoutData.horizontalSpan = 5;
     _tree.setLayoutData(tableLayoutData);
@@ -75,29 +75,29 @@ public class TreeDelegatedViewer extends AbstractDelegatedViewer {
   }
 
   /**
-   * @param colNumber_p
-   * @param labelProvider_p
+   * @param colNumber
+   * @param labelProvider
    * @return
    */
-  protected TreeViewerColumn createTreeViewerColumn(int colNumber_p, CellLabelProvider labelProvider_p) {
+  protected TreeViewerColumn createTreeViewerColumn(int colNumber, CellLabelProvider labelProvider) {
     TreeViewerColumn viewerColumn = new TreeViewerColumn((TreeViewer) getColumnViewer(), SWT.NONE);
     TreeColumn column = viewerColumn.getColumn();
-    column.setText(getColumnProperties()[colNumber_p]);
+    column.setText(getColumnProperties()[colNumber]);
     column.setWidth(DEFAULT_COLUMN_BOUND);
     column.setResizable(true);
     column.setMoveable(true);
-    viewerColumn.setLabelProvider(labelProvider_p);
+    viewerColumn.setLabelProvider(labelProvider);
     return viewerColumn;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void setInput(final List<EObject> input_p) {
+  public void setInput(final List<EObject> input) {
     if (null != _columnViewer) {
       _columnViewer.setInput(new IStructuredItemContentProvider() {
-        public Collection<?> getElements(Object object_p) {
-          return input_p;
+        public Collection<?> getElements(Object object) {
+          return input;
         }
       });
     }
@@ -106,9 +106,9 @@ public class TreeDelegatedViewer extends AbstractDelegatedViewer {
   /**
    * {@inheritDoc}
    */
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if ((null != _tree) && !_tree.isDisposed()) {
-      _tree.setEnabled(enabled_p);
+      _tree.setEnabled(enabled);
     }
   }
 }

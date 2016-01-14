@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,17 +13,12 @@ package org.polarsys.capella.common.re.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
@@ -39,6 +34,7 @@ import org.polarsys.capella.common.re.RePackage;
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#getUnsynchronizedFeatures <em>Unsynchronized Features</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl#isSuffixed <em>Suffixed</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,6 +93,33 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	 * @ordered
 	 */
 	protected EList<String> unsynchronizedFeatures;
+
+
+
+
+	/**
+	 * The default value of the '{@link #isSuffixed() <em>Suffixed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSuffixed()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SUFFIXED_EDEFAULT = false;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #isSuffixed() <em>Suffixed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSuffixed()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean suffixed = SUFFIXED_EDEFAULT;
 
 
 
@@ -306,6 +329,32 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public boolean isSuffixed() {
+
+		return suffixed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setSuffixed(boolean newSuffixed) {
+
+		boolean oldSuffixed = suffixed;
+		suffixed = newSuffixed;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT_LINK__SUFFIXED, oldSuffixed, suffixed));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -320,6 +369,8 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 				return basicGetOrigin();
 			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
 				return getUnsynchronizedFeatures();
+			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+				return isSuffixed();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -364,6 +415,15 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 				getUnsynchronizedFeatures().clear();
 				getUnsynchronizedFeatures().addAll((Collection<? extends String>)newValue);
 				return;
+			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Boolean) {
+				// end-extension-code
+					setSuffixed((Boolean)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -389,6 +449,9 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
 				getUnsynchronizedFeatures().clear();
 				return;
+			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+				setSuffixed(SUFFIXED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -411,6 +474,8 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 				return origin != null;
 			case RePackage.CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES:
 				return unsynchronizedFeatures != null && !unsynchronizedFeatures.isEmpty();
+			case RePackage.CATALOG_ELEMENT_LINK__SUFFIXED:
+				return suffixed != SUFFIXED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -428,6 +493,8 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (unsynchronizedFeatures: "); //$NON-NLS-1$
 		result.append(unsynchronizedFeatures);
+		result.append(", suffixed: "); //$NON-NLS-1$
+		result.append(suffixed);
 		result.append(')');
 		return result.toString();
 	}

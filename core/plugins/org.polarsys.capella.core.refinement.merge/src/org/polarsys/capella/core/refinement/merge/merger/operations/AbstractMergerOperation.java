@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,11 +26,11 @@ public abstract class AbstractMergerOperation implements IMergerOperation {
       preOperation();
       perform();
       postOperation();
-    } catch (MergeToolException exception_p) {  
+    } catch (MergeToolException exception) {  
             
       b = false;
       //TODO more explicit message
-      throw new MergeToolException(MergeMessages.genericToolError);
+      throw new MergeToolException(MergeMessages.genericToolError, exception);
     }
     
     return b;

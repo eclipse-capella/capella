@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,12 +27,12 @@ public class PhysicalLinkAllocatedComponentExchangesController extends Allocated
    * {@inheritDoc}
    */
   @Override
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    super.doAddOperationInWriteOpenValues(semanticElement_p, semanticFeature_p, object_p);
+  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    super.doAddOperationInWriteOpenValues(semanticElement, semanticFeature, object);
 
     if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed()
-        && (semanticElement_p instanceof PhysicalLink) && (object_p instanceof ComponentExchange)) {
-      PhysicalLinkExt.synchronizeAllocations((PhysicalLink) semanticElement_p, (ComponentExchange) object_p);
+        && (semanticElement instanceof PhysicalLink) && (object instanceof ComponentExchange)) {
+      PhysicalLinkExt.synchronizeAllocations((PhysicalLink) semanticElement, (ComponentExchange) object);
     }
   }
 
@@ -41,7 +41,7 @@ public class PhysicalLinkAllocatedComponentExchangesController extends Allocated
    * The synchronization of the delegations/allocations is now managed by {@link DeleteHelper} class
    */
   @Override
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    super.doRemoveOperationInWriteOpenValues(semanticElement_p, semanticFeature_p, object_p);
+  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    super.doRemoveOperationInWriteOpenValues(semanticElement, semanticFeature, object);
   }
 }

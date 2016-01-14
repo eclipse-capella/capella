@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class EntityItemProvider
 			// Process OaPackage.Literals.ENTITY__ACTUAL_LOCATION
 			if (actualLocationPropertyDescriptor != null) {
 				Object actualLocationValue = eObject.eGet(OaPackage.Literals.ENTITY__ACTUAL_LOCATION, true);
-				if (actualLocationValue != null && actualLocationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) actualLocationValue)) {
+				if (actualLocationValue != null && actualLocationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) actualLocationValue)) {
 					itemPropertyDescriptors.remove(actualLocationPropertyDescriptor);
 				} else if (actualLocationValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ENTITY__ACTUAL_LOCATION) != null) {
 					itemPropertyDescriptors.remove(actualLocationPropertyDescriptor);				  					

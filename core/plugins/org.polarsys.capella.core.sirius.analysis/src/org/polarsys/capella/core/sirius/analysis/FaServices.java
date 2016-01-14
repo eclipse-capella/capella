@@ -157,7 +157,6 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 /**
  * Services for Functional Analysis Elements
  */
-@SuppressWarnings("deprecation")
 public class FaServices {
 
   private static FaServices singleton = null;
@@ -177,25 +176,26 @@ public class FaServices {
   }
 
   /**
-   * @param context_p
+   * @param context
    *          current context
-   * @param source_p
+   * @param source
    *          selected source of the edge
-   * @return if a FunctionalExchange can be created from source_p
+   * @return if a FunctionalExchange can be created from source
    */
-  public boolean isValidCreationFunctionalExchange(EObject context_p, EObject source_p) {
+  public boolean isValidCreationFunctionalExchange(EObject context, EObject source) {
 
-    if ((source_p instanceof InputPin) || !(source_p instanceof ActivityNode)) {
+    if ((source instanceof InputPin) || !(source instanceof ActivityNode)) {
       return false;
     }
 
-    AbstractFunction sourceFunction = FunctionExt.getRelatedFunction((ActivityNode) source_p);
+    AbstractFunction sourceFunction = FunctionExt.getRelatedFunction((ActivityNode) source);
 
     if (FunctionExt.isControlNodeOneOutput(sourceFunction)) {
-      if (!(FunctionExt.getOutGoingExchange(sourceFunction).isEmpty() || FunctionExt.getOutGoingExchange(sourceFunction).contains(context_p))) {
+      if (!(FunctionExt.getOutGoingExchange(sourceFunction).isEmpty() || FunctionExt
+          .getOutGoingExchange(sourceFunction).contains(context))) {
         return false;
       }
-      if (!((source_p instanceof OutputPin) || sourceFunction.getOutputs().isEmpty())) {
+      if (!((source instanceof OutputPin) || sourceFunction.getOutputs().isEmpty())) {
         return false;
       }
     }
@@ -204,22 +204,22 @@ public class FaServices {
   }
 
   /**
-   * @param context_p
+   * @param context
    *          current context
-   * @param source_p
+   * @param source
    *          selected source of the edge
-   * @param target_p
+   * @param target
    *          selected target of the edge
-   * @return if a FunctionalExchange can be created between source_p and target_p
+   * @return if a FunctionalExchange can be created between source and target
    */
-  public boolean isValidCreationFunctionalExchange(EObject context_p, EObject source_p, EObject target_p) {
+  public boolean isValidCreationFunctionalExchange(EObject context, EObject source, EObject target) {
 
-    if ((target_p instanceof OutputPin) || !(target_p instanceof ActivityNode)) {
+    if ((target instanceof OutputPin) || !(target instanceof ActivityNode)) {
       return false;
     }
 
-    AbstractFunction sourceFunction = FunctionExt.getRelatedFunction((ActivityNode) source_p);
-    AbstractFunction targetFunction = FunctionExt.getRelatedFunction((ActivityNode) target_p);
+    AbstractFunction sourceFunction = FunctionExt.getRelatedFunction((ActivityNode) source);
+    AbstractFunction targetFunction = FunctionExt.getRelatedFunction((ActivityNode) target);
     if (sourceFunction.equals(targetFunction)) {
       return false;
     }
@@ -231,39 +231,40 @@ public class FaServices {
     }
 
     if (FunctionExt.isControlNodeOneInput(targetFunction)) {
-      if (!(FunctionExt.getIncomingExchange(targetFunction).isEmpty() || FunctionExt.getIncomingExchange(targetFunction).contains(context_p))) {
+      if (!(FunctionExt.getIncomingExchange(targetFunction).isEmpty() || FunctionExt
+          .getIncomingExchange(targetFunction).contains(context))) {
         return false;
       }
-      if (!((target_p instanceof InputPin) || targetFunction.getInputs().isEmpty())) {
+      if (!((target instanceof InputPin) || targetFunction.getInputs().isEmpty())) {
         return false;
       }
     }
 
-    return isValidCreationFunctionalExchange(context_p, source_p);
+    return isValidCreationFunctionalExchange(context, source);
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return used in logical.odesign oa.odesign, physical.odesign called by show/hide FunctionalExchanges tools
    *         (DataFlow Blank Diagrams)
    */
-  public List<FunctionalExchange> getAvailableFunctionalExchangesToInsert(DSemanticDecorator context_p) {
+  public List<FunctionalExchange> getAvailableFunctionalExchangesToInsert(DSemanticDecorator context) {
     List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
     List<FunctionalExchange> allFunctionalExchanges = new ArrayList<FunctionalExchange>();
     List<FunctionalExchange> existingExchangesInDiagram = new ArrayList<FunctionalExchange>();
     AbstractFunction selectedFunction = null;
 
-    if (!(context_p instanceof AbstractDNode)) {
+    if (!(context instanceof AbstractDNode)) {
       return returnedList;
     }
 
-    for (DEdge anEdge : CapellaServices.getService().getDiagramContainer(context_p).getEdges()) {
+    for (DEdge anEdge : CapellaServices.getService().getDiagramContainer(context).getEdges()) {
       if (anEdge.getTarget() instanceof FunctionalExchange) {
         existingExchangesInDiagram.add((FunctionalExchange) anEdge.getTarget());
       }
     }
-    if (context_p.getTarget() instanceof AbstractFunction) {
-      selectedFunction = (AbstractFunction) context_p.getTarget();
+    if (context.getTarget() instanceof AbstractFunction) {
+      selectedFunction = (AbstractFunction) context.getTarget();
       for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(selectedFunction)) {
         allFunctionalExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
         allFunctionalExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
@@ -273,8 +274,10 @@ public class FaServices {
     // if the following part is not commented => you must modify the
     // beforeRefresh for the dataFlow
     for (FunctionalExchange aFunctionalExchange : allFunctionalExchanges) {
-      if ((aFunctionalExchange.getTarget() == null) || (aFunctionalExchange.getSource() == null)
-          || (EcoreUtil.isAncestor(selectedFunction, aFunctionalExchange.getSource()) && EcoreUtil.isAncestor(selectedFunction, aFunctionalExchange.getTarget()))) {
+      if ((aFunctionalExchange.getTarget() == null)
+          || (aFunctionalExchange.getSource() == null)
+          || (EcoreUtil.isAncestor(selectedFunction, aFunctionalExchange.getSource()) && EcoreUtil.isAncestor(
+              selectedFunction, aFunctionalExchange.getTarget()))) {
         continue;
       }
       returnedList.add(aFunctionalExchange);
@@ -283,18 +286,18 @@ public class FaServices {
   }
 
   /**
-   * @param selectedElement_p
+   * @param selectedElement
    * @return displayed incoming and outgoing functional Exchanges called by show/hide FunctionalExchanges tools
    *         (DataFlow Blank Diagrams) used in oa, logical, context, physical
    */
-  public List<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement_p) {
+  public List<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement) {
     List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
     // current DiagramElements
-    if (selectedElement_p instanceof AbstractDNode) {
-      result = getDisplayedFunctionalExchangesFromAbstractDNode((AbstractDNode) selectedElement_p);
+    if (selectedElement instanceof AbstractDNode) {
+      result = getDisplayedFunctionalExchangesFromAbstractDNode((AbstractDNode) selectedElement);
 
       // Consider Sub Containers of current DiagramElement
-      List<DNodeContainer> allContainers = DiagramServices.getDiagramServices().getAllContainers(selectedElement_p);
+      List<DNodeContainer> allContainers = DiagramServices.getDiagramServices().getAllContainers(selectedElement);
       for (DNodeContainer dNodeContainer : allContainers) {
         List<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(dNodeContainer);
         if (!subFunctionEdges.isEmpty()) {
@@ -303,7 +306,7 @@ public class FaServices {
       }
 
       // Consider Sub Nodes of current DiagramElement
-      List<DNode> allNodes = DiagramServices.getDiagramServices().getAllNodes(selectedElement_p);
+      List<DNode> allNodes = DiagramServices.getDiagramServices().getAllNodes(selectedElement);
       for (DNode aDNode : allNodes) {
         List<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(aDNode);
         if (!subFunctionEdges.isEmpty()) {
@@ -318,16 +321,16 @@ public class FaServices {
   /**
    * get Functional Exchange edges from current AbstractNode
    * 
-   * @param selectedElement_p
+   * @param selectedElement
    * @return
    */
-  public List<FunctionalExchange> getDisplayedFunctionalExchangesFromAbstractDNode(AbstractDNode selectedElement_p) {
+  public List<FunctionalExchange> getDisplayedFunctionalExchangesFromAbstractDNode(AbstractDNode selectedElement) {
     List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
     List<DEdge> incomingOutgoingEdges = new ArrayList<DEdge>();
 
-    if (selectedElement_p.getTarget() instanceof AbstractFunction) {
+    if (selectedElement.getTarget() instanceof AbstractFunction) {
       // consider the boarder nodes (inputpin, outputpin)
-      for (DNode aNode : selectedElement_p.getOwnedBorderedNodes()) {
+      for (DNode aNode : selectedElement.getOwnedBorderedNodes()) {
         if ((aNode.getTarget() instanceof InputPin)) {
           incomingOutgoingEdges.addAll(CapellaServices.getService().getIncomingEdges(aNode));
         }
@@ -336,9 +339,9 @@ public class FaServices {
         }
       }
       // consider operational activity
-      if (selectedElement_p.getTarget() instanceof OperationalActivity) {
-        incomingOutgoingEdges.addAll(CapellaServices.getService().getIncomingEdges((EdgeTarget) selectedElement_p));
-        incomingOutgoingEdges.addAll(CapellaServices.getService().getOutgoingEdges((EdgeTarget) selectedElement_p));
+      if (selectedElement.getTarget() instanceof OperationalActivity) {
+        incomingOutgoingEdges.addAll(CapellaServices.getService().getIncomingEdges((EdgeTarget) selectedElement));
+        incomingOutgoingEdges.addAll(CapellaServices.getService().getOutgoingEdges((EdgeTarget) selectedElement));
       }
     }
     // filter functionalExchanges
@@ -355,34 +358,34 @@ public class FaServices {
   }
 
   @Deprecated
-  public Collection<ComponentExchange> getDisplayedComponentExchanges(DNodeContainer selectedElement_p) {
-    return getDisplayedComponentExchanges(selectedElement_p);
+  public Collection<ComponentExchange> getDisplayedComponentExchanges(DNodeContainer selectedElement) {
+    return Collections.EMPTY_SET;
   }
 
   @Deprecated
-  public Collection<ComponentExchange> getAvailableComponentExchangesToInsert(DNodeContainer context_p) {
-    return getAvailableComponentExchangesToInsert(context_p);
+  public Collection<ComponentExchange> getAvailableComponentExchangesToInsert(DNodeContainer context) {
+    return Collections.EMPTY_SET;
   }
 
   /**
    * used in oa, logical, context, physical
    * 
-   * @param selectedElement_p
+   * @param selectedElement
    * @return called by show/hide ComponentExchanges tools (Architecture Blank Diagrams)
    */
-  public Collection<ComponentExchange> getDisplayedConnections(DNodeContainer selectedElement_p) {
+  public Collection<ComponentExchange> getDisplayedConnections(DNodeContainer selectedElement) {
     Collection<ComponentExchange> returnedList = new HashSet<ComponentExchange>();
     List<DEdge> edges = new ArrayList<DEdge>();
 
-    for (DNode aNode : selectedElement_p.getOwnedBorderedNodes()) {
+    for (DNode aNode : selectedElement.getOwnedBorderedNodes()) {
       if (aNode.getTarget() instanceof ComponentPort) {
         edges.addAll(CapellaServices.getService().getIncomingEdges(aNode));
         edges.addAll(CapellaServices.getService().getOutgoingEdges(aNode));
       }
     }
 
-    edges.addAll(CapellaServices.getService().getIncomingEdges(selectedElement_p));
-    edges.addAll(CapellaServices.getService().getOutgoingEdges(selectedElement_p));
+    edges.addAll(CapellaServices.getService().getIncomingEdges(selectedElement));
+    edges.addAll(CapellaServices.getService().getOutgoingEdges(selectedElement));
 
     for (DEdge anEdge : edges) {
       if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof ComponentExchange)) {
@@ -398,21 +401,21 @@ public class FaServices {
   /**
    * used in oa, logical, context, physical
    * 
-   * @param context_p
+   * @param context
    * @return called by show/hide ComponentExchanges tools (Architecture Blank Diagrams)
    */
-  public Collection<ComponentExchange> getAvailableConnectionsToInsert(DNodeContainer context_p) {
+  public Collection<ComponentExchange> getAvailableConnectionsToInsert(DNodeContainer context) {
     List<ComponentExchange> returnedList = new ArrayList<ComponentExchange>();
     List<ComponentExchange> allComponentExchanges = new ArrayList<ComponentExchange>();
 
     EObject currentComponent = null;
     Part currentPart = null;
 
-    if (context_p.getTarget() instanceof Component) {
-      currentComponent = context_p.getTarget();
-    } else if (context_p.getTarget() instanceof Part) {
-      currentPart = (Part) context_p.getTarget();
-      currentComponent = CsServices.getService().getComponentType((Part) context_p.getTarget());
+    if (context.getTarget() instanceof Component) {
+      currentComponent = context.getTarget();
+    } else if (context.getTarget() instanceof Part) {
+      currentPart = (Part) context.getTarget();
+      currentComponent = CsServices.getService().getComponentType((Part) context.getTarget());
     }
 
     if ((currentComponent != null) && (currentComponent instanceof Component)) {
@@ -423,9 +426,9 @@ public class FaServices {
         }
       }
 
-      if (context_p.getTarget() instanceof InformationsExchanger) {
+      if (context.getTarget() instanceof InformationsExchanger) {
 
-        for (AbstractInformationFlow aFlow : ((InformationsExchanger) context_p.getTarget()).getInformationFlows()) {
+        for (AbstractInformationFlow aFlow : ((InformationsExchanger) context.getTarget()).getInformationFlows()) {
           if (aFlow instanceof ComponentExchange) {
             allComponentExchanges.add((ComponentExchange) aFlow);
           }
@@ -436,7 +439,8 @@ public class FaServices {
 
     for (ComponentExchange connection : allComponentExchanges) {
       // Add connection if is related to the current part if any
-      if (!CsServices.getService().isMultipartMode(connection) || !((currentPart != null) && !FunctionalExt.getRelatedParts(connection).contains(currentPart))) {
+      if (!CsServices.getService().isMultipartMode(connection)
+          || !((currentPart != null) && !FunctionalExt.getRelatedParts(connection).contains(currentPart))) {
         returnedList.add(connection);
       }
     }
@@ -446,16 +450,17 @@ public class FaServices {
   /**
    * used in oa, logical, context, physical
    * 
-   * @param context_p
+   * @param context
    * @return called by show/hide FunctionalExchanges tools (Architecture Blank Diagrams)
    */
-  public List<FunctionalExchange> getAvailableFunctionalExchangesToInsertInArchitectureBlank(AbstractDNode context_p) {
+  public List<FunctionalExchange> getAvailableFunctionalExchangesToInsertInArchitectureBlank(AbstractDNode context) {
     List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
-    List<FunctionalExchange> allFunctionalExchanges = getAvailableFunctionalExchangesToInsert(context_p);
-    AbstractFunction selectedFunction = (AbstractFunction) context_p.getTarget();
+    List<FunctionalExchange> allFunctionalExchanges = getAvailableFunctionalExchangesToInsert(context);
+    AbstractFunction selectedFunction = (AbstractFunction) context.getTarget();
     for (FunctionalExchange anExchange : allFunctionalExchanges) {
       AbstractFunction targetFunction;
-      if (anExchange.getTarget().equals(selectedFunction) || anExchange.getTarget().eContainer().equals(selectedFunction)) {
+      if (anExchange.getTarget().equals(selectedFunction)
+          || anExchange.getTarget().eContainer().equals(selectedFunction)) {
         targetFunction = FunctionExt.getRelatedFunction(anExchange.getSource());
       } else {
         targetFunction = FunctionExt.getRelatedFunction(anExchange.getTarget());
@@ -476,10 +481,10 @@ public class FaServices {
     return returnedList;
   }
 
-  private DNodeContainer getDisplayedFunctionContainer(EObject function_p, Collection<DNodeContainer> containers_p) {
-    EObject currentFunction = function_p;
+  private DNodeContainer getDisplayedFunctionContainer(EObject function, Collection<DNodeContainer> containers) {
+    EObject currentFunction = function;
     while ((currentFunction != null) && (currentFunction instanceof AbstractFunction)) {
-      for (DNodeContainer aContainer : containers_p) {
+      for (DNodeContainer aContainer : containers) {
         if (aContainer.getTarget().equals(currentFunction)) {
           return aContainer;
         }
@@ -490,201 +495,229 @@ public class FaServices {
   }
 
   /**
-   * @param semantic_p
-   * @param dDiagram_p
+   * @param semantic
+   * @param dDiagram
    * @return
    */
-  public DiagramElementMapping getMappingABRole(Role semantic_p, DDiagram diagram_p) {
+  public DiagramElementMapping getMappingABRole(Role semantic, DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAB_ROLE_MAPPING_NAME;
 
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.ORB_ROLE_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
 
   }
 
-  public ContainerMapping getMappingABComponent(EObject component_p, DDiagram diagram_p) {
-    EObject component = component_p;
-    if ((component != null) && (component instanceof Part)) {
-      component = CsServices.getService().getComponentType((Part) component_p);
+  public ContainerMapping getMappingABComponent(EObject component, DDiagram diagram) {
+    EObject cpnt = component;
+    if ((cpnt != null) && (cpnt instanceof Part)) {
+      cpnt = CsServices.getService().getComponentType((Part) component);
     }
 
     EClass clazz = CsPackage.Literals.COMPONENT;
-    if (component != null) {
-      clazz = component.eClass();
+    if (cpnt != null) {
+      clazz = cpnt.eClass();
     }
-    return getMappingABComponent(clazz, diagram_p);
+    return getMappingABComponent(clazz, diagram);
   }
 
-  public ContainerMapping getMappingABComponent(EClass clazz_p, DDiagram diagram_p) {
+  public ContainerMapping getMappingABComponent(EClass clazz, DDiagram diagram) {
     EClass absActor = CsPackage.Literals.ABSTRACT_ACTOR;
 
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
+      if (absActor.isSuperTypeOf(clazz)) {
         mappingName = IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME;
       }
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
+      if (absActor.isSuperTypeOf(clazz)) {
         mappingName = IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME;
       }
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
+      if (absActor.isSuperTypeOf(clazz)) {
         mappingName = IMappingNameConstants.SAB_ACTOR_MAPPING_NAME;
       }
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAB_ENTITY_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
+      if (absActor.isSuperTypeOf(clazz)) {
         mappingName = IMappingNameConstants.OAB_ENTITY_MAPPING_NAME;
       }
     }
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
 
   }
 
-  public AbstractNodeMapping getMappingFunction(AbstractFunction function_p, DDiagram diagram_p) {
+  public AbstractNodeMapping getMappingFunction(AbstractFunction function, DDiagram diagram) {
 
-    if (DiagramHelper.getService().isArchitectureBlank(diagram_p) || DiagramHelper.getService().hasKind(diagram_p, DiagramDescriptionConstants.ROLE_BLANK_DIAGRAM_NAME)) {
-      return FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) function_p, diagram_p);
+    if (DiagramHelper.getService().isArchitectureBlank(diagram)
+        || DiagramHelper.getService().hasKind(diagram, DiagramDescriptionConstants.ROLE_BLANK_DIAGRAM_NAME)) {
+      return FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) function, diagram);
     }
 
-    return FaServices.getFaServices().getMappingDFFunction((AbstractFunction) function_p, diagram_p);
+    return FaServices.getFaServices().getMappingDFFunction((AbstractFunction) function, diagram);
 
   }
 
-  public AbstractNodeMapping getMappingFunctionPort(FunctionPort port_p, DDiagram diagram_p) {
+  public AbstractNodeMapping getMappingFunctionPort(FunctionPort port, DDiagram diagram) {
 
-    if (DiagramHelper.getService().isArchitectureBlank(diagram_p)) {
-      return FaServices.getFaServices().getMappingABFunctionPort(diagram_p);
+    if (DiagramHelper.getService().isArchitectureBlank(diagram)) {
+      return FaServices.getFaServices().getMappingABFunctionPort(diagram);
     }
 
-    return FaServices.getFaServices().getMappingDFFunctionPort(diagram_p);
+    return FaServices.getFaServices().getMappingDFFunctionPort(diagram);
 
   }
 
-  public EdgeMapping getMappingFunctionalExchange(DDiagram diagram_p) {
+  public EdgeMapping getMappingFunctionalExchange(DDiagram diagram) {
 
-    if (DiagramHelper.getService().isArchitectureBlank(diagram_p)) {
-      return FaServices.getFaServices().getMappingABFunctionalExchange(diagram_p);
+    if (DiagramHelper.getService().isArchitectureBlank(diagram)) {
+      return FaServices.getFaServices().getMappingABFunctionalExchange(diagram);
     }
 
-    return FaServices.getFaServices().getMappingDFFunctionalExchange(diagram_p);
+    return FaServices.getFaServices().getMappingDFFunctionalExchange(diagram);
 
   }
 
-  public NodeMapping getMappingABAbstractFunction(AbstractFunction function_p, DDiagram diagram_p) {
+  public NodeMapping getMappingABAbstractFunction(AbstractFunction function, DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICAL_FUNCTION_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_LOGICAL_FUNCTION_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_SYSTEM_FUNCTION_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAB_FUNCTION_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.ORB_OPERATIONAL_ACTIVITY_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
-  public NodeMapping getMappingABFunctionPort(DDiagram diagram_p) {
+  public NodeMapping getMappingABFunctionPort(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_FUNCTION_PORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_FUNCTION_PORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_FUNCTION_PORT_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
-  public EdgeMapping getMappingABFunctionalExchange(DDiagram diagram_p) {
+  public EdgeMapping getMappingABFunctionalExchange(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OEB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.ORB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
-  public EdgeMapping getMappingABComponentPortAllocation(DDiagram diagram_p) {
+  public EdgeMapping getMappingABComponentPortAllocation(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_COMPONENT_PORT_ALLOCATION_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
-  public EdgeMapping getMappingABConnection(DDiagram diagram_p) {
+  public EdgeMapping getMappingABConnection(DDiagram diagram) {
     String mappingName = null;
 
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_CONNECTION_MAPPING_NAME;
 
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_CONNECTION_MAPPING_NAME;
 
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_CONNECTION_MAPPING_NAME;
 
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAB_COMMUNICATION_MEAN_MAPPING_NAME;
 
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CCII_COMPONENT_EXCHANGE_MAPPING_NAME;
 
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.IDB_COMPONENT_EXCHANGE_MAPPING_NAME;
 
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.COC_COMMUNICATION_MEAN_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
-  public EdgeMapping getMappingABPhysicalLink(DDiagram diagram_p) {
+  public EdgeMapping getMappingABPhysicalLink(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_PHYSICALLINK_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_PHYSICALLINK_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICALLINK_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
   /**
@@ -768,7 +801,8 @@ public class FaServices {
     for (AbstractFunction function : involvedFunctions) {
       if (!elements.containsKey(function)) {
         ContainerMapping mapping = getMappingDFFunction(function, diagram);
-        elements.put(function, DiagramServices.getDiagramServices().createContainer(mapping, function, diagram, diagram));
+        elements.put(function, DiagramServices.getDiagramServices()
+            .createContainer(mapping, function, diagram, diagram));
       }
     }
 
@@ -783,12 +817,14 @@ public class FaServices {
       // Create source port
       if (!elements.containsKey(nodeSource)) {
         DDiagramElementContainer containerView = (DDiagramElementContainer) elements.get(nodeSource.eContainer());
-        elements.put(nodeSource, DiagramServices.getDiagramServices().createBorderedNode(portMapping, nodeSource, containerView, diagram));
+        elements.put(nodeSource,
+            DiagramServices.getDiagramServices().createBorderedNode(portMapping, nodeSource, containerView, diagram));
       }
       // Create target port
       if (!elements.containsKey(nodeTarget)) {
         DDiagramElementContainer containerView = (DDiagramElementContainer) elements.get(nodeTarget.eContainer());
-        elements.put(nodeTarget, DiagramServices.getDiagramServices().createBorderedNode(portMapping, nodeTarget, containerView, diagram));
+        elements.put(nodeTarget,
+            DiagramServices.getDiagramServices().createBorderedNode(portMapping, nodeTarget, containerView, diagram));
       }
       // Create exchange
       if (!elements.containsKey(exchange)) {
@@ -810,147 +846,172 @@ public class FaServices {
   }
 
   /**
-   * @param diagram_p
+   * @param diagram
    * @return
    */
-  private NodeMapping getMappingFunctionalChainEnd(DDiagram diagram_p) {
+  private NodeMapping getMappingFunctionalChainEnd(DDiagram diagram) {
     String mappingName = null;
 
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CPDF_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CLDF_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CSDF_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAIB_OPERATIONAL_PROCESS_END_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
   /**
-   * @param function_p
-   * @param diagram_p
+   * @param function
+   * @param diagram
    * @return
    */
 
-  public ContainerMapping getMappingDFFunction(AbstractFunction function_p, DDiagram diagram_p) {
+  public ContainerMapping getMappingDFFunction(AbstractFunction function, DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_FUNCTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_FUNCTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_FUNCTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CPDF_FUNCTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CLDF_FUNCTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CSDF_FUNCTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAIB_FUNCTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OEB_FUNCTION_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
   }
 
   /**
    * Returns mapping on data flow diagrams for the given abstract function
    * 
-   * @param function_p
-   * @param diagram_p
+   * @param function
+   * @param diagram
    * @return
    */
-  private DiagramElementMapping getMappingDFAbstractFunction(AbstractFunction function_p, DDiagram diagram_p) {
-    return getMappingDFFunction(function_p, diagram_p);
+  private DiagramElementMapping getMappingDFAbstractFunction(AbstractFunction function, DDiagram diagram) {
+    return getMappingDFFunction(function, diagram);
   }
 
   /**
-   * @param diagram_p
+   * @param diagram
    * @return
    */
-  EdgeMapping getMappingDFFunctionalExchange(DDiagram diagram_p) {
+  EdgeMapping getMappingDFFunctionalExchange(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CPDF_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CLDF_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CSDF_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_ACTIVITY_INTERACTION_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_ACTIVITY_INTERACTION_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.COAI_INTERACTION_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAIB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OEB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.ORB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
-  private NodeMapping getMappingDFFunctionPort(DDiagram diagram_p) {
+  private NodeMapping getMappingDFFunctionPort(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CSDF_PIN_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_PIN_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CLDF_PIN_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_PIN_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CPDF_PIN_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_PIN_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
   /**
    * used in context, oa, logical, physical
    * 
-   * @param current_p
+   * @param current
    * @return
    */
-  public List<AbstractFunction> getAvailableAbstractFunctionsToInsertInDataFlowBlank(DSemanticDecorator current_p) {
+  public List<AbstractFunction> getAvailableAbstractFunctionsToInsertInDataFlowBlank(DSemanticDecorator current) {
     List<AbstractFunction> returnedFunctions = new ArrayList<AbstractFunction>();
     AbstractFunction currentFunction = null;
-    EObject target = current_p.getTarget();
-    if (current_p instanceof DDiagram) {
-      if (current_p.getTarget() instanceof AbstractFunction) {
-        currentFunction = (AbstractFunction) current_p.getTarget();
+    EObject target = current.getTarget();
+    if (current instanceof DDiagram) {
+      if (current.getTarget() instanceof AbstractFunction) {
+        currentFunction = (AbstractFunction) current.getTarget();
       } else {
         currentFunction = getRootFunction(target);
       }
       returnedFunctions.addAll(CapellaServices.getService().getAvailableFunctionsInDataFlowBlank(currentFunction));
     }
-    if ((null != target) && (current_p instanceof DNodeContainer) && (target instanceof AbstractFunction)) {
+    if ((null != target) && (current instanceof DNodeContainer) && (target instanceof AbstractFunction)) {
       currentFunction = (AbstractFunction) target;
       returnedFunctions.addAll(FunctionExt.getAllAbstractFunctions(currentFunction));
     }
-    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(current_p);
+    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(current);
     for (AbstractDNode aContainer : currentDiagram.getContainers()) {
       if (aContainer.getTarget() instanceof AbstractFunction) {
         returnedFunctions.remove(aContainer.getTarget());
@@ -971,13 +1032,14 @@ public class FaServices {
   /**
    * used in context, logical, physical
    * 
-   * @param context_p
-   * @param diagram_p
-   * @param selectExchangeCategories_p
+   * @param context
+   * @param diagram
+   * @param selectExchangeCategories
    *          exchanges categories to show (from wizard selection)
    * @return the context
    */
-  public EObject switchFunctionalExchangesCategories(EObject context_p, List<ExchangeCategory> selectedExchangeCategories_p, DDiagram diagram_p) {
+  public EObject switchFunctionalExchangesCategories(EObject context,
+      List<ExchangeCategory> selectedExchangeCategories, DDiagram diagram) {
     Set<DEdge> exchangeCategoryEdgesToRemove = new HashSet<DEdge>(); // exchange
     // category
     // edges
@@ -999,25 +1061,25 @@ public class FaServices {
     Set<ExchangeCategory> categoryToHide = new HashSet<ExchangeCategory>(); // categories
     // to
     // hide
-    Set<ExchangeCategory> displayedCategories = getDisplayedExchangeCategoriesInDiagram(diagram_p);
+    Set<ExchangeCategory> displayedCategories = getDisplayedExchangeCategoriesInDiagram(diagram);
     Map<FunctionalExchange, DEdge> functionalExchangesInDiagram = new HashMap<FunctionalExchange, DEdge>(); // functional
     // exchanges
     // in
     // diagram
 
     // init categoryToDisplay
-    for (ExchangeCategory aCategory : selectedExchangeCategories_p) {
+    for (ExchangeCategory aCategory : selectedExchangeCategories) {
       categoryToDisplay.add(aCategory);
     }
     // init categoryToHide
     for (ExchangeCategory aCategory : displayedCategories) {
-      if (!selectedExchangeCategories_p.contains(aCategory)) {
+      if (!selectedExchangeCategories.contains(aCategory)) {
         categoryToHide.add(aCategory);
       }
     }
 
     // init edges category to remove
-    for (DEdge anEdge : diagram_p.getEdges()) {
+    for (DEdge anEdge : diagram.getEdges()) {
       if ((anEdge.getTarget() instanceof ExchangeCategory) && (categoryToHide.contains(anEdge.getTarget()))) {
         exchangeCategoryEdgesToRemove.add(anEdge);
         borderedNodesToCheck.add(anEdge.getSourceNode());
@@ -1055,7 +1117,8 @@ public class FaServices {
       AbstractFunction sourceFunction = (AbstractFunction) sourceFunctionView.getTarget();
       AbstractFunction targetFunction = (AbstractFunction) targetFunctionView.getTarget();
       List<FunctionalExchange> functionalExchangesOfCategory = ((ExchangeCategory) anEdge.getTarget()).getExchanges();
-      Set<FunctionalExchange> exchangesToDisplay = getAvailableFunctionalExchangesBetweeen2Functions(functionalExchangesOfCategory, sourceFunction, targetFunction);
+      Set<FunctionalExchange> exchangesToDisplay = getAvailableFunctionalExchangesBetweeen2Functions(
+          functionalExchangesOfCategory, sourceFunction, targetFunction);
       for (FunctionalExchange anExchange : exchangesToDisplay) {
 
         boolean toRemove = false;
@@ -1075,12 +1138,12 @@ public class FaServices {
             CapellaServices.getService().show((DDiagramElement) currentExchangeView.getTargetNode());
             CapellaServices.getService().show(currentExchangeView);
           } else {
-            createViewFunctionalExchange(anExchange, sourceFunctionView, targetFunctionView, diagram_p);
+            createViewFunctionalExchange(anExchange, sourceFunctionView, targetFunctionView, diagram);
             alreadyCreated.add(anExchange);
           }
         }
       }
-      if (!diagram_p.isSynchronized()) {
+      if (!diagram.isSynchronized()) {
         DiagramServices.getDiagramServices().removeEdgeView(anEdge);
       } else {
         DiagramServices.getDiagramServices().removeEdgeView(anEdge);
@@ -1094,10 +1157,10 @@ public class FaServices {
       FunctionalExchange currentExchange = (FunctionalExchange) anEdge.getTarget();
       for (ExchangeCategory aCategory : currentExchange.getCategories()) {
         if (categoryToDisplay.contains(aCategory)) {
-          createViewExchangeCategory(aCategory, sourceFunctionView, targetFunctionView, diagram_p);
+          createViewExchangeCategory(aCategory, sourceFunctionView, targetFunctionView, diagram);
         }
       }
-      if (!diagram_p.isSynchronized()) {
+      if (!diagram.isSynchronized()) {
         DiagramServices.getDiagramServices().removeEdgeView(anEdge);
       } else {
         CapellaServices.getService().hide(anEdge);
@@ -1107,9 +1170,9 @@ public class FaServices {
     Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<AbstractFunction, AbstractDNode>();
 
     // get all displayed functions in the diagram
-    for (DDiagramElement aContainer : DiagramServices.getDiagramServices().getDiagramElements(diagram_p)) {
+    for (DDiagramElement aContainer : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       if ((aContainer != null) && (aContainer.getTarget() != null) && (aContainer instanceof AbstractDNode)
-          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram_p)) {
+          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)) {
         if (aContainer.getTarget() instanceof AbstractFunction) {
           allFunctionsInDiagram.put((AbstractFunction) aContainer.getTarget(), (AbstractDNode) aContainer);
         }
@@ -1126,7 +1189,7 @@ public class FaServices {
           if (isValidCreationCategoryBetweenViews(currentExchange, sourceFunctionView, targetFunctionView)) {
             for (ExchangeCategory aCategory : currentExchange.getCategories()) {
               if (categoryToDisplay.contains(aCategory)) {
-                createViewExchangeCategory(aCategory, sourceFunctionView, targetFunctionView, diagram_p);
+                createViewExchangeCategory(aCategory, sourceFunctionView, targetFunctionView, diagram);
               }
             }
           }
@@ -1135,24 +1198,26 @@ public class FaServices {
     }
 
     for (EdgeTarget aNode : borderedNodesToCheck) {
-      boolean incoming = DiagramServices.getDiagramServices().getIncomingEdges(aNode, diagram_p).isEmpty();
-      boolean outgoing = DiagramServices.getDiagramServices().getOutgoingEdges(aNode, diagram_p).isEmpty();
+      boolean incoming = DiagramServices.getDiagramServices().getIncomingEdges(aNode, diagram).isEmpty();
+      boolean outgoing = DiagramServices.getDiagramServices().getOutgoingEdges(aNode, diagram).isEmpty();
 
       if (!incoming) {
         incoming = true;
-        for (DEdge edge : DiagramServices.getDiagramServices().getIncomingEdges(aNode, diagram_p)) {
-          incoming = (incoming) ? (exchangeCategoryEdgesToRemove.contains(edge) || functionalExchangeEdgesToRemove.contains(edge)) : false;
+        for (DEdge edge : DiagramServices.getDiagramServices().getIncomingEdges(aNode, diagram)) {
+          incoming = (incoming) ? (exchangeCategoryEdgesToRemove.contains(edge) || functionalExchangeEdgesToRemove
+              .contains(edge)) : false;
         }
       }
       if (!outgoing) {
         outgoing = true;
-        for (DEdge edge : DiagramServices.getDiagramServices().getOutgoingEdges(aNode, diagram_p)) {
-          outgoing = (outgoing) ? (exchangeCategoryEdgesToRemove.contains(edge) || functionalExchangeEdgesToRemove.contains(edge)) : false;
+        for (DEdge edge : DiagramServices.getDiagramServices().getOutgoingEdges(aNode, diagram)) {
+          outgoing = (outgoing) ? (exchangeCategoryEdgesToRemove.contains(edge) || functionalExchangeEdgesToRemove
+              .contains(edge)) : false;
         }
       }
 
       if (incoming && outgoing) {
-        if ((((DNode) aNode).getTarget() instanceof ExchangeCategory) || !diagram_p.isSynchronized()) {
+        if ((((DNode) aNode).getTarget() instanceof ExchangeCategory) || !diagram.isSynchronized()) {
           DiagramServices.getDiagramServices().removeNodeView((DNode) aNode);
         } else {
           if (aNode.eContainer() != null) {
@@ -1162,24 +1227,25 @@ public class FaServices {
       }
     }
 
-    return context_p;
+    return context;
   }
 
   /**
    * Returns whether an exchange category can be displayed between both views
    * 
-   * @param sourceFunctionView_p
-   * @param targetFunctionView_p
+   * @param sourceFunctionView
+   * @param targetFunctionView
    * @return
    */
-  public boolean isValidCreationCategoryBetweenViews(FunctionalExchange exchange, AbstractDNode sourceFunctionView_p, AbstractDNode targetFunctionView_p) {
-    if ((sourceFunctionView_p != null) && (targetFunctionView_p != null)) {
-      if ((sourceFunctionView_p.getTarget() != null) && (targetFunctionView_p.getTarget() != null)) {
-        if (sourceFunctionView_p != targetFunctionView_p) {
+  public boolean isValidCreationCategoryBetweenViews(FunctionalExchange exchange, AbstractDNode sourceFunctionView,
+      AbstractDNode targetFunctionView) {
+    if ((sourceFunctionView != null) && (targetFunctionView != null)) {
+      if ((sourceFunctionView.getTarget() != null) && (targetFunctionView.getTarget() != null)) {
+        if (sourceFunctionView != targetFunctionView) {
           // remove displaying categories from a function to one of
           // its parents
-          if (!EcoreUtil2.isContainedBy(sourceFunctionView_p.getTarget(), targetFunctionView_p.getTarget())) {
-            if (!EcoreUtil2.isContainedBy(targetFunctionView_p.getTarget(), sourceFunctionView_p.getTarget())) {
+          if (!EcoreUtil2.isContainedBy(sourceFunctionView.getTarget(), targetFunctionView.getTarget())) {
+            if (!EcoreUtil2.isContainedBy(targetFunctionView.getTarget(), sourceFunctionView.getTarget())) {
               return true;
             }
           }
@@ -1190,24 +1256,27 @@ public class FaServices {
   }
 
   /**
-   * @param aCategory_p
-   * @param sourceFunctionView_p
-   * @param targetFunctionView_p
+   * @param aCategory
+   * @param sourceFunctionView
+   * @param targetFunctionView
    */
-  private void createViewExchangeCategory(ExchangeCategory aCategory_p, AbstractDNode sourceFunctionView_p, AbstractDNode targetFunctionView_p, DDiagram diagram_p) {
+  private void createViewExchangeCategory(ExchangeCategory aCategory, AbstractDNode sourceFunctionView,
+      AbstractDNode targetFunctionView, DDiagram diagram) {
     DNode sourceView = null;
     DNode targetView = null;
 
     // check if the source Function already contains the port Category
-    for (DNode aNode : sourceFunctionView_p.getOwnedBorderedNodes()) {
-      if (aNode.getTarget().equals(aCategory_p) && aNode.getActualMapping().getName().equals(getMappingNameOutputPinCategory(diagram_p))) {
+    for (DNode aNode : sourceFunctionView.getOwnedBorderedNodes()) {
+      if (aNode.getTarget().equals(aCategory)
+          && aNode.getActualMapping().getName().equals(getMappingNameOutputPinCategory(diagram))) {
         sourceView = aNode;
       }
     }
 
     // check if the target Function already contains the port Category
-    for (DNode aNode : targetFunctionView_p.getOwnedBorderedNodes()) {
-      if (aNode.getTarget().equals(aCategory_p) && aNode.getActualMapping().getName().equals(getMappingNameInputPinCategory(diagram_p))) {
+    for (DNode aNode : targetFunctionView.getOwnedBorderedNodes()) {
+      if (aNode.getTarget().equals(aCategory)
+          && aNode.getActualMapping().getName().equals(getMappingNameInputPinCategory(diagram))) {
         targetView = aNode;
       }
     }
@@ -1215,7 +1284,7 @@ public class FaServices {
     // test if an edge representing the category already exists between the
     // 2 functions
     if ((null != sourceView) && (null != targetView)) {
-      for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceView, diagram_p)) {
+      for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceView, diagram)) {
         if (anEdge.getTargetNode().equals(targetView)) {
           // the edge already exists => show the edge
           CapellaServices.getService().show((DDiagramElement) anEdge.getSourceNode());
@@ -1228,36 +1297,37 @@ public class FaServices {
 
     if (null == sourceView) {
       // create source Port View
-      sourceView = createViewOutputPinCategory(aCategory_p, sourceFunctionView_p, diagram_p);
+      sourceView = createViewOutputPinCategory(aCategory, sourceFunctionView, diagram);
     }
     if (null == targetView) {
       // create target Port View
-      targetView = createViewInputPinCategory(aCategory_p, targetFunctionView_p, diagram_p);
+      targetView = createViewInputPinCategory(aCategory, targetFunctionView, diagram);
     }
 
-    EdgeMapping mapping = getMappingExchangeCategory(diagram_p);
+    EdgeMapping mapping = getMappingExchangeCategory(diagram);
     // create Edge
-    DiagramServices.getDiagramServices().createEdge(mapping, sourceView, targetView, aCategory_p);
+    DiagramServices.getDiagramServices().createEdge(mapping, sourceView, targetView, aCategory);
   }
 
   /**
-   * @param anExchange_p
-   * @param sourceFunctionView_p
-   * @param targetFunctionView_p
+   * @param anExchange
+   * @param sourceFunctionView
+   * @param targetFunctionView
    */
-  public DEdge createViewFunctionalExchange(FunctionalExchange anExchange_p, AbstractDNode sourceFunctionView_p, AbstractDNode targetFunctionView_p, DDiagram diagram_p) {
-    ActivityNode source = anExchange_p.getSource();
-    ActivityNode target = anExchange_p.getTarget();
+  public DEdge createViewFunctionalExchange(FunctionalExchange anExchange, AbstractDNode sourceFunctionView,
+      AbstractDNode targetFunctionView, DDiagram diagram) {
+    ActivityNode source = anExchange.getSource();
+    ActivityNode target = anExchange.getTarget();
     EdgeTarget sourceView = null;
     EdgeTarget targetView = null;
 
     // check if the sourceView already exists
 
-    if (source.equals(sourceFunctionView_p.getTarget()) && (sourceFunctionView_p instanceof EdgeTarget)) {
-      sourceView = (EdgeTarget) sourceFunctionView_p;
+    if (source.equals(sourceFunctionView.getTarget()) && (sourceFunctionView instanceof EdgeTarget)) {
+      sourceView = (EdgeTarget) sourceFunctionView;
     }
     if (null == sourceView) {
-      for (DNode aBorderedNode : sourceFunctionView_p.getOwnedBorderedNodes()) {
+      for (DNode aBorderedNode : sourceFunctionView.getOwnedBorderedNodes()) {
         if ((aBorderedNode.getTarget() != null) && aBorderedNode.getTarget().equals(source)) {
           sourceView = aBorderedNode;
         }
@@ -1266,17 +1336,17 @@ public class FaServices {
 
     // if it does not exist, create view
     if (null == sourceView) {
-      sourceView = createViewPin(source, sourceFunctionView_p, diagram_p);
+      sourceView = createViewPin(source, sourceFunctionView, diagram);
     }
 
-    if (target.equals(targetFunctionView_p.getTarget()) && (targetFunctionView_p instanceof EdgeTarget)) {
-      targetView = (EdgeTarget) targetFunctionView_p;
+    if (target.equals(targetFunctionView.getTarget()) && (targetFunctionView instanceof EdgeTarget)) {
+      targetView = (EdgeTarget) targetFunctionView;
     }
 
     // check if the targetView already exists
 
     if (null == targetView) {
-      for (DNode aBorderedNode : targetFunctionView_p.getOwnedBorderedNodes()) {
+      for (DNode aBorderedNode : targetFunctionView.getOwnedBorderedNodes()) {
         if ((aBorderedNode.getTarget() != null) && aBorderedNode.getTarget().equals(target)) {
           targetView = aBorderedNode;
         }
@@ -1285,96 +1355,98 @@ public class FaServices {
 
     // if it does not exist, create view
     if (null == targetView) {
-      targetView = createViewPin(target, targetFunctionView_p, diagram_p);
+      targetView = createViewPin(target, targetFunctionView, diagram);
     }
 
     // create functionalExchangeView
-    EdgeMapping mapping = getMappingDFFunctionalExchange(diagram_p);
+    EdgeMapping mapping = getMappingDFFunctionalExchange(diagram);
     if (mapping == null) {
-      mapping = getMappingABFunctionalExchange(diagram_p);
+      mapping = getMappingABFunctionalExchange(diagram);
     }
     CapellaServices.getService().show((DDiagramElement) sourceView);
     CapellaServices.getService().show((DDiagramElement) targetView);
-    return DiagramServices.getDiagramServices().createEdge(mapping, sourceView, targetView, anExchange_p);
+    return DiagramServices.getDiagramServices().createEdge(mapping, sourceView, targetView, anExchange);
 
   }
 
-  private DNode createViewPin(ActivityNode modelElement_p, AbstractDNode containerView_p, DDiagram diagram_p) {
-    NodeMapping mapping = getMappingDFFunctionPort(diagram_p);
+  private DNode createViewPin(ActivityNode modelElement, AbstractDNode containerView, DDiagram diagram) {
+    NodeMapping mapping = getMappingDFFunctionPort(diagram);
     if (mapping == null) {
-      mapping = getMappingABFunctionPort(diagram_p);
+      mapping = getMappingABFunctionPort(diagram);
     }
-    return DiagramServices.getDiagramServices().createBorderedNode(mapping, modelElement_p, (DragAndDropTarget) containerView_p, diagram_p);
+    return DiagramServices.getDiagramServices().createBorderedNode(mapping, modelElement,
+        (DragAndDropTarget) containerView, diagram);
   }
 
-  private DNode createViewInputPinCategory(ExchangeCategory category_p, AbstractDNode containerView_p, DDiagram diagram_p) {
-    String mappingName = getMappingNameInputPinCategory(diagram_p);
-    NodeMapping mapping = DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
-    return DiagramServices.getDiagramServices().createBorderedNode(mapping, category_p, (DragAndDropTarget) containerView_p, diagram_p);
+  private DNode createViewInputPinCategory(ExchangeCategory category, AbstractDNode containerView, DDiagram diagram) {
+    String mappingName = getMappingNameInputPinCategory(diagram);
+    NodeMapping mapping = DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
+    return DiagramServices.getDiagramServices().createBorderedNode(mapping, category,
+        (DragAndDropTarget) containerView, diagram);
   }
 
-  String getMappingNameInputPinCategory(DDiagram diagram_p) {
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+  String getMappingNameInputPinCategory(DDiagram diagram) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       return IMappingNameConstants.CSDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.SDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       return IMappingNameConstants.CLDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.LDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       return IMappingNameConstants.CPDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.PDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.SAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.PAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.LAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
     return null;
   }
 
   /**
-   * @param context_p
-   * @param aOperation_p
-   * @param diagram_p
+   * @param context
+   * @param aOperation
+   * @param diagram
    */
 
   @Deprecated
-  public AbstractFunction createForkFunction(EObject container_p) {
-    return createDuplicateFunction(container_p);
+  public AbstractFunction createForkFunction(EObject container) {
+    return createDuplicateFunction(container);
   }
 
-  public boolean isControlNode(EObject element_p) {
-    return (element_p instanceof AbstractFunction) && FunctionExt.isControlNode((AbstractFunction) element_p);
+  public boolean isControlNode(EObject element) {
+    return (element instanceof AbstractFunction) && FunctionExt.isControlNode((AbstractFunction) element);
   }
 
-  public boolean isDuplicateFunction(EObject element_p) {
-    return (element_p instanceof AbstractFunction) && FunctionExt.isDuplicateFunction((AbstractFunction) element_p);
+  public boolean isDuplicateFunction(EObject element) {
+    return (element instanceof AbstractFunction) && FunctionExt.isDuplicateFunction((AbstractFunction) element);
   }
 
-  public String computeFunctionLabel(DSemanticDecorator decorator_p) {
-    if (decorator_p instanceof DDiagramElement) {
-      EObject target = decorator_p.getTarget();
+  public String computeFunctionLabel(DSemanticDecorator decorator) {
+    if (decorator instanceof DDiagramElement) {
+      EObject target = decorator.getTarget();
       if (target instanceof FunctionalChainInvolvement) {
         target = ((FunctionalChainInvolvement) target).getInvolved();
       }
       if (isControlNode(target)) {
-        return decorateString(ICommonConstants.EMPTY_STRING, decorator_p);
+        return decorateString(ICommonConstants.EMPTY_STRING, decorator);
       }
-      return decorateString(EObjectLabelProviderHelper.getText(target), decorator_p);
+      return decorateString(EObjectLabelProviderHelper.getText(target), decorator);
     }
-    return decorateString(ICommonConstants.EMPTY_STRING, decorator_p);
+    return decorateString(ICommonConstants.EMPTY_STRING, decorator);
   }
 
   private String decorateString(String text, Object element) {
@@ -1384,106 +1456,98 @@ public class FaServices {
     return text;
   }
 
-  public boolean isGatherFunction(EObject element_p) {
-    return (element_p instanceof AbstractFunction) && FunctionExt.isGatherFunction((AbstractFunction) element_p);
+  public boolean isGatherFunction(EObject element) {
+    return (element instanceof AbstractFunction) && FunctionExt.isGatherFunction((AbstractFunction) element);
   }
 
-  public boolean isRouteFunction(EObject element_p) {
-    return (element_p instanceof AbstractFunction) && FunctionExt.isRouteFunction((AbstractFunction) element_p);
+  public boolean isRouteFunction(EObject element) {
+    return (element instanceof AbstractFunction) && FunctionExt.isRouteFunction((AbstractFunction) element);
   }
 
-  public boolean isSelectFunction(EObject element_p) {
-    return (element_p instanceof AbstractFunction) && FunctionExt.isSelectFunction((AbstractFunction) element_p);
+  public boolean isSelectFunction(EObject element) {
+    return (element instanceof AbstractFunction) && FunctionExt.isSelectFunction((AbstractFunction) element);
   }
 
-  public boolean isSplitFunction(EObject element_p) {
-    return (element_p instanceof AbstractFunction) && FunctionExt.isSplitFunction((AbstractFunction) element_p);
+  public boolean isSplitFunction(EObject element) {
+    return (element instanceof AbstractFunction) && FunctionExt.isSplitFunction((AbstractFunction) element);
   }
 
-  public AbstractFunction createDuplicateFunction(EObject container_p) {
-    return createFunction(container_p, FunctionKind.DUPLICATE);
+  public AbstractFunction createDuplicateFunction(EObject container) {
+    return createFunction(container, FunctionKind.DUPLICATE);
   }
 
-  public AbstractFunction createGatherFunction(EObject container_p) {
-    return createFunction(container_p, FunctionKind.GATHER);
+  public AbstractFunction createGatherFunction(EObject container) {
+    return createFunction(container, FunctionKind.GATHER);
   }
 
-  public AbstractFunction createRouteFunction(EObject container_p) {
-    return createFunction(container_p, FunctionKind.ROUTE);
+  public AbstractFunction createRouteFunction(EObject container) {
+    return createFunction(container, FunctionKind.ROUTE);
   }
 
-  public AbstractFunction createSelectFunction(EObject container_p) {
-    return createFunction(container_p, FunctionKind.SELECT);
+  public AbstractFunction createSelectFunction(EObject container) {
+    return createFunction(container, FunctionKind.SELECT);
   }
 
-  public AbstractFunction createSplitFunction(EObject container_p) {
-    return createFunction(container_p, FunctionKind.SPLIT);
+  public AbstractFunction createSplitFunction(EObject container) {
+    return createFunction(container, FunctionKind.SPLIT);
   }
 
-  public AbstractFunction getParentFunctionContainer(EObject container_p) {
-    return getFunctionContainer(container_p.eContainer());
+  public AbstractFunction getParentFunctionContainer(EObject container) {
+    return getFunctionContainer(container.eContainer());
   }
 
-  public AbstractFunction getFunctionContainer(EObject container_p) {
-    AbstractFunction container = null;
-    if ((container_p instanceof AbstractFunction)) {
-      container = (AbstractFunction) container_p;
+  public AbstractFunction getFunctionContainer(EObject container) {
+    AbstractFunction owner = null;
+    if ((container instanceof AbstractFunction)) {
+      owner = (AbstractFunction) container;
     } else {
-      container = (AbstractFunction) EcoreUtil2.getFirstContainer(container_p, FaPackage.Literals.ABSTRACT_FUNCTION);
+      owner = (AbstractFunction) EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTION);
     }
 
-    if (container == null) {
-      container = BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(container_p));
+    if (owner == null) {
+      owner = BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(container));
     }
-    return container;
+    return owner;
   }
 
-  public AbstractFunction allocateToComponent(AbstractFunction function_p, Component component_p) {
+  public AbstractFunction allocateToComponent(AbstractFunction function, Component component) {
     ComponentFunctionalAllocation allocation = FaFactory.eINSTANCE.createComponentFunctionalAllocation();
-    if (component_p != null) {
-      allocation.setSourceElement(component_p);
-      allocation.setTargetElement(function_p);
-      component_p.getOwnedFunctionalAllocation().add(allocation);
+    if (component != null) {
+      allocation.setSourceElement(component);
+      allocation.setTargetElement(function);
+      component.getOwnedFunctionalAllocation().add(allocation);
     }
-    return function_p;
+    return function;
   }
 
-  public AbstractFunction allocateToRole(AbstractFunction function_p, Role component_p) {
+  public AbstractFunction allocateToRole(AbstractFunction function, Role component) {
     ActivityAllocation allocation = OaFactory.eINSTANCE.createActivityAllocation();
-    if (component_p != null) {
-      allocation.setSourceElement(component_p);
-      allocation.setTargetElement(function_p);
-      component_p.getOwnedActivityAllocations().add(allocation);
+    if (component != null) {
+      allocation.setSourceElement(component);
+      allocation.setTargetElement(function);
+      component.getOwnedActivityAllocations().add(allocation);
     }
-    return function_p;
+    return function;
   }
 
-  public AbstractFunction allocateToCapability(AbstractFunction function_p, DSemanticDecorator containerView_p) {
-    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(containerView_p);
+  public AbstractFunction allocateToCapability(AbstractFunction function, DSemanticDecorator containerView) {
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(containerView);
     if ((diagram != null) && (diagram.getTarget() != null) && (diagram.getTarget() instanceof AbstractCapability)) {
       AbstractCapability capability = (AbstractCapability) diagram.getTarget();
-      createAbstractFunctionAbstractCapabilityInvolvement(capability, function_p);
+      createAbstractFunctionAbstractCapabilityInvolvement(capability, function);
     }
-    return function_p;
+    return function;
   }
 
-  public AbstractFunction allocateToNewActor(AbstractFunction function_p) {
-    Component actor = CsServices.getService().createActor(BlockArchitectureExt.getRootBlockArchitecture(function_p), true, null);
-    allocateToComponent(function_p, actor);
-    return function_p;
+  public AbstractFunction allocateToNewActor(AbstractFunction function) {
+    Component actor = CsServices.getService().createActor(BlockArchitectureExt.getRootBlockArchitecture(function),
+        true, null);
+    allocateToComponent(function, actor);
+    return function;
   }
 
-  public AbstractFunction createActorFunction(EObject container_p) {
-    return createFunction(container_p, "A ", FunctionKind.FUNCTION); //$NON-NLS-1$
-  }
-
-  /**
-   * Returns functions owned by the function or owned function pkg
-   * 
-   * @return
-   */
-  public Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function_p) {
-    return FunctionExt.getFirstLevelAbstractFunctions(function_p);
+  public AbstractFunction createActorFunction(EObject container) {
+    return createFunction(container, "A ", FunctionKind.FUNCTION); //$NON-NLS-1$
   }
 
   /**
@@ -1491,20 +1555,29 @@ public class FaServices {
    * 
    * @return
    */
-  public Collection<AbstractFunction> getFirstLevelAbstractFunctions(FunctionPkg container_p) {
-    return FunctionPkgExt.getFirstLevelAbstractFunctions(container_p);
+  public Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function) {
+    return FunctionExt.getFirstLevelAbstractFunctions(function);
   }
 
-  public static boolean isControlNodeOneOutput(AbstractFunction function_p) {
-    return FunctionExt.isControlNodeOneOutput(function_p);
+  /**
+   * Returns functions owned by the function or owned function pkg
+   * 
+   * @return
+   */
+  public Collection<AbstractFunction> getFirstLevelAbstractFunctions(FunctionPkg container) {
+    return FunctionPkgExt.getFirstLevelAbstractFunctions(container);
   }
 
-  public static boolean isControlNodeOneInput(AbstractFunction function_p) {
-    return FunctionExt.isControlNodeOneInput(function_p);
+  public static boolean isControlNodeOneOutput(AbstractFunction function) {
+    return FunctionExt.isControlNodeOneOutput(function);
   }
 
-  public boolean isValidCreationFunctionInputPort(DSemanticDecorator decorator_p) {
-    EObject target = decorator_p.getTarget();
+  public static boolean isControlNodeOneInput(AbstractFunction function) {
+    return FunctionExt.isControlNodeOneInput(function);
+  }
+
+  public boolean isValidCreationFunctionInputPort(DSemanticDecorator decorator) {
+    EObject target = decorator.getTarget();
     AbstractFunction function = FunctionExt.getRelatedFunction((ActivityNode) target);
 
     if (FunctionExt.isControlNodeOneInput(function)) {
@@ -1514,8 +1587,8 @@ public class FaServices {
     return true;
   }
 
-  public boolean isValidCreationFunctionOutputPort(DSemanticDecorator decorator_p) {
-    EObject target = decorator_p.getTarget();
+  public boolean isValidCreationFunctionOutputPort(DSemanticDecorator decorator) {
+    EObject target = decorator.getTarget();
     AbstractFunction function = FunctionExt.getRelatedFunction((ActivityNode) target);
 
     if (FunctionExt.isControlNodeOneOutput(function)) {
@@ -1525,27 +1598,27 @@ public class FaServices {
     return true;
   }
 
-  public AbstractFunction createFunction(EObject container_p, String prefix, FunctionKind kind_p) {
+  public AbstractFunction createFunction(EObject container, String prefix, FunctionKind kind) {
     AbstractFunction function = null;
-    AbstractFunction container = getFunctionContainer(container_p);
+    AbstractFunction owner = getFunctionContainer(container);
 
-    if (container != null) {
-      if (container instanceof OperationalActivity) {
+    if (owner != null) {
+      if (owner instanceof OperationalActivity) {
         function = OaFactory.eINSTANCE.createOperationalActivity();
 
-      } else if (container instanceof SystemFunction) {
+      } else if (owner instanceof SystemFunction) {
         function = CtxFactory.eINSTANCE.createSystemFunction();
 
-      } else if (container instanceof LogicalFunction) {
+      } else if (owner instanceof LogicalFunction) {
         function = LaFactory.eINSTANCE.createLogicalFunction();
 
-      } else if (container instanceof PhysicalFunction) {
+      } else if (owner instanceof PhysicalFunction) {
         function = PaFactory.eINSTANCE.createPhysicalFunction();
       }
 
       if (function != null) {
-        container.getOwnedFunctions().add(function);
-        function.setKind(kind_p);
+        owner.getOwnedFunctions().add(function);
+        function.setKind(kind);
         if (prefix != null) {
           CapellaServices.getService().creationService(function, prefix);
         } else {
@@ -1557,114 +1630,117 @@ public class FaServices {
   }
 
   /**
-   * @param context_p
-   * @param aOperation_p
-   * @param diagram_p
+   * @param context
+   * @param aOperation
+   * @param diagram
    */
-  public AbstractFunction createFunction(EObject container_p) {
-    return createFunction(container_p, null, FunctionKind.FUNCTION);
+  public AbstractFunction createFunction(EObject container) {
+    return createFunction(container, null, FunctionKind.FUNCTION);
   }
 
-  private AbstractFunction createFunction(EObject container_p, FunctionKind kind_p) {
-    return createFunction(container_p, null, kind_p);
+  private AbstractFunction createFunction(EObject container, FunctionKind kind) {
+    return createFunction(container, null, kind);
   }
 
-  private DNode createViewOutputPinCategory(ExchangeCategory category_p, AbstractDNode containerView_p, DDiagram diagram_p) {
-    String mappingName = getMappingNameOutputPinCategory(diagram_p);
-    NodeMapping mapping = DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
-    return DiagramServices.getDiagramServices().createBorderedNode(mapping, category_p, (DragAndDropTarget) containerView_p, diagram_p);
+  private DNode createViewOutputPinCategory(ExchangeCategory category, AbstractDNode containerView, DDiagram diagram) {
+    String mappingName = getMappingNameOutputPinCategory(diagram);
+    NodeMapping mapping = DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
+    return DiagramServices.getDiagramServices().createBorderedNode(mapping, category,
+        (DragAndDropTarget) containerView, diagram);
   }
 
-  String getMappingNameOutputPinCategory(DDiagram diagram_p) {
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+  String getMappingNameOutputPinCategory(DDiagram diagram) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       return IMappingNameConstants.CSDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.SDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       return IMappingNameConstants.CLDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.LDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       return IMappingNameConstants.CPDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.PDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.SAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.PAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return IMappingNameConstants.LAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
     return null;
   }
 
-  private EdgeMapping getMappingExchangeCategory(DDiagram diagram_p) {
+  private EdgeMapping getMappingExchangeCategory(DDiagram diagram) {
     String mappingName = null;
 
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CSDF_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CLDF_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CPDF_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_EXCHANGE_CATEGORY_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
 
   }
 
-  private Set<FunctionalExchange> getAvailableFunctionalExchangesBetweeen2Functions(List<FunctionalExchange> exchanges_p, AbstractFunction sourceFunction_p,
-      AbstractFunction targetFunction_p) {
+  private Set<FunctionalExchange> getAvailableFunctionalExchangesBetweeen2Functions(List<FunctionalExchange> exchanges,
+      AbstractFunction sourceFunction, AbstractFunction targetFunction) {
     Set<FunctionalExchange> returnedSet = new HashSet<FunctionalExchange>();
-    for (FunctionalExchange anExchange : exchanges_p) {
-      if (EcoreUtil.isAncestor(sourceFunction_p, anExchange.getSource()) && EcoreUtil.isAncestor(targetFunction_p, anExchange.getTarget())) {
+    for (FunctionalExchange anExchange : exchanges) {
+      if (EcoreUtil.isAncestor(sourceFunction, anExchange.getSource())
+          && EcoreUtil.isAncestor(targetFunction, anExchange.getTarget())) {
         returnedSet.add(anExchange);
       }
     }
     return returnedSet;
   }
 
-  private Set<ExchangeCategory> getVisibleExchangeCategoriesInDiagram(DDiagram diagram_p) {
+  private Set<ExchangeCategory> getVisibleExchangeCategoriesInDiagram(DDiagram diagram) {
     Set<ExchangeCategory> returnedList = new HashSet<ExchangeCategory>();
-    for (DEdge anEdge : diagram_p.getEdges()) {
-      if ((anEdge.getTarget() instanceof ExchangeCategory) && (!returnedList.contains(anEdge.getTarget())) && (anEdge.isVisible())) {
+    for (DEdge anEdge : diagram.getEdges()) {
+      if ((anEdge.getTarget() instanceof ExchangeCategory) && (!returnedList.contains(anEdge.getTarget()))
+          && (anEdge.isVisible())) {
         returnedList.add((ExchangeCategory) anEdge.getTarget());
       }
     }
     return returnedList;
   }
 
-  private Set<ExchangeCategory> getDisplayedExchangeCategoriesInDiagram(DDiagram diagram_p) {
+  private Set<ExchangeCategory> getDisplayedExchangeCategoriesInDiagram(DDiagram diagram) {
     Set<ExchangeCategory> returnedList = new HashSet<ExchangeCategory>();
-    for (DEdge anEdge : diagram_p.getEdges()) {
+    for (DEdge anEdge : diagram.getEdges()) {
       if ((anEdge.getTarget() instanceof ExchangeCategory) && (!returnedList.contains(anEdge.getTarget()))) {
         returnedList.add((ExchangeCategory) anEdge.getTarget());
       }
@@ -1685,10 +1761,12 @@ public class FaServices {
     DSemanticDecorator source_d = source;
     DSemanticDecorator target_d = target;
 
-    if (((source_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) source_d) && ((DNode) source_d).isVisible()))) {
+    if (((source_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) source_d) && ((DNode) source_d)
+        .isVisible()))) {
       return false;
     }
-    if (((target_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) target_d) && ((DNode) target_d).isVisible()))) {
+    if (((target_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) target_d) && ((DNode) target_d)
+        .isVisible()))) {
       return false;
     }
 
@@ -1739,31 +1817,32 @@ public class FaServices {
     return false;
   }
 
-  List<DNodeContainer> getOwnedVisibleFunctionContainersInDataFlowBlank(DNodeContainer container_p, DDiagram diagram_p) {
+  List<DNodeContainer> getOwnedVisibleFunctionContainersInDataFlowBlank(DNodeContainer container, DDiagram diagram) {
     List<DNodeContainer> returnedList = new ArrayList<DNodeContainer>();
     Set<AbstractDNode> containers = new HashSet<AbstractDNode>();
-    if (null == container_p) {
-      containers.addAll(diagram_p.getContainers());
+    if (null == container) {
+      containers.addAll(diagram.getContainers());
     } else {
-      containers.addAll(container_p.getContainers());
+      containers.addAll(container.getContainers());
     }
     for (AbstractDNode aSubContainer : containers) {
-      if ((aSubContainer instanceof DNodeContainer) && (aSubContainer.getTarget() != null) && (aSubContainer.getTarget() instanceof AbstractFunction)
-          && isAbstractFunctionVisibleInDFB(aSubContainer, diagram_p)) {
+      if ((aSubContainer instanceof DNodeContainer) && (aSubContainer.getTarget() != null)
+          && (aSubContainer.getTarget() instanceof AbstractFunction)
+          && isAbstractFunctionVisibleInDFB(aSubContainer, diagram)) {
         returnedList.add((DNodeContainer) aSubContainer);
       }
     }
     return returnedList;
   }
 
-  boolean isAbstractFunctionVisibleInDFB(AbstractDNode abstractFunction_p, DDiagram diagram_p) {
+  boolean isAbstractFunctionVisibleInDFB(AbstractDNode abstractFunction, DDiagram diagram) {
     // special case for sub functions in contextual data flow blank
     // we can not call the display service manager to know if sub functions
     // are visible
     // if we activate/deactivate a layer
-    if (abstractFunction_p.getMapping().getName().contains(IMappingNameConstants.SUB_CONTROL_NODE_MAPPING_NAME)
-        || abstractFunction_p.getMapping().getName().contains(IMappingNameConstants.SUB_FUNCTION_MAPPING_NAME)) {
-      for (Layer activatedLayer : diagram_p.getActivatedLayers()) {
+    if (abstractFunction.getMapping().getName().contains(IMappingNameConstants.SUB_CONTROL_NODE_MAPPING_NAME)
+        || abstractFunction.getMapping().getName().contains(IMappingNameConstants.SUB_FUNCTION_MAPPING_NAME)) {
+      for (Layer activatedLayer : diagram.getActivatedLayers()) {
         if (activatedLayer.getName().contains(IMappingNameConstants.INTERNAL_DATA_FLOW_LAYER_NAME)) {
           // if the internal layer is active, the sub function is
           // visible
@@ -1772,28 +1851,28 @@ public class FaServices {
       }
       return false;
     }
-    return CapellaServices.getService().isVisibleInDiagram(diagram_p, abstractFunction_p);
+    return CapellaServices.getService().isVisibleInDiagram(diagram, abstractFunction);
   }
 
   /**
    * used in context, logical, oa, physical
    * 
-   * @param view_p
+   * @param view
    *          a nodeContainer or a diagram
    * @return the list of containers/nodes (whose target is a Function/ControlNode) displayed in the current view
    */
-  public List<AbstractDNode> getDisplayedAbstractFunctionViews(DSemanticDecorator view_p) {
+  public List<AbstractDNode> getDisplayedAbstractFunctionViews(DSemanticDecorator view) {
     List<AbstractDNode> returnedList = new ArrayList<AbstractDNode>();
-    if (view_p instanceof DDiagram) {
-      DDiagram diagram = (DDiagram) view_p;
+    if (view instanceof DDiagram) {
+      DDiagram diagram = (DDiagram) view;
       for (AbstractDNode aContainer : diagram.getContainers()) {
         if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)) {
           returnedList.add(aContainer);
         }
       }
     }
-    if (view_p instanceof DNodeContainer) {
-      DNodeContainer currentContainer = (DNodeContainer) view_p;
+    if (view instanceof DNodeContainer) {
+      DNodeContainer currentContainer = (DNodeContainer) view;
       for (AbstractDNode aContainer : currentContainer.getContainers()) {
         if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)) {
           returnedList.add(aContainer);
@@ -1806,13 +1885,13 @@ public class FaServices {
   /**
    * used in context, logical, oa physical
    * 
-   * @param view_p
+   * @param view
    *          a nodeContainer or a diagram
    * @return the list of Functions/ControlNodes displayed in the current view
    */
-  public List<AbstractFunction> getDisplayedAbstractFunctions(DSemanticDecorator view_p) {
+  public List<AbstractFunction> getDisplayedAbstractFunctions(DSemanticDecorator view) {
     List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-    for (AbstractDNode aView : getDisplayedAbstractFunctionViews(view_p)) {
+    for (AbstractDNode aView : getDisplayedAbstractFunctionViews(view)) {
       returnedList.add((AbstractFunction) aView.getTarget());
     }
     return returnedList;
@@ -1821,16 +1900,16 @@ public class FaServices {
   /**
    * used by external action
    * 
-   * @param view_p
+   * @param view
    * @param selectedFunctions
    * @param visibleFunctions
    * @param visibleFunctionViews
    * @return
    */
-  public EObject showHideFunctionsInDataFlowBlank(DSemanticDecorator view_p, List<AbstractFunction> selectedFunctions, List<AbstractFunction> visibleFunctions,
-      List<AbstractDNode> visibleFunctionViews) {
+  public EObject showHideFunctionsInDataFlowBlank(DSemanticDecorator view, List<AbstractFunction> selectedFunctions,
+      List<AbstractFunction> visibleFunctions, List<AbstractDNode> visibleFunctionViews) {
 
-    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view_p);
+    DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
     DDiagramContents content = new DDiagramContents(diagram);
 
     Set<AbstractDNode> toBeRemoved = new HashSet<AbstractDNode>();
@@ -1853,7 +1932,8 @@ public class FaServices {
       HashSet<DNode> borderedNodes = new HashSet<DNode>();
       borderedNodes.addAll(aView.getOwnedBorderedNodes());
       for (DNode aBorderedNode : borderedNodes) {
-        if ((aBorderedNode.getTarget() != null) && ((aBorderedNode.getTarget() instanceof FunctionPort) || (aBorderedNode.getTarget() instanceof ExchangeCategory))) {
+        if ((aBorderedNode.getTarget() != null)
+            && ((aBorderedNode.getTarget() instanceof FunctionPort) || (aBorderedNode.getTarget() instanceof ExchangeCategory))) {
           moveBorderedNodeIfPossible(aBorderedNode, toBeRemoved, diagram);
         }
       }
@@ -1888,12 +1968,11 @@ public class FaServices {
         Collection<DSemanticDecorator> views = shService.showWithResult(aFunction, context);
 
         // retrieve newly created views
-        for (DSemanticDecorator view : views) {
-          if (aFunction.equals(view.getTarget()) && view instanceof AbstractDNode) {
-            showHideCategories.put(aFunction, (AbstractDNode) view);
+        for (DSemanticDecorator aView : views) {
+          if (aFunction.equals(aView.getTarget()) && aView instanceof AbstractDNode) {
+            showHideCategories.put(aFunction, (AbstractDNode) aView);
           }
         }
-
       }
     }
 
@@ -1903,10 +1982,11 @@ public class FaServices {
       if (!visibleFunctions.contains(aFunction)) {
         AbstractDNode node = showHideCategories.get(aFunction);
         if (node != null && CapellaServices.getService().isSynchronized(diagram)) {
-          HashMapSet<ExchangeCategory, EObject> scope = (HashMapSet) getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(node, content);
+          HashMapSet<ExchangeCategory, EObject> scope = (HashMapSet) getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(
+              node, content);
           HashMapSet<EObject, EObject> selectedElements = new HashMapSet<EObject, EObject>((Map) scope);
-          HashMapSet<EObject, EObject> initialSelection = (HashMapSet) FaServices.getFaServices().getCategoriesAndFunctionsInitialSelectionInDataFlowBlank((DNodeContainer) node,
-              content);
+          HashMapSet<EObject, EObject> initialSelection = (HashMapSet) FaServices.getFaServices()
+              .getCategoriesAndFunctionsInitialSelectionInDataFlowBlank((DNodeContainer) node, content);
 
           for (ExchangeCategory category : new ArrayList<ExchangeCategory>(scope.keySet())) {
             if (!categories.contains(category)) {
@@ -1919,12 +1999,13 @@ public class FaServices {
       }
     }
 
-    return view_p;
+    return view;
   }
 
   public void removeAbstractFunctionAbstractCapabilityInvolvement(AbstractCapability capability, EObject target) {
     Set<AbstractFunctionAbstractCapabilityInvolvement> toRemove = new HashSet<AbstractFunctionAbstractCapabilityInvolvement>();
-    for (AbstractFunctionAbstractCapabilityInvolvement inv : capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements()) {
+    for (AbstractFunctionAbstractCapabilityInvolvement inv : capability
+        .getOwnedAbstractFunctionAbstractCapabilityInvolvements()) {
       if (inv.getInvolved().equals(target)) {
         toRemove.add(inv);
       }
@@ -1934,13 +2015,16 @@ public class FaServices {
     }
   }
 
-  public AbstractFunctionAbstractCapabilityInvolvement createAbstractFunctionAbstractCapabilityInvolvement(AbstractCapability capability, AbstractFunction target) {
-    for (AbstractFunctionAbstractCapabilityInvolvement inv : capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements()) {
+  public AbstractFunctionAbstractCapabilityInvolvement createAbstractFunctionAbstractCapabilityInvolvement(
+      AbstractCapability capability, AbstractFunction target) {
+    for (AbstractFunctionAbstractCapabilityInvolvement inv : capability
+        .getOwnedAbstractFunctionAbstractCapabilityInvolvements()) {
       if (inv.getInvolved().equals(target)) {
         return inv;
       }
     }
-    AbstractFunctionAbstractCapabilityInvolvement newInv = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
+    AbstractFunctionAbstractCapabilityInvolvement newInv = InteractionFactory.eINSTANCE
+        .createAbstractFunctionAbstractCapabilityInvolvement();
     newInv.setInvolver(capability);
     newInv.setInvolved(target);
     capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add(newInv);
@@ -1949,23 +2033,23 @@ public class FaServices {
   }
 
   /**
-   * @param aBorderedNode_p
-   * @param aView_p
+   * @param aBorderedNode
+   * @param aView
    */
-  private void moveBorderedNodeIfPossible(DNode aBorderedNode_p, Set<AbstractDNode> toBeRemoved_p, DDiagram diagram_p) {
-    EObject container = aBorderedNode_p.eContainer();
+  private void moveBorderedNodeIfPossible(DNode aBorderedNode, Set<AbstractDNode> toBeRemoved, DDiagram diagram) {
+    EObject container = aBorderedNode.eContainer();
     while ((container != null) && (container instanceof DNodeContainer)) {
-      if (!toBeRemoved_p.contains(container)) {
+      if (!toBeRemoved.contains(container)) {
         boolean canMove = true;
 
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aBorderedNode_p, diagram_p)) {
+        for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aBorderedNode, diagram)) {
           if (EcoreUtil.isAncestor(container, anEdge.getSourceNode())) {
             // not a internal exchanges
             canMove = false;
             break;
           }
         }
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aBorderedNode_p, diagram_p)) {
+        for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aBorderedNode, diagram)) {
           if (EcoreUtil.isAncestor(container, anEdge.getTargetNode())) {
             // not a internal exchanges
             canMove = false;
@@ -1974,17 +2058,17 @@ public class FaServices {
         }
 
         if (canMove) {
-          if (aBorderedNode_p.getTarget() instanceof ExchangeCategory) {
+          if (aBorderedNode.getTarget() instanceof ExchangeCategory) {
             for (DNode node : ((DNodeContainer) container).getOwnedBorderedNodes()) {
-              if (node.getTarget() == aBorderedNode_p.getTarget()) {
-                aBorderedNode_p.getIncomingEdges().addAll(aBorderedNode_p.getIncomingEdges());
-                aBorderedNode_p.getOutgoingEdges().addAll(aBorderedNode_p.getOutgoingEdges());
+              if (node.getTarget() == aBorderedNode.getTarget()) {
+                aBorderedNode.getIncomingEdges().addAll(aBorderedNode.getIncomingEdges());
+                aBorderedNode.getOutgoingEdges().addAll(aBorderedNode.getOutgoingEdges());
                 return;
               }
             }
           }
           // not a internal exchanges
-          ((DNodeContainer) container).getOwnedBorderedNodes().add(aBorderedNode_p);
+          ((DNodeContainer) container).getOwnedBorderedNodes().add(aBorderedNode);
         }
         return;
       }
@@ -2000,7 +2084,8 @@ public class FaServices {
    * @param selectedExchanges
    * @return
    */
-  public EObject showDFFunctionalExchange(AbstractDNode currentFunctionView, List<FunctionalExchange> scope, List<FunctionalExchange> selectedExchanges) {
+  public EObject showDFFunctionalExchange(AbstractDNode currentFunctionView, List<FunctionalExchange> scope,
+      List<FunctionalExchange> selectedExchanges) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(currentFunctionView);
     DDiagramContents content = getDDiagramContents(currentDiagram);
     Set<FunctionalExchange> scopeSet = new HashSet<FunctionalExchange>();
@@ -2015,24 +2100,14 @@ public class FaServices {
     for (FunctionalExchange exchange : exchanges) {
       if (selectedExchangesSet.contains(exchange)) {
         shService.show(exchange, context);
-
-        // showDFFunctionalExchange(shService, currentFunctionView,
-        // exchange, context, false);
         selectedExchangesSet.remove(exchange);
       } else {
         shService.hide(exchange, context);
-
-        // hideDFFunctionalExchange(exchange, context);
       }
     }
 
-    int i = 0;
     for (FunctionalExchange exchange : selectedExchangesSet) {
-      // showDFFunctionalExchange(shService, currentFunctionView,
-      // exchange, context, false);
       shService.show(exchange, context);
-
-      i++;
     }
 
     reorderFAElements(currentDiagram);
@@ -2040,22 +2115,14 @@ public class FaServices {
     return currentFunctionView;
   }
 
-  //
-  // public void showDFFunctionalExchange(AbstractShowHide categories_p,
-  // AbstractDNode currentFunctionView,
-  // FunctionalExchange exchange_p, DiagramContext context_p,
-  // boolean checkValid_p) {
-  // categories_p.show(exchange_p, context_p);
-  //
-  // }
-
-  public void showDFFunctionalExchange(AbstractDNode currentFunctionView, FunctionalExchange exchange_p, DDiagramContents context_p, boolean checkValid_p) {
-    DEdge edge = context_p.getEdge(exchange_p);
+  public void showDFFunctionalExchange(AbstractDNode currentFunctionView, FunctionalExchange exchange,
+      DDiagramContents context, boolean checkValid) {
+    DEdge edge = context.getEdge(exchange);
 
     if (edge != null) {
-      if (checkValid_p) {
-        if (!DFServices.getService().isValidDFFunctionalExchangeEdgeFromInternalTool(exchange_p, (DSemanticDecorator) edge.getSourceNode(),
-            (DSemanticDecorator) edge.getTargetNode())) {
+      if (checkValid) {
+        if (!DFServices.getService().isValidDFFunctionalExchangeEdgeFromInternalTool(exchange,
+            (DSemanticDecorator) edge.getSourceNode(), (DSemanticDecorator) edge.getTargetNode())) {
           return;
         }
       }
@@ -2063,14 +2130,14 @@ public class FaServices {
     } else {
 
       // Reveal source element
-      ActivityNode source = exchange_p.getSource();
-      ActivityNode target = exchange_p.getTarget();
+      ActivityNode source = exchange.getSource();
+      ActivityNode target = exchange.getTarget();
 
       AbstractFunction sourceFunction = FunctionExt.getRelatedFunction(source);
       AbstractFunction targetFunction = FunctionExt.getRelatedFunction(target);
 
-      Collection<DDiagramElement> sourceViews = context_p.getDiagramElements(sourceFunction);
-      Collection<DDiagramElement> targetViews = context_p.getDiagramElements(targetFunction);
+      Collection<DDiagramElement> sourceViews = context.getDiagramElements(sourceFunction);
+      Collection<DDiagramElement> targetViews = context.getDiagramElements(targetFunction);
 
       AbstractDNode sourceView = null;
       if (sourceViews.size() > 0) {
@@ -2090,8 +2157,8 @@ public class FaServices {
         }
       }
 
-      DragAndDropTarget sourceContainerView = context_p.getBestContainer(sourceFunction);
-      DragAndDropTarget targetContainerView = context_p.getBestContainer(targetFunction);
+      DragAndDropTarget sourceContainerView = context.getBestContainer(sourceFunction);
+      DragAndDropTarget targetContainerView = context.getBestContainer(targetFunction);
 
       // If there is a hierarchy between both preferred bounds of
       // functional exchange, we need to display both instead
@@ -2101,18 +2168,18 @@ public class FaServices {
         DragAndDropTarget bView = targetContainerView;
 
         if (EcoreUtil.isAncestor(aView, bView)) {
-          EObject element = context_p.getElement(sourceFunction, exchange_p);
+          EObject element = context.getElement(sourceFunction, exchange);
           if ((element != null) && (element instanceof AbstractFunction)) {
-            if (!context_p.getDiagramElements(element).contains(sourceContainerView)) {
-              sourceContainerView = context_p.getDDiagram();
+            if (!context.getDiagramElements(element).contains(sourceContainerView)) {
+              sourceContainerView = context.getDDiagram();
             }
           }
         }
         if (EcoreUtil.isAncestor(bView, aView)) {
-          EObject element = context_p.getElement(targetFunction, exchange_p);
+          EObject element = context.getElement(targetFunction, exchange);
           if ((element != null) && (element instanceof AbstractFunction)) {
-            if (!context_p.getDiagramElements(element).contains(targetContainerView)) {
-              targetContainerView = context_p.getDDiagram();
+            if (!context.getDiagramElements(element).contains(targetContainerView)) {
+              targetContainerView = context.getDDiagram();
             }
           }
         }
@@ -2125,9 +2192,9 @@ public class FaServices {
         if ((sourceContainerView != null) && (sourceContainerView instanceof AbstractDNode)) {
           sourceView = (AbstractDNode) sourceContainerView;
         } else {
-          EObject element = context_p.getElement(sourceFunction, exchange_p);
+          EObject element = context.getElement(sourceFunction, exchange);
           if ((element != null) && (element instanceof AbstractFunction)) {
-            sourceView = showDFAbstractFunction((AbstractFunction) element, context_p.getBestContainer(element), context_p);
+            sourceView = showDFAbstractFunction((AbstractFunction) element, context.getBestContainer(element), context);
           }
         }
       }
@@ -2139,52 +2206,54 @@ public class FaServices {
         if ((targetContainerView != null) && (targetContainerView instanceof AbstractDNode)) {
           targetView = (AbstractDNode) targetContainerView;
         } else {
-          EObject element = context_p.getElement(targetFunction, exchange_p);
+          EObject element = context.getElement(targetFunction, exchange);
           if ((element != null) && (element instanceof AbstractFunction)) {
-            targetView = showDFAbstractFunction((AbstractFunction) element, context_p.getBestContainer(element), context_p);
+            targetView = showDFAbstractFunction((AbstractFunction) element, context.getBestContainer(element), context);
           }
         }
       }
 
-      if (checkValid_p) {
-        if (!DFServices.getService().isValidDFFunctionalExchangeEdgeFromInternalTool(exchange_p, sourceView, targetView)) {
+      if (checkValid) {
+        if (!DFServices.getService().isValidDFFunctionalExchangeEdgeFromInternalTool(exchange, sourceView, targetView)) {
           return;
         }
       }
 
       if (source instanceof FunctionPort) {
-        sourceView = showDFFunctionPort(source, sourceView, context_p);
+        sourceView = showDFFunctionPort(source, sourceView, context);
       }
       if (target instanceof FunctionPort) {
-        targetView = showDFFunctionPort(target, targetView, context_p);
+        targetView = showDFFunctionPort(target, targetView, context);
       }
 
       // Create an edge between both source and target
       if ((sourceView != null) && (targetView != null)) {
-        edge = DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingDFFunctionalExchange(context_p.getDDiagram()), (EdgeTarget) sourceView,
-            (EdgeTarget) targetView, exchange_p);
-        context_p.addView(edge);
+        edge = DiagramServices.getDiagramServices().createEdge(
+            FaServices.getFaServices().getMappingDFFunctionalExchange(context.getDDiagram()), (EdgeTarget) sourceView,
+            (EdgeTarget) targetView, exchange);
+        context.addView(edge);
       }
     }
   }
 
   /**
-   * @param source_p
-   * @param sourceFunction_p
-   * @param context_p
+   * @param source
+   * @param sourceFunction
+   * @param context
    */
-  private AbstractDNode showDFFunctionPort(ActivityNode port_p, AbstractDNode sourceFunction_p, DDiagramContents context_p) {
-    for (DDiagramElement element : sourceFunction_p.getOwnedBorderedNodes()) {
-      if ((element.getTarget() != null) && element.getTarget().equals(port_p)) {
+  private AbstractDNode showDFFunctionPort(ActivityNode port, AbstractDNode sourceFunction, DDiagramContents context) {
+    for (DDiagramElement element : sourceFunction.getOwnedBorderedNodes()) {
+      if ((element.getTarget() != null) && element.getTarget().equals(port)) {
         return (AbstractDNode) element;
       }
     }
 
-    if (sourceFunction_p.getTarget() instanceof AbstractFunction) {
-      AbstractFunction function = (AbstractFunction) sourceFunction_p.getTarget();
-      if (CapellaServices.getService().getAvailablePins(function, context_p.getDDiagram(), sourceFunction_p).contains(port_p)) {
-        AbstractDNode element = createViewFunctionPort(port_p, (DragAndDropTarget) sourceFunction_p, context_p._currentDiagram);
-        context_p.addView(element);
+    if (sourceFunction.getTarget() instanceof AbstractFunction) {
+      AbstractFunction function = (AbstractFunction) sourceFunction.getTarget();
+      if (CapellaServices.getService().getAvailablePins(function, context.getDDiagram(), sourceFunction).contains(port)) {
+        AbstractDNode element = createViewFunctionPort(port, (DragAndDropTarget) sourceFunction,
+            context._currentDiagram);
+        context.addView(element);
         return element;
       }
     }
@@ -2192,28 +2261,29 @@ public class FaServices {
   }
 
   /**
-   * @param function_p
-   * @param dContainer_p
-   * @param context_p
+   * @param function
+   * @param dContainer
+   * @param context
    * @return
    */
-  public AbstractDNode showDFAbstractFunction(AbstractFunction function_p, DragAndDropTarget dContainer_p, DDiagramContents context_p) {
-    DiagramElementMapping mapping = getMappingDFAbstractFunction(function_p, context_p.getDDiagram());
-    Collection<DDiagramElement> views = context_p.getDiagramElements(function_p, mapping);
+  public AbstractDNode showDFAbstractFunction(AbstractFunction function, DragAndDropTarget dContainer,
+      DDiagramContents context) {
+    DiagramElementMapping mapping = getMappingDFAbstractFunction(function, context.getDDiagram());
+    Collection<DDiagramElement> views = context.getDiagramElements(function, mapping);
     if (views.size() > 0) {
       return (AbstractDNode) views.iterator().next();
     }
 
-    AbstractDNode element = createViewDFAbstractFunction(function_p, context_p.getDDiagram());
-    DiagramServices.getDiagramServices().getOwnedDiagramElements(dContainer_p).add(element);
+    AbstractDNode element = createViewDFAbstractFunction(function, context.getDDiagram());
+    DiagramServices.getDiagramServices().getOwnedDiagramElements(dContainer).add(element);
 
-    context_p.addView(element);
+    context.addView(element);
     return element;
   }
 
-  private void hideDFFunctionalExchange(FunctionalExchange exchange_p, DDiagramContents context_p) {
-    if (!CapellaServices.getService().isSynchronized(context_p._currentDiagram)) {
-      DEdge edge = context_p.getEdge(exchange_p);
+  private void hideDFFunctionalExchange(FunctionalExchange exchange, DDiagramContents context) {
+    if (!CapellaServices.getService().isSynchronized(context._currentDiagram)) {
+      DEdge edge = context.getEdge(exchange);
       if (edge != null) {
         EdgeTarget source = edge.getSourceNode();
         EdgeTarget target = edge.getTargetNode();
@@ -2260,339 +2330,361 @@ public class FaServices {
   }
 
   /**
-   * @param aFunction_p
-   * @param diagram_p
+   * @param aFunction
+   * @param diagram
    */
-  protected DNode createViewFunctionPort(ActivityNode port, DragAndDropTarget container, DDiagram diagram_p) {
-    NodeMapping mapping = getMappingDFFunctionPort(diagram_p);
+  protected DNode createViewFunctionPort(ActivityNode port, DragAndDropTarget container, DDiagram diagram) {
+    NodeMapping mapping = getMappingDFFunctionPort(diagram);
     if (mapping == null) {
-      mapping = getMappingABFunctionPort(diagram_p);
+      mapping = getMappingABFunctionPort(diagram);
     }
-    return DiagramServices.getDiagramServices().createBorderedNode(mapping, port, container, diagram_p);
+    return DiagramServices.getDiagramServices().createBorderedNode(mapping, port, container, diagram);
   }
 
   /**
-   * @param aFunction_p
-   * @param diagram_p
+   * @param aFunction
+   * @param diagram
    */
-  protected AbstractDNode createViewDFAbstractFunction(AbstractFunction aFunction_p, DDiagram diagram_p) {
-    return createViewDFFunction(aFunction_p, diagram_p);
+  protected AbstractDNode createViewDFAbstractFunction(AbstractFunction aFunction, DDiagram diagram) {
+    return createViewDFFunction(aFunction, diagram);
   }
 
   /**
-   * @param aFunction_p
-   * @param diagram_p
+   * @param aFunction
+   * @param diagram
    */
-  protected DNode createViewABAbstractFunction(AbstractFunction aFunction_p, DragAndDropTarget container, DDiagram diagram_p) {
-    NodeMapping mapping = getMappingABAbstractFunction(aFunction_p, diagram_p);
-    return DiagramServices.getDiagramServices().createNode(mapping, aFunction_p, container, diagram_p);
+  protected DNode createViewABAbstractFunction(AbstractFunction aFunction, DragAndDropTarget container, DDiagram diagram) {
+    NodeMapping mapping = getMappingABAbstractFunction(aFunction, diagram);
+    return DiagramServices.getDiagramServices().createNode(mapping, aFunction, container, diagram);
   }
 
   /**
-   * @param aFunction_p
-   * @param diagram_p
+   * @param aFunction
+   * @param diagram
    * @return
    */
-  protected DNodeContainer createViewDFFunction(AbstractFunction aFunction_p, DDiagram diagram_p) {
-    ContainerMapping mapping = getMappingDFFunction(aFunction_p, diagram_p);
-    return DiagramServices.getDiagramServices().createContainer(mapping, aFunction_p, diagram_p, diagram_p);
+  protected DNodeContainer createViewDFFunction(AbstractFunction aFunction, DDiagram diagram) {
+    ContainerMapping mapping = getMappingDFFunction(aFunction, diagram);
+    return DiagramServices.getDiagramServices().createContainer(mapping, aFunction, diagram, diagram);
   }
 
   /**
-   * @param aFunction_p
-   * @param diagram_p
+   * @param aFunction
+   * @param diagram
    * @return
    */
-  protected DNode createViewComponentPort(Port port_p, DragAndDropTarget container, DDiagram diagram_p) {
-    NodeMapping mapping = getMappingABComponentPort(port_p, diagram_p);
-    return DiagramServices.getDiagramServices().createBorderedNode(mapping, port_p, container, diagram_p);
+  protected DNode createViewComponentPort(Port port, DragAndDropTarget container, DDiagram diagram) {
+    NodeMapping mapping = getMappingABComponentPort(port, diagram);
+    return DiagramServices.getDiagramServices().createBorderedNode(mapping, port, container, diagram);
   }
 
   /**
-   * @param aFunction_p
-   * @param diagram_p
+   * @param aFunction
+   * @param diagram
    * @return
    */
-  protected DNode createViewPhysicalPort(Port port_p, DragAndDropTarget container, DDiagram diagram_p) {
-    NodeMapping mapping = getMappingABPhysicalPort(port_p, diagram_p);
-    return DiagramServices.getDiagramServices().createBorderedNode(mapping, port_p, container, diagram_p);
+  protected DNode createViewPhysicalPort(Port port, DragAndDropTarget container, DDiagram diagram) {
+    NodeMapping mapping = getMappingABPhysicalPort(port, diagram);
+    return DiagramServices.getDiagramServices().createBorderedNode(mapping, port, container, diagram);
   }
 
-  public DNodeContainer createViewPart(EObject target_p, DragAndDropTarget parent_p, DDiagram parentDiagram_p) {
-    Component parent = null;
-    if (target_p instanceof Component) {
-      parent = (Component) target_p;
-    } else if (target_p instanceof Part) {
-      parent = (Component) ((Part) target_p).getAbstractType();
+  public DNodeContainer createViewPart(EObject target, DragAndDropTarget parent, DDiagram parentDiagram) {
+    Component cpnt = null;
+    if (target instanceof Component) {
+      cpnt = (Component) target;
+    } else if (target instanceof Part) {
+      cpnt = (Component) ((Part) target).getAbstractType();
     }
-    ContainerMapping mapping = getMappingABComponent(parent, parentDiagram_p);
-    return DiagramServices.getDiagramServices().createContainer(mapping, target_p, parent_p, parentDiagram_p);
+    ContainerMapping mapping = getMappingABComponent(cpnt, parentDiagram);
+    return DiagramServices.getDiagramServices().createContainer(mapping, target, parent, parentDiagram);
   }
 
-  public NodeMapping getMappingABComponentPort(DDiagram diagram_p) {
+  public NodeMapping getMappingABComponentPort(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_COMPONENT_PORT_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_COMPONENT_PORT_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_COMPONENT_PORT_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CCII_PORT_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.IDB_PORT_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
-  public List<NodeMapping> getMappingABPorts(DDiagram diagram_p) {
+  public List<NodeMapping> getMappingABPorts(DDiagram diagram) {
     List<String> mappingNames = new ArrayList<String>();
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.PAB_COMPONENT_PORT_MAPPING_NAME);
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.LAB_COMPONENT_PORT_MAPPING_NAME);
       mappingNames.add(IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME);
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.SAB_COMPONENT_PORT_MAPPING_NAME);
       mappingNames.add(IMappingNameConstants.SAB_PHYSICAL_PORT_MAPPING_NAME);
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.CCII_PORT_MAPPING_NAME);
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
       mappingNames.add(IMappingNameConstants.IDB_PORT_MAPPING_NAME);
     }
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingNames);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingNames);
   }
 
   /**
    * Returns mapping of component port
    */
   @Deprecated
-  public NodeMapping getMappingABComponentPort(Port port_p, DDiagram diagram_p) {
-    return getMappingABComponentPort(diagram_p);
+  public NodeMapping getMappingABComponentPort(Port port, DDiagram diagram) {
+    return getMappingABComponentPort(diagram);
   }
 
   @Deprecated
-  public NodeMapping getMappingABPhysicalPort(DDiagram diagram_p) {
+  public NodeMapping getMappingABPhysicalPort(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICAL_PORT_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
-  public NodeMapping getMappingABPhysicalPort(Port port_p, DDiagram diagram_p) {
+  public NodeMapping getMappingABPhysicalPort(Port port, DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_PHYSICAL_PORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_PHYSICAL_PORT_MAPPING_NAME;
     }
 
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
   /**
    * Perform a dnd of a function port.
    * 
-   * @param port_p
-   * @param oldContainer_p
-   * @param newContainer_p
+   * @param port
+   * @param oldContainer
+   * @param newContainer
    */
-  public EObject dndDFFunctionPort(FunctionPort port_p, NamedElement oldContainer_p, NamedElement newContainer_p) {
+  public EObject dndDFFunctionPort(FunctionPort port, NamedElement oldContainer, NamedElement newContainer) {
 
-    if (newContainer_p instanceof AbstractFunction) {
-      AbstractFunction newFunction = (AbstractFunction) newContainer_p;
-      AbstractFunction oldFunction = (AbstractFunction) port_p.eContainer();
-      if (port_p instanceof FunctionInputPort) {
-        for (ActivityEdge anEdge : ((FunctionInputPort) port_p).getIncoming()) {
+    if (newContainer instanceof AbstractFunction) {
+      AbstractFunction newFunction = (AbstractFunction) newContainer;
+      AbstractFunction oldFunction = (AbstractFunction) port.eContainer();
+      if (port instanceof FunctionInputPort) {
+        for (ActivityEdge anEdge : ((FunctionInputPort) port).getIncoming()) {
           if (anEdge instanceof FunctionalExchange) {
             updateFunctionaChainInvolvementsOfFunctionalExchange((FunctionalExchange) anEdge, oldFunction, newFunction);
           }
         }
-        newFunction.getInputs().add((FunctionInputPort) port_p);
+        newFunction.getInputs().add((FunctionInputPort) port);
       } else {
-        for (ActivityEdge anEdge : ((FunctionOutputPort) port_p).getOutgoing()) {
+        for (ActivityEdge anEdge : ((FunctionOutputPort) port).getOutgoing()) {
           if (anEdge instanceof FunctionalExchange) {
             updateFunctionaChainInvolvementsOfFunctionalExchange((FunctionalExchange) anEdge, oldFunction, newFunction);
           }
         }
-        newFunction.getOutputs().add((FunctionOutputPort) port_p);
+        newFunction.getOutputs().add((FunctionOutputPort) port);
       }
     }
-    return port_p;
+    return port;
   }
 
-  public Collection<? extends EObject> getFBDSemanticFunctions(AbstractFunction root_p) {
-    Collection<? extends EObject> result = getFBDSemanticAbstractFunctions(root_p);
+  public Collection<? extends EObject> getFBDSemanticFunctions(AbstractFunction root) {
+    Collection<? extends EObject> result = getFBDSemanticAbstractFunctions(root);
     CapellaServices.getService().filter(result, FaPackage.Literals.ABSTRACT_FUNCTION);
     return result;
   }
 
   @Deprecated
-  public Collection<? extends EObject> getFBDSemanticControlNodes(AbstractFunction root_p) {
+  public Collection<? extends EObject> getFBDSemanticControlNodes(AbstractFunction root) {
     return Collections.emptyList();
   }
 
   /** Returns all owned functions used in breakdown diagrams */
-  public Collection<? extends EObject> getFBDSemanticAbstractFunctions(AbstractFunction root_p) {
-    Collection<? extends AbstractFunction> result = getAllAbstractFunctions(root_p);
-    EObject container = root_p.eContainer();
+  public Collection<? extends EObject> getFBDSemanticAbstractFunctions(AbstractFunction root) {
+    Collection<? extends AbstractFunction> result = getAllAbstractFunctions(root);
+    EObject container = root.eContainer();
     if ((container != null) && (container instanceof FunctionPkg)) {
       container = container.eContainer();
       // Remove the root function
       if ((container != null) && (container instanceof BlockArchitecture)) {
-        result.remove(root_p);
+        result.remove(root);
       }
     }
     return result;
   }
 
-  public Collection<AbstractFunction> getAllAbstractFunctions(AbstractFunction root_p) {
-    return FunctionExt.getAllAbstractFunctions(root_p);
+  public Collection<AbstractFunction> getAllAbstractFunctions(AbstractFunction root) {
+    return FunctionExt.getAllAbstractFunctions(root);
   }
 
-  public Collection<AbstractFunction> getAllAbstractFunctions(BlockArchitecture root_p) {
-    return FunctionExt.getAllAbstractFunctions(root_p);
+  public Collection<AbstractFunction> getAllAbstractFunctions(BlockArchitecture root) {
+    return FunctionExt.getAllAbstractFunctions(root);
   }
 
-  public Collection<AbstractFunction> getAllAbstractFunctions(FunctionPkg root_p) {
-    return FunctionPkgExt.getAllAbstractFunctions(root_p);
+  public Collection<AbstractFunction> getAllAbstractFunctions(FunctionPkg root) {
+    return FunctionPkgExt.getAllAbstractFunctions(root);
   }
 
-  public EObject getFBDParentFunction(AbstractFunction root_p) {
-    return EcoreUtil2.getFirstContainer(root_p, FaPackage.Literals.ABSTRACT_FUNCTION);
+  public EObject getFBDParentFunction(AbstractFunction root) {
+    return EcoreUtil2.getFirstContainer(root, FaPackage.Literals.ABSTRACT_FUNCTION);
   }
 
-  public EObject updateFunctionaChainInvolvementsOfFunctionalExchange(FunctionalExchange fe_p, AbstractFunction oldFunction, AbstractFunction newFunction_p) {
-    for (Involvement anInvolvement : fe_p.getInvolvingInvolvements()) {
+  public EObject updateFunctionaChainInvolvementsOfFunctionalExchange(FunctionalExchange fe,
+      AbstractFunction oldFunction, AbstractFunction newFunction) {
+    for (Involvement anInvolvement : fe.getInvolvingInvolvements()) {
       if (anInvolvement instanceof FunctionalChainInvolvement) {
 
         FunctionalChainInvolvement currentInvolvement = (FunctionalChainInvolvement) anInvolvement;
         FunctionalChain currentFunctionalChain = (FunctionalChain) currentInvolvement.eContainer();
 
-        Set<FunctionalChainInvolvement> newFunctionInvolvements = FunctionalChainExt.getInvolvementsOf(currentFunctionalChain, newFunction_p);
+        Set<FunctionalChainInvolvement> newFunctionInvolvements = FunctionalChainExt.getInvolvementsOf(
+            currentFunctionalChain, newFunction);
         FunctionalChainInvolvement newFunctionInv;
         if (newFunctionInvolvements.isEmpty()) {
           // we add the new Function to the functional chain
-          newFunctionInv = FunctionalChainExt.createInvolvement(currentFunctionalChain, newFunction_p);
+          newFunctionInv = FunctionalChainExt.createInvolvement(currentFunctionalChain, newFunction);
         } else {
           newFunctionInv = newFunctionInvolvements.iterator().next();
         }
-        if (!FunctionExt.getIncomingAbstractFunction(fe_p).equals(oldFunction)) {
+        if (!FunctionExt.getIncomingAbstractFunction(fe).equals(oldFunction)) {
           // the target of the exchange has changed
           currentInvolvement.getNextFunctionalChainInvolvements().clear();
           currentInvolvement.getNextFunctionalChainInvolvements().add(newFunctionInv);
         } else {
           // the source of the exchange has changed
-          FunctionalChainInvolvement previousInv = currentInvolvement.getPreviousFunctionalChainInvolvements().iterator().next();
+          FunctionalChainInvolvement previousInv = currentInvolvement.getPreviousFunctionalChainInvolvements()
+              .iterator().next();
           previousInv.getNextFunctionalChainInvolvements().remove(currentInvolvement);
           newFunctionInv.getNextFunctionalChainInvolvements().add(currentInvolvement);
         }
       }
     }
-    return fe_p;
+    return fe;
   }
 
   /**
    * Performs semantic operation for a reconnect of source from a component exchange edge
    * 
-   * @param componentExchange_p
-   * @param edge_p
-   * @param oldNode_p
-   * @param newNode_p
+   * @param componentExchange
+   * @param edge
+   * @param oldNode
+   * @param newNode
    */
-  public EObject reconnectDFFunctionalExchangeSource(EObject functionalExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p, DSemanticDecorator newNode_p) {
-    if (edge_p instanceof DEdge) {
-      if (functionalExchange_p instanceof FunctionalExchange) {
-        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange_p, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge_p, oldNode_p, newNode_p);
+  public EObject reconnectDFFunctionalExchangeSource(EObject functionalExchange, DSemanticDecorator edge,
+      DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+    if (edge instanceof DEdge) {
+      if (functionalExchange instanceof FunctionalExchange) {
+        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange,
+            ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge, oldNode, newNode);
       }
     }
-    return functionalExchange_p;
+    return functionalExchange;
   }
 
   /**
    * Performs semantic operation for a reconnect of source from a component exchange edge
    * 
-   * @param componentExchange_p
-   * @param edge_p
-   * @param oldNode_p
-   * @param newNode_p
+   * @param componentExchange
+   * @param edge
+   * @param oldNode
+   * @param newNode
    */
-  public EObject reconnectDFFunctionalExchangeTarget(EObject functionalExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p, DSemanticDecorator newNode_p) {
-    if (edge_p instanceof DEdge) {
-      if (functionalExchange_p instanceof FunctionalExchange) {
-        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange_p, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge_p, oldNode_p, newNode_p);
+  public EObject reconnectDFFunctionalExchangeTarget(EObject functionalExchange, DSemanticDecorator edge,
+      DSemanticDecorator oldNode, DSemanticDecorator newNode) {
+    if (edge instanceof DEdge) {
+      if (functionalExchange instanceof FunctionalExchange) {
+        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange,
+            ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge, oldNode, newNode);
       }
     }
-    return functionalExchange_p;
+    return functionalExchange;
   }
 
   /**
-   * @param functionalExchange_p
-   * @param activityEdgeSource_p
-   * @param edge_p
-   * @param oldNode_p
-   * @param newNode_p
+   * @param functionalExchange
+   * @param activityEdgeSource
+   * @param edge
+   * @param oldNode
+   * @param newNode
    */
-  private void reconnectDFFunctionalExchange(FunctionalExchange functionalExchange_p, EReference activityEdgeSource_p, DEdge edge_p, DSemanticDecorator oldNode_p,
-      DSemanticDecorator newNode_p) {
+  private void reconnectDFFunctionalExchange(FunctionalExchange functionalExchange, EReference activityEdgeSource,
+      DEdge edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
     //
   }
 
-  public EObject reconnectFunctionalExchange(FunctionalExchange fe_p, ActivityNode source_p, ActivityNode target_p) {
-    EObject oldFunction = FunctionExt.getRelatedFunction(source_p);
-    EObject newFunction = FunctionExt.getRelatedFunction(target_p);
+  public EObject reconnectFunctionalExchange(FunctionalExchange fe, ActivityNode source, ActivityNode target) {
+    EObject oldFunction = FunctionExt.getRelatedFunction(source);
+    EObject newFunction = FunctionExt.getRelatedFunction(target);
 
-    updateFunctionaChainInvolvementsOfFunctionalExchange(fe_p, (AbstractFunction) oldFunction, (AbstractFunction) newFunction);
-    if (fe_p.getSource().equals(source_p)) {
-      fe_p.setSource(target_p);
+    updateFunctionaChainInvolvementsOfFunctionalExchange(fe, (AbstractFunction) oldFunction,
+        (AbstractFunction) newFunction);
+    if (fe.getSource().equals(source)) {
+      fe.setSource(target);
     } else {
-      fe_p.setTarget(target_p);
+      fe.setTarget(target);
     }
-    EObject commonAncestor = CapellaServices.getService().getCommonAncestor(fe_p.getSource(), fe_p.getTarget());
-    if ((commonAncestor != null) && (commonAncestor instanceof AbstractFunction) && (!commonAncestor.equals(fe_p.eContainer()))) {
-      ((AbstractFunction) commonAncestor).getOwnedFunctionalExchanges().add(fe_p);
+    EObject commonAncestor = CapellaServices.getService().getCommonAncestor(fe.getSource(), fe.getTarget());
+    if ((commonAncestor != null) && (commonAncestor instanceof AbstractFunction)
+        && (!commonAncestor.equals(fe.eContainer()))) {
+      ((AbstractFunction) commonAncestor).getOwnedFunctionalExchanges().add(fe);
     }
-    return fe_p;
+    return fe;
   }
 
-  public boolean isFunctionalExchangeReconnectable(FunctionalExchange fe_p, DDiagram diagram_p, EObject source_p, EObject target_p) {
+  public boolean isFunctionalExchangeReconnectable(FunctionalExchange fe, DDiagram diagram, EObject source,
+      EObject target) {
 
     Set<FunctionalChain> visibleFC = new HashSet<FunctionalChain>();
-    for (DNode aNode : diagram_p.getNodes()) {
+    for (DNode aNode : diagram.getNodes()) {
       if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionalChain)) {
         visibleFC.add((FunctionalChain) aNode.getTarget());
       }
     }
-    for (FunctionalChain aFC : fe_p.getInvolvingFunctionalChains()) {
+    for (FunctionalChain aFC : fe.getInvolvingFunctionalChains()) {
       if (visibleFC.contains(aFC)) {
         return true;
       }
     }
-    if ((source_p instanceof InputPin) && (target_p instanceof OutputPin)) {
+    if ((source instanceof InputPin) && (target instanceof OutputPin)) {
       return false;
     }
-    if ((source_p instanceof OutputPin) && (target_p instanceof InputPin)) {
+    if ((source instanceof OutputPin) && (target instanceof InputPin)) {
       return false;
     }
-    if ((target_p instanceof AbstractFunction) && !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(fe_p)) {
+    if ((target instanceof AbstractFunction) && !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(fe)) {
       return false;
     }
-    if (!(target_p instanceof AbstractFunction) && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(fe_p)) {
+    if (!(target instanceof AbstractFunction) && CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(fe)) {
       return false;
     }
 
     // move source ?
-    if (fe_p.getSource().equals(source_p) && !isValidCreationFunctionalExchange(fe_p, target_p, fe_p.getTarget())) {
+    if (fe.getSource().equals(source) && !isValidCreationFunctionalExchange(fe, target, fe.getTarget())) {
       return false;
     }
     // move target ?
-    if (fe_p.getTarget().equals(source_p) && !isValidCreationFunctionalExchange(fe_p, fe_p.getSource(), target_p)) {
+    if (fe.getTarget().equals(source) && !isValidCreationFunctionalExchange(fe, fe.getSource(), target)) {
       return false;
     }
     return true;
@@ -2605,7 +2697,7 @@ public class FaServices {
   /**
    * Perform model modifications on dnd of an abstract function.
    * 
-   * @param function_p
+   * @param function
    *          the given abstractFunction
    * @param oldContainer
    *          the given namedElement
@@ -2613,11 +2705,12 @@ public class FaServices {
    *          the given namedElement
    * @return the EObject
    */
-  public EObject dndABAbstractFunctionAllocation(AbstractFunction function_p, NamedElement oldContainer, NamedElement newContainer) {
+  public EObject dndABAbstractFunctionAllocation(AbstractFunction function, NamedElement oldContainer,
+      NamedElement newContainer) {
     if (oldContainer.equals(newContainer)) {
-      return function_p;
+      return function;
     }
-    Collection<AbstractFunction> functions = FunctionExt.getAllAbstractFunctions(function_p);
+    Collection<AbstractFunction> functions = FunctionExt.getAllAbstractFunctions(function);
 
     Component oldComponent = null;
     Component newComponent = null;
@@ -2636,7 +2729,8 @@ public class FaServices {
 
     if ((oldComponent != null) && (newComponent != null)) {
       // Move all related allocations
-      for (ComponentFunctionalAllocation allocation : new ArrayList<ComponentFunctionalAllocation>(oldComponent.getOwnedFunctionalAllocation())) {
+      for (ComponentFunctionalAllocation allocation : new ArrayList<ComponentFunctionalAllocation>(
+          oldComponent.getOwnedFunctionalAllocation())) {
         if (functions.contains(allocation.getTargetElement())) {
           allocation.setSourceElement(newComponent);
           newComponent.getOwnedFunctionalAllocation().add(allocation);
@@ -2657,12 +2751,12 @@ public class FaServices {
     // old container is ROLE and new container is Component
     else if ((oldContainer instanceof Role) && (newComponent != null)) {
       Role oldRole = (Role) oldContainer;
-      // remove activity allocation toward function_p
+      // remove activity allocation toward function
       List<ActivityAllocation> removeAllocationLink = new ArrayList<ActivityAllocation>();
       EList<ActivityAllocation> allocations = oldRole.getActivityAllocations();
       for (ActivityAllocation activityAllocation : allocations) {
         OperationalActivity activity = activityAllocation.getActivity();
-        if ((null != activity) && activity.equals(function_p)) {
+        if ((null != activity) && activity.equals(function)) {
           removeAllocationLink.add(activityAllocation);
         }
       }
@@ -2670,17 +2764,17 @@ public class FaServices {
 
       // create new Component Functional Allocation allocation in new
       // container(that is component)
-      allocateToComponent(function_p, newComponent);
+      allocateToComponent(function, newComponent);
     }
     // old container is Component and new container is ROLE
     else if ((oldComponent != null) && (newContainer instanceof Role)) {
       Role newRole = (Role) newContainer;
-      // remove Component Functional Allocation toward function_p
+      // remove Component Functional Allocation toward function
       List<ComponentFunctionalAllocation> removeAllocationLink = new ArrayList<ComponentFunctionalAllocation>();
       EList<ComponentFunctionalAllocation> allocations = oldComponent.getOwnedFunctionalAllocation();
       for (ComponentFunctionalAllocation activityAllocation : allocations) {
-        AbstractFunction function = activityAllocation.getFunction();
-        if ((null != function) && function.equals(function_p)) {
+        AbstractFunction fct = activityAllocation.getFunction();
+        if ((null != fct) && fct.equals(function)) {
           removeAllocationLink.add(activityAllocation);
         }
       }
@@ -2688,30 +2782,31 @@ public class FaServices {
 
       // create new Activity Allocation allocation in new container (that
       // is role)
-      allocateToRole(function_p, newRole);
+      allocateToRole(function, newRole);
     }
 
     // remove useless portRealization of "all functions" and inComing and
     // outGoing functiaonalExchages(component
     // Exchange Allocation)
     if (!oldContainer.equals(newComponent)) {
-      removeUseLessPortRealizationAndComponentExchangeAllocation(function_p, functions);
+      removeUseLessPortRealizationAndComponentExchangeAllocation(function, functions);
     }
 
-    return function_p;
+    return function;
   }
 
-  private void removeUseLessPortRealizationAndComponentExchangeAllocation(AbstractFunction function_p, Collection<AbstractFunction> functions) {
+  private void removeUseLessPortRealizationAndComponentExchangeAllocation(AbstractFunction function,
+      Collection<AbstractFunction> functions) {
     Collection<FunctionalExchange> functionalExchanges = new HashSet<FunctionalExchange>();
-    for (AbstractFunction function : functions) {
+    for (AbstractFunction fct : functions) {
       // Find all PortRealization and component exchanges to be deleted
-      for (Port port : FunctionExt.getOwnedFunctionPorts(function)) {
+      for (Port port : FunctionExt.getOwnedFunctionPorts(fct)) {
         removeUselessPortRealizations(port, true, true, false, false);
       }
     }
     // consider incoming and outgoing functionalExchanges of target function
-    functionalExchanges.addAll(FunctionExt.getIncomingExchange(function_p));
-    functionalExchanges.addAll(FunctionExt.getOutGoingExchange(function_p));
+    functionalExchanges.addAll(FunctionExt.getIncomingExchange(function));
+    functionalExchanges.addAll(FunctionExt.getOutGoingExchange(function));
 
     removeComponentExchangeAllocations(functionalExchanges);
   }
@@ -2722,7 +2817,8 @@ public class FaServices {
     // Remove components exchanges realizing the functional exchanges
     for (FunctionalExchange exchange : functionalExchanges) {
       for (ComponentExchange ce : exchange.getAllocatingComponentExchanges()) {
-        for (ComponentExchangeFunctionalExchangeAllocation alloc : ce.getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
+        for (ComponentExchangeFunctionalExchangeAllocation alloc : ce
+            .getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
           if (alloc.getAllocatedFunctionalExchange().equals(exchange)) {
             allocations.add(alloc);
           }
@@ -2735,21 +2831,25 @@ public class FaServices {
   }
 
   /**
-   * @param realization_p
+   * @param realization
    * @return
    */
-  private boolean isValidAllocation(Allocation realization_p) {
-    return (realization_p.getSourceElement() != null) && (realization_p.getTargetElement() != null) && (realization_p.getSourceElement() instanceof CapellaElement)
-        && (realization_p.getTargetElement() instanceof CapellaElement)
-        && CapellaElementExt.areInSameDecompositionAlternative((CapellaElement) realization_p.getSourceElement(), (CapellaElement) realization_p.getTargetElement());
+  private boolean isValidAllocation(Allocation realization) {
+    return (realization.getSourceElement() != null)
+        && (realization.getTargetElement() != null)
+        && (realization.getSourceElement() instanceof CapellaElement)
+        && (realization.getTargetElement() instanceof CapellaElement)
+        && CapellaElementExt.areInSameDecompositionAlternative((CapellaElement) realization.getSourceElement(),
+            (CapellaElement) realization.getTargetElement());
   }
 
-  public HashMapSet<ExchangeCategory, AbstractFunction> getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(AbstractDNode functionView_p, DDiagramContents content_p) {
+  public HashMapSet<ExchangeCategory, AbstractFunction> getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(
+      AbstractDNode functionView, DDiagramContents content) {
 
     HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<ExchangeCategory, AbstractFunction>();
     List<DNodeContainer> functionContainersInDiagram = new ArrayList<DNodeContainer>();
 
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content_p.getDDiagram())) { // TODO
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content.getDDiagram())) { // TODO
       // We
       // need
       // to
@@ -2761,23 +2861,25 @@ public class FaServices {
       // S/H
       if (element instanceof AbstractDNode) {
         AbstractDNode aContainer = (AbstractDNode) element;
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction) && (aContainer instanceof DNodeContainer)) {
+        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)
+            && (aContainer instanceof DNodeContainer)) {
           functionContainersInDiagram.add((DNodeContainer) aContainer);
         }
       }
     }
 
-    AbstractFunction function = (AbstractFunction) functionView_p.getTarget();
-    for (FunctionalExchange anExchange : getAvailableFunctionalExchangesToInsert(functionView_p)) {
+    AbstractFunction function = (AbstractFunction) functionView.getTarget();
+    for (FunctionalExchange anExchange : getAvailableFunctionalExchangesToInsert(functionView)) {
       AbstractFunction targetFunction = null;
       if (EcoreUtil.isAncestor(function, anExchange.getSource())) {
         targetFunction = (AbstractFunction) anExchange.getTarget().eContainer();
       } else {
         targetFunction = (AbstractFunction) anExchange.getSource().eContainer();
       }
-      DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(targetFunction, functionContainersInDiagram);
+      DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(targetFunction,
+          functionContainersInDiagram);
       if (visibleFunctionInDiagram != null) {
-        if (isValidCreationCategoryBetweenViews(anExchange, functionView_p, visibleFunctionInDiagram)) {
+        if (isValidCreationCategoryBetweenViews(anExchange, functionView, visibleFunctionInDiagram)) {
           targetFunction = (AbstractFunction) visibleFunctionInDiagram.getTarget();
         } else {
           targetFunction = null;
@@ -2793,11 +2895,12 @@ public class FaServices {
     return returnedMap;
   }
 
-  public HashMapSet<ExchangeCategory, AbstractFunction> getCategoriesAndFunctionsInitialSelectionInDataFlowBlank(DNodeContainer functionView_p, DDiagramContents content_p) {
+  public HashMapSet<ExchangeCategory, AbstractFunction> getCategoriesAndFunctionsInitialSelectionInDataFlowBlank(
+      DNodeContainer functionView, DDiagramContents content) {
     HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<ExchangeCategory, AbstractFunction>();
     List<DNodeContainer> functionContainersInDiagram = new ArrayList<DNodeContainer>();
 
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content_p.getDDiagram())) { // TODO
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content.getDDiagram())) { // TODO
       // We
       // need
       // to
@@ -2809,33 +2912,38 @@ public class FaServices {
       // S/H
       if (element instanceof AbstractDNode) {
         AbstractDNode aContainer = (AbstractDNode) element;
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction) && (aContainer instanceof DNodeContainer)) {
+        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)
+            && (aContainer instanceof DNodeContainer)) {
           functionContainersInDiagram.add((DNodeContainer) aContainer);
         }
       }
     }
 
-    for (DNode aBorderedNode : functionView_p.getOwnedBorderedNodes()) {
+    for (DNode aBorderedNode : functionView.getOwnedBorderedNodes()) {
       if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof ExchangeCategory)) {
         ExchangeCategory aCategory = (ExchangeCategory) aBorderedNode.getTarget();
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aBorderedNode, content_p.getDDiagram())) {
+        for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aBorderedNode, content.getDDiagram())) {
           if (anEdge.isVisible()) {
-            AbstractFunction sourceFunction = (AbstractFunction) ((DNodeContainer) anEdge.getSourceNode().eContainer()).getTarget();
+            AbstractFunction sourceFunction = (AbstractFunction) ((DNodeContainer) anEdge.getSourceNode().eContainer())
+                .getTarget();
             // find if a function in the diagram may be a source
             // Function of the functional Exchange
-            DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(sourceFunction, functionContainersInDiagram);
+            DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(sourceFunction,
+                functionContainersInDiagram);
             if (visibleFunctionInDiagram != null) {
               sourceFunction = (AbstractFunction) visibleFunctionInDiagram.getTarget();
             }
             returnedMap.put(aCategory, sourceFunction);
           }
         }
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aBorderedNode, content_p.getDDiagram())) {
+        for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aBorderedNode, content.getDDiagram())) {
           if (anEdge.isVisible()) {
-            AbstractFunction targetFunction = (AbstractFunction) ((DNodeContainer) anEdge.getTargetNode().eContainer()).getTarget();
+            AbstractFunction targetFunction = (AbstractFunction) ((DNodeContainer) anEdge.getTargetNode().eContainer())
+                .getTarget();
             // find if a function in the diagram may be a target
             // Function of the functional Exchange
-            DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(targetFunction, functionContainersInDiagram);
+            DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(targetFunction,
+                functionContainersInDiagram);
             if (visibleFunctionInDiagram != null) {
               targetFunction = (AbstractFunction) visibleFunctionInDiagram.getTarget();
             }
@@ -2850,19 +2958,20 @@ public class FaServices {
   /**
    * Create a component exchange between two parts, without creating any ports
    * 
-   * @param context_p
-   * @param sourceView_p
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createABComponentExchangeWithoutPorts(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
+  public EObject createABComponentExchangeWithoutPorts(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
 
-    InformationsExchanger sourcePart = CsServices.getService().getRelatedPart(sourceView_p);
-    InformationsExchanger targetPart = CsServices.getService().getRelatedPart(targetView_p);
+    InformationsExchanger sourcePart = CsServices.getService().getRelatedPart(sourceView);
+    InformationsExchanger targetPart = CsServices.getService().getRelatedPart(targetView);
 
-    EdgeTarget nodeSource = (EdgeTarget) sourceView_p;
-    EdgeTarget nodeTarget = (EdgeTarget) targetView_p;
+    EdgeTarget nodeSource = (EdgeTarget) sourceView;
+    EdgeTarget nodeTarget = (EdgeTarget) targetView;
 
     // Create component exchange
     ComponentExchange exchange = FaFactory.eINSTANCE.createComponentExchange();
@@ -2876,21 +2985,22 @@ public class FaServices {
     ComponentExchangeExt.attachToDefaultContainer(exchange);
 
     CapellaServices.getService().creationService(exchange);
-    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABConnection(diagram), nodeSource, nodeTarget, exchange);
-    return context_p;
+    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABConnection(diagram),
+        nodeSource, nodeTarget, exchange);
+    return context;
   }
 
   /**
-   * @param sourceView_p
+   * @param sourceView
    * @return
    */
-  public ActivityNode getRelatedActivityNode(DSemanticDecorator sourceView_p) {
-    if (sourceView_p != null) {
-      if ((sourceView_p.getTarget() != null) && (sourceView_p.getTarget() instanceof ActivityNode)) {
-        return (ActivityNode) sourceView_p.getTarget();
+  public ActivityNode getRelatedActivityNode(DSemanticDecorator sourceView) {
+    if (sourceView != null) {
+      if ((sourceView.getTarget() != null) && (sourceView.getTarget() instanceof ActivityNode)) {
+        return (ActivityNode) sourceView.getTarget();
       }
-      if ((sourceView_p.eContainer() != null) && (sourceView_p.eContainer() instanceof DSemanticDecorator)) {
-        return getRelatedActivityNode((DSemanticDecorator) sourceView_p.eContainer());
+      if ((sourceView.eContainer() != null) && (sourceView.eContainer() instanceof DSemanticDecorator)) {
+        return getRelatedActivityNode((DSemanticDecorator) sourceView.eContainer());
       }
     }
     return null;
@@ -2899,40 +3009,42 @@ public class FaServices {
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
    * 
-   * @param context_p
-   * @param sourceViewk
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createABComponentExchange(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    return createABComponentExchangeWithOption(context_p, sourceView_p, targetView_p, false);
+  public EObject createABComponentExchange(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+    return createABComponentExchangeWithOption(context, sourceView, targetView, false);
   }
 
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
    * 
-   * @param context_p
-   * @param sourceViewk
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createABComponentExchange(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p, boolean createComponentExchageOnType_p) {
-    return createABComponentExchangeWithOption(context_p, sourceView_p, targetView_p, createComponentExchageOnType_p);
+  public EObject createABComponentExchange(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView, boolean createComponentExchageOnType) {
+    return createABComponentExchangeWithOption(context, sourceView, targetView, createComponentExchageOnType);
   }
 
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
    * 
-   * @param context_p
-   * @param sourceViewk
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createABComponentExchangeWithOption(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p, boolean createComponentExchageOnType_p) {
-    EObject sourceTarget = sourceView_p.getTarget();
-    EObject targetTarget = targetView_p.getTarget();
+  public EObject createABComponentExchangeWithOption(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView, boolean createComponentExchageOnType) {
+    EObject sourceTarget = sourceView.getTarget();
+    EObject targetTarget = targetView.getTarget();
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
 
     EdgeTarget nodeSource = null;
     EdgeTarget nodeTarget = null;
@@ -2945,12 +3057,12 @@ public class FaServices {
       exchange.setSource((Entity) sourceTarget);
       exchange.setTarget((Entity) targetTarget);
 
-      nodeSource = (EdgeTarget) sourceView_p;
-      nodeTarget = (EdgeTarget) targetView_p;
+      nodeSource = (EdgeTarget) sourceView;
+      nodeTarget = (EdgeTarget) targetView;
     } else {
 
-      InformationsExchanger sourceRelatedPart = CsServices.getService().getRelatedPart(sourceView_p);
-      InformationsExchanger targetRelatedPart = CsServices.getService().getRelatedPart(targetView_p);
+      InformationsExchanger sourceRelatedPart = CsServices.getService().getRelatedPart(sourceView);
+      InformationsExchanger targetRelatedPart = CsServices.getService().getRelatedPart(targetView);
 
       Part sourcePart = null;
       Part targetPart = null;
@@ -2965,7 +3077,7 @@ public class FaServices {
       ComponentPort sourcePort = null;
       if (sourceTarget instanceof ComponentPort) {
         sourcePort = (ComponentPort) sourceTarget;
-        nodeSource = (EdgeTarget) sourceView_p;
+        nodeSource = (EdgeTarget) sourceView;
 
       } else {
         sourcePort = FaFactory.eINSTANCE.createComponentPort();
@@ -2981,8 +3093,8 @@ public class FaServices {
         }
 
         CapellaServices.getService().creationService(sourcePort);
-        if (sourceView_p instanceof DNodeContainer) {
-          nodeSource = CsServices.getService().createViewOrGetPort((DNodeContainer) sourceView_p, sourcePort).getKey();
+        if (sourceView instanceof DNodeContainer) {
+          nodeSource = CsServices.getService().createViewOrGetPort((DNodeContainer) sourceView, sourcePort).getKey();
         }
       }
 
@@ -2990,7 +3102,7 @@ public class FaServices {
       ComponentPort targetPort = null;
       if (targetTarget instanceof ComponentPort) {
         targetPort = (ComponentPort) targetTarget;
-        nodeTarget = (EdgeTarget) targetView_p;
+        nodeTarget = (EdgeTarget) targetView;
       } else {
         targetPort = FaFactory.eINSTANCE.createComponentPort();
         ((Component) targetPart.getType()).getOwnedFeatures().add(targetPort);
@@ -3001,8 +3113,8 @@ public class FaServices {
         }
 
         CapellaServices.getService().creationService(targetPort);
-        if (targetView_p instanceof DNodeContainer) {
-          nodeTarget = CsServices.getService().createViewOrGetPort((DNodeContainer) targetView_p, targetPort).getKey();
+        if (targetView instanceof DNodeContainer) {
+          nodeTarget = CsServices.getService().createViewOrGetPort((DNodeContainer) targetView, targetPort).getKey();
         }
       }
 
@@ -3015,7 +3127,7 @@ public class FaServices {
       }
 
       // Set source
-      if (CsServices.getService().isMultipartMode((ModelElement) sourceTarget) && !createComponentExchageOnType_p) {
+      if (CsServices.getService().isMultipartMode((ModelElement) sourceTarget) && !createComponentExchageOnType) {
         ComponentExchangeEnd end = FaFactory.eINSTANCE.createComponentExchangeEnd();
         end.setPart(sourcePart);
         end.setPort(sourcePort);
@@ -3027,7 +3139,7 @@ public class FaServices {
       }
 
       // Set target
-      if (CsServices.getService().isMultipartMode((ModelElement) sourceTarget) && !createComponentExchageOnType_p) {
+      if (CsServices.getService().isMultipartMode((ModelElement) sourceTarget) && !createComponentExchageOnType) {
         ComponentExchangeEnd end = FaFactory.eINSTANCE.createComponentExchangeEnd();
         end.setPart(targetPart);
         end.setPort(targetPort);
@@ -3043,38 +3155,40 @@ public class FaServices {
     ComponentExchangeExt.attachToDefaultContainer(exchange);
 
     CapellaServices.getService().creationService(exchange);
-    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABConnection(diagram), nodeSource, nodeTarget, exchange);
-    return context_p;
+    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABConnection(diagram),
+        nodeSource, nodeTarget, exchange);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange);
+    return context;
   }
 
   /**
    * Create a delegation in an interface blank diagram. Create port if selected views are not targeting port
    * 
-   * @param context_p
-   * @param sourceView_p
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createIBDelegation(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    return createABDelegation(context_p, sourceView_p, targetView_p);
+  public EObject createIBDelegation(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+    return createABDelegation(context, sourceView, targetView);
   }
 
   /**
    * Create a delegation in an architecture blank diagram. Create port if selected views are not targeting port
    * 
-   * @param context_p
-   * @param sourceView_p
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createABDelegation(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    EObject sourceTarget = sourceView_p.getTarget();
-    EObject targetTarget = targetView_p.getTarget();
+  public EObject createABDelegation(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+    EObject sourceTarget = sourceView.getTarget();
+    EObject targetTarget = targetView.getTarget();
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
 
-    EObject sourceRelatedPart = CsServices.getService().getRelatedPart(sourceView_p);
-    EObject targetRelatedPart = CsServices.getService().getRelatedPart(targetView_p);
+    EObject sourceRelatedPart = CsServices.getService().getRelatedPart(sourceView);
+    EObject targetRelatedPart = CsServices.getService().getRelatedPart(targetView);
 
     Part sourcePart = null;
     Part targetPart = null;
@@ -3086,23 +3200,25 @@ public class FaServices {
     }
 
     if (sourcePart == null) {
-      EObject sourceComponent = CsServices.getService().getComponentType(sourceView_p);
+      EObject sourceComponent = CsServices.getService().getComponentType(sourceView);
       if ((sourceComponent != null) && (sourceComponent instanceof Component)) {
-        if ((((Component) sourceComponent).getRepresentingPartitions().size() > 0) && (((Component) sourceComponent).getRepresentingPartitions().get(0) instanceof Part)) {
+        if ((((Component) sourceComponent).getRepresentingPartitions().size() > 0)
+            && (((Component) sourceComponent).getRepresentingPartitions().get(0) instanceof Part)) {
           sourcePart = (Part) ((Component) sourceComponent).getRepresentingPartitions().get(0);
         }
       }
     }
     if (targetPart == null) {
-      EObject targetComponent = CsServices.getService().getComponentType(targetView_p);
+      EObject targetComponent = CsServices.getService().getComponentType(targetView);
       if ((targetComponent != null) && (targetComponent instanceof Component)) {
-        if ((((Component) targetComponent).getRepresentingPartitions().size() > 0) && (((Component) targetComponent).getRepresentingPartitions().get(0) instanceof Part)) {
+        if ((((Component) targetComponent).getRepresentingPartitions().size() > 0)
+            && (((Component) targetComponent).getRepresentingPartitions().get(0) instanceof Part)) {
           targetPart = (Part) ((Component) targetComponent).getRepresentingPartitions().get(0);
         }
       }
     }
     if ((sourcePart == null) || (targetPart == null)) {
-      return context_p;
+      return context;
     }
 
     EdgeTarget nodeSource = null;
@@ -3112,13 +3228,14 @@ public class FaServices {
     Port sourcePort = null;
     if (sourceTarget instanceof Port) {
       sourcePort = (Port) sourceTarget;
-      nodeSource = (EdgeTarget) sourceView_p;
+      nodeSource = (EdgeTarget) sourceView;
 
     } else {
 
       // Create a component port or a physical port if from physical
       // component
-      if ((sourcePart.getAbstractType() instanceof PhysicalComponent) && (((PhysicalComponent) sourcePart.getAbstractType()).getNature() == PhysicalComponentNature.NODE)) {
+      if ((sourcePart.getAbstractType() instanceof PhysicalComponent)
+          && (((PhysicalComponent) sourcePart.getAbstractType()).getNature() == PhysicalComponentNature.NODE)) {
         sourcePort = CsFactory.eINSTANCE.createPhysicalPort();
         ((Component) sourcePart.getType()).getOwnedFeatures().add((PhysicalPort) sourcePort);
 
@@ -3138,8 +3255,8 @@ public class FaServices {
       }
 
       CapellaServices.getService().creationService(sourcePort);
-      if (sourceView_p instanceof DNodeContainer) {
-        nodeSource = CsServices.getService().createViewOrGetPort((DNodeContainer) sourceView_p, sourcePort).getKey();
+      if (sourceView instanceof DNodeContainer) {
+        nodeSource = CsServices.getService().createViewOrGetPort((DNodeContainer) sourceView, sourcePort).getKey();
       }
     }
 
@@ -3147,7 +3264,7 @@ public class FaServices {
     Port targetPort = null;
     if (targetTarget instanceof ComponentPort) {
       targetPort = (ComponentPort) targetTarget;
-      nodeTarget = (EdgeTarget) targetView_p;
+      nodeTarget = (EdgeTarget) targetView;
     } else {
       targetPort = FaFactory.eINSTANCE.createComponentPort();
       ComponentPort targetCPort = (ComponentPort) targetPort;
@@ -3161,8 +3278,8 @@ public class FaServices {
       ((Component) targetPart.getType()).getOwnedFeatures().add(targetCPort);
 
       CapellaServices.getService().creationService(targetPort);
-      if (targetView_p instanceof DNodeContainer) {
-        nodeTarget = CsServices.getService().createViewOrGetPort((DNodeContainer) targetView_p, targetPort).getKey();
+      if (targetView instanceof DNodeContainer) {
+        nodeTarget = CsServices.getService().createViewOrGetPort((DNodeContainer) targetView, targetPort).getKey();
       }
     }
 
@@ -3189,56 +3306,62 @@ public class FaServices {
     ComponentExchangeExt.attachToDefaultContainer(exchange);
 
     CapellaServices.getService().creationService(exchange);
-    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABConnection(diagram), nodeSource, nodeTarget, exchange);
-    return context_p;
+    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABConnection(diagram),
+        nodeSource, nodeTarget, exchange);
+    CsServices.getService().setInterpreterVariable(context, "result", exchange);
+    return context;
   }
 
   /**
    * Create a component exchange between parents part of sourceView and targetView considered as "brothers" and create
    * delegations from theses parts and sourceView and targetView
    * 
-   * @param context_p
-   * @param sourceView_p
-   * @param targetView_p
+   * @param context
+   * @param sourceView
+   * @param targetView
    * @return
    */
-  public EObject createABComponentExchangeThroughDelegation(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    InformationsExchanger sourcePart = CsServices.getService().getRelatedPart(sourceView_p);
-    InformationsExchanger targetPart = CsServices.getService().getRelatedPart(targetView_p);
+  public EObject createABComponentExchangeThroughDelegation(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
+    InformationsExchanger sourcePart = CsServices.getService().getRelatedPart(sourceView);
+    InformationsExchanger targetPart = CsServices.getService().getRelatedPart(targetView);
 
     ComponentPort sourcePort = null;
-    if ((sourceView_p.getTarget() != null) && (sourceView_p.getTarget() instanceof ComponentPort)) {
-      sourcePort = (ComponentPort) sourceView_p.getTarget();
+    if ((sourceView.getTarget() != null) && (sourceView.getTarget() instanceof ComponentPort)) {
+      sourcePort = (ComponentPort) sourceView.getTarget();
     }
 
     ComponentPort targetPort = null;
-    if ((targetView_p.getTarget() != null) && (targetView_p.getTarget() instanceof ComponentPort)) {
-      targetPort = (ComponentPort) targetView_p.getTarget();
+    if ((targetView.getTarget() != null) && (targetView.getTarget() instanceof ComponentPort)) {
+      targetPort = (ComponentPort) targetView.getTarget();
     }
 
     if ((sourcePart instanceof Part) && (targetPart instanceof Part)) {
-      Collection<EObject> createdElements = ComponentExt.createComponentExchangeThroughDelegations((Part) sourcePart, sourcePort, (Part) targetPart, targetPort);
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
+      Collection<EObject> createdElements = ComponentExt.createComponentExchangeThroughDelegations((Part) sourcePart,
+          sourcePort, (Part) targetPart, targetPort);
+      DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
       CsServices.getService().showABComponentExchange(createdElements, (DSemanticDecorator) diagram);
+      CsServices.getService().setInterpreterVariable(context, "result", createdElements);
     }
-    return context_p;
+    return context;
   }
 
-  public Collection<ComponentExchange> getRelatedComponentExchanges(NamedElement componentOrPart_p) {
+  public Collection<ComponentExchange> getRelatedComponentExchanges(NamedElement componentOrPart) {
     Collection<ComponentExchange> relatedExchanges = new ArrayList<ComponentExchange>();
 
     // Retrieve all related component exchanges
-    if (componentOrPart_p instanceof Component) {
-      relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange((Component) componentOrPart_p));
+    if (componentOrPart instanceof Component) {
+      relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange((Component) componentOrPart));
 
-    } else if (componentOrPart_p instanceof Part) {
-      Part part = (Part) componentOrPart_p;
+    } else if (componentOrPart instanceof Part) {
+      Part part = (Part) componentOrPart;
       if ((part.getAbstractType() != null) && (part.getAbstractType() instanceof Component)) {
-        Component component = (Component) ((Part) componentOrPart_p).getAbstractType();
+        Component component = (Component) ((Part) componentOrPart).getAbstractType();
 
-        if (CsServices.getService().isMultipartMode(componentOrPart_p)) {
+        if (CsServices.getService().isMultipartMode(componentOrPart)) {
           for (ComponentExchange exchange : ComponentExt.getAllRelatedComponentExchange(component)) {
-            if (part.equals(ComponentExchangeExt.getSourcePart(exchange)) || part.equals(ComponentExchangeExt.getTargetPart(exchange))) {
+            if (part.equals(ComponentExchangeExt.getSourcePart(exchange))
+                || part.equals(ComponentExchangeExt.getTargetPart(exchange))) {
               relatedExchanges.add(exchange);
             }
           }
@@ -3251,11 +3374,11 @@ public class FaServices {
   }
 
   /**
-   * @param component_p
+   * @param component
    */
-  void removeUselessExchanges(NamedElement componentOrPart_p) {
+  void removeUselessExchanges(NamedElement componentOrPart) {
 
-    Collection<ComponentExchange> relatedExchanges = getRelatedComponentExchanges(componentOrPart_p);
+    Collection<ComponentExchange> relatedExchanges = getRelatedComponentExchanges(componentOrPart);
 
     // remove all delegation links
     // remove all incoming traceLinks from PhysicalLink
@@ -3324,20 +3447,21 @@ public class FaServices {
   /**
    * Perform a dnd of a port.
    * 
-   * @param port_p
+   * @param port
    */
-  EObject removeUselessPortRealizations(Port port_p, boolean includeFunctionalRealization, boolean includeComponentRealization, boolean topDelegation, boolean bottomDelegation) {
+  EObject removeUselessPortRealizations(Port port, boolean includeFunctionalRealization,
+      boolean includeComponentRealization, boolean topDelegation, boolean bottomDelegation) {
     Collection<EObject> elements = new HashSet<EObject>();
 
-    if (port_p instanceof ComponentPort) {
+    if (port instanceof ComponentPort) {
       // Retrieve delegation to delete, according to parameters
-      for (ComponentExchange exchange : PortExt.getDelegationComponentExchanges((ComponentPort) port_p)) {
+      for (ComponentExchange exchange : PortExt.getDelegationComponentExchanges((ComponentPort) port)) {
         Component sourceComponent = ComponentExchangeExt.getSourceComponent(exchange);
         Component targetComponent = ComponentExchangeExt.getTargetComponent(exchange);
         Component containingPort = targetComponent;
         Component delegatedPort = sourceComponent;
-        if (port_p.eContainer() != null) {
-          if (port_p.eContainer().equals(sourceComponent)) {
+        if (port.eContainer() != null) {
+          if (port.eContainer().equals(sourceComponent)) {
             containingPort = sourceComponent;
             delegatedPort = targetComponent;
           }
@@ -3345,17 +3469,18 @@ public class FaServices {
 
         if (topDelegation && CsServices.getService().getContainersOfParts(containingPort).contains(delegatedPort)) {
           elements.add(exchange);
-        } else if (bottomDelegation && CsServices.getService().getContainersOfParts(delegatedPort).contains(containingPort)) {
+        } else if (bottomDelegation
+            && CsServices.getService().getContainersOfParts(delegatedPort).contains(containingPort)) {
           elements.add(exchange);
         }
       }
     }
 
     Collection<Allocation> allocations = new HashSet<Allocation>();
-    allocations.addAll(port_p.getIncomingPortAllocations());
-    allocations.addAll(port_p.getOutgoingPortAllocations());
-    allocations.addAll(port_p.getIncomingPortRealizations());
-    allocations.addAll(port_p.getOutgoingPortRealizations());
+    allocations.addAll(port.getIncomingPortAllocations());
+    allocations.addAll(port.getOutgoingPortAllocations());
+    allocations.addAll(port.getIncomingPortRealizations());
+    allocations.addAll(port.getOutgoingPortRealizations());
 
     // Retrieve port allocation according to parameters
     for (Allocation realization : allocations) {
@@ -3366,11 +3491,13 @@ public class FaServices {
             elements.add(realization);
           }
 
-          if ((port_p instanceof FunctionPort) && includeComponentRealization && (realization.getSourceElement() instanceof FunctionPort)) {
+          if ((port instanceof FunctionPort) && includeComponentRealization
+              && (realization.getSourceElement() instanceof FunctionPort)) {
             elements.add(realization);
           }
 
-          if (includeComponentRealization && ((realization.getTargetElement() instanceof ComponentPort) || (realization.getTargetElement() instanceof PhysicalPort))) {
+          if (includeComponentRealization
+              && ((realization.getTargetElement() instanceof ComponentPort) || (realization.getTargetElement() instanceof PhysicalPort))) {
             elements.add(realization);
           }
         }
@@ -3378,93 +3505,93 @@ public class FaServices {
     }
 
     CapellaServices.getService().removeElements(elements);
-    return port_p;
+    return port;
   }
 
   /**
    * Perform a dnd of a function port.
    * 
-   * @param port_p
-   * @param oldContainer_p
-   * @param newContainer_p
+   * @param port
+   * @param oldContainer
+   * @param newContainer
    */
-  public EObject dndABFunctionPort(FunctionPort port_p, NamedElement oldContainer_p, NamedElement newContainer_p) {
+  public EObject dndABFunctionPort(FunctionPort port, NamedElement oldContainer, NamedElement newContainer) {
 
-    removeUselessPortRealizations(port_p, true, true, false, false);
+    removeUselessPortRealizations(port, true, true, false, false);
 
     // move the port in the new function container
-    if (newContainer_p instanceof AbstractFunction) {
-      AbstractFunction newFunction = (AbstractFunction) newContainer_p;
-      AbstractFunction oldFunction = (AbstractFunction) port_p.eContainer();
-      if (port_p instanceof FunctionInputPort) {
-        for (ActivityEdge anEdge : ((FunctionInputPort) port_p).getIncoming()) {
+    if (newContainer instanceof AbstractFunction) {
+      AbstractFunction newFunction = (AbstractFunction) newContainer;
+      AbstractFunction oldFunction = (AbstractFunction) port.eContainer();
+      if (port instanceof FunctionInputPort) {
+        for (ActivityEdge anEdge : ((FunctionInputPort) port).getIncoming()) {
           if (anEdge instanceof FunctionalExchange) {
             updateFunctionaChainInvolvementsOfFunctionalExchange((FunctionalExchange) anEdge, oldFunction, newFunction);
           }
         }
-        newFunction.getInputs().add((FunctionInputPort) port_p);
+        newFunction.getInputs().add((FunctionInputPort) port);
       } else {
-        for (ActivityEdge anEdge : ((FunctionOutputPort) port_p).getOutgoing()) {
+        for (ActivityEdge anEdge : ((FunctionOutputPort) port).getOutgoing()) {
           if (anEdge instanceof FunctionalExchange) {
             updateFunctionaChainInvolvementsOfFunctionalExchange((FunctionalExchange) anEdge, oldFunction, newFunction);
           }
         }
-        newFunction.getOutputs().add((FunctionOutputPort) port_p);
+        newFunction.getOutputs().add((FunctionOutputPort) port);
       }
     }
 
-    moveFunctionalExchanges(port_p);
-    removeComponentExchangeAllocations(getFunctionalExchanges(port_p));
+    moveFunctionalExchanges(port);
+    removeComponentExchangeAllocations(getFunctionalExchanges(port));
 
-    return port_p;
+    return port;
   }
 
   /**
    * Perform a dnd of a physical port
    * 
-   * @param port_p
+   * @param port
    *          the given port
-   * @param oldContainer_p
+   * @param oldContainer
    *          the old view container
-   * @param newContainer_p
+   * @param newContainer
    *          the new view container
    * @return the EObject
    */
-  public EObject dndABPhysicalPort(PhysicalPort port_p, Part oldContainer_p, Part newContainer_p) {
+  public EObject dndABPhysicalPort(PhysicalPort port, Part oldContainer, Part newContainer) {
 
-    if (!port_p.eContainer().equals(newContainer_p.getType())) {
-      removeUselessExchanges(port_p);
-      removeUselessPortRealizations(port_p, true, true, false, false);
+    if (!port.eContainer().equals(newContainer.getType())) {
+      removeUselessExchanges(port);
+      removeUselessPortRealizations(port, true, true, false, false);
 
-      ((Component) newContainer_p.getType()).getOwnedFeatures().add(port_p);
-      updateExchanges(port_p, oldContainer_p, newContainer_p);
+      ((Component) newContainer.getType()).getOwnedFeatures().add(port);
+      updateExchanges(port, oldContainer, newContainer);
     }
 
-    return port_p;
+    return port;
   }
 
   /**
    * Perform a dnd of a component port (standard port or flow port)
    * 
-   * @param port_p
+   * @param port
    *          the given port
-   * @param oldContainer_p
+   * @param oldContainer
    *          the old view container
-   * @param newContainer_p
+   * @param newContainer
    *          the new view container
    * @return the EObject
    */
-  public EObject dndABComponentPort(ComponentPort port_p, Part oldContainer_p, Part newContainer_p) {
+  public EObject dndABComponentPort(ComponentPort port, Part oldContainer, Part newContainer) {
 
-    if (!port_p.eContainer().equals(newContainer_p.getType())) {
-      removeUselessExchanges(port_p);
-      removeUselessPortRealizations(port_p, true, true, false, false);
+    if (!port.eContainer().equals(newContainer.getType())) {
+      removeUselessExchanges(port);
+      removeUselessPortRealizations(port, true, true, false, false);
 
-      ((Component) newContainer_p.getType()).getOwnedFeatures().add(port_p);
-      updateComponentExchanges(port_p, oldContainer_p, newContainer_p);
+      ((Component) newContainer.getType()).getOwnedFeatures().add(port);
+      updateComponentExchanges(port, oldContainer, newContainer);
     }
 
-    return port_p;
+    return port;
   }
 
   /**
@@ -3562,14 +3689,14 @@ public class FaServices {
    * @param port
    *          the given flowPort
    */
-  protected void moveComponentExchanges(ComponentPort port_p) {
-    for (ComponentExchange exchange : port_p.getComponentExchanges()) {
+  protected void moveComponentExchanges(ComponentPort port) {
+    for (ComponentExchange exchange : port.getComponentExchanges()) {
       moveComponentExchange(exchange);
     }
   }
 
-  protected void moveComponentExchanges(Component component_p) {
-    for (ComponentPort port : ComponentExt.getOwnedComponentPort(component_p)) {
+  protected void moveComponentExchanges(Component component) {
+    for (ComponentPort port : ComponentExt.getOwnedComponentPort(component)) {
       moveComponentExchanges(port);
     }
   }
@@ -3584,7 +3711,8 @@ public class FaServices {
     for (ComponentExchange exchange : port.getComponentExchanges()) {
       if (exchange.getOwnedComponentExchangeEnds().size() > 0) {
         for (ComponentExchangeEnd anEnd : exchange.getOwnedComponentExchangeEnds()) {
-          if ((anEnd.getPort() != null) && anEnd.getPort().equals(port) && (anEnd.getPart() != null) && anEnd.getPart().equals(oldPart)) {
+          if ((anEnd.getPort() != null) && anEnd.getPort().equals(port) && (anEnd.getPart() != null)
+              && anEnd.getPart().equals(oldPart)) {
             anEnd.setPart(newPart);
           }
         }
@@ -3631,57 +3759,57 @@ public class FaServices {
   /**
    * Returns owned function pkgs
    */
-  public Collection<? extends AbstractFunction> getTableRootAbstractFunctions(BlockArchitecture architecture_p) {
-    return getOwnedAbstractFunctions(getRootFunction(architecture_p));
+  public Collection<? extends AbstractFunction> getTableRootAbstractFunctions(BlockArchitecture architecture) {
+    return getOwnedAbstractFunctions(getRootFunction(architecture));
   }
 
   /**
    * Returns owned function pkgs
    */
-  public Collection<? extends FunctionPkg> getTableRootAbstractFunctionPkgs(BlockArchitecture architecture_p) {
-    return getOwnedAbstractFunctionPkgs(getRootFunction(architecture_p));
+  public Collection<? extends FunctionPkg> getTableRootAbstractFunctionPkgs(BlockArchitecture architecture) {
+    return getOwnedAbstractFunctionPkgs(getRootFunction(architecture));
   }
 
   /**
    * Returns owned function pkgs
    */
-  public Collection<? extends AbstractFunction> getOwnedAbstractFunctions(AbstractFunction function_p) {
-    return function_p.getOwnedFunctions();
+  public Collection<? extends AbstractFunction> getOwnedAbstractFunctions(AbstractFunction function) {
+    return function.getOwnedFunctions();
   }
 
   /**
    * Returns owned function pkgs
    */
-  public Collection<? extends AbstractFunction> getOwnedAbstractFunctions(FunctionPkg functionPkg_p) {
-    return FunctionPkgExt.getOwnedFunctions(functionPkg_p);
+  public Collection<? extends AbstractFunction> getOwnedAbstractFunctions(FunctionPkg functionPkg) {
+    return FunctionPkgExt.getOwnedFunctions(functionPkg);
   }
 
   /**
    * Returns owned function pkgs
    */
-  public Collection<? extends FunctionPkg> getOwnedAbstractFunctionPkgs(FunctionPkg function_p) {
-    return FunctionPkgExt.getOwnedFunctionPkgs(function_p);
+  public Collection<? extends FunctionPkg> getOwnedAbstractFunctionPkgs(FunctionPkg function) {
+    return FunctionPkgExt.getOwnedFunctionPkgs(function);
   }
 
   /**
    * Returns owned function pkgs
    */
-  public Collection<? extends FunctionPkg> getOwnedAbstractFunctionPkgs(AbstractFunction function_p) {
-    return FunctionExt.getOwnedFunctionPkgs(function_p);
+  public Collection<? extends FunctionPkg> getOwnedAbstractFunctionPkgs(AbstractFunction function) {
+    return FunctionExt.getOwnedFunctionPkgs(function);
   }
 
   /**
    * Returns the root function of current architecture of the given element and create it if not found
    */
-  public AbstractFunction getTableRootFunction(EObject element_p) {
-    return getRootFunction(element_p);
+  public AbstractFunction getTableRootFunction(EObject element) {
+    return getRootFunction(element);
   }
 
   /**
    * Returns the root function of current architecture of the given element and create it if not found
    */
-  public AbstractFunction getRootFunction(EObject element_p) {
-    return BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(element_p));
+  public AbstractFunction getRootFunction(EObject element) {
+    return BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(element));
   }
 
   /**
@@ -3717,33 +3845,32 @@ public class FaServices {
   }
 
   /**
-   * Returns whether the context_p decorator is from the given node_p eclass and is linked to edges from given edge_p
-   * eclass
+   * Returns whether the context decorator is from the given node eclass and is linked to edges from given edge eclass
    * 
-   * @param context_p
-   * @param diagram_p
-   * @param node_p
-   * @param edge_p
+   * @param context
+   * @param diagram
+   * @param node
+   * @param edge
    * @return
    */
-  public boolean isNodeWithoutEdge(EObject context_p, DDiagram diagram_p, EClass node_p, EClass edge_p) {
-    if (diagram_p != null) {
+  public boolean isNodeWithoutEdge(EObject context, DDiagram diagram, EClass node, EClass edge) {
+    if (diagram != null) {
 
-      if (context_p instanceof DSemanticDecorator) {
-        DSemanticDecorator decorator = (DSemanticDecorator) context_p;
-        if (!((decorator.getTarget() != null) && node_p.isInstance(decorator.getTarget()))) {
+      if (context instanceof DSemanticDecorator) {
+        DSemanticDecorator decorator = (DSemanticDecorator) context;
+        if (!((decorator.getTarget() != null) && node.isInstance(decorator.getTarget()))) {
           return true;
         }
 
-        if (context_p instanceof EdgeTarget) {
-          EdgeTarget target = (EdgeTarget) context_p;
-          for (DEdge edge : target.getIncomingEdges()) {
-            if ((edge.getTarget() != null) && edge_p.isInstance(edge.getTarget())) {
+        if (context instanceof EdgeTarget) {
+          EdgeTarget target = (EdgeTarget) context;
+          for (DEdge incoming : target.getIncomingEdges()) {
+            if ((incoming.getTarget() != null) && edge.isInstance(incoming.getTarget())) {
               return true;
             }
           }
-          for (DEdge edge : target.getOutgoingEdges()) {
-            if ((edge.getTarget() != null) && edge_p.isInstance(edge.getTarget())) {
+          for (DEdge outgoing : target.getOutgoingEdges()) {
+            if ((outgoing.getTarget() != null) && edge.isInstance(outgoing.getTarget())) {
               return true;
             }
           }
@@ -3758,53 +3885,53 @@ public class FaServices {
   /**
    * Hide Component Port without Interfaces in Diagram
    * 
-   * @param context_p
+   * @param context
    *          : Function Port
-   * @param diagram_p
+   * @param diagram
    *          : DDiagram
    * @return true if PhysicalPort has PhysicalLink displayed in diagram.
    */
-  public boolean isComponentPortWithoutInterfaces(EObject context_p, DDiagram diagram_p) {
-    return isNodeWithoutEdge(context_p, diagram_p, FaPackage.Literals.COMPONENT_PORT, CsPackage.Literals.INTERFACE);
+  public boolean isComponentPortWithoutInterfaces(EObject context, DDiagram diagram) {
+    return isNodeWithoutEdge(context, diagram, FaPackage.Literals.COMPONENT_PORT, CsPackage.Literals.INTERFACE);
   }
 
   /**
    * Hide Physical Port without Exchanges in Diagram
    * 
-   * @param context_p
+   * @param context
    *          : Function Port
-   * @param diagram_p
+   * @param diagram
    *          : DDiagram
    * @return true if PhysicalPort has PhysicalLink displayed in diagram.
    */
-  public boolean isPhysicalPortWithoutLinks(EObject context_p, DDiagram diagram_p) {
-    return isNodeWithoutEdge(context_p, diagram_p, CsPackage.Literals.PHYSICAL_PORT, CsPackage.Literals.PHYSICAL_LINK);
+  public boolean isPhysicalPortWithoutLinks(EObject context, DDiagram diagram) {
+    return isNodeWithoutEdge(context, diagram, CsPackage.Literals.PHYSICAL_PORT, CsPackage.Literals.PHYSICAL_LINK);
   }
 
   /**
    * Hide Component Port without Exchanges in Diagram
    * 
-   * @param context_p
+   * @param context
    *          : Function Port
-   * @param diagram_p
+   * @param diagram
    *          : DDiagram
    * @return true if ComponentPort has ComponentExchange displayed in diagram.
    */
-  public boolean isComponentPortWithoutExchanges(EObject context_p, DDiagram diagram_p) {
-    return isNodeWithoutEdge(context_p, diagram_p, FaPackage.Literals.COMPONENT_PORT, FaPackage.Literals.COMPONENT_EXCHANGE);
+  public boolean isComponentPortWithoutExchanges(EObject context, DDiagram diagram) {
+    return isNodeWithoutEdge(context, diagram, FaPackage.Literals.COMPONENT_PORT, FaPackage.Literals.COMPONENT_EXCHANGE);
   }
 
   /**
    * Hide Function Port without Exchanges in Diagram
    * 
-   * @param context_p
+   * @param context
    *          : Function Port
-   * @param diagram_p
+   * @param diagram
    *          : DDiagram
    * @return true if FunctionPort[input/output] has (incoming/outgoing)FunctionExchange displayed in diagram.
    */
-  public boolean isFunctionPortWithoutExchanges(EObject context_p, DDiagram diagram_p) {
-    return isNodeWithoutEdge(context_p, diagram_p, FaPackage.Literals.FUNCTION_PORT, FaPackage.Literals.FUNCTIONAL_EXCHANGE);
+  public boolean isFunctionPortWithoutExchanges(EObject context, DDiagram diagram) {
+    return isNodeWithoutEdge(context, diagram, FaPackage.Literals.FUNCTION_PORT, FaPackage.Literals.FUNCTIONAL_EXCHANGE);
   }
 
   /**
@@ -3836,30 +3963,35 @@ public class FaServices {
 
     // container
 
-    public FunctionContainer(DNodeContainer container_p, FunctionContainer parent_p, DDiagram diagram_p, Map<AbstractFunction, AbstractDNode> functions_p) {
-      container = container_p;
-      parent = parent_p;
-      function = (AbstractFunction) container_p.getTarget();
+    public FunctionContainer(DNodeContainer container, FunctionContainer parent, DDiagram diagram,
+        Map<AbstractFunction, AbstractDNode> functions) {
+      this.container = container;
+      this.parent = parent;
+      function = (AbstractFunction) container.getTarget();
       incomingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
       outgoingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
       functionPorts = new HashMap<FunctionPort, DNode>();
       categoryNodesToRemove = new HashSet<DNode>();
 
-      for (DNode aNode : container_p.getOwnedBorderedNodes()) {
+      for (DNode aNode : container.getOwnedBorderedNodes()) {
         if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionPort)) {
           functionPorts.put((FunctionPort) aNode.getTarget(), aNode);
         }
-        if ((aNode.getTarget() != null) && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameInputPinCategory(diagram_p)))) {
+        if ((aNode.getTarget() != null)
+            && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameInputPinCategory(
+                diagram)))) {
           incomingExchangeCategories.put((ExchangeCategory) aNode.getTarget(), aNode);
         }
-        if ((aNode.getTarget() != null) && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameOutputPinCategory(diagram_p)))) {
+        if ((aNode.getTarget() != null)
+            && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameOutputPinCategory(
+                diagram)))) {
           outgoingExchangeCategories.put((ExchangeCategory) aNode.getTarget(), aNode);
         }
       }
 
     }
 
-    public void initCategoryNodesToRemove(Map<AbstractFunction, AbstractDNode> functions_p) {
+    public void initCategoryNodesToRemove(Map<AbstractFunction, AbstractDNode> functions) {
       // init list of exchangeCategory Nodes to Remove
       for (Entry<ExchangeCategory, DNode> me : this.incomingExchangeCategories.entrySet()) {
         boolean toRemove = true;
@@ -3867,9 +3999,10 @@ public class FaServices {
         // container as target function and if the source
         // Function is in the diagram
         for (FunctionalExchange anExchange : me.getKey().getExchanges()) {
-          AbstractDNode targetPortContainer = getBestFunctionContainer(anExchange.getTarget(), functions_p);
-          AbstractDNode sourcePortContainer = getBestFunctionContainer(anExchange.getSource(), functions_p);
-          if ((targetPortContainer != null) && (sourcePortContainer != null) && targetPortContainer.equals(this.container)) {
+          AbstractDNode targetPortContainer = getBestFunctionContainer(anExchange.getTarget(), functions);
+          AbstractDNode sourcePortContainer = getBestFunctionContainer(anExchange.getSource(), functions);
+          if ((targetPortContainer != null) && (sourcePortContainer != null)
+              && targetPortContainer.equals(this.container)) {
             toRemove = false;
             break;
           }
@@ -3884,9 +4017,10 @@ public class FaServices {
         // container as source function and if the target
         // Function is in the diagram
         for (FunctionalExchange anExchange : me.getKey().getExchanges()) {
-          AbstractDNode targetPortContainer = getBestFunctionContainer(anExchange.getTarget(), functions_p);
-          AbstractDNode sourcePortContainer = getBestFunctionContainer(anExchange.getSource(), functions_p);
-          if ((targetPortContainer != null) && (sourcePortContainer != null) && sourcePortContainer.equals(this.container)) {
+          AbstractDNode targetPortContainer = getBestFunctionContainer(anExchange.getTarget(), functions);
+          AbstractDNode sourcePortContainer = getBestFunctionContainer(anExchange.getSource(), functions);
+          if ((targetPortContainer != null) && (sourcePortContainer != null)
+              && sourcePortContainer.equals(this.container)) {
             toRemove = false;
             break;
           }
@@ -3947,14 +4081,18 @@ public class FaServices {
       return categoryNodesToRemove;
     }
 
-    public void setIncomingOutgoingExchangeCategories(DDiagram diagram_p) {
+    public void setIncomingOutgoingExchangeCategories(DDiagram diagram) {
       this.incomingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
       this.outgoingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
       for (DNode aNode : this.getContainer().getOwnedBorderedNodes()) {
-        if ((aNode.getTarget() != null) && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameInputPinCategory(diagram_p)))) {
+        if ((aNode.getTarget() != null)
+            && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameInputPinCategory(
+                diagram)))) {
           incomingExchangeCategories.put((ExchangeCategory) aNode.getTarget(), aNode);
         }
-        if ((aNode.getTarget() != null) && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameOutputPinCategory(diagram_p)))) {
+        if ((aNode.getTarget() != null)
+            && (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameOutputPinCategory(
+                diagram)))) {
           outgoingExchangeCategories.put((ExchangeCategory) aNode.getTarget(), aNode);
         }
       }
@@ -3972,7 +4110,7 @@ public class FaServices {
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void reorderFAElements(DDiagram diagram_p) {
+  public void reorderFAElements(DDiagram diagram) {
     Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<EObject, DDiagramElement>(); // all
     // displayed
     // elements
@@ -3986,11 +4124,12 @@ public class FaServices {
     // moved
     Set<FunctionPort> functionPortsInDiagram = new HashSet<FunctionPort>();
     Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<AbstractFunction, AbstractDNode>();
-    DDiagramContents content = new DDiagramContents(diagram_p);
+    DDiagramContents content = new DDiagramContents(diagram);
 
     // get all displayed functions in the diagram
-    for (DDiagramElement aContainer : diagram_p.getContainers()) {
-      if ((aContainer != null) && (aContainer.getTarget() != null) && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram_p)) {
+    for (DDiagramElement aContainer : diagram.getContainers()) {
+      if ((aContainer != null) && (aContainer.getTarget() != null)
+          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)) {
         elementsInDiagram.put(aContainer.getTarget(), aContainer);
         if (aContainer.getTarget() instanceof AbstractFunction) {
           allFunctionsInDiagram.put((AbstractFunction) aContainer.getTarget(), (AbstractDNode) aContainer);
@@ -3998,7 +4137,7 @@ public class FaServices {
       }
     }
     // get all displayed control nodes and FunctionPorts in the diagram
-    for (DNode aNode : diagram_p.getNodes()) {
+    for (DNode aNode : diagram.getNodes()) {
       if ((aNode != null) && (aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionPort)) {
         functionPortsInDiagram.add((FunctionPort) aNode.getTarget());
       }
@@ -4018,7 +4157,7 @@ public class FaServices {
       if (anElement.eContainer() instanceof DNodeContainer) {
         EObject actualParentContainer = ((DNodeContainer) anElement.eContainer()).getTarget();
         if (!org.eclipse.emf.ecore.util.EcoreUtil.isAncestor(actualParentContainer, anElement.getTarget())) {
-          diagram_p.getOwnedDiagramElements().add(anElement);
+          diagram.getOwnedDiagramElements().add(anElement);
           toBeMoved.add(anElement);
           continue;
         }
@@ -4041,13 +4180,14 @@ public class FaServices {
         // test if a parent of the function appears in the diagram
         DDiagramElement parentGraphicalElement = elementsInDiagram.get(parent);
         if ((null != parentGraphicalElement) && (parentGraphicalElement instanceof DNodeContainer)
-            && CapellaServices.getService().isVisibleInDiagram(diagram_p, parentGraphicalElement) && canContainSubContainer(parentGraphicalElement)) {
+            && CapellaServices.getService().isVisibleInDiagram(diagram, parentGraphicalElement)
+            && canContainSubContainer(parentGraphicalElement)) {
           DNodeContainer nodeContainer = (DNodeContainer) parentGraphicalElement;
           // if the parent (diagramElement) does not contain the
           // current function (diagramElement)
           // the current function (diagramElement) must be moved
           if (!nodeContainer.getOwnedDiagramElements().contains(anElement)) {
-            diagram_p.getOwnedDiagramElements().add(anElement);
+            diagram.getOwnedDiagramElements().add(anElement);
             toBeMoved.add(anElement);
           }
           break;
@@ -4079,13 +4219,13 @@ public class FaServices {
     }
 
     Set<DNodeContainer> ownedVisibleFunctionContainers = new HashSet<DNodeContainer>();
-    for (DDiagramElement anElement : diagram_p.getOwnedDiagramElements()) {
+    for (DDiagramElement anElement : diagram.getOwnedDiagramElements()) {
       if ((anElement instanceof DNodeContainer) && (anElement.getTarget() instanceof AbstractFunction)
-          && (FaServices.getFaServices().isAbstractFunctionVisibleInDFB((DNodeContainer) anElement, diagram_p))) {
+          && (FaServices.getFaServices().isAbstractFunctionVisibleInDFB((DNodeContainer) anElement, diagram))) {
         ownedVisibleFunctionContainers.add((DNodeContainer) anElement);
       }
     }
-    if (!(((DSemanticDiagram) diagram_p).getTarget() instanceof OperationalActivity)) {
+    if (!(((DSemanticDiagram) diagram).getTarget() instanceof OperationalActivity)) {
       for (DNodeContainer aContainer : ownedVisibleFunctionContainers) {
         updateBorderedNodes(aContainer, content, null, allFunctionsInDiagram);
       }
@@ -4097,17 +4237,17 @@ public class FaServices {
    * This method is necessary because of contextual Data Flow diagrams In contextual diagrams, only the current
    * contextual function can contain subContainers
    * 
-   * @param aContainer_p
+   * @param aContainer
    *          a container
    * @return true if the container can contain sub containers
    */
-  public boolean canContainSubContainer(DDiagramElement aContainer_p) {
-    if (!(aContainer_p instanceof DNodeContainer)) {
+  public boolean canContainSubContainer(DDiagramElement aContainer) {
+    if (!(aContainer instanceof DNodeContainer)) {
       return false;
     }
-    DSemanticDiagram currentDiagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(aContainer_p);
+    DSemanticDiagram currentDiagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(aContainer);
     if (currentDiagram.getDescription().getName().contains("Contextual")) { //$NON-NLS-1$
-      return (aContainer_p.getTarget().equals(currentDiagram.getTarget()));
+      return (aContainer.getTarget().equals(currentDiagram.getTarget()));
     }
     return true;
   }
@@ -4115,20 +4255,21 @@ public class FaServices {
   /**
    * remove/move recursively borderedNodes representing FunctionPorts or ExchangeCategories
    * 
-   * @param container_p
+   * @param container
    *          current container
-   * @param diagram_p
+   * @param diagram
    *          current diagram
-   * @param parentContainer_p
+   * @param parentContainer
    *          parent container
-   * @param functions_p
-   *          functions in diagram_p
+   * @param functions
+   *          functions in diagram
    * @return
    */
-  protected FunctionContainer updateBorderedNodes(DNodeContainer container_p, DDiagramContents content_p, FunctionContainer parentContainer_p,
-      Map<AbstractFunction, AbstractDNode> functions_p) {
-    FunctionContainer currentContainer = new FunctionContainer(container_p, parentContainer_p, content_p.getDDiagram(), functions_p);
-    DDiagram diagram = content_p.getDDiagram();
+  protected FunctionContainer updateBorderedNodes(DNodeContainer container, DDiagramContents content,
+      FunctionContainer parentContainer, Map<AbstractFunction, AbstractDNode> functions) {
+    FunctionContainer currentContainer = new FunctionContainer(container, parentContainer, content.getDDiagram(),
+        functions);
+    DDiagram diagram = content.getDDiagram();
 
     // function ports
     if (null != currentContainer.getParent()) {
@@ -4136,13 +4277,15 @@ public class FaServices {
       // function, move or create it
       for (Map.Entry<FunctionPort, DNode> me : currentContainer.getParent().getFunctionPorts().entrySet()) {
         if (((me.getValue().eContainer() != null) && (((DDiagramElement) me.getValue().eContainer()).getTarget() != null))) {
-          AbstractFunction best = getBestPortFunctionContainer((Pin) me.getKey(), (AbstractFunction) ((DDiagramElement) me.getValue().eContainer()).getTarget(),
+          AbstractFunction best = getBestPortFunctionContainer((Pin) me.getKey(),
+              (AbstractFunction) ((DDiagramElement) me.getValue().eContainer()).getTarget(),
               currentContainer.getFunction());
           if ((best != null) && best.equals(currentContainer.getFunction())) {
             if (currentContainer.getFunctionPorts().containsKey(me.getKey())) {
               // delete the bordered node on parent function if it
               // already exists on a child function
-              removeNodeAndMoveEdges(me.getValue(), currentContainer.getFunctionPorts().get(me.getKey()), content_p.getDDiagram());
+              removeNodeAndMoveEdges(me.getValue(), currentContainer.getFunctionPorts().get(me.getKey()),
+                  content.getDDiagram());
             } else {
               // move the bordered Node on the child function
               currentContainer.getContainer().getOwnedBorderedNodes().add(me.getValue());
@@ -4154,20 +4297,20 @@ public class FaServices {
     }
 
     // Exchange Category Management
-    if (parentContainer_p != null) {
-      parentContainer_p.setIncomingOutgoingExchangeCategories(content_p.getDDiagram());
+    if (parentContainer != null) {
+      parentContainer.setIncomingOutgoingExchangeCategories(content.getDDiagram());
 
       // TODO BUG: In some tricky case where parent category is hidden,
       // categories on children are created but shouldn't
-      HashMapSet<ExchangeCategory, AbstractFunction> availableCategories = FaServices.getFaServices().getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(
-          currentContainer.getContainer(), content_p);
+      HashMapSet<ExchangeCategory, AbstractFunction> availableCategories = FaServices.getFaServices()
+          .getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(currentContainer.getContainer(), content);
       // For all categories of the parentContainer, propagate to children.
       // If not synchronized, create category exchanges in children only
       // if category
       // of parent container need to be removed.
-      for (DNode aNode : parentContainer_p.getCategoryNodes()) {
-        if (!CapellaServices.getService().isSynchronized(content_p.getDDiagram())) {
-          if (!parentContainer_p.getCategoryNodesToRemove().contains(aNode)) {
+      for (DNode aNode : parentContainer.getCategoryNodes()) {
+        if (!CapellaServices.getService().isSynchronized(content.getDDiagram())) {
+          if (!parentContainer.getCategoryNodesToRemove().contains(aNode)) {
             continue;
           }
         }
@@ -4178,29 +4321,37 @@ public class FaServices {
 
         ExchangeCategory currentCategory = (ExchangeCategory) aNode.getTarget();
         if (availableCategories.containsKey(currentCategory)) {
-          if (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameOutputPinCategory(diagram))) {
+          if (aNode.getActualMapping().getName()
+              .equals(FaServices.getFaServices().getMappingNameOutputPinCategory(diagram))) {
             for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aNode, diagram)) {
               if ((anEdge.getTargetNode() != null) && (anEdge.getTargetNode().eContainer() != null)) {
                 DNodeContainer targetFunctionContainer = (DNodeContainer) anEdge.getTargetNode().eContainer();
                 if (availableCategories.get(currentCategory).contains(targetFunctionContainer.getTarget())) {
-                  FaServices.getFaServices().createViewExchangeCategory(currentCategory, container_p, targetFunctionContainer, diagram);
+                  FaServices.getFaServices().createViewExchangeCategory(currentCategory, container,
+                      targetFunctionContainer, diagram);
                   if (!currentContainer.getOutgoingExchangeCategories().containsKey(currentCategory)) {
-                    currentContainer.getOutgoingExchangeCategories().put(currentCategory,
-                        getBorderedNode(container_p, currentCategory, FaServices.getFaServices().getMappingNameOutputPinCategory(diagram)));
+                    currentContainer.getOutgoingExchangeCategories().put(
+                        currentCategory,
+                        getBorderedNode(container, currentCategory, FaServices.getFaServices()
+                            .getMappingNameOutputPinCategory(diagram)));
                   }
                 }
               }
             }
           }
-          if (aNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameInputPinCategory(diagram))) {
+          if (aNode.getActualMapping().getName()
+              .equals(FaServices.getFaServices().getMappingNameInputPinCategory(diagram))) {
             for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aNode, diagram)) {
               if ((anEdge.getSourceNode() != null) && (anEdge.getSourceNode().eContainer() != null)) {
                 DNodeContainer sourceFunctionContainer = (DNodeContainer) anEdge.getSourceNode().eContainer();
                 if (availableCategories.get(currentCategory).contains(sourceFunctionContainer.getTarget())) {
-                  FaServices.getFaServices().createViewExchangeCategory(currentCategory, sourceFunctionContainer, container_p, diagram);
+                  FaServices.getFaServices().createViewExchangeCategory(currentCategory, sourceFunctionContainer,
+                      container, diagram);
                   if (!currentContainer.getIncomingExchangeCategories().containsKey(currentCategory)) {
-                    currentContainer.getIncomingExchangeCategories().put(currentCategory,
-                        getBorderedNode(container_p, currentCategory, FaServices.getFaServices().getMappingNameInputPinCategory(diagram)));
+                    currentContainer.getIncomingExchangeCategories().put(
+                        currentCategory,
+                        getBorderedNode(container, currentCategory, FaServices.getFaServices()
+                            .getMappingNameInputPinCategory(diagram)));
                   }
                 }
               }
@@ -4209,17 +4360,19 @@ public class FaServices {
         }
       }
     }
-    currentContainer.initCategoryNodesToRemove(functions_p);
+    currentContainer.initCategoryNodesToRemove(functions);
 
-    for (DDiagramElement anElement : container_p.getOwnedDiagramElements()) {
+    for (DDiagramElement anElement : container.getOwnedDiagramElements()) {
       // recursively update bordered nodes on contained visible
       // NodeContainers
-      if ((anElement instanceof DNodeContainer) && (anElement.getTarget() != null) && (anElement.getTarget() instanceof AbstractFunction)
+      if ((anElement instanceof DNodeContainer) && (anElement.getTarget() != null)
+          && (anElement.getTarget() instanceof AbstractFunction)
           && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((DNodeContainer) anElement, diagram)) {
-        updateBorderedNodes((DNodeContainer) anElement, content_p, currentContainer, functions_p);
+        updateBorderedNodes((DNodeContainer) anElement, content, currentContainer, functions);
       }
       // move up borderedNodes of invisible sub functions
-      if ((anElement instanceof DNodeContainer) && (anElement.getTarget() != null) && (anElement.getTarget() instanceof AbstractFunction)
+      if ((anElement instanceof DNodeContainer) && (anElement.getTarget() != null)
+          && (anElement.getTarget() instanceof AbstractFunction)
           && !FaServices.getFaServices().isAbstractFunctionVisibleInDFB((DNodeContainer) anElement, diagram)) {
         moveUpBorderedNodes((DNodeContainer) anElement, diagram, currentContainer);
       }
@@ -4236,53 +4389,61 @@ public class FaServices {
   /**
    * move up borderedNodes of invisible functions
    * 
-   * @param anElement_p
-   * @param diagram_p
-   * @param currentContainer_p
-   * @param functions_p
+   * @param anElement
+   * @param diagram
+   * @param currentContainer
+   * @param functions
    */
-  public void moveUpBorderedNodes(DNodeContainer container_p, DDiagram diagram_p, FunctionContainer parentContainer_p) {
+  public void moveUpBorderedNodes(DNodeContainer container, DDiagram diagram, FunctionContainer parentContainer) {
 
     Set<DDiagramElement> ownedDiagramElements = new HashSet<DDiagramElement>();
-    ownedDiagramElements.addAll(container_p.getOwnedDiagramElements());
+    ownedDiagramElements.addAll(container.getOwnedDiagramElements());
 
     Set<DNode> ownedBorderedNodes = new HashSet<DNode>();
-    ownedBorderedNodes.addAll(container_p.getOwnedBorderedNodes());
+    ownedBorderedNodes.addAll(container.getOwnedBorderedNodes());
     // move up controlNodes as Ports and function ports
     for (DNode aBorderedNode : ownedBorderedNodes) {
-      if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof FunctionPort) && CapellaServices.getService().isVisibleInDiagram(diagram_p, aBorderedNode)
-          && !CapellaServices.getService().isSynchronized(diagram_p)) {
-        if (parentContainer_p.getFunctionPorts().containsKey(aBorderedNode.getTarget())) {
+      if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof FunctionPort)
+          && CapellaServices.getService().isVisibleInDiagram(diagram, aBorderedNode)
+          && !CapellaServices.getService().isSynchronized(diagram)) {
+        if (parentContainer.getFunctionPorts().containsKey(aBorderedNode.getTarget())) {
           // delete the bordered node on current function if it
           // already exists on the parent function
-          removeNodeAndMoveEdges(aBorderedNode, parentContainer_p.getFunctionPorts().get(aBorderedNode.getTarget()), diagram_p);
+          removeNodeAndMoveEdges(aBorderedNode, parentContainer.getFunctionPorts().get(aBorderedNode.getTarget()),
+              diagram);
         } else {
           // move the bordered Node on the parent function
-          parentContainer_p.getContainer().getOwnedBorderedNodes().add(aBorderedNode);
-          parentContainer_p.getFunctionPorts().put((FunctionPort) aBorderedNode.getTarget(), aBorderedNode);
+          parentContainer.getContainer().getOwnedBorderedNodes().add(aBorderedNode);
+          parentContainer.getFunctionPorts().put((FunctionPort) aBorderedNode.getTarget(), aBorderedNode);
         }
       }
       if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof ExchangeCategory)
-          && CapellaServices.getService().isVisibleInDiagram(diagram_p, aBorderedNode)) {
-        if (aBorderedNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameInputPinCategory(diagram_p))) {
-          if (!parentContainer_p.getIncomingExchangeCategories().containsKey(aBorderedNode.getTarget())) {
+          && CapellaServices.getService().isVisibleInDiagram(diagram, aBorderedNode)) {
+        if (aBorderedNode.getActualMapping().getName()
+            .equals(FaServices.getFaServices().getMappingNameInputPinCategory(diagram))) {
+          if (!parentContainer.getIncomingExchangeCategories().containsKey(aBorderedNode.getTarget())) {
             // create borderedNode view on parent function
-            DNode newNode = FaServices.getFaServices().createViewInputPinCategory((ExchangeCategory) aBorderedNode.getTarget(), parentContainer_p.getContainer(), diagram_p);
-            parentContainer_p.getIncomingExchangeCategories().put((ExchangeCategory) aBorderedNode.getTarget(), newNode);
+            DNode newNode = FaServices.getFaServices().createViewInputPinCategory(
+                (ExchangeCategory) aBorderedNode.getTarget(), parentContainer.getContainer(), diagram);
+            parentContainer.getIncomingExchangeCategories().put((ExchangeCategory) aBorderedNode.getTarget(), newNode);
           }
           // delete the bordered node on current function if it
           // already exists on the parent function and move edges
-          removeNodeAndMoveEdges(aBorderedNode, parentContainer_p.getIncomingExchangeCategories().get(aBorderedNode.getTarget()), diagram_p);
+          removeNodeAndMoveEdges(aBorderedNode,
+              parentContainer.getIncomingExchangeCategories().get(aBorderedNode.getTarget()), diagram);
         }
-        if (aBorderedNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameOutputPinCategory(diagram_p))) {
-          if (!parentContainer_p.getOutgoingExchangeCategories().containsKey(aBorderedNode.getTarget())) {
+        if (aBorderedNode.getActualMapping().getName()
+            .equals(FaServices.getFaServices().getMappingNameOutputPinCategory(diagram))) {
+          if (!parentContainer.getOutgoingExchangeCategories().containsKey(aBorderedNode.getTarget())) {
             // create borderedNode view on parent function
-            DNode newNode = FaServices.getFaServices().createViewOutputPinCategory((ExchangeCategory) aBorderedNode.getTarget(), parentContainer_p.getContainer(), diagram_p);
-            parentContainer_p.getOutgoingExchangeCategories().put((ExchangeCategory) aBorderedNode.getTarget(), newNode);
+            DNode newNode = FaServices.getFaServices().createViewOutputPinCategory(
+                (ExchangeCategory) aBorderedNode.getTarget(), parentContainer.getContainer(), diagram);
+            parentContainer.getOutgoingExchangeCategories().put((ExchangeCategory) aBorderedNode.getTarget(), newNode);
           }
           // delete the bordered node on current function if it
           // already exists on the parent function and move edges
-          removeNodeAndMoveEdges(aBorderedNode, parentContainer_p.getOutgoingExchangeCategories().get(aBorderedNode.getTarget()), diagram_p);
+          removeNodeAndMoveEdges(aBorderedNode,
+              parentContainer.getOutgoingExchangeCategories().get(aBorderedNode.getTarget()), diagram);
         }
       }
     }
@@ -4290,20 +4451,21 @@ public class FaServices {
   }
 
   /**
-   * @param port_p
+   * @param port
    *          a FunctionPort or ControlNode
-   * @param function1_p
-   * @param function2_p
+   * @param function1
+   * @param function2
    * @return the function that must contain graphically the functionPort or controlNode
    */
-  protected AbstractFunction getBestPortFunctionContainer(ActivityNode port_p, AbstractFunction function1_p, AbstractFunction function2_p) {
-    EObject container = port_p.eContainer();
+  protected AbstractFunction getBestPortFunctionContainer(ActivityNode port, AbstractFunction function1,
+      AbstractFunction function2) {
+    EObject container = port.eContainer();
     while ((container != null) && (container instanceof AbstractFunction)) {
-      if (container.equals(function1_p)) {
-        return function1_p;
+      if (container.equals(function1)) {
+        return function1;
       }
-      if (container.equals(function2_p)) {
-        return function2_p;
+      if (container.equals(function2)) {
+        return function2;
       }
       container = container.eContainer();
     }
@@ -4313,139 +4475,144 @@ public class FaServices {
   /**
    * remove a node and move incoming and outgoing edges on the existing child/parent node
    * 
-   * @param toBeRemoved_p
+   * @param toBeRemoved
    *          the bordered node to remove
-   * @param existingChildNode_p
+   * @param existingChildNode
    *          the existing child/parent borderedNode
-   * @param diagram_p
+   * @param diagram
    *          the current diagram
    */
-  protected void removeNodeAndMoveEdges(DNode toBeRemoved_p, DNode existingChildNode_p, DDiagram diagram_p) {
+  protected void removeNodeAndMoveEdges(DNode toBeRemoved, DNode existingChildNode, DDiagram diagram) {
     Set<DEdge> incomingExchanges = new HashSet<DEdge>();
     Set<DEdge> outgoingExchanges = new HashSet<DEdge>();
-    incomingExchanges.addAll(DiagramServices.getDiagramServices().getIncomingEdges(existingChildNode_p, diagram_p));
-    outgoingExchanges.addAll(DiagramServices.getDiagramServices().getOutgoingEdges(existingChildNode_p, diagram_p));
+    incomingExchanges.addAll(DiagramServices.getDiagramServices().getIncomingEdges(existingChildNode, diagram));
+    outgoingExchanges.addAll(DiagramServices.getDiagramServices().getOutgoingEdges(existingChildNode, diagram));
 
-    for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(toBeRemoved_p, diagram_p)) {
+    for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(toBeRemoved, diagram)) {
       // move edge if necessary
       boolean toMove = true;
       for (DEdge anExistingEdge : incomingExchanges) {
-        if ((anExistingEdge.getTarget() != null) && (anExistingEdge.getSourceNode() != null) && (anExistingEdge.getTarget().equals(anEdge.getTarget()))
+        if ((anExistingEdge.getTarget() != null) && (anExistingEdge.getSourceNode() != null)
+            && (anExistingEdge.getTarget().equals(anEdge.getTarget()))
             && (anExistingEdge.getSourceNode().equals(anEdge.getSourceNode()))) {
           toMove = false;
         }
       }
       if (toMove) {
-        anEdge.setTargetNode(existingChildNode_p);
+        anEdge.setTargetNode(existingChildNode);
       } else {
         DiagramServices.getDiagramServices().removeEdgeView(anEdge);
       }
     }
-    for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(toBeRemoved_p, diagram_p)) {
+    for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(toBeRemoved, diagram)) {
       // move edge if necessary
       boolean toMove = true;
       for (DEdge anExistingEdge : outgoingExchanges) {
-        if ((anExistingEdge.getTarget() != null) && (anExistingEdge.getTargetNode() != null) && (anExistingEdge.getTarget().equals(anEdge.getTarget()))
+        if ((anExistingEdge.getTarget() != null) && (anExistingEdge.getTargetNode() != null)
+            && (anExistingEdge.getTarget().equals(anEdge.getTarget()))
             && (anExistingEdge.getTargetNode().equals(anEdge.getTargetNode()))) {
           toMove = false;
         }
       }
       if (toMove) {
-        anEdge.setSourceNode(existingChildNode_p);
+        anEdge.setSourceNode(existingChildNode);
       } else {
         DiagramServices.getDiagramServices().removeEdgeView(anEdge);
       }
     }
-    DiagramServices.getDiagramServices().removeNodeView(toBeRemoved_p);
+    DiagramServices.getDiagramServices().removeNodeView(toBeRemoved);
   }
 
   /**
-   * @param port_p
-   * @param functions_p
+   * @param port
+   * @param functions
    *          Map of visible containers in the diagram
-   * @return the visible container in the diagram that must contain the port port_p
+   * @return the visible container in the diagram that must contain the port port
    */
-  public AbstractDNode getBestFunctionContainer(ActivityNode port_p, Map<AbstractFunction, AbstractDNode> functions_p) {
-    if ((port_p == null) || (port_p.eContainer() == null)) {
+  public AbstractDNode getBestFunctionContainer(ActivityNode port, Map<AbstractFunction, AbstractDNode> functions) {
+    if ((port == null) || (port.eContainer() == null)) {
       return null;
     }
-    EObject functionContainer = port_p.eContainer();
+    EObject functionContainer = port.eContainer();
     while ((functionContainer != null) && (functionContainer instanceof AbstractFunction)) {
-      if (functions_p.containsKey(functionContainer)) {
-        return functions_p.get(functionContainer);
+      if (functions.containsKey(functionContainer)) {
+        return functions.get(functionContainer);
       }
       functionContainer = functionContainer.eContainer();
     }
     return null;
   }
 
-  public DNode getBorderedNode(DNodeContainer container_p, EObject target_p, String mappingName_p) {
+  public DNode getBorderedNode(DNodeContainer container, EObject target, String mappingName) {
     DNode returnedNode = null;
-    for (DNode aBorderedNode : container_p.getOwnedBorderedNodes()) {
-      if ((aBorderedNode.getTarget() != null) && aBorderedNode.getTarget().equals(target_p) && aBorderedNode.getActualMapping().getName().equals(mappingName_p)) {
+    for (DNode aBorderedNode : container.getOwnedBorderedNodes()) {
+      if ((aBorderedNode.getTarget() != null) && aBorderedNode.getTarget().equals(target)
+          && aBorderedNode.getActualMapping().getName().equals(mappingName)) {
         return aBorderedNode;
       }
     }
     return returnedNode;
   }
 
-  public List<AbstractFunction> getShowableParentOfAllocatedFunctions(AbstractFunction parent_p, List<AbstractFunction> showableLeaves_p) {
-    return showableLeaves_p;
+  public List<AbstractFunction> getShowableParentOfAllocatedFunctions(AbstractFunction parent,
+      List<AbstractFunction> showableLeaves) {
+    return showableLeaves;
 
   }
 
-  public List<AbstractFunction> getShowableAllocatedFunctions(Component component_p) {
-    return AbstractFunctionExt.getAllocatedFunctions(component_p);
+  public List<AbstractFunction> getShowableAllocatedFunctions(Component component) {
+    return AbstractFunctionExt.getAllocatedFunctions(component);
   }
 
-  public List<AbstractFunction> getShowableAllocatedOperationalActivities(Role role_p) {
-    return AbstractFunctionExt.getAllocatedOperationalActivities(role_p);
+  public List<AbstractFunction> getShowableAllocatedOperationalActivities(Role role) {
+    return AbstractFunctionExt.getAllocatedOperationalActivities(role);
   }
 
-  public DNodeContainer createViewDeployedPart(EObject target_p, DragAndDropTarget parent_p, DDiagram parentDiagram_p) {
-    ContainerMapping mapping = getMappingABDeployedElement(parentDiagram_p);
-    return DiagramServices.getDiagramServices().createContainer(mapping, target_p, parent_p, parentDiagram_p);
+  public DNodeContainer createViewDeployedPart(EObject target, DragAndDropTarget parent, DDiagram parentDiagram) {
+    ContainerMapping mapping = getMappingABDeployedElement(parentDiagram);
+    return DiagramServices.getDiagramServices().createContainer(mapping, target, parent, parentDiagram);
   }
 
-  public ContainerMapping getMappingABDeployedElement(DDiagram diagram_p) {
+  public ContainerMapping getMappingABDeployedElement(DDiagram diagram) {
     String mappingName = IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME;
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
   }
 
-  public boolean isLeaf(EObject function_p) {
-    return FunctionExt.isLeaf((AbstractFunction) function_p);
+  public boolean isLeaf(EObject function) {
+    return FunctionExt.isLeaf((AbstractFunction) function);
   }
 
   /**
    * Get all the leaf Functions
    * 
-   * @param arch_p
+   * @param arch
    * @return : List of leaf Functions
    */
-  public List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch_p) {
-    return FunctionExt.getAllLeafAbstractFunctions(arch_p);
+  public List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch) {
+    return FunctionExt.getAllLeafAbstractFunctions(arch);
   }
 
-  public AbstractFunction getOutgoingAbstractFunction(FunctionalExchange fe_p) {
-    return FunctionExt.getOutGoingAbstractFunction(fe_p);
+  public AbstractFunction getOutgoingAbstractFunction(FunctionalExchange fe) {
+    return FunctionExt.getOutGoingAbstractFunction(fe);
   }
 
-  public EObject insertRemoveAllocatedFunctions(DNodeContainer containerView_p, List<AbstractFunction> selectedFunctions_p) {
+  public EObject insertRemoveAllocatedFunctions(DNodeContainer containerView, List<AbstractFunction> selectedFunctions) {
     HashMap<AbstractFunction, DNode> visibleFunctions = new HashMap<AbstractFunction, DNode>();
 
-    for (DDiagramElement aElement : containerView_p.getOwnedDiagramElements()) {
-      if ((aElement.getTarget() != null) && (aElement.getTarget() instanceof AbstractFunction) && (aElement instanceof DNode)) {
+    for (DDiagramElement aElement : containerView.getOwnedDiagramElements()) {
+      if ((aElement.getTarget() != null) && (aElement.getTarget() instanceof AbstractFunction)
+          && (aElement instanceof DNode)) {
         visibleFunctions.put((AbstractFunction) aElement.getTarget(), (DNode) aElement);
       }
     }
     // delete not selected functions if they are displayed in the container
     // view
     for (Entry<AbstractFunction, DNode> me : visibleFunctions.entrySet()) {
-      if (!selectedFunctions_p.contains(me.getKey())) {
+      if (!selectedFunctions.contains(me.getKey())) {
         DiagramServices.getDiagramServices().removeNodeView(me.getValue());
       } else {
         for (AbstractFunction aParentFunction : FunctionExt.getParentFunctions(me.getKey())) {
-          if (selectedFunctions_p.contains(aParentFunction)) {
+          if (selectedFunctions.contains(aParentFunction)) {
             DiagramServices.getDiagramServices().removeNodeView(me.getValue());
             break;
           }
@@ -4453,29 +4620,30 @@ public class FaServices {
       }
     }
     // create view for selected elements if they do not exist
-    for (AbstractFunction aSelectedFunction : selectedFunctions_p) {
+    for (AbstractFunction aSelectedFunction : selectedFunctions) {
       if (!visibleFunctions.containsKey(aSelectedFunction)) {
         boolean toAdd = true;
         // test if a parent function is already displayed
         for (AbstractFunction aParentFunction : FunctionExt.getParentFunctions(aSelectedFunction)) {
-          if (selectedFunctions_p.contains(aParentFunction)) {
+          if (selectedFunctions.contains(aParentFunction)) {
             toAdd = false;
             break;
           }
         }
         if (toAdd) {
-          createViewABAbstractFunction(aSelectedFunction, containerView_p, CapellaServices.getService().getDiagramContainer(containerView_p));
+          createViewABAbstractFunction(aSelectedFunction, containerView, CapellaServices.getService()
+              .getDiagramContainer(containerView));
         }
       }
     }
-    return containerView_p;
+    return containerView;
   }
 
   /**
    * Return all the leaf functions from given Block Architecture
    */
-  public List<AbstractFunction> getAllLeafFunctions(BlockArchitecture blockArchitecture_p) {
-    List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllLeafAbstractFunctions(blockArchitecture_p);
+  public List<AbstractFunction> getAllLeafFunctions(BlockArchitecture blockArchitecture) {
+    List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllLeafAbstractFunctions(blockArchitecture);
     if (!allAbstractFunctions.isEmpty()) {
       return allAbstractFunctions;
     }
@@ -4483,19 +4651,19 @@ public class FaServices {
     return new ArrayList<AbstractFunction>(0);
   }
 
-  public List<AbstractFunction> getAllLeafFunctions(ModellingBlock block_p) {
-    BlockArchitecture archi = BlockArchitectureExt.getRootBlockArchitecture(block_p);
+  public List<AbstractFunction> getAllLeafFunctions(ModellingBlock block) {
+    BlockArchitecture archi = BlockArchitectureExt.getRootBlockArchitecture(block);
     return getAllLeafFunctions(archi);
   }
 
   /**
    * Return all the recursive functions from given Block Architecture
    */
-  public List<FunctionalChain> getAllFunctionalChains(BlockArchitecture blockArchitecture_p) {
+  public List<FunctionalChain> getAllFunctionalChains(BlockArchitecture blockArchitecture) {
     List<FunctionalChain> functionalChains = new ArrayList<FunctionalChain>(0);
 
     // collect all functions
-    List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllAbstractFunctions(blockArchitecture_p);
+    List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllAbstractFunctions(blockArchitecture);
     for (AbstractFunction abstractFunction : allAbstractFunctions) {
       functionalChains.addAll(abstractFunction.getOwnedFunctionalChains());
     }
@@ -4503,7 +4671,7 @@ public class FaServices {
     // collect all capabilities
 
     TableCapabilitiesServices cap = new TableCapabilitiesServices();
-    Collection<AbstractCapability> allCapabilities = cap.getAllCapabilities(blockArchitecture_p);
+    Collection<AbstractCapability> allCapabilities = cap.getAllCapabilities(blockArchitecture);
     for (AbstractCapability abstractCapability : allCapabilities) {
       functionalChains.addAll(abstractCapability.getOwnedFunctionalChains());
     }
@@ -4511,15 +4679,15 @@ public class FaServices {
     return functionalChains;
   }
 
-  public List<FunctionalChain> getAllFunctionalChains(ModellingBlock block_p) {
-    BlockArchitecture archi = BlockArchitectureExt.getRootBlockArchitecture(block_p);
+  public List<FunctionalChain> getAllFunctionalChains(ModellingBlock block) {
+    BlockArchitecture archi = BlockArchitectureExt.getRootBlockArchitecture(block);
     return getAllFunctionalChains(archi);
   }
 
   /**
    * Perform dnd from diagram to diagram of a physical artifacts.
    * 
-   * @param node_p
+   * @param node
    *          the given physical artifacts
    * @param oldContainer
    *          the given namedElement
@@ -4527,23 +4695,24 @@ public class FaServices {
    *          the given namedElement
    * @return the EObject
    */
-  public EObject dndABPhysicalArtifacts(CapellaElement node_p, NamedElement oldContainer, NamedElement newContainer) {
+  public EObject dndABPhysicalArtifacts(CapellaElement node, NamedElement oldContainer, NamedElement newContainer) {
     // Physical Artifacts == Physical Component, Physical Link and Physical
     // Port
 
     if (oldContainer.equals(newContainer)) {
-      return node_p;
+      return node;
     }
 
     // Get root architecture, and make sure that its physical architecture
-    BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(node_p);
+    BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(node);
     if (!(arch instanceof PhysicalArchitecture)) {
-      return node_p;
+      return node;
     }
 
     // Collect all physical artifacts
     List<CapellaElement> physicalArtifacts = new ArrayList<CapellaElement>(0);
-    List<PhysicalComponent> allPhysicalComponents = PhysicalArchitectureExt.getAllPhysicalComponents((PhysicalArchitecture) arch);
+    List<PhysicalComponent> allPhysicalComponents = PhysicalArchitectureExt
+        .getAllPhysicalComponents((PhysicalArchitecture) arch);
     for (PhysicalComponent physicalComponent : allPhysicalComponents) {
       physicalArtifacts.add(physicalComponent);
       // collect all physical links
@@ -4592,24 +4761,26 @@ public class FaServices {
         TraceableElement targetElement = artifactRealization.getTargetElement();
         // check if already exist in newContainer, only move which is
         // asked to
-        if ((null != targetElement) && physicalArtifacts.contains(targetElement) && node_p.equals(targetElement) && !newArtifactRealizationsTarget.contains(targetElement)) {
+        if ((null != targetElement) && physicalArtifacts.contains(targetElement) && node.equals(targetElement)
+            && !newArtifactRealizationsTarget.contains(targetElement)) {
           artifactRealization.setSourceElement(newComponent);
           newComponent.getOwnedPhysicalArtifactRealizations().add(artifactRealization);
         }
       }
     }
 
-    return node_p;
+    return node;
   }
 
   /**
    * @used context.odesign returns display name of functional exchange
-   * @param exchange_p
+   * @param exchange
    *          the functional exchange
    * @return display name of the functional exchange
    */
-  public String getComponentExchangeLabel(ComponentExchange exchange_p, DDiagram diagram_p) {
-    if ((exchange_p == null) || isHideComponentExchangesNamesEnable(exchange_p, diagram_p) || isHideCommunicationMeansNamesEnable(exchange_p, diagram_p)) {
+  public String getComponentExchangeLabel(ComponentExchange exchange, DDiagram diagram) {
+    if ((exchange == null) || isHideComponentExchangesNamesEnable(exchange, diagram)
+        || isHideCommunicationMeansNamesEnable(exchange, diagram)) {
       return ICommonConstants.EMPTY_STRING;
     }
 
@@ -4617,7 +4788,7 @@ public class FaServices {
     boolean showFunctionalExchangeName = false;
     boolean showExchangeItemsWithOutFE = false;
     // check the activation of the filters
-    for (FilterDescription filter : diagram_p.getActivatedFilters()) {
+    for (FilterDescription filter : diagram.getActivatedFilters()) {
       if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS_ON_CE)) {
         showExchangeItems = true;
       }
@@ -4632,8 +4803,10 @@ public class FaServices {
 
     if (showFunctionalExchangeName) {
       ArrayList<FunctionalExchange> fes = new ArrayList<FunctionalExchange>();
-      for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange_p.getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
-        if ((allocation.getAllocatedFunctionalExchange() != null) && !fes.contains(allocation.getAllocatedFunctionalExchange())) {
+      for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange
+          .getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
+        if ((allocation.getAllocatedFunctionalExchange() != null)
+            && !fes.contains(allocation.getAllocatedFunctionalExchange())) {
           fes.add(allocation.getAllocatedFunctionalExchange());
         }
       }
@@ -4641,16 +4814,17 @@ public class FaServices {
       if (!showExchangeItemsWithOutFE) {
         for (FunctionalExchange fe : fes) {
           index++;
-          getExchangeWithExchangeItemsLabel(fe, false, true, showExchangeItems, showExchangeItemsWithOutFE, result, getRelatedExchangeItems(fe));
+          getExchangeWithExchangeItemsLabel(fe, false, true, showExchangeItems, showExchangeItemsWithOutFE, result,
+              getRelatedExchangeItems(fe));
           if (index < fes.size()) {
             result.append(", "); //$NON-NLS-1$
           }
         }
       }
       if (fes.size() == 0) {
-        List<AbstractExchangeItem> exchangedItems = getRelatedExchangeItems(exchange_p, false);
-        getExchangeWithExchangeItemsLabel(exchange_p, false, (!showExchangeItems && !showExchangeItemsWithOutFE) || exchangedItems.isEmpty(), showExchangeItems,
-            showExchangeItemsWithOutFE, result, exchangedItems);
+        List<AbstractExchangeItem> exchangedItems = getRelatedExchangeItems(exchange, false);
+        getExchangeWithExchangeItemsLabel(exchange, false, (!showExchangeItems && !showExchangeItemsWithOutFE)
+            || exchangedItems.isEmpty(), showExchangeItems, showExchangeItemsWithOutFE, result, exchangedItems);
       }
 
     } else {
@@ -4658,14 +4832,14 @@ public class FaServices {
       List<AbstractExchangeItem> exchangedItems = new UniqueEList<AbstractExchangeItem>(0);
       // showExchangeItems
       if (showExchangeItems) {
-        exchangedItems.addAll(getRelatedExchangeItems(exchange_p, true));
+        exchangedItems.addAll(getRelatedExchangeItems(exchange, true));
       }
       // showExchangeItemsWithOutFE
       if (showExchangeItemsWithOutFE) {
-        exchangedItems.addAll(getRelatedExchangeItems(exchange_p, false));
+        exchangedItems.addAll(getRelatedExchangeItems(exchange, false));
       }
-      getExchangeWithExchangeItemsLabel(exchange_p, false, (!showExchangeItems && !showExchangeItemsWithOutFE), showExchangeItems, showExchangeItemsWithOutFE, result,
-          exchangedItems);
+      getExchangeWithExchangeItemsLabel(exchange, false, (!showExchangeItems && !showExchangeItemsWithOutFE),
+          showExchangeItems, showExchangeItemsWithOutFE, result, exchangedItems);
 
     }
     return result.toString();
@@ -4673,15 +4847,15 @@ public class FaServices {
 
   /**
    * @used context.odesign returns display name of functional exchange
-   * @param exchange_p
+   * @param exchange
    *          the functional exchange
    * @return display name of the functional exchange
    */
-  public String getFunctionalExchangeLabel(FunctionalExchange exchange_p, DDiagram diagram_p) {
-    if (exchange_p == null) {
-      return decorateString(ICommonConstants.EMPTY_STRING, exchange_p);
+  public String getFunctionalExchangeLabel(FunctionalExchange exchange, DDiagram diagram) {
+    if (exchange == null) {
+      return decorateString(ICommonConstants.EMPTY_STRING, exchange);
     }
-    if (isHideFunctionalExchangesNamesEnable(exchange_p, diagram_p) || isHideInteractionsNamesEnable(exchange_p, diagram_p)) {
+    if (isHideFunctionalExchangesNamesEnable(exchange, diagram) || isHideInteractionsNamesEnable(exchange, diagram)) {
       return Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
     }
 
@@ -4693,7 +4867,7 @@ public class FaServices {
     boolean showFEEIParams = false;
 
     // check the activation of the filters
-    for (FilterDescription filter : diagram_p.getActivatedFilters()) {
+    for (FilterDescription filter : diagram.getActivatedFilters()) {
       if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS)) {
         showExchangeItems = true;
       }
@@ -4715,10 +4889,10 @@ public class FaServices {
     }
 
     if (showFEEI) {
-      return decorateString(getFEEIMessageName(exchange_p), exchange_p);
+      return decorateString(getFEEIMessageName(exchange), exchange);
     }
     if (showFEEIParams || showFEParams) {
-      return decorateString(showFeEiParams(exchange_p, showFEEIParams), exchange_p);
+      return decorateString(showFeEiParams(exchange, showFEEIParams), exchange);
     }
 
     StringBuilder result = new StringBuilder();
@@ -4727,10 +4901,10 @@ public class FaServices {
     int indice = 0;
     if (showFunctionalExchanges || showExchangeItems || showExchangeItemsParameters) {
       if (showFunctionalExchanges) {
-        result.append(getSafeName(exchange_p));
+        result.append(getSafeName(exchange));
       }
       if (showExchangeItems || showExchangeItemsParameters) {
-        List<? extends AbstractExchangeItem> selectEIList = exchange_p.getExchangedItems();
+        List<? extends AbstractExchangeItem> selectEIList = exchange.getExchangedItems();
         if (selectEIList.size() != 0) {
           result.append("["); //$NON-NLS-1$
         }
@@ -4746,17 +4920,17 @@ public class FaServices {
         }
       }
     } else {
-      result.append(exchange_p.getName());
+      result.append(exchange.getName());
     }
-    return decorateString(result.toString(), exchange_p);
+    return decorateString(result.toString(), exchange);
   }
 
-  private String showFeEiParams(FunctionalExchange exchange_p, boolean showEIName) {
+  private String showFeEiParams(FunctionalExchange exchange, boolean showEIName) {
     StringBuilder result = new StringBuilder();
     List<? extends AbstractExchangeItem> selectEIList;
-    selectEIList = exchange_p.getExchangedItems();
+    selectEIList = exchange.getExchangedItems();
 
-    result.append(getSafeName(exchange_p));
+    result.append(getSafeName(exchange));
 
     int indice = 0;
     if (showEIName) {
@@ -4801,11 +4975,11 @@ public class FaServices {
     return result.toString();
   }
 
-  private String getFEEIMessageName(FunctionalExchange exchange_p) {
+  private String getFEEIMessageName(FunctionalExchange exchange) {
     StringBuilder result = new StringBuilder();
     List<? extends AbstractExchangeItem> selectEIList;
-    selectEIList = exchange_p.getExchangedItems();
-    result.append(exchange_p.getName());
+    selectEIList = exchange.getExchangedItems();
+    result.append(exchange.getName());
     result.append(" "); //$NON-NLS-1$
     result.append("["); //$NON-NLS-1$
     int indice = 0;
@@ -4823,14 +4997,16 @@ public class FaServices {
     return result.toString();
   }
 
-  private List<AbstractExchangeItem> getRelatedExchangeItems(ComponentExchange exchange_p, boolean inDepth_p) {
+  private List<AbstractExchangeItem> getRelatedExchangeItems(ComponentExchange exchange, boolean inDepth) {
     // exchangeItems
     List<AbstractExchangeItem> exchangedItems = new ArrayList<AbstractExchangeItem>();
-    exchangedItems.addAll(exchange_p.getConvoyedInformations());
-    if (inDepth_p) {
-      for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange_p.getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
+    exchangedItems.addAll(exchange.getConvoyedInformations());
+    if (inDepth) {
+      for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange
+          .getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
         if (allocation.getAllocatedFunctionalExchange() != null) {
-          for (AbstractExchangeItem abstractExchangeItem : getRelatedExchangeItems(allocation.getAllocatedFunctionalExchange())) {
+          for (AbstractExchangeItem abstractExchangeItem : getRelatedExchangeItems(allocation
+              .getAllocatedFunctionalExchange())) {
             if (!exchangedItems.contains(abstractExchangeItem)) {
               exchangedItems.add(abstractExchangeItem);
             }
@@ -4842,13 +5018,13 @@ public class FaServices {
     return exchangedItems;
   }
 
-  private List<AbstractExchangeItem> getRelatedExchangeItems(FunctionalExchange exchange_p) {
+  private List<AbstractExchangeItem> getRelatedExchangeItems(FunctionalExchange exchange) {
     // exchangeItems
     List<AbstractExchangeItem> exchangedItems = new ArrayList<AbstractExchangeItem>();
 
-    exchangedItems.addAll(exchange_p.getExchangedItems());
+    exchangedItems.addAll(exchange.getExchangedItems());
     if (exchangedItems.size() == 0) {
-      for (CapellaElement capellaElement : AbstractFunctionExt.getExchangeSourceAndTargetPorts(exchange_p)) {
+      for (CapellaElement capellaElement : AbstractFunctionExt.getExchangeSourceAndTargetPorts(exchange)) {
         if (capellaElement instanceof FunctionInputPort) {
           FunctionInputPort inPutPort = (FunctionInputPort) capellaElement;
           // collect exchange items of ports
@@ -4871,11 +5047,12 @@ public class FaServices {
     return exchangedItems;
   }
 
-  private void getExchangeWithExchangeItemsLabel(AbstractNamedElement exchange_p, boolean showExchangeItemsParameters, boolean showName, boolean showExchangeItems,
-      boolean showExchangeItemsWithOutFE, StringBuilder result, List<AbstractExchangeItem> exchangedItems) {
+  private void getExchangeWithExchangeItemsLabel(AbstractNamedElement exchange, boolean showExchangeItemsParameters,
+      boolean showName, boolean showExchangeItems, boolean showExchangeItemsWithOutFE, StringBuilder result,
+      List<AbstractExchangeItem> exchangedItems) {
     int indice = 0;
     if (showName) {
-      result.append(exchange_p.getName());
+      result.append(exchange.getName());
     }
 
     if (showExchangeItems || showExchangeItemsWithOutFE) {
@@ -4896,119 +5073,127 @@ public class FaServices {
 
   }
 
-  public DDiagramContents getDDiagramContents(DDiagram diagram_p) {
-    return new DDiagramContents(diagram_p);
+  public DDiagramContents getDDiagramContents(DDiagram diagram) {
+    return new DDiagramContents(diagram);
   }
 
   /**
-   * @param diagram_p
-   * @param chains_p
+   * @param diagram
+   * @param chains
    */
-  public void showABFunctionalChains(DDiagram diagram_p, Collection<EObject> chains_p) {
-    showABFunctionalChains(diagram_p, chains_p, getDDiagramContents(diagram_p));
+  public void showABFunctionalChains(DDiagram diagram, Collection<EObject> chains) {
+    showABFunctionalChains(diagram, chains, getDDiagramContents(diagram));
   }
 
   /**
-   * @param diagram_p
-   * @param chains_p
+   * @param diagram
+   * @param chains
    */
-  public void showDFFunctionalChains(DDiagram diagram_p, Collection<EObject> chains_p) {
-    showDFFunctionalChains(diagram_p, chains_p, getDDiagramContents(diagram_p));
+  public void showDFFunctionalChains(DDiagram diagram, Collection<EObject> chains) {
+    showDFFunctionalChains(diagram, chains, getDDiagramContents(diagram));
   }
 
   /**
-   * @param diagram_p
-   * @param chains_p
+   * @param diagram
+   * @param chains
    */
-  public void showABFunctionalChains(DDiagram diagram_p, Collection<EObject> chains_p, DDiagramContents context_p) {
-    for (EObject object : chains_p) {
-      if (context_p.getNode(object) == null) {
-        createViewABFunctionalChain(diagram_p, object);
+  public void showABFunctionalChains(DDiagram diagram, Collection<EObject> chains, DDiagramContents context) {
+    for (EObject object : chains) {
+      if (context.getNode(object) == null) {
+        createViewABFunctionalChain(diagram, object);
       }
     }
   }
 
   /**
-   * @param diagram_p
-   * @param chains_p
+   * @param diagram
+   * @param chains
    */
-  public void showDFFunctionalChains(DDiagram diagram_p, Collection<EObject> chains_p, DDiagramContents context_p) {
-    for (EObject object : chains_p) {
-      if (context_p.getNode(object) == null) {
-        createViewDFFunctionalChain(diagram_p, object);
+  public void showDFFunctionalChains(DDiagram diagram, Collection<EObject> chains, DDiagramContents context) {
+    for (EObject object : chains) {
+      if (context.getNode(object) == null) {
+        createViewDFFunctionalChain(diagram, object);
       }
     }
   }
 
   /**
-   * @param diagram_p
-   * @param object_p
+   * @param diagram
+   * @param object
    */
-  private DNode createViewABFunctionalChain(DDiagram diagram_p, EObject object_p) {
-    NodeMapping mapping = getMappingABFunctionalChain(object_p, diagram_p);
-    return DiagramServices.getDiagramServices().createNode(mapping, object_p, diagram_p, diagram_p);
+  private DNode createViewABFunctionalChain(DDiagram diagram, EObject object) {
+    NodeMapping mapping = getMappingABFunctionalChain(object, diagram);
+    return DiagramServices.getDiagramServices().createNode(mapping, object, diagram, diagram);
   }
 
   /**
-   * @param diagram_p
-   * @param object_p
+   * @param diagram
+   * @param object
    */
-  private DNode createViewDFFunctionalChain(DDiagram diagram_p, EObject object_p) {
-    NodeMapping mapping = getMappingDFFunctionalChain(object_p, diagram_p);
-    return DiagramServices.getDiagramServices().createNode(mapping, object_p, diagram_p, diagram_p);
+  private DNode createViewDFFunctionalChain(DDiagram diagram, EObject object) {
+    NodeMapping mapping = getMappingDFFunctionalChain(object, diagram);
+    return DiagramServices.getDiagramServices().createNode(mapping, object, diagram, diagram);
   }
 
   /**
-   * @param port_p
-   * @param diagram_p
+   * @param port
+   * @param diagram
    * @return
    */
-  public NodeMapping getMappingABFunctionalChain(EObject port_p, DDiagram diagram_p) {
+  public NodeMapping getMappingABFunctionalChain(EObject port, DDiagram diagram) {
     String mappingName = null;
 
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAB_OPERATIONAL_PROCESS_END_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
   /**
-   * @param port_p
-   * @param diagram_p
+   * @param port
+   * @param diagram
    * @return
    */
-  public NodeMapping getMappingDFFunctionalChain(EObject port_p, DDiagram diagram_p) {
+  public NodeMapping getMappingDFFunctionalChain(EObject port, DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.OAIB_OPERATIONAL_PROCESS_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
-    } else if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_FUNCTIONAL_CHAIN_END_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
   /**
-   * @param diagram_p
-   * @param contextualElements_p
+   * @param diagram
+   * @param contextualElements
    */
-  public void showDFContextualElements(DDiagramContents diagramContent_p, Collection<EObject> contextualElements_p) {
+  public void showDFContextualElements(DDiagramContents diagramContent, Collection<EObject> contextualElements) {
     Collection<AbstractFunction> contextualFunctions = new HashSet<AbstractFunction>();
     Collection<FunctionalExchange> contextualFunctionalExchanges = new HashSet<FunctionalExchange>();
     Collection<EObject> contextualFunctionalChains = new HashSet<EObject>();
     Collection<EObject> contextualModes = new HashSet<EObject>();
     Collection<EObject> contextualScenarios = new HashSet<EObject>();
 
-    for (EObject contextualElement : contextualElements_p) {
+    for (EObject contextualElement : contextualElements) {
       if (contextualElement instanceof AbstractFunction) {
         contextualFunctions.add((AbstractFunction) contextualElement);
 
@@ -5018,7 +5203,8 @@ public class FaServices {
             AbstractFunction target = FunctionalExchangeExt.getTargetFunction(exchange);
             // Restrict to outside exchanges
             if ((source != null) && (target != null)) {
-              if (!(EcoreUtil2.isContainedBy(source, contextualElement) && (EcoreUtil2.isContainedBy(target, contextualElement)))) {
+              if (!(EcoreUtil2.isContainedBy(source, contextualElement) && (EcoreUtil2.isContainedBy(target,
+                  contextualElement)))) {
                 contextualFunctionalExchanges.add(exchange);
               }
             }
@@ -5028,7 +5214,8 @@ public class FaServices {
             AbstractFunction target = FunctionalExchangeExt.getTargetFunction(exchange);
             // Restrict to outside exchanges
             if ((source != null) && (target != null)) {
-              if (!(EcoreUtil2.isContainedBy(source, contextualElement) && (EcoreUtil2.isContainedBy(target, contextualElement)))) {
+              if (!(EcoreUtil2.isContainedBy(source, contextualElement) && (EcoreUtil2.isContainedBy(target,
+                  contextualElement)))) {
                 contextualFunctionalExchanges.add(exchange);
               }
             }
@@ -5037,10 +5224,12 @@ public class FaServices {
       } else if (contextualElement instanceof FunctionalChain) {
         contextualFunctionalChains.add(contextualElement);
 
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
+        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf(
+            (FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
           contextualFunctions.add((AbstractFunction) involvement.getInvolved());
         }
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf(
+            (FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
           contextualFunctionalExchanges.add((FunctionalExchange) involvement.getInvolved());
         }
 
@@ -5055,28 +5244,28 @@ public class FaServices {
 
     // Display all contextual functions
     for (AbstractFunction function : contextualFunctions) {
-      showDFAbstractFunction(function, diagramContent_p.getBestContainer(function), diagramContent_p);
+      showDFAbstractFunction(function, diagramContent.getBestContainer(function), diagramContent);
     }
 
     // Create a customized diagram contents to retrieve brothers of diagram
     // elements instead of best container
-    DDiagramContents extendedContent = new DDiagramContents(diagramContent_p) {
+    DDiagramContents extendedContent = new DDiagramContents(diagramContent) {
 
       @Override
-      public EObject getElement(EObject object_p, EObject context_p) {
-        if (context_p instanceof FunctionalExchange) {
-          FunctionalExchange exchange = (FunctionalExchange) context_p;
+      public EObject getElement(EObject object, EObject context) {
+        if (context instanceof FunctionalExchange) {
+          FunctionalExchange exchange = (FunctionalExchange) context;
           AbstractFunction sourceExchange = FunctionalExchangeExt.getSourceFunction(exchange);
           AbstractFunction targetExchange = FunctionalExchangeExt.getTargetFunction(exchange);
 
           AbstractFunction brother = null;
           AbstractFunction brother2 = null;
 
-          if (object_p.equals(sourceExchange)) {
+          if (object.equals(sourceExchange)) {
             brother = targetExchange;
             brother2 = sourceExchange;
 
-          } else if (object_p.equals(targetExchange)) {
+          } else if (object.equals(targetExchange)) {
             brother = sourceExchange;
             brother2 = targetExchange;
           }
@@ -5095,18 +5284,18 @@ public class FaServices {
             }
           }
         }
-        return object_p;
+        return object;
       }
 
       @Override
-      public Collection<EObject> getParents(EObject object_p, EObject context_p) {
-        return super.getParents(object_p, context_p);
+      public Collection<EObject> getParents(EObject object, EObject context) {
+        return super.getParents(object, context);
       }
 
-      private boolean isVisible(EObject brother_p, EObject brother2_p) {
-        EObject parent = brother_p.eContainer();
-        if ((parent instanceof AbstractFunction) && (brother2_p instanceof AbstractFunction)) {
-          if (FunctionExt.getFirstLevelAbstractFunctions((AbstractFunction) parent).contains(brother2_p)) {
+      private boolean isVisible(EObject brother, EObject brother2) {
+        EObject parent = brother.eContainer();
+        if ((parent instanceof AbstractFunction) && (brother2 instanceof AbstractFunction)) {
+          if (FunctionExt.getFirstLevelAbstractFunctions((AbstractFunction) parent).contains(brother2)) {
             return true;
           }
         }
@@ -5120,38 +5309,38 @@ public class FaServices {
       showDFFunctionalExchange(null, functionalExchange, extendedContent, true);
     }
 
-    showDFFunctionalChains(diagramContent_p.getDDiagram(), contextualFunctionalChains, diagramContent_p);
+    showDFFunctionalChains(diagramContent.getDDiagram(), contextualFunctionalChains, diagramContent);
 
-    DFServices.getService().showDFScenarios((DSemanticDecorator) diagramContent_p.getDDiagram(), contextualScenarios);
-    DFServices.getService().showDFStateModes((DSemanticDecorator) diagramContent_p.getDDiagram(), contextualModes);
+    DFServices.getService().showDFScenarios((DSemanticDecorator) diagramContent.getDDiagram(), contextualScenarios);
+    DFServices.getService().showDFStateModes((DSemanticDecorator) diagramContent.getDDiagram(), contextualModes);
   }
 
   /**
    * is [FUNCTIONKIND = FUNCTION] and not AcotorFunction or ControlNode
    * 
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isFunction(AbstractFunction element_p) {
-    return FunctionExt.isFunction(element_p);
+  public boolean isFunction(AbstractFunction element) {
+    return FunctionExt.isFunction(element);
   }
 
   /**
    * is [FUNCTIONKIND = FUNCTION] and not AcotorFunction or ControlNode
    * 
-   * @param element_p
+   * @param element
    * @return
    */
-  public boolean isActorFunction(AbstractFunction element_p) {
-    return FunctionExt.isActorFunction(element_p);
+  public boolean isActorFunction(AbstractFunction element) {
+    return FunctionExt.isActorFunction(element);
   }
 
-  public boolean isAllLeavesFunctionActorALlocated(AbstractFunction element_p) {
+  public boolean isAllLeavesFunctionActorALlocated(AbstractFunction element) {
     int i, j = 0;
-    if ((element_p == null) || isLeaf(element_p)) {
+    if ((element == null) || isLeaf(element)) {
       return false;
     }
-    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(element_p);
+    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(element);
     i = leaves.size();
     for (AbstractFunction af : leaves) {
       if (FunctionExt.isActorFunction(af)) {
@@ -5162,19 +5351,19 @@ public class FaServices {
 
   }
 
-  private boolean isDiagramFilterEnable(EObject exchange_p, EObject diagram_p, String filterName_p) {
-    if (null != diagram_p) {
+  private boolean isDiagramFilterEnable(EObject exchange, EObject diagram, String filterName) {
+    if (null != diagram) {
       // get Diagram
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(diagram_p);
-      Object oDiagram = CsServices.getService().getInterpreterVariable(exchange_p, IInterpreterSiriusVariables.DIAGRAM);
+      DDiagram diag = CapellaServices.getService().getDiagramContainer(diagram);
+      Object oDiagram = CsServices.getService().getInterpreterVariable(exchange, IInterpreterSiriusVariables.DIAGRAM);
       if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
-        diagram = (DDiagram) oDiagram;
+        diag = (DDiagram) oDiagram;
       }
-      if (diagram != null) {
-        EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+      if (diag != null) {
+        EList<FilterDescription> activatedFilters = diag.getActivatedFilters();
         for (FilterDescription filterDescription : activatedFilters) {
           // if given filter is enable return true
-          if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName_p)) {
+          if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName)) {
             return true;
           }
         }
@@ -5183,48 +5372,48 @@ public class FaServices {
     return false;
   }
 
-  public boolean isHideFunctionalExchangesNamesEnable(EObject fe_p, DDiagram diagram_p) {
-    return isDiagramFilterEnable(fe_p, diagram_p, IMappingNameConstants.HIDE_FUNCTIONAL_EXCHANGES_NAMES);
+  public boolean isHideFunctionalExchangesNamesEnable(EObject fe, DDiagram diagram) {
+    return isDiagramFilterEnable(fe, diagram, IMappingNameConstants.HIDE_FUNCTIONAL_EXCHANGES_NAMES);
   }
 
-  public boolean isHideComponentExchangesNamesEnable(EObject ce_p, EObject view_p) {
-    return isDiagramFilterEnable(ce_p, view_p, IMappingNameConstants.HIDE_COMPONENT_EXCHANGES_NAMES);
+  public boolean isHideComponentExchangesNamesEnable(EObject ce, EObject view) {
+    return isDiagramFilterEnable(ce, view, IMappingNameConstants.HIDE_COMPONENT_EXCHANGES_NAMES);
   }
 
-  public boolean isHideCommunicationMeansNamesEnable(EObject ce_p, EObject view_p) {
-    return isDiagramFilterEnable(ce_p, view_p, IMappingNameConstants.HIDE_COMMUNICATION_MEANS_NAMES);
+  public boolean isHideCommunicationMeansNamesEnable(EObject ce, EObject view) {
+    return isDiagramFilterEnable(ce, view, IMappingNameConstants.HIDE_COMMUNICATION_MEANS_NAMES);
   }
 
-  public boolean isHideInteractionsNamesEnable(EObject fe_p, DDiagram diagram_p) {
-    return isDiagramFilterEnable(fe_p, diagram_p, IMappingNameConstants.HIDE_INTERACTIONS_NAMES);
+  public boolean isHideInteractionsNamesEnable(EObject fe, DDiagram diagram) {
+    return isDiagramFilterEnable(fe, diagram, IMappingNameConstants.HIDE_INTERACTIONS_NAMES);
   }
 
-  public boolean isHidePhysicalLinksNamesEnable(EObject pl_p, EObject view_p) {
-    return isDiagramFilterEnable(pl_p, view_p, IMappingNameConstants.HIDE_PHYSICAL_LINKS_NAMES);
+  public boolean isHidePhysicalLinksNamesEnable(EObject pl, EObject view) {
+    return isDiagramFilterEnable(pl, view, IMappingNameConstants.HIDE_PHYSICAL_LINKS_NAMES);
   }
 
-  public String getExchangeCenterLabel(EObject exchange_p, DDiagram diagram_p) {
+  public String getExchangeCenterLabel(EObject exchange, DDiagram diagram) {
     // why white space char
     // The manual refresh of the diagram does not take into account the
     // EmptySting
     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
-    if ((null != exchange_p) && (exchange_p instanceof FunctionalExchange)) {
-      FunctionalExchange fe = (FunctionalExchange) exchange_p;
-      if (!isHideFunctionalExchangesNamesEnable(exchange_p, diagram_p)) {
+    if ((null != exchange) && (exchange instanceof FunctionalExchange)) {
+      FunctionalExchange fe = (FunctionalExchange) exchange;
+      if (!isHideFunctionalExchangesNamesEnable(exchange, diagram)) {
         return fe.getName();
       }
     }
     return centerLabel;
   }
 
-  public String getPhysicalLinkCenterLabel(EObject exchange_p, DDiagram diagram_p) {
+  public String getPhysicalLinkCenterLabel(EObject exchange, DDiagram diagram) {
     // why white space char
     // The manual refresh of the diagram does not take into account the
     // EmptySting
     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
-    if ((null != exchange_p) && (exchange_p instanceof PhysicalLink)) {
-      PhysicalLink pl = (PhysicalLink) exchange_p;
-      if (!isHidePhysicalLinksNamesEnable(exchange_p, diagram_p)) {
+    if ((null != exchange) && (exchange instanceof PhysicalLink)) {
+      PhysicalLink pl = (PhysicalLink) exchange;
+      if (!isHidePhysicalLinksNamesEnable(exchange, diagram)) {
         return pl.getName();
       }
     }
@@ -5234,119 +5423,122 @@ public class FaServices {
   /**
    * Get the Node mapping for Functional Exchange category pin
    * 
-   * @param diagram_p
+   * @param diagram
    * @return
    */
-  public NodeMapping getMappingFECategoryOutputPin(DDiagram diagram_p) {
+  public NodeMapping getMappingFECategoryOutputPin(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CSDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CLDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CPDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
-  public NodeMapping getMappingFECategoryInputPin(DDiagram diagram_p) {
+  public NodeMapping getMappingFECategoryInputPin(DDiagram diagram) {
     String mappingName = null;
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CSDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CLDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.CPDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.SAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.LAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
     }
-    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
   /**
    * Get the edge mapping for the Functional Exchange category
    * 
-   * @param diagram_p
+   * @param diagram
    * @return
    */
-  public EdgeMapping getMappingFECategory(DDiagram diagram_p) {
-    return getMappingExchangeCategory(diagram_p);
+  public EdgeMapping getMappingFECategory(DDiagram diagram) {
+    return getMappingExchangeCategory(diagram);
   }
 
   /**
    * Do a switch Functional Exchange / Category
    * 
-   * @param context_p
+   * @param context
    * @param scope
    * @param initialSelection
    * @param selectedElements
    * @return
    */
-  public EObject switchFECategories(DSemanticDecorator context_p, Collection<EObject> scope, Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
-    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context_p);
+  public EObject switchFECategories(DSemanticDecorator context, Collection<EObject> scope,
+      Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
+    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
-    return switchFECategories(content, context_p, selectedElements);
+    return switchFECategories(content, context, selectedElements);
   }
 
-  public EObject switchFECategories(DDiagramContents content_p, DSemanticDecorator context_p, Collection<EObject> selectedElements) {
+  public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
+      Collection<EObject> selectedElements) {
 
-    FaServices.getFaServices().updateFECategories(content_p);
+    FaServices.getFaServices().updateFECategories(content);
 
-    switchFEInvisibleCategories(content_p, context_p, selectedElements);
+    switchFEInvisibleCategories(content, context, selectedElements);
 
-    DDiagram currentDiagram = content_p.getDDiagram();
+    DDiagram currentDiagram = content.getDDiagram();
     Collection<DDiagramElement> sourceViews = new HashSet<DDiagramElement>();
-    if (context_p instanceof DDiagramElement) {
-      sourceViews.add((DDiagramElement) context_p);
+    if (context instanceof DDiagramElement) {
+      sourceViews.add((DDiagramElement) context);
     }
     if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABAbstractFunction(null, currentDiagram))) {
+      for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices()
+          .getMappingABAbstractFunction(null, currentDiagram))) {
         sourceViews.add(element);
       }
     }
 
-    AbstractShowHide categories = new ShowHideExchangeCategory(content_p);
-    DiagramContext context = categories.new DiagramContext();
-    if (context_p instanceof DDiagramElement) {
-      context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context_p));
+    AbstractShowHide categories = new ShowHideExchangeCategory(content);
+    DiagramContext ctx = categories.new DiagramContext();
+    if (context instanceof DDiagramElement) {
+      ctx.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context));
     }
 
     for (DDiagramElement sourceView : sourceViews) {
@@ -5356,19 +5548,20 @@ public class FaServices {
         for (EObject key : scopeSource.keySet()) {
           if (selectedElements.contains(key)) {
             for (Map.Entry<EObject, EObject> srcTarMap : scopeSource.get(key)) {
-              showFECategory(categories, context, (ExchangeCategory) key, srcTarMap.getKey(), srcTarMap.getValue(), true);
+              showFECategory(categories, ctx, (ExchangeCategory) key, srcTarMap.getKey(), srcTarMap.getValue(), true);
             }
           } else {
             for (Map.Entry<EObject, EObject> srcTarMap : scopeSource.get(key)) {
-              showFECategory(categories, context, (ExchangeCategory) key, getBestFunctionContainer(srcTarMap.getKey(), content_p),
-                  getBestFunctionContainer(srcTarMap.getValue(), content_p), false);
+              showFECategory(categories, ctx, (ExchangeCategory) key,
+                  getBestFunctionContainer(srcTarMap.getKey(), content),
+                  getBestFunctionContainer(srcTarMap.getValue(), content), false);
             }
           }
         }
       }
     }
 
-    context = categories.new DiagramContext();
+    ctx = categories.new DiagramContext();
     for (DDiagramElement sourceView : sourceViews) {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
@@ -5377,13 +5570,13 @@ public class FaServices {
           if (selectedElements.contains(key)) {
             for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
               if (exchange.getCategories().contains(key)) {
-                categories.hide(exchange, context);
+                categories.hide(exchange, ctx);
               }
             }
           } else {
             for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
               if (exchange.getCategories().contains(key)) {
-                categories.show(exchange, context);
+                categories.show(exchange, ctx);
               }
             }
           }
@@ -5391,25 +5584,27 @@ public class FaServices {
       }
     }
 
-    FaServices.getFaServices().updateFECategories(content_p);
+    FaServices.getFaServices().updateFECategories(content);
 
-    content_p.commitDeferredActions();
-    return context_p;
+    content.commitDeferredActions();
+    return context;
   }
 
   /**
    * Do a Exchange/Category switch for hidden categories
    * 
-   * @param content_p
-   * @param context_p
+   * @param content
+   * @param context
    * @param selectedElements
    * @return
    */
-  public EObject switchFEInvisibleCategories(DDiagramContents content_p, DSemanticDecorator context_p, Collection<EObject> selectedElements) {
+  public EObject switchFEInvisibleCategories(DDiagramContents content, DSemanticDecorator context,
+      Collection<EObject> selectedElements) {
 
-    DDiagram currentDiagram = content_p.getDDiagram();
+    DDiagram currentDiagram = content.getDDiagram();
     Collection<DDiagramElement> invisibleCategoryEdges = new HashSet<DDiagramElement>();
-    for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingFECategory(currentDiagram))) {
+    for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingFECategory(
+        currentDiagram))) {
       if (!element.isVisible())
         invisibleCategoryEdges.add(element);
     }
@@ -5420,30 +5615,30 @@ public class FaServices {
       EObject tarFunc = ((DDiagramElement) ((DEdge) categoryEdge).getTargetNode().eContainer()).getTarget();
 
       if (categoryObj != null && categoryObj instanceof ExchangeCategory) {
-        AbstractShowHide invCatSwitch = new ShowHideInvisibleExchangeCategory(content_p);
-        DiagramContext context = invCatSwitch.new DiagramContext();
+        AbstractShowHide invCatSwitch = new ShowHideInvisibleExchangeCategory(content);
+        DiagramContext ctx = invCatSwitch.new DiagramContext();
         if (selectedElements.contains(categoryObj)) {
-          showFECategory(invCatSwitch, context, (ExchangeCategory) categoryObj, srcFunc, tarFunc, true);
+          showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, true);
         } else
-          showFECategory(invCatSwitch, context, (ExchangeCategory) categoryObj, srcFunc, tarFunc, false);
+          showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, false);
       }
     }
 
-    content_p.commitDeferredActions();
-    return context_p;
+    content.commitDeferredActions();
+    return context;
   }
 
   /**
    * 
    * @param abstractFunction
-   * @param content_p
+   * @param content
    * @return The best container for a function, taking into account hidden functions
    */
-  public static EObject getBestFunctionContainer(EObject abstractFunction, DDiagramContents content_p) {
+  public static EObject getBestFunctionContainer(EObject abstractFunction, DDiagramContents content) {
     if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
-      if (!content_p.getDiagramElements(abstractFunction).isEmpty()) {
+      if (!content.getDiagramElements(abstractFunction).isEmpty()) {
         boolean bVisible = false;
-        for (DDiagramElement element : content_p.getDiagramElements(abstractFunction)) {
+        for (DDiagramElement element : content.getDiagramElements(abstractFunction)) {
           if (element.isVisible())
             bVisible = true;
         }
@@ -5452,7 +5647,7 @@ public class FaServices {
           return abstractFunction;
       }
       // Else, return its best container
-      DragAndDropTarget node = content_p.getBestContainer(abstractFunction);
+      DragAndDropTarget node = content.getBestContainer(abstractFunction);
       if (abstractFunction instanceof AbstractFunction) {
         if (node instanceof DDiagram) {
           return null;
@@ -5469,25 +5664,26 @@ public class FaServices {
   /**
    * Refine the state of categories (e.g. invalid category edges are removed, etc.)
    * 
-   * @param context_p
+   * @param context
    */
-  public void updateFECategories(DDiagramContents context_p) {
+  public void updateFECategories(DDiagramContents context) {
     Collection<DEdge> toRemoveEdges = new HashSet<DEdge>();
     Collection<AbstractDNode> toRemoveNodes = new HashSet<AbstractDNode>();
     Collection<AbstractDNode> toHideNodes = new HashSet<AbstractDNode>();
 
-    EdgeMapping edgeMapping = getMappingFECategory(context_p.getDDiagram());
-    NodeMapping nodeMapping = getMappingFECategoryOutputPin(context_p.getDDiagram());
+    EdgeMapping edgeMapping = getMappingFECategory(context.getDDiagram());
+    NodeMapping nodeMapping = getMappingFECategoryOutputPin(context.getDDiagram());
 
     // Retrieve all invalid edges to be removed
     if (edgeMapping != null) {
-      for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
+      for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
         if (!(element instanceof DEdge)) {
           continue;
         }
         DEdge edge = (DEdge) element;
 
-        boolean isValidEdge = isValidFECategoryEdge((ExchangeCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(), (DSemanticDecorator) edge.getTargetNode());
+        boolean isValidEdge = isValidFECategoryEdge((ExchangeCategory) element.getTarget(),
+            (DSemanticDecorator) edge.getSourceNode(), (DSemanticDecorator) edge.getTargetNode());
         if (!isValidEdge) {
           toRemoveEdges.add(edge);
         }
@@ -5496,7 +5692,7 @@ public class FaServices {
 
     // Retrieve all nodes without incoming/outgoing edges to be removed
     if (nodeMapping != null) {
-      for (DDiagramElement element : context_p.getDiagramElements(nodeMapping)) {
+      for (DDiagramElement element : context.getDiagramElements(nodeMapping)) {
         if (!(element instanceof EdgeTarget)) {
           continue;
         }
@@ -5521,9 +5717,9 @@ public class FaServices {
     }
 
     // Retrieve all nodes to be hidden or removed
-    List<NodeMapping> nodeMappings = FaServices.getFaServices().getMappingABPorts(context_p.getDDiagram());
+    List<NodeMapping> nodeMappings = FaServices.getFaServices().getMappingABPorts(context.getDDiagram());
     if (!nodeMappings.isEmpty()) {
-      Iterable<DDiagramElement> diagElements = context_p.getDiagramElements(nodeMappings);
+      Iterable<DDiagramElement> diagElements = context.getDiagramElements(nodeMappings);
       for (DDiagramElement element : diagElements) {
 
         if (!(element instanceof EdgeTarget)) {
@@ -5538,7 +5734,7 @@ public class FaServices {
           int nbHidden = 0;
           for (DEdge edge : edges) {
 
-            if (!context_p.isVisible(edge)) {
+            if (!context.isVisible(edge)) {
               if (edge.getTarget() != null) {
                 EObject target = edge.getTarget();
                 if ((target instanceof ComponentExchange) && !(((ComponentExchange) target).getCategories().isEmpty())) {
@@ -5565,7 +5761,7 @@ public class FaServices {
     }
 
     for (AbstractDNode node : toHideNodes) {
-      context_p.deferredHide(node);
+      context.deferredHide(node);
     }
 
     for (AbstractDNode node : toRemoveNodes) {
@@ -5577,12 +5773,12 @@ public class FaServices {
   /**
    * Retrieve a map<ExchangeCategory, FunctionalExchange> of available category to display from the given source view
    * 
-   * @param context_p
+   * @param context
    * @return
    */
-  public HashMapSet<EObject, EObject> getShowHideFECategoriesScope(DSemanticDecorator context_p) {
+  public HashMapSet<EObject, EObject> getShowHideFECategoriesScope(DSemanticDecorator context) {
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
-    EObject abstractFunction = context_p.getTarget();
+    EObject abstractFunction = context.getTarget();
     if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
       for (FunctionalExchange fe : FunctionExt.getOutGoingExchange((AbstractFunction) abstractFunction))
         for (ExchangeCategory value : fe.getCategories()) {
@@ -5601,53 +5797,53 @@ public class FaServices {
    * Retrieve a map of available category to display from the given source view (including those of sub-elements of the
    * source view)
    * 
-   * @param context_p
+   * @param context
    * @return
    */
-  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context_p) {
+  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context) {
     HashMapSet<EObject, Map.Entry<EObject, EObject>> result = new HashMapSet<EObject, Map.Entry<EObject, EObject>>();
-    EObject abstractFunction = context_p.getTarget();
+    EObject abstractFunction = context.getTarget();
 
     if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
       for (FunctionalExchange fe : FunctionExt.getAllOutgoingExchanges((AbstractFunction) abstractFunction))
         for (ExchangeCategory value : fe.getCategories()) {
-          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(FunctionExt.getIncomingAbstractFunction(fe),
-              FunctionExt.getOutGoingAbstractFunction(fe));
+          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(
+              FunctionExt.getIncomingAbstractFunction(fe), FunctionExt.getOutGoingAbstractFunction(fe));
           result.put(value, srcTar);
         }
 
       for (FunctionalExchange fe : FunctionExt.getAllIncomingExchanges((AbstractFunction) abstractFunction))
         for (ExchangeCategory value : fe.getCategories()) {
-          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(FunctionExt.getIncomingAbstractFunction(fe),
-              FunctionExt.getOutGoingAbstractFunction(fe));
+          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(
+              FunctionExt.getIncomingAbstractFunction(fe), FunctionExt.getOutGoingAbstractFunction(fe));
           result.put(value, srcTar);
         }
     }
     return result;
   }
 
-  public Collection<EObject> getSwitchFECategoriesScope(DSemanticDecorator context_p) {
-    if (context_p instanceof DDiagram) {
+  public Collection<EObject> getSwitchFECategoriesScope(DSemanticDecorator context) {
+    if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
-      DDiagramContents context = new DDiagramContents((DDiagram) context_p);
+      DDiagramContents ctx = new DDiagramContents((DDiagram) context);
 
-      EdgeMapping dfFEMapping = getMappingDFFunctionalExchange(context.getDDiagram());
-      EdgeMapping abFEMapping = getMappingABFunctionalExchange(context.getDDiagram());
+      EdgeMapping dfFEMapping = getMappingDFFunctionalExchange(ctx.getDDiagram());
+      EdgeMapping abFEMapping = getMappingABFunctionalExchange(ctx.getDDiagram());
 
-      for (DDiagramElement element : context.getDiagramElements(dfFEMapping)) {
+      for (DDiagramElement element : ctx.getDiagramElements(dfFEMapping)) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof FunctionalExchange)) {
           values.addAll(((FunctionalExchange) element.getTarget()).getCategories());
         }
       }
 
-      for (DDiagramElement element : context.getDiagramElements(abFEMapping)) {
+      for (DDiagramElement element : ctx.getDiagramElements(abFEMapping)) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof FunctionalExchange)) {
           values.addAll(((FunctionalExchange) element.getTarget()).getCategories());
         }
       }
       return values;
     }
-    HashMapSet<EObject, EObject> scope = getShowHideFECategoriesScope(context_p);
+    HashMapSet<EObject, EObject> scope = getShowHideFECategoriesScope(context);
     return scope.keySet();
 
   }
@@ -5655,62 +5851,63 @@ public class FaServices {
   /**
    * Retrieve all Functional Exchange for the related Category
    * 
-   * @param element_p
+   * @param element
    * @return
    */
-  public Collection<FunctionalExchange> getRelatedFunctionalExchanges(EObject element_p) {
-    if (element_p instanceof ExchangeCategory) {
-      return ((ExchangeCategory) element_p).getExchanges();
+  public Collection<FunctionalExchange> getRelatedFunctionalExchanges(EObject element) {
+    if (element instanceof ExchangeCategory) {
+      return ((ExchangeCategory) element).getExchanges();
 
     }
     return Collections.emptyList();
   }
 
-  public boolean isValidFECategoryEdge(ExchangeCategory category_p, DSemanticDecorator source_p, DSemanticDecorator target_p) {
+  public boolean isValidFECategoryEdge(ExchangeCategory category, DSemanticDecorator source, DSemanticDecorator target) {
     return true;
   }
 
   /**
    * Show/Hide a FE category from the source to the target
    * 
-   * @param categories_p
-   * @param context_p
-   * @param key_p
-   * @param source_p
-   * @param target_p
-   * @param b_p
+   * @param categories
+   * @param context
+   * @param key
+   * @param source
+   * @param target
+   * @param b
    */
-  private void showFECategory(AbstractShowHide categories_p, DiagramContext context_p, ExchangeCategory key_p, EObject source_p, EObject target_p, boolean b_p) {
+  private void showFECategory(AbstractShowHide categories, DiagramContext context, ExchangeCategory key,
+      EObject source, EObject target, boolean b) {
 
-    context_p.setVariable(ShowHideABComponent.SOURCE_PARTS, Collections.singletonList(source_p));
-    context_p.setVariable(ShowHideABComponent.TARGET_PARTS, Collections.singletonList(target_p));
+    context.setVariable(ShowHideABComponent.SOURCE_PARTS, Collections.singletonList(source));
+    context.setVariable(ShowHideABComponent.TARGET_PARTS, Collections.singletonList(target));
 
-    if (b_p) {
-      categories_p.show(key_p, context_p);
+    if (b) {
+      categories.show(key, context);
     } else {
-      categories_p.hide(key_p, context_p);
+      categories.hide(key, context);
     }
   }
 
   /**
    * Show all FE categories in the scope
    * 
-   * @param context_p
+   * @param context
    * @param scope
    * @param initialSelection
    * @param selectedElements
    * @return
    */
-  public EObject showFECategories(DSemanticDecorator context_p, HashMapSet<EObject, EObject> scope, HashMapSet<EObject, EObject> initialSelection,
-      final HashMapSet<EObject, EObject> selectedElements) {
-    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context_p);
+  public EObject showFECategories(DSemanticDecorator context, HashMapSet<EObject, EObject> scope,
+      HashMapSet<EObject, EObject> initialSelection, final HashMapSet<EObject, EObject> selectedElements) {
+    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
-    EObject source = context_p.getTarget();
+    EObject source = context.getTarget();
 
     AbstractShowHide shService = new ShowHideExchangeCategory(content);
-    DiagramContext context = shService.new DiagramContext();
-    if (context_p instanceof DDiagramElement) {
-      context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context_p));
+    DiagramContext ctx = shService.new DiagramContext();
+    if (context instanceof DDiagramElement) {
+      ctx.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context));
     }
 
     for (EObject key : scope.keySet()) {
@@ -5719,8 +5916,8 @@ public class FaServices {
         // categories, hide it
         if (!selectedElements.containsKey(key) || !selectedElements.get(key).contains(value)) {
           if (initialSelection.containsKey(key) && initialSelection.get(key).contains(value)) {
-            showFECategory(shService, context, (ExchangeCategory) key, source, value, false);
-            showFECategory(shService, context, (ExchangeCategory) key, value, source, false);
+            showFECategory(shService, ctx, (ExchangeCategory) key, source, value, false);
+            showFECategory(shService, ctx, (ExchangeCategory) key, value, source, false);
           }
         }
       }
@@ -5728,67 +5925,62 @@ public class FaServices {
 
     for (EObject key : selectedElements.keySet()) {
       for (EObject target : selectedElements.get(key)) {
-        showFECategory(shService, context, (ExchangeCategory) key, source, target, true);
-        showFECategory(shService, context, (ExchangeCategory) key, target, source, true);
+        showFECategory(shService, ctx, (ExchangeCategory) key, source, target, true);
+        showFECategory(shService, ctx, (ExchangeCategory) key, target, source, true);
       }
 
     }
 
     content.commitDeferredActions();
 
-    return context_p;
+    return context;
   }
 
   /**
    * Retrieve the initial selection of displayed category for the given source view
    * 
-   * @param context_p
+   * @param context
    * @return
    */
-  public Collection<EObject> getSwitchFECategoriesInitialSelection(DSemanticDecorator context_p) {
-    if (context_p instanceof DDiagram) {
+  public Collection<EObject> getSwitchFECategoriesInitialSelection(DSemanticDecorator context) {
+    if (context instanceof DDiagram) {
       HashSet<EObject> values = new HashSet<EObject>();
-      DDiagramContents context = new DDiagramContents((DDiagram) context_p);
-      for (DDiagramElement element : context.getDiagramElements(getMappingExchangeCategory(context.getDDiagram()))) {
+      DDiagramContents ctx = new DDiagramContents((DDiagram) context);
+      for (DDiagramElement element : ctx.getDiagramElements(getMappingExchangeCategory(ctx.getDDiagram()))) {
         if ((element.getTarget() != null) && (element.getTarget() instanceof CapellaElement)) {
           values.add(element.getTarget());
         }
       }
       return values;
     }
-    HashMapSet<EObject, EObject> result = getShowHideFECategoriesInitialSelection(context_p);
+    HashMapSet<EObject, EObject> result = getShowHideFECategoriesInitialSelection(context);
     return result.keySet();
   }
 
   /**
    * Retrieve the initial selection of displayed category for the given source view
    * 
-   * @param context_p
+   * @param context
    * @return
    */
-  public HashMapSet<EObject, EObject> getShowHideFECategoriesInitialSelection(DSemanticDecorator context_p) {
-    HashMapSet<EObject, EObject> scope = getShowHideFECategoriesScope(context_p);
+  public HashMapSet<EObject, EObject> getShowHideFECategoriesInitialSelection(DSemanticDecorator context) {
+    HashMapSet<EObject, EObject> scope = getShowHideFECategoriesScope(context);
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(context_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(context);
     EdgeMapping edgeMapping = getMappingExchangeCategory(diagram);
-    DDiagramContents context = new DDiagramContents(diagram);
-
-    DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(context_p);
+    DDiagramContents content = new DDiagramContents(diagram);
+    // DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(context);
 
     for (EObject key : scope.keySet()) {
       for (EObject targetPart : scope.get(key)) {
-        for (DDiagramElement elementView : context.getDiagramElements(key, edgeMapping)) {
+        for (DDiagramElement elementView : content.getDiagramElements(key, edgeMapping)) {
           if (elementView instanceof DEdge) {
-            DEdge ve = (DEdge) elementView;
-
             result.put(key, targetPart);
-
           }
         }
       }
     }
     return result;
   }
-
 }

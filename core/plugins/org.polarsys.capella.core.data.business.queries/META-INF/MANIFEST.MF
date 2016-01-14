@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.business.queries;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences;visibility:=reexport,
@@ -26,7 +26,18 @@ Export-Package: org.polarsys.capella.core.business.abstractqueries,
  org.polarsys.capella.core.business.queries.oa,
  org.polarsys.capella.core.business.queries.pa,
  org.polarsys.capella.core.business.queries.preferences,
- org.polarsys.capella.core.business.queries.queries.capellacommon
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.polarsys.capella.core.business.queries.queries.capellacommon,
+ org.polarsys.capella.core.business.queries.queries.capellacore,
+ org.polarsys.capella.core.business.queries.queries.capellamodeller,
+ org.polarsys.capella.core.business.queries.queries.cs,
+ org.polarsys.capella.core.business.queries.queries.ctx,
+ org.polarsys.capella.core.business.queries.queries.epbs,
+ org.polarsys.capella.core.business.queries.queries.fa,
+ org.polarsys.capella.core.business.queries.queries.information,
+ org.polarsys.capella.core.business.queries.queries.interaction,
+ org.polarsys.capella.core.business.queries.queries.la,
+ org.polarsys.capella.core.business.queries.queries.oa,
+ org.polarsys.capella.core.business.queries.queries.pa
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Activator: org.polarsys.capella.core.business.queries.BusinessQueriesPlugin
 Bundle-Localization: plugin

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,10 +12,15 @@ package org.polarsys.capella.core.data.interaction.impl;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IAdapterManager;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -25,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.NamingRule;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
@@ -189,8 +195,8 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 
 	public AbstractCapability getAbstractCapability() {
 
-		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY) return null;
-		return (AbstractCapability)eContainer();
+		AbstractCapability abstractCapability = basicGetAbstractCapability();
+		return abstractCapability != null && abstractCapability.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)abstractCapability) : abstractCapability;
 	}
 
 
@@ -202,53 +208,38 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 
 	public AbstractCapability basicGetAbstractCapability() {
 
-		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY) return null;
-		return (AbstractCapability)eInternalContainer();
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY, annotation);
+		
+		try {
+			return (AbstractCapability) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
 	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetAbstractCapability(AbstractCapability newAbstractCapability, NotificationChain msgs) {
-
-		msgs = eBasicSetContainer((InternalEObject)newAbstractCapability, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY, msgs);
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setAbstractCapability(AbstractCapability newAbstractCapability) {
-
-		if (newAbstractCapability != eInternalContainer() || (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY && newAbstractCapability != null)) {
-			if (EcoreUtil.isAncestor(this, newAbstractCapability))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newAbstractCapability != null)
-				msgs = ((InternalEObject)newAbstractCapability).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS, AbstractCapability.class, msgs);
-			msgs = basicSetAbstractCapability(newAbstractCapability, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY, newAbstractCapability, newAbstractCapability));
-
-	}
-
-
-
 
 
 
@@ -277,10 +268,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetAbstractCapability((AbstractCapability)otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExtendLinks()).basicAdd(otherEnd, msgs);
 		}
@@ -297,26 +284,10 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
-				return basicSetAbstractCapability(null, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
 				return ((InternalEList<?>)getExtendLinks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
-				return eInternalContainer().eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS, AbstractCapability.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -362,15 +333,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 				getNamingRules().clear();
 				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractCapability) {
-				// end-extension-code
-					setAbstractCapability((AbstractCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
 				getExtendLinks().clear();
 				getExtendLinks().addAll((Collection<? extends AbstractCapabilityExtend>)newValue);
@@ -393,9 +355,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				getNamingRules().clear();
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
-				setAbstractCapability((AbstractCapability)null);
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
 				getExtendLinks().clear();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -108,8 +108,8 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
 
     CapellaElement element;
 
-    public ExchangeItemSelectionListener(CapellaElement component_p) {
-      element = component_p;
+    public ExchangeItemSelectionListener(CapellaElement component) {
+      this.element = component;
     }
 
     protected List<CapellaElement> getAvailableElements() {
@@ -134,7 +134,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
      */
     @Override
     @SuppressWarnings("synthetic-access")
-    public void widgetSelected(SelectionEvent e_p) {
+    public void widgetSelected(SelectionEvent e) {
       List<? extends EObject> availableElements = getAvailableElements();
       List<? extends EObject> currentElements = getCurrentElements();
       TransferTreeListDialog dialog =
@@ -166,16 +166,16 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     private Text _funtionToClear;
     private ListenerType _type;
 
-    public FunctionClearListener(Text functionName_p, ListenerType type_p) {
-      _funtionToClear = functionName_p;
-      _type = type_p;
+    public FunctionClearListener(Text functionName, ListenerType type) {
+      _funtionToClear = functionName;
+      _type = type;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void widgetSelected(SelectionEvent e_p) {
+    public void widgetSelected(SelectionEvent e) {
       _funtionToClear.setData(null);
       _funtionToClear.setText(""); //$NON-NLS-1$
       // clears the cache if any selected function was stored
@@ -191,14 +191,14 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     private ListenerType _type;
 
     /**
-     * @param sourceFunctionName_p
-     * @param function_p
+     * @param sourceFunctionName
+     * @param function
      * @param listener_type
      */
-    public FunctionSelectionListener(Text sourceText_p, FunctionPkg function_p, Component component_p, ListenerType listener_type) {
-      _text = sourceText_p;
-      _function = function_p;
-      _component = component_p;
+    public FunctionSelectionListener(Text sourceText, FunctionPkg function, Component component, ListenerType listener_type) {
+      _text = sourceText;
+      _function = function;
+      _component = component;
       _type = listener_type;
     }
 
@@ -225,12 +225,12 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
 
     /**
      * returns a list of available functions. These are the functions not yet implemented, further these implemented by _component
-     * @param functionPkg_p
+     * @param functionPkg
      * @return
      */
-    private List<? extends EObject> getAccessibleFunctions(FunctionPkg functionPkg_p) {
+    private List<? extends EObject> getAccessibleFunctions(FunctionPkg functionPkg) {
       List<AbstractFunction> result = new ArrayList<AbstractFunction>();
-      TreeIterator<EObject> it = functionPkg_p.eAllContents();
+      TreeIterator<EObject> it = functionPkg.eAllContents();
       while (it.hasNext()) {
         EObject obj = it.next();
         if (obj instanceof AbstractFunction) {
@@ -271,7 +271,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
      */
     @SuppressWarnings("synthetic-access")
     @Override
-    public void widgetSelected(SelectionEvent e_p) {
+    public void widgetSelected(SelectionEvent e) {
       Collection<? extends EObject> functions = getAccessibleFunctions(_function);
       SelectElementsDialog selectFunctionDialog =
           new SelectElementsDialog(getParentShell(), TransactionHelper.getEditingDomain(functions), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
@@ -317,28 +317,28 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
   private InstanceRole _sourceIR;
 
   /**
-   * @param parentShell_p
-   * @param editingDomain_p
-   * @param adapterFactory_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param displayedElements_p
-   * @param message_p
-   * @param sourceIR_p
-   * @param targetIR_p
-   * @param creationType_p
+   * @param parentShell
+   * @param editingDomain
+   * @param adapterFactory
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param displayedElements
+   * @param message
+   * @param sourceIR
+   * @param targetIR
+   * @param creationType
    */
-  public SelectFunctionalExchangeDialog(Shell parentShell_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p, String dialogTitle_p,
-      String dialogMessage_p, List<? extends EObject> displayedElements_p, SequenceMessage message_p, InstanceRole sourceIR_p, InstanceRole targetIR_p,
-      DataflowDialogCreationType creationType_p) {
-    super(parentShell_p, new CapellaTransfertViewerLabelProvider(), dialogTitle_p, dialogMessage_p, displayedElements_p, false, null,
+  public SelectFunctionalExchangeDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle,
+      String dialogMessage, List<? extends EObject> displayedElements, SequenceMessage message, InstanceRole sourceIR, InstanceRole targetIR,
+      DataflowDialogCreationType creationType) {
+    super(parentShell, new CapellaTransfertViewerLabelProvider(), dialogTitle, dialogMessage, displayedElements, false, null,
           AbstractTreeViewer.ALL_LEVELS);
-    _sequenceMessage = message_p;
-    _displayedElements = displayedElements_p;
-    _creationType = creationType_p;
+    _sequenceMessage = message;
+    _displayedElements = displayedElements;
+    _creationType = creationType;
     _allocatedExchangeItems = new ArrayList<EObject>();
-    _sourceIR = sourceIR_p;
-    _targetIR = targetIR_p;
+    _sourceIR = sourceIR;
+    _targetIR = targetIR;
   }
 
   /**
@@ -350,7 +350,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
        * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
        */
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
+      public void widgetSelected(SelectionEvent event) {
         updateWindow();
       }
     };
@@ -448,7 +448,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
       /**
        * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
        */
-      public void modifyText(ModifyEvent e_p) {
+      public void modifyText(ModifyEvent e) {
         updateButtons(null);
       }
     };
@@ -501,8 +501,8 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     }
   }
 
-  private FunctionPkg getFunctionPkgFromInstanceRole(InstanceRole ir_p) {
-    EObject obj = ir_p;
+  private FunctionPkg getFunctionPkgFromInstanceRole(InstanceRole ir) {
+    EObject obj = ir;
     while (!(obj instanceof BlockArchitecture)) {
       obj = obj.eContainer();
     }
@@ -561,7 +561,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
       /**
        * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
        */
-      public void modifyText(ModifyEvent e_p) {
+      public void modifyText(ModifyEvent e) {
         updateButtons(null);
       }
     };
@@ -579,9 +579,9 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
   }
 
   @Override
-  protected void doCreateDialogArea(Composite parent_p) {
+  protected void doCreateDialogArea(Composite parent) {
     if (!isLostFoundContext()) {
-      final Group headerGroup = new Group(parent_p, SWT.NONE);
+      final Group headerGroup = new Group(parent, SWT.NONE);
       if ((_creationType == DataflowDialogCreationType.COMPONENT_EXCHANGE) || (_creationType == DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO)) {
         createSimpleHeaderEditPart(headerGroup);
       } else {
@@ -589,7 +589,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
       }
       disableDirectCreationForNode(headerGroup);
     }
-    super.doCreateDialogArea(parent_p);
+    super.doCreateDialogArea(parent);
 
     // Add a selection handler to all the selection of an existing
     // interface.
@@ -605,64 +605,64 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
   }
 
   /**
-   * @param sourceFunctionName_p
+   * @param sourceFunctionName
    * @return
    */
-  private AbstractFunction ensureFunction(Text sourceFunctionName_p, AbstractFunction parent_p) {
-    if (sourceFunctionName_p.getData() != null) {
-      return (AbstractFunction) sourceFunctionName_p.getData();
+  private AbstractFunction ensureFunction(Text sourceFunctionName, AbstractFunction parent) {
+    if (sourceFunctionName.getData() != null) {
+      return (AbstractFunction) sourceFunctionName.getData();
     }
     AbstractFunction result = null;
 
-    if (parent_p instanceof SystemFunction) {
+    if (parent instanceof SystemFunction) {
       result = CtxFactory.eINSTANCE.createSystemFunction();
-    } else if (parent_p instanceof LogicalFunction) {
+    } else if (parent instanceof LogicalFunction) {
       result = LaFactory.eINSTANCE.createLogicalFunction();
-    } else if (parent_p instanceof PhysicalFunction) {
+    } else if (parent instanceof PhysicalFunction) {
       result = PaFactory.eINSTANCE.createPhysicalFunction();
-    } else if (parent_p instanceof OperationalActivity) {
+    } else if (parent instanceof OperationalActivity) {
       result = OaFactory.eINSTANCE.createOperationalActivity();
     }
-    parent_p.getOwnedFunctions().add(result);
+    parent.getOwnedFunctions().add(result);
     CapellaElementExt.creationService(result);
-    result.setName(sourceFunctionName_p.getText());
+    result.setName(sourceFunctionName.getText());
     return result;
   }
 
   /**
-   * @param srcComponent_p
-   * @param srcFunc_p
+   * @param srcComponent
+   * @param srcFunc
    */
-  private void ensureFunctionRealization(Component component_p, AbstractFunction func_p) {
+  private void ensureFunctionRealization(Component component, AbstractFunction func) {
     boolean found = false;
-    for (ComponentFunctionalAllocation alloc : component_p.getFunctionalAllocations()) {
-      if (alloc.getFunction() == func_p) {
+    for (ComponentFunctionalAllocation alloc : component.getFunctionalAllocations()) {
+      if (alloc.getFunction() == func) {
         found = true;
       }
     }
     if (!found) {
       ComponentFunctionalAllocation cfa = FaFactory.eINSTANCE.createComponentFunctionalAllocation();
-      component_p.getOwnedFunctionalAllocation().add(cfa);
-      cfa.setTargetElement(func_p);
-      cfa.setSourceElement(component_p);
+      component.getOwnedFunctionalAllocation().add(cfa);
+      cfa.setTargetElement(func);
+      cfa.setSourceElement(component);
       CapellaElementExt.creationService(cfa);
     }
   }
 
   /**
-   * @param sourceFunctionName_p
-   * @param targetFunctionName_p
-   * @param functionalExchangeText_p
+   * @param sourceFunctionName
+   * @param targetFunctionName
+   * @param functionalExchangeText
    * @return
    */
-  private FunctionalExchange ensureFunctions(Text sourceFunctionName_p, Text targetFunctionName_p, Text functionalExchangeText_p) {
+  private FunctionalExchange ensureFunctions(Text sourceFunctionName, Text targetFunctionName, Text functionalExchangeText) {
     AbstractFunction root = BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(_sourceIR != null ? _sourceIR : _targetIR));
 
-    AbstractFunction srcFunc = ensureFunction(sourceFunctionName_p, root);
-    AbstractFunction tgtFunc = ensureFunction(targetFunctionName_p, root);
+    AbstractFunction srcFunc = ensureFunction(sourceFunctionName, root);
+    AbstractFunction tgtFunc = ensureFunction(targetFunctionName, root);
 
     FunctionalExchange fe = FunctionalExchangeExt.createFunctionalExchange(srcFunc, tgtFunc);
-    fe.setName(functionalExchangeText_p.getText());
+    fe.setName(functionalExchangeText.getText());
 
     // do not forget the functionRealization on components.
     if (_sourceIR != null) {
@@ -687,18 +687,18 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     return fe;
   }
 
-  private void ensureFunctionRealization(Role role_p, AbstractFunction func_p) {
+  private void ensureFunctionRealization(Role role, AbstractFunction func) {
     boolean found = false;
-    for (ActivityAllocation alloc : role_p.getOwnedActivityAllocations()) {
-      if (alloc.getActivity() == func_p) {
+    for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
+      if (alloc.getActivity() == func) {
         found = true;
       }
     }
     if (!found) {
       ActivityAllocation cfa = OaFactory.eINSTANCE.createActivityAllocation();
-      role_p.getOwnedActivityAllocations().add(cfa);
-      cfa.setTargetElement(func_p);
-      cfa.setSourceElement(role_p);
+      role.getOwnedActivityAllocations().add(cfa);
+      cfa.setTargetElement(func);
+      cfa.setSourceElement(role);
       CapellaElementExt.creationService(cfa);
     }
 
@@ -780,7 +780,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
   }
 
   @Override
-  protected boolean isOkToClose(ISelection selection_p) {
+  protected boolean isOkToClose(ISelection selection) {
     if (createNewExchangeButton == null) {
       return (getViewer().getSelection() != null) && !getViewer().getSelection().isEmpty();
     }
@@ -788,7 +788,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     // If not checked, or no selection of exchangeItem in the list, the
     // end-user has selected an existing allocation.
     if ((!createNewExchangeButton.getSelection()) && (getViewer().getSelection() != null) && !getViewer().getSelection().isEmpty()) {
-      return super.isOkToClose(selection_p);
+      return super.isOkToClose(selection);
     }
     if ((_creationType == DataflowDialogCreationType.COMPONENT_EXCHANGE) || (_creationType == DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO)) {
       return !functionalExchangeText.getText().equals(ICommonConstants.EMPTY_STRING);
@@ -806,12 +806,12 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
    * Save selected exchange items into the given object
    */
   @SuppressWarnings("unchecked")
-  private void saveExchangeItems(EObject object_p) {
-    EReference reference = getExchangeItemReference(object_p.eClass());
+  private void saveExchangeItems(EObject object) {
+    EReference reference = getExchangeItemReference(object.eClass());
 
     if (_allocatedExchangeItems != null) {
       if ((reference != null) && reference.isMany()) {
-        List<EObject> value = ((List<EObject>) object_p.eGet(reference));
+        List<EObject> value = ((List<EObject>) object.eGet(reference));
         for (EObject item : new ArrayList<EObject>(value)) {
           if (!_allocatedExchangeItems.contains(item)) {
             value.remove(item);
@@ -828,14 +828,14 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
 
   @SuppressWarnings("unchecked")
   @Override
-  public void updateButtons(ISelection selection_p) {
-    super.updateButtons(selection_p);
+  public void updateButtons(ISelection selection) {
+    super.updateButtons(selection);
 
     // Update the exchange item list according to the selection
     List<EObject> exchangeItems = new ArrayList<EObject>();
-    if (selection_p != null) {
-      if (selection_p instanceof TreeSelection) {
-        Object element = ((TreeSelection) selection_p).getFirstElement();
+    if (selection != null) {
+      if (selection instanceof TreeSelection) {
+        Object element = ((TreeSelection) selection).getFirstElement();
         if ((element != null) && (element instanceof EObject)) {
           EReference reference = getExchangeItemReference(((EObject) element).eClass());
           if ((reference != null) && reference.isMany() && EcoreUtil2.isEqualOrSuperClass(reference.getEContainingClass(), ((EObject) element).eClass())) {
@@ -850,9 +850,9 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
   /**
    * Update temporary stored list of exchange item according to the given list and update the text of exchange item textbox
    */
-  private void updateExchangeItems(List<EObject> resultObjects_p) {
-    if (resultObjects_p != null) {
-      _allocatedExchangeItems = resultObjects_p;
+  private void updateExchangeItems(List<EObject> resultObjects) {
+    if (resultObjects != null) {
+      _allocatedExchangeItems = resultObjects;
 
       String textDescription = ICommonConstants.EMPTY_STRING;
       for (int i = 0; i < (_allocatedExchangeItems.size() - 1); i++) {

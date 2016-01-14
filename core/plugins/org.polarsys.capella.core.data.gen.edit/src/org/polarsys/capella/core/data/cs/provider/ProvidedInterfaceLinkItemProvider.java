@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class ProvidedInterfaceLinkItemProvider
 			// Process CsPackage.Literals.PROVIDED_INTERFACE_LINK__INTERFACE
 			if (interfacePropertyDescriptor != null) {
 				Object interfaceValue = eObject.eGet(CsPackage.Literals.PROVIDED_INTERFACE_LINK__INTERFACE, true);
-				if (interfaceValue != null && interfaceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) interfaceValue)) {
+				if (interfaceValue != null && interfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) interfaceValue)) {
 					itemPropertyDescriptors.remove(interfacePropertyDescriptor);
 				} else if (interfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.PROVIDED_INTERFACE_LINK__INTERFACE) != null) {
 					itemPropertyDescriptors.remove(interfacePropertyDescriptor);				  					

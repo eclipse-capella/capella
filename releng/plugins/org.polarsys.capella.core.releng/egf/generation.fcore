@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
 <fcore:FactoryComponent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
     xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
     xmlns:jetpattern="http://www.eclipse.org/egf/1.0.0/jetpattern" xmlns:pattern="http://www.eclipse.org/egf/1.0.0/pattern"
@@ -50,7 +60,7 @@
         <elements xmi:id="_jTm0MfPKEeSU3eQEoBs7gw" name="build.properties" superPattern="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_IfGS0I6XEd-e7viTqNBNrA"
             headerMethod="#_jTm0M_PKEeSU3eQEoBs7gw" conditionMethod="#_jTm0NfPKEeSU3eQEoBs7gw"
             initMethod="#_jTm0NPPKEeSU3eQEoBs7gw" footerMethod="#_jTm0N_PKEeSU3eQEoBs7gw">
-          <nature xmi:type="jetpattern:JetNature" xmi:id="_jTm0MvPKEeSU3eQEoBs7gw" 
+          <nature xmi:type="jetpattern:JetNature" xmi:id="_jTm0MvPKEeSU3eQEoBs7gw"
               name="JET"/>
           <methods xmi:id="_jTm0M_PKEeSU3eQEoBs7gw" name="header" patternFilePath="templates/pattern._jTm0MfPKEeSU3eQEoBs7gw/method._jTm0M_PKEeSU3eQEoBs7gw.pt"/>
           <methods xmi:id="_jTm0NPPKEeSU3eQEoBs7gw" name="init" patternFilePath="templates/pattern._jTm0MfPKEeSU3eQEoBs7gw/method._jTm0NPPKEeSU3eQEoBs7gw.pt"/>

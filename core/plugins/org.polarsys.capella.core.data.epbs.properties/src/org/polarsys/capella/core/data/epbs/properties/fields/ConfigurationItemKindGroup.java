@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,21 +35,21 @@ public class ConfigurationItemKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public ConfigurationItemKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("ConfigurationItemKind.Label"), 4); //$NON-NLS-1$
+  public ConfigurationItemKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("ConfigurationItemKind.Label"), 4); //$NON-NLS-1$
 
-    _ciKindBtnUnset = createButton(ConfigurationItemKind.UNSET, enabled_p);
-    _ciKindBtnCOTSCI = createButton(ConfigurationItemKind.COTSCI, enabled_p);
-    _ciKindBtnCSCI = createButton(ConfigurationItemKind.CSCI, enabled_p);
-    _ciKindBtnHWCI = createButton(ConfigurationItemKind.HWCI, enabled_p);
-    _ciKindBtnInterfaceCI = createButton(ConfigurationItemKind.INTERFACE_CI, enabled_p);
-    _ciKindBtnNDICI = createButton(ConfigurationItemKind.NDICI, enabled_p);
-    _ciKindBtnPrimeItemCI = createButton(ConfigurationItemKind.PRIME_ITEM_CI, enabled_p);
-    _ciKindBtnSystemCI = createButton(ConfigurationItemKind.SYSTEM_CI, enabled_p);
+    _ciKindBtnUnset = createButton(ConfigurationItemKind.UNSET, enabled);
+    _ciKindBtnCOTSCI = createButton(ConfigurationItemKind.COTSCI, enabled);
+    _ciKindBtnCSCI = createButton(ConfigurationItemKind.CSCI, enabled);
+    _ciKindBtnHWCI = createButton(ConfigurationItemKind.HWCI, enabled);
+    _ciKindBtnInterfaceCI = createButton(ConfigurationItemKind.INTERFACE_CI, enabled);
+    _ciKindBtnNDICI = createButton(ConfigurationItemKind.NDICI, enabled);
+    _ciKindBtnPrimeItemCI = createButton(ConfigurationItemKind.PRIME_ITEM_CI, enabled);
+    _ciKindBtnSystemCI = createButton(ConfigurationItemKind.SYSTEM_CI, enabled);
   }
 
   /**

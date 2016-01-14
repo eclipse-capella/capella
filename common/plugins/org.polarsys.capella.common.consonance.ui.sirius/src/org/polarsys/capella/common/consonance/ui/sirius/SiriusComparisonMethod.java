@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -95,6 +95,7 @@ public class SiriusComparisonMethod extends GMFComparisonMethod {
       case 0:
         // No session found: use new editing domain
         result = createEditingDomain();
+        _isDedicatedEditingDomain = true;
         break;
       case 1:
         // One session found: use its editing domain
@@ -122,7 +123,7 @@ public class SiriusComparisonMethod extends GMFComparisonMethod {
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.gmf.GmfComparisonSpecification#createDiffPolicy()
+   * @see org.eclipse.emf.diffmerge.ui.gmf.GMFComparisonMethod#createDiffPolicy()
    */
   @Override
   protected IDiffPolicy createDiffPolicy() {

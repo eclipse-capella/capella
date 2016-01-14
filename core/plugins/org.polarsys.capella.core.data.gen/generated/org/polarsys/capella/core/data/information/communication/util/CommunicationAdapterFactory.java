@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,14 +17,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.behavior.AbstractSignal;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Feature;
@@ -40,7 +38,6 @@ import org.polarsys.capella.core.data.information.MultiplicityElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
-import org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.information.communication.Message;
@@ -145,10 +142,6 @@ public class CommunicationAdapterFactory extends AdapterFactoryImpl {
 				return createCommunicationLinkExchangerAdapter();
 			}
 			@Override
-			public Adapter caseCommunicationLinkAllocation(CommunicationLinkAllocation object) {
-				return createCommunicationLinkAllocationAdapter();
-			}
-			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
@@ -247,14 +240,6 @@ public class CommunicationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAbstractInstance(AbstractInstance object) {
 				return createAbstractInstanceAdapter();
-			}
-			@Override
-			public Adapter caseAbstractTrace(AbstractTrace object) {
-				return createAbstractTraceAdapter();
-			}
-			@Override
-			public Adapter caseAllocation(Allocation object) {
-				return createAllocationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -399,20 +384,6 @@ public class CommunicationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCommunicationLinkExchangerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation <em>Link Allocation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation
-	 * @generated
-	 */
-	public Adapter createCommunicationLinkAllocationAdapter() {
 		return null;
 	}
 
@@ -763,34 +734,6 @@ public class CommunicationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractInstanceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.AbstractTrace <em>Abstract Trace</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.common.data.modellingcore.AbstractTrace
-	 * @generated
-	 */
-	public Adapter createAbstractTraceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Allocation <em>Allocation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.Allocation
-	 * @generated
-	 */
-	public Adapter createAllocationAdapter() {
 		return null;
 	}
 

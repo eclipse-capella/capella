@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,13 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItemElement#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItemElement#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItemElement#isComposite <em>Composite</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItemElement#getReferencedProperties <em>Referenced Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemElement()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a part of a structured exchange item\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical, epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,12 +37,12 @@ public class SelectInvokedOperationController {
   protected SelectInvokedOperationModel model;
   protected SelectInvokedOperationView view;
 
-  public SelectInvokedOperationController(SelectInvokedOperationModel model_p) {
-    this.model = model_p;
+  public SelectInvokedOperationController(SelectInvokedOperationModel model) {
+    this.model = model;
   }
 
-  public void selectionHasChanged(ISelection selection_p) {
-    Object selectedElement = (selection_p == null) || selection_p.isEmpty() ? null : ((IStructuredSelection) selection_p).getFirstElement();
+  public void selectionHasChanged(ISelection selection) {
+    Object selectedElement = (selection == null) || selection.isEmpty() ? null : ((IStructuredSelection) selection).getFirstElement();
     if (selectedElement instanceof AbstractCommunication) {
       model.setSelectedElement((AbstractCommunication) selectedElement);
     } else {
@@ -51,13 +51,13 @@ public class SelectInvokedOperationController {
     updateWindow();
   }
 
-  protected void initControlOnView(SelectInvokedOperationView view_p) {
-    this.view = view_p;
+  protected void initControlOnView(SelectInvokedOperationView vw) {
+    this.view = vw;
     // initialize controls ...
     // ... for createSequenceMessageKind_area
     view.synchronousRadioButton.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
+      public void widgetSelected(SelectionEvent event) {
         model.setMessageKind(MessageKind.SYNCHRONOUS_CALL);
         if (model.doesElementMustBeCreated()) {
           updateRadioButtons();
@@ -68,7 +68,7 @@ public class SelectInvokedOperationController {
     });
     view.asynchronousRadioButton.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
+      public void widgetSelected(SelectionEvent event) {
         model.setMessageKind(MessageKind.ASYNCHRONOUS_CALL);
         if (model.doesElementMustBeCreated()) {
           updateRadioButtons();
@@ -80,8 +80,8 @@ public class SelectInvokedOperationController {
     // ... for createElementCreation_area
     view.createElementButton.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        boolean elementCreation = ((Button) event_p.widget).getSelection();
+      public void widgetSelected(SelectionEvent event) {
+        boolean elementCreation = ((Button) event.widget).getSelection();
         model.setElementMustBeCreated(elementCreation);
         if (elementCreation) {
           model.setSelectedElement(null);
@@ -96,8 +96,8 @@ public class SelectInvokedOperationController {
     });
     SelectionAdapter listener = new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        Button button = ((Button) event_p.widget);
+      public void widgetSelected(SelectionEvent event) {
+        Button button = ((Button) event.widget);
         if (button == view.operationRadioButton) {
           model.setSelectedExchangeMechanism(ExchangeMechanism.OPERATION);
         } else if (button == view.eventRadioButton) {
@@ -119,7 +119,7 @@ public class SelectInvokedOperationController {
 
     view.exchangeItemNameText.addModifyListener(new ModifyListener() {
       @Override
-      public void modifyText(ModifyEvent e_p) {
+      public void modifyText(ModifyEvent e) {
         model.setCreatedElementName(view.exchangeItemNameText.getText());
         updateOkButton();
       }
@@ -127,7 +127,7 @@ public class SelectInvokedOperationController {
     // ... for createInterface_area
     view.interfaceText.addModifyListener(new ModifyListener() {
       @Override
-      public void modifyText(ModifyEvent e_p) {
+      public void modifyText(ModifyEvent e) {
         model.setSelectedInterfaceName(view.interfaceText.getText());
         if (!model.isValidInterfaceName()) {
           view.setErrorMessage("A technical interface already exists with the given name. Choose another name."); //$NON-NLS-1$
@@ -146,7 +146,7 @@ public class SelectInvokedOperationController {
     });
     view.selectInterfaceButton.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
+      public void widgetSelected(SelectionEvent event) {
         SelectElementsDialog selectInterfaceDialog =
             new SelectElementsDialog(view.getTheParentShell(), TransactionHelper.getEditingDomain(model.getInterfaces(false, false)),
                 CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(), Messages.SelectOperationDialog_SelectInterfaceDialog_Title,
@@ -164,36 +164,36 @@ public class SelectInvokedOperationController {
     // ... for createSelectionOptions_area
     view.optionSelectionA_button.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        model.setHideTechnicalInterfaceNames(((Button) event_p.widget).getSelection());
+      public void widgetSelected(SelectionEvent event) {
+        model.setHideTechnicalInterfaceNames(((Button) event.widget).getSelection());
         view.refreshPossibleElementsTree();
       }
     });
     view.optionSelectionB_button.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        model.setRestrictToExistingStaticCommunicationCompatibility(((Button) event_p.widget).getSelection());
+      public void widgetSelected(SelectionEvent event) {
+        model.setRestrictToExistingStaticCommunicationCompatibility(((Button) event.widget).getSelection());
         view.refreshPossibleElementsTree();
       }
     });
     view.optionSelectionC_button.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        model.setAllowSelectionOfExistingExchangeItems(((Button) event_p.widget).getSelection());
+      public void widgetSelected(SelectionEvent event) {
+        model.setAllowSelectionOfExistingExchangeItems(((Button) event.widget).getSelection());
         view.refreshPossibleElementsTree();
       }
     });
     // ... for createCreationOptions_area
     view.optionCreationA_button.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        model.setPortsMustBeCreated(((Button) event_p.widget).getSelection());
+      public void widgetSelected(SelectionEvent event) {
+        model.setPortsMustBeCreated(((Button) event.widget).getSelection());
       }
     });
     view.optionCreationB_button.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        model.setCommunicationLinksMustBeCreated(((Button) event_p.widget).getSelection());
+      public void widgetSelected(SelectionEvent event) {
+        model.setCommunicationLinksMustBeCreated(((Button) event.widget).getSelection());
       }
     });
     // initialize the view state

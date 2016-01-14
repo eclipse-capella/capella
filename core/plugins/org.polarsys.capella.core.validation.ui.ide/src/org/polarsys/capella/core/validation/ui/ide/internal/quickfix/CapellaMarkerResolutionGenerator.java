@@ -11,14 +11,10 @@
 package org.polarsys.capella.core.validation.ui.ide.internal.quickfix;
 
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.ui.IMarkerResolution;
 import org.eclipse.ui.IMarkerResolutionGenerator2;
-
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 
 /**
  * Marker resolution generator for Capella markers
@@ -35,18 +31,19 @@ final public class CapellaMarkerResolutionGenerator implements IMarkerResolution
     
     IMarkerResolution[] result = null;
     
-    String ruleId = null;
+    String ruleId = MarkerViewHelper.getRuleID(marker_p, true);
 
-    try {
-      ruleId = (String) marker_p.getAttribute(IValidationConstants.TAG_RULE_ID);
-    } catch (CoreException e){
-      PluginActivator.getDefault().getLog().log(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), e.getMessage(), e));
-    }
-    
     if ( null != ruleId ) {
       result = MarkerResolutionCache.INSTANCE.getResolutionsFor(ruleId);
     } else {
-      result = MarkerResolutionCache.NO_RESOLUTIONS;
+      
+      /* Ecore markers don't have rule id's attached. We use the diagnostic source + code as a 'virtual' rule id to find the resolution */
+      if (MarkerViewHelper.isEcore(marker_p)){      
+        Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker_p);
+        result = MarkerResolutionCache.INSTANCE.getResolutionsFor(diagnostic.getSource() + "." + diagnostic.getCode());
+      } else {
+        result = MarkerResolutionCache.NO_RESOLUTIONS;
+      }
     }
     
     return result;

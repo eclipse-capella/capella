@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,19 +23,19 @@ public interface IBusinessQuery {
 	/**
    * Gets all the available elements for the business query
    *
-   * @param element_p the current element
+   * @param element the current element
    * @return list of available elements
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p);
+  public List<CapellaElement> getAvailableElements(CapellaElement element);
 
   /**
    * Gets all the current elements for the business query
    *
-   * @param element_p the current element
-   * @param onlyGenerated_p retrieve only generated elements or not
+   * @param element the current element
+   * @param onlyGenerated retrieve only generated elements or not
    * @return list of current elements
    */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p);
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated);
 
   /**
    *

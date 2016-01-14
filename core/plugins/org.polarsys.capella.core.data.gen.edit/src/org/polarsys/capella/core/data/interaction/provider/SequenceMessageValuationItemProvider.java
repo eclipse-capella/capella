@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -16,19 +16,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.command.CommandParameter;
-
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -38,23 +32,16 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-
 import org.polarsys.capella.common.data.modellingcore.provider.ModelElementItemProvider;
-
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
-
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -115,7 +102,7 @@ public class SequenceMessageValuationItemProvider
 			// Process CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS
 			if (statusPropertyDescriptor != null) {
 				Object statusValue = eObject.eGet(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS, true);
-				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) statusValue)) {
+				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) statusValue)) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);
 				} else if (statusValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS) != null) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);				  					
@@ -126,7 +113,7 @@ public class SequenceMessageValuationItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT
 			if (exchangeItemElementPropertyDescriptor != null) {
 				Object exchangeItemElementValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT, true);
-				if (exchangeItemElementValue != null && exchangeItemElementValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) exchangeItemElementValue)) {
+				if (exchangeItemElementValue != null && exchangeItemElementValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exchangeItemElementValue)) {
 					itemPropertyDescriptors.remove(exchangeItemElementPropertyDescriptor);
 				} else if (exchangeItemElementValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT) != null) {
 					itemPropertyDescriptors.remove(exchangeItemElementPropertyDescriptor);				  					
@@ -137,7 +124,7 @@ public class SequenceMessageValuationItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__VALUE
 			if (valuePropertyDescriptor != null) {
 				Object valueValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__VALUE, true);
-				if (valueValue != null && valueValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) valueValue)) {
+				if (valueValue != null && valueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) valueValue)) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);
 				} else if (valueValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION__VALUE) != null) {
 					itemPropertyDescriptors.remove(valuePropertyDescriptor);				  					

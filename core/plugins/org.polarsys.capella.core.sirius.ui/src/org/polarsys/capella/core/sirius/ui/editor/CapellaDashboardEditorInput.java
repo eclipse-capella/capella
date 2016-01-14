@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -230,7 +230,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
         // Instantiate the action responsible for opening a session.
         OpenSessionAction openSessionAction = new OpenSessionAction();
         // Disable to open the capella dashboard as we are already restoring a Capella Dashboard editor input i.e a CapellaDashboard editor.
-        openSessionAction.setOpenCapellaDashboard(false);
+        openSessionAction.setOpenActivityExplorer(false);
         openSessionAction.setRunInProgressService(false);
         openSessionAction.selectionChanged(new StructuredSelection(diagramFile));
         // Open the session.

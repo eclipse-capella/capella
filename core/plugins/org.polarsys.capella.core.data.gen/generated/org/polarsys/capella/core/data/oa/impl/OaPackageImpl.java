@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1865,13 +1865,13 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "profileName", "Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																								
+		   });
 	}
 
 	/**
@@ -1881,7 +1881,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1891,7 +1891,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																							
+		   });
 	}
 
 	/**
@@ -1901,7 +1901,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1913,7 +1913,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "This package depends on the model CompositeStructure.ecore\r\nThis package depends on the model Interaction.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (operationalAnalysisEClass, 
 		   source, 
@@ -1925,7 +1925,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedOperationalContext(), 
 		   source, 
@@ -1933,7 +1933,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the \"context\" for this architecture, e.g. the parts that make the environnement of the entities (actors, ...) , plus the entities itself", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedRolePkg(), 
 		   source, 
@@ -1941,7 +1941,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "container for Role definitions of this operational analysis\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedEntityPkg(), 
 		   source, 
@@ -1949,7 +1949,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "container for the Entities defined for this operational analysis\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedConceptPkg(), 
 		   source, 
@@ -1957,7 +1957,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "container for the Concepts defined in this operational analysis\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (operationalScenarioEClass, 
 		   source, 
@@ -1969,7 +1969,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalScenario_Context(), 
 		   source, 
@@ -1978,7 +1978,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalScenario_Objective(), 
 		   source, 
@@ -1987,7 +1987,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (operationalActivityPkgEClass, 
 		   source, 
@@ -1999,7 +1999,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivityPkg_OwnedOperationalActivities(), 
 		   source, 
@@ -2007,7 +2007,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the operational activities contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivityPkg_OwnedOperationalActivityPkgs(), 
 		   source, 
@@ -2015,7 +2015,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "sub-packages of operational activities, contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (operationalActivityEClass, 
 		   source, 
@@ -2028,7 +2028,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedOperationalActivityPkgs(), 
 		   source, 
@@ -2036,7 +2036,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "sub-packages of operational activities, contained in this operational activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ActivityAllocations(), 
 		   source, 
@@ -2044,7 +2044,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "allocation of this operational activity to a given operational role\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedSwimlanes(), 
 		   source, 
@@ -2052,7 +2052,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "list of swimlanes used to partition this operational activity\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedProcess(), 
 		   source, 
@@ -2060,7 +2060,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "list of Processes associated to this Operational Activity\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ChildrenOperationalActivities(), 
 		   source, 
@@ -2068,7 +2068,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "list of children operational activities\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalProcessEClass, 
 		   source, 
@@ -2080,7 +2080,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalProcess_InvolvingOperationalCapabilities(), 
 		   source, 
@@ -2088,7 +2088,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (swimlaneEClass, 
 		   source, 
@@ -2100,7 +2100,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSwimlane_RepresentedEntity(), 
 		   source, 
@@ -2108,7 +2108,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the entity to which that elements in this swimlane are being allocated\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalCapabilityPkgEClass, 
 		   source, 
@@ -2120,7 +2120,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedOperationalCapabilities(), 
 		   source, 
@@ -2128,7 +2128,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "operational capabilities contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedOperationalCapabilityPkgs(), 
 		   source, 
@@ -2136,7 +2136,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "sub-packages of operational capabilities contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedCapabilityConfigurations(), 
 		   source, 
@@ -2144,7 +2144,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "Capability Configurations contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedConceptCompliances(), 
 		   source, 
@@ -2152,7 +2152,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "ConceptCompliance elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalCapabilityEClass, 
 		   source, 
@@ -2164,7 +2164,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapability_Compliances(), 
 		   source, 
@@ -2172,7 +2172,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the list of concepts to which this Capability complies\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalCapability_Configurations(), 
 		   source, 
@@ -2180,7 +2180,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the list of various configurations of this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (activityAllocationEClass, 
 		   source, 
@@ -2192,7 +2192,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityAllocation_Role(), 
 		   source, 
@@ -2200,7 +2200,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "Operational role involved in this allocation relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityAllocation_Activity(), 
 		   source, 
@@ -2208,7 +2208,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "Operational activity involved in this allocation relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rolePkgEClass, 
 		   source, 
@@ -2220,7 +2220,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRolePkg_OwnedRolePkgs(), 
 		   source, 
@@ -2228,7 +2228,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "sub-(role)packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRolePkg_OwnedRoles(), 
 		   source, 
@@ -2236,7 +2236,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the Role elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (roleEClass, 
 		   source, 
@@ -2248,7 +2248,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_OwnedRoleAssemblyUsages(), 
 		   source, 
@@ -2256,7 +2256,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "list of mediator elements establishing links between this role and parent/children roles\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getRole_OwnedActivityAllocations(), 
 		   source, 
@@ -2264,7 +2264,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "list of allocations between roles and operational activities, that are stored/owned by this role\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_RoleAllocations(), 
 		   source, 
@@ -2272,7 +2272,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "list of allocations between this operational role, and operational entities\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_ActivityAllocations(), 
 		   source, 
@@ -2280,7 +2280,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "(automatically computed) list of allocations of this role to/from operation activities\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (roleAssemblyUsageEClass, 
 		   source, 
@@ -2292,7 +2292,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getRoleAssemblyUsage_Child(), 
 		   source, 
@@ -2300,7 +2300,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "child Role involved in this relationship mediator element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (roleAllocationEClass, 
 		   source, 
@@ -2312,7 +2312,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRoleAllocation_Role(), 
 		   source, 
@@ -2320,7 +2320,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the operational role involved in this allocation link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRoleAllocation_Entity(), 
 		   source, 
@@ -2328,7 +2328,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the operational entity involved in this allocation link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (entityPkgEClass, 
 		   source, 
@@ -2340,7 +2340,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedEntityPkgs(), 
 		   source, 
@@ -2348,7 +2348,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "sub-(Entity)packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedEntities(), 
 		   source, 
@@ -2356,7 +2356,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the Entity elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedLocations(), 
 		   source, 
@@ -2364,7 +2364,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the Location elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedCommunicationMeans(), 
 		   source, 
@@ -2372,7 +2372,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the CommunicationMean elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (entityEClass, 
 		   source, 
@@ -2385,7 +2385,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getEntity_RoleAllocations(), 
 		   source, 
@@ -2393,7 +2393,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the allocation links between this operational entity and the operational roles\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntity_OrganisationalUnitMemberships(), 
 		   source, 
@@ -2401,7 +2401,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "list of organisational units to which this Entity belongs\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntity_ActualLocation(), 
 		   source, 
@@ -2409,7 +2409,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "Location where this Entity operates.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_SubEntities(), 
 		   source, 
@@ -2417,7 +2417,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "sub-entities that have a derivation relationship from this entity\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedEntities(), 
 		   source, 
@@ -2425,7 +2425,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "Entities owned by this Entity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedCommunicationMeans(), 
 		   source, 
@@ -2433,7 +2433,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "communication means associated to this Entity\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedRoleAllocations(), 
 		   source, 
@@ -2441,7 +2441,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "role allocation links owned by this Entity\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (conceptPkgEClass, 
 		   source, 
@@ -2453,7 +2453,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptPkg_OwnedConceptPkgs(), 
 		   source, 
@@ -2461,7 +2461,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "concept packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptPkg_OwnedConcepts(), 
 		   source, 
@@ -2469,7 +2469,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "Operational concepts contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (conceptEClass, 
 		   source, 
@@ -2481,7 +2481,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConcept_Compliances(), 
 		   source, 
@@ -2489,7 +2489,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the list of Compliances that this operational concept follows\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConcept_CompositeLinks(), 
 		   source, 
@@ -2497,7 +2497,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "relationships with concept items\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (conceptComplianceEClass, 
 		   source, 
@@ -2509,7 +2509,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptCompliance_ComplyWithConcept(), 
 		   source, 
@@ -2517,7 +2517,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the Concept involved in this compliance relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptCompliance_CompliantCapability(), 
 		   source, 
@@ -2525,7 +2525,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the Capability involved in this compliance relationship\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (itemInConceptEClass, 
 		   source, 
@@ -2537,7 +2537,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getItemInConcept_Concept(), 
 		   source, 
@@ -2545,7 +2545,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the operational concept involved in the relationship implemented by this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getItemInConcept_Item(), 
 		   source, 
@@ -2553,7 +2553,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the concept item involved in the relationship implemented by this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractConceptItemEClass, 
 		   source, 
@@ -2565,7 +2565,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractConceptItem_ComposingLinks(), 
 		   source, 
@@ -2573,7 +2573,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "relationships between this item and the concept(s) that it is involved in\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalActorEClass, 
 		   source, 
@@ -2586,7 +2586,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (communityOfInterestEClass, 
 		   source, 
@@ -2598,7 +2598,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunityOfInterest_CommunityOfInterestCompositions(), 
 		   source, 
@@ -2606,7 +2606,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "mediator elements implementing the relationships between this community of interest and the organizational units.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communityOfInterestCompositionEClass, 
 		   source, 
@@ -2618,7 +2618,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunityOfInterestComposition_CommunityOfInterest(), 
 		   source, 
@@ -2626,7 +2626,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "The community of interest involved in the relationship implemented by this mediator element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunityOfInterestComposition_InterestedOrganisationUnit(), 
 		   source, 
@@ -2634,7 +2634,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "The organisational unit involved in the relationship implemented by this mediator element.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (organisationalUnitEClass, 
 		   source, 
@@ -2646,7 +2646,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnit_OrganisationalUnitCompositions(), 
 		   source, 
@@ -2654,7 +2654,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "mediator elements implementing the relationships between this organisational unit and the entities that are part of it\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnit_CommunityOfInterestMemberships(), 
 		   source, 
@@ -2662,7 +2662,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the links between this organisational unit and the communities of interest to which it is associated\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (organisationalUnitCompositionEClass, 
 		   source, 
@@ -2674,7 +2674,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnitComposition_OrganisationalUnit(), 
 		   source, 
@@ -2682,7 +2682,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the organisational unit involved in the relationship implemented by this mediator element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnitComposition_ParticipatingEntity(), 
 		   source, 
@@ -2690,7 +2690,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the operational entity involved in the relationship implemented by this mediator element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (locationEClass, 
 		   source, 
@@ -2702,7 +2702,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getLocation_LocationDescription(), 
 		   source, 
@@ -2711,7 +2711,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLocation_LocatedEntities(), 
 		   source, 
@@ -2719,7 +2719,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the operational entities assigned to this location\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (capabilityConfigurationEClass, 
 		   source, 
@@ -2731,7 +2731,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCapabilityConfiguration_ConfiguredCapability(), 
 		   source, 
@@ -2739,7 +2739,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "description", "the Capability to which this configuration is associated\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationMeanEClass, 
 		   source, 
@@ -2751,7 +2751,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });	
 		addAnnotation
 		  (operationalContextEClass, 
 		   source, 
@@ -2763,7 +2763,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -2773,283 +2773,283 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (operationalAnalysisEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedOperationalContext(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedRolePkg(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedEntityPkg(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_ContainedOperationalCapabilityPkg(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_ContainedOperationalActivityPkg(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_AllocatingSystemAnalyses(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getOperationalScenario_Context(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalScenario_Objective(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (operationalActivityPkgEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivityPkg_OwnedOperationalActivities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivityPkg_OwnedOperationalActivityPkgs(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (operationalActivityEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedOperationalActivityPkgs(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatorEntities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_RealizingSystemFunctions(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatingRoles(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ContainedOperationalActivities(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ChildrenOperationalActivities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (operationalProcessEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalProcess_InvolvingOperationalCapabilities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (operationalCapabilityPkgEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedOperationalCapabilities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedOperationalCapabilityPkgs(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (operationalCapabilityEClass, 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getOperationalCapability_RealizingCapabilities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalCapability_InvolvedEntities(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (rolePkgEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRolePkg_OwnedRolePkgs(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRolePkg_OwnedRoles(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (roleEClass, 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getRole_AllocatingEntities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_AllocatedOperationalActivities(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (entityPkgEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedEntityPkgs(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedEntities(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (entityEClass, 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getEntity_SubEntities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedEntities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedCommunicationMeans(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getEntity_AllocatedOperationalActivities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_AllocatedRoles(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_RealizingSystems(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_RealizingActors(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																
+		   });	
 		addAnnotation
 		  (operationalActorEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalActor_RealizingSystemActors(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																													
+		   });	
 		addAnnotation
 		  (getLocation_LocationDescription(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (communicationMeanEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunicationMean_SourceEntity(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationMean_TargetEntity(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (operationalContextEClass, 
 		   source, 
@@ -3064,7 +3064,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -3074,7 +3074,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																				
+		   });
 	}
 
 	/**
@@ -3084,7 +3084,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$								
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (operationalAnalysisEClass, 
 		   source, 
@@ -3093,7 +3093,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedOperationalContext(), 
 		   source, 
@@ -3101,7 +3101,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::PackagedElement elements on which OperationalContext stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedRolePkg(), 
 		   source, 
@@ -3109,7 +3109,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which RolePkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedEntityPkg(), 
 		   source, 
@@ -3117,7 +3117,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which EntityPkgstereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedConceptPkg(), 
 		   source, 
@@ -3125,7 +3125,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which ConceptPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_ContainedOperationalCapabilityPkg(), 
 		   source, 
@@ -3133,7 +3133,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_ContainedOperationalActivityPkg(), 
 		   source, 
@@ -3141,7 +3141,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_AllocatingSystemAnalyses(), 
 		   source, 
@@ -3149,7 +3149,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (operationalScenarioEClass, 
 		   source, 
@@ -3158,7 +3158,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalScenario_Context(), 
 		   source, 
@@ -3166,7 +3166,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalScenario_Objective(), 
 		   source, 
@@ -3174,7 +3174,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (operationalActivityPkgEClass, 
 		   source, 
@@ -3183,7 +3183,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivityPkg_OwnedOperationalActivities(), 
 		   source, 
@@ -3191,7 +3191,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which OperationalActivity stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivityPkg_OwnedOperationalActivityPkgs(), 
 		   source, 
@@ -3199,7 +3199,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which OperationalActivityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (operationalActivityEClass, 
 		   source, 
@@ -3208,7 +3208,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "All functions are mapped to (empty) activities", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedOperationalActivityPkgs(), 
 		   source, 
@@ -3216,7 +3216,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which OperationalActivityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ActivityAllocations(), 
 		   source, 
@@ -3224,7 +3224,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedSwimlanes(), 
 		   source, 
@@ -3232,7 +3232,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedProcess(), 
 		   source, 
@@ -3240,7 +3240,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatorEntities(), 
 		   source, 
@@ -3248,7 +3248,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_RealizingSystemFunctions(), 
 		   source, 
@@ -3256,7 +3256,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatingRoles(), 
 		   source, 
@@ -3264,7 +3264,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ContainedOperationalActivities(), 
 		   source, 
@@ -3272,7 +3272,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ChildrenOperationalActivities(), 
 		   source, 
@@ -3280,7 +3280,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalProcessEClass, 
 		   source, 
@@ -3289,7 +3289,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Activity", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalProcess_InvolvingOperationalCapabilities(), 
 		   source, 
@@ -3297,7 +3297,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (swimlaneEClass, 
 		   source, 
@@ -3306,7 +3306,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::ActivityPartition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSwimlane_RepresentedEntity(), 
 		   source, 
@@ -3314,7 +3314,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalCapabilityPkgEClass, 
 		   source, 
@@ -3323,7 +3323,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedOperationalCapabilities(), 
 		   source, 
@@ -3331,7 +3331,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which OperationalCapability stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedOperationalCapabilityPkgs(), 
 		   source, 
@@ -3339,7 +3339,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which OperationalCapabilityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedCapabilityConfigurations(), 
 		   source, 
@@ -3347,7 +3347,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which CapabilityConfiguration stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalCapabilityPkg_OwnedConceptCompliances(), 
 		   source, 
@@ -3355,7 +3355,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ConceptCompliance stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalCapabilityEClass, 
 		   source, 
@@ -3364,7 +3364,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapability_Compliances(), 
 		   source, 
@@ -3372,7 +3372,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which ConceptCompliance stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalCapability_Configurations(), 
 		   source, 
@@ -3380,7 +3380,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getOperationalCapability_OwnedEntityOperationalCapabilityInvolvements(), 
 		   source, 
@@ -3389,7 +3389,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapability_RealizingCapabilities(), 
 		   source, 
@@ -3397,7 +3397,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperationalCapability_InvolvedEntities(), 
 		   source, 
@@ -3405,7 +3405,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (activityAllocationEClass, 
 		   source, 
@@ -3414,7 +3414,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityAllocation_Role(), 
 		   source, 
@@ -3422,7 +3422,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityAllocation_Activity(), 
 		   source, 
@@ -3430,7 +3430,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (rolePkgEClass, 
 		   source, 
@@ -3439,7 +3439,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRolePkg_OwnedRolePkgs(), 
 		   source, 
@@ -3447,7 +3447,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which RolePkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRolePkg_OwnedRoles(), 
 		   source, 
@@ -3455,7 +3455,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Role stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (roleEClass, 
 		   source, 
@@ -3464,7 +3464,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML ::Blocks ::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_OwnedRoleAssemblyUsages(), 
 		   source, 
@@ -3472,7 +3472,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getRole_OwnedActivityAllocations(), 
 		   source, 
@@ -3480,7 +3480,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which ActivityAllocation stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_RoleAllocations(), 
 		   source, 
@@ -3488,7 +3488,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_ActivityAllocations(), 
 		   source, 
@@ -3496,7 +3496,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_AllocatingEntities(), 
 		   source, 
@@ -3504,7 +3504,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_AllocatedOperationalActivities(), 
 		   source, 
@@ -3512,7 +3512,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (roleAssemblyUsageEClass, 
 		   source, 
@@ -3521,7 +3521,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Usage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getRoleAssemblyUsage_Child(), 
 		   source, 
@@ -3529,7 +3529,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (roleAllocationEClass, 
 		   source, 
@@ -3538,7 +3538,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRoleAllocation_Role(), 
 		   source, 
@@ -3546,7 +3546,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getRoleAllocation_Entity(), 
 		   source, 
@@ -3554,7 +3554,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (entityPkgEClass, 
 		   source, 
@@ -3563,7 +3563,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedEntityPkgs(), 
 		   source, 
@@ -3571,7 +3571,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which EntityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedEntities(), 
 		   source, 
@@ -3579,7 +3579,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Entity stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedLocations(), 
 		   source, 
@@ -3587,7 +3587,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Location stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedCommunicationMeans(), 
 		   source, 
@@ -3595,7 +3595,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which CommunicationMean stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (entityEClass, 
 		   source, 
@@ -3604,7 +3604,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "SysML ::Blocks ::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getEntity_RoleAllocations(), 
 		   source, 
@@ -3612,7 +3612,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntity_OrganisationalUnitMemberships(), 
 		   source, 
@@ -3620,7 +3620,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntity_ActualLocation(), 
 		   source, 
@@ -3628,7 +3628,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_SubEntities(), 
 		   source, 
@@ -3636,7 +3636,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedEntities(), 
 		   source, 
@@ -3644,7 +3644,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedCommunicationMeans(), 
 		   source, 
@@ -3652,7 +3652,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "since CommunicationMean is mapped to uml::InformationFlow, and no containment reference on Block is available to receive this", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_OwnedRoleAllocations(), 
 		   source, 
@@ -3660,7 +3660,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "some elements on which RoleAllocation stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_AllocatedOperationalActivities(), 
 		   source, 
@@ -3668,7 +3668,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_AllocatedRoles(), 
 		   source, 
@@ -3676,7 +3676,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_RealizingSystems(), 
 		   source, 
@@ -3684,7 +3684,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_RealizingActors(), 
 		   source, 
@@ -3692,7 +3692,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
 		   source, 
@@ -3700,7 +3700,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (conceptPkgEClass, 
 		   source, 
@@ -3709,7 +3709,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptPkg_OwnedConceptPkgs(), 
 		   source, 
@@ -3717,7 +3717,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which ConceptPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptPkg_OwnedConcepts(), 
 		   source, 
@@ -3725,7 +3725,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Concept stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (conceptEClass, 
 		   source, 
@@ -3734,7 +3734,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConcept_Compliances(), 
 		   source, 
@@ -3742,7 +3742,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConcept_CompositeLinks(), 
 		   source, 
@@ -3750,7 +3750,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency, keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which ItemInConcept stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (conceptComplianceEClass, 
 		   source, 
@@ -3759,7 +3759,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptCompliance_ComplyWithConcept(), 
 		   source, 
@@ -3767,7 +3767,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConceptCompliance_CompliantCapability(), 
 		   source, 
@@ -3775,7 +3775,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (itemInConceptEClass, 
 		   source, 
@@ -3784,7 +3784,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getItemInConcept_Concept(), 
 		   source, 
@@ -3792,7 +3792,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getItemInConcept_Item(), 
 		   source, 
@@ -3800,7 +3800,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractConceptItemEClass, 
 		   source, 
@@ -3809,7 +3809,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::NamedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractConceptItem_ComposingLinks(), 
 		   source, 
@@ -3817,7 +3817,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalActorEClass, 
 		   source, 
@@ -3826,7 +3826,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML ::Blocks ::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperationalActor_RealizingSystemActors(), 
 		   source, 
@@ -3834,7 +3834,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communityOfInterestEClass, 
 		   source, 
@@ -3843,7 +3843,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Actor", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunityOfInterest_CommunityOfInterestCompositions(), 
 		   source, 
@@ -3851,7 +3851,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency, keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which CommunityOfInterestComposition stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communityOfInterestCompositionEClass, 
 		   source, 
@@ -3860,7 +3860,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunityOfInterestComposition_CommunityOfInterest(), 
 		   source, 
@@ -3868,7 +3868,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCommunityOfInterestComposition_InterestedOrganisationUnit(), 
 		   source, 
@@ -3876,7 +3876,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (organisationalUnitEClass, 
 		   source, 
@@ -3885,7 +3885,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Actor", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnit_OrganisationalUnitCompositions(), 
 		   source, 
@@ -3893,7 +3893,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency, keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "some elements on which OrganisationalUnitComposition stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnit_CommunityOfInterestMemberships(), 
 		   source, 
@@ -3901,7 +3901,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (organisationalUnitCompositionEClass, 
 		   source, 
@@ -3910,7 +3910,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnitComposition_OrganisationalUnit(), 
 		   source, 
@@ -3918,7 +3918,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOrganisationalUnitComposition_ParticipatingEntity(), 
 		   source, 
@@ -3926,7 +3926,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (locationEClass, 
 		   source, 
@@ -3935,7 +3935,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getLocation_LocationDescription(), 
 		   source, 
@@ -3943,7 +3943,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getLocation_LocatedEntities(), 
 		   source, 
@@ -3951,7 +3951,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (capabilityConfigurationEClass, 
 		   source, 
@@ -3960,7 +3960,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCapabilityConfiguration_ConfiguredCapability(), 
 		   source, 
@@ -3968,7 +3968,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (communicationMeanEClass, 
 		   source, 
@@ -3977,7 +3977,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "not explicitly mapped to uml::InformationFlow, since its parent (ComponentExchange) is concrete and already mapped to uml::InformationFlow\r\n", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCommunicationMean_SourceEntity(), 
 		   source, 
@@ -3985,7 +3985,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationMean_TargetEntity(), 
 		   source, 
@@ -3993,7 +3993,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (entityOperationalCapabilityInvolvementEClass, 
 		   source, 
@@ -4002,7 +4002,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntityOperationalCapabilityInvolvement_Entity(), 
 		   source, 
@@ -4010,7 +4010,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEntityOperationalCapabilityInvolvement_Capability(), 
 		   source, 
@@ -4018,7 +4018,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (operationalContextEClass, 
 		   source, 
@@ -4027,7 +4027,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -4037,182 +4037,182 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																					
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getOperationalAnalysis_ContainedOperationalCapabilityPkg(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_ContainedOperationalActivityPkg(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalAnalysis_AllocatingSystemAnalyses(), 
 		   source, 
 		   new String[] {
-		   });																											
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ActivityAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedSwimlanes(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedProcess(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatorEntities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_RealizingSystemFunctions(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatingRoles(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ContainedOperationalActivities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalActivity_ChildrenOperationalActivities(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getOperationalProcess_InvolvingOperationalCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getSwimlane_RepresentedEntity(), 
 		   source, 
 		   new String[] {
-		   });																									
+		   });	
 		addAnnotation
 		  (getOperationalCapability_RealizingCapabilities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationalCapability_InvolvedEntities(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getActivityAllocation_Role(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getActivityAllocation_Activity(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (getRole_RoleAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_ActivityAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_AllocatingEntities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRole_AllocatedOperationalActivities(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getRoleAllocation_Role(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getRoleAllocation_Entity(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (getEntity_RoleAllocations(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getEntity_SubEntities(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getEntity_AllocatedOperationalActivities(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_AllocatedRoles(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_RealizingSystems(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_RealizingActors(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
 		   source, 
 		   new String[] {
-		   });																																			
+		   });	
 		addAnnotation
 		  (getOperationalActor_RealizingSystemActors(), 
 		   source, 
 		   new String[] {
-		   });																																								
+		   });	
 		addAnnotation
 		  (getCommunicationMean_SourceEntity(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCommunicationMean_TargetEntity(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getEntityOperationalCapabilityInvolvement_Entity(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getEntityOperationalCapabilityInvolvement_Capability(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });
 	}
 
 } //OaPackageImpl

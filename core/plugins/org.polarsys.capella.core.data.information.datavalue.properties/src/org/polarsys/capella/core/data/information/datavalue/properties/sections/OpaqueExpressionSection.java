@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,45 +69,45 @@ import com.google.common.base.Objects;
 
 public class OpaqueExpressionSection extends NamedElementSection {
 
-  private OpaqueExpression _opaqueExpression;
-  private Composite _bodyEditorComposite;
+  private OpaqueExpression opaqueExpression;
+  private Composite bodyEditorComposite;
   private TableViewer languagesViewer;
-  private IObservableList _elements = new WritableList(new ArrayList<OpaqueExpressionElement>(), OpaqueExpressionElement.class); 
+  private IObservableList elements = new WritableList(new ArrayList<OpaqueExpressionElement>(), OpaqueExpressionElement.class); 
   private final PropertyChangeListener bodyListener = new PropertyChangeListener() {
     @Override
-    public void propertyChange(PropertyChangeEvent evt_p) {
+    public void propertyChange(PropertyChangeEvent evt) {
       syncToModel();
     }
   };
   
   static class OpaqueExpressionElement {
     
-    private final PropertyChangeSupport _propertyChangeSupport;
-    private final OpaqueExpression _opaqueExpression;
-    private final String _language;
-    private String _body;
+    private final PropertyChangeSupport propertyChangeSupport;
+    private final OpaqueExpression opaqueExpr;
+    private final String language;
+    private String body;
 
-    OpaqueExpressionElement(OpaqueExpression opaqueExpression_p, String language_p, String body_p){
-      _language = language_p;
-      _body = body_p;
-      _propertyChangeSupport = new PropertyChangeSupport(this);
-      _opaqueExpression = opaqueExpression_p;
+    OpaqueExpressionElement(OpaqueExpression opaqueExpression, String language, String body){
+      this.language = language;
+      this.body = body;
+      this.propertyChangeSupport = new PropertyChangeSupport(this);
+      this.opaqueExpr = opaqueExpression;
     }
 
-    public void addPropertyChangeListener(String propertyName_p, PropertyChangeListener listener_p) {
-      _propertyChangeSupport.addPropertyChangeListener(propertyName_p, listener_p);
+    public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+      propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
     }
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
-      _propertyChangeSupport.removePropertyChangeListener(listener);
+      propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
     public OpaqueExpression getOpaqueExpression(){
-      return _opaqueExpression;
+      return opaqueExpr;
     }
     
     public String getLanguage(){
-      return _language;
+      return language;
     }
     
     public String getDisplayLanguage(){
@@ -119,16 +119,16 @@ public class OpaqueExpressionSection extends NamedElementSection {
      * The language body. Never null.
      */
     public String getBody(){
-      return _body;
+      return body;
     }
 
     /**
      * Set the language body. Never null.
-     * @param body_p
+     * @param body
      */
-    public void setBody(String body_p){
-      if (!Objects.equal(body_p, _body)){
-        _propertyChangeSupport.firePropertyChange("body", _body, _body = body_p); //$NON-NLS-1$
+    public void setBody(String body){
+      if (!Objects.equal(body, this.body)){
+        propertyChangeSupport.firePropertyChange("body", this.body, this.body = body); //$NON-NLS-1$
       }
     }
   }
@@ -137,29 +137,29 @@ public class OpaqueExpressionSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object toTest_p) {
+  public boolean select(Object toTest) {
     return true;
   }
   
   private OpaqueExpression getOpaqueExpression(){
-    return _opaqueExpression;
+    return opaqueExpression;
   }
   
-  private void setOpaqueExpression(OpaqueExpression expression_p){
-    _opaqueExpression = expression_p;
+  private void setOpaqueExpression(OpaqueExpression expression){
+    opaqueExpression = expression;
   }
   
   
   private IObservableList getElements(){
-    return _elements;
+    return elements;
   }
 
   @Override
-  public void loadData(CapellaElement element_p){
-    super.loadData(element_p);
+  public void loadData(CapellaElement element){
+    super.loadData(element);
 
-    if (getOpaqueExpression() != element_p){
-      setOpaqueExpression((OpaqueExpression) element_p);
+    if (getOpaqueExpression() != element){
+      setOpaqueExpression((OpaqueExpression) element);
       getElements().clear();
       for (int i = 0; i < Math.min(
           getOpaqueExpression().getLanguages().size(),
@@ -170,8 +170,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
             getOpaqueExpression().getBodies().get(i)));
       }
 
-      for (Object element : getElements()){
-        ((OpaqueExpressionElement)element).addPropertyChangeListener("body", bodyListener); //$NON-NLS-1$
+      for (Object elt : getElements()){
+        ((OpaqueExpressionElement)elt).addPropertyChangeListener("body", bodyListener); //$NON-NLS-1$
       }
 
       if (getElements().size() > 0){
@@ -202,8 +202,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
         }
 
         // Now, the trailing elements have to be removed: These are not in the model any more
-        while (_elements.size() > _opaqueExpression.getLanguages().size()){
-          _elements.remove(_opaqueExpression.getLanguages().size());
+        while (elements.size() > opaqueExpression.getLanguages().size()){
+          elements.remove(opaqueExpression.getLanguages().size());
         }
       }
 
@@ -211,7 +211,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
   }
 
   private void syncToModel() {
-    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(_opaqueExpression);
+    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(opaqueExpression);
     RecordingCommand c = new RecordingCommand(domain, "Edit OpaqueExpression") {
       
       final OpaqueExpression _affected = getOpaqueExpression();
@@ -256,8 +256,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
 
     Group opaqueExpressionGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
 
@@ -277,8 +277,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
     languagesViewer = new TableViewer(table);
     languagesViewer.addSelectionChangedListener(new ISelectionChangedListener() {
       @Override
-      public void selectionChanged(SelectionChangedEvent event_p) {
-        OpaqueExpressionElement newElement = (OpaqueExpressionElement) ((IStructuredSelection)event_p.getSelection()).getFirstElement();
+      public void selectionChanged(SelectionChangedEvent event) {
+        OpaqueExpressionElement newElement = (OpaqueExpressionElement) ((IStructuredSelection)event.getSelection()).getFirstElement();
         updateTextArea(newElement);
       }
     });
@@ -288,9 +288,9 @@ public class OpaqueExpressionSection extends NamedElementSection {
     data.horizontalSpan=4;
     table.setLayoutData(data);
     
-    _bodyEditorComposite = getWidgetFactory().createComposite(opaqueExpressionGroup);
+    bodyEditorComposite = getWidgetFactory().createComposite(opaqueExpressionGroup);
     data = new GridData(SWT.FILL, SWT.FILL, true, true);
-    _bodyEditorComposite.setLayoutData(data);
+    bodyEditorComposite.setLayoutData(data);
     
     Button add = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
     add.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.ADD_ITEM_IMAGE_ID));
@@ -304,7 +304,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
     
     remove.addSelectionListener(new SelectionListener() {
       @Override
-      public void widgetSelected(SelectionEvent e_p) {
+      public void widgetSelected(SelectionEvent e) {
         Object selected = ((IStructuredSelection) languagesViewer.getSelection()).getFirstElement();
         if (selected != null){
           getElements().remove(selected);
@@ -312,7 +312,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
         }
       }
       @Override
-      public void widgetDefaultSelected(SelectionEvent e_p) {
+      public void widgetDefaultSelected(SelectionEvent e) {
       }
     });
     
@@ -332,13 +332,13 @@ public class OpaqueExpressionSection extends NamedElementSection {
        * {@inheritDoc}
        */
       @Override
-      public void widgetSelected(SelectionEvent e_p) {
+      public void widgetSelected(SelectionEvent e) {
         IStructuredSelection sel = (IStructuredSelection) languagesViewer.getSelection();
         OpaqueExpressionElement element = (OpaqueExpressionElement) sel.getFirstElement();
         if (element != null){          
           WritableList l =  (WritableList) languagesViewer.getInput();
           int currentIndex = l.indexOf(element);
-          if (e_p.getSource() == up){
+          if (e.getSource() == up){
             if (currentIndex > 0){
               l.move(currentIndex, currentIndex - 1);
             }
@@ -357,16 +357,16 @@ public class OpaqueExpressionSection extends NamedElementSection {
     add.addSelectionListener(new SelectionListener(){
 
       @Override
-      public void widgetSelected(SelectionEvent e_p) {
+      public void widgetSelected(SelectionEvent e) {
         
-        InputDialog i = new InputDialog(e_p.widget.getDisplay().getActiveShell(), "Add OpaqueExpression element", "Enter language name", null, new IInputValidator() {
+        InputDialog i = new InputDialog(e.widget.getDisplay().getActiveShell(), "Add OpaqueExpression element", "Enter language name", null, new IInputValidator() {
           @Override
-          public String isValid(String newText_p) {
-            if (newText_p != null && newText_p.trim().isEmpty()){
+          public String isValid(String newText) {
+            if (newText != null && newText.trim().isEmpty()){
               return ""; //$NON-NLS-1$
             }
             for (Object o : getElements()){
-              if (((OpaqueExpressionElement) o).getDisplayLanguage().trim().equals(newText_p.trim())){
+              if (((OpaqueExpressionElement) o).getDisplayLanguage().trim().equals(newText.trim())){
                 return "Language is already used";
               }
             }
@@ -388,27 +388,27 @@ public class OpaqueExpressionSection extends NamedElementSection {
       }
 
       @Override
-      public void widgetDefaultSelected(SelectionEvent e_p) {
+      public void widgetDefaultSelected(SelectionEvent e) {
       }
 
     });
 
-    ViewerSupport.bind(languagesViewer, _elements, BeanProperties.value("displayLanguage"));
+    ViewerSupport.bind(languagesViewer, elements, BeanProperties.value("displayLanguage"));
 
   }
 
   /**
-   * @param firstElement_p
+   * @param firstElement
    */
-  protected void updateTextArea(OpaqueExpressionElement firstElement_p) {
-    for (Control c : _bodyEditorComposite.getChildren()){
+  protected void updateTextArea(OpaqueExpressionElement firstElement) {
+    for (Control c : bodyEditorComposite.getChildren()){
       c.dispose();
     }
-    _bodyEditorComposite.setLayout(null);
-    if (firstElement_p != null){
-      LanguageProvider.Registry.INSTANCE.getProviderFor(firstElement_p.getOpaqueExpression(), firstElement_p).createControl(_bodyEditorComposite, getWidgetFactory());
+    bodyEditorComposite.setLayout(null);
+    if (firstElement != null){
+      LanguageProvider.Registry.INSTANCE.getProviderFor(firstElement.getOpaqueExpression(), firstElement).createControl(bodyEditorComposite, getWidgetFactory());
     }
-    _bodyEditorComposite.layout(true, true);
+    bodyEditorComposite.layout(true, true);
   }
 
   public static abstract class LanguageProvider {
@@ -417,24 +417,24 @@ public class OpaqueExpressionSection extends NamedElementSection {
      * Sets a layout on the parent and create the control that allows editing 
      * the body of an opaque expression in a specific language.
      * 
-     * @param parent_p
-     * @param widgetFactory_p
+     * @param parent
+     * @param widgetFactory
      */
-    public abstract void createControl(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p);
+    public abstract void createControl(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory);
     
     static interface Registry {
       
-      public LanguageProvider getProviderFor(OpaqueExpression expression_p, OpaqueExpressionElement element);
+      public LanguageProvider getProviderFor(OpaqueExpression expression, OpaqueExpressionElement element);
 
       final static Registry INSTANCE = new Registry(){
         
         @Override
-        public LanguageProvider getProviderFor(OpaqueExpression expression_p, OpaqueExpressionElement element_p) {
+        public LanguageProvider getProviderFor(OpaqueExpression expression, OpaqueExpressionElement element) {
           LanguageProvider result = null;
-          if (CapellaLinkedTextConstants.OPAQUE_EXPRESSION_LINKED_TEXT.equals(element_p.getLanguage())){
-            result = new LinkedTextLanguageProvider(expression_p, element_p);
+          if (CapellaLinkedTextConstants.OPAQUE_EXPRESSION_LINKED_TEXT.equals(element.getLanguage())){
+            result = new LinkedTextLanguageProvider(expression, element);
           } else {
-            result = new DefaultLanguageProvider(element_p);
+            result = new DefaultLanguageProvider(element);
           }
           return result;
         }
@@ -446,15 +446,15 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
     final OpaqueExpressionElement _element;
     
-    public DefaultLanguageProvider(OpaqueExpressionElement element_p){
-      _element = element_p;
+    public DefaultLanguageProvider(OpaqueExpressionElement element){
+      _element = element;
     }
 
     @Override
-    public void createControl(Composite parent_p, TabbedPropertySheetWidgetFactory factory_p) {
-      parent_p.setLayout(new FillLayout());
+    public void createControl(Composite parent, TabbedPropertySheetWidgetFactory factory) {
+      parent.setLayout(new FillLayout());
       
-      StyledText text = new StyledText(parent_p, SWT.MULTI | factory_p.getBorderStyle());
+      StyledText text = new StyledText(parent, SWT.MULTI | factory.getBorderStyle());
       text.setAlwaysShowScrollBars(false);
       text.setText(_element.getBody() == null ? "" : _element.getBody()); //$NON-NLS-1$
 
@@ -464,7 +464,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
       context.bindValue(widgetValue, modelValue, new UpdateValueStrategy(), null);
       text.addDisposeListener(new DisposeListener() {
         @Override
-        public void widgetDisposed(DisposeEvent e_p) {
+        public void widgetDisposed(DisposeEvent e) {
           context.dispose();
         }
       });
@@ -473,30 +473,30 @@ public class OpaqueExpressionSection extends NamedElementSection {
 
   static class LinkedTextLanguageProvider extends LanguageProvider {
     private final OpaqueExpressionElement _element;
-    public LinkedTextLanguageProvider(OpaqueExpression expression_p, OpaqueExpressionElement element_p) {
-      _element = element_p;
+    public LinkedTextLanguageProvider(OpaqueExpression expression, OpaqueExpressionElement element) {
+      _element = element;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void createControl(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-      parent_p.setLayout(new FillLayout());
-      CapellaEmbeddedLinkedTextEditor editor = new CapellaEmbeddedLinkedTextEditor(parent_p, SWT.H_SCROLL | SWT.V_SCROLL | widgetFactory_p.getBorderStyle());
+    public void createControl(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+      parent.setLayout(new FillLayout());
+      CapellaEmbeddedLinkedTextEditor editor = new CapellaEmbeddedLinkedTextEditor(parent, SWT.H_SCROLL | SWT.V_SCROLL | widgetFactory.getBorderStyle());
       final CapellaEmbeddedLinkedTextEditorInput input = new CapellaEmbeddedLinkedTextEditorInput(_element.getOpaqueExpression()){
         @Override
         public String getText() {
           return _element.getBody() == null ? "" : _element.getBody(); //$NON-NLS-1$
         }
         @Override
-        public void setText(String linkedText_p) {
-          _element.setBody(linkedText_p.isEmpty() ? null : linkedText_p);
+        public void setText(String linkedText) {
+          _element.setBody(linkedText.isEmpty() ? null : linkedText);
         }
       };
       editor.getSourceViewer().getTextWidget().addDisposeListener(new DisposeListener() {
         @Override
-        public void widgetDisposed(DisposeEvent e_p) {
+        public void widgetDisposed(DisposeEvent e) {
           input.dispose();
         }
       });

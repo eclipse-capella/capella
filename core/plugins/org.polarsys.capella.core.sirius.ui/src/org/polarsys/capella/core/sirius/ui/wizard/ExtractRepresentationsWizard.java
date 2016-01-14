@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -232,7 +233,7 @@ public class ExtractRepresentationsWizard extends Wizard {
     _session.addReferencedAnalysis(slaveAnalysis_p);
     for (Resource resource : _session.getSemanticResources()) {
       if (!resource.getContents().isEmpty()) {
-        slaveAnalysis_p.getModels().add(resource.getContents().iterator().next());
+        slaveAnalysis_p.getSemanticResources().add(new ResourceDescriptor(resource.getURI()));
       }
     }
     for (DRepresentation representation : _representations) {

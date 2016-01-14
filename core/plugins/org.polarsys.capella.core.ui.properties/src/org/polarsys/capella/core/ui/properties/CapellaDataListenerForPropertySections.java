@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,22 +39,22 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     // pre-condition: call contributed filters
-    if (filterNotification(notification_p)) {
+    if (filterNotification(notification)) {
       return;
     }
 
     // pre-condition: only SET and UNSET notifications are wanted
-    if ((notification_p.getEventType() != Notification.SET) && (notification_p.getEventType() != Notification.UNSET)) {
+    if ((notification.getEventType() != Notification.SET) && (notification.getEventType() != Notification.UNSET)) {
       return;
     }
 
-    Object notifier = notification_p.getNotifier();
+    Object notifier = notification.getNotifier();
     if (notifier instanceof EObject) {
       UIJob refreshView = new UIJob(Display.getDefault(), "Refresh properties view") { //$NON-NLS-1$
             @Override
-            public IStatus runInUIThread(IProgressMonitor monitor_p) {
+            public IStatus runInUIThread(IProgressMonitor monitor) {
               for (TabbedPropertySheetPage page : getPages()) {
                 page.refresh();
                 page.labelProviderChanged(new LabelProviderChangedEvent(new BaseLabelProvider(), null));
@@ -69,17 +69,17 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
   /**
    * 
    */
-  public void registerPropertySheetPage(TabbedPropertySheetPage page_p) {
-    if (!getPages().contains(page_p)) {
-      getPages().add(page_p);
+  public void registerPropertySheetPage(TabbedPropertySheetPage page) {
+    if (!getPages().contains(page)) {
+      getPages().add(page);
     }
   }
 
   /**
    * 
    */
-  public void unregisterPropertySheetPage(TabbedPropertySheetPage page_p) {
-    getPages().remove(page_p);
+  public void unregisterPropertySheetPage(TabbedPropertySheetPage page) {
+    getPages().remove(page);
   }
 
   /**

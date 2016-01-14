@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -187,6 +187,16 @@ public class BrowserHistory {
   }
 
   /**
+   * Remove all entries after the active entry.
+   */
+  private void removeForwardEntries() {
+      int length = _entries.size();
+      for (int i = _currentEntryIndex + 1; i < length; i++) {
+          _entries.remove(_currentEntryIndex + 1);
+      }
+  }
+  
+  /**
    * Update is called when an new input is set. Add element to the history. Update index. retain backward history.
    * @param realObject_p
    */
@@ -200,6 +210,7 @@ public class BrowserHistory {
         _entries.remove(0); // remove the oldest entry.
       }
       // Add new entry.
+      removeForwardEntries();
       _entries.add(new BrowserNavigationHistoryEntry(realObject_p));
       _currentEntryIndex = _entries.size() - 1;
     }

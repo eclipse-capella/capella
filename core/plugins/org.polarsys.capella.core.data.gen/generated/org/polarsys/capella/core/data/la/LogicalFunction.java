@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getOwnedLogicalFunctionPkgs <em>Owned Logical Function Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getAllocatorLogicalActors <em>Allocator Logical Actors</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getContainedLogicalFunctions <em>Contained Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getChildrenLogicalFunctions <em>Children Logical Functions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Function at Logical level' usage\040guideline='n/a' used\040in\040levels='logical' usage\040examples='../img/usage_examples/example_logicalfunction.png' constraints='none' comment/notes='none' reference\040documentation='none'"

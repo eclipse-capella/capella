@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,8 @@ public class BusinessQueriesPlugin extends AbstractUIActivator {
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
    */
   @Override
-  public void start(BundleContext context_p) throws Exception {
-    super.start(context_p);
+  public void start(BundleContext context) throws Exception {
+    super.start(context);
     __instance = this;
   }
 
@@ -43,8 +43,8 @@ public class BusinessQueriesPlugin extends AbstractUIActivator {
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
    */
   @Override
-  public void stop(BundleContext context_p) throws Exception {
-    super.stop(context_p);
+  public void stop(BundleContext context) throws Exception {
+    super.stop(context);
     __instance = null;
   }
 }

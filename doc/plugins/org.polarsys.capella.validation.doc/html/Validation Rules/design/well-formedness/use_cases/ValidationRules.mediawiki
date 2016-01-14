@@ -1,0 +1,21 @@
+      
+= > Validation Rules > capella.category > design > well-formedness > use_cases =
+            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that an Capability Realization can only be located in Logical, Physical and EPBS level. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that OperationalCapability/Capability/CapabilityRealization element is realized by below layer.  Example: If Capability resides in SystemAnalysis layer. It should be relalized by a CapabilityRealization from Logical layer. 
+|-
+|- 
+|}   

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2421,18 +2421,6 @@ public class GenericPkgItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          CommunicationFactory.eINSTANCE.createCommunicationLink());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CommunicationFactory.eINSTANCE.createCommunicationLinkAllocation());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class SystemCommunicationHookItemProvider
 			// Process CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION
 			if (communicationPropertyDescriptor != null) {
 				Object communicationValue = eObject.eGet(CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION, true);
-				if (communicationValue != null && communicationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) communicationValue)) {
+				if (communicationValue != null && communicationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) communicationValue)) {
 					itemPropertyDescriptors.remove(communicationPropertyDescriptor);
 				} else if (communicationValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION) != null) {
 					itemPropertyDescriptors.remove(communicationPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class SystemCommunicationHookItemProvider
 			// Process CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					

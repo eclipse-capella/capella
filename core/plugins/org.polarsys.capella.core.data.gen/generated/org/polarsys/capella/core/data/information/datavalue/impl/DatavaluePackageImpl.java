@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1219,7 +1219,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1229,7 +1229,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																												
+		   });
 	}
 
 	/**
@@ -1239,7 +1239,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1251,7 +1251,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (dataValueEClass, 
 		   source, 
@@ -1263,7 +1263,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getDataValue_Abstract(), 
 		   source, 
@@ -1271,7 +1271,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "whether or not the value is abstract", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataValue_Type(), 
 		   source, 
@@ -1279,7 +1279,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "The type of the TypedElement\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (dataValueContainerEClass, 
 		   source, 
@@ -1291,7 +1291,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDataValueContainer_OwnedDataValues(), 
 		   source, 
@@ -1299,7 +1299,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "DataValue elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractBooleanValueEClass, 
 		   source, 
@@ -1311,7 +1311,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractBooleanValue_BooleanType(), 
 		   source, 
@@ -1319,7 +1319,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalBooleanValueEClass, 
 		   source, 
@@ -1331,7 +1331,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralBooleanValue_Value(), 
 		   source, 
@@ -1340,7 +1340,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (booleanReferenceEClass, 
 		   source, 
@@ -1352,7 +1352,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedValue(), 
 		   source, 
@@ -1360,7 +1360,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the boolean value that this reference points to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedProperty(), 
 		   source, 
@@ -1368,7 +1368,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the property that is using this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractEnumerationValueEClass, 
 		   source, 
@@ -1380,7 +1380,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractEnumerationValue_EnumerationType(), 
 		   source, 
@@ -1388,7 +1388,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (enumerationLiteralEClass, 
 		   source, 
@@ -1400,7 +1400,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationLiteral_DomainValue(), 
 		   source, 
@@ -1412,7 +1412,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationReferenceEClass, 
 		   source, 
@@ -1424,7 +1424,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedValue(), 
 		   source, 
@@ -1432,7 +1432,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the abstract enumeration value that this reference points to", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedProperty(), 
 		   source, 
@@ -1440,7 +1440,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the property that is using this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractStringValueEClass, 
 		   source, 
@@ -1452,7 +1452,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractStringValue_StringType(), 
 		   source, 
@@ -1460,7 +1460,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalStringValueEClass, 
 		   source, 
@@ -1472,7 +1472,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralStringValue_Value(), 
 		   source, 
@@ -1481,7 +1481,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (stringReferenceEClass, 
 		   source, 
@@ -1493,7 +1493,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedValue(), 
 		   source, 
@@ -1501,7 +1501,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the string value that this reference points to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedProperty(), 
 		   source, 
@@ -1509,7 +1509,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericValueEClass, 
 		   source, 
@@ -1521,7 +1521,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getNumericValue_Unit(), 
 		   source, 
@@ -1533,7 +1533,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getNumericValue_NumericType(), 
 		   source, 
@@ -1541,7 +1541,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalNumericValueEClass, 
 		   source, 
@@ -1553,7 +1553,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralNumericValue_Value(), 
 		   source, 
@@ -1562,7 +1562,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericReferenceEClass, 
 		   source, 
@@ -1574,7 +1574,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedValue(), 
 		   source, 
@@ -1582,7 +1582,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the numeric value being referenced\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedProperty(), 
 		   source, 
@@ -1590,7 +1590,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractComplexValueEClass, 
 		   source, 
@@ -1602,7 +1602,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractComplexValue_ComplexType(), 
 		   source, 
@@ -1610,7 +1610,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (complexValueEClass, 
 		   source, 
@@ -1622,7 +1622,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComplexValue_OwnedParts(), 
 		   source, 
@@ -1634,7 +1634,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (complexValueReferenceEClass, 
 		   source, 
@@ -1646,7 +1646,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedValue(), 
 		   source, 
@@ -1654,7 +1654,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the complex value being referenced", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedProperty(), 
 		   source, 
@@ -1662,7 +1662,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the property that uses this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (valuePartEClass, 
 		   source, 
@@ -1674,7 +1674,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getValuePart_ReferencedProperty(), 
 		   source, 
@@ -1686,7 +1686,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getValuePart_OwnedValue(), 
 		   source, 
@@ -1698,7 +1698,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractExpressionValueEClass, 
 		   source, 
@@ -1710,7 +1710,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_Expression(), 
 		   source, 
@@ -1722,7 +1722,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_UnparsedExpression(), 
 		   source, 
@@ -1734,7 +1734,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
@@ -1742,7 +1742,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "the type of the data being valued\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (binaryExpressionEClass, 
 		   source, 
@@ -1754,7 +1754,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBinaryExpression_Operator(), 
 		   source, 
@@ -1763,7 +1763,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedLeftOperand(), 
 		   source, 
@@ -1771,7 +1771,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedRightOperand(), 
 		   source, 
@@ -1779,7 +1779,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (unaryExpressionEClass, 
 		   source, 
@@ -1791,7 +1791,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getUnaryExpression_Operator(), 
 		   source, 
@@ -1800,7 +1800,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getUnaryExpression_OwnedOperand(), 
 		   source, 
@@ -1808,7 +1808,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "list of the operands being part of the boolean expression\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum, 
 		   source, 
@@ -1816,7 +1816,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Specifies the kind of this binary operator", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(0), 
 		   source, 
@@ -1824,7 +1824,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator is not initialized", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(1), 
 		   source, 
@@ -1832,7 +1832,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to an addition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(2), 
 		   source, 
@@ -1840,7 +1840,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a multiplication", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(3), 
 		   source, 
@@ -1848,7 +1848,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a substraction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(4), 
 		   source, 
@@ -1856,7 +1856,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a division", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(5), 
 		   source, 
@@ -1864,7 +1864,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a power operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(6), 
 		   source, 
@@ -1872,7 +1872,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a min operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(7), 
 		   source, 
@@ -1880,7 +1880,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a max operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(8), 
 		   source, 
@@ -1888,7 +1888,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to an equal operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(9), 
 		   source, 
@@ -1896,7 +1896,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a logical inclusive OR operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(10), 
 		   source, 
@@ -1904,7 +1904,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a logical exclusive OR operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(11), 
 		   source, 
@@ -1912,7 +1912,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the binary operator refers to a logical AND operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum, 
 		   source, 
@@ -1920,7 +1920,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Specifies the kind of this unary operator", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(0), 
 		   source, 
@@ -1928,7 +1928,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the unary operator is not initialized", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(1), 
 		   source, 
@@ -1936,7 +1936,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the unary operator refers to a NOT operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(2), 
 		   source, 
@@ -1944,7 +1944,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the unary operator refers to a position operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(3), 
 		   source, 
@@ -1952,7 +1952,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the unary operator refers to a value operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(4), 
 		   source, 
@@ -1960,7 +1960,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the unary operator refers to a successor operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(5), 
 		   source, 
@@ -1968,26 +1968,26 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the unary operator refers to a predecessor operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (opaqueExpressionEClass, 
 		   source, 
 		   new String[] {
 			 "description", "An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of\r\nthe languages.\r\nOne predefined language for specifying expressions is OCL. Natural language or programming languages may also be\r\nused.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "If the language attribute is not empty, then the size of the body and language arrays must be the same." //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOpaqueExpression_Bodies(), 
 		   source, 
 		   new String[] {
 			 "description", "The text of the expression, possibly in multiple languages." //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOpaqueExpression_Languages(), 
 		   source, 
 		   new String[] {
 			 "description", "Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the\r\nlanguages. If the languages are unspecified, they might be implicit from the expression body or the context.\r\nLanguages are matched to body strings by order." //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -1997,280 +1997,280 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getDataValue_Abstract(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getDataValue_Type(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getDataValueContainer_OwnedDataValues(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getAbstractBooleanValue_BooleanType(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalBooleanValueEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralBooleanValue_Value(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (booleanReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getAbstractEnumerationValue_EnumerationType(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (enumerationLiteralEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationLiteral_DomainValue(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getAbstractStringValue_StringType(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalStringValueEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralStringValue_Value(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (stringReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getNumericValue_Unit(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getNumericValue_NumericType(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalNumericValueEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralNumericValue_Value(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (numericReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getAbstractComplexValue_ComplexType(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (complexValueEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComplexValue_OwnedParts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (complexValueReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (valuePartEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getValuePart_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getValuePart_OwnedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_Expression(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_UnparsedExpression(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
 		   new String[] {
 			 "feature", "abstractType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (binaryExpressionEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getBinaryExpression_Operator(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedLeftOperand(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedRightOperand(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (unaryExpressionEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getUnaryExpression_Operator(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getUnaryExpression_OwnedOperand(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum, 
 		   source, 
 		   new String[] {
-		   });																												
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum, 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (opaqueExpressionEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getOpaqueExpression_Bodies(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getOpaqueExpression_Languages(), 
 		   source, 
@@ -2285,7 +2285,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2295,7 +2295,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																									
+		   });
 	}
 
 	/**
@@ -2305,193 +2305,193 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (dataValueEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DataValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (dataValueContainerEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DataTypePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDataValueContainer_OwnedDataValues(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedDataValues" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractBooleanValue_BooleanType(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (literalBooleanValueEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "LiteralBooleanValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (booleanReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "BooleanReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractEnumerationValue_EnumerationType(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (enumerationLiteralEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "EnumerationLiteral" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractStringValueEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "StringValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractStringValue_StringType(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (literalStringValueEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "LiteralStringValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (stringReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "StringReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericValueEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "NumericValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getNumericValue_NumericType(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (literalNumericValueEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "LiteralNumericValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (numericReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "NumericReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractComplexValue_ComplexType(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (binaryExpressionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "BinaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedLeftOperand(), 
 		   source, 
 		   new String[] {
 			 "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedRightOperand(), 
 		   source, 
 		   new String[] {
 			 "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (unaryExpressionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "UnaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getUnaryExpression_OwnedOperand(), 
 		   source, 
 		   new String[] {
 			 "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																					
+		   });
 	}
 
 	/**
@@ -2501,242 +2501,242 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (dataValueEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.DataValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (dataValueContainerEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataValueContainer_OwnedDataValues(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractBooleanValue_BooleanType(), 
 		   source, 
 		   new String[] {
 			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (literalBooleanValueEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "LiteralBoolean", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.LiteralBooleanValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralBooleanValue_Value(), 
 		   source, 
 		   new String[] {
 			 "featureName", "value", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "LiteralBoolean" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (booleanReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.BooleanReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractEnumerationValue_EnumerationType(), 
 		   source, 
 		   new String[] {
 			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (enumerationLiteralEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.EnumerationLiteral" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (abstractStringValueEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "ValueSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractStringValue_StringType(), 
 		   source, 
 		   new String[] {
 			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (literalStringValueEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "LiteralString", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.LiteralStringValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralStringValue_Value(), 
 		   source, 
 		   new String[] {
 			 "featureName", "value", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "LiteralString" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (stringReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.StringReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (numericValueEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "ValueSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericValue_NumericType(), 
 		   source, 
 		   new String[] {
 			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (literalNumericValueEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.LiteralNumericValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralNumericValue_Value(), 
 		   source, 
 		   new String[] {
 			 "featureName", "symbol", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Expression" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericReferenceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.NumericReference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractComplexValue_ComplexType(), 
 		   source, 
 		   new String[] {
 			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
 		   new String[] {
 			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "TypedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (binaryExpressionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.BinaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedLeftOperand(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedRightOperand(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (unaryExpressionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.UnaryExpression" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getUnaryExpression_OwnedOperand(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																						
+		   });
 	}
 
 	/**
@@ -2746,7 +2746,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (dataValueEClass, 
 		   source, 
@@ -2755,7 +2755,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getDataValue_Abstract(), 
 		   source, 
@@ -2763,7 +2763,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataValue_Type(), 
 		   source, 
@@ -2771,7 +2771,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (dataValueContainerEClass, 
 		   source, 
@@ -2780,7 +2780,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDataValueContainer_OwnedDataValues(), 
 		   source, 
@@ -2788,7 +2788,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractBooleanValueEClass, 
 		   source, 
@@ -2797,7 +2797,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractBooleanValue_BooleanType(), 
 		   source, 
@@ -2805,7 +2805,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalBooleanValueEClass, 
 		   source, 
@@ -2814,7 +2814,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::LiteralBoolean", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralBooleanValue_Value(), 
 		   source, 
@@ -2822,7 +2822,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "uml::LiteralBoolean::value", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (booleanReferenceEClass, 
 		   source, 
@@ -2831,7 +2831,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedValue(), 
 		   source, 
@@ -2839,7 +2839,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedProperty(), 
 		   source, 
@@ -2847,7 +2847,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractEnumerationValueEClass, 
 		   source, 
@@ -2856,7 +2856,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractEnumerationValue_EnumerationType(), 
 		   source, 
@@ -2864,7 +2864,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (enumerationLiteralEClass, 
 		   source, 
@@ -2873,7 +2873,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::EnumerationLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationLiteral_DomainValue(), 
 		   source, 
@@ -2881,7 +2881,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (enumerationReferenceEClass, 
 		   source, 
@@ -2890,7 +2890,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedValue(), 
 		   source, 
@@ -2898,7 +2898,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedProperty(), 
 		   source, 
@@ -2906,7 +2906,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractStringValueEClass, 
 		   source, 
@@ -2915,7 +2915,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractStringValue_StringType(), 
 		   source, 
@@ -2923,7 +2923,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalStringValueEClass, 
 		   source, 
@@ -2932,7 +2932,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::LiteralString", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralStringValue_Value(), 
 		   source, 
@@ -2940,7 +2940,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "uml::LiteralString::value", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (stringReferenceEClass, 
 		   source, 
@@ -2949,7 +2949,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedValue(), 
 		   source, 
@@ -2957,7 +2957,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedProperty(), 
 		   source, 
@@ -2965,7 +2965,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericValueEClass, 
 		   source, 
@@ -2974,7 +2974,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getNumericValue_Unit(), 
 		   source, 
@@ -2983,7 +2983,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getNumericValue_NumericType(), 
 		   source, 
@@ -2991,7 +2991,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (literalNumericValueEClass, 
 		   source, 
@@ -3000,7 +3000,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getLiteralNumericValue_Value(), 
 		   source, 
@@ -3008,7 +3008,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "uml::LiteralString::value", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericReferenceEClass, 
 		   source, 
@@ -3017,7 +3017,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedValue(), 
 		   source, 
@@ -3025,7 +3025,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedProperty(), 
 		   source, 
@@ -3033,7 +3033,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractComplexValueEClass, 
 		   source, 
@@ -3042,7 +3042,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::ValueSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractComplexValue_ComplexType(), 
 		   source, 
@@ -3050,7 +3050,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (complexValueEClass, 
 		   source, 
@@ -3059,7 +3059,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComplexValue_OwnedParts(), 
 		   source, 
@@ -3067,7 +3067,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "***** elements on which ValuePart stereotype or any stereotype that inherits from it is applied\r\n" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (complexValueReferenceEClass, 
 		   source, 
@@ -3076,7 +3076,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::LiteralSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedValue(), 
 		   source, 
@@ -3084,7 +3084,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedProperty(), 
 		   source, 
@@ -3092,7 +3092,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (valuePartEClass, 
 		   source, 
@@ -3101,7 +3101,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getValuePart_ReferencedProperty(), 
 		   source, 
@@ -3109,7 +3109,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getValuePart_OwnedValue(), 
 		   source, 
@@ -3117,7 +3117,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "****** elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractExpressionValueEClass, 
 		   source, 
@@ -3126,7 +3126,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_Expression(), 
 		   source, 
@@ -3134,7 +3134,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_UnparsedExpression(), 
 		   source, 
@@ -3142,7 +3142,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
@@ -3150,7 +3150,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (binaryExpressionEClass, 
 		   source, 
@@ -3159,7 +3159,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getBinaryExpression_Operator(), 
 		   source, 
@@ -3167,7 +3167,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedLeftOperand(), 
 		   source, 
@@ -3175,7 +3175,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "uml::Expression::operand", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedRightOperand(), 
 		   source, 
@@ -3183,7 +3183,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "uml::Expression::operand", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (unaryExpressionEClass, 
 		   source, 
@@ -3192,7 +3192,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "base metaclass in UML/SysML profile ", "uml::Expression", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getUnaryExpression_Operator(), 
 		   source, 
@@ -3200,7 +3200,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getUnaryExpression_OwnedOperand(), 
 		   source, 
@@ -3208,7 +3208,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "uml::Expression::operand", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_ Check that uml::Expression::operand contains BooleanValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Expression::operand elements on which ValueSpecification stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum, 
 		   source, 
@@ -3216,7 +3216,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(0), 
 		   source, 
@@ -3224,7 +3224,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(1), 
 		   source, 
@@ -3232,7 +3232,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(2), 
 		   source, 
@@ -3240,7 +3240,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(3), 
 		   source, 
@@ -3248,7 +3248,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(4), 
 		   source, 
@@ -3256,7 +3256,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(5), 
 		   source, 
@@ -3264,7 +3264,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(6), 
 		   source, 
@@ -3272,7 +3272,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(7), 
 		   source, 
@@ -3280,7 +3280,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(8), 
 		   source, 
@@ -3288,7 +3288,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(9), 
 		   source, 
@@ -3296,7 +3296,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(10), 
 		   source, 
@@ -3304,7 +3304,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (binaryOperatorEEnum.getELiterals().get(11), 
 		   source, 
@@ -3312,7 +3312,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum, 
 		   source, 
@@ -3320,7 +3320,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(0), 
 		   source, 
@@ -3328,7 +3328,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(1), 
 		   source, 
@@ -3336,7 +3336,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(2), 
 		   source, 
@@ -3344,7 +3344,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(3), 
 		   source, 
@@ -3352,7 +3352,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(4), 
 		   source, 
@@ -3360,7 +3360,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unaryOperatorEEnum.getELiterals().get(5), 
 		   source, 
@@ -3368,13 +3368,13 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (opaqueExpressionEClass, 
 		   source, 
 		   new String[] {
 			 "base metaclass in UML/SysML profile ", "uml::OpaqueExpression" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });
 	}
 
 	/**
@@ -3384,47 +3384,47 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$													
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getDataValue_Type(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (getAbstractBooleanValue_BooleanType(), 
 		   source, 
 		   new String[] {
-		   });																																				
+		   });	
 		addAnnotation
 		  (getAbstractEnumerationValue_EnumerationType(), 
 		   source, 
 		   new String[] {
-		   });																																
+		   });	
 		addAnnotation
 		  (getAbstractStringValue_StringType(), 
 		   source, 
 		   new String[] {
-		   });																																									
+		   });	
 		addAnnotation
 		  (getNumericValue_NumericType(), 
 		   source, 
 		   new String[] {
-		   });																																				
+		   });	
 		addAnnotation
 		  (getAbstractComplexValue_ComplexType(), 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_Expression(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
 		   new String[] {
-		   });																																																																																						
+		   });
 	}
 
 	/**
@@ -3434,97 +3434,97 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																							
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getDataValueContainer_OwnedDataValues(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractBooleanValue_BooleanType(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractEnumerationValue_EnumerationType(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (getEnumerationReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getAbstractStringValue_StringType(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getNumericValue_NumericType(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getAbstractComplexValue_ComplexType(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (getComplexValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });																									
+		   });	
 		addAnnotation
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedLeftOperand(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBinaryExpression_OwnedRightOperand(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getUnaryExpression_OwnedOperand(), 
 		   source, 
 		   new String[] {
-		   });																																																				
+		   });
 	}
 
 } //DatavaluePackageImpl

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -33,40 +34,41 @@ import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.model.handler.helpers.ICapellaResourceHelper;
-import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Helper that deal with Capella resources.
  */
 public class CapellaResourceHelper {
-	/**
-	 * The Capella model file extension, value:<code>melodymodeller</code>
-	 */
-	public static final String CAPELLA_MODEL_FILE_EXTENSION = "melodymodeller"; //$NON-NLS-1$
-	/**
-	 * The Capella fragment file extension value:<code>melodyfragment</code>
-	 */
-	public static final String CAPELLA_FRAGMENT_FILE_EXTENSION = "melodyfragment"; //$NON-NLS-1$
-	/**
-	 * The Aird fragment file extension value:<code>airdfragment</code>
-	 */
-	public static final String AIRD_FRAGMENT_FILE_EXTENSION = "airdfragment"; //$NON-NLS-1$
-	/**
-	 * The Aird file extension value:<code>aird</code>
-	 */
-	public static final String AIRD_FILE_EXTENSION = SiriusUtil.SESSION_RESOURCE_EXTENSION;
-	/**
-	 * Fragments default folder name:<code>fragments</code>
-	 */
-	public static final String FRAGMENTS_DEFAULT_FOLDER = "fragments"; //$NON-NLS-1$
+  /**
+   * The Capella model file extension, value:<code>melodymodeller</code>
+   */
+  public static final String CAPELLA_MODEL_FILE_EXTENSION = "melodymodeller"; //$NON-NLS-1$
+  /**
+   * The Capella fragment file extension value:<code>melodyfragment</code>
+   */
+  public static final String CAPELLA_FRAGMENT_FILE_EXTENSION = "melodyfragment"; //$NON-NLS-1$
+  /**
+   * The Aird fragment file extension value:<code>airdfragment</code>
+   */
+  public static final String AIRD_FRAGMENT_FILE_EXTENSION = "airdfragment"; //$NON-NLS-1$
+  /**
+   * The Aird file extension value:<code>aird</code>
+   */
+  public static final String AIRD_FILE_EXTENSION = SiriusUtil.SESSION_RESOURCE_EXTENSION;
+  /**
+   * Fragments default folder name:<code>fragments</code>
+   */
+  public static final String FRAGMENTS_DEFAULT_FOLDER = "fragments"; //$NON-NLS-1$
 
-	private static ICapellaResourceHelper __delegatedCapellaResourceHelper;
+  private static boolean __delegatedCapellaResourceHelperLoaded = false;
 
-	public static final String CAPELLA_PROJECT_NATURE = "org.polarsys.capella.project.nature"; //$NON-NLS-1$
+  private static ICapellaResourceHelper __delegatedCapellaResourceHelper;
 
-	public static final String CAPELLA_LIBRARY_PROJECT_NATURE = "org.polarsys.capella.library.nature";//$NON-NLS-1$
+  public static final String CAPELLA_PROJECT_NATURE = "org.polarsys.capella.project.nature"; //$NON-NLS-1$
 
-	public static final String CAPELLA_CONFIGURATION_PROJECT_NATURE = "org.polarsys.capella.core.preferences.project.nature.configNature"; //$NON-NLS-1$
+  public static final String CAPELLA_LIBRARY_PROJECT_NATURE = "org.polarsys.capella.library.nature";//$NON-NLS-1$
+
+  public static final String CAPELLA_CONFIGURATION_PROJECT_NATURE = "org.polarsys.capella.core.preferences.project.nature.configNature"; //$NON-NLS-1$
 
   /**
    * Ensure given resource is writable.<br>
@@ -130,7 +132,7 @@ public class CapellaResourceHelper {
   public static boolean isAirdResource(IResource resource, boolean ignoreAirdFragment) {
     return hasFileExtension(resource, ignoreAirdFragment, AIRD_FRAGMENT_FILE_EXTENSION, AIRD_FILE_EXTENSION);
   }
-	
+
   /**
    * Whether or not given URI represents an AIRD one i.e a model or a fragment.
    * 
@@ -215,24 +217,21 @@ public class CapellaResourceHelper {
     if (null == uri) {
       return false;
     }
-    if (null == __delegatedCapellaResourceHelper) {
+    if (!__delegatedCapellaResourceHelperLoaded) {
       __delegatedCapellaResourceHelper = loadDelegatedCapellaResourceHelper();
     }
+
     // Call the delegation if any.
     boolean isCapellaResource = (null != __delegatedCapellaResourceHelper) ? __delegatedCapellaResourceHelper
         .isCapellaResource(uri) : false;
-    return isCapellaResource
-        || CAPELLA_MODEL_FILE_EXTENSION.equals(uri.fileExtension())
-        || isCapellaFragment(uri)
-        || /* Needed for the Capella Phantom resource */uri.toString().toLowerCase()
-            .endsWith(CAPELLA_MODEL_FILE_EXTENSION);
+    return isCapellaResource || CAPELLA_MODEL_FILE_EXTENSION.equals(uri.fileExtension()) || isCapellaFragment(uri);
   }
 
   /**
    * Returns whether an object is a semantic element. Such element benefit of all basic tooling provided by capella
    */
   public static boolean isSemanticElement(Object object) {
-    return object instanceof Element;
+    return object instanceof EObject && !(object instanceof DModelElement);
   }
 
   /**
@@ -247,24 +246,21 @@ public class CapellaResourceHelper {
     return true;
   }
 
-	/**
-	 * Create a new capella resource and loads it in the given editing domain
-	 */
-	public static Resource createCapellaResource(IProject project,
-			String filename, TransactionalEditingDomain domain) {
-		// Creates the XMI serialization file.
-		String fullPath = project.getFullPath().toString()
-				+ ICommonConstants.SLASH_CHARACTER + filename
-				+ ICommonConstants.POINT_CHARACTER
-				+ CAPELLA_MODEL_FILE_EXTENSION;
-		URI capellaModelURI = URI.createPlatformResourceURI(fullPath, true);
+  /**
+   * Create a new capella resource and loads it in the given editing domain
+   */
+  public static Resource createCapellaResource(IProject project, String filename, TransactionalEditingDomain domain) {
+    // Creates the XMI serialization file.
+    String fullPath = project.getFullPath().toString() + ICommonConstants.SLASH_CHARACTER + filename
+        + ICommonConstants.POINT_CHARACTER + CAPELLA_MODEL_FILE_EXTENSION;
+    URI capellaModelURI = URI.createPlatformResourceURI(fullPath, true);
 
-		// create a resource
-		ResourceSet set = domain.getResourceSet();
-		Resource xmiResource = set.createResource(capellaModelURI);
+    // create a resource
+    ResourceSet set = domain.getResourceSet();
+    Resource xmiResource = set.createResource(capellaModelURI);
 
-		return xmiResource;
-	}
+    return xmiResource;
+  }
 
   /**
    * Load the unique delegated Capella Resource Helper.
@@ -280,6 +276,7 @@ public class CapellaResourceHelper {
       delegatedHelper = (ICapellaResourceHelper) ExtensionPointHelper.createInstance(configurationElements[0],
           ExtensionPointHelper.ATT_CLASS);
     }
+    __delegatedCapellaResourceHelperLoaded = true;
     return delegatedHelper;
   }
 
@@ -322,7 +319,6 @@ public class CapellaResourceHelper {
   }
 
   /**
-   * 
    * @param eObject
    * @return the main model resource if eObject is in a fragmented resource
    */
@@ -333,10 +329,12 @@ public class CapellaResourceHelper {
       // main model
       if (CapellaResourceHelper.isCapellaFragment(objRes.getURI())) {
         Resource mainModelResource = EcoreUtil.getRootContainer(eObject, true).eResource();
-        if (mainModelResource != null)
+        if (mainModelResource != null) {
           return mainModelResource;
-      } else
+        }
+      } else {
         return objRes;
+      }
     }
     return null;
   }

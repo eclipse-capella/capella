@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,25 +60,25 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 public class DataFlowHelper {
 
   /**
-   * @param message_p
-   * @param fe_p
+   * @param message
+   * @param fe
    */
-  public static void affectDataflowToMessageAndOpposite(SequenceMessage message_p, AbstractEventOperation fe_p) {
-    if (fe_p != null) {
-      DataFlowHelper.affectDataflowToMessage(message_p, fe_p);
-      SequenceMessage oppositeMessage = SequenceLocalHelper.getOppositeSequenceMessage(message_p);
+  public static void affectDataflowToMessageAndOpposite(SequenceMessage message, AbstractEventOperation fe) {
+    if (fe != null) {
+      DataFlowHelper.affectDataflowToMessage(message, fe);
+      SequenceMessage oppositeMessage = SequenceLocalHelper.getOppositeSequenceMessage(message);
       if (oppositeMessage != null) {
-        DataFlowHelper.affectDataflowToMessage(oppositeMessage, fe_p);
+        DataFlowHelper.affectDataflowToMessage(oppositeMessage, fe);
       }
     }
   }
 
   /**
-   * @param message_p
-   * @param abstractEventOperation_p
+   * @param message
+   * @param abstractEventOperation
    */
-  public static void affectDataflowToMessage(SequenceMessage message_p, AbstractEventOperation abstractEventOperation_p) {
-    MessageEnd end = message_p.getReceivingEnd();
+  public static void affectDataflowToMessage(SequenceMessage message, AbstractEventOperation abstractEventOperation) {
+    MessageEnd end = message.getReceivingEnd();
     if (end != null) {
       Event event = end.getEvent();
       EventReceiptOperation eventR = null;
@@ -89,9 +89,9 @@ public class DataFlowHelper {
         eventR = InteractionFactory.eINSTANCE.createEventReceiptOperation();
         end.setEvent(eventR);
       }
-      eventR.setOperation(abstractEventOperation_p);
+      eventR.setOperation(abstractEventOperation);
     }
-    MessageEnd begin = message_p.getSendingEnd();
+    MessageEnd begin = message.getSendingEnd();
     if (begin != null) {
       Event event = begin.getEvent();
       EventSentOperation eventS = null;
@@ -102,13 +102,13 @@ public class DataFlowHelper {
         eventS = InteractionFactory.eINSTANCE.createEventSentOperation();
         begin.setEvent(eventS);
       }
-      eventS.setOperation(abstractEventOperation_p);
-      message_p.setName(abstractEventOperation_p.getName());
+      eventS.setOperation(abstractEventOperation);
+      message.setName(abstractEventOperation.getName());
     }
-    if (message_p.getKind() == MessageKind.SYNCHRONOUS_CALL) {
+    if (message.getKind() == MessageKind.SYNCHRONOUS_CALL) {
       // same affectation on the return message
-      SequenceMessage reply = SequenceLocalHelper.getOppositeSequenceMessage(message_p);
-      affectDataflowToMessage(reply, abstractEventOperation_p);
+      SequenceMessage reply = SequenceLocalHelper.getOppositeSequenceMessage(message);
+      affectDataflowToMessage(reply, abstractEventOperation);
     }
 
   }
@@ -116,34 +116,34 @@ public class DataFlowHelper {
   /**
    * find all available exchanges assignable to this message. Must be acceptable about functions realized by the source and functions implemented by
    * destination
-   * @param message_p the message to affect
+   * @param message the message to affect
    */
-  public static List<FunctionalExchange> getAvailableFonctionalExchanges(SequenceMessage message_p) {
+  public static List<FunctionalExchange> getAvailableFonctionalExchanges(SequenceMessage message) {
     // Find source and target InstanceRoles from given SequenceMessage.
-    InstanceRole sourceInstanceRole = AbstractEndExt.getInstanceRole(message_p.getSendingEnd());
-    InstanceRole targetInstanceRole = AbstractEndExt.getInstanceRole(message_p.getReceivingEnd());
+    InstanceRole sourceInstanceRole = AbstractEndExt.getInstanceRole(message.getSendingEnd());
+    InstanceRole targetInstanceRole = AbstractEndExt.getInstanceRole(message.getReceivingEnd());
     return getAvailableFonctionalExchanges(sourceInstanceRole, targetInstanceRole);
   }
 
   /**
-   * @param sourceIR_p
-   * @param targetIR_p
+   * @param sourceIR
+   * @param targetIR
    * @return
    */
-  public static List<FunctionalExchange> getAvailableFonctionalExchanges(InstanceRole sourceIR_p, InstanceRole targetIR_p) {
+  public static List<FunctionalExchange> getAvailableFonctionalExchanges(InstanceRole sourceIR, InstanceRole targetIR) {
     List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
     List<FunctionalExchange> resultExchangeSender = new ArrayList<FunctionalExchange>();
     List<FunctionalExchange> resultExchangeReceiver = new ArrayList<FunctionalExchange>();
 
-    if (targetIR_p != null) {
-      List<AbstractFunction> resultReceiver = findFunctionRealizedByInstanceRole(targetIR_p);
+    if (targetIR != null) {
+      List<AbstractFunction> resultReceiver = findFunctionRealizedByInstanceRole(targetIR);
       for (AbstractFunction function : resultReceiver) {
         resultExchangeReceiver.addAll(getExchangeDestinationByFunction(function));
       }
     }
 
-    if (sourceIR_p != null) {
-      List<AbstractFunction> resultSender = findFunctionRealizedByInstanceRole(sourceIR_p);
+    if (sourceIR != null) {
+      List<AbstractFunction> resultSender = findFunctionRealizedByInstanceRole(sourceIR);
       for (AbstractFunction function : resultSender) {
         resultExchangeSender.addAll(getExchangeSourceByFunction(function));
       }
@@ -151,9 +151,9 @@ public class DataFlowHelper {
 
     // the result is the intersection of the two exchange lists if there is a source, and a target.
     // otherwise, it's the whole list of one of the side.
-    if (sourceIR_p == null) {
+    if (sourceIR == null) {
       result.addAll(resultExchangeReceiver);
-    } else if (targetIR_p == null) {
+    } else if (targetIR == null) {
       result.addAll(resultExchangeSender);
     } else {
       for (FunctionalExchange functionalExchange : resultExchangeSender) {
@@ -165,9 +165,9 @@ public class DataFlowHelper {
     return result;
   }
 
-  private static List<FunctionalExchange> getExchangeDestinationByFunction(AbstractFunction function_p) {
+  private static List<FunctionalExchange> getExchangeDestinationByFunction(AbstractFunction function) {
     List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
-    for (InputPin inputPin : function_p.getInputs()) {
+    for (InputPin inputPin : function.getInputs()) {
       for (ActivityEdge ae : inputPin.getIncoming()) {
         if (ae instanceof FunctionalExchange) {
           FunctionalExchange fe = (FunctionalExchange) ae;
@@ -175,8 +175,8 @@ public class DataFlowHelper {
         }
       }
     }
-    if (function_p instanceof OperationalActivity) {
-      OperationalActivity oa = (OperationalActivity) function_p;
+    if (function instanceof OperationalActivity) {
+      OperationalActivity oa = (OperationalActivity) function;
       for (ActivityEdge ae : oa.getIncoming()) {
         if (ae instanceof FunctionalExchange) {
           FunctionalExchange fe = (FunctionalExchange) ae;
@@ -184,7 +184,7 @@ public class DataFlowHelper {
         }
       }
     }
-    for (EObject obj : function_p.eContents()) {
+    for (EObject obj : function.eContents()) {
       if (obj instanceof AbstractFunction) {
         AbstractFunction subFunction = (AbstractFunction) obj;
         result.addAll(getExchangeDestinationByFunction(subFunction));
@@ -193,9 +193,9 @@ public class DataFlowHelper {
     return result;
   }
 
-  private static List<FunctionalExchange> getExchangeSourceByFunction(AbstractFunction function_p) {
+  private static List<FunctionalExchange> getExchangeSourceByFunction(AbstractFunction function) {
     List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
-    for (OutputPin output : function_p.getOutputs()) {
+    for (OutputPin output : function.getOutputs()) {
       for (ActivityEdge ae : output.getOutgoing()) {
         if (ae instanceof FunctionalExchange) {
           FunctionalExchange fe = (FunctionalExchange) ae;
@@ -203,8 +203,8 @@ public class DataFlowHelper {
         }
       }
     }
-    if (function_p instanceof OperationalActivity) {
-      OperationalActivity oa = (OperationalActivity) function_p;
+    if (function instanceof OperationalActivity) {
+      OperationalActivity oa = (OperationalActivity) function;
       for (ActivityEdge ae : oa.getOutgoing()) {
         if (ae instanceof FunctionalExchange) {
           FunctionalExchange fe = (FunctionalExchange) ae;
@@ -212,7 +212,7 @@ public class DataFlowHelper {
         }
       }
     }
-    for (EObject obj : function_p.eContents()) {
+    for (EObject obj : function.eContents()) {
       if (obj instanceof AbstractFunction) {
         AbstractFunction subFunction = (AbstractFunction) obj;
         result.addAll(getExchangeSourceByFunction(subFunction));
@@ -223,13 +223,13 @@ public class DataFlowHelper {
 
   /**
    * @param result
-   * @param instanceRole_p
+   * @param instanceRole
    */
-  public static List<AbstractFunction> findFunctionRealizedByInstanceRole(InstanceRole instanceRole_p) {
+  public static List<AbstractFunction> findFunctionRealizedByInstanceRole(InstanceRole instanceRole) {
     List<AbstractFunction> result = new ArrayList<AbstractFunction>();
 
-    if (instanceRole_p != null) {
-      AbstractInstance ai = instanceRole_p.getRepresentedInstance();
+    if (instanceRole != null) {
+      AbstractInstance ai = instanceRole.getRepresentedInstance();
 
       if (ai != null) {
         AbstractType at = ai.getAbstractType();
@@ -271,12 +271,12 @@ public class DataFlowHelper {
 
   /**
    * Check if a diagram doesn't contain a component exchange (connection) to avoid mix of CE and FE in dataflow scenario
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static boolean isFeDiagram(Scenario scenario_p) {
+  public static boolean isFeDiagram(Scenario scenario) {
     boolean foundCe = false;
-    for (Event event : scenario_p.getOwnedEvents()) {
+    for (Event event : scenario.getOwnedEvents()) {
       if (event instanceof EventSentOperation) {
         EventSentOperation eso = (EventSentOperation) event;
         if (eso.getOperation() instanceof ComponentExchange) {
@@ -289,12 +289,12 @@ public class DataFlowHelper {
 
   /**
    * Check if a diagram doesn't contain a component exchange (connection) to avoid mix of CE and FE in dataflow scenario
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static boolean isCeDiagram(Scenario scenario_p) {
+  public static boolean isCeDiagram(Scenario scenario) {
     boolean foundFe = false;
-    for (Event event : scenario_p.getOwnedEvents()) {
+    for (Event event : scenario.getOwnedEvents()) {
       if (event instanceof EventSentOperation) {
         EventSentOperation eso = (EventSentOperation) event;
         if (eso.getOperation() instanceof FunctionalExchange) {
@@ -306,32 +306,32 @@ public class DataFlowHelper {
   }
 
   /**
-   * @param message_p
+   * @param message
    * @return
    */
-  public static Collection<? extends AbstractEventOperation> getAvailableComponentExchanges(SequenceMessage message_p) {
+  public static Collection<? extends AbstractEventOperation> getAvailableComponentExchanges(SequenceMessage message) {
     // Find source and target InstanceRoles from given SequenceMessage.
-    InstanceRole sourceInstanceRole = AbstractEndExt.getInstanceRole(message_p.getSendingEnd());
-    InstanceRole targetInstanceRole = AbstractEndExt.getInstanceRole(message_p.getReceivingEnd());
+    InstanceRole sourceInstanceRole = AbstractEndExt.getInstanceRole(message.getSendingEnd());
+    InstanceRole targetInstanceRole = AbstractEndExt.getInstanceRole(message.getReceivingEnd());
     return getAvailableComponentExchanges(sourceInstanceRole, targetInstanceRole);
   }
 
   /**
-   * @param sourceComponent_p
+   * @param sourceComponent
    * @return
    */
-  private static List<Component> getAllComponentHierarchy(Component component_p) {
+  private static List<Component> getAllComponentHierarchy(Component component) {
     List<Component> result = new ArrayList<Component>();
-    result.add(component_p);
-    for (Generalization generalization : component_p.getOwnedGeneralizations()) {
+    result.add(component);
+    for (Generalization generalization : component.getOwnedGeneralizations()) {
       GeneralizableElement super_ = generalization.getSuper();
       if (super_ instanceof Component) {
         result.addAll(getAllComponentHierarchy((Component) super_));
       }
     }
     // deployed components if the component is a node component
-    if (component_p instanceof PhysicalComponent) {
-      PhysicalComponent pc = (PhysicalComponent) component_p;
+    if (component instanceof PhysicalComponent) {
+      PhysicalComponent pc = (PhysicalComponent) component;
       if (pc.getNature().equals(PhysicalComponentNature.NODE)) {
         for (PhysicalComponent deployedPC : pc.getDeployedPhysicalComponents()) {
           result.addAll(getAllComponentHierarchy(deployedPC));
@@ -345,15 +345,15 @@ public class DataFlowHelper {
   }
 
   /**
-   * @param sourceComponent_p
+   * @param sourceComponent
    * @return
    */
-  private static List<ComponentExchange> getCEFromComponent(Component component_p, OrientationPortKind orientation_p) {
+  private static List<ComponentExchange> getCEFromComponent(Component component, OrientationPortKind orientation) {
     List<ComponentExchange> result = new ArrayList<ComponentExchange>();
-    for (Feature f : component_p.getOwnedFeatures()) {
+    for (Feature f : component.getOwnedFeatures()) {
       if (f instanceof ComponentPort) {
         ComponentPort port = (ComponentPort) f;
-        if (isDirectionCompatible(port.getOrientation(), orientation_p)) {
+        if (isDirectionCompatible(port.getOrientation(), orientation)) {
           for (ComponentExchange componentExchange : port.getComponentExchanges()) {
             result.add(componentExchange);
             if (componentExchange.getKind().equals(ComponentExchangeKind.DELEGATION)) {
@@ -363,16 +363,16 @@ public class DataFlowHelper {
         }
       }
     }
-    if (component_p instanceof Entity) {
-      Entity entity = (Entity) component_p;
-      if (orientation_p == OrientationPortKind.OUT) {
+    if (component instanceof Entity) {
+      Entity entity = (Entity) component;
+      if (orientation == OrientationPortKind.OUT) {
         for (AbstractInformationFlow if_ : entity.getOutgoingInformationFlows()) {
           if (if_ instanceof CommunicationMean) {
             result.add((ComponentExchange) if_);
           }
         }
       }
-      if (orientation_p == OrientationPortKind.IN) {
+      if (orientation == OrientationPortKind.IN) {
         for (AbstractInformationFlow if_ : entity.getIncomingInformationFlows()) {
           if (if_ instanceof CommunicationMean) {
             result.add((ComponentExchange) if_);
@@ -384,18 +384,18 @@ public class DataFlowHelper {
   }
 
   /**
-   * @param orientation_p
-   * @param orientation2_p
+   * @param orientation
+   * @param orientation2
    * @return
    */
-  private static boolean isDirectionCompatible(OrientationPortKind portOrientation_p, OrientationPortKind searchedOrientation_p) {
+  private static boolean isDirectionCompatible(OrientationPortKind portOrientation, OrientationPortKind searchedOrientation) {
     boolean result = false;
-    switch (searchedOrientation_p) {
+    switch (searchedOrientation) {
       case IN:
-        result = (portOrientation_p == OrientationPortKind.IN) || (portOrientation_p == OrientationPortKind.INOUT);
+        result = (portOrientation == OrientationPortKind.IN) || (portOrientation == OrientationPortKind.INOUT);
       break;
       case OUT:
-        result = (portOrientation_p == OrientationPortKind.OUT) || (portOrientation_p == OrientationPortKind.INOUT);
+        result = (portOrientation == OrientationPortKind.OUT) || (portOrientation == OrientationPortKind.INOUT);
       break;
       case INOUT:
       case UNSET:
@@ -405,28 +405,28 @@ public class DataFlowHelper {
   }
 
   /**
-   * @param message_p
+   * @param message
    * @return
    */
-  public static List<FunctionalExchange> getAvailableFonctionalExchangesFromFunctions(SequenceMessage message_p) {
+  public static List<FunctionalExchange> getAvailableFonctionalExchangesFromFunctions(SequenceMessage message) {
     // Find source and target InstanceRoles from given SequenceMessage.
-    InstanceRole sourceInstanceRole = AbstractEndExt.getInstanceRole(message_p.getSendingEnd());
-    InstanceRole targetInstanceRole = AbstractEndExt.getInstanceRole(message_p.getReceivingEnd());
+    InstanceRole sourceInstanceRole = AbstractEndExt.getInstanceRole(message.getSendingEnd());
+    InstanceRole targetInstanceRole = AbstractEndExt.getInstanceRole(message.getReceivingEnd());
     return getAvailableFonctionalExchangesFromFunctions(sourceInstanceRole, targetInstanceRole);
   }
 
   /**
-   * @param sourceIR_p
-   * @param targetIR_p
+   * @param sourceIR
+   * @param targetIR
    * @return
    */
-  public static List<FunctionalExchange> getAvailableFonctionalExchangesFromFunctions(InstanceRole sourceIR_p, InstanceRole targetIR_p) {
+  public static List<FunctionalExchange> getAvailableFonctionalExchangesFromFunctions(InstanceRole sourceIR, InstanceRole targetIR) {
     List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
-    AbstractFunction resultReceiver = (AbstractFunction) targetIR_p.getRepresentedInstance();
+    AbstractFunction resultReceiver = (AbstractFunction) targetIR.getRepresentedInstance();
     List<FunctionalExchange> resultExchangeReceiver = new ArrayList<FunctionalExchange>();
     resultExchangeReceiver.addAll(getExchangeDestinationByFunction(resultReceiver));
 
-    AbstractFunction resultSender = (AbstractFunction) sourceIR_p.getRepresentedInstance();
+    AbstractFunction resultSender = (AbstractFunction) sourceIR.getRepresentedInstance();
     List<FunctionalExchange> resultExchangeSender = new ArrayList<FunctionalExchange>();
     resultExchangeSender.addAll(getExchangeSourceByFunction(resultSender));
 
@@ -441,16 +441,16 @@ public class DataFlowHelper {
   }
 
   /**
-   * @param sourceIR_p
-   * @param targetIR_p
+   * @param sourceIR
+   * @param targetIR
    * @return
    */
-  public static Collection<? extends AbstractEventOperation> getAvailableComponentExchanges(InstanceRole sourceIR_p, InstanceRole targetIR_p) {
+  public static Collection<? extends AbstractEventOperation> getAvailableComponentExchanges(InstanceRole sourceIR, InstanceRole targetIR) {
 
     List<ComponentExchange> result = new ArrayList<ComponentExchange>();
 
-    Component sourceComponent = (Component) (sourceIR_p == null ? null : sourceIR_p.getRepresentedInstance().getAbstractType());
-    Component targetComponent = (Component) (targetIR_p == null ? null : targetIR_p.getRepresentedInstance().getAbstractType());
+    Component sourceComponent = (Component) (sourceIR == null ? null : sourceIR.getRepresentedInstance().getAbstractType());
+    Component targetComponent = (Component) (targetIR == null ? null : targetIR.getRepresentedInstance().getAbstractType());
 
     List<ComponentExchange> sourceConnections = new ArrayList<ComponentExchange>();
     if (sourceComponent != null) {

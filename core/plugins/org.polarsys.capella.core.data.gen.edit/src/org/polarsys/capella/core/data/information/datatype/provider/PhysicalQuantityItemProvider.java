@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public class PhysicalQuantityItemProvider extends NumericTypeItemProvider implem
 			// Process DatatypePackage.Literals.PHYSICAL_QUANTITY__UNIT
 			if (unitPropertyDescriptor != null) {
 				Object unitValue = eObject.eGet(DatatypePackage.Literals.PHYSICAL_QUANTITY__UNIT, true);
-				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) unitValue)) {
+				if (unitValue != null && unitValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) unitValue)) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);
 				} else if (unitValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.PHYSICAL_QUANTITY__UNIT) != null) {
 					itemPropertyDescriptors.remove(unitPropertyDescriptor);				  					

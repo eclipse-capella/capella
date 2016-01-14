@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class ExecutionEndItemProvider
 			// Process InteractionPackage.Literals.EXECUTION_END__EXECUTION
 			if (executionPropertyDescriptor != null) {
 				Object executionValue = eObject.eGet(InteractionPackage.Literals.EXECUTION_END__EXECUTION, true);
-				if (executionValue != null && executionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) executionValue)) {
+				if (executionValue != null && executionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) executionValue)) {
 					itemPropertyDescriptors.remove(executionPropertyDescriptor);
 				} else if (executionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.EXECUTION_END__EXECUTION) != null) {
 					itemPropertyDescriptors.remove(executionPropertyDescriptor);				  					

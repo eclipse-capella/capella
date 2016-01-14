@@ -104,7 +104,7 @@ public class CreateCellToolWrapper extends AbstractTableToolWrapper {
       boolean shouldCreate = false;
       if (container instanceof DCell) {
         DCell cell = (DCell) container;
-        if (TableHelper.getCreateCellTool(cell) != null) {
+        if (TableHelper.getCreateCellTool(cell.getLine(), cell.getColumn()) != null) {
           shouldCreate = true;
         }
       }

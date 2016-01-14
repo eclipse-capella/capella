@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,27 +48,27 @@ public class ReferenceTableField extends AbstractStructuredRepresentationField {
   /**
    * Constructor.
    *
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param referencedFeature_p
-   * @param label_p
-   * @param controller_p
-   * @param viewerType_p
+   * @param parent
+   * @param widgetFactory
+   * @param referencedFeature
+   * @param label
+   * @param controller
+   * @param viewerType
    */
-  public ReferenceTableField(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, EReference referencedFeature_p, 
-      String label_p, IMultipleSemanticFieldController controller_p, IDelegatedViewer delegatedViewer_p)
+  public ReferenceTableField(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, EReference referencedFeature, 
+      String label, IMultipleSemanticFieldController controller, IDelegatedViewer delegatedViewer)
   {
-    super(parent_p, widgetFactory_p, referencedFeature_p, label_p, delegatedViewer_p);
+    super(parent, widgetFactory, referencedFeature, label, delegatedViewer);
     
-    _controller = controller_p;
+    _controller = controller;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void createCustomActions(Composite parent_p) {
-    _browseBtn = createTableButton(parent_p, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_BROWSE_BUTTON), new Runnable() {
+  protected void createCustomActions(Composite parent) {
+    _browseBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_BROWSE_BUTTON), new Runnable() {
       public void run() {
         handleBrowse();
       }
@@ -134,11 +134,11 @@ public class ReferenceTableField extends AbstractStructuredRepresentationField {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    super.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
 
     if (null != _browseBtn && !_browseBtn.isDisposed()) {
-      _browseBtn.setEnabled(enabled_p);
+      _browseBtn.setEnabled(enabled);
     }
   }
 }

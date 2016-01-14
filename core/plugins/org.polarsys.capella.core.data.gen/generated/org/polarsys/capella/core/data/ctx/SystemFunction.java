@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getOwnedSystemFunctionPkgs <em>Owned System Function Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getAllocatorActors <em>Allocator Actors</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getContainedSystemFunctions <em>Contained System Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getChildrenSystemFunctions <em>Children System Functions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Function at System level\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='system' usage\040examples='../img/usage_examples/example_systemfunction.png' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,10 @@ import org.polarsys.capella.core.data.capellacore.provider.FeatureItemProvider;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
+import org.polarsys.capella.core.data.information.Unit;
+import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
@@ -94,7 +97,7 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
 			// Process ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
 			if (abstractTypePropertyDescriptor != null) {
 				Object abstractTypeValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, true);
-				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) abstractTypeValue)) {
+				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) abstractTypeValue)) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);
 				} else if (abstractTypeValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE) != null) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);				  					
@@ -105,7 +108,7 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
 			// Process CapellacorePackage.Literals.TYPED_ELEMENT__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(CapellacorePackage.Literals.TYPED_ELEMENT__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					
@@ -116,7 +119,7 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
 			// Process InformationPackage.Literals.PROPERTY__ASSOCIATION
 			if (associationPropertyDescriptor != null) {
 				Object associationValue = eObject.eGet(InformationPackage.Literals.PROPERTY__ASSOCIATION, true);
-				if (associationValue != null && associationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) associationValue)) {
+				if (associationValue != null && associationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) associationValue)) {
 					itemPropertyDescriptors.remove(associationPropertyDescriptor);
 				} else if (associationValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PROPERTY__ASSOCIATION) != null) {
 					itemPropertyDescriptors.remove(associationPropertyDescriptor);				  					
@@ -558,18 +561,34 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
   public String getText(Object object) {
     String label = ((Property) object).getName();
     String typeName = ""; //$NON-NLS-1$
+
+    String prefix = PropertyNamingHelper.prefixPropertyLabel((Property) object);
+    String symbolIfPropertyIsDerived = PropertyNamingHelper.getSymbolIfPropertyIsDerived((Property) object);
+    String multiplicity = PropertyNamingHelper.multiplicityToStringDisplay((Property) object);
+
     AbstractType type = ((Property) object).getAbstractType();
     if (null != type) {
       typeName = type.getName();
       if (null == typeName || "" == typeName) { //$NON-NLS-1$
         typeName = "[" + type.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      } else {
+        if (type instanceof PhysicalQuantity) {
+          Unit unit = ((PhysicalQuantity) type).getUnit();
+          if (unit != null) {
+            String unitName = unit.getName();
+            if (unitName != null && !unitName.isEmpty()) {
+              typeName += " (" + unitName + ")";
+            }
+          }
+        }
       }
     } else {
       typeName = "<undefined>"; //$NON-NLS-1$
     }
     if (label == null || label.length() == 0)
       label = "[" + getString("_UI_Property_type") + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    label += ": " + typeName; //$NON-NLS-1$
+
+    label = prefix + multiplicity + " " + symbolIfPropertyIsDerived + label + " : " + typeName; //$NON-NLS-1$ //$NON-NLS-2$
 
     return (label == null || label.length() == 0) ? "[" + getString("_UI_Property_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }

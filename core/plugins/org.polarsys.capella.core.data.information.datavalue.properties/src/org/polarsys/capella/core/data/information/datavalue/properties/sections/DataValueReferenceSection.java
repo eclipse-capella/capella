@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,8 @@ public abstract class DataValueReferenceSection extends DataValueSection {
        * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.SimpleSemanticField#handleOpenButtonClicked(org.eclipse.swt.widgets.Button)
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
 
         executeCommand(updateType(_semanticElement, _semanticFeature));
         refresh();
@@ -73,8 +73,8 @@ public abstract class DataValueReferenceSection extends DataValueSection {
        * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.SimpleSemanticField#handleOpenButtonClicked(org.eclipse.swt.widgets.Button)
        */
       @Override
-      protected void handleOpenButtonClicked(Button button_p) {
-        super.handleOpenButtonClicked(button_p);
+      protected void handleOpenButtonClicked(Button button) {
+        super.handleOpenButtonClicked(button);
 
         executeCommand(updateType(_semanticElement, _semanticFeature));
         refresh();
@@ -94,19 +94,19 @@ public abstract class DataValueReferenceSection extends DataValueSection {
   }
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
+   * @param semanticElement
+   * @param semanticFeature
    * @return
    */
-  protected AbstractReadWriteCommand updateType(final EObject semanticElement_p, final EStructuralFeature semanticFeature_p) {
+  protected AbstractReadWriteCommand updateType(final EObject semanticElement, final EStructuralFeature semanticFeature) {
     return new AbstractReadWriteCommand() {
       /**
        * {@inheritDoc}
        */
       public void run() {
-        EObject obj = (EObject) semanticElement_p.eGet(semanticFeature_p);
+        EObject obj = (EObject) semanticElement.eGet(semanticFeature);
         if (obj instanceof AbstractTypedElement) {
-          semanticElement_p.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) obj).getAbstractType());
+          semanticElement.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), ((AbstractTypedElement) obj).getAbstractType());
         }
       }
       /**
@@ -114,29 +114,29 @@ public abstract class DataValueReferenceSection extends DataValueSection {
        */
       @Override
       public String getName() {
-        return "Edit " + semanticElement_p.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
+        return "Edit " + semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
       }
     };
   }
 
   /**
-   * @param semanticElement_p
+   * @param semanticElement
    * @return
    */
-  protected AbstractReadWriteCommand removeType(final EObject semanticElement_p) {
+  protected AbstractReadWriteCommand removeType(final EObject semanticElement) {
     return new AbstractReadWriteCommand() {
       /**
        * {@inheritDoc}
        */
       public void run() {
-        semanticElement_p.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), null);
+        semanticElement.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), null);
       }
       /**
        * {@inheritDoc}
        */
       @Override
       public String getName() {
-        return "Edit " + semanticElement_p.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
+        return "Edit " + semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
       }
     };
   }

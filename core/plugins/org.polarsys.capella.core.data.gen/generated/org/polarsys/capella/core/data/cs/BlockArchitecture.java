@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedRequirementPkgs <em>Owned Requirement Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getOwnedAbstractCapabilityPkg <em>Owned Abstract Capability Pkg</em>}</li>
@@ -33,7 +34,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getAllocatedArchitectures <em>Allocated Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getAllocatingArchitectures <em>Allocating Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture()
  * @model abstract="true"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,9 +31,9 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
    */
   private EditCapellaCustomPropertyWizardPage _page;
 
-  public EditCapellaCustomPropertyWizard(EObject object_p) {
-    _object = object_p;
-    _metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(object_p, false);
+  public EditCapellaCustomPropertyWizard(EObject object) {
+    _object = object;
+    _metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(object, false);
     setWindowTitle(_metaclassLabel);
   }
 

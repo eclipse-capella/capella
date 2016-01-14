@@ -49,7 +49,6 @@ import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
@@ -57,6 +56,7 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
 public class ValidationCommandLine extends AbstractCommandLine {
@@ -297,7 +297,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
   private Collection<IMarker> filterValidationMarkers(Collection<IMarker> markers_p) throws CoreException {
     Collection<IMarker> result = new ArrayList<IMarker>();
     for (IMarker iMarker : markers_p) {
-      if (LightMarkerRegistry.VALIDATION_TYPE.equals(iMarker.getType())) {
+      if (ICapellaValidationConstants.CAPELLA_MARKER_ID.equals(iMarker.getType())) {
         result.add(iMarker);
       }
     }
@@ -361,7 +361,13 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
       // ruleId
       res.append("<td>"); //$NON-NLS-1$
-      res.append(new MarkerViewHelper(null, null).getUnqualifiedRuleId(MarkerViewHelper.getRuleId(iMarker)));
+      
+      String ruleId = MarkerViewHelper.getRuleID(iMarker, false);
+      if (ruleId == null) {
+        ruleId = MarkerViewHelper.getSource(iMarker);
+      }
+      
+      res.append(ruleId);
       res.append("</td>"); //$NON-NLS-1$
 
       // origin
@@ -409,7 +415,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
    */
   private String getCategory(IMarker iMarker) throws CoreException {
     String result = ""; //$NON-NLS-1$
-    Diagnostic diagnostic = (Diagnostic) iMarker.getAttribute(IValidationConstants.TAG_DIAGNOSTIC);
+    Diagnostic diagnostic = (Diagnostic) iMarker.getAdapter(Diagnostic.class);
     if (diagnostic instanceof ConstraintStatusDiagnostic) {
       Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint().getDescriptor().getCategories();
       if (!cats.isEmpty()) {

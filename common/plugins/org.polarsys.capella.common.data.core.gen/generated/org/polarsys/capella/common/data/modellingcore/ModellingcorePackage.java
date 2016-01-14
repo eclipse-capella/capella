@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public interface ModellingcorePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/common/core/0.8.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/common/core/1.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -1572,15 +1572,15 @@ public interface ModellingcorePackage extends EPackage {
 	int ISTATE__REFERENCED_STATES = ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * The feature id for the '<em><b>Exploited States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISTATE__AVAILABLE_IN_STATES = ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 1;
+  int ISTATE__EXPLOITED_STATES = ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 1;
 
-	/**
+  /**
 	 * The number of structural features of the '<em>IState</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2188,17 +2188,17 @@ public interface ModellingcorePackage extends EPackage {
 	EReference getIState_ReferencedStates();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.common.data.modellingcore.IState#getAvailableInStates <em>Available In States</em>}'.
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.common.data.modellingcore.IState#getExploitedStates <em>Exploited States</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Available In States</em>'.
-	 * @see org.polarsys.capella.common.data.modellingcore.IState#getAvailableInStates()
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Exploited States</em>'.
+	 * @see org.polarsys.capella.common.data.modellingcore.IState#getExploitedStates()
 	 * @see #getIState()
 	 * @generated
 	 */
-	EReference getIState_AvailableInStates();
+  EReference getIState_ExploitedStates();
 
-	/**
+  /**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.common.data.modellingcore.ParameterEffectKind <em>Parameter Effect Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2707,14 +2707,14 @@ public interface ModellingcorePackage extends EPackage {
 		EReference ISTATE__REFERENCED_STATES = eINSTANCE.getIState_ReferencedStates();
 
 		/**
-		 * The meta object literal for the '<em><b>Available In States</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Exploited States</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ISTATE__AVAILABLE_IN_STATES = eINSTANCE.getIState_AvailableInStates();
+    EReference ISTATE__EXPLOITED_STATES = eINSTANCE.getIState_ExploitedStates();
 
-		/**
+    /**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.data.modellingcore.ParameterEffectKind <em>Parameter Effect Kind</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

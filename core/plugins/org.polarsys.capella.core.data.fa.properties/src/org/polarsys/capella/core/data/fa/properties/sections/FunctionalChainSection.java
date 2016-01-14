@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,9 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class FunctionalChainSection extends NamedElementSection {
 
-  private boolean _showFunctionalChainRealizations;
-  private MultipleSemanticField _availableInStatesField;
-  private MultipleSemanticField _realizedFunctionalChainsField;
+  private boolean showFunctionalChainRealizations;
+  private MultipleSemanticField availableInStatesField;
+  private MultipleSemanticField realizedFunctionalChainsField;
 
   /**
    * Default constructor.
@@ -43,10 +43,10 @@ public class FunctionalChainSection extends NamedElementSection {
 
   /**
    * Constructor.
-   * @param showFunctionalChainRealizations_p
+   * @param showFunctionalChainRealizations
    */
-  public FunctionalChainSection(boolean showFunctionalChainRealizations_p) {
-    _showFunctionalChainRealizations = showFunctionalChainRealizations_p;
+  public FunctionalChainSection(boolean showFunctionalChainRealizations) {
+    this.showFunctionalChainRealizations = showFunctionalChainRealizations;
   }
 
   /**
@@ -58,12 +58,12 @@ public class FunctionalChainSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _availableInStatesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainSection_AvailableInStates_Label, getWidgetFactory(), new FunctionalChain_AvailableInStatesController());
-    _availableInStatesField.setDisplayedInWizard(displayedInWizard);
+    availableInStatesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainSection_AvailableInStates_Label, getWidgetFactory(), new FunctionalChain_AvailableInStatesController());
+    availableInStatesField.setDisplayedInWizard(displayedInWizard);
 
-    if (_showFunctionalChainRealizations) {
-      _realizedFunctionalChainsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainSection_FunctionalChainRealizations_Label, getWidgetFactory(), new FunctionalChainRealizationsController());
-      _realizedFunctionalChainsField.setDisplayedInWizard(displayedInWizard);
+    if (showFunctionalChainRealizations) {
+      realizedFunctionalChainsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainSection_FunctionalChainRealizations_Label, getWidgetFactory(), new FunctionalChainRealizationsController());
+      realizedFunctionalChainsField.setDisplayedInWizard(displayedInWizard);
     }
   }
 
@@ -71,12 +71,12 @@ public class FunctionalChainSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _availableInStatesField.loadData(capellaElement_p, FaPackage.eINSTANCE.getFunctionalChain_AvailableInStates());
-    if (null != _realizedFunctionalChainsField) {
-      _realizedFunctionalChainsField.loadData(capellaElement_p, FaPackage.eINSTANCE.getFunctionalChain_OwnedFunctionalChainRealizations());
+    availableInStatesField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalChain_AvailableInStates());
+    if (null != realizedFunctionalChainsField) {
+      realizedFunctionalChainsField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalChain_OwnedFunctionalChainRealizations());
     }
   }
 
@@ -97,8 +97,8 @@ public class FunctionalChainSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_availableInStatesField);
-    fields.add(_realizedFunctionalChainsField);
+    fields.add(availableInStatesField);
+    fields.add(realizedFunctionalChainsField);
 
     return fields;
   }

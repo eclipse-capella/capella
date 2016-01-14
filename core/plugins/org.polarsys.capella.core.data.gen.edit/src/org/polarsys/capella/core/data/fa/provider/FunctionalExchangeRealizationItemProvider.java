@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class FunctionalExchangeRealizationItemProvider
 			// Process FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE
 			if (realizedFunctionalExchangePropertyDescriptor != null) {
 				Object realizedFunctionalExchangeValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE, true);
-				if (realizedFunctionalExchangeValue != null && realizedFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedFunctionalExchangeValue)) {
+				if (realizedFunctionalExchangeValue != null && realizedFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedFunctionalExchangeValue)) {
 					itemPropertyDescriptors.remove(realizedFunctionalExchangePropertyDescriptor);
 				} else if (realizedFunctionalExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(realizedFunctionalExchangePropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class FunctionalExchangeRealizationItemProvider
 			// Process FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE
 			if (realizingFunctionalExchangePropertyDescriptor != null) {
 				Object realizingFunctionalExchangeValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE, true);
-				if (realizingFunctionalExchangeValue != null && realizingFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingFunctionalExchangeValue)) {
+				if (realizingFunctionalExchangeValue != null && realizingFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingFunctionalExchangeValue)) {
 					itemPropertyDescriptors.remove(realizingFunctionalExchangePropertyDescriptor);
 				} else if (realizingFunctionalExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(realizingFunctionalExchangePropertyDescriptor);				  					

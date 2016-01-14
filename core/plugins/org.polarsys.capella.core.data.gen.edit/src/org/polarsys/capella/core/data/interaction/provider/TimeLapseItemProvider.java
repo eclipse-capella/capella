@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class TimeLapseItemProvider
 			// Process InteractionPackage.Literals.TIME_LAPSE__START
 			if (startPropertyDescriptor != null) {
 				Object startValue = eObject.eGet(InteractionPackage.Literals.TIME_LAPSE__START, true);
-				if (startValue != null && startValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) startValue)) {
+				if (startValue != null && startValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) startValue)) {
 					itemPropertyDescriptors.remove(startPropertyDescriptor);
 				} else if (startValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.TIME_LAPSE__START) != null) {
 					itemPropertyDescriptors.remove(startPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class TimeLapseItemProvider
 			// Process InteractionPackage.Literals.TIME_LAPSE__FINISH
 			if (finishPropertyDescriptor != null) {
 				Object finishValue = eObject.eGet(InteractionPackage.Literals.TIME_LAPSE__FINISH, true);
-				if (finishValue != null && finishValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) finishValue)) {
+				if (finishValue != null && finishValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) finishValue)) {
 					itemPropertyDescriptors.remove(finishPropertyDescriptor);
 				} else if (finishValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.TIME_LAPSE__FINISH) != null) {
 					itemPropertyDescriptors.remove(finishPropertyDescriptor);				  					

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class MessageEndItemProvider
 			// Process InteractionPackage.Literals.MESSAGE_END__MESSAGE
 			if (messagePropertyDescriptor != null) {
 				Object messageValue = eObject.eGet(InteractionPackage.Literals.MESSAGE_END__MESSAGE, true);
-				if (messageValue != null && messageValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) messageValue)) {
+				if (messageValue != null && messageValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) messageValue)) {
 					itemPropertyDescriptors.remove(messagePropertyDescriptor);
 				} else if (messageValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.MESSAGE_END__MESSAGE) != null) {
 					itemPropertyDescriptors.remove(messagePropertyDescriptor);				  					

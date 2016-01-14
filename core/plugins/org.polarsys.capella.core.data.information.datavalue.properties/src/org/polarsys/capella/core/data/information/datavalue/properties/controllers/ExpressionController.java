@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,29 +33,29 @@ public class ExpressionController extends AbstractSimpleEditableSemanticFieldCon
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
     DataValue newValue = null;
     if (value instanceof AbstractBooleanValue) {
-      newValue = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName_p);
+      newValue = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName);
       newValue.eSet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue(), value);
     } else if (value instanceof AbstractComplexValue) {
-      newValue = DatavalueFactory.eINSTANCE.createComplexValueReference(defaultName_p);
+      newValue = DatavalueFactory.eINSTANCE.createComplexValueReference(defaultName);
       newValue.eSet(DatavaluePackage.eINSTANCE.getComplexValueReference_ReferencedValue(), value);
     } else if (value instanceof AbstractEnumerationValue) {
-      newValue = DatavalueFactory.eINSTANCE.createEnumerationReference(defaultName_p);
+      newValue = DatavalueFactory.eINSTANCE.createEnumerationReference(defaultName);
       newValue.eSet(DatavaluePackage.eINSTANCE.getEnumerationReference_ReferencedValue(), value);
     } else if (value instanceof NumericValue) {
-      newValue = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+      newValue = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
       newValue.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue(), value);
     } else if (value instanceof AbstractStringValue) {
-      newValue = DatavalueFactory.eINSTANCE.createStringReference(defaultName_p);
+      newValue = DatavalueFactory.eINSTANCE.createStringReference(defaultName);
       newValue.eSet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue(), value);
     } else if (value instanceof Unit) {
-      semanticElement_p.eSet(semanticFeature_p, value);
+      semanticElement.eSet(semanticFeature, value);
     }
 
     if (newValue != null) {
-      semanticElement_p.eSet(semanticFeature_p, newValue);
+      semanticElement.eSet(semanticFeature, newValue);
     }
 
     return value;
@@ -65,15 +65,15 @@ public class ExpressionController extends AbstractSimpleEditableSemanticFieldCon
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.ISimpleEditableSemanticFieldController#editValue(org.polarsys.capella.core.data.capellacore.CapellaElement,
    *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
    */
-  public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-    if (semanticElement_p != null) {
-      DataValue currentValue = (DataValue) semanticElement_p.eGet(semanticFeature_p);
+  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+    if (semanticElement != null) {
+      DataValue currentValue = (DataValue) semanticElement.eGet(semanticFeature);
       if (currentValue != null) {
         editValueWizard(currentValue);
       } else {
-        LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName_p);
+        LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName);
 
-        semanticElement_p.eSet(semanticFeature_p, newValue);
+        semanticElement.eSet(semanticFeature, newValue);
         if (editValueWizard(newValue)) {
           currentValue = newValue;
         } else {

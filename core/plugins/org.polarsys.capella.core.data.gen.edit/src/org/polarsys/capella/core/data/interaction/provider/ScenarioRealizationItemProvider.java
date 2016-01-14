@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class ScenarioRealizationItemProvider
 			// Process InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZED_SCENARIO
 			if (realizedScenarioPropertyDescriptor != null) {
 				Object realizedScenarioValue = eObject.eGet(InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZED_SCENARIO, true);
-				if (realizedScenarioValue != null && realizedScenarioValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedScenarioValue)) {
+				if (realizedScenarioValue != null && realizedScenarioValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedScenarioValue)) {
 					itemPropertyDescriptors.remove(realizedScenarioPropertyDescriptor);
 				} else if (realizedScenarioValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZED_SCENARIO) != null) {
 					itemPropertyDescriptors.remove(realizedScenarioPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ScenarioRealizationItemProvider
 			// Process InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZING_SCENARIO
 			if (realizingScenarioPropertyDescriptor != null) {
 				Object realizingScenarioValue = eObject.eGet(InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZING_SCENARIO, true);
-				if (realizingScenarioValue != null && realizingScenarioValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingScenarioValue)) {
+				if (realizingScenarioValue != null && realizingScenarioValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingScenarioValue)) {
 					itemPropertyDescriptors.remove(realizingScenarioPropertyDescriptor);
 				} else if (realizingScenarioValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZING_SCENARIO) != null) {
 					itemPropertyDescriptors.remove(realizingScenarioPropertyDescriptor);				  					

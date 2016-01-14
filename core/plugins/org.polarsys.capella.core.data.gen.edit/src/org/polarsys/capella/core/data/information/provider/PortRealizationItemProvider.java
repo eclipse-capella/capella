@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class PortRealizationItemProvider
 			// Process InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT
 			if (realizedPortPropertyDescriptor != null) {
 				Object realizedPortValue = eObject.eGet(InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT, true);
-				if (realizedPortValue != null && realizedPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedPortValue)) {
+				if (realizedPortValue != null && realizedPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedPortValue)) {
 					itemPropertyDescriptors.remove(realizedPortPropertyDescriptor);
 				} else if (realizedPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT) != null) {
 					itemPropertyDescriptors.remove(realizedPortPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class PortRealizationItemProvider
 			// Process InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT
 			if (realizingPortPropertyDescriptor != null) {
 				Object realizingPortValue = eObject.eGet(InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT, true);
-				if (realizingPortValue != null && realizingPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingPortValue)) {
+				if (realizingPortValue != null && realizingPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingPortValue)) {
 					itemPropertyDescriptors.remove(realizingPortPropertyDescriptor);
 				} else if (realizingPortValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT) != null) {
 					itemPropertyDescriptors.remove(realizingPortPropertyDescriptor);				  					

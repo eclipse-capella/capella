@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,13 +23,13 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getSendProtocol <em>Send Protocol</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getReceiveProtocol <em>Receive Protocol</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getAllocatedItem <em>Allocated Item</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation#getAllocatingInterface <em>Allocating Interface</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getExchangeItemAllocation()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Allocation link between exchange items and interface that support them' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,22 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.polarsys.capella.common.re.*;
-
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.CatalogElementPkg;
+import org.polarsys.capella.common.re.CompliancyDefinition;
+import org.polarsys.capella.common.re.CompliancyDefinitionPkg;
+import org.polarsys.capella.common.re.GroupingElementPkg;
+import org.polarsys.capella.common.re.ReAbstractElement;
+import org.polarsys.capella.common.re.ReDescriptionElement;
+import org.polarsys.capella.common.re.ReElementContainer;
+import org.polarsys.capella.common.re.ReNamedElement;
+import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.common.re.RecCatalog;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
@@ -61,7 +68,7 @@ public class ReSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */

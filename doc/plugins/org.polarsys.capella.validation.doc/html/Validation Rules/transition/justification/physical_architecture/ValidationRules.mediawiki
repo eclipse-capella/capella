@@ -1,0 +1,102 @@
+      
+= > Validation Rules > capella.category > transition > justification > physical_architecture =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a leaf of Logical Component is realized by at least one Physical Component. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Logical Component is not realized by more than one Physical Component. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that a Logical Actor is realized by at least one Physical Actor. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Logical Function is realized by at least one Physical Function. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that the Capability Realization in LogicalArchitecture layer is refined toward CapabilityRealization in PhysicalArchitecture layer. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that a Physical Component implements / uses a logical interface which is used / implemented / provided / required by its realized Logical Components.   This rule is only evaluated if the transition preference "Transit Interfaces handled by Components from context/logical layers to physical architecture" is disabled. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Physical Component implements / uses / provides / requires an interface of its own level.   This rule is only evaluated if the transition preference"Transit Interfaces handled by Components from context/logical layers to physical architecture" is enabled. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks the realization consistency between logical components and physical components. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Physical Artifact is realized by at least one Configuration Item. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule ensures that a Physical Actor realizes at least one Logical Actor. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a Logical Interface is realized by at least one Physical Interface. 
+|-
+|- 
+|}   

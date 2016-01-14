@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class ConceptComplianceItemProvider
 			// Process OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT
 			if (complyWithConceptPropertyDescriptor != null) {
 				Object complyWithConceptValue = eObject.eGet(OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT, true);
-				if (complyWithConceptValue != null && complyWithConceptValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) complyWithConceptValue)) {
+				if (complyWithConceptValue != null && complyWithConceptValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) complyWithConceptValue)) {
 					itemPropertyDescriptors.remove(complyWithConceptPropertyDescriptor);
 				} else if (complyWithConceptValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLY_WITH_CONCEPT) != null) {
 					itemPropertyDescriptors.remove(complyWithConceptPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class ConceptComplianceItemProvider
 			// Process OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY
 			if (compliantCapabilityPropertyDescriptor != null) {
 				Object compliantCapabilityValue = eObject.eGet(OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY, true);
-				if (compliantCapabilityValue != null && compliantCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) compliantCapabilityValue)) {
+				if (compliantCapabilityValue != null && compliantCapabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) compliantCapabilityValue)) {
 					itemPropertyDescriptors.remove(compliantCapabilityPropertyDescriptor);
 				} else if (compliantCapabilityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.CONCEPT_COMPLIANCE__COMPLIANT_CAPABILITY) != null) {
 					itemPropertyDescriptors.remove(compliantCapabilityPropertyDescriptor);				  					

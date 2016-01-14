@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,16 +41,16 @@ public class AbstractPropertyValueCellEditorProvider implements ICellEditorProvi
   private static final String VALUE = "value"; //$NON-NLS-1$
 
   /**
-   * @param element_p
+   * @param element
    * @param column
    * @return
    */
   @SuppressWarnings("boxing")
-  public Object getElementValue(EObject element_p, int column_p) {
-    switch (column_p) {
+  public Object getElementValue(EObject element, int column) {
+    switch (column) {
       case 0:
-        if (element_p instanceof AbstractPropertyValue) {
-          String name = ((AbstractPropertyValue) element_p).getName();
+        if (element instanceof AbstractPropertyValue) {
+          String name = ((AbstractPropertyValue) element).getName();
           if (null == name) {
             name = ICommonConstants.EMPTY_STRING;
           }
@@ -58,25 +58,25 @@ public class AbstractPropertyValueCellEditorProvider implements ICellEditorProvi
         }
         break;
       case 1:
-        if (element_p instanceof BooleanPropertyValue)
-          return ((BooleanPropertyValue) element_p).isValue();
-        if (element_p instanceof IntegerPropertyValue)
-          return ((IntegerPropertyValue) element_p).getValue();
-        if (element_p instanceof FloatPropertyValue)
-          return ((FloatPropertyValue) element_p).getValue();
-        if (element_p instanceof StringPropertyValue) {
-          String value = ((StringPropertyValue) element_p).getValue();
+        if (element instanceof BooleanPropertyValue)
+          return ((BooleanPropertyValue) element).isValue();
+        if (element instanceof IntegerPropertyValue)
+          return ((IntegerPropertyValue) element).getValue();
+        if (element instanceof FloatPropertyValue)
+          return ((FloatPropertyValue) element).getValue();
+        if (element instanceof StringPropertyValue) {
+          String value = ((StringPropertyValue) element).getValue();
           if (null == value) {
             value = ICommonConstants.EMPTY_STRING;
           }
           return value;
         }
-        if (element_p instanceof EnumerationPropertyValue)
-          return ((EnumerationPropertyValue) element_p).getValue();
+        if (element instanceof EnumerationPropertyValue)
+          return ((EnumerationPropertyValue) element).getValue();
         break;
       case 2:
-        if (element_p instanceof AbstractPropertyValue) {
-          String summary = ((AbstractPropertyValue) element_p).getSummary();
+        if (element instanceof AbstractPropertyValue) {
+          String summary = ((AbstractPropertyValue) element).getSummary();
           if (null == summary) {
             summary = ICommonConstants.EMPTY_STRING;
           }
@@ -87,34 +87,34 @@ public class AbstractPropertyValueCellEditorProvider implements ICellEditorProvi
   }
 
   /**
-   * @param element_p
-   * @param value_p
+   * @param element
+   * @param value
    */
   @SuppressWarnings("boxing")
-  public void modifyElement(EObject element_p, int column_p, Object value_p) {
-    switch (column_p) {
+  public void modifyElement(EObject element, int column, Object value) {
+    switch (column) {
       case 0:
-        if ((element_p instanceof AbstractPropertyValue) && (null != value_p)) {
-          ((AbstractPropertyValue) element_p).setName((String) value_p);
+        if ((element instanceof AbstractPropertyValue) && (null != value)) {
+          ((AbstractPropertyValue) element).setName((String) value);
         }
         break;
       case 1:
-        if ((element_p instanceof BooleanPropertyValue) && (null != value_p)) {
-          ((BooleanPropertyValue) element_p).setValue((Boolean) value_p);
-        } else if ((element_p instanceof IntegerPropertyValue) && (null != value_p)) {
-          ((IntegerPropertyValue) element_p).setValue((Integer) value_p);
-        } else if ((element_p instanceof FloatPropertyValue) && (null != value_p)) {
-          ((FloatPropertyValue) element_p).setValue((Float) value_p);
-        } else if ((element_p instanceof StringPropertyValue) && (null != value_p)) {
-          ((StringPropertyValue) element_p).setValue((String) value_p);
-        } else if (element_p instanceof EnumerationPropertyValue) {
+        if ((element instanceof BooleanPropertyValue) && (null != value)) {
+          ((BooleanPropertyValue) element).setValue((Boolean) value);
+        } else if ((element instanceof IntegerPropertyValue) && (null != value)) {
+          ((IntegerPropertyValue) element).setValue((Integer) value);
+        } else if ((element instanceof FloatPropertyValue) && (null != value)) {
+          ((FloatPropertyValue) element).setValue((Float) value);
+        } else if ((element instanceof StringPropertyValue) && (null != value)) {
+          ((StringPropertyValue) element).setValue((String) value);
+        } else if (element instanceof EnumerationPropertyValue) {
           // this value can be null (unset)
-          ((EnumerationPropertyValue) element_p).setValue((EnumerationPropertyLiteral) value_p);
+          ((EnumerationPropertyValue) element).setValue((EnumerationPropertyLiteral) value);
         }
         break;
       case 2:
-        if ((element_p instanceof AbstractPropertyValue) && (null != value_p)) {
-          ((AbstractPropertyValue) element_p).setSummary((String) value_p);
+        if ((element instanceof AbstractPropertyValue) && (null != value)) {
+          ((AbstractPropertyValue) element).setSummary((String) value);
         }
     }
   }
@@ -122,37 +122,37 @@ public class AbstractPropertyValueCellEditorProvider implements ICellEditorProvi
   /**
    * Gets a cell editor for the given element.
    * 
-   * @param composite_p
-   * @param column_p
-   * @param element_p
+   * @param composite
+   * @param column
+   * @param element
    * @return cell editor for the given element
    */
-  public CellEditor getCellEditor(Composite composite_p, int column_p, Object element_p) {
-    switch (column_p) {
+  public CellEditor getCellEditor(Composite composite, int column, Object element) {
+    switch (column) {
       case 0:
         // Gets a simple text cell editor.
-        return createCellEditor(composite_p, null);
+        return createCellEditor(composite, null);
       case 1:
-        if (element_p instanceof BooleanPropertyValue) {
-          return createCellEditor(composite_p, element_p);
+        if (element instanceof BooleanPropertyValue) {
+          return createCellEditor(composite, element);
         }
-        if (element_p instanceof IntegerPropertyValue) {
-          return createCellEditor(composite_p, element_p);
+        if (element instanceof IntegerPropertyValue) {
+          return createCellEditor(composite, element);
         }
-        if (element_p instanceof StringPropertyValue) {
-          return createCellEditor(composite_p, element_p);
+        if (element instanceof StringPropertyValue) {
+          return createCellEditor(composite, element);
         }
-        if (element_p instanceof FloatPropertyValue) {
-          return createCellEditor(composite_p, element_p);
+        if (element instanceof FloatPropertyValue) {
+          return createCellEditor(composite, element);
         }
-        if (element_p instanceof EnumerationPropertyValue) {
-          return createCellEditor(composite_p, element_p);
+        if (element instanceof EnumerationPropertyValue) {
+          return createCellEditor(composite, element);
         }
         // Gets a dummy cell editor.
-        return createCellEditor(composite_p, null);
+        return createCellEditor(composite, null);
       case 2:
         // Gets a simple text cell editor.
-        return createCellEditor(composite_p, null);
+        return createCellEditor(composite, null);
     }
     return null;
   }
@@ -160,35 +160,35 @@ public class AbstractPropertyValueCellEditorProvider implements ICellEditorProvi
   /**
    * Creates a cell editor for the given element.
    * 
-   * @param composite_p
-   * @param element_p
+   * @param composite
+   * @param element
    * @return cell editor for the given element
    */
-  private CellEditor createCellEditor(Composite composite_p, Object element_p) {
-    if (null == element_p) {
-      return new TextCellEditor(composite_p);
+  private CellEditor createCellEditor(Composite composite, Object element) {
+    if (null == element) {
+      return new TextCellEditor(composite);
     }
 
-    IItemPropertySource provider = (IItemPropertySource) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(element_p, IItemPropertySource.class);
-    IItemPropertyDescriptor itemDescriptor = provider.getPropertyDescriptor(element_p, VALUE);
-    PropertyDescriptor descriptor = new PropertyDescriptor(element_p, itemDescriptor);
+    IItemPropertySource provider = (IItemPropertySource) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(element, IItemPropertySource.class);
+    IItemPropertyDescriptor itemDescriptor = provider.getPropertyDescriptor(element, VALUE);
+    PropertyDescriptor descriptor = new PropertyDescriptor(element, itemDescriptor);
 
-    if (element_p instanceof EnumerationPropertyValue) {
+    if (element instanceof EnumerationPropertyValue) {
       ArrayList<EObject> list = new ArrayList<EObject>();
       IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
         CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE,
         CapellacorePackage.Literals.ENUMERATION_PROPERTY_VALUE__VALUE);
       if (null != query) {
-        list.addAll(query.getCurrentElements((CapellaElement) element_p, false));
-        list.addAll(query.getAvailableElements((CapellaElement) element_p));
+        list.addAll(query.getCurrentElements((CapellaElement) element, false));
+        list.addAll(query.getAvailableElements((CapellaElement) element));
       }
       // this null value an expected value
       if (!list.contains(null)) {
         list.add(0, null);
       }
 
-      return new ExtendedComboBoxCellEditor(composite_p, list, descriptor.getLabelProvider(), itemDescriptor.isSortChoices(element_p));
+      return new ExtendedComboBoxCellEditor(composite, list, descriptor.getLabelProvider(), itemDescriptor.isSortChoices(element));
     }
-    return descriptor.createPropertyEditor(composite_p);
+    return descriptor.createPropertyEditor(composite);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class ComponentExchangeFunctionalExchangeAllocationItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE
 			if (allocatedFunctionalExchangePropertyDescriptor != null) {
 				Object allocatedFunctionalExchangeValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE, true);
-				if (allocatedFunctionalExchangeValue != null && allocatedFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedFunctionalExchangeValue)) {
+				if (allocatedFunctionalExchangeValue != null && allocatedFunctionalExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedFunctionalExchangeValue)) {
 					itemPropertyDescriptors.remove(allocatedFunctionalExchangePropertyDescriptor);
 				} else if (allocatedFunctionalExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(allocatedFunctionalExchangePropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ComponentExchangeFunctionalExchangeAllocationItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE
 			if (allocatingComponentExchangePropertyDescriptor != null) {
 				Object allocatingComponentExchangeValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE, true);
-				if (allocatingComponentExchangeValue != null && allocatingComponentExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingComponentExchangeValue)) {
+				if (allocatingComponentExchangeValue != null && allocatingComponentExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingComponentExchangeValue)) {
 					itemPropertyDescriptors.remove(allocatingComponentExchangePropertyDescriptor);
 				} else if (allocatingComponentExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(allocatingComponentExchangePropertyDescriptor);				  					

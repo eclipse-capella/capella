@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -33,14 +31,12 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.provider.RelationshipItemProvider;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation} object.
@@ -93,7 +89,7 @@ public class ExchangeItemAllocationItemProvider
 			// Process CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM
 			if (allocatedItemPropertyDescriptor != null) {
 				Object allocatedItemValue = eObject.eGet(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, true);
-				if (allocatedItemValue != null && allocatedItemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedItemValue)) {
+				if (allocatedItemValue != null && allocatedItemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedItemValue)) {
 					itemPropertyDescriptors.remove(allocatedItemPropertyDescriptor);
 				} else if (allocatedItemValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM) != null) {
 					itemPropertyDescriptors.remove(allocatedItemPropertyDescriptor);				  					
@@ -104,7 +100,7 @@ public class ExchangeItemAllocationItemProvider
 			// Process CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE
 			if (allocatingInterfacePropertyDescriptor != null) {
 				Object allocatingInterfaceValue = eObject.eGet(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE, true);
-				if (allocatingInterfaceValue != null && allocatingInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingInterfaceValue)) {
+				if (allocatingInterfaceValue != null && allocatingInterfaceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingInterfaceValue)) {
 					itemPropertyDescriptors.remove(allocatingInterfacePropertyDescriptor);
 				} else if (allocatingInterfaceValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE) != null) {
 					itemPropertyDescriptors.remove(allocatingInterfacePropertyDescriptor);				  					

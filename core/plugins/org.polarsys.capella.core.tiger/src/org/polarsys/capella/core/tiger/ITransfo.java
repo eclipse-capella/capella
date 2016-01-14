@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,52 +26,52 @@ public interface ITransfo extends Map<String, Object> {
 
   public abstract String getUid();
 
-  public abstract void setUid(String uid_p);
+  public abstract void setUid(String uid);
 
   /**
-   * @param rule_p
+   * @param rule
    * @see org.polarsys.capella.core.tiger.impl.TransfoRuleBase#addRule(org.polarsys.capella.core.tiger.impl.TransfoRule)
    */
-  public abstract void addRule(TransfoRule rule_p);
+  public abstract void addRule(TransfoRule rule);
 
   /**
-   * @param ruleClass_p
+   * @param ruleClass
    * @see org.polarsys.capella.core.tiger.impl.TransfoRuleBase#loadRule(java.lang.Class)
    */
-  public abstract void loadRule(Class<?> ruleClass_p);
+  public abstract void loadRule(Class<?> ruleClass);
 
   /**
-   * @param rulePkgName_p
-   * @param classNames_p
+   * @param rulePkgName
+   * @param classNames
    * @throws ClassNotFoundException
    * @see org.polarsys.capella.core.tiger.impl.TransfoRuleBase#loadRules(java.lang.String, java.lang.String[])
    */
-  public abstract void loadRules(String rulePkgName_p, String[] classNames_p) throws ClassNotFoundException;
+  public abstract void loadRules(String rulePkgName, String[] classNames) throws ClassNotFoundException;
 
   /**
-   * @param rulePkgName_p
+   * @param rulePkgName
    * @throws ClassNotFoundException
    * @see org.polarsys.capella.core.tiger.impl.TransfoRuleBase#loadRules(java.lang.String)
    */
-  public abstract void loadRules(String rulePkgName_p) throws ClassNotFoundException;
+  public abstract void loadRules(String rulePkgName) throws ClassNotFoundException;
 
   /**
    * 
-   * @param element_p
-   * @param transfo_p
+   * @param element
+   * @param transfo
    * @return
    * @throws TransfoException 
    * @see TransfoRuleBase#findMatchingRule(EObject, Transfo)
    */
-  public abstract ITransfoRule findMatchingRule(EObject element_p) throws TransfoException;
+  public abstract ITransfoRule findMatchingRule(EObject element) throws TransfoException;
 
   /**
    * 
-   * @param element_p
+   * @param element
    * @return
    * @throws TransfoException 
    */
-  public abstract ITransfoRule findCachedMatchingRule(EObject element_p) throws TransfoException;
+  public abstract ITransfoRule findCachedMatchingRule(EObject element) throws TransfoException;
 
   /**
    *

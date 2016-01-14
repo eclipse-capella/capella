@@ -78,7 +78,7 @@ public class CapellaValidateAction extends ValidateAction {
         // Original reasons to switch: CDO and too many workspace notifications (especially in transitions)
 
         // can't use resource_p, see handleDiagnostics below
-        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p);
+        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, getMarkerID());
       }
 
       /**
@@ -91,7 +91,7 @@ public class CapellaValidateAction extends ValidateAction {
           List<IMarker> markers = new ArrayList<IMarker>(LightMarkerRegistry.getInstance().getMarkers());
           for (IMarker marker : markers) {
             try {
-              if (marker.getType().equals(ICapellaValidationConstants.CAPELLA_MARKER_ID)) {
+              if (marker.getType().equals(getMarkerID())) {
                 marker.delete();
               }
             } catch (CoreException e) {
@@ -101,10 +101,12 @@ public class CapellaValidateAction extends ValidateAction {
         }
       }
 
+      /**
+       * Overridden to redirect markers to target to the .aird file so that
+       * relevant markers can be removed when the corresponding session is closed
+       * (see {@link org.polarsys.capella.core.ui.reportlog.InformationViewSessionListener})
+       */
       @Override
-      // Try to create markers on the primary aird file
-      // This beautifully ignores fragmentation and
-      // should work also for CapellaCollab
       protected IFile getFile(Object datum) {
         Object derivedDatum = datum;
         if (datum instanceof EObject) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ public class AbstractCapability_SuperController extends AbstractMultipleSemantic
    * @see org.polarsys.capella.core.ui.properties.controllers.custom.properties.controllers.AbstractMultipleSemanticFieldController#getReadOpenValuesQuery()
    */
   @Override
-  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(),
+  protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(),
         InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUPER_GENERALIZATIONS);
   }
 
@@ -38,8 +38,8 @@ public class AbstractCapability_SuperController extends AbstractMultipleSemantic
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    AbstractCapabilityExt.addSuperCapability((AbstractCapability) semanticElement_p, (AbstractCapability) object_p);
+  protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    AbstractCapabilityExt.addSuperCapability((AbstractCapability) semanticElement, (AbstractCapability) object);
   }
 
   /**
@@ -47,7 +47,7 @@ public class AbstractCapability_SuperController extends AbstractMultipleSemantic
    *      org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
-    AbstractCapabilityExt.removeSuperCapability((AbstractCapability) semanticElement_p, (AbstractCapability) object_p);
+  protected void doRemoveOperationInWriteOpenValues(CapellaElement semanticElement, EStructuralFeature semanticFeature, EObject object) {
+    AbstractCapabilityExt.removeSuperCapability((AbstractCapability) semanticElement, (AbstractCapability) object);
   }
 }

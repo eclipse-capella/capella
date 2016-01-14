@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.ComponentAllocation#getAllocatedComponent <em>Allocated Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.ComponentAllocation#getAllocatingComponent <em>Allocating Component</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentAllocation()
  * @model abstract="true"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public class ValuePartItemProvider extends ModelElementItemProvider implements I
 			// Process CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS
 			if (statusPropertyDescriptor != null) {
 				Object statusValue = eObject.eGet(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS, true);
-				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) statusValue)) {
+				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) statusValue)) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);
 				} else if (statusValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS) != null) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class ValuePartItemProvider extends ModelElementItemProvider implements I
 			// Process DatavaluePackage.Literals.VALUE_PART__REFERENCED_PROPERTY
 			if (referencedPropertyPropertyDescriptor != null) {
 				Object referencedPropertyValue = eObject.eGet(DatavaluePackage.Literals.VALUE_PART__REFERENCED_PROPERTY, true);
-				if (referencedPropertyValue != null && referencedPropertyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) referencedPropertyValue)) {
+				if (referencedPropertyValue != null && referencedPropertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedPropertyValue)) {
 					itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);
 				} else if (referencedPropertyValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.VALUE_PART__REFERENCED_PROPERTY) != null) {
 					itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);				  					

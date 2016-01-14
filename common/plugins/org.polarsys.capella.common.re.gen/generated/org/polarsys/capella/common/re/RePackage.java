@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
@@ -499,13 +498,22 @@ public interface RePackage extends EPackage {
 	int CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES = RE_ABSTRACT_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Suffixed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG_ELEMENT_LINK__SUFFIXED = RE_ABSTRACT_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Catalog Element Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT_LINK_FEATURE_COUNT = RE_ABSTRACT_ELEMENT_FEATURE_COUNT + 4;
+	int CATALOG_ELEMENT_LINK_FEATURE_COUNT = RE_ABSTRACT_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.re.impl.CatalogElementImpl <em>Catalog Element</em>}' class.
@@ -590,13 +598,22 @@ public interface RePackage extends EPackage {
 	int CATALOG_ELEMENT__ENVIRONMENT = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Suffix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CATALOG_ELEMENT__SUFFIX = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
 	 * The feature id for the '<em><b>Purpose</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__PURPOSE = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 4;
+	int CATALOG_ELEMENT__PURPOSE = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
@@ -605,7 +622,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__TAGS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 5;
+	int CATALOG_ELEMENT__TAGS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Origin</b></em>' reference.
@@ -614,7 +631,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__ORIGIN = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 6;
+	int CATALOG_ELEMENT__ORIGIN = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Current Compliancy</b></em>' reference.
@@ -623,7 +640,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__CURRENT_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 7;
+	int CATALOG_ELEMENT__CURRENT_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Default Replica Compliancy</b></em>' reference.
@@ -632,7 +649,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 8;
+	int CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Owned Links</b></em>' containment reference list.
@@ -641,7 +658,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__OWNED_LINKS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 9;
+	int CATALOG_ELEMENT__OWNED_LINKS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Referenced Elements</b></em>' reference list.
@@ -650,7 +667,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__REFERENCED_ELEMENTS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 10;
+	int CATALOG_ELEMENT__REFERENCED_ELEMENTS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Replicated Elements</b></em>' reference list.
@@ -659,7 +676,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__REPLICATED_ELEMENTS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 11;
+	int CATALOG_ELEMENT__REPLICATED_ELEMENTS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>Catalog Element</em>' class.
@@ -668,7 +685,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT_FEATURE_COUNT = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 12;
+	int CATALOG_ELEMENT_FEATURE_COUNT = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.re.impl.CompliancyDefinitionPkgImpl <em>Compliancy Definition Pkg</em>}' class.
@@ -982,6 +999,17 @@ public interface RePackage extends EPackage {
 	EAttribute getCatalogElementLink_UnsynchronizedFeatures();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.common.re.CatalogElementLink#isSuffixed <em>Suffixed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Suffixed</em>'.
+	 * @see org.polarsys.capella.common.re.CatalogElementLink#isSuffixed()
+	 * @see #getCatalogElementLink()
+	 * @generated
+	 */
+	EAttribute getCatalogElementLink_Suffixed();
+
+	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.common.re.CatalogElement <em>Catalog Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1025,6 +1053,17 @@ public interface RePackage extends EPackage {
 	EAttribute getCatalogElement_Environment();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.common.re.CatalogElement#getSuffix <em>Suffix</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Suffix</em>'.
+	 * @see org.polarsys.capella.common.re.CatalogElement#getSuffix()
+	 * @see #getCatalogElement()
+	 * @generated
+	 */
+  EAttribute getCatalogElement_Suffix();
+
+  /**
 	 * Returns the meta object for the attribute '{@link org.polarsys.capella.common.re.CatalogElement#getPurpose <em>Purpose</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1336,6 +1375,14 @@ public interface RePackage extends EPackage {
 		EAttribute CATALOG_ELEMENT_LINK__UNSYNCHRONIZED_FEATURES = eINSTANCE.getCatalogElementLink_UnsynchronizedFeatures();
 
 		/**
+		 * The meta object literal for the '<em><b>Suffixed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CATALOG_ELEMENT_LINK__SUFFIXED = eINSTANCE.getCatalogElementLink_Suffixed();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.re.impl.CatalogElementImpl <em>Catalog Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1370,6 +1417,14 @@ public interface RePackage extends EPackage {
 		EAttribute CATALOG_ELEMENT__ENVIRONMENT = eINSTANCE.getCatalogElement_Environment();
 
 		/**
+		 * The meta object literal for the '<em><b>Suffix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EAttribute CATALOG_ELEMENT__SUFFIX = eINSTANCE.getCatalogElement_Suffix();
+
+    /**
 		 * The meta object literal for the '<em><b>Purpose</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

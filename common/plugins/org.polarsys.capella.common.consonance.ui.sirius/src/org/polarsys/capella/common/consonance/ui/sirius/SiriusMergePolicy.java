@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 
@@ -55,6 +55,9 @@ public class SiriusMergePolicy extends GMFMergePolicy {
         }
       }
     }
+    // Sirius/GMF consistency: GMF driven by Sirius
+    if (element_p instanceof DDiagramElement)
+      extendGMFAdditionGroupSemanticTarget(group_p, element_p, scope_p);
   }
   
   /**

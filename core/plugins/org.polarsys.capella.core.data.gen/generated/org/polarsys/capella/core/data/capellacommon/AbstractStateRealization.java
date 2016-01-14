@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.AbstractStateRealization#getRealizedAbstractState <em>Realized Abstract State</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.AbstractStateRealization#getRealizingAbstractState <em>Realizing Abstract State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractStateRealization()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an AbstractStateRealization is a specific kind of allocation link between two AbstractStates (typically of different design levels, or of different nature)\r\n[source: Capella study]' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='none' constraints='none' comment/notes='none' reference\040documentation='none'"

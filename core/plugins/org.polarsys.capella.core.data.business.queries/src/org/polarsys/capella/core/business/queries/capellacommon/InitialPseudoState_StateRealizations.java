@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,16 +43,16 @@ public class InitialPseudoState_StateRealizations extends AbstractState_Abstract
 	}
 
 	@Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS, element_p, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS, element, context);
 	}
 
 	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS, element_p, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS, element, context);
 	}
 }

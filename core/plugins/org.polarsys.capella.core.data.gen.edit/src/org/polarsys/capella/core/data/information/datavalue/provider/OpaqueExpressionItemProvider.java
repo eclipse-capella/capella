@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -16,19 +16,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
-
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -38,20 +32,13 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-
 import org.polarsys.capella.common.data.modellingcore.provider.ModelElementItemProvider;
-import org.polarsys.capella.common.data.modellingcore.provider.AbstractTypedElementItemProvider;
-
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
-
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
-
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
@@ -106,7 +93,7 @@ public class OpaqueExpressionItemProvider
 			// Process CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS
 			if (statusPropertyDescriptor != null) {
 				Object statusValue = eObject.eGet(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS, true);
-				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) statusValue)) {
+				if (statusValue != null && statusValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) statusValue)) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);
 				} else if (statusValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS) != null) {
 					itemPropertyDescriptors.remove(statusPropertyDescriptor);				  					
@@ -117,7 +104,7 @@ public class OpaqueExpressionItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
 			if (abstractTypePropertyDescriptor != null) {
 				Object abstractTypeValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, true);
-				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) abstractTypeValue)) {
+				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) abstractTypeValue)) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);
 				} else if (abstractTypeValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE) != null) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);				  					

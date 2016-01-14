@@ -17,6 +17,8 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.transition.ju.testcases.ReconciliationCommunicationLinks;
+import org.polarsys.capella.test.transition.ju.testcases.ReconciliationInterfaceUsesImplements;
 
 public class TransitionTestSuite extends BasicTestSuite {
 
@@ -30,6 +32,8 @@ public class TransitionTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new ReconciliationCommunicationLinks());
+    tests.add(new ReconciliationInterfaceUsesImplements());
     return tests;
   }
 

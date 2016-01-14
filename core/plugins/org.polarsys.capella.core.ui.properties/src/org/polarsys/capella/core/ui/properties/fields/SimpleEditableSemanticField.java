@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,22 +23,22 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 public class SimpleEditableSemanticField extends SimpleSemanticField {
 
 	/**
-	 * @param parent_p
-	 * @param label_p
-	 * @param widgetFactory_p
-	 * @param defaultName_p
-	 * @param controller_p
+	 * @param parent
+	 * @param label
+	 * @param widgetFactory
+	 * @param defaultName
+	 * @param controller
 	 */
-	public SimpleEditableSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-			String defaultName_p, ISimpleEditableSemanticFieldController controller_p)
+	public SimpleEditableSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
+			String defaultName, ISimpleEditableSemanticFieldController controller)
 	{
-		super(parent_p, label_p, widgetFactory_p, 2, controller_p, defaultName_p, true);
+		super(parent, label, widgetFactory, 2, controller, defaultName, true);
 	}
 
-	public SimpleEditableSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-			String defaultName_p, ISimpleEditableSemanticFieldController controller_p, boolean shortcut, int cardType)
+	public SimpleEditableSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
+			String defaultName, ISimpleEditableSemanticFieldController controller, boolean shortcut, int cardType)
 	{
-		super(parent_p, label_p, widgetFactory_p, 1, controller_p, defaultName_p, true, shortcut, cardType);
+		super(parent, label, widgetFactory, 1, controller, defaultName, true, shortcut, cardType);
 	}
 
 

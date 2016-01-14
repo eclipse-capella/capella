@@ -2,11 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.navigator;singleton:=true
-Bundle-Version: 0.8.3.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin
 Bundle-Vendor: %providerName
 Bundle-localization: plugin
-Require-Bundle: org.eclipse.core.expressions,
+Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
+ org.eclipse.core.expressions,
  org.eclipse.emf.transaction.ui;visibility:=reexport,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor,
  org.eclipse.gmf.runtime.diagram.ui.render,

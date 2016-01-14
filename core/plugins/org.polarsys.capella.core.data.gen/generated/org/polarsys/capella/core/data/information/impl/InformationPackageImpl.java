@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2283,7 +2283,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2293,7 +2293,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
+		   });
 	}
 
 	/**
@@ -2303,7 +2303,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2315,7 +2315,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "This package depends on the model CapellaCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractInstanceEClass, 
 		   source, 
@@ -2327,7 +2327,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum, 
 		   source, 
@@ -2335,7 +2335,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "defines the specific kind of a relationship, as per UML definitions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2343,7 +2343,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when value is not defined by the user\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2351,7 +2351,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "An association specifies a semantic relationship that can occur between typed instances. It has at least two ends\r\nrepresented by properties, each of which is connected to the type of the end. More than one end of the association may\r\nhave the same type.\r\n[source: UML superstructure v2.2]\r\n\r\nIndicates that the property has no aggregation.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -2359,7 +2359,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "An aggregation specifies a semantic relationship between a part and a whole. The part has a lifecycle of its own, and is potentially shared among several aggregators\r\n[source: Capella study]\r\n\r\nIndicates that the property has a shared aggregation.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -2367,7 +2367,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "A composition specifies a semantic relationship between whole and its parts. The parts lifecycles are tied to that of the whole, and they are not shared with any other aggregator.\r\n[source: Capella study]\r\n\r\nIndicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence\r\nand storage of the composed objects.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (associationPkgEClass, 
 		   source, 
@@ -2379,7 +2379,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAssociationPkg_Visibility(), 
 		   source, 
@@ -2388,7 +2388,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to VisibilityKind description", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociationPkg_OwnedAssociations(), 
 		   source, 
@@ -2396,7 +2396,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the Associations elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (associationEClass, 
 		   source, 
@@ -2408,7 +2408,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "- An association specializing another association has the same number of ends as the other association.\r\nself.parents()->forAll(p | p.memberEnd.size() = self.memberEnd.size())\r\n- When an association specializes another association, every end of the specific association corresponds to an end of the\r\ngeneral association, and the specific end reaches the same type or a subtype of the more general end.\r\n- endType is derived from the types of the member ends.\r\nself.endType = self.memberEnd->collect(e | e.type)\r\n- Only binary associations can be aggregations.\r\nself.memberEnd->exists(aggregation <> Aggregation::none) implies self.memberEnd->size() = 2\r\n- Association ends of associations with more than two ends must be owned by the association.\r\nif memberEnd->size() > 2 then ownedEnd->includesAll(memberEnd)\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_OwnedMembers(), 
 		   source, 
@@ -2416,7 +2416,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Each end represents participation of instances of the classifier connected to the end in links of the association.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_NavigableMembers(), 
 		   source, 
@@ -2424,7 +2424,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "The navigable ends that are owned by the association itself\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (classEClass, 
 		   source, 
@@ -2436,7 +2436,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getClass_IsPrimitive(), 
 		   source, 
@@ -2445,7 +2445,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "\"true\" means that there is no super class that this class inherits from.", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getClass_KeyParts(), 
 		   source, 
@@ -2453,7 +2453,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "The KeyPart elements owned by this class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_OwnedStateMachines(), 
 		   source, 
@@ -2461,7 +2461,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the state machines associated to this class, supporting the characterization of its dynamic behavior\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_OwnedDataValues(), 
 		   source, 
@@ -2469,7 +2469,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the list of DataValue elements owned by this class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getClass_RealizedClasses(), 
 		   source, 
@@ -2477,7 +2477,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "class(es) realized by this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_RealizingClasses(), 
 		   source, 
@@ -2485,7 +2485,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "class(es) realizing this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (collectionEClass, 
 		   source, 
@@ -2497,7 +2497,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_IsPrimitive(), 
 		   source, 
@@ -2506,7 +2506,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "true if the Collection is not assembling other Collections", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Visibility(), 
 		   source, 
@@ -2515,7 +2515,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "Refer to VisibilityKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Kind(), 
 		   source, 
@@ -2524,7 +2524,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "Refer to CollectionKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_AggregationKind(), 
 		   source, 
@@ -2533,7 +2533,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCollection_Type(), 
 		   source, 
@@ -2541,7 +2541,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the type of the elements being collected\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Index(), 
 		   source, 
@@ -2549,7 +2549,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "index pointing to a specific part of this collection \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getCollection_ContainedOperations(), 
 		   source, 
@@ -2557,7 +2557,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "The operations associated to this collection\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractCollectionValueEClass, 
 		   source, 
@@ -2569,7 +2569,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (collectionValueEClass, 
 		   source, 
@@ -2581,7 +2581,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollectionValue_OwnedElements(), 
 		   source, 
@@ -2593,7 +2593,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollectionValue_OwnedDefaultElement(), 
 		   source, 
@@ -2605,7 +2605,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (collectionValueReferenceEClass, 
 		   source, 
@@ -2617,7 +2617,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedValue(), 
 		   source, 
@@ -2625,7 +2625,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the collection value that this reference points to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedProperty(), 
 		   source, 
@@ -2633,7 +2633,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the property that is using this reference\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (dataPkgEClass, 
 		   source, 
@@ -2645,7 +2645,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataPkgs(), 
 		   source, 
@@ -2653,7 +2653,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Sub data packages contained in this data package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedClasses(), 
 		   source, 
@@ -2661,7 +2661,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the class elements contained in the package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedKeyParts(), 
 		   source, 
@@ -2669,7 +2669,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "KeyPart elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedCollections(), 
 		   source, 
@@ -2677,7 +2677,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Collection elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedUnits(), 
 		   source, 
@@ -2685,7 +2685,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the Unit elements contained in the package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataTypes(), 
 		   source, 
@@ -2693,7 +2693,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Data types contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedSignals(), 
 		   source, 
@@ -2701,7 +2701,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the Signal elements contained in the package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedMessages(), 
 		   source, 
@@ -2709,7 +2709,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the Messages contained in this Message package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedExceptions(), 
 		   source, 
@@ -2717,7 +2717,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the Exception elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedStateEvents(), 
 		   source, 
@@ -2725,7 +2725,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the StateEvent elements contained in the package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (domainElementEClass, 
 		   source, 
@@ -2737,7 +2737,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella 1.0.3", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (keyPartEClass, 
 		   source, 
@@ -2749,7 +2749,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getKeyPart_Property(), 
 		   source, 
@@ -2757,7 +2757,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the Part/Property being declared as the key to access some other element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (multiplicityElementEClass, 
 		   source, 
@@ -2769,7 +2769,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "These constraints must handle situations where the upper bound may be specified by an expression not computable in the\r\nmodel.\r\n- A multiplicity must define at least one valid cardinality that is greater than zero.\r\nupperBound()->notEmpty() implies upperBound() > 0\r\n- The lower bound must be a non-negative integer literal.\r\nlowerBound()->notEmpty() implies lowerBound() >= 0\r\n- The upper bound must be greater than or equal to the lower bound.\r\n(upperBound()->notEmpty() and lowerBound()->notEmpty()) implies upperBound() >= lowerBound()\r\n- If a non-literal ValueSpecification is used for the lower or upper bound, then evaluating that specification must not have\r\nside effects.\r\nCannot be expressed in OCL.\r\n- If a non-literal ValueSpecification is used for the lower or upper bound, then that specification must be a constant\r\nexpression.\r\nCannot be expressed in OCL.\r\n- The derived lower attribute must equal the lowerBound.\r\nlower = lowerBound()\r\n- The derived upper attribute must equal the upperBound.\r\n[source: UML superstructure v2.2]\r\nupper = upperBound()", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_Ordered(), 
 		   source, 
@@ -2778,7 +2778,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_Unique(), 
 		   source, 
@@ -2787,7 +2787,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "true is element is unique", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_MinInclusive(), 
 		   source, 
@@ -2796,7 +2796,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_MaxInclusive(), 
 		   source, 
@@ -2805,7 +2805,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedDefaultValue(), 
 		   source, 
@@ -2813,7 +2813,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the value assigned by default to this multiplicity element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinValue(), 
 		   source, 
@@ -2821,7 +2821,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "minimum specified value for this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxValue(), 
 		   source, 
@@ -2829,7 +2829,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "specified max value for this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedNullValue(), 
 		   source, 
@@ -2837,7 +2837,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the reference to the null value among the set of values contained in this MultiplicityElement\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinCard(), 
 		   source, 
@@ -2845,7 +2845,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Specifies the lower bound of the multiplicity interval, if it is expressed as an integer\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinLength(), 
 		   source, 
@@ -2853,7 +2853,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Specified minimum length for this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxCard(), 
 		   source, 
@@ -2861,7 +2861,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxLength(), 
 		   source, 
@@ -2869,7 +2869,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Specified max length for this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (operationEClass, 
 		   source, 
@@ -2881,7 +2881,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "- An operation can have at most one return parameter (i.e., an owned parameter with the direction set to \"return\").\r\nownedParameter->select(par | par.direction = #return)->size() <= 1\r\n- If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter; otherwise, isOrdered\r\nis false.\r\nisOrdered = if returnResult()->notEmpty() then returnResult()->any().isOrdered else false endif\r\n- If this operation has a return parameter, isUnique equals the value of isUnique for that parameter; otherwise, isUnique is\r\ntrue.\r\nisUnique = if returnResult()->notEmpty() then returnResult()->any().isUnique else true endif\r\n- If this operation has a return parameter, lower equals the value of lower for that parameter; otherwise, lower is not\r\ndefined.\r\nlower = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif\r\n- If this operation has a return parameter, upper equals the value of upper for that parameter; otherwise, upper is not\r\ndefined.\r\nupper = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif\r\n- If this operation has a return parameter, type equals the value of type for that parameter; otherwise, type is not defined.\r\ntype = if returnResult()->notEmpty() then returnResult()->any().type else Set{} endif\r\n- A bodyCondition can only be specified for a query operation.\r\nbodyCondition->notEmpty() implies isQuery\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getOperation_OwnedParameters(), 
 		   source, 
@@ -2889,7 +2889,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the parameters associated to this operation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperation_AllocatingOperations(), 
 		   source, 
@@ -2897,7 +2897,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) the operation allocation relationships that point to this Operation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperation_AllocatedOperations(), 
 		   source, 
@@ -2905,7 +2905,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) the operation allocation relationships that start from this Operation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperation_OwnedOperationAllocation(), 
 		   source, 
@@ -2913,7 +2913,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "list of the allocations of this operation to/from other operations.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperation_OwnedExchangeItemRealizations(), 
 		   source, 
@@ -2921,7 +2921,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "list of the exchange items that the operation is realizing\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperation_RealizedExchangeItems(), 
 		   source, 
@@ -2929,7 +2929,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "class(es) realized by this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (operationAllocationEClass, 
 		   source, 
@@ -2941,7 +2941,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationAllocation_AllocatedOperation(), 
 		   source, 
@@ -2949,7 +2949,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "contains the \"target\" of the allocation link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationAllocation_AllocatingOperation(), 
 		   source, 
@@ -2957,7 +2957,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "contains the \"source\" of the allocation link\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (parameterEClass, 
 		   source, 
@@ -2969,7 +2969,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_Direction(), 
 		   source, 
@@ -2978,7 +2978,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "see ParameterDirection definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_PassingMode(), 
 		   source, 
@@ -2987,7 +2987,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "see PassingMode enumeration definition for possible values", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum, 
 		   source, 
@@ -2995,7 +2995,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "specifies the direction in which data is passed along through a parameter \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "could be renamed ParameterDirectionKind to match UML" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(0), 
 		   source, 
@@ -3003,7 +3003,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the parameter represents an input of the operation it is used in\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(1), 
 		   source, 
@@ -3011,7 +3011,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the parameter represents an output of the operation it is used in\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(2), 
 		   source, 
@@ -3019,7 +3019,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the parameter represents both an input and on output of the operation it is used in\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(3), 
 		   source, 
@@ -3027,7 +3027,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the parameter represents the return value of the operation it is used in\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(4), 
 		   source, 
@@ -3035,7 +3035,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the parameter is like an exception", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(5), 
 		   source, 
@@ -3043,7 +3043,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the CommunicationLink protocol is not yet set", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (passingModeEEnum, 
 		   source, 
@@ -3051,7 +3051,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "specifies the data passing mechanism for parameters of an operation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(0), 
 		   source, 
@@ -3059,7 +3059,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the data passing mechanism is not precised\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(1), 
 		   source, 
@@ -3067,7 +3067,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the data is being passed by reference to the operation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(2), 
 		   source, 
@@ -3075,7 +3075,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the data is being passed by value to the operation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (propertyEClass, 
 		   source, 
@@ -3087,7 +3087,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "- If this property is owned by a class associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.\r\n- A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.\r\n- Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property.\r\n- A redefined property must be inherited from a more general classifier containing the redefining property.\r\n- A subsetting property may strengthen the type of the subsetted property, and its upper bound may be less.\r\n- Only a navigable property can be marked as readOnly.\r\n- A derived union is derived.\r\n- A derived union is read only.\r\n- The value of isComposite is true only if aggregation is composite.\r\n-  A Property cannot be subset by a Property with the same name\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_AggregationKind(), 
 		   source, 
@@ -3096,7 +3096,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getProperty_IsDerived(), 
 		   source, 
@@ -3105,7 +3105,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_IsReadOnly(), 
 		   source, 
@@ -3114,7 +3114,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_IsPartOfKey(), 
 		   source, 
@@ -3123,7 +3123,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "\"true\" if the Property is used as a key", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
@@ -3131,7 +3131,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "an association relationship related to this Property\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum, 
 		   source, 
@@ -3139,7 +3139,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "specifies the synchronicity of an operation invocation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3147,7 +3147,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the synchronicity of the operation is not precised\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3155,7 +3155,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used to specify that the invocation of the operation is synchronous, e.g. does not complete before the actions performed by the operation are complete\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3163,7 +3163,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used to specify that the invocation of the operation is asynchronous, i.e. it is potentially completed before the actions performed in the operation are completed\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (serviceEClass, 
 		   source, 
@@ -3175,7 +3175,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getService_SynchronismKind(), 
 		   source, 
@@ -3184,7 +3184,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "see SynchronismKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getService_ThrownExceptions(), 
 		   source, 
@@ -3192,7 +3192,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "list of exceptions that can be raised by this service\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getService_Messages(), 
 		   source, 
@@ -3200,7 +3200,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) the Messages involving this Service\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getService_MessageReferences(), 
 		   source, 
@@ -3208,7 +3208,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the reference objects to the Messages involving this Service\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (unionEClass, 
 		   source, 
@@ -3220,7 +3220,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getUnion_Kind(), 
 		   source, 
@@ -3229,7 +3229,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "see UnionKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getUnion_Discriminant(), 
 		   source, 
@@ -3237,7 +3237,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Link to the discriminant union property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getUnion_DefaultProperty(), 
 		   source, 
@@ -3245,7 +3245,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Link to the default union property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (unionKindEEnum, 
 		   source, 
@@ -3253,7 +3253,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "defines the specific kind of a Union structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (unionKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3261,7 +3261,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the structure represents a union \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unionKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3269,7 +3269,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the structure represents possible variants of the same data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (unionPropertyEClass, 
 		   source, 
@@ -3281,7 +3281,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "not used/implemented as of Capella", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getUnionProperty_Qualifier(), 
 		   source, 
@@ -3289,7 +3289,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(not used)", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (unitEClass, 
 		   source, 
@@ -3301,7 +3301,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (partitionableElementEClass, 
 		   source, 
@@ -3313,7 +3313,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getPartitionableElement_OwnedPartitions(), 
 		   source, 
@@ -3321,7 +3321,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) list of partitions contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
@@ -3329,7 +3329,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) the list of Partitions that are associated to this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (partitionEClass, 
 		   source, 
@@ -3341,7 +3341,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (portEClass, 
 		   source, 
@@ -3354,7 +3354,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_IncomingPortRealizations(), 
 		   source, 
@@ -3362,7 +3362,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "contains the list of port realization link(s) pointing from other (typically lower level) port(s) to this port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OutgoingPortRealizations(), 
 		   source, 
@@ -3370,7 +3370,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) list of port realization links starting from this port, and pointing to other (typically higher-level) ports.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPort_OwnedProtocols(), 
 		   source, 
@@ -3378,7 +3378,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "allows to associate state machines to this port, specifying the communication protocol of incoming data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPort_IncomingPortAllocations(), 
 		   source, 
@@ -3386,7 +3386,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) list of allocation links pointing from other model elements, to this port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OutgoingPortAllocations(), 
 		   source, 
@@ -3394,7 +3394,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "(automatically computed) list of allocations links, starting from this port towards other model elements to which this port needs to be allocated\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPort_ProvidedInterfaces(), 
 		   source, 
@@ -3402,7 +3402,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "lists the Interfaces that are provided through this port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_RequiredInterfaces(), 
 		   source, 
@@ -3410,7 +3410,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "lists the Interfaces that are required by this port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OwnedPortRealizations(), 
 		   source, 
@@ -3418,7 +3418,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the port realizations links that are owned/contained in this Port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPort_OwnedPortAllocations(), 
 		   source, 
@@ -3426,7 +3426,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the port allocation links that are owned/contained in this Port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (portRealizationEClass, 
 		   source, 
@@ -3438,7 +3438,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortRealization_RealizedPort(), 
 		   source, 
@@ -3446,7 +3446,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "destiniation of the port realization : the port that is being realized\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortRealization_RealizingPort(), 
 		   source, 
@@ -3454,7 +3454,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the source of the Port realization : the port that is realizing another port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (portAllocationEClass, 
 		   source, 
@@ -3466,7 +3466,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortAllocation_AllocatedPort(), 
 		   source, 
@@ -3474,7 +3474,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the \"destination\" of the allocation link : the port that is being allocated by another port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortAllocation_AllocatingPort(), 
 		   source, 
@@ -3482,7 +3482,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the \"source\" of the allocation link : the port that is allocating the other port\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemEClass, 
 		   source, 
@@ -3494,7 +3494,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_ExchangeMechanism(), 
 		   source, 
@@ -3503,7 +3503,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to ExchangeMechanism definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_OwnedElements(), 
 		   source, 
@@ -3511,7 +3511,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Set of exchange item elements that form the structure of the structured exchange item\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizedExchangeItems(), 
 		   source, 
@@ -3519,7 +3519,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "class(es) realized by this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizingExchangeItems(), 
 		   source, 
@@ -3527,7 +3527,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "class(es) realizing this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizingOperations(), 
 		   source, 
@@ -3535,7 +3535,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "class(es) realizing this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemElementEClass, 
 		   source, 
@@ -3547,7 +3547,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Kind(), 
 		   source, 
@@ -3556,7 +3556,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to ElementKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Direction(), 
 		   source, 
@@ -3565,7 +3565,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "see ParameterDirection definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Composite(), 
 		   source, 
@@ -3574,7 +3574,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_ReferencedProperties(), 
 		   source, 
@@ -3583,7 +3583,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (informationRealizationEClass, 
 		   source, 
@@ -3595,7 +3595,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum, 
 		   source, 
@@ -3603,7 +3603,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Enumeration of the different exchange mechanisms\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(0), 
 		   source, 
@@ -3611,7 +3611,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Exchange mechanism not defined", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(1), 
 		   source, 
@@ -3619,7 +3619,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Continuous supply of a data\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(2), 
 		   source, 
@@ -3627,7 +3627,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Sporadic supply of a data with a returned data\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(3), 
 		   source, 
@@ -3635,7 +3635,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Asynchronous information that is taken into account rapidly\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(4), 
 		   source, 
@@ -3643,7 +3643,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "Data taken into account (reading or writing) without taking care of producers or consumers\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (elementKindEEnum, 
 		   source, 
@@ -3651,7 +3651,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "enumeration listing the various possibilities regarding the visibility of a feature of a class\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (elementKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3659,7 +3659,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when ExchangeItemElement is described as a type for its ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (elementKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3667,7 +3667,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when ExchangeItemElement is described as a member for its ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (collectionKindEEnum, 
 		   source, 
@@ -3675,7 +3675,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "defines the specific kind of a Collection structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (collectionKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3683,7 +3683,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the collection is to be considered as an array of elements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (collectionKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3691,7 +3691,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "used when the collection is to be considered as a sequence (list) of elements\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemRealizationEClass, 
 		   source, 
@@ -3703,7 +3703,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemRealization_RealizedItem(), 
 		   source, 
@@ -3711,7 +3711,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the exchange item that is being realized by the operation\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemRealization_RealizingOperation(), 
 		   source, 
@@ -3719,7 +3719,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the interface\'s operation that realizes the given exchange item\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractEventOperationEClass, 
 		   source, 
@@ -3727,7 +3727,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "the element triggered by the reception of the event", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });
 	}
 
 	/**
@@ -3737,531 +3737,531 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum, 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getAssociationPkg_Visibility(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociationPkg_OwnedAssociations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (associationEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_OwnedMembers(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_NavigableMembers(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (classEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getClass_IsPrimitive(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getClass_KeyParts(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_OwnedStateMachines(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_OwnedDataValues(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getClass_RealizedClasses(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_RealizingClasses(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (collectionEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_IsPrimitive(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Visibility(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Kind(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_AggregationKind(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getCollection_Type(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Index(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getCollection_ContainedOperations(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (collectionValueEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCollectionValue_OwnedElements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getCollectionValue_OwnedDefaultElement(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (collectionValueReferenceEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (dataPkgEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataPkgs(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedClasses(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedKeyParts(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedCollections(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedUnits(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataTypes(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedSignals(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedMessages(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedExceptions(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedStateEvents(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (domainElementEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (keyPartEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getKeyPart_Property(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_Ordered(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_Unique(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_MinInclusive(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_MaxInclusive(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedNullValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinCard(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinLength(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxCard(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getOperation_OwnedParameters(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getOperation_AllocatingOperations(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperation_AllocatedOperations(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (getOperation_RealizedExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (parameterEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_Direction(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_PassingMode(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum, 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (passingModeEEnum, 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (propertyEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_AggregationKind(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getProperty_IsDerived(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_IsReadOnly(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_IsPartOfKey(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum, 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (serviceEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getService_SynchronismKind(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getService_ThrownExceptions(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (unionEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getUnion_Kind(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getUnion_Discriminant(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getUnion_DefaultProperty(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getUnion_ContainedUnionProperties(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (unionKindEEnum, 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (unionPropertyEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getUnionProperty_Qualifier(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (unitEClass, 
 		   source, 
 		   new String[] {
-		   });																			
+		   });	
 		addAnnotation
 		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (getPort_OwnedProtocols(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getPort_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
-		   });																								
+		   });	
 		addAnnotation
 		  (exchangeItemEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_ExchangeMechanism(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_OwnedElements(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_OwnedExchangeItemInstances(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getExchangeItem_AllocatorInterfaces(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizedExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizingExchangeItems(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizingOperations(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (exchangeItemElementEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Kind(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Direction(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Composite(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_ReferencedProperties(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemInstanceEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum, 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (elementKindEEnum, 
 		   source, 
 		   new String[] {
-		   });								
+		   });	
 		addAnnotation
 		  (collectionKindEEnum, 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getAbstractEventOperation_InvokingSequenceMessages(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -4271,7 +4271,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -4281,7 +4281,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									
+		   });
 	}
 
 	/**
@@ -4291,355 +4291,355 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractInstanceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractInstance" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum, 
 		   source, 
 		   new String[] {
 			 "Label", "AggregationKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																	
+		   });	
 		addAnnotation
 		  (associationPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AssociationPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getAssociationPkg_OwnedAssociations(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedAssociations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (associationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Association" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAssociation_OwnedMembers(), 
 		   source, 
 		   new String[] {
 			 "Label", "members" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_NavigableMembers(), 
 		   source, 
 		   new String[] {
 			 "Label", "navigable" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (classEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Class" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getClass_KeyParts(), 
 		   source, 
 		   new String[] {
 			 "Label", "keyParts" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });	
 		addAnnotation
 		  (collectionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Collection" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (getCollection_Type(), 
 		   source, 
 		   new String[] {
 			 "Label", "type" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getCollection_ContainedOperations(), 
 		   source, 
 		   new String[] {
 			 "Label", "operations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "Label", "reference" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (dataPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DataPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedDataPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedClasses(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedClasses" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedKeyParts(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedKeyParts" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedCollections(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedCollections" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedUnits(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedUnits" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataTypes(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedDataTypes" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedSignals(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedSignals" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedMessages(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedMessages" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedExceptions(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedExceptions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedStateEvents(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedStateEvents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (domainElementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DomainElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (keyPartEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "KeyPart" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getKeyPart_Property(), 
 		   source, 
 		   new String[] {
 			 "Label", "property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "Default Value" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "Min Value" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "Max Value" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedNullValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "Null value" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinCard(), 
 		   source, 
 		   new String[] {
 			 "Label", "Min Card" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinLength(), 
 		   source, 
 		   new String[] {
 			 "Label", "Min Length" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxCard(), 
 		   source, 
 		   new String[] {
 			 "Label", "Max Card" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
 			 "Label", "Max Length" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (operationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Operation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getOperation_OwnedParameters(), 
 		   source, 
 		   new String[] {
 			 "Label", "parameters" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (operationAllocationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Operation Allocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (parameterEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Parameter" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum, 
 		   source, 
 		   new String[] {
 			 "Label", "ParameterDirection" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (passingModeEEnum, 
 		   source, 
 		   new String[] {
 			 "Label", "PassingMode" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (propertyEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
 		   new String[] {
 			 "Label", "association" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });	
 		addAnnotation
 		  (serviceEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Service" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getService_ThrownExceptions(), 
 		   source, 
 		   new String[] {
 			 "Label", "thrownExceptions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getService_Messages(), 
 		   source, 
 		   new String[] {
 			 "Label", "messages" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getService_MessageReferences(), 
 		   source, 
 		   new String[] {
 			 "Label", "messageReferences" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (unionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Union" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getUnion_Discriminant(), 
 		   source, 
 		   new String[] {
 			 "Label", "discriminant" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });	
 		addAnnotation
 		  (unionPropertyEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "UnionProperty" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getUnionProperty_Qualifier(), 
 		   source, 
 		   new String[] {
 			 "Label", "qualifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (unitEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Unit" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (partitionableElementEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "PartitionableElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPartitionableElement_OwnedPartitions(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedParts" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
 		   new String[] {
 			 "Label", "parts" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (partitionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "PhysicalPartition" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (portEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Port" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																
+		   });
 	}
 
 	/**
@@ -4649,78 +4649,78 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractInstanceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum, 
 		   source, 
 		   new String[] {
 			 "enum", "AggregationKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "NONE" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(2), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "SHARED" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(3), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "COMPOSITE" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (associationPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociationPkg_OwnedAssociations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (associationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Association", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Association" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAssociation_OwnedMembers(), 
 		   source, 
 		   new String[] {
 			 "featureName", "memberEnd", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Association" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_NavigableMembers(), 
 		   source, 
 		   new String[] {
 			 "featureName", "navigableOwnedEnd", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Association" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (classEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Class" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getClass_IsPrimitive(), 
 		   source, 
@@ -4728,202 +4728,202 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "featureName", "isPrimitive", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getClass_KeyParts(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (collectionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Collection" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																								
+		   });	
 		addAnnotation
 		  (getCollection_ContainedOperations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Class" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (dataPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.DataPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedClasses(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedKeyParts(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedCollections(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedUnits(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataTypes(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedSignals(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedMessages(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedExceptions(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (domainElementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.DomainElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (keyPartEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.KeyPart" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getKeyPart_Property(), 
 		   source, 
 		   new String[] {
 			 "featureName", "supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "lowerValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "MultiplicityElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "upperValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "MultiplicityElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinCard(), 
 		   source, 
 		   new String[] {
 			 "featureName", "lowerValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "MultiplicityElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinLength(), 
 		   source, 
 		   new String[] {
 			 "featureName", "lowerValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "MultiplicityElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxCard(), 
 		   source, 
 		   new String[] {
 			 "featureName", "upperValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "MultiplicityElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
 			 "featureName", "upperValue", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "MultiplicityElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (operationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Operation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperation_OwnedParameters(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedParameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "BehavioralFeature" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																
+		   });	
 		addAnnotation
 		  (parameterEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Parameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Parameter" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_Direction(), 
 		   source, 
 		   new String[] {
 			 "featureName", "direction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Parameter" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_PassingMode(), 
 		   source, 
@@ -4931,76 +4931,76 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "featureName", "passingMode", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Parameter" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum, 
 		   source, 
 		   new String[] {
 			 "enum", "ParameterDirectionKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(0), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "IN" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "OUT" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(2), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "INOUT" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(3), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "RETURN" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (passingModeEEnum, 
 		   source, 
 		   new String[] {
 			 "enum", "PassingMode" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "BY_REF" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(2), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "BY_VALUE" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (propertyEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_AggregationKind(), 
 		   source, 
 		   new String[] {
 			 "featureName", "aggregation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getProperty_IsReadOnly(), 
 		   source, 
 		   new String[] {
 			 "featureName", "isReadOnly", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuralFeature" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_IsPartOfKey(), 
 		   source, 
@@ -5008,39 +5008,39 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "featureName", "isPartOfKey", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
 		   new String[] {
 			 "featureName", "association", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum, 
 		   source, 
 		   new String[] {
 			 "enum", "SynchronismKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "SYNCHRONOUS" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(2), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "ASYNCHRONOUS" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (serviceEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Service" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getService_SynchronismKind(), 
 		   source, 
@@ -5048,95 +5048,95 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "featureName", "synchronismKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Service" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getService_ThrownExceptions(), 
 		   source, 
 		   new String[] {
 			 "featureName", "raisedException", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "BehavioralFeature" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getService_MessageReferences(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (unionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Union" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getUnion_Discriminant(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (unionPropertyEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.UnionProperty" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getUnionProperty_Qualifier(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (unitEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Unit" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (partitionableElementEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPartitionableElement_OwnedPartitions(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
 		   new String[] {
 			 "featureName", "part", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (partitionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (portEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Port" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																											
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Direction(), 
 		   source, 
 		   new String[] {
 			 "featureName", "direction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Parameter" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																					
+		   });
 	}
 
 	/**
@@ -5146,7 +5146,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (abstractInstanceEClass, 
 		   source, 
@@ -5155,7 +5155,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractInstance_RepresentingInstanceRoles(), 
 		   source, 
@@ -5163,7 +5163,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum, 
 		   source, 
@@ -5171,7 +5171,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::AggregationKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5179,7 +5179,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "This enumeration literal has no UML-SysML equivalence" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5187,7 +5187,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::AggregationKind::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5195,7 +5195,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::AggregationKind::shared", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (aggregationKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -5203,7 +5203,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::AggregationKind::composite", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (associationPkgEClass, 
 		   source, 
@@ -5212,7 +5212,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAssociationPkg_Visibility(), 
 		   source, 
@@ -5220,7 +5220,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociationPkg_OwnedAssociations(), 
 		   source, 
@@ -5228,7 +5228,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Association stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (associationEClass, 
 		   source, 
@@ -5237,7 +5237,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Association", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_OwnedMembers(), 
 		   source, 
@@ -5245,7 +5245,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Association::ownedEnd, uml::Association::memberEnd", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [2..2]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_NavigableMembers(), 
 		   source, 
@@ -5253,7 +5253,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Association::navigableOwnedEnd", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (classEClass, 
 		   source, 
@@ -5262,7 +5262,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getClass_IsPrimitive(), 
 		   source, 
@@ -5270,7 +5270,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getClass_KeyParts(), 
 		   source, 
@@ -5278,7 +5278,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which KeyPart stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_OwnedStateMachines(), 
 		   source, 
@@ -5286,7 +5286,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Class::nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Class::nestedClassifier elements on which StateMachine stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_OwnedDataValues(), 
 		   source, 
@@ -5294,7 +5294,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which DataValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getClass_OwnedInformationRealizations(), 
 		   source, 
@@ -5302,7 +5302,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (collectionEClass, 
 		   source, 
@@ -5311,7 +5311,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "DataType chosen because it has a containment reference to Operations, which is required to simplify the transformation of Collection::operations derived reference", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_IsPrimitive(), 
 		   source, 
@@ -5319,7 +5319,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Visibility(), 
 		   source, 
@@ -5327,7 +5327,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::NamedElement::visibility", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Kind(), 
 		   source, 
@@ -5335,7 +5335,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_AggregationKind(), 
 		   source, 
@@ -5343,7 +5343,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getCollection_Type(), 
 		   source, 
@@ -5351,7 +5351,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollection_Index(), 
 		   source, 
@@ -5359,7 +5359,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getCollection_ContainedOperations(), 
 		   source, 
@@ -5367,7 +5367,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::DataType::ownedOperation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractCollectionValueEClass, 
 		   source, 
@@ -5376,7 +5376,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (collectionValueEClass, 
 		   source, 
@@ -5385,7 +5385,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollectionValue_OwnedElements(), 
 		   source, 
@@ -5394,7 +5394,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCollectionValue_OwnedDefaultElement(), 
 		   source, 
@@ -5403,7 +5403,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (collectionValueReferenceEClass, 
 		   source, 
@@ -5412,7 +5412,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedValue(), 
 		   source, 
@@ -5420,7 +5420,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedProperty(), 
 		   source, 
@@ -5428,7 +5428,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (dataPkgEClass, 
 		   source, 
@@ -5437,7 +5437,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataPkgs(), 
 		   source, 
@@ -5445,7 +5445,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedClasses(), 
 		   source, 
@@ -5453,7 +5453,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Class stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedKeyParts(), 
 		   source, 
@@ -5461,7 +5461,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which KeyPart stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedCollections(), 
 		   source, 
@@ -5469,7 +5469,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Collectionstereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedUnits(), 
 		   source, 
@@ -5477,7 +5477,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Unit stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataTypes(), 
 		   source, 
@@ -5485,7 +5485,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which DataType stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedSignals(), 
 		   source, 
@@ -5493,7 +5493,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Signal stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedMessages(), 
 		   source, 
@@ -5501,7 +5501,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Message stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedExceptions(), 
 		   source, 
@@ -5509,7 +5509,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Excpetion stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedStateEvents(), 
 		   source, 
@@ -5517,7 +5517,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (domainElementEClass, 
 		   source, 
@@ -5526,7 +5526,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (keyPartEClass, 
 		   source, 
@@ -5535,7 +5535,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getKeyPart_Property(), 
 		   source, 
@@ -5543,7 +5543,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (multiplicityElementEClass, 
 		   source, 
@@ -5552,7 +5552,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::MultiplicityElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_Ordered(), 
 		   source, 
@@ -5560,7 +5560,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_Unique(), 
 		   source, 
@@ -5568,7 +5568,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_MinInclusive(), 
 		   source, 
@@ -5576,7 +5576,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_MaxInclusive(), 
 		   source, 
@@ -5584,7 +5584,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedDefaultValue(), 
 		   source, 
@@ -5592,7 +5592,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which DataValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinValue(), 
 		   source, 
@@ -5600,7 +5600,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxValue(), 
 		   source, 
@@ -5608,7 +5608,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedNullValue(), 
 		   source, 
@@ -5616,7 +5616,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which DataValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinCard(), 
 		   source, 
@@ -5624,7 +5624,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinLength(), 
 		   source, 
@@ -5632,7 +5632,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which NumericValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxCard(), 
 		   source, 
@@ -5640,7 +5640,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxLength(), 
 		   source, 
@@ -5648,7 +5648,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which NumericValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (operationEClass, 
 		   source, 
@@ -5657,7 +5657,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getOperation_OwnedParameters(), 
 		   source, 
@@ -5665,7 +5665,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Operation::ownedParameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperation_AllocatingOperations(), 
 		   source, 
@@ -5673,7 +5673,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getOperation_AllocatedOperations(), 
 		   source, 
@@ -5681,7 +5681,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperation_OwnedOperationAllocation(), 
 		   source, 
@@ -5689,7 +5689,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which OperationAlllocation stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getOperation_OwnedExchangeItemRealizations(), 
 		   source, 
@@ -5697,7 +5697,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which ExchangeItemRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (operationAllocationEClass, 
 		   source, 
@@ -5706,7 +5706,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationAllocation_AllocatedOperation(), 
 		   source, 
@@ -5714,7 +5714,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationAllocation_AllocatingOperation(), 
 		   source, 
@@ -5722,7 +5722,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (parameterEClass, 
 		   source, 
@@ -5731,7 +5731,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Parameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_Direction(), 
 		   source, 
@@ -5739,7 +5739,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Parameter::direction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getParameter_PassingMode(), 
 		   source, 
@@ -5747,7 +5747,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum, 
 		   source, 
@@ -5755,7 +5755,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::ParameterDirectionKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(0), 
 		   source, 
@@ -5763,7 +5763,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::ParameterDirectionKind::in", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(1), 
 		   source, 
@@ -5771,7 +5771,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::ParameterDirectionKind::out", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(2), 
 		   source, 
@@ -5779,7 +5779,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::ParameterDirectionKind::inout", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(3), 
 		   source, 
@@ -5787,7 +5787,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::ParameterDirectionKind::return", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(4), 
 		   source, 
@@ -5795,7 +5795,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (parameterDirectionEEnum.getELiterals().get(5), 
 		   source, 
@@ -5803,7 +5803,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (passingModeEEnum, 
 		   source, 
@@ -5811,7 +5811,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(0), 
 		   source, 
@@ -5819,7 +5819,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(1), 
 		   source, 
@@ -5827,7 +5827,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (passingModeEEnum.getELiterals().get(2), 
 		   source, 
@@ -5835,7 +5835,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (propertyEClass, 
 		   source, 
@@ -5844,7 +5844,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_AggregationKind(), 
 		   source, 
@@ -5852,7 +5852,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Property::aggregation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getProperty_IsDerived(), 
 		   source, 
@@ -5860,7 +5860,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Property::isDerived", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_IsReadOnly(), 
 		   source, 
@@ -5868,7 +5868,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Property::isReadOnly", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProperty_IsPartOfKey(), 
 		   source, 
@@ -5876,7 +5876,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
@@ -5884,7 +5884,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Property::owningAssociation, uml::Property::association", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum, 
 		   source, 
@@ -5892,7 +5892,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "No equivalent enum on uml Operations. The two other candidates (CallOperationAction::isSynchronous or Message::messageSort) are not appropriate (different semantics)", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5900,7 +5900,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5908,7 +5908,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (synchronismKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5916,7 +5916,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (serviceEClass, 
 		   source, 
@@ -5925,7 +5925,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getService_SynchronismKind(), 
 		   source, 
@@ -5933,7 +5933,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_ Study the link with CallOperationAction::isSynchronous or Message::messageSort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getService_ThrownExceptions(), 
 		   source, 
@@ -5941,7 +5941,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Operation::raisedException", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Exception should extend uml::Type", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getService_Messages(), 
 		   source, 
@@ -5949,7 +5949,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getService_MessageReferences(), 
 		   source, 
@@ -5957,7 +5957,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::NamedElement::clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which MessageReference stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (unionEClass, 
 		   source, 
@@ -5966,7 +5966,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getUnion_Kind(), 
 		   source, 
@@ -5974,7 +5974,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getUnion_Discriminant(), 
 		   source, 
@@ -5982,7 +5982,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getUnion_DefaultProperty(), 
 		   source, 
@@ -5990,7 +5990,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getUnion_ContainedUnionProperties(), 
 		   source, 
@@ -5998,7 +5998,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unionKindEEnum, 
 		   source, 
@@ -6006,7 +6006,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (unionKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -6014,7 +6014,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (unionKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -6022,7 +6022,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (unionPropertyEClass, 
 		   source, 
@@ -6031,7 +6031,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getUnionProperty_Qualifier(), 
 		   source, 
@@ -6039,7 +6039,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (unitEClass, 
 		   source, 
@@ -6048,7 +6048,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "SysML::Blocks::Unit", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (partitionableElementEClass, 
 		   source, 
@@ -6057,7 +6057,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::StructuredClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getPartitionableElement_OwnedPartitions(), 
 		   source, 
@@ -6065,7 +6065,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::StructuredClassifier::ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Even though this reference is derived and transient, it is mapped, to a non-derived reference to simplify the transformation since the containment and derived references are inversed between MA and UML", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::StructuredClassifier::owneddAttribute elements on which Partition stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
@@ -6073,7 +6073,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (partitionEClass, 
 		   source, 
@@ -6082,7 +6082,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (portEClass, 
 		   source, 
@@ -6091,7 +6091,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Port", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_IncomingPortRealizations(), 
 		   source, 
@@ -6099,7 +6099,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OutgoingPortRealizations(), 
 		   source, 
@@ -6107,7 +6107,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPort_OwnedProtocols(), 
 		   source, 
@@ -6115,7 +6115,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPort_IncomingPortAllocations(), 
 		   source, 
@@ -6123,7 +6123,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OutgoingPortAllocations(), 
 		   source, 
@@ -6131,7 +6131,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPort_ProvidedInterfaces(), 
 		   source, 
@@ -6139,7 +6139,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_RequiredInterfaces(), 
 		   source, 
@@ -6147,7 +6147,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OwnedPortRealizations(), 
 		   source, 
@@ -6155,7 +6155,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which PortRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getPort_OwnedPortAllocations(), 
 		   source, 
@@ -6163,7 +6163,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Some elements on which PortAllocation stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (portRealizationEClass, 
 		   source, 
@@ -6172,7 +6172,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortRealization_RealizedPort(), 
 		   source, 
@@ -6180,7 +6180,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortRealization_RealizingPort(), 
 		   source, 
@@ -6188,7 +6188,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (portAllocationEClass, 
 		   source, 
@@ -6197,7 +6197,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "SysML::Allocations::Allocate", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortAllocation_AllocatedPort(), 
 		   source, 
@@ -6205,7 +6205,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getPortAllocation_AllocatingPort(), 
 		   source, 
@@ -6213,7 +6213,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemEClass, 
 		   source, 
@@ -6222,7 +6222,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_ExchangeMechanism(), 
 		   source, 
@@ -6230,7 +6230,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_OwnedElements(), 
 		   source, 
@@ -6238,7 +6238,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Operation::ownedParameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Operation::ownedParameter elements on which ExchangeItemElement stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getExchangeItem_OwnedInformationRealizations(), 
 		   source, 
@@ -6246,7 +6246,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getExchangeItem_OwnedExchangeItemInstances(), 
 		   source, 
@@ -6254,7 +6254,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getExchangeItem_AllocatorInterfaces(), 
 		   source, 
@@ -6262,7 +6262,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (exchangeItemElementEClass, 
 		   source, 
@@ -6271,7 +6271,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Parameter", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Kind(), 
 		   source, 
@@ -6279,7 +6279,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Direction(), 
 		   source, 
@@ -6287,7 +6287,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "uml::Parameter::direction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_Composite(), 
 		   source, 
@@ -6295,7 +6295,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemElement_ReferencedProperties(), 
 		   source, 
@@ -6303,7 +6303,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemInstanceEClass, 
 		   source, 
@@ -6312,7 +6312,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (informationRealizationEClass, 
 		   source, 
@@ -6321,7 +6321,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::Comment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum, 
 		   source, 
@@ -6329,7 +6329,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(0), 
 		   source, 
@@ -6337,7 +6337,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(1), 
 		   source, 
@@ -6345,7 +6345,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(2), 
 		   source, 
@@ -6353,7 +6353,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(3), 
 		   source, 
@@ -6361,7 +6361,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeMechanismEEnum.getELiterals().get(4), 
 		   source, 
@@ -6369,7 +6369,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (elementKindEEnum, 
 		   source, 
@@ -6377,7 +6377,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (elementKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -6385,7 +6385,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (elementKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -6393,7 +6393,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (collectionKindEEnum, 
 		   source, 
@@ -6401,7 +6401,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (collectionKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -6409,7 +6409,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "This enumeration literal has no UML-SysML equivalence" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (collectionKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -6417,7 +6417,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "This enumeration literal has no UML-SysML equivalence" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (exchangeItemRealizationEClass, 
 		   source, 
@@ -6426,7 +6426,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemRealization_RealizedItem(), 
 		   source, 
@@ -6434,7 +6434,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemRealization_RealizingOperation(), 
 		   source, 
@@ -6442,7 +6442,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractEventOperationEClass, 
 		   source, 
@@ -6451,7 +6451,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractEventOperation_InvokingSequenceMessages(), 
 		   source, 
@@ -6469,152 +6469,152 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$										
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getAbstractInstance_RepresentingInstanceRoles(), 
 		   source, 
 		   new String[] {
-		   });																																																																								
+		   });	
 		addAnnotation
 		  (getClass_RealizedClasses(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getClass_RealizingClasses(), 
 		   source, 
 		   new String[] {
-		   });																															
+		   });	
 		addAnnotation
 		  (getCollection_ContainedOperations(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																						
+		   });	
 		addAnnotation
 		  (getOperation_AllocatingOperations(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getOperation_AllocatedOperations(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getOperation_RealizedExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getOperationAllocation_AllocatedOperation(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getOperationAllocation_AllocatingOperation(), 
 		   source, 
 		   new String[] {
-		   });																																																																												
+		   });	
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
 		   new String[] {
-		   });																															
+		   });	
 		addAnnotation
 		  (getService_Messages(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getUnion_ContainedUnionProperties(), 
 		   source, 
 		   new String[] {
-		   });																																			
+		   });	
 		addAnnotation
 		  (getPartitionableElement_OwnedPartitions(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getPort_IncomingPortRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OutgoingPortRealizations(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPort_IncomingPortAllocations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPort_OutgoingPortAllocations(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (getPortRealization_RealizedPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPortRealization_RealizingPort(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getPortAllocation_AllocatedPort(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getPortAllocation_AllocatingPort(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (getExchangeItem_AllocatorInterfaces(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizedExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizingExchangeItems(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItem_RealizingOperations(), 
 		   source, 
 		   new String[] {
-		   });																																																					
+		   });	
 		addAnnotation
 		  (getExchangeItemRealization_RealizedItem(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getExchangeItemRealization_RealizingOperation(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEventOperation_InvokingSequenceMessages(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });
 	}
 
 	/**
@@ -6624,182 +6624,182 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																																					
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getAssociationPkg_OwnedAssociations(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getAssociation_OwnedMembers(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAssociation_NavigableMembers(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (getClass_KeyParts(), 
 		   source, 
 		   new String[] {
-		   });																																												
+		   });	
 		addAnnotation
 		  (getCollection_ContainedOperations(), 
 		   source, 
 		   new String[] {
-		   });																						
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getCollectionValueReference_ReferencedProperty(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataPkgs(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedClasses(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedKeyParts(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedCollections(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedUnits(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedDataTypes(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedSignals(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedMessages(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedExceptions(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getDataPkg_OwnedStateEvents(), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });	
 		addAnnotation
 		  (getKeyPart_Property(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedNullValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinCard(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMinLength(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxCard(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getMultiplicityElement_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getOperation_OwnedParameters(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																		
+		   });	
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
 		   new String[] {
-		   });																												
+		   });	
 		addAnnotation
 		  (getService_ThrownExceptions(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getService_Messages(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getService_MessageReferences(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getUnion_Discriminant(), 
 		   source, 
 		   new String[] {
-		   });																									
+		   });	
 		addAnnotation
 		  (getUnionProperty_Qualifier(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });	
 		addAnnotation
 		  (getPartitionableElement_OwnedPartitions(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																									
+		   });
 	}
 
 	/**
@@ -6809,17 +6809,17 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																											
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (associationEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																													
+		   });	
 		addAnnotation
 		  (keyPartEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																							
+		   });
 	}
 
 } //InformationPackageImpl

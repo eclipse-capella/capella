@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,24 +18,24 @@ import org.eclipse.swt.widgets.Composite;
  */
 public interface ICellEditorProvider {
   /**
-   * @param element_p
-   * @param column_p
+   * @param element
+   * @param column
    * @return
    */
-  public Object getElementValue(EObject element_p, int column_p);
+  public Object getElementValue(EObject element, int column);
 
   /**
-   * @param element_p
-   * @param column_p
-   * @param value_p
+   * @param element
+   * @param column
+   * @param value
    */
-  public void modifyElement(EObject element_p, int column_p, Object value_p);
+  public void modifyElement(EObject element, int column, Object value);
 
   /**
-   * @param composite_p
-   * @param column_p
-   * @param element_p
+   * @param composite
+   * @param column
+   * @param element
    * @return
    */
-  public CellEditor getCellEditor(Composite composite_p, int column_p, Object element_p);
+  public CellEditor getCellEditor(Composite composite, int column, Object element);
 }

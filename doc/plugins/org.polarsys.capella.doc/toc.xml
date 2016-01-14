@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="Capella Guide" topic="html/toc.html" sort="false">
+   <topic label="User Manual">
+   		<anchor id="contribution"/>
+   </topic>
+   <topic label="Diagrams">
+      <anchor id="diagram"/>
+   </topic>
+   <topic label="Validation Rules">
+      <anchor id="validation"/>
+   </topic>
+   <topic label="Glossary">
+      <anchor id="glossary"/>
+   </topic>
+</toc>

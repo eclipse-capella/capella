@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,10 +45,10 @@ public class ConstraintReferenceGroup {
    * a constraint and must be single valued. The keys in the argument map
    * are used as the field labels.
    * 
-   * @param refs_p a map of field labels to constraint references.
+   * @param refs a map of field labels to constraint references.
    */
-  public ConstraintReferenceGroup(Map<String, EReference> refs_p){
-    refs = refs_p;
+  public ConstraintReferenceGroup(Map<String, EReference> refs){
+    this.refs = refs;
     fields = new HashMap<EReference, AbstractSemanticField>();
   }
 
@@ -57,15 +57,15 @@ public class ConstraintReferenceGroup {
    * The created controls are put inside a group that spans the entire column count of the parent
    * layout.
    * 
-   * @param parent_p
-   * @param factory_p
-   * @param isDisplayedInWizard_p
+   * @param parent
+   * @param factory
+   * @param isDisplayedInWizard
    */
-  public void createControls(Composite parent_p, TabbedPropertySheetWidgetFactory factory_p, boolean isDisplayedInWizard_p){
-    Group referenceGroup = factory_p.createGroup(parent_p, ""); //$NON-NLS-1$
+  public void createControls(Composite parent, TabbedPropertySheetWidgetFactory factory, boolean isDisplayedInWizard){
+    Group referenceGroup = factory.createGroup(parent, ""); //$NON-NLS-1$
     
     GridData gd = new GridData(SWT.FILL, SWT.TOP, true, false);
-    gd.horizontalSpan = ((GridLayout)(parent_p.getLayout())).numColumns;
+    gd.horizontalSpan = ((GridLayout)(parent.getLayout())).numColumns;
     
     referenceGroup.setLayoutData(gd);
     
@@ -73,28 +73,28 @@ public class ConstraintReferenceGroup {
     referenceGroup.setLayout(new GridLayout(6, false));
     for (final Map.Entry<String, EReference> entry : refs.entrySet()){
 
-      SimpleEditableSemanticField field = new SimpleEditableSemanticField(referenceGroup, entry.getKey(), factory_p, "", new AbstractSimpleEditableSemanticFieldController() { //$NON-NLS-1$
+      SimpleEditableSemanticField field = new SimpleEditableSemanticField(referenceGroup, entry.getKey(), factory, "", new AbstractSimpleEditableSemanticFieldController() { //$NON-NLS-1$
 
         @Override
-        public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value_p) {
-          semanticElement_p.eSet(semanticFeature_p, value_p);
-          return value_p;
+        public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
+          semanticElement.eSet(semanticFeature, value);
+          return value;
         }
 
         @Override
-        public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
+        public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
 	    	boolean wasCreatedSpec = false;
 	    	boolean wasCreatedCons = false;
         	
 	    	// Get constraint on semantic element
-        	Constraint constraint = ((Constraint) semanticElement_p.eGet(semanticFeature_p));
+        	Constraint constraint = ((Constraint) semanticElement.eGet(semanticFeature));
         	
         	// If element has no constraint, create one
 	    	if (null == constraint) {
 	    		constraint = CapellacoreFactory.eINSTANCE.createConstraint();
-	    		semanticElement_p.getOwnedConstraints().add(constraint);
-	            CreationHelper.performContributionCommands(constraint, semanticElement_p);
-	            semanticElement_p.eSet(semanticFeature_p, constraint);
+	    		semanticElement.getOwnedConstraints().add(constraint);
+	            CreationHelper.performContributionCommands(constraint, semanticElement);
+	            semanticElement.eSet(semanticFeature, constraint);
 	            wasCreatedCons = true;
 	    	}
 	    	
@@ -119,17 +119,17 @@ public class ConstraintReferenceGroup {
 	    			SimpleEditableSemanticField.deleteContainmentValue(specification);
 	    		}
 	    	}
-	    	return (EObject) semanticElement_p.eGet(semanticFeature_p);
+	    	return (EObject) semanticElement.eGet(semanticFeature);
         }
       });
-      field.setDisplayedInWizard(isDisplayedInWizard_p);
+      field.setDisplayedInWizard(isDisplayedInWizard);
       fields.put(entry.getValue(), field);
     }
   }
   
-  public void loadData(CapellaElement element_p){
+  public void loadData(CapellaElement element){
     for (Map.Entry<EReference, AbstractSemanticField> e : fields.entrySet()){
-      e.getValue().loadData(element_p, e.getKey());
+      e.getValue().loadData(element, e.getKey());
     }
   }
 

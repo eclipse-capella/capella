@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -16,16 +16,11 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -35,14 +30,10 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.ObjectFlow;
-
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 
@@ -97,7 +88,7 @@ public class ObjectFlowItemProvider
 			// Process ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION
 			if (transformationPropertyDescriptor != null) {
 				Object transformationValue = eObject.eGet(ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION, true);
-				if (transformationValue != null && transformationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) transformationValue)) {
+				if (transformationValue != null && transformationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) transformationValue)) {
 					itemPropertyDescriptors.remove(transformationPropertyDescriptor);
 				} else if (transformationValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_FLOW__TRANSFORMATION) != null) {
 					itemPropertyDescriptors.remove(transformationPropertyDescriptor);				  					
@@ -108,7 +99,7 @@ public class ObjectFlowItemProvider
 			// Process ActivityPackage.Literals.OBJECT_FLOW__SELECTION
 			if (selectionPropertyDescriptor != null) {
 				Object selectionValue = eObject.eGet(ActivityPackage.Literals.OBJECT_FLOW__SELECTION, true);
-				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) selectionValue)) {
+				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) selectionValue)) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);
 				} else if (selectionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_FLOW__SELECTION) != null) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);				  					

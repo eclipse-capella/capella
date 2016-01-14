@@ -16,12 +16,11 @@ import org.polarsys.capella.common.linkedtext.ui.LinkedTextDocument;
 import org.polarsys.capella.common.linkedtext.ui.LinkedTextHyperlink;
 import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
-import org.polarsys.capella.core.linkedtext.ui.CapellaLinkedTextConstants;
+import org.polarsys.capella.core.model.helpers.ConstraintExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
- * Validates linked text in opaque expressions for dangling (unresolvable) 
- * hyperlinks
+ * Validates linked text in opaque expressions for dangling (unresolvable) hyperlinks
  */
 public class OpaqueExpressionHyperlinkCheck extends AbstractValidationRule {
 
@@ -32,7 +31,7 @@ public class OpaqueExpressionHyperlinkCheck extends AbstractValidationRule {
   public IStatus validate(IValidationContext ctx_p) {
     OpaqueExpression oe = (OpaqueExpression) ctx_p.getTarget();
     for (int i = 0; i < oe.getLanguages().size(); i++) {
-      if (CapellaLinkedTextConstants.OPAQUE_EXPRESSION_LINKED_TEXT.equals(oe.getLanguages().get(i))) {
+      if (ConstraintExt.OPAQUE_EXPRESSION_LINKED_TEXT.equals(oe.getLanguages().get(i))) {
         if (hasDanglingReferences(oe, oe.getBodies().get(i))) {
           return ctx_p.createFailureStatus(oe);
         }

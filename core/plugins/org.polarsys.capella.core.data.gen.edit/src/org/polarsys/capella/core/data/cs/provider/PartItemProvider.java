@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -235,9 +235,9 @@ public class PartItemProvider
 				 getString("_UI_DeploymentTarget_deploymentLinks_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deploymentLinks_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -418,7 +418,7 @@ public class PartItemProvider
 	 * @generated
 	 */
 	public Object getImageGen(Object object) {
-	  return overlayImage(object, getResourceLocator().getImage("full/obj16/Part")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Part")); //$NON-NLS-1$
 	}
 
 	/**

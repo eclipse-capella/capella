@@ -49,7 +49,7 @@ final public class MarkerResolutionCache {
   
   /**
    * Get the registered marker resolver for this constraint
-   * @param ruleId_p
+   * @param constraintId_p
    * @return
    */
   public IMarkerResolution[] getResolutionsFor(String constraintId_p) {
@@ -70,10 +70,10 @@ final public class MarkerResolutionCache {
   
   
   public Map<AbstractCapellaMarkerResolution, Set<String>> getResolverRuleMap() {
-	return resolverRuleMap;
-}
+    return resolverRuleMap;
+  }
 
-protected void initCache() {
+  protected void initCache() {
     
     // On a first hand, let's initialize the cache map 
     _map = new HashMap<String, Set<AbstractCapellaMarkerResolution>>();
@@ -81,7 +81,7 @@ protected void initCache() {
     // First of all, let's get all contribution
     Map<AbstractCapellaMarkerResolution, Set<String>> map = CapellaQuickFixExtPointUtil.gettAllAvailableMarkerResolution();
     resolverRuleMap = map;
-    
+
     // The available constraint ids
     HashSet<String> allConstraintsIds = new HashSet<String>();
     for (IConstraintDescriptor icd: ValidationHelper.getAllConstraintDescriptors()) {
@@ -99,9 +99,10 @@ protected void initCache() {
         if (allConstraintsIds.contains(id)) {
           addToCache(id, key);
         } else {
-          // "Second" pass with partial rule Id
+          // Many capella qf extensions don't use the fully qualified constraint id, 
+          // but only the 'unqualified id', e.g. DWF_D_20 rather than org.polarsys.capella...DWF_D_20
           for (String current: allConstraintsIds) {
-            if ( current.endsWith(id)) {
+            if (current.endsWith(id)) {
               addToCache(current, key);
               break;
             }

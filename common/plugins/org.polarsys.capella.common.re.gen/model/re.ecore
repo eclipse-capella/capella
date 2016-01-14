@@ -35,7 +35,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RecCatalog" eSuperTypes="#//CatalogElementPkg platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering "/>
+      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/1.0.0#//SystemEngineering "/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
       <details key="Mapping" value="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering "/>
@@ -45,7 +45,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupingElementPkg" eSuperTypes="#//CatalogElementPkg platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/0.8.0#//BlockArchitecture"/>
+      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/1.0.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/1.0.0#//BlockArchitecture"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CatalogElementLink" eSuperTypes="#//ReAbstractElement">
@@ -54,6 +54,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="origin" eType="#//CatalogElementLink"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unsynchronizedFeatures"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suffixed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CatalogElement" eSuperTypes="#//ReDescriptionElement #//ReElementContainer">
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
@@ -65,6 +66,9 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suffix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="purpose" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">

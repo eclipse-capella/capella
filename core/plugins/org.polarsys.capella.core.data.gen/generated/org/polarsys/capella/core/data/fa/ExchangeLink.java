@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.capellacore.NamedRelationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeLink#getExchanges <em>Exchanges</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeLink#getExchangeContainmentLinks <em>Exchange Containment Links</em>}</li>
@@ -27,7 +28,6 @@ import org.polarsys.capella.core.data.capellacore.NamedRelationship;
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeLink#getSources <em>Sources</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ExchangeLink#getDestinations <em>Destinations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeLink()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='FunctionalLink'"

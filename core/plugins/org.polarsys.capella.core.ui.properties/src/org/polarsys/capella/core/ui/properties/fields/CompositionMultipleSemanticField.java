@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,24 +26,24 @@ public class CompositionMultipleSemanticField extends MultipleSemanticField {
   protected EStructuralFeature _compositionFeature;
 
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param controller_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param controller
    */
-  public CompositionMultipleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-      IMultipleSemanticFieldController controller_p) {
-    super(parent_p, label_p, widgetFactory_p, controller_p);
+  public CompositionMultipleSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
+      IMultipleSemanticFieldController controller) {
+    super(parent, label, widgetFactory, controller);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#loadData(org.polarsys.capella.core.data.information.datatype.BooleanType,
    *      org.eclipse.emf.ecore.EReference)
    */
-  public void loadData(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EStructuralFeature compositionFeature_p) {
-    super.loadData(semanticElement_p, semanticFeature_p);
+  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature, EStructuralFeature compositionFeature) {
+    super.loadData(semanticElement, semanticFeature);
 
-    _compositionFeature = compositionFeature_p;
+    _compositionFeature = compositionFeature;
   }
 
   /**

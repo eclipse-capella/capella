@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,7 +99,7 @@ public class SequenceMessageSection extends NamedElementSection {
           // a refresh is needed in order to update the name text field
           @SuppressWarnings("synthetic-access")
           @Override
-          protected void handleOpenButtonClicked(final Button button_p) {
+          protected void handleOpenButtonClicked(final Button button) {
             AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
               @Override
               public void run() {
@@ -165,10 +165,10 @@ public class SequenceMessageSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    Scenario scenario = (Scenario) ((SequenceMessage) capellaElement_p).eContainer();
+    Scenario scenario = (Scenario) ((SequenceMessage) capellaElement).eContainer();
     if (null != scenario) {
       if (scenario.getKind() == ScenarioKind.INTERFACE) {
         invokedOperationField.setController(new InterfaceController());
@@ -201,10 +201,10 @@ public class SequenceMessageSection extends NamedElementSection {
       }
     }
 
-    messageKindGroup.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getSequenceMessage_Kind());
-    invokedOperationField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getEventReceiptOperation_Operation());
-    exchangedItemsField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getSequenceMessage_ExchangedItems());
-    exchangeContextField.loadData(capellaElement_p);
+    messageKindGroup.loadData(capellaElement, InteractionPackage.eINSTANCE.getSequenceMessage_Kind());
+    invokedOperationField.loadData(capellaElement, InteractionPackage.eINSTANCE.getEventReceiptOperation_Operation());
+    exchangedItemsField.loadData(capellaElement, InteractionPackage.eINSTANCE.getSequenceMessage_ExchangedItems());
+    exchangeContextField.loadData(capellaElement);
   }
 
   /**

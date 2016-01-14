@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public class AbstractStateItemProvider
 			super.getPropertyDescriptors(object);
 
 			addReferencedStatesPropertyDescriptor(object);
-			addAvailableInStatesPropertyDescriptor(object);
+			addExploitedStatesPropertyDescriptor(object);
 			addRealizedAbstractStatesPropertyDescriptor(object);
 			addRealizingAbstractStatesPropertyDescriptor(object);
 			addOutgoingPropertyDescriptor(object);
@@ -114,12 +114,12 @@ public class AbstractStateItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Available In States feature.
+	 * This adds a property descriptor for the Exploited States feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAvailableInStatesPropertyDescriptor(Object object) {
+  protected void addExploitedStatesPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -127,9 +127,9 @@ public class AbstractStateItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IState_availableInStates_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_IState_availableInStates_feature", "_UI_IState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 ModellingcorePackage.Literals.ISTATE__AVAILABLE_IN_STATES,
+				 getString("_UI_IState_exploitedStates_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_IState_exploitedStates_feature", "_UI_IState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 ModellingcorePackage.Literals.ISTATE__EXPLOITED_STATES,
 				 true,
 				 false,
 				 true,
@@ -140,7 +140,7 @@ public class AbstractStateItemProvider
 		// end-extension-code
 	}
 
-	/**
+  /**
 	 * This adds a property descriptor for the Realized Abstract States feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

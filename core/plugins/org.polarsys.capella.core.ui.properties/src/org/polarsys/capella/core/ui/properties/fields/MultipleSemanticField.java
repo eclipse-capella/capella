@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,36 +34,36 @@ public class MultipleSemanticField extends BrowseSemanticField {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param controller_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param controller
    */
-  public MultipleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-      IMultipleSemanticFieldController controller_p) {
-    this(parent_p, label_p, widgetFactory_p, 3, controller_p, false);
+  public MultipleSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory,
+      IMultipleSemanticFieldController controller) {
+    this(parent, label, widgetFactory, 3, controller, false);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param textFieldSpan_p
-   * @param controller_p
-   * @param hasAddBtn_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param textFieldSpan
+   * @param controller
+   * @param hasAddBtn
    */
-  public MultipleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, int textFieldSpan_p,
-      IMultipleSemanticFieldController controller_p, boolean hasAddBtn_p) {
-    super(parent_p, label_p, widgetFactory_p, textFieldSpan_p);
+  public MultipleSemanticField(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory, int textFieldSpan,
+      IMultipleSemanticFieldController controller, boolean hasAddBtn) {
+    super(parent, label, widgetFactory, textFieldSpan);
 
-    _controller = controller_p;
+    _controller = controller;
 
-    if (hasAddBtn_p) {
-      createAddButton(parent_p);
+    if (hasAddBtn) {
+      createAddButton(parent);
     }
-    createOpenButton(parent_p);
-    createDeleteButton(parent_p);
+    createOpenButton(parent);
+    createDeleteButton(parent);
   }
 
   /**
@@ -71,19 +71,19 @@ public class MultipleSemanticField extends BrowseSemanticField {
    *      org.eclipse.emf.ecore.EReference)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p) {
-    super.loadData(semanticElement_p, semanticFeature_p);
+  public void loadData(CapellaElement semanticElement, EStructuralFeature semanticFeature) {
+    super.loadData(semanticElement, semanticFeature);
 
-    List<EObject> values = _controller.loadValues(semanticElement_p, semanticFeature_p);
+    List<EObject> values = _controller.loadValues(semanticElement, semanticFeature);
     setValueTextField(values);
   }
 
   /**
    * Handle Open button click event.
-   * @param button_p
+   * @param button
    */
   @Override
-  protected void handleOpenButtonClicked(final Button button_p) {
+  protected void handleOpenButtonClicked(final Button button) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
         List<EObject> currentElements = _controller.readOpenValues(_semanticElement, _semanticFeature, false);
@@ -94,7 +94,7 @@ public class MultipleSemanticField extends BrowseSemanticField {
         String message = NamingHelper.getDefaultMessage(_semanticElement, (_semanticFeature != null) ? _semanticFeature.getName() : ""); //$NON-NLS-1$
         
         // calling selection wizard
-        List<EObject> allResults = openTransferDialog(button_p, currentElements, availableElements, title, message);
+        List<EObject> allResults = openTransferDialog(button, currentElements, availableElements, title, message);
         if (null != allResults) {
           List<EObject> writeOpenValues = _controller.writeOpenValues(_semanticElement, _semanticFeature, allResults);
           // Update the widget according to user selection.
@@ -107,14 +107,14 @@ public class MultipleSemanticField extends BrowseSemanticField {
 
   /**
    * Open standard transfer dialog.<br>
-   * @param button_p
+   * @param button
    * @param currentElements
    * @param availableElements
    * @param title
    * @param message
    * @return
    */
-  protected List<EObject> openTransferDialog(Button button_p, List<EObject> currentElements, List<EObject> availableElements, String title, String message) {
-    return DialogHelper.openTransferDialog(button_p, currentElements, availableElements, title, message);
+  protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements, List<EObject> availableElements, String title, String message) {
+    return DialogHelper.openTransferDialog(button, currentElements, availableElements, title, message);
   }
 }

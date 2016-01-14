@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.polarsys.capella.common.re.ReAbstractElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.shared.id.handler.IScope;
@@ -39,17 +40,17 @@ public abstract class ValidationRulePartialTestCase extends ValidationRuleTestCa
    * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTestScope(ICapellaModel)
    */
   @Override
-  protected List<CapellaElement> getTestScope(ICapellaModel model) {
-    List<CapellaElement> scope = new ArrayList<CapellaElement>();
+  protected List<EObject> getTestScope(ICapellaModel model) {
+    List<EObject> scope = new ArrayList<EObject>();
     IScope resourceScope = new IScope() {
       public List<Resource> getResources() {
-        return getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain().getResourceSet().getResources();
+        return new ArrayList<Resource>(getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain().getResourceSet().getResources());
       }
     };
     for (String id : getScopeDefinition()) {
       EObject obj = IdManager.getInstance().getEObject(id, resourceScope);
-      if (obj instanceof CapellaElement) {
-        scope.add((CapellaElement) obj);
+      if (obj instanceof CapellaElement || obj instanceof ReAbstractElement) {
+        scope.add(obj);
       }
     }
     return scope;

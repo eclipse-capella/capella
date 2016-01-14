@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,168 +14,148 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.navigator.CommonNavigator;
 import org.polarsys.capella.common.helpers.operations.ILongRunningListener;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
- * A long running operations listener dedicated to the capella explorer.
+ * A long running operations listener dedicated to the Capella Explorer.
  */
 public class ExplorerLongRunningOperationsListener implements ILongRunningListener {
+
+  /**
+   * Runnable to be run in UI Thread to enable/disable notifications on the Capella Project Explorer.
+   */
+  private class NotificationEnabler implements Runnable {
+
+    private final boolean enableNotifications;
+
+    protected CapellaCommonNavigator view;
+
+    /**
+     * @param enable
+     */
+    public NotificationEnabler(boolean enable) {
+      enableNotifications = enable;
+    }
+
+    /**
+     * @see java.lang.Runnable#run()
+     */
+    @Override
+    public void run() {
+      // The getCapellaExplorerView() call must be done in this method (because of threads management)
+      view = getCapellaExplorerView();
+      if (null != view) {
+        if (enableNotifications) {
+          // Enable content notifications.
+          view.enableContentNotifications();
+        } else {
+          // Disable content notifications.
+          view.disableContentNotifications();
+        }
+      }
+    }
+  }
+
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#isListenerFor(java.lang.Class)
    */
-  public boolean isListenerFor(Class<?> longRunningOperationClass_p) {
-    // Explorer should not be refreshed during long operation on model.
-    // Handle'em all !
+  @Override
+  public boolean isListenerFor(final Class<?> longRunningOperationClass) {
+    // Ignore calls coming from the CapellaDeleteCommand.
+    if (CapellaDeleteCommand.class.equals(longRunningOperationClass)) {
+      return false;
+    }
+    // Explorer should not be refreshed during other long operations on model.
     return true;
   }
 
   /**
-   * Get common viewer.
-   * @return
+   * Get CapellaExplorerNavigator (to be executed in UI Thread).
+   * @return the CapellaExplorerNavigator or <code>null</code> if it can't be found.
    */
   protected CapellaCommonNavigator getCapellaExplorerView() {
-    final CapellaCommonNavigator[] result = new CapellaCommonNavigator[] { null };
-    final IWorkbench workbench = PlatformUI.getWorkbench();
     // Precondition.
+    final IWorkbench workbench = PlatformUI.getWorkbench();
     // Head-less mode is unlikely to be satisfying here.
     if (null == workbench) {
-      return result[0];
+      return null;
     }
     // Navigator finder.
-    Runnable navigatorFinder = new Runnable() {
-      /**
-       * @see java.lang.Runnable#run()
-       */
-      public void run() {
-        // Get active page view references.
-        IViewReference[] viewReferences = workbench.getActiveWorkbenchWindow().getActivePage().getViewReferences();
-        for (IViewReference viewReference : viewReferences) {
-          if (CapellaCommonNavigator.ID.equals(viewReference.getId())) {
-            try {
-              result[0] = CapellaCommonNavigator.class.cast(viewReference.getView(false));
-            } catch (Exception e_p) {
-              // Oups, can't get the navigator.
-              // Either it is not open, or it is no longer a navigator implementation.
-              // Someone should take care of this one.
-            }
-            // Found it, stop here.
-            break;
-          }
+    // Get active page view references.
+    IViewReference[] viewReferences = workbench.getActiveWorkbenchWindow().getActivePage().getViewReferences();
+    for (IViewReference viewReference : viewReferences) {
+      if (CapellaCommonNavigator.ID.equals(viewReference.getId())) {
+        try {
+          return CapellaCommonNavigator.class.cast(viewReference.getView(false));
+        } catch (Exception e) {
+          // Oups, can't get the navigator.
+          // Either it is not open, or it is no longer a navigator implementation.
+          // Someone should take care of this one.
+          return null;
         }
       }
-    };
-    // Ensure execution in UI thread.
-    if (null == Display.getCurrent()) {
-      workbench.getDisplay().syncExec(navigatorFinder);
-    } else {
-      // Already in UI thread.
-      navigatorFinder.run();
     }
-    return result[0];
+    return null;
   }
 
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#operationAborted(java.lang.Class)
    */
-  public void operationAborted(final Class<?> operationClass_p) {
-    final CapellaCommonNavigator view = getCapellaExplorerView();
-    // Precondition.
-    // There is nothing that can be done here.
-    if (null == view) {
-      return;
-    }
-    /**
-     * Enable redraw runnable.
-     */
-    Runnable enableRedraw = new Runnable() {
-      /**
-       * @see java.lang.Runnable#run()
-       */
-      public void run() {
-        // Re-enable content notifications for capella explorer.
-        if (!CapellaDeleteCommand.class.equals(operationClass_p)) {
-          view.enableContentNotifications();
-        }
-      }
-    };
+  @Override
+  public void operationAborted(final Class<?> operationClass) {
+    // Re-enable notifications.
+    Runnable enableNotifications = new NotificationEnabler(true);
     // Ensure execution in UI thread.
     if (null == Display.getCurrent()) {
-      PlatformUI.getWorkbench().getDisplay().asyncExec(enableRedraw);
+      PlatformUI.getWorkbench().getDisplay().asyncExec(enableNotifications);
     } else {
       // Already in UI thread.
-      enableRedraw.run();
+      enableNotifications.run();
     }
   }
 
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#operationEnded(java.lang.Class)
    */
-  public void operationEnded(Class<?> operationClass_p) {
-    // Go for it.
-    operationAborted(operationClass_p);
-    // Ask for a full refresh of the explorer, if it is not a delete command.
-    if (!CapellaDeleteCommand.class.equals(operationClass_p)) {
-      final CommonNavigator view = getCapellaExplorerView();
-
-      // Precondition.
-      // There is nothing that can be done here.
-      if (null == view) {
-        return;
-      }
-
-      // Refresh the whole tree.
-      Runnable refreshTree = new Runnable() {
-        /**
-         * @see java.lang.Runnable#run()
-         */
-        public void run() {
+  @Override
+  public void operationEnded(final Class<?> operationClass) {
+    // Re-enable notifications + Do a whole refresh of the explorer.
+    Runnable enableNotificationsAndRefresh = new NotificationEnabler(true) {
+      @Override
+      public void run() {
+        super.run();
+        if (null != view) {
+          // Do a whole refresh.
           view.getCommonViewer().refresh();
         }
-      };
-
-      // Ensure execution in UI thread.
-      if (null == Display.getCurrent()) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(refreshTree);
-      } else {
-        // Already in UI thread.
-        refreshTree.run();
       }
+    };
+
+    // Ensure execution in UI thread.
+    if (null == Display.getCurrent()) {
+      PlatformUI.getWorkbench().getDisplay().asyncExec(enableNotificationsAndRefresh);
+    } else {
+      // Already in UI thread.
+      enableNotificationsAndRefresh.run();
     }
+
   }
 
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#operationStarting(java.lang.Class)
    */
-  public void operationStarting(final Class<?> operationClass_p) {
-    final CapellaCommonNavigator view = getCapellaExplorerView();
-    // Precondition.
-    // There is nothing that can be done here.
-    if (null == view) {
-      return;
-    }
-    /**
-     * Disable redraw runnable.
-     */
-    Runnable disableRedraw = new Runnable() {
-      /**
-       * @see java.lang.Runnable#run()
-       */
-      public void run() {
-        // Disable content notifications for capella explorer.
-        if (!CapellaDeleteCommand.class.equals(operationClass_p)) {
-          view.disableContentNotifications();
-        }
-      }
-    };
+  @Override
+  public void operationStarting(final Class<?> operationClass) {
+    // Disable notifications.
+    Runnable disableNotifications = new NotificationEnabler(false);
     // Ensure execution in UI thread.
     if (null == Display.getCurrent()) {
-      PlatformUI.getWorkbench().getDisplay().syncExec(disableRedraw);
+      PlatformUI.getWorkbench().getDisplay().syncExec(disableNotifications);
     } else {
       // Already in UI thread.
-      disableRedraw.run();
+      disableNotifications.run();
     }
   }
 }

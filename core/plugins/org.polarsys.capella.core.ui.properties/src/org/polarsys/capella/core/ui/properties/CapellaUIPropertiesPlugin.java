@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,25 +80,25 @@ public class CapellaUIPropertiesPlugin extends AbstractUIActivator {
   }
 
   /**
-   * @param modelElement_p
+   * @param modelElement
    */
-  private boolean openCustomWizard(EObject object_p) {
-    OpenCustomWizardCommand command = new OpenCustomWizardCommand(object_p);
-    TransactionHelper.getExecutionManager(object_p).execute(command);
+  private boolean openCustomWizard(EObject object) {
+    OpenCustomWizardCommand command = new OpenCustomWizardCommand(object);
+    TransactionHelper.getExecutionManager(object).execute(command);
     return !command.isCanceled();
   }
 
   /**
    * Open the related wizard for specified model element. The entire operation is wrapped in a command and executed on the command stack. If you're already
    * running inside a command, do not use this method. You should then instantiate and execute a CustomWizardHandler directly.
-   * @param modelElement_p the model element to be edited
-   * @param event_p not used
+   * @param modelElement the model element to be edited
+   * @param event not used
    * @return true if the wizard was successfully finished (not canceled)
    */
-  public boolean openWizard(DoubleClickEvent event_p, EObject object_p) {
+  public boolean openWizard(DoubleClickEvent event, EObject object) {
     boolean result = false;
-    if (existCustomWizard(object_p)) {
-      result = openCustomWizard(object_p);
+    if (existCustomWizard(object)) {
+      result = openCustomWizard(object);
     }
     return result;
   }
@@ -106,16 +106,16 @@ public class CapellaUIPropertiesPlugin extends AbstractUIActivator {
   /**
    * @see openWizard(DoubleClickEvent, ModelElement)
    */
-  public boolean openWizard(EObject object_p) {
-    return openWizard(null, object_p);
+  public boolean openWizard(EObject object) {
+    return openWizard(null, object);
   }
 
   /**
    * Tests the existence of a custom wizard.
-   * @param eclass_p
+   * @param eclass
    */
-  public static boolean existCustomWizard(EObject object_p) {
-    Map<String, IAbstractSection> sections = CustomPropertyHelper.getCustomPropertySection(object_p, PROPERTIES_CONTRIBUTOR);
+  public static boolean existCustomWizard(EObject eclass) {
+    Map<String, IAbstractSection> sections = CustomPropertyHelper.getCustomPropertySection(eclass, PROPERTIES_CONTRIBUTOR);
     return !sections.isEmpty();
   }
 

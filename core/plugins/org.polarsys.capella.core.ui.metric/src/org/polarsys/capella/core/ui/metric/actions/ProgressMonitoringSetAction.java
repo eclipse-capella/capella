@@ -45,13 +45,12 @@ import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
 import org.polarsys.capella.core.ui.metric.utils.Utils;
-
 public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
 
   private static final Logger logger = ReportManagerRegistry.getInstance().subscribe("Progress Monitoring"); //$NON-NLS-1$
   private static final String strStatus = "Status";
   private static final String strReview = "Review";
-  
+
   /**
    * Constructor.
    */
@@ -103,7 +102,7 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
           
           int nbCapellaElementReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),CapellaElement.class);
           int nbDRepresentationReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),DRepresentation.class);
-          
+
           if (nbCapellaElementTagged+nbDRepresentationTagged == 0) {
         	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strStatus));
           } else {

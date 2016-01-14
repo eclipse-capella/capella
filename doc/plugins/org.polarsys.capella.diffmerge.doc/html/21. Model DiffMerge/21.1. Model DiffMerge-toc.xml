@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc label="21.1. Model DiffMerge" link_to="PLUGINS_ROOT/org.polarsys.capella.diffmerge.doc/toc.xml#contribution" topic="html/21. Model DiffMerge/21.1. Model DiffMerge.html">
+	<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html" label="The DiffMerge tool">
+		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Overview" label="Overview"></topic>
+		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Starting_the_Capella_Diff.2FMerge_Tool" label="Starting the Capella Diff/Merge Tool"></topic>
+		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Configuration_and_Features_of_the_Diff.2FMerge_Tool" label="Configuration and Features of the Diff/Merge Tool">
+			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#SVN_preferences" label="SVN preferences"></topic>
+			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#User_interface_of_the_Diff.2FMerge_Tool" label="User interface of the Diff/Merge Tool"></topic>
+		</topic>
+		<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#The_Capella_Diff.2FMerge_process" label="The Capella Diff/Merge process">
+			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Starting_the_Diff.2FMerge_tool" label="Starting the Diff/Merge tool"></topic>
+			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Resolve_differences" label="Resolve differences"></topic>
+			<topic href="html/21. Model DiffMerge/21.1. Model DiffMerge.html#Save_for_committing_the_resolution_results" label="Save for committing the resolution results"></topic>
+		</topic>
+	</topic>
+</toc>

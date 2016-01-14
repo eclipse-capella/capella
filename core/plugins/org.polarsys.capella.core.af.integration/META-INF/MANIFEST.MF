@@ -19,7 +19,6 @@ Require-Bundle: org.eclipse.ui.navigator,
  org.eclipse.emf.edit.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.polarsys.capella.core.af.integration,
- org.polarsys.capella.core.af.integration.menu,
  org.polarsys.capella.core.af.integration.provider,
  org.polarsys.capella.core.af.integration.services
 Bundle-ActivationPolicy: lazy 

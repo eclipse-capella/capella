@@ -18,8 +18,8 @@ import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.cdb.InsertRemoveTypeTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.CDBCommunication;
-import org.polarsys.capella.test.diagram.tools.ju.step.cdb.InsertRemoveTypeTool;
 
 /**
  *

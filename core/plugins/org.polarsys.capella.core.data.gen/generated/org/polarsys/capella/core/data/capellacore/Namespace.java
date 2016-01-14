@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getOwnedTraces <em>Owned Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getContainedGenericTraces <em>Contained Generic Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getContainedRequirementsTraces <em>Contained Requirements Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.Namespace#getNamingRules <em>Naming Rules</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getNamespace()
  * @model interface="true" abstract="true"

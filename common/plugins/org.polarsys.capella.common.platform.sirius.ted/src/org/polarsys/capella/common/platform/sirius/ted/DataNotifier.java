@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2007, 2009 LCELB
+ *  Copyright (c) 2007, 2015 LCELB
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  *  Contributors:
  *      LCELB - initial API and implementation
+ *     Thales - bug fix (see https://polarsys.org/bugs/show_bug.cgi?id=367)
  *******************************************************************************/
 package org.polarsys.capella.common.platform.sirius.ted;
 
@@ -24,6 +25,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
@@ -138,6 +140,8 @@ public class DataNotifier extends EContentAdapter {
     Object notifier = notification_p.getNotifier();
     Object oldValue = notification_p.getOldValue();
     Object newValue = notification_p.getNewValue();
+    Object feature = notification_p.getFeature();
+    boolean isContainmentReference = ((feature instanceof EReference) && ((EReference) feature).isContainment());
     // Add adapters by class first, then by reference.
     Set<Adapter> adapters = new HashSet<Adapter>(0);
     // Always search for notifier adapters.
@@ -172,13 +176,13 @@ public class DataNotifier extends EContentAdapter {
         // Model element removed.
         // Add adapters for old value.
         // Do remove those that used old value as reference key.
-        adapters.addAll(searchAdapters(oldValue, true));
+        adapters.addAll(searchAdapters(oldValue, isContainmentReference));
       break;
       case Notification.REMOVE_MANY:
         // List of model elements removed.
         // Add adapters for old values.
         // Do remove those that used old values as reference keys.
-        adapters.addAll(searchAdapters((Collection<?>) oldValue, true));
+        adapters.addAll(searchAdapters((Collection<?>) oldValue, isContainmentReference));
       break;
       default:
       break;

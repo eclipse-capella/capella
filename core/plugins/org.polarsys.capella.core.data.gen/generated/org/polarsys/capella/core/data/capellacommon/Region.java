@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,12 +20,12 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.Region#getOwnedStates <em>Owned States</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.Region#getOwnedTransitions <em>Owned Transitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.Region#getInvolvedStates <em>Involved States</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getRegion()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.\r\n[source: UML superstructure v2.2]' usage\040guideline='in Capella, a Region is automatically created when creating a state/mode diagram' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

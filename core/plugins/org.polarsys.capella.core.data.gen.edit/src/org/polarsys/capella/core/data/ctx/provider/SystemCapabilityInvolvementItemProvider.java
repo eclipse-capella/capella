@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class SystemCapabilityInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVER
 			if (involverPropertyDescriptor != null) {
 				Object involverValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, true);
-				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involverValue)) {
+				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involverValue)) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);
 				} else if (involverValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER) != null) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);				  					
@@ -111,7 +111,7 @@ public class SystemCapabilityInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVED
 			if (involvedPropertyDescriptor != null) {
 				Object involvedValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, true);
-				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involvedValue)) {
+				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedValue)) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);
 				} else if (involvedValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED) != null) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);				  					
@@ -122,7 +122,7 @@ public class SystemCapabilityInvolvementItemProvider
 			// Process CtxPackage.Literals.SYSTEM_CAPABILITY_INVOLVEMENT__CAPABILITY
 			if (capabilityPropertyDescriptor != null) {
 				Object capabilityValue = eObject.eGet(CtxPackage.Literals.SYSTEM_CAPABILITY_INVOLVEMENT__CAPABILITY, true);
-				if (capabilityValue != null && capabilityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) capabilityValue)) {
+				if (capabilityValue != null && capabilityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) capabilityValue)) {
 					itemPropertyDescriptors.remove(capabilityPropertyDescriptor);
 				} else if (capabilityValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_CAPABILITY_INVOLVEMENT__CAPABILITY) != null) {
 					itemPropertyDescriptors.remove(capabilityPropertyDescriptor);				  					
@@ -133,7 +133,7 @@ public class SystemCapabilityInvolvementItemProvider
 			// Process CtxPackage.Literals.SYSTEM_CAPABILITY_INVOLVEMENT__SYSTEM
 			if (systemPropertyDescriptor != null) {
 				Object systemValue = eObject.eGet(CtxPackage.Literals.SYSTEM_CAPABILITY_INVOLVEMENT__SYSTEM, true);
-				if (systemValue != null && systemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) systemValue)) {
+				if (systemValue != null && systemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) systemValue)) {
 					itemPropertyDescriptors.remove(systemPropertyDescriptor);
 				} else if (systemValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.SYSTEM_CAPABILITY_INVOLVEMENT__SYSTEM) != null) {
 					itemPropertyDescriptors.remove(systemPropertyDescriptor);				  					

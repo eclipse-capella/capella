@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,8 +99,8 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
     // This operation history listener is used to force refreshes when undo / redo operations are performed.
     OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
 
@@ -119,8 +119,8 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void focusLost(FocusEvent e_p) {
-        if (e_p.widget == _nameTextField) {
+      public void focusLost(FocusEvent e) {
+        if (e.widget == _nameTextField) {
           commitNameChanged();
         }
       }
@@ -132,9 +132,9 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void keyPressed(KeyEvent event_p) {
-        if ((event_p != null) && (event_p.character == SWT.CR)) {
-          if (event_p.widget == _nameTextField) {
+      public void keyPressed(KeyEvent event) {
+        if ((event != null) && (event.character == SWT.CR)) {
+          if (event.widget == _nameTextField) {
             commitNameChanged();
           }
         }
@@ -150,23 +150,23 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
 
   /**
    * Create name widget.
-   * @param widgetFactory_p
-   * @param textGroup_p
+   * @param widgetFactory
+   * @param textGroup
    */
-  protected void createNameWidget(TabbedPropertySheetWidgetFactory widgetFactory_p, Group textGroup_p) {
+  protected void createNameWidget(TabbedPropertySheetWidgetFactory widgetFactory, Group textGroup) {
     // Create Name text field.
-    widgetFactory_p.createCLabel(textGroup_p, Messages.RepresentationSection_Name_Title);
-    _nameTextField = widgetFactory_p.createText(textGroup_p, ICommonConstants.EMPTY_STRING);
+    widgetFactory.createCLabel(textGroup, Messages.RepresentationSection_Name_Title);
+    _nameTextField = widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
     _nameTextField.setLayoutData(new GridData(SWT.FILL, GridData.FILL, true, false));
     _nameTextField.addFocusListener(_focusAdapter);
     _nameTextField.addKeyListener(_keyAdapter);
   }
 
   /**
-   * @param widgetFactory_p
-   * @param rootParentComposite_p
+   * @param widgetFactory
+   * @param rootParentComposite
    */
-  protected void createContextualElementsWidget(TabbedPropertySheetWidgetFactory widgetFactory_p, Composite rootParentComposite_p) {
+  protected void createContextualElementsWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite rootParentComposite) {
     boolean displayedInWizard = isDisplayedInWizard();
     _contextualElementsField =
         new RepresentationContextualElementsField(getReferencesGroup(), Messages.ContextualElements_Label, getWidgetFactory(),
@@ -194,11 +194,11 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * @see org.eclipse.core.commands.operations.IOperationHistoryListener#historyNotification(org.eclipse.core.commands.operations.OperationHistoryEvent)
    */
   @Override
-  public void historyNotification(OperationHistoryEvent event_p) {
+  public void historyNotification(OperationHistoryEvent event) {
     // We only handle undo & redo operations to force a refresh.
-    int eventType = event_p.getEventType();
+    int eventType = event.getEventType();
     if ((OperationHistoryEvent.UNDONE == eventType) || (OperationHistoryEvent.REDONE == eventType)) {
-      IUndoableOperation operation = event_p.getOperation();
+      IUndoableOperation operation = event.getOperation();
       // Take into account the EMF command operation.
       if (operation instanceof EMFCommandOperation) {
         // Get the command.
@@ -241,8 +241,8 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object toTest_p) {
-    return (toTest_p instanceof DRepresentation) || (toTest_p instanceof IDDiagramEditPart);
+  public boolean select(Object toTest) {
+    return (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
   }
 
   @Override
@@ -254,15 +254,15 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public void setInput(IWorkbenchPart part_p, ISelection selection_p) {
-    if (!selection_p.isEmpty()) {
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    if (!selection.isEmpty()) {
       // Unregister...
       if (null != _representation) {
         CapellaReadOnlyHelper.unregister(_representation.get(), this);
       }
 
-      if (selection_p instanceof IStructuredSelection) {
-        Object firstElement = ((IStructuredSelection) selection_p).getFirstElement();
+      if (selection instanceof IStructuredSelection) {
+        Object firstElement = ((IStructuredSelection) selection).getFirstElement();
         if (firstElement instanceof DRepresentation) {
           _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
         } else if (firstElement instanceof IDDiagramEditPart) {
@@ -285,14 +285,14 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    super.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
 
     if ((null != _nameTextField) && !_nameTextField.isDisposed()) {
-      _nameTextField.setEnabled(enabled_p);
+      _nameTextField.setEnabled(enabled);
     }
     if (null != _contextualElementsField) {
-      _contextualElementsField.setEnabled(enabled_p);
+      _contextualElementsField.setEnabled(enabled);
     }
   }
 

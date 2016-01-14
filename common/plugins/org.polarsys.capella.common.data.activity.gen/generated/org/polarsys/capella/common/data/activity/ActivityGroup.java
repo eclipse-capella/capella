@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,13 +20,13 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSuperGroup <em>Super Group</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityGroup#getSubGroups <em>Sub Groups</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityGroup#getOwnedNodes <em>Owned Nodes</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.ActivityGroup#getOwnedEdges <em>Owned Edges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityGroup()
  * @model abstract="true"

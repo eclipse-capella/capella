@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,15 +23,37 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
 import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 
 /**
-  * An {@link ECrossReferenceAdapter} that only takes capella resources into account.
-  */
-public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterImpl {
+ * An {@link ECrossReferenceAdapter} that only takes capella resources into account.
+ */
+public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer implements SiriusCrossReferenceAdapter {
+
+  /**
+   * Tell if the resolution of the proxy is enabled or not.
+   */
+  private boolean resolveProxyEnabled = true;
+
+  /**
+   * Disable the resolution of the proxy.
+   */
+  @Override
+  public void disableResolveProxy() {
+    resolveProxyEnabled = false;
+  }
+
+  /**
+   * Enable the resolution of the proxy.
+   */
+  @Override
+  public void enableResolveProxy() {
+    resolveProxyEnabled = true;
+  }
 
   class CapellaInverseCrossReferencer extends InverseCrossReferencer {
     /**
@@ -51,22 +73,23 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
     protected boolean resolve() {
       return CapellaECrossReferenceAdapter.this.resolve();
     }
+
   }
 
   WeakReference<EditingDomain> _editingDomain;
 
   public CapellaECrossReferenceAdapter(EditingDomain editingDomain) {
-	super();
-	_editingDomain = new WeakReference<EditingDomain>(editingDomain);
+    super();
+    _editingDomain = new WeakReference<EditingDomain>(editingDomain);
   }
 
-/**
+  /**
    * Adapt all references of specified object against the inverse cross referencer.<br>
    * Adapted means fake a Notification against the cross referencer to make sure its internal map is correctly filled in.
    * @param object_p
    */
-  protected void adaptAllEReferences(EObject object_p) {
-    EList<EReference> eAllReferences = object_p.eClass().getEAllReferences();
+  protected void adaptAllEReferences(EObject object) {
+    EList<EReference> eAllReferences = object.eClass().getEAllReferences();
     // Loop over all references of specified object. When attaching an object to a new container, its subtree elements must be self adapted too.
     // When attaching to a new container, remove notifications are sent that clears crossreferencer maps regarding this subtree.
     // Hence, we must adapt again the subtree to make sure the cross referencer maps are filled in correctly.
@@ -75,7 +98,7 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
       if (!eReference.isMany()) {
         eventType = Notification.SET;
       }
-      selfAdapt(new ENotificationImpl((InternalEObject) object_p, eventType, eReference, null, object_p.eGet(eReference)));
+      selfAdapt(new ENotificationImpl((InternalEObject) object, eventType, eReference, null, object.eGet(eReference)));
     }
   }
 
@@ -83,14 +106,14 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
    * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#addAdapter(org.eclipse.emf.common.notify.Notifier)
    */
   @Override
-  protected void addAdapter(Notifier notifier_p) {
-    if (notifier_p instanceof Resource) {
+  protected void addAdapter(Notifier notifier) {
+    if (notifier instanceof Resource) {
       // Make sure this is a capella resource.
-      if (!retainResource((Resource) notifier_p)) {
+      if (!retainResource((Resource) notifier)) {
         return;
       }
     }
-    super.addAdapter(notifier_p);
+    super.addAdapter(notifier);
   }
 
   @Override
@@ -103,13 +126,13 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
    */
   @SuppressWarnings("fallthrough")
   @Override
-  protected void handleContainment(Notification notification_p) {
-    super.handleContainment(notification_p);
-    int eventType = notification_p.getEventType();
+  protected void handleContainment(Notification notification) {
+    super.handleContainment(notification);
+    int eventType = notification.getEventType();
     switch (eventType) {
       case Notification.ADD:
       case Notification.SET:
-        Object newValue = notification_p.getNewValue();
+        Object newValue = notification.getNewValue();
         if (null != newValue) {
           if (newValue instanceof EObject) {
             // When setting/adding an object, we must make sure its references are also adapted against the cross referencer.
@@ -126,7 +149,7 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
       case Notification.REMOVE:
         EObject oldValue = null;
         try {
-          oldValue = EObject.class.cast(notification_p.getOldValue());
+          oldValue = EObject.class.cast(notification.getOldValue());
         } catch (Exception exception_p) {
           // Do not deal with this value.
         }
@@ -136,7 +159,7 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
         }
       break;
       case Notification.ADD_MANY:
-        for (Object value : (Collection<?>) notification_p.getNewValue()) {
+        for (Object value : (Collection<?>) notification.getNewValue()) {
           if (value instanceof EObject) {
             // See explanations in ADD, SET case.
             adaptAllEReferences((EObject) value);
@@ -152,17 +175,17 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
    * Handle resource content notification.
    * @param notification_p
    */
-  protected boolean handleResourceContentNotification(Notification notification_p) {
+  protected boolean handleResourceContentNotification(Notification notification) {
     boolean handleSomething = false;
-    switch (notification_p.getFeatureID(Resource.class)) {
+    switch (notification.getFeatureID(Resource.class)) {
       case Resource.RESOURCE__CONTENTS:
-        switch (notification_p.getEventType()) {
+        switch (notification.getEventType()) {
           case Notification.REMOVE:
             // Let the super selfAdapt method does its job i.e don't set to true the return value.
             // Override completely the super selfAdapt method to avoid keeping proxies in memory.
             handleSomething = true;
             // Handle remove operations for objects directly contains by a resource.
-            EObject eObject = (EObject) notification_p.getOldValue();
+            EObject eObject = (EObject) notification.getOldValue();
             unsetTarget(eObject);
           break;
         }
@@ -170,8 +193,8 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
       case Resource.RESOURCE__IS_LOADED: {
         // Override completely the super selfAdapt method to avoid keeping proxies in memory.
         handleSomething = true;
-        Object notifier = notification_p.getNotifier();
-        if (notification_p.getNewBooleanValue()) {
+        Object notifier = notification.getNotifier();
+        if (notification.getNewBooleanValue()) {
           unloadedResources.remove(notifier);
           for (Notifier child : ((Resource) notifier).getContents()) {
             addAdapter(child);
@@ -190,16 +213,16 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
    * @param resource_p
    * @return
    */
-  protected boolean retainResource(Resource resource_p) {
-    return CapellaResourceHelper.isCapellaResource(resource_p);
+  protected boolean retainResource(Resource resource) {
+    return CapellaResourceHelper.isCapellaResource(resource);
   }
 
   /**
    * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#selfAdapt(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  protected void selfAdapt(Notification notification_p) {
-    Object notifier = notification_p.getNotifier();
+  protected void selfAdapt(Notification notification) {
+    Object notifier = notification.getNotifier();
 
     if (notifier instanceof Resource) {
       // Make sure this is a capella resource.
@@ -207,11 +230,11 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
         return;
       }
       // Handle resource content changes.
-      if (handleResourceContentNotification(notification_p)) {
+      if (handleResourceContentNotification(notification)) {
         return; // Stop here as already handled.
       }
     }
-    super.selfAdapt(notification_p);
+    super.selfAdapt(notification);
   }
 
   /**
@@ -222,8 +245,12 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterIm
     if (SiriusSessionListener.isClosingSession(_editingDomain.get())) {
       return false;
     }
-    
+
     if (!CrossReferencerHelper.resolutionEnabled()) {
+      return false;
+    }
+
+    if (!resolveProxyEnabled) {
       return false;
     }
 

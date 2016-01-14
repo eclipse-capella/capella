@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,7 +82,7 @@ public class EnumerationItemProvider
 			// Process DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE
 			if (domainTypePropertyDescriptor != null) {
 				Object domainTypeValue = eObject.eGet(DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE, true);
-				if (domainTypeValue != null && domainTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) domainTypeValue)) {
+				if (domainTypeValue != null && domainTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) domainTypeValue)) {
 					itemPropertyDescriptors.remove(domainTypePropertyDescriptor);
 				} else if (domainTypeValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.ENUMERATION__DOMAIN_TYPE) != null) {
 					itemPropertyDescriptors.remove(domainTypePropertyDescriptor);				  					

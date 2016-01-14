@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public interface CommunicationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/information/communication/0.8.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/information/communication/1.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -2842,250 +2842,6 @@ public interface CommunicationPackage extends EPackage {
 	int COMMUNICATION_LINK_EXCHANGER_FEATURE_COUNT = 11;
 
 	/**
-	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkAllocationImpl <em>Link Allocation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkAllocationImpl
-	 * @see org.polarsys.capella.core.data.information.communication.impl.CommunicationPackageImpl#getCommunicationLinkAllocation()
-	 * @generated
-	 */
-	int COMMUNICATION_LINK_ALLOCATION = 9;
-
-	/**
-	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__OWNED_EXTENSIONS = CapellacorePackage.ALLOCATION__OWNED_EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__ID = CapellacorePackage.ALLOCATION__ID;
-
-	/**
-	 * The feature id for the '<em><b>Sid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__SID = CapellacorePackage.ALLOCATION__SID;
-
-	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__REALIZED_FLOW = CapellacorePackage.ALLOCATION__REALIZED_FLOW;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__INCOMING_TRACES = CapellacorePackage.ALLOCATION__INCOMING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__OUTGOING_TRACES = CapellacorePackage.ALLOCATION__OUTGOING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__VISIBLE_IN_DOC = CapellacorePackage.ALLOCATION__VISIBLE_IN_DOC;
-
-	/**
-	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__VISIBLE_IN_LM = CapellacorePackage.ALLOCATION__VISIBLE_IN_LM;
-
-	/**
-	 * The feature id for the '<em><b>Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__SUMMARY = CapellacorePackage.ALLOCATION__SUMMARY;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__DESCRIPTION = CapellacorePackage.ALLOCATION__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Review</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__REVIEW = CapellacorePackage.ALLOCATION__REVIEW;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__OWNED_PROPERTY_VALUES = CapellacorePackage.ALLOCATION__OWNED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.ALLOCATION__OWNED_ENUMERATION_PROPERTY_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__APPLIED_PROPERTY_VALUES = CapellacorePackage.ALLOCATION__APPLIED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.ALLOCATION__OWNED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.ALLOCATION__APPLIED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__STATUS = CapellacorePackage.ALLOCATION__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Target Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__TARGET_ELEMENT = CapellacorePackage.ALLOCATION__TARGET_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Source Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__SOURCE_ELEMENT = CapellacorePackage.ALLOCATION__SOURCE_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Allocating Link</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK = CapellacorePackage.ALLOCATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Allocated Link</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK = CapellacorePackage.ALLOCATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Link Allocation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_LINK_ALLOCATION_FEATURE_COUNT = CapellacorePackage.ALLOCATION_FEATURE_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkKind <em>Link Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3093,7 +2849,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.communication.impl.CommunicationPackageImpl#getCommunicationLinkKind()
 	 * @generated
 	 */
-	int COMMUNICATION_LINK_KIND = 10;
+	int COMMUNICATION_LINK_KIND = 9;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol <em>Link Protocol</em>}' enum.
@@ -3103,7 +2859,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.communication.impl.CommunicationPackageImpl#getCommunicationLinkProtocol()
 	 * @generated
 	 */
-	int COMMUNICATION_LINK_PROTOCOL = 11;
+	int COMMUNICATION_LINK_PROTOCOL = 10;
 
 
 	/**
@@ -3417,38 +3173,6 @@ public interface CommunicationPackage extends EPackage {
 	EReference getCommunicationLinkExchanger_Transmit();
 
 	/**
-	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation <em>Link Allocation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Link Allocation</em>'.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation
-	 * @generated
-	 */
-	EClass getCommunicationLinkAllocation();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation#getAllocatingLink <em>Allocating Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Allocating Link</em>'.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation#getAllocatingLink()
-	 * @see #getCommunicationLinkAllocation()
-	 * @generated
-	 */
-	EReference getCommunicationLinkAllocation_AllocatingLink();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation#getAllocatedLink <em>Allocated Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Allocated Link</em>'.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation#getAllocatedLink()
-	 * @see #getCommunicationLinkAllocation()
-	 * @generated
-	 */
-	EReference getCommunicationLinkAllocation_AllocatedLink();
-
-	/**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkKind <em>Link Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3739,32 +3463,6 @@ public interface CommunicationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMMUNICATION_LINK_EXCHANGER__TRANSMIT = eINSTANCE.getCommunicationLinkExchanger_Transmit();
-
-		/**
-		 * The meta object literal for the '{@link org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkAllocationImpl <em>Link Allocation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.polarsys.capella.core.data.information.communication.impl.CommunicationLinkAllocationImpl
-		 * @see org.polarsys.capella.core.data.information.communication.impl.CommunicationPackageImpl#getCommunicationLinkAllocation()
-		 * @generated
-		 */
-		EClass COMMUNICATION_LINK_ALLOCATION = eINSTANCE.getCommunicationLinkAllocation();
-
-		/**
-		 * The meta object literal for the '<em><b>Allocating Link</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK = eINSTANCE.getCommunicationLinkAllocation_AllocatingLink();
-
-		/**
-		 * The meta object literal for the '<em><b>Allocated Link</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK = eINSTANCE.getCommunicationLinkAllocation_AllocatedLink();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkKind <em>Link Kind</em>}' enum.

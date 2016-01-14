@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class ItemInConceptItemProvider
 			// Process OaPackage.Literals.ITEM_IN_CONCEPT__CONCEPT
 			if (conceptPropertyDescriptor != null) {
 				Object conceptValue = eObject.eGet(OaPackage.Literals.ITEM_IN_CONCEPT__CONCEPT, true);
-				if (conceptValue != null && conceptValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) conceptValue)) {
+				if (conceptValue != null && conceptValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) conceptValue)) {
 					itemPropertyDescriptors.remove(conceptPropertyDescriptor);
 				} else if (conceptValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ITEM_IN_CONCEPT__CONCEPT) != null) {
 					itemPropertyDescriptors.remove(conceptPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class ItemInConceptItemProvider
 			// Process OaPackage.Literals.ITEM_IN_CONCEPT__ITEM
 			if (itemPropertyDescriptor != null) {
 				Object itemValue = eObject.eGet(OaPackage.Literals.ITEM_IN_CONCEPT__ITEM, true);
-				if (itemValue != null && itemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) itemValue)) {
+				if (itemValue != null && itemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) itemValue)) {
 					itemPropertyDescriptors.remove(itemPropertyDescriptor);
 				} else if (itemValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ITEM_IN_CONCEPT__ITEM) != null) {
 					itemPropertyDescriptors.remove(itemPropertyDescriptor);				  					

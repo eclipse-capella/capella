@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,8 @@ public class PhysicalLinkSection extends ComponentExchangeAllocatorSection {
                * {@inheritDoc}
                */
               @Override
-              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-                return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), CsPackage.eINSTANCE.getPhysicalLink_Categories());
+              protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+                return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CsPackage.eINSTANCE.getPhysicalLink_Categories());
               }
             });
     _categoriesField.setDisplayedInWizard(displayedInWizard);
@@ -64,14 +64,14 @@ public class PhysicalLinkSection extends ComponentExchangeAllocatorSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _categoriesField) {
-      _categoriesField.loadData(capellaElement_p, CsPackage.eINSTANCE.getPhysicalLink_Categories());
+      _categoriesField.loadData(capellaElement, CsPackage.eINSTANCE.getPhysicalLink_Categories());
     }
     if (null != _realizedLinksField) {
-      _realizedLinksField.loadData(capellaElement_p, CsPackage.eINSTANCE.getPhysicalLink_OwnedPhysicalLinkRealizations());
+      _realizedLinksField.loadData(capellaElement, CsPackage.eINSTANCE.getPhysicalLink_OwnedPhysicalLinkRealizations());
     }
   }
 

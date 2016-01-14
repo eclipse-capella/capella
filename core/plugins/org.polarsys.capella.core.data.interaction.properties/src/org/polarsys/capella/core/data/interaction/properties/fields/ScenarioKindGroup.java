@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,18 +32,18 @@ public class ScenarioKindGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param enabled_p
+   * @param parent
+   * @param widgetFactory
+   * @param enabled
    */
-  public ScenarioKindGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean enabled_p) {
-    super(parent_p, widgetFactory_p, Messages.getString("ScenarioKind.Label"), 5); //$NON-NLS-1$
+  public ScenarioKindGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+    super(parent, widgetFactory, Messages.getString("ScenarioKind.Label"), 5); //$NON-NLS-1$
 
-    _scenarioKindBtnUnset = createButton(ScenarioKind.UNSET, enabled_p);
-    _scenarioKindBtnDataflow = createButton(ScenarioKind.DATA_FLOW, enabled_p);
-    _scenarioKindBtnFunctional = createButton(ScenarioKind.FUNCTIONAL, enabled_p);
-    _scenarioKindBtnInteraction = createButton(ScenarioKind.INTERACTION, enabled_p);
-    _scenarioKindBtnInterface = createButton(ScenarioKind.INTERFACE, enabled_p);
+    _scenarioKindBtnUnset = createButton(ScenarioKind.UNSET, enabled);
+    _scenarioKindBtnDataflow = createButton(ScenarioKind.DATA_FLOW, enabled);
+    _scenarioKindBtnFunctional = createButton(ScenarioKind.FUNCTIONAL, enabled);
+    _scenarioKindBtnInteraction = createButton(ScenarioKind.INTERACTION, enabled);
+    _scenarioKindBtnInterface = createButton(ScenarioKind.INTERFACE, enabled);
   }
 
   /**

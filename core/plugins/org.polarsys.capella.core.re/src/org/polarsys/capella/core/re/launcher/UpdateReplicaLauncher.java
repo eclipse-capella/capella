@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,14 +16,13 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.common.handlers.log.ILogHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.system.handlers.log.CapellaLogHandler;
 import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
-import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
 
 /**
  */
@@ -71,7 +70,6 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
 
   @Override
   public void run(Collection<Object> selection_p, boolean save, IProgressMonitor monitor_p) {
-
     HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
     for (Object selected : SemanticHelper.getSemanticObjects(selection_p)) {
       if (selected instanceof EObject) {
@@ -87,6 +85,5 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
       item.add(selected);
       launch(item, getPurpose(), getMapping(), monitor_p);
     }
-
   }
 }

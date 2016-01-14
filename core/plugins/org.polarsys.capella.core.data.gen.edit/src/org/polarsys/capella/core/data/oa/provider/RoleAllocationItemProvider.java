@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class RoleAllocationItemProvider
 			// Process OaPackage.Literals.ROLE_ALLOCATION__ROLE
 			if (rolePropertyDescriptor != null) {
 				Object roleValue = eObject.eGet(OaPackage.Literals.ROLE_ALLOCATION__ROLE, true);
-				if (roleValue != null && roleValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) roleValue)) {
+				if (roleValue != null && roleValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) roleValue)) {
 					itemPropertyDescriptors.remove(rolePropertyDescriptor);
 				} else if (roleValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ROLE_ALLOCATION__ROLE) != null) {
 					itemPropertyDescriptors.remove(rolePropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class RoleAllocationItemProvider
 			// Process OaPackage.Literals.ROLE_ALLOCATION__ENTITY
 			if (entityPropertyDescriptor != null) {
 				Object entityValue = eObject.eGet(OaPackage.Literals.ROLE_ALLOCATION__ENTITY, true);
-				if (entityValue != null && entityValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) entityValue)) {
+				if (entityValue != null && entityValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) entityValue)) {
 					itemPropertyDescriptors.remove(entityPropertyDescriptor);
 				} else if (entityValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.ROLE_ALLOCATION__ENTITY) != null) {
 					itemPropertyDescriptors.remove(entityPropertyDescriptor);				  					

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class CallBehaviorActionItemProvider
 			// Process ActivityPackage.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR
 			if (behaviorPropertyDescriptor != null) {
 				Object behaviorValue = eObject.eGet(ActivityPackage.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR, true);
-				if (behaviorValue != null && behaviorValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) behaviorValue)) {
+				if (behaviorValue != null && behaviorValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) behaviorValue)) {
 					itemPropertyDescriptors.remove(behaviorPropertyDescriptor);
 				} else if (behaviorValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.CALL_BEHAVIOR_ACTION__BEHAVIOR) != null) {
 					itemPropertyDescriptors.remove(behaviorPropertyDescriptor);				  					

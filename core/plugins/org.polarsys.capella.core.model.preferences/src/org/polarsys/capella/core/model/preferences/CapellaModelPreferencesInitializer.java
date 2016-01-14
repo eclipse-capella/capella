@@ -56,6 +56,10 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
     putBoolean(IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION,
         IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION_DEFAULT.booleanValue(),
         ProjectScope.class);
+
+    // Set Mode & State management preferences
+    putBoolean(IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED,
+        IModeAndStateManagementPreferences.PREFS_MIXED_MODE_STATE_ALLOWED_DEFAULT.booleanValue(), ProjectScope.class);
   }
 
 }

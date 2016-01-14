@@ -131,8 +131,8 @@ public class ScenarioService {
    * @return the moved end.
    */
   public EObject moveEndOnInstanceRole(final InteractionFragment toMove, final InteractionFragment previousEnd) {
-    final Scenario scenario = (Scenario) previousEnd.eContainer();
-    final InstanceRole covered = toMove.getCoveredInstanceRoles().get(0);
+//    final Scenario scenario = (Scenario) previousEnd.eContainer();
+//    final InstanceRole covered = toMove.getCoveredInstanceRoles().get(0);
 
     /*
      * First of all: move the messageEnd to the end of the list
@@ -236,8 +236,8 @@ public class ScenarioService {
     return SequenceMessageExt.getOppositeSequenceMessage((SequenceMessage) context);
   }
 
-  public String getInstanceRoleLabel(InstanceRole ir_p) {
-    AbstractInstance part = ir_p.getRepresentedInstance();
+  public String getInstanceRoleLabel(InstanceRole ir) {
+    AbstractInstance part = ir.getRepresentedInstance();
     AbstractType type = part.getAbstractType();
 
     boolean multipart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type));
@@ -266,7 +266,7 @@ public class ScenarioService {
    *          the message
    * @return display name of the message
    */
-  public String getDFMessageName(SequenceMessage message, DDiagram diagram_p) {
+  public String getDFMessageName(SequenceMessage message, DDiagram diagram) {
     if (message == null) {
       return EMPTY_STRING;
     }
@@ -291,7 +291,7 @@ public class ScenarioService {
 
     List<? extends AbstractExchangeItem> eiOnMessage = message.getExchangedItems();
 
-    for (FilterDescription filter : diagram_p.getActivatedFilters()) {
+    for (FilterDescription filter : diagram.getActivatedFilters()) {
       if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS)) {
         showExchangeItems = true;
       }
@@ -340,7 +340,7 @@ public class ScenarioService {
 
     StringBuilder result = new StringBuilder();
 
-    if (DiagramDescriptionConstants.INTERFACE_SCENARIO.equals(diagram_p.getDescription().getName())) {
+    if (DiagramDescriptionConstants.INTERFACE_SCENARIO.equals(diagram.getDescription().getName())) {
       result.append(getMessageName(message, hideCallArguments));
       if (showExchangeContext) {
         result.append(" "); //$NON-NLS-1$
@@ -410,53 +410,51 @@ public class ScenarioService {
     return result.toString().trim();
   }
 
-  private StringBuilder appendFunctionalExchanges(AbstractEventOperation op_p, StringBuilder builder_p) {
-    if (op_p instanceof FunctionalExchange) {
-      builder_p.append(getSafeName(op_p));
-    } else if (op_p instanceof ComponentExchange) {
-      ComponentExchange ce = (ComponentExchange) op_p;
+  private StringBuilder appendFunctionalExchanges(AbstractEventOperation op, StringBuilder builder) {
+    if (op instanceof FunctionalExchange) {
+      builder.append(getSafeName(op));
+    } else if (op instanceof ComponentExchange) {
+      ComponentExchange ce = (ComponentExchange) op;
       int size = ce.getOwnedComponentExchangeFunctionalExchangeAllocations().size();
       int index = 0;
       for (ComponentExchangeFunctionalExchangeAllocation fea : ce
           .getOwnedComponentExchangeFunctionalExchangeAllocations()) {
-        builder_p.append(getSafeName(fea.getAllocatedFunctionalExchange()));
+        builder.append(getSafeName(fea.getAllocatedFunctionalExchange()));
         if (++index < size) {
-          builder_p.append(", "); //$NON-NLS-1$
+          builder.append(", "); //$NON-NLS-1$
         }
       }
     }
-    return builder_p;
+    return builder;
   }
 
-  private static void appendExchangeItems(List<? extends AbstractExchangeItem> eiOnMessage_p,
-      AbstractEventOperation op_p, boolean showExchangeItemParameters_p, StringBuilder builder_p) {
+  private static void appendExchangeItems(List<? extends AbstractExchangeItem> eiOnMessage,
+      AbstractEventOperation op, boolean showExchangeItemParameters, StringBuilder builder) {
     List<? extends AbstractExchangeItem> eiOnOperation = Collections.emptyList();
-    if (op_p instanceof ComponentExchange) {
-      eiOnOperation = ((ComponentExchange) op_p).getConvoyedInformations();
-    } else if (op_p instanceof FunctionalExchange) {
-      eiOnOperation = ((FunctionalExchange) op_p).getExchangedItems();
+    if (op instanceof ComponentExchange) {
+      eiOnOperation = ((ComponentExchange) op).getConvoyedInformations();
+    } else if (op instanceof FunctionalExchange) {
+      eiOnOperation = ((FunctionalExchange) op).getExchangedItems();
     }
-    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage_p, eiOnOperation);
+    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage, eiOnOperation);
     if (selectEIList.size() != 0) {
-      builder_p.append("["); //$NON-NLS-1$
+      builder.append("["); //$NON-NLS-1$
     }
     int index = 0;
     for (AbstractExchangeItem ei : selectEIList) {
-      builder_p.append(InformationServices.getEILabel(ei, showExchangeItemParameters_p));
+      builder.append(InformationServices.getEILabel(ei, showExchangeItemParameters));
       if (++index < selectEIList.size()) {
-        builder_p.append(", "); //$NON-NLS-1$
+        builder.append(", "); //$NON-NLS-1$
       }
     }
     if (selectEIList.size() != 0) {
-      builder_p.append("]"); //$NON-NLS-1$
+      builder.append("]"); //$NON-NLS-1$
     }
   }
 
-  private static void appendExchangeContext(SequenceMessage message, StringBuilder builder_p) {
-    builder_p
-        .append(String
-            .format(
-                "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
+  private static void appendExchangeContext(SequenceMessage message, StringBuilder builder) {
+    builder.append(String.format(
+        "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private static String getSafeName(AbstractNamedElement fe) {
@@ -653,9 +651,9 @@ public class ScenarioService {
     return result.toString();
   }
 
-  private static List<? extends AbstractExchangeItem> firstNonEmpty(List<? extends AbstractExchangeItem> first_p,
-      List<? extends AbstractExchangeItem> second_p) {
-    return first_p.size() > 0 ? first_p : second_p;
+  private static List<? extends AbstractExchangeItem> firstNonEmpty(List<? extends AbstractExchangeItem> first,
+      List<? extends AbstractExchangeItem> second) {
+    return first.size() > 0 ? first : second;
   }
 
   /**
@@ -784,12 +782,12 @@ public class ScenarioService {
     return sb.toString();
   }
 
-  private String getNameParameter(NamedElement parameter_p, AbstractType type, ParameterDirection direction,
+  private String getNameParameter(NamedElement parameter, AbstractType type, ParameterDirection direction,
       SequenceMessage message) {
     String name = null;
     if ((message.getKind() == MessageKind.REPLY)
         && ((direction == ParameterDirection.OUT) || (direction == ParameterDirection.INOUT))) {
-      name = parameter_p.getName();
+      name = parameter.getName();
     } else if ((message.getKind() == MessageKind.REPLY) && (direction == ParameterDirection.RETURN)) {
       if (type == null) {
         name = "";//$NON-NLS-1$
@@ -798,7 +796,7 @@ public class ScenarioService {
       }
     } else if (((message.getKind() == MessageKind.SYNCHRONOUS_CALL) || (message.getKind() == MessageKind.ASYNCHRONOUS_CALL))
         && ((direction == ParameterDirection.IN) || (direction == ParameterDirection.INOUT))) {
-      name = parameter_p.getName();
+      name = parameter.getName();
     }
 
     return name;
@@ -852,27 +850,27 @@ public class ScenarioService {
   /**
    * used in common.odesign, oa.odesign, sequences.odesign
    * 
-   * @param message_p
+   * @param message
    * @return
    */
-  public String newCallName(final SequenceMessage message_p) {
+  public String newCallName(final SequenceMessage message) {
     return "Message Call"; //$NON-NLS-1$
   }
 
   /**
    * return the
    * 
-   * @param ir_p
+   * @param ir
    * @return
    */
-  public List<StateFragment> getInteractionStatesOnExecution(InstanceRole ir_p) {
+  public List<StateFragment> getInteractionStatesOnExecution(InstanceRole ir) {
     List<StateFragment> result = new ArrayList<StateFragment>(1);
-    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) ir_p
+    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) ir
         .eContainer());
     Stack<TimeLapse> execStack = new Stack<TimeLapse>();
 
     for (InteractionFragment ifg : fragments) {
-      if (ifg.getCoveredInstanceRoles().contains(ir_p)) {
+      if (ifg.getCoveredInstanceRoles().contains(ir)) {
         if ((ifg instanceof InteractionState) && execStack.isEmpty()) {
           result.add((StateFragment) getStartingExecution(ifg));
         }
@@ -928,13 +926,13 @@ public class ScenarioService {
   }
 
   /**
-   * @param ifg_p
+   * @param ifg
    * @return
    */
-  private TimeLapse getEndingExecution(InteractionFragment ifg_p) {
-    Scenario s = SequenceDiagramServices.getScenario(ifg_p);
+  private TimeLapse getEndingExecution(InteractionFragment ifg) {
+    Scenario s = SequenceDiagramServices.getScenario(ifg);
     for (TimeLapse lap : s.getOwnedTimeLapses()) {
-      if (lap.getFinish() == ifg_p) {
+      if (lap.getFinish() == ifg) {
         return lap;
       }
     }
@@ -942,48 +940,53 @@ public class ScenarioService {
   }
 
   /**
-   * @param ifg_p
+   * @param ifg
    * @return
    */
-  private TimeLapse getStartingExecution(InteractionFragment ifg_p) {
-    Scenario s = SequenceDiagramServices.getScenario(ifg_p);
+  private TimeLapse getStartingExecution(InteractionFragment ifg) {
+    Scenario s = SequenceDiagramServices.getScenario(ifg);
     for (TimeLapse lap : s.getOwnedTimeLapses()) {
-      if (lap.getStart() == ifg_p) {
+      if (lap.getStart() == ifg) {
         return lap;
       }
     }
     return null;
   }
 
-  public List<InstanceRole> getCoveredFromAbstractFragment(AbstractFragment af_p) {
-    return af_p.getStart().getCoveredInstanceRoles();
+  public List<InstanceRole> getCoveredFromAbstractFragment(AbstractFragment af) {
+    return af.getStart().getCoveredInstanceRoles();
   }
 
-  public InstanceRole getCoveredFromExecOrIR(EObject context_p, EObject container_p) {
-    if (container_p instanceof Execution) {
-      Execution exec = (Execution) container_p;
+  public InstanceRole getCoveredFromExecOrIR(EObject context, EObject container) {
+    if (container instanceof Execution) {
+      Execution exec = (Execution) container;
       return exec.getCovered();
     }
-    return (InstanceRole) container_p;
+    return (InstanceRole) container;
   }
 
-  public InteractionFragment getOperandBegin(InteractionOperand operand_p) {
-    return operand_p;
+  public InteractionFragment getOperandBegin(InteractionOperand operand) {
+    return operand;
   }
 
-  public InteractionFragment getOperandEnd(InteractionOperand operand_p) {
+  public InteractionFragment getOperandEnd(InteractionOperand operand) {
     CombinedFragment cf = null;
-    Scenario s = (Scenario) operand_p.eContainer();
+    Scenario s = (Scenario) operand.eContainer();
+    // Find the CombinedFragment containing the given operand.
     for (TimeLapse tl : s.getOwnedTimeLapses()) {
       if (tl instanceof CombinedFragment) {
         CombinedFragment cftmp = (CombinedFragment) tl;
-        if (cftmp.getReferencedOperands().contains(operand_p)) {
+        if (cftmp.getReferencedOperands().contains(operand)) {
           cf = cftmp;
           break;
         }
       }
     }
-
+    // Can not find a CombinedFragment containing the operand -> Stop here.
+    // FIXME this null value can not be returned in our context, but if it was returned, the diagram would be corrupted...
+    if (null == cf) {
+      return null;
+    }
     // we can't use referencedOperand to check order, we must look
     // in ownedInteractionFragment
     boolean nextWillBeGood = false;
@@ -993,7 +996,7 @@ public class ScenarioService {
           return fragment;
         }
       }
-      if (fragment == operand_p) {
+      if (fragment == operand) {
         nextWillBeGood = true;
       }
     }
@@ -1002,8 +1005,8 @@ public class ScenarioService {
     return cf.getFinish();
   }
 
-  public boolean isFunctionalExecution(Execution execution_p) {
-    InteractionFragment end = execution_p.getStart();
+  public boolean isFunctionalExecution(Execution execution) {
+    InteractionFragment end = execution.getStart();
     if (end instanceof MessageEnd) {
       MessageEnd me = (MessageEnd) end;
       EventReceiptOperation ero = (EventReceiptOperation) me.getEvent();
@@ -1015,14 +1018,14 @@ public class ScenarioService {
   /**
    * Returns the scope of available scenario which can be use in an InteractionUse element
    */
-  public List<CapellaElement> getReferenceScope(Scenario scenario_p) {
+  public List<CapellaElement> getReferenceScope(Scenario scenario) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
         InteractionPackage.Literals.INTERACTION_USE, InteractionPackage.Literals.INTERACTION_USE__REFERENCED_SCENARIO);
 
     if (query != null) {
-      availableElements.addAll(query.getAvailableElements(scenario_p));
+      availableElements.addAll(query.getAvailableElements(scenario));
     }
 
     return availableElements;
@@ -1031,66 +1034,66 @@ public class ScenarioService {
   /**
    * Returns available state modes which can be added into an IS IS-Insert-StateMode
    */
-  public Collection<AbstractState> getISStateModes(AbstractInstance instance_p) {
-    return ScenarioExt.getAvailableStateModeStateFragment(instance_p);
+  public Collection<AbstractState> getISStateModes(AbstractInstance instance) {
+    return ScenarioExt.getAvailableStateModeStateFragment(instance);
   }
 
-  public Collection<AbstractFunction> getFunctionsForStateAtOA(EObject context_p, AbstractInstance instance_p) {
-    return ScenarioExt.getAvailableFunctionsStateFragment(instance_p);
+  public Collection<AbstractFunction> getFunctionsForStateAtOA(EObject context, AbstractInstance instance) {
+    return ScenarioExt.getAvailableFunctionsStateFragment(instance);
   }
 
-  public Collection<AbstractFunction> getFunctionsForState(EObject context_p, Component component_p) {
-    return ScenarioExt.getAvailableFunctionsStateFragment(component_p);
+  public Collection<AbstractFunction> getFunctionsForState(EObject context, Component component) {
+    return ScenarioExt.getAvailableFunctionsStateFragment(component);
   }
 
   @SuppressWarnings("nls")
-  public String getOperandLabel(InteractionOperand operand_p) {
+  public String getOperandLabel(InteractionOperand operand) {
     StringBuilder builder = null;
-    if (operand_p.getGuard() != null) {
+    if (operand.getGuard() != null) {
       builder = new StringBuilder("[ ");
-      builder.append(CapellaServices.getService().getConstraintLabel(operand_p.getGuard())).append(" ]");
+      builder.append(CapellaServices.getService().getConstraintLabel(operand.getGuard())).append(" ]");
     }
     return builder == null ? "" : builder.toString();
   }
 
-  public boolean isValidScenarioDrop(EObject context_p, Scenario scenario_p, EObject element_p) {
-    if (element_p instanceof Component) {
-      for (InstanceRole ir : scenario_p.getOwnedInstanceRoles()) {
+  public boolean isValidScenarioDrop(EObject context, Scenario scenario, EObject element) {
+    if (element instanceof Component) {
+      for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
         if ((ir.getRepresentedInstance() != null) && (ir.getRepresentedInstance().getAbstractType() != null)) {
-          if (ir.getRepresentedInstance().getAbstractType().equals(element_p)) {
+          if (ir.getRepresentedInstance().getAbstractType().equals(element)) {
             return false; // already unmasked
           }
         }
       }
-    } else if (element_p instanceof AbstractFunction) {
-      for (InstanceRole ir : scenario_p.getOwnedInstanceRoles()) {
-        if (ir.getRepresentedInstance().equals(element_p)) {
+    } else if (element instanceof AbstractFunction) {
+      for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
+        if (ir.getRepresentedInstance().equals(element)) {
           return false; // already unmasked
         }
       }
-    } else if (element_p instanceof Role) {
-      for (InstanceRole ir : scenario_p.getOwnedInstanceRoles()) {
-        if (ir.getRepresentedInstance().equals(element_p)) {
+    } else if (element instanceof Role) {
+      for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
+        if (ir.getRepresentedInstance().equals(element)) {
           return false; // already unmasked
         }
       }
     }
     // compatibility :
-    if ((scenario_p.getKind() == ScenarioKind.DATA_FLOW) || (scenario_p.getKind() == ScenarioKind.INTERFACE)) {
-      return ((element_p instanceof SystemComponent) || (element_p instanceof AbstractActor))
-          && isCorrectComponentLevel(context_p, element_p);
-    } else if (scenario_p.getKind() == ScenarioKind.FUNCTIONAL) {
-      return (element_p instanceof AbstractFunction);
-    } else if (scenario_p.getKind() == ScenarioKind.INTERACTION) {
-      if (scenario_p.getOwnedInstanceRoles().size() != 0) {
-        InstanceRole firstIr = scenario_p.getOwnedInstanceRoles().get(0);
+    if ((scenario.getKind() == ScenarioKind.DATA_FLOW) || (scenario.getKind() == ScenarioKind.INTERFACE)) {
+      return ((element instanceof SystemComponent) || (element instanceof AbstractActor))
+          && isCorrectComponentLevel(context, element);
+    } else if (scenario.getKind() == ScenarioKind.FUNCTIONAL) {
+      return (element instanceof AbstractFunction);
+    } else if (scenario.getKind() == ScenarioKind.INTERACTION) {
+      if (scenario.getOwnedInstanceRoles().size() != 0) {
+        InstanceRole firstIr = scenario.getOwnedInstanceRoles().get(0);
         if (firstIr.getRepresentedInstance() instanceof OperationalActivity) {
-          return (element_p instanceof OperationalActivity);
+          return (element instanceof OperationalActivity);
         }
-        return (element_p instanceof Entity) || (element_p instanceof Role);
+        return (element instanceof Entity) || (element instanceof Role);
       }
       // empty diagram
-      return (element_p instanceof Entity) || (element_p instanceof Role) || (element_p instanceof OperationalActivity);
+      return (element instanceof Entity) || (element instanceof Role) || (element instanceof OperationalActivity);
     }
     return true;
   }
@@ -1099,19 +1102,19 @@ public class ScenarioService {
    * in a DnD of SystemComponent, check that this drop is legal : the dropped Element must be inside the context if it
    * is a component. If it's an actor, all cases are legal.
    * 
-   * @param context_p
+   * @param context
    *          contextual component
-   * @param element_p
+   * @param element
    *          dropped component
    * @return
    */
-  private boolean isCorrectComponentLevel(EObject context_p, EObject element_p) {
-    if (element_p instanceof AbstractActor) {
+  private boolean isCorrectComponentLevel(EObject context, EObject element) {
+    if (element instanceof AbstractActor) {
       return true;
     }
     // find the carrier component of the scenario
     SystemComponent referenceComponent = null;
-    EObject container = context_p;
+    EObject container = context;
     while (referenceComponent == null) {
       container = container.eContainer();
       if (container instanceof SystemComponent) {
@@ -1128,10 +1131,10 @@ public class ScenarioService {
       }
     }
 
-    // element_p is in the parts of this component or below
+    // element is in the parts of this component or below
 
     for (Component tested : ComponentExt.getAllSubUsedComponents(referenceComponent)) {
-      if (tested.equals(element_p)) {
+      if (tested.equals(element)) {
         return true;
       }
     }
@@ -1144,14 +1147,14 @@ public class ScenarioService {
    * element that targets a sequence message and that sequence message has an exchange context, the result will contain
    * exactly that exchange context. Otherwise the result is empty.
    * 
-   * @param context_p
+   * @param context
    *          The sirius invocation context
    * @return A possibly empty list of constraints
    **/
-  public List<EObject> getExchangeContextsToInsertInDiagram(EObject context_p) {
+  public List<EObject> getExchangeContextsToInsertInDiagram(EObject context) {
     List<EObject> result = new ArrayList<EObject>(0);
-    if (context_p instanceof DDiagram) {
-      DSemanticDecorator diagram = (DSemanticDecorator) context_p;
+    if (context instanceof DDiagram) {
+      DSemanticDecorator diagram = (DSemanticDecorator) context;
       EObject target = diagram.getTarget();
       if ((null != target) && (target instanceof Scenario)) {
         for (SequenceMessage msg : ((Scenario) target).getOwnedMessages()) {
@@ -1160,11 +1163,10 @@ public class ScenarioService {
           }
         }
       }
-    } else if (context_p instanceof DDiagramElement) {
-      DDiagramElement element = (DDiagramElement) context_p;
+    } else if (context instanceof DDiagramElement) {
+      DDiagramElement element = (DDiagramElement) context;
       EObject target = element.getTarget();
-      if ((null != target) && (target instanceof SequenceMessage)
-          && (((SequenceMessage) target).getExchangeContext() != null)) {
+      if ((null != target) && (target instanceof SequenceMessage) && (((SequenceMessage) target).getExchangeContext() != null)) {
         result.add(((SequenceMessage) target).getExchangeContext());
       }
     }
@@ -1174,21 +1176,20 @@ public class ScenarioService {
   /**
    * Gets the exchange context constraints currently visible in a given context.
    * 
-   * @param context_p
+   * @param context
    *          : a diagram element, or a diagram
    * @return list of visible exchange contexts
    */
-  public List<EObject> getVisibleExchangeContexts(DSemanticDecorator context_p, DDiagram diagram_p) {
+  public List<EObject> getVisibleExchangeContexts(DSemanticDecorator context, DDiagram diagram) {
 
     Collection<Constraint> allPresentConstraints = new HashSet<Constraint>();
     Collection<Constraint> allAvailableExchangeContexts = new HashSet<Constraint>();
 
-    for (DDiagramElement elem : diagram_p.getDiagramElements()) {
+    for (DDiagramElement elem : diagram.getDiagramElements()) {
       if (elem.getTarget() instanceof Constraint) {
         allPresentConstraints.add((Constraint) elem.getTarget());
-      } else if ((elem.getTarget() instanceof SequenceMessage)
-          && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)) {
-        if ((context_p == diagram_p) || (context_p == elem)) {
+      } else if ((elem.getTarget() instanceof SequenceMessage) && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)) {
+        if ((context == diagram) || (context == elem)) {
           allAvailableExchangeContexts.add(((SequenceMessage) elem.getTarget()).getExchangeContext());
         }
       }
@@ -1197,12 +1198,12 @@ public class ScenarioService {
     return new ArrayList<EObject>(allPresentConstraints);
   }
 
-  public String getOperatorLabel(EObject context_p) {
+  public String getOperatorLabel(EObject context) {
     String operatorkind = null;
 
-    if (context_p instanceof CombinedFragment) {
-      CombinedFragment combfragment = (CombinedFragment) context_p;
-      operatorkind = " " + combfragment.getOperator().getLiteral();
+    if (context instanceof CombinedFragment) {
+      CombinedFragment combfragment = (CombinedFragment) context;
+      operatorkind = " " + combfragment.getOperator().getLiteral(); //$NON-NLS-1$
     }
     return operatorkind;
   }

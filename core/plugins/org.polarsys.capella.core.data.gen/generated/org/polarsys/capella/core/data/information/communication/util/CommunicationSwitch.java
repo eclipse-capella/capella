@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,22 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.information.communication.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.polarsys.capella.common.data.behavior.AbstractSignal;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Feature;
@@ -41,7 +37,6 @@ import org.polarsys.capella.core.data.information.MultiplicityElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
-import org.polarsys.capella.core.data.information.communication.CommunicationLinkAllocation;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.information.communication.Message;
@@ -91,7 +86,7 @@ public class CommunicationSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
@@ -267,22 +262,6 @@ public class CommunicationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION: {
-				CommunicationLinkAllocation communicationLinkAllocation = (CommunicationLinkAllocation)theEObject;
-				T result = caseCommunicationLinkAllocation(communicationLinkAllocation);
-				if (result == null) result = caseAllocation(communicationLinkAllocation);
-				if (result == null) result = caseRelationship(communicationLinkAllocation);
-				if (result == null) result = caseAbstractTrace(communicationLinkAllocation);
-				if (result == null) result = caseAbstractRelationship(communicationLinkAllocation);
-				if (result == null) result = caseCapellaElement(communicationLinkAllocation);
-				if (result == null) result = caseTraceableElement(communicationLinkAllocation);
-				if (result == null) result = casePublishableElement(communicationLinkAllocation);
-				if (result == null) result = caseModelElement(communicationLinkAllocation);
-				if (result == null) result = caseExtensibleElement(communicationLinkAllocation);
-				if (result == null) result = caseElement(communicationLinkAllocation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -419,21 +398,6 @@ public class CommunicationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCommunicationLinkExchanger(CommunicationLinkExchanger object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Link Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Link Allocation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCommunicationLinkAllocation(CommunicationLinkAllocation object) {
 		return null;
 	}
 
@@ -809,36 +773,6 @@ public class CommunicationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAbstractInstance(AbstractInstance object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Trace</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Trace</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractTrace(AbstractTrace object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Allocation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAllocation(Allocation object) {
 		return null;
 	}
 

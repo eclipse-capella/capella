@@ -36,7 +36,6 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
-import org.eclipse.sirius.business.internal.resource.parser.AirDCrossReferenceAdapterImpl;
 import org.eclipse.sirius.business.internal.session.SessionFactoryImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
@@ -73,7 +72,6 @@ public class SiriusSessionFactory implements SessionFactory {
 
     // Configure the resource set, its is done here and not before the
     // editing domain creation which could provide its own resource set.
-    transactionalEditingDomain.getResourceSet().eAdapters().add(new AirDCrossReferenceAdapterImpl());
     if (Movida.isEnabled()) {
       transactionalEditingDomain.getResourceSet().setURIConverter(
           new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
@@ -97,7 +95,7 @@ public class SiriusSessionFactory implements SessionFactory {
     return session;
   }
 
-  protected Session loadSessionModelResource(URI sessionResourceURI, TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor)
+  protected Session loadSessionModelResource(URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor)
       throws CoreException {
     ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
     // Make ResourceSet aware of resource loading with progress monitor

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,7 @@ public class StateFragmentItemProvider
 			// Process InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE
 			if (relatedAbstractStatePropertyDescriptor != null) {
 				Object relatedAbstractStateValue = eObject.eGet(InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE, true);
-				if (relatedAbstractStateValue != null && relatedAbstractStateValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) relatedAbstractStateValue)) {
+				if (relatedAbstractStateValue != null && relatedAbstractStateValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) relatedAbstractStateValue)) {
 					itemPropertyDescriptors.remove(relatedAbstractStatePropertyDescriptor);
 				} else if (relatedAbstractStateValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE) != null) {
 					itemPropertyDescriptors.remove(relatedAbstractStatePropertyDescriptor);				  					
@@ -94,7 +94,7 @@ public class StateFragmentItemProvider
 			// Process InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION
 			if (relatedAbstractFunctionPropertyDescriptor != null) {
 				Object relatedAbstractFunctionValue = eObject.eGet(InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION, true);
-				if (relatedAbstractFunctionValue != null && relatedAbstractFunctionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) relatedAbstractFunctionValue)) {
+				if (relatedAbstractFunctionValue != null && relatedAbstractFunctionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) relatedAbstractFunctionValue)) {
 					itemPropertyDescriptors.remove(relatedAbstractFunctionPropertyDescriptor);
 				} else if (relatedAbstractFunctionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION) != null) {
 					itemPropertyDescriptors.remove(relatedAbstractFunctionPropertyDescriptor);				  					

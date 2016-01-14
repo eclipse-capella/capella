@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,14 +14,13 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.information.AggregationKind;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
-import org.polarsys.capella.core.model.helpers.DataValueExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -47,8 +46,8 @@ public class AssociationCompositionProperty extends AbstractValidationRule {
               String min = ICommonConstants.EMPTY_STRING;
               String max = ICommonConstants.EMPTY_STRING;
 
-              min = DataValueExt.getCardValue(ownedMinCard);
-              max = DataValueExt.getCardValue(ownedMaxCard);
+              min = PropertyNamingHelper.getCardValue(ownedMinCard);
+              max = PropertyNamingHelper.getCardValue(ownedMaxCard);
 
               if (min != null && max != null) {
                 if (!(min.equalsIgnoreCase("0") || min.equalsIgnoreCase("1")) || !max.equalsIgnoreCase("1")) { //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$

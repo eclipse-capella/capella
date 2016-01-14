@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,8 @@ import java.io.StringWriter;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -82,6 +84,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionH
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveDownAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.ICapellaNavigatorPreferences;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.ActiveSessionManager;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.ICommandStackSelectionProvider;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.NavigatorEditingDomainDispatcher;
@@ -104,16 +107,17 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     /**
      * Pretty much self explanatory.
      */
+    @Deprecated
     protected volatile boolean _isRefreshEnabled;
 
     /**
      * Constructor.
-     * @param aViewerId_p
-     * @param aParent_p
-     * @param aStyle_p
+     * @param aViewerId
+     * @param aParent
+     * @param aStyle
      */
-    public CapellaCommonViewer(String aViewerId_p, Composite aParent_p, int aStyle_p) {
-      super(aViewerId_p, aParent_p, aStyle_p);
+    public CapellaCommonViewer(String aViewerId, Composite aParent, int aStyle) {
+      super(aViewerId, aParent, aStyle);
       _isRefreshEnabled = true;
       NavigatorEditingDomainDispatcher.registerCommandStackSelectionProvider(CapellaCommonNavigator.this);
     }
@@ -170,13 +174,9 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * @see org.eclipse.ui.navigator.CommonViewer#refresh(java.lang.Object, boolean)
      */
     @Override
-    public void refresh(Object element_p, boolean updateLabels_p) {
+    public void refresh(Object element, boolean updateLabels) {
       getPatternFilter().clearCaches();
-      if (_isRefreshEnabled) {
-        _isRefreshEnabled = false;
-        super.refresh(element_p, updateLabels_p);
-        _isRefreshEnabled = true;
-      }
+      super.refresh(element, updateLabels);
     }
 
     /**
@@ -264,12 +264,8 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * @see org.eclipse.ui.navigator.CommonViewer#update(java.lang.Object, java.lang.String[])
      */
     @Override
-    public void update(Object element_p, String[] properties_p) {
-      if (_isRefreshEnabled) {
-        _isRefreshEnabled = false;
-        super.update(element_p, properties_p);
-        _isRefreshEnabled = true;
-      }
+    public void update(Object element, String[] properties) {
+      super.update(element, properties);
     }
 
   }
@@ -281,21 +277,21 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   protected class CapellaFilteredTree extends FilteredTree {
     /**
      * Constructor.
-     * @param parent_p
+     * @param parent
      */
-    protected CapellaFilteredTree(Composite parent_p) {
-      super(parent_p);
+    protected CapellaFilteredTree(Composite parent) {
+      super(parent);
       attachFilterControlFocusListener();
     }
 
     /**
      * Constructor.
-     * @param parent_p
-     * @param treeStyle_p
-     * @param filter_p
+     * @param parent
+     * @param treeStyle
+     * @param filter
      */
-    public CapellaFilteredTree(Composite parent_p, int treeStyle_p, PatternFilter filter_p) {
-      super(parent_p, treeStyle_p, filter_p);
+    public CapellaFilteredTree(Composite parent, int treeStyle, PatternFilter filter) {
+      super(parent, treeStyle, filter);
       attachFilterControlFocusListener();
     }
 
@@ -313,22 +309,22 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * {@inheritDoc}
      */
     @Override
-    protected void createClearText(Composite parent_p) {
+    protected void createClearText(Composite parent) {
       filterToolBar = new ToolBarManager(SWT.FLAT | SWT.HORIZONTAL);
-      filterToolBar.createControl(parent_p);
-      createSearchDescriptionButton(parent_p);
-      super.createClearText(parent_p);
+      filterToolBar.createControl(parent);
+      createSearchDescriptionButton(parent);
+      super.createClearText(parent);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected Composite createFilterControls(Composite parent_p) {
+    protected Composite createFilterControls(Composite parent) {
       // Change the layout of the parent to host 3 widgets.
-      GridLayout layout = (GridLayout) parent_p.getLayout();
+      GridLayout layout = (GridLayout) parent.getLayout();
       layout.numColumns = 3;
-      Composite filterControls = super.createFilterControls(parent_p);
+      Composite filterControls = super.createFilterControls(parent);
       return filterControls;
     }
 
@@ -336,8 +332,8 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * {@inheritDoc}
      */
     @Override
-    protected Label createMessageArea(Composite parent_p) {
-      Label messageArea = super.createMessageArea(parent_p);
+    protected Label createMessageArea(Composite parent) {
+      Label messageArea = super.createMessageArea(parent);
       GridData layoutData = (GridData) messageArea.getLayoutData();
       layoutData.horizontalSpan = 3;
       return messageArea;
@@ -345,9 +341,9 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
 
     /**
      * Create the button that triggers search in description.
-     * @param parent_p parent <code>Composite</code> of toolbar button
+     * @param parent parent <code>Composite</code> of toolbar button
      */
-    private void createSearchDescriptionButton(Composite parent_p) {
+    private void createSearchDescriptionButton(Composite parent) {
       IAction searchInDescriptionAction = new Action(ICommonConstants.EMPTY_STRING, IAction.AS_PUSH_BUTTON) {
         /**
          * {@inheritDoc}
@@ -369,8 +365,8 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * @see org.eclipse.ui.dialogs.FilteredTree#doCreateTreeViewer(org.eclipse.swt.widgets.Composite, int)
      */
     @Override
-    protected TreeViewer doCreateTreeViewer(Composite parent__p, int style_p) {
-      return new CapellaCommonViewer(getViewSite().getId(), parent__p, style_p);
+    protected TreeViewer doCreateTreeViewer(Composite parent, int style) {
+      return new CapellaCommonViewer(getViewSite().getId(), parent, style);
     }
 
     /**
@@ -403,20 +399,21 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#init(int, org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter)
      */
     @Override
-    protected void init(int treeStyle_p, PatternFilter filter_p) {
+    protected void init(int treeStyle, PatternFilter filter) {
       // Disable auto filtering for usability.
       setAutoFiltering(false);
-      super.init(treeStyle_p, filter_p);
+      super.init(treeStyle, filter);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void updateToolbar(boolean visible_p) {
-      // Do nothing as we want to always see the toolbar to access search in description.
+    protected void updateToolbar(boolean visible) {
+      // Do nothing as we want to always see the toolbar to access search
+      // in description.
       IContributionItem[] items = filterToolBar.getItems();
-      items[hasNativeClearButton() ? 0 : 1].setVisible(visible_p);
+      items[hasNativeClearButton() ? 0 : 1].setVisible(visible);
       filterToolBar.update(true);
     }
 
@@ -424,8 +421,10 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       getFilterControl().addFocusListener(new FocusAdapter() {
         @Override
         public void focusGained(FocusEvent e) {
-          // whenever the filter text control receives the focus, uninstall
-          // the global cut/copy/paste handlers set in EditCommonActionProvider
+          // whenever the filter text control receives the focus,
+          // uninstall
+          // the global cut/copy/paste handlers set in
+          // EditCommonActionProvider
           IActionBars ab = getViewSite().getActionBars();
           ab.setGlobalActionHandler(ActionFactory.CUT.getId(), null);
           ab.setGlobalActionHandler(ActionFactory.COPY.getId(), null);
@@ -448,17 +447,17 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * {@inheritDoc}
      */
     @Override
-    protected String getTextFromModelElement(EObject element_p) {
+    protected String getTextFromModelElement(EObject element) {
       String result = null;
       if (_searchInDescription) {
         // Search on description attribute.
-        if (element_p instanceof CapellaElement) {
-          result = ((CapellaElement) element_p).getDescription();
-        } else if (element_p instanceof DSemanticDiagram) {
-          result = ((DSemanticDiagram) element_p).getDocumentation();
+        if (element instanceof CapellaElement) {
+          result = ((CapellaElement) element).getDescription();
+        } else if (element instanceof DSemanticDiagram) {
+          result = ((DSemanticDiagram) element).getDocumentation();
         }
       } else {
-        result = super.getTextFromModelElement(element_p);
+        result = super.getTextFromModelElement(element);
       }
       return (null == result) ? ICommonConstants.EMPTY_STRING : result;
     }
@@ -467,12 +466,12 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * {@inheritDoc}
      */
     @Override
-    public boolean isElementVisible(Viewer viewer_p, Object parentElement_p, Object element_p) {
+    public boolean isElementVisible(Viewer viewer, Object parentElement, Object element) {
       if (_searchInDescription) {
         // Apply strict match algorithm.
-        return isLeafMatch(viewer_p, parentElement_p, element_p) || isParentMatch(viewer_p, parentElement_p, element_p);
+        return isLeafMatch(viewer, parentElement, element) || isParentMatch(viewer, parentElement, element);
       }
-      boolean visible = super.isElementVisible(viewer_p, parentElement_p, element_p);
+      boolean visible = super.isElementVisible(viewer, parentElement, element);
       return visible;
     }
 
@@ -480,25 +479,25 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * {@inheritDoc}
      */
     @Override
-    protected boolean isLeafMatch(Viewer viewer_p, Object parentElement_p, Object element_p) {
+    protected boolean isLeafMatch(Viewer viewer, Object parentElement, Object element) {
       if (_searchInDescription) {
         // Apply strict match algorithm.
-        return doIsLeafMatch(viewer_p, parentElement_p, element_p);
+        return doIsLeafMatch(viewer, parentElement, element);
       }
-      return super.isLeafMatch(viewer_p, parentElement_p, element_p);
+      return super.isLeafMatch(viewer, parentElement, element);
     }
 
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("synthetic-access")
     @Override
-    protected boolean isParentMatch(Viewer viewer_p, Object parentElement_p, Object element_p) {
-      // we provide our own content provider instead of getting it from the viewer
+    protected boolean isParentMatch(Viewer viewer, Object parentElement, Object element) {
+      // we provide our own content provider instead of getting it from
+      // the viewer
       ITreeContentProvider iTreeContentProvider = getContentProvider();
-      Object[] children = iTreeContentProvider.getChildren(element_p);
+      Object[] children = iTreeContentProvider.getChildren(element);
       if ((children != null) && (children.length > 0)) {
-        return isAnyVisible(viewer_p, element_p, children);
+        return isAnyVisible(viewer, element, children);
       }
       return false;
     }
@@ -515,20 +514,20 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
      * {@inheritDoc}
      */
     @Override
-    public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
+    public boolean select(Viewer viewer, Object parentElement, Object element) {
       if (_searchInDescription) {
         // Apply strict match algorithm.
-        return isElementVisible(viewer_p, parentElement_p, element_p);
+        return isElementVisible(viewer, parentElement, element);
       }
-      return super.select(viewer_p, parentElement_p, element_p);
+      return super.select(viewer, parentElement, element);
     }
 
     /**
      * Set Search in description flag.
-     * @param searchInDescription_p the searchInDescription to set
+     * @param searchInDescription the searchInDescription to set
      */
-    protected void setSearchInDescription(boolean searchInDescription_p) {
-      _searchInDescription = searchInDescription_p;
+    protected void setSearchInDescription(boolean searchInDescription) {
+      _searchInDescription = searchInDescription;
     }
   }
 
@@ -561,9 +560,9 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   /**
    * Pattern filter used to apply pattern entered by the end-user on the common viewer.
    */
-  private CapellaNavigatorPatternFilter _patternFilter;
+  private CapellaNavigatorPatternFilter patternFilter;
 
-  private TabbedPropertySheetPage _propertySheetPage;
+  private TabbedPropertySheetPage propertySheetPage;
 
   /**
    * Dialog settings for this view.
@@ -593,7 +592,8 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     // Remove all contributions to change the items order.
     toolBarManager.removeAll();
 
-    // Add the move up & down actions here to get them before action provider initialization to avoid tool bar recomputation.
+    // Add the move up & down actions here to get them before action
+    // provider initialization to avoid tool bar recomputation.
     _moveUp = new MoveUpAction();
     toolBarManager.add(_moveUp);
     SelectionHelper.registerToSelectionChanges(_moveUp, site.getSelectionProvider());
@@ -613,29 +613,30 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     _moveDown.selectionChanged(selection);
   }
 
-  /** 
+  /**
    * @see org.eclipse.ui.navigator.CommonNavigator#createCommonViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected CommonViewer createCommonViewer(Composite parent_p) {
-    _patternFilter = new CapellaNavigatorPatternFilter();
-    _patternFilter.setStringMatcherFactory(new StringMatcherFactory() {
+  protected CommonViewer createCommonViewer(Composite parent) {
+    patternFilter = new CapellaNavigatorPatternFilter();
+    patternFilter.setStringMatcherFactory(new StringMatcherFactory() {
       @Override
       public StringMatcher createStringMatcher(String pattern) {
         IPreferenceStore store = Activator.getDefault().getPreferenceStore();
         return new StringMatcher(pattern, store.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_IGNORE_CASE), false);
       }
     });
-    _filteredTree = new CapellaFilteredTree(parent_p, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, _patternFilter);
+    _filteredTree = new CapellaFilteredTree(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, patternFilter);
     final CapellaCommonViewer commonViewer = (CapellaCommonViewer) _filteredTree.getViewer();
 
     initListeners(commonViewer);
     commonViewer.getNavigatorContentService().restoreState(memento);
-    // Listen to changes on "group tree items" preferences to refresh the viewer.
+    // Listen to changes on "group tree items" preferences to refresh the
+    // viewer.
     SiriusTransPlugin.getPlugin().getPreferenceStore().addPropertyChangeListener(new IPropertyChangeListener() {
       @Override
-      public void propertyChange(PropertyChangeEvent event_p) {
-        String propertyName = event_p.getProperty();
+      public void propertyChange(PropertyChangeEvent event) {
+        String propertyName = event.getProperty();
         if (CommonPreferencesConstants.PREF_GROUP_ENABLE.equals(propertyName) || CommonPreferencesConstants.PREF_GROUP_TRIGGER.equals(propertyName)
             || CommonPreferencesConstants.PREF_GROUP_SIZE.equals(propertyName)) {
           commonViewer.refresh();
@@ -650,10 +651,10 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * @see org.eclipse.ui.navigator.CommonNavigator#createPartControl(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  public void createPartControl(Composite parent_p) {
+  public void createPartControl(Composite parent) {
 
     // Create a composite that hosts the view content.
-    Composite composite = new Composite(parent_p, SWT.NONE);
+    Composite composite = new Composite(parent, SWT.NONE);
     GridLayout layout = new GridLayout();
     composite.setLayout(layout);
     composite.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -678,8 +679,9 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   /**
    * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
    */
-  public void propertyChange(PropertyChangeEvent event_p) {
-    String property = event_p.getProperty();
+  @Override
+  public void propertyChange(PropertyChangeEvent event) {
+    String property = event.getProperty();
     if (ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT.equals(property)
         || ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW.equals(property)) {
       // Get all active sessions.
@@ -687,7 +689,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       // Iterate over sessions to refresh their UI representations.
       while (iterator.hasNext()) {
         Session session = iterator.next();
-        if (PreferencesHelper.isNonReferencesCapellaProject(event_p.getSource(), SessionHelper.getCapellaProject(session), session)) {
+        if (PreferencesHelper.isNonReferencesCapellaProject(event.getSource(), SessionHelper.getCapellaProject(session), session)) {
           if (null != _sessionManagerListener) {
             _sessionManagerListener.notifyUpdatedSession(session);
           }
@@ -701,25 +703,21 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * This is the default behavior, thus this method should not be called at creation time.
    */
   public void enableContentNotifications() {
-    // Enable refresh...
-    getCommonViewer()._isRefreshEnabled = true;
     // ...and notifications.
     CapellaNavigatorContentProvider contentProvider = getContentProvider();
     if (null == contentProvider) {
       return;
     }
-    contentProvider.enableContentNotifications();
+    ActiveSessionManager.getInstance().enableContentNotifications();
   }
 
   public void disableContentNotifications() {
-    // Disable refresh...
-    getCommonViewer()._isRefreshEnabled = false;
     // ...and notifications.
     CapellaNavigatorContentProvider contentProvider = getContentProvider();
     if (null == contentProvider) {
       return;
     }
-    contentProvider.disableContentNotifications();
+    ActiveSessionManager.getInstance().disableContentNotifications();
   }
 
   /**
@@ -727,28 +725,24 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * This is the default behavior, thus this method should not be called at creation time.
    */
   public void enableContentNotifications(SemanticEditingDomain editingDomain) {
-    // Enable refresh...
-    getCommonViewer()._isRefreshEnabled = true;
     // ...and notifications.
     CapellaNavigatorContentProvider contentProvider = getContentProvider();
     if (null == contentProvider) {
       return;
     }
-    contentProvider.enableContentNotifications(editingDomain);
+    ActiveSessionManager.getInstance().enableContentNotifications(editingDomain);
   }
 
   /**
    * Disable content notifications until {@link #enableContentNotifications()} is called.
    */
   public void disableContentNotifications(SemanticEditingDomain editingDomain) {
-    // Disable refresh...
-    getCommonViewer()._isRefreshEnabled = false;
     // ...and notifications.
     CapellaNavigatorContentProvider contentProvider = getContentProvider();
     if (null == contentProvider) {
       return;
     }
-    contentProvider.disableContentNotifications(editingDomain);
+    ActiveSessionManager.getInstance().disableContentNotifications(editingDomain);
   }
 
   /**
@@ -783,11 +777,11 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * @see org.eclipse.ui.navigator.CommonNavigator#getAdapter(java.lang.Class)
    */
   @Override
-  public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter_p) {
-    if (IPropertySheetPage.class.equals(adapter_p)) {
+  public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+    if (IPropertySheetPage.class.equals(adapter)) {
       return getPropertySheetPage();
     }
-    return super.getAdapter(adapter_p);
+    return super.getAdapter(adapter);
   }
 
   /**
@@ -818,6 +812,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   /**
    * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor#getContributorId()
    */
+  @Override
   public String getContributorId() {
     return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
@@ -842,15 +837,15 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * @return the patternFilter
    */
   protected CapellaNavigatorPatternFilter getPatternFilter() {
-    return _patternFilter;
+    return patternFilter;
   }
 
   /**
    * Gets the property sheet page.
    */
   private IPropertySheetPage getPropertySheetPage() {
-    if (null == _propertySheetPage) {
-      _propertySheetPage = new CapellaTabbedPropertySheetPage(this) {
+    if (null == propertySheetPage) {
+      propertySheetPage = new CapellaTabbedPropertySheetPage(this) {
         /**
          * {@inheritDoc}
          */
@@ -858,34 +853,34 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
         @Override
         public void dispose() {
           super.dispose();
-          _propertySheetPage = null;
+          propertySheetPage = null;
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public void init(IPageSite pageSite_p) {
-          super.init(pageSite_p);
-          pageSite_p.setSelectionProvider(getCommonViewer());
+        public void init(IPageSite pageSite) {
+          super.init(pageSite);
+          pageSite.setSelectionProvider(getCommonViewer());
         }
       };
     }
-    return _propertySheetPage;
+    return propertySheetPage;
   }
 
   /**
    * @see org.eclipse.ui.navigator.CommonNavigator#handleDoubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
    */
   @Override
-  protected void handleDoubleClick(DoubleClickEvent event_p) {
-    super.handleDoubleClick(event_p);
+  protected void handleDoubleClick(DoubleClickEvent event) {
+    super.handleDoubleClick(event);
     // Add an additional behavior for ModelElement selection.
-    IStructuredSelection selection = (IStructuredSelection) event_p.getSelection();
+    IStructuredSelection selection = (IStructuredSelection) event.getSelection();
     Object element = selection.getFirstElement();
 
     if (CapellaResourceHelper.isSemanticElement(element)) {
-      CapellaUIPropertiesPlugin.getDefault().openWizard(event_p, (EObject) element);
+      CapellaUIPropertiesPlugin.getDefault().openWizard(event, (EObject) element);
     }
   }
 
@@ -893,32 +888,39 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * @see org.eclipse.ui.navigator.CommonNavigator#init(org.eclipse.ui.IViewSite, org.eclipse.ui.IMemento)
    */
   @Override
-  public void init(IViewSite site_p, IMemento memento_p) throws PartInitException {
+  public void init(IViewSite site, IMemento memento) throws PartInitException {
     // Specified memento could be null :
-    // 1) if the view was not shown when the previous workbench session exited.
-    // 2) the view is open by the end-user whereas the workbench is already loaded.
-    // Parent class does not a provide an accessor on memento field (Eclipse 3.3).
+    // 1) if the view was not shown when the previous workbench session
+    // exited.
+    // 2) the view is open by the end-user whereas the workbench is already
+    // loaded.
+    // Parent class does not a provide an accessor on memento field (Eclipse
+    // 3.3).
     // As of 3.5, getMemento is provided.
-    memento = restoreViewSettings(memento_p);
-    super.init(site_p, memento);
-    // Add a command stack listener to select and reveal affected objects by the most recent command.
+    memento = restoreViewSettings(memento);
+    super.init(site, memento);
+    // Add a command stack listener to select and reveal affected objects by
+    // the most recent command.
 
   }
 
   /**
    * Restore view settings.
    */
-  private IMemento restoreViewSettings(IMemento memento_p) {
-    IMemento memento_l = memento_p;
-    // Specified memento is null, let's get it from view settings persistence.
+  private IMemento restoreViewSettings(IMemento memento) {
+    IMemento memento_l = memento;
+    // Specified memento is null, let's get it from view settings
+    // persistence.
     if (null == memento_l) {
-      // Indeed, if the view was not shown when the previous workbench session exited, no memento is provided.
-      // The only chance to restore current state is to get the memento from its persisted representation in view settings (if any).
+      // Indeed, if the view was not shown when the previous workbench
+      // session exited, no memento is provided.
+      // The only chance to restore current state is to get the memento
+      // from its persisted representation in view settings (if any).
       String persistedMemento = _viewSettings.get(TAG_MEMENTO);
       if (null != persistedMemento) {
         try {
           memento_l = XMLMemento.createReadRoot(new StringReader(persistedMemento));
-        } catch (WorkbenchException exception_p) {
+        } catch (WorkbenchException exception) {
           // Don't do anything. Simply don't restore the settings
         }
       }
@@ -934,21 +936,23 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     // Create a new memento.
     XMLMemento memento_l = XMLMemento.createWriteRoot(rootName);
     // Save current state in it.
-    // Notice, that the saveState() method is also called by the workbench when exiting before the dispose() method.
-    // Nevertheless, we keep this call here, to make sure current state is stored within a running workbench session where the saveState() method is not called.
+    // Notice, that the saveState() method is also called by the workbench
+    // when exiting before the dispose() method.
+    // Nevertheless, we keep this call here, to make sure current state is
+    // stored within a running workbench session where the saveState()
+    // method is not called.
     saveState(memento_l);
     StringWriter writer = new StringWriter();
     try {
       memento_l.save(writer);
       _viewSettings.put(TAG_MEMENTO, writer.getBuffer().toString());
-    } catch (IOException exception_p) {
+    } catch (IOException exception) {
       // Don't do anything. Simply don't store the settings
     }
   }
 
   /**
-   * FIXME MA01 - ensure Sirius-2776 is now fixed
-   * {@inheritDoc}
+   * FIXME MA01 - ensure Sirius-2776 is now fixed {@inheritDoc}
    */
   @Override
   public Saveable[] getActiveSaveables() {
@@ -969,8 +973,14 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * {@inheritDoc}
    */
   @Override
-  public void commandStackSelectionChanged(ISelection selection_p) {
-    selectReveal(selection_p);
+  public void commandStackSelectionChanged(ISelection selection) {
+    boolean enabled = true;
+    if (selection instanceof IStructuredSelection) {
+      TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(((IStructuredSelection) selection).getFirstElement());
+      enabled = ActiveSessionManager.getInstance().isEnabledContentNotifications(domain);
+    }
+    if (enabled) {
+      selectReveal(selection);
+    }
   }
-
 }

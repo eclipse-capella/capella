@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,29 +13,34 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
- * This class is a IEditingDomainListener which redirect required events on registered ICommandStackSelectionProvider and INotifyChangedListener
- * 
- * On created editing domain, it create a NavigatorCommandStackListener on it and a NavigatorModelDataListener on its DataNotifier.
- * On command stack events or on DataNotifier events, it dispatch it to registered ICommandStackSelectionProvider and INotifyChangedListener
+ * This class is a IEditingDomainListener which redirect required events on registered ICommandStackSelectionProvider
+ * and INotifyChangedListener On created editing domain, it create a NavigatorCommandStackListener on it and a
+ * NavigatorModelDataListener on its DataNotifier. On command stack events or on DataNotifier events, it dispatch it to
+ * registered ICommandStackSelectionProvider and INotifyChangedListener
  */
-public class NavigatorEditingDomainDispatcher implements IEditingDomainListener, INotifyChangedListener, ICommandStackSelectionProvider {
+public class NavigatorEditingDomainDispatcher implements IEditingDomainListener, INotifyChangedListener,
+    ICommandStackSelectionProvider {
 
   private static Collection<INotifyChangedListener> _notifyListeners = new HashSet<INotifyChangedListener>();
 
   private static Collection<ICommandStackSelectionProvider> _commandStackListeners = new HashSet<ICommandStackSelectionProvider>();
 
   /**
-    * Add a listener on all editing domains to handle model element changes even if not displayed in the viewer.
-    */
+   * Add a listener on all editing domains to handle model element changes even if not displayed in the viewer.
+   */
   private NavigatorModelDataListener _dataListener;
 
   /**
@@ -52,27 +57,28 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
    * {@inheritDoc}
    */
   @Override
-  public void createdEditingDomain(EditingDomain editingDomain_p) {
-    _dataListener.registerToDataNotifier((SemanticEditingDomain) editingDomain_p);
-    _csListener.registerCommandStackListener((SemanticEditingDomain) editingDomain_p);
+  public void createdEditingDomain(EditingDomain editingDomain) {
+    _dataListener.registerToDataNotifier((SemanticEditingDomain) editingDomain);
+    _csListener.registerCommandStackListener((SemanticEditingDomain) editingDomain);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void disposedEditingDomain(EditingDomain editingDomain_p) {
-    _dataListener.unregisterFromDataNotifier((SemanticEditingDomain) editingDomain_p);
-    _csListener.unregisterCommandStackListener((SemanticEditingDomain) editingDomain_p);
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+    _dataListener.unregisterFromDataNotifier((SemanticEditingDomain) editingDomain);
+    _csListener.unregisterCommandStackListener((SemanticEditingDomain) editingDomain);
+    ActiveSessionManager.getInstance().remove((SemanticEditingDomain) editingDomain);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     for (INotifyChangedListener provider : _notifyListeners) {
-      provider.notifyChanged(notification_p);
+      provider.notifyChanged(notification);
     }
   }
 
@@ -80,31 +86,36 @@ public class NavigatorEditingDomainDispatcher implements IEditingDomainListener,
    * {@inheritDoc}
    */
   @Override
-  public void commandStackSelectionChanged(final ISelection selection_p) {
-    PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+  public void commandStackSelectionChanged(final ISelection selection) {
+
+    UIJob job = new UIJob(PlatformUI.getWorkbench().getDisplay(), NavigatorEditingDomainDispatcher.this.getClass()
+        .getName()) {
       @Override
-      public void run() {
+      public IStatus runInUIThread(IProgressMonitor monitor_p) {
         for (final ICommandStackSelectionProvider provider : _commandStackListeners) {
-          provider.commandStackSelectionChanged(selection_p);
+          provider.commandStackSelectionChanged(selection);
         }
+        return Status.OK_STATUS;
       }
-    });
+    };
+    job.schedule();
+
   }
 
-  public static void registerNotifyChangedListener(INotifyChangedListener listener_p) {
-    _notifyListeners.add(listener_p);
+  public static void registerNotifyChangedListener(INotifyChangedListener listener) {
+    _notifyListeners.add(listener);
   }
 
-  public static void unregisterNotifyChangedListener(INotifyChangedListener listener_p) {
-    _notifyListeners.remove(listener_p);
+  public static void unregisterNotifyChangedListener(INotifyChangedListener listener) {
+    _notifyListeners.remove(listener);
   }
 
-  public static void registerCommandStackSelectionProvider(ICommandStackSelectionProvider listener_p) {
-    _commandStackListeners.add(listener_p);
+  public static void registerCommandStackSelectionProvider(ICommandStackSelectionProvider listener) {
+    _commandStackListeners.add(listener);
   }
 
-  public static void unregisterCommandStackSelectionProvider(ICommandStackSelectionProvider listener_p) {
-    _commandStackListeners.remove(listener_p);
+  public static void unregisterCommandStackSelectionProvider(ICommandStackSelectionProvider listener) {
+    _commandStackListeners.remove(listener);
   }
 
 }

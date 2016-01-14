@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,37 +18,33 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.polarsys.capella.common.bundle.FeatureHelper;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
-import org.polarsys.capella.detachment.version.precondition.Activator;
 import org.polarsys.capella.detachment.version.precondition.util.SAXModelsElementsParser;
+import org.polarsys.kitalpha.model.common.precondition.exception.InvalidPreconditionException;
 import org.polarsys.kitalpha.model.common.precondition.interfaces.IPrecondition;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-
 public class VersionChecker implements IPrecondition<IFile> {
+	
+	private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
 
 	@Override
-	public void executePrecondition(IFile param) {
+	public void executePrecondition(IFile param, IProgressMonitor monitor) throws InvalidPreconditionException {
 		SAXParserFactory parserFactory = SAXParserFactory.newInstance();
 		parserFactory.setNamespaceAware(false);
 		InputSource is;
 		try {
-			SAXModelsElementsParser modelsEltParser = new SAXModelsElementsParser();
+			String projectName = param.getProject().getName();
+			SAXModelsElementsParser modelsEltParser = SAXModelsElementsParser.newInstance(projectName);
 			SAXParser saxParser = parserFactory.newSAXParser();
 			XMLReader xmlReader = saxParser.getXMLReader();
 			xmlReader.setContentHandler(modelsEltParser);
@@ -56,78 +52,49 @@ public class VersionChecker implements IPrecondition<IFile> {
 			is.setByteStream(param.getContents());
 			xmlReader.parse(is);
 			
-			Collection<String> capellaModellers = modelsEltParser.getCapellaModellers();
-			Collection<URI> capellaModellersURIs = new HashSet<URI>();
-
-			String projectName = param.getProject().getName();
-			//Create uris
-			for (String refrencedModel : capellaModellers) {
-				//workspace resources
-				if (refrencedModel.startsWith("platform:/resource/")){ //$NON-NLS-1$
-					URI platformResourceURI = URI.createURI(refrencedModel, true);
-					capellaModellersURIs.add(platformResourceURI);
-				}
-				
-				//the current model
-				if (!refrencedModel.isEmpty() && !refrencedModel.startsWith("platform:/resource/")){ //$NON-NLS-1$
-					URI plateformResourceURI = URI.createPlatformResourceURI(projectName + "/" + refrencedModel, true);
-					capellaModellersURIs.add(plateformResourceURI);
-				}
-			}
+			Collection<IFile> capellaModellers = modelsEltParser.getCapellaModellers();
+			capellaModellers.add(param);
 			
 			String capellaVersion = FeatureHelper.getCapellaVersion(false);
-			final StringBuffer exceptionMsg = new StringBuffer();
 			
-			exceptionMsg.append("The model needs to be migrated: Capella version is ").append(capellaVersion).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$
-			exceptionMsg.append("Model version:\n"); //$NON-NLS-1$
-			boolean launchException = false;
-			
-			for (URI uri : capellaModellersURIs) {
-				String projectId = uri.segment(1);
-				String modelName = uri.lastSegment();
-				
-				if (uri.isPlatformResource()){
-					IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectId);
-					IFile file = null;
-					if (uri.toString().endsWith("melodyfragment")){
-						IFolder folderFragments = project.getFolder("fragments");
-						file = folderFragments.getFile(modelName);
-					} else {
-						file =	project.getFile(modelName);
-					}
-					
-					String modelVersion = CapellaFeatureHelper.getDetectedVersion(file);
-					if (capellaVersion != null && modelVersion != null && !capellaVersion.isEmpty() && !modelVersion.isEmpty()){
-					  // check only major and minor version, micro (patch) is ignored
-						if (!modelVersion.startsWith(capellaVersion.substring(0, 3))){
-							exceptionMsg.append("\t").append(uri.toString()).append(" - version: ").append(modelVersion).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-							launchException = true;
-						}
+			Collection<StringBuffer> result = new HashSet<StringBuffer>();
+			for (IFile iFile : capellaModellers) {
+				String modelVersion = CapellaFeatureHelper.getDetectedVersion(iFile);
+				if (modelVersion != null && !modelVersion.isEmpty()){
+					if (!modelVersion.startsWith(capellaVersion.substring(0, 3))){
+						StringBuffer _msg = new StringBuffer();
+						_msg.append(iFile.getName()).
+							append(": model version is: ").
+							append(modelVersion).
+							append(". It needs to be migrated to ").
+							append("Capella ").
+							append(capellaVersion).
+							append(".\n");
+						result.add(_msg);
 					}
 				}
 			}
-			
-			//FIXME use precondition exception, and catch it in the run method
-			if (launchException){
-				Display.getDefault().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						RuntimeException e = new RuntimeException(exceptionMsg.toString());
-						final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-						IStatus status = new Status(IStatus.ERROR, Activator.getContext().getBundle().getSymbolicName(), exceptionMsg.toString(), null);
-						ErrorDialog.openError(shell, "Detachment Error", exceptionMsg.toString(), status);
-						throw e;
-					}
-				});
+			if (!result.isEmpty()){
+				final String _msg = assembleMessage(result);
+				throw new InvalidPreconditionException(_msg);
 			}
-		} catch (ParserConfigurationException e1) {
-			e1.printStackTrace();
-		} catch (SAXException e1) {
-			e1.printStackTrace();
+			
+		} catch (ParserConfigurationException e) {
+			logger.error(e.getMessage());
+		} catch (SAXException e) {
+			logger.error(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (CoreException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
+	}
+
+	private String assembleMessage(Collection<StringBuffer> result) {
+		String _msg = "";
+		for (StringBuffer m : result) {
+			_msg += m.toString();
+		}
+		return _msg;
 	}
 }

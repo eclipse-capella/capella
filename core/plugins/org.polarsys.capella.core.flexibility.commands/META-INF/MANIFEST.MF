@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.flexibility.commands;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.flexibility.commands.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -34,6 +34,18 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.model.obfuscator,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.sirius.diagram.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.core.flexibility.commands,
+ org.polarsys.capella.core.flexibility.commands.actions,
+ org.polarsys.capella.core.flexibility.commands.dynamic,
+ org.polarsys.capella.core.flexibility.commands.dynamic.tools,
+ org.polarsys.capella.core.flexibility.commands.dynamic.tools.annotations,
+ org.polarsys.capella.core.flexibility.commands.dynamic.tools.testgen,
+ org.polarsys.capella.core.flexibility.commands.handlers,
+ org.polarsys.capella.core.flexibility.commands.helpers,
+ org.polarsys.capella.core.flexibility.commands.menus.policy,
+ org.polarsys.capella.core.flexibility.commands.menus.provider,
+ org.polarsys.capella.core.flexibility.commands.menus.ui,
+ org.polarsys.capella.core.flexibility.commands.preferences

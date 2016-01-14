@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public class PhysicalLinkItemProvider
 			// Process CsPackage.Literals.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT
 			if (sourcePhysicalPortPropertyDescriptor != null) {
 				Object sourcePhysicalPortValue = eObject.eGet(CsPackage.Literals.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT, true);
-				if (sourcePhysicalPortValue != null && sourcePhysicalPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourcePhysicalPortValue)) {
+				if (sourcePhysicalPortValue != null && sourcePhysicalPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourcePhysicalPortValue)) {
 					itemPropertyDescriptors.remove(sourcePhysicalPortPropertyDescriptor);
 				} else if (sourcePhysicalPortValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT) != null) {
 					itemPropertyDescriptors.remove(sourcePhysicalPortPropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class PhysicalLinkItemProvider
 			// Process CsPackage.Literals.PHYSICAL_LINK__TARGET_PHYSICAL_PORT
 			if (targetPhysicalPortPropertyDescriptor != null) {
 				Object targetPhysicalPortValue = eObject.eGet(CsPackage.Literals.PHYSICAL_LINK__TARGET_PHYSICAL_PORT, true);
-				if (targetPhysicalPortValue != null && targetPhysicalPortValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetPhysicalPortValue)) {
+				if (targetPhysicalPortValue != null && targetPhysicalPortValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetPhysicalPortValue)) {
 					itemPropertyDescriptors.remove(targetPhysicalPortPropertyDescriptor);
 				} else if (targetPhysicalPortValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.PHYSICAL_LINK__TARGET_PHYSICAL_PORT) != null) {
 					itemPropertyDescriptors.remove(targetPhysicalPortPropertyDescriptor);				  					

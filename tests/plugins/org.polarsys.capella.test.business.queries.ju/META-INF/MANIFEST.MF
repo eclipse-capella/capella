@@ -2,15 +2,28 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.business.queries.ju;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.business.queries.ju.TestBusinessQueriesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.data.business.queries;visibility:=reexport,
  org.polarsys.capella.test.framework;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.business.queries.ju,
  org.polarsys.capella.test.business.queries.ju.errors,
- org.polarsys.capella.test.business.queries.ju.testSuites
+ org.polarsys.capella.test.business.queries.ju.testSuites,
+ org.polarsys.capella.test.business.queries.ju.testSuites.main,
+ org.polarsys.capella.test.business.queries.ju.testSuites.partial,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.capellacommon,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.capellacore,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.ctx,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.information,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.interaction,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.la,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.oa,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa
 Bundle-Localization: plugin

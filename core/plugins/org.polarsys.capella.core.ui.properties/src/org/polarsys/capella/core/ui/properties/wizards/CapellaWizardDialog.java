@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,11 +27,11 @@ public class CapellaWizardDialog extends WizardDialog implements IDialog {
   private Button _finishButton;
 
   /**
-   * @param shell_p
-   * @param wizard_p
+   * @param shell
+   * @param wizard
    */
-  public CapellaWizardDialog(Shell shell_p, IWizard wizard_p) {
-    super(shell_p, wizard_p);
+  public CapellaWizardDialog(Shell shell, IWizard wizard) {
+    super(shell, wizard);
   }
 
   /**

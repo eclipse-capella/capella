@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,12 +22,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
@@ -41,14 +41,11 @@ import org.eclipse.emf.ecore.xmi.PackageNotFoundException;
 import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -56,7 +53,6 @@ import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.IModelIdentifier;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -107,25 +103,23 @@ public class CapellaSessionHelper {
 
   /**
    * Returns whether all referenced libraries from the given session are available
-   * @param session_p
+   * @param session
    * @return
    */
-  public static IStatus checkLibrariesAvailability(Session session_p) {
-    Collection<Resource> res = session_p.getSemanticResources();
+  public static IStatus checkLibrariesAvailability(Session session) {
+    Collection<Resource> res = session.getSemanticResources();
     for (Resource resource : res) {
       IModelIdentifier modelId = ILibraryManager.INSTANCE.getModelIdentifier(resource.getURI());
       IModel model = ILibraryManager.INSTANCE.getModel(ILibraryManager.DEFAULT_EDITING_DOMAIN, modelId);
       Collection<IModelIdentifier> unavailable = LibraryManagerExt.getAllUnavailableReferences(model);
       if (!unavailable.isEmpty()) {
-        StringBuffer buffer = new StringBuffer();
+        MultiStatus status =
+            new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR, Messages.CapellaSessionHelper_MissingLibraries_Message, null);
         for (IModelIdentifier identifier : unavailable) {
-          buffer.append(identifier);
-          buffer.append(ICommonConstants.COMMA_CHARACTER);
+          status.add(new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.toString()));
         }
-        buffer.deleteCharAt(buffer.length() - 1);
-        String message = NLS.bind(Messages.CapellaSessionHelper_MissingLibraries_Message, buffer);
-        reportError(message);
-        return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), message, null);
+        reportError(status);
+        return status;
       }
     }
     return Status.OK_STATUS; // at the end there is no error.
@@ -147,13 +141,14 @@ public class CapellaSessionHelper {
         // Load the file in a temporary resource and catch loading errors.
         resourceSet.getResource(uri, true);
         EcoreUtil.resolveAll(resourceSet);
-      } catch (Exception exception_p) {
-        String handleLoadingErrors = handleLoadingErrors(exception_p);
+      } catch (Exception exception) {
+        String handleLoadingErrors = handleLoadingErrors(exception);
         if (handleLoadingErrors == null) {
           return Status.OK_STATUS; // at the end there is no error.
         }
-        reportError(handleLoadingErrors);
-        return new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception_p);
+        IStatus status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception);
+        reportError(status);
+        return status;
       } finally {
         // Make sure all loaded resources in the temporary resourceSet are unloaded & removed.
         cleanResourceSet(resourceSet);
@@ -168,17 +163,17 @@ public class CapellaSessionHelper {
    * It is like call {@link CapellaSessionHelper#checkModelsCompliancy(URI)} and then a more complete version of
    * {@link CapellaSessionHelper#checkModelCompliant(ResourceSet)}.<br>
    * FIXME Used only for Capella Team for now, to be used by Capella ?
-   * @param uri_p
+   * @param uri
    * @return an IStatus with severity OK, WARNING or ERROR.
    */
-  public static IStatus checkModelsFullCompliancy(URI uri_p) {
+  public static IStatus checkModelsFullCompliancy(URI uri) {
     final String pluginId = CapellaActionsActivator.getDefault().getPluginId();
     ResourceSet tempResourceSet = new ResourceSetImpl();
     tempResourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
     tempResourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.FALSE);
     try {
       // Load the file in a temporary resource and catch loading errors.
-      tempResourceSet.getResource(uri_p, true);
+      tempResourceSet.getResource(uri, true);
       // Resources have been loaded, check if there has been other problems.
       // Look for first error.
       for (Resource resource : tempResourceSet.getResources()) {
@@ -194,12 +189,15 @@ public class CapellaSessionHelper {
           return new Status(IStatus.WARNING, pluginId, diagnostic.getMessage(), exception);
         }
       }
-    } catch (Exception exception_p) {
-      String handleLoadingErrors = handleLoadingErrors(exception_p);
+    } catch (Exception exception) {
+      String handleLoadingErrors = handleLoadingErrors(exception);
       if (handleLoadingErrors == null) {
         return Status.OK_STATUS; // at the end there is no error.
       }
-      return new Status(IStatus.ERROR, pluginId, handleLoadingErrors, exception_p);
+      IStatus status = new Status(IStatus.ERROR, pluginId, handleLoadingErrors, exception);
+      reportError(status);
+      return status;
+
     } finally {
       // Make sure all loaded resources in the temporary resourceSet are unloaded & removed.
       cleanResourceSet(tempResourceSet);
@@ -210,11 +208,11 @@ public class CapellaSessionHelper {
 
   /**
    * Unload all resources on a temporary resourceSet, so resources are not removed
-   * @param resourceSet_p the resource set to be cleaned
+   * @param resourceSet the resource set to be cleaned
    */
-  public static void cleanResourceSet(ResourceSet resourceSet_p) {
-    if (null != resourceSet_p) {
-      List<Resource> resources = new ArrayList<Resource>(resourceSet_p.getResources());
+  public static void cleanResourceSet(ResourceSet resourceSet) {
+    if (null != resourceSet) {
+      List<Resource> resources = new ArrayList<Resource>(resourceSet.getResources());
       for (Resource resource : resources) {
         resource.unload();
       }
@@ -223,10 +221,10 @@ public class CapellaSessionHelper {
 
   /**
    * Unload and remove resources on a session ResourceSet
-   * @param session_p
+   * @param session
    */
-  public static void cleanResourceSet(Session session_p) {
-    ResourceSet resourceSet = session_p.getSessionResource().getResourceSet();
+  public static void cleanResourceSet(Session session) {
+    ResourceSet resourceSet = session.getSessionResource().getResourceSet();
     for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
       if (resource.getErrors().size() > 0) {
         resource.unload();
@@ -264,50 +262,55 @@ public class CapellaSessionHelper {
   }
 
   /**
-   * @param errorMsg_p
+   * @param message
    */
-  private static void reportError(final String message_p) {
-    final Display display = PlatformUI.getWorkbench().getDisplay();
-    display.syncExec(new Runnable() {
-      @Override
-      public void run() {
-        MessageDialog.openError(display.getActiveShell(), Messages.CapellaSessionHelper_SemanticModel_ErrorDialog_Title, message_p);
-      }
-    });
+  public static void reportError(IStatus status) {
+    StatusManager.getManager().handle(status, StatusManager.LOG);
+    StatusManager.getManager().handle(status, StatusManager.BLOCK);
+
+    // Log exception...
+    if (status.getException() != null) {
+      status.getException().printStackTrace();
+    }
+    __logger.error(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.MODEL));
   }
 
   /**
    * @param diagnostic
    */
   private static void reportError(final Diagnostic diagnostic) {
-    final Display display = PlatformUI.getWorkbench().getDisplay();
-    display.syncExec(new Runnable() {
-      @Override
-      public void run() {
-        DiagnosticDialog.openProblem(display.getActiveShell(), Messages.CapellaSessionHelper_SemanticModel_ErrorDialog_Title,
-            "The session cannot be open.", diagnostic); //$NON-NLS-1$
+    IStatus status = Status.OK_STATUS;
+    if (diagnostic.getChildren().isEmpty()) {
+      status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), diagnostic.getMessage());
+
+    } else {
+      status = new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR, diagnostic.getMessage(), null);
+      for (Diagnostic identifier : diagnostic.getChildren()) {
+        ((MultiStatus) status).add(new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.getMessage()));
       }
-    });
+    }
+    reportError(status);
   }
 
   /**
-   * @param exception_p
+   * @param exception
    */
-  public static void reportException(Exception exception_p) {
-    String handleLoadingErrors = handleLoadingErrors(exception_p);
+  public static void reportException(Exception exception) {
+    String handleLoadingErrors = handleLoadingErrors(exception);
     if (handleLoadingErrors != null) {
-      reportError(handleLoadingErrors);
+      IStatus error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), exception);
+      reportError(error);
     }
   }
 
   /**
-   * @param exception_p
+   * @param exception
    * @return a not <code>null</code> error message.
    */
-  public static String handleLoadingErrors(Exception exception_p) {
+  public static String handleLoadingErrors(Exception exception) {
     String errorMsg = null;
-    if (exception_p instanceof WrappedException) {
-      Throwable cause = ((WrappedException) exception_p).getCause();
+    if (exception instanceof RuntimeException) {
+      Throwable cause = ((RuntimeException) exception).getCause();
       if (cause instanceof FeatureNotFoundException) {
         // we can only get this exception during the migration process. In the usual case (ie no migration) we will get a PackageNotFoundException
         return null;
@@ -325,47 +328,51 @@ public class CapellaSessionHelper {
           errorMsg = "A metamodel is missing: " + packageNotFound; //$NON-NLS-1$
         }
       } else if (cause instanceof org.eclipse.emf.ecore.xmi.ClassNotFoundException) {
-        if (exception_p.getMessage().indexOf(".aird,") >= 0) { //$NON-NLS-1$
+        if (exception.getMessage().indexOf(".aird,") >= 0) { //$NON-NLS-1$
           errorMsg = Messages.CapellaSessionHelper_Repair_Migrate_Message;
         }
       } else if (cause instanceof UnresolvedReferenceException) {
         errorMsg = cause.getMessage();
       }
-    } else if (exception_p instanceof ClassCastException) {
-      if (exception_p.getMessage().indexOf("org.eclipse.sirius") >= 0) { //$NON-NLS-1$
+    } else if (exception instanceof ClassCastException) {
+      if (exception.getMessage().indexOf("org.eclipse.sirius") >= 0) { //$NON-NLS-1$
         errorMsg = Messages.CapellaSessionHelper_Repair_Migrate_Message;
       }
+    } else if (exception instanceof RuntimeException) {
+      Throwable cause = ((RuntimeException) exception).getCause();
+      if (cause instanceof FeatureNotFoundException) {
+        errorMsg = Messages.CapellaSessionHelper_Repair_Migrate_Project_Message;
+      }
     }
+
     // Deal with unknown errors.
     if (null == errorMsg) {
       errorMsg = Messages.CapellaSessionHelper_UnknownError_Message;
     }
-    // Log exception...
-    __logger.debug(new EmbeddedMessage(exception_p.getMessage(), IReportManagerDefaultComponents.MODEL));
-    __logger.error(new EmbeddedMessage(errorMsg, IReportManagerDefaultComponents.MODEL));
+
     return errorMsg;
   }
 
   /**
    * Utility method to create and open a new local session.
-   * @param semanticModels_p the IFile's of the model to use a semantic models.
-   * @param airdURI_p the URI of the target diagrams file that will keep all the session data. The resource targeted by the URI will be created.
+   * @param semanticModels the IFile's of the model to use a semantic models.
+   * @param airdURI the URI of the target diagrams file that will keep all the session data. The resource targeted by the URI will be created.
    * @return the newly created session.
    * @throws IOException if the diagrams file can't be created.
    * @throws PartInitException if the model content view can't be activated.
    * @throws InterruptedException on interruption while creating the session.
    * @throws InvocationTargetException on invocation error.
    */
-  public static Session createLocalSession(List<IFile> semanticModels_p, URI airdURI_p, IProgressMonitor monitor_p) throws IOException, PartInitException,
+  public static Session createLocalSession(List<IFile> semanticModels, URI airdURI, IProgressMonitor monitor) throws IOException, PartInitException,
       InvocationTargetException, InterruptedException {
     List<URI> semanticURIs = new ArrayList<URI>();
-    for (IFile semanticModelFile : semanticModels_p) {
+    for (IFile semanticModelFile : semanticModels) {
       semanticURIs.add(EcoreUtil2.getURI(semanticModelFile));
     }
 
     if (!semanticURIs.isEmpty()) {
-      LocalSessionCreationOperation sessionCreationOperation = new LocalSessionCreationOperation(semanticURIs, airdURI_p);
-      sessionCreationOperation.run(monitor_p);
+      LocalSessionCreationOperation sessionCreationOperation = new LocalSessionCreationOperation(semanticURIs, airdURI);
+      sessionCreationOperation.run(monitor);
       return sessionCreationOperation.getCreatedSession();
     }
     throw new IllegalArgumentException("No semantic model might be loaded."); //$NON-NLS-1$
@@ -381,29 +388,29 @@ class LocalSessionCreationOperation extends WorkspaceModifyOperation {
 
   /**
    * Constructs the workspace operation which allow to create a local session.
-   * @param airdURI_p The aird resource.
-   * @param semanticURIs_p The loaded resources list.
+   * @param airdURI The aird resource.
+   * @param semanticURIs The loaded resources list.
    */
-  public LocalSessionCreationOperation(List<URI> semanticURIs_p, URI airdURI_p) {
-    _semanticURIs = semanticURIs_p;
-    _airdURI = airdURI_p;
+  public LocalSessionCreationOperation(List<URI> semanticURIs, URI airdURI) {
+    _semanticURIs = semanticURIs;
+    _airdURI = airdURI;
   }
 
   /**
    * @see org.eclipse.ui.actions.WorkspaceModifyOperation#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
   @Override
-  protected void execute(IProgressMonitor monitor_p) throws CoreException, InterruptedException {
-    SubMonitor progress = SubMonitor.convert(monitor_p, Messages.CapellaSessionHelper_CreateSession_Title, 1);
+  protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
+    SubMonitor progress = SubMonitor.convert(monitor, Messages.CapellaSessionHelper_CreateSession_Title, 1);
     // Begins the task.
     try {
 
-      monitor_p.beginTask("Representations resource creation", 3);//$NON-NLS-1$
+      monitor.beginTask("Representations resource creation", 3);//$NON-NLS-1$
 
-      monitor_p.subTask("Session creation");//$NON-NLS-1$
-      _session = SessionFactory.INSTANCE.createSession(_airdURI, new SubProgressMonitor(monitor_p, 1));
+      monitor.subTask("Session creation");//$NON-NLS-1$
+      _session = SessionFactory.INSTANCE.createSession(_airdURI, new SubProgressMonitor(monitor, 1));
 
-      monitor_p.subTask("Add semantic model to the session");//$NON-NLS-1$
+      monitor.subTask("Add semantic model to the session");//$NON-NLS-1$
       TransactionHelper.getExecutionManager(_session).execute(new AbstractReadWriteCommand() {
         @Override
         public void run() {
@@ -413,8 +420,8 @@ class LocalSessionCreationOperation extends WorkspaceModifyOperation {
         }
       });
 
-    } catch (CoreException exception_p) {
-      __logger.error(exception_p.getMessage(), exception_p);
+    } catch (CoreException exception) {
+      __logger.error(exception.getMessage(), exception);
     }
     progress.worked(1);
   }

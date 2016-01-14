@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,13 +22,13 @@ public class NewLibraryProjectWizard extends NewProjectWizard {
 
   @Override
   protected SessionCreationHelper createSessionCreationHelper() {
-    return new LibrarySessionCreationHelper(_modelPage.isEpbsSelected(), _modelPage.isOpaSelected(), getProjectApproach());
+    return new LibrarySessionCreationHelper(modelPage.isEpbsSelected(), modelPage.isOpaSelected(), getProjectApproach());
   }
 
   @Override
   // overrides just to replace GUI text (title and image)
-  public void init(IWorkbench workbench_p, IStructuredSelection currentSelection_p) {
-    super.init(workbench_p, currentSelection_p);
+  public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
+    super.init(workbench, currentSelection);
     setWindowTitle("New Capella Library"); //$NON-NLS-1$
     ImageDescriptor descriptor = Activator.getDefault().getImageDescriptor("libraryWizard.png"); //$NON-NLS-1$
     if (null == descriptor) {

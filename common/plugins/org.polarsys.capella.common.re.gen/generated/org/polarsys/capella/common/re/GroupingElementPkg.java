@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  *
  *
  * @see org.polarsys.capella.common.re.RePackage#getGroupingElementPkg()
- * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/0.8.0#//BlockArchitecture'"
+ * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='http://www.polarsys.org/capella/core/modeller/1.0.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/1.0.0#//BlockArchitecture'"
  * @generated
  */
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,10 +38,10 @@ public class TigerProjectExporter {
    */
   private static final String CAPELLAMODELLER = ".melodymodeller"; //$NON-NLS-1$
 
-	public void export (EObject sibbling_p, EObject root_p) {
-		URI uri = sibbling_p.eResource().getURI();
+	public void export (EObject sibbling, EObject root) {
+		URI uri = sibbling.eResource().getURI();
 		String[] segments = uri.segments();
-		String name = ((NamedElement)root_p).getName();
+		String name = ((NamedElement)root).getName();
 		segments[segments.length - 1] = name + CAPELLAMODELLER;
 		StringBuilder sb = new StringBuilder();
 		for (int i=1; i < segments.length; i++) {
@@ -49,9 +49,9 @@ public class TigerProjectExporter {
 			sb.append(segments[i]);
 		}
 		
-		XMIResource myNewResource = (XMIResource) TransactionHelper.getEditingDomain(sibbling_p).createResource(sb.toString());
-		myNewResource.getResourceSet().getResources().add(sibbling_p.eResource());
-		myNewResource.getContents().add(root_p);
+		XMIResource myNewResource = (XMIResource) TransactionHelper.getEditingDomain(sibbling).createResource(sb.toString());
+		myNewResource.getResourceSet().getResources().add(sibbling.eResource());
+		myNewResource.getContents().add(root);
 		try {
 			final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
       saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);

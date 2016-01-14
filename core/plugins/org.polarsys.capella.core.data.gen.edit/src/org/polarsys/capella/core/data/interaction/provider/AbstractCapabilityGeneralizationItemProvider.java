@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,13 @@ public class AbstractCapabilityGeneralizationItemProvider
 	protected IItemPropertyDescriptor superPropertyDescriptor;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor subPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -77,12 +84,23 @@ public class AbstractCapabilityGeneralizationItemProvider
 			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER
 			if (superPropertyDescriptor != null) {
 				Object superValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER, true);
-				if (superValue != null && superValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) superValue)) {
+				if (superValue != null && superValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) superValue)) {
 					itemPropertyDescriptors.remove(superPropertyDescriptor);
 				} else if (superValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER) != null) {
 					itemPropertyDescriptors.remove(superPropertyDescriptor);				  					
 				} else if (itemPropertyDescriptors.contains(superPropertyDescriptor) == false) {
 					itemPropertyDescriptors.add(superPropertyDescriptor);
+				}
+			}
+			// Process InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB
+			if (subPropertyDescriptor != null) {
+				Object subValue = eObject.eGet(InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB, true);
+				if (subValue != null && subValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) subValue)) {
+					itemPropertyDescriptors.remove(subPropertyDescriptor);
+				} else if (subValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB) != null) {
+					itemPropertyDescriptors.remove(subPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(subPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(subPropertyDescriptor);
 				}
 			}
 		}		
@@ -100,6 +118,7 @@ public class AbstractCapabilityGeneralizationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSuperPropertyDescriptor(object);
+			addSubPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -130,6 +149,32 @@ public class AbstractCapabilityGeneralizationItemProvider
 		// begin-extension-code
 				 null);
 		itemPropertyDescriptors.add(superPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Sub feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubPropertyDescriptor(Object object) {
+		// begin-extension-code
+		subPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractCapabilityGeneralization_sub_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractCapabilityGeneralization_sub_feature", "_UI_AbstractCapabilityGeneralization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUB,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(subPropertyDescriptor);
 		// end-extension-code
 	}
 

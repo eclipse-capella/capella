@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -635,7 +635,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -645,7 +645,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																			
+		   });
 	}
 
 	/**
@@ -655,7 +655,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -667,7 +667,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "This package depends on the model CompositeStructure.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (epbsArchitecturePkgEClass, 
 		   source, 
@@ -679,7 +679,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEPBSArchitecturePkg_OwnedEPBSArchitectures(), 
 		   source, 
@@ -687,7 +687,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "End product breakdown structure architectures set\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (epbsArchitectureEClass, 
 		   source, 
@@ -699,7 +699,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedEPBSContext(), 
 		   source, 
@@ -707,7 +707,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "the context is the set of (epbs) parts that make the \"world\" at this abstraction level (the system part(s) and the external actor part(s))", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItem(), 
 		   source, 
@@ -715,7 +715,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "the Configuration items contained in this EPBS architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Even though configuration items are normally stored in a configurationItemPkg, there is this possibility to store them directly under the EPBS architecture element, the purpose being to avoid too many levels of nesting/hierarchy, to ease the navigation of the user in the model" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
@@ -723,7 +723,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "Set of packages that contain configuration items, owned by this EPBS architecture\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedPhysicalArchitectureRealizations(), 
 		   source, 
@@ -731,7 +731,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "Set of physical architecture realization links owned by this EPBS architecture\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations(), 
 		   source, 
@@ -739,7 +739,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "(automatically computed) the physical architecture realization links involving this EPBS architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (epbsContextEClass, 
 		   source, 
@@ -751,7 +751,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (configurationItemPkgEClass, 
 		   source, 
@@ -763,7 +763,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItems(), 
 		   source, 
@@ -771,7 +771,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "Set of configuration items that are stored in the package\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItemPkgs(), 
 		   source, 
@@ -779,7 +779,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "Set of owned packages containing configuration items\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (configurationItemEClass, 
 		   source, 
@@ -792,7 +792,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "arcadia_description", "A configuration item (CI) is a part of the system, to be \r\n- Designed and produced, or purchased\r\n- Duplicated as much as it is used in the system\r\n- assembled with others \r\nin order to build each copy of the system. \r\nExamples of configuration items are cabinets, racks, electronic boards, wiring & plugs, software components...\r\nCI are usually qualified as Hardware (HWCI), Computer Software (CSCI), Commercial off the Shelf (COTS, purchased item), Prime Item...\r\n" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItems(), 
 		   source, 
@@ -800,7 +800,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "the children of this ConfigurationItem \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItemPkgs(), 
 		   source, 
@@ -808,7 +808,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "the sub-(configuration item) packages owned by this component", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedPhysicalArtifactRealizations(), 
 		   source, 
@@ -816,7 +816,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "Set of physical component realization links owned by this configuration item\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getConfigurationItem_AllocatedPhysicalArtifacts(), 
 		   source, 
@@ -824,7 +824,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "(automatically computed) the list of realizations links coming from physical artifacts, and in which this ConfigurationItem is involved\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (configurationItemKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -836,7 +836,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (configurationItemKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -848,7 +848,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (configurationItemKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -860,7 +860,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (configurationItemKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -872,7 +872,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (configurationItemKindEEnum.getELiterals().get(5), 
 		   source, 
@@ -884,7 +884,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (configurationItemKindEEnum.getELiterals().get(6), 
 		   source, 
@@ -896,7 +896,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (configurationItemKindEEnum.getELiterals().get(7), 
 		   source, 
@@ -908,7 +908,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (physicalArchitectureRealizationEClass, 
 		   source, 
@@ -920,7 +920,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalArtifactRealizationEClass, 
 		   source, 
@@ -932,7 +932,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -942,93 +942,93 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (epbsArchitectureEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedEPBSContext(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItem(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_ContainedCapabilityRealizationPkg(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_AllocatedPhysicalArchitectures(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (epbsContextEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (configurationItemPkgEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (configurationItemEClass, 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getConfigurationItem_ItemIdentifier(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getConfigurationItem_Kind(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_AllocatedPhysicalArtifacts(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });
 	}
 
 	/**
@@ -1038,7 +1038,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1048,7 +1048,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																
+		   });
 	}
 
 	/**
@@ -1058,73 +1058,73 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (epbsArchitecturePkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "EPBSArchitecturePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEPBSArchitecturePkg_OwnedEPBSArchitectures(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedEPBSArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (epbsArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "EPBSArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItem(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConfigurationItems" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConfigurationItemPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (configurationItemPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ConfigurationItemPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConfigurationItems" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConfigurationItemPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (configurationItemEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ConfigurationItem" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConfigurationItems" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedConfigurationItemPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });
 	}
 
 	/**
@@ -1134,83 +1134,83 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (epbsArchitecturePkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.EPBSArchitecturePkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEPBSArchitecturePkg_OwnedEPBSArchitectures(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (epbsArchitectureEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.EPBSArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItem(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (configurationItemPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.ConfigurationItemPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (configurationItemEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });
 	}
 
 	/**
@@ -1220,7 +1220,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (epbsArchitecturePkgEClass, 
 		   source, 
@@ -1229,7 +1229,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEPBSArchitecturePkg_OwnedEPBSArchitectures(), 
 		   source, 
@@ -1237,7 +1237,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which EPBSArchitecture stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (epbsArchitectureEClass, 
 		   source, 
@@ -1246,7 +1246,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedEPBSContext(), 
 		   source, 
@@ -1254,7 +1254,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which EPBSContext stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItem(), 
 		   source, 
@@ -1262,7 +1262,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
@@ -1270,7 +1270,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which ConfigurationItemPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_ContainedCapabilityRealizationPkg(), 
 		   source, 
@@ -1278,7 +1278,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedPhysicalArchitectureRealizations(), 
 		   source, 
@@ -1286,7 +1286,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which PhysicalArchitectureRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations(), 
 		   source, 
@@ -1294,7 +1294,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_AllocatedPhysicalArchitectures(), 
 		   source, 
@@ -1302,7 +1302,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (epbsContextEClass, 
 		   source, 
@@ -1311,7 +1311,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (configurationItemPkgEClass, 
 		   source, 
@@ -1320,7 +1320,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItems(), 
 		   source, 
@@ -1328,7 +1328,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItemPkgs(), 
 		   source, 
@@ -1336,7 +1336,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which ConfigurationItemPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (configurationItemEClass, 
 		   source, 
@@ -1345,7 +1345,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "base metaclass in UML/SysML profile ", "SysML::Blocks::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Could have been mapped to Package (to be closer to the semantic of a \"group of\" physical components, \r\nbut it is not possible since there are Parts associated to CI\'s, and packages do not inherit from Type, hence cannot be used to type a Part.", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItems(), 
 		   source, 
@@ -1353,7 +1353,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "uml::Class::nestedClassifier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Class::nestedClassifier elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItemPkgs(), 
 		   source, 
@@ -1361,7 +1361,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "store them in the nearest possible package, since a Block cannot contain packages" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedPhysicalArtifactRealizations(), 
 		   source, 
@@ -1369,7 +1369,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "store them in the nearest possible package, since a Block cannot contain packages" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getConfigurationItem_AllocatedPhysicalArtifacts(), 
 		   source, 
@@ -1377,7 +1377,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (physicalArchitectureRealizationEClass, 
 		   source, 
@@ -1386,7 +1386,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (physicalArtifactRealizationEClass, 
 		   source, 
@@ -1405,42 +1405,42 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$												
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getEPBSArchitecturePkg_OwnedEPBSArchitectures(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItem(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItemPkg_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItems(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItemPkgs(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });
 	}
 
 	/**
@@ -1450,27 +1450,27 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																																			
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getEPBSArchitecture_ContainedCapabilityRealizationPkg(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEPBSArchitecture_AllocatedPhysicalArchitectures(), 
 		   source, 
 		   new String[] {
-		   });																																													
+		   });	
 		addAnnotation
 		  (getConfigurationItem_AllocatedPhysicalArtifacts(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });
 	}
 
 } //EpbsPackageImpl

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,7 +91,7 @@ public class AbstractInformationFlowItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW
 			if (realizedFlowPropertyDescriptor != null) {
 				Object realizedFlowValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW, true);
-				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedFlowValue)) {
+				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedFlowValue)) {
 					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);
 				} else if (realizedFlowValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW) != null) {
 					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);				  					
@@ -102,7 +102,7 @@ public class AbstractInformationFlowItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
@@ -113,7 +113,7 @@ public class AbstractInformationFlowItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET
 			if (targetPropertyDescriptor != null) {
 				Object targetValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					

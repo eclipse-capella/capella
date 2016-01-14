@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -95,7 +95,7 @@ public class DataTypeItemProvider
 			// Process DatatypePackage.Literals.DATA_TYPE__DEFAULT_VALUE
 			if (defaultValuePropertyDescriptor != null) {
 				Object defaultValueValue = eObject.eGet(DatatypePackage.Literals.DATA_TYPE__DEFAULT_VALUE, true);
-				if (defaultValueValue != null && defaultValueValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) defaultValueValue)) {
+				if (defaultValueValue != null && defaultValueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) defaultValueValue)) {
 					itemPropertyDescriptors.remove(defaultValuePropertyDescriptor);
 				} else if (defaultValueValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.DATA_TYPE__DEFAULT_VALUE) != null) {
 					itemPropertyDescriptors.remove(defaultValuePropertyDescriptor);				  					
@@ -106,7 +106,7 @@ public class DataTypeItemProvider
 			// Process DatatypePackage.Literals.DATA_TYPE__NULL_VALUE
 			if (nullValuePropertyDescriptor != null) {
 				Object nullValueValue = eObject.eGet(DatatypePackage.Literals.DATA_TYPE__NULL_VALUE, true);
-				if (nullValueValue != null && nullValueValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) nullValueValue)) {
+				if (nullValueValue != null && nullValueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) nullValueValue)) {
 					itemPropertyDescriptors.remove(nullValuePropertyDescriptor);
 				} else if (nullValueValue == null && ExtensionModelManager.getAnyType(eObject, DatatypePackage.Literals.DATA_TYPE__NULL_VALUE) != null) {
 					itemPropertyDescriptors.remove(nullValuePropertyDescriptor);				  					

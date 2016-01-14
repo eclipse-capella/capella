@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,54 +30,52 @@ public class DebugHelper {
     // 
   }
 
-  public static void displayTree(EObject root_p) {
-    displayTree(root_p, 0);
+  public static void displayTree(EObject root) {
+    displayTree(root, 0);
   }
 
-  @SuppressWarnings("nls")
-  public static void displayTree(EObject root_p, int level) {
-    if (root_p instanceof GenericTrace) {
+  public static void displayTree(EObject root, int level) {
+    if (root instanceof GenericTrace) {
       return;
     }
 
-    List<EObject> elements = root_p.eContents();
+    List<EObject> elements = root.eContents();
 
     for (int i = 0; i < level; i++) {
-      System.out.print("  ");
+      System.out.print("  "); //$NON-NLS-1$
     }
 
-    System.out.println(" + " + elementToString(root_p));
+    System.out.println(" + " + elementToString(root)); //$NON-NLS-1$
 
     for (EObject element : elements) {
       displayTree(element, level + 1);
     }
   }
 
-  @SuppressWarnings("nls")
-  public static String elementToString(EObject object_p) {
-    if (object_p == null) {
+  public static String elementToString(EObject object) {
+    if (object == null) {
       return ICommonConstants.EMPTY_STRING;
     }
-    if (object_p instanceof NamedElement) {
-      if (object_p == object_p.eContainer()) {
-        System.out.println("Object same container name " + object_p.toString());
+    if (object instanceof NamedElement) {
+      if (object == object.eContainer()) {
+        System.out.println("Object same container name " + object.toString()); //$NON-NLS-1$
       }
-      return "'" + ((NamedElement) object_p).getName() + "' " + ((NamedElement) object_p).getFullLabel() + " [" + object_p.eClass().getName() + "] ";
+      return "'" + ((NamedElement) object).getName() + "' " + ((NamedElement) object).getFullLabel() + " [" + object.eClass().getName() + "] "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
     }
 
-    return "Unnamed of [" + object_p.eClass().getName() + "] ";
+    return "Unnamed of [" + object.eClass().getName() + "] "; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @SuppressWarnings("unchecked")
-  public static String elementToString(Object obj_p) {
-    if (obj_p == null) {
+  public static String elementToString(Object obj) {
+    if (obj == null) {
       return ICommonConstants.EMPTY_STRING;
     }
-    if (obj_p instanceof EObject) {
-      return elementToString((EObject) obj_p);
+    if (obj instanceof EObject) {
+      return elementToString((EObject) obj);
 
-    } else if (obj_p instanceof List<?>) {
-      List<EObject> lst = (List<EObject>) obj_p;
+    } else if (obj instanceof List<?>) {
+      List<EObject> lst = (List<EObject>) obj;
       StringBuilder builder = new StringBuilder();
       for (EObject eObject : lst) {
         builder.append(elementToString(eObject));
@@ -85,6 +83,6 @@ public class DebugHelper {
       return builder.toString();
 
     }
-    return obj_p.toString();
+    return obj.toString();
   }
 }

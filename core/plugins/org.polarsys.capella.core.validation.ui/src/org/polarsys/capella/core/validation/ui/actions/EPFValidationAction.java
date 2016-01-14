@@ -27,6 +27,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -44,6 +45,7 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
@@ -322,12 +324,18 @@ public class EPFValidationAction extends CapellaValidateAction {
         // Original reasons to switch: CDO and too many workspace
         // notifications (especially in transitions)
         // can't use resource_p, see handleDiagnostics below
-        if (getEpf() == null) {
-          LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p, "Default"); //$NON-NLS-1$
-        } else {
-          LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p, getEpf().getName());
-        }
-
+        final String epf = getEpf() == null ? "Default" : getEpf().getName();
+        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, getMarkerID(), new LightMarkerRegistry.IMarkerModification() {	
+          @Override
+          public void modify(IMarker marker) {
+            try {
+              marker.setAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, epf);
+            } catch (CoreException e) {
+              CapellaValidationUIActivator.getDefault().getLog().log(
+                  new Status(e.getStatus().getSeverity(), CapellaValidationUIActivator.getDefault().getBundle().getSymbolicName(), e.getMessage(), e));
+            }
+          }
+        });
       }
 
       /**

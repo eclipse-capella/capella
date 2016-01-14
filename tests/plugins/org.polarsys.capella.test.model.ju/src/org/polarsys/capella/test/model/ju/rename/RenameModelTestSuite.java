@@ -12,7 +12,7 @@ package org.polarsys.capella.test.model.ju.rename;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.model.ju.model.RenameModel;
 
 public class RenameModelTestSuite extends RenameModel {
@@ -25,7 +25,7 @@ public class RenameModelTestSuite extends RenameModel {
 
     IFile file = getCapellaFileForLoadedModel(getRequiredTestModels().get(0));
 
-    TestHelper.renameModelFile(file, "renamed_" + getRequiredTestModels().get(0));
+    GuiActions.renameModelFile(file, "renamed_" + getRequiredTestModels().get(0));
 
     Session session = getSessionForTestModel(getRequiredTestModels().get(0));
     assertTrue("Session is not loaded with renamed resource", session != null);

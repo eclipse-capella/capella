@@ -31,7 +31,6 @@ import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.la.LogicalFunction;
@@ -168,10 +167,6 @@ public class FixCustomFeaturesHelper {
   }
 
   private static RGBValues createRGBValues(int red, int green, int blue) {
-    RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
-    rgb.setRed(red);
-    rgb.setGreen(green);
-    rgb.setBlue(blue);
-    return rgb;
+    return RGBValues.create(red, green, blue);
   }
 }

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.recrpl.ju;singleton:=true
-Bundle-Version: 0.8.2.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.recrpl.ju.RecRplTestPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -13,6 +13,12 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.eclipse.emf.diffmerge
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.test.recrpl.ju,
+ org.polarsys.capella.test.recrpl.ju.handlers.filter,
+ org.polarsys.capella.test.recrpl.ju.model,
+ org.polarsys.capella.test.recrpl.ju.testcases,
+ org.polarsys.capella.test.recrpl.ju.testsuites,
+ org.polarsys.capella.test.recrpl.ju.testsuites.main

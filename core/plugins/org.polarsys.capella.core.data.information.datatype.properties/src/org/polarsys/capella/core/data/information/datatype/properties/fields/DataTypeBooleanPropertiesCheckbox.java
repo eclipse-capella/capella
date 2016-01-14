@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,30 +35,30 @@ public class DataTypeBooleanPropertiesCheckbox extends AbstractSemanticCheckboxG
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param style
+   * @param widgetFactory
    */
-  public DataTypeBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, widgetFactory_p, true);
+  public DataTypeBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, widgetFactory, true);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
-   * @param widgetFactory_p
-   * @param showInclusiveFields_p
+   * @param parent
+   * @param style
+   * @param widgetFactory
+   * @param showInclusiveFields
    */
-  public DataTypeBooleanPropertiesCheckbox(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean showInclusiveFields_p) {
-    super(parent_p, widgetFactory_p);
+  public DataTypeBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showInclusiveFields) {
+    super(parent, widgetFactory);
 
-    _isFinalBtn = createButton(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL, Messages.getString("DataType.IsFinalLabel"), parent_p); //$NON-NLS-1$  
-    _isAbstractBtn = createButton(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT, Messages.getString("DataType.IsAbstractLabel"), parent_p); //$NON-NLS-1$ 
-    _isDiscreteBtn = createButton(DatatypePackage.Literals.DATA_TYPE__DISCRETE, Messages.getString("DataType.IsDiscreteLabel"), parent_p); //$NON-NLS-1$
-    if (showInclusiveFields_p) {
-      _isMinInclusiveBtn = createButton(DatatypePackage.Literals.DATA_TYPE__MIN_INCLUSIVE, Messages.getString("DataType.IsMinInclusiveLabel"), parent_p); //$NON-NLS-1$  
-      _isMaxInclusiveBtn = createButton(DatatypePackage.Literals.DATA_TYPE__MAX_INCLUSIVE, Messages.getString("DataType.IsMaxInclusiveLabel"), parent_p); //$NON-NLS-1$  
+    _isFinalBtn = createButton(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL, Messages.getString("DataType.IsFinalLabel"), parent); //$NON-NLS-1$  
+    _isAbstractBtn = createButton(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT, Messages.getString("DataType.IsAbstractLabel"), parent); //$NON-NLS-1$ 
+    _isDiscreteBtn = createButton(DatatypePackage.Literals.DATA_TYPE__DISCRETE, Messages.getString("DataType.IsDiscreteLabel"), parent); //$NON-NLS-1$
+    if (showInclusiveFields) {
+      _isMinInclusiveBtn = createButton(DatatypePackage.Literals.DATA_TYPE__MIN_INCLUSIVE, Messages.getString("DataType.IsMinInclusiveLabel"), parent); //$NON-NLS-1$  
+      _isMaxInclusiveBtn = createButton(DatatypePackage.Literals.DATA_TYPE__MAX_INCLUSIVE, Messages.getString("DataType.IsMaxInclusiveLabel"), parent); //$NON-NLS-1$  
     }
   }
 

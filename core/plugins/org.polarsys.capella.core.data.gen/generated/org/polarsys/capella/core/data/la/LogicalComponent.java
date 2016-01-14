@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getOwnedLogicalComponents <em>Owned Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getOwnedLogicalArchitectures <em>Owned Logical Architectures</em>}</li>
@@ -32,7 +33,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getRealizingPhysicalComponents <em>Realizing Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getRealizedSystems <em>Realized Systems</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='LogicalComponent'"

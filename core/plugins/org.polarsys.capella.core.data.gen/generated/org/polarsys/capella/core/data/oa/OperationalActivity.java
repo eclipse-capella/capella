@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalActivity#getOwnedOperationalActivityPkgs <em>Owned Operational Activity Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalActivity#getActivityAllocations <em>Activity Allocations</em>}</li>
@@ -32,7 +33,6 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalActivity#getContainedOperationalActivities <em>Contained Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalActivity#getChildrenOperationalActivities <em>Children Operational Activities</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActivity()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Any process step or function performed, both mental and physical, toward achieving some objective. A task is a \"formal\" activity (see also task).\r\n[source: Sys EM, EIA/IS-731.1]' usage\040guideline='In the first steps of the operational analysis, all activities related to the targeted domain should be identified, regardless of their future allocation to the targeted system or not (e.g. even activities of actors external to the future system being design, should be identified and modelled)\r\n' arcadia_description='An operational Activity is a process step or function performed toward achieving some objective, by actors that could necessitate to use the system for this. Example: listen to radio, select a radio station...' used\040in\040levels='operational' usage\040examples='../img/usage_examples/example_operational_activities.png' constraints='none' comment/notes='none' reference\040documentation='none'"

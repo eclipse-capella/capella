@@ -74,15 +74,8 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @return
      */
-    public ECrossReferenceAdapter getCrossReferencer(EditingDomain editingDomain);
+    public SemanticCrossReferencer getCrossReferencer(EditingDomain editingDomain);
 
-    /**
-     * Get cross referencer for derived features computation.<br>
-     * This one also must limit its scope to semantic models.
-     * 
-     * @return
-     */
-    public ECrossReferenceAdapter getDerivedCrossReferencer(EditingDomain editingDomain);
   }
 
   /**
@@ -379,7 +372,6 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       for (IEditingDomainListener listener : getEditingDomainListeners()) {
         listener.disposedEditingDomain(this);
       }
-
     }
 
     private List<IEditingDomainListener> getEditingDomainListeners() {
@@ -400,7 +392,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @return
      */
-    public ECrossReferenceAdapter getCrossReferencer() {
+    public SemanticCrossReferencer getCrossReferencer() {
       SemanticResourceSet semanticResourceSet = getResourceSet();
       if (semanticResourceSet != null) {
         return semanticResourceSet.getCrossReferencer();
@@ -419,43 +411,9 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     }
 
     /**
-     * Get cross referencer that should be used for TIG helpers computation.
      * 
-     * @return
-     */
-    public ECrossReferenceAdapter getDerivedCrossReferencer() {
-      SemanticResourceSet semanticResourceSet = getResourceSet();
-      if (semanticResourceSet != null) {
-        return semanticResourceSet.getDerivedCrossReferencer();
-      }
-      return null;
-    }
-
-    /**
-     * Get cross holding resource.
      * 
-     * @return
-     */
-    // public HoldingResource getHoldingResource() {
-    // // There is no need for the holding resource, if no derived features cross referencer was found.
-    // if ((null != getDerivedCrossReferencer()) && (null == _holdingResource)) {
-    // // Create and attach cross referencer resource.
-    // _holdingResource = new HoldingResource();
-    // ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName()).execute(new
     // AbstractNonDirtyingCommand() {
-    // @SuppressWarnings("synthetic-access")
-    // public void run() {
-    // getResourceSet().getResources().add(_holdingResource);
-    // // the 'resourceSet' attribute of the holding resource must
-    // // be set, or the cross referencer won't work correctly !
-    // _holdingResource.basicSetResourceSet(getResourceSet(), null);
-    // }
-    // });
-    // }
-    // return _holdingResource;
-    // }
-
-    /**
      * @see org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain#getResourceSet()
      */
     @Override
@@ -531,14 +489,11 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * Editing domain.
      */
     private EditingDomain _editingDomain;
-    /**
-     * Derived features cross referencer.
-     */
-    private ECrossReferenceAdapter _derivedCrossReferencer;
+    
     /**
      * General purpose cross referencer.
      */
-    private ECrossReferenceAdapter _crossReferencer;
+    private SemanticCrossReferencer _crossReferencer;
     /**
      * Data notifier.
      */
@@ -562,12 +517,8 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       // Load (expectedly) unique cross referencer for derived features computation.
       // Also load general purpose cross referencer.
       loadCrossReferencers(getEditingDomain());
-      // Register it.
-      if (null != _derivedCrossReferencer) {
-        eAdapters().add(_derivedCrossReferencer);
-      }
       // Add general cross referencing cross referencer.
-      if ((null != _crossReferencer) && (_crossReferencer != _derivedCrossReferencer)) {
+      if (null != _crossReferencer) {
         eAdapters().add(_crossReferencer);
       }
       // Add the famous and useful data notifier.
@@ -597,7 +548,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @return
      */
-    protected ECrossReferenceAdapter getCrossReferencer() {
+    protected SemanticCrossReferencer getCrossReferencer() {
       return _crossReferencer;
     }
 
@@ -611,15 +562,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     }
 
     /**
-     * Get derived features cross referencer.
      * 
-     * @return
-     */
-    protected ECrossReferenceAdapter getDerivedCrossReferencer() {
-      return _derivedCrossReferencer;
-    }
-
-    /**
      * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
      */
     public EditingDomain getEditingDomain() {
@@ -652,7 +595,6 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       if (null != semanticEditingDomainProviders) {
         ICrossReferencerProvider provider = semanticEditingDomainProviders.getCrossReferencerProvider();
         if (null != provider) {
-          _derivedCrossReferencer = provider.getDerivedCrossReferencer(editingDomain);
           _crossReferencer = provider.getCrossReferencer(editingDomain);
         }
       }
@@ -715,7 +657,6 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
 
   /**
    * Do create a custom transactional editing domain using newly created custom custom stack.
-   * 
    * @param stack
    */
   protected TransactionalEditingDomain doCreateEditingDomain(TransactionalCommandStack stack) {

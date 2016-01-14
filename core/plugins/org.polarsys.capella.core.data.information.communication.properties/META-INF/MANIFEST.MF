@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.information.communication.properties;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.information.communication.properties.CommunicationPropertiesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport
@@ -10,5 +10,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.information.communication.properties,
  org.polarsys.capella.core.data.information.communication.properties.fields,
  org.polarsys.capella.core.data.information.communication.properties.sections
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin

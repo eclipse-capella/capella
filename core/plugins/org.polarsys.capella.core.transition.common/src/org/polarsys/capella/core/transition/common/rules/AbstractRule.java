@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,69 +50,69 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   /**
    * @see org.polarsys.capella.core.transition.common.rules.IRuleScope#retrieveRootElement(java.lang.Object, java.lang.Object)
    */
-  public List<EObject> retrieveRootElements(EObject source_p, IContext context_p) {
-    setCurrentContext(context_p);
+  public List<EObject> retrieveRootElements(EObject source, IContext context) {
+    setCurrentContext(context);
     List<EObject> result = new ArrayList<EObject>();
-    retrieveRootElement(source_p, result, context_p);
+    retrieveRootElement(source, result, context);
     return result;
   }
 
   /**
    * @see org.polarsys.capella.core.transition.common.rules.IRuleScope#retrieveContainer(java.lang.Object, java.lang.Object)
    */
-  public List<EObject> retrieveContainers(EObject source_p, IContext context_p) {
-    setCurrentContext(context_p);
+  public List<EObject> retrieveContainers(EObject source, IContext context) {
+    setCurrentContext(context);
     List<EObject> result = new ArrayList<EObject>();
-    retrieveContainer(source_p, result, context_p);
+    retrieveContainer(source, result, context);
     return result;
   }
 
   /**
    * {@inheritDoc}
    */
-  public List<EObject> retrieveRequiredElements(EObject element_p, IContext context_p) {
-    setCurrentContext(context_p);
+  public List<EObject> retrieveRequiredElements(EObject element, IContext context) {
+    setCurrentContext(context);
     List<EObject> result = new ArrayList<EObject>();
-    retrieveRequired(element_p, result, context_p);
+    retrieveRequired(element, result, context);
     return result;
   }
 
   /**
    * @see org.polarsys.capella.core.transition.common.rules.IRuleScope#retrieveRelatedElements(java.lang.Object, java.lang.Object)
    */
-  public List<EObject> retrieveRelatedElements(EObject element_p, IContext context_p) {
-    setCurrentContext(context_p);
+  public List<EObject> retrieveRelatedElements(EObject element, IContext context) {
+    setCurrentContext(context);
     List<EObject> result = new ArrayList<EObject>();
-    retrieveCurrent(element_p, result, context_p);
-    retrieveGoDeep(element_p, result, context_p);
+    retrieveCurrent(element, result, context);
+    retrieveGoDeep(element, result, context);
 
     return result;
   }
 
-  protected void retrieveCurrent(EObject source_p, List<EObject> result_p, IContext context_p) {
-    setCurrentContext(context_p);
-    result_p.add(source_p);
+  protected void retrieveCurrent(EObject source, List<EObject> result, IContext context) {
+    setCurrentContext(context);
+    result.add(source);
   }
 
-  protected void retrieveRequired(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
     // Nothing here
   }
 
-  protected void retrieveRootElement(EObject source_p, List<EObject> result_p, IContext context_p) {
-    EObject container = TransformationHandlerHelper.getInstance(context_p).getLevelElement(source_p, context_p);
+  protected void retrieveRootElement(EObject source, List<EObject> result, IContext context) {
+    EObject container = TransformationHandlerHelper.getInstance(context).getLevelElement(source, context);
     if (container != null) {
-      result_p.add(container);
+      result.add(container);
     }
   }
 
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
     // Nothing here
   }
 
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    EObject container = element_p.eContainer();
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    EObject container = element.eContainer();
     if (container != null) {
-      result_p.add(container);
+      result.add(container);
     }
   }
 
@@ -120,12 +120,12 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
    * ------------ Premises computing ------------
    */
 
-  public List<IPremise> getPremises(EObject element_p) {
+  public List<IPremise> getPremises(EObject element) {
     ArrayList<IPremise> needed = new ArrayList<IPremise>();
     ArrayList<EObject> previous = new ArrayList<EObject>();
-    premicesContainement(element_p, needed);
-    premicesRelated(element_p, needed);
-    previous.add(element_p);
+    premicesContainement(element, needed);
+    premicesRelated(element, needed);
+    previous.add(element);
 
     // Log invalid premises
     IContext context = getCurrentContext();
@@ -141,48 +141,48 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
           } else if ((result != null) && (result instanceof EObject) && !scope.isInScope((EObject) result, context)) {
             LogHelper.getInstance().warn(
                 NLS.bind("Element ''{0}'' is premise of ''{1}'' but not in scope.", LogHelper.getInstance().getText(result),
-                    LogHelper.getInstance().getText(element_p)), Messages.Activity_Transformation);
+                    LogHelper.getInstance().getText(element)), Messages.Activity_Transformation);
           }
         }
       }
     }
 
     if (LogHelper.getInstance().hasDebug()) {
-      LogHelper.getInstance().debug(NLS.bind("Premises of ''{0}'' .", LogHelper.getInstance().getText(element_p)), previous, Messages.Activity_Transformation);
+      LogHelper.getInstance().debug(NLS.bind("Premises of ''{0}'' .", LogHelper.getInstance().getText(element)), previous, Messages.Activity_Transformation);
     }
 
     return needed;
   }
 
   /**
-   * @param element_p
-   * @param needed_p
+   * @param element
+   * @param needed
    */
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
     // Nothing here
   }
 
   /**
-   * @param element_p
-   * @param needed_p
+   * @param element
+   * @param needed
    */
-  protected void premicesContainement(EObject element_p, ArrayList<IPremise> needed_p) {
-    IPremise premise = createDefaultContainementPremice(element_p);
+  protected void premicesContainement(EObject element, ArrayList<IPremise> needed) {
+    IPremise premise = createDefaultContainementPremice(element);
     if (premise != null) {
-      needed_p.add(premise);
+      needed.add(premise);
     }
   }
 
   /**
    * Return a premise for the container (by default, if container isn't in the scope of transformation, we find recursively a container in the scope)
    */
-  protected ContainmentPremise<EObject> createDefaultContainementPremice(EObject eObject_p) {
-    EObject parent = eObject_p.eContainer();
+  protected ContainmentPremise<EObject> createDefaultContainementPremice(EObject eObject) {
+    EObject parent = eObject.eContainer();
     IContext context = getCurrentContext();
     if (context != null) {
       IScopeHandler scope = ScopeHandlerHelper.getInstance(context);
       if (scope != null) {
-        parent = eObject_p.eContainer();
+        parent = eObject.eContainer();
         while (parent != null) {
           if (scope.isInScope(parent, context)) {
             break;
@@ -199,18 +199,18 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   }
 
   /**
-   * Return a premise for any elements by eObject.eGet(reference_p) available in the scope
+   * Return a premise for any elements by eObject.eGet(reference) available in the scope
    */
-  protected List<PrecedencePremise<EObject>> createDefaultPrecedencePremices(Collection<EObject> referencedElements_p, String name_p) {
+  protected List<PrecedencePremise<EObject>> createDefaultPrecedencePremices(Collection<EObject> referencedElements, String name) {
     ArrayList<PrecedencePremise<EObject>> premices = new ArrayList<PrecedencePremise<EObject>>();
 
     IContext context = getCurrentContext();
     if (context != null) {
       IScopeHandler scope = ScopeHandlerHelper.getInstance(context);
       if (scope != null) {
-        for (EObject obj : referencedElements_p) {
+        for (EObject obj : referencedElements) {
           if (scope.isInScope(obj, context)) {
-            premices.add(createPrecedencePremice(obj, name_p));
+            premices.add(createPrecedencePremice(obj, name));
           }
         }
       }
@@ -219,18 +219,18 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   }
 
   /**
-   * Return a premise for any elements by eObject.eGet(reference_p) available in the scope
+   * Return a premise for any elements by eObject.eGet(reference) available in the scope
    */
-  protected List<PrecedencePremise<EObject>> createDefaultCriticalPremices(Collection<EObject> referencedElements_p, String name_p) {
+  protected List<PrecedencePremise<EObject>> createDefaultCriticalPremices(Collection<EObject> referencedElements, String name) {
     ArrayList<PrecedencePremise<EObject>> premices = new ArrayList<PrecedencePremise<EObject>>();
 
     IContext context = getCurrentContext();
     if (context != null) {
       IScopeHandler scope = ScopeHandlerHelper.getInstance(context);
       if (scope != null) {
-        for (EObject obj : referencedElements_p) {
+        for (EObject obj : referencedElements) {
           if (scope.isInScope(obj, context)) {
-            premices.add(createCriticalPremice(obj, name_p));
+            premices.add(createCriticalPremice(obj, name));
           }
         }
       }
@@ -239,9 +239,9 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   }
 
   /**
-   * Return a premise for any elements by eObject.eGet(reference_p) available in the scope
+   * Return a premise for any elements by eObject.eGet(reference) available in the scope
    */
-  public List<PrecedencePremise<EObject>> createDefaultPrecedencePremices(EObject eObject_p, EReference reference_p) {
+  public List<PrecedencePremise<EObject>> createDefaultPrecedencePremices(EObject eObject, EReference reference) {
     ArrayList<PrecedencePremise<EObject>> premices = new ArrayList<PrecedencePremise<EObject>>();
 
     IContext context = getCurrentContext();
@@ -249,19 +249,19 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
       IScopeHandler scope = ScopeHandlerHelper.getInstance(context);
       if (scope != null) {
 
-        if (reference_p.isMany()) {
-          for (Object obj : ((EList) eObject_p.eGet(reference_p))) {
+        if (reference.isMany()) {
+          for (Object obj : ((EList) eObject.eGet(reference))) {
             if ((obj != null) && (obj instanceof EObject)) {
               if (scope.isInScope((EObject) obj, context)) {
-                premices.add(createPrecedencePremice((EObject) obj, reference_p.getName()));
+                premices.add(createPrecedencePremice((EObject) obj, reference.getName()));
               }
             }
           }
         } else {
-          Object obj = eObject_p.eGet(reference_p);
+          Object obj = eObject.eGet(reference);
           if ((obj != null) && (obj instanceof EObject)) {
             if (scope.isInScope((EObject) obj, context)) {
-              premices.add(createPrecedencePremice((EObject) obj, reference_p.getName()));
+              premices.add(createPrecedencePremice((EObject) obj, reference.getName()));
             }
           }
         }
@@ -271,34 +271,34 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   }
 
   /**
-   * Return critical premises for all targeted elements from the given reference_p
-   * @param eObject_p
-   * @param reference_p
+   * Return critical premises for all targeted elements from the given reference
+   * @param eObject
+   * @param reference
    * @return
    */
-  public List<PrecedencePremise<EObject>> createDefaultCriticalPremices(EObject eObject_p, EReference reference_p) {
-    List<PrecedencePremise<EObject>> premices = createDefaultPrecedencePremices(eObject_p, reference_p);
+  public List<PrecedencePremise<EObject>> createDefaultCriticalPremices(EObject eObject, EReference reference) {
+    List<PrecedencePremise<EObject>> premices = createDefaultPrecedencePremices(eObject, reference);
     for (PrecedencePremise<EObject> premice : premices) {
       premice.setCritical(true);
     }
     return premices;
   }
 
-  protected PrecedencePremise<EObject> createPrecedencePremice(EObject eObject_p, String string_p) {
+  protected PrecedencePremise<EObject> createPrecedencePremice(EObject eObject, String string) {
     PrecedencePremise<EObject> premice = null;
-    premice = new PrecedencePremise<EObject>(eObject_p, string_p);
+    premice = new PrecedencePremise<EObject>(eObject, string);
     return premice;
   }
 
-  protected ContainmentPremise<EObject> createContainmentPremice(EObject eObject_p) {
+  protected ContainmentPremise<EObject> createContainmentPremice(EObject eObject) {
     ContainmentPremise<EObject> premice = null;
-    premice = new ContainmentPremise<EObject>(eObject_p);
+    premice = new ContainmentPremise<EObject>(eObject);
     return premice;
   }
 
-  protected ContainmentPremise<EObject> createCriticalPremice(EObject eObject_p, String string_p) {
+  protected ContainmentPremise<EObject> createCriticalPremice(EObject eObject, String string) {
     ContainmentPremise<EObject> premice = null;
-    premice = new ContainmentPremise<EObject>(eObject_p);
+    premice = new ContainmentPremise<EObject>(eObject);
     return premice;
   }
 
@@ -308,47 +308,47 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
    * in an incomplete rule, we perform only transformation, and we attach them when the complete rule will be triggered
    */
 
-  public void apply(EObject element_p, IContext context_p) throws Exception {
+  public void apply(EObject element, IContext context) throws Exception {
 
-    Boolean isComplete = ((Boolean) context_p.get(ITransitionConstants.TRANSPOSER_APPLY_IS_COMPLETE));
+    Boolean isComplete = ((Boolean) context.get(ITransitionConstants.TRANSPOSER_APPLY_IS_COMPLETE));
     boolean isCompleteRule = isComplete == null ? true : isComplete.booleanValue();
     if (!isCompleteRule) {
-      registerAsIncomplete(element_p, context_p);
+      registerAsIncomplete(element, context);
     }
 
     try {
-      if (applyRequired(element_p, context_p).isOK()) {
+      if (applyRequired(element, context).isOK()) {
 
-        if (!isCompleteRule || (isCompleteRule && !isIncomplete(element_p, context_p))) {
+        if (!isCompleteRule || (isCompleteRule && !isIncomplete(element, context))) {
 
-          IStatus transformRequired = transformRequired(element_p, context_p);
+          IStatus transformRequired = transformRequired(element, context);
 
           if (transformRequired.isOK()) {
-            for (EObject result : transformElement(element_p, context_p)) {
-              postTransformElement(element_p, result, context_p);
+            for (EObject result : transformElement(element, context)) {
+              postTransformElement(element, result, context);
 
-              if (isValidTargetElement(element_p, result, context_p)) {
-                if (!isRegisteredTargetElement(element_p, result, context_p)) {
-                  registerTargetElement(element_p, result, context_p);
+              if (isValidTargetElement(element, result, context)) {
+                if (!isRegisteredTargetElement(element, result, context)) {
+                  registerTargetElement(element, result, context);
                 }
               }
             }
           } else {
-            LogHelper.getInstance().log("Element is not transitioned: " + transformRequired.getMessage(), transformRequired, element_p,
+            LogHelper.getInstance().log("Element is not transitioned: " + transformRequired.getMessage(), transformRequired, element,
                 transformRequired.getPlugin());
           }
         }
 
         if (isCompleteRule) {
-          for (EObject result : retrieveTracedElements(element_p, context_p)) {
-            if (isValidTargetElement(element_p, result, context_p)) {
-              updateElement(element_p, result, context_p);
+          for (EObject result : retrieveTracedElements(element, context)) {
+            if (isValidTargetElement(element, result, context)) {
+              updateElement(element, result, context);
 
-              if (!isContainementAttached(element_p, result, context_p)) {
-                attachContainement(element_p, result, context_p);
+              if (!isContainementAttached(element, result, context)) {
+                attachContainement(element, result, context);
               }
-              if (!isRelatedAttached(element_p, result, context_p)) {
-                attachRelated(element_p, result, context_p);
+              if (!isRelatedAttached(element, result, context)) {
+                attachRelated(element, result, context);
               }
             }
           }
@@ -365,199 +365,199 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    */
-  protected void postTransformElement(EObject element_p, EObject result_p, IContext context_p) {
-    TransformationHandlerHelper.getInstance(context_p).postTransformElement(element_p, result_p, context_p);
+  protected void postTransformElement(EObject element, EObject result, IContext context) {
+    TransformationHandlerHelper.getInstance(context).postTransformElement(element, result, context);
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    */
-  protected void updateElement(EObject element_p, EObject result_p, IContext context_p) {
+  protected void updateElement(EObject element, EObject result, IContext context) {
     // Nothing here
   }
 
   /**
-   * @param element_p
-   * @param context_p
+   * @param element
+   * @param context
    * @return
    */
-  public IStatus applyRequired(EObject element_p, IContext context_p) {
-    Object applyRequired = context_p.get(ITransitionConstants.TRANSPOSER_APPLY_REQUIRED);
+  public IStatus applyRequired(EObject element, IContext context) {
+    Object applyRequired = context.get(ITransitionConstants.TRANSPOSER_APPLY_REQUIRED);
     if ((applyRequired != null) && ((Boolean) applyRequired).booleanValue()) {
       return Status.OK_STATUS;
     }
     return new Status(IStatus.WARNING, Messages.Activity_Transformation, "Apply is not required for this transition");
   }
 
-  protected Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p) {
-    return TraceabilityHandlerHelper.getInstance(context_p).retrieveTracedElements(source_p, context_p);
+  protected Collection<EObject> retrieveTracedElements(EObject source, IContext context) {
+    return TraceabilityHandlerHelper.getInstance(context).retrieveTracedElements(source, context);
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected boolean isValidTargetElement(EObject element_p, EObject result_p, IContext context_p) {
-    return result_p != null;
+  protected boolean isValidTargetElement(EObject element, EObject result, IContext context) {
+    return result != null;
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected boolean isRegisteredTargetElement(EObject element_p, EObject result_p, IContext context_p) {
+  protected boolean isRegisteredTargetElement(EObject element, EObject result, IContext context) {
     return false;
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    */
-  protected void registerTargetElement(EObject sourceElement, EObject targetElement_p, IContext context_p) {
-    if (targetElement_p != null) {
-      ((Collection) context_p.get(ITransitionConstants.TRANSFORMED_ELEMENTS)).add(targetElement_p);
+  protected void registerTargetElement(EObject sourceElement, EObject targetElement, IContext context) {
+    if (targetElement != null) {
+      ((Collection) context.get(ITransitionConstants.TRANSFORMED_ELEMENTS)).add(targetElement);
     }
-    TraceabilityHandlerHelper.getInstance(context_p).attachTraceability(sourceElement, targetElement_p, context_p);
+    TraceabilityHandlerHelper.getInstance(context).attachTraceability(sourceElement, targetElement, context);
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected boolean isRelatedAttached(EObject element_p, EObject result_p, IContext context_p) {
+  protected boolean isRelatedAttached(EObject element, EObject result, IContext context) {
     return false;
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected boolean isContainementAttached(EObject element_p, EObject result_p, IContext context_p) {
-    return result_p.eContainer() != null;
+  protected boolean isContainementAttached(EObject element, EObject result, IContext context) {
+    return result.eContainer() != null;
   }
 
   /**
    * Default implementation attach the target into the transitioned container
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    */
-  protected void attachContainement(EObject element_p, EObject result_p, IContext context_p) {
+  protected void attachContainement(EObject element, EObject result, IContext context) {
 
-    EObject container = getBestContainer(element_p, result_p, context_p);
+    EObject container = getBestContainer(element, result, context);
 
     if (container == null) {
-      container = getDefaultContainer(element_p, result_p, context_p);
+      container = getDefaultContainer(element, result, context);
     }
 
-    EStructuralFeature sourceFeature = getSourceContainementFeature(element_p, result_p, context_p);
-    EStructuralFeature targetFeature = getTargetContainementFeature(element_p, result_p, container, context_p);
+    EStructuralFeature sourceFeature = getSourceContainementFeature(element, result, context);
+    EStructuralFeature targetFeature = getTargetContainementFeature(element, result, container, context);
 
     if (container != null) {
-      if (AttachmentHelper.getInstance(context_p).isApplicable(container.eClass(), targetFeature)) {
-        AttachmentHelper.getInstance(context_p).attachElementByReference(element_p.eContainer(), container, element_p, result_p, (EReference) sourceFeature,
+      if (AttachmentHelper.getInstance(context).isApplicable(container.eClass(), targetFeature)) {
+        AttachmentHelper.getInstance(context).attachElementByReference(element.eContainer(), container, element, result, (EReference) sourceFeature,
             (EReference) targetFeature);
       }
     }
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
+  protected EObject getBestContainer(EObject element, EObject result, IContext context) {
     EObject bestContainer = null;
-    EObject container = getSourceContainer(element_p, result_p, context_p);
+    EObject container = getSourceContainer(element, result, context);
 
     if (container != null) {
       ISelectionContext sContext =
-          SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element_p,
-              result_p);
+          SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element,
+              result);
 
-      bestContainer = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(container, context_p, sContext);
+      bestContainer = TransformationHandlerHelper.getInstance(context).getBestTracedElement(container, context, sContext);
     }
     return bestContainer;
   }
 
-  protected EObject getSourceContainer(EObject element_p, EObject result_p, IContext context_p) {
-    return element_p.eContainer();
+  protected EObject getSourceContainer(EObject element, EObject result, IContext context) {
+    return element.eContainer();
   }
 
-  public EObject retrieveDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    return getDefaultContainer(element_p, result_p, context_p);
+  public EObject retrieveDefaultContainer(EObject element, EObject result, IContext context) {
+    return getDefaultContainer(element, result, context);
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
     return null;
   }
 
   /**
-   * Default implementation can return null if element_p is not attached
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * Default implementation can return null if element is not attached
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected EStructuralFeature getSourceContainementFeature(EObject element_p, EObject result_p, IContext context_p) {
-    return element_p.eContainingFeature();
+  protected EStructuralFeature getSourceContainementFeature(EObject element, EObject result, IContext context) {
+    return element.eContainingFeature();
   }
 
   /**
-   * Default implementation can return null if element_p is not attached
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * Default implementation can return null if element is not attached
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    return element_p.eContainingFeature();
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    return element.eContainingFeature();
   }
 
-  public EStructuralFeature retrieveTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    return getTargetContainementFeature(element_p, result_p, container_p, context_p);
+  public EStructuralFeature retrieveTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    return getTargetContainementFeature(element, result, container, context);
   }
 
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
+  protected void attachRelated(EObject element, EObject result, IContext context) {
     // Nothing here
   }
 
   /**
-   * @param element_p
-   * @param context_p
+   * @param element
+   * @param context
    */
-  protected Collection<EObject> transformElement(EObject element_p, IContext context_p) {
-    EObject transitioned = transformDirectElement(element_p, context_p);
+  protected Collection<EObject> transformElement(EObject element, IContext context) {
+    EObject transitioned = transformDirectElement(element, context);
     if (LogHelper.getInstance().hasDebug()) {
       LogHelper.getInstance().debug(
-          NLS.bind("Element ''{0}'' {1} is transformed to ''{2}'' {3} [{4}]", new Object[] { LogHelper.getInstance().getText(element_p),
-                                                                                            EObjectLabelProviderHelper.getMetaclassLabel(element_p, true),
+          NLS.bind("Element ''{0}'' {1} is transformed to ''{2}'' {3} [{4}]", new Object[] { LogHelper.getInstance().getText(element),
+                                                                                            EObjectLabelProviderHelper.getMetaclassLabel(element, true),
                                                                                             LogHelper.getInstance().getText(transitioned),
                                                                                             EObjectLabelProviderHelper.getMetaclassLabel(transitioned, true),
                                                                                             getClass().getSimpleName() }),
-          new Object[] { element_p, transitioned }, Messages.Activity_Transformation);
+          new Object[] { element, transitioned }, Messages.Activity_Transformation);
     }
     return Collections.singleton(transitioned);
   }
@@ -570,10 +570,10 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   /**
    * @return
    */
-  public abstract EClass getTargetType(EObject element_p, IContext context_p);
+  public abstract EClass getTargetType(EObject element, IContext context);
 
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    EClass clazz = getTargetType(element_p, context_p);
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    EClass clazz = getTargetType(element, context);
     EObject result = null;
 
     if (clazz != null) {
@@ -583,40 +583,40 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
     return result;
   }
 
-  public boolean isApplicableOn(EObject element_p) {
+  public boolean isApplicableOn(EObject element) {
     EClass sourceType = getSourceType();
-    return (sourceType != null) && sourceType.isInstance(element_p);
+    return (sourceType != null) && sourceType.isInstance(element);
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
-  protected boolean isFirstAttach(EObject element_p, EObject result_p, IContext context_p) {
-    return result_p.eContainer() == null;
+  protected boolean isFirstAttach(EObject element, EObject result, IContext context) {
+    return result.eContainer() == null;
   }
 
   /**
    * Returns whether the source should be transformed following the given rule
    */
-  public IStatus transformRequired(EObject source_p, IContext context_p) {
+  public IStatus transformRequired(EObject source, IContext context) {
 
-    EClass clazz = getTargetType(source_p, context_p);
+    EClass clazz = getTargetType(source, context);
     if (clazz == null) {
       return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("No rule is defined for the element ''{0}'' [{1}]", LogHelper.getInstance()
-          .getText(source_p), source_p.eClass().getName()));
+          .getText(source), source.eClass().getName()));
     }
 
     ISelectionContext sContext =
-        SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION);
-    EObject result = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(source_p, context_p, sContext);
+        SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION);
+    EObject result = TransformationHandlerHelper.getInstance(context).getBestTracedElement(source, context, sContext);
 
     if (result != null) {
       if (clazz.isInstance(result)) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind("Element ''{0}'' is already transformed [{1}]", LogHelper.getInstance()
-            .getText(source_p), source_p.eClass().getName()));
+            .getText(source), source.eClass().getName()));
       }
     }
     return Status.OK_STATUS;
@@ -629,12 +629,12 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   /**
    * Register the given element as an incomplete element.
    */
-  protected void registerAsIncomplete(EObject element_p, IContext context_p) {
-    Object rest = context_p.get(ITransitionConstants.INCOMPLETE_ELEMENTS);
+  protected void registerAsIncomplete(EObject element, IContext context) {
+    Object rest = context.get(ITransitionConstants.INCOMPLETE_ELEMENTS);
     if (rest == null) {
-      context_p.put(ITransitionConstants.INCOMPLETE_ELEMENTS, new HashSet<EObject>());
+      context.put(ITransitionConstants.INCOMPLETE_ELEMENTS, new HashSet<EObject>());
     }
-    ((Collection) context_p.get(ITransitionConstants.INCOMPLETE_ELEMENTS)).add(element_p);
+    ((Collection) context.get(ITransitionConstants.INCOMPLETE_ELEMENTS)).add(element);
   }
 
   /**
@@ -645,14 +645,14 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
    * We will perform transformation of all dependencing elements and in a second step, we
    * will attach them.
    * 
-   * @param element_p
-   * @param context_p
+   * @param element
+   * @param context
    * @return
    */
-  protected boolean isIncomplete(EObject element_p, IContext context_p) {
-    Object rest = context_p.get(ITransitionConstants.INCOMPLETE_ELEMENTS);
+  protected boolean isIncomplete(EObject element, IContext context) {
+    Object rest = context.get(ITransitionConstants.INCOMPLETE_ELEMENTS);
     if (rest != null) {
-      return ((Collection) context_p.get(ITransitionConstants.INCOMPLETE_ELEMENTS)).contains(element_p);
+      return ((Collection) context.get(ITransitionConstants.INCOMPLETE_ELEMENTS)).contains(element);
     }
     return false;
   }
@@ -665,8 +665,8 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   protected IContext currentContext;
 
   @Deprecated
-  public void setCurrentContext(IContext context_p) {
-    currentContext = context_p;
+  public void setCurrentContext(IContext context) {
+    currentContext = context;
   }
 
   @Deprecated

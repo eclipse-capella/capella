@@ -2,33 +2,31 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.sirius.ui;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-localization: plugin
-Require-Bundle: org.eclipse.sirius.ui,
+Require-Bundle: org.eclipse.ui.ide,
+ org.eclipse.ui.navigator,
  org.eclipse.sirius.common,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius.ecore.extender,
- org.eclipse.gmf.runtime.diagram.ui,
- org.eclipse.ui.navigator,
- org.polarsys.capella.common.ui.services,
- org.polarsys.capella.core.model.handler,
- org.eclipse.sirius.table,
- org.polarsys.capella.core.platform.sirius.ui.actions,
  org.eclipse.sirius.table.ui,
- org.eclipse.ui.ide,
- org.eclipse.sirius.diagram,
+ org.eclipse.sirius.ext.base,
+ org.eclipse.sirius.diagram.sequence;bundle-version="2.0.0",
+ org.eclipse.sirius.diagram.layoutdata;visibility:=reexport,
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.gmf.runtime.diagram.ui,
  org.eclipse.gmf.runtime.diagram.ui.providers,
  org.eclipse.gmf.runtime.diagram.ui.render,
- org.polarsys.capella.core.preferences,
- org.eclipse.sirius.diagram.layoutdata;visibility:=reexport,
- org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.core.libraries,
- org.eclipse.sirius.ext.base,
- org.eclipse.sirius.diagram.ui,
  com.google.guava,
- org.eclipse.sirius.diagram.sequence;bundle-version="2.0.0"
+ org.eclipse.amalgam.explorer.activity.ui,
+ org.polarsys.capella.core.libraries,
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.ui.services,
+ org.polarsys.capella.core.platform.sirius.ui.actions
 Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.actions,
  org.polarsys.capella.core.sirius.ui.copylayout,

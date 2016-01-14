@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,7 +91,7 @@ public class PhysicalArchitectureItemProvider
 			// Process PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG
 			if (containedCapabilityRealizationPkgPropertyDescriptor != null) {
 				Object containedCapabilityRealizationPkgValue = eObject.eGet(PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG, true);
-				if (containedCapabilityRealizationPkgValue != null && containedCapabilityRealizationPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedCapabilityRealizationPkgValue)) {
+				if (containedCapabilityRealizationPkgValue != null && containedCapabilityRealizationPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedCapabilityRealizationPkgValue)) {
 					itemPropertyDescriptors.remove(containedCapabilityRealizationPkgPropertyDescriptor);
 				} else if (containedCapabilityRealizationPkgValue == null && ExtensionModelManager.getAnyType(eObject, PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG) != null) {
 					itemPropertyDescriptors.remove(containedCapabilityRealizationPkgPropertyDescriptor);				  					
@@ -102,7 +102,7 @@ public class PhysicalArchitectureItemProvider
 			// Process PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG
 			if (containedPhysicalFunctionPkgPropertyDescriptor != null) {
 				Object containedPhysicalFunctionPkgValue = eObject.eGet(PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG, true);
-				if (containedPhysicalFunctionPkgValue != null && containedPhysicalFunctionPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedPhysicalFunctionPkgValue)) {
+				if (containedPhysicalFunctionPkgValue != null && containedPhysicalFunctionPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedPhysicalFunctionPkgValue)) {
 					itemPropertyDescriptors.remove(containedPhysicalFunctionPkgPropertyDescriptor);
 				} else if (containedPhysicalFunctionPkgValue == null && ExtensionModelManager.getAnyType(eObject, PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG) != null) {
 					itemPropertyDescriptors.remove(containedPhysicalFunctionPkgPropertyDescriptor);				  					

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.Collection#isIsPrimitive <em>Is Primitive</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Collection#getVisibility <em>Visibility</em>}</li>
@@ -34,7 +35,6 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *   <li>{@link org.polarsys.capella.core.data.information.Collection#getIndex <em>Index</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Collection#getContainedOperations <em>Contained Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getCollection()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Collection'"

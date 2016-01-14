@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
-import org.polarsys.capella.common.data.modellingcore.ModellingcoreFactory;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
@@ -113,7 +112,7 @@ public class FunctionInputPortItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION
 			if (inActivityPartitionPropertyDescriptor != null) {
 				Object inActivityPartitionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, true);
-				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
+				if (inActivityPartitionValue != null && inActivityPartitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inActivityPartitionValue)) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);
 				} else if (inActivityPartitionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION) != null) {
 					itemPropertyDescriptors.remove(inActivityPartitionPropertyDescriptor);				  					
@@ -124,7 +123,7 @@ public class FunctionInputPortItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION
 			if (inInterruptibleRegionPropertyDescriptor != null) {
 				Object inInterruptibleRegionValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, true);
-				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
+				if (inInterruptibleRegionValue != null && inInterruptibleRegionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inInterruptibleRegionValue)) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);
 				} else if (inInterruptibleRegionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION) != null) {
 					itemPropertyDescriptors.remove(inInterruptibleRegionPropertyDescriptor);				  					
@@ -135,7 +134,7 @@ public class FunctionInputPortItemProvider
 			// Process ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE
 			if (inStructuredNodePropertyDescriptor != null) {
 				Object inStructuredNodeValue = eObject.eGet(ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true);
-				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
+				if (inStructuredNodeValue != null && inStructuredNodeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inStructuredNodeValue)) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);
 				} else if (inStructuredNodeValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE) != null) {
 					itemPropertyDescriptors.remove(inStructuredNodePropertyDescriptor);				  					
@@ -146,7 +145,7 @@ public class FunctionInputPortItemProvider
 			// Process ActivityPackage.Literals.OBJECT_NODE__SELECTION
 			if (selectionPropertyDescriptor != null) {
 				Object selectionValue = eObject.eGet(ActivityPackage.Literals.OBJECT_NODE__SELECTION, true);
-				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) selectionValue)) {
+				if (selectionValue != null && selectionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) selectionValue)) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);
 				} else if (selectionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.OBJECT_NODE__SELECTION) != null) {
 					itemPropertyDescriptors.remove(selectionPropertyDescriptor);				  					
@@ -157,7 +156,7 @@ public class FunctionInputPortItemProvider
 			// Process ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION
 			if (inputEvaluationActionPropertyDescriptor != null) {
 				Object inputEvaluationActionValue = eObject.eGet(ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION, true);
-				if (inputEvaluationActionValue != null && inputEvaluationActionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) inputEvaluationActionValue)) {
+				if (inputEvaluationActionValue != null && inputEvaluationActionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) inputEvaluationActionValue)) {
 					itemPropertyDescriptors.remove(inputEvaluationActionPropertyDescriptor);
 				} else if (inputEvaluationActionValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.INPUT_PIN__INPUT_EVALUATION_ACTION) != null) {
 					itemPropertyDescriptors.remove(inputEvaluationActionPropertyDescriptor);				  					

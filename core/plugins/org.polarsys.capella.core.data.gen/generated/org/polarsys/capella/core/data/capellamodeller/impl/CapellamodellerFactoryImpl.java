@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public class CapellamodellerFactoryImpl extends EFactoryImpl implements Capellam
 	 */
 	public static CapellamodellerFactory init() {
 		try {
-			CapellamodellerFactory theCapellamodellerFactory = (CapellamodellerFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/modeller/0.8.0"); //$NON-NLS-1$ 
+			CapellamodellerFactory theCapellamodellerFactory = (CapellamodellerFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/modeller/1.0.0"); //$NON-NLS-1$ 
 			if (theCapellamodellerFactory != null) {
 				return theCapellamodellerFactory;
 			}

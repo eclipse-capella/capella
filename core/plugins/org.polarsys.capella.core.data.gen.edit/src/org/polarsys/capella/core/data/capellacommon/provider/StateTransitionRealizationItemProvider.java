@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class StateTransitionRealizationItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION
 			if (realizedStateTransitionPropertyDescriptor != null) {
 				Object realizedStateTransitionValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION, true);
-				if (realizedStateTransitionValue != null && realizedStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedStateTransitionValue)) {
+				if (realizedStateTransitionValue != null && realizedStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedStateTransitionValue)) {
 					itemPropertyDescriptors.remove(realizedStateTransitionPropertyDescriptor);
 				} else if (realizedStateTransitionValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION) != null) {
 					itemPropertyDescriptors.remove(realizedStateTransitionPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class StateTransitionRealizationItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION
 			if (realizingStateTransitionPropertyDescriptor != null) {
 				Object realizingStateTransitionValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION, true);
-				if (realizingStateTransitionValue != null && realizingStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingStateTransitionValue)) {
+				if (realizingStateTransitionValue != null && realizingStateTransitionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingStateTransitionValue)) {
 					itemPropertyDescriptors.remove(realizingStateTransitionPropertyDescriptor);
 				} else if (realizingStateTransitionValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION) != null) {
 					itemPropertyDescriptors.remove(realizingStateTransitionPropertyDescriptor);				  					

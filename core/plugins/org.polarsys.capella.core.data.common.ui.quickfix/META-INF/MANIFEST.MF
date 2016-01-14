@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.common.ui.quickfix;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.polarsys.capella.core.validation.ui,
@@ -10,5 +10,8 @@ Require-Bundle: org.polarsys.capella.core.validation.ui,
  org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.polarsys.capella.core.data.gen;visibility:=reexport
+ org.polarsys.capella.core.data.gen;visibility:=reexport,
+ org.polarsys.capella.core.sirius.analysis,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.core.platform.sirius.ui.actions
 Bundle-Localization: plugin

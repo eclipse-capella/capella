@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,37 +11,21 @@
 package org.polarsys.capella.common.re.handlers.attributes;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
-import org.polarsys.capella.common.re.ReFactory;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.options.IPropertyHandler;
-import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
-import org.polarsys.capella.core.transition.common.rules.AbstractRule;
-import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
-import org.polarsys.kitalpha.transposer.rules.handler.exceptions.possibilities.MappingPossibilityResolutionException;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
-import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IRule;
-import org.polarsys.kitalpha.transposer.rules.handler.rules.common.MappingPossibility;
 
 /**
  *
@@ -58,7 +42,7 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -66,70 +50,80 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
-  public String getDefaultName(EObject object_p, IContext context_p, IPropertyContext pContext_p) {
-    return EObjectLabelProviderHelper.getText(object_p);
+  public String getDefaultName(EObject object, IContext context, IPropertyContext pContext) {
+    return EObjectLabelProviderHelper.getText(object);
   }
 
-  public boolean hasCustomName(EObject object_p, IContext context_p) {
-    return _mNames.containsKey(object_p);
+  public boolean hasCustomName(EObject object, IContext context) {
+    return _mNames.containsKey(object);
   }
 
-  public Collection<EObject> getCustomNameElements(IContext context_p) {
+  public Collection<EObject> getCustomNameElements(IContext context) {
     return _mNames.keySet();
   }
 
-  public String getCustomName(EObject object_p, IContext context_p) {
-    if (_mNames.containsKey(object_p)) {
-      return _mNames.get(object_p);
+  public String getCustomName(EObject object, IContext context) {
+    if (_mNames.containsKey(object)) {
+      return _mNames.get(object);
     }
     return null;
   }
 
-  public void setCustomName(EObject object_p, String value_p, IContext context_p) {
-    _mNames.put(object_p, value_p);
+  public void setCustomName(EObject object, String value, IContext context) {
+    _mNames.put(object, value);
   }
 
-  public String getCurrentName(EObject object_p, IContext context_p, IPropertyContext pContext_p) {
+  public String getCurrentName(EObject object, IContext context, IPropertyContext pContext) {
     String value = "";
-    if (_mNames.containsKey(object_p)) {
-      return _mNames.get(object_p);
+    if (_mNames.containsKey(object)) {
+      return _mNames.get(object);
     }
 
-    if (object_p instanceof CatalogElementLink) {
-      if (!(((CatalogElementLink) object_p).getTarget() instanceof CatalogElement)) {
-        value += getDefaultName(((CatalogElementLink) object_p).getTarget(), context_p, pContext_p);
+    if (object instanceof CatalogElementLink) {
+      value += getDefaultName(((CatalogElementLink) object).getTarget(), context, pContext);
 
-      } else {
-        value += getDefaultName(((CatalogElementLink) object_p).getTarget(), context_p, pContext_p);
-      }
+      // If the element is suffixed, we want to append the suffix of the origin element.
+      if (AttributesHandlerHelper.getInstance(context).isSuffixable(((CatalogElementLink) object).getOrigin().getTarget(), context)) {
+        IProperty property = pContext.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
+        String suffix = (String) pContext.getCurrentValue(property);
 
-      if (ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.CREATED_LINKS, object_p, context_p)) {
+        // If element name was ending by original suffix, we remove it before appending the new suffix
+        String originalSuffix = ((CatalogElement) object.eContainer()).getSuffix();
 
-        if (AttributesHandlerHelper.getInstance(context_p).isSuffixable(((CatalogElementLink) object_p).getOrigin().getTarget(), context_p)) {
-          IProperty property = pContext_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
-          String suffix = (String) pContext_p.getCurrentValue(property);
+        if (originalSuffix == null) {
+          value += suffix;
+        } else if (value.endsWith(originalSuffix)) {
+          value = value.substring(0, value.length() - originalSuffix.length());
+          value += suffix;
+        } else if (ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, object, context)) {
           value += suffix;
         }
+        // If element name doesn't have the same name than the source name, we ignore it
+        // String oriName = getDefaultName(((CatalogElementLink) object_p).getOrigin().getTarget(), context_p, pContext_p);
+        // if (value.equals(oriName)) {
+        // value += suffix;
+        // }
       }
 
-    } else if (object_p instanceof CatalogElement) {
-      IProperty property = pContext_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
-      Object replica = pContext_p.getCurrentValue(property);
+    } else if (object instanceof CatalogElement) {
+      // If it's the target replica, we display the name of the property TARGET_NAME. Otherwise, we display the default name
+      IProperty property = pContext.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
+      Object replica = pContext.getCurrentValue(property);
 
-      if (object_p.equals(replica)) {
-        property = pContext_p.getProperties().getProperty("targetName");
-        String suffix = (String) pContext_p.getCurrentValue(property);
-        value += suffix;
+      if (object.equals(replica)) {
+        property = pContext.getProperties().getProperty(IReConstants.PROPERTY__TARGET_NAME);
+        String replicaName = (String) pContext.getCurrentValue(property);
+        value += replicaName;
       } else {
-        value += getDefaultName(object_p, context_p, pContext_p);
+        value += getDefaultName(object, context, pContext);
       }
 
     } else {
-      value += getDefaultName(object_p, context_p, pContext_p);
+      value += getDefaultName(object, context, pContext);
     }
     return value;
   }
@@ -138,14 +132,14 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setSuffixable(EObject object_p, boolean value_p, IContext context_p) {
-    if (object_p instanceof CatalogElement) {
+  public void setSuffixable(EObject object, boolean value, IContext context) {
+    if (object instanceof CatalogElement) {
       return;
     }
-    if (!value_p) {
-      _suffixable.remove(object_p);
+    if (!value) {
+      _suffixable.remove(object);
     } else {
-      _suffixable.add(object_p);
+      _suffixable.add(object);
     }
 
   }
@@ -154,37 +148,37 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setManualSuffixable(EObject object_p, boolean value_p, IContext context_p) {
-    if (object_p instanceof CatalogElement) {
+  public void setManualSuffixable(EObject object, boolean value, IContext context) {
+    if (object instanceof CatalogElement) {
       return;
     }
-    _msuffixable.add(object_p);
-    if (!value_p) {
-      _suffixable.remove(object_p);
+    _msuffixable.add(object);
+    if (!value) {
+      _suffixable.remove(object);
     } else {
-      _suffixable.add(object_p);
+      _suffixable.add(object);
     }
   }
 
-  public boolean isManualSuffixable(Object object_p, IContext context_p) {
-    return _msuffixable.contains(object_p);
+  public boolean isManualSuffixable(Object object, IContext context) {
+    return _msuffixable.contains(object);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isSuffixable(Object object_p, IContext context_p) {
-    return _suffixable.contains(object_p);
+  public boolean isSuffixable(Object object, IContext context) {
+    return _suffixable.contains(object);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void unsetCustomName(EObject element_p, String value_p, IContext iContext_p, IPropertyContext pContext_p) {
-    if (_mNames.containsKey(element_p)) {
-      _mNames.remove(element_p);
+  public void unsetCustomName(EObject element, String value, IContext iContext, IPropertyContext pContext) {
+    if (_mNames.containsKey(element)) {
+      _mNames.remove(element);
     }
   }
 
@@ -192,8 +186,16 @@ public class DefaultAttributeHandler implements IAttributeHandler {
    * {@inheritDoc}
    */
   @Override
-  public boolean isSuffixableElement(Object object_p, IContext context_p) {
+  public boolean isSuffixableElement(Object object, IContext context) {
     return true;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public EStructuralFeature getSuffixableFeature(EObject object, IContext context) {
+    return object.eClass().getEStructuralFeature("name");
   }
 
 }

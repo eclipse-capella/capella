@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,39 +57,39 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
 
   /**
    * Constructor
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param referencerFeature_p
-   * @param referencedFeature_p
-   * @param referencedFeatureType_p
-   * @param label_p
-   * @param selectionElementDialogMessage_p
-   * @param viewer_p
+   * @param parent
+   * @param widgetFactory
+   * @param referencerFeature
+   * @param referencedFeature
+   * @param referencedFeatureType
+   * @param label
+   * @param selectionElementDialogMessage
+   * @param viewer
    */
-  public ContainmentTableField(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, EReference referencerFeature_p,
-      EReference referencedFeature_p, EClass referencedFeatureType_p, String label_p, String selectionElementDialogMessage_p, IDelegatedViewer viewer_p) {
-    super(parent_p, widgetFactory_p, referencedFeature_p, label_p, viewer_p);
+  public ContainmentTableField(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, EReference referencerFeature,
+      EReference referencedFeature, EClass referencedFeatureType, String label, String selectionElementDialogMessage, IDelegatedViewer viewer) {
+    super(parent, widgetFactory, referencedFeature, label, viewer);
 
-    _referencerFeature = referencerFeature_p;
-    _referencedFeatureType = referencedFeatureType_p;
-    _selectionElementDialogMessage = selectionElementDialogMessage_p;
+    _referencerFeature = referencerFeature;
+    _referencedFeatureType = referencedFeatureType;
+    _selectionElementDialogMessage = selectionElementDialogMessage;
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param widgetFactory_p
-   * @param referencerFeature_p
-   * @param referencedFeature_p a feature that refers to another element from elements contained by the semantic feature.
-   * @param referencedFeatureType_p the concrete type of the referenced feature (Use to create new element).
-   * @param label_p the label displayed at the right top of the table.
-   * @param selectionElementDialogMessage_p The message displayed when opening the dialog to add / create an element.
+   * @param parent
+   * @param widgetFactory
+   * @param referencerFeature
+   * @param referencedFeature a feature that refers to another element from elements contained by the semantic feature.
+   * @param referencedFeatureType the concrete type of the referenced feature (Use to create new element).
+   * @param label the label displayed at the right top of the table.
+   * @param selectionElementDialogMessage The message displayed when opening the dialog to add / create an element.
    */
-  public ContainmentTableField(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, EReference referencerFeature_p,
-      EReference referencedFeature_p, EClass referencedFeatureType_p, String label_p, String selectionElementDialogMessage_p) {
+  public ContainmentTableField(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, EReference referencerFeature,
+      EReference referencedFeature, EClass referencedFeatureType, String label, String selectionElementDialogMessage) {
 
-    this(parent_p, widgetFactory_p, referencerFeature_p, referencedFeature_p, referencedFeatureType_p, label_p, selectionElementDialogMessage_p,
-         new TableDelegatedViewer(widgetFactory_p));
+    this(parent, widgetFactory, referencerFeature, referencedFeature, referencedFeatureType, label, selectionElementDialogMessage,
+         new TableDelegatedViewer(widgetFactory));
 
   }
 
@@ -97,18 +97,18 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
    * Create the actions.
    */
   @Override
-  protected void createCustomActions(Composite parent_p) {
-    _downBtn = createTableButton(parent_p, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_DOWN), new Runnable() {
+  protected void createCustomActions(Composite parent) {
+    _downBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_DOWN), new Runnable() {
       public void run() {
         handleDown();
       }
     });
-    _upBtn = createTableButton(parent_p, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_UP), new Runnable() {
+    _upBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_UP), new Runnable() {
       public void run() {
         handleUp();
       }
     });
-    _addBtn = createTableButton(parent_p, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ADD_BUTTON), new Runnable() {
+    _addBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ADD_BUTTON), new Runnable() {
       public void run() {
         handleAdd();
       }
@@ -209,17 +209,17 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
-    super.setEnabled(enabled_p);
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
 
     if ((null != _downBtn) && !_downBtn.isDisposed()) {
-      _downBtn.setEnabled(enabled_p);
+      _downBtn.setEnabled(enabled);
     }
     if ((null != _upBtn) && !_upBtn.isDisposed()) {
-      _upBtn.setEnabled(enabled_p);
+      _upBtn.setEnabled(enabled);
     }
     if ((null != _addBtn) && !_addBtn.isDisposed()) {
-      _addBtn.setEnabled(enabled_p);
+      _addBtn.setEnabled(enabled);
     }
   }
 
@@ -251,16 +251,16 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
   /**
    * Get the selection element dialog.<br>
    * Default implementation returns a {@link SelectElementsDialog} that only allows the end-user to select elements.
-   * @param parentShell_p
-   * @param editingDomain_p
-   * @param adapterFactory_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param displayedElements_p
+   * @param parentShell
+   * @param editingDomain
+   * @param adapterFactory
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param displayedElements
    * @return
    */
-  protected SelectElementsDialog getSelectionElementDialog(Shell parentShell_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p,
-      String dialogTitle_p, String dialogMessage_p, List<? extends EObject> displayedElements_p) {
-    return new SelectElementsDialog(parentShell_p, editingDomain_p, adapterFactory_p, dialogTitle_p, dialogMessage_p, displayedElements_p, true, null);
+  protected SelectElementsDialog getSelectionElementDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory,
+      String dialogTitle, String dialogMessage, List<? extends EObject> displayedElements) {
+    return new SelectElementsDialog(parentShell, editingDomain, adapterFactory, dialogTitle, dialogMessage, displayedElements, true, null);
   }
 }

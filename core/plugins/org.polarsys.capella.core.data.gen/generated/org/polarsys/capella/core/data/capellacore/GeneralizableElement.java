@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#getOwnedGeneralizations <em>Owned Generalizations</em>}</li>
@@ -27,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSuper <em>Super</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSub <em>Sub</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement()
  * @model abstract="true"

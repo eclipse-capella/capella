@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class ActorMissionInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVER
 			if (involverPropertyDescriptor != null) {
 				Object involverValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, true);
-				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involverValue)) {
+				if (involverValue != null && involverValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involverValue)) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);
 				} else if (involverValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER) != null) {
 					itemPropertyDescriptors.remove(involverPropertyDescriptor);				  					
@@ -111,7 +111,7 @@ public class ActorMissionInvolvementItemProvider
 			// Process CapellacorePackage.Literals.INVOLVEMENT__INVOLVED
 			if (involvedPropertyDescriptor != null) {
 				Object involvedValue = eObject.eGet(CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, true);
-				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) involvedValue)) {
+				if (involvedValue != null && involvedValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedValue)) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);
 				} else if (involvedValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED) != null) {
 					itemPropertyDescriptors.remove(involvedPropertyDescriptor);				  					
@@ -122,7 +122,7 @@ public class ActorMissionInvolvementItemProvider
 			// Process CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT__ACTOR
 			if (actorPropertyDescriptor != null) {
 				Object actorValue = eObject.eGet(CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT__ACTOR, true);
-				if (actorValue != null && actorValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) actorValue)) {
+				if (actorValue != null && actorValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) actorValue)) {
 					itemPropertyDescriptors.remove(actorPropertyDescriptor);
 				} else if (actorValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT__ACTOR) != null) {
 					itemPropertyDescriptors.remove(actorPropertyDescriptor);				  					
@@ -133,7 +133,7 @@ public class ActorMissionInvolvementItemProvider
 			// Process CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT__MISSION
 			if (missionPropertyDescriptor != null) {
 				Object missionValue = eObject.eGet(CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT__MISSION, true);
-				if (missionValue != null && missionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) missionValue)) {
+				if (missionValue != null && missionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) missionValue)) {
 					itemPropertyDescriptors.remove(missionPropertyDescriptor);
 				} else if (missionValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT__MISSION) != null) {
 					itemPropertyDescriptors.remove(missionPropertyDescriptor);				  					

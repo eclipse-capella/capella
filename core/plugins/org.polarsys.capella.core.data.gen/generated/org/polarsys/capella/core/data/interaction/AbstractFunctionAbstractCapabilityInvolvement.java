@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement#getCapability <em>Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement#getFunction <em>Function</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractFunctionAbstractCapabilityInvolvement()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A function can be involved in a capability.\r\n[source: MBSD unified approach]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,10 +21,10 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public interface ISimpleEditableSemanticFieldController extends ISimpleSemanticFieldController {
 
   /**
-   * @param semanticElement_p
-   * @param semanticFeature_p
-   * @param defaultName_p
+   * @param semanticElement
+   * @param semanticFeature
+   * @param defaultName
    * @return
    */
-  public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p);
+  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName);
 }

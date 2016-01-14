@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.cs.Interface;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItem#getExchangeMechanism <em>Exchange Mechanism</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItem#getOwnedElements <em>Owned Elements</em>}</li>
@@ -36,7 +37,6 @@ import org.polarsys.capella.core.data.cs.Interface;
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItem#getRealizingExchangeItems <em>Realizing Exchange Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.ExchangeItem#getRealizingOperations <em>Realizing Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItem()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Defined by functional characteristics that exist at a common boundary with co-functioning items and allow systems equipment to be compatible. \r\nAn exchange item describes a required or produced data.\r\nAn exchange item has an exchange mechanism\r\n[source:ARCADIA encyclopedia v0.8.0]' usage\040guideline='an exchange item should be created whenever there is a need to group data type elements that are bound by an applicative meaning, and should be treated as a whole' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

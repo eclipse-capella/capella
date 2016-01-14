@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -638,7 +638,7 @@ public class LaItemProviderAdapterFactory extends LaAdapterFactory implements Co
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/la/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/la/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -666,7 +666,7 @@ public class LaItemProviderAdapterFactory extends LaAdapterFactory implements Co
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/la/0.8.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/la/1.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

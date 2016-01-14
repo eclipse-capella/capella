@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Involvement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement#getActor <em>Actor</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement#getMission <em>Mission</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getActorMissionInvolvement()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ActorMissionInvolvement'"

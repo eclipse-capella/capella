@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalArchitecture#getOwnedLogicalContext <em>Owned Logical Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalArchitecture#getOwnedLogicalComponent <em>Owned Logical Component</em>}</li>
@@ -34,7 +35,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalArchitecture#getAllocatedSystemAnalyses <em>Allocated System Analyses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalArchitecture#getAllocatingPhysicalArchitectures <em>Allocating Physical Architectures</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalArchitecture()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Logical Architecture'"

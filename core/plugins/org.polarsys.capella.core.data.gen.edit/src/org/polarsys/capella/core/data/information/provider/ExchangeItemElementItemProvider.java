@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,7 @@ public class ExchangeItemElementItemProvider extends NamedElementItemProvider im
 			// Process ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
 			if (abstractTypePropertyDescriptor != null) {
 				Object abstractTypeValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, true);
-				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) abstractTypeValue)) {
+				if (abstractTypeValue != null && abstractTypeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) abstractTypeValue)) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);
 				} else if (abstractTypeValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE) != null) {
 					itemPropertyDescriptors.remove(abstractTypePropertyDescriptor);				  					
@@ -99,7 +99,7 @@ public class ExchangeItemElementItemProvider extends NamedElementItemProvider im
 			// Process CapellacorePackage.Literals.TYPED_ELEMENT__TYPE
 			if (typePropertyDescriptor != null) {
 				Object typeValue = eObject.eGet(CapellacorePackage.Literals.TYPED_ELEMENT__TYPE, true);
-				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) typeValue)) {
+				if (typeValue != null && typeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) typeValue)) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);
 				} else if (typeValue == null && ExtensionModelManager.getAnyType(eObject, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE) != null) {
 					itemPropertyDescriptors.remove(typePropertyDescriptor);				  					

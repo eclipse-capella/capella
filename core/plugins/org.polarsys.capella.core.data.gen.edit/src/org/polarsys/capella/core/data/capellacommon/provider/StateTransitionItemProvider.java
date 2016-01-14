@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,13 +31,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.provider.NamedElementItemProvider;
-import org.polarsys.capella.core.data.capellacore.provider.RelationshipItemProvider;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
@@ -114,7 +112,7 @@ public class StateTransitionItemProvider
 			// Process ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW
 			if (realizedFlowPropertyDescriptor != null) {
 				Object realizedFlowValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW, true);
-				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedFlowValue)) {
+				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedFlowValue)) {
 					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);
 				} else if (realizedFlowValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW) != null) {
 					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);				  					
@@ -125,7 +123,7 @@ public class StateTransitionItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION__GUARD
 			if (guardPropertyDescriptor != null) {
 				Object guardValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__GUARD, true);
-				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) guardValue)) {
+				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) guardValue)) {
 					itemPropertyDescriptors.remove(guardPropertyDescriptor);
 				} else if (guardValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION__GUARD) != null) {
 					itemPropertyDescriptors.remove(guardPropertyDescriptor);				  					
@@ -136,7 +134,7 @@ public class StateTransitionItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, true);
-				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sourceValue)) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
 				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE) != null) {
 					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
@@ -147,7 +145,7 @@ public class StateTransitionItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION__TARGET
 			if (targetPropertyDescriptor != null) {
 				Object targetValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__TARGET, true);
-				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) targetValue)) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);
 				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET) != null) {
 					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
@@ -158,7 +156,7 @@ public class StateTransitionItemProvider
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT
 			if (effectPropertyDescriptor != null) {
 				Object effectValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT, true);
-				if (effectValue != null && effectValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) effectValue)) {
+				if (effectValue != null && effectValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) effectValue)) {
 					itemPropertyDescriptors.remove(effectPropertyDescriptor);
 				} else if (effectValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT) != null) {
 					itemPropertyDescriptors.remove(effectPropertyDescriptor);				  					

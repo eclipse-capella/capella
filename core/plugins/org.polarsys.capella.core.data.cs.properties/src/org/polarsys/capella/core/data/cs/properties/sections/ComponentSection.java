@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,18 +47,18 @@ public abstract class ComponentSection extends GeneralizableElementSection {
 
   /**
    * Constructor.
-   * @param showImplementedInterfaces_p
-   * @param showUsedInterfaces_p
-   * @param showAllocatedFunctions_p
-   * @param showSuperTypes_p
-   * @param showIsAbstract_p
+   * @param showImplementedInterfaces
+   * @param showUsedInterfaces
+   * @param showAllocatedFunctions
+   * @param showSuperTypes
+   * @param showIsAbstract
    */
-  public ComponentSection(boolean showImplementedInterfaces_p, boolean showUsedInterfaces_p, boolean showAllocatedFunctions_p, boolean showSuperTypes_p, boolean showIsAbstract_p) {
-    super(showSuperTypes_p, showIsAbstract_p);
+  public ComponentSection(boolean showImplementedInterfaces, boolean showUsedInterfaces, boolean showAllocatedFunctions, boolean showSuperTypes, boolean showIsAbstract) {
+    super(showSuperTypes, showIsAbstract);
 
-    _showImplementedInterfaces = showImplementedInterfaces_p;
-    _showUsedInterfaces = showUsedInterfaces_p;
-    _showAllocatedFunctions = showAllocatedFunctions_p;
+    _showImplementedInterfaces = showImplementedInterfaces;
+    _showUsedInterfaces = showUsedInterfaces;
+    _showAllocatedFunctions = showAllocatedFunctions;
   }
 
   /**
@@ -95,17 +95,17 @@ public abstract class ComponentSection extends GeneralizableElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _implementedInterfaces) {
-      _implementedInterfaces.loadData(capellaElement_p, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS);
+      _implementedInterfaces.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS);
     }
     if (null != _usedInterfaces) {
-      _usedInterfaces.loadData(capellaElement_p, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES);
+      _usedInterfaces.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES);
     }
     if (null != _allocatedFunctions) {
-      _allocatedFunctions.loadData(capellaElement_p, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
+      _allocatedFunctions.loadData(capellaElement, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
     }
   }
 

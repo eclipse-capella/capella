@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,9 +33,9 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class PhysicalComponentSection extends ComponentSection {
 
-  private PhysicalComponentKindGroup _pcKindGroup;
-  private PhysicalComponentNatureGroup _pcNatureGroup;
-  private MultipleSemanticField _logicalComponentRealizations;
+  private PhysicalComponentKindGroup pcKindGroup;
+  private PhysicalComponentNatureGroup pcNatureGroup;
+  private MultipleSemanticField logicalComponentRealizations;
 
   /**
    * Default constructor.
@@ -53,29 +53,29 @@ public class PhysicalComponentSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _pcKindGroup = new PhysicalComponentKindGroup(_rootParentComposite, getWidgetFactory(), true);
-    _pcKindGroup.setDisplayedInWizard(displayedInWizard);
-    _pcNatureGroup = new PhysicalComponentNatureGroup(_rootParentComposite, getWidgetFactory(), true);
-    _pcNatureGroup.setDisplayedInWizard(displayedInWizard);
+    pcKindGroup = new PhysicalComponentKindGroup(_rootParentComposite, getWidgetFactory(), true);
+    pcKindGroup.setDisplayedInWizard(displayedInWizard);
+    pcNatureGroup = new PhysicalComponentNatureGroup(_rootParentComposite, getWidgetFactory(), true);
+    pcNatureGroup.setDisplayedInWizard(displayedInWizard);
 
-    _logicalComponentRealizations =
+    logicalComponentRealizations =
         new MultipleSemanticField(getReferencesGroup(), Messages.getString("PhysicalComponentSection_LogicalComponentRealizations_Label"), getWidgetFactory(), //$NON-NLS-1$
             new RealizedLogicalComponentsController());
-    _logicalComponentRealizations.setDisplayedInWizard(displayedInWizard);
+    logicalComponentRealizations.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _pcKindGroup.loadData(capellaElement_p, PaPackage.eINSTANCE.getAbstractPhysicalComponent_Kind());
-    _pcNatureGroup.loadData(capellaElement_p, PaPackage.eINSTANCE.getAbstractPhysicalComponent_Nature());
-    _logicalComponentRealizations.loadData(capellaElement_p, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS);
+    pcKindGroup.loadData(capellaElement, PaPackage.eINSTANCE.getAbstractPhysicalComponent_Kind());
+    pcNatureGroup.loadData(capellaElement, PaPackage.eINSTANCE.getAbstractPhysicalComponent_Nature());
+    logicalComponentRealizations.loadData(capellaElement, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS);
 
-    updateAllocatedFunctionsField((PhysicalComponentNature) capellaElement_p.eGet(PaPackage.eINSTANCE.getAbstractPhysicalComponent_Nature()));
+    updateAllocatedFunctionsField((PhysicalComponentNature) capellaElement.eGet(PaPackage.eINSTANCE.getAbstractPhysicalComponent_Nature()));
   }
 
   /**
@@ -95,15 +95,15 @@ public class PhysicalComponentSection extends ComponentSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_logicalComponentRealizations);
-    fields.add(_pcKindGroup);
-    fields.add(_pcNatureGroup);
+    fields.add(logicalComponentRealizations);
+    fields.add(pcKindGroup);
+    fields.add(pcNatureGroup);
 
     return fields;
   }
 
-  private void updateAllocatedFunctionsField(PhysicalComponentNature nature_p) {
-    if (PhysicalComponentNature.NODE.equals(nature_p)) {
+  private void updateAllocatedFunctionsField(PhysicalComponentNature nature) {
+    if (PhysicalComponentNature.NODE.equals(nature)) {
       _allocatedFunctions.enableOpenButton(false);
     } else {
       _allocatedFunctions.enableOpenButton(true);

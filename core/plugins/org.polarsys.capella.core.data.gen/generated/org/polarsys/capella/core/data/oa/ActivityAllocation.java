@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.oa.ActivityAllocation#getRole <em>Role</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.ActivityAllocation#getActivity <em>Activity</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getActivityAllocation()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allocation relationship between an operational role and an operational activity\r\n[source: Capella study]' usage\040guideline='In Capella, these allocations are created using the \"Operational Role Blank\" diagram' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

@@ -8,4 +8,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.test.framework;bundle-version="0.8.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

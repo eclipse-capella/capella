@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,36 +21,36 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
  */
 public class TextAreaValueGroup extends TextValueGroup {
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
    */
-  public TextAreaValueGroup(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    this(parent_p, label_p, widgetFactory_p, false);
+  public TextAreaValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory) {
+    this(parent, label, widgetFactory, false);
   }
 
   /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param skipGroup_p
+   * @param parent
+   * @param label
+   * @param widgetFactory
+   * @param skipGroup
    */
-  public TextAreaValueGroup(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, boolean skipGroup_p) {
-    super(parent_p, label_p, widgetFactory_p, skipGroup_p);
+  public TextAreaValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory, boolean skipGroup) {
+    super(parent, label, widgetFactory, skipGroup);
   }
 
   /**
    * {@inheritDoc}
    * 
-   * @param label_p
-   * @param hasResetBtn_p
+   * @param label
+   * @param hasResetBtn
    */
   @Override
-  protected void createValueTextField(String label_p, boolean hasResetBtn_p) {
-    CLabel label = _widgetFactory.createCLabel(_parent, label_p);
+  protected void createValueTextField(String label, boolean hasResetBtn) {
+    CLabel lbl = _widgetFactory.createCLabel(_parent, label);
     GridData gd = new GridData();
     gd.horizontalSpan = ((GridLayout) _parent.getLayout()).numColumns; //2;
-    label.setLayoutData(gd);
+    lbl.setLayoutData(gd);
     _valueField = _widgetFactory.createText(_parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = ((GridLayout) _parent.getLayout()).numColumns; //2;

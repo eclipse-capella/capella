@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,7 +81,7 @@ public class NumericReferenceItemProvider extends NumericValueItemProvider imple
 			// Process DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_VALUE
 			if (referencedValuePropertyDescriptor != null) {
 				Object referencedValueValue = eObject.eGet(DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_VALUE, true);
-				if (referencedValueValue != null && referencedValueValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) referencedValueValue)) {
+				if (referencedValueValue != null && referencedValueValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedValueValue)) {
 					itemPropertyDescriptors.remove(referencedValuePropertyDescriptor);
 				} else if (referencedValueValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_VALUE) != null) {
 					itemPropertyDescriptors.remove(referencedValuePropertyDescriptor);				  					
@@ -92,7 +92,7 @@ public class NumericReferenceItemProvider extends NumericValueItemProvider imple
 			// Process DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_PROPERTY
 			if (referencedPropertyPropertyDescriptor != null) {
 				Object referencedPropertyValue = eObject.eGet(DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_PROPERTY, true);
-				if (referencedPropertyValue != null && referencedPropertyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) referencedPropertyValue)) {
+				if (referencedPropertyValue != null && referencedPropertyValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) referencedPropertyValue)) {
 					itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);
 				} else if (referencedPropertyValue == null && ExtensionModelManager.getAnyType(eObject, DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_PROPERTY) != null) {
 					itemPropertyDescriptors.remove(referencedPropertyPropertyDescriptor);				  					

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,13 +24,13 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentAspect;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getNature <em>Nature</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getOwnedDeploymentLinks <em>Owned Deployment Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getOwnedDeploymentAspect <em>Owned Deployment Aspect</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent()
  * @model abstract="true"

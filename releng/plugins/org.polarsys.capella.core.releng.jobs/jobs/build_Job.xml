@@ -6,5 +6,8 @@
 	<echo message="Running Job CapellaTestSuite in Job_CapellaTestSuite/releng"/>
 	<ant dir="Job_CapellaTestSuite/releng"/>
 
+	<echo message="Running Job CapellaRcpttTestSuite in Job_CapellaRcpttTestSuite/releng"/>
+	<ant dir="Job_CapellaRcpttTestSuite/releng"/>
+
 
 </project>

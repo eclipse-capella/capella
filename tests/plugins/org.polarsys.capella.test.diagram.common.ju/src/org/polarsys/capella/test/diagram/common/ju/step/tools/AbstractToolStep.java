@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.common.ju.step.tools;
 import junit.framework.Assert;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -50,6 +51,31 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
    */
   protected abstract void initToolArguments();
 
+  public void cannotRun() {
+
+    try {
+      preRunTest();
+
+      boolean isArgumentOk = _toolWrapper.isArgumentsAreSet();
+      Assert.assertTrue(Messages.toolWrapperArgumentErr, isArgumentOk);
+
+      boolean isContextOk = _toolWrapper.isContextOk();
+      Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentValueErr, toolName), isContextOk);
+
+      TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
+        public void run() {
+          Command cmd = _toolWrapper.createCommand();
+          Assert.assertTrue(UnexecutableCommand.INSTANCE.equals(cmd));
+
+        }
+      });
+
+    } finally {
+      dispose();
+    }
+
+  }
+
   /**
    * Implement a create and execute tool operation.
    */
@@ -65,11 +91,11 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
     TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
       public void run() {
         Command cmd = _toolWrapper.createCommand();
+        Assert.assertTrue(!UnexecutableCommand.INSTANCE.equals(cmd));
         cmd.execute();
       }
     });
 
-    return;
   }
 
   /**

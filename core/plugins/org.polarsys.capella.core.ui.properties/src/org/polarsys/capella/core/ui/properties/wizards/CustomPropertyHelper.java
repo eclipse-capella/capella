@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,29 +51,29 @@ public class CustomPropertyHelper {
 
   /**
    * Get the custom property sections for given parameters.
-   * @param metaclass_p
-   * @param contributorId_p
+   * @param metaclass
+   * @param contributorId
    * @return
    */
-  public static Map<String, IAbstractSection> getCustomPropertySection(EObject object_p, String contributorId_p) {
-    return getCustomPropertySection(object_p, contributorId_p, true);
+  public static Map<String, IAbstractSection> getCustomPropertySection(EObject object, String contributorId) {
+    return getCustomPropertySection(object, contributorId, true);
   }
 
   /**
    * Get the custom property sections for given parameters.
-   * @param metaclass_p
-   * @param contributorId_p
-   * @param strict_p
+   * @param metaclass
+   * @param contributorId
+   * @param strict
    * @return
    */
-  public static Map<String, IAbstractSection> getCustomPropertySection(EObject object_p, String contributorId_p, boolean strict_p) {
+  public static Map<String, IAbstractSection> getCustomPropertySection(EObject object, String contributorId, boolean strict) {
     Map<String, IAbstractSection> result = new HashMap<String, IAbstractSection>(0);
     // Preconditions
-    if ((null == object_p) || (null == contributorId_p)) {
+    if ((null == object) || (null == contributorId)) {
       return result;
     }
 
-    Map<String, List<Object>> map = getAllPropertySections(object_p, contributorId_p, strict_p);
+    Map<String, List<Object>> map = getAllPropertySections(object, contributorId, strict);
     Iterator<String> it = map.keySet().iterator();
     while (it.hasNext()) {
       String key = it.next();
@@ -92,14 +92,14 @@ public class CustomPropertyHelper {
   }
 
   /**
-   * @param metaclass_p
-   * @param contributorId_p
-   * @param key_p
+   * @param metaclass
+   * @param contributorId
+   * @param key
    */
-  public static AbstractPropertySection getDescriptionSection(EClass metaclass_p, String contributorId_p, String key_p) {
-    if (null != contributorId_p) {
-      Map<String, List<Object>> map = getAllPropertySections(metaclass_p, contributorId_p, false);
-      List<Object> values = map.get(key_p);
+  public static AbstractPropertySection getDescriptionSection(EClass metaclass, String contributorId, String key) {
+    if (null != contributorId) {
+      Map<String, List<Object>> map = getAllPropertySections(metaclass, contributorId, false);
+      List<Object> values = map.get(key);
       if (values.size() > 0) {
         Object value = values.get(0);
         if (value instanceof AbstractPropertySection) {
@@ -112,24 +112,24 @@ public class CustomPropertyHelper {
 
   /**
    * Get all the property sections for given parameters.
-   * @param metaclass_p
-   * @param contributorId_p
-   * @param strict_p
+   * @param metaclass
+   * @param contributorId
+   * @param strict
    * @return
    */
-  private static Map<String, List<Object>> getAllPropertySections(EObject object_p, String contributorId_p, boolean strict_p) {
+  private static Map<String, List<Object>> getAllPropertySections(EObject object, String contributorId, boolean strict) {
     Map<String, List<Object>> result = new HashMap<String, List<Object>>();
 
-    String metaClassName = object_p.eClass().getInstanceClassName();
-    List<String> allMetaClassNames = getAllMetaClassNames(object_p.eClass());
+    String metaClassName = object.eClass().getInstanceClassName();
+    List<String> allMetaClassNames = getAllMetaClassNames(object.eClass());
 
     IConfigurationElement[] propertySectionsElements =
         ExtensionPointHelper.getConfigurationElements(TabbedPropertyViewPlugin.getPlugin().getBundle().getSymbolicName(), EXTPT_SECTIONS);
     for (IConfigurationElement propertySectionsElement : propertySectionsElements) {
       // Get the contributor id.
-      String contributorId = propertySectionsElement.getAttribute(ATT_CONTRIBUTOR_ID);
+      String id = propertySectionsElement.getAttribute(ATT_CONTRIBUTOR_ID);
       // Search for a 'propertySections' matching the capella navigator property contributor id.
-      if (contributorId_p.equals(contributorId)) {
+      if (contributorId.equals(id)) {
         // Get the 'propertySection' Node that deals with current metaclass.
         IConfigurationElement[] sections = propertySectionsElement.getChildren(ELEMENT_SECTION);
         // Loop over contained propertySection.
@@ -139,7 +139,7 @@ public class CustomPropertyHelper {
           for (IConfigurationElement element : elements) {
             String readMetaClass = element.getAttribute(ATT_INPUT_TYPE);
             // Search one that matches the current metaclass.
-            if ((strict_p && metaClassName.equals(readMetaClass)) || (!strict_p && allMetaClassNames.contains(readMetaClass))) {
+            if ((strict && metaClassName.equals(readMetaClass)) || (!strict && allMetaClassNames.contains(readMetaClass))) {
               // Get the name of tab for this section.
               Object section = ExtensionPointHelper.createInstance(propertySectionElement, ExtensionPointHelper.ATT_CLASS);
               List<Object> lst = result.get(key);
@@ -147,7 +147,7 @@ public class CustomPropertyHelper {
                 lst = new ArrayList<Object>();
               }
               // this list can potentially contains several sections
-              // we insert at first position the one that strictly matches 'metaclass_p'
+              // we insert at first position the one that strictly matches 'metaclass'
               if (metaClassName.equals(readMetaClass)) {
                 lst.add(0, section);
               } else {
@@ -163,16 +163,16 @@ public class CustomPropertyHelper {
     SubPropertiesTabDescriptorProvider _provider = new SubPropertiesTabDescriptorProvider() {
 
       @Override
-      protected ITabDescriptor createTabDescriptor(IPropertyContext context_p, IRendererContext rendererContext_p, IPropertyGroup mainGroup_p) {
-        return new PropertiesTabDescriptor(context_p, rendererContext_p, mainGroup_p) {
+      protected ITabDescriptor createTabDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup mainGroup) {
+        return new PropertiesTabDescriptor(context, rendererContext, mainGroup) {
 
           @Override
-          protected ISectionDescriptor createSectionDescriptor(IPropertyContext context_p, IRendererContext rendererContext_p, IPropertyGroup group_p) {
-            return new PropertiesSectionDescriptor(context_p, rendererContext_p, group_p) {
+          protected ISectionDescriptor createSectionDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup group) {
+            return new PropertiesSectionDescriptor(context, rendererContext, group) {
 
               @Override
-              protected ISection createSection(IPropertyContext context_p, IRendererContext renderers_p, IPropertyGroup group_p) {
-                return new CapellaPropertySection(context_p, renderers_p, group_p);
+              protected ISection createSection(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
+                return new CapellaPropertySection(context, renderers, group);
               }
 
             };
@@ -181,13 +181,13 @@ public class CustomPropertyHelper {
       }
 
     };
-    ISelection selection = new StructuredSelection(object_p);
+    ISelection selection = new StructuredSelection(object);
 
     ITabDescriptor[] descriptors = _provider.getTabDescriptors(null, selection);
     for (ITabDescriptor descriptor : descriptors) {
-      for (Object object : descriptor.getSectionDescriptors()) {
-        if ((object != null) && (object instanceof ISectionDescriptor)) {
-          ISectionDescriptor sectionDescriptor = (ISectionDescriptor) object;
+      for (Object obj : descriptor.getSectionDescriptors()) {
+        if (obj instanceof ISectionDescriptor) {
+          ISectionDescriptor sectionDescriptor = (ISectionDescriptor) obj;
           ISection section = sectionDescriptor.getSectionClass();
           List<Object> lst = result.get(descriptor.getText());
           if (null == lst) {
@@ -203,15 +203,15 @@ public class CustomPropertyHelper {
   }
 
   /**
-   * @param eclass_p
+   * @param eclass
    * @return
    */
-  protected static List<String> getAllMetaClassNames(EClass eclass_p) {
+  protected static List<String> getAllMetaClassNames(EClass eclass) {
     List<String> allNames = new ArrayList<String>();
-    for (EClass eclass : eclass_p.getEAllSuperTypes()) {
-      allNames.add(eclass.getInstanceClassName());
+    for (EClass ecls : eclass.getEAllSuperTypes()) {
+      allNames.add(ecls.getInstanceClassName());
     }
-    allNames.add(eclass_p.getInstanceClassName());
+    allNames.add(eclass.getInstanceClassName());
     return allNames;
   }
 }

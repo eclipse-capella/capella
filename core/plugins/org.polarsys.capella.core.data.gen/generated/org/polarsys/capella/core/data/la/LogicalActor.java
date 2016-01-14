@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.polarsys.capella.core.data.pa.PhysicalActor;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalActor#getOwnedSystemActorRealizations <em>Owned System Actor Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalActor#getSystemActorRealizations <em>System Actor Realizations</em>}</li>
@@ -31,7 +32,6 @@ import org.polarsys.capella.core.data.pa.PhysicalActor;
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalActor#getRealizedSystemActors <em>Realized System Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalActor#getRealizingPhysicalActors <em>Realizing Physical Actors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalActor()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='External actor interacting with the system via logical interfaces' usage\040guideline='logical actors are typically created automatically when performing a transition of system-level actors. Additional logical actors can then be created manually.' used\040in\040levels='logical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

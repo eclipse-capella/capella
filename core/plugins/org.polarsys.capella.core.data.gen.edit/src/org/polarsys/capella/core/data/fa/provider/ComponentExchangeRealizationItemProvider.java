@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class ComponentExchangeRealizationItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE
 			if (allocatedComponentExchangePropertyDescriptor != null) {
 				Object allocatedComponentExchangeValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE, true);
-				if (allocatedComponentExchangeValue != null && allocatedComponentExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedComponentExchangeValue)) {
+				if (allocatedComponentExchangeValue != null && allocatedComponentExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedComponentExchangeValue)) {
 					itemPropertyDescriptors.remove(allocatedComponentExchangePropertyDescriptor);
 				} else if (allocatedComponentExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATED_COMPONENT_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(allocatedComponentExchangePropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class ComponentExchangeRealizationItemProvider
 			// Process FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE
 			if (allocatingComponentExchangePropertyDescriptor != null) {
 				Object allocatingComponentExchangeValue = eObject.eGet(FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE, true);
-				if (allocatingComponentExchangeValue != null && allocatingComponentExchangeValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingComponentExchangeValue)) {
+				if (allocatingComponentExchangeValue != null && allocatingComponentExchangeValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingComponentExchangeValue)) {
 					itemPropertyDescriptors.remove(allocatingComponentExchangePropertyDescriptor);
 				} else if (allocatingComponentExchangeValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION__ALLOCATING_COMPONENT_EXCHANGE) != null) {
 					itemPropertyDescriptors.remove(allocatingComponentExchangePropertyDescriptor);				  					

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getReferencedStates <em>Referenced States</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getAvailableInStates <em>Available In States</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getExploitedStates <em>Exploited States</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getOwnedAbstractStateRealizations <em>Owned Abstract State Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getRealizedAbstractStates <em>Realized Abstract States</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getRealizingAbstractStates <em>Realizing Abstract States</em>}</li>
@@ -73,20 +73,20 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 
 	/**
-	 * The cached value of the '{@link #getAvailableInStates() <em>Available In States</em>}' reference list.
+	 * The cached value of the '{@link #getExploitedStates() <em>Exploited States</em>}' reference list.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAvailableInStates()
+   * <!-- end-user-doc -->
+	 * @see #getExploitedStates()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<IState> availableInStates;
+  protected EList<IState> exploitedStates;
 
 
 
 
 
-	/**
+  /**
 	 * The cached value of the '{@link #getOwnedAbstractStateRealizations() <em>Owned Abstract State Realizations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -184,19 +184,19 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
 
-	public EList<IState> getAvailableInStates() {
+  public EList<IState> getExploitedStates() {
 
-		if (availableInStates == null) {
-			availableInStates = new EObjectResolvingEList<IState>(IState.class, this, CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES);
+		if (exploitedStates == null) {
+			exploitedStates = new EObjectResolvingEList<IState>(IState.class, this, CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES);
 		}
-		return availableInStates;
+		return exploitedStates;
 	}
 
-	/**
+  /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -434,8 +434,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		switch (featureID) {
 			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
 				return getReferencedStates();
-			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
-				return getAvailableInStates();
+			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+				return getExploitedStates();
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				return getOwnedAbstractStateRealizations();
 			case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
@@ -465,9 +465,9 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 				getReferencedStates().clear();
 				getReferencedStates().addAll((Collection<? extends IState>)newValue);
 				return;
-			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
-				getAvailableInStates().clear();
-				getAvailableInStates().addAll((Collection<? extends IState>)newValue);
+			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+				getExploitedStates().clear();
+				getExploitedStates().addAll((Collection<? extends IState>)newValue);
 				return;
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				getOwnedAbstractStateRealizations().clear();
@@ -497,8 +497,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
 				getReferencedStates().clear();
 				return;
-			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
-				getAvailableInStates().clear();
+			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+				getExploitedStates().clear();
 				return;
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				getOwnedAbstractStateRealizations().clear();
@@ -525,8 +525,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		switch (featureID) {
 			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
 				return referencedStates != null && !referencedStates.isEmpty();
-			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
-				return availableInStates != null && !availableInStates.isEmpty();
+			case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES:
+				return exploitedStates != null && !exploitedStates.isEmpty();
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				return ownedAbstractStateRealizations != null && !ownedAbstractStateRealizations.isEmpty();
 			case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
@@ -554,7 +554,7 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		if (baseClass == IState.class) {
 			switch (derivedFeatureID) {
 				case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES: return ModellingcorePackage.ISTATE__REFERENCED_STATES;
-				case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES: return ModellingcorePackage.ISTATE__AVAILABLE_IN_STATES;
+				case CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES: return ModellingcorePackage.ISTATE__EXPLOITED_STATES;
 				default: return -1;
 			}
 		}
@@ -571,7 +571,7 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		if (baseClass == IState.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ISTATE__REFERENCED_STATES: return CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES;
-				case ModellingcorePackage.ISTATE__AVAILABLE_IN_STATES: return CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES;
+				case ModellingcorePackage.ISTATE__EXPLOITED_STATES: return CapellacommonPackage.ABSTRACT_STATE__EXPLOITED_STATES;
 				default: return -1;
 			}
 		}

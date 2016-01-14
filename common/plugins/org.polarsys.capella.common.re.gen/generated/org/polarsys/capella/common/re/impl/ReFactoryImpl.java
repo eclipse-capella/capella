@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,19 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.polarsys.capella.common.re.*;
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.CatalogElementPkg;
+import org.polarsys.capella.common.re.CompliancyDefinition;
+import org.polarsys.capella.common.re.CompliancyDefinitionPkg;
+import org.polarsys.capella.common.re.GroupingElementPkg;
+import org.polarsys.capella.common.re.ReFactory;
+import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.common.re.RecCatalog;
 
 /**
  * <!-- begin-user-doc -->

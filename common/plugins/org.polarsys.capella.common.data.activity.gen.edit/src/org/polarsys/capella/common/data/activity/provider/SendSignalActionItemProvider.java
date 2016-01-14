@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,7 +79,7 @@ public class SendSignalActionItemProvider
 			// Process ActivityPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL
 			if (signalPropertyDescriptor != null) {
 				Object signalValue = eObject.eGet(ActivityPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL, true);
-				if (signalValue != null && signalValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) signalValue)) {
+				if (signalValue != null && signalValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) signalValue)) {
 					itemPropertyDescriptors.remove(signalPropertyDescriptor);
 				} else if (signalValue == null && ExtensionModelManager.getAnyType(eObject, ActivityPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL) != null) {
 					itemPropertyDescriptors.remove(signalPropertyDescriptor);				  					

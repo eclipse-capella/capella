@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class FragmentEndItemProvider
 			// Process InteractionPackage.Literals.FRAGMENT_END__ABSTRACT_FRAGMENT
 			if (abstractFragmentPropertyDescriptor != null) {
 				Object abstractFragmentValue = eObject.eGet(InteractionPackage.Literals.FRAGMENT_END__ABSTRACT_FRAGMENT, true);
-				if (abstractFragmentValue != null && abstractFragmentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) abstractFragmentValue)) {
+				if (abstractFragmentValue != null && abstractFragmentValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) abstractFragmentValue)) {
 					itemPropertyDescriptors.remove(abstractFragmentPropertyDescriptor);
 				} else if (abstractFragmentValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.FRAGMENT_END__ABSTRACT_FRAGMENT) != null) {
 					itemPropertyDescriptors.remove(abstractFragmentPropertyDescriptor);				  					

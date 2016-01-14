@@ -93,7 +93,8 @@ final public class ScenarioMergeProcessor implements IProcessor {
               MergeMessages.preValidationErr,
               new Object[] {_context.getName(),_target.getName()}
           ), 
-          this
+          this,
+          exception
       );
     } finally {
       if (!b) {
@@ -118,7 +119,8 @@ final public class ScenarioMergeProcessor implements IProcessor {
               MergeMessages.genericError,
               new Object[] {_context.getName(),_target.getName()}
           ), 
-          this
+          this,
+          exception
       );
     }
     
@@ -133,7 +135,8 @@ final public class ScenarioMergeProcessor implements IProcessor {
               MergeMessages.postValidationErr,
               new Object[] {_context.getName(),_target.getName()}
           ), 
-          this
+          this,
+          exception
       );
     }
     

@@ -24,8 +24,8 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveContai
  * Test the case of removing components and actors in LAB diagram.
  */
 public class ShowHideComponentTestCase extends AbstractDiagramTestCase {
-  public static String LC2 = "2283e062-6553-4eac-8796-b7a23750df18";
-  public static String LA1 = "ed28653a-51f7-4e7d-914b-6e8a96c5c296";
+  public static String LC2 = "a40b9c14-b6b4-48a6-b804-e467480b7d7c";
+  public static String LA1 = "109f1f79-b2d0-4848-9812-5103c4979bce";
   public static String LAB_DIAGRAM = "[LAB] Logical System - Logical Architecture Blank";
 
   @Override

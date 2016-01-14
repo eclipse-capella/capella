@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class PhysicalLinkEndItemProvider
 			// Process CsPackage.Literals.PHYSICAL_LINK_END__PORT
 			if (portPropertyDescriptor != null) {
 				Object portValue = eObject.eGet(CsPackage.Literals.PHYSICAL_LINK_END__PORT, true);
-				if (portValue != null && portValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) portValue)) {
+				if (portValue != null && portValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) portValue)) {
 					itemPropertyDescriptors.remove(portPropertyDescriptor);
 				} else if (portValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.PHYSICAL_LINK_END__PORT) != null) {
 					itemPropertyDescriptors.remove(portPropertyDescriptor);				  					
@@ -95,7 +95,7 @@ public class PhysicalLinkEndItemProvider
 			// Process CsPackage.Literals.PHYSICAL_LINK_END__PART
 			if (partPropertyDescriptor != null) {
 				Object partValue = eObject.eGet(CsPackage.Literals.PHYSICAL_LINK_END__PART, true);
-				if (partValue != null && partValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) partValue)) {
+				if (partValue != null && partValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) partValue)) {
 					itemPropertyDescriptors.remove(partPropertyDescriptor);
 				} else if (partValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.PHYSICAL_LINK_END__PART) != null) {
 					itemPropertyDescriptors.remove(partPropertyDescriptor);				  					

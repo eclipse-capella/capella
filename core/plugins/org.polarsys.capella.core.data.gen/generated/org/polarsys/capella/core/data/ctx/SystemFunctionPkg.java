@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunctionPkg#getOwnedSystemFunctions <em>Owned System Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunctionPkg#getOwnedSystemFunctionPkgs <em>Owned System Function Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunctionPkg()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a container for System Functions\r\n[source: Capella study]' usage\040guideline='this can be used to structure/organize system functions in the model' used\040in\040levels='system' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"

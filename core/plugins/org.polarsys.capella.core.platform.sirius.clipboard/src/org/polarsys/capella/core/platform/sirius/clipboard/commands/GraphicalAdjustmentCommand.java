@@ -31,7 +31,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.graphics.Point;
 import org.polarsys.capella.core.platform.sirius.clipboard.Messages;

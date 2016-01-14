@@ -59,7 +59,7 @@ public class RepresentationAnnotationHelper {
 		}
 		return ICommonConstants.EMPTY_STRING;
 	}
-
+  
 	public static void setProgressStatus(DRepresentation representation,
 			String value) {
 		if (representation != null) {

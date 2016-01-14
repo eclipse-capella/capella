@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,12 +19,12 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtended <em>Extended</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtension <em>Extension</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtensionLocation <em>Extension Location</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='AbstractCapabilityExtend'"
@@ -41,7 +41,6 @@ public interface AbstractCapabilityExtend extends Relationship {
 
 	/**
 	 * Returns the value of the '<em><b>Extended</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getExtending <em>Extending</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -52,8 +51,7 @@ public interface AbstractCapabilityExtend extends Relationship {
 	 * @return the value of the '<em>Extended</em>' reference.
 	 * @see #setExtended(AbstractCapability)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_Extended()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getExtending
-	 * @model opposite="extending" required="true"
+	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extendedCase' featureOwner='Extend'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extended'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being extended\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -85,8 +83,7 @@ public interface AbstractCapabilityExtend extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Extension</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getExtends <em>Extends</em>}'.
+	 * Returns the value of the '<em><b>Extension</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -94,11 +91,9 @@ public interface AbstractCapabilityExtend extends Relationship {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Extension</em>' container reference.
-	 * @see #setExtension(AbstractCapability)
+	 * @return the value of the '<em>Extension</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtend_Extension()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getExtends
-	 * @model opposite="extends" required="true" transient="false"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extension' featureOwner='Extend'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extension'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability that realizes the extension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -107,24 +102,6 @@ public interface AbstractCapabilityExtend extends Relationship {
 	 */
 
 	AbstractCapability getExtension();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtension <em>Extension</em>}' container reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Extension</em>' container reference.
-	 * @see #getExtension()
-	 * @generated
-	 */
-
-	void setExtension(AbstractCapability value);
-
-
-
 
 
 

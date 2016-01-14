@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public class OperationalAnalysisItemProvider
 			// Process OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG
 			if (containedOperationalCapabilityPkgPropertyDescriptor != null) {
 				Object containedOperationalCapabilityPkgValue = eObject.eGet(OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG, true);
-				if (containedOperationalCapabilityPkgValue != null && containedOperationalCapabilityPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedOperationalCapabilityPkgValue)) {
+				if (containedOperationalCapabilityPkgValue != null && containedOperationalCapabilityPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedOperationalCapabilityPkgValue)) {
 					itemPropertyDescriptors.remove(containedOperationalCapabilityPkgPropertyDescriptor);
 				} else if (containedOperationalCapabilityPkgValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG) != null) {
 					itemPropertyDescriptors.remove(containedOperationalCapabilityPkgPropertyDescriptor);				  					
@@ -101,7 +101,7 @@ public class OperationalAnalysisItemProvider
 			// Process OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG
 			if (containedOperationalActivityPkgPropertyDescriptor != null) {
 				Object containedOperationalActivityPkgValue = eObject.eGet(OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG, true);
-				if (containedOperationalActivityPkgValue != null && containedOperationalActivityPkgValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) containedOperationalActivityPkgValue)) {
+				if (containedOperationalActivityPkgValue != null && containedOperationalActivityPkgValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) containedOperationalActivityPkgValue)) {
 					itemPropertyDescriptors.remove(containedOperationalActivityPkgPropertyDescriptor);
 				} else if (containedOperationalActivityPkgValue == null && ExtensionModelManager.getAnyType(eObject, OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG) != null) {
 					itemPropertyDescriptors.remove(containedOperationalActivityPkgPropertyDescriptor);				  					

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,12 +24,12 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.CommunicationItem#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.CommunicationItem#getOwnedStateMachines <em>Owned State Machines</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.communication.CommunicationItem#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationItem()
  * @model abstract="true"

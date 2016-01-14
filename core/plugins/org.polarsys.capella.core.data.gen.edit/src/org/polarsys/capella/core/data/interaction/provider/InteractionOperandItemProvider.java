@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.interaction.InteractionOperand;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
@@ -77,7 +76,7 @@ public class InteractionOperandItemProvider
 			// Process InteractionPackage.Literals.INTERACTION_OPERAND__GUARD
 			if (guardPropertyDescriptor != null) {
 				Object guardValue = eObject.eGet(InteractionPackage.Literals.INTERACTION_OPERAND__GUARD, true);
-				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) guardValue)) {
+				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) guardValue)) {
 					itemPropertyDescriptors.remove(guardPropertyDescriptor);
 				} else if (guardValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INTERACTION_OPERAND__GUARD) != null) {
 					itemPropertyDescriptors.remove(guardPropertyDescriptor);				  					

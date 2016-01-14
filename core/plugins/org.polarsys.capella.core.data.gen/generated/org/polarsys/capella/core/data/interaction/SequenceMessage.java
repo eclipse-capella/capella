@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getExchangeContext <em>Exchange Context</em>}</li>
@@ -38,7 +39,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getReceivingFunction <em>Receiving Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getOwnedSequenceMessageValuations <em>Owned Sequence Message Valuations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessage()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='SequenceMessage'"

@@ -19,11 +19,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -44,7 +44,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.misc.StringMatcher;
-import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ef.command.AbstractCompoundCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -53,7 +52,6 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.re.ReNamedElement;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry.IMarkerModification;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
@@ -466,18 +464,6 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     return wildCardMatcher.match(string_p);
   }
 
-  /**
-   * 
-   */
-  private boolean matchStringWords(String string_p) {
-    for (String word : string_p.split(SPACE)) {
-      if (word.equals(getFindString())) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   public static boolean matchExpressionList(List<String> text, List<String> findExpr, boolean ignoreCase_p) {
     if ((null == text) | (null == findExpr)) {
       return false;
@@ -540,27 +526,8 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    */
   private void reportResults(String message, final Set<Element> impactedElements) {
     final int impactedCount = impactedElements.size();
-    final String informationMessage = NLS.bind(message, new Integer(impactedCount));
-
-    IMarkerModification markerModification = new IMarkerModification() {
-      @Override
-      public void modify(IMarker marker_p) {
-        try {
-          marker_p.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO);
-          marker_p.setAttribute(IMarker.MESSAGE, informationMessage);
-          StringBuilder list = new StringBuilder();
-          for (Element capellaElement : impactedElements) {
-
-            String objUri = capellaElement.eResource().getURIFragment(capellaElement).toString();
-            list.append(objUri + ", "); //$NON-NLS-1$
-          }
-          marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, list);
-        } catch (CoreException e) {
-          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
-        }
-      }
-    };
-    LightMarkerRegistry.getInstance().createMarker(ResourcesPlugin.getWorkspace().getRoot(), MarkerView.MARKER_ID, markerModification);
+    final String informationMessage =  NLS.bind(message, new Integer(impactedCount));
+    LightMarkerRegistry.getInstance().createMarker(ResourcesPlugin.getWorkspace().getRoot(), new BasicDiagnostic(Messages.FindAndReplaceDialog_1, 0, informationMessage, impactedElements.toArray()));
     try {
       // Show the Information view
       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID, null, IWorkbenchPage.VIEW_VISIBLE);

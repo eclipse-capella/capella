@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,10 +51,10 @@ import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 /**
  * The abstract transformation engine. This abstraction contains the transformation algorithm chosen for the bridge.
  */
-@SuppressWarnings({ "nls", "unchecked" })
+@SuppressWarnings("unchecked")
 public abstract class TransfoEngine extends ITransfoEngine {
 
-  public static final String HOLDING_RESOURCE = "HOLDING_RESOURCE";
+  public static final String HOLDING_RESOURCE = "HOLDING_RESOURCE"; //$NON-NLS-1$
 
   /**
    * The transformation engine state
@@ -135,8 +135,8 @@ public abstract class TransfoEngine extends ITransfoEngine {
     this(ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT));
   }
 
-  public TransfoEngine(Logger logger_p) {
-    _logger = logger_p;
+  public TransfoEngine(Logger logger) {
+    _logger = logger;
     _agenda = new ArrayList<EObject>();
     _dependingModels = new ArrayList<EObject>();
     _transformedElements = new ArrayList<EObject>();
@@ -148,9 +148,9 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   private void attach() throws TransfoException {
     if (_logger.isDebugEnabled()) {
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
       _logger.debug("Attach");
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
     }
     int step = 0;
     for (EObject sourceElement : _agenda) {
@@ -170,7 +170,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
    * Checks integrity of the transformed elements
    * @throws TransfoException when integrity check fails
    */
-  private void check(ITransfo transfo_p) throws TransfoException {
+  private void check(ITransfo transfo) throws TransfoException {
     List<EObject> troubleList = new ArrayList<EObject>();
 
     // 1- Checks against null containment
@@ -184,45 +184,45 @@ public abstract class TransfoEngine extends ITransfoEngine {
 
     // 2- Report the error if the list is not empty
     if (troubleList.size() > 0) {
-      StringBuilder builder = new StringBuilder("No containment for :");
-      builder.append(System.getProperty("line.separator"));
+      StringBuilder builder = new StringBuilder("No containment for :"); //$NON-NLS-1$
+      builder.append(System.getProperty("line.separator")); //$NON-NLS-1$
       for (EObject troubleObject : troubleList) {
         builder.append(" - ");
         builder.append(DebugHelper.elementToString(troubleObject));
-        builder.append(System.getProperty("line.separator"));
+        builder.append(System.getProperty("line.separator")); //$NON-NLS-1$
 
         CapellaElement element = (CapellaElement) troubleObject;
         cleanUp(element);
       }
 
       // Throws the exception
-      throw new TransfoException(builder.toString(), (EObject) transfo_p.get(TRANSFO_SOURCE));
+      throw new TransfoException(builder.toString(), (EObject) transfo.get(TRANSFO_SOURCE));
     }
   }
 
-  public abstract void doProcessDependingModels(List<EObject> dependingModels_p) throws TransfoException;
+  public abstract void doProcessDependingModels(List<EObject> dependingModels) throws TransfoException;
 
   /**
    * @throws TransfoException
    * @see org.polarsys.capella.common.tiger.ITransfoEngine#execute(org.polarsys.capella.core.bridges.transfo.impl.Transfo)
    */
   @Override
-  public void execute(ITransfo transfo_p) throws TransfoException {
+  public void execute(ITransfo transfo) throws TransfoException {
 
     try {
 
-      preExecute(transfo_p);
+      preExecute(transfo);
 
       // Initializes the engine
       if (_state != State.INITIALIZED) {
-        initialize(transfo_p);
+        initialize(transfo);
       }
 
       _state = State.RUNNING;
 
       if (_logger.isDebugEnabled()) {
         _logger.debug("====================================");
-        _logger.debug("Starting transformation '" + transfo_p.getUid() + "'");
+        _logger.debug("Starting transformation '" + transfo.getUid() + "'");
         _logger.debug("====================================");
       }
 
@@ -239,7 +239,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       finalize_();
       List<IFinalizer> finalizers = _transfo.getFinalizers();
       for (IFinalizer iFinalizer : finalizers) {
-        iFinalizer.finalize(transfo_p);
+        iFinalizer.finalize(transfo);
       }
 
       // 5- Display traces
@@ -247,63 +247,63 @@ public abstract class TransfoEngine extends ITransfoEngine {
       // IReportManagerDefaultComponents.DEFAULT, null));
 
       // 6- Checks the transformed model
-      check(transfo_p);
+      check(transfo);
 
       _state = State.FINISH;
 
-    } catch (OperationCanceledException exception_p) {
-      String exception = exception_p.getMessage();
-      _logger.error(exception, exception_p);
-      throw exception_p;
-    } catch (TransfoException exception_p) {
+    } catch (OperationCanceledException exception) {
+      String msg = exception.getMessage();
+      _logger.error(msg, exception);
+      throw exception;
+    } catch (TransfoException exception) {
       // /////////////////////////////////////////
       // 7.1- Transformation exception raised
-      exception_p.printStackTrace();
-      String exception = NLS.bind(Messages.TransfoEngine_ErrorWhileTransformation, exception_p.getMessage());
-      _logger.error(exception, exception_p);
+      exception.printStackTrace();
+      String msg = NLS.bind(Messages.TransfoEngine_ErrorWhileTransformation, exception.getMessage());
+      _logger.error(msg, exception);
 
-      throw exception_p;
+      throw exception;
 
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       // /////////////////////////////////////////
       // 7.2- Unexpected exception raised
-      exception_p.printStackTrace();
-      String exception = NLS.bind(Messages.TransfoEngine_ErrorWhileTransformationDetailled + exception_p.getMessage(), exception_p.getClass().getSimpleName());
-      _logger.error(exception, exception_p);
+      exception.printStackTrace();
+      String msg = NLS.bind(Messages.TransfoEngine_ErrorWhileTransformationDetailled + exception.getMessage(), exception.getClass().getSimpleName());
+      _logger.error(msg, exception);
 
-      throw new TransfoException(exception_p.getMessage() + "(" + exception_p.getClass().getSimpleName() + ")",
-          _transfo != null ? (EObject) _transfo.get(TRANSFO_SOURCE) : null, exception_p);
+      throw new TransfoException(exception.getMessage() + "(" + exception.getClass().getSimpleName() + ")",
+          _transfo != null ? (EObject) _transfo.get(TRANSFO_SOURCE) : null, exception);
     } finally {
-      postExecute(transfo_p);
+      postExecute(transfo);
     }
 
   }
 
   /**
-   * @param transfo_p
+   * @param transfo
    * @throws CoreException
    * @throws Exception
    */
-  public void preExecute(ITransfo transfo_p) throws CoreException, Exception {
+  public void preExecute(ITransfo transfo) throws CoreException, Exception {
     IExtensionRegistry registry = Platform.getExtensionRegistry();
     IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.PLUGIN_ID);
     for (final IConfigurationElement element : elements) {
       if (TRANSFO_EXTENSION.equals(element.getName())) {
         ITransfoEngineExecuteExt extension = (ITransfoEngineExecuteExt) element.createExecutableExtension("class"); //$NON-NLS-1$
-        extension.preExecute(transfo_p);
+        extension.preExecute(transfo);
       }
     }
   }
 
   /**
-   * @param transfo_p
+   * @param transfo
    * @throws CoreException
    * @throws Exception
    */
-  public void postExecute(ITransfo transfo_p) {
+  public void postExecute(ITransfo transfo) {
 
     //We remove the holding resource at the end of the transition
-    EObject transfoSource = (EObject) _transfo.get(TRANSFO_SOURCE);
+    // EObject transfoSource = (EObject) _transfo.get(TRANSFO_SOURCE);
     // new HoldingResourceHelper().flushHoldingResource(MDEAdapterFactory.getEditingDomain(transfoSource));
 
     try {
@@ -312,15 +312,15 @@ public abstract class TransfoEngine extends ITransfoEngine {
       for (final IConfigurationElement element : elements) {
         if (TRANSFO_EXTENSION.equals(element.getName())) {
           ITransfoEngineExecuteExt extension = (ITransfoEngineExecuteExt) element.createExecutableExtension("class"); //$NON-NLS-1$
-          extension.postExecute(transfo_p);
+          extension.postExecute(transfo);
         }
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       // /////////////////////////////////////////
       // Unexpected exception raised
-      exception_p.printStackTrace();
-      String exception = NLS.bind(Messages.TransfoEngine_ErrorWhileTransformationDetailled + exception_p.getMessage(), exception_p.getClass().getSimpleName());
-      _logger.error(exception, exception_p);
+      exception.printStackTrace();
+      String msg = NLS.bind(Messages.TransfoEngine_ErrorWhileTransformationDetailled + exception.getMessage(), exception.getClass().getSimpleName());
+      _logger.error(msg, exception);
     }
   }
 
@@ -336,12 +336,12 @@ public abstract class TransfoEngine extends ITransfoEngine {
   public String generateReport() {
     StringBuilder builder = new StringBuilder();
     if (_state == State.INITIALIZED) {
-      builder.append("The transformation " + _transfo.getUid() + " is about to be launched.");
+      builder.append("The transformation " + _transfo.getUid() + " is about to be launched."); //$NON-NLS-1$ //$NON-NLS-2$
       builder.append(__cr);
-      builder.append("It requires " + _agenda.size() + " transformations.");
+      builder.append("It requires " + _agenda.size() + " transformations."); //$NON-NLS-1$ //$NON-NLS-2$
       builder.append(__cr);
     } else if (_state == State.FINISH) {
-      builder.append(_agenda.size() + " transformations has been done.");
+      builder.append(_agenda.size() + " transformations has been done."); //$NON-NLS-1$
       builder.append(__cr);
     }
     return builder.toString();
@@ -399,17 +399,17 @@ public abstract class TransfoEngine extends ITransfoEngine {
    * @see org.polarsys.capella.common.tiger.ITransfoEngine#initialize(org.polarsys.capella.common.tiger.ITransfo)
    */
   @Override
-  public void initialize(ITransfo transfo_p) throws TransfoException {
+  public void initialize(ITransfo transfo) throws TransfoException {
 
     _state = State.CREATED;
 
-    setTransfo(transfo_p);
+    setTransfo(transfo);
     generateUid();
 
     if (_logger.isDebugEnabled()) {
-      _logger.debug("====================================");
-      _logger.debug("Initializing transformation '" + transfo_p.getUid() + "'");
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
+      _logger.debug("Initializing transformation '" + transfo.getUid() + "'"); //$NON-NLS-1$
+      _logger.debug("===================================="); //$NON-NLS-1$
     }
 
     initialize();
@@ -419,9 +419,9 @@ public abstract class TransfoEngine extends ITransfoEngine {
     _state = State.INITIALIZED;
 
     if (_logger.isDebugEnabled()) {
-      _logger.debug("====================================");
-      _logger.debug("Report");
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
+      _logger.debug("Report"); //$NON-NLS-1$
+      _logger.debug("===================================="); //$NON-NLS-1$
       _logger.debug(generateReport());
     }
   }
@@ -437,9 +437,9 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   private void processDependingModels() throws TransfoException {
     if (_logger.isDebugEnabled()) {
-      _logger.debug("====================================");
-      _logger.debug("Process depending models");
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
+      _logger.debug("Process depending models"); //$NON-NLS-1$
+      _logger.debug("===================================="); //$NON-NLS-1$
     }
     doProcessDependingModels(_dependingModels);
   }
@@ -476,9 +476,9 @@ public abstract class TransfoEngine extends ITransfoEngine {
   private void retrieveDependingModels() {
 
     if (_logger.isDebugEnabled()) {
-      _logger.debug("====================================");
-      _logger.debug("Retrieving depending models");
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
+      _logger.debug("Retrieving depending models"); //$NON-NLS-1$
+      _logger.debug("===================================="); //$NON-NLS-1$
     }
 
     _dependingModels.clear();
@@ -491,7 +491,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
     }
 
     if (_logger.isDebugEnabled()) {
-      _logger.debug(_dependingModels.size() + " depending models had been detected.");
+      _logger.debug(_dependingModels.size() + " depending models had been detected."); //$NON-NLS-1$
     }
   }
 
@@ -510,9 +510,9 @@ public abstract class TransfoEngine extends ITransfoEngine {
   protected void retrieveElements() throws TransfoException {
 
     if (_logger.isDebugEnabled()) {
-      _logger.debug("====================================");
-      _logger.debug("Retrieving elements to be transformed");
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
+      _logger.debug("Retrieving elements to be transformed"); //$NON-NLS-1$
+      _logger.debug("===================================="); //$NON-NLS-1$
     }
 
     LinkedList<EObject> agenda = new LinkedList<EObject>();
@@ -523,7 +523,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
     agenda.addAll(bootstrap);
 
     if (!agenda.isEmpty() && _logger.isInfoEnabled()) {
-      _logger.info(new EmbeddedMessage("----- Perform transition of '" + EObjectLabelProviderHelper.getText(agenda.get(0)) + "' -----", _logger.getName(),
+      _logger.info(new EmbeddedMessage("----- Perform transition of '" + EObjectLabelProviderHelper.getText(agenda.get(0)) + "' -----", _logger.getName(), //$NON-NLS-1$ //$NON-NLS-2$
           agenda.get(0)));
     }
 
@@ -533,14 +533,14 @@ public abstract class TransfoEngine extends ITransfoEngine {
       EObject currentElement = agenda.removeFirst();
 
       if (_logger.isDebugEnabled()) {
-        _logger.debug(" + Step " + step);
-        _logger.debug("   - The agenda size is : " + agenda.size());
-        _logger.debug("   - The current element is : " + DebugHelper.elementToString(currentElement));
+        _logger.debug(" + Step " + step); //$NON-NLS-1$
+        _logger.debug("   - The agenda size is : " + agenda.size()); //$NON-NLS-1$
+        _logger.debug("   - The current element is : " + DebugHelper.elementToString(currentElement)); //$NON-NLS-1$
       }
 
       // No 'null' element in the agenda
       if (currentElement == null) {
-        throw new TransfoException("The parsed element is 'null'", currentElement);
+        throw new TransfoException("The parsed element is 'null'", currentElement); //$NON-NLS-1$
       }
 
       if (visited.contains(currentElement)) {
@@ -555,7 +555,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       if (rule == null) {
         if (_logger.isDebugEnabled()) {
           // New version : just a warning
-          _logger.debug("      -> Warning no rule found for " + DebugHelper.elementToString(currentElement));
+          _logger.debug("      -> Warning no rule found for " + DebugHelper.elementToString(currentElement)); //$NON-NLS-1$
         }
         agenda.remove(currentElement);
 
@@ -566,20 +566,20 @@ public abstract class TransfoEngine extends ITransfoEngine {
         // ////////////////////////////////
       } else {
         if (_logger.isDebugEnabled()) {
-          _logger.debug("   - Matching rule is : " + rule.getName());
+          _logger.debug("   - Matching rule is : " + rule.getName()); //$NON-NLS-1$
         }
 
         List<EObject> relatedElements = rule.retrieveRelatedElements(currentElement, _transfo);
 
         if ((relatedElements != null) && relatedElements.contains(null)) {
-          throw new TransfoException("One related element is 'null'", currentElement, rule);
+          throw new TransfoException("One related element is 'null'", currentElement, rule); //$NON-NLS-1$
         }
 
         if (relatedElements != null) {
           agenda.addAll(relatedElements);
           if (_logger.isDebugEnabled()) {
             for (EObject relatedElement : relatedElements) {
-              _logger.debug("   - Re-injecting element : " + DebugHelper.elementToString(relatedElement));
+              _logger.debug("   - Re-injecting element : " + DebugHelper.elementToString(relatedElement)); //$NON-NLS-1$
             }
           }
         }
@@ -608,16 +608,16 @@ public abstract class TransfoEngine extends ITransfoEngine {
    * @see org.polarsys.capella.common.tiger.ITransfoEngine#setTransfo(org.polarsys.capella.core.bridges.transfo.impl.Transfo)
    */
   @Override
-  public void setTransfo(ITransfo transfo_p) {
-    _transfo = transfo_p;
+  public void setTransfo(ITransfo transfo) {
+    _transfo = transfo;
   }
 
-  protected Resource getHoldingResource(ITransfo transfo_p) {
-    if (!transfo_p.containsKey(HOLDING_RESOURCE)) {
+  protected Resource getHoldingResource(ITransfo transfo) {
+    if (!transfo.containsKey(HOLDING_RESOURCE)) {
       EObject transfoSource = (EObject) _transfo.get(TRANSFO_SOURCE);
-      transfo_p.put(HOLDING_RESOURCE, HoldingResourceHelper.getHoldingResource(TransactionHelper.getEditingDomain(transfoSource)));
+      transfo.put(HOLDING_RESOURCE, HoldingResourceHelper.getHoldingResource(TransactionHelper.getEditingDomain(transfoSource)));
     }
-    return (Resource) transfo_p.get(HOLDING_RESOURCE);
+    return (Resource) transfo.get(HOLDING_RESOURCE);
   }
 
   /**
@@ -626,16 +626,16 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   private void transformUpdate() throws TransfoException {
     if (_logger.isDebugEnabled()) {
-      _logger.debug("====================================");
+      _logger.debug("===================================="); //$NON-NLS-1$
       _logger.debug("Transform/Update");
-      _logger.debug("====================================");
-      _logger.debug("Nb of element to be transformed: " + _agenda.size());
+      _logger.debug("===================================="); //$NON-NLS-1$
+      _logger.debug("Nb of element to be transformed: " + _agenda.size()); //$NON-NLS-1$
     }
     int step = 0;
     for (EObject sourceElement : _agenda) {
       if (_logger.isDebugEnabled()) {
-        _logger.debug(" + Step " + step);
-        _logger.debug("   - Current element is : " + DebugHelper.elementToString(sourceElement));
+        _logger.debug(" + Step " + step); //$NON-NLS-1$
+        _logger.debug("   - Current element is : " + DebugHelper.elementToString(sourceElement)); //$NON-NLS-1$
       }
       ITransfoRule rule = _transfo.findCachedMatchingRule(sourceElement);
 
@@ -658,7 +658,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
         } else {
           Object transformedElement = Query.retrieveTransformedElement(sourceElement, _transfo);
           if (_logger.isInfoEnabled()) {
-            _logger.info(new EmbeddedMessage(NLS.bind("''{0}'' is already transitioned.", EObjectLabelProviderHelper.getText(sourceElement)),
+            _logger.info(new EmbeddedMessage(NLS.bind("''{0}'' is already transitioned.", EObjectLabelProviderHelper.getText(sourceElement)), //$NON-NLS-1$
                 _logger.getName(), new Object[] { sourceElement, transformedElement }));
           }
         }
@@ -673,31 +673,30 @@ public abstract class TransfoEngine extends ITransfoEngine {
    * @see org.polarsys.capella.common.tiger.ITransfoEngine#update(java.util.Observable, java.lang.Object)
    */
   @Override
-  public void update(Observable o_p, Object arg_p) {
+  public void update(Observable o, Object arg) {
     // Notification received from the progress observable (IU)
     // FIXME this is strange
   }
 
   /**
    * Cleans up the element in parameter (Destroys it and remove links from and to it)
-   * @param element_p The element to be cleaned up
+   * @param element The element to be cleaned up
    */
-  private static void cleanUp(CapellaElement element_p) {
+  private static void cleanUp(CapellaElement element) {
 
     // 1- Clean up the incoming traces
-    List<AbstractTrace> traces = new ArrayList<AbstractTrace>(element_p.getIncomingTraces());
+    List<AbstractTrace> traces = new ArrayList<AbstractTrace>(element.getIncomingTraces());
     for (AbstractTrace trace : traces) {
       trace.destroy();
     }
 
     // 2- Clean up the outgoing traces
-    traces = new ArrayList<AbstractTrace>(element_p.getOutgoingTraces());
+    traces = new ArrayList<AbstractTrace>(element.getOutgoingTraces());
     for (AbstractTrace trace : traces) {
       trace.destroy();
     }
 
     // 3- Destroy the element itself
-    element_p.destroy();
+    element.destroy();
   }
-
 }

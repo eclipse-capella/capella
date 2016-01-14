@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -739,7 +739,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -749,7 +749,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																							
+		   });
 	}
 
 	/**
@@ -759,7 +759,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -771,7 +771,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (dataTypeEClass, 
 		   source, 
@@ -783,7 +783,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_Discrete(), 
 		   source, 
@@ -792,7 +792,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_MinInclusive(), 
 		   source, 
@@ -801,7 +801,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_MaxInclusive(), 
 		   source, 
@@ -810,7 +810,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_Pattern(), 
 		   source, 
@@ -819,7 +819,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_Visibility(), 
 		   source, 
@@ -828,7 +828,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to VisibilityKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_DefaultValue(), 
 		   source, 
@@ -836,7 +836,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "allows to specify a default value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_NullValue(), 
 		   source, 
@@ -844,7 +844,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "allows to specify the nature/value of the \"null\" value for this type of data\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getDataType_RealizedDataTypes(), 
 		   source, 
@@ -852,7 +852,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "class(es) realized by this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_RealizingDataTypes(), 
 		   source, 
@@ -860,7 +860,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "class(es) realizing this class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (booleanTypeEClass, 
 		   source, 
@@ -872,7 +872,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedLiterals(), 
 		   source, 
@@ -880,7 +880,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "the literals that are contained in this enumeration\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedDefaultValue(), 
 		   source, 
@@ -888,7 +888,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "default value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (enumerationEClass, 
 		   source, 
@@ -900,7 +900,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedLiterals(), 
 		   source, 
@@ -908,7 +908,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "the literals that are contained in this enumeration\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedDefaultValue(), 
 		   source, 
@@ -916,7 +916,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "default value among this enumeration\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedNullValue(), 
 		   source, 
@@ -924,7 +924,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "Null value among this enumeration\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMinValue(), 
 		   source, 
@@ -932,7 +932,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "specification of the minimum value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMaxValue(), 
 		   source, 
@@ -940,7 +940,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "specification of the maximum value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_DomainType(), 
 		   source, 
@@ -952,7 +952,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (stringTypeEClass, 
 		   source, 
@@ -964,7 +964,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedDefaultValue(), 
 		   source, 
@@ -972,7 +972,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "the default value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedNullValue(), 
 		   source, 
@@ -980,7 +980,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "the neutral value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMinLength(), 
 		   source, 
@@ -988,7 +988,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "specification of the minimum length of the string\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMaxLength(), 
 		   source, 
@@ -996,7 +996,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "specification of the maximum length of the string\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericTypeEClass, 
 		   source, 
@@ -1008,7 +1008,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNumericType_Kind(), 
 		   source, 
@@ -1017,7 +1017,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "refer to NumericTypeKind", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedDefaultValue(), 
 		   source, 
@@ -1025,7 +1025,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "the default value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedNullValue(), 
 		   source, 
@@ -1033,7 +1033,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "the neutral value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMinValue(), 
 		   source, 
@@ -1041,7 +1041,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "specification of the minimum value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMaxValue(), 
 		   source, 
@@ -1049,7 +1049,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "specification of the maximum value for this data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (physicalQuantityEClass, 
 		   source, 
@@ -1061,7 +1061,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalQuantity_Unit(), 
 		   source, 
@@ -1069,7 +1069,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "the unit of this physical dimension\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (numericTypeKindEEnum, 
 		   source, 
@@ -1077,7 +1077,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "Specifies the kind of this numeric data type\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (numericTypeKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -1085,7 +1085,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "Used when the numeric type refers to an integer value\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (numericTypeKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -1093,7 +1093,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "description", "Used when the numeric type refers to a float value\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -1103,178 +1103,178 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getDataType_Discrete(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_MinInclusive(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_MaxInclusive(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_Pattern(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_Visibility(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_DefaultValue(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_NullValue(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_RealizedDataTypes(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_RealizingDataTypes(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (booleanTypeEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedLiterals(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (enumerationEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedLiterals(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedNullValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMinValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_DomainType(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (stringTypeEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMinLength(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (numericTypeEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getNumericType_Kind(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMinValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (physicalQuantityEClass, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalQuantity_Unit(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (numericTypeKindEEnum, 
 		   source, 
 		   new String[] {
-		   });				
+		   });
 	}
 
 	/**
@@ -1284,7 +1284,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -1294,7 +1294,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																				
+		   });
 	}
 
 	/**
@@ -1304,127 +1304,127 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (dataTypeEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DataType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																					
+		   });	
 		addAnnotation
 		  (booleanTypeEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "BooleanType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedLiterals(), 
 		   source, 
 		   new String[] {
 			 "Label", "literals" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "defaultValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (enumerationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Enumeration" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedLiterals(), 
 		   source, 
 		   new String[] {
 			 "Label", "literals" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMinValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "minValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "maxValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });									
+		   });	
 		addAnnotation
 		  (stringTypeEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "StringType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "defaultValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "nullValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMinLength(), 
 		   source, 
 		   new String[] {
 			 "Label", "minLength" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
 			 "Label", "maxLength" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericTypeEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "NumericType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "defaultValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "nullValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMinValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "minValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
 			 "Label", "maxValue" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (physicalQuantityEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "PhysicalDimension" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalQuantity_Unit(), 
 		   source, 
 		   new String[] {
 			 "Label", "unit" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });
 	}
 
 	/**
@@ -1434,14 +1434,14 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (dataTypeEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.DataType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_Discrete(), 
 		   source, 
@@ -1449,7 +1449,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "featureName", "isDiscreet", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getDataType_Pattern(), 
 		   source, 
@@ -1457,140 +1457,140 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "featureName", "constraint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																								
+		   });	
 		addAnnotation
 		  (booleanTypeEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.BooleanType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedLiterals(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Enumeration" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (enumerationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Enumeration", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Enumeration" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedLiterals(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Enumeration" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMinValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (stringTypeEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.StringType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getStringType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMinLength(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (numericTypeEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.NumericType" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMinValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (physicalQuantityEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.PhysicalDimension" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getPhysicalQuantity_Unit(), 
 		   source, 
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });
 	}
 
 	/**
@@ -1600,7 +1600,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (dataTypeEClass, 
 		   source, 
@@ -1609,7 +1609,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_Discrete(), 
 		   source, 
@@ -1617,7 +1617,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_MinInclusive(), 
 		   source, 
@@ -1625,7 +1625,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_MaxInclusive(), 
 		   source, 
@@ -1633,7 +1633,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_Pattern(), 
 		   source, 
@@ -1641,7 +1641,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_Visibility(), 
 		   source, 
@@ -1649,7 +1649,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "uml::NamedElement:visibility", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_DefaultValue(), 
 		   source, 
@@ -1657,7 +1657,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_NullValue(), 
 		   source, 
@@ -1665,7 +1665,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getDataType_OwnedInformationRealizations(), 
 		   source, 
@@ -1673,7 +1673,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (booleanTypeEClass, 
 		   source, 
@@ -1682,7 +1682,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "base metaclass in UML/SysML profile ", "uml::PrimitiveType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedLiterals(), 
 		   source, 
@@ -1690,7 +1690,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedDefaultValue(), 
 		   source, 
@@ -1698,7 +1698,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which BooleanValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (enumerationEClass, 
 		   source, 
@@ -1707,7 +1707,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "base metaclass in UML/SysML profile ", "uml::Enumeration", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedLiterals(), 
 		   source, 
@@ -1715,7 +1715,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "uml::Enumeration::ownedLiteral", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedDefaultValue(), 
 		   source, 
@@ -1723,7 +1723,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which EnumerationValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedNullValue(), 
 		   source, 
@@ -1731,7 +1731,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which EnumerationValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMinValue(), 
 		   source, 
@@ -1739,7 +1739,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which NumericType stereotype or any stereotype that inherits from it is applied", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_ Treat difference between default, null, min and max values\r\n" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMaxValue(), 
 		   source, 
@@ -1747,7 +1747,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which NumericType stereotype or any stereotype that inherits from it is applied", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "_todo_ Treat difference between default, null, min and max values\r\n" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEnumeration_DomainType(), 
 		   source, 
@@ -1755,7 +1755,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (stringTypeEClass, 
 		   source, 
@@ -1764,7 +1764,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "base metaclass in UML/SysML profile ", "uml::DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedDefaultValue(), 
 		   source, 
@@ -1772,7 +1772,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which StringValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedNullValue(), 
 		   source, 
@@ -1780,7 +1780,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which StringValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMinLength(), 
 		   source, 
@@ -1788,7 +1788,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which FunctionRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMaxLength(), 
 		   source, 
@@ -1796,7 +1796,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which UnlimitedNaturalValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (numericTypeEClass, 
 		   source, 
@@ -1805,7 +1805,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "base metaclass in UML/SysML profile ", "uml::DataType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getNumericType_Kind(), 
 		   source, 
@@ -1813,7 +1813,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedDefaultValue(), 
 		   source, 
@@ -1821,7 +1821,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which NumericValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedNullValue(), 
 		   source, 
@@ -1829,7 +1829,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which NumericValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMinValue(), 
 		   source, 
@@ -1837,7 +1837,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which NumericValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMaxValue(), 
 		   source, 
@@ -1845,7 +1845,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Elements on which NumericValue stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (physicalQuantityEClass, 
 		   source, 
@@ -1854,7 +1854,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "should be SysML::Blocks::ValueType, but its parent is concrete and already mapped (to uml::DataType), \r\nso do not map this one too to prevent Papyrus errors.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getPhysicalQuantity_Unit(), 
 		   source, 
@@ -1862,7 +1862,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (numericTypeKindEEnum, 
 		   source, 
@@ -1870,7 +1870,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (numericTypeKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -1878,7 +1878,7 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (numericTypeKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -1896,27 +1896,27 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																											
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getDataType_DefaultValue(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getDataType_NullValue(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getDataType_RealizedDataTypes(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getDataType_RealizingDataTypes(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																		
+		   });
 	}
 
 	/**
@@ -1926,77 +1926,77 @@ public class DatatypePackageImpl extends EPackageImpl implements DatatypePackage
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																																																	
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getBooleanType_OwnedLiterals(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getBooleanType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedLiterals(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMinValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getEnumeration_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getStringType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMinLength(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getStringType_OwnedMaxLength(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedDefaultValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedNullValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMinValue(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getNumericType_OwnedMaxValue(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getPhysicalQuantity_Unit(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });
 	}
 
 } //DatatypePackageImpl

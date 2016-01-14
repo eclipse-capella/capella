@@ -57,13 +57,13 @@ public class PropertyGroup extends AbstractSemanticField {
   private SimpleEditableSemanticField nullValueField;
 
   /**
-   * @param parent_p
-   * @param widgetFactory_p
+   * @param parent
+   * @param widgetFactory
    */
-  public PropertyGroup(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p) {
-    super(widgetFactory_p);
+  public PropertyGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+    super(widgetFactory);
 
-    Group group = _widgetFactory.createGroup(parent_p, ""); //$NON-NLS-1$
+    Group group = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     group.setLayout(new GridLayout(6, false));
     group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
@@ -109,101 +109,101 @@ public class PropertyGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param checkGroup_p
-   * @param widgetFactory_p
+   * @param checkGroup
+   * @param widgetFactory
    */
-  protected void createNavigableCheckbox(Group checkGroup_p) {
-    navigableCheckbox = new NavigableCheckbox(checkGroup_p, _widgetFactory);
+  protected void createNavigableCheckbox(Group checkGroup) {
+    navigableCheckbox = new NavigableCheckbox(checkGroup, _widgetFactory);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, null);
+  public void loadData(CapellaElement semanticElement) {
+    loadData(semanticElement, null);
 
     if (null != _semanticElement) {
       setTextValue(roleTextField, _semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name());
     }
 
-    featureBooleanPropertiesCheckbox.loadData(semanticElement_p);
-    multiplicityElementBooleanPropertiesCheckbox.loadData(semanticElement_p);
-    propertyBooleanPropertiesCheckbox.loadData(semanticElement_p);
-    navigableCheckbox.loadData(semanticElement_p);
+    featureBooleanPropertiesCheckbox.loadData(semanticElement);
+    multiplicityElementBooleanPropertiesCheckbox.loadData(semanticElement);
+    propertyBooleanPropertiesCheckbox.loadData(semanticElement);
+    navigableCheckbox.loadData(semanticElement);
 
-    visibilityKindGroup.loadData(semanticElement_p, CapellacorePackage.eINSTANCE.getFeature_Visibility());
-    aggregationKindGroup.loadData(semanticElement_p, InformationPackage.eINSTANCE.getProperty_AggregationKind());
+    visibilityKindGroup.loadData(semanticElement, CapellacorePackage.eINSTANCE.getFeature_Visibility());
+    aggregationKindGroup.loadData(semanticElement, InformationPackage.eINSTANCE.getProperty_AggregationKind());
 
-    abstractTypeField.loadData(semanticElement_p, ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType());
-    minCardField.loadData(semanticElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinCard());
-    maxCardField.loadData(semanticElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxCard());
-    minValueField.loadData(semanticElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
-    maxValueField.loadData(semanticElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
-    defaultValueField.loadData(semanticElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
-    nullValueField.loadData(semanticElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
+    abstractTypeField.loadData(semanticElement, ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType());
+    minCardField.loadData(semanticElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinCard());
+    maxCardField.loadData(semanticElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxCard());
+    minValueField.loadData(semanticElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinValue());
+    maxValueField.loadData(semanticElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxValue());
+    defaultValueField.loadData(semanticElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedDefaultValue());
+    nullValueField.loadData(semanticElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedNullValue());
 
-    evaluateButtonStatus((Property) semanticElement_p);
+    evaluateButtonStatus((Property) semanticElement);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != roleTextField && !roleTextField.isDisposed()) {
-      roleTextField.setEnabled(enabled_p);
+      roleTextField.setEnabled(enabled);
     }
 
     if (null != featureBooleanPropertiesCheckbox) {
-      featureBooleanPropertiesCheckbox.setEnabled(enabled_p);
+      featureBooleanPropertiesCheckbox.setEnabled(enabled);
     }
     if (null != multiplicityElementBooleanPropertiesCheckbox) {
-      multiplicityElementBooleanPropertiesCheckbox.setEnabled(enabled_p);
+      multiplicityElementBooleanPropertiesCheckbox.setEnabled(enabled);
     }
     if (null != propertyBooleanPropertiesCheckbox) {
-      propertyBooleanPropertiesCheckbox.setEnabled(enabled_p);
+      propertyBooleanPropertiesCheckbox.setEnabled(enabled);
     }
     if (null != navigableCheckbox) {
-      navigableCheckbox.setEnabled(enabled_p);
+      navigableCheckbox.setEnabled(enabled);
     }
 
     if (null != visibilityKindGroup) {
-      visibilityKindGroup.setEnabled(enabled_p);
+      visibilityKindGroup.setEnabled(enabled);
     }
     if (null != aggregationKindGroup) {
-      aggregationKindGroup.setEnabled(enabled_p);
+      aggregationKindGroup.setEnabled(enabled);
     }
 
     if (null != abstractTypeField) {
-      abstractTypeField.setEnabled(enabled_p);
+      abstractTypeField.setEnabled(enabled);
     }
     if (null != minCardField) {
-      minCardField.setEnabled(enabled_p);
+      minCardField.setEnabled(enabled);
     }
     if (null != maxCardField) {
-      maxCardField.setEnabled(enabled_p);
+      maxCardField.setEnabled(enabled);
     }
     if (null != minValueField) {
-      minValueField.setEnabled(enabled_p);
+      minValueField.setEnabled(enabled);
     }
     if (null != maxValueField) {
-      maxValueField.setEnabled(enabled_p);
+      maxValueField.setEnabled(enabled);
     }
     if (null != defaultValueField) {
-      defaultValueField.setEnabled(enabled_p);
+      defaultValueField.setEnabled(enabled);
     }
     if (null != nullValueField) {
-      nullValueField.setEnabled(enabled_p);
+      nullValueField.setEnabled(enabled);
     }
   }
 
   /**
-   * @param property_p
+   * @param property
    */
-  private void evaluateButtonStatus(Property property_p) {
-    if (property_p != null) {
-      AbstractType type = property_p.getAbstractType();
+  private void evaluateButtonStatus(Property property) {
+    if (property != null) {
+      AbstractType type = property.getAbstractType();
       if (type != null) {
         if ((type instanceof DataType) || ((type instanceof Class) && ((Class) type).isIsPrimitive()) || ((type instanceof Collection) && ((Collection) type).isIsPrimitive())) {
           aggregationKindGroup.setEnabled(false);
@@ -217,12 +217,12 @@ public class PropertyGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textField_p
+   * @param textField
    *          text field to be filled
    */
   @Override
-  protected void fillTextField(Text textField_p) {
-    if (textField_p.equals(roleTextField)) {
+  protected void fillTextField(Text textField) {
+    if (textField.equals(roleTextField)) {
       setDataValue(_semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), roleTextField.getText());
     }
   }

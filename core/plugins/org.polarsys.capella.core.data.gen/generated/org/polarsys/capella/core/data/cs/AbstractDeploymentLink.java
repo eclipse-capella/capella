@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getDeployedElement <em>Deployed Element</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getLocation <em>Location</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractDeploymentLink()
  * @model abstract="true"
@@ -84,7 +84,6 @@ public interface AbstractDeploymentLink extends Relationship {
 
 	/**
 	 * Returns the value of the '<em><b>Location</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.DeploymentTarget#getDeploymentLinks <em>Deployment Links</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -95,8 +94,7 @@ public interface AbstractDeploymentLink extends Relationship {
 	 * @return the value of the '<em>Location</em>' reference.
 	 * @see #setLocation(DeploymentTarget)
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractDeploymentLink_Location()
-	 * @see org.polarsys.capella.core.data.cs.DeploymentTarget#getDeploymentLinks
-	 * @model opposite="deploymentLinks" required="true"
+	 * @model required="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='location'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the host where the source element involved in this relationship will be deployed\r\n[source: Capella study]' constraints='none' comment/notes='none'"

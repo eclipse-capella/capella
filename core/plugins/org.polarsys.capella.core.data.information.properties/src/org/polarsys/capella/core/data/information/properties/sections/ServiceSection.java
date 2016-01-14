@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,8 +66,8 @@ public class ServiceSection extends NamedElementSection {
     _thrownExceptionsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("ServiceSection_ThrownExceptions_Label"), getWidgetFactory(), new AbstractMultipleSemanticFieldController() { //$NON-NLS-1$
           @Override
-          protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-            return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), InformationPackage.eINSTANCE.getService_ThrownExceptions());
+          protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement) {
+            return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), InformationPackage.eINSTANCE.getService_ThrownExceptions());
           }
         });
     _thrownExceptionsField.setDisplayedInWizard(displayedInWizard);
@@ -119,13 +119,13 @@ public class ServiceSection extends NamedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _visibilityKindGroup.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getFeature_Visibility());
-    _thrownExceptionsField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getService_ThrownExceptions());
-    _realizedExchangeItemsField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getOperation_OwnedExchangeItemRealizations());
-    _containmentTableField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getOperation_OwnedParameters());
+    _visibilityKindGroup.loadData(capellaElement, CapellacorePackage.eINSTANCE.getFeature_Visibility());
+    _thrownExceptionsField.loadData(capellaElement, InformationPackage.eINSTANCE.getService_ThrownExceptions());
+    _realizedExchangeItemsField.loadData(capellaElement, InformationPackage.eINSTANCE.getOperation_OwnedExchangeItemRealizations());
+    _containmentTableField.loadData(capellaElement, InformationPackage.eINSTANCE.getOperation_OwnedParameters());
   }
 
   /**

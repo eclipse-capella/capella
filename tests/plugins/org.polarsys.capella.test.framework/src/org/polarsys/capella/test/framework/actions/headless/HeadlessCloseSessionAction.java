@@ -14,12 +14,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.sirius.ui.actions.CloseSessionAction;
 
 public class HeadlessCloseSessionAction extends CloseSessionAction {
@@ -38,10 +36,8 @@ public class HeadlessCloseSessionAction extends CloseSessionAction {
     // Launch the close sessions operation on all selected sessions.
     IRunnableWithProgress closeSessionOperation = new CloseSessionOperation(sessionsToClose);
 
-    Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    ProgressMonitorDialog monitor = new ProgressMonitorDialog(activeShell);
     try {
-      monitor.run(false, false, closeSessionOperation);
+      closeSessionOperation.run(new NullProgressMonitor());
     } catch (final InvocationTargetException ite) {
       SiriusPlugin.getDefault().error("the program was not able close the session", ite); //$NON-NLS-1$
     } catch (final InterruptedException ie) {

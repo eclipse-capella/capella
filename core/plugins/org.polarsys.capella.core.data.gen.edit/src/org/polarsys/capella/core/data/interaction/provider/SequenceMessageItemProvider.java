@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -132,7 +132,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT
 			if (exchangeContextPropertyDescriptor != null) {
 				Object exchangeContextValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, true);
-				if (exchangeContextValue != null && exchangeContextValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) exchangeContextValue)) {
+				if (exchangeContextValue != null && exchangeContextValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) exchangeContextValue)) {
 					itemPropertyDescriptors.remove(exchangeContextPropertyDescriptor);
 				} else if (exchangeContextValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT) != null) {
 					itemPropertyDescriptors.remove(exchangeContextPropertyDescriptor);				  					
@@ -143,7 +143,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END
 			if (sendingEndPropertyDescriptor != null) {
 				Object sendingEndValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END, true);
-				if (sendingEndValue != null && sendingEndValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sendingEndValue)) {
+				if (sendingEndValue != null && sendingEndValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sendingEndValue)) {
 					itemPropertyDescriptors.remove(sendingEndPropertyDescriptor);
 				} else if (sendingEndValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END) != null) {
 					itemPropertyDescriptors.remove(sendingEndPropertyDescriptor);				  					
@@ -154,7 +154,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END
 			if (receivingEndPropertyDescriptor != null) {
 				Object receivingEndValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END, true);
-				if (receivingEndValue != null && receivingEndValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) receivingEndValue)) {
+				if (receivingEndValue != null && receivingEndValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) receivingEndValue)) {
 					itemPropertyDescriptors.remove(receivingEndPropertyDescriptor);
 				} else if (receivingEndValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END) != null) {
 					itemPropertyDescriptors.remove(receivingEndPropertyDescriptor);				  					
@@ -165,7 +165,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION
 			if (invokedOperationPropertyDescriptor != null) {
 				Object invokedOperationValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION, true);
-				if (invokedOperationValue != null && invokedOperationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) invokedOperationValue)) {
+				if (invokedOperationValue != null && invokedOperationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) invokedOperationValue)) {
 					itemPropertyDescriptors.remove(invokedOperationPropertyDescriptor);
 				} else if (invokedOperationValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION) != null) {
 					itemPropertyDescriptors.remove(invokedOperationPropertyDescriptor);				  					
@@ -176,7 +176,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART
 			if (sendingPartPropertyDescriptor != null) {
 				Object sendingPartValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART, true);
-				if (sendingPartValue != null && sendingPartValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sendingPartValue)) {
+				if (sendingPartValue != null && sendingPartValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sendingPartValue)) {
 					itemPropertyDescriptors.remove(sendingPartPropertyDescriptor);
 				} else if (sendingPartValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART) != null) {
 					itemPropertyDescriptors.remove(sendingPartPropertyDescriptor);				  					
@@ -187,7 +187,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART
 			if (receivingPartPropertyDescriptor != null) {
 				Object receivingPartValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART, true);
-				if (receivingPartValue != null && receivingPartValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) receivingPartValue)) {
+				if (receivingPartValue != null && receivingPartValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) receivingPartValue)) {
 					itemPropertyDescriptors.remove(receivingPartPropertyDescriptor);
 				} else if (receivingPartValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART) != null) {
 					itemPropertyDescriptors.remove(receivingPartPropertyDescriptor);				  					
@@ -198,7 +198,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION
 			if (sendingFunctionPropertyDescriptor != null) {
 				Object sendingFunctionValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION, true);
-				if (sendingFunctionValue != null && sendingFunctionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sendingFunctionValue)) {
+				if (sendingFunctionValue != null && sendingFunctionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) sendingFunctionValue)) {
 					itemPropertyDescriptors.remove(sendingFunctionPropertyDescriptor);
 				} else if (sendingFunctionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION) != null) {
 					itemPropertyDescriptors.remove(sendingFunctionPropertyDescriptor);				  					
@@ -209,7 +209,7 @@ public class SequenceMessageItemProvider
 			// Process InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION
 			if (receivingFunctionPropertyDescriptor != null) {
 				Object receivingFunctionValue = eObject.eGet(InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION, true);
-				if (receivingFunctionValue != null && receivingFunctionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) receivingFunctionValue)) {
+				if (receivingFunctionValue != null && receivingFunctionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) receivingFunctionValue)) {
 					itemPropertyDescriptors.remove(receivingFunctionPropertyDescriptor);
 				} else if (receivingFunctionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION) != null) {
 					itemPropertyDescriptors.remove(receivingFunctionPropertyDescriptor);				  					

@@ -26,6 +26,7 @@ import org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin;
  */
 public class ChangeLocker extends ResourceSetListenerImpl {
 
+  @Override
 	public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
 			throw new RollbackException(new Status(IStatus.CANCEL, CapellaTestFrameworkPlugin.PLUGIN_ID, "Test model can not be modified by a test artefact which is not its owner."));
 		}

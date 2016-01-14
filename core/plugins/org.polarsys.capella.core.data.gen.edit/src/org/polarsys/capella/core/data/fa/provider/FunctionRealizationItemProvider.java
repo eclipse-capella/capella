@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class FunctionRealizationItemProvider
 			// Process FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATED_FUNCTION
 			if (allocatedFunctionPropertyDescriptor != null) {
 				Object allocatedFunctionValue = eObject.eGet(FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATED_FUNCTION, true);
-				if (allocatedFunctionValue != null && allocatedFunctionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedFunctionValue)) {
+				if (allocatedFunctionValue != null && allocatedFunctionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatedFunctionValue)) {
 					itemPropertyDescriptors.remove(allocatedFunctionPropertyDescriptor);
 				} else if (allocatedFunctionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATED_FUNCTION) != null) {
 					itemPropertyDescriptors.remove(allocatedFunctionPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class FunctionRealizationItemProvider
 			// Process FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATING_FUNCTION
 			if (allocatingFunctionPropertyDescriptor != null) {
 				Object allocatingFunctionValue = eObject.eGet(FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATING_FUNCTION, true);
-				if (allocatingFunctionValue != null && allocatingFunctionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingFunctionValue)) {
+				if (allocatingFunctionValue != null && allocatingFunctionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) allocatingFunctionValue)) {
 					itemPropertyDescriptors.remove(allocatingFunctionPropertyDescriptor);
 				} else if (allocatingFunctionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTION_REALIZATION__ALLOCATING_FUNCTION) != null) {
 					itemPropertyDescriptors.remove(allocatingFunctionPropertyDescriptor);				  					

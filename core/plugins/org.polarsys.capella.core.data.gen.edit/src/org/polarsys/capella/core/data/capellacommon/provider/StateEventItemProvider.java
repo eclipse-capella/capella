@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -60,8 +60,7 @@ public class StateEventItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IItemPropertyDescriptor conditionPropertyDescriptor;
-
+	protected IItemPropertyDescriptor expressionPropertyDescriptor;
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -82,15 +81,15 @@ public class StateEventItemProvider
 		super.checkChildCreationExtender(object);
 		if (object instanceof EObject) {
 			EObject eObject = (EObject) object;
-			// Process CapellacommonPackage.Literals.STATE_EVENT__CONDITION
-			if (conditionPropertyDescriptor != null) {
-				Object conditionValue = eObject.eGet(CapellacommonPackage.Literals.STATE_EVENT__CONDITION, true);
-				if (conditionValue != null && conditionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) conditionValue)) {
-					itemPropertyDescriptors.remove(conditionPropertyDescriptor);
-				} else if (conditionValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_EVENT__CONDITION) != null) {
-					itemPropertyDescriptors.remove(conditionPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(conditionPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(conditionPropertyDescriptor);
+			// Process CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION
+			if (expressionPropertyDescriptor != null) {
+				Object expressionValue = eObject.eGet(CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION, true);
+				if (expressionValue != null && expressionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) expressionValue)) {
+					itemPropertyDescriptors.remove(expressionPropertyDescriptor);
+				} else if (expressionValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION) != null) {
+					itemPropertyDescriptors.remove(expressionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(expressionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(expressionPropertyDescriptor);
 				}
 			}
 		}		
@@ -108,7 +107,7 @@ public class StateEventItemProvider
 			super.getPropertyDescriptors(object);
 
 			addAbstractTypedElementsPropertyDescriptor(object);
-			addConditionPropertyDescriptor(object);
+			addExpressionPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -144,20 +143,20 @@ public class StateEventItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Condition feature.
+	 * This adds a property descriptor for the Expression feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addConditionPropertyDescriptor(Object object) {
+	protected void addExpressionPropertyDescriptor(Object object) {
 		// begin-extension-code
-		conditionPropertyDescriptor = createItemPropertyDescriptor
+		expressionPropertyDescriptor = createItemPropertyDescriptor
 		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_StateEvent_condition_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_StateEvent_condition_feature", "_UI_StateEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE_EVENT__CONDITION,
+				 getString("_UI_StateEvent_expression_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_StateEvent_expression_feature", "_UI_StateEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION,
 				 true,
 				 false,
 				 true,
@@ -165,7 +164,7 @@ public class StateEventItemProvider
 				 null,
 		// begin-extension-code
 				 null);
-		itemPropertyDescriptors.add(conditionPropertyDescriptor);
+		itemPropertyDescriptors.add(expressionPropertyDescriptor);
 		// end-extension-code
 	}
 

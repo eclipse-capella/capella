@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.common.mdsofa.common.feature"
       label="%featureName"
-      version="0.8.0.qualifier"
+      version="1.0.0.qualifier"
       provider-name="%providerName"
       plugin="org.polarsys.capella.common.mdsofa.common">
 
@@ -29,10 +29,10 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.emf" version="2.3.2.v200802051830" match="compatible"/>
-      <import feature="org.eclipse.jdt" version="3.3.2.r33x_r20080129-7o7jE7_EDhYDiyVEnjb1pFd7ZGD7" match="compatible"/>
-      <import feature="org.eclipse.pde" version="3.3.3.r33x_r20080129-7N7M5DQVIA_6oJsEFkEL" match="compatible"/>
-      <import feature="org.eclipse.platform" version="3.3.3.r33x_r20080129-_19UEl7Ezk_gXF1kouft" match="compatible"/>
+      <import feature="org.eclipse.emf" />
+      <import feature="org.eclipse.jdt" />
+      <import feature="org.eclipse.pde" />
+      <import feature="org.eclipse.platform" />
    </requires>
 
    <plugin

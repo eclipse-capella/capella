@@ -29,7 +29,7 @@ public abstract class AbstractMarkerResolutionGenerator implements IMarkerResolu
   
   @Override
   public boolean hasResolutions(IMarker marker) {
-    String ruleID = MarkerViewHelper.getRuleId(marker);
+    String ruleID = MarkerViewHelper.getRuleID(marker, true);
     return getRuleId().equals(ruleID);
   }
   

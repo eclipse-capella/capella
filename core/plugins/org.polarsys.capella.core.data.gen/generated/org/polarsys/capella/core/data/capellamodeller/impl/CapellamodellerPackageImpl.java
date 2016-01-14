@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -541,89 +541,89 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "profileName", "Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (projectEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Model", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "core.Project" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProject_KeyValuePairs(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProject_OwnedFolders(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getProject_OwnedModelRoots(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (folderEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "core.Folder" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFolder_OwnedFolders(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFolder_OwnedModelRoots(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (modelRootEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (systemEngineeringEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.SystemEngineering" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																								
+		   });	
 		addAnnotation
 		  (systemEngineeringPkgEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.SystemEngineeringPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineeringPkg_OwnedSystemEngineerings(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });
 	}
 
 	/**
@@ -633,7 +633,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -642,7 +642,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																															
+		   });
 	}
 
 	/**
@@ -652,7 +652,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -664,7 +664,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "constraints", "This package depends on the model CapellaCore.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (projectEClass, 
 		   source, 
@@ -676,7 +676,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "constraints", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "None", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "None" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProject_KeyValuePairs(), 
 		   source, 
@@ -684,7 +684,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "description", "a list of key/value pairs applying to this Project\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProject_OwnedFolders(), 
 		   source, 
@@ -692,7 +692,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "description", "Set of folders owned by the project\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getProject_OwnedModelRoots(), 
 		   source, 
@@ -700,7 +700,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "description", "Set of system engineering elements\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (folderEClass, 
 		   source, 
@@ -712,7 +712,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFolder_OwnedFolders(), 
 		   source, 
@@ -720,7 +720,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "description", "Sub folders of this folder\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFolder_OwnedModelRoots(), 
 		   source, 
@@ -728,7 +728,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "description", "Set of system engineering elements\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (modelRootEClass, 
 		   source, 
@@ -740,7 +740,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (systemEngineeringEClass, 
 		   source, 
@@ -752,7 +752,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																								
+		   });	
 		addAnnotation
 		  (systemEngineeringPkgEClass, 
 		   source, 
@@ -764,7 +764,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSystemEngineeringPkg_OwnedSystemEngineerings(), 
 		   source, 
@@ -772,7 +772,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "description", "Set of system engineering elements\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });
 	}
 
 	/**
@@ -782,69 +782,69 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (projectEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getProject_KeyValuePairs(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getProject_OwnedModelRoots(), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });	
 		addAnnotation
 		  (systemEngineeringEClass, 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedOperationalAnalysis(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedSystemAnalysis(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedPhysicalArchitectures(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedEPBSArchitectures(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedSharedPkgs(), 
 		   source, 
 		   new String[] {
 			 "feature", "ownedArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (libraryEClass, 
 		   source, 
@@ -859,7 +859,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -868,7 +868,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																												
+		   });
 	}
 
 	/**
@@ -878,7 +878,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (projectEClass, 
 		   source, 
@@ -887,7 +887,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProject_KeyValuePairs(), 
 		   source, 
@@ -895,7 +895,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "uml::Element::ownedComment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Element::ownedComment elements on which KeyValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getProject_OwnedFolders(), 
 		   source, 
@@ -903,7 +903,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which Folder stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getProject_OwnedModelRoots(), 
 		   source, 
@@ -911,7 +911,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ModelRoot stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (folderEClass, 
 		   source, 
@@ -920,7 +920,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFolder_OwnedFolders(), 
 		   source, 
@@ -928,7 +928,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getFolder_OwnedModelRoots(), 
 		   source, 
@@ -936,7 +936,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which ModelRoot stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (modelRootEClass, 
 		   source, 
@@ -945,7 +945,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (systemEngineeringEClass, 
 		   source, 
@@ -954,7 +954,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedOperationalAnalysis(), 
 		   source, 
@@ -962,7 +962,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedSystemAnalysis(), 
 		   source, 
@@ -970,7 +970,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedLogicalArchitectures(), 
 		   source, 
@@ -978,7 +978,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedPhysicalArchitectures(), 
 		   source, 
@@ -986,7 +986,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedEPBSArchitectures(), 
 		   source, 
@@ -994,7 +994,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedSharedPkgs(), 
 		   source, 
@@ -1002,7 +1002,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (systemEngineeringPkgEClass, 
 		   source, 
@@ -1011,7 +1011,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSystemEngineeringPkg_OwnedSystemEngineerings(), 
 		   source, 
@@ -1019,7 +1019,7 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });
 	}
 
 	/**
@@ -1029,25 +1029,25 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$																																		
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (systemEngineeringEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "System Engineering" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																								
+		   });	
 		addAnnotation
 		  (systemEngineeringPkgEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SystemEngineeringPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSystemEngineeringPkg_OwnedSystemEngineerings(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedSystemEngineerings" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });
 	}
 
 	/**
@@ -1057,37 +1057,37 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																																							
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getSystemEngineering_ContainedOperationalAnalysis(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedSystemAnalysis(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedLogicalArchitectures(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedPhysicalArchitectures(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedEPBSArchitectures(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSystemEngineering_ContainedSharedPkgs(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });
 	}
 
 	/**
@@ -1097,12 +1097,12 @@ public class CapellamodellerPackageImpl extends EPackageImpl implements Capellam
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																																																															
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getSystemEngineeringPkg_OwnedSystemEngineerings(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });
 	}
 
 } //CapellamodellerPackageImpl

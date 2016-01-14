@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,255 +48,275 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_Collection_NullValue extends AbstractQuery {
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public List<Object> execute(Object input, IQueryContext context) {
-		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
-		return (List) availableElements;
-	}
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  @Override
+  public List<Object> execute(Object input, IQueryContext context) {
+    CapellaElement capellaElement = (CapellaElement) input;
+    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+    return (List) availableElements;
+  }
 
-	/** 
-	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element_p);
-		SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element_p);
-		OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
-		returnValue.addAll(getDataFromLevel(operationalAnalysis, element_p));
-		if (!(currentBlockArchitecture instanceof OperationalAnalysis)) {
-			SystemAnalysis systemAnalysis = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-			returnValue.addAll(getDataFromLevel(systemAnalysis, element_p));
-			if (!(currentBlockArchitecture instanceof SystemAnalysis)) {
-				LogicalArchitecture logicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-				returnValue.addAll(getDataFromLevel(logicalArchitecture, element_p));
-				if (!(currentBlockArchitecture instanceof LogicalArchitecture)) {
-					PhysicalArchitecture physicalArchitecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-					returnValue.addAll(getDataFromLevel(physicalArchitecture, element_p));
-					if (!(currentBlockArchitecture instanceof PhysicalArchitecture)) {
-						EPBSArchitecture epbsArchitecture = SystemEngineeringExt.getEPBSArchitecture((systemEngineering));
-						returnValue.addAll(getDataFromLevel(epbsArchitecture, element_p));
-					}
-				}
-			}
-		}
-		returnValue.addAll(getUnlevelizedData(element_p));
-		returnValue.addAll(getDataFromComponentHierarchy(element_p));
-		returnValue.addAll(getDataFromRealizedComponentsHierarchy(element_p));
-		returnValue.addAll(getTypesFromComponentHierarchy(element_p));
-		returnValue = filterUnNamedElements(returnValue);
-		return returnValue;
-	}
+  /**
+   * filter unNamed Capella Elements
+   * 
+   * @param list
+   * @return : List<CapellaElement>
+   */
+  protected List<CapellaElement> filterUnNamedElements(List<CapellaElement> list) {
+    List<CapellaElement> result = new ArrayList<CapellaElement>(1);
+    for (CapellaElement capellaElement : list) {
+      if (capellaElement instanceof AbstractNamedElement) {
+        String name = ((AbstractNamedElement) capellaElement).getName();
+        if ((null != name) && !ICommonConstants.EMPTY_STRING.equals(name)) {
+          result.add(capellaElement);
+        }
+      }
+    }
+    return result;
+  }
 
-	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
-	 */
-	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE);
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   */
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
+    BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element);
+    SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element);
+    OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
+    returnValue.addAll(getDataFromLevel(operationalAnalysis, element));
+    if (!(currentBlockArchitecture instanceof OperationalAnalysis)) {
+      SystemAnalysis systemAnalysis = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
+      returnValue.addAll(getDataFromLevel(systemAnalysis, element));
+      if (!(currentBlockArchitecture instanceof SystemAnalysis)) {
+        LogicalArchitecture logicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
+        returnValue.addAll(getDataFromLevel(logicalArchitecture, element));
+        if (!(currentBlockArchitecture instanceof LogicalArchitecture)) {
+          PhysicalArchitecture physicalArchitecture = SystemEngineeringExt
+              .getOwnedPhysicalArchitecture(systemEngineering);
+          returnValue.addAll(getDataFromLevel(physicalArchitecture, element));
+          if (!(currentBlockArchitecture instanceof PhysicalArchitecture)) {
+            EPBSArchitecture epbsArchitecture = SystemEngineeringExt.getEPBSArchitecture((systemEngineering));
+            returnValue.addAll(getDataFromLevel(epbsArchitecture, element));
+          }
+        }
+      }
+    }
+    returnValue.addAll(getUnlevelizedData(element));
+    returnValue.addAll(getDataFromComponentHierarchy(element));
+    returnValue.addAll(getDataFromRealizedComponentsHierarchy(element));
+    returnValue.addAll(getTypesFromComponentHierarchy(element));
+    returnValue = filterUnNamedElements(returnValue);
+    return returnValue;
+  }
 
-	public List<CapellaElement> getUnlevelizedData(CapellaElement capellaElement_p) {
-		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		if (capellaElement_p instanceof Property) {
-			AbstractType type = ((Property) capellaElement_p).getAbstractType();
-			if (type != null) {
-				if (type instanceof Enumeration) {
-					List<GeneralizableElement> rootSupertypes = GeneralizableElementExt.getRootSupertypes((Enumeration) type);
-					rootSupertypes.add((GeneralizableElement) type);
-					for (CapellaElement melElem : rootSupertypes) {
-						if (melElem instanceof Enumeration) {
-							Enumeration rootBooleanType = (Enumeration) melElem;
-							returnValue.addAll(rootBooleanType.getOwnedLiterals());
-						}
-					}
-				} else if (type instanceof BooleanType) {
-					List<GeneralizableElement> rootSupertypes = GeneralizableElementExt.getRootSupertypes((BooleanType) type);
-					rootSupertypes.add((GeneralizableElement) type);
-					for (CapellaElement melElem : rootSupertypes) {
-						if (melElem instanceof BooleanType) {
-							BooleanType rootBooleanType = (BooleanType) melElem;
-							returnValue.addAll(rootBooleanType.getOwnedLiterals());
-						}
-					}
-				}
-			}
-		}
-		return returnValue;
-	}
+  /** 
+   */
+  protected List<CapellaElement> getDataFromComponentHierarchy(CapellaElement element) {
+    List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
+      DataPkg dataPkg = cpnt.getOwnedDataPkg();
+      if (null != dataPkg) {
+        allDatas.addAll(getDataFromLevel(dataPkg, element));
+      }
+    }
+    return allDatas;
+  }
 
-	/** 
-	 * @see org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery#getDataFromLevel(org.polarsys.capella.core.data.cs.BlockArchitecture,org.polarsys.capella.core.data.capellacore.CapellaElement)
-	 */
-	public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
-		List<CapellaElement> dataFromLevel = super_getDataFromLevel(dataPkg_p, capellaElement_p);
-		if (capellaElement_p instanceof MultiplicityElement) {
-			dataFromLevel.addAll(CapellaElementsHelperForBusinessQueries.getApplicableValuesForMultEleConsideringSuperGenElements(dataPkg_p,
-					(MultiplicityElement) capellaElement_p, getEStructuralFeatures()));
-		}
-		return dataFromLevel;
-	}
-	
-  public List<CapellaElement> super_getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
-    if (capellaElement_p instanceof MultiplicityElement) {
-
-      List<CapellaElement> returnValue =
-          CapellaElementsHelperForBusinessQueries.getStandardApplicableValuesForMultiplicityElementInLevel(dataPkg_p, (MultiplicityElement) capellaElement_p,
-              getEStructuralFeatures());
-      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesWithTypeOf(dataPkg_p, capellaElement_p));
-      return returnValue;
+  /**
+   * This method purpose is to get the available data related to the given element in the given layer
+   * 
+   * @param blockArchitecture
+   *          the layer
+   * @param capellaElement
+   *          the capella element
+   * @return the available elements
+   */
+  public List<CapellaElement> getDataFromLevel(BlockArchitecture blockArchitecture, CapellaElement capellaElement) {
+    if (null != blockArchitecture) {
+      DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
+      if (null != dataPkg) {
+        return getDataFromLevel(dataPkg, capellaElement);
+      }
     }
     return Collections.emptyList();
   }
 
-	/** 
-	 * This method purpose is to get the available data related to the given element in the given layer
-	 * @param blockArchitecture_p the layer
-	 * @param capellaElement_p the capella element
-	 * @return the available elements
-	 */
-	public List<CapellaElement> getDataFromLevel(BlockArchitecture blockArchitecture_p, CapellaElement capellaElement_p) {
-		if (null != blockArchitecture_p) {
-			DataPkg dataPkg = blockArchitecture_p.getOwnedDataPkg();
-			if (null != dataPkg) {
-				return getDataFromLevel(dataPkg, capellaElement_p);
-			}
-		}
-		return Collections.emptyList();
-	}
+  /**
+   * @see org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery#getDataFromLevel(org.polarsys.capella.core.data.cs.BlockArchitecture,org.polarsys.capella.core.data.capellacore.CapellaElement)
+   */
+  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
+    List<CapellaElement> dataFromLevel = super_getDataFromLevel(dataPkg, capellaElement);
+    if (capellaElement instanceof MultiplicityElement) {
+      dataFromLevel.addAll(CapellaElementsHelperForBusinessQueries
+          .getApplicableValuesForMultEleConsideringSuperGenElements(dataPkg, (MultiplicityElement) capellaElement,
+              getEStructuralFeatures()));
+    }
+    return dataFromLevel;
+  }
 
-	/** 
-	 */
-	protected List<CapellaElement> getDataFromComponentHierarchy(CapellaElement element_p) {
-		List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
-		for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
-			DataPkg dataPkg = cpnt.getOwnedDataPkg();
-			if (null != dataPkg) {
-				allDatas.addAll(getDataFromLevel(dataPkg, element_p));
-			}
-		}
-		return allDatas;
-	}
+  /** 
+   */
+  protected List<CapellaElement> getDataFromRealizedComponentsHierarchy(CapellaElement element) {
+    List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
+    Component currentCpnt = (element instanceof Component) ? (Component) element : null;
+    if (null == currentCpnt) {
+      currentCpnt = (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
+    }
+    if (null != currentCpnt) {
+      for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
+        List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
+        componentHierarchy.add(allocatedCpnt);
+        for (Component cpnt : componentHierarchy) {
+          DataPkg dataPkg = cpnt.getOwnedDataPkg();
+          if (null != dataPkg) {
+            for (CapellaElement data : getDataFromLevel(dataPkg, element)) {
+              if (!allDatas.contains(data)) {
+                allDatas.add(data);
+              }
+            }
+          }
+        }
+      }
+    }
+    return allDatas;
+  }
 
-	/** 
-	 */
-	protected List<CapellaElement> getDataFromRealizedComponentsHierarchy(CapellaElement element_p) {
-		List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
-		Component currentCpnt = (element_p instanceof Component) ? (Component) element_p : null;
-		if (null == currentCpnt) {
-			currentCpnt = (Component) EcoreUtil2.getFirstContainer(element_p, CsPackage.Literals.COMPONENT);
-		}
-		if (null != currentCpnt) {
-			for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
-				List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
-				componentHierarchy.add(allocatedCpnt);
-				for (Component cpnt : componentHierarchy) {
-					DataPkg dataPkg = cpnt.getOwnedDataPkg();
-					if (null != dataPkg) {
-						for (CapellaElement data : getDataFromLevel(dataPkg, element_p)) {
-							if (!allDatas.contains(data)) {
-								allDatas.add(data);
-							}
-						}
-					}
-				}
-			}
-		}
-		return allDatas;
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
+   */
+  public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE);
+  }
 
-	/** 
-	 */
-	protected List<CapellaElement> getTypesFromComponentHierarchy(CapellaElement element_p) {
-		List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
-		for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
-			DataPkg dataPkg = cpnt.getOwnedDataPkg();
-			if (null != dataPkg) {
-				allDatas.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
-			}
-		}
-		allDatas = removeNonPrimitiveClasses(allDatas);
-		allDatas = removeNonPrimitiveCollections(allDatas);
-		return allDatas;
-	}
+  /** 
+   */
+  protected List<CapellaElement> getTypesFromComponentHierarchy(CapellaElement element) {
+    List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
+      DataPkg dataPkg = cpnt.getOwnedDataPkg();
+      if (null != dataPkg) {
+        allDatas.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
+      }
+    }
+    allDatas = removeNonPrimitiveClasses(allDatas);
+    allDatas = removeNonPrimitiveCollections(allDatas);
+    return allDatas;
+  }
 
-	/** 
-	 * filter unNamed Capella Elements
-	 * @param list_p
-	 * @return : List<CapellaElement>
-	 */
-	protected List<CapellaElement> filterUnNamedElements(List<CapellaElement> list_p) {
-		List<CapellaElement> result = new ArrayList<CapellaElement>(1);
-		for (CapellaElement capellaElement : list_p) {
-			if (capellaElement instanceof AbstractNamedElement) {
-				String name = ((AbstractNamedElement) capellaElement).getName();
-				if ((null != name) && !ICommonConstants.EMPTY_STRING.equals(name)) {
-					result.add(capellaElement);
-				}
-			}
-		}
-		return result;
-	}
+  public List<CapellaElement> getUnlevelizedData(CapellaElement capellaElement) {
+    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
+    if (capellaElement instanceof Property) {
+      AbstractType type = ((Property) capellaElement).getAbstractType();
+      if (type != null) {
+        if (type instanceof Enumeration) {
+          List<GeneralizableElement> rootSupertypes = GeneralizableElementExt.getRootSupertypes((Enumeration) type);
+          rootSupertypes.add((GeneralizableElement) type);
+          for (CapellaElement melElem : rootSupertypes) {
+            if (melElem instanceof Enumeration) {
+              Enumeration rootBooleanType = (Enumeration) melElem;
+              returnValue.addAll(rootBooleanType.getOwnedLiterals());
+            }
+          }
+        } else if (type instanceof BooleanType) {
+          List<GeneralizableElement> rootSupertypes = GeneralizableElementExt.getRootSupertypes((BooleanType) type);
+          rootSupertypes.add((GeneralizableElement) type);
+          for (CapellaElement melElem : rootSupertypes) {
+            if (melElem instanceof BooleanType) {
+              BooleanType rootBooleanType = (BooleanType) melElem;
+              returnValue.addAll(rootBooleanType.getOwnedLiterals());
+            }
+          }
+        }
+      }
+    }
+    return returnValue;
+  }
 
-	/** 
-	 * Removes the non primitives classes from the given list
-	 * @param elements_p the list to handle
-	 * @return the processed list
-	 */
-	protected List<CapellaElement> removeNonPrimitiveClasses(List<CapellaElement> elements_p) {
-		return removePrimitiveOrNonPrimitiveClasses(elements_p, false);
-	}
+  /**
+   * Removes the non primitives classes from the given list
+   * 
+   * @param elements
+   *          the list to handle
+   * @return the processed list
+   */
+  protected List<CapellaElement> removeNonPrimitiveClasses(List<CapellaElement> elements) {
+    return removePrimitiveOrNonPrimitiveClasses(elements, false);
+  }
 
-	/** 
-	 * Removes the non primitives Collections from the given list
-	 * @param elements_p the list to handle
-	 * @return the processed list
-	 */
-	protected List<CapellaElement> removeNonPrimitiveCollections(List<CapellaElement> elements_p) {
-		return removePrimitiveOrNonPrimitiveCollections(elements_p, false);
-	}
+  /**
+   * Removes the non primitives Collections from the given list
+   * 
+   * @param elements
+   *          the list to handle
+   * @return the processed list
+   */
+  protected List<CapellaElement> removeNonPrimitiveCollections(List<CapellaElement> elements) {
+    return removePrimitiveOrNonPrimitiveCollections(elements, false);
+  }
 
-	/** 
-	 * Allows to remove primitive or non primitive classes from a list
-	 * @param elements_p the list
-	 * @param removePrimitive_p <code>true</code> if you want to remove the primitive classes, <code>false</code> if you want to remove the non primitive classes
-	 * @return the processed list
-	 */
-	protected List<CapellaElement> removePrimitiveOrNonPrimitiveClasses(List<CapellaElement> elements_p, boolean removePrimitive_p) {
-		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		for (CapellaElement element : elements_p) {
-			if (element instanceof Class) {
-				Class currentClass = (Class) element;
-				if ((!removePrimitive_p && currentClass.isIsPrimitive()) || (removePrimitive_p && !currentClass.isIsPrimitive())) {
-					returnValue.add(currentClass);
-				}
-			} else {
-				returnValue.add(element);
-			}
-		}
-		return returnValue;
-	}
+  /**
+   * Allows to remove primitive or non primitive classes from a list
+   * 
+   * @param elements
+   *          the list
+   * @param removePrimitive
+   *          <code>true</code> if you want to remove the primitive classes, <code>false</code> if you want to remove
+   *          the non primitive classes
+   * @return the processed list
+   */
+  protected List<CapellaElement> removePrimitiveOrNonPrimitiveClasses(List<CapellaElement> elements,
+      boolean removePrimitive) {
+    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
+    for (CapellaElement element : elements) {
+      if (element instanceof Class) {
+        Class currentClass = (Class) element;
+        if ((!removePrimitive && currentClass.isIsPrimitive()) || (removePrimitive && !currentClass.isIsPrimitive())) {
+          returnValue.add(currentClass);
+        }
+      } else {
+        returnValue.add(element);
+      }
+    }
+    return returnValue;
+  }
 
-	/** 
-	 * Allows to remove primitive or non primitive Collections from a list
-	 * @param elements_p the list
-	 * @param removePrimitive_p <code>true</code> if you want to remove the primitive Collections, <code>false</code> if you want to remove the non primitive
-	 * Collections
-	 * @return the processed list
-	 */
-	protected List<CapellaElement> removePrimitiveOrNonPrimitiveCollections(List<CapellaElement> elements_p, boolean removePrimitive_p) {
-		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		for (CapellaElement element : elements_p) {
-			if (element instanceof Collection) {
-				Collection currentCollection = (Collection) element;
-				if ((!removePrimitive_p && currentCollection.isIsPrimitive()) || (removePrimitive_p && !currentCollection.isIsPrimitive())) {
-					returnValue.add(currentCollection);
-				}
-			} else {
-				returnValue.add(element);
-			}
-		}
-		return returnValue;
-	}
+  /**
+   * Allows to remove primitive or non primitive Collections from a list
+   * 
+   * @param elements
+   *          the list
+   * @param removePrimitive
+   *          <code>true</code> if you want to remove the primitive Collections, <code>false</code> if you want to
+   *          remove the non primitive Collections
+   * @return the processed list
+   */
+  protected List<CapellaElement> removePrimitiveOrNonPrimitiveCollections(List<CapellaElement> elements,
+      boolean removePrimitive) {
+    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
+    for (CapellaElement element : elements) {
+      if (element instanceof Collection) {
+        Collection currentCollection = (Collection) element;
+        if ((!removePrimitive && currentCollection.isIsPrimitive())
+            || (removePrimitive && !currentCollection.isIsPrimitive())) {
+          returnValue.add(currentCollection);
+        }
+      } else {
+        returnValue.add(element);
+      }
+    }
+    return returnValue;
+  }
+
+  public List<CapellaElement> super_getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
+    if (capellaElement instanceof MultiplicityElement) {
+
+      List<CapellaElement> returnValue = CapellaElementsHelperForBusinessQueries
+          .getStandardApplicableValuesForMultiplicityElementInLevel(dataPkg, (MultiplicityElement) capellaElement,
+              getEStructuralFeatures());
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesWithTypeOf(dataPkg, capellaElement));
+      return returnValue;
+    }
+    return Collections.emptyList();
+  }
 
 }

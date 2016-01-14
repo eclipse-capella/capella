@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2145,13 +2145,13 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		initEReference(getAbstractCapability_OwnedScenarios(), this.getScenario(), null, "ownedScenarios", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_IncomingCapabilityAllocation(), this.getAbstractCapabilityRealization(), this.getAbstractCapabilityRealization_RealizedCapability(), "incomingCapabilityAllocation", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_OutgoingCapabilityAllocation(), this.getAbstractCapabilityRealization(), this.getAbstractCapabilityRealization_RealizingCapability(), "outgoingCapabilityAllocation", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapability_Extends(), this.getAbstractCapabilityExtend(), this.getAbstractCapabilityExtend_Extension(), "extends", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapability_Extending(), this.getAbstractCapabilityExtend(), this.getAbstractCapabilityExtend_Extended(), "extending", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapability_AbstractCapabilityExtensionPoints(), this.getAbstractCapabilityExtensionPoint(), this.getAbstractCapabilityExtensionPoint_AbstractCapability(), "abstractCapabilityExtensionPoints", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapability_SuperGeneralizations(), this.getAbstractCapabilityGeneralization(), this.getAbstractCapabilityGeneralization_Sub(), "superGeneralizations", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapability_SubGeneralizations(), this.getAbstractCapabilityGeneralization(), this.getAbstractCapabilityGeneralization_Super(), "subGeneralizations", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapability_Includes(), this.getAbstractCapabilityInclude(), this.getAbstractCapabilityInclude_Inclusion(), "includes", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapability_Including(), this.getAbstractCapabilityInclude(), this.getAbstractCapabilityInclude_Included(), "including", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_Extends(), this.getAbstractCapabilityExtend(), null, "extends", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_Extending(), this.getAbstractCapabilityExtend(), null, "extending", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_AbstractCapabilityExtensionPoints(), this.getAbstractCapabilityExtensionPoint(), null, "abstractCapabilityExtensionPoints", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_SuperGeneralizations(), this.getAbstractCapabilityGeneralization(), null, "superGeneralizations", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_SubGeneralizations(), this.getAbstractCapabilityGeneralization(), null, "subGeneralizations", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_Includes(), this.getAbstractCapabilityInclude(), null, "includes", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_Including(), this.getAbstractCapabilityInclude(), null, "including", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_Super(), this.getAbstractCapability(), null, "super", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_Sub(), this.getAbstractCapability(), null, "sub", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_IncludedAbstractCapabilities(), this.getAbstractCapability(), null, "includedAbstractCapabilities", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2166,21 +2166,21 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		initEReference(getAbstractCapability_InvolvedFunctionalChains(), theFaPackage.getFunctionalChain(), null, "involvedFunctionalChains", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractCapabilityExtendEClass, AbstractCapabilityExtend.class, "AbstractCapabilityExtend", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getAbstractCapabilityExtend_Extended(), this.getAbstractCapability(), this.getAbstractCapability_Extending(), "extended", null, 1, 1, AbstractCapabilityExtend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapabilityExtend_Extension(), this.getAbstractCapability(), this.getAbstractCapability_Extends(), "extension", null, 1, 1, AbstractCapabilityExtend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapabilityExtend_Extended(), this.getAbstractCapability(), null, "extended", null, 1, 1, AbstractCapabilityExtend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapabilityExtend_Extension(), this.getAbstractCapability(), null, "extension", null, 1, 1, AbstractCapabilityExtend.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapabilityExtend_ExtensionLocation(), this.getAbstractCapabilityExtensionPoint(), this.getAbstractCapabilityExtensionPoint_ExtendLinks(), "extensionLocation", null, 0, 1, AbstractCapabilityExtend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractCapabilityExtensionPointEClass, AbstractCapabilityExtensionPoint.class, "AbstractCapabilityExtensionPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getAbstractCapabilityExtensionPoint_AbstractCapability(), this.getAbstractCapability(), this.getAbstractCapability_AbstractCapabilityExtensionPoints(), "abstractCapability", null, 1, 1, AbstractCapabilityExtensionPoint.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapabilityExtensionPoint_AbstractCapability(), this.getAbstractCapability(), null, "abstractCapability", null, 1, 1, AbstractCapabilityExtensionPoint.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapabilityExtensionPoint_ExtendLinks(), this.getAbstractCapabilityExtend(), this.getAbstractCapabilityExtend_ExtensionLocation(), "extendLinks", null, 0, -1, AbstractCapabilityExtensionPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractCapabilityGeneralizationEClass, AbstractCapabilityGeneralization.class, "AbstractCapabilityGeneralization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getAbstractCapabilityGeneralization_Super(), this.getAbstractCapability(), this.getAbstractCapability_SubGeneralizations(), "super", null, 1, 1, AbstractCapabilityGeneralization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapabilityGeneralization_Sub(), this.getAbstractCapability(), this.getAbstractCapability_SuperGeneralizations(), "sub", null, 1, 1, AbstractCapabilityGeneralization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapabilityGeneralization_Super(), this.getAbstractCapability(), null, "super", null, 1, 1, AbstractCapabilityGeneralization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapabilityGeneralization_Sub(), this.getAbstractCapability(), null, "sub", null, 1, 1, AbstractCapabilityGeneralization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractCapabilityIncludeEClass, AbstractCapabilityInclude.class, "AbstractCapabilityInclude", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getAbstractCapabilityInclude_Included(), this.getAbstractCapability(), this.getAbstractCapability_Including(), "included", null, 1, 1, AbstractCapabilityInclude.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractCapabilityInclude_Inclusion(), this.getAbstractCapability(), this.getAbstractCapability_Includes(), "inclusion", null, 1, 1, AbstractCapabilityInclude.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapabilityInclude_Included(), this.getAbstractCapability(), null, "included", null, 1, 1, AbstractCapabilityInclude.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapabilityInclude_Inclusion(), this.getAbstractCapability(), null, "inclusion", null, 1, 1, AbstractCapabilityInclude.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(interactionFragmentEClass, InteractionFragment.class, "InteractionFragment", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getInteractionFragment_CoveredInstanceRoles(), this.getInstanceRole(), null, "coveredInstanceRoles", null, 1, -1, InteractionFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2308,7 +2308,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2318,7 +2318,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+		   });
 	}
 
 	/**
@@ -2328,7 +2328,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createDocumentationAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -2340,7 +2340,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "This package depends on the model FunctionalAnalysis.ecore\r\nThis package depends on the model Behavior.ecore", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (sequenceMessageEClass, 
 		   source, 
@@ -2352,7 +2352,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed Message to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSequenceMessage_Kind(), 
 		   source, 
@@ -2361,7 +2361,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "see MessageKind definition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingEnd(), 
 		   source, 
@@ -2369,7 +2369,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "This is equivalent to UML Message::sendEvent :\r\nReferences the Sending of the Message.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingEnd(), 
 		   source, 
@@ -2377,7 +2377,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "This is equivalent to UML Message::sendEvent :\r\nReferences the Receiving of the Message.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSequenceMessage_InvokedOperation(), 
 		   source, 
@@ -2385,7 +2385,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the AbstractEventOperation triggered by this sequence message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ExchangedItems(), 
 		   source, 
@@ -2393,7 +2393,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the ExchangeItems carried by this sequence message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																			
+		   });	
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
@@ -2405,7 +2405,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_Kind(), 
 		   source, 
@@ -2413,7 +2413,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_Merged(), 
 		   source, 
@@ -2422,7 +2422,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_PreCondition(), 
 		   source, 
@@ -2431,7 +2431,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_PostCondition(), 
 		   source, 
@@ -2440,7 +2440,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
 		   source, 
@@ -2448,7 +2448,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "Link to the set of instance roles (lifelines)\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedMessages(), 
 		   source, 
@@ -2456,7 +2456,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "Link to the owned sequence messages\r\n[Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInteractionFragments(), 
 		   source, 
@@ -2464,7 +2464,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "Link to the owned message and operation ends\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedTimeLapses(), 
 		   source, 
@@ -2472,7 +2472,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "Link to the set of owned executions\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedEvents(), 
 		   source, 
@@ -2480,7 +2480,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Events associated to this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_OwnedFormalGates(), 
 		   source, 
@@ -2492,7 +2492,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getScenario_OwnedScenarioRealization(), 
 		   source, 
@@ -2504,7 +2504,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getScenario_OwnedConstraintDurations(), 
 		   source, 
@@ -2516,7 +2516,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getScenario_ContainedFunctions(), 
 		   source, 
@@ -2524,7 +2524,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the SequenceMessage list, in sequence order", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ContainedParts(), 
 		   source, 
@@ -2532,7 +2532,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the SequenceMessage list, in sequence order", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ReferencedScenarios(), 
 		   source, 
@@ -2540,7 +2540,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizedScenarios(), 
 		   source, 
@@ -2548,7 +2548,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizingScenarios(), 
 		   source, 
@@ -2556,7 +2556,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (messageEndEClass, 
 		   source, 
@@ -2568,7 +2568,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed MessageOccurrenceSpecification to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMessageEnd_Message(), 
 		   source, 
@@ -2576,7 +2576,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Message to which this MessageEnd is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (executionEClass, 
 		   source, 
@@ -2588,7 +2588,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed ExecutionSpecification to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExecution_Covered(), 
 		   source, 
@@ -2596,7 +2596,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the instance role that performs this Execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (executionEndEClass, 
 		   source, 
@@ -2608,7 +2608,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed ExecutionOccurrenceSpecification to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExecutionEnd_Execution(), 
 		   source, 
@@ -2616,7 +2616,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Execution to which this ExecutionEnd is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (creationEventEClass, 
 		   source, 
@@ -2628,7 +2628,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (destructionEventEClass, 
 		   source, 
@@ -2640,7 +2640,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (executionEventEClass, 
 		   source, 
@@ -2652,7 +2652,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (instanceRoleEClass, 
 		   source, 
@@ -2664,7 +2664,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "May be renamed Lifeline", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInstanceRole_AbstractEnds(), 
 		   source, 
@@ -2672,7 +2672,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the start/end points of interactions that are attached to this lifeline\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInstanceRole_RepresentedInstance(), 
 		   source, 
@@ -2680,7 +2680,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the instance that this lifeline represents the activity of\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractEndEClass, 
 		   source, 
@@ -2692,7 +2692,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed OccurrenceSpecification to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractEndEClass, 
 		   source, 
@@ -2700,7 +2700,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the scenario that this interaction endpoint is related to\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Event(), 
 		   source, 
@@ -2708,7 +2708,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Event associated to this interaction endpoint\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Covered(), 
 		   source, 
@@ -2716,7 +2716,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the instance role (lifeline) to which this interaction endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageKindEEnum, 
 		   source, 
@@ -2724,7 +2724,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "This concept is similar to UML MessageSort :\r\nThis is an enumerated type that identifies the type of message.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed MessageSort to map UML concept" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -2732,7 +2732,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "The message kind is not specified\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -2740,7 +2740,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "This enumeration literal is equivalent to UML MessageSort::asynchCall :\r\nThe message was generated by an asynchronous call to an operation.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -2748,7 +2748,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "This enumeration literal is equivalent to UML MessageSort::synchCall :\r\nThe message was generated by a synchronous call to an operation.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -2756,7 +2756,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "This enumeration literal is equivalent to UML MessageSort::reply :\r\nThe message is a reply message to an operation call.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -2764,7 +2764,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "This enumeration literal is equivalent to UML MessageSort::deleteMessage :\r\nThe message designating the termination of another lifeline.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(5), 
 		   source, 
@@ -2772,7 +2772,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "The message designating the creation of an instance role\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(6), 
 		   source, 
@@ -2780,7 +2780,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (eventEClass, 
 		   source, 
@@ -2792,7 +2792,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (eventReceiptOperationEClass, 
 		   source, 
@@ -2804,7 +2804,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed ReceiveOperationEvent to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEventReceiptOperation_Operation(), 
 		   source, 
@@ -2812,7 +2812,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Operation triggered by the reception of this event\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (eventSentOperationEClass, 
 		   source, 
@@ -2824,7 +2824,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed SendOperationEvent to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEventSentOperation_Operation(), 
 		   source, 
@@ -2832,7 +2832,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Operation triggering associated to the sending of this Event\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (mergeLinkEClass, 
 		   source, 
@@ -2844,7 +2844,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (refinementLinkEClass, 
 		   source, 
@@ -2856,7 +2856,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractCapabilityRealizationEClass, 
 		   source, 
@@ -2868,7 +2868,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizedCapability(), 
 		   source, 
@@ -2876,7 +2876,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Capability being realized from the other Capability", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizingCapability(), 
 		   source, 
@@ -2884,7 +2884,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Capability starting the realization relationships towards the other capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractCapabilityEClass, 
 		   source, 
@@ -2896,7 +2896,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractCapability_PreCondition(), 
 		   source, 
@@ -2905,7 +2905,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_PostCondition(), 
 		   source, 
@@ -2914,7 +2914,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedScenarios(), 
 		   source, 
@@ -2922,7 +2922,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Scenarios describing the dynamic aspects of this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncomingCapabilityAllocation(), 
 		   source, 
@@ -2930,7 +2930,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the allocations links which destination is this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OutgoingCapabilityAllocation(), 
 		   source, 
@@ -2938,7 +2938,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the allocation links having this Capability as their start point\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extends(), 
 		   source, 
@@ -2946,7 +2946,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the list of reference elements to the Capabilities that this Capability extends\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extending(), 
 		   source, 
@@ -2954,7 +2954,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the list of reference elements to Capabilities that extend this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AbstractCapabilityExtensionPoints(), 
 		   source, 
@@ -2962,7 +2962,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the extension points that this Capability provides\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SuperGeneralizations(), 
 		   source, 
@@ -2970,7 +2970,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the list of references to Capabilities from which this Capability inherits\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SubGeneralizations(), 
 		   source, 
@@ -2978,7 +2978,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the list of references to Capabilities that derive from this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Includes(), 
 		   source, 
@@ -2986,7 +2986,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the list of references to Capabilities used/included by this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Including(), 
 		   source, 
@@ -2994,7 +2994,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the list of references to Capabilities that use/include this Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Super(), 
 		   source, 
@@ -3002,7 +3002,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the direct references to Capabilities from which this Capability inherit", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Sub(), 
 		   source, 
@@ -3010,7 +3010,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the direct references to Capabilities that inherit from this Capability", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludedAbstractCapabilities(), 
 		   source, 
@@ -3018,7 +3018,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the direct references to the Capabilities that this Capability uses/includes", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludingAbstractCapabilities(), 
 		   source, 
@@ -3026,7 +3026,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the direct references to the Capabilities that this Capability uses/includes", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendedAbstractCapabilities(), 
 		   source, 
@@ -3034,7 +3034,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the direct references to the Capabilities that this Capability extends", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendingAbstractCapabilities(), 
 		   source, 
@@ -3042,7 +3042,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "(automatically computed) the direct references to the Capabilities that this Capability extends", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AvailableInStates(), 
 		   source, 
@@ -3050,7 +3050,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the list of (system) states in which this abstract capability is actually available\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedAbstractFunctions(), 
 		   source, 
@@ -3058,7 +3058,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedFunctionalChains(), 
 		   source, 
@@ -3066,7 +3066,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtendEClass, 
 		   source, 
@@ -3078,7 +3078,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed Extend to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extended(), 
 		   source, 
@@ -3086,7 +3086,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Capability being extended\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extension(), 
 		   source, 
@@ -3094,7 +3094,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Capability that realizes the extension\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_ExtensionLocation(), 
 		   source, 
@@ -3102,7 +3102,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the extension point to which the extending Capability is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "this extension location must be one of the extensions of the Capability pointed by the  \"extended\" reference\r\n", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtensionPointEClass, 
 		   source, 
@@ -3114,7 +3114,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_AbstractCapability(), 
 		   source, 
@@ -3122,7 +3122,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Capability to which this extension point belongs\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_ExtendLinks(), 
 		   source, 
@@ -3130,7 +3130,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the extension links starting from this extension point\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractCapabilityGeneralizationEClass, 
 		   source, 
@@ -3142,7 +3142,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Super(), 
 		   source, 
@@ -3150,7 +3150,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the parent Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Sub(), 
 		   source, 
@@ -3158,7 +3158,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the child Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractCapabilityIncludeEClass, 
 		   source, 
@@ -3170,7 +3170,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "Should be renamed Include to map UML concept", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "n/a" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Included(), 
 		   source, 
@@ -3178,7 +3178,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Capability being included\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Inclusion(), 
 		   source, 
@@ -3186,7 +3186,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the Capability performing the inclusion of the other Capability\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum, 
 		   source, 
@@ -3194,7 +3194,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3202,7 +3202,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3210,7 +3210,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3218,7 +3218,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -3226,7 +3226,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -3234,7 +3234,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (interactionFragmentEClass, 
 		   source, 
@@ -3246,7 +3246,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getInteractionFragment_CoveredInstanceRoles(), 
 		   source, 
@@ -3254,7 +3254,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the instance role that performs this Execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (interactionStateEClass, 
 		   source, 
@@ -3266,7 +3266,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionState_RelatedAbstractState(), 
 		   source, 
@@ -3278,7 +3278,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInteractionState_RelatedAbstractFunction(), 
 		   source, 
@@ -3290,7 +3290,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInteractionState_Covered(), 
 		   source, 
@@ -3298,7 +3298,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the instance role (lifeline) to which this interaction endpoint is attached\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (interactionUseEClass, 
 		   source, 
@@ -3310,7 +3310,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionUse_ReferencedScenario(), 
 		   source, 
@@ -3322,7 +3322,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInteractionUse_ActualGates(), 
 		   source, 
@@ -3334,7 +3334,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (combinedFragmentEClass, 
 		   source, 
@@ -3346,7 +3346,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCombinedFragment_Operator(), 
 		   source, 
@@ -3358,7 +3358,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCombinedFragment_ReferencedOperands(), 
 		   source, 
@@ -3370,7 +3370,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCombinedFragment_ExpressionGates(), 
 		   source, 
@@ -3382,7 +3382,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (gateEClass, 
 		   source, 
@@ -3394,7 +3394,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperandEClass, 
 		   source, 
@@ -3406,7 +3406,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionOperand_ReferencedInteractionFragments(), 
 		   source, 
@@ -3418,7 +3418,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionOperand_Guard(), 
 		   source, 
@@ -3430,7 +3430,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum, 
 		   source, 
@@ -3442,7 +3442,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -3454,7 +3454,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -3466,7 +3466,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -3478,7 +3478,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -3490,7 +3490,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -3502,7 +3502,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(5), 
 		   source, 
@@ -3514,7 +3514,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(6), 
 		   source, 
@@ -3526,7 +3526,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(7), 
 		   source, 
@@ -3538,7 +3538,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(8), 
 		   source, 
@@ -3550,7 +3550,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(9), 
 		   source, 
@@ -3562,7 +3562,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(10), 
 		   source, 
@@ -3574,7 +3574,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(11), 
 		   source, 
@@ -3586,7 +3586,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeLapseEClass, 
 		   source, 
@@ -3598,7 +3598,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getTimeLapse_Start(), 
 		   source, 
@@ -3606,7 +3606,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the starting point of this Execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getTimeLapse_Finish(), 
 		   source, 
@@ -3614,7 +3614,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the ending point of this Execution\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (abstractFragmentEClass, 
 		   source, 
@@ -3626,7 +3626,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFragment_OwnedGates(), 
 		   source, 
@@ -3638,7 +3638,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (fragmentEndEClass, 
 		   source, 
@@ -3650,7 +3650,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFragmentEnd_AbstractFragment(), 
 		   source, 
@@ -3662,7 +3662,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (functionalChainAbstractCapabilityInvolvementEClass, 
 		   source, 
@@ -3674,7 +3674,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractFunctionAbstractCapabilityInvolvementEClass, 
 		   source, 
@@ -3686,7 +3686,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (scenarioRealizationEClass, 
 		   source, 
@@ -3698,7 +3698,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizedScenario(), 
 		   source, 
@@ -3706,7 +3706,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the scenario that is being realized by/from the other scenario", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizingScenario(), 
 		   source, 
@@ -3714,7 +3714,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the scenario that realizes (to) the other scenario", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (stateFragmentEClass, 
 		   source, 
@@ -3726,7 +3726,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getStateFragment_RelatedAbstractState(), 
 		   source, 
@@ -3738,7 +3738,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getStateFragment_RelatedAbstractFunction(), 
 		   source, 
@@ -3750,7 +3750,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (armTimerEventEClass, 
 		   source, 
@@ -3758,7 +3758,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (cancelTimerEventEClass, 
 		   source, 
@@ -3766,7 +3766,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (constraintDurationEClass, 
 		   source, 
@@ -3774,7 +3774,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getConstraintDuration_Duration(), 
 		   source, 
@@ -3782,7 +3782,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getConstraintDuration_Start(), 
 		   source, 
@@ -3790,7 +3790,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getConstraintDuration_Finish(), 
 		   source, 
@@ -3798,7 +3798,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });
 	}
 
 	/**
@@ -3808,201 +3808,201 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createSemanticAnnotations() {
-		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$				
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (sequenceMessageEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getSequenceMessage_Kind(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ExchangeContext(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getSequenceMessage_InvokedOperation(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ExchangedItems(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingPart(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingPart(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingFunction(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingFunction(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getSequenceMessage_OwnedSequenceMessageValuations(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_Kind(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_Merged(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_PreCondition(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_PostCondition(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getScenario_OwnedMessages(), 
 		   source, 
 		   new String[] {
-		   });																										
+		   });	
 		addAnnotation
 		  (getScenario_ContainedFunctions(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ContainedParts(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ReferencedScenarios(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizedScenarios(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizingScenarios(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																
+		   });	
 		addAnnotation
 		  (getAbstractCapability_PreCondition(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_PostCondition(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedScenarios(), 
 		   source, 
 		   new String[] {
-		   });																																																
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Super(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Sub(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AvailableInStates(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedAbstractFunctions(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																															
+		   });	
 		addAnnotation
 		  (getCombinedFragment_Operator(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });	
 		addAnnotation
 		  (getInteractionOperand_Guard(), 
 		   source, 
 		   new String[] {
-		   });																																																																																				
+		   });	
 		addAnnotation
 		  (sequenceMessageValuationEClass, 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getSequenceMessageValuation_ExchangeItemElement(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });	
 		addAnnotation
 		  (getSequenceMessageValuation_Value(), 
 		   source, 
@@ -4017,7 +4017,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createExtensionAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$					
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -4027,7 +4027,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		
+		   });
 	}
 
 	/**
@@ -4037,391 +4037,391 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createBusinessInformationAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$						
+		String source = "http://www.polarsys.org/capella/2007/BusinessInformation"; //$NON-NLS-1$	
 		addAnnotation
 		  (sequenceMessageEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "SequenceMessage" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingEnd(), 
 		   source, 
 		   new String[] {
 			 "Label", "sendingEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingEnd(), 
 		   source, 
 		   new String[] {
 			 "Label", "receivingEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																									
+		   });	
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Scenario" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
 		   source, 
 		   new String[] {
 			 "Label", "instanceRoles" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedMessages(), 
 		   source, 
 		   new String[] {
 			 "Label", "messages" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInteractionFragments(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedAbstractEnds" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedTimeLapses(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedExecutions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedEvents(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedEvents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																															
+		   });	
 		addAnnotation
 		  (messageEndEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "MessageEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMessageEnd_Message(), 
 		   source, 
 		   new String[] {
 			 "Label", "message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (executionEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Execution" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExecution_Covered(), 
 		   source, 
 		   new String[] {
 			 "Label", "covers" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (executionEndEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ExecutionEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExecutionEnd_Execution(), 
 		   source, 
 		   new String[] {
 			 "Label", "execution" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (creationEventEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "CreationEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (destructionEventEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "DestructionEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (executionEventEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "ExecutionEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (instanceRoleEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "InstanceRole" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInstanceRole_AbstractEnds(), 
 		   source, 
 		   new String[] {
 			 "Label", "abstractEnds" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInstanceRole_RepresentedInstance(), 
 		   source, 
 		   new String[] {
 			 "Label", "representedInstance" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractEndEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Event(), 
 		   source, 
 		   new String[] {
 			 "Label", "event" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Covered(), 
 		   source, 
 		   new String[] {
 			 "Label", "instanceRole" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageKindEEnum, 
 		   source, 
 		   new String[] {
 			 "Label", "MessageKind" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																							
+		   });	
 		addAnnotation
 		  (eventEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "Event" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (eventReceiptOperationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "EventReceiptOperation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEventReceiptOperation_Operation(), 
 		   source, 
 		   new String[] {
 			 "Label", "operation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (eventSentOperationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "EventSentOperation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEventSentOperation_Operation(), 
 		   source, 
 		   new String[] {
 			 "Label", "operation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (mergeLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "MergeLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (refinementLinkEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "RefinementLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (abstractCapabilityEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractCapability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedScenarios(), 
 		   source, 
 		   new String[] {
 			 "Label", "scenarios" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extends(), 
 		   source, 
 		   new String[] {
 			 "Label", "extends" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extending(), 
 		   source, 
 		   new String[] {
 			 "Label", "extending" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AbstractCapabilityExtensionPoints(), 
 		   source, 
 		   new String[] {
 			 "Label", "abstractCapabilityExtensionPoints" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SuperGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "generalizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SubGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "Label", "generalizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Includes(), 
 		   source, 
 		   new String[] {
 			 "Label", "includes" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Including(), 
 		   source, 
 		   new String[] {
 			 "Label", "including" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Super(), 
 		   source, 
 		   new String[] {
 			 "Label", "superAbstractCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Sub(), 
 		   source, 
 		   new String[] {
 			 "Label", "superAbstractCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
 			 "Label", "includedAbstractCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
 			 "Label", "includedAbstractCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
 			 "Label", "extendedCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
 			 "Label", "extendedCapabilityUseCases" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																					
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtendEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractCapabilityExtend" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extended(), 
 		   source, 
 		   new String[] {
 			 "Label", "extended" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extension(), 
 		   source, 
 		   new String[] {
 			 "Label", "extension" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_ExtensionLocation(), 
 		   source, 
 		   new String[] {
 			 "Label", "extensionLocation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtensionPointEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractCapabilityExtensionPoint" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_AbstractCapability(), 
 		   source, 
 		   new String[] {
 			 "Label", "abstractCapability" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_ExtendLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "extendLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractCapabilityGeneralizationEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractCapabilityGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Super(), 
 		   source, 
 		   new String[] {
 			 "Label", "super" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Sub(), 
 		   source, 
 		   new String[] {
 			 "Label", "super" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractCapabilityIncludeEClass, 
 		   source, 
 		   new String[] {
 			 "Label", "AbstractCapabilityInclude" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Included(), 
 		   source, 
 		   new String[] {
 			 "Label", "included" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Inclusion(), 
 		   source, 
 		   new String[] {
 			 "Label", "inclusion" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });	
 		addAnnotation
 		  (getInteractionFragment_CoveredInstanceRoles(), 
 		   source, 
 		   new String[] {
 			 "Label", "covers" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (getInteractionState_Covered(), 
 		   source, 
 		   new String[] {
 			 "Label", "instanceRole" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																													
+		   });	
 		addAnnotation
 		  (getTimeLapse_Start(), 
 		   source, 
 		   new String[] {
 			 "Label", "start" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getTimeLapse_Finish(), 
 		   source, 
 		   new String[] {
 			 "Label", "finish" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																		
+		   });
 	}
 
 	/**
@@ -4431,42 +4431,42 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createUML2MappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$							
+		String source = "http://www.polarsys.org/capella/2007/UML2Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (sequenceMessageEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.SequenceMessage" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSequenceMessage_Kind(), 
 		   source, 
 		   new String[] {
 			 "featureName", "messageSort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingEnd(), 
 		   source, 
 		   new String[] {
 			 "featureName", "sendEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingEnd(), 
 		   source, 
 		   new String[] {
 			 "featureName", "receiveEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																											
+		   });	
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Interaction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Scenario" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getScenario_Merged(), 
 		   source, 
@@ -4474,411 +4474,411 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "featureName", "isMerged", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Scenario", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });											
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
 		   source, 
 		   new String[] {
 			 "featureName", "lifeline", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Interaction" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedMessages(), 
 		   source, 
 		   new String[] {
 			 "featureName", "message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Interaction" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInteractionFragments(), 
 		   source, 
 		   new String[] {
 			 "featureName", "fragment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Interaction" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedTimeLapses(), 
 		   source, 
 		   new String[] {
 			 "featureName", "fragment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Interaction" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedEvents(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																	
+		   });	
 		addAnnotation
 		  (messageEndEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "MessageOccurrenceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.MessageEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getMessageEnd_Message(), 
 		   source, 
 		   new String[] {
 			 "featureName", "message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "MessageEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (executionEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "BehaviorExecutionSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Execution" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExecution_Covered(), 
 		   source, 
 		   new String[] {
 			 "featureName", "covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "InteractionFragment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (executionEndEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "ExecutionOccurrenceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.ExecutionEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getExecutionEnd_Execution(), 
 		   source, 
 		   new String[] {
 			 "featureName", "execution", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ExecutionOccurrenceSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (creationEventEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "CreationEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.CreationEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (destructionEventEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "DestructionEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.DestructionEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (executionEventEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "ExecutionEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.ExecutionEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (instanceRoleEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Lifeline", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.InstanceRole" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInstanceRole_AbstractEnds(), 
 		   source, 
 		   new String[] {
 			 "featureName", "coveredBy", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Lifeline" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInstanceRole_RepresentedInstance(), 
 		   source, 
 		   new String[] {
 			 "featureName", "represents", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Lifeline" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractEndEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "OccurrenceSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Event(), 
 		   source, 
 		   new String[] {
 			 "featureName", "event", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "OccurrenceSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Covered(), 
 		   source, 
 		   new String[] {
 			 "featureName", "covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "InteractionFragment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (messageKindEEnum, 
 		   source, 
 		   new String[] {
 			 "enum", "MessageSort" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "ASYNCH_CALL" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(2), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "SYNCH_CALL" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(3), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "REPLY" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(4), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "DELETE_MESSAGE" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(5), 
 		   source, 
 		   new String[] {
 			 "enumLiteral", "CREATE_MESSAGE" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (eventEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Event" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (eventReceiptOperationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "ReceiveOperationEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.EventReceiptOperation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEventReceiptOperation_Operation(), 
 		   source, 
 		   new String[] {
 			 "featureName", "operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ReceiveOperationEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (eventSentOperationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "SendOperationEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.EventSentOperation" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getEventSentOperation_Operation(), 
 		   source, 
 		   new String[] {
 			 "featureName", "operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "SendOperationEvent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (mergeLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.MergeLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (refinementLinkEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.RefinementLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });	
 		addAnnotation
 		  (abstractCapabilityEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedScenarios(), 
 		   source, 
 		   new String[] {
 			 "featureName", "ownedBehavior", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "BehavioredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });													
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extends(), 
 		   source, 
 		   new String[] {
 			 "featureName", "extend", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "UseCase" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extending(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "extendedCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Extend" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AbstractCapabilityExtensionPoints(), 
 		   source, 
 		   new String[] {
 			 "featureName", "extensionPoint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "UseCase" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SuperGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SubGeneralizations(), 
 		   source, 
 		   new String[] {
 			 "featureName", "generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Classifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Includes(), 
 		   source, 
 		   new String[] {
 			 "featureName", "include", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "UseCase" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Including(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "addition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																									
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtendEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Extend", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.AbstractCapabilityExtend" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extended(), 
 		   source, 
 		   new String[] {
 			 "featureName", "extendedCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Extend" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extension(), 
 		   source, 
 		   new String[] {
 			 "featureName", "extension", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Extend" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_ExtensionLocation(), 
 		   source, 
 		   new String[] {
 			 "featureName", "extensionLocation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Extend" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtensionPointEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "ExtensionPoint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.AbstractCapabilityExtensionPoint" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_AbstractCapability(), 
 		   source, 
 		   new String[] {
 			 "featureName", "useCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ExtensionPoint" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_ExtendLinks(), 
 		   source, 
 		   new String[] {
 			 "umlOppositeReference", "extensionLocation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "umlOppositeReferenceOwner", "Extend" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractCapabilityGeneralizationEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.AbstractCapabilityGeneralization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Super(), 
 		   source, 
 		   new String[] {
 			 "featureName", "general", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Sub(), 
 		   source, 
 		   new String[] {
 			 "featureName", "general", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Generalization" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractCapabilityIncludeEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Include", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.AbstractCapabilityInclude" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Included(), 
 		   source, 
 		   new String[] {
 			 "featureName", "addition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Inclusion(), 
 		   source, 
 		   new String[] {
 			 "featureName", "includingCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Include" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });	
 		addAnnotation
 		  (getInteractionFragment_CoveredInstanceRoles(), 
 		   source, 
 		   new String[] {
 			 "featureName", "covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "InteractionFragment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });	
 		addAnnotation
 		  (getInteractionState_Covered(), 
 		   source, 
 		   new String[] {
 			 "featureName", "covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "InteractionFragment" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																													
+		   });	
 		addAnnotation
 		  (getTimeLapse_Start(), 
 		   source, 
 		   new String[] {
 			 "featureName", "start", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ExecutionSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getTimeLapse_Finish(), 
 		   source, 
 		   new String[] {
 			 "featureName", "finish", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ExecutionSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																			
+		   });
 	}
 
 	/**
@@ -4888,7 +4888,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createMappingAnnotations() {
-		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$									
+		String source = "http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping"; //$NON-NLS-1$	
 		addAnnotation
 		  (sequenceMessageEClass, 
 		   source, 
@@ -4897,7 +4897,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSequenceMessage_Kind(), 
 		   source, 
@@ -4905,7 +4905,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Message::messageSort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingEnd(), 
 		   source, 
@@ -4913,7 +4913,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Message::sendEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingEnd(), 
 		   source, 
@@ -4921,7 +4921,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Message::receiveEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getSequenceMessage_InvokedOperation(), 
 		   source, 
@@ -4929,7 +4929,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ExchangedItems(), 
 		   source, 
@@ -4937,7 +4937,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingPart(), 
 		   source, 
@@ -4945,7 +4945,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingPart(), 
 		   source, 
@@ -4953,7 +4953,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingFunction(), 
 		   source, 
@@ -4961,7 +4961,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingFunction(), 
 		   source, 
@@ -4969,7 +4969,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
@@ -4978,7 +4978,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Interaction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_Kind(), 
 		   source, 
@@ -4986,7 +4986,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_Merged(), 
 		   source, 
@@ -4994,7 +4994,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_PreCondition(), 
 		   source, 
@@ -5002,7 +5002,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_PostCondition(), 
 		   source, 
@@ -5010,7 +5010,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
 		   source, 
@@ -5018,7 +5018,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Interaction::lifeline", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Interaction::lifeline elements on which InstanceRole stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedMessages(), 
 		   source, 
@@ -5026,7 +5026,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Interaction::message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInteractionFragments(), 
 		   source, 
@@ -5034,7 +5034,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Interaction::fragment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Interaction::fragment elements on which AbstractEnd stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedTimeLapses(), 
 		   source, 
@@ -5042,7 +5042,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Interaction::fragment", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Interaction::fragment elements on which Execution stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedEvents(), 
 		   source, 
@@ -5050,7 +5050,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "specific rule : a package will be created in the nearest package, the events will be stored there, and the Capability will have a package import element.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getScenario_OwnedFormalGates(), 
 		   source, 
@@ -5058,7 +5058,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getScenario_OwnedScenarioRealization(), 
 		   source, 
@@ -5066,7 +5066,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getScenario_OwnedConstraintDurations(), 
 		   source, 
@@ -5074,7 +5074,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenario_ContainedFunctions(), 
 		   source, 
@@ -5082,7 +5082,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ContainedParts(), 
 		   source, 
@@ -5090,7 +5090,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ReferencedScenarios(), 
 		   source, 
@@ -5098,7 +5098,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizedScenarios(), 
 		   source, 
@@ -5106,7 +5106,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizingScenarios(), 
 		   source, 
@@ -5114,7 +5114,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (messageEndEClass, 
 		   source, 
@@ -5123,7 +5123,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::MessageOccurrenceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getMessageEnd_Message(), 
 		   source, 
@@ -5131,7 +5131,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::MessageEnd::message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (executionEClass, 
 		   source, 
@@ -5140,7 +5140,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::BehaviorExecutionSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExecution_Covered(), 
 		   source, 
@@ -5148,7 +5148,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::InteractionFragment::covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (executionEndEClass, 
 		   source, 
@@ -5157,7 +5157,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::ExecutionOccurrenceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getExecutionEnd_Execution(), 
 		   source, 
@@ -5165,7 +5165,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::ExecutionOccurrenceSpecification::execution", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (creationEventEClass, 
 		   source, 
@@ -5174,7 +5174,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::CreationEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (destructionEventEClass, 
 		   source, 
@@ -5183,7 +5183,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::DestructionEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (executionEventEClass, 
 		   source, 
@@ -5192,7 +5192,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::ExecutionEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (instanceRoleEClass, 
 		   source, 
@@ -5201,7 +5201,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Lifeline", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getInstanceRole_AbstractEnds(), 
 		   source, 
@@ -5209,7 +5209,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Lifeline::coveredBy", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInstanceRole_RepresentedInstance(), 
 		   source, 
@@ -5217,7 +5217,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Lifeline::represents", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractEndEClass, 
 		   source, 
@@ -5226,7 +5226,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::OccurrenceSpecification", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractEndEClass, 
 		   source, 
@@ -5234,7 +5234,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::InteractionFragment::enclosingInteraction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Event(), 
 		   source, 
@@ -5242,7 +5242,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::OccurrenceSpecification::event", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Covered(), 
 		   source, 
@@ -5250,7 +5250,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::InteractionFragment::covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (messageKindEEnum, 
 		   source, 
@@ -5258,7 +5258,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::MessageSort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5266,7 +5266,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5274,7 +5274,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::MessageSort::asynchCall", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5282,7 +5282,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::MessageSort::synchCall", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -5290,7 +5290,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::MessageSort::reply", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -5298,7 +5298,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::MessageSort::deleteMessage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (messageKindEEnum.getELiterals().get(5), 
 		   source, 
@@ -5306,7 +5306,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::MessageSort::createMessage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (eventEClass, 
 		   source, 
@@ -5315,7 +5315,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (eventReceiptOperationEClass, 
 		   source, 
@@ -5324,7 +5324,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::ReceiveOperationEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEventReceiptOperation_Operation(), 
 		   source, 
@@ -5332,7 +5332,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::ReceiveOperationEvent::operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (eventSentOperationEClass, 
 		   source, 
@@ -5341,7 +5341,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::SendOperationEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getEventSentOperation_Operation(), 
 		   source, 
@@ -5349,7 +5349,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::SendOperationEvent::operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (mergeLinkEClass, 
 		   source, 
@@ -5358,7 +5358,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (refinementLinkEClass, 
 		   source, 
@@ -5367,7 +5367,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractCapabilityRealizationEClass, 
 		   source, 
@@ -5376,7 +5376,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizedCapability(), 
 		   source, 
@@ -5384,7 +5384,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizingCapability(), 
 		   source, 
@@ -5392,7 +5392,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (abstractCapabilityEClass, 
 		   source, 
@@ -5401,7 +5401,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractCapability_PreCondition(), 
 		   source, 
@@ -5409,7 +5409,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_PostCondition(), 
 		   source, 
@@ -5417,7 +5417,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedScenarios(), 
 		   source, 
@@ -5425,7 +5425,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::BehavioredClassifier::ownedBehavior", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::BehavioredClassifier::ownedBehavior elements on which Scenario stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncomingCapabilityAllocation(), 
 		   source, 
@@ -5433,7 +5433,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OutgoingCapabilityAllocation(), 
 		   source, 
@@ -5441,7 +5441,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extends(), 
 		   source, 
@@ -5449,7 +5449,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::UseCase::extend", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extending(), 
 		   source, 
@@ -5457,7 +5457,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Extend::extendedCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AbstractCapabilityExtensionPoints(), 
 		   source, 
@@ -5465,7 +5465,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::UseCase::extensionPoint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SuperGeneralizations(), 
 		   source, 
@@ -5473,7 +5473,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Classifier::generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SubGeneralizations(), 
 		   source, 
@@ -5481,7 +5481,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Includes(), 
 		   source, 
@@ -5489,7 +5489,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::UseCase::include", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Including(), 
 		   source, 
@@ -5497,7 +5497,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Include::addition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Super(), 
 		   source, 
@@ -5505,7 +5505,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Sub(), 
 		   source, 
@@ -5513,7 +5513,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludedAbstractCapabilities(), 
 		   source, 
@@ -5521,7 +5521,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludingAbstractCapabilities(), 
 		   source, 
@@ -5529,7 +5529,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendedAbstractCapabilities(), 
 		   source, 
@@ -5537,7 +5537,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendingAbstractCapabilities(), 
 		   source, 
@@ -5545,7 +5545,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedFunctionalChainAbstractCapabilityInvolvements(), 
 		   source, 
@@ -5553,7 +5553,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedAbstractFunctionAbstractCapabilityInvolvements(), 
 		   source, 
@@ -5561,7 +5561,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AvailableInStates(), 
 		   source, 
@@ -5569,7 +5569,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedAbstractCapabilityRealizations(), 
 		   source, 
@@ -5577,7 +5577,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedAbstractFunctions(), 
 		   source, 
@@ -5585,7 +5585,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedFunctionalChains(), 
 		   source, 
@@ -5593,7 +5593,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtendEClass, 
 		   source, 
@@ -5602,7 +5602,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Extend", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extended(), 
 		   source, 
@@ -5610,7 +5610,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Extend::extendedCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extension(), 
 		   source, 
@@ -5618,7 +5618,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Extend::extension", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_ExtensionLocation(), 
 		   source, 
@@ -5626,7 +5626,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Extend::extensionLocation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtensionPointEClass, 
 		   source, 
@@ -5635,7 +5635,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::ExtensionPoint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_AbstractCapability(), 
 		   source, 
@@ -5643,7 +5643,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::ExtensionPoint::useCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_ExtendLinks(), 
 		   source, 
@@ -5651,7 +5651,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Extend::extensionLocation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::NamedElement::clientDependency elements on which AbstractCapabilityExtend stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractCapabilityGeneralizationEClass, 
 		   source, 
@@ -5660,7 +5660,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Generalization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Super(), 
 		   source, 
@@ -5668,7 +5668,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Generalization::general", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Sub(), 
 		   source, 
@@ -5676,7 +5676,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Generalization::specific", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (abstractCapabilityIncludeEClass, 
 		   source, 
@@ -5685,7 +5685,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Include", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Included(), 
 		   source, 
@@ -5693,7 +5693,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Include::addition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Inclusion(), 
 		   source, 
@@ -5701,7 +5701,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::Include::includingCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum, 
 		   source, 
@@ -5709,7 +5709,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5717,7 +5717,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5725,7 +5725,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5733,7 +5733,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -5741,7 +5741,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -5749,7 +5749,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (interactionFragmentEClass, 
 		   source, 
@@ -5757,7 +5757,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getInteractionFragment_CoveredInstanceRoles(), 
 		   source, 
@@ -5765,7 +5765,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::InteractionFragment::covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (interactionStateEClass, 
 		   source, 
@@ -5774,7 +5774,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionState_RelatedAbstractState(), 
 		   source, 
@@ -5782,7 +5782,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInteractionState_RelatedAbstractFunction(), 
 		   source, 
@@ -5790,7 +5790,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });	
 		addAnnotation
 		  (getInteractionState_Covered(), 
 		   source, 
@@ -5798,7 +5798,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::InteractionFragment::covered", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Multiplicity must be [1..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionUseEClass, 
 		   source, 
@@ -5807,7 +5807,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionUse_ReferencedScenario(), 
 		   source, 
@@ -5815,7 +5815,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getInteractionUse_ActualGates(), 
 		   source, 
@@ -5823,7 +5823,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (combinedFragmentEClass, 
 		   source, 
@@ -5832,7 +5832,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getCombinedFragment_Operator(), 
 		   source, 
@@ -5840,7 +5840,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCombinedFragment_ReferencedOperands(), 
 		   source, 
@@ -5848,7 +5848,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getCombinedFragment_ExpressionGates(), 
 		   source, 
@@ -5856,7 +5856,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (gateEClass, 
 		   source, 
@@ -5864,7 +5864,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperandEClass, 
 		   source, 
@@ -5873,7 +5873,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionOperand_ReferencedInteractionFragments(), 
 		   source, 
@@ -5881,7 +5881,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getInteractionOperand_Guard(), 
 		   source, 
@@ -5889,7 +5889,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum, 
 		   source, 
@@ -5897,7 +5897,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(0), 
 		   source, 
@@ -5905,7 +5905,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(1), 
 		   source, 
@@ -5913,7 +5913,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(2), 
 		   source, 
@@ -5921,7 +5921,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(3), 
 		   source, 
@@ -5929,7 +5929,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(4), 
 		   source, 
@@ -5937,7 +5937,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(5), 
 		   source, 
@@ -5945,7 +5945,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(6), 
 		   source, 
@@ -5953,7 +5953,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(7), 
 		   source, 
@@ -5961,7 +5961,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(8), 
 		   source, 
@@ -5969,7 +5969,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(9), 
 		   source, 
@@ -5977,7 +5977,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(10), 
 		   source, 
@@ -5985,7 +5985,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (interactionOperatorKindEEnum.getELiterals().get(11), 
 		   source, 
@@ -5993,7 +5993,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (timeLapseEClass, 
 		   source, 
@@ -6001,7 +6001,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });	
 		addAnnotation
 		  (getTimeLapse_Start(), 
 		   source, 
@@ -6009,7 +6009,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::ExecutionSpecification::start", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });	
 		addAnnotation
 		  (getTimeLapse_Finish(), 
 		   source, 
@@ -6017,7 +6017,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "uml::ExecutionSpecification::finish", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (abstractFragmentEClass, 
 		   source, 
@@ -6025,7 +6025,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFragment_OwnedGates(), 
 		   source, 
@@ -6033,7 +6033,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (fragmentEndEClass, 
 		   source, 
@@ -6042,7 +6042,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFragmentEnd_AbstractFragment(), 
 		   source, 
@@ -6050,7 +6050,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });	
 		addAnnotation
 		  (functionalChainAbstractCapabilityInvolvementEClass, 
 		   source, 
@@ -6059,7 +6059,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChainAbstractCapabilityInvolvement_Capability(), 
 		   source, 
@@ -6067,7 +6067,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChainAbstractCapabilityInvolvement_FunctionalChain(), 
 		   source, 
@@ -6075,7 +6075,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (abstractFunctionAbstractCapabilityInvolvementEClass, 
 		   source, 
@@ -6084,7 +6084,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionAbstractCapabilityInvolvement_Capability(), 
 		   source, 
@@ -6092,7 +6092,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionAbstractCapabilityInvolvement_Function(), 
 		   source, 
@@ -6100,7 +6100,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (scenarioRealizationEClass, 
 		   source, 
@@ -6109,7 +6109,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizedScenario(), 
 		   source, 
@@ -6117,7 +6117,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizingScenario(), 
 		   source, 
@@ -6125,7 +6125,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });		
+		   });	
 		addAnnotation
 		  (stateFragmentEClass, 
 		   source, 
@@ -6134,7 +6134,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getStateFragment_RelatedAbstractState(), 
 		   source, 
@@ -6142,7 +6142,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (getStateFragment_RelatedAbstractFunction(), 
 		   source, 
@@ -6150,7 +6150,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });	
 		addAnnotation
 		  (armTimerEventEClass, 
 		   source, 
@@ -6159,7 +6159,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (cancelTimerEventEClass, 
 		   source, 
@@ -6168,7 +6168,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });	
 		addAnnotation
 		  (constraintDurationEClass, 
 		   source, 
@@ -6177,7 +6177,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });
 	}
 
 	/**
@@ -6187,222 +6187,222 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createSegmentAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$																		
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getSequenceMessage_SendingEnd(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingEnd(), 
 		   source, 
 		   new String[] {
-		   });																																												
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedMessages(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getScenario_OwnedInteractionFragments(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedTimeLapses(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getScenario_OwnedEvents(), 
 		   source, 
 		   new String[] {
-		   });																																				
+		   });	
 		addAnnotation
 		  (getMessageEnd_Message(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });	
 		addAnnotation
 		  (getExecution_Covered(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getExecutionEnd_Execution(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getInstanceRole_AbstractEnds(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getInstanceRole_RepresentedInstance(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Event(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Covered(), 
 		   source, 
 		   new String[] {
-		   });																																					
+		   });	
 		addAnnotation
 		  (getEventReceiptOperation_Operation(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });	
 		addAnnotation
 		  (getEventSentOperation_Operation(), 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OwnedScenarios(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extends(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Extending(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_AbstractCapabilityExtensionPoints(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SuperGeneralizations(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_SubGeneralizations(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Includes(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Including(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Super(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Sub(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });																											
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extended(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extension(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_ExtensionLocation(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_AbstractCapability(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_ExtendLinks(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Super(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Sub(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Included(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Inclusion(), 
 		   source, 
 		   new String[] {
-		   });																		
+		   });	
 		addAnnotation
 		  (getInteractionFragment_CoveredInstanceRoles(), 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (getInteractionState_Covered(), 
 		   source, 
 		   new String[] {
-		   });																																																													
+		   });	
 		addAnnotation
 		  (getTimeLapse_Start(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getTimeLapse_Finish(), 
 		   source, 
 		   new String[] {
-		   });																																																	
+		   });
 	}
 
 	/**
@@ -6412,192 +6412,227 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createDerivedAnnotations() {
-		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																												
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$	
 		addAnnotation
 		  (getSequenceMessage_InvokedOperation(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingPart(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingPart(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingFunction(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingFunction(), 
 		   source, 
 		   new String[] {
-		   });																																																									
+		   });	
 		addAnnotation
 		  (getScenario_ContainedFunctions(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ContainedParts(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_ReferencedScenarios(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizedScenarios(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenario_RealizingScenarios(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });	
 		addAnnotation
 		  (getMessageEnd_Message(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getExecution_Covered(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getExecutionEnd_Execution(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getInstanceRole_AbstractEnds(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });	
 		addAnnotation
 		  (getAbstractEnd_Covered(), 
 		   source, 
 		   new String[] {
-		   });																																																										
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizedCapability(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizingCapability(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncomingCapabilityAllocation(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getAbstractCapability_OutgoingCapabilityAllocation(), 
 		   source, 
 		   new String[] {
-		   });																																									
+		   });	
+		addAnnotation
+		  (getAbstractCapability_Extending(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAbstractCapability_SubGeneralizations(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAbstractCapability_Including(), 
+		   source, 
+		   new String[] {
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Super(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_Sub(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedAbstractFunctions(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedFunctionalChains(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																						
+		   });	
+		addAnnotation
+		  (getAbstractCapabilityExtend_Extension(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAbstractCapabilityExtensionPoint_AbstractCapability(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAbstractCapabilityGeneralization_Sub(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAbstractCapabilityInclude_Inclusion(), 
+		   source, 
+		   new String[] {
+		   });	
 		addAnnotation
 		  (getInteractionState_Covered(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (getInteractionUse_ActualGates(), 
 		   source, 
 		   new String[] {
-		   });											
+		   });	
 		addAnnotation
 		  (getCombinedFragment_ExpressionGates(), 
 		   source, 
 		   new String[] {
-		   });																																																											
+		   });	
 		addAnnotation
 		  (getFragmentEnd_AbstractFragment(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getFunctionalChainAbstractCapabilityInvolvement_Capability(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getFunctionalChainAbstractCapabilityInvolvement_FunctionalChain(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getAbstractFunctionAbstractCapabilityInvolvement_Capability(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });	
 		addAnnotation
 		  (getAbstractFunctionAbstractCapabilityInvolvement_Function(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizedScenario(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizingScenario(), 
 		   source, 
 		   new String[] {
-		   });																				
+		   });
 	}
 
 	/**
@@ -6607,37 +6642,37 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																																																																																																																																																																																																																												
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$	
 		addAnnotation
 		  (mergeLinkEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });	
 		addAnnotation
 		  (refinementLinkEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																									
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtendEClass, 
 		   source, 
 		   new String[] {
-		   });																					
+		   });	
 		addAnnotation
 		  (abstractCapabilityExtensionPointEClass, 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (abstractCapabilityGeneralizationEClass, 
 		   source, 
 		   new String[] {
-		   });																
+		   });	
 		addAnnotation
 		  (abstractCapabilityIncludeEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																												
+		   });
 	}
 
 } //InteractionPackageImpl

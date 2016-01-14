@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,37 +44,36 @@ public class Cloner {
   
   /**
    * 
-   * @param sourceElement_p
-   * @param transfo_p
-   * @param transfoLinkList_p
+   * @param sourceElement
+   * @param transfo
+   * @param transfoLinkList
    * @return
- * @throws TransfoException 
    * @throws TransfoException 
    */
-  public static Object clone(EObject sourceElement_p, 
-      ITransfo transfo_p, 
-      List<AbstractTrace> transfoLinkList_p) throws TransfoException {
-    List<EObject> sourceElementList = findElements(sourceElement_p, transfo_p);
-    transform(sourceElementList, transfo_p, transfoLinkList_p);
-    update(sourceElementList, transfo_p);
-    attach(sourceElementList, transfo_p);
+  public static Object clone(EObject sourceElement, 
+      ITransfo transfo, 
+      List<AbstractTrace> transfoLinkList) throws TransfoException {
+    List<EObject> sourceElementList = findElements(sourceElement, transfo);
+    transform(sourceElementList, transfo, transfoLinkList);
+    update(sourceElementList, transfo);
+    attach(sourceElementList, transfo);
 
     Object targetElement 
-    = Query.retrieveTransformedElement(sourceElement_p, transfo_p);    
+    = Query.retrieveTransformedElement(sourceElement, transfo);    
 
     return targetElement;
   }
 
   /**
    * 
-   * @param sourceElement_p
-   * @param transfo_p
+   * @param sourceElement
+   * @param transfo
    * @return
    */
-  protected static List<EObject> findElements(EObject sourceElement_p, ITransfo transfo_p) {
+  protected static List<EObject> findElements(EObject sourceElement, ITransfo transfo) {
     List<EObject> elementsToBeCloned = new ArrayList<EObject>();
     List<EObject> agenda = new ArrayList<EObject>();
-    agenda.add(sourceElement_p);
+    agenda.add(sourceElement);
     while(!agenda.isEmpty()) {
       EObject currentElement = agenda.get(0);
 
@@ -86,7 +85,7 @@ public class Cloner {
 
       agenda.remove(currentElement);
       for (EObject relatedElement : relatedElements) {
-        if(isContainedBy(relatedElement, sourceElement_p)) {
+        if(isContainedBy(relatedElement, sourceElement)) {
           agenda.add(relatedElement);            
         }
       }
@@ -99,24 +98,24 @@ public class Cloner {
     return elementsToBeCloned;
   }
 
-  protected static void transform(List<EObject> sourceElementList_p, ITransfo transfo_p, List<AbstractTrace> transfoLinkList_p) throws TransfoException {
+  protected static void transform(List<EObject> sourceElementList, ITransfo transfo, List<AbstractTrace> transfoLinkList) throws TransfoException {
 
-    for (EObject sourceElement : sourceElementList_p) {
-      if(!Query.isElementTransformed(sourceElement, transfo_p))
+    for (EObject sourceElement : sourceElementList) {
+      if(!Query.isElementTransformed(sourceElement, transfo))
       {
         EClass clazz = sourceElement.eClass();
         EObject targetElement = CapellacommonFactory.eINSTANCE.create(clazz);
-        AbstractTrace transfoLink = TigerRelationshipHelper.createTransfoLink(sourceElement, targetElement, transfo_p);
-        if (transfoLink != null) transfoLinkList_p.add(transfoLink);
+        AbstractTrace transfoLink = TigerRelationshipHelper.createTransfoLink(sourceElement, targetElement, transfo);
+        if (transfoLink != null) transfoLinkList.add(transfoLink);
       }
     }
   }
 
-  protected static void update(List<EObject> sourceElementList_p, ITransfo transfo_p) {
-    for (EObject sourceElement : sourceElementList_p) {
+  protected static void update(List<EObject> sourceElementList, ITransfo transfo) {
+    for (EObject sourceElement : sourceElementList) {
       EClass clazz = sourceElement.eClass();
       Object targetElement 
-      = Query.retrieveTransformedElement(sourceElement, transfo_p);
+      = Query.retrieveTransformedElement(sourceElement, transfo);
       if (targetElement instanceof EObject) {
         EObject targetElement2 = (EObject) targetElement;
         List<EAttribute> attributes = clazz.getEAllAttributes();
@@ -132,14 +131,14 @@ public class Cloner {
     }
   }
 
-  protected static void attach(List<EObject> sourceElementList_p, ITransfo transfo_p) {
-    for (EObject sourceElement : sourceElementList_p) {
+  protected static void attach(List<EObject> sourceElementList, ITransfo transfo) {
+    for (EObject sourceElement : sourceElementList) {
       EClass clazz = sourceElement.eClass();
       EList<EStructuralFeature> features = clazz.getEAllStructuralFeatures();
       for (EStructuralFeature feature : features) {
         if(isClonableFeature(feature))
         {
-          TigerRelationshipHelper.attachTransformedRelatedElements(sourceElement, transfo_p, (EReference)feature);
+          TigerRelationshipHelper.attachTransformedRelatedElements(sourceElement, transfo, (EReference)feature);
         }
       }
     }
@@ -147,10 +146,10 @@ public class Cloner {
 
   /**
    * Retrieve elements linked by a relationship by passing its name
-   * @param relationshipString_p The relationship name
+   * @param relationshipString The relationship name
    * @return
    */
-  @SuppressWarnings({"nls", "unchecked"})
+  @SuppressWarnings("unchecked")
   protected static List<EObject> retrieveRelatedElementsForClone(EObject element) {
 
     EClass clazz = element.eClass();
@@ -166,45 +165,41 @@ public class Cloner {
             EObject eObject = (EObject) obj;
             relatedElements.add(eObject);
           }
-          else
-          {
+          else {
             if (obj instanceof EList) {
-              EList eObject = (EList) obj;
-              relatedElements.addAll(eObject);
+              relatedElements.addAll((EList) obj);
             }
           }
         }
       } catch (Exception e) {
-        _logger.error("   + Cancel feature " 
+        _logger.error("   + Cancel feature " //$NON-NLS-1$
                            + feature.getName() 
-                           + " on " + element.eClass().getName()
-                           + " while cloning.", e);
+                           + " on " + element.eClass().getName() //$NON-NLS-1$
+                           + " while cloning.", e); //$NON-NLS-1$
       }
     }
 
     return relatedElements;
   }
 
-  protected static boolean isClonableFeature(EStructuralFeature feature_p) {
-    return !feature_p.isUnsettable() 
-    && !feature_p.isDerived()
-    && !feature_p.isVolatile()
-    && !feature_p.isTransient();
+  protected static boolean isClonableFeature(EStructuralFeature feature) {
+    return !feature.isUnsettable() 
+    && !feature.isDerived()
+    && !feature.isVolatile()
+    && !feature.isTransient();
   }
 
-  protected static boolean isContainedBy(EObject object_p, EObject container_p) {
-    if(object_p == container_p)
+  protected static boolean isContainedBy(EObject object, EObject container) {
+    if(object == container)
       return true;
 
     boolean found = false;
-    EObject currentElement = object_p.eContainer();
+    EObject currentElement = object.eContainer();
     while (currentElement!=null && !found ) {
-      found = (currentElement == container_p);
+      found = (currentElement == container);
       currentElement = currentElement.eContainer();
     }
 
     return found;
   }
-
-
 }

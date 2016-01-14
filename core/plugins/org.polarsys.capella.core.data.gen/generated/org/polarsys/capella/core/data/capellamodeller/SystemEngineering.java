@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.SystemEngineering#getContainedOperationalAnalysis <em>Contained Operational Analysis</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.SystemEngineering#getContainedSystemAnalysis <em>Contained System Analysis</em>}</li>
@@ -35,7 +36,6 @@ import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.SystemEngineering#getContainedEPBSArchitectures <em>Contained EPBS Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellamodeller.SystemEngineering#getContainedSharedPkgs <em>Contained Shared Pkgs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='System Engineering'"

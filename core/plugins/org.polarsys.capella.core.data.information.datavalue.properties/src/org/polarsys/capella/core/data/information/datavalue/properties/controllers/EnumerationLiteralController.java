@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,34 +37,34 @@ public class EnumerationLiteralController extends AbstractSimpleEditableSemantic
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#writeOpenValue(org.eclipse.emf.ecore.EObject)
    */
-  public EObject writeOpenValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p, EObject value) {
+  public EObject writeOpenValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName, EObject value) {
     DataValue ref = null;
     if (value instanceof Property) {
-      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedProperty(), value);
     }
     else if (value instanceof NumericValue) {
-      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createNumericReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getNumericReference_ReferencedValue(), value);
-      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement_p);
+      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
     else if (value instanceof AbstractBooleanValue) {
-      ref = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createBooleanReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getBooleanReference_ReferencedValue(), value);
-      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement_p);
+      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
     else if (value instanceof AbstractStringValue) {
-      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createStringReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getStringReference_ReferencedValue(), value);
-      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement_p);
+      ref.eSet(ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType(), semanticElement);
     }
     else if (value instanceof EnumerationLiteral) {
-      ref = DatavalueFactory.eINSTANCE.createEnumerationReference(defaultName_p);
+      ref = DatavalueFactory.eINSTANCE.createEnumerationReference(defaultName);
       ref.eSet(DatavaluePackage.eINSTANCE.getEnumerationReference_ReferencedValue(), value);
     }
 
     if (ref != null) {
-      semanticElement_p.eSet(semanticFeature_p, ref);
+      semanticElement.eSet(semanticFeature, ref);
       return ref;
     }
 
@@ -74,27 +74,27 @@ public class EnumerationLiteralController extends AbstractSimpleEditableSemantic
   /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.widgets.SimpleEditableSemanticField#editValue()
    */
-  public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-    if (semanticElement_p != null) {
-      DataValue currentValue = (DataValue) semanticElement_p.eGet(semanticFeature_p);
+  public EObject editValue(CapellaElement semanticElement, EStructuralFeature semanticFeature, String defaultName) {
+    if (semanticElement != null) {
+      DataValue currentValue = (DataValue) semanticElement.eGet(semanticFeature);
       if (currentValue != null) {
         editValueWizard(currentValue);
       } else {
-        EObject owner = semanticElement_p.eContainer();
+        EObject owner = semanticElement.eContainer();
         if (owner instanceof Enumeration) {
           DataValue newValue = null;
           DataType domainType = ((Enumeration) owner).getDomainType();
           if (domainType instanceof BooleanType) {
-            newValue = DatavalueFactory.eINSTANCE.createLiteralBooleanValue(defaultName_p);
+            newValue = DatavalueFactory.eINSTANCE.createLiteralBooleanValue(defaultName);
           } else if (domainType instanceof StringType) {
-            newValue = DatavalueFactory.eINSTANCE.createLiteralStringValue(defaultName_p);
+            newValue = DatavalueFactory.eINSTANCE.createLiteralStringValue(defaultName);
           } else if (domainType instanceof Enumeration) {
-            newValue = DatavalueFactory.eINSTANCE.createEnumerationLiteral(defaultName_p);
+            newValue = DatavalueFactory.eINSTANCE.createEnumerationLiteral(defaultName);
           } else {
-            newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName_p);
+            newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue(defaultName);
           }
           if (null != newValue) {
-            semanticElement_p.eSet(semanticFeature_p, newValue);
+            semanticElement.eSet(semanticFeature, newValue);
             if (editValueWizard(newValue)) {
               currentValue = newValue;
             } else {

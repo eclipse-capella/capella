@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.polarsys.capella.core.data.information.Port;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentPort#getOrientation <em>Orientation</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentPort#getKind <em>Kind</em>}</li>
@@ -34,7 +35,6 @@ import org.polarsys.capella.core.data.information.Port;
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentPort#getRealizedComponentPorts <em>Realized Component Ports</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.ComponentPort#getRealizingComponentPorts <em>Realizing Component Ports</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentPort()
  * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A component port is the unification of the standard port and the flow port.' constraints='none' comment/notes='none'"

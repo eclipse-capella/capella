@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getOwnedFunctionalChainInvolvements <em>Owned Functional Chain Involvements</em>}</li>
@@ -42,7 +43,6 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getRealizedFunctionalChains <em>Realized Functional Chains</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getRealizingFunctionalChains <em>Realizing Functional Chains</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='FunctionalChain'"

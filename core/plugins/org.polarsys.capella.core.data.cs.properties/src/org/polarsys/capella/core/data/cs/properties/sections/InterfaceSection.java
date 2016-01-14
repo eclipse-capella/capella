@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,8 +48,8 @@ public class InterfaceSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -109,20 +109,20 @@ public class InterfaceSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _visibilityKindGroup.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getGeneralClass_Visibility());
-    _superTypeWidget.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(), CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
-    _containmentTableField.loadData(capellaElement_p, CsPackage.Literals.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS);
+    _visibilityKindGroup.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralClass_Visibility());
+    _superTypeWidget.loadData(capellaElement, CapellacorePackage.eINSTANCE.getGeneralizableElement_Super(), CapellacorePackage.eINSTANCE.getGeneralizableElement_OwnedGeneralizations());
+    _containmentTableField.loadData(capellaElement, CsPackage.Literals.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object object_p) {
-    EObject eObject = super.selection(object_p);
+  public boolean select(Object object) {
+    EObject eObject = super.selection(object);
     return (null != eObject) && (CsPackage.Literals.INTERFACE == eObject.eClass());
   }
 

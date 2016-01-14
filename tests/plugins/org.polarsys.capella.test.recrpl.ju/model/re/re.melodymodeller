@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_0.8.0-->
+<!--Capella_Version_1.0.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/0.8.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/0.8.0"
-    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/0.8.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/0.8.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/0.8.0"
-    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/0.8.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/0.8.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/0.8.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/0.8.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/0.8.0"
-    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/0.8.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/0.8.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/0.8.0"
-    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/0.8.0"
-    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/0.8.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.0.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.0.0"
+    xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.0.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.0.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.0.0"
+    xmlns:org.polarsys.capella.core.data.epbs="http://www.polarsys.org/capella/core/epbs/1.0.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.0.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.0.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.0.0"
+    xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.0.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.0.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.0.0"
+    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/1.0.0"
+    xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.0.0"
     xmlns:re="http://www.polarsys.org/capella/common/re/1.0.0" id="b1d992a8-73f9-4d2b-a3b4-e086e1adc508"
     name="re">
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -70,36 +70,26 @@
             source="#54706a7b-1e5e-4bfd-93b3-15023961972b" target="#38553c38-9ffa-44e9-8fe7-980c026c0fa6"/>
       </ownedElements>
       <ownedElements xsi:type="re:CatalogElement" id="c1d01584-d3aa-4f12-974e-926241618e40"
-          name="RPL1" kind="RPL" origin="#54706a7b-1e5e-4bfd-93b3-15023961972b" currentCompliancy="#46352380-e5a3-4439-ab60-c0d910576888"
-          defaultReplicaCompliancy="#46352380-e5a3-4439-ab60-c0d910576888">
+          name="RPL1" kind="RPL" suffix="" origin="#54706a7b-1e5e-4bfd-93b3-15023961972b"
+          currentCompliancy="#46352380-e5a3-4439-ab60-c0d910576888" defaultReplicaCompliancy="#46352380-e5a3-4439-ab60-c0d910576888">
         <ownedLinks xsi:type="re:CatalogElementLink" id="f6d846cc-5b44-4f38-a2c1-5c370d7ae1e0"
             source="#c1d01584-d3aa-4f12-974e-926241618e40" target="#2dd78730-bd99-407b-8795-f93f8175dd3f"
-            origin="#d1f76843-3520-4f7a-9450-54528544a69d">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#d1f76843-3520-4f7a-9450-54528544a69d" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="c393d52e-a5a8-4d61-b1b6-18391852b893"
             source="#c1d01584-d3aa-4f12-974e-926241618e40" target="#06c9ccf2-b4aa-4555-a977-201fadc78a9b"
             origin="#5920a0ba-67da-4d22-9658-fbc31c1c71c5"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="0ef6cd29-bbbb-47c0-b398-23e56795b024"
             source="#c1d01584-d3aa-4f12-974e-926241618e40" target="#8f203d7c-2bb7-4f49-981b-9d2e6cdbaaad"
-            origin="#f1a9c98b-da23-4240-82c9-472f399189d8">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#f1a9c98b-da23-4240-82c9-472f399189d8" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="de918b7d-6c73-45da-8bc0-89c12e3dd868"
             source="#c1d01584-d3aa-4f12-974e-926241618e40" target="#c2ac2907-6097-48a7-a52b-b8d8a0e25ff9"
-            origin="#09cbf5e6-3155-4e58-89cb-51529bfeaef2">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#09cbf5e6-3155-4e58-89cb-51529bfeaef2" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="ca0b7efe-acdd-407a-a711-a833aa014dc6"
             source="#c1d01584-d3aa-4f12-974e-926241618e40" target="#87f954b3-a5b4-49b5-97e0-8ec4522b0cd6"
-            origin="#e150520f-ebb6-41e5-9617-f58a7543b1fc">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#e150520f-ebb6-41e5-9617-f58a7543b1fc" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="cf75a289-7187-4d8f-998c-81ab01d1a1ff"
             source="#c1d01584-d3aa-4f12-974e-926241618e40" target="#cb2f48a4-1b95-4d12-ae0c-80eb75181327"
-            origin="#e70ab633-31cb-4293-baf1-cd10fc5b296d">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#e70ab633-31cb-4293-baf1-cd10fc5b296d" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="868294d3-5601-4ef6-a529-37e7680d8b7c"
             source="#c1d01584-d3aa-4f12-974e-926241618e40" target="#f3324510-0af0-465e-993b-42a9509a29fc"
             origin="#7984e894-e4e7-430c-ba2c-086ca1a4c49c"/>
@@ -108,36 +98,26 @@
             origin="#92031aae-cae8-4bbf-876a-a8f7c411cb39"/>
       </ownedElements>
       <ownedElements xsi:type="re:CatalogElement" id="19742f93-f555-40d3-ae50-4cc0b593c083"
-          name="RPL2" kind="RPL" origin="#54706a7b-1e5e-4bfd-93b3-15023961972b" currentCompliancy="#46352380-e5a3-4439-ab60-c0d910576888"
-          defaultReplicaCompliancy="#46352380-e5a3-4439-ab60-c0d910576888">
+          name="RPL2" kind="RPL" suffix="" origin="#54706a7b-1e5e-4bfd-93b3-15023961972b"
+          currentCompliancy="#46352380-e5a3-4439-ab60-c0d910576888" defaultReplicaCompliancy="#46352380-e5a3-4439-ab60-c0d910576888">
         <ownedLinks xsi:type="re:CatalogElementLink" id="7ac321eb-8530-42bb-bbb8-a1011de82e0c"
             source="#19742f93-f555-40d3-ae50-4cc0b593c083" target="#0ea3888a-bbf0-496b-ba60-b2ef6e9b046a"
-            origin="#d1f76843-3520-4f7a-9450-54528544a69d">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#d1f76843-3520-4f7a-9450-54528544a69d" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="49f02e30-94e0-40ad-936a-86974511ed6f"
             source="#19742f93-f555-40d3-ae50-4cc0b593c083" target="#385481bc-2eb1-48ea-866c-30b01c3a29b5"
             origin="#5920a0ba-67da-4d22-9658-fbc31c1c71c5"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="b04be483-b5e0-419f-aa07-094a42fd0427"
             source="#19742f93-f555-40d3-ae50-4cc0b593c083" target="#ec19d394-ac3d-45e4-b4c8-44cba0b29f97"
-            origin="#f1a9c98b-da23-4240-82c9-472f399189d8">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#f1a9c98b-da23-4240-82c9-472f399189d8" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="5c5f5fb4-d674-4827-adf3-0f400044606a"
             source="#19742f93-f555-40d3-ae50-4cc0b593c083" target="#a89b10a9-dd5d-4d88-b65f-0737ca9d6dca"
-            origin="#09cbf5e6-3155-4e58-89cb-51529bfeaef2">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#09cbf5e6-3155-4e58-89cb-51529bfeaef2" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="8c7c7346-ee85-4f6e-9655-10c7406204ce"
             source="#19742f93-f555-40d3-ae50-4cc0b593c083" target="#7bf34953-6b14-408e-9e48-dba9f83fc5ad"
-            origin="#e150520f-ebb6-41e5-9617-f58a7543b1fc">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#e150520f-ebb6-41e5-9617-f58a7543b1fc" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="5d1a0db0-ba0c-45d2-8ac3-75a2904ff436"
             source="#19742f93-f555-40d3-ae50-4cc0b593c083" target="#4045788f-33de-4002-944c-f8ff9a9213dd"
-            origin="#e70ab633-31cb-4293-baf1-cd10fc5b296d">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#e70ab633-31cb-4293-baf1-cd10fc5b296d" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="5b72da11-c120-403b-8489-da8bd0446158"
             source="#19742f93-f555-40d3-ae50-4cc0b593c083" target="#d1d9caac-c07f-4e10-8277-648d1849f9e1"
             origin="#7984e894-e4e7-430c-ba2c-086ca1a4c49c"/>
@@ -146,36 +126,26 @@
             origin="#92031aae-cae8-4bbf-876a-a8f7c411cb39"/>
       </ownedElements>
       <ownedElements xsi:type="re:CatalogElement" id="ec2f1832-73d0-4166-b532-436f7a82892b"
-          name="RPL3" kind="RPL" origin="#54706a7b-1e5e-4bfd-93b3-15023961972b" currentCompliancy="#46352380-e5a3-4439-ab60-c0d910576888"
-          defaultReplicaCompliancy="#46352380-e5a3-4439-ab60-c0d910576888">
+          name="RPL3" kind="RPL" suffix="" origin="#54706a7b-1e5e-4bfd-93b3-15023961972b"
+          currentCompliancy="#46352380-e5a3-4439-ab60-c0d910576888" defaultReplicaCompliancy="#46352380-e5a3-4439-ab60-c0d910576888">
         <ownedLinks xsi:type="re:CatalogElementLink" id="f6976f57-0dab-4bae-8692-cd6cc39a97ee"
             source="#ec2f1832-73d0-4166-b532-436f7a82892b" target="#b61c5f2b-760b-4b71-836d-c3ced52b248d"
-            origin="#d1f76843-3520-4f7a-9450-54528544a69d">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#d1f76843-3520-4f7a-9450-54528544a69d" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="d93cca19-7144-479a-8141-b78d2b01927c"
             source="#ec2f1832-73d0-4166-b532-436f7a82892b" target="#b9ee0993-cb48-4123-90e6-df51c68623cb"
             origin="#5920a0ba-67da-4d22-9658-fbc31c1c71c5"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="27398777-ec12-4bc7-8540-7adbe819ff61"
             source="#ec2f1832-73d0-4166-b532-436f7a82892b" target="#f54d6dd2-82e9-4eca-8df7-a2d5269c4f15"
-            origin="#f1a9c98b-da23-4240-82c9-472f399189d8">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#f1a9c98b-da23-4240-82c9-472f399189d8" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="ad6e9a6a-0e43-40c3-be24-1b6b8e74b4c7"
             source="#ec2f1832-73d0-4166-b532-436f7a82892b" target="#2b3f5d6f-d457-4c02-9ab0-d906b93c2ef6"
-            origin="#09cbf5e6-3155-4e58-89cb-51529bfeaef2">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#09cbf5e6-3155-4e58-89cb-51529bfeaef2" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="efe38488-b3f4-47bd-872f-2fa2335b62f6"
             source="#ec2f1832-73d0-4166-b532-436f7a82892b" target="#8d65175c-a3e8-4ad4-ac2a-7722739309e5"
-            origin="#e150520f-ebb6-41e5-9617-f58a7543b1fc">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#e150520f-ebb6-41e5-9617-f58a7543b1fc" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="d87323ba-8be4-4fbd-9928-43b3a24569a4"
             source="#ec2f1832-73d0-4166-b532-436f7a82892b" target="#f6a2aca7-8558-4124-a0ba-78f2bea6a470"
-            origin="#e70ab633-31cb-4293-baf1-cd10fc5b296d">
-          <unsynchronizedFeatures>name</unsynchronizedFeatures>
-        </ownedLinks>
+            origin="#e70ab633-31cb-4293-baf1-cd10fc5b296d" suffixed="true"/>
         <ownedLinks xsi:type="re:CatalogElementLink" id="aa45a368-c97b-47c0-a7b1-05e6e9ed83e8"
             source="#ec2f1832-73d0-4166-b532-436f7a82892b" target="#da411fb8-244d-4e4a-b364-eb26a0b0fc7b"
             origin="#7984e894-e4e7-430c-ba2c-086ca1a4c49c"/>
@@ -470,7 +440,7 @@
       <ownedPhysicalComponent xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
           id="af98fc5b-638b-4dd8-b41b-67f0f9b24e90" name="Physical System">
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="de7d9616-8769-4c23-8dcb-23b8a7a991c0"
-            name="PC 1" abstractType="#c4d199a1-55ee-40a6-bbaa-21f8534114fb" deploymentLinks="#73e425ed-a73d-4bd5-8854-9be428d36b24 #05df6602-ff4d-42ef-ad80-57055eb6b97f">
+            name="PC 1" abstractType="#c4d199a1-55ee-40a6-bbaa-21f8534114fb">
           <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
               id="73e425ed-a73d-4bd5-8854-9be428d36b24" deployedElement="#295e1117-4b0d-4b08-8a82-01dfb59ed226"
               location="#de7d9616-8769-4c23-8dcb-23b8a7a991c0"/>
@@ -483,7 +453,7 @@
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="be9554cf-4080-485e-b0c8-8e30ecae1258"
             name="PC 3" abstractType="#fdc38a4c-17a8-4190-9e3b-742511a5ac84"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="1b63a48b-843a-4bbc-b9e6-9ae0f8425890"
-            name="PC 4" abstractType="#11f31544-5397-47de-a3cc-4a1965721fc4" deploymentLinks="#9d440b2a-1e57-4a2a-b0b3-43d0a8c7a622">
+            name="PC 4" abstractType="#11f31544-5397-47de-a3cc-4a1965721fc4">
           <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
               id="9d440b2a-1e57-4a2a-b0b3-43d0a8c7a622" deployedElement="#7e2cd206-1740-4807-9b4b-7aeb5768bbea"
               location="#1b63a48b-843a-4bbc-b9e6-9ae0f8425890"/>
@@ -493,13 +463,13 @@
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2dd78730-bd99-407b-8795-f93f8175dd3f"
             name="PC 12" abstractType="#87f954b3-a5b4-49b5-97e0-8ec4522b0cd6"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c2ac2907-6097-48a7-a52b-b8d8a0e25ff9"
-            name="PC 11" abstractType="#8f203d7c-2bb7-4f49-981b-9d2e6cdbaaad" deploymentLinks="#06c9ccf2-b4aa-4555-a977-201fadc78a9b">
+            name="PC 11" abstractType="#8f203d7c-2bb7-4f49-981b-9d2e6cdbaaad">
           <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
               id="06c9ccf2-b4aa-4555-a977-201fadc78a9b" deployedElement="#2dd78730-bd99-407b-8795-f93f8175dd3f"
               location="#c2ac2907-6097-48a7-a52b-b8d8a0e25ff9"/>
         </ownedFeatures>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="a89b10a9-dd5d-4d88-b65f-0737ca9d6dca"
-            name="PC 21" abstractType="#ec19d394-ac3d-45e4-b4c8-44cba0b29f97" deploymentLinks="#385481bc-2eb1-48ea-866c-30b01c3a29b5">
+            name="PC 21" abstractType="#ec19d394-ac3d-45e4-b4c8-44cba0b29f97">
           <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
               id="385481bc-2eb1-48ea-866c-30b01c3a29b5" deployedElement="#0ea3888a-bbf0-496b-ba60-b2ef6e9b046a"
               location="#a89b10a9-dd5d-4d88-b65f-0737ca9d6dca"/>
@@ -507,7 +477,7 @@
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="0ea3888a-bbf0-496b-ba60-b2ef6e9b046a"
             name="PC 22" abstractType="#7bf34953-6b14-408e-9e48-dba9f83fc5ad"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2b3f5d6f-d457-4c02-9ab0-d906b93c2ef6"
-            name="PC 31" abstractType="#f54d6dd2-82e9-4eca-8df7-a2d5269c4f15" deploymentLinks="#b9ee0993-cb48-4123-90e6-df51c68623cb">
+            name="PC 31" abstractType="#f54d6dd2-82e9-4eca-8df7-a2d5269c4f15">
           <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
               id="b9ee0993-cb48-4123-90e6-df51c68623cb" deployedElement="#b61c5f2b-760b-4b71-836d-c3ced52b248d"
               location="#2b3f5d6f-d457-4c02-9ab0-d906b93c2ef6"/>

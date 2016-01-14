@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.patterns.feature"
       label="%featureName"
-      version="0.8.2.qualifier"
+      version="1.0.0.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -48,6 +48,13 @@ Its purpose it to provide a better user experience than the default one for Cape
 
    <plugin
          id="org.polarsys.capella.patterns.obfuscator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.patterns.migration"
          download-size="0"
          install-size="0"
          version="0.0.0"

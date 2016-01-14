@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class PhysicalActorSection extends ComponentSection {
 
-  private MultipleSemanticField _logicalActorRealizations;
+  private MultipleSemanticField logicalActorRealizations;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -38,20 +38,20 @@ public class PhysicalActorSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _logicalActorRealizations =
+    logicalActorRealizations =
         new MultipleSemanticField(getReferencesGroup(), Messages.getString("PhysicalActorSection_LogicalActorRealizations_Label"), getWidgetFactory(), //$NON-NLS-1$
             new RealizedLogicalActorsController());
-    _logicalActorRealizations.setDisplayedInWizard(displayedInWizard);
+    logicalActorRealizations.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _logicalActorRealizations.loadData(capellaElement_p, PaPackage.Literals.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS);
+    logicalActorRealizations.loadData(capellaElement, PaPackage.Literals.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS);
   }
 
   /**
@@ -71,7 +71,7 @@ public class PhysicalActorSection extends ComponentSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_logicalActorRealizations);
+    fields.add(logicalActorRealizations);
 
     return fields;
   }

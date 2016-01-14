@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class EventReceiptOperationItemProvider
 			// Process InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION
 			if (operationPropertyDescriptor != null) {
 				Object operationValue = eObject.eGet(InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION, true);
-				if (operationValue != null && operationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) operationValue)) {
+				if (operationValue != null && operationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) operationValue)) {
 					itemPropertyDescriptors.remove(operationPropertyDescriptor);
 				} else if (operationValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION) != null) {
 					itemPropertyDescriptors.remove(operationPropertyDescriptor);				  					

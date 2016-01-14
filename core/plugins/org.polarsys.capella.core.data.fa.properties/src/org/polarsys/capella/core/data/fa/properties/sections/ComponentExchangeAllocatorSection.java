@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public abstract class ComponentExchangeAllocatorSection extends NamedElementSection {
 
-  private MultipleSemanticField _componentExchangeAllocations;
+  private MultipleSemanticField componentExchangeAllocations;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -36,8 +36,8 @@ public abstract class ComponentExchangeAllocatorSection extends NamedElementSect
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _componentExchangeAllocations = createComponentExchangeAllocationsField();
-    _componentExchangeAllocations.setDisplayedInWizard(displayedInWizard);
+    componentExchangeAllocations = createComponentExchangeAllocationsField();
+    componentExchangeAllocations.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -52,11 +52,11 @@ public abstract class ComponentExchangeAllocatorSection extends NamedElementSect
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    if (null != _componentExchangeAllocations) {
-      _componentExchangeAllocations.loadData(capellaElement_p, FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
+    if (null != componentExchangeAllocations) {
+      componentExchangeAllocations.loadData(capellaElement, FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
     }
   }
 
@@ -68,7 +68,7 @@ public abstract class ComponentExchangeAllocatorSection extends NamedElementSect
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_componentExchangeAllocations);
+    fields.add(componentExchangeAllocations);
 
     return fields;
   }

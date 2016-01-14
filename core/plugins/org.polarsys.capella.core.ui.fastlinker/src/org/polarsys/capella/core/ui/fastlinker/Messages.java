@@ -18,6 +18,7 @@ public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.ui.fastlinker.messages"; //$NON-NLS-1$
   public static String FastLinkerManager_QualifiedLinkCommandReport;
   public static String FastLinkerManager_UnQualifiedLinkCommandReport;
+  public static String FastLinker;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

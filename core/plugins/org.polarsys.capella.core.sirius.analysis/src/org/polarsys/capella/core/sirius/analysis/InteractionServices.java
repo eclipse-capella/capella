@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,26 +78,26 @@ public class InteractionServices {
   /**
    * Retrieve scope for the Relationship tool in the capability diagram
    * @param source
-   * @param diagram_p
+   * @param diagram
    * @return
    */
   @SuppressWarnings("unchecked")
-  public List<EObject> getCapabilityDiagramScopeInsertRelationship(EObject source, DDiagram diagram_p) {
-    if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      return getScopeInsertRelationship(source, diagram_p, false, true);
+  public List<EObject> getCapabilityDiagramScopeInsertRelationship(EObject source, DDiagram diagram) {
+    if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      return getScopeInsertRelationship(source, diagram, false, true);
 
-    } else if (IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      return getScopeInsertRelationship(source, diagram_p, true, false);
+    } else if (IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      return getScopeInsertRelationship(source, diagram, true, false);
 
-    } else if (IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      return getScopeInsertRelationship(source, diagram_p, true, false);
+    } else if (IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      return getScopeInsertRelationship(source, diagram, true, false);
 
-    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      return getScopeInsertRelationship(source, diagram_p, true, true);
-    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      return getScopeInsertRelationship(source, diagram_p, false, true);
-    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      return getScopeInsertRelationship(source, diagram_p, false, true);
+    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      return getScopeInsertRelationship(source, diagram, true, true);
+    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      return getScopeInsertRelationship(source, diagram, false, true);
+    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      return getScopeInsertRelationship(source, diagram, false, true);
     }
 
     return Collections.EMPTY_LIST;
@@ -142,20 +142,20 @@ public class InteractionServices {
   /**
    * Retrieve scope for the Relationship tool in the capability diagram
    * @param source
-   * @param diagram_p
+   * @param diagram
    * @param addActorMissionInvolvement
    * @param addCapabilityManagement
    * @return
    */
-  protected List<EObject> getScopeInsertRelationship(EObject source, EObject diagram_p, boolean addActorMissionInvolvement, boolean addCapabilityManagement) {
+  protected List<EObject> getScopeInsertRelationship(EObject source, EObject diagram, boolean addActorMissionInvolvement, boolean addCapabilityManagement) {
     List<EObject> result = new ArrayList<EObject>();
-    DDiagram diagram = (DDiagram) diagram_p;
+    DDiagram diag = (DDiagram) diagram;
 
     if (source instanceof AbstractCapability) {
       AbstractCapability capa = (AbstractCapability) source;
 
       // In synchronized mode, edges will be automatically created, so we create only wanted nodes
-      if (diagram.isSynchronized()) {
+      if (diag.isSynchronized()) {
 
         if (addCapabilityManagement) {
           if (capa instanceof Capability) {
@@ -213,7 +213,7 @@ public class InteractionServices {
       Actor actor = (Actor) source;
 
       // In synchronized mode, edges will be automatically created, so we create only wanted nodes
-      if (diagram.isSynchronized()) {
+      if (diag.isSynchronized()) {
 
         result.addAll(actor.getSub());
         result.addAll(actor.getSuper());
@@ -241,7 +241,7 @@ public class InteractionServices {
       Mission mission = (Mission) source;
 
       // In synchronized mode, edges will be automatically created, so we create only wanted nodes
-      if (diagram.isSynchronized()) {
+      if (diag.isSynchronized()) {
         result.addAll(mission.getExploitedCapabilities());
 
         if (addActorMissionInvolvement) {
@@ -263,7 +263,7 @@ public class InteractionServices {
       EList<Involvement> involvingInvolvements = entity.getInvolvingInvolvements();
 
       // In synchronized mode, edges will be automatically created, so we create only wanted nodes
-      if (diagram.isSynchronized()) {
+      if (diag.isSynchronized()) {
         for (Involvement involvement : involvingInvolvements) {
           InvolverElement involver = involvement.getInvolver();
           if ((null != involver) && (involver instanceof OperationalCapability)) {
@@ -434,19 +434,19 @@ public class InteractionServices {
   }
 
   /**
-   * Show selectedItems_p and hide unselected elements of the scope_p in the diagram of sourceView_p
-   * @param context_p
-   * @param sourceView_p
-   * @param selectedItems_p
-   * @param scope_p
+   * Show selectedItems and hide unselected elements of the scope in the diagram of sourceView
+   * @param context
+   * @param sourceView
+   * @param selectedItems
+   * @param scope
    */
-  public void showHideRelationshipInCapabilityDiagram(EObject context_p, EObject sourceView_p, Collection<EObject> selectedItems_p, Collection<EObject> scope_p) {
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
+  public void showHideRelationshipInCapabilityDiagram(EObject context, EObject sourceView, Collection<EObject> selectedItems, Collection<EObject> scope) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     DiagramServices ds = DiagramServices.getDiagramServices();
 
     Map<EObject, DSemanticDecorator> elements = ds.getMapOfDiagramElements(diagram);
 
-    for (EObject object : selectedItems_p) {
+    for (EObject object : selectedItems) {
       AbstractNodeMapping nodeMapping = getNodeMapping(diagram, object);
 
       if (nodeMapping != null) {
@@ -471,15 +471,15 @@ public class InteractionServices {
             target = targetCandidates.get(0);
           }
 
-          DSemanticDecorator sourceView = elements.get(source);
+          DSemanticDecorator srcView = elements.get(source);
           if (source != null) {
-            sourceView = elements.get(source);
-            if (sourceView == null) {
+            srcView = elements.get(source);
+            if (srcView == null) {
               nodeMapping = getNodeMapping(diagram, source);
               if (nodeMapping != null) {
                 DDiagramElement container = ds.createAbstractDNode(nodeMapping, source, diagram, diagram);
                 elements.put(source, container);
-                sourceView = container;
+                srcView = container;
               }
             }
           }
@@ -497,15 +497,15 @@ public class InteractionServices {
             }
           }
 
-          if ((sourceView != null) && (targetView != null) && !ds.isOnDiagram(diagram, object)) {
-            ds.createEdge(edgeMapping, (EdgeTarget) sourceView, (EdgeTarget) targetView, object);
+          if ((srcView != null) && (targetView != null) && !ds.isOnDiagram(diagram, object)) {
+            ds.createEdge(edgeMapping, (EdgeTarget) srcView, (EdgeTarget) targetView, object);
           }
         }
       }
     }
 
-    for (EObject elementScope : scope_p) {
-      if (elements.containsKey(elementScope) && !selectedItems_p.contains(elementScope)) {
+    for (EObject elementScope : scope) {
+      if (elements.containsKey(elementScope) && !selectedItems.contains(elementScope)) {
         DSemanticDecorator diagramElement = elements.get(elementScope);
         if (diagramElement instanceof DEdge) {
           ds.removeEdgeView((DEdge) diagramElement);

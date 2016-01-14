@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.core.advance.feature"
       label="%featureName"
-      version="0.8.4.qualifier"
+      version="1.0.1.qualifier"
       provider-name="%providerName"
       plugin="org.polarsys.capella.core.platform.sirius.ui.perspective"
       image="Capella32x32.gif">
@@ -85,8 +85,12 @@
          id="org.polarsys.capella.core.libraries.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.polarsys.capella.core.migration.feature"
+         version="0.0.0"/>
+
    <requires>
-      <import feature="org.polarsys.capella.shared.feature" version="0.8.0" match="greaterOrEqual"/>
+      <import feature="org.polarsys.capella.shared.feature"/>
    </requires>
 
 </feature>

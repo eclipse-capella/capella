@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPreCondition <em>Pre Condition</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPostCondition <em>Post Condition</em>}</li>
@@ -52,7 +53,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getInvolvedAbstractFunctions <em>Involved Abstract Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getInvolvedFunctionalChains <em>Involved Functional Chains</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability()
  * @model abstract="true"
@@ -229,7 +229,6 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	/**
 	 * Returns the value of the '<em><b>Extends</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtension <em>Extension</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -239,8 +238,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extends</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_Extends()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtension
-	 * @model opposite="extension" containment="true"
+	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extend' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extends'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of reference elements to the Capabilities that this Capability extends\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -259,7 +257,6 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	/**
 	 * Returns the value of the '<em><b>Extending</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtended <em>Extended</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -269,8 +266,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extending</em>' reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_Extending()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtended
-	 * @model opposite="extended"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='extendedCase' umlOppositeReferenceOwner='Extend'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extending'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of reference elements to Capabilities that extend this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -289,7 +285,6 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	/**
 	 * Returns the value of the '<em><b>Abstract Capability Extension Points</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability <em>Abstract Capability</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -299,8 +294,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Abstract Capability Extension Points</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_AbstractCapabilityExtensionPoints()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability
-	 * @model opposite="abstractCapability" containment="true"
+	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='extensionPoint' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractCapabilityExtensionPoints'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the extension points that this Capability provides\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -319,7 +313,6 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	/**
 	 * Returns the value of the '<em><b>Super Generalizations</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSub <em>Sub</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -329,8 +322,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Super Generalizations</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_SuperGeneralizations()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSub
-	 * @model opposite="sub" containment="true"
+	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='generalizations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities from which this Capability inherits\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -349,7 +341,6 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	/**
 	 * Returns the value of the '<em><b>Sub Generalizations</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSuper <em>Super</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -359,8 +350,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Generalizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_SubGeneralizations()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization#getSuper
-	 * @model opposite="super" resolveProxies="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='generalizations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities that derive from this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -379,7 +369,6 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	/**
 	 * Returns the value of the '<em><b>Includes</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getInclusion <em>Inclusion</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -389,8 +378,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Includes</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_Includes()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getInclusion
-	 * @model opposite="inclusion" containment="true"
+	 * @model containment="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='include' featureOwner='UseCase'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='includes'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities used/included by this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
@@ -409,7 +397,6 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	/**
 	 * Returns the value of the '<em><b>Including</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getIncluded <em>Included</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -419,8 +406,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Including</em>' reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_Including()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude#getIncluded
-	 * @model opposite="included"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='addition' umlOppositeReferenceOwner='Include'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='including'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of references to Capabilities that use/include this Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"

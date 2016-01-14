@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,11 +39,11 @@ public abstract class MultiplicityElementSection extends TypedElementSection {
   private SimpleEditableSemanticField _minCardField;
   private SimpleEditableSemanticField _maxCardField;
 
-  public MultiplicityElementSection(boolean showIsOrdered_p, boolean showIsUnique_p, boolean showIsMinInclusive_p, boolean showIsMaxInclusive_p) {
-    _showIsOrdered = showIsOrdered_p;
-    _showIsUnique = showIsUnique_p;
-    _showIsMinInclusive = showIsMinInclusive_p;
-    _showIsMaxInclusive = showIsMaxInclusive_p;
+  public MultiplicityElementSection(boolean showIsOrdered, boolean showIsUnique, boolean showIsMinInclusive, boolean showIsMaxInclusive) {
+    _showIsOrdered = showIsOrdered;
+    _showIsUnique = showIsUnique;
+    _showIsMinInclusive = showIsMinInclusive;
+    _showIsMaxInclusive = showIsMaxInclusive;
   }
 
   @Override
@@ -71,14 +71,14 @@ public abstract class MultiplicityElementSection extends TypedElementSection {
    * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
     if (null != _multiplicityElementBooleanPropertiesCheckbox) {
-      _multiplicityElementBooleanPropertiesCheckbox.loadData(capellaElement_p);
+      _multiplicityElementBooleanPropertiesCheckbox.loadData(capellaElement);
     }
-    _minCardField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinCard());
-    _maxCardField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxCard());
+    _minCardField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMinCard());
+    _maxCardField.loadData(capellaElement, InformationPackage.eINSTANCE.getMultiplicityElement_OwnedMaxCard());
   }
 
   /**

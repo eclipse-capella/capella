@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class ExchangeItemRealizationItemProvider
 			// Process InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM
 			if (realizedItemPropertyDescriptor != null) {
 				Object realizedItemValue = eObject.eGet(InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM, true);
-				if (realizedItemValue != null && realizedItemValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedItemValue)) {
+				if (realizedItemValue != null && realizedItemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedItemValue)) {
 					itemPropertyDescriptors.remove(realizedItemPropertyDescriptor);
 				} else if (realizedItemValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZED_ITEM) != null) {
 					itemPropertyDescriptors.remove(realizedItemPropertyDescriptor);				  					
@@ -96,7 +96,7 @@ public class ExchangeItemRealizationItemProvider
 			// Process InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION
 			if (realizingOperationPropertyDescriptor != null) {
 				Object realizingOperationValue = eObject.eGet(InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION, true);
-				if (realizingOperationValue != null && realizingOperationValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizingOperationValue)) {
+				if (realizingOperationValue != null && realizingOperationValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingOperationValue)) {
 					itemPropertyDescriptors.remove(realizingOperationPropertyDescriptor);
 				} else if (realizingOperationValue == null && ExtensionModelManager.getAnyType(eObject, InformationPackage.Literals.EXCHANGE_ITEM_REALIZATION__REALIZING_OPERATION) != null) {
 					itemPropertyDescriptors.remove(realizingOperationPropertyDescriptor);				  					
