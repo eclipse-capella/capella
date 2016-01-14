@@ -54,7 +54,9 @@ class ProgressSetDialog extends Dialog {
   /** Selected enumeration */
   private EnumerationPropertyLiteral selectedEnumLiteral = null;
 
-  private boolean propagateWithoutFiltering = false;
+  private boolean propagateSemanticWithoutFiltering = true;
+  
+  private boolean propagateTechnicalWithoutFiltering = false;
 
   private boolean propagateToRepresentation = false;
 
@@ -85,8 +87,16 @@ class ProgressSetDialog extends Dialog {
    * 
    * @return Indicates whether to apply filtering when setting the status for selected Capella elements.
    */
-  public boolean isPropagateWithoutFiltering() {
-    return propagateWithoutFiltering;
+  public boolean isPropagateSemanticWithoutFiltering() {
+    return propagateSemanticWithoutFiltering;
+  }
+  
+  /**
+   * 
+   * @return Indicates whether to apply filtering when setting the status for selected Capella elements.
+   */
+  public boolean isPropagateTechnicalWithoutFiltering() {
+    return propagateTechnicalWithoutFiltering;
   }
 
   /**
@@ -200,16 +210,31 @@ class ProgressSetDialog extends Dialog {
     Group filterGroup = createFilterGroup(composite);
  
 
-    // Propagate without filtering button
-    Button propagateWithoutFilteringButton = new Button(filterGroup, SWT.CHECK);
-    propagateWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_button_lbl);
-    propagateWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_button_tooltip);
-    propagateWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
-    propagateWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
+    // Propagate semantic elements without filtering button
+    Button propagateSemanticWithoutFilteringButton = new Button(filterGroup, SWT.CHECK);
+    propagateSemanticWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_lbl);
+    propagateSemanticWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_tooltip);
+    propagateSemanticWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
+    propagateSemanticWithoutFilteringButton.setSelection(propagateSemanticWithoutFiltering);
+    propagateSemanticWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
 
       @Override
       public void widgetSelected(SelectionEvent event) {
-        propagateWithoutFiltering = ((Button) event.getSource()).getSelection();
+        propagateSemanticWithoutFiltering = ((Button) event.getSource()).getSelection();
+      }
+    });
+    
+ // Propagate technical elements without filtering button
+    Button propagateTechnicalWithoutFilteringButton = new Button(filterGroup, SWT.CHECK);
+    propagateTechnicalWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_lbl);
+    propagateTechnicalWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_tooltip);
+    propagateTechnicalWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
+    propagateTechnicalWithoutFilteringButton.setSelection(propagateTechnicalWithoutFiltering);
+    propagateTechnicalWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
+
+      @Override
+      public void widgetSelected(SelectionEvent event) {
+        propagateTechnicalWithoutFiltering = ((Button) event.getSource()).getSelection();
       }
     });
 
@@ -220,6 +245,7 @@ class ProgressSetDialog extends Dialog {
     propagateToRepresentationButton
         .setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_to_representation_button_tooltip);
     propagateToRepresentationButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
+    propagateToRepresentationButton.setSelection(propagateToRepresentation);
     propagateToRepresentationButton.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent event) {

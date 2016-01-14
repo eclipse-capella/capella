@@ -52,7 +52,7 @@ public abstract class PropertyPropagator {
    * @return the collection of modified objects
    */
   public List<Collection<EObject>> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> semanticObjects,
-      boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus,
+      boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus,
       String filterStatus, boolean mustCleanReview, boolean mustPropagateStatus) {
     //
     // First of all, let's obtain target eObjects.
@@ -63,12 +63,12 @@ public abstract class PropertyPropagator {
         TreeIterator<EObject> it = obj.eAllContents();
         EObject current = null;
 
-        handleFilterStatus(technicalElementPropagation, useFilterStatus, filterStatus, tgts, obj);
+        handleFilterStatus(semanticElementPropagation, technicalElementPropagation, useFilterStatus, filterStatus, tgts, obj);
 
         while (it.hasNext()) {
           current = it.next();
 
-          handleFilterStatus(technicalElementPropagation, useFilterStatus, filterStatus, tgts, current);
+          handleFilterStatus(semanticElementPropagation, technicalElementPropagation, useFilterStatus, filterStatus, tgts, current);
         }
       }
     }
@@ -116,23 +116,29 @@ public abstract class PropertyPropagator {
     return colOut;
   }
 
-  protected void handleFilterStatus(boolean technicalElementPropagation, boolean useFilterStatus, String filterStatus,
+  protected void handleFilterStatus(boolean semanticElementPropagation, boolean technicalElementPropagation, boolean useFilterStatus, String filterStatus,
       Collection<EObject> tgts, EObject current) {
     if (useFilterStatus) {
       if (mustBeFiltered(filterStatus, current)) {
-        handleTechnicalPropagation(technicalElementPropagation, tgts, current);
+        handlePropagation(semanticElementPropagation, technicalElementPropagation, tgts, current);
       }
     } else {
-      handleTechnicalPropagation(technicalElementPropagation, tgts, current);
+      handlePropagation(semanticElementPropagation, technicalElementPropagation, tgts, current);
     }
   }
 
-  protected void handleTechnicalPropagation(boolean technicalElementPropagation, Collection<EObject> tgts, EObject obj) {
-    if (technicalElementPropagation) {
-      tgts.add(obj);
-    } else if (isTaggableElement(obj)) {
-      tgts.add(obj);
+  protected void handlePropagation(boolean semanticElementPropagation, boolean technicalElementPropagation, Collection<EObject> tgts, EObject obj) {
+    
+    if (isTaggableElement(obj)) {
+      if (semanticElementPropagation) {
+        tgts.add(obj);
+      }
+    } else {
+      if (technicalElementPropagation) {
+        tgts.add(obj);
+      }
     }
+    
   }
 
   protected boolean mustBeFiltered(String filterStatus, EObject obj) {

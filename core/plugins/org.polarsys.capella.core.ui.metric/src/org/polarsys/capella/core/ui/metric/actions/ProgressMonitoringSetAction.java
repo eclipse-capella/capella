@@ -94,7 +94,7 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
         public void run() {
           List<Collection<EObject>> result = ProgressMonitoringPropagator.getInstance().applyPropertiesOn(
               Collections.singletonList(dialog.getSelectedEnum()), selectedObjects,
-              dialog.isPropagateWithoutFiltering(), dialog.isPropagateToRepresentations(),
+              dialog.isPropagateSemanticWithoutFiltering(), dialog.isPropagateTechnicalWithoutFiltering(), dialog.isPropagateToRepresentations(),
               dialog.useFilterStatus(), getLabel(dialog), dialog.mustCleanReview(),dialog.mustPropagateStatus());
 
           // Compute the number of modified elements
