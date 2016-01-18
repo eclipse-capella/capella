@@ -43,6 +43,7 @@ public abstract class PropertyPropagator {
   /**
    * @param literals
    * @param semanticObjects
+   * @param semanticElementPropagation
    * @param technicalElementPropagation
    *          Indicates whether to propagate the status without filtering.
    * @param propagateToRepresentations
@@ -138,7 +139,6 @@ public abstract class PropertyPropagator {
         tgts.add(obj);
       }
     }
-    
   }
 
   protected boolean mustBeFiltered(String filterStatus, EObject obj) {

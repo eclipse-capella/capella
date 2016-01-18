@@ -43,6 +43,7 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
 import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
+import org.polarsys.capella.core.ui.metric.actions.ProgressSetDialog.PropagateChoice;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
 import org.polarsys.capella.core.ui.metric.utils.Utils;
 
@@ -92,9 +93,15 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
       TransactionHelper.getExecutionManager(selectedObjects.iterator().next()).execute(new AbstractReadWriteCommand() {
         @SuppressWarnings("synthetic-access")
         public void run() {
+          
+          PropagateChoice propagateChoice = dialog.getPropagateChoiceWithoutFiltering();
+          boolean semanticElementPropagation = propagateChoice == PropagateChoice.ONLY_BUSINESS_ELEMENTS
+              || propagateChoice == PropagateChoice.ALL_CAPELLA_ELEMENTS;
+          boolean technicalElementPropagation = propagateChoice == PropagateChoice.ALL_CAPELLA_ELEMENTS;
+          
           List<Collection<EObject>> result = ProgressMonitoringPropagator.getInstance().applyPropertiesOn(
               Collections.singletonList(dialog.getSelectedEnum()), selectedObjects,
-              dialog.isPropagateSemanticWithoutFiltering(), dialog.isPropagateTechnicalWithoutFiltering(), dialog.isPropagateToRepresentations(),
+              semanticElementPropagation, technicalElementPropagation, dialog.isPropagateToRepresentations(),
               dialog.useFilterStatus(), getLabel(dialog), dialog.mustCleanReview(),dialog.mustPropagateStatus());
 
           // Compute the number of modified elements
