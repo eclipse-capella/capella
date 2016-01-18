@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.linkedtext.ui.LinkedTextDocument;
 import org.polarsys.capella.common.linkedtext.ui.LinkedTextHyperlink;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
 import org.polarsys.capella.core.model.helpers.ConstraintExt;
@@ -28,25 +29,26 @@ public class OpaqueExpressionHyperlinkCheck extends AbstractValidationRule {
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    OpaqueExpression oe = (OpaqueExpression) ctx_p.getTarget();
+  public IStatus validate(IValidationContext ctx) {
+    OpaqueExpression oe = (OpaqueExpression) ctx.getTarget();
     for (int i = 0; i < oe.getLanguages().size(); i++) {
       if (ConstraintExt.OPAQUE_EXPRESSION_LINKED_TEXT.equals(oe.getLanguages().get(i))) {
         if (hasDanglingReferences(oe, oe.getBodies().get(i))) {
-          return ctx_p.createFailureStatus(oe);
+          return ctx.createFailureStatus(EObjectLabelProviderHelper.getText(oe));
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   /**
-   * @param string_p
+   * @param documentBase
+   * @param body
    * @return
    */
-  private boolean hasDanglingReferences(OpaqueExpression documentBase_p, final String body_p) {
+  private boolean hasDanglingReferences(OpaqueExpression documentBase, final String body) {
 
-    CapellaEmbeddedLinkedTextEditorInput input = new CapellaEmbeddedLinkedTextEditorInput.Readonly(documentBase_p, body_p);
+    CapellaEmbeddedLinkedTextEditorInput input = new CapellaEmbeddedLinkedTextEditorInput.Readonly(documentBase, body);
     try {
       LinkedTextDocument doc = LinkedTextDocument.load(input);
       for (LinkedTextHyperlink hl : doc.getHyperlinks()) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -70,6 +71,7 @@ public abstract class AbstractProvider implements IModelProvider{
           lstSetUpArtefacts.put(artefact, loadedModels);
         } catch (Exception e) {
           e.printStackTrace();
+          throw new WrappedException(e);
         }
       } else {
         List<String> loadedModels = lstSetUpArtefacts.get(startArtefact);
@@ -138,6 +140,7 @@ public abstract class AbstractProvider implements IModelProvider{
             lstSetUpArtefacts.remove(startArtefact);
           } catch (Exception e) {
             e.printStackTrace();
+            throw new WrappedException(e);
           }
         }
       }
@@ -186,8 +189,9 @@ public abstract class AbstractProvider implements IModelProvider{
     if (!project.isOpen()) {
       try {
         project.open(new NullProgressMonitor());
-      } catch (CoreException exception_p) {
-        exception_p.printStackTrace();
+      } catch (CoreException exception) {
+        exception.printStackTrace();
+        throw new WrappedException(exception);
       }
     }
   }
