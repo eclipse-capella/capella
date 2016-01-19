@@ -8,16 +8,119 @@
  Contributors:
  	Thales - initial API and implementation
 -->
-<!--?xml version='1.0' encoding='utf-8' ?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>12.4. Progress Monitoring</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Progress_Monitoring">Progress Monitoring</h1><h2 id="Steps_for_Creating_Project-Specific_Progress_Status">Steps for Creating Project-Specific Progress Status</h2><p>Configure the Capella browser so that the <i>Project</i> element is displayed (see <i>Project Explorer </i>section of Preferences).</p><p><center><img height="445" width="475" border="0" src="Images/12.4.%20Progress%20Monitoring_html_4f09dd6.png"/></center></p><p>Using the contextual menu on this <i>Project</i> element, create a new <i>EnumerationPropertyType</i> element and name it &quot;ProgressStatus&quot;.</p><p><center><img height="385" width="335" border="0" src="Images/12.4.%20Progress%20Monitoring_html_73c7c6df.png"/></center></p><p>Under &quot;ProgressStatus&quot;, create as many <i>EnumerationPropertyLiteral</i> elements as needed. Rename these literals with the appropriate values using <i>F2</i> in the project explorer or using the dedicated editors.</p><p><center><img height="569" width="437" border="0" src="Images/12.4.%20Progress%20Monitoring_html_1366c180.png"/></center></p><p>It is recommended to hide again the <i>Project</i> element in the project explorer so that end-users will not be tempted to modify it</p><h2 id="Setting_Progress_Status_on_Elements">Setting Progress Status on Elements</h2><p>To tag elements with a given progress status, use from the contextual menu of any element the command Progress Monitoring -&gt; Set Progress.</p><p><center><img height="578" width="1013" border="0" src="Images/12.4.%20Progress%20Monitoring_html_72c054c1.png"/></center></p><h3 id="Propagate_Progress_Status_to_all_Capella_Elements">Propagate Progress Status to all Capella Elements</h3><pre> To propagate the progress status to all Capella elements in the scope of the selection and without any filtering, you can check the corresponding button in the wizard as shown in the picture below. 
-</pre><pre> <center><img height="304" width="385" border="0" src="Images/12.4.%20Progress%20Monitoring_html_12d478a0.png"/></center>
-</pre><h3 id="Propagate_Progress_Status_to_Sub_Representations">Propagate Progress Status to Sub Representations</h3><pre> It's also possible to propagate the progress status to all Sub Representations (Diagrams and Tables) under the selected elements by checking the corresponding button in the wizard as shown in the picture below.
-</pre><pre> <center><img height="303" width="384" border="0" src="Images/12.4.%20Progress%20Monitoring_html_81b291e7.png"/></center>
-</pre><h3 id="Change_only_elements_with_Status">Change only elements with Status</h3><pre> This option allow to change the progress status only on elements which have the selected status.
+<!--?xml version='1.0' encoding='utf-8' ?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>12.4. Progress Monitoring</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Progress_Monitoring">Progress Monitoring</h1>
+		<h2 id="Steps_for_Creating_Project-Specific_Progress_Status">Steps for Creating Project-Specific Progress Status</h2>
+		<p>Configure the Capella browser so that the 
+			<i>Project</i> element is displayed (see 
+			<i>Project Explorer </i>section of Preferences).
+		</p>
+		<p><center>
+			<img height="445" width="475" border="0" src="Images/12.4.%20Progress%20Monitoring_html_4f09dd6.png"/></center>
+		</p>
+		<p>Using the contextual menu on this 
+			<i>Project</i> element, create a new 
+			<i>EnumerationPropertyType</i> element and name it &quot;ProgressStatus&quot;.
+		</p>
+		<p><center>
+			<img height="385" width="335" border="0" src="Images/12.4.%20Progress%20Monitoring_html_73c7c6df.png"/></center>
+		</p>
+		<p>Under &quot;ProgressStatus&quot;, create as many 
+			<i>EnumerationPropertyLiteral</i> elements as needed. Rename these literals with the appropriate values using 
+			<i>F2</i> in the project explorer or using the dedicated editors.
+		</p>
+		<p><center>
+			<img height="569" width="437" border="0" src="Images/12.4.%20Progress%20Monitoring_html_1366c180.png"/></center>
+		</p>
+		<p>It is recommended to hide again the 
+			<i>Project</i> element in the project explorer so that end-users will not be tempted to modify it
+		</p>
+		<h2 id="Setting_Progress_Status_on_Elements">Setting Progress Status on Elements</h2>
+		<p>To tag elements with a given progress status, use from the contextual menu of any element the command Progress Monitoring -&gt; Set Progress.</p>
+		<p><center>
+			<img height="578" width="1013" border="0" src="Images/12.4.%20Progress%20Monitoring_html_72c054c1.png"/></center>
+		</p>
+		<h3 id="Propagate_Progress_Status_to_only_Business_Elements">Propagate Progress Status to only Business Elements</h3>
+		<p>It is the configuration by default. </p>
+		<p><center>
+			<img height="345" width="386" border="0" src="Images/12.4.%20Progress%20Monitoring_Default_Configuration.png"/></center>
+		</p>
+		<p>Only following model elements are taken into account:</p>
+		<ul>
+			<li>AbstractCapability</li>
+			<li>AbstractFragment</li>
+			<li>AbstractFunction</li>
+			<li>Collection</li>
+			<li>Component</li>
+			<li>ComponentExchange</li>
+			<li>Constraint</li>
+			<li>DataType</li>
+			<li>Entity</li>
+			<li>ExchangeCategory</li>
+			<li>ExchangeItem</li>
+			<li>FunctionalChain</li>
+			<li>FunctionalExchange</li>
+			<li>GeneralClass</li>
+			<li>Mission</li>
+			<li>Part</li>
+			<li>PhysicalPath</li>
+			<li>PhysicalLink</li>
+			<li>Region</li>
+			<li>Requirement</li>
+			<li>Role</li>
+			<li>Scenario</li>
+			<li>StateMachine</li>
+			<li>Structure</li>
+			<li>Unit</li>
+		</ul>
+		<h3 id="Propagate_Progress_Status_to_all_Capella_Elements">Propagate Progress Status to all Capella Elements</h3>
+		<pre> To propagate the progress status to all Capella elements in the scope of the selection and without any filtering, you can check the corresponding button in the wizard as shown in the picture below. 
+</pre>
+		<pre> <center><img height="304" width="385" border="0" src="Images/12.4.%20Progress%20Monitoring_html_12d478a0.png"/></center>
+</pre>
+		<h3 id="Propagate_Progress_Status_to_Sub_Representations">Propagate Progress Status to Sub Representations</h3>
+		<pre> It's also possible to propagate the progress status to all Sub Representations (Diagrams and Tables) under the selected elements by checking the corresponding button in the wizard as shown in the picture below.
+</pre>
+		<pre> <center><img height="303" width="384" border="0" src="Images/12.4.%20Progress%20Monitoring_html_81b291e7.png"/></center>
+</pre>
+		<pre>   It is possible to only propagate on sub representations without propagate on model elements by selecting "Do not propagate to Model Elements".
+</pre>
+		<h3 id="Change_only_elements_with_Status">Change only elements with Status</h3>
+		<pre> This option allow to change the progress status only on elements which have the selected status.
  For instance, it is possible to update all the Status from TO BE REVIEWED to REVIEWED.
-</pre><pre>  <center><img height="313" width="388" border="0" src="Images/12.4.%20Progress%20Monitoring_Change_.png"/></center>
-</pre><h2 id="Clear_Progress_Status_on_Elements">Clear Progress Status on Elements</h2><pre>To clear the progress status, you can select in the combo of the set progress wizard the empty value as shown in the picture below.
-</pre><pre><center><img height="303" width="384" border="0" src="Images/12.4.%20Progress%20Monitoring_html_32a787d3.png"/></center>
-</pre><h2 id="Clear_Review_Field">Clear Review Field</h2><pre>When the Clear Review field options is checked, the review field will be cleared as the status is propagated. 
-<center><img height="303" width="384" border="0" src="Images/12.4%20Progress%20Monitoring_Clear%20Review.png"/></center>
-</pre><h2 id="Modification_logged_in_Information_View">Modification logged in Information View</h2><p>The number of elements and representations (diagrams and tables) impacted are logged in the Information View. Both number of modified Progress Status and Review field cleared appeared.</p><p><center><img height="110" width="668" border="0" src="Images/12.4.%20Progress%20Monitoring_InformationView.png"/></center></p><h2 id="Visualization_of_Progress_Monitoring_Information">Visualization of Progress Monitoring Information</h2><pre>A dialog allowing to visualize all elements and representations with a progress status or a review attribute is available from the contextual menu (Progress Monitoring / Progress Overview). 
-</pre><p><center><img height="632" width="838" border="0" src="Images/12.4.%20Progress%20Monitoring_html_34e72a1c.png"/></center></p><p>From this dialog, it is possible to export the results as CSV files.</p><p><center><img height="212" width="1442" border="0" src="Images/12.4.%20Progress%20Monitoring_html_27a38b50.png"/></center></p></body></html>
+</pre>
+		<pre>  <center><img height="313" width="388" border="0" src="Images/12.4.%20Progress%20Monitoring_Change_.png"/></center>
+</pre>
+		<h2 id="Clear_Progress_Status_on_Elements">Clear Progress Status on Elements</h2>
+		<pre>To clear the progress status, you can select in the combo of the set progress wizard the empty value as shown in the picture below.
+</pre>
+		<pre><center><img height="303" width="384" border="0" src="Images/12.4.%20Progress%20Monitoring_html_32a787d3.png"/></center>
+</pre>
+		<h2 id="Clear_Review_Field">Clear Review Field</h2>
+		<pre>When the Clear Review field options is checked, the review field will be cleared as the status is propagated. 
+<center><img height="345" width="386" border="0" src="Images/12.4.%20Progress%20Monitoring_Clear%20Review.png"/></center>
+</pre>
+		<h2 id="Modification_logged_in_Information_View">Modification logged in Information View</h2>
+		<p>The number of elements and representations (diagrams and tables) impacted are logged in the Information View. Both number of modified Progress Status and Review field cleared appeared.</p>
+		<p><center>
+			<img height="110" width="668" border="0" src="Images/12.4.%20Progress%20Monitoring_InformationView.png"/></center>
+		</p>
+		<h2 id="Visualization_of_Progress_Monitoring_Information">Visualization of Progress Monitoring Information</h2>
+		<pre>A dialog allowing to visualize all elements and representations with a progress status or a review attribute is available from the contextual menu (Progress Monitoring / Progress Overview). 
+</pre>
+		<p><center>
+			<img height="632" width="838" border="0" src="Images/12.4.%20Progress%20Monitoring_html_34e72a1c.png"/></center>
+		</p>
+		<p>From this dialog, it is possible to export the results as CSV files.</p>
+		<p><center>
+			<img height="212" width="1442" border="0" src="Images/12.4.%20Progress%20Monitoring_html_27a38b50.png"/></center>
+		</p>
+	</body>
+</html>

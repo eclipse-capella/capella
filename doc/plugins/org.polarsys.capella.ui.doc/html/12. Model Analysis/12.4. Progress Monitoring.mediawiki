@@ -31,6 +31,38 @@ To tag elements with a given progress status, use from the contextual menu of an
  
 <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_72c054c1.png|1013x578px]]</center>
 
+  === Propagate Progress Status to only Business Elements ===
+
+It is the configuration by default. 
+
+<center>[[Image:Images/12.4.%20Progress%20Monitoring_Default_Configuration.png|386x345px]]</center>
+
+Only following model elements are taken into account:
+* AbstractCapability
+* AbstractFragment
+* AbstractFunction
+* Collection
+* Component
+* ComponentExchange
+* Constraint
+* DataType
+* Entity
+* ExchangeCategory
+* ExchangeItem
+* FunctionalChain
+* FunctionalExchange
+* GeneralClass
+* Mission
+* Part
+* PhysicalPath
+* PhysicalLink
+* Region
+* Requirement
+* Role
+* Scenario
+* StateMachine
+* Structure
+* Unit
 
   === Propagate Progress Status to all Capella Elements ===
   
@@ -44,8 +76,11 @@ To tag elements with a given progress status, use from the contextual menu of an
   
   It's also possible to propagate the progress status to all Sub Representations (Diagrams and Tables) under the selected elements by checking the corresponding button in the wizard as shown in the picture below.
   
+  
   <center>[[Image:Images/12.4.%20Progress%20Monitoring_html_81b291e7.png|384x303px]]</center>
   
+    It is possible to only propagate on sub representations without propagate on model elements by selecting "Do not propagate to Model Elements".
+    
     === Change only elements with Status ===
   
   This option allow to change the progress status only on elements which have the selected status.
@@ -62,7 +97,7 @@ To tag elements with a given progress status, use from the contextual menu of an
 == Clear Review Field ==
  
  When the Clear Review field options is checked, the review field will be cleared as the status is propagated. 
- <center>[[Image:Images/12.4%20Progress%20Monitoring_Clear%20Review.png|384x303px]]</center>
+ <center>[[Image:Images/12.4.%20Progress%20Monitoring_Clear%20Review.png|386x345px]]</center>
   
 == Modification logged in Information View ==
 
