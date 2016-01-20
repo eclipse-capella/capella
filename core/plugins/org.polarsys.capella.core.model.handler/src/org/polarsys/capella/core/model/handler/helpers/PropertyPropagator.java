@@ -40,284 +40,318 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
  */
 public abstract class PropertyPropagator {
 
-  /**
-   * @param literals
-   * @param semanticObjects
-   * @param technicalElementPropagation
-   *          Indicates whether to propagate the status without filtering.
-   * @param propagateToRepresentations
-   *          Indicates whether to propagate the status to the referenced {@link DRepresentation}
-   * @param mustCleanReview
-   * 
-   * @return the collection of modified objects
-   */
-  public List<Collection<EObject>> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> semanticObjects,
-      boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus,
-      String filterStatus, boolean mustCleanReview, boolean mustPropagateStatus) {
-    //
-    // First of all, let's obtain target eObjects.
-    //
-    Collection<EObject> tgts = new HashSet<EObject>();
-    for (EObject obj : semanticObjects) {
-      if (!tgts.contains(obj)) {
-        TreeIterator<EObject> it = obj.eAllContents();
-        EObject current = null;
+	/**
+	 * @param literals
+	 * @param semanticObjects
+	 * @param semanticElementPropagation
+	 * @param technicalElementPropagation
+	 *            Indicates whether to propagate the status without filtering.
+	 * @param propagateToRepresentations
+	 *            Indicates whether to propagate the status to the referenced
+	 *            {@link DRepresentation}
+	 * @param mustCleanReview
+	 * 
+	 * @return the collection of modified objects
+	 */
+	public List<Collection<EObject>> applyPropertiesOn(
+			List<? extends EObject> literals,
+			Collection<EObject> semanticObjects,
+			boolean semanticElementPropagation,
+			boolean technicalElementPropagation,
+			boolean propagateToRepresentations, boolean useFilterStatus,
+			String filterStatus, boolean mustCleanReview,
+			boolean mustPropagateStatus) {
+		//
+		// First of all, let's obtain target eObjects.
+		//
+		Collection<EObject> tgts = new HashSet<EObject>();
+		for (EObject obj : semanticObjects) {
+			if (!tgts.contains(obj)) {
+				TreeIterator<EObject> it = obj.eAllContents();
+				EObject current = null;
 
-        handleFilterStatus(technicalElementPropagation, useFilterStatus, filterStatus, tgts, obj);
+				handleFilterStatus(semanticElementPropagation,
+						technicalElementPropagation, useFilterStatus,
+						filterStatus, tgts, obj);
 
-        while (it.hasNext()) {
-          current = it.next();
+				while (it.hasNext()) {
+					current = it.next();
 
-          handleFilterStatus(technicalElementPropagation, useFilterStatus, filterStatus, tgts, current);
-        }
-      }
-    }
+					handleFilterStatus(semanticElementPropagation,
+							technicalElementPropagation, useFilterStatus,
+							filterStatus, tgts, current);
+				}
+			}
+		}
 
-    // Handle DRepresentation
-    if (propagateToRepresentations) {
-      Collection<DRepresentation> representationsTargeted = RepresentationHelper
-          .getAllRepresentationsTargetedBy(semanticObjects);
+		// Handle DRepresentation
+		if (propagateToRepresentations) {
+			Collection<DRepresentation> representationsTargeted = RepresentationHelper
+					.getAllRepresentationsTargetedBy(semanticObjects);
 
-      for (DRepresentation representation : representationsTargeted) {
-        if (useFilterStatus) {
-          if (mustBeFiltered(filterStatus, representation)) {
-            tgts.add(representation);
-          }
-        } else {
-          tgts.add(representation);
-        }
-      }
+			for (DRepresentation representation : representationsTargeted) {
+				if (useFilterStatus) {
+					if (mustBeFiltered(filterStatus, representation)) {
+						tgts.add(representation);
+					}
+				} else {
+					tgts.add(representation);
+				}
+			}
 
-    }
+		}
 
-    //
-    // On a second hand, let's tag target eObjects.
-    //
-    Collection<EObject> tagChangedElements = new HashSet<EObject>();
-    Collection<EObject> reviewChangedElements = new HashSet<EObject>();
-    for (EObject eobj : tgts) {
-    	Boolean result = false;
-    	if (mustPropagateStatus) {
-    		result = tagElement(literals, eobj);
-    		if (result) {
-    			tagChangedElements.add(eobj);
-    		}
-    	}
-    	if (mustCleanReview) {
-    		result = cleanReview(eobj);
-    		if (result) {
-    			reviewChangedElements.add(eobj);
-    		}
-    	}
-    }
-    List<Collection<EObject>> colOut = new ArrayList<Collection<EObject>>();
-    colOut.add(tagChangedElements);
-    colOut.add(reviewChangedElements);
-    return colOut;
-  }
+		//
+		// On a second hand, let's tag target eObjects.
+		//
+		Collection<EObject> tagChangedElements = new HashSet<EObject>();
+		Collection<EObject> reviewChangedElements = new HashSet<EObject>();
+		for (EObject eobj : tgts) {
+			Boolean result = false;
+			if (mustPropagateStatus) {
+				result = tagElement(literals, eobj);
+				if (result) {
+					tagChangedElements.add(eobj);
+				}
+			}
+			if (mustCleanReview) {
+				result = cleanReview(eobj);
+				if (result) {
+					reviewChangedElements.add(eobj);
+				}
+			}
+		}
+		List<Collection<EObject>> colOut = new ArrayList<Collection<EObject>>();
+		colOut.add(tagChangedElements);
+		colOut.add(reviewChangedElements);
+		return colOut;
+	}
 
-  protected void handleFilterStatus(boolean technicalElementPropagation, boolean useFilterStatus, String filterStatus,
-      Collection<EObject> tgts, EObject current) {
-    if (useFilterStatus) {
-      if (mustBeFiltered(filterStatus, current)) {
-        handleTechnicalPropagation(technicalElementPropagation, tgts, current);
-      }
-    } else {
-      handleTechnicalPropagation(technicalElementPropagation, tgts, current);
-    }
-  }
+	protected void handleFilterStatus(boolean semanticElementPropagation,
+			boolean technicalElementPropagation, boolean useFilterStatus,
+			String filterStatus, Collection<EObject> tgts, EObject current) {
+		if (useFilterStatus) {
+			if (mustBeFiltered(filterStatus, current)) {
+				handlePropagation(semanticElementPropagation,
+						technicalElementPropagation, tgts, current);
+			}
+		} else {
+			handlePropagation(semanticElementPropagation,
+					technicalElementPropagation, tgts, current);
+		}
+	}
 
-  protected void handleTechnicalPropagation(boolean technicalElementPropagation, Collection<EObject> tgts, EObject obj) {
-    if (technicalElementPropagation) {
-      tgts.add(obj);
-    } else if (isTaggableElement(obj)) {
-      tgts.add(obj);
-    }
-  }
+	protected void handlePropagation(boolean semanticElementPropagation,
+			boolean technicalElementPropagation, Collection<EObject> tgts,
+			EObject obj) {
 
-  protected boolean mustBeFiltered(String filterStatus, EObject obj) {
-    return (filterStatus == null && getElementTag(obj) == null) || filterStatus != null
-        && filterStatus.equals(getElementTag(obj));
-  }
+		if (isTaggableElement(obj)) {
+			if (semanticElementPropagation) {
+				tgts.add(obj);
+			}
+		} else {
+			if (technicalElementPropagation) {
+				tgts.add(obj);
+			}
+		}
+	}
 
-  /**
-   * @param element
-   * @return
-   */
-  public boolean isTaggableElement(EObject element) {
-    return isDirectElement(element) || isWithSpecializedElement(element);
-  }
+	protected boolean mustBeFiltered(String filterStatus, EObject obj) {
+		return (filterStatus == null && getElementTag(obj) == null)
+				|| filterStatus != null
+				&& filterStatus.equals(getElementTag(obj));
+	}
 
-  /**
-   * @param literals
-   * @param eObject
-   * @return
-   */
-  protected boolean tagElement(List<? extends EObject> literals, EObject eObject) {
-    boolean result = true;
-    for (EObject literal : literals) {
-      if (literal == null || literal instanceof EnumerationPropertyLiteral) {
-        result &= tagElement((EnumerationPropertyLiteral) literal, eObject);
-      } else {
-        result &= false;
-      }
-    }
-    return result;
-  }
+	/**
+	 * @param element
+	 * @return
+	 */
+	public boolean isTaggableElement(EObject element) {
+		return isDirectElement(element) || isWithSpecializedElement(element);
+	}
 
-  /**
-   * @return
-   */
-  protected Collection<EClass> getDirectTypes() {
-    Collection<EClass> directTypes = new HashSet<EClass>();
-    directTypes.add(FaPackage.Literals.COMPONENT_EXCHANGE);
-    directTypes.add(FaPackage.Literals.FUNCTIONAL_EXCHANGE);
-    directTypes.add(InteractionPackage.Literals.ABSTRACT_FRAGMENT);
-    directTypes.add(CsPackage.Literals.PHYSICAL_LINK);
-    return directTypes;
-  }
+	/**
+	 * @param literals
+	 * @param eObject
+	 * @return
+	 */
+	protected boolean tagElement(List<? extends EObject> literals,
+			EObject eObject) {
+		boolean result = true;
+		for (EObject literal : literals) {
+			if (literal == null
+					|| literal instanceof EnumerationPropertyLiteral) {
+				result &= tagElement((EnumerationPropertyLiteral) literal,
+						eObject);
+			} else {
+				result &= false;
+			}
+		}
+		return result;
+	}
 
-  /**
-   * @return
-   */
-  protected Collection<EClass> getWithSpecializationType() {
-    Collection<EClass> withSpecializationTypes = new HashSet<EClass>();
-    withSpecializationTypes.add(CapellacorePackage.Literals.CONSTRAINT);
-    withSpecializationTypes.add(CapellacommonPackage.Literals.STATE_MACHINE);
-    withSpecializationTypes.add(CapellacorePackage.Literals.STRUCTURE);
-    withSpecializationTypes.add(FaPackage.Literals.ABSTRACT_FUNCTION);
-    withSpecializationTypes.add(CsPackage.Literals.PART);
-    withSpecializationTypes.add(CsPackage.Literals.COMPONENT);
-    withSpecializationTypes.add(FaPackage.Literals.FUNCTIONAL_CHAIN);
-    withSpecializationTypes.add(FaPackage.Literals.EXCHANGE_CATEGORY);
-    withSpecializationTypes.add(InteractionPackage.Literals.ABSTRACT_CAPABILITY);
-    withSpecializationTypes.add(InteractionPackage.Literals.SCENARIO);
-    withSpecializationTypes.add(CtxPackage.Literals.MISSION);
-    withSpecializationTypes.add(OaPackage.Literals.ENTITY);
-    withSpecializationTypes.add(OaPackage.Literals.ROLE);
-    withSpecializationTypes.add(CsPackage.Literals.PHYSICAL_PATH);
-    withSpecializationTypes.add(CapellacorePackage.Literals.GENERAL_CLASS);
-    withSpecializationTypes.add(InformationPackage.Literals.COLLECTION);
-    withSpecializationTypes.add(InformationPackage.Literals.EXCHANGE_ITEM);
-    withSpecializationTypes.add(DatatypePackage.Literals.DATA_TYPE);
-    withSpecializationTypes.add(InformationPackage.Literals.UNIT);
-    withSpecializationTypes.add(RequirementPackage.Literals.REQUIREMENT);
-    withSpecializationTypes.add(CapellacommonPackage.Literals.REGION);
-    return withSpecializationTypes;
-  }
+	/**
+	 * @return
+	 */
+	protected Collection<EClass> getDirectTypes() {
+		Collection<EClass> directTypes = new HashSet<EClass>();
+		directTypes.add(FaPackage.Literals.COMPONENT_EXCHANGE);
+		directTypes.add(FaPackage.Literals.FUNCTIONAL_EXCHANGE);
+		directTypes.add(InteractionPackage.Literals.ABSTRACT_FRAGMENT);
+		directTypes.add(CsPackage.Literals.PHYSICAL_LINK);
+		return directTypes;
+	}
 
-  /**
-   * @param eObject
-   * @return
-   */
-  protected abstract boolean isTagged(EObject eObject);
+	/**
+	 * @return
+	 */
+	protected Collection<EClass> getWithSpecializationType() {
+		Collection<EClass> withSpecializationTypes = new HashSet<EClass>();
+		withSpecializationTypes.add(CapellacorePackage.Literals.CONSTRAINT);
+		withSpecializationTypes
+				.add(CapellacommonPackage.Literals.STATE_MACHINE);
+		withSpecializationTypes.add(CapellacorePackage.Literals.STRUCTURE);
+		withSpecializationTypes.add(FaPackage.Literals.ABSTRACT_FUNCTION);
+		withSpecializationTypes.add(CsPackage.Literals.PART);
+		withSpecializationTypes.add(CsPackage.Literals.COMPONENT);
+		withSpecializationTypes.add(FaPackage.Literals.FUNCTIONAL_CHAIN);
+		withSpecializationTypes.add(FaPackage.Literals.EXCHANGE_CATEGORY);
+		withSpecializationTypes
+				.add(InteractionPackage.Literals.ABSTRACT_CAPABILITY);
+		withSpecializationTypes.add(InteractionPackage.Literals.SCENARIO);
+		withSpecializationTypes.add(CtxPackage.Literals.MISSION);
+		withSpecializationTypes.add(OaPackage.Literals.ENTITY);
+		withSpecializationTypes.add(OaPackage.Literals.ROLE);
+		withSpecializationTypes.add(CsPackage.Literals.PHYSICAL_PATH);
+		withSpecializationTypes.add(CapellacorePackage.Literals.GENERAL_CLASS);
+		withSpecializationTypes.add(InformationPackage.Literals.COLLECTION);
+		withSpecializationTypes.add(InformationPackage.Literals.EXCHANGE_ITEM);
+		withSpecializationTypes.add(DatatypePackage.Literals.DATA_TYPE);
+		withSpecializationTypes.add(InformationPackage.Literals.UNIT);
+		withSpecializationTypes.add(RequirementPackage.Literals.REQUIREMENT);
+		withSpecializationTypes.add(CapellacommonPackage.Literals.REGION);
+		return withSpecializationTypes;
+	}
 
-  /**
-   * @param eObject
-   * @return
-   */
-  protected abstract boolean isTaggedRepresentation(EObject eObject);
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	protected abstract boolean isTagged(EObject eObject);
 
-  /**
-   * @param literal
-   * @param eObject
-   * @return
-   */
-  protected abstract boolean tagElement(EnumerationPropertyLiteral literal, EObject eObject);
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	protected abstract boolean isTaggedRepresentation(EObject eObject);
 
-  /**
-   * @return
-   */
-  protected abstract String getKeyword();
+	/**
+	 * @param literal
+	 * @param eObject
+	 * @return
+	 */
+	protected abstract boolean tagElement(EnumerationPropertyLiteral literal,
+			EObject eObject);
 
-  /**
-   * Clean review
-   * @param eobj
-   */
-  protected abstract boolean cleanReview(EObject eobj);
+	/**
+	 * @return
+	 */
+	protected abstract String getKeyword();
 
-  /**
-   * 
-   * @param eObject
-   * @return
-   */
-  protected abstract String getElementTag(EObject eObject);
+	/**
+	 * Clean review
+	 * 
+	 * @param eobj
+	 */
+	protected abstract boolean cleanReview(EObject eobj);
 
-  /**
-   * @param eObject
-   * @return
-   */
-  protected boolean isDirectElement(EObject eObject) {
-    if (null != eObject) {
-      EClass eclass = eObject.eClass();
-      for (EClass current : getDirectTypes()) {
-        if (current == eclass) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+	/**
+	 * 
+	 * @param eObject
+	 * @return
+	 */
+	protected abstract String getElementTag(EObject eObject);
 
-  /**
-   * @param eObject
-   * @return
-   */
-  protected boolean isWithSpecializedElement(EObject eObject) {
-    if (null != eObject) {
-      EClass eclass = eObject.eClass();
-      for (EClass current : getWithSpecializationType()) {
-        if (current.isSuperTypeOf(eclass)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	protected boolean isDirectElement(EObject eObject) {
+		if (null != eObject) {
+			EClass eclass = eObject.eClass();
+			for (EClass current : getDirectTypes()) {
+				if (current == eclass) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
-  /**
-   * @param eObject
-   * @return
-   */
-  public boolean isEnumerationPropertyTypeDefinedForProject(EObject eObject) {
-    return (null != CapellaProjectHelper.getEnumerationPropertyType(eObject, getKeyword()));
-  }
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	protected boolean isWithSpecializedElement(EObject eObject) {
+		if (null != eObject) {
+			EClass eclass = eObject.eClass();
+			for (EClass current : getWithSpecializationType()) {
+				if (current.isSuperTypeOf(eclass)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
-  /**
-   * @param root
-   * @return
-   */
-  public List<EObject> getTaggedObjects(EObject root) {
-    List<EObject> result = new ArrayList<EObject>();
-    Session session = SessionManager.INSTANCE.getSession(root);
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	public boolean isEnumerationPropertyTypeDefinedForProject(EObject eObject) {
+		return (null != CapellaProjectHelper.getEnumerationPropertyType(
+				eObject, getKeyword()));
+	}
 
-    if (null != root) {
-      if (isTagged(root)) {
-        result.add(root);
-      }
+	/**
+	 * @param root
+	 * @return
+	 */
+	public List<EObject> getTaggedObjects(EObject root) {
+		List<EObject> result = new ArrayList<EObject>();
+		Session session = SessionManager.INSTANCE.getSession(root);
 
-      TreeIterator<EObject> it = root.eAllContents();
-      EObject current = null;
-      EObject currentDiagram = null;
-      while (it.hasNext()) {
-        current = it.next();
-        if (isTagged(current)) {
-          result.add(current);
-        }
-        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(current, session).iterator(); iter.hasNext();) {
-          currentDiagram = (EObject) iter.next();
-          if (isTaggedRepresentation(currentDiagram)) {
-            result.add(currentDiagram);
-          }
-        }
-        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(root, session).iterator(); iter.hasNext();) {
-          currentDiagram = (EObject) iter.next();
-          if (isTaggedRepresentation(currentDiagram)) {
-            result.add(currentDiagram);
-          }
-        }
-      }
-    }
-    return result;
-  }
+		if (null != root) {
+			if (isTagged(root)) {
+				result.add(root);
+			}
+
+			TreeIterator<EObject> it = root.eAllContents();
+			EObject current = null;
+			EObject currentDiagram = null;
+			while (it.hasNext()) {
+				current = it.next();
+				if (isTagged(current)) {
+					result.add(current);
+				}
+				for (Iterator<?> iter = DialectManager.INSTANCE
+						.getRepresentations(current, session).iterator(); iter
+						.hasNext();) {
+					currentDiagram = (EObject) iter.next();
+					if (isTaggedRepresentation(currentDiagram)) {
+						result.add(currentDiagram);
+					}
+				}
+				for (Iterator<?> iter = DialectManager.INSTANCE
+						.getRepresentations(root, session).iterator(); iter
+						.hasNext();) {
+					currentDiagram = (EObject) iter.next();
+					if (isTaggedRepresentation(currentDiagram)) {
+						result.add(currentDiagram);
+					}
+				}
+			}
+		}
+		return result;
+	}
 }

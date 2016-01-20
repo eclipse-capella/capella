@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,28 +39,28 @@ public class MDCHK_StateFragment_ES_OES_ModeState extends AbstractValidationRule
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     //
     // Preconditions.
     //
-    EMFEventType eType = ctx_p.getEventType();
+    EMFEventType eType = ctx.getEventType();
     if (EMFEventType.NULL != eType) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
     if (!(eObj instanceof StateFragment)) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
     StateFragment stateFragment = (StateFragment) eObj;
     // It must be a StateFragment with a related AbstractState.
     if (null == stateFragment.getRelatedAbstractState()) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
     // This rule is only valid for Exchange Scenarios (DATA_FLOW) or Operational Entity Scenarios (INTERACTION without instance role of functions).
     Scenario containingScenario = (Scenario) stateFragment.eContainer();
     if (!((containingScenario.getKind() == ScenarioKind.DATA_FLOW) || ((containingScenario.getKind() == ScenarioKind.INTERACTION) && !ScenarioExt
         .isFunctionalScenario(containingScenario)))) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
     // Get related AbstractState.
     AbstractState relatedState = stateFragment.getRelatedAbstractState();
@@ -69,14 +69,13 @@ public class MDCHK_StateFragment_ES_OES_ModeState extends AbstractValidationRule
     InstanceRole instanceRole = StateFragmentExt.getCoveredInstanceRole(stateFragment);
     Component component = InstanceRoleExt.getComponent(instanceRole);
     List<CapellaElement> modeAndStates = ComponentExt.getAllStatesAndModesFromComponent(component);
-    if (!modeAndStates.contains(relatedState)) {
+    if (component != null && !modeAndStates.contains(relatedState)) {
       String stateMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(relatedState, false);
       String scenarioMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(containingScenario, false);
       String componentMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(component, false);
-      return ctx_p.createFailureStatus(relatedState.getName(), stateMetaClassLabel, containingScenario.getName(), scenarioMetaClassLabel, component.getName(),
+      return ctx.createFailureStatus(relatedState.getName(), stateMetaClassLabel, containingScenario.getName(), scenarioMetaClassLabel, component.getName(),
           componentMetaClassLabel);
     }
-
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

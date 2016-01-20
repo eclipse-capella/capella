@@ -43,14 +43,16 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
 import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
+import org.polarsys.capella.core.ui.metric.actions.ProgressSetDialog.PropagateChoice;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
 import org.polarsys.capella.core.ui.metric.utils.Utils;
+
 public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
 
   private static final Logger logger = ReportManagerRegistry.getInstance().subscribe("Progress Monitoring"); //$NON-NLS-1$
   private static final String strStatus = "Status";
   private static final String strReview = "Review";
-
+  
   /**
    * Constructor.
    */
@@ -91,9 +93,15 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
       TransactionHelper.getExecutionManager(selectedObjects.iterator().next()).execute(new AbstractReadWriteCommand() {
         @SuppressWarnings("synthetic-access")
         public void run() {
+          
+          PropagateChoice propagateChoice = dialog.getPropagateChoiceWithoutFiltering();
+          boolean semanticElementPropagation = propagateChoice == PropagateChoice.ONLY_BUSINESS_ELEMENTS
+              || propagateChoice == PropagateChoice.ALL_CAPELLA_ELEMENTS;
+          boolean technicalElementPropagation = propagateChoice == PropagateChoice.ALL_CAPELLA_ELEMENTS;
+          
           List<Collection<EObject>> result = ProgressMonitoringPropagator.getInstance().applyPropertiesOn(
               Collections.singletonList(dialog.getSelectedEnum()), selectedObjects,
-              dialog.isPropagateWithoutFiltering(), dialog.isPropagateToRepresentations(),
+              semanticElementPropagation, technicalElementPropagation, dialog.isPropagateToRepresentations(),
               dialog.useFilterStatus(), getLabel(dialog), dialog.mustCleanReview(),dialog.mustPropagateStatus());
 
           // Compute the number of modified elements
@@ -102,7 +110,7 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
           
           int nbCapellaElementReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),CapellaElement.class);
           int nbDRepresentationReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),DRepresentation.class);
-
+          
           if (nbCapellaElementTagged+nbDRepresentationTagged == 0) {
         	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strStatus));
           } else {
@@ -199,3 +207,4 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
     return false;
   }
 }
+
