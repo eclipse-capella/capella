@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IMarkerResolution;
-import org.eclipse.ui.IMarkerResolutionGenerator;
 
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -33,24 +32,25 @@ import org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command.InvertComp
 import org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command.InvertComponentExchangePortOrientations;
 import org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command.SetComponentPortOrientation;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
+import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.CommandMarkerResolution;
 
 /**
  * Find marker resolutions for inconsistent ComponentPort orientations. Because the available solutions may be different on a case to case basis, we cannot use
  * the CapellaQuickfix extension point, which only supports purely static marker resolutions.
  */
-public class ComponentPortOrientationResolutions implements IMarkerResolutionGenerator {
+public class ComponentPortOrientationResolutions extends AbstractMarkerResolutionGenerator {
 
-  public IMarkerResolution[] getResolutions(IMarker marker_p) {
+  @Override
+  protected IMarkerResolution[] doGetResolutions(IMarker marker) {
     List<? extends IMarkerResolution> resolutions = Collections.emptyList();
-    List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker(marker_p);
+    List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker(marker);
     if ((objects.size() > 0) && (objects.get(0) instanceof ComponentExchange)) {
       ComponentExchange exchange = (ComponentExchange) objects.get(0);
       ComponentPort sourceCompPort = null;
       ComponentPort targetCompPort = null;
-      Port sourcePort = ComponentExchangeExt.getSourcePort(exchange);
-      Port targetPort = ComponentExchangeExt.getTargetPort(exchange);
+      Port sourcePort = exchange.getSourcePort();
+      Port targetPort = exchange.getTargetPort();
       if (sourcePort instanceof ComponentPort) {
         sourceCompPort = (ComponentPort) sourcePort;
       }
@@ -69,32 +69,36 @@ public class ComponentPortOrientationResolutions implements IMarkerResolutionGen
     return resolutions.toArray(new IMarkerResolution[0]);
   }
 
-  private List<? extends IMarkerResolution> generateResolutions(ComponentExchange exchange_p, ComponentPort sourcePort_p, ComponentPort targetPort_p,
-      OrientationPortKind source_p, OrientationPortKind target_p) {
+  private List<? extends IMarkerResolution> generateResolutions(ComponentExchange exchange, ComponentPort sourcePort, ComponentPort targetPort,
+      OrientationPortKind source, OrientationPortKind target) {
     List<IMarkerResolution> resolutions = new ArrayList<IMarkerResolution>();
 
-    ComponentExchangeKind kind = exchange_p.getKind();
+    ComponentExchangeKind kind = exchange.getKind();
     if (!kind.equals(ComponentExchangeKind.DELEGATION)) {
-      if ((source_p == IN) && (target_p == OUT)) {
-        resolutions.add(new CommandMarkerResolution(new InvertComponentExchangeDirection(exchange_p)));
-        resolutions.add(new CommandMarkerResolution(new InvertComponentExchangePortOrientations(exchange_p)));
-      } else if (source_p == IN) {
-        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(sourcePort_p, OUT)));
-        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(sourcePort_p, INOUT)));
-        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(sourcePort_p, UNSET)));
-      } else if (target_p == OUT) {
-        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort_p, IN)));
-        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort_p, INOUT)));
-        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort_p, UNSET)));
+      if ((source == IN) && (target == OUT)) {
+        resolutions.add(new CommandMarkerResolution(new InvertComponentExchangeDirection(exchange)));
+        resolutions.add(new CommandMarkerResolution(new InvertComponentExchangePortOrientations(exchange)));
+      } else if (source == IN) {
+        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(sourcePort, OUT)));
+        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(sourcePort, INOUT)));
+        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(sourcePort, UNSET)));
+      } else if (target == OUT) {
+        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort, IN)));
+        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort, INOUT)));
+        resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort, UNSET)));
       }
     } else {
       // Component Exchange of kind DELEGATION should have same orientation
-      resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort_p, source_p)));
-      resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort_p, INOUT)));
-      resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort_p, UNSET)));
+      resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort, source)));
+      resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort, INOUT)));
+      resolutions.add(new CommandMarkerResolution(new SetComponentPortOrientation(targetPort, UNSET)));
     }
 
     return resolutions;
   }
-
+  
+  @Override
+  protected String getRuleId() {
+    return "org.polarsys.capella.core.data.fa.validation.I_20";
+  }
 }

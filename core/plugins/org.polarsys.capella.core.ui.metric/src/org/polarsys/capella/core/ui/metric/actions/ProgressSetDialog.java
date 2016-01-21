@@ -54,8 +54,14 @@ class ProgressSetDialog extends Dialog {
   /** Selected enumeration */
   private EnumerationPropertyLiteral selectedEnumLiteral = null;
 
-  private boolean propagateWithoutFiltering = false;
-
+  public enum PropagateChoice {
+    NO_MODEL_ELEMENTS,
+    ONLY_BUSINESS_ELEMENTS,
+    ALL_CAPELLA_ELEMENTS,
+  }
+  
+  private PropagateChoice propagateChoiceFiltering = PropagateChoice.ONLY_BUSINESS_ELEMENTS;
+  
   private boolean propagateToRepresentation = false;
 
   private boolean useFilterStatus = false;
@@ -63,7 +69,11 @@ class ProgressSetDialog extends Dialog {
   private EnumerationPropertyLiteral filterStatus = null;
 
   private boolean cleanReview = false;
+  
+  private boolean propagateStatus = true;
 
+  private Combo combo;
+  
   /**
    * Constructor
    */
@@ -81,18 +91,22 @@ class ProgressSetDialog extends Dialog {
 
   /**
    * 
-   * @return Indicates whether to apply filtering when setting the status for selected Capella elements.
+   * @return Indicates whether to apply filtering when setting the status for no Model elements.
    */
-  public boolean isPropagateWithoutFiltering() {
-    return propagateWithoutFiltering;
+  public PropagateChoice getPropagateChoiceWithoutFiltering() {
+    return propagateChoiceFiltering;
   }
-
+  
   /**
    * 
    * @return Indicates whether to set the propagate the status for referenced graphical representations.
    */
   public boolean isPropagateToRepresentations() {
     return propagateToRepresentation;
+  }
+  
+  public boolean mustPropagateStatus() {
+	return propagateStatus;
   }
   
   public boolean mustCleanReview() {
@@ -105,6 +119,46 @@ class ProgressSetDialog extends Dialog {
 
   public EnumerationPropertyLiteral getFilterStatus() {
     return filterStatus;
+  }
+  
+  private void refreshWizard() {
+    
+    boolean action = propagateStatus || cleanReview;
+    boolean propagateOn = propagateToRepresentation || propagateChoiceFiltering != PropagateChoice.NO_MODEL_ELEMENTS;
+    
+    // refresh OK button
+    if (getButton(OK) != null) {
+      getButton(OK).setEnabled(action && propagateOn);
+    }
+    
+    // refresh dialog message    
+    if (!action) {
+      
+      dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_ERROR));
+      dlgMessage.setText(MetricMessages.progressMonitoring_setAction_dialog_noAction_lbl);
+
+    } else if (!propagateOn) {
+      
+      dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_ERROR));
+      dlgMessage.setText(MetricMessages.progressMonitoring_setAction_dialog_noPropagateOn_lbl);
+
+    } else if (propagateStatus) {
+      
+      selectedEnumLiteral = (EnumerationPropertyLiteral) combo.getData(String.valueOf(combo.getSelectionIndex()));
+      if (selectedEnumLiteral == null) {
+        dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_WARNING));
+        dlgMessage.setText(MetricMessages.progressMonitoring_setAction_dialog_clear_lbl);
+      } else {
+        dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_INFO));
+        dlgMessage.setText(NLS.bind(MetricMessages.progressMonitoring_setAction_dialog_main_lbl,
+            selectedEnumLiteral.getLabel()));
+      }
+      
+    } else {
+      
+      dlgImage.setImage(null);
+      dlgMessage.setText("");
+    }
   }
   
   /**
@@ -138,26 +192,34 @@ class ProgressSetDialog extends Dialog {
     propagateComposite.setLayout(new GridLayout(2, false));
     propagateComposite.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true, 2, 1));
 
-    new Label(propagateComposite, SWT.NONE).setText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
-
-    final Combo combo = new Combo(propagateComposite, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
+    //new Label(propagateComposite, SWT.NONE).setText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
+    Button propagateStatusField = new Button(propagateComposite, SWT.CHECK);
+    propagateStatusField.setText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
+    propagateStatusField.setToolTipText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
+    propagateStatusField.setSelection(propagateStatus);
+    
+    combo = new Combo(propagateComposite, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
     combo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
     combo.addModifyListener(new ModifyListener() {
 
       @Override
       public void modifyText(ModifyEvent e) {
-        selectedEnumLiteral = (EnumerationPropertyLiteral) combo.getData(String.valueOf(combo.getSelectionIndex()));
-        if (selectedEnumLiteral == null) {
-          dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_WARNING));
-          dlgMessage.setText(MetricMessages.progressMonitoring_setAction_dialog_clear_lbl);
-        } else {
-          dlgImage.setImage(JFaceResources.getImage(Dialog.DLG_IMG_MESSAGE_INFO));
-          dlgMessage.setText(NLS.bind(MetricMessages.progressMonitoring_setAction_dialog_main_lbl,
-              selectedEnumLiteral.getLabel()));
-        }
-      }
+        refreshWizard();
+      } 
     });
 
+    propagateStatusField.addSelectionListener(new SelectionAdapter() {
+    	@Override
+    	public void widgetSelected(SelectionEvent e) {
+    	  
+    		propagateStatus = ((Button) e.getSource()).getSelection();
+    		combo.setEnabled(propagateStatus);
+    		
+    		refreshWizard();
+    	}
+    });
+
+    
     Button cleanReviewField = new Button(propagateComposite, SWT.CHECK);
     cleanReviewField.setText(MetricMessages.progressMonitoring_clearReview_button_lbl);
     cleanReviewField.setToolTipText(MetricMessages.progressMonitoring_clearReview_button_tooltip);
@@ -165,25 +227,58 @@ class ProgressSetDialog extends Dialog {
       @Override
       public void widgetSelected(SelectionEvent e) {
         cleanReview = ((Button) e.getSource()).getSelection();
+        
+        refreshWizard();
       }
     });
 
     Group filterGroup = createFilterGroup(composite);
+ 
+    // Propagate semantic elements without filtering button
+    Button propagateNothingWithoutFilteringButton = new Button(filterGroup, SWT.RADIO);
+    propagateNothingWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_nothing_button_lbl);
+    propagateNothingWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_nothing_button_tooltip);
+    propagateNothingWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
+    propagateNothingWithoutFilteringButton.setSelection(propagateChoiceFiltering == PropagateChoice.NO_MODEL_ELEMENTS);
+    propagateNothingWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
+      
+      @Override
+      public void widgetSelected(SelectionEvent event) {
+        propagateChoiceFiltering = PropagateChoice.NO_MODEL_ELEMENTS;
+        
+        refreshWizard();
+      }
+    });
     
-    // Ask for the index to select
-    int index = getSelectIndex(combo);
-    combo.select(index);
-
-    // Propagate without filtering button
-    Button propagateWithoutFilteringButton = new Button(filterGroup, SWT.CHECK);
-    propagateWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_button_lbl);
-    propagateWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_button_tooltip);
-    propagateWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
-    propagateWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
+    // Propagate semantic elements without filtering button
+    Button propagateSemanticWithoutFilteringButton = new Button(filterGroup, SWT.RADIO);
+    propagateSemanticWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_lbl);
+    propagateSemanticWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_semantic_button_tooltip);
+    propagateSemanticWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
+    propagateSemanticWithoutFilteringButton.setSelection(propagateChoiceFiltering == PropagateChoice.ONLY_BUSINESS_ELEMENTS);
+    propagateSemanticWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
 
       @Override
       public void widgetSelected(SelectionEvent event) {
-        propagateWithoutFiltering = ((Button) event.getSource()).getSelection();
+        propagateChoiceFiltering = PropagateChoice.ONLY_BUSINESS_ELEMENTS;
+        
+        refreshWizard();
+      }
+    });
+    
+ // Propagate technical elements without filtering button
+    Button propagateTechnicalWithoutFilteringButton = new Button(filterGroup, SWT.RADIO);
+    propagateTechnicalWithoutFilteringButton.setText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_lbl);
+    propagateTechnicalWithoutFilteringButton.setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_technical_button_tooltip);
+    propagateTechnicalWithoutFilteringButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
+    propagateTechnicalWithoutFilteringButton.setSelection(propagateChoiceFiltering == PropagateChoice.ALL_CAPELLA_ELEMENTS);
+    propagateTechnicalWithoutFilteringButton.addSelectionListener(new SelectionAdapter() {
+
+      @Override
+      public void widgetSelected(SelectionEvent event) {
+        propagateChoiceFiltering = PropagateChoice.ALL_CAPELLA_ELEMENTS;
+        
+        refreshWizard();
       }
     });
 
@@ -194,10 +289,13 @@ class ProgressSetDialog extends Dialog {
     propagateToRepresentationButton
         .setToolTipText(MetricMessages.progressMonitoring_dialog_propagate_to_representation_button_tooltip);
     propagateToRepresentationButton.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 2, 1));
+    propagateToRepresentationButton.setSelection(propagateToRepresentation);
     propagateToRepresentationButton.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent event) {
         propagateToRepresentation = ((Button) event.getSource()).getSelection();
+        
+        refreshWizard();
       }
     });
 
@@ -224,25 +322,30 @@ class ProgressSetDialog extends Dialog {
     });
 
     fillComboBox(combo);
+    // Ask for the index to select
+    int index = getSelectIndex(combo);
+    combo.select(index);
+    
     fillComboBox(comboFilter);
 
     return super.createContents(parent);
   }
 
   private void fillComboBox(Combo combo) {
-    // Add an empty string, at index 0, so that the user is able to unset the status
-    combo.add("");
-    combo.setData(String.valueOf(0), null);
 
     EnumerationPropertyType ept = getEnumerationPropertyType();
 
     // Add the literals
-    int i = 1;
+    int i = 0;
     for (EnumerationPropertyLiteral enumLiteral : ept.getOwnedLiterals()) {
       combo.add(enumLiteral.getLabel());
       combo.setData(String.valueOf(i), enumLiteral);
       i++;
     }
+    
+    // Add an empty string, at index 0, so that the user is able to unset the status
+    combo.add("");
+    combo.setData(String.valueOf(i), null);
     
     combo.notifyListeners(SWT.Modify, new Event());
   }

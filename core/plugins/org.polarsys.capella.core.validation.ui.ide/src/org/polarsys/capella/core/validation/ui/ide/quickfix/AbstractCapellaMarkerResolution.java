@@ -67,26 +67,26 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
   }
 
   /** Write accessor on label */
-  public final void setLabel(String label_p) {
-    _label = label_p;
+  public final void setLabel(String label) {
+    _label = label;
     return;
   }
 
   /** Write accessor on description */
-  public final void setDescription(String desc_p) {
-    _desc = desc_p;
+  public final void setDescription(String desc) {
+    _desc = desc;
     return;
   }
 
   /** Write accessor on imageKey */
-  public final void setImgKey(String key_p) {
-    _imgKey = key_p;
+  public final void setImgKey(String key) {
+    _imgKey = key;
     return;
   }
 
   /** Write accessor on contributorId */
-  public final void setContributorId(String id_p) {
-    _contributorId = id_p;
+  public final void setContributorId(String id) {
+    _contributorId = id;
     return;
   }
 
@@ -94,8 +94,8 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
     return _contributorId;
   }
 
-  public List<EObject> getModelElements(IMarker marker_p) {
-    return MarkerViewHelper.getModelElementsFromMarker(marker_p);
+  public List<EObject> getModelElements(IMarker marker) {
+    return MarkerViewHelper.getModelElementsFromMarker(marker);
   }
 
   @Override
@@ -123,23 +123,25 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
 
   /**
    * Check if this resolution can resolve the given marker. Used to compute the resolvable markers during
-   * findOtherMarkers. This implementation checks if the ruleId stored in the marker is one of the ids that's returned
-   * by getResolvableRuleIds.
+   * findOtherMarkers. This implementation checks if the unqualified ruleId stored in the marker is one of the ids
+   * that's returned by getResolvableRuleIds.
    * 
    * @param marker
    * @return
    */
   protected boolean canResolve(IMarker marker) {
     String ruleId = MarkerViewHelper.getRuleID(marker, true);
-    if (isEMFRule(ruleId)) {
-      return true;
-    }
-    String fqnRule[] = ruleId.split("\\.");
-    String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
-    if (shortRuleId != null) {
-      for (String id : getResolvableRuleIds()) {
-        if (shortRuleId.equals(id)) {
-          return true;
+    if (ruleId != null) {
+      if (isEMFRule(ruleId)) {
+        return true;
+      }
+      String fqnRule[] = ruleId.split("\\.");
+      String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
+      if (shortRuleId != null) {
+        for (String id : getResolvableRuleIds()) {
+          if (shortRuleId.equals(id)) {
+            return true;
+          }
         }
       }
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
@@ -42,6 +43,8 @@ import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
@@ -170,7 +173,7 @@ public class GuiActions {
     return result;
   }
 
-  public static void renameModelFile(IFile modelFile_p, final String newName_p) {
+  public static void renameModelFile(IFile modelFile, final String newName) {
 
     IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
 
@@ -189,16 +192,40 @@ public class GuiActions {
       RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()) {
         @Override
         protected String queryNewResourceName(final IResource resource) {
-          return newName_p;
+          return newName;
         }
       };
-      IStructuredSelection selection = new StructuredSelection(modelFile_p);
+      IStructuredSelection selection = new StructuredSelection(modelFile);
       renameAction.selectionChanged(selection);
       renameAction.run();
     } finally {
       // Deactivate dummy handler
       handlerService.deactivateHandler(dummyHandlerActivation);
     }
+  }
+
+  /**
+   * Call the Sort Content action on an element
+   * 
+   * @param elementToSort
+   */
+  public static void sortContent(EObject elementToSort) {
+    SortContentAction _sortContent = new SortContentAction();
+    IStructuredSelection selection = new StructuredSelection(elementToSort);
+    _sortContent.selectionChanged(selection);
+    _sortContent.run();
+  }
+
+  /**
+   * Call the Sort Selection action on a list of selected elements
+   * 
+   * @param elementsToSort
+   */
+  public static void sortSelection(List<EObject> elementsToSort) {
+    SortSelectionAction _sortSelection = new SortSelectionAction();
+    IStructuredSelection selection = new StructuredSelection(elementsToSort.toArray());
+    _sortSelection.selectionChanged(selection);
+    _sortSelection.run();
   }
 
   /**
@@ -257,7 +284,7 @@ public class GuiActions {
 
     StructuredSelection selection = new StructuredSelection(file);
     CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
-        .getActiveWorkbenchWindow().getActivePage().showView("capella.project.explorer");
+        .getActiveWorkbenchWindow().getActivePage().showView(CapellaCommonNavigator.ID);
 
     site.setSelectionProvider(capellaProjectView.getCommonViewer());
     site.getSelectionProvider().setSelection(selection);

@@ -8855,19 +8855,19 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%current.kind==&quot;FLOW&quot; &amp;&amp; current.orientation==&quot;IN&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%current.kind==&quot;FLOW&quot; &amp;&amp; current.orientation==&quot;OUT&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%current.kind==&quot;FLOW&quot; &amp;&amp; current.orientation==&quot;INOUT&quot;%>">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeLabel()%>" sizeComputationExpression="1" hideLabelByDefault="true" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FlowPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
