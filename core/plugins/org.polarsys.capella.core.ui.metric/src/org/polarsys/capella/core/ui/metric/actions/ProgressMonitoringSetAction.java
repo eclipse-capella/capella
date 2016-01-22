@@ -92,6 +92,7 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
     if (dialog != null) {
       TransactionHelper.getExecutionManager(selectedObjects.iterator().next()).execute(new AbstractReadWriteCommand() {
         @SuppressWarnings("synthetic-access")
+        @Override
         public void run() {
           
           PropagateChoice propagateChoice = dialog.getPropagateChoiceWithoutFiltering();
@@ -105,11 +106,11 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
               dialog.useFilterStatus(), getLabel(dialog), dialog.mustCleanReview(),dialog.mustPropagateStatus());
 
           // Compute the number of modified elements
-          int nbCapellaElementTagged = getNbElementsOfType((Collection<EObject>)result.get(0),CapellaElement.class);
-          int nbDRepresentationTagged = getNbElementsOfType((Collection<EObject>)result.get(0),DRepresentation.class);
+          int nbCapellaElementTagged = getNbElementsOfType(result.get(0), CapellaElement.class);
+          int nbDRepresentationTagged = getNbElementsOfType(result.get(0), DRepresentation.class);
           
-          int nbCapellaElementReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),CapellaElement.class);
-          int nbDRepresentationReviewedCleared = getNbElementsOfType((Collection<EObject>)result.get(1),DRepresentation.class);
+          int nbCapellaElementReviewedCleared = getNbElementsOfType(result.get(1), CapellaElement.class);
+          int nbDRepresentationReviewedCleared = getNbElementsOfType(result.get(1), DRepresentation.class);
           
           if (nbCapellaElementTagged+nbDRepresentationTagged == 0) {
         	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strStatus));

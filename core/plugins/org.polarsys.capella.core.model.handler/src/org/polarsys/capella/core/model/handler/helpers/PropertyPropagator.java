@@ -42,7 +42,7 @@ public abstract class PropertyPropagator {
 
   /**
    * @param literals
-   * @param semanticObjects
+   * @param selectedObjects
    * @param semanticElementPropagation
    * @param technicalElementPropagation
    *          Indicates whether to propagate the status without filtering.
@@ -52,24 +52,25 @@ public abstract class PropertyPropagator {
    * 
    * @return the collection of modified objects
    */
-  public List<Collection<EObject>> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> semanticObjects,
+  public List<Collection<EObject>> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> selectedObjects,
       boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus,
       String filterStatus, boolean mustCleanReview, boolean mustPropagateStatus) {
     //
     // First of all, let's obtain target eObjects.
     //
     Collection<EObject> tgts = new HashSet<EObject>();
-    for (EObject obj : semanticObjects) {
+    for (EObject obj : selectedObjects) {
       if (!tgts.contains(obj)) {
-        TreeIterator<EObject> it = obj.eAllContents();
-        EObject current = null;
+        handleFilterStatus(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, useFilterStatus, filterStatus, tgts, obj);
 
-        handleFilterStatus(semanticElementPropagation, technicalElementPropagation, useFilterStatus, filterStatus, tgts, obj);
+        if (!(obj instanceof DRepresentation)) {
+          // Go through model elements to get inner elements
+          TreeIterator<EObject> it = obj.eAllContents();
 
-        while (it.hasNext()) {
-          current = it.next();
-
-          handleFilterStatus(semanticElementPropagation, technicalElementPropagation, useFilterStatus, filterStatus, tgts, current);
+          while (it.hasNext()) {
+            EObject current = it.next();
+            handleFilterStatus(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, useFilterStatus, filterStatus, tgts, current);
+          }
         }
       }
     }
@@ -77,7 +78,7 @@ public abstract class PropertyPropagator {
     // Handle DRepresentation
     if (propagateToRepresentations) {
       Collection<DRepresentation> representationsTargeted = RepresentationHelper
-          .getAllRepresentationsTargetedBy(semanticObjects);
+          .getAllRepresentationsTargetedBy(selectedObjects);
 
       for (DRepresentation representation : representationsTargeted) {
         if (useFilterStatus) {
@@ -97,7 +98,7 @@ public abstract class PropertyPropagator {
     Collection<EObject> tagChangedElements = new HashSet<EObject>();
     Collection<EObject> reviewChangedElements = new HashSet<EObject>();
     for (EObject eobj : tgts) {
-    	Boolean result = false;
+    	boolean result = false;
     	if (mustPropagateStatus) {
     		result = tagElement(literals, eobj);
     		if (result) {
@@ -117,21 +118,25 @@ public abstract class PropertyPropagator {
     return colOut;
   }
 
-  protected void handleFilterStatus(boolean semanticElementPropagation, boolean technicalElementPropagation, boolean useFilterStatus, String filterStatus,
+  protected void handleFilterStatus(boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus, String filterStatus,
       Collection<EObject> tgts, EObject current) {
     if (useFilterStatus) {
       if (mustBeFiltered(filterStatus, current)) {
-        handlePropagation(semanticElementPropagation, technicalElementPropagation, tgts, current);
+        handlePropagation(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, tgts, current);
       }
     } else {
-      handlePropagation(semanticElementPropagation, technicalElementPropagation, tgts, current);
+      handlePropagation(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, tgts, current);
     }
   }
 
-  protected void handlePropagation(boolean semanticElementPropagation, boolean technicalElementPropagation, Collection<EObject> tgts, EObject obj) {
-    
+  protected void handlePropagation(boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, Collection<EObject> tgts, EObject obj) {
     if (isTaggableElement(obj)) {
-      if (semanticElementPropagation) {
+      if (obj instanceof DRepresentation) {
+       if (propagateToRepresentations) {
+        tgts.add(obj);
+       }
+      }
+      else if (semanticElementPropagation) {
         tgts.add(obj);
       }
     } else {

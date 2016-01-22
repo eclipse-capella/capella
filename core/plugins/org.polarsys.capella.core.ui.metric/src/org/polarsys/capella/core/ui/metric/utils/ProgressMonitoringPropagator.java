@@ -88,7 +88,8 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
   protected String getKeyword() {
     return CapellaProjectHelper.PROGRESS_STATUS_KEYWORD;
   }
-
+  
+  @Override
   public boolean isTaggableElement(EObject element) {
     return element instanceof DRepresentation || super.isTaggableElement(element);
   }
