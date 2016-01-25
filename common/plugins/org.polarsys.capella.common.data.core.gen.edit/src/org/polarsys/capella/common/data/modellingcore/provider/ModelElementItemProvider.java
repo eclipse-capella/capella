@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -259,7 +259,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
 	}
 
-		/**
+  /**
    * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createItemPropertyDescriptor(org.eclipse.emf.common.notify.AdapterFactory,
    *      org.eclipse.emf.common.util.ResourceLocator, java.lang.String, java.lang.String, org.eclipse.emf.ecore.EStructuralFeature, boolean, boolean, boolean,
    *      java.lang.Object, java.lang.String, java.lang.String[])
@@ -268,33 +268,8 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
   protected ItemPropertyDescriptor createItemPropertyDescriptor(AdapterFactory adapterFactory_p, ResourceLocator resourceLocator_p, String displayName_p,
       String description_p, EStructuralFeature feature_p, boolean isSettable_p, boolean multiLine_p, boolean sortChoices_p, Object staticImage_p,
       String category_p, String[] filterFlags_p) {
-    return new ExtensionItemPropertyDescriptor(adapterFactory_p, resourceLocator_p, displayName_p, description_p, feature_p, isSettable_p, multiLine_p,
-        sortChoices_p, staticImage_p, category_p, filterFlags_p) {
-
-      /**
-       * @see org.polarsys.capella.common.mdsofa.emf.edit.provider.DslfactoryItemPropertyDescriptor#canSetProperty(java.lang.Object)
-       */
-      @Override
-      public boolean canSetProperty(Object object_p) {
-        boolean result = true;
-        for (IConfigurationElement configurationElement : ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.common.model", "DelegatedListener")) { //$NON-NLS-1$ //$NON-NLS-2$
-          IDelegatedListener contributor = (IDelegatedListener) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
-          if (null != contributor) {
-            result &= contributor.canSetProperty(object_p);
-          }
-        }
-        if (result) {
-          result &= super.canSetProperty(object_p);
-        }
-        return result;
-        // TODO mettre en place un point d'extension qui sera impl�ment� par le plugin collab capella.
-        // En effet, ce dernier branchera le canSetProperty sur le lock cdo.
-//        IPropertyEdition propertyEdition = null;
-//        if (null == propertyEdition) {
-//          return super.canSetProperty(object_p);
-//        }
-//        return propertyEdition.canSetProperty(object_p);
-      }
-    };
+    return new ModelElementItemPropertyDescriptor(adapterFactory_p, resourceLocator_p, displayName_p, description_p, feature_p, isSettable_p, multiLine_p,
+        sortChoices_p, staticImage_p, category_p, filterFlags_p);
   }
+
 }
