@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,11 +16,12 @@ import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
+ *
  */
 public interface ISessionHandler extends IHandler {
 
-  public EObject getEObjectFromId(String id_p, IContext context_p);
+  EObject getEObjectFromId(String id, IContext context);
 
-  public String getId(EObject element_p, IContext context_p);
+  String getId(EObject element, IContext context);
 
 }

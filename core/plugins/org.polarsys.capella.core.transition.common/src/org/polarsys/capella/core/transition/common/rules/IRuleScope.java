@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,29 +17,29 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IRule;
 
 /**
- * A transposer rule to retrieve some elements for the given element_p
+ * A transposer rule to retrieve some elements for the given element
  */
 public interface IRuleScope extends IRule<EObject> {
 
   /**
    * Retrieve all root related to the current source element
    */
-  public List<EObject> retrieveRootElements(EObject element_p, IContext context_p);
+  List<EObject> retrieveRootElements(EObject element, IContext context);
 
   /**
    * Retrieve containers related to the current source element
    */
-  public List<EObject> retrieveContainers(EObject element_p, IContext context_p);
+  List<EObject> retrieveContainers(EObject element, IContext context);
 
   /**
    * Retrieve all elements related to the current source element
    * (can be its owned elements)
    */
-  public List<EObject> retrieveRelatedElements(EObject element_p, IContext context_p);
+  List<EObject> retrieveRelatedElements(EObject element, IContext context);
 
   /**
    * Retrieve all elements required to be in the scope when when source element is in the scope
    */
-  public List<EObject> retrieveRequiredElements(EObject element_p, IContext context_p);
+  List<EObject> retrieveRequiredElements(EObject element, IContext context);
 
 }

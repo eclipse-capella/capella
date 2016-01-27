@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,10 +15,10 @@ package org.polarsys.capella.core.transition.common.constants;
  */
 public interface ITransitionSteps {
 
-  public static final String INITIALIZE_TRANSITION = "initializeTransition";
+  static final String INITIALIZE_TRANSITION = "initializeTransition";
 
-  public static final String INITIALIZE_TRANSFORMATION = "initializeTransformation";
+  static final String INITIALIZE_TRANSFORMATION = "initializeTransformation";
 
-  public static final String UNDEFINED_ATIVITY = "";
+  static final String UNDEFINED_ATIVITY = "";
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,20 +29,20 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public interface IContextScopeHandler extends IHandler {
 
-  public void add(String scopeId_p, EObject object_p, IContext context_p);
+   void add(String scopeId, EObject object, IContext context);
 
-  public void addAll(String scopeId_p, Collection<? extends EObject> objects_p, IContext context_p);
+   void addAll(String scopeId, Collection<? extends EObject> objects, IContext context);
 
-  public boolean contains(String scopeId_p, EObject object_p, IContext context_p);
+   boolean contains(String scopeId, EObject object, IContext context);
 
-  public void remove(String scopeId_p, EObject object_p, IContext context_p);
+   void remove(String scopeId, EObject object, IContext context);
 
-  public void removeAll(String scopeId_p, Collection<? extends EObject> objects_p, IContext context_p);
+   void removeAll(String scopeId, Collection<? extends EObject> objects, IContext context);
 
-  public Iterator<EObject> get(String scopeId_p, IContext context_p);
+   Iterator<EObject> get(String scopeId, IContext context);
 
-  public Collection<EObject> getCollection(String scopeId_p, IContext context_p);
+   Collection<EObject> getCollection(String scopeId, IContext context);
 
-  public void clear(String scopeId_p, IContext context_p);
+   void clear(String scopeId, IContext context);
 
 }

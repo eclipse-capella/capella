@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,39 +22,39 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public interface ITransformationHandler extends IHandler {
 
   /**
-   * Return whether the source_p element is already or will be transformed after the transformation
+   * Return whether the source element is already or will be transformed after the transformation
    */
-  public IStatus isOrWillBeTransformed(EObject source_p, IContext context_p);
+  IStatus isOrWillBeTransformed(EObject source, IContext context);
 
   /**
-   * Retrieve a root element containing the source_p. This root element should be traced in the transformed model (can be another element than the first
+   * Retrieve a root element containing the source. This root element should be traced in the transformed model (can be another element than the first
    * element of the eResource if this element is not traced)
    */
-  public EObject getLevelElement(EObject source_p, IContext context_p);
+  EObject getLevelElement(EObject source, IContext context);
 
   /**
    * Retrieve the best traced element of the given element, matching given selection context, according to the current context, and the current transformation
    */
-  public EObject getBestTracedElement(EObject source_p, IContext context_p, ISelectionContext sContext_p);
+  EObject getBestTracedElement(EObject source, IContext context, ISelectionContext sContext);
 
   /**
-   * Retrieve the target type of the source_p element with the transformation
+   * Retrieve the target type of the source element with the transformation
    */
-  public EClass getTargetType(EObject source_p, IContext context_p);
+  EClass getTargetType(EObject source, IContext context);
 
-  public IStatus checkTransformRequired(EObject source_p, IContext context_p, EObject sourceElement);
+  IStatus checkTransformRequired(EObject source, IContext context, EObject sourceElement);
 
-  public IStatus checkTransformRequired(EObject source_p, IContext context_p, EObject sourceElement, EObject targetElement);
+  IStatus checkTransformRequired(EObject source, IContext context, EObject sourceElement, EObject targetElement);
 
   /**
    * 
    * 
    */
 
-  public EObject getBestTracedElement(EObject root_p, IContext context_p, EClass blockArchitecture_p);
+  EObject getBestTracedElement(EObject root, IContext context, EClass blockArchitecture);
 
-  public EObject getBestTracedElement(EObject root_p, IContext context_p, EClass blockArchitecture_p, EObject element_p, EObject result_p);
+  EObject getBestTracedElement(EObject root, IContext context, EClass blockArchitecture, EObject element, EObject result);
 
-  public void postTransformElement(EObject element_p, EObject result_p, IContext context_p);
+  void postTransformElement(EObject element, EObject result, IContext context);
 
 }

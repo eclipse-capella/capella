@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,20 +24,20 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public interface IFilterItem extends IHandler {
 
-  public String getIdentifier();
+  String getIdentifier();
 
-  public boolean isApplicable(EClass differenceClass_p);
+  boolean isApplicable(EClass differenceClass);
 
-  public String getDescription(IDifference difference_p);
+  String getDescription(IDifference difference);
 
-  public boolean isMergeable(EStructuralFeature feature_p, IContext context_p);
+  boolean isMergeable(EStructuralFeature feature, IContext context);
 
-  public boolean isMergeable(IDifference difference_p, Role role_p, IContext context_p);
+  boolean isMergeable(IDifference difference, Role role, IContext context);
 
-  public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p);
+  boolean isDisplayable(IDifference difference, Role role, IContext context);
 
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p);
+  FilterAction getDestinationRole(IDifference difference, Role role, IContext context);
 
-  public boolean isReadOnly(IDifference diff_p, Role role_p, IContext context_p);
+  boolean isReadOnly(IDifference diff, Role role, IContext context);
 
 }
