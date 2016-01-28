@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,15 +26,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.helpers.modellingcore.utils.HoldingResourceFilter;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
+import org.polarsys.capella.common.ef.domain.AbstractEditingDomainResourceSetListenerImpl;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
@@ -43,7 +40,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 /**
  *
  */
-public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl implements IEditingDomainListener {
+public class ProxyResolutionResourceSetListener extends AbstractEditingDomainResourceSetListenerImpl {
 
   @Override
   public boolean isPrecommitOnly() {
@@ -193,19 +190,4 @@ public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl 
     }
   }
 
-  /**
-   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
-   */
-  @Override
-  public void createdEditingDomain(EditingDomain editingDomain) {
-    ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
-  }
-	
-  /**
-   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
-   */
-  @Override
-  public void disposedEditingDomain(EditingDomain editingDomain) {
-	((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
-  }
 }
