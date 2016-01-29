@@ -95,13 +95,11 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
           //Update ReplicableElement from Replica
           linkTarget = linksSource.get(mSource);
           linkSource = linksTarget.get(mTarget);
-
         } else {
 
           //Update Replica from ReplicableElement
           linkSource = linksSource.get(mSource);
           linkTarget = linksTarget.get(mTarget);
-
         }
 
         if ((linkSource != null) && (linkTarget != null)) {
@@ -111,11 +109,9 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
             (((CatalogElement) linkTarget.getTarget())).setOrigin((CatalogElement) linkSource.getTarget());
           }
         }
-
       }
     }
 
     return Status.OK_STATUS;
-
   }
 }

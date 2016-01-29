@@ -63,40 +63,51 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
    * @return
    */
   @Override
-  protected IStatus initializeReferenceScope(IContext context, ActivityParameters activityParams) {
+	protected IStatus initializeReferenceScope(IContext context,
+			ActivityParameters activityParams) {
 
-    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
+		CatalogElement source = ReplicableElementHandlerHelper.getInstance(
+				context).getSource(context);
+		CatalogElement target = ReplicableElementHandlerHelper.getInstance(
+				context).getTarget(context);
 
     //Scope is computed, we put it into Merge Scope
     Collection<EObject> scopeElements =
         OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_SOURCE_SCOPE, (Collection) Collections.emptyList());
 
-    //Ensure unwanted elements not in scope!
-    scopeElements.remove(source);
-    scopeElements.remove(target);
+		// Ensure unwanted elements not in scope!
+		scopeElements.remove(source);
+		scopeElements.remove(target);
 
-    ITraceabilityHandler handler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    IEditableModelScope sourceScope = new ReSourceScope(source, handler, scopeElements, context);
-    context.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
-    ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context));
+		ITraceabilityHandler handler = (ITraceabilityHandler) context
+				.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
+		IEditableModelScope sourceScope = new ReSourceScope(source, handler,
+				scopeElements, context);
+		context.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
+		((PartialRootedModelScope) sourceScope)
+				.build(getReferenceFilter(context));
 
     if (source == null) {
       //Only if create a new RE or update current replica (not definition), we don't create new elements.
       //When we will want to promote it into library, it will be another story
+			Object location = OptionsHandlerHelper.getInstance(context)
+					.getValue(
+							context,
+							(String) context
+									.get(ITransitionConstants.OPTIONS_SCOPE),
+							IReConstants.PROPERTY__LOCATION_TARGET, null);
 
-      Object location =
-          OptionsHandlerHelper.getInstance(context).getValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
-              IReConstants.PROPERTY__LOCATION_TARGET, null);
+			if (ReplicableElementHandlerHelper.getInstance(context)
+					.isDefaultLocation((EObject) location, context)) {
+				ContextScopeHandlerHelper.getInstance(context).addAll(
+						IReConstants.UNMERGEABLE_ELEMENTS, scopeElements,
+						context);
+			}
+		}
 
-      if (ReplicableElementHandlerHelper.getInstance(context).isDefaultLocation((EObject) location, context)) {
-        ContextScopeHandlerHelper.getInstance(context).addAll(IReConstants.UNMERGEABLE_ELEMENTS, scopeElements, context);
-      }
-    }
-
-    return Status.OK_STATUS;
-  }
+		return Status.OK_STATUS;
+	}
 
   /**
    * @param context
@@ -104,7 +115,8 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
    * @return
    */
   @Override
-  protected IStatus initializeTargetScope(IContext context, ActivityParameters activityParams) {
+	protected IStatus initializeTargetScope(IContext context,
+			ActivityParameters activityParams) {
 
     CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
     //Target is the ReplicableElement
@@ -115,17 +127,19 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
         OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_TARGET_SCOPE, (Collection) Collections.emptyList());
 
-    //Ensure unwanted elements not in scope!
-    scopeElements.remove(source);
-    scopeElements.remove(target);
+		// Ensure unwanted elements not in scope!
+		scopeElements.remove(source);
+		scopeElements.remove(target);
 
-    ITraceabilityHandler handler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
-    IEditableModelScope targetScope = new ReTargetScope(target, handler, scopeElements, context);
-    context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
-    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
+		ITraceabilityHandler handler = (ITraceabilityHandler) context
+				.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+		IEditableModelScope targetScope = new ReTargetScope(target, handler,
+				scopeElements, context);
+		context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
+		((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
 
-    return Status.OK_STATUS;
-  }
+		return Status.OK_STATUS;
+	}
 
   @Override
   protected IStatus initializeTraceabilitySourceHandler(IContext context, ActivityParameters activityParams) {
