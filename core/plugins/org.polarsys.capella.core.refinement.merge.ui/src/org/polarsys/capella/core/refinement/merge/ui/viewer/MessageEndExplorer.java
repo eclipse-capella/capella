@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,15 +100,15 @@ public class MessageEndExplorer extends Composite {
     createSashForm();
   }
 
-  public void setCurrentMessageEnd(MessageEnd messageEnd_p) {
-    _name.setText(messageEnd_p.getName()==null?"null":messageEnd_p.getName());
-    _capellaId.setText(messageEnd_p.getId());
-    _instanceRole.setText(messageEnd_p.getCovered().getName());
-    _representedInstance.setText(messageEnd_p.getCovered().getRepresentedInstance().getName());
-    _representedComponent.setText(((AbstractNamedElement) ((Part) messageEnd_p.getCovered().getRepresentedInstance()).eContainer()).getName());
-    SequenceMessage message = messageEnd_p.getMessage();
+  public void setCurrentMessageEnd(MessageEnd messageEnd) {
+    _name.setText(messageEnd.getName()==null?"null":messageEnd.getName());
+    _capellaId.setText(messageEnd.getId());
+    _instanceRole.setText(messageEnd.getCovered().getName());
+    _representedInstance.setText(messageEnd.getCovered().getRepresentedInstance().getName());
+    _representedComponent.setText(((AbstractNamedElement) ((Part) messageEnd.getCovered().getRepresentedInstance()).eContainer()).getName());
+    SequenceMessage message = messageEnd.getMessage();
     _messageName.setText(message.getName());
-    boolean isSendingEnd = message.getSendingEnd() == messageEnd_p;
+    boolean isSendingEnd = message.getSendingEnd() == messageEnd;
     _isSendingEnd.setSelection(isSendingEnd);
     MessageEnd other = isSendingEnd?message.getReceivingEnd():message.getSendingEnd();
     _otherName.setText(other.getName()==null?"null":other.getName());
@@ -139,15 +139,15 @@ public class MessageEndExplorer extends Composite {
     createComposite();
   }
   
-  private void setCurrentAbstractEnd(AbstractEnd end_p) {
-    if (end_p instanceof MessageEnd) {
-      MessageEnd messageEnd = (MessageEnd) end_p;
+  private void setCurrentAbstractEnd(AbstractEnd end) {
+    if (end instanceof MessageEnd) {
+      MessageEnd messageEnd = (MessageEnd) end;
       setCurrentMessageEnd(messageEnd);
       _isMessageEnd.setSelection(true);
     }
     else
     {
-      ExecutionEnd executionEnd = (ExecutionEnd) end_p;
+      ExecutionEnd executionEnd = (ExecutionEnd) end;
       setCurrentExecutionEnd(executionEnd);
       _isMessageEnd.setSelection(false);
     }
@@ -155,14 +155,14 @@ public class MessageEndExplorer extends Composite {
   }
   
   /**
-   * @param executionEnd_p
+   * @param executionEnd
    */
-  private void setCurrentExecutionEnd(ExecutionEnd executionEnd_p) {
-    _name.setText(executionEnd_p.getName()==null?"null":executionEnd_p.getName());
-    _capellaId.setText(executionEnd_p.getId());
-    _instanceRole.setText(executionEnd_p.getCovered().getName());
-    _representedInstance.setText(executionEnd_p.getCovered().getRepresentedInstance().getName());
-    _representedComponent.setText(((AbstractNamedElement) ((Part) executionEnd_p.getCovered().getRepresentedInstance()).eContainer()).getName());
+  private void setCurrentExecutionEnd(ExecutionEnd executionEnd) {
+    _name.setText(executionEnd.getName()==null?"null":executionEnd.getName());
+    _capellaId.setText(executionEnd.getId());
+    _instanceRole.setText(executionEnd.getCovered().getName());
+    _representedInstance.setText(executionEnd.getCovered().getRepresentedInstance().getName());
+    _representedComponent.setText(((AbstractNamedElement) ((Part) executionEnd.getCovered().getRepresentedInstance()).eContainer()).getName());
     _message.setVisible(false);
     _other.setVisible(false);
     
@@ -223,7 +223,7 @@ public class MessageEndExplorer extends Composite {
     label1.setLayoutData(gridData23);
     _capellaId = new Text(composite, SWT.BORDER);
     _capellaId.setLayoutData(gridData11);
-    Label filler = new Label(composite, SWT.NONE);
+    new Label(composite, SWT.NONE);
     _isMessageEnd = new Button(composite, SWT.CHECK);
     _isMessageEnd.setText("MessageEnd=1/ExecutionEnd=0");
     _isMessageEnd.setLayoutData(gridData13);
@@ -242,7 +242,7 @@ public class MessageEndExplorer extends Composite {
     label4.setLayoutData(gridData7);
     _representedComponent = new Text(composite, SWT.BORDER);
     _representedComponent.setLayoutData(gridData8);
-    Label filler53 = new Label(composite, SWT.NONE);
+    new Label(composite, SWT.NONE);
     _isSendingEnd = new Button(composite, SWT.CHECK);
     _isSendingEnd.setText("Sending=1/Receiving=0");
     create_other();
@@ -250,13 +250,13 @@ public class MessageEndExplorer extends Composite {
   }
 
   /**
-   * @param value_p
+   * @param value
    */
-  public void addAbstractEnd(AbstractEnd value_p) {
-    boolean isMessageEnd = value_p instanceof MessageEnd;
+  public void addAbstractEnd(AbstractEnd value) {
+    boolean isMessageEnd = value instanceof MessageEnd;
     list1.add((isMessageEnd?"[M]":"[E]") 
-              + (value_p.getName()==null?"null":value_p.getName()));
-    _messageEnds.add(value_p);
+              + (value.getName()==null?"null":value.getName()));
+    _messageEnds.add(value);
     
   }
 
@@ -331,7 +331,7 @@ public class MessageEndExplorer extends Composite {
     label9.setLayoutData(gridData21);
     _otherRepresentedComponent = new Text(_other, SWT.BORDER);
     _otherRepresentedComponent.setLayoutData(gridData17);
-    Label filler1 = new Label(_other, SWT.NONE);
+    new Label(_other, SWT.NONE);
     _otherIsSending = new Button(_other, SWT.CHECK);
     _otherIsSending.setText("Sending=1/Receiving=0");
     _otherIsSending.setLayoutData(gridData18);

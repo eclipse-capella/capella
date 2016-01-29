@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.polarsys.capella.common.re.rpl2re.activities;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -69,9 +68,8 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
     CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
     CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
-    Collection<EObject> scopeElements = new HashSet<EObject>();
     //Scope is computed, we put it into Merge Scope
-    scopeElements =
+    Collection<EObject> scopeElements =
         OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_SOURCE_SCOPE, (Collection) Collections.emptyList());
 
@@ -87,8 +85,6 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
     if (source == null) {
       //Only if create a new RE or update current replica (not definition), we don't create new elements.
       //When we will want to promote it into library, it will be another story
-
-      Collection selection = (Collection) context.get(ITransitionConstants.TRANSITION_SOURCES);
 
       Object location =
           OptionsHandlerHelper.getInstance(context).getValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
@@ -111,13 +107,11 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
   protected IStatus initializeTargetScope(IContext context, ActivityParameters activityParams) {
 
     CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    //Target is the ReplicableElement
     CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
-    //Target is the ReplicableElement
-    Collection<EObject> scopeElements = new HashSet<EObject>();
-
     //Scope is computed, we put it into Merge Scope
-    scopeElements =
+    Collection<EObject> scopeElements =
         OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_TARGET_SCOPE, (Collection) Collections.emptyList());
 
@@ -149,8 +143,6 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeFrom
   @Override
   protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
     CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
-
     ITraceabilityConfiguration configuration = new ReConfiguration(source);
     return new CompoundTraceabilityHandler(configuration);
   }

@@ -33,7 +33,6 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.core.model.handler.helpers.ICapellaResourceHelper;
 
 /**
  * Helper that deal with Capella resources.
@@ -121,7 +120,7 @@ public class CapellaResourceHelper {
   }
 
   /**
-   * Whether or not given resource is an AIRD one i.e a model or a fragment depending on ignoreAirdFragment_p.
+   * Whether or not given resource is an AIRD one i.e a model or a fragment depending on ignoreAirdFragment.
    * 
    * @param resource
    * @param ignoreAirdFragment
@@ -169,7 +168,7 @@ public class CapellaResourceHelper {
   }
 
   /**
-   * Whether or not given resource is a Capella one i.e a model or a fragment depending on ignoreCapellaFragment_p.
+   * Whether or not given resource is a Capella one i.e a model or a fragment depending on ignoreCapellaFragment.
    * 
    * @param resource
    * @param ignoreCapellaFragment
@@ -313,7 +312,7 @@ public class CapellaResourceHelper {
   public static boolean isCapellaProject(IProject targetProject) {
     try {
       return targetProject.hasNature(CAPELLA_PROJECT_NATURE) || targetProject.hasNature(CAPELLA_LIBRARY_PROJECT_NATURE);
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       return false;
     }
   }
