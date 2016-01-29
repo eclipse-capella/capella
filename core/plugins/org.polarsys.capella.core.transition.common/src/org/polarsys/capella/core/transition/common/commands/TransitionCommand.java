@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,19 +35,19 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
   protected String _name;
 
   /**
-   * @param modelElement_p
+   * @param modelElement
    */
-  public TransitionCommand(Collection<Object> selection_p) {
-    this(selection_p, new NullProgressMonitor());
+  public TransitionCommand(Collection<Object> selection) {
+    this(selection, new NullProgressMonitor());
   }
 
   /**
-   * @param modelElement_p
-   * @param progressMonitor_p
+   * @param modelElement
+   * @param progressMonitor
    */
-  public TransitionCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
-    _selection = selection_p;
-    _progressMonitor = progressMonitor_p;
+  public TransitionCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
+    _selection = selection;
+    _progressMonitor = progressMonitor;
     setName(getClass().getSimpleName());
   }
 
@@ -90,15 +90,14 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @param selection_p
+   * @param selection
    * @return
    */
-  protected Collection<Object> retrieveElements(Collection<Object> selection_p) {
+  protected Collection<Object> retrieveElements(Collection<Object> selection) {
     Collection<Object> elements = new ArrayList<Object>();
 
-    if ((selection_p != null) && (selection_p instanceof Collection)) {
-
-      Iterator<?> iterator = selection_p.iterator();
+    if (selection != null) {
+      Iterator<?> iterator = selection.iterator();
       while (iterator.hasNext()) {
         Object selectedElement = iterator.next();
         elements.addAll(retrieveRelatedElements(selectedElement));
@@ -108,18 +107,18 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @param element_p
+   * @param element
    */
-  protected void performTransformation(Collection<Object> elements_p) {
+  protected void performTransformation(Collection<Object> elements) {
     // Nothing yet
   }
 
   /**
-   * @param rootElement_p
+   * @param rootElement
    * @return
    */
-  protected Collection<Object> retrieveRelatedElements(Object rootElement_p) {
-    return Collections.singleton(rootElement_p);
+  protected Collection<Object> retrieveRelatedElements(Object rootElement) {
+    return Collections.singleton(rootElement);
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,14 +32,14 @@ public class SelectionDependenciesProperty extends AbstractProperty implements I
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    Object value = context_p.getSourceAsList(EObject.class);
+  public Object getValue(IPropertyContext context) {
+    Object value = context.getSourceAsList(EObject.class);
 
-    if ((value != null) && (value instanceof Collection)) {
-      IContext context = (IContext) context_p.getSourceAsList(IContext.class).iterator().next();
-      IPropertyContext rootContext = (IPropertyContext) context_p.getSourceAsList(IPropertyContext.class).iterator().next();
+    if (value != null) {
+      IContext ctx = (IContext) context.getSourceAsList(IContext.class).iterator().next();
+      IPropertyContext rootContext = (IPropertyContext) context.getSourceAsList(IPropertyContext.class).iterator().next();
       Collection<EObject> scopeElements = (Collection) rootContext.getCurrentValue(rootContext.getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
-      Collection values = DependenciesHandlerHelper.getInstance(context).getDependencies((Collection<EObject>) value, scopeElements, context);
+      Collection values = DependenciesHandlerHelper.getInstance(ctx).getDependencies((Collection<EObject>) value, scopeElements, ctx);
       return new ArrayList(values);
     }
 
@@ -59,16 +59,15 @@ public class SelectionDependenciesProperty extends AbstractProperty implements I
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     //Nothing here
   }
-
 }

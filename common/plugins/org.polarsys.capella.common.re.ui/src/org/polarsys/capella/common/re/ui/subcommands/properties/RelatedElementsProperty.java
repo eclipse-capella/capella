@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,15 +30,13 @@ public class RelatedElementsProperty extends AbstractProperty implements IEditab
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    Object value = context_p.getSourceAsList(EObject.class);
+  public Object getValue(IPropertyContext context) {
+    Object value = context.getSourceAsList(EObject.class);
 
-    if ((value != null) && (value instanceof Collection)) {
+    if (value != null) {
       Collection<EObject> scopeElements = (Collection) value;
-
-      IContext context = (IContext) context_p.getSourceAsList(IContext.class).iterator().next();
-
-      return DependenciesHandlerHelper.getInstance(context).getRelatedElements(scopeElements, scopeElements, context);
+      IContext ctx = (IContext) context.getSourceAsList(IContext.class).iterator().next();
+      return DependenciesHandlerHelper.getInstance(ctx).getRelatedElements(scopeElements, scopeElements, ctx);
     }
 
     return Collections.emptyList();
@@ -57,16 +55,15 @@ public class RelatedElementsProperty extends AbstractProperty implements IEditab
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     //Nothing here
   }
-
 }

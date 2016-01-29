@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -881,7 +881,7 @@ public class TigerRelationshipHelper {
         if ((valueSource != null) && (valueSource != ICommonConstants.EMPTY_STRING)
             && ((valueTarget == null) || ((valueTarget instanceof String) && (((String) valueTarget).length() == 0))) && !valueSource.equals(valueTarget)) {
           targetElement.eSet(attribute, valueSource);
-          if (!((valueTarget == null) || ((valueTarget instanceof String) && (((String) valueTarget).length() == 0)))) {
+          if (!((valueTarget == null) || (((String) valueTarget).length() == 0))) {
             if (_logger.isInfoEnabled()){
               String text = NLS.bind(Messages.TigerRelationshipHelper_UpdateAttribute, new Object[] { attribute.getName(), 
                                                                                                       EObjectLabelProviderHelper.getText(targetElement), 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,15 +33,15 @@ public class AllElementsProperty extends AbstractProperty implements IEditablePr
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
 
-    IContext context = (IContext) context_p.getSourceAsList(IContext.class).iterator().next();
-    Collection<EObject> objects = (Collection) context_p.getSourceAsList(EObject.class);
+    IContext ctx = (IContext) context.getSourceAsList(IContext.class).iterator().next();
+    Collection<EObject> objects = (Collection) context.getSourceAsList(EObject.class);
 
     if (objects.isEmpty()) {
-      objects = (Collection) ((TransitionContext) context).get(ITransitionConstants.TRANSITION_SOURCES);
+      objects = (Collection) ((TransitionContext) ctx).get(ITransitionConstants.TRANSITION_SOURCES);
     }
-    if ((objects != null) && (objects instanceof Collection) && (!((Collection) objects).isEmpty())) {
+    if ((objects != null) && !((Collection) objects).isEmpty()) {
       EObject value = (EObject) ((Collection) objects).iterator().next();
       return value.eResource();
     }
@@ -53,7 +53,7 @@ public class AllElementsProperty extends AbstractProperty implements IEditablePr
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -69,15 +69,15 @@ public class AllElementsProperty extends AbstractProperty implements IEditablePr
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     //Nothing here
   }
 
