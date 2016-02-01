@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -331,11 +331,9 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployers" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployers" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployments" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployments" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedInterface" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedInterface" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedLCS" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedLCS" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_UsedInterface" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_UsedInterface" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployers" id="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployers" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployments" id="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployments" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_ImplementedLCS" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_ImplementedLCS" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_UsedInterface" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_UsedInterface" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_FunctionalRealization" id="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_FunctionalRealization" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_AvailableInstates" id="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_AvailableInstates" />
@@ -1199,12 +1197,6 @@
     <querySpecification queryIdentifier="GetCurrent_PhysicalComp_Deployments">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_Deployments" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_PhysicalComp_ImplementedLCS">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_ImplementedLCS" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_PhysicalComp_ImplementedLCS">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_ImplementedLCS" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_PhysicalComponent_DeployedComponents">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_DeployedComponents" />
     </querySpecification>
@@ -1258,12 +1250,6 @@
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_PhysicalNode_ImplementedInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_ImplementedInterface" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_PhysicalNode_ImplementedLCS">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_ImplementedLCS" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_PhysicalNode_ImplementedLCS">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_ImplementedLCS" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_PhysicalNode_UsedInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_UsedInterface" />
