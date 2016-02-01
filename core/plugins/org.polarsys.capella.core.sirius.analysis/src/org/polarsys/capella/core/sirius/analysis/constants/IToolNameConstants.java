@@ -53,6 +53,7 @@ public interface IToolNameConstants {
 
   // CDB Tools - Class Diagram Blank
   // Classes Tools
+  String TOOL_CDB_DELETE_CONSTRAINT_ELEMENT = "Delete Constraint Elements"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_DATA_PACKAGE = "Data Package"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_CLASS = "Class"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_UNION = "Union"; //$NON-NLS-1$

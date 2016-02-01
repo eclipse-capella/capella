@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,6 +66,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
@@ -84,8 +85,11 @@ public class DiagramHelper {
 
   /**
    * Change the synchronize state on a diagram
-   * @param diagram a given DDiagram
-   * @param isSynchronized change the state
+   * 
+   * @param diagram
+   *          a given DDiagram
+   * @param isSynchronized
+   *          change the state
    */
   public static void setSynchronized(final DDiagram diagram, final boolean isSynchronized) {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
@@ -183,7 +187,7 @@ public class DiagramHelper {
    * Return the DRepresention with the given name and platformSpecificElementId ( ie next.eResource().getURIFragment(next)), null otherwise. Use in case, we
    * have diagrams with the same name in session.
    * @param session the current Session.
-   * @param name
+   * @param n
    * @param platformSpecificElementId
    * @return <code>null</code> if an error occurred.
    */
@@ -255,7 +259,8 @@ public class DiagramHelper {
   }
 
   /**
-   * Return the {@link DDiagramElement} corresponding to the first occurrence found for the given ID and the given Container, null otherwise
+   * Return the {@link DDiagramElement} corresponding to the first occurrence found for the given ID and the given
+   * Container, null otherwise
    * <p>
    * Useful to select an InstanceRole
    * @param diagram the target diagram
@@ -422,6 +427,7 @@ public class DiagramHelper {
     final AbstractCommand cmd = new AbstractNonDirtyingCommand() {
       /**
        * Code duplicated from the AbstractChangeLayerActivation class.
+       * 
        * @see org.eclipse.sirius.diagram.tools.internal.handler.AbstractChangeLayerActivation#run()
        */
       public void run() {
@@ -464,6 +470,7 @@ public class DiagramHelper {
 
   /**
    * All the contribution layers of the diagram
+   * 
    * @param diagramDescription
    * @param viewpoints
    * @return contributed layers
@@ -525,7 +532,9 @@ public class DiagramHelper {
 
   /**
    * Test if the input diagram is synchronized
-   * @param diagram a given DDiagram
+   * 
+   * @param diagram
+   *          a given DDiagram
    */
   public static void checkIsSynchronized(DDiagram diagram) {
     boolean isSynchronized = diagram.isSynchronized();
@@ -534,7 +543,9 @@ public class DiagramHelper {
 
   /**
    * Test if the input diagram is unsynchronized
-   * @param diagram a given DDiagram
+   * 
+   * @param diagram
+   *          a given DDiagram
    */
   public static void checkIsUnSynchronized(DDiagram diagram) {
     boolean isUnSynchronized = !(diagram.isSynchronized());
@@ -543,7 +554,9 @@ public class DiagramHelper {
 
   /**
    * Get the visible elements of a diagram
-   * @param diagram a given DDiagram
+   * 
+   * @param diagram
+   *          a given DDiagram
    */
   public static List<DDiagramElement> getVisibleDiagramElements(DDiagram diagram) {
     List<DDiagramElement> result = new ArrayList<DDiagramElement>();
@@ -558,7 +571,9 @@ public class DiagramHelper {
 
   /**
    * Get the invisible elements of a diagram (hidden and not visible diagram elements)
-   * @param diagram a given DDiagram
+   * 
+   * @param diagram
+   *          a given DDiagram
    */
   public static List<DDiagramElement> getInvisibleDiagramElements(DDiagram diagram) {
     List<DDiagramElement> result = new ArrayList<DDiagramElement>();
@@ -754,11 +769,9 @@ public class DiagramHelper {
 
     for (EObject current : list) {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
-      Assert.assertTrue(
-          NLS.bind(errMsg,
-              new Object[] {
-                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
-                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+      Assert.assertTrue(NLS.bind(errMsg, new Object[] {
+          current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current.eClass()
+              .getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -772,11 +785,9 @@ public class DiagramHelper {
 
     for (EObject current : list) {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
-      Assert.assertTrue(
-          NLS.bind(errMsg,
-              new Object[] {
-                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
-                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+      Assert.assertTrue(NLS.bind(errMsg, new Object[] {
+          current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current.eClass()
+              .getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -795,4 +806,14 @@ public class DiagramHelper {
     return null;
   }
 
+  public static List<DEdge> getEdges(DDiagram diagram, String elementId) {
+    List<DEdge> edgeList = new ArrayList<DEdge>();
+    for (DDiagramElement element : diagram.getDiagramElements()) {
+      if (element instanceof DEdge && element.getTarget() instanceof ModelElement
+          && ((ModelElement) element.getTarget()).getId().equals(elementId)) {
+        edgeList.add((DEdge) element);
+      }
+    }
+    return edgeList;
+  }
 }
