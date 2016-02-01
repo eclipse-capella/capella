@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,6 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.Physi
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployers;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployments;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_ImplementedInterface;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_ImplementedLCS;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_UsedInterface;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_DeployedComponents;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_FunctionalAllocation;
@@ -63,7 +62,6 @@ public class PaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new PhysicalComp_Deployers());
     tests.add(new PhysicalComp_Deployments());
     tests.add(new PhysicalComp_ImplementedInterface());
-    tests.add(new PhysicalComp_ImplementedLCS());
     tests.add(new PhysicalComp_UsedInterface());
     tests.add(new PhysicalComponent_DeployedComponents());
     tests.add(new PhysicalComponent_FunctionalAllocation());
