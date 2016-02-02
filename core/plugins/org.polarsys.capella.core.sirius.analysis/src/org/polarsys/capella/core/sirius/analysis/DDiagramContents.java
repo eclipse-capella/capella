@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,17 +54,17 @@ public class DDiagramContents {
 
   protected HashSet<DDiagramElement> _elementsToHide = null;
 
-  public void deferredShow(DDiagramElement element_p) {
-    _elementsToShow.add(element_p);
-    if (_elementsToHide.contains(element_p)) {
-      _elementsToHide.remove(element_p);
+  public void deferredShow(DDiagramElement element) {
+    _elementsToShow.add(element);
+    if (_elementsToHide.contains(element)) {
+      _elementsToHide.remove(element);
     }
   }
 
-  public void deferredHide(DDiagramElement element_p) {
-    _elementsToHide.add(element_p);
-    if (_elementsToShow.contains(element_p)) {
-      _elementsToShow.remove(element_p);
+  public void deferredHide(DDiagramElement element) {
+    _elementsToHide.add(element);
+    if (_elementsToShow.contains(element)) {
+      _elementsToShow.remove(element);
     }
   }
 
@@ -90,11 +90,11 @@ public class DDiagramContents {
    * Create a new diagram contents from an existing diagram contents. (both diagram contents are linked by attributes,
    * don't perform a clone)
    * 
-   * @param diagramContent_p
+   * @param diagramContent
    */
-  public DDiagramContents(DDiagramContents diagramContent_p) {
-    this._currentDiagram = diagramContent_p._currentDiagram;
-    this._elementsTargets = diagramContent_p._elementsTargets;
+  public DDiagramContents(DDiagramContents diagramContent) {
+    this._currentDiagram = diagramContent._currentDiagram;
+    this._elementsTargets = diagramContent._elementsTargets;
     _elementsToShow = new HashSet<DDiagramElement>();
     _elementsToHide = new HashSet<DDiagramElement>();
   }
@@ -122,19 +122,19 @@ public class DDiagramContents {
   /**
    * Allows adding a view in the diagram content information (do not add the given view in the diagram)
    * 
-   * @param diagramElement_p
+   * @param diagramElement
    */
-  public void addView(DDiagramElement diagramElement_p) {
-    getMapDiagramElements().put(diagramElement_p.getTarget(), diagramElement_p);
+  public void addView(DDiagramElement diagramElement) {
+    getMapDiagramElements().put(diagramElement.getTarget(), diagramElement);
   }
 
   /**
    * Allows adding a view in the diagram content information (do not add the given view in the diagram)
    * 
-   * @param diagramElement_p
+   * @param diagramElement
    */
-  public void removeView(DDiagramElement diagramElement_p) {
-    getMapDiagramElements().remove(diagramElement_p.getTarget(), diagramElement_p);
+  public void removeView(DDiagramElement diagramElement) {
+    getMapDiagramElements().remove(diagramElement.getTarget(), diagramElement);
   }
 
   /**
@@ -151,13 +151,13 @@ public class DDiagramContents {
    * 
    * @return
    */
-  public Iterable<DDiagramElement> getDiagramElements(DiagramElementMapping mapping_p) {
-    return DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping_p);
+  public Iterable<DDiagramElement> getDiagramElements(DiagramElementMapping mapping) {
+    return DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping);
   }
 
-  public List<DDiagramElement> getVisibleDiagramElements(DiagramElementMapping mapping_p) {
+  public List<DDiagramElement> getVisibleDiagramElements(DiagramElementMapping mapping) {
     List<DDiagramElement> lstVisibleElements = new ArrayList<DDiagramElement>();
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping_p)) {
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping)) {
       if (element.isVisible())
         lstVisibleElements.add(element);
     }
@@ -170,39 +170,39 @@ public class DDiagramContents {
    * @param target_p
    * @return
    */
-  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement containerView_p, DiagramElementMapping mapping_p) {
-    return DiagramServices.getDiagramServices().getDiagramElements(containerView_p, mapping_p);
+  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement containerView, DiagramElementMapping mapping) {
+    return DiagramServices.getDiagramServices().getDiagramElements(containerView, mapping);
   }
 
-  public Iterable<DDiagramElement> getDiagramElements(DSemanticDecorator decorator_p, DiagramElementMapping mapping_p) {
-    if (decorator_p instanceof DDiagram) {
-      return getDiagramElements(mapping_p);
+  public Iterable<DDiagramElement> getDiagramElements(DSemanticDecorator decorator, DiagramElementMapping mapping) {
+    if (decorator instanceof DDiagram) {
+      return getDiagramElements(mapping);
     }
-    return getDiagramElements((DDiagramElement) decorator_p, mapping_p);
+    return getDiagramElements((DDiagramElement) decorator, mapping);
   }
 
   /**
    * returns a collection of diagram elements with the given target
    * 
-   * @param target_p
+   * @param target
    * @return
    */
-  public Collection<DDiagramElement> getDiagramElements(EObject target_p) {
-    return getMapDiagramElements().get(target_p);
+  public Collection<DDiagramElement> getDiagramElements(EObject target) {
+    return getMapDiagramElements().get(target);
   }
 
   /**
    * returns a collection of diagram elements with the given target
    * 
-   * @param target_p
+   * @param targetInput
    * @return
    */
-  public Collection<DDiagramElement> getDiagramElements(Collection<? extends EObject> target_p) {
-    if (target_p.size() == 1) {
-      return getDiagramElements(target_p.iterator().next());
-    } else if (target_p.size() > 1) {
+  public Collection<DDiagramElement> getDiagramElements(Collection<? extends EObject> targetInput) {
+    if (targetInput.size() == 1) {
+      return getDiagramElements(targetInput.iterator().next());
+    } else if (targetInput.size() > 1) {
       Collection<DDiagramElement> elements = new HashSet<DDiagramElement>();
-      for (EObject target : target_p) {
+      for (EObject target : targetInput) {
         elements.addAll(getDiagramElements(target));
       }
     }
@@ -226,16 +226,16 @@ public class DDiagramContents {
    * @param mapping
    * @return
    */
-  public boolean containsView(EObject target, DiagramElementMapping mapping_p) {
+  public boolean containsView(EObject target, DiagramElementMapping mapping) {
     if (!getMapDiagramElements().containsKey(target)) {
       return false;
     }
-    if ((mapping_p == null) && getMapDiagramElements().containsKey(target)) {
+    if ((mapping == null) && getMapDiagramElements().containsKey(target)) {
       return true;
     }
 
     for (DDiagramElement view : getDiagramElements(target)) {
-      if (mapping_p.equals(view.getDiagramElementMapping())) {
+      if (mapping.equals(view.getDiagramElementMapping())) {
         return true;
       }
     }
@@ -245,20 +245,20 @@ public class DDiagramContents {
   /**
    * returns a collection of diagram elements with the given target
    * 
-   * @param target_p
+   * @param target
    * @return
    */
-  public Collection<DDiagramElement> getDiagramElements(EObject target_p, DiagramElementMapping mapping_p) {
-    if (!getMapDiagramElements().containsKey(target_p)) {
+  public Collection<DDiagramElement> getDiagramElements(EObject target, DiagramElementMapping mapping) {
+    if (!getMapDiagramElements().containsKey(target)) {
       return Collections.emptyList();
     }
-    if ((mapping_p == null) && getMapDiagramElements().containsKey(target_p)) {
-      return getMapDiagramElements().get(target_p);
+    if ((mapping == null) && getMapDiagramElements().containsKey(target)) {
+      return getMapDiagramElements().get(target);
     }
 
     ArrayList<DDiagramElement> result = new ArrayList<DDiagramElement>();
-    for (DDiagramElement view : getMapDiagramElements().get(target_p)) {
-      if (mapping_p.equals(view.getDiagramElementMapping())) {
+    for (DDiagramElement view : getMapDiagramElements().get(target)) {
+      if (mapping.equals(view.getDiagramElementMapping())) {
         result.add(view);
       }
     }
@@ -270,18 +270,18 @@ public class DDiagramContents {
    * 
    * for a bordered node, we returns if strict containment
    * 
-   * @param target_p
+   * @param target
    * @return
    */
-  public Collection<DDiagramElement> getDiagramElements(EObject target_p, DiagramElementMapping mapping_p, DSemanticDecorator containerView_p) {
-    if (!getMapDiagramElements().containsKey(target_p)) {
+  public Collection<DDiagramElement> getDiagramElements(EObject target, DiagramElementMapping mapping, DSemanticDecorator containerView) {
+    if (!getMapDiagramElements().containsKey(target)) {
       return Collections.emptyList();
     }
 
     ArrayList<DDiagramElement> result = new ArrayList<DDiagramElement>();
-    for (DDiagramElement view : getMapDiagramElements().get(target_p)) {
-      if ((mapping_p == null) || mapping_p.equals(view.getDiagramElementMapping())) {
-        if ((containerView_p == null) || EcoreUtil2.isContainedBy(view, containerView_p)) {
+    for (DDiagramElement view : getMapDiagramElements().get(target)) {
+      if ((mapping == null) || mapping.equals(view.getDiagramElementMapping())) {
+        if ((containerView == null) || EcoreUtil2.isContainedBy(view, containerView)) {
           result.add(view);
         }
       }
@@ -295,8 +295,8 @@ public class DDiagramContents {
    * @param target
    * @return
    */
-  public Collection<AbstractDNode> getNodes(EObject target_p) {
-    return DiagramServices.getDiagramServices().filterNodes(getDiagramElements(target_p));
+  public Collection<AbstractDNode> getNodes(EObject target) {
+    return DiagramServices.getDiagramServices().filterNodes(getDiagramElements(target));
   }
 
   /**
@@ -305,8 +305,8 @@ public class DDiagramContents {
    * @param target
    * @return
    */
-  public Collection<DNodeContainer> getNodeContainers(EObject target_p) {
-    return DiagramServices.getDiagramServices().filterNodeContainers(getDiagramElements(target_p));
+  public Collection<DNodeContainer> getNodeContainers(EObject target) {
+    return DiagramServices.getDiagramServices().filterNodeContainers(getDiagramElements(target));
   }
 
   /**
@@ -352,16 +352,16 @@ public class DDiagramContents {
   /**
    * Returns the container which should containing the given anElement_p
    * 
-   * @param anElement_p
+   * @param anElement
    * @param diagram_p
    * @param diagramContent_p
    * @return
    */
-  public DragAndDropTarget getBestContainer(DDiagramElement anElement_p) {
-    EObject object = anElement_p.getTarget();
+  public DragAndDropTarget getBestContainer(DDiagramElement anElement) {
+    EObject object = anElement.getTarget();
     DragAndDropTarget result = getBestContainer(object);
     if (result == null) {
-      result = (DragAndDropTarget) anElement_p.eContainer();
+      result = (DragAndDropTarget) anElement.eContainer();
     }
     return result;
   }
@@ -375,22 +375,22 @@ public class DDiagramContents {
    * @param diagramContent_p
    * @return
    */
-  public DragAndDropTarget getBestContainer(EObject semantic_p) {
-    EObject object = semantic_p;
+  public DragAndDropTarget getBestContainer(EObject semantic) {
+    EObject object = semantic;
     LinkedList<EObject> toVisit = new LinkedList<EObject>();
     if (object != null) {
-      toVisit.addAll(getParents(object, semantic_p));
+      toVisit.addAll(getParents(object, semantic));
       while (toVisit.size() > 0) {
         EObject element = toVisit.removeFirst();
 
         if (element != null) {
           if (this.containsView(element)) {
-            for (DDiagramElement view : this.getNodeContainers(element)) {
+            for (DDiagramElement view : this.getNodes(element)) {
               if (view.isVisible())
                 return (DragAndDropTarget) view;
             }
           }
-          toVisit.addAll(getParents(element, semantic_p));
+          toVisit.addAll(getParents(element, semantic));
         }
 
       }
@@ -406,35 +406,35 @@ public class DDiagramContents {
   /**
    * Returns possible parents of the given semantic element
    * 
-   * @param object_p
+   * @param object
    * @return
    */
-  public Collection<EObject> getParents(EObject object_p, EObject context_p) {
-    return Collections.singleton(object_p.eContainer());
+  public Collection<EObject> getParents(EObject object, EObject context) {
+    return Collections.singleton(object.eContainer());
   }
 
   /**
    * Returns possible parents of the given semantic element
    * 
-   * @param object_p
+   * @param object
    * @return
    */
-  public EObject getElement(EObject object_p, EObject context_p) {
-    return object_p;
+  public EObject getElement(EObject object, EObject context) {
+    return object;
   }
 
   /**
-   * @param edge_p
+   * @param edge
    * @return
    */
-  public boolean isVisible(DDiagramElement edge_p) {
-    if (_elementsToHide.contains(edge_p)) {
+  public boolean isVisible(DDiagramElement edge) {
+    if (_elementsToHide.contains(edge)) {
       return false;
     }
-    if (_elementsToShow.contains(edge_p)) {
+    if (_elementsToShow.contains(edge)) {
       return true;
     }
-    return DiagramServices.getDiagramServices().isVisible(edge_p);
+    return DiagramServices.getDiagramServices().isVisible(edge);
   }
 
 }
