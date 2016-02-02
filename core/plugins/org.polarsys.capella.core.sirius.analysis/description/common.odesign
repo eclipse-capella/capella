@@ -2620,6 +2620,11 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target%>">
                   <subModelOperations xsi:type="tool_1:Unset" featureName="constrainedElements" elementExpression="&lt;%$elementView.targetNode.target%>"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$elementView.targetNode.target.filter(&quot;Part&quot;).nSize() == 1%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$elementView.targetNode.target.deployingLinks.nSize() > 0%>">
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="constrainedElements" elementExpression="&lt;%$elementView.targetNode.target.deployingLinks%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>

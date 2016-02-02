@@ -1,0 +1,65 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_C_OB0MEVEeWqb6y2_gGIKQ
+Element-Name: PreferenceModification
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _oVQaQMN9EeWBxdbwkOo7Xg
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 1/26/16 10:30 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+This test case tests the modification of Activity Explorer when the session is closed
+Test scenario:
+1. Create a new project
+2. Close Capella session
+3. Go to Preferences/Activity Explorer/Management, uncheck Operational Analysis
+4. Verify that Operational Analysis does not appear
+5. Go to Preferences/Activity Explorer/Management, recheck Operational Analysis
+6. Verify that Operational Analysis tab reappears
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text Project
+    get-button Finish | click
+}
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu Close | click
+get-preferences-menu | click
+with [get-window Preferences] {
+    get-tree | select "Activity Explorer/Management"
+    with [get-tree -after [get-label "Select element:"]] {
+        select "Operational Analysis"
+        get-item "Operational Analysis" | uncheck
+    }
+    get-button OK | click
+}
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Open Session" | click
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Open Activity Explorer" 
+    | click
+
+with [get-editor "Project - Activity Explorer" | get-tab-folder] {
+    verify-error {get-tab-item "Operational Analysis"}
+}
+
+get-preferences-menu | click
+with [get-window Preferences] {
+    with [get-tree -after [get-label "Select element:"]] {
+        select "Operational Analysis"
+        get-item "Operational Analysis" | check
+    }
+    get-button Apply | click
+}
+get-window Preferences | get-button OK | click
+with [get-editor "Project - Activity Explorer" | get-tab-folder] {
+    get-tab-item "Operational Analysis" | click
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

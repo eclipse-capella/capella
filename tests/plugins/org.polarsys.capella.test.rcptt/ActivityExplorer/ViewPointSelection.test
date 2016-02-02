@@ -1,0 +1,64 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_C_OB0MEVEeWqb6y2_gGIKQ
+Element-Name: ViewPointSelection
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _cZR30MN6EeWBxdbwkOo7Xg
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 1/26/16 10:13 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+This test case tests if Activity Explorer is updated if some viewpoints are unselected.
+Test scenario:
+1. Create a new Capella project
+2. Unselect 2 viewpoints Common and Logical Architecture
+=> In the tab Logical Architecture, no viewpoint should be shown
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text Project
+    get-button Finish | click
+}
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Viewpoints selection" | click
+with [get-window "Viewpoints Selection"] {
+	let [val table [get-table]]
+	{
+		$table | get-items | foreach [val item] {
+		    if [$item | get-property "columns[2]" -raw | eq "Common"] {
+		    	let [val index [$item | get-property index -raw]] {
+		    		$table | get-cell $index 0 | uncheck
+		    	}
+		  	}
+	  	}
+	}
+}
+
+with [get-window "Viewpoints Selection"] {
+	let [val table [get-table]]
+	{
+		$table | get-items | foreach [val item] {
+		    if [$item | get-property "columns[2]" -raw | eq "Logical Architecture"] {
+		    	let [val index [$item | get-property index -raw]] {
+		    		$table | get-cell $index 0 | uncheck
+		    	}
+		  	}
+	  	}
+	}
+}
+get-window "Viewpoints Selection" | get-button OK | click
+with [get-editor "Project - Activity Explorer" | get-tab-folder] {
+    get-tab-item "Logical Architecture" | click
+}
+get-editor "Project - Activity Explorer" | get-section "Diagrams Viewer" | get-tree | get-property itemCount | equals 0 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

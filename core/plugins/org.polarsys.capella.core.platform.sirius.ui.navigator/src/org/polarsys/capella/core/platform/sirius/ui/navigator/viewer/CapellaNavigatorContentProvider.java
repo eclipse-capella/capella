@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -223,7 +223,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       // Parent for a semantic resource is the parent of its session as
       // the session node is no longer displayed in the viewer.
       parent = getParent(session);
-    } else if ((element instanceof Project) && !isCapellaProjectDisplayed((Project) element)) {
+    } else if ((element instanceof Project)) {
       // In the CapellaProjectExplorer, parent of a Project/Library is actually the .aird
       // file (depending of preferences).
       Resource mmResource = ((EObject) element).eResource();
@@ -234,19 +234,24 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       // preferences).
       Resource mmResource = ((EObject) element).eResource();
       parent = getParent(mmResource);
-    } else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
+    } else if ((element instanceof SystemEngineering)
+        && isCapellaProjectDisplayed(ProjectExt.getProject((EObject) element))) {
+      // In the CapellaProjectExplorer, parent of a Project/Library is actually the Project file 
+      // (depending of preferences).
+	  parent = _sessionContentProvider.getParent(element);
+	} else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
       EObject eObject = (EObject) element;
       Component component = (Component) eObject.eContainer();
       if (isImplicitView(component)) {
         if (component.eContainingFeature().equals(CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE)) {
           return getParent(component);
+          }
         }
-      }
-      parent = _sessionContentProvider.getParent(element);
-    } else {
-      // Handle other cases.
-      parent = _sessionContentProvider.getParent(element);
-    }
+        parent = _sessionContentProvider.getParent(element);
+	  } else {
+	    // Handle other cases.
+	    parent = _sessionContentProvider.getParent(element);
+	  }
 
     return parent;
   }
