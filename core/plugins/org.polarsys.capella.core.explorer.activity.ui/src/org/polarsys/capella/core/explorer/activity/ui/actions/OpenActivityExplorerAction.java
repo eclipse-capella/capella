@@ -27,7 +27,7 @@ public class OpenActivityExplorerAction extends BaseSelectionListenerAction {
   /**
    * Constructor.
    */
-  protected OpenActivityExplorerAction() {
+  public OpenActivityExplorerAction() {
     super(Messages.OpenActivityExplorerAction_Title);
     setImageDescriptor(CapellaActivityExplorerActivator.getDefault().getImageDescriptor(IImageKeys.IMG_MENU_ACTIVITY_EXPLORER));
   }

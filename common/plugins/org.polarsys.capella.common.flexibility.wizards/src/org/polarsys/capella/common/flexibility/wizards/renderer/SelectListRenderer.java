@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -89,19 +89,19 @@ public class SelectListRenderer extends AbstractRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void performRender(Composite parent_p, IRendererContext rendererContext_p) {
-    _labelProvider = createLabelProvider(rendererContext_p);
+  public void performRender(Composite parent, IRendererContext rendererContext) {
+    _labelProvider = createLabelProvider(rendererContext);
 
-    Composite parent = new Composite(parent_p, SWT.NONE);
-    parent.setLayout(createMainLayout());
-    parent.setLayoutData(createMainLayoutData());
+    Composite prt = new Composite(parent, SWT.NONE);
+    prt.setLayout(createMainLayout());
+    prt.setLayoutData(createMainLayoutData());
 
-    createTreeViewer(parent, rendererContext_p);
+    createTreeViewer(prt, rendererContext);
 
     // Populate toolbar and set selection to getViewer()
     if (!getToolbarLocation().isEmpty()) {
       _toolbarPopulator =
-          new ToolbarPopulator(_toolbarManager, getToolbarLocation(), rendererContext_p, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
+          new ToolbarPopulator(_toolbarManager, getToolbarLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
               .getActiveWorkbenchWindow());
       _toolbarPopulator.populate();
     }
@@ -109,7 +109,7 @@ public class SelectListRenderer extends AbstractRenderer {
     // Populate contextMenu and set selection to getViewer()
     if (!getPopupLocation().isEmpty()) {
       _popupPopulator =
-          new ToolbarPopulator(_popupManager, getPopupLocation(), rendererContext_p, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
+          new ToolbarPopulator(_popupManager, getPopupLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
               .getActiveWorkbenchWindow());
       _popupPopulator.populate();
 
@@ -124,10 +124,10 @@ public class SelectListRenderer extends AbstractRenderer {
 
   }
 
-  protected void initializeControls(final Composite parent_p, final IRendererContext context_p) {
+  protected void initializeControls(final Composite parent, final IRendererContext context) {
 
     if (!getToolbarLocation().isEmpty()) {
-      ToolBar toolbar = new ToolBar(parent_p, SWT.VERTICAL);
+      ToolBar toolbar = new ToolBar(parent, SWT.VERTICAL);
       toolbar.setLayout(createLayout());
       toolbar.setLayoutData(createToolbarLayoutData());
       _toolbarManager = new ToolBarManager(toolbar);
@@ -147,24 +147,24 @@ public class SelectListRenderer extends AbstractRenderer {
     return "";
   }
 
-  protected ILabelProvider createLabelProvider(final IRendererContext rendererContext_p) {
-    _dataLabelProvider = new DataViewerLabelProvider(rendererContext_p.getLabelProvider()) {
+  protected ILabelProvider createLabelProvider(final IRendererContext rendererContext) {
+    _dataLabelProvider = new DataViewerLabelProvider(rendererContext.getLabelProvider()) {
 
       /**
        * {@inheritDoc}
        */
       @Override
-      protected boolean isValid(Object element_p) {
-        return super.isValid(element_p) && isValidElement(element_p, rendererContext_p);
+      protected boolean isValid(Object element) {
+        return super.isValid(element) && isValidElement(element, rendererContext);
       }
 
     };
 
     return new DefaultLabelProvider(_dataLabelProvider) {
       @Override
-      public Color getBackground(Object element_p) {
+      public Color getBackground(Object element) {
         // Do nothing.
-        IStatus status = getStatus(element_p, rendererContext_p);
+        IStatus status = getStatus(element, rendererContext);
         if ((status == null) || status.isOK()) {
           return null;
 
@@ -183,19 +183,19 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  protected boolean isValidElement(Object element_p, IRendererContext rendererContext_p) {
+  protected boolean isValidElement(Object element, IRendererContext rendererContext) {
     return true;
   }
 
   /**
-   * @param element_p
-   * @param rendererContext_p
+   * @param element
+   * @param rendererContext
    * @return
    */
-  protected IStatus getStatus(Object element_p, IRendererContext rendererContext_p) {
+  protected IStatus getStatus(Object element, IRendererContext rendererContext) {
     return Status.OK_STATUS;
   }
 
@@ -216,22 +216,22 @@ public class SelectListRenderer extends AbstractRenderer {
 
     /**
      * Constructor.
-     * @param parent_p
+     * @param parent
      */
-    protected CapellaFilteredTree(Composite parent_p) {
-      super(parent_p);
+    protected CapellaFilteredTree(Composite parent) {
+      super(parent);
     }
 
     /**
      * Constructor.
-     * @param parent_p
-     * @param treeStyle_p
-     * @param filter_p
+     * @param parent
+     * @param treeStyle
+     * @param filter
      */
-    public CapellaFilteredTree(Composite parent_p, int treeStyle_p, PatternFilter filter_p, IRendererContext context_p) {
-      super(parent_p);
-      _context = context_p;
-      init(treeStyle_p, filter_p);
+    public CapellaFilteredTree(Composite parent, int treeStyle, PatternFilter filter, IRendererContext context) {
+      super(parent);
+      _context = context;
+      init(treeStyle, filter);
     }
 
     /**
@@ -247,16 +247,16 @@ public class SelectListRenderer extends AbstractRenderer {
      * {@inheritDoc}
      */
     @Override
-    protected void createClearText(Composite parent_p) {
+    protected void createClearText(Composite parent) {
       filterToolBar = new ToolBarManager(SWT.FLAT | SWT.HORIZONTAL);
-      filterToolBar.createControl(parent_p);
-      createSearchDescriptionButton(parent_p);
-      super.createClearText(parent_p);
+      filterToolBar.createControl(parent);
+      createSearchDescriptionButton(parent);
+      super.createClearText(parent);
     }
 
     @Override
-    protected Composite createFilterGroup(Composite parent_p) {
-      filterComposite = new Composite(parent_p, SWT.NONE);
+    protected Composite createFilterGroup(Composite parent) {
+      filterComposite = new Composite(parent, SWT.NONE);
       return filterComposite;
     }
 
@@ -264,23 +264,23 @@ public class SelectListRenderer extends AbstractRenderer {
      * {@inheritDoc}
      */
     @Override
-    protected Composite createFilterControls(Composite parent_p) {
-      return super.createFilterControls(parent_p);
+    protected Composite createFilterControls(Composite parent) {
+      return super.createFilterControls(parent);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected Label createMessageArea(Composite parent_p) {
+    protected Label createMessageArea(Composite parent) {
       return null;
     }
 
     /**
      * Create the button that triggers search in description.
-     * @param parent_p parent <code>Composite</code> of toolbar button
+     * @param parent parent <code>Composite</code> of toolbar button
      */
-    protected void createSearchDescriptionButton(Composite parent_p) {
+    protected void createSearchDescriptionButton(Composite parent) {
       IAction searchInDescriptionAction = new Action(ICommonConstants.EMPTY_STRING, IAction.AS_PUSH_BUTTON) {
         /**
          * {@inheritDoc}
@@ -302,21 +302,21 @@ public class SelectListRenderer extends AbstractRenderer {
     }
 
     @Override
-    protected void createControl(Composite parent_p, int treeStyle_p) {
+    protected void createControl(Composite parent, int treeStyle) {
       showFilterControls = isFilterBar();
-      super.createControl(parent, treeStyle_p);
+      super.createControl(parent, treeStyle);
     }
 
     @Override
-    protected Control createTreeControl(Composite parent_p, int style) {
-      Composite parent = new Composite(parent_p, SWT.NONE);
+    protected Control createTreeControl(Composite parent, int style) {
+      Composite prt = new Composite(parent, SWT.NONE);
       GridLayout layout = (GridLayout) createLayout();
       layout.numColumns = 2;
-      parent.setLayout(layout);
-      parent.setLayoutData(createLayoutData());
+      prt.setLayout(layout);
+      prt.setLayoutData(createLayoutData());
 
-      Control tree = super.createTreeControl(parent, style);
-      initializeControls(parent, _context);
+      Control tree = super.createTreeControl(prt, style);
+      initializeControls(prt, _context);
       return tree;
     }
 
@@ -324,11 +324,11 @@ public class SelectListRenderer extends AbstractRenderer {
      * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#init(int, org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter)
      */
     @Override
-    protected void init(int treeStyle_p, PatternFilter filter_p) {
+    protected void init(int treeStyle, PatternFilter filter) {
       // Disable auto filtering for usability.
       setAutoFiltering(false);
 
-      super.init(treeStyle_p, filter_p);
+      super.init(treeStyle, filter);
       showFilterControls = isFilterBar();
     }
 
@@ -336,43 +336,43 @@ public class SelectListRenderer extends AbstractRenderer {
      * {@inheritDoc}
      */
     @Override
-    protected void updateToolbar(boolean visible_p) {
+    protected void updateToolbar(boolean visible) {
       // Do nothing as we want to always see the toolbar to access search in description.
       IContributionItem[] items = filterToolBar.getItems();
-      items[1].setVisible(visible_p);
+      items[1].setVisible(visible);
       filterToolBar.update(true);
     }
   }
 
-  protected void createTreeViewer(Composite parent_p, final IRendererContext context_p) {
-    int style_p = SWT.NONE;
+  protected void createTreeViewer(Composite parent, final IRendererContext context) {
+    int style = SWT.NONE;
 
     // Create a TreeAndListViewer.
-    _viewer = new TreeAndListViewer(parent_p, isMultipleSelection(), style_p) {
+    _viewer = new TreeAndListViewer(parent, isMultipleSelection(), style) {
       /**
        * Overridden to set the viewer in the label provider at creation time.
        * @see org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer#doClientViewer(org.eclipse.swt.widgets.Composite)
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      protected TreeViewer doClientViewer(Composite parent_p) {
+      protected TreeViewer doClientViewer(Composite parent) {
 
         // Create a filtered tree viewer that expands all systematically.
-        FilteredTree filteredTree = new CapellaFilteredTree(parent_p, getTreeStyle(), getFilter(), context_p) {
+        FilteredTree filteredTree = new CapellaFilteredTree(parent, getTreeStyle(), getFilter(), context) {
 
           /**
            * {@inheritDoc}
            */
           @Override
-          protected TreeViewer doCreateTreeViewer(Composite parent_p, int style_p) {
-            return super.doCreateTreeViewer(parent_p, style_p);
+          protected TreeViewer doCreateTreeViewer(Composite parent, int style) {
+            return super.doCreateTreeViewer(parent, style);
           }
 
           /**
            * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#handleTreeViewerExpansionWhenNoFilter(java.lang.Object[])
            */
           @Override
-          protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements_p) {
+          protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements) {
             treeViewer.expandAll();
           }
         };
@@ -381,8 +381,8 @@ public class SelectListRenderer extends AbstractRenderer {
         return viewer;
       }
 
-      protected void setExpandLevel(TreeViewer viewer_p) {
-        viewer_p.setAutoExpandLevel(getExpandLevel());
+      protected void setExpandLevel(TreeViewer viewer) {
+        viewer.setAutoExpandLevel(getExpandLevel());
       }
 
     };
@@ -396,11 +396,11 @@ public class SelectListRenderer extends AbstractRenderer {
       /**
        * @see ISelectionChangedListener#selectionChanged(SelectionChangedEvent)
        */
-      public void selectionChanged(SelectionChangedEvent event_p) {
+      public void selectionChanged(SelectionChangedEvent event) {
         // Handle the selection itself.
-        IStructuredSelection selection = (IStructuredSelection) event_p.getSelection();
+        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
         _selection = selection;
-        selectionChange(selection, context_p);
+        selectionChange(selection, context);
       }
 
     };
@@ -411,25 +411,25 @@ public class SelectListRenderer extends AbstractRenderer {
       /**
        * @see IDoubleClickListener#doubleClick(DoubleClickEvent)
        */
-      public void doubleClick(DoubleClickEvent event_p) {
-        ISelection selection = event_p.getSelection();
-        if (isValidDoubleClick(event_p, selection, context_p)) {
-          doubleClicked(selection, context_p);
+      public void doubleClick(DoubleClickEvent event) {
+        ISelection selection = event.getSelection();
+        if (isValidDoubleClick(event, selection, context)) {
+          doubleClicked(selection, context);
         }
       }
 
     };
     clientViewer.addDoubleClickListener(viewerDoubleClickListener);
 
-    clientViewer.setContentProvider(createContentProvider(context_p));
+    clientViewer.setContentProvider(createContentProvider(context));
     clientViewer.setLabelProvider(_labelProvider);
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return
    */
-  protected ISelection getInitialSelection(IRendererContext context_p) {
+  protected ISelection getInitialSelection(IRendererContext context) {
     return new StructuredSelection();
   }
 
@@ -479,52 +479,52 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   /**
-   * @param property_p
-   * @param propertyContext_p
+   * @param property
+   * @param propertyContext
    */
-  protected void reloadInput(IProperty property_p, IRendererContext propertyContext_p) {
-    Object input = createInput(property_p, propertyContext_p);
+  protected void reloadInput(IProperty property, IRendererContext propertyContext) {
+    Object input = createInput(property, propertyContext);
 
     if ((_viewer != null) && (_viewer.getClientViewer().getContentProvider() != null)) {
       if (reloadInputRequired(input, _viewer.getClientViewer().getInput())) {
-        setInput(input, propertyContext_p);
+        setInput(input, propertyContext);
       }
     }
   }
 
   /**
-   * @param input_p
+   * @param input
    */
-  private void setInput(Object input_p, IRendererContext propertyContext_p) {
-    _viewer.setInput(input_p);
+  private void setInput(Object input, IRendererContext propertyContext) {
+    _viewer.setInput(input);
     IContentProvider provider = _viewer.getClientViewer().getContentProvider();
     if (provider != null) {
-      provider.inputChanged(_viewer.getClientViewer(), null, input_p);
+      provider.inputChanged(_viewer.getClientViewer(), null, input);
     }
   }
 
   /**
-   * @param input_p
-   * @param input2_p
+   * @param input
+   * @param input2
    * @return
    */
-  public boolean reloadInputRequired(Object input_p, Object input2_p) {
+  public boolean reloadInputRequired(Object input, Object input2) {
     return true;
   }
 
-  protected void searchClicked(String pattern_p, IRendererContext context_p) {
-    IProperty property = context_p.getProperty(this);
-    reloadInput(property, context_p);
+  protected void searchClicked(String pattern, IRendererContext context) {
+    IProperty property = context.getProperty(this);
+    reloadInput(property, context);
   }
 
-  protected boolean isValidDoubleClick(DoubleClickEvent event_p, ISelection selection_p, IRendererContext context_p) {
-    if (!((null != selection_p) && !selection_p.isEmpty() && (selection_p instanceof IStructuredSelection))) {
+  protected boolean isValidDoubleClick(DoubleClickEvent event, ISelection selection, IRendererContext context) {
+    if (!((null != selection) && !selection.isEmpty() && (selection instanceof IStructuredSelection))) {
       return false;
     }
-    IStructuredSelection selection = (IStructuredSelection) selection_p;
-    Collection<Object> value = isMultipleSelection() ? selection.toList() : Collections.singletonList(selection.getFirstElement());
+    IStructuredSelection sel = (IStructuredSelection) selection;
+    Collection<Object> value = isMultipleSelection() ? sel.toList() : Collections.singletonList(sel.getFirstElement());
     for (Object val : value) {
-      Object input = event_p.getViewer().getInput();
+      Object input = event.getViewer().getInput();
       if ((input instanceof AbstractData) && !(((AbstractData) input).isValid(val))) {
         return false;
       }
@@ -534,21 +534,21 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   /**
-   * @param doubleClickedElement_p
-   * @param context_p
+   * @param doubleClickedElement
+   * @param context
    */
-  protected void doubleClicked(ISelection doubleClickedElement_p, IRendererContext context_p) {
+  protected void doubleClicked(ISelection doubleClickedElement, IRendererContext context) {
     // Nothing here
   }
 
-  protected IContentProvider createContentProvider(IRendererContext rendererContext_p) {
+  protected IContentProvider createContentProvider(IRendererContext rendererContext) {
     return new DataContentProvider();
   }
 
-  protected Object createInput(IProperty property_p, IRendererContext context_p) {
-    if (property_p instanceof IRestraintProperty) {
-      Object value = ((IRestraintProperty) property_p).getChoiceValues(context_p.getPropertyContext());
-      if ((value != null) && (value instanceof Collection)) {
+  protected Object createInput(IProperty property, IRendererContext context) {
+    if (property instanceof IRestraintProperty) {
+      Object value = ((IRestraintProperty) property).getChoiceValues(context.getPropertyContext());
+      if (value != null) {
         Collection<Object> dataa = (Collection) value;
         TreeData data = new TreeData(dataa, null);
         return data;
@@ -557,16 +557,16 @@ public class SelectListRenderer extends AbstractRenderer {
     return new ListData(Collections.emptyList(), null);
   }
 
-  public void initialize(IProperty property_p, IRendererContext propertyContext_p) {
-    Object value = propertyContext_p.getPropertyContext().getDefaultValue(property_p);
-    updatedValue(property_p, propertyContext_p, value);
-    reloadInput(property_p, propertyContext_p);
-    selectionChange(new StructuredSelection(), propertyContext_p);
+  public void initialize(IProperty property, IRendererContext propertyContext) {
+    Object value = propertyContext.getPropertyContext().getDefaultValue(property);
+    updatedValue(property, propertyContext, value);
+    reloadInput(property, propertyContext);
+    selectionChange(new StructuredSelection(), propertyContext);
   }
 
-  public void selectionChange(IStructuredSelection selection_p, IRendererContext context_p) {
-    Object value = isMultipleSelection() ? selection_p.toList() : selection_p.getFirstElement();
-    changeValue(context_p.getProperty(this), context_p, value);
+  public void selectionChange(IStructuredSelection selection, IRendererContext context) {
+    Object value = isMultipleSelection() ? selection.toList() : selection.getFirstElement();
+    changeValue(context.getProperty(this), context, value);
   }
 
   public IStructuredSelection getSelection() {
@@ -574,7 +574,7 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext propertyContext_p, Object newValue_p) {
+  public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
     // Nothing here
   }
 
@@ -582,8 +582,8 @@ public class SelectListRenderer extends AbstractRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void dispose(IRendererContext context_p) {
-    super.dispose(context_p);
+  public void dispose(IRendererContext context) {
+    super.dispose(context);
 
     if (_toolbarPopulator != null) {
       _toolbarPopulator.dispose();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,14 +26,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.core.model.handler.helpers.ICapellaResourceHelper;
-import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Helper that deal with Capella resources.
@@ -73,8 +72,10 @@ public class CapellaResourceHelper {
   /**
    * Ensure given resource is writable.<br>
    * If the resource is in read only, a dialog is prompted to ask the end-user to make the resource writable.
+   * 
    * @param resource
-   * @return <code>true</code> means writable; <code>false</code> means read only and the end-user turns down to make the resource writable.
+   * @return <code>true</code> means writable; <code>false</code> means read only and the end-user turns down to make
+   *         the resource writable.
    */
   public static boolean ensureResourceIsWritable(Resource resource) {
     boolean result = false;
@@ -96,13 +97,15 @@ public class CapellaResourceHelper {
 
   /**
    * Whether or not specified resource has provided file extension.
+   * 
    * @param resource
    * @param ignoreFragment
    * @param fragmentFileExtension
    * @param modelFileExtension
    * @return
    */
-  private static boolean hasFileExtension(IResource resource, boolean ignoreFragment, String fragmentFileExtension, String modelFileExtension) {
+  private static boolean hasFileExtension(IResource resource, boolean ignoreFragment, String fragmentFileExtension,
+      String modelFileExtension) {
     boolean result = false;
     // Precondition.
     if ((null == resource) || (IResource.FILE != resource.getType())) {
@@ -117,9 +120,11 @@ public class CapellaResourceHelper {
   }
 
   /**
-   * Whether or not given resource is an AIRD one i.e a model or a fragment depending on ignoreAirdFragment_p.
+   * Whether or not given resource is an AIRD one i.e a model or a fragment depending on ignoreAirdFragment.
+   * 
    * @param resource
-   * @param ignoreAirdFragment <code>true</code> means files with {@link #AIRD_FRAGMENT_FILE_EXTENSION} file extension are ignored.
+   * @param ignoreAirdFragment
+   *          <code>true</code> means files with {@link #AIRD_FRAGMENT_FILE_EXTENSION} file extension are ignored.
    * @return <code>true</code> means given resource is a Capella one.
    * @see {@link #AIRD_FRAGMENT_FILE_EXTENSION}, {@link #AIRD_FILE_EXTENSION}
    */
@@ -129,16 +134,20 @@ public class CapellaResourceHelper {
 
   /**
    * Whether or not given URI represents an AIRD one i.e a model or a fragment.
+   * 
    * @param uri
-   * @return <code>true</code> means the file extension is either {@link #AIRD_FRAGMENT_FILE_EXTENSION} or {@link #AIRD_FILE_EXTENSION}.
+   * @return <code>true</code> means the file extension is either {@link #AIRD_FRAGMENT_FILE_EXTENSION} or
+   *         {@link #AIRD_FILE_EXTENSION}.
    * @see {@link #AIRD_FRAGMENT_FILE_EXTENSION}, {@link #AIRD_FILE_EXTENSION}
    */
   public static boolean isAirdResource(URI uri) {
-    return (uri != null) && (AIRD_FILE_EXTENSION.equals(uri.fileExtension()) || AIRD_FRAGMENT_FILE_EXTENSION.equals(uri.fileExtension()));
+    return (uri != null)
+        && (AIRD_FILE_EXTENSION.equals(uri.fileExtension()) || AIRD_FRAGMENT_FILE_EXTENSION.equals(uri.fileExtension()));
   }
 
   /**
    * Whether or not given resource is a Capella fragment.
+   * 
    * @param uri
    * @return <code>true</code> means given resource is a Capella fragment.
    * @see #CAPELLA_FRAGMENT_FILE_EXTENSION
@@ -149,6 +158,7 @@ public class CapellaResourceHelper {
 
   /**
    * Whether or not given resource is a Capella one i.e a model or a fragment.
+   * 
    * @param resource
    * @return <code>true</code> means given resource is a Capella one.
    * @see {@link #CAPELLA_FRAGMENT_FILE_EXTENSION}, {@link #CAPELLA_MODEL_FILE_EXTENSION}
@@ -158,18 +168,22 @@ public class CapellaResourceHelper {
   }
 
   /**
-   * Whether or not given resource is a Capella one i.e a model or a fragment depending on ignoreCapellaFragment_p.
+   * Whether or not given resource is a Capella one i.e a model or a fragment depending on ignoreCapellaFragment.
+   * 
    * @param resource
-   * @param ignoreCapellaFragment <code>true</code> means files with {@link #CAPELLA_FRAGMENT_FILE_EXTENSION} file extension are ignored.
+   * @param ignoreCapellaFragment
+   *          <code>true</code> means files with {@link #CAPELLA_FRAGMENT_FILE_EXTENSION} file extension are ignored.
    * @return <code>true</code> means given resource is a Capella one.
    * @see {@link #CAPELLA_FRAGMENT_FILE_EXTENSION}, {@link #CAPELLA_MODEL_FILE_EXTENSION}
    */
   public static boolean isCapellaResource(IResource resource, boolean ignoreCapellaFragment) {
-    return hasFileExtension(resource, ignoreCapellaFragment, CAPELLA_FRAGMENT_FILE_EXTENSION, CAPELLA_MODEL_FILE_EXTENSION);
+    return hasFileExtension(resource, ignoreCapellaFragment, CAPELLA_FRAGMENT_FILE_EXTENSION,
+        CAPELLA_MODEL_FILE_EXTENSION);
   }
 
   /**
    * Whether or not given object is a Capella resource i.e a model or a fragment.
+   * 
    * @param object
    * @return
    */
@@ -181,6 +195,7 @@ public class CapellaResourceHelper {
 
   /**
    * Whether or not given resource is a Capella one i.e a model or a fragment.
+   * 
    * @param resource
    * @return <code>true</code> means given resource is a Capella one.
    * @see {@link #CAPELLA_FRAGMENT_FILE_EXTENSION}, {@link #CAPELLA_MODEL_FILE_EXTENSION}
@@ -191,6 +206,7 @@ public class CapellaResourceHelper {
 
   /**
    * Whether or not given resource is a Capella one i.e a model or a fragment.
+   * 
    * @param uri
    * @return <code>true</code> means given resource is a Capella one.
    * @see {@link #CAPELLA_FRAGMENT_FILE_EXTENSION}, {@link #CAPELLA_MODEL_FILE_EXTENSION}
@@ -205,7 +221,8 @@ public class CapellaResourceHelper {
     }
 
     // Call the delegation if any.
-    boolean isCapellaResource = (null != __delegatedCapellaResourceHelper) ? __delegatedCapellaResourceHelper.isCapellaResource(uri) : false;
+    boolean isCapellaResource = (null != __delegatedCapellaResourceHelper) ? __delegatedCapellaResourceHelper
+        .isCapellaResource(uri) : false;
     return isCapellaResource || CAPELLA_MODEL_FILE_EXTENSION.equals(uri.fileExtension()) || isCapellaFragment(uri);
   }
 
@@ -213,7 +230,7 @@ public class CapellaResourceHelper {
    * Returns whether an object is a semantic element. Such element benefit of all basic tooling provided by capella
    */
   public static boolean isSemanticElement(Object object) {
-    return object instanceof Element;
+    return object instanceof EObject && !(object instanceof DRefreshable);
   }
 
   /**
@@ -233,8 +250,8 @@ public class CapellaResourceHelper {
    */
   public static Resource createCapellaResource(IProject project, String filename, TransactionalEditingDomain domain) {
     // Creates the XMI serialization file.
-    String fullPath =
-        project.getFullPath().toString() + ICommonConstants.SLASH_CHARACTER + filename + ICommonConstants.POINT_CHARACTER + CAPELLA_MODEL_FILE_EXTENSION;
+    String fullPath = project.getFullPath().toString() + ICommonConstants.SLASH_CHARACTER + filename
+        + ICommonConstants.POINT_CHARACTER + CAPELLA_MODEL_FILE_EXTENSION;
     URI capellaModelURI = URI.createPlatformResourceURI(fullPath, true);
 
     // create a resource
@@ -250,12 +267,13 @@ public class CapellaResourceHelper {
   private static ICapellaResourceHelper loadDelegatedCapellaResourceHelper() {
     ICapellaResourceHelper delegatedHelper = null;
     // Load SemanticEditingDomain providers if any.
-    IConfigurationElement[] configurationElements =
-        ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.model.handler", "delegatedCapellaResourceHelper"); //$NON-NLS-1$ //$NON-NLS-2$
+    IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(
+        "org.polarsys.capella.core.model.handler", "delegatedCapellaResourceHelper"); //$NON-NLS-1$ //$NON-NLS-2$
     // Loop over contributed SemanticEditingDomain providers, must be only
     // one.
     if (configurationElements.length > 0) {
-      delegatedHelper = (ICapellaResourceHelper) ExtensionPointHelper.createInstance(configurationElements[0], ExtensionPointHelper.ATT_CLASS);
+      delegatedHelper = (ICapellaResourceHelper) ExtensionPointHelper.createInstance(configurationElements[0],
+          ExtensionPointHelper.ATT_CLASS);
     }
     __delegatedCapellaResourceHelperLoaded = true;
     return delegatedHelper;
@@ -263,6 +281,7 @@ public class CapellaResourceHelper {
 
   /**
    * Retrieve editable attribute
+   * 
    * @param selectedElement
    * @return a changeable, no-transient, no-derived, no-isMany attribute, or null
    */
@@ -293,7 +312,7 @@ public class CapellaResourceHelper {
   public static boolean isCapellaProject(IProject targetProject) {
     try {
       return targetProject.hasNature(CAPELLA_PROJECT_NATURE) || targetProject.hasNature(CAPELLA_LIBRARY_PROJECT_NATURE);
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       return false;
     }
   }

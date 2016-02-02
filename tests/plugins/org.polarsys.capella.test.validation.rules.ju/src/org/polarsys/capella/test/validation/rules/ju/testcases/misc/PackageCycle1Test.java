@@ -18,6 +18,6 @@ public class PackageCycle1Test extends AbstractPackageCycleTest {
 
   @Override
   protected String getRequiredTestModel() {
-    return "PackageCycle1";
+    return "PackageCycleTest1";
   }
 }

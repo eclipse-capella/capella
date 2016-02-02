@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,15 +19,16 @@ import org.polarsys.capella.core.transition.common.handlers.traceability.ITracea
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
+ *
  */
 public interface ITraceabilityConfiguration extends IHandler {
 
-  public List<ITraceabilityHandler> getDefinedHandlers(IContext context_p);
+  List<ITraceabilityHandler> getDefinedHandlers(IContext context);
 
-  public boolean useHandlerForAttachment(EObject source_p, EObject target_p, ITraceabilityHandler handler_p, IContext context_p);
+  boolean useHandlerForAttachment(EObject source, EObject target, ITraceabilityHandler handler, IContext context);
 
-  public boolean useHandlerForTracedElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p);
+  boolean useHandlerForTracedElements(EObject source, ITraceabilityHandler handler, IContext context);
 
-  public boolean useHandlerForSourceElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p);
+  boolean useHandlerForSourceElements(EObject source, ITraceabilityHandler handler, IContext context);
 
 }

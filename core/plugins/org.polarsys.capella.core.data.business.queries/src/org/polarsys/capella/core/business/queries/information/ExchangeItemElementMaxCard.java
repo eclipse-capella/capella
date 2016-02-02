@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,38 +24,38 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.InformationPackage;
 
 /**
- * This is the query for exchange item element max card. 
+ * This is the query for exchange item element max card.
  */
 public class ExchangeItemElementMaxCard extends CapellaElement_AbstractCardinality implements IBusinessQuery {
 
-	/**
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-	 */
-	@Override
-	public EClass getEClass() {
-		return InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT;
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+   */
+  @Override
+  public EClass getEClass() {
+    return InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT;
+  }
 
-	/**
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
-	 */
-	@Override
-	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD);
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
+   */
+  @Override
+  public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD);
+  }
 
-	@Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT_MAX_CARD, element_p, context);
-	}
+  @Override
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PROPERTY__CARDINALITY___LIB, element, context);
+  }
 
-	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__EXCHANGE_ITEM_ELEMENT_MAX_CARD, element_p, context);
-	}
+  @Override
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__EXCHANGE_ITEM_ELEMENT_MAX_CARD, element, context);
+  }
 
 }

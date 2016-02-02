@@ -34,8 +34,8 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.information.BooleanType_InheritedBooleanType-getAvailableElements
 inputId = 465ff781-97b1-4258-9ecf-4f8ecd4f5249
 resultIds = {
-    f940caf7-79d8-4250-8613-25c2601a7a72
     e2ec45a1-e107-49e5-9b6d-cb50e6d7f686
+    f940caf7-79d8-4250-8613-25c2601a7a72
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.BooleanType_InheritedBooleanType-getCurrentElements

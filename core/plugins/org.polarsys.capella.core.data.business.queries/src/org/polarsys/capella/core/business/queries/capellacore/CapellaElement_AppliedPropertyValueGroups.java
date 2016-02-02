@@ -40,7 +40,7 @@ public class CapellaElement_AppliedPropertyValueGroups implements IBusinessQuery
 	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS, element, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS_LIB, element, context);
 	}
 
 	@Override

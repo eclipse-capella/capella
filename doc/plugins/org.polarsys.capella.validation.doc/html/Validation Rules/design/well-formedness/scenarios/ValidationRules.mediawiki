@@ -1,0 +1,201 @@
+      
+= > Validation Rules > capella.category > design > well-formedness > scenarios =
+            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that an Interaction uses correctly references of a scenario. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that an Instance Role is correctly typed. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that sequence messages have an invoked operation. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that sequence messages have a correct invoked operation (sender shall use/require operation's interface and receiver shall implement/provide operation's interface). 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that sequence messages are justified in sender/receiver Components terms between scenarios from different levels. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that sequence messages are justified in Operation terms between scenarios from different levels. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that Sequence Messages have a not null invoked operation. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that scenarios have a coherent ordering, i.e. finish of time lapses are after the corresponding beginning. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule ensures that a sequence message does not allocate exchange items which are not allocated by invoked operation of sequence message. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks the consistency between Scenario kind and Level: On OA level, only INTERACTION Scenarios are allowed, On SYS/LC/PC levels, only DATA_FLOW, INTERFACE and FUNCTIONAL Scenarii are allowed, On EPBS level, only INTERFACE Scenarios are allowed. Whatever the level, UNSET Scenarios raise an error. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that sender and reply branches sequence messages are not inverted. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks name consistency between operations / functional exchanges and sequence messages. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that an arm timer or cancel timer message is reflexive. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that a cancel timer message is within an arm timer message. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that a shared data READ is within an execution. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks the refinement needed for decomposed Logical components. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/warning.gif|WARNING]]
+|  
+|-
+|This rule checks that a sequence message kind is coherent with its transmission protocol. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that Sequence Messages in OES or ES scenarios are consistent with their associated Component Exchange or Functional Exchange. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|This rule checks that Sequence Messages in OAS or FS scenarios are consistent with their associated Functional Exchange. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|Check that the AbstractFunction related to the current StateFragment is allocated by the Component (or a sub Component) associated to the instance role. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|Check that the Mode/State related to the current StateFragment is contained by the Component associated to the instance role. 
+|-
+|- 
+|}            
+{| border="1"
+|-
+|[[Image:Images/error.gif|ERROR]]
+|  
+|-
+|Check that the AbstractFunction associated to the instance role is available for the Mode/State related to the current StateFragment. 
+|-
+|- 
+|}   

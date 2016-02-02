@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.diffmerge.api.IComparison;
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.util.structures.FArrayList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -28,7 +27,6 @@ import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.activities.AbstractActivity;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -40,20 +38,12 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
 
   public static final String ID = MakeTraceabilityActivity.class.getCanonicalName();
 
-  /*
-   * (non-Javadoc)
+  /**
    * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
    */
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
-
-    ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
-
-    IEditableModelScope sourceScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_REFERENCE_SCOPE);
-    IEditableModelScope targetScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_TARGET_SCOPE);
-
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
     IComparison comparison = (IComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
 
     TreeIterator<IMatch> targetMatches = comparison.getAllContents(Role.TARGET);
@@ -105,13 +95,11 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
           //Update ReplicableElement from Replica
           linkTarget = linksSource.get(mSource);
           linkSource = linksTarget.get(mTarget);
-
         } else {
 
           //Update Replica from ReplicableElement
           linkSource = linksSource.get(mSource);
           linkTarget = linksTarget.get(mTarget);
-
         }
 
         if ((linkSource != null) && (linkTarget != null)) {
@@ -121,11 +109,9 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
             (((CatalogElement) linkTarget.getTarget())).setOrigin((CatalogElement) linkSource.getTarget());
           }
         }
-
       }
     }
 
     return Status.OK_STATUS;
-
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,20 +16,20 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IMarkerResolution;
-import org.eclipse.ui.IMarkerResolutionGenerator;
 
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command.EditComponentExchange;
 import org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command.RemoveInvalidFunctionalExchangeAllocations;
+import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.CommandMarkerResolution;
 
-public class ComponentExchangeFunctionalExchangeResoultions implements IMarkerResolutionGenerator {
+public class ComponentExchangeFunctionalExchangeResoultions extends AbstractMarkerResolutionGenerator {
 
-  public IMarkerResolution[] getResolutions(IMarker marker_p) {
-
+  @Override
+  protected IMarkerResolution[] doGetResolutions(IMarker marker) {
     List<IMarkerResolution> resolutions = new ArrayList<IMarkerResolution>();
-    List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker(marker_p);
+    List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker(marker);
     if ((objects.size() > 0) && (objects.get(0) instanceof ComponentExchange)) {
       ComponentExchange exchange = (ComponentExchange) objects.get(0);
       resolutions.add(new CommandMarkerResolution(new EditComponentExchange(exchange)));
@@ -39,4 +39,8 @@ public class ComponentExchangeFunctionalExchangeResoultions implements IMarkerRe
     return resolutions.toArray(new IMarkerResolution[0]);
   }
 
+  @Override
+  protected String getRuleId() {
+    return "org.polarsys.capella.core.data.fa.validation.DWF_DF_08";
+  }
 }

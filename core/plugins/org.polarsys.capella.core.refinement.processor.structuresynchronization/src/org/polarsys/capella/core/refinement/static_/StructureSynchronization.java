@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,36 +60,35 @@ public class StructureSynchronization extends StaticRefinement {
 	/**
 	 * Constructor
 	 */
-	public StructureSynchronization(NamedElement context_p) {
+	public StructureSynchronization(NamedElement context) {
 		super();
-
-		setContext(context_p);
+		setContext(context);
 	}
 
 	/**
 	 * Add processors
 	 * 
-	 * @param context_p
+	 * @param context
 	 */
 	@Override
-	public void setContext(ModelElement context_p) {
-		if ((context_p instanceof AbstractCapabilityPkg) || (EcoreUtil2.isContainedBy(context_p, CapellacommonPackage.Literals.ABSTRACT_CAPABILITY_PKG))) {
+	public void setContext(ModelElement context) {
+		if ((context instanceof AbstractCapabilityPkg) || (EcoreUtil2.isContainedBy(context, CapellacommonPackage.Literals.ABSTRACT_CAPABILITY_PKG))) {
 			List<AbstractCapability> abstractCapabilities = new ArrayList<AbstractCapability>();
 
-			if (context_p instanceof AbstractCapability) {
-				abstractCapabilities.add((AbstractCapability) context_p);
+			if (context instanceof AbstractCapability) {
+				abstractCapabilities.add((AbstractCapability) context);
 			}
-			else if (context_p instanceof Scenario) {
-				abstractCapabilities.add((AbstractCapability) context_p.eContainer());
+			else if (context instanceof Scenario) {
+				abstractCapabilities.add((AbstractCapability) context.eContainer());
 			}
 			else {
-				Set<EObject> scSet = EObjectExt.getAll(context_p, InteractionPackage.Literals.ABSTRACT_CAPABILITY);
+				Set<EObject> scSet = EObjectExt.getAll(context, InteractionPackage.Literals.ABSTRACT_CAPABILITY);
 				for (EObject obj : scSet) {
 					abstractCapabilities.add((AbstractCapability) obj);
 				}
 			}
 
-			super.setContext(context_p);
+			super.setContext(context);
 
 			fillInTargets(abstractCapabilities);
 		}
@@ -105,26 +104,24 @@ public class StructureSynchronization extends StaticRefinement {
 	/**
 	 * Add targeted processors
 	 * 
-	 * @param srcEltSet_p
+	 * @param srcEltSet
 	 */
-	private void fillInTargets(List<AbstractCapability> srcEltSet_p) {
-		Map<NamedElement, List<NamedElement>> targetMap = evaluateTarget(srcEltSet_p);
-		Set<NamedElement> capabilities = targetMap.keySet();
-		for (NamedElement capability : capabilities) {
-			List<NamedElement> targetList = targetMap.get(capability);
-			for (NamedElement target : targetList) {
-				addPlug(new StructureSynchronizationProcessor(capability, target));
+	private void fillInTargets(List<AbstractCapability> srcEltSet) {
+		Map<NamedElement, List<NamedElement>> targetMap = evaluateTarget(srcEltSet);
+		for (Map.Entry<NamedElement,List<NamedElement>> entry : targetMap.entrySet()) {
+			for (NamedElement target : entry.getValue()) {
+				addPlug(new StructureSynchronizationProcessor(entry.getKey(), target));
 			}
 		}
 	}
 
 	/**
-	 * @param capabilities_p
+	 * @param capabilities
 	 */
-	private Map<NamedElement, List<NamedElement>> evaluateTarget(List<AbstractCapability> capabilities_p) {
+	private Map<NamedElement, List<NamedElement>> evaluateTarget(List<AbstractCapability> capabilities) {
 		Map<NamedElement, List<NamedElement>> tmpTargets = new HashMap<NamedElement, List<NamedElement>>();
 
-		for (NamedElement capability : capabilities_p) {
+		for (NamedElement capability : capabilities) {
 			List<NamedElement> targetSet = new ArrayList<NamedElement>();
 			AbstractCapabilityPkg aspectPkg = AbstractCapabilityExt.getOwnerAbstractCapabilityPkg((AbstractCapability) capability);
 			CapellaElement cpnt = (CapellaElement) aspectPkg.eContainer();
@@ -170,16 +167,16 @@ public class StructureSynchronization extends StaticRefinement {
 	}
 
 	/**
-	 * @param allTargets_p
+	 * @param allTargets
 	 */
-	private Map<NamedElement, List<NamedElement>> selectTarget(Map<NamedElement, List<NamedElement>> allTargets_p) {
+	private Map<NamedElement, List<NamedElement>> selectTarget(Map<NamedElement, List<NamedElement>> allTargets) {
 		Map<NamedElement, List<NamedElement>> finalTargets = new HashMap<NamedElement, List<NamedElement>>();
 
-		if (!choiceIsNeeded(allTargets_p)) {
-			finalTargets = allTargets_p;
+		if (!choiceIsNeeded(allTargets)) {
+			finalTargets = allTargets;
 		} else {
 			 String message = "Select the target(s) on which static refinement must be launched."; //$NON-NLS-1$
-			TargetSelectionItem rootItem = new TargetSelectionItem(allTargets_p);
+			TargetSelectionItem rootItem = new TargetSelectionItem(allTargets);
 			SelectionWizard wizard = new SelectionWizard(rootItem, "Capella wizard", "Refinement target selection", message, true, true); //$NON-NLS-1$ //$NON-NLS-2$
 			if (wizard.open() == 0) {
 				for (SelectionItemNode item : wizard.getSelectionList()) {
@@ -197,15 +194,13 @@ public class StructureSynchronization extends StaticRefinement {
 	}
 
 	/**
-	 * @param allTargets_p
+	 * @param allTargets
 	 */
-	private boolean choiceIsNeeded(Map<NamedElement, List<NamedElement>> allTargets_p) {
-		for (NamedElement tgt : allTargets_p.keySet()) {
-			List<NamedElement> datas = allTargets_p.get(tgt);
-			if (datas.size() > 1)
+	private boolean choiceIsNeeded(Map<NamedElement, List<NamedElement>> allTargets) {
+		for (Map.Entry<NamedElement,List<NamedElement>> entry : allTargets.entrySet()) {
+			if (entry.getValue().size() > 1)
 				return true;
 		}
-
 		return false;
 	}
 }

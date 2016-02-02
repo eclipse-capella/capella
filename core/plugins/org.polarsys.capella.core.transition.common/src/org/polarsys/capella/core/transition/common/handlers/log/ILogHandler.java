@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,46 +21,46 @@ import org.polarsys.capella.core.transition.common.handlers.IHandler;
  */
 public interface ILogHandler extends IHandler {
 
-  public void setLevel(Level level_p);
+  void setLevel(Level level);
 
-  public String getText(Object object);
+  String getText(Object object);
 
-  public boolean hasDebug();
+  boolean hasDebug();
 
-  public boolean hasInfo();
+  boolean hasInfo();
 
-  public boolean hasWarn();
+  boolean hasWarn();
 
-  public boolean hasError();
+  boolean hasError();
 
-  public boolean hasFatal();
+  boolean hasFatal();
 
-  public void log(String message, IStatus status, String source_p);
+  void log(String message, IStatus status, String source);
 
-  public void log(String message, IStatus status, Object relatedObjects, String source_p);
+  void log(String message, IStatus status, Object relatedObjects, String source);
 
-  public void debug(String message, Object relatedObjects, String source_p);
+  void debug(String message, Object relatedObjects, String source);
 
-  public void debug(String message, String source_p);
+  void debug(String message, String source);
 
-  public void info(String message, Object relatedObjects, String source_p);
+  void info(String message, Object relatedObjects, String source);
 
-  public void info(String message, String source_p);
+  void info(String message, String source);
 
-  public void warn(String message, Object relatedObjects, String source_p);
+  void warn(String message, Object relatedObjects, String source);
 
-  public void warn(String message, String source_p);
+  void warn(String message, String source);
 
-  public void error(String message, Object relatedObjects, String source_p);
+  void error(String message, Object relatedObjects, String source);
 
-  public void error(String message, String source_p);
+  void error(String message, String source);
 
-  public void fatal(String message, Object relatedObjects, String source_p);
+  void fatal(String message, Object relatedObjects, String source);
 
-  public void fatal(String message, String source_p);
+  void fatal(String message, String source);
 
-  public void flush();
+  void flush();
 
-  public String getIdentifier(EObject me_p);
+  String getIdentifier(EObject me);
 
 }

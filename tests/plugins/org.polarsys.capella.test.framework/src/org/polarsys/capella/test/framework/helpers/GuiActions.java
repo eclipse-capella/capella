@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,27 +10,41 @@
  *******************************************************************************/
 package org.polarsys.capella.test.framework.helpers;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
+import org.eclipse.amalgam.explorer.activity.ui.api.preferences.PreferenceConstants;
+import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.IJobManager;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RenameResourceAction;
 import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
+import org.eclipse.ui.progress.UIJob;
+import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
@@ -48,16 +62,32 @@ public class GuiActions {
    * 
    * @param airdFile
    *          the aird file
+   * @param openActivityExplorer
+   *          Open the ActivityExplorer on open session
    */
-  public static void openSession(IFile airdFile) {
+  public static void openSession(IFile airdFile, boolean openActivityExplorer) {
+    // Set the corresponding preference to the expected value
+    boolean originalPrefValue = ActivityExplorerActivator.getDefault().getPreferenceStore()
+        .getBoolean(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
+    if (originalPrefValue != openActivityExplorer) {
+      ActivityExplorerActivator.getDefault().getPreferenceStore()
+          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, openActivityExplorer);
+    }
     OpenSessionAction olsa = new OpenSessionAction();
+    olsa.setOpenActivityExplorer(openActivityExplorer);
     olsa.selectionChanged(new StructuredSelection(airdFile));
     olsa.run();
+    // Reset the original value of the preference
+    if (originalPrefValue != openActivityExplorer) {
+      ActivityExplorerActivator.getDefault().getPreferenceStore()
+          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, originalPrefValue);
+    }
+
     flushASyncGuiThread();
   }
 
   /**
-   * Close several sessions at the same time by using the capella action @see CloseSessionAction.
+   * Close several sessions at the same time by using the Capella action @see CloseSessionAction.
    * 
    * @param sessions
    *          the list of sessions to close
@@ -75,6 +105,11 @@ public class GuiActions {
 
   public static void deleteEclipseProject(IProject eclipseProject) throws CoreException {
     eclipseProject.delete(false, true, new NullProgressMonitor());
+    flushASyncGuiThread();
+  }
+
+  public static void eraseEclipseProject(IProject eclipseProject) throws CoreException {
+    eclipseProject.delete(true, true, new NullProgressMonitor());
     flushASyncGuiThread();
   }
 
@@ -103,17 +138,94 @@ public class GuiActions {
     }
   }
 
-  public static void renameModelFile(IFile modelFile_p, final String newName_p) {
-    Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    RenameResourceAction renameAction = new RenameResourceAction(activeShell) {
-      @Override
-      protected String queryNewResourceName(final IResource resource) {
-        return newName_p;
+  /**
+   * Prevents that all UIJobs scheduled has been executed before returning.
+   */
+  public static void flushASyncGuiJobs() {
+    Collection<Job> jobs = getUIJobs();
+    while (jobs.size() > 0) {
+      for (Job job : jobs) {
+        try {
+          job.join();
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
       }
-    };
-    IStructuredSelection selection = new StructuredSelection(modelFile_p);
-    renameAction.selectionChanged(selection);
-    renameAction.run();
+      jobs = getUIJobs();
+    }
+  }
+
+  protected static Collection<Job> getUIJobs() {
+    IJobManager jobMan = Job.getJobManager();
+    Job[] jobs = jobMan.find(null);
+
+    Collection<Job> result = new ArrayList<Job>();
+    for (Job job : jobs) {
+      try {
+        if (job instanceof UIJob) {
+          result.add(job);
+        }
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+    }
+    return result;
+  }
+
+  public static void renameModelFile(IFile modelFile, final String newName) {
+
+    IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+
+    // Replace default handler by a dummy one (we do not want to display the rename dialog)
+    // See LTKLauncher.LTK_RENAME_ID (private)
+    String renameResourceCommandID = "org.eclipse.ltk.ui.refactoring.commands.renameResource";
+    IHandlerActivation dummyHandlerActivation = handlerService.activateHandler(renameResourceCommandID,
+        new AbstractHandler() {
+          @Override
+          public Object execute(ExecutionEvent event) throws ExecutionException {
+            return null;
+          }
+        });
+    try {
+      // Execute the rename action
+      RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()) {
+        @Override
+        protected String queryNewResourceName(final IResource resource) {
+          return newName;
+        }
+      };
+      IStructuredSelection selection = new StructuredSelection(modelFile);
+      renameAction.selectionChanged(selection);
+      renameAction.run();
+    } finally {
+      // Deactivate dummy handler
+      handlerService.deactivateHandler(dummyHandlerActivation);
+    }
+  }
+
+  /**
+   * Call the Sort Content action on an element
+   * 
+   * @param elementToSort
+   */
+  public static void sortContent(EObject elementToSort) {
+    SortContentAction _sortContent = new SortContentAction();
+    IStructuredSelection selection = new StructuredSelection(elementToSort);
+    _sortContent.selectionChanged(selection);
+    _sortContent.run();
+  }
+
+  /**
+   * Call the Sort Selection action on a list of selected elements
+   * 
+   * @param elementsToSort
+   */
+  public static void sortSelection(List<EObject> elementsToSort) {
+    SortSelectionAction _sortSelection = new SortSelectionAction();
+    IStructuredSelection selection = new StructuredSelection(elementsToSort.toArray());
+    _sortSelection.selectionChanged(selection);
+    _sortSelection.run();
   }
 
   /**
@@ -149,7 +261,20 @@ public class GuiActions {
   }
 
   /**
+   * Open ActivityExplorersession by using the Capella action @see OpenActivityExplorerAction
+   * 
+   * @param airdFile
+   *          the aird file
+   */
+  public static void launchOpenActivityExplorerAction(IFile airdFile) {
+    OpenActivityExplorerAction oaea = new OpenActivityExplorerAction();
+    oaea.selectionChanged(new StructuredSelection(airdFile));
+    oaea.run();
+  }
+
+  /**
    * Set current selection on IFile file
+   * 
    * @param file
    * @throws PartInitException
    */
@@ -159,7 +284,7 @@ public class GuiActions {
 
     StructuredSelection selection = new StructuredSelection(file);
     CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
-        .getActiveWorkbenchWindow().getActivePage().showView("capella.project.explorer");
+        .getActiveWorkbenchWindow().getActivePage().showView(CapellaCommonNavigator.ID);
 
     site.setSelectionProvider(capellaProjectView.getCommonViewer());
     site.getSelectionProvider().setSelection(selection);

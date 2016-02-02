@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,16 +22,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.requirement.RequirementPackage;
 
@@ -41,53 +41,134 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
 public abstract class PropertyPropagator {
 
   /**
-   * @param root_p
+   * @param literals
+   * @param selectedObjects
+   * @param semanticElementPropagation
+   * @param technicalElementPropagation
+   *          Indicates whether to propagate the status without filtering.
+   * @param propagateToRepresentations
+   *          Indicates whether to propagate the status to the referenced {@link DRepresentation}
+   * @param mustCleanReview
+   * 
+   * @return the collection of modified objects
    */
-  public void applyPropertiesOn(List<? extends EObject> literals_p, EObject root_p) {
+  public List<Collection<EObject>> applyPropertiesOn(List<? extends EObject> literals, Collection<EObject> selectedObjects,
+      boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus,
+      String filterStatus, boolean mustCleanReview, boolean mustPropagateStatus) {
     //
     // First of all, let's obtain target eObjects.
     //
-    TreeIterator<EObject> it = root_p.eAllContents();
-    EObject current = null;
     Collection<EObject> tgts = new HashSet<EObject>();
+    for (EObject obj : selectedObjects) {
+      if (!tgts.contains(obj)) {
+        handleFilterStatus(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, useFilterStatus, filterStatus, tgts, obj);
 
-    if (isTaggableElement(root_p)) {
-      tgts.add(root_p);
+        if (!(obj instanceof DRepresentation)) {
+          // Go through model elements to get inner elements
+          TreeIterator<EObject> it = obj.eAllContents();
+
+          while (it.hasNext()) {
+            EObject current = it.next();
+            handleFilterStatus(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, useFilterStatus, filterStatus, tgts, current);
+          }
+        }
+      }
     }
 
-    while (it.hasNext()) {
-      current = it.next();
-      if (isTaggableElement(current)) {
-        tgts.add(current);
+    // Handle DRepresentation
+    if (propagateToRepresentations) {
+      Collection<DRepresentation> representationsTargeted = RepresentationHelper
+          .getAllRepresentationsTargetedBy(selectedObjects);
+
+      for (DRepresentation representation : representationsTargeted) {
+        if (useFilterStatus) {
+          if (mustBeFiltered(filterStatus, representation)) {
+            tgts.add(representation);
+          }
+        } else {
+          tgts.add(representation);
+        }
       }
+
     }
 
     //
     // On a second hand, let's tag target eObjects.
     //
+    Collection<EObject> tagChangedElements = new HashSet<EObject>();
+    Collection<EObject> reviewChangedElements = new HashSet<EObject>();
     for (EObject eobj : tgts) {
-      tagElement(literals_p, eobj);
+    	boolean result = false;
+    	if (mustPropagateStatus) {
+    		result = tagElement(literals, eobj);
+    		if (result) {
+    			tagChangedElements.add(eobj);
+    		}
+    	}
+    	if (mustCleanReview) {
+    		result = cleanReview(eobj);
+    		if (result) {
+    			reviewChangedElements.add(eobj);
+    		}
+    	}
+    }
+    List<Collection<EObject>> colOut = new ArrayList<Collection<EObject>>();
+    colOut.add(tagChangedElements);
+    colOut.add(reviewChangedElements);
+    return colOut;
+  }
+
+  protected void handleFilterStatus(boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, boolean useFilterStatus, String filterStatus,
+      Collection<EObject> tgts, EObject current) {
+    if (useFilterStatus) {
+      if (mustBeFiltered(filterStatus, current)) {
+        handlePropagation(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, tgts, current);
+      }
+    } else {
+      handlePropagation(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, tgts, current);
     }
   }
 
-  /**
-   * @param element_p
-   * @return
-   */
-  public boolean isTaggableElement(EObject element_p) {
-    return isDirectElement(element_p) || isWithSpecializedElement(element_p);
+  protected void handlePropagation(boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, Collection<EObject> tgts, EObject obj) {
+    if (isTaggableElement(obj)) {
+      if (obj instanceof DRepresentation) {
+       if (propagateToRepresentations) {
+        tgts.add(obj);
+       }
+      }
+      else if (semanticElementPropagation) {
+        tgts.add(obj);
+      }
+    } else {
+      if (technicalElementPropagation) {
+        tgts.add(obj);
+      }
+    }
+  }
+
+  protected boolean mustBeFiltered(String filterStatus, EObject obj) {
+    return (filterStatus == null && getElementTag(obj) == null) || filterStatus != null
+        && filterStatus.equals(getElementTag(obj));
   }
 
   /**
-   * @param literals_p
-   * @param eObject_p
+   * @param element
    * @return
    */
-  private boolean tagElement(List<? extends EObject> literals_p, EObject eObject_p) {
+  public boolean isTaggableElement(EObject element) {
+    return isDirectElement(element) || isWithSpecializedElement(element);
+  }
+
+  /**
+   * @param literals
+   * @param eObject
+   * @return
+   */
+  protected boolean tagElement(List<? extends EObject> literals, EObject eObject) {
     boolean result = true;
-    for (EObject literal : literals_p) {
-      if (literal instanceof EnumerationPropertyLiteral) {
-        result &= tagElement((EnumerationPropertyLiteral) literal, eObject_p);
+    for (EObject literal : literals) {
+      if (literal == null || literal instanceof EnumerationPropertyLiteral) {
+        result &= tagElement((EnumerationPropertyLiteral) literal, eObject);
       } else {
         result &= false;
       }
@@ -137,23 +218,23 @@ public abstract class PropertyPropagator {
   }
 
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  protected abstract boolean isTagged(EObject eObject_p);
-  
+  protected abstract boolean isTagged(EObject eObject);
+
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  protected abstract boolean isTaggedRepresentation(EObject eObject_p);
-  
+  protected abstract boolean isTaggedRepresentation(EObject eObject);
+
   /**
-   * @param literal_p
-   * @param eObject_p
+   * @param literal
+   * @param eObject
    * @return
    */
-  protected abstract boolean tagElement(EnumerationPropertyLiteral literal_p, EObject eObject_p);
+  protected abstract boolean tagElement(EnumerationPropertyLiteral literal, EObject eObject);
 
   /**
    * @return
@@ -161,12 +242,25 @@ public abstract class PropertyPropagator {
   protected abstract String getKeyword();
 
   /**
-   * @param eObject_p
+   * Clean review
+   * @param eobj
+   */
+  protected abstract boolean cleanReview(EObject eobj);
+
+  /**
+   * 
+   * @param eObject
    * @return
    */
-  private boolean isDirectElement(EObject eObject_p) {
-    if (null != eObject_p) {
-      EClass eclass = eObject_p.eClass();
+  protected abstract String getElementTag(EObject eObject);
+
+  /**
+   * @param eObject
+   * @return
+   */
+  protected boolean isDirectElement(EObject eObject) {
+    if (null != eObject) {
+      EClass eclass = eObject.eClass();
       for (EClass current : getDirectTypes()) {
         if (current == eclass) {
           return true;
@@ -177,12 +271,12 @@ public abstract class PropertyPropagator {
   }
 
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  private boolean isWithSpecializedElement(EObject eObject_p) {
-    if (null != eObject_p) {
-      EClass eclass = eObject_p.eClass();
+  protected boolean isWithSpecializedElement(EObject eObject) {
+    if (null != eObject) {
+      EClass eclass = eObject.eClass();
       for (EClass current : getWithSpecializationType()) {
         if (current.isSuperTypeOf(eclass)) {
           return true;
@@ -193,49 +287,48 @@ public abstract class PropertyPropagator {
   }
 
   /**
-   * @param eObject_p
+   * @param eObject
    * @return
    */
-  public boolean isEnumerationPropertyTypeDefinedForProject(EObject eObject_p) {
-    return (null != CapellaProjectHelper.getEnumerationPropertyType(eObject_p, getKeyword()));
+  public boolean isEnumerationPropertyTypeDefinedForProject(EObject eObject) {
+    return (null != CapellaProjectHelper.getEnumerationPropertyType(eObject, getKeyword()));
   }
 
   /**
-   * @param root_p
+   * @param root
    * @return
    */
-  public List<EObject> getTaggedObjects(EObject root_p) {
+  public List<EObject> getTaggedObjects(EObject root) {
     List<EObject> result = new ArrayList<EObject>();
-    Session session = SessionManager.INSTANCE.getSession(root_p);
+    Session session = SessionManager.INSTANCE.getSession(root);
 
-    if (null != root_p) {
-      if (isTagged(root_p)) {
-        result.add(root_p);
+    if (null != root) {
+      if (isTagged(root)) {
+        result.add(root);
       }
-      
-      TreeIterator<EObject> it = root_p.eAllContents();
+
+      TreeIterator<EObject> it = root.eAllContents();
       EObject current = null;
-      EObject currentDiagram = null ;
+      EObject currentDiagram = null;
       while (it.hasNext()) {
         current = it.next();
         if (isTagged(current)) {
           result.add(current);
-            }
-        for (Iterator iter = DialectManager.INSTANCE.getRepresentations(current, session ).iterator(); iter.hasNext();) {
-    		currentDiagram=(EObject) iter.next();
-    		if (isTaggedRepresentation(currentDiagram)) {
-    			result.add(currentDiagram);
-    		}
         }
-        for (Iterator iter = DialectManager.INSTANCE.getRepresentations(root_p, session ).iterator(); iter.hasNext();) {
-    		currentDiagram=(EObject) iter.next();
-    		if (isTaggedRepresentation(currentDiagram)) {
-    			result.add(currentDiagram);
-    		}
+        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(current, session).iterator(); iter.hasNext();) {
+          currentDiagram = (EObject) iter.next();
+          if (isTaggedRepresentation(currentDiagram)) {
+            result.add(currentDiagram);
+          }
+        }
+        for (Iterator<?> iter = DialectManager.INSTANCE.getRepresentations(root, session).iterator(); iter.hasNext();) {
+          currentDiagram = (EObject) iter.next();
+          if (isTaggedRepresentation(currentDiagram)) {
+            result.add(currentDiagram);
+          }
         }
       }
     }
     return result;
   }
-
 }

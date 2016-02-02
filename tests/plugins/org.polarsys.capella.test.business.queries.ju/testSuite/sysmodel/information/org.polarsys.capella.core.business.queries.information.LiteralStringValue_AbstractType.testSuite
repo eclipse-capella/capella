@@ -12,9 +12,9 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType-getAvailableElements
 inputId = 16ee0e61-1925-46d8-b53d-9c1a58492f95
 resultIds = {
+    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     d2362e05-0c2c-4055-8ff4-f8aa59203a2f
     9689c187-38f6-44af-bd70-b6c0c9613e65
-    32a91bc7-3ed4-4dc5-8611-d2662e68249c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType-getCurrentElements
@@ -26,9 +26,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType-getAvailableElements
 inputId = 546512c3-34cf-4d43-98a0-01ec52f8cd41
 resultIds = {
+    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     d2362e05-0c2c-4055-8ff4-f8aa59203a2f
     9689c187-38f6-44af-bd70-b6c0c9613e65
-    32a91bc7-3ed4-4dc5-8611-d2662e68249c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType-getCurrentElements
@@ -40,9 +40,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType-getAvailableElements
 inputId = 42904720-e13d-4971-b1dc-8039c9a6a8c4
 resultIds = {
+    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     d2362e05-0c2c-4055-8ff4-f8aa59203a2f
     9689c187-38f6-44af-bd70-b6c0c9613e65
-    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     afde6871-dd8c-4621-beca-082f9ea30c12
     78c08e0a-df66-493b-8a1f-cc162dbbe196
 }
@@ -56,9 +56,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType-getAvailableElements
 inputId = 6e674eb4-1cac-4278-aed5-681f95a8e2e6
 resultIds = {
+    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     d2362e05-0c2c-4055-8ff4-f8aa59203a2f
     9689c187-38f6-44af-bd70-b6c0c9613e65
-    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     afde6871-dd8c-4621-beca-082f9ea30c12
     78c08e0a-df66-493b-8a1f-cc162dbbe196
 }
@@ -72,9 +72,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType-getAvailableElements
 inputId = d845a7ac-7f33-404c-85ef-276fac6e9f13
 resultIds = {
+    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     d2362e05-0c2c-4055-8ff4-f8aa59203a2f
     9689c187-38f6-44af-bd70-b6c0c9613e65
-    32a91bc7-3ed4-4dc5-8611-d2662e68249c
     afde6871-dd8c-4621-beca-082f9ea30c12
     78c08e0a-df66-493b-8a1f-cc162dbbe196
 }

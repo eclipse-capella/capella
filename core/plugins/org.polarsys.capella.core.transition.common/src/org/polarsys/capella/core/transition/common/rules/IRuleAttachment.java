@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,13 +23,13 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IRule;
 public interface IRuleAttachment extends IRule<EObject> {
 
   /**
-   * Returns the default container to store the result_p element
+   * Returns the default container to store the result element
    */
-  public EObject retrieveDefaultContainer(EObject element_p, EObject result_p, IContext context_p);
+  EObject retrieveDefaultContainer(EObject element, EObject result, IContext context);
 
   /**
-   * Returns the containementFeature which should be used for the result_p element when stored into container_p
+   * Returns the containementFeature which should be used for the result element when stored into container
    */
-  public EStructuralFeature retrieveTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p);
+  EStructuralFeature retrieveTargetContainementFeature(EObject element, EObject result, EObject container, IContext context);
 
 }

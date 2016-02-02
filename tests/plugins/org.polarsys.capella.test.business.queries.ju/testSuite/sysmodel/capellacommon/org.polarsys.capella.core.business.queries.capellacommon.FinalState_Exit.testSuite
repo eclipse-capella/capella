@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.FinalState_Exit-getAvailableElements
 inputId = 40a24867-02cc-4407-b89e-6607c409c8cc
 resultIds = {

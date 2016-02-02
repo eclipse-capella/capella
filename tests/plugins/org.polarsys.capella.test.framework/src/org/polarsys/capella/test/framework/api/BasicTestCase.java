@@ -51,8 +51,13 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   protected BasicTestSuite parentTestSuite;
 
   @Override
-  public void setParentTestSuite(BasicTestSuite parentTestSuite) {
+  public void setParentTestSuite(@SuppressWarnings("hiding") BasicTestSuite parentTestSuite) {
     this.parentTestSuite = parentTestSuite;
+  }
+
+  @Override
+  public BasicTestSuite getParentTestSuite() {
+    return this.parentTestSuite;
   }
 
   /*
@@ -93,7 +98,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   }
 
   @Override
-  public long getExcutionDuration() {
+  public long getExecutionDuration() {
     return executionDurationInMillis;
   }
 
@@ -103,8 +108,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   }
 
   protected IFile getAirdFileForLoadedModel(String modelName) {
-    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(
-        modelName + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
+    return AbstractProvider.getAirdFileForLoadedModel(modelName);
   }
 
   protected IFile getCapellaFileForLoadedModel(String modelName) {
@@ -114,7 +118,8 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 
   // /**
   // * Returns the plugin ID of the current test plugin.<br>
-  // * Should be overriden in an abstract class whose all test cases in a test plugin inherit.
+  // * Should be overriden in an abstract class whose all test cases in a test
+  // plugin inherit.
   // */
   // protected abstract String getPluginId();
 
@@ -125,17 +130,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   public abstract void test() throws Exception;
 
   protected CapellaModel getTestModel(String relativeModelPath) {
-    // IProject project = IResourceHelpers.getEclipseProjectInWorkspace(modelName);
-    // if (!project.isOpen()) {
-    // try {
-    // project.open(new NullProgressMonitor());
-    // } catch (CoreException exception_p) {
-    // exception_p.printStackTrace();
-    // }
-    // }
-    // Session session = getSessionForLoadedCapellaModel(modelName);
-    // return (CapellaModel) ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
-    return ModelProvider.getTestModel(relativeModelPath, this);
+    return ModelProviderHelper.getInstance().getModelProvider().getTestModel(relativeModelPath, this);
   }
 
   protected Session getSession(String relativeModelPath) {
@@ -143,16 +138,11 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   }
 
   protected Session getSessionForTestModel(String relativeModelPath) {
-    // IProject project = IResourceHelpers.getEclipseProjectInWorkspace(modelName);
-    //  	Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(project.getFile(modelName + ".aird")), new NullProgressMonitor()); //$NON-NLS-1$
-    // if (!session.isOpen())
-    // session.open(new NullProgressMonitor());
-    // return session;
-    return ModelProvider.getSessionForTestModel(relativeModelPath, this);
+    return ModelProviderHelper.getInstance().getModelProvider().getSessionForTestModel(relativeModelPath, this);
   }
 
   protected IProject getEclipseProjectForTestModel(String relativeModelPath) {
-    return ModelProvider.getEclipseProjectForTestModel(relativeModelPath, this);
+    return AbstractProvider.getEclipseProjectForTestModel(relativeModelPath, this);
   }
 
   protected String getRelativeModelsFolderName() {
@@ -168,12 +158,9 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    // require test models
     List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null) {
-      for (String modelName : projectNamesToLoad) {
-        ModelProvider.requireTestModel(modelName, this);
-      }
+      ModelProviderHelper.getInstance().getModelProvider().requireTestModel(projectNamesToLoad, this);
     }
   }
 
@@ -184,7 +171,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null) {
       for (String modelName : projectNamesToLoad) {
-        ModelProvider.releaseTestModel(modelName, this);
+        ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
       }
     }
   }
@@ -234,6 +221,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     return new File(getPluginFolder().toString() + "/" + relativePath); //$NON-NLS-1$
   }
 
+  @Override
   public File getFileOrFolderInTestModelRepository(String relativePath) {
     return getFileOrFolderInTestPlugin(getRelativeModelsFolderName() + "/" + relativePath);//$NON-NLS-1$
   }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -264,15 +264,6 @@
     <querySpecification queryIdentifier="GetAvailable_StringReference_ReferencedProperty__Lib" extendedQueryIdentifier="GetAvailable_StringReference_ReferencedProperty">
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_UnionProperty_MinValue__Lib" extendedQueryIdentifier="GetAvailable_UnionProperty_MinValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_UnionProperty_MaxValue__Lib" extendedQueryIdentifier="GetAvailable_UnionProperty_MaxValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_UnionProperty_DefaultValue__Lib" extendedQueryIdentifier="GetAvailable_UnionProperty_DefaultValue">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_ComplexValue_Type__Lib" extendedQueryIdentifier="GetAvailable_ComplexValue_Type">
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
@@ -345,9 +336,20 @@
     <querySpecification queryIdentifier="GetAvailable_ExchangeItem_InheritedExchangeItem__Lib" extendedQueryIdentifier="GetAvailable_ExchangeItem_InheritedExchangeItem">
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
-    <querySpecification extendedQueryIdentifier="GetAvailable_AbstractStateProperties"
-          queryIdentifier="GetAvailable_AbstractStateProperties__Lib">
+    <querySpecification extendedQueryIdentifier="GetAvailable_AbstractStateProperties" queryIdentifier="GetAvailable_AbstractStateProperties__Lib">
        <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_AbstractStateProperties__Lib">
+       </queryAlgorithm>
+    </querySpecification>
+    <querySpecification extendedQueryIdentifier="GetAvailable_EnumerationPropertyValue_Type" queryIdentifier="GetAvailable_EnumerationPropertyValue_Type__Lib">
+       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.information.GetAvailable_EnumerationPropertyValue_Type__Lib">
+       </queryAlgorithm>
+    </querySpecification>
+    <querySpecification extendedQueryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValueGroups" queryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValueGroups_Lib">
+       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_CapellaElement_AppliedPropertyValueGroups_Lib">
+       </queryAlgorithm>
+    </querySpecification>
+    <querySpecification extendedQueryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValues" queryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValues_Lib">
+       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_CapellaElement_AppliedPropertyValues_Lib">
        </queryAlgorithm>
     </querySpecification>    
   </extension>

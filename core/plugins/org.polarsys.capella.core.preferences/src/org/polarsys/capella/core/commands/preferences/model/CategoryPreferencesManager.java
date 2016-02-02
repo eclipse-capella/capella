@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -123,9 +123,8 @@ public class CategoryPreferencesManager {
 	public CategoryPreferences getCategory(CategoryPreferences parent, String path) {
 		if (parent == null) {
 			return globalCategory.getDescendent(path, true);
-		} else {
-			return parent.getDescendent(path, true);
 		}
+		return parent.getDescendent(path, true);
 	}
 
 	/**
@@ -155,9 +154,8 @@ public class CategoryPreferencesManager {
 	public CategoryPreferences findCategory(CategoryPreferences parent, String path) {
 		if (parent == null) {
 			return globalCategory.getDescendent(path, false);
-		} else {
-			return parent.getDescendent(path, false);
 		}
+		return parent.getDescendent(path, false);
 	}
 	
 	/**
@@ -257,9 +255,6 @@ public class CategoryPreferencesManager {
 	 * @param element
 	 */
 	public void loadCategories(CategoryPreferences parent, IConfigurationElement element) {
-		
-		
-		String path = element.getAttribute(XmlPreferencesConfig.ITEM_ID);
 		String description = element.getAttribute(XmlPreferencesConfig.ITEM_DESCRIPTION);
 		String name = element.getAttribute(XmlPreferencesConfig.ITEM_NAME);
 		
@@ -274,13 +269,10 @@ public class CategoryPreferencesManager {
 			}
 			//Finally resolve items of current category
 			try {
-				
-				category = XmlPreferencesConfig.loadCategoryItems(element, category);
-			} catch (Exception exception_p) {
-				StringBuilder loggerMessage = new StringBuilder("CategoryManager.loadCategories(..) _ "); //$NON-NLS-1$
-				exception_p.printStackTrace();
+				XmlPreferencesConfig.loadCategoryItems(element, category);
+			} catch (Exception exception) {
+				exception.printStackTrace();
 			}
-			
 		} 
 	}
 

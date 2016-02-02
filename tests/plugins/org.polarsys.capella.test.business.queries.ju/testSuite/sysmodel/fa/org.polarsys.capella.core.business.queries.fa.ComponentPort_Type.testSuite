@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_Type-getAvailableElements
 inputId = 3ad12179-8094-4664-8dcb-df042088c92d
 resultIds = {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,20 +18,21 @@ import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
+ *
  */
 public interface IResolverHandler extends IHandler {
 
   /**
-   * Performs a selection of one or some elements from the given items_p
-   * @param source_p the element which require the selection
-   * @param items_p a list of choices
-   * @param title_p a short description for the selection
-   * @param message_p a detailed description for the selection
-   * @param multipleSelection_p defines if the returned list should contain only one or many elements
-   * @param transfo_p the current transfo
-   * @return a list which can contains one or many elements according to the multiple_selection_p parameter
+   * Performs a selection of one or some elements from the given items
+   * @param source the element which require the selection
+   * @param items a list of choices
+   * @param title a short description for the selection
+   * @param message a detailed description for the selection
+   * @param multipleSelection defines if the returned list should contain only one or many elements
+   * @param transfo the current transfo
+   * @return a list which can contains one or many elements according to the multiple_selection parameter
    */
-  public List<EObject> resolve(EObject source_p, List<EObject> items_p, final String title_p, final String message_p, boolean multipleSelection_p,
-      IContext context_p, EObject[] context);
+  List<EObject> resolve(EObject source, List<EObject> items, final String title, final String message, boolean multipleSelection,
+      IContext context, EObject[] contexts);
 
 }

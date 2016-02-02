@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,20 +40,21 @@ import org.polarsys.capella.core.transfo.statemachine.TransformStateMachine;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 /**
+ *
  */
 public class Rule_OperationalEntity extends org.polarsys.capella.core.projection.common.rules.oa.Rule_OperationalEntity {
 
   /**
-   * @param source_p
-   * @param target_p
+   * @param source
+   * @param target
    */
   public Rule_OperationalEntity() {
     super(OaPackage.Literals.ENTITY, CsPackage.Literals.COMPONENT, CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION);
   }
 
   /**
-   * @param source_p
-   * @param target_p
+   * @param source
+   * @param target
    */
   public Rule_OperationalEntity(EClass source, EClass target, EClass reference) {
     super(source, target, reference);
@@ -63,24 +64,24 @@ public class Rule_OperationalEntity extends org.polarsys.capella.core.projection
    * @see org.polarsys.capella.core.tiger.ITransfoRule#requireTransformation(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
    */
   @Override
-  public boolean requireTransformation(EObject element_p, ITransfo transfo_p) {
-    Object transformedElement = Query.retrieveTransformedElements(element_p, transfo_p, CtxPackage.Literals.ACTOR);
+  public boolean requireTransformation(EObject element, ITransfo transfo) {
+    Object transformedElement = Query.retrieveTransformedElements(element, transfo, CtxPackage.Literals.ACTOR);
 
-    return ((transformedElement == null) || ((transformedElement instanceof List<?>) && (((List<?>) transformedElement).size() == 0)) || ((transformedElement instanceof EObject) && !EcoreUtil2
+    return ((transformedElement == null) || (((List<?>) transformedElement).size() == 0) || ((transformedElement instanceof EObject) && !EcoreUtil2
         .isEqualOrSuperClass(getTargetType(), ((EObject) transformedElement).eClass())));
 
   }
 
   @Override
-  public boolean when(EObject element_p, ITransfo transfo_p) {
-    return !(element_p instanceof OperationalActor);
+  public boolean when(EObject element, ITransfo transfo) {
+    return !(element instanceof OperationalActor);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
     return CtxPackage.Literals.ACTOR_PKG__OWNED_ACTORS;
   }
 
@@ -88,19 +89,19 @@ public class Rule_OperationalEntity extends org.polarsys.capella.core.projection
    * {@inheritDoc}
    */
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    Entity sourceElement = (Entity) element_p;
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    Entity sourceElement = (Entity) element;
     EObject result = CtxFactory.eINSTANCE.createActor();
     if (result instanceof AbstractType) {
       PartExt.addPart((AbstractType) result, CsFactory.eINSTANCE.createPart(sourceElement.getName()),
-          (SystemAnalysis) context_p.get(CapellaEngine.TRANSFO_TARGET_CONTAINER));
+          (SystemAnalysis) context.get(CapellaEngine.TRANSFO_TARGET_CONTAINER));
     }
     return result;
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    BlockArchitecture architecture = (BlockArchitecture) context_p.get(CapellaEngine.TRANSFO_TARGET_CONTAINER);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    BlockArchitecture architecture = (BlockArchitecture) context.get(CapellaEngine.TRANSFO_TARGET_CONTAINER);
     return BlockArchitectureExt.getActorPkg(architecture);
   }
 
@@ -108,8 +109,8 @@ public class Rule_OperationalEntity extends org.polarsys.capella.core.projection
    * {@inheritDoc}
    */
   @Override
-  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EntityPkg pkg = (EntityPkg) EcoreUtil2.getFirstContainer(element_p, OaPackage.Literals.ENTITY_PKG);
+  protected EObject getBestContainer(EObject element, EObject result, IContext context) {
+    EntityPkg pkg = (EntityPkg) EcoreUtil2.getFirstContainer(element, OaPackage.Literals.ENTITY_PKG);
     ActorPkg pkgt = (ActorPkg) Query.retrieveFirstTransformedElement(pkg, _transfo, CtxPackage.Literals.ACTOR_PKG);
     if (pkgt != null) {
       return pkgt;
@@ -118,22 +119,17 @@ public class Rule_OperationalEntity extends org.polarsys.capella.core.projection
   }
 
   @Override
-  protected void runSubTransition(EObject element_p, ITransfo transfo_p) {
-
+  protected void runSubTransition(EObject element, ITransfo transfo) {
     EObject transfoSource = (EObject) getTransfo().get(TransfoEngine.TRANSFO_SOURCE);
-    if (EcoreUtil2.isOrIsContainedBy(element_p, transfoSource)) {
-
-      if (element_p instanceof StateMachine) {
-        StateMachine sourceElement = (StateMachine) element_p;
+    if (EcoreUtil2.isOrIsContainedBy(element, transfoSource)) {
+      if (element instanceof StateMachine) {
+        StateMachine sourceElement = (StateMachine) element;
         TransformStateMachine transfSM = new TransformStateMachine();
         transfSM.setContext(sourceElement);
         transfSM.execute();
-
       } else {
-        super.runSubTransition(element_p, transfo_p);
+        super.runSubTransition(element, transfo);
       }
     }
-
   }
-
 }

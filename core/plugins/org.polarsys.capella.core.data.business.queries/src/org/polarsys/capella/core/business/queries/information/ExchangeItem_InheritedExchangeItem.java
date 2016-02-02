@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,24 +44,24 @@ public class ExchangeItem_InheritedExchangeItem extends AbstractClassInheritedCl
 
 	
 	@Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
 		List<CapellaElement> result = new ArrayList<CapellaElement>();
-		if (element_p instanceof ExchangeItem) {
-			List<CapellaElement> elements = QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB, element_p, context, new RemoveFinalElement());
+		if (element instanceof ExchangeItem) {
+			List<CapellaElement> elements = QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB, element, context, new RemoveFinalElement());
 			result.addAll(elements);
 		}
-		result.remove(element_p);
+		result.remove(element);
 		return result;
 	}
 	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
 		List<CapellaElement> result = new ArrayList<CapellaElement>();
-		if (element_p instanceof ExchangeItem) {			
-			List<CapellaElement> elements = QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM, element_p, context, new RemoveFinalElement());
+		if (element instanceof ExchangeItem) {			
+			List<CapellaElement> elements = QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM, element, context, new RemoveFinalElement());
 			result.addAll(elements);
 		}
 		return result;

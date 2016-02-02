@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,101 +10,49 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.metric.actions;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
+import org.apache.log4j.Logger;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
+import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
 import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
+import org.polarsys.capella.core.ui.metric.actions.ProgressSetDialog.PropagateChoice;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
+import org.polarsys.capella.core.ui.metric.utils.Utils;
 
 public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
 
-  private class ProgressSetDialog extends Dialog {
-
-    /** Selected enumeration */
-    private EnumerationPropertyLiteral _enum = null;
-
-    /**
-     * Constructor
-     */
-    protected ProgressSetDialog(Shell parentShell_p) {
-      super(parentShell_p);
-    }
-
-    /** accessor */
-    public EnumerationPropertyLiteral getSelectedEnum() {
-      return _enum;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @SuppressWarnings("synthetic-access")
-    @Override
-    protected Control createContents(Composite parent_p) {
-
-      getShell().setText(MetricMessages.progressMonitoring_setAction_dialog_title);
-
-      Composite comp = new Composite(parent_p, SWT.NONE);
-      comp.setLayout(new GridLayout(2, false));
-      comp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-
-      new Label(comp, SWT.NONE).setText(MetricMessages.progressMonitoring_setAction_dialog_main_lbl);
-
-      new Label(comp, SWT.NONE);
-
-      new Label(comp, SWT.NONE).setText(MetricMessages.progressMonitoring_setAction_dialog_combo_lbl);
-
-      final Combo combo = new Combo(comp, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
-      EnumerationPropertyType ept = CapellaProjectHelper.getEnumerationPropertyType(_rootSemanticObject, CapellaProjectHelper.PROGRESS_STATUS_KEYWORD);
-      int i = 0;
-      int i0 = 0;
-      for (EnumerationPropertyLiteral enumz : ept.getOwnedLiterals()) {
-        combo.add(enumz.getLabel());
-        combo.setData(String.valueOf(i++), enumz);
-      }
-      combo.select(i0);
-      _enum = (EnumerationPropertyLiteral) combo.getData(String.valueOf(i0));
-
-      GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
-      combo.setLayoutData(gd);
-
-      combo.addSelectionListener(new SelectionAdapter() {
-        @Override
-        public void widgetSelected(SelectionEvent e) {
-          _enum = (EnumerationPropertyLiteral) combo.getData(String.valueOf(combo.getSelectionIndex()));
-          return;
-        }
-      });
-
-      return super.createContents(parent_p);
-    }
-
-  }
-
-  /** the root semantic object selected */
-  private EObject _rootSemanticObject;
-
+  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe("Progress Monitoring"); //$NON-NLS-1$
+  private static final String strStatus = "Status";
+  private static final String strReview = "Review";
+  
   /**
    * Constructor.
    */
@@ -113,29 +61,80 @@ public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
     setImageDescriptor(MetricActivator.getDefault().getImageDescriptor(IImageKeys.IMG_PROGRESS_MONITORING));
   }
 
+  
+  @SuppressWarnings("rawtypes")
+private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) {
+	  int nb = 0;
+	  for (EObject eo : inCollection ) {
+		  if (clazz.isInstance(eo)) {
+			  nb+=1;
+		  }
+	  }
+	  
+	  
+	  return nb;
+  }
+  
+  
   /**
    * @see org.eclipse.jface.action.Action#run()
    */
   @Override
   public void run() {
-    EObject rootSemanticObject = ProgressMonitoringActionsHelper.getSelectedEObject(getStructuredSelection());
-    if (null == rootSemanticObject) {
+    // Assume that all selected objects are in the same Capella Project
+    final Collection<EObject> selectedObjects = ProgressMonitoringActionsHelper
+        .getSelectedEObjects(getStructuredSelection());
+    if (selectedObjects.isEmpty()) {
       return;
     }
-    _rootSemanticObject = rootSemanticObject;
 
-    Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    ProgressSetDialog d = new ProgressSetDialog(shell);
-
-    int ret = d.open();
-
-    final EnumerationPropertyLiteral enu = d.getSelectedEnum();
-
-    if (Window.OK == ret) {
-      TransactionHelper.getExecutionManager(_rootSemanticObject).execute(new AbstractReadWriteCommand() {
+    final ProgressSetDialog dialog = getRunSetup(selectedObjects);
+    if (dialog != null) {
+      TransactionHelper.getExecutionManager(selectedObjects.iterator().next()).execute(new AbstractReadWriteCommand() {
         @SuppressWarnings("synthetic-access")
+        @Override
         public void run() {
-          ProgressMonitoringPropagator.getInstance().applyPropertiesOn(Collections.singletonList(enu), _rootSemanticObject);
+          
+          PropagateChoice propagateChoice = dialog.getPropagateChoiceWithoutFiltering();
+          boolean semanticElementPropagation = propagateChoice == PropagateChoice.ONLY_BUSINESS_ELEMENTS
+              || propagateChoice == PropagateChoice.ALL_CAPELLA_ELEMENTS;
+          boolean technicalElementPropagation = propagateChoice == PropagateChoice.ALL_CAPELLA_ELEMENTS;
+          
+          List<Collection<EObject>> result = ProgressMonitoringPropagator.getInstance().applyPropertiesOn(
+              Collections.singletonList(dialog.getSelectedEnum()), selectedObjects,
+              semanticElementPropagation, technicalElementPropagation, dialog.isPropagateToRepresentations(),
+              dialog.useFilterStatus(), getLabel(dialog), dialog.mustCleanReview(),dialog.mustPropagateStatus());
+
+          // Compute the number of modified elements
+          int nbCapellaElementTagged = getNbElementsOfType(result.get(0), CapellaElement.class);
+          int nbDRepresentationTagged = getNbElementsOfType(result.get(0), DRepresentation.class);
+          
+          int nbCapellaElementReviewedCleared = getNbElementsOfType(result.get(1), CapellaElement.class);
+          int nbDRepresentationReviewedCleared = getNbElementsOfType(result.get(1), DRepresentation.class);
+          
+          if (nbCapellaElementTagged+nbDRepresentationTagged == 0) {
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strStatus));
+          } else {
+        	  String[] arguments = new String[3];
+        	  arguments[0] = strStatus;
+        	  arguments[1] = Integer.toString(nbCapellaElementTagged);
+        	  arguments[2] = Integer.toString(nbDRepresentationTagged);
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_changes_info, arguments));
+          }
+
+          if (nbCapellaElementReviewedCleared+nbDRepresentationReviewedCleared == 0) {
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strReview));
+          } else {
+        	  String[] arguments = new String[3];
+        	  arguments[0] = strReview;
+        	  arguments[1] = Integer.toString(nbCapellaElementReviewedCleared);
+        	  arguments[2] = Integer.toString(nbDRepresentationReviewedCleared);
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_changes_info, arguments));
+          }
+        }
+
+        private String getLabel(final ProgressSetDialog runSetup) {
+          return runSetup.getFilterStatus() == null ? null:runSetup.getFilterStatus().getLabel();
         }
 
         @Override
@@ -144,9 +143,69 @@ public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
         }
       });
     }
-
-    // in order to avoid any memory leak with models...
-    _rootSemanticObject = null;
   }
 
+  protected ProgressSetDialog getRunSetup(Collection<EObject> selectedObjects) {
+    Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+    final ProgressSetDialog dialog = new ProgressSetDialog(shell, selectedObjects);
+    if (dialog.open() == Window.OK) {
+      return dialog;
+    }
+    return null;
+  }
+
+  @Override
+  protected boolean updateSelection(IStructuredSelection selection) {
+    if (selection != null) {
+      boolean enabled = true;
+      Set<IProject> projects = new HashSet<IProject>();
+      Iterator<?> iterator = selection.iterator();
+      while (iterator.hasNext()) {
+        Object object = iterator.next();
+        enabled &= isEnabled(object);
+        projects.add(getProject(object));
+      }
+      return enabled && projects.size() == 1;
+    }
+    return false;
+  }
+
+  private IProject getProject(Object object) {
+    if (object instanceof EObject) {
+      return getProject(EcoreUtil2.getFile(((EObject) object).eResource()));
+    } else if (object instanceof IFile) {
+      return ((IFile) object).getProject();
+    }
+    return null;
+  }
+
+  private boolean isEnabled(Object selection) {
+    if (selection instanceof IFile) {
+      Session session = SessionHelper.getSession((IFile) selection);
+      if ((null != session) && session.isOpen()) {
+        Resource resource = session.getSessionResource();
+        DAnalysis da = (DAnalysis) EcoreUtil.getObjectByType(resource.getContents(),
+            ViewpointPackage.Literals.DANALYSIS);
+        Collection<EObject> models = new ArrayList<EObject>();
+        models.addAll(da.getModels());
+        for (DAnalysis refDa : da.getReferencedAnalysis()) {
+          models.addAll(refDa.getModels());
+        }
+
+        boolean showProgressAction = false;
+        for (EObject model : models) {
+          showProgressAction = showProgressAction
+              || ProgressMonitoringPropagator.getInstance().isEnumerationPropertyTypeDefinedForProject(model);
+        }
+        return showProgressAction;
+      }
+    } else if (selection instanceof DRepresentation) {
+      return ProgressMonitoringPropagator.getInstance().isEnumerationPropertyTypeDefinedForProject(
+          Utils.getTarget((DRepresentation) selection));
+    } else if (selection instanceof EObject) {
+      return ProgressMonitoringPropagator.getInstance().isEnumerationPropertyTypeDefinedForProject((EObject) selection);
+    }
+    return false;
+  }
 }
+

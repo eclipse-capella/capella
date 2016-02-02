@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -108,9 +108,8 @@ public class InitializeDiffMergeUpdateReplicaActivity extends InitializeDiffMerg
     //If replicable element is into a writeable area, we could consider to let computed scope to be merge-scope, but some elements can 
     //be linked to source replicable element, adding links to them.
 
-    Collection<EObject> scopeElements = new HashSet<EObject>();
     //Scope is computed, we put it into Merge Scope
-    scopeElements =
+    Collection<EObject> scopeElements =
         OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_SOURCE_SCOPE, (Collection) Collections.emptyList());
 
@@ -136,13 +135,11 @@ public class InitializeDiffMergeUpdateReplicaActivity extends InitializeDiffMerg
   protected IStatus initializeTargetScope(IContext context, ActivityParameters activityParams) {
 
     CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    //Target is the ReplicableElement
     CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
-    //Target is the ReplicableElement
-    Collection<EObject> scopeElements = new HashSet<EObject>();
-
     //Scope is computed, we put it into Merge Scope
-    scopeElements =
+    Collection<EObject> scopeElements =
         OptionsHandlerHelper.getInstance(context).getCollectionValue(context, (String) context.get(ITransitionConstants.OPTIONS_SCOPE),
             IReConstants.PROPERTY__MERGE_TARGET_SCOPE, (Collection) Collections.emptyList());
 
@@ -174,8 +171,6 @@ public class InitializeDiffMergeUpdateReplicaActivity extends InitializeDiffMerg
   @Override
   protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
     CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
-
     ITraceabilityConfiguration configuration = new ReConfiguration(source);
     return new CompoundTraceabilityHandler(configuration);
   }

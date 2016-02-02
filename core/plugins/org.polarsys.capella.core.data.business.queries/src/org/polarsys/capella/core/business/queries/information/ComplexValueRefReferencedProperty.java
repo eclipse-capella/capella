@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,9 +40,9 @@ public class ComplexValueRefReferencedProperty extends AbstractReference_Referen
   }
 
   @Override
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<Object> parameters = new ArrayList<Object>();
-    parameters.add(element_p);
+    parameters.add(element);
     List<EClass> availableEClassForPropertiesTypes = new ArrayList<EClass>();
     availableEClassForPropertiesTypes.add(InformationPackage.Literals.COLLECTION);
     availableEClassForPropertiesTypes.add(InformationPackage.Literals.CLASS);
@@ -53,9 +53,9 @@ public class ComplexValueRefReferencedProperty extends AbstractReference_Referen
   }
 
   @Override
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COMPLEX_VALUE_REF_REFERENCED_PROPERTY, element_p, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COMPLEX_VALUE_REF_REFERENCED_PROPERTY, element, context);
   }
 }

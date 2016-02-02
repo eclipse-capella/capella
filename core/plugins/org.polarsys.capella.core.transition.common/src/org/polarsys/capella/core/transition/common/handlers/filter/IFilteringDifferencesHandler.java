@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,12 +25,12 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public interface IFilteringDifferencesHandler extends IHandler {
 
-  public IStatus processDifferences(IContext context_p, Collection<IDifference> diffSource_p, Collection<IDifference> diffTarget_p);
+  IStatus processDifferences(IContext context, Collection<IDifference> diffSource, Collection<IDifference> diffTarget);
 
-  public Role getMergeDestination(IContext context_p, IDifference difference_p, Role scope_p);
+  Role getMergeDestination(IContext context, IDifference difference, Role scope);
 
-  public void uncheck(IContext context_p, IDiffModelViewer diff_p);
+  void uncheck(IContext context, IDiffModelViewer diff);
 
-  public void check(IContext context_p, IDiffModelViewer diff_p);
+  void check(IContext context, IDiffModelViewer diff);
 
 }

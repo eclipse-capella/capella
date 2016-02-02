@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,14 +17,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
+/**
+ *
+ */
 public interface IOptionsHandler extends IHandler {
 
-  public String getStringValue(IContext context_p, String scope_p, String key_p, String default_p);
+  String getStringValue(IContext context, String scope, String key, String defaults);
 
-  public boolean getBooleanValue(IContext context_p, String scope_p, String key_p, boolean default_p);
+  boolean getBooleanValue(IContext context, String scope, String key, boolean defaults);
 
-  public Collection<EObject> getCollectionValue(IContext context_p, String scope_p, String key_p, Collection<EObject> default_p);
+  Collection<EObject> getCollectionValue(IContext context, String scope, String key, Collection<EObject> defaults);
 
-  public Object getValue(IContext context_p, String scope_p, String key_p, Object default_p);
+  Object getValue(IContext context, String scope, String key, Object defaults);
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
+ 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_MinCardinality-getAvailableElements
 inputId = ee0bef88-715a-4b59-8ea0-10a6402ccc31
 resultIds = {

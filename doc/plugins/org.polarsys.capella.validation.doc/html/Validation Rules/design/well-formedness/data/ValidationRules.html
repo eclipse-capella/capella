@@ -1,0 +1,696 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+	</head>
+	<body>
+		<h1 id=".3E_Validation_Rules_.3E_capella.category_.3E_design_.3E_well-formedness_.3E_data">&gt; Validation Rules &gt; capella.category &gt; design &gt; well-formedness &gt; data</h1>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_01 - Union qualifier integrity </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that every union property of an union (except discriminant and default property) has at least one qualifier. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_02 - Union qualifier cardinality  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that a data value used as a qualifier for a union property cannot be used as a qualifier of another union property of the same union. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_03 - Discriminant Union Property Qualifier </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that the discriminant of an union do not have any qualifier. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_04 - Composition Cardinality Rule </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that the cardinality of a source Class is  0..1 or 1..1 for an Association of Composition kind. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_D_05 - Association Ends IsPrimitive check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that the Association Ends are not primitive </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_06 - Property isPrimitive type check  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that the properties are of primitive type  if there is no bound to an Association. This rule does nothing  if a parent of a property is primitive. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_08 - Union Discriminant </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that Union has a discriminant. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_10 - Aggregation/Composition navigability check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that an Aggregation/Composition is navigable. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_11 - Association member AggregationKind check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that an Association contains at least one member with AggregationKind=ASSOCIATION. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_12 - Property type check</td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that the property is typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_13 Consistency of Qualifier values </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that the values used as qualifiers of Union Properties are consistent with the Discriminant of the Union. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_14 - Association members check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This test checks that an Association has at least two members. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_15 - Class self generalization </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that a Class cannot generalize itself. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_16 - Class cycles check (inner package) </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks whether some cycles between classes (through association or generalization) exist. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_17 - Union Discriminant Data Value </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that a data value of the discriminant type shall be used at least once as a qualifier for the union property(which is not the discriminant). </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_18 - Collection type check  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that a collection is typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_19 - Class Multiple Inheritance </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that a Class (or a Component) cannot inherit from multiple classes (resp. Components) if the dedicated configuration option does not allow it. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_21 - DataType Pattern Validation </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that the pattern of a data type is a Regular expression. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_22 - Boolean Type Incorrect literals values  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that a BooleanType can not have literals with same values. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_23 - NumericValue Unit Consistency </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that a NumericValue can not have an unit value different from the unit value of its type Length PhysicalQuantity. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_24 - DataValue Pattern Validation </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that the value of the DataValue(LiteralNumericValue or LiteralStringValue) matches with the data type Regular expression.  1) value of dataValue must be set. 2) if dataValue typed, pattern should not be null. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_25 - Dependency Cycle Detection </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule detects Cycle of Dependencies. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_26 LiteralBooleanValuel Type  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that LiteralBooleanValue is typed by its parent BooleanType. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_28 - DataValue Reference check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that DataValue Reference referenced value is named. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_29 - Association members AggregationKind check 2 </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that an Association should not contains member with AggregationKind=UNSET. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_30 - Boolean Value Family Type check  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that LiteralBooleanValue and BooleanReference are Typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_32 - Collection Value Family Type check  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that CollectionValueReference is Typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_33 - String Value Family Type check  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that LiteralStringValue and StringReference are Typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_34 - Complex Value Family Type check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that ComplexValue and ComplexValueReference are Typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_35 - Enumeration Value Family Type check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that EnumerationLiteral and EnumerationReference are Typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_36 - Numeric Value Family Type check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that LiteralNumericValue and NumericReference are Typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_37 - Expression Value Family Type check  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that BinaryExpression and UnaryExpression are Typed. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_38 - Association Target Class Property key value check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that a reference relationship association of  kind ASSOCIATION can only exist, if and only if the target class has or inherits at least one property being a key. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_39 - Data Value Name Check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that a data value defined directly in its name space (class, datatype, package) have a name. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_40 - Association Consistency between layers</td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that an Association from given layer should not associate with elements of lower Architecture layer.  Example: If an Association is on SystemArchitecture layer. It should not associate with any elements from Logical or Physical Layer. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_41 - class with an abstract attribute/role </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule chekcs if a class has an abstract attribute or a abstract role of an association on the navigable side, the class shall be abstract. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_42 - Packages visibility problem </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule detects that it is impossible to create an association from Class1 to Class2 if Class2 is in package0, and Class1 in packag1 within package0. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_43 - Exchange Item Element Parameter Direction consistency </td>
+			</tr>
+			<tr>
+				<td colspan="2">for an Exchange Item with anything but an Operation Exchange Mechanism, the inner Exchange Item Element shall NOT have a parameter direction set and - in case of an Exchange Item Operation Exchange Mechanism, all inner Exchanges Items Elements shall have a parameter direction set </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_44 - Enumeration Literals Domain Values Constraints  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that enumeration literals domain values are typed according to the type of their container enumeration domain type. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_45 - Class Association End Constraints </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that class relationships (e.g. association) between classes has valid source and target </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_46 - Association Container Check </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that an Association is in its correct container: - Unidirectional associations are stored in their source class containers - Bidirectional and nondirectional association are stored in common ancestor of their source and target classes. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_47 - Final Inheritance  </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that superTypes are not Final. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_48 - Dangling LinkedText hyperlinks in OpaqueExpressions </td>
+			</tr>
+			<tr>
+				<td colspan="2">Verifies that all LinkedText hyperlinks in an OpaqueExpression can be resolved </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_49 - Key Parts Cardinality Rule  </td>
+			</tr>
+			<tr>
+				<td colspan="2">In a class, when a property or an association role is part of key, value of maximum cardinality must be equal to one. </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_50 - Max Cardinality Is A Natural  </td>
+			</tr>
+			<tr>
+				<td colspan="2">In class property, association role and exchange item element, maximum cardinality value is defined and, unless abstract, evals to a value in &#91;1, *&#91; </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_51 - Min Cardinality Is A Natural Or Zero </td>
+			</tr>
+			<tr>
+				<td colspan="2">In class property, association role and exchange item element minimum cardinality value is defined and, unless abstract, evals to a natural or zero (i.e. integer belonging to &#91;0, *&#91;) </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_52 - Type Of Default And Null Value For Property </td>
+			</tr>
+			<tr>
+				<td colspan="2">For a property, type of the default (resp. null) value shall be Undefined (implicit typing) or the property's datatype or a super type of the property's datatype </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_53 - Property Or Role Overriding Is Not Allowed </td>
+			</tr>
+			<tr>
+				<td colspan="2">A property/role in a class shall not have the same name as a property/role of a super-class </td>
+			</tr>
+		</table>
+		<p>
+			<br/>         
+		</p>
+		<table style="max-width:100%; white-space:nowrap;" cellpadding="6">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DWF_D_54 - Property Or Role Respects Covariance  </td>
+			</tr>
+			<tr>
+				<td colspan="2">If class K inherits class C, if property or association role is owned by C with type/class A and redefined in K with type/class B, then B inherits (or is equal to) A. </td>
+			</tr>
+		</table>
+	</body>
+</html>

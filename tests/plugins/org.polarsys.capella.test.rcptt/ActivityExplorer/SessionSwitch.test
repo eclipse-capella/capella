@@ -1,0 +1,44 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _77dBkJ6NEeWcU-ojRg-Rxw,_C_OB0MEVEeWqb6y2_gGIKQ
+Element-Name: SessionSwitch
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _nYMhoMNoEeWVyMGp52XeIQ
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 1/25/16 4:44 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+This test case tests that the close of a session should close all related opened activity explorers.
+Scenario:
+1. Create 2 projects P1 and P2
+2. On Activity Explorer of P2, switch to P1
+3. Close P1's session
+=> Both 2 Activity Explorers should be closed.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text P1
+    get-button Finish | click
+}
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text P2
+    get-button Finish | click
+}
+with [get-editor "P2 - Activity Explorer"] {
+    get-link | click
+    get-canvas -index 3 | get-menu P1 | click
+}
+get-view "Capella Project Explorer" | get-tree | select "P1/P1.aird" | get-menu Close | click
+get-tab-folder -index 1 | get-property tabCount | equals 0 | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

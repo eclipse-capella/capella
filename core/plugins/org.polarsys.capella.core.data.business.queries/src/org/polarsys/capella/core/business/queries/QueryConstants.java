@@ -29,15 +29,12 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__BOOLEAN_TYPE__INHERITED_BOOLEAN_TYPE___LIB = "GetAvailable_BooleanType_InheritedBooleanType__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__BOOLEAN_TYPE__PROPERTY = "GetAvailable_BooleanType_Property"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__BOOLEAN_TYPE__REALIZED_BOOLEAN_TYPE = "GetAvailable_BooleanType_RealizedBooleanType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__ACTOR_CAPABILITY_REALIZATION =
-      "GetAvailable_CapabilityRealization_ActorCapabilityRealization"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__ACTOR_CAPABILITY_REALIZATION = "GetAvailable_CapabilityRealization_ActorCapabilityRealization"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__AVAILABLE_IN_STATES = "GetAvailable_CapabilityRealization_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION =
-      "GetAvailable_CapabilityRealization_ComponentCapabilityRealization"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION = "GetAvailable_CapabilityRealization_ComponentCapabilityRealization"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INHERITED_CAPABILITIES = "GetAvailable_CapabilityRealization_InheritedCapabilities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INTERACTING_COMPONENTS = "GetAvailable_CapabilityRealization_InteractingComponents"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_ABSTRACT_FUNCTIONS =
-      "GetAvailable_CapabilityRealization_InvolvedAbstractFunctions"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_ABSTRACT_FUNCTIONS = "GetAvailable_CapabilityRealization_InvolvedAbstractFunctions"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_FUNCTIONAL_CHAINS = "GetAvailable_CapabilityRealization_InvolvedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__REALIZED_CAPABILITIES = "GetAvailable_CapabilityRealization_RealizedCapabilities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY__AVAILABLE_IN_STATES = "GetAvailable_Capability_AvailableInStates"; //$NON-NLS-1$
@@ -49,7 +46,9 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS = "GetAvailable_Capability_InvolvedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPABILITY__REALIZED_CAPABILITIES = "GetAvailable_Capability_RealizedCapabilities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS = "GetAvailable_CapellaElement_AppliedPropertyValueGroups"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS_LIB = "GetAvailable_CapellaElement_AppliedPropertyValueGroups_Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES = "GetAvailable_CapellaElement_AppliedPropertyValues"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES_LIB = "GetAvailable_CapellaElement_AppliedPropertyValues_Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CAPELLA_ELEMENT__STATUS = "GetAvailable_CapellaElement_Status"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CHANGE_EVENT__EXPRESSION = "GetAvailable_ChangeEvent_Expression"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CHOICE_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_ChoicePseudoState_StateRealizations"; //$NON-NLS-1$
@@ -58,9 +57,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__COLLECTION__DEFAULT_VALUE = "GetAvailable_Collection_DefaultValue"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__COLLECTION__INDEX = "GetAvailable_Collection_Index"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__COLLECTION__INHERITED_COLLECTION___LIB = "GetAvailable_Collection_InheritedCollection__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__MAX_CARDINALITY = "GetAvailable_Collection_MaxCardinality"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__COLLECTION__MAX_VALUE = "GetAvailable_Collection_MaxValue"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__MIN_CARDINALITY = "GetAvailable_Collection_MinCardinality"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__COLLECTION__MIN_VALUE = "GetAvailable_Collection_MinValue"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__COLLECTION__NULL_VALUE = "GetAvailable_Collection_NullValue"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__COLLECTION__TYPE___LIB = "GetAvailable_Collection_Type__Lib"; //$NON-NLS-1$
@@ -83,20 +80,19 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__CONFIGURATION_ITEM__IMPLEMENTED_P_C = "GetAvailable_ConfigurationItem_ImplementedPC"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CONFIGURATION_ITEM__INVOLVED_REALIZATION = "GetAvailable_ConfigurationItem_InvolvedRealization"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CONFIGURATION_ITEM__USED_INTERFACES___LIB = "GetAvailable_ConfigurationItem_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONNECTION__CONNECTION_FUNCTIONAL_EXCHANGE_ALLOCATIONS =
-      "GetAvailable_Connection_ConnectionFunctionalExchangeAllocations"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__CONNECTION__CONNECTION_FUNCTIONAL_EXCHANGE_ALLOCATIONS = "GetAvailable_Connection_ConnectionFunctionalExchangeAllocations"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CONNECTION__CONNECTION_REALIZATIONS = "GetAvailable_Connection_ConnectionRealizations"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CONNECTION__CONVOYED_INFORMATION___LIB = "GetAvailable_Connection_ConvoyedInformation__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__CONSTRAINT__CONSTRAINED_ELEMENTS = "GetAvailable_Constraint_ConstrainedElements"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__DATA_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_DataValue_AbstractType__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__DEPLOY_CONF__DEPLOYMENTS = "GetAvailable_DeployConf_Deployments"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__E_P_B_S_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE =
-      "GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__E_P_B_S_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE = "GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENTITY__ALLOCATED_ACTIVITIES = "GetAvailable_Entity_AllocatedActivities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENTITY__ALLOCATED_ROLES = "GetAvailable_Entity_AllocatedRoles"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION_LITERAL_ABSTRACT_TYPE = "GetAvailable_EnumerationLiteralAbstractType"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION_LITERAL_DOMAIN_VALUE___LIB = "GetAvailable_EnumerationLiteralDomainValue__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__TYPE = "GetAvailable_EnumerationPropertyValue_Type"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE_TYPE__LIB = "GetAvailable_EnumerationPropertyValue_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__VALUE = "GetAvailable_EnumerationPropertyValue_Value"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION__DEFAULT_VALUE___LIB = "GetAvailable_Enumeration_DefaultValue__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ENUMERATION__DOMAIN_TYPE___LIB = "GetAvailable_Enumeration_DomainType__Lib"; //$NON-NLS-1$
@@ -105,8 +101,6 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__EXCEPTION__INHERITED_EXCEPTION = "GetAvailable_Exception_InheritedException"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__EXCHANGE_CATEGORY__EXCHANGES = "GetAvailable_ExchangeCategory_Exchanges"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM = "GetAvailable_ExchangeItemAllocation_AllocatedItem"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT_MAX_CARD = "GetAvailable_ExchangeItemElementMaxCard"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT_MIN_CARD = "GetAvailable_ExchangeItemElementMinCard"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT__REFERENCED_PROPERTIES = "GetAvailable_ExchangeItemElement_ReferencedProperties"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT__TYPE___LIB = "GetAvailable_ExchangeItemElement_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB = "GetAvailable_ExchangeItem_InheritedExchangeItem__Lib"; //$NON-NLS-1$
@@ -127,8 +121,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = "GetAvailable_FunctionalChain_RealizedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__CATEGORIES = "GetAvailable_FunctionalExchange_Categories"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionalExchange_ExchangeItems__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS =
-      "GetAvailable_FunctionalExchange_FunctionalExchangeRealizations"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS = "GetAvailable_FunctionalExchange_FunctionalExchangeRealizations"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__GENERIC__REFERENCED_PROPERTY___LIB = "GetAvailable_Generic_ReferencedProperty__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__GENERIC__REFERENCED_VALUE___LIB = "GetAvailable_Generic_ReferencedValue__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_InitialPseudoState_StateRealizations"; //$NON-NLS-1$
@@ -172,17 +165,12 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INHERITED_CLASSES = "GetAvailable_OperationalCapability_InheritedClasses"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ACTIVITY = "GetAvailable_OperationalCapability_InvolvedActivity"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES = "GetAvailable_OperationalCapability_InvolvedEntities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS =
-      "GetAvailable_OperationalCapability_InvolvedOperationalProcess"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = "GetAvailable_OperationalCapability_InvolvedOperationalProcess"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES = "GetAvailable_OperationalProcess_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PARAMETER__DEFAULT_VALUE = "GetAvailable_Parameter_DefaultValue"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PARAMETER__MAX_CARDINALITY = "GetAvailable_Parameter_MaxCardinality"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PARAMETER__MIN_CARDINALITY = "GetAvailable_Parameter_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PARAMETER__NULL_VALUE = "GetAvailable_Parameter_NullValue"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PARAMETER__TYPE = "GetAvailable_Parameter_Type"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PART__DEPLOYED_ELEMENTS___LIB = "GetAvailable_Part_DeployedElements__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PART__MAX_CARDINALITY = "GetAvailable_Part_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PART__MIN_CARDINALITY = "GetAvailable_Part_MinCardinality"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PART__TYPE_PORTS = "GetAvailable_Part_TypePorts"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PART__TYPE___LIB = "GetAvailable_Part_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PHYSICAL_ACTOR__FUNCTIONAL_ALLOCATION = "GetAvailable_PhysicalActor_FunctionalAllocation"; //$NON-NLS-1$
@@ -192,8 +180,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATION = "GetAvailable_PhysicalActor_LogicalActorRealization"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PHYSICAL_ACTOR__REALIZED_CAPABILITIES = "GetAvailable_PhysicalActor_RealizedCapabilities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PHYSICAL_ACTOR__USED_INTERFACES___LIB = "GetAvailable_PhysicalActor_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE =
-      "GetAvailable_PhysicalArchitecture_AllocatedLogicalArchitecture"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE = "GetAvailable_PhysicalArchitecture_AllocatedLogicalArchitecture"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PHYSICAL_COMP__DEFINE_REALIZATIONS = "GetAvailable_PhysicalComp_DefineRealizations"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PHYSICAL_COMP__DEPLOYERS = "GetAvailable_PhysicalComp_Deployers"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PHYSICAL_COMP__DEPLOYMENTS = "GetAvailable_PhysicalComp_Deployments"; //$NON-NLS-1$
@@ -226,9 +213,6 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__REALIZED_PHYSICAL_QUANTITY = "GetAvailable_PhysicalQuantity_RealizedPhysicalQuantity"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__UNIT___LIB = "GetAvailable_PhysicalQuantity_Unit__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PROPERTY__CARDINALITY___LIB = "GetAvailable_Property_Cardinality__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PROPERTY__DEFAULT_VALUE = "GetAvailable_Property_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PROPERTY__MAX_VALUE = "GetAvailable_Property_MaxValue"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PROPERTY__MIN_VALUE = "GetAvailable_Property_MinValue"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PROPERTY__NULL_VALUE___LIB = "GetAvailable_Property_NullValue__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__PROPERTY__TYPE___LIB = "GetAvailable_Property_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ROLE__ALLOCATED_ACTIVITIES = "GetAvailable_Role_AllocatedActivities"; //$NON-NLS-1$
@@ -263,9 +247,6 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__SYSTEM__USED_INTERFACES___LIB = "GetAvailable_System_UsedInterfaces__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__TERMINATE_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_TerminatePseudoState_StateRealizations"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__TIME_EVENT__EXPRESSION = "GetAvailable_TimeEvent_Expression"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION_PROPERTY__DEFAULT_VALUE___LIB = "GetAvailable_UnionProperty_DefaultValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION_PROPERTY__MAX_VALUE___LIB = "GetAvailable_UnionProperty_MaxValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION_PROPERTY__MIN_VALUE___LIB = "GetAvailable_UnionProperty_MinValue__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__UNION_PROPERTY__QUALIFIERS = "GetAvailable_UnionProperty_Qualifiers"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__UNION__DEFAULT_PROPERTY = "GetAvailable_Union_DefaultProperty"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__UNION__DISCRIMINANT = "GetAvailable_Union_Discriminant"; //$NON-NLS-1$
@@ -295,8 +276,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__BOOLEAN_TYPE__REALIZED_BOOLEAN_TYPE = "GetCurrent_BooleanType_RealizedBooleanType"; //$NON-NLS-1$
   public static final String GET_CURRENT__CAPABILITY_REALIZATION__ACTOR_CAPABILITY_REALIZATION = "GetCurrent_CapabilityRealization_ActorCapabilityRealization"; //$NON-NLS-1$
   public static final String GET_CURRENT__CAPABILITY_REALIZATION__AVAILABLE_IN_STATES = "GetCurrent_CapabilityRealization_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION =
-      "GetCurrent_CapabilityRealization_ComponentCapabilityRealization"; //$NON-NLS-1$
+  public static final String GET_CURRENT__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION = "GetCurrent_CapabilityRealization_ComponentCapabilityRealization"; //$NON-NLS-1$
   public static final String GET_CURRENT__CAPABILITY_REALIZATION__INHERITED_CAPABILITIES = "GetCurrent_CapabilityRealization_InheritedCapabilities"; //$NON-NLS-1$
   public static final String GET_CURRENT__CAPABILITY_REALIZATION__INTERACTING_COMPONENTS = "GetCurrent_CapabilityRealization_InteractingComponents"; //$NON-NLS-1$
   public static final String GET_CURRENT__CAPABILITY_REALIZATION__INVOLVED_ABSTRACT_FUNCTIONS = "GetCurrent_CapabilityRealization_InvolvedAbstractFunctions"; //$NON-NLS-1$
@@ -353,8 +333,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__CONFIGURATION_ITEM__IMPLEMENTED_P_C = "GetCurrent_ConfigurationItem_ImplementedPC"; //$NON-NLS-1$
   public static final String GET_CURRENT__CONFIGURATION_ITEM__INVOLVED_REALIZATION = "GetCurrent_ConfigurationItem_InvolvedRealization"; //$NON-NLS-1$
   public static final String GET_CURRENT__CONFIGURATION_ITEM__USED_INTERFACES = "GetCurrent_ConfigurationItem_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONNECTION__CONNECTION_FUNCTIONAL_EXCHANGE_ALLOCATIONS =
-      "GetCurrent_Connection_ConnectionFunctionalExchangeAllocations"; //$NON-NLS-1$
+  public static final String GET_CURRENT__CONNECTION__CONNECTION_FUNCTIONAL_EXCHANGE_ALLOCATIONS = "GetCurrent_Connection_ConnectionFunctionalExchangeAllocations"; //$NON-NLS-1$
   public static final String GET_CURRENT__CONNECTION__CONNECTION_REALIZATIONS = "GetCurrent_Connection_ConnectionRealizations"; //$NON-NLS-1$
   public static final String GET_CURRENT__CONNECTION__CONVOYED_INFORMATION = "GetCurrent_Connection_ConvoyedInformation"; //$NON-NLS-1$
   public static final String GET_CURRENT__CONSTRAINT__CONSTRAINED_ELEMENTS = "GetCurrent_Constraint_ConstrainedElements"; //$NON-NLS-1$
@@ -401,8 +380,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = "GetCurrent_FunctionalChain_RealizedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__CATEGORIES = "GetCurrent_FunctionalExchange_Categories"; //$NON-NLS-1$
   public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS = "GetCurrent_FunctionalExchange_ExchangeItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS =
-      "GetCurrent_FunctionalExchange_FunctionalExchangeRealizations"; //$NON-NLS-1$
+  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS = "GetCurrent_FunctionalExchange_FunctionalExchangeRealizations"; //$NON-NLS-1$
   public static final String GET_CURRENT__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS = "GetCurrent_InitialPseudoState_StateRealizations"; //$NON-NLS-1$
   public static final String GET_CURRENT__INSTANCE_ROLE__REPRESENTED_INSTANCE = "GetCurrent_InstanceRole_RepresentedInstance"; //$NON-NLS-1$
   public static final String GET_CURRENT__INTERACTION_USE__REFERENCED_SCENARIO = "GetCurrent_InteractionUse_ReferencedScenario"; //$NON-NLS-1$
@@ -453,6 +431,8 @@ public class QueryConstants {
   public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = "GetCurrent_OperationalCapability_InvolvedOperationalProcess"; //$NON-NLS-1$
   public static final String GET_CURRENT__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES = "GetCurrent_OperationalProcess_AvailableInStates"; //$NON-NLS-1$
   public static final String GET_CURRENT__PARAMETER__DEFAULT_VALUE = "GetCurrent_Parameter_DefaultValue"; //$NON-NLS-1$
+  public static final String GET_CURRENT__PARAMETER__MAX_VALUE = "GetCurrent_Parameter_MaxValue"; //$NON-NLS-1$
+  public static final String GET_CURRENT__PARAMETER__MIN_VALUE = "GetCurrent_Parameter_MinValue"; //$NON-NLS-1$
   public static final String GET_CURRENT__PARAMETER__MAX_CARDINALITY = "GetCurrent_Parameter_MaxCardinality"; //$NON-NLS-1$
   public static final String GET_CURRENT__PARAMETER__MIN_CARDINALITY = "GetCurrent_Parameter_MinCardinality"; //$NON-NLS-1$
   public static final String GET_CURRENT__PARAMETER__NULL_VALUE = "GetCurrent_Parameter_NullValue"; //$NON-NLS-1$
@@ -469,8 +449,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATION = "GetCurrent_PhysicalActor_LogicalActorRealization"; //$NON-NLS-1$
   public static final String GET_CURRENT__PHYSICAL_ACTOR__REALIZED_CAPABILITIES = "GetCurrent_PhysicalActor_RealizedCapabilities"; //$NON-NLS-1$
   public static final String GET_CURRENT__PHYSICAL_ACTOR__USED_INTERFACES = "GetCurrent_PhysicalActor_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE =
-      "GetCurrent_PhysicalArchitecture_AllocatedLogicalArchitecture"; //$NON-NLS-1$
+  public static final String GET_CURRENT__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE = "GetCurrent_PhysicalArchitecture_AllocatedLogicalArchitecture"; //$NON-NLS-1$
   public static final String GET_CURRENT__PHYSICAL_COMP__DEFINE_REALIZATIONS = "GetCurrent_PhysicalComp_DefineRealizations"; //$NON-NLS-1$
   public static final String GET_CURRENT__PHYSICAL_COMP__DEPLOYERS = "GetCurrent_PhysicalComp_Deployers"; //$NON-NLS-1$
   public static final String GET_CURRENT__PHYSICAL_COMP__DEPLOYMENTS = "GetCurrent_PhysicalComp_Deployments"; //$NON-NLS-1$

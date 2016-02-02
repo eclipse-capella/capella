@@ -53,6 +53,7 @@ public interface IToolNameConstants {
 
   // CDB Tools - Class Diagram Blank
   // Classes Tools
+  String TOOL_CDB_DELETE_CONSTRAINT_ELEMENT = "Delete Constraint Elements"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_DATA_PACKAGE = "Data Package"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_CLASS = "Class"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_UNION = "Union"; //$NON-NLS-1$
@@ -536,6 +537,7 @@ public interface IToolNameConstants {
   String TOOL_LAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES = "Switch Physical Links / Categories"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_LAB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$    
+  String TOOL_LAB_INSERT_ACTOR = "Show/Hide Actors"; //$NON-NLS-1$
   // Functions
   String TOOL_LAB_CREATE_LOGICAL_FUNCTION = "Logical Function"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_DUPLICATE = "Duplicate"; //$NON-NLS-1$

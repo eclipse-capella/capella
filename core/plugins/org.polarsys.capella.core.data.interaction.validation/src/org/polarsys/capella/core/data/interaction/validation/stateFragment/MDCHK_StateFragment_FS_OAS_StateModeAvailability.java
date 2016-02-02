@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,26 +34,26 @@ public class MDCHK_StateFragment_FS_OAS_StateModeAvailability extends AbstractVa
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
+  public IStatus validate(IValidationContext ctx) {
     //
     // Preconditions.
     //
-    EMFEventType eType = ctx_p.getEventType();
+    EMFEventType eType = ctx.getEventType();
     if (EMFEventType.NULL != eType) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
-    EObject eObj = ctx_p.getTarget();
+    EObject eObj = ctx.getTarget();
     if (!(eObj instanceof StateFragment)) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
     StateFragment stateFragment = (StateFragment) eObj;
     // It must be a StateFragment with a related AbstractState.
     if (null == stateFragment.getRelatedAbstractState()) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
     // This rule is only valid for Function Scenarios or Operational Activity Scenarios (scenarios containing only instance roles of functions).
     if (!(stateFragment.eContainer() instanceof Scenario) || !ScenarioExt.isFunctionalScenario((Scenario) stateFragment.eContainer())) {
-      return ctx_p.createSuccessStatus();
+      return ctx.createSuccessStatus();
     }
     Scenario containingScenario = (Scenario) stateFragment.eContainer();
     // Get related AbstractState.
@@ -66,10 +66,9 @@ public class MDCHK_StateFragment_FS_OAS_StateModeAvailability extends AbstractVa
       String relatedStateMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(relatedState, false);
       String containingScenarioMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(containingScenario, false);
       String abstractFunctionMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(abstractFunction, false);
-      return ctx_p.createFailureStatus(relatedState.getName(), relatedStateMetaClassLabel, containingScenario.getName(), containingScenarioMetaClassLabel,
+      return ctx.createFailureStatus(relatedState.getName(), relatedStateMetaClassLabel, containingScenario.getName(), containingScenarioMetaClassLabel,
           abstractFunction.getName(), abstractFunctionMetaClassLabel);
     }
-
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 }

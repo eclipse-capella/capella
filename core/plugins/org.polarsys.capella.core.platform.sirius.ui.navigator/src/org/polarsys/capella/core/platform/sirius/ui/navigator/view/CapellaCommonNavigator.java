@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -490,7 +490,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("synthetic-access")
     @Override
     protected boolean isParentMatch(Viewer viewer, Object parentElement, Object element) {
       // we provide our own content provider instead of getting it from
@@ -561,9 +560,9 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   /**
    * Pattern filter used to apply pattern entered by the end-user on the common viewer.
    */
-  private CapellaNavigatorPatternFilter atternFilter;
+  private CapellaNavigatorPatternFilter patternFilter;
 
-  private TabbedPropertySheetPage ropertySheetPage;
+  private TabbedPropertySheetPage propertySheetPage;
 
   /**
    * Dialog settings for this view.
@@ -619,15 +618,15 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    */
   @Override
   protected CommonViewer createCommonViewer(Composite parent) {
-    atternFilter = new CapellaNavigatorPatternFilter();
-    atternFilter.setStringMatcherFactory(new StringMatcherFactory() {
+    patternFilter = new CapellaNavigatorPatternFilter();
+    patternFilter.setStringMatcherFactory(new StringMatcherFactory() {
       @Override
       public StringMatcher createStringMatcher(String pattern) {
         IPreferenceStore store = Activator.getDefault().getPreferenceStore();
         return new StringMatcher(pattern, store.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_IGNORE_CASE), false);
       }
     });
-    _filteredTree = new CapellaFilteredTree(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, atternFilter);
+    _filteredTree = new CapellaFilteredTree(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, patternFilter);
     final CapellaCommonViewer commonViewer = (CapellaCommonViewer) _filteredTree.getViewer();
 
     initListeners(commonViewer);
@@ -680,6 +679,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   /**
    * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
    */
+  @Override
   public void propertyChange(PropertyChangeEvent event) {
     String property = event.getProperty();
     if (ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT.equals(property)
@@ -812,6 +812,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   /**
    * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor#getContributorId()
    */
+  @Override
   public String getContributorId() {
     return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
@@ -836,15 +837,15 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * @return the patternFilter
    */
   protected CapellaNavigatorPatternFilter getPatternFilter() {
-    return atternFilter;
+    return patternFilter;
   }
 
   /**
    * Gets the property sheet page.
    */
   private IPropertySheetPage getPropertySheetPage() {
-    if (null == ropertySheetPage) {
-      ropertySheetPage = new CapellaTabbedPropertySheetPage(this) {
+    if (null == propertySheetPage) {
+      propertySheetPage = new CapellaTabbedPropertySheetPage(this) {
         /**
          * {@inheritDoc}
          */
@@ -852,7 +853,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
         @Override
         public void dispose() {
           super.dispose();
-          ropertySheetPage = null;
+          propertySheetPage = null;
         }
 
         /**
@@ -865,7 +866,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
         }
       };
     }
-    return ropertySheetPage;
+    return propertySheetPage;
   }
 
   /**

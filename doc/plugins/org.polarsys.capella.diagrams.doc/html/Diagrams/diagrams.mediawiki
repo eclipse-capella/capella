@@ -1,0 +1,3618 @@
+         
+== Activity Interaction Scenario ==
+                                                                                                                                                                                                                                    
+{| border="1"
+|-
+| 	Exchange Context 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Activity 	
+| [[Image:Images/icons/full/obj16/OperationalActivity.gif]] 
+| 
+|-
+| 	Activities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Interaction 	
+| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| 		Creates a new Sequence Message invoking an Interaction without return branch between the Source and Target Lifelines representing existing Operational Activities. This tool opens a selection wizard to select an available existing Interaction or to create a new one between these Operational Activities. 	
+|-
+| 	Interaction with return branch 	
+| 
+| 		Creates a new Sequence Message invoking an Interaction with return branch between the Source and Target Lifelines representing existing Operational Activities. This tool opens a selection wizard to select an available existing Interaction or to create a new one between these Operational Activities. 	
+|-
+| 	Reference 	
+| [[Image:Images/icons/full/obj16/InteractionUse.gif]] 
+| 		Creates a Reference to an existing Operational Activity Scenario. Lifelines covered by the Reference box represent Operational Activities also represented in the referenced Scenario. 	
+|-
+| 	LOOP 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind LOOP (repeated part of the Scenario) and involving the covered Lifelines.  	
+|-
+| 	ALT 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind ALT (Alternative) and involving the covered Lifelines. Operands should be added to the combined Fragment. 	
+|-
+| 	PAR 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind PAR (Parallel) and involving the covered Lifelines. Operands should be added to the combined Fragment. 	
+|-
+| 	Other Combined Fragment 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with selected kind and involving the covered Lifelines. The Kind of the Fragment has to be set using the Property Editors. 	
+|-
+| 	Operand 	
+| [[Image:Images/icons/full/obj16/InteractionOperand.gif]] 
+| 		Creates a new Operand within the selected Combined Fragment.  	
+|-
+| 	State / Mode 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing State/Mode of the Target Component/Actor. This tool opens a selection wizard to select an available State/Mode. 	
+|-
+| 	Duration 	
+| [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
+| 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElementScenario 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OAS_Operational Activity Scenario.jpg|Sample will be available soon]]    
+== Capability Realization Blank ==
+                                                                                                                                                                                                                                                                                                    
+{| border="1"
+|-
+| 	Capability Realization  	
+| [[Image:Images/icons/full/obj16/CapabilityUseCase.gif]] 
+| 		Creates a new Capability Realization 	
+|-
+| 	Component 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Logical / Physical Component (and creates a Part in the selected Container Component) 	
+|-
+| 	COTS 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Configuration Item with kind COTS (Commercial Off The Shelf). 	
+|-
+| 	CS 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Configuration Item with kind CS (Computer Software) . 	
+|-
+| 	HW 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Configuration Item with kind HW (Hardware) . 	
+|-
+| 	Interface 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Configuration Item with kind Interface. 	
+|-
+| 	NDI 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Configuration Item with kind NDI (Not Developed Item) . 	
+|-
+| 	Prime Item 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Configuration Item with kind Prime Item. 	
+|-
+| 	System 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Configuration Item with kind System. 	
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 		Creates a new Logical Actor / Physical Actor (and creates a Part in the Context element of the current level) 	
+|-
+| 	Involvement 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates a new Involvement relationship between the source Capability Realization and the target Component. 	
+|-
+| 	Extends 	
+| [[Image:Images/icons/full/obj16/Extend.gif]] 
+| 		Creates a new Extension relationship between the source and target Capability Realizations. 	
+|-
+| 	Includes 	
+| [[Image:Images/icons/full/obj16/Include.gif]] 
+| 		Creates a new Inclusion relationship between the source and target Capability Realizations. 	
+|-
+| 	Capability Generalization 	
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
+| 		Creates a new Generalization relationship between the source and target Capability Realizations. 	
+|-
+| 	Actor Generalization 	
+| 
+| 		Creates a new Generalization relationship between the source and target Actors. 	
+|-
+| 	Capability Realizations 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Capability Realizations. Create or delete graphical objects corresponding to already existing Capability Realizations. Removing a Capability Realization graphical object from the diagram does not delete the Capability Realization from the model. This tool does not modify the semantic model. 	
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Logical / Physical Component. Create or delete graphical objects representing existing Components. Removing a Component graphical object from a diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Logical / Physical Actors. Create or delete graphical objects representing existing Actors. Removing a Component graphical object from a diagram does not delete the Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CRB_Capability Realization Blank.jpg|Sample will be available soon]]    
+== Capability Realization Refinement ==
+            
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CRR_Capability Realization Refinement.jpg|Sample will be available soon]]    
+== Capella Architecture ==
+                                                                                                                                                                                                         
+{| border="1"
+|-
+| 	Operational Analysis 	
+| [[Image:Images/icons/full/obj16/OperationalAnalysis.gif]] 
+| 
+|-
+| 	System Analysis 	
+| [[Image:Images/icons/full/obj16/SystemAnalysis.gif]] 
+| 
+|-
+| 	Logical Architecture 	
+| [[Image:Images/icons/full/obj16/LogicalArchitecture.gif]] 
+| 
+|-
+| 	Physical Architecture 	
+| [[Image:Images/icons/full/obj16/PhysicalArchitecture.gif]] 
+| 
+|-
+| 	EPBS Architecture 	
+| [[Image:Images/icons/full/obj16/EPBSArchitecture.gif]] 
+| 
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/Capella Architecture.jpg|Sample will be available soon]]    
+== Class Diagram Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+{| border="1"
+|-
+| 	Data Package 	
+| 
+| 		Creates a new Data Package. 	
+|-
+| 	Class 	
+| 
+| 		Creates a new Class. 	
+|-
+| 	Union 	
+| 
+| 		Creates a new Union. 	
+|-
+| 	Collection 	
+| 
+| 		Creates a new Collection. 	
+|-
+| 	BooleanType 	
+| [[Image:Images/icons/full/obj16/BooleanType.gif]] 
+| 		Creates a new Boolean Type. 	
+|-
+| 	BooleanLiteral 	
+| 
+| 		Creates a new Boolean Literal. 	
+|-
+| 	Enumeration 	
+| 
+| 		Creates a new Enumeration. 	
+|-
+| 	EnumerationLiteral 	
+| 
+| 		Creates a new Enumeration Literal in the selected Enumeration. 	
+|-
+| 	NumericType 	
+| [[Image:Images/icons/full/obj16/NumericType.gif]] 
+| 		Creates a new NumericType. 	
+|-
+| 	StringType 	
+| [[Image:Images/icons/full/obj16/StringType.gif]] 
+| 		Creates a new StringType. 	
+|-
+| 	PhysicalQuantity 	
+| [[Image:Images/icons/full/obj16/PhysicalQuantity.gif]] 
+| 		Creates a new Physical Quantity. 	
+|-
+| 	Unit 	
+| 
+| 		Creates a new Unit. 	
+|-
+| 	Numeric Reference 	
+| [[Image:Images/icons/full/obj16/NumericReference.gif]] 
+| 		Creates a new Numeric Reference. 	
+|-
+| 	Literal Numeric Value 	
+| [[Image:Images/icons/full/obj16/LiteralNumericValue.gif]] 
+| 		Creates a new Literal Numeric Value. 	
+|-
+| 	Unary Expression 	
+| [[Image:Images/icons/full/obj16/UnaryExpression.gif]] 
+| 		Creates a new Unary Expression. 	
+|-
+| 	Binary Expression 	
+| [[Image:Images/icons/full/obj16/BinaryExpression.gif]] 
+| 		Creates a new Binary Expression. 	
+|-
+| 	Literal String Value 	
+| [[Image:Images/icons/full/obj16/LiteralStringValue.gif]] 
+| 		Creates a new Literal String Value. 	
+|-
+| 	String Reference 	
+| [[Image:Images/icons/full/obj16/StringReference.gif]] 
+| 		Creates a new String Reference. 	
+|-
+| 	Boolean Reference 	
+| [[Image:Images/icons/full/obj16/BooleanReference.gif]] 
+| 		Creates a new Boolean Reference. 	
+|-
+| 	Complex Value 	
+| [[Image:Images/icons/full/obj16/ComplexValue.gif]] 
+| 		Creates a new Complex Value. 	
+|-
+| 	Complex Value Reference 	
+| [[Image:Images/icons/full/obj16/ComplexValueReference.gif]] 
+| 		Creates a new Complex Value Reference. 	
+|-
+| 	Enumeration Reference 	
+| [[Image:Images/icons/full/obj16/EnumerationReference.gif]] 
+| 		Creates a new Enumeration Reference. 	
+|-
+| 	Collection Value 	
+| [[Image:Images/icons/full/obj16/ComplexValueReference.gif]] 
+| 		Creates a new Collection Value. 	
+|-
+| 	Collection Value Reference 	
+| [[Image:Images/icons/full/obj16/ComplexValueReference.gif]] 
+| 		Creates a new Collection Value Reference. 	
+|-
+| 	Property 	
+| 
+| 		Creates a new Property in the selected Class or Union. This tool opens a selection wizard to select the type of the Property. 	
+|-
+| 	Class Operation 	
+| [[Image:Images/icons/full/obj16/Service.gif]] 
+| 		Creates a new Operation in the selected Class. 	
+|-
+| 	Parameter 	
+| [[Image:Images/icons/full/obj16/Parameter.gif]] 
+| 		Creates a new Parameter for the selected Class Operation. This tool opens a selection wizard to select the Type of the Parameter. 	
+|-
+| 	Association 	
+| [[Image:Images/icons/full/obj16/ClassAssociation.gif]] 
+| 		Creates a new Association relationship between the Source and Target Classifiers (Class, Union, Collection).  	
+|-
+| 	Aggregation 	
+| [[Image:Images/icons/full/obj16/ClassAggregation.gif]] 
+| 		Creates a new Aggregation relationship between the Source and Target Classifiers (Class, Union, Collection).. 	
+|-
+| 	Composition 	
+| [[Image:Images/icons/full/obj16/ClassComposition.gif]] 
+| 		Creates a new Composition relationship between the Source and Target Classifiers (Class, Union, Collection). 	
+|-
+| 	Generalization 	
+| 
+| 		Creates a new Generalization relationship between the Source and Target elements (Class, Union, Collection, Datatypes, etc.). 	
+|-
+| 	Collection Type 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Sets the type of a Collection with an existing Type.  	
+|-
+| 	Data Packages 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Data Packages. Removing a Data Package graphical object does not delete this Data Package from the model. This tool does not modify the semantic model.  	
+|-
+| 	Types 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Types. Removing a Type graphical object does not delete this Type from the model. This tool does not modify the semantic model. 	
+|-
+| 	Properties 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove properties 	
+|-
+| 	Operations 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove operations 	
+|-
+| 	Data Values 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Data Values 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Creates a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Interface Package 	
+| [[Image:Images/icons/full/obj16/ClassPkg.gif]] 
+| 		Creates a new Interface Package. 	
+|-
+| 	Interface 	
+| 
+| 		Creates a new Interface. 	
+|-
+| 	Event 	
+| [[Image:Images/icons/full/obj16/ExchangeItemEvent.gif]] 
+| 		Creates a new Exchange Item with a Communication Mechanism set to EVENT. 	
+|-
+| 	Operation 	
+| [[Image:Images/icons/full/obj16/ExchangeItemOperation.gif]] 
+| 		Creates a new Exchange Item with a Communication Mechanism set to OPERATION. 	
+|-
+| 	Flow 	
+| [[Image:Images/icons/full/obj16/ExchangeItemFlow.gif]] 
+| 		Creates a new Exchange Item with a Communication Mechanism set to FLOW. 	
+|-
+| 	Data 	
+| [[Image:Images/icons/full/obj16/ExchangeItemData.gif]] 
+| 		Creates a new Exchange Item with a Communication Mechanism set to SHARED_DATA. 	
+|-
+| 	Undefined Exchange Item 	
+| [[Image:Images/icons/full/obj16/ExchangeItem.gif]] 
+| 		Create a new Exchange Item with an UNSET Communication Mechanism. 	
+|-
+| 	Exchange Item Element 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Creates a new Exchange Item Element belonging to the Source Exchange Item and typed by the Target Type. 	
+|-
+| 	Manage Exchange Item Allocations 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Manage Exchange Item Allocations 	
+|-
+| 	Interface Packages 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interface Packages 	
+|-
+| 	Interfaces 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interfaces 	
+|-
+| 	Exchange Items 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items 	
+|-
+| 	Exchange Item Element Links 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Item Element Links 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CDB_Class Diagram Blank.jpg|Sample will be available soon]]    
+== Component Exchanges Scenario ==
+                                                                                                                                                                                                                                                                                                                                                                                                                              
+{| border="1"
+|-
+| 	Exchange Context 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Node PC 	
+| [[Image:Images/icons/full/obj16/ComponentInstanceNodePC.gif]] 
+| 
+|-
+| 	Behavior PC 	
+| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| 
+|-
+| 	Component 	
+| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| 
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Component 	
+| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| 
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| 		Creates a new Sequence Message invoking a Functional Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions. This tool is masked as soon as a Component Exchange is displayed on the scenario. 	
+|-
+| 	Functional Exchange with Return Branch 	
+| 
+| 		Creates a new Sequence Message invoking a Functional Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions. This tool is masked as soon as a Component Exchange is displayed on the scenario.  	
+|-
+| 	Component Exchange 	
+| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| 		Creates a new Sequence Message invoking a Component Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario. 	
+|-
+| 	Component Exchange with Return Branch 	
+| 
+| 		Creates a new Sequence Message invoking a Component Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario. 	
+|-
+| 	Arm timer 	
+| 
+| 		Create a new sequence message to arm a timer. 	
+|-
+| 	Cancel timer 	
+| 
+| 		Create a new sequence message to cancel a prieviously armed timer. 	
+|-
+| 	Found Functional Exchange 	
+| [[Image:Images/icons/full/obj16/FoundMessage.gif]] 
+| 		Creates a new Lost Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange. 	
+|-
+| 	Lost Component Exchange 	
+| [[Image:Images/icons/full/obj16/LostMessage.gif]] 
+| 		Creates a new Found Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange. 	
+|-
+| 	Found Component Exchange 	
+| [[Image:Images/icons/full/obj16/FoundMessage.gif]] 
+| 		Creates a new Lost Sequence Message invoking a Component Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Component Exchange. 	
+|-
+| 	Lost Functional Exchange 	
+| [[Image:Images/icons/full/obj16/LostMessage.gif]] 
+| 		Creates a new Found Sequence Message invoking a Functional Exchange between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Functional Exchange. 	
+|-
+| 	Allocated Function 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing Function allocated to Target Component/Actor. This tool opens a selection wizard to select an available Function. 	
+|-
+| 	Involved State / Mode 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing State/Mode of the Target Component/Actor. This tool opens a selection wizard to select an available State/Mode. 	
+|-
+| 	Reference 	
+| [[Image:Images/icons/full/obj16/InteractionUse.gif]] 
+| 		Creates a Reference to existing Scenario with the kind DATA_FLOW covering Target Lifelines representing existing Component/Actor Parts. 	
+|-
+| 	LOOP 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind LOOP covering Target Lifelines representing existing Component/Actor Parts. 	
+|-
+| 	ALT 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind ALT covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	PAR 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind PAR covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Other Combined Fragment 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with selected kind covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Operand 	
+| [[Image:Images/icons/full/obj16/InteractionOperand.gif]] 
+| 		Creates a new Operand within the target Combined Fragment.  	
+|-
+| 	Duration 	
+| [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
+| 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/ES_Exchange Scenario.jpg|Sample will be available soon]]    
+== Component Interfaces Scenario ==
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+{| border="1"
+|-
+| 	Component 	
+| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| 
+|-
+| 	COTS 	
+| 
+| 
+|-
+| 	CS 	
+| 
+| 
+|-
+| 	HW 	
+| 
+| 
+|-
+| 	Interface 	
+| 
+| 
+|-
+| 	NDI 	
+| 
+| 
+|-
+| 	Prime Item 	
+| 
+| 
+|-
+| 	System 	
+| 
+| 
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Shared Data/Event  	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Sequence Message 	
+| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| 		Creates a new Sequence Message invoking a Interface Exchange Item allocation without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
+|-
+| 	Sequence Message with Return Branch 	
+| 
+| 		Creates a new Sequence Message invoking a Interface Exchange Item allocation with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
+|-
+| 	Create message 	
+| [[Image:Images/icons/full/obj16/CreateSequenceMessage.gif]] 
+| 		Creates a new Create Sequence Message invoking a Interface Exchange Item allocation between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
+|-
+| 	Delete message 	
+| [[Image:Images/icons/full/obj16/DeleteSequenceMessage.gif]] 
+| 		Creates a new Delete Sequence Message invoking a Interface Exchange Item allocation between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
+|-
+| 	Arm timer 	
+| 
+| 		Create a new sequence message to arm a timer. 	
+|-
+| 	Cancel timer 	
+| 
+| 		Create a new sequence message to cancel a prieviously armed timer. 	
+|-
+| 	Found Message 	
+| [[Image:Images/icons/full/obj16/FoundMessage.gif]] 
+| 		Creates a new Found Sequence Message invoking an Exchange Item between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Exchange Item. 	
+|-
+| 	Lost Message 	
+| [[Image:Images/icons/full/obj16/LostMessage.gif]] 
+| 		Creates a new Lost Sequence Message invoking an Exchange Item between the Source and Target Lifelines representing existing Components / Actors. This tool opens a selection wizard to select an available existing Exchange Item. 	
+|-
+| 	LOOP 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind LOOP covering Target Lifelines representing existing Component/Actor Parts. 	
+|-
+| 	ALT 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind ALT covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	PAR 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind PAR covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Other Combined Fragment 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with selected kind covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Duration 	
+| [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
+| 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
+|-
+| 	Exchange Context 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Allocated Function 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing Function allocated to Target Component/Actor. This tool opens a selection wizard to select an available Function. 	
+|-
+| 	Involved State / Mode 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing State/Mode of the Target Component/Actor. This tool opens a selection wizard to select an available State/Mode. 	
+|-
+| 	Reference 	
+| [[Image:Images/icons/full/obj16/InteractionUse.gif]] 
+| 		Create a State Fragment referencing an existing State/Mode of the Target Component/Actor. This tool opens a selection wizard to select an available State/Mode. 	
+|-
+| 	Operand 	
+| [[Image:Images/icons/full/obj16/InteractionOperand.gif]] 
+| 		Creates a new Operand within the target Combined Fragment.  	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/IS_Interface Scenario.jpg|Sample will be available soon]]    
+== Configuration Items Breakdown ==
+                                                                                                                                                                
+{| border="1"
+|-
+| 	COTS 	
+| [[Image:Images/icons/full/obj16/COTSCI.gif]] 
+| 		Creates a new Configuration Item with kind COTS (Commercial Off The Shelf). 	
+|-
+| 	CS 	
+| [[Image:Images/icons/full/obj16/CSCI.gif]] 
+| 		Creates a new Configuration Item with kind CS (Computer Software) . 	
+|-
+| 	HW 	
+| [[Image:Images/icons/full/obj16/HWCI.gif]] 
+| 		Creates a new Configuration Item with kind HW (Hardware) . 	
+|-
+| 	Interface 	
+| [[Image:Images/icons/full/obj16/InterfaceCI.gif]] 
+| 		Creates a new Configuration Item with kind Interface. 	
+|-
+| 	NDI 	
+| [[Image:Images/icons/full/obj16/NDICI.gif]] 
+| 		Creates a new Configuration Item with kind NDI (Not Developed Item) . 	
+|-
+| 	Prime Item 	
+| [[Image:Images/icons/full/obj16/PrimeItemCI.gif]] 
+| 		Creates a new Configuration Item with kind Prime Item. 	
+|-
+| 	System 	
+| [[Image:Images/icons/full/obj16/SystemCI.gif]] 
+| 		Creates a new Configuration Item with kind System. 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Move a Source Configuration Item Part from its Container to Target Configuration Item Part. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CIBD_Configuration Items Breakdown.jpg|Sample will be available soon]]    
+== Contextual Capability ==
+                                                                                                                                                                                                                           
+{| border="1"
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 		Creates a new Actor. 	
+|-
+| 	Mission 	
+| [[Image:Images/icons/full/obj16/Mission.gif]] 
+| 		Creates a new Mission. 	
+|-
+| 	Capability 	
+| [[Image:Images/icons/full/obj16/CapabilityUseCase.gif]] 
+| 		Creates a new Capability. 	
+|-
+| 	Capability Exploitation 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Create a new Capability Exploitation relationship between the Source Mission and Target Capability. 	
+|-
+| 	Involved Actor 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Create a new Actor Capability Involvement relationship between the Source Capability and Target Actor. 	
+|-
+| 	Extends 	
+| [[Image:Images/icons/full/obj16/Extend.gif]] 
+| 		Create a new Capability Extension relationship between the Source and Target Capabilities. 	
+|-
+| 	Includes 	
+| [[Image:Images/icons/full/obj16/Include.gif]] 
+| 		Create a new Capability Inclusion relationship between the Source and Target Capabilities. 	
+|-
+| 	Capability Generalization 	
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
+| 		Create a new Capability Generalization relationship between the Source and Target Super Capabilities. 	
+|-
+| 	Actor Generalization 	
+| 
+| 		Create a new Actor Generalization relationship between the Source and Target Super Actors. 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Actors. Create or delete graphical objects corresponding to existing Actors. Removing an Actor graphical does not delete this Actor. This tool does not modify the semantic model. 	
+|-
+| 	Missions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Missions. Create or delete graphical objects corresponding to existing Missions. Removing a Mission graphical does not delete this Actor. This tool does not modify the semantic model. 	
+|-
+| 	Capabilities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Capabilities. Create or delete graphical objects corresponding to existing Capabilities. Removing a Capability graphical does not delete this Actor. This tool does not modify the semantic model. 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CC_Contextual Capabilty.jpg|Sample will be available soon]]    
+== Contextual Capability Realization Involvement ==
+                                                                                 
+{| border="1"
+|-
+| 	Involve Component 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		Create a new Involvement relationship between the Source Capability and Target Component. This tool opens a selection wizard to select an available Component. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CRI_Contextual Capability Realization Involvement.jpg|Sample will be available soon]]    
+== Contextual Component Detailed Interfaces ==
+                                                                                                                                                                                                                                                                                                                                                                                                                         
+{| border="1"
+|-
+| 	Interface 	
+| [[Image:Images/icons/full/obj16/Interface.gif]] 
+| 		Creates an Interface 	
+|-
+| 	In Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction IN 	
+|-
+| 	Out Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortOut.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction OUT 	
+|-
+| 	InOut Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPort.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction INOUT 	
+|-
+| 	Standard Port 	
+| [[Image:Images/icons/full/obj16/StandardPort.gif]] 
+| 		Creates a Component Port with a Kind STANDARD and a direction UNSET 	
+|-
+| 	Implements 	
+| [[Image:Images/icons/full/obj16/Implement.gif]] 
+| 		Creates an Implementation relationship from a Component to an Interface 	
+|-
+| 	Uses 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates an Use relationship from a Component to an Interface 	
+|-
+| 	Requires 	
+| [[Image:Images/icons/full/obj16/Require.gif]] 
+| 		Creates a Require relationship from a Component Port to an Interface 	
+|-
+| 	Provides 	
+| [[Image:Images/icons/full/obj16/Provide.gif]] 
+| 		Creates a Provide relationship from a Component Port to an Interface 	
+|-
+| 	Generalization 	
+| 
+| 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
+|-
+| 	Event 	
+| [[Image:Images/icons/full/obj16/ExchangeItemEvent.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to EVENT 	
+|-
+| 	Operation 	
+| [[Image:Images/icons/full/obj16/ExchangeItemOperation.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to OPERATION 	
+|-
+| 	Flow 	
+| [[Image:Images/icons/full/obj16/ExchangeItemFlow.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to FLOW 	
+|-
+| 	Data 	
+| [[Image:Images/icons/full/obj16/ExchangeItemData.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to SHARED DATA 	
+|-
+| 	Undefined Exchange Item 	
+| [[Image:Images/icons/full/obj16/ExchangeItem.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to UNSET 	
+|-
+| 	Exchange Item Element 	
+| [[Image:Images/icons/full/obj16/Parameter.gif]] 
+| 		Create a new Exchange Item Element in the selected Exchange Item. This tool opens a selection wizard to select the type of the Exchange Item Element. 	
+|-
+| 	Transmit 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Send/Produce/Call/Write) from a Component to an Exchange Item 	
+|-
+| 	Acquire 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Receive/Consume/Execute/Access) from a Component to an Exchange Item 	
+|-
+| 	Manage Exchange Item Allocations 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates an allocation relationship from an Interface to an Exchange Item. An Exchange Item can be allocated to several Interfaces. 	
+|-
+| 	Interfaces 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Item Allocations 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item. 	
+|-
+| 	Exchange Items 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Item Elements 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items Elements. Removing an Exchange Item Element graphical object from a diagram does not delete the Exchange Item Element from the model. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CDI_Contextual Component Detailed Interfaces.jpg|Sample will be available soon]]    
+== Contextual Component External Interfaces ==
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+{| border="1"
+|-
+| 	Component 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Logical / Physical Component (and creates a Part in the selected Container Component) 	
+|-
+| 	Reuse Component 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Components&#93; Creates a new Part in the selected Container and type it by the selected Logical / Physical Component 	
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 		Creates a new System Actor / Logical Actor / Physical Actor (and creates a Part in the Context element of the current level) 	
+|-
+| 	In Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction IN 	
+|-
+| 	Out Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortOut.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction OUT 	
+|-
+| 	InOut Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPort.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction INOUT 	
+|-
+| 	Standard Port 	
+| [[Image:Images/icons/full/obj16/StandardPort.gif]] 
+| 		Creates a Component Port with a Kind STANDARD and a direction UNSET 	
+|-
+| 	Interface 	
+| [[Image:Images/icons/full/obj16/Interface.gif]] 
+| 		Creates an Interface 	
+|-
+| 	Implements 	
+| [[Image:Images/icons/full/obj16/Implement.gif]] 
+| 		Creates an Implementation relationship from a Component to an Interface 	
+|-
+| 	Uses 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates an Use relationship from a Component to an Interface 	
+|-
+| 	Provides 	
+| [[Image:Images/icons/full/obj16/Provide.gif]] 
+| 		Creates a Provide relationship from a Component Port to an Interface 	
+|-
+| 	Requires 	
+| [[Image:Images/icons/full/obj16/Require.gif]] 
+| 		Creates a Require relationship from a Component Port to an Interface 	
+|-
+| 	Generalization 	
+| 
+| 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
+|-
+| 	Event 	
+| [[Image:Images/icons/full/obj16/ExchangeItemEvent.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to EVENT 	
+|-
+| 	Operation 	
+| [[Image:Images/icons/full/obj16/ExchangeItemOperation.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to OPERATION 	
+|-
+| 	Flow 	
+| [[Image:Images/icons/full/obj16/ExchangeItemFlow.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to FLOW 	
+|-
+| 	Data 	
+| [[Image:Images/icons/full/obj16/ExchangeItemData.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to SHARED DATA 	
+|-
+| 	Undefined Exchange Item 	
+| [[Image:Images/icons/full/obj16/ExchangeItem.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to UNSET 	
+|-
+| 	Exchange Item Allocation 	
+| [[Image:Images/icons/full/obj16/Implement.gif]] 
+| 		Creates an allocation relationship from an Interface to an Exchange Item. An Exchange Item can be allocated to several Interfaces. 	
+|-
+| 	Transmit 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Send/Produce/Call/Write) from a Component to an Exchange Item 	
+|-
+| 	Acquire 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Receive/Consume/Execute/Access) from a Component to an Exchange Item 	
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Logical / Physical Component. Create or delete graphical objects representing existing Components. Removing a Component graphical object from a diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Sytem / Logical / Physical Actors. Create or delete graphical objects representing existing Actors. Removing a Component graphical object from a diagram does not delete the Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Interfaces 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Items 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CEI_ Contextual Component External Interfaces.jpg|Sample will be available soon]]    
+== Contextual Component Internal Interfaces ==
+                                                                                                                                                                                                                                                                                                                                                                                                                            
+{| border="1"
+|-
+| 	Component 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Logical / Physical Component (and creates a Part in the selected Container Component) 	
+|-
+| 	Reuse Component 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Components&#93; Creates a new Part in the selected Container and type it by the selected Logical / Physical Component 	
+|-
+| 	In Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction IN 	
+|-
+| 	Out Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortOut.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction OUT 	
+|-
+| 	InOut Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPort.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction INOUT 	
+|-
+| 	Standard Port 	
+| [[Image:Images/icons/full/obj16/StandardPort.gif]] 
+| 		Creates a Component Port with a Kind STANDARD and a direction UNSET 	
+|-
+| 	Interface 	
+| [[Image:Images/icons/full/obj16/Interface.gif]] 
+| 		Creates an Interface 	
+|-
+| 	Implements 	
+| [[Image:Images/icons/full/obj16/Implement.gif]] 
+| 		Creates an Implementation relationship from a Component to an Interface 	
+|-
+| 	Uses 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates an Use relationship from a Component to an Interface 	
+|-
+| 	Provides 	
+| [[Image:Images/icons/full/obj16/Provide.gif]] 
+| 		Creates a Provide relationship from a Component Port to an Interface 	
+|-
+| 	Requires 	
+| [[Image:Images/icons/full/obj16/Require.gif]] 
+| 		Creates a Require relationship from a Component Port to an Interface 	
+|-
+| 	Delegation 	
+| 
+| 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. 	
+|-
+| 	Generalization 	
+| 
+| 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
+|-
+| 	Event 	
+| [[Image:Images/icons/full/obj16/ExchangeItemEvent.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to EVENT 	
+|-
+| 	Operation 	
+| [[Image:Images/icons/full/obj16/ExchangeItemOperation.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to OPERATION 	
+|-
+| 	Flow 	
+| [[Image:Images/icons/full/obj16/ExchangeItemFlow.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to FLOW 	
+|-
+| 	Data 	
+| [[Image:Images/icons/full/obj16/ExchangeItemData.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to SHARED DATA 	
+|-
+| 	Undefined Exchange Item 	
+| [[Image:Images/icons/full/obj16/ExchangeItem.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to UNSET 	
+|-
+| 	Exchange Item Allocation 	
+| [[Image:Images/icons/full/obj16/Implement.gif]] 
+| 		Creates an allocation relationship from an Interface to an Exchange Item. An Exchange Item can be allocated to several Interfaces. 	
+|-
+| 	Transmit 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Send/Produce/Call/Write) from a Component to an Exchange Item 	
+|-
+| 	Acquire 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Receive/Consume/Execute/Access) from a Component to an Exchange Item 	
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Logical / Physical Component. Create or delete graphical objects representing existing Components. Removing a Component graphical object from a diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Interfaces 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Items 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CII_Contextual Component Internal Interfaces.jpg|Sample will be available soon]]    
+== Contextual Mission ==
+                                                                                                                                                                       
+{| border="1"
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 
+|-
+| 	Capability 	
+| [[Image:Images/icons/full/obj16/CapabilityUseCase.gif]] 
+| 
+|-
+| 	Capability Exploitation 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 
+|-
+| 	Actor Involvement 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 
+|-
+| 	Actor Generalization 	
+| 
+| 
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert Actors 	
+|-
+| 	Capabilities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert Capabilities 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CM_Contextual Mission.jpg|Sample will be available soon]]    
+== Contextual Operational Capability ==
+                                                                                                                                                                               
+{| border="1"
+|-
+| 	Operational Entity 	
+| [[Image:Images/icons/full/obj16/Entity.gif]] 
+| 		Creates a new Operational Entity 	
+|-
+| 	Operational Actor 	
+| [[Image:Images/icons/full/obj16/OperationalActor.gif]] 
+| 		Creates a new Operational Actor 	
+|-
+| 	Operational Capability 	
+| [[Image:Images/icons/full/obj16/CapabilityUseCase.gif]] 
+| 		Creates a new Operational Capability. 	
+|-
+| 	Involvement 	
+| 
+| 		Creates a new Involvement relationship between a source Operational Capability and a target Operational Entity / Actor 	
+|-
+| 	Extends 	
+| [[Image:Images/icons/full/obj16/Extend.gif]] 
+| 		Create a new Operational Capability Extension relationship between the Source and Target Operational Capabilities. 	
+|-
+| 	Includes 	
+| [[Image:Images/icons/full/obj16/Include.gif]] 
+| 		Create a new Operational Capability Inclusion relationship between the Source and Target Operational Capabilities. 	
+|-
+| 	Operational Capability Generalization 	
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
+| 		Create a new Operational Capability Generalization relationship between the Source and Target Super Operational Capabilities. 	
+|-
+| 	Operational Entities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Actors. Creates or deletes graphical objects corresponding to already existing Operational Actors. Removing an Operational Actor graphical object from the diagram does not delete the Operational Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Operational Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Operational Capabilities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Capabilities. Creates or deletes graphical objects corresponding to already existing Operational Capabilities. Removing an Operational Capability graphical object from the diagram does not delete the Operational Capability from the model. This tool does not modify the semantic model. 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/COC_Contextual Operational Capabilty.jpg|Sample will be available soon]]    
+== Contextual System Actors ==
+                                                                                        
+{| border="1"
+|-
+| 	Actor 	
+| 
+| 
+|-
+| 	Actor Generalization 	
+| 
+| 
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/CSA_Contextual System Actors.jpg|Sample will be available soon]]    
+== EPBS Architecture Blank ==
+                                                                                                                                                                                                                          
+{| border="1"
+|-
+| 	COTS  	
+| [[Image:Images/icons/full/obj16/COTSCI.gif]] 
+| 		Creates a new Configuration Item with kind COTS (Commercial Off The Shelf). 	
+|-
+| 	CS 	
+| [[Image:Images/icons/full/obj16/CSCI.gif]] 
+| 		Creates a new Configuration Item with kind CS (Computer Software) . 	
+|-
+| 	HW 	
+| [[Image:Images/icons/full/obj16/HWCI.gif]] 
+| 		Creates a new Configuration Item with kind HW (Hardware) . 	
+|-
+| 	Interface 	
+| [[Image:Images/icons/full/obj16/InterfaceCI.gif]] 
+| 		Creates a new Configuration Item with kind Interface. 	
+|-
+| 	NDI 	
+| [[Image:Images/icons/full/obj16/NDICI.gif]] 
+| 		Creates a new Configuration Item with kind NDI (Not Developed Item) . 	
+|-
+| 	Prime Item 	
+| [[Image:Images/icons/full/obj16/PrimeItemCI.gif]] 
+| 		Creates a new Configuration Item with kind Prime Item. 	
+|-
+| 	System 	
+| [[Image:Images/icons/full/obj16/SystemCI.gif]] 
+| 		Creates a new Configuration Item with kind System. 	
+|-
+| 	Reuse Configuration Item 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		Create a new Part allowing to reuse an existing Configuration Item. 	
+|-
+| 	Manage Realized Physical Artifacts 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates new Realization relationships from the selected Configuration Item towards the target Physical Artifact (Phsyical Component, Physical Port, Physical Link). The newly realized Physical Artifacts are automatically displayed on the target Configuration Item. This tool modifies the semantic model. 	
+|-
+| 	Configuration Items 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create or delete graphical objects corresponding to existing Configuration Items. Removing a Configuration Item graphical object does not delete this Configuration Item from the model. This tool does not modify the semantic model. 	
+|-
+| 	Realized Physical Artifacts 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create or delete graphical objects corresponding to already realized Physical Artifacts. Removing a Physical Artifacts graphical object from a Configuration Item does not delete the realization relationship between this Configuration Item and the Physical Artifact. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/EAB_EPBS Architecture Blank.jpg|Sample will be available soon]]    
+== Functional Chain Description ==
+                                                                                                                                 
+{| border="1"
+|-
+| 	Involve Function 	
+| 
+| 		Creates a new step referencing the selected Function. 	
+|-
+| 	Involve Functional Exchange 	
+| 
+| 		Creates a new step referencing one existing Functional Exchange between the Function respectively referenced by the preceeding and following steps. 	
+|-
+| 	Involve Functional Chain 	
+| 
+| 		Creates a new step referencing the selected Functional Chain. 	
+|-
+| 	Involve Functional Exchange & Target Function 	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
+| 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functions. 	
+|-
+| 	Involve Functional Exchange & Target Functional Chain 	
+| [[Image:Images/icons/full/obj16/FunctionalChainReference.gif]] 
+| 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/FCD_Functional Chain Description.jpg|Sample will be available soon]]    
+== Functional Scenario ==
+                                                                                                                                                                                                                                                                                                                                            
+{| border="1"
+|-
+| 	Exchange Context 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	System Function 	
+| [[Image:Images/icons/full/obj16/SystemFunction.gif]] 
+| 		 Creates a new lifeline representing a System Function. 	
+|-
+| 	Logical Function 	
+| [[Image:Images/icons/full/obj16/LogicalFunction.gif]] 
+| 		 Creates a new lifeline representing a System Function. 	
+|-
+| 	Physical Function 	
+| [[Image:Images/icons/full/obj16/PhysicalFunction.gif]] 
+| 		 Creates a new lifeline representing a System Function. 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Creates a new lifeline representing a Function of kind Duplicate. 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Creates a new lifeline representing a Function of kind Gather. 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Creates a new lifeline representing a Function of kind Route. 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Creates a new lifeline representing a Function of kind Select. 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Creates a new lifeline representing a Function of kind Split. 	
+|-
+| 	Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functions. Creates or delete semantic Lifelines representing existing Functions. Removing a Lifeline from a scenario deletes incoming and outgoing sequence messages, but does not delete from model the represented Functions and related Functional Exchanges. 	
+|-
+| 	Functional Exchange with return branch 	
+| 
+| 		Creates a new Sequence Message invoking a  Functional Exchange with a return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one. 	
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| 		Creates a new Sequence Message invoking a  Functional Exchange without return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one.  	
+|-
+| 	Reference 	
+| [[Image:Images/icons/full/obj16/InteractionUse.gif]] 
+| 		Creates a Reference to existing Scenario covering Target Lifelines representing existing Operational Entities Parts. 	
+|-
+| 	LOOP 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind LOOP covering Target Lifelines representing existing Component/Actor Parts. 	
+|-
+| 	ALT 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind ALT covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	PAR 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind PAR covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Other Combined Fragment 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with selected kind covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Operand 	
+| [[Image:Images/icons/full/obj16/InteractionOperand.gif]] 
+| 		Creates a new Operand within the target Combined Fragment.  	
+|-
+| 	Involved State / Mode 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing State/Mode. This tool opens a selection wizard to select an available State/Mode. 	
+|-
+| 	Duration 	
+| [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
+| 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/FS_Function Scenario.jpg|Sample will be available soon]]    
+== Interface Diagram ==
+                                                                                                                                                                                                   
+{| border="1"
+|-
+| 	Event 	
+| [[Image:Images/icons/full/obj16/ExchangeItemEvent.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to EVENT 	
+|-
+| 	Operation 	
+| [[Image:Images/icons/full/obj16/ExchangeItemOperation.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to OPERATION 	
+|-
+| 	Flow 	
+| [[Image:Images/icons/full/obj16/ExchangeItemFlow.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to FLOW 	
+|-
+| 	Data 	
+| [[Image:Images/icons/full/obj16/ExchangeItemData.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to SHARED DATA 	
+|-
+| 	Undefined Exchange Item 	
+| [[Image:Images/icons/full/obj16/ExchangeItem.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to UNSET 	
+|-
+| 	ExchangeItemElement 	
+| [[Image:Images/icons/full/obj16/Parameter.gif]] 
+| 		Create a new Exchange Item Element in the selected Exchange Item. This tool opens a selection wizard to select the type of the Exchange Item Element. 	
+|-
+| 	Exchange Item Allocations 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/ID_Interface Diagram.jpg|Sample will be available soon]]    
+== Interfaces Diagram Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+{| border="1"
+|-
+| 	Component 	
+| [[Image:Images/icons/full/obj16/System.gif]] 
+| 		Creates a new Logical / Physical Component (and creates a Part in the selected Container Component) 	
+|-
+| 	Reuse Component 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Components&#93; Creates a new Part in the selected Container and type it by the selected Logical / Physical Component 	
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 		Creates a new System Actor / Logical Actor / Physical Actor (and creates a Part in the Context element of the current level) 	
+|-
+| 	In Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction IN 	
+|-
+| 	Out Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortOut.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction OUT 	
+|-
+| 	InOut Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPort.gif]] 
+| 		Creates a Component Port with a Kind FLOW and a direction INOUT 	
+|-
+| 	Standard Port 	
+| [[Image:Images/icons/full/obj16/StandardPort.gif]] 
+| 		Creates a Component Port with a Kind STANDARD and a direction UNSET 	
+|-
+| 	Interface 	
+| [[Image:Images/icons/full/obj16/Interface.gif]] 
+| 		Creates an Interface 	
+|-
+| 	Implements 	
+| [[Image:Images/icons/full/obj16/Implement.gif]] 
+| 		Creates an Implementation relationship from a Component to an Interface 	
+|-
+| 	Uses 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates an Use relationship from a Component to an Interface 	
+|-
+| 	Provides 	
+| [[Image:Images/icons/full/obj16/Provide.gif]] 
+| 		Creates a Provide relationship from a Component Port to an Interface 	
+|-
+| 	Requires 	
+| [[Image:Images/icons/full/obj16/Require.gif]] 
+| 		Creates a Require relationship from a Component Port to an Interface 	
+|-
+| 	Delegation 	
+| 
+| 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. 	
+|-
+| 	Generalization 	
+| 
+| 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
+|-
+| 	Event 	
+| [[Image:Images/icons/full/obj16/ExchangeItemEvent.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to EVENT 	
+|-
+| 	Operation 	
+| [[Image:Images/icons/full/obj16/ExchangeItemOperation.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to OPERATION 	
+|-
+| 	Flow 	
+| [[Image:Images/icons/full/obj16/ExchangeItemFlow.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to FLOW 	
+|-
+| 	Data 	
+| [[Image:Images/icons/full/obj16/ExchangeItemData.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to SHARED DATA 	
+|-
+| 	Undefined Exchange Item 	
+| [[Image:Images/icons/full/obj16/ExchangeItem.gif]] 
+| 		Creates an Exchange Item with a Communication Mechanism set to UNSET 	
+|-
+| 	Exchange Item Element 	
+| [[Image:Images/icons/full/obj16/Parameter.gif]] 
+| 		Create a new Exchange Item Element in the selected Exchange Item. This tool opens a selection wizard to select the type of the Exchange Item Element. 	
+|-
+| 	Transmit 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Send/Produce/Call/Write) from a Component to an Exchange Item 	
+|-
+| 	Acquire 	
+| [[Image:Images/icons/full/obj16/CommunicationLink.gif]] 
+| 		Creates a Communication Link (Receive/Consume/Execute/Access) from a Component to an Exchange Item 	
+|-
+| 	Manage Exchange Item Allocations 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item. 	
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Logical / Physical Component. Create or delete graphical objects representing existing Components. Removing a Component graphical object from a diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Sytem / Logical / Physical Actors. Create or delete graphical objects representing existing Actors. Removing a Component graphical object from a diagram does not delete the Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Component Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Component Ports.  Create or delete graphical objects corresponding to already existing Component Ports. Removing a Component Port graphical object from a Component / Actor does not delete the Component Port from the model. This tool does not modify the semantic model. 	
+|-
+| 	Interfaces 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Item Allocations 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item. 	
+|-
+| 	Exchange Item 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Item Elements 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Exchange Items Elements. Removing an Exchange Item Element graphical object from a diagram does not delete the Exchange Item Element from the model. This tool does not modify the semantic model. 	
+|-
+| 	Communication Links 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Communication Links 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/IDB_Interfaces Diagram Blank.jpg|Sample will be available soon]]    
+== Logical Architecture Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+{| border="1"
+|-
+| 	Logical Component 	
+| 
+| 		Creates a new Logical Component and a Part typed by this Logical Component.  The Part is created in the Component target of the click. 	
+|-
+| 	Reuse Logical Component 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Components&#93; Creates a new Part of an existing Logical Component into the targeted Component. 	
+|-
+| 	Logical Actor 	
+| 
+| 		Creates a new Logical Actor and a Part typed by this Logical Actor.  The Part is created in the Logical Context. 	
+|-
+| 	Reuse Logical Actor 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Components&#93; Creates a new Part of an existing Actor. 	
+|-
+| 	Component Exchange 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components.  This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	Component Exchange with Delegations 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. When necessary (for example when used to relate two sub components), Delegation relationships are also created. This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	Component Exchange with ports 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Reusable Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Parts. Component Ports are created automatically if the Source and / or Target are Parts instead of Ports.  	
+|-
+| 	Component Exchange without ports 	
+| 
+| 		&#91;Reusable Components&#93; Creates a Component Exchange of kind ASSEMBLY between the Source Part and Target Parts. 	
+|-
+| 	Component Exchange between types 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components.  This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	Delegation 	
+| 
+| 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	Physical Link 	
+| 
+| 		Creates a new Physical Link between the source and target Logicall Components or Actors. 	
+|-
+| 	In Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction IN 	
+|-
+| 	Out Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortOut.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction OUT 	
+|-
+| 	InOut Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPort.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction INOUT 	
+|-
+| 	Standard Port 	
+| [[Image:Images/icons/full/obj16/StandardPort.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction UNSET 	
+|-
+| 	Physical Port 	
+| [[Image:Images/icons/full/obj16/PhysicalPort.gif]] 
+| 		Creates a new Physical Port on the target Logical Component or Actor. 	
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Components 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or delete graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create or delete graphical objects corresponding to existing Actors. Removing an Actor graphical object from the diagram does not delete the Actor from the model.  This tool does not modify the semantic model. 	
+|-
+| 	Component Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create or delete graphical objects corresponding to existing Component Exchanges. The proposed Component Exchanges are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
+|-
+| 	Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Component Exchanges. Create or delete graphical objects corresponding to already existing Categorized Component Exchanges and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Component Exchange graphical object from the diagram does not delete the Component Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Component Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges. 	
+|-
+| 	Physical Links 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
+|-
+| 	Physical Path 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model. 	
+|-
+| 	Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Physical Links. Create or delete graphical objects corresponding to already existing Categorized Physical Links and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Physical Link graphical object from the diagram does not delete the Physical Link from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Physical Links / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Physical Links and their representation as Category-based Physical Links. 	
+|-
+| 	Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Unsynchronized diagrams only&#93; Create or delete graphical objects corresponding to Component Ports. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Logical Function 	
+| 
+| 		Creates a new Logical Function and allocates it to the target Logical Component / Actor. 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Create a new Duplicate allocated to the component type of the selected part 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Create a new Gather allocated to the component type of the selected part 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Create a new Route allocated to the component type of the selected part 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Create a new Select allocated to the component type of the selected part 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Create a new Split allocated to the component type of the selected part 	
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
+| 		Creates a new Functional Exchange between the Source and Target Logical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target. 	
+|-
+| 	Input Port 	
+| [[Image:Images/icons/full/obj16/InFlowPort.gif]] 
+| 		Creates a new Function Input Port on the target Logical Function. 	
+|-
+| 	Output Port 	
+| [[Image:Images/icons/full/obj16/OutFlowPort.gif]] 
+| 		Creates a new Function Input Port on the target Logical Function. 	
+|-
+| 	Port Allocation 	
+| [[Image:Images/icons/full/obj16/PortAllocation.gif]] 
+| 		Creates a new Port Allocation from the source Component Port to the target Function Port. 	
+|-
+| 	Manage Function Allocation 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates new allocation relationships between selected Logical Functions and the target Logical Component.  The newly allocated logical Functions are automatically displayed on the target Logical Component.  This tool modifies the semantic model. 	
+|-
+| 	Allocated Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Allocated Functions. Create or delete graphical objects corresponding to already allocated Logical Functions. Removing an Logical Function graphical object from a Logical Component does not delete the allocation relationship between this Component and the Logical Function. This tool does not modify the semantic model.  	
+|-
+| 	All Allocated Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert all Allocated Functions. Create graphical objects for all Logical Functions already allocated to all Logical Components appearing on the diagram. This tool does not modify the semantic model.  	
+|-
+| 	Functional Chains 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Chains. Create or delete graphical objects corresponding to existing Functional Chains. Removing a Functional Chain graphical object from a diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model.  	
+|-
+| 	Functional Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create or delete graphical objects corresponding to existing Functional Exchanges. The proposed Functional Exchanges are the one incoming and outgoing from the Logical Function target of the click.  Opposite Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented.  This tool does not modify the semantic model. 	
+|-
+| 	Function Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Unsynchronized diagrams only&#93; Create or delete graphical objects corresponding to Function Ports.  This tool does not modify the semantic model. 	
+|-
+| 	Switch Functional Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges.  	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Functions from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the related elements contributing to a given Scenario.  Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented.  This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/LAB_Logical Architecture Blank.jpg|Sample will be available soon]]    
+== Logical Component Breakdown ==
+                                                                                               
+{| border="1"
+|-
+| 	Logical Component 	
+| 
+| 		Creates a new Logical Component in the target Logical Component 	
+|-
+| 	Create Part 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		&#91;Reusable Components&#93; Creates a new Part typed by the source Logical Component in the target Logical Component 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Sets the target Logical Component as the new container of the source Logical Component 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/LCBD_Logical Component Breakdown.jpg|Sample will be available soon]]    
+== Logical Data Flow Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                          
+{| border="1"
+|-
+| 	Logical Function 	
+| 
+| 		Creates a new Logical Function 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Creates a new Duplicate 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Creates a new Gather 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Creates a new Route 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Creates a new Select 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Creates a new Split 	
+|-
+| 	Actor Function 	
+| [[Image:Images/icons/full/obj16/ActorFunction.gif]] 
+| 		Creates a new Logical Function allocated to a new Logical Actor 	
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
+| 		Creates a new Functional Exchange between the Source and Target Logical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target. 	
+|-
+| 	Input Port 	
+| [[Image:Images/icons/full/obj16/InFlowPort.gif]] 
+| 		Creates a new Input Port on the target Function 	
+|-
+| 	Output Port 	
+| [[Image:Images/icons/full/obj16/OutFlowPort.gif]] 
+| 		Creates a new Output Port on the target Function 	
+|-
+| 	Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actor Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+|-
+| 	Functional Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Exchange. Create or delete graphical objects corresponding to already existing Functional Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Functional Exchange graphical object from the diagram does not delete the Functional Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Function Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Function Ports. Create or delete graphical objects corresponding to already existing Function Ports. Removing a Function Port graphical object from the diagram does not delete the Function Port from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Exchanges. Create or delete graphical objects corresponding to already existing Categorized Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Categorized Exchange graphical object from the diagram does not delete the Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Functional Chains 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Chain. Create or delete graphical objects corresponding to already existing Functional Chains. Removing a Functional Chain graphical object from the diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Functional Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges.  	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Functions from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the Functions and Functional Exchanges contributing to a given Scenario. This tool does not modify the semantic model. 	
+|-
+| 	Functional Chain Elements 	
+| [[Image:Images/icons/full/obj16/FunctionalChain.gif]] 
+| 		Insert all the Functions and Functional Exchanges contributing to a given Functional Chain.  	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/LDFB_Logical Data Flow Blank.jpg|Sample will be available soon]]    
+== Logical Function Breakdown ==
+                                                                                                                                                     
+{| border="1"
+|-
+| 	Logical Function 	
+| 
+| 		Creates a new Logical Function in the target Function 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Creates a new Duplicate Function in the target Function 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Creates a new Gather Function in the target Function 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Creates a new Route Function in the target Function 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Creates a new Select Function in the target Function 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Creates a new Split Function in the target Function 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Sets the target Function as the new container of the source Function 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/LFBD_Logical Function Breakdown.jpg|Sample will be available soon]]    
+== Missions Blank ==
+                                                                                                                                                                                             
+{| border="1"
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 		Creates a new System Actor 	
+|-
+| 	Capability 	
+| [[Image:Images/icons/full/obj16/CapabilityUseCase.gif]] 
+| 		Creates a new Capability 	
+|-
+| 	Mission 	
+| [[Image:Images/icons/full/obj16/Mission.gif]] 
+| 		Creates a new Mission 	
+|-
+| 	Capability Exploitation 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates a new Exploitation relationship between the source Mission and the target Capability 	
+|-
+| 	Actor Involvement 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates a new Involvement relationship between the source Mission / Capability and the target System Actor 	
+|-
+| 	Actor Generalization 	
+| 
+| 		Creates a new Generalization relationship between the source and target System Actors 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove System Actors. Creates or deletes graphical objects corresponding to already existing System Actors. Removing a System Actor graphical object from the diagram does not delete the System Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Missions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Missions. Creates or deletes graphical objects corresponding to already existing Missions. Removing a Mission graphical object from the diagram does not delete the Mission from the model. This tool does not modify the semantic model. 	
+|-
+| 	Capabilities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Capabilities. Creates or deletes graphical objects corresponding to already existing Capabilities. Removing a Capability graphical object from the diagram does not delete the Capability from the model. This tool does not modify the semantic model. 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/MB_Missions Blank.jpg|Sample will be available soon]]    
+== Missions Capabilities Blank ==
+                                                                                                                                                                                                                           
+{| border="1"
+|-
+| 	Actor 	
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
+| 		Creates a new System Actor 	
+|-
+| 	Mission 	
+| [[Image:Images/icons/full/obj16/Mission.gif]] 
+| 		Creates a new Mission 	
+|-
+| 	Capability 	
+| [[Image:Images/icons/full/obj16/CapabilityUseCase.gif]] 
+| 		Creates a new Capability 	
+|-
+| 	Capability Exploitation 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates a new Exploitation relationship between the source Mission and the target Capability 	
+|-
+| 	Involved Actor 	
+| [[Image:Images/icons/full/obj16/Use.gif]] 
+| 		Creates a new Involvement relationship between the source Mission / Capability and the target System Actor 	
+|-
+| 	Extends 	
+| [[Image:Images/icons/full/obj16/Extend.gif]] 
+| 		Creates a new Extension relationship between the source and target Capabilities 	
+|-
+| 	Includes 	
+| [[Image:Images/icons/full/obj16/Include.gif]] 
+| 		Creates a new Inclusion relationship between the source and target Capabilities 	
+|-
+| 	Capability Generalization 	
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
+| 		Creates a new Generalization relationship between the source and target Capabilities 	
+|-
+| 	Actor Generalization 	
+| 
+| 		Creates a new Generalization relationship between the source and target System Actors 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Capabilities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Missions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships. Create or delete graphical objects corresponding to already existing Exploitation / Extension / Inclusion / Generalization relationships. Removing a Relationship graphical object from the diagram does not delete the Relationship from the model. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/MCB_Mission Capabilities Blank.jpg|Sample will be available soon]]    
+== Modes & States ==
+                                                                                                                                                                                                                                                                               
+{| border="1"
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Mode 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Creates a new Mode 	
+|-
+| 	State 	
+| [[Image:Images/icons/full/obj16/State.gif]] 
+| 		Creates a new State 	
+|-
+| 	State/Mode 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Transition 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Reuse Mode/State 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		Reuse Mode/State 	
+|-
+| 	Initial 	
+| [[Image:Images/icons/full/obj16/InitialPseudoState.gif]] 
+| 		Creates an Initial Pseudo State 	
+|-
+| 	Join 	
+| [[Image:Images/icons/full/obj16/JoinPseudoState.gif]] 
+| 		Creates a Join Pseudo State 	
+|-
+| 	Choice 	
+| [[Image:Images/icons/full/obj16/ChoicePseudoState.gif]] 
+| 		Creates a Choice Pseudo State 	
+|-
+| 	Fork 	
+| [[Image:Images/icons/full/obj16/ForkPseudoState.gif]] 
+| 		Creates a Fork Pseudo State 	
+|-
+| 	Terminate 	
+| [[Image:Images/icons/full/obj16/TerminatePseudoState.gif]] 
+| 		Creates a Termintate Pseudo State 	
+|-
+| 	Final 	
+| [[Image:Images/icons/full/obj16/FinalState.gif]] 
+| 		Creates a Final Pseudo State 	
+|-
+| 	EntryPoint 	
+| [[Image:Images/icons/full/obj16/Pseudostate_entryPoint.gif]] 
+| 		Creates a Entry Pseudo State 	
+|-
+| 	ExitPoint 	
+| [[Image:Images/icons/full/obj16/Pseudostate_exitPoint.gif]] 
+| 		Creates a Exit Pseudo State 	
+|-
+| 	DeepHistory 	
+| [[Image:Images/icons/full/obj16/Pseudostate_deepHistory.gif]] 
+| 		Creates a Deep History Pseudo State 	
+|-
+| 	ShallowHistory 	
+| [[Image:Images/icons/full/obj16/Pseudostate_shallowHistory.gif]] 
+| 		Creates a Shallow History Pseudo State 	
+|-
+| 	Transition 	
+| [[Image:Images/icons/full/obj16/StateTransition.gif]] 
+| 		Creates a Transition between the source and target States or Modes 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/M-S_Modes and States.jpg|Sample will be available soon]]    
+== Operational Activity Breakdown ==
+                                                                            
+{| border="1"
+|-
+| 	Operational Activity 	
+| 
+| 		Creates a new Operational Activity in the target Operational Activity 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Sets the target Operational Activity as the new container of the source Operational Activity 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OABD_Operational Activity Breakdown.jpg|Sample will be available soon]]    
+== Operational Activity Interaction Blank ==
+                                                                                                                                                                                  
+{| border="1"
+|-
+| 	Operational Activity 	
+| 
+| 		Creates a new Operational Activity  	
+|-
+| 	Interaction 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange_OA.gif]] 
+| 		Creates a new Interaction between the source and target Operational Activities 	
+|-
+| 	Operational Activities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Activities. Create or delete graphical objects corresponding to already existing Operational Activities. Removing an Operational Activity graphical object from the diagram does not delete the Operational Activity from the model. This tool does not modify the semantic model. 	
+|-
+| 	Interactions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interactions. Create or delete graphical objects corresponding to already existing Interactions and the corresponding source/target Operational Activities if they are not present on the diagram yet. Removing an Interaction graphical object from the diagram does not delete the Interaction from the model. This tool does not modify the semantic model. 	
+|-
+| 	Operational Processes 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Processes. Create or delete graphical objects corresponding to already existing Operational Processes. Removing an Operational Process graphical object from the diagram does not delete the Operational Process from the model. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Activities from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Activities available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the Activities and Interactions contributing to a given Scenario. This tool does not modify the semantic model. 	
+|-
+| 	Operational Process Elements 	
+| [[Image:Images/icons/full/obj16/FunctionalChain.gif]] 
+| 		Insert all the Operational Activities and Interactions contributing to a given Operational Process. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OAIB_Operational Activity Interaction Blank.jpg|Sample will be available soon]]    
+== Operational Capabilities Blank ==
+                                                                                                                                                                             
+{| border="1"
+|-
+| 	Operational Entity 	
+| [[Image:Images/icons/full/obj16/Entity.gif]] 
+| 		Creates a new Operational Entity 	
+|-
+| 	Operational Actor 	
+| [[Image:Images/icons/full/obj16/OperationalActor.gif]] 
+| 		Creates a new Operational Actor 	
+|-
+| 	Operational Capability 	
+| [[Image:Images/icons/full/obj16/Capability.gif]] 
+| 		Creates a new Operational Capability 	
+|-
+| 	CommunicationMean 	
+| 
+| 		Creates a new Communication Mean between two Operational Entities / Actors 	
+|-
+| 	Involvement 	
+| 
+| 		Creates a new Involvement relationship between a source Operational Capability and a target Operational Entity / Actor 	
+|-
+| 	Extends 	
+| [[Image:Images/icons/full/obj16/Extend.gif]] 
+| 		Create a new Capability Extension relationship between the Source and Target Capabilities. 	
+|-
+| 	Includes 	
+| [[Image:Images/icons/full/obj16/Include.gif]] 
+| 		Create a new Capability Inclusion relationship between the Source and Target Capabilities. 	
+|-
+| 	Operational Capability Generalization 	
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
+| 		Create a new Capability Generalization relationship between the Source and Target Super Capabilities. 	
+|-
+| 	Operational Entities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Actors. Creates or deletes graphical objects corresponding to already existing Operational Actors. Removing an Operational Actor graphical object from the diagram does not delete the Operational Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Operational Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Operational Capabilities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Capabilities. Creates or deletes graphical objects corresponding to already existing Operational Capabilities. Removing an Operational Capability graphical object from the diagram does not delete the Operational Capability from the model. This tool does not modify the semantic model. 	
+|-
+| 	Relationships 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Relationships 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OCB_Operational Capabilities Blank.jpg|Sample will be available soon]]    
+== Operational Entity Blank ==
+                                                                                                                                                                                                                                                                                                                                                                     
+{| border="1"
+|-
+| 	Operational Entity 	
+| [[Image:Images/icons/full/obj16/Entity.gif]] 
+| 		Creates a new Operational Entity 	
+|-
+| 	Operational Actor 	
+| [[Image:Images/icons/full/obj16/OperationalActor.gif]] 
+| 		Creates a new Operational Actor 	
+|-
+| 	Communication Mean 	
+| 
+| 		Creates a Communication Mean 	
+|-
+| 	Operational Entities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Entities. Create or delete graphical objects corresponding to already existing Operational Entities. Removing an Operational Entity graphical object from the diagram does not delete the Operational Entity from the model. This tool does not modify the semantic model. 	
+|-
+| 	Operational Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Actors. Create or delete graphical objects corresponding to already existing Operational Actors. Removing an Operational Actor graphical object from the diagram does not delete the Operational Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Communication Means 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Communication Means. Create or delete graphical objects corresponding to already existing Communication Means and the corresponding source/target Operational Entity if they are not present on the diagram yet. Removing a Communication Mean graphical object from the diagram does not delete the Communication Mean from the model. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Role 	
+| 
+| 		Create a new Role and allocate it to the selected Operational Entity 	
+|-
+| 	Manage Role Allocation 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates new allocation relationships between selected Roles and the target Operational Entity. The newly allocated Roles are automatically displayed on the target Operational Entity. This tool modifies the semantic model. 	
+|-
+| 	All Allocated Roles 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert All Allocated Roles. Create graphical objects for all Roles already allocated to all Operational Entities appearing on the diagram. This tool does not modify the semantic model. 	
+|-
+| 	Allocated Roles 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Allocated Roles. Create or delete graphical objects corresponding to already allocated Roles. Removing a Role graphical object from an Operational Entity does not delete the allocation relationship between this Operational Entity and the Role. This tool does not modify the semantic model 	
+|-
+| 	Operational Activity 	
+| 
+| 		Create a new Operational Activity and allocate it to the selected Operational Entity or the selected Role. 	
+|-
+| 	Interaction 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange_OA.gif]] 
+| 		Create an Interaction between two Operational Activities. 	
+|-
+| 	Manage Activity Allocation 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates new allocation relationships between selected Operational Activity and the target Operational Entity or Role. The newly allocated Operational Activity are automatically displayed on the target Operational Entity or Role. This tool modifies the semantic model. 	
+|-
+| 	Interactions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Interactions. Create or delete graphical objects corresponding to already existing Interactions and the corresponding source/target Operational Activities / Roles / Operational Entities if they are not present on the diagram yet. Removing an Interaction graphical object from the diagram does not delete the Interaction from the model. This tool does not modify the semantic model. 	
+|-
+| 	Operational Processes 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Processes. Create or delete graphical objects corresponding to already existing Operational Processes. Removing an Operational Process graphical object from the diagram does not delete the Operational Process from the model. This tool does not modify the semantic model. 	
+|-
+| 	Allocated Activities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Activities. Create or delete graphical objects corresponding to already existing Operational Activities. Removing an Operational Activity graphical object from the diagram does not delete the Operational Activity from the model. This tool does not modify the semantic model. 	
+|-
+| 	All Allocated Activities in Entities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert All Allocated Operational Activities. Create graphical objects for all Operational Activities already allocated to all Operational Entities appearing on the diagram. This tool does not modify the semantic model. 	
+|-
+| 	All Allocated Activities in Roles 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert All Allocated Operational Activities. Create graphical objects for all Operational Activities already allocated to all Roles appearing on the diagram. This tool does not modify the semantic model. 	
+|-
+| 	Activities from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Activities available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the related elements contributing to a given Scenario.  Activities and allocating Entities might be displayed on the diagram as well if they are not yet represented.  This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OAB_Operational Architecture Blank.jpg|Sample will be available soon]]    
+== Operational Entity Breakdown ==
+                                                                                          
+{| border="1"
+|-
+| 	Operational Entity 	
+| [[Image:Images/icons/full/obj16/Entity.gif]] 
+| 		Creates a new Operational Entity in the target Entity 	
+|-
+| 	Operational Actor 	
+| [[Image:Images/icons/full/obj16/OperationalActor.gif]] 
+| 		Creates a new Operational Actor in the target Entity 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Sets the target Operational Entity as the new container of the source Operational Entity 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OEBD_Operational Entity Breakdown.jpg|Sample will be available soon]]    
+== Operational Interaction Scenario ==
+                                                                                                                                                                                                                                                                                                                                    
+{| border="1"
+|-
+| 	Exchange Context 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Operational Entity 	
+| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| 
+|-
+| 	Operational Actor 	
+| [[Image:Images/icons/full/obj16/OperationalActor.gif]] 
+| 
+|-
+| 	Role 	
+| [[Image:Images/icons/full/obj16/Role.gif]] 
+| 
+|-
+| 	Operational Entities / roles 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Interaction with Return Branch 	
+| 
+| 		Creates a new Sequence Message invoking an Operational Interaction with return branch between the Source and Target Lifelines (representing existing Operational Entities Parts). This tool opens a selection wizard to select an available existing Interaction or to create a new one between existing/new allocated  Operational Activities. This tool is masked as soon as a Communication Mean is displayed on the scenario.  	
+|-
+| 	Interaction 	
+| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| 		Creates a new Sequence Message invoking an Operational Interaction without return branch between the Source and Target Lifelines (representing existing Operational Entities Parts). This tool opens a selection wizard to select an available existing Interaction or to create a new one between existing/new allocated  Operational Activities. This tool is masked as soon as a Communication Mean is displayed on the scenario. 	
+|-
+| 	CommunicationMean Return Branch 	
+| 
+| 		Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities. This tool is masked as soon as an Operational Interaction is displayed on the scenario. 	
+|-
+| 	Communication Mean 	
+| [[Image:Images/icons/full/obj16/AsyncSequenceMessage.gif]] 
+| 		Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities. 	
+|-
+| 	Create message 	
+| [[Image:Images/icons/full/obj16/CreateSequenceMessage.gif]] 
+| 		Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean. 	
+|-
+| 	Delete message 	
+| [[Image:Images/icons/full/obj16/DeleteSequenceMessage.gif]] 
+| 		Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean. 	
+|-
+| 	Arm timer 	
+| 
+| 		Create a new sequence message to arm a timer. 	
+|-
+| 	Cancel timer 	
+| 
+| 		Create a new sequence message to cancel a prieviously armed timer. 	
+|-
+| 	Reference 	
+| [[Image:Images/icons/full/obj16/InteractionUse.gif]] 
+| 		Creates a Reference to existing Scenario covering Target Lifelines representing existing Operational Entities Parts. 	
+|-
+| 	LOOP 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind LOOP covering Target Lifelines representing existing Component/Actor Parts. 	
+|-
+| 	ALT 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind ALT covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	PAR 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with the kind PAR covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Other Combined Fragment 	
+| [[Image:Images/icons/full/obj16/CombinedFragment.gif]] 
+| 		Creates a Combined Fragment with selected kind covering Target Lifelines representing existing Component/Actor Parts. Operands should be added to the combined Fragment. 	
+|-
+| 	Operand 	
+| [[Image:Images/icons/full/obj16/InteractionOperand.gif]] 
+| 		Creates a new Operand within the target Combined Fragment.  	
+|-
+| 	Activity 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing Operational Activity allocated to Target Operational Entity. This tool opens a selection wizard to select an available Operational Activity. 	
+|-
+| 	State / Mode 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create a State Fragment referencing an existing State/Mode of the Target Operational Entity. This tool opens a selection wizard to select an available State/Mode. 	
+|-
+| 	Duration 	
+| [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
+| 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OES_Operational Entity Scenario.jpg|Sample will be available soon]]    
+== Operational Process Description ==
+                                                                                                                   
+{| border="1"
+|-
+| 	Involve Operational Activity 	
+| 
+| 		Creates a new step referencing the selected Operational Activity. 	
+|-
+| 	Involve Interaction 	
+| 
+| 		Creates a new step referencing one existing Interaction between the Operational Activities respectively referenced by the preceeding and following steps. 	
+|-
+| 	Involve Operational Process 	
+| 
+| 		Creates a new step referencing the selected Functional Chain. 	
+|-
+| 	Involve Interaction & Target Activity 	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
+| 		Creates two new steps respectively referencing one existing outgoing Interaction and a target Operational Activity. 	
+|-
+| 	Involve Interaction & Target Operational Process 	
+| [[Image:Images/icons/full/obj16/FunctionalChainReference.gif]] 
+| 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/OPD_Operational Process Description.jpg|Sample will be available soon]]    
+== Operational Role Blank ==
+                                                                                                                                                                      
+{| border="1"
+|-
+| 	Operational Role 	
+| 
+| 		Creates a new Operational Role 	
+|-
+| 	Operational Roles 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Roles. Creates or deletes graphical objects corresponding to already existing Operational Roles. Removing an Operational Role graphical object from the diagram does not delete the Operational Role from the model. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Operational Activity 	
+| 
+| 		Creates a new Operational Activity allocated to the target Operational Role 	
+|-
+| 	Interaction 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange_OA.gif]] 
+| 		Creates a new Interaction between the source and target Operational Activities  	
+|-
+| 	Interactions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Operational Interactions. Creates or deletes graphical objects corresponding to already existing Operational Interactions. Removing an Operational Interaction graphical object from the diagram does not delete the Operational Interaction from the model. This tool does not modify the semantic model.  	
+|-
+| 	Manage Activity Allocation 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Manage Operational Activity Allocation. Creates new allocation relationships between the selected Operational Activities and the target Operational Role. The newly allocated Operational Activities are automatically displayed on the target Operational Role. This tool modifies the semantic model. 	
+|-
+| 	Allocated Activities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Allocated Operational Activities. Creates or deletes graphical objects corresponding to already Operational Activities. Removing an Operational Activity graphical object from an Operational Role does not delete the allocation relationship towards the Operational Activity. This tool does not modify the semantic model. 	
+|-
+| 	All Allocated Activities 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert All Allocated Operational Activities. Creates graphical objects for all Operational Activities already allocated to all Operational Roles appearing on the diagram. This tool does not modify the semantic model.  	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/ORB_Operational Role Blank.jpg|Sample will be available soon]]    
+== Package Dependencies ==
+                                                                                        
+{| border="1"
+|-
+| 	Data Packages 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Data Packages 	
+|-
+| 	Interface Packages 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Iinterface Packages 	
+|-
+| 	Dependencies 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Dependent Packages 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/PD_Package Dependencies.jpg|Sample will be available soon]]    
+== Physical Architecture Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+{| border="1"
+|-
+| 	Node PC 	
+| [[Image:Images/icons/full/obj16/PhysicalComponentNode.gif]] 
+| 		Creates a new Physical Component with a Kind NODE  and a Part typed by this Physical Component. The Part is created in the Component target of the click. 	
+|-
+| 	Reuse PC 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Component&#93; Creates a new Part of an existing Node Physical Component into the targeted element. 	
+|-
+| 	Deploy Node PC 	
+| [[Image:Images/icons/full/obj16/PhysicalComponentNode.gif]] 
+| 		Creates a new Physlcal Component with a Kind NODE and deployed on the target Node Physical Component.  	
+|-
+| 	Physical Actor 	
+| [[Image:Images/icons/full/obj16/PhysicalActor.gif]] 
+| 		Creates a new Physical Actor with a Kind NODE  and a Part typed by this Physical Actor. The Part is created in the Physical Context Element. 	
+|-
+| 	Reuse Physical Actor 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Components&#93; Creates a new Part of an existing Physical Actor. 	
+|-
+| 	Physical Link 	
+| 
+| 		Creates a new Physical Link between the source and target Node Physical Components or Actors. 	
+|-
+| 	Physical Port 	
+| [[Image:Images/icons/full/obj16/PhysicalPort.gif]] 
+| 		Creates a new Physical Port on the target Node Physical Component or Actor. 	
+|-
+| 	Component Port Allocation 	
+| [[Image:Images/icons/full/obj16/PortAllocation.gif]] 
+| 		Creates a new Port Allocation from the source Component Port to the target Function Port. 	
+|-
+| 	Manage Node PCs Deployment 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates new deployment relationships between selected Node Physical Component and the target Physical Component. The newly deployed Physical Components are automatically displayed on the target Physical Component. This tool modifies the semantic model. 	
+|-
+| 	Node PCs 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Node PCs. Creates or deletes graphical objects on the diagrams corresponding to existing Physical Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Node PCs 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Node PCs. Creates or deletes graphical objects on the diagrams corresponding to existing Physical Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Actors. Creates or deletes graphical objects corresponding to existing Physical Actors. Removing an Actor graphical object from the diagram does not delete the Actor from the model. This tool does not modify the semantic model. 	
+|-
+| 	Deployed PCs 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Deployed PCs. Creates or delete graphical objects corresponding to already deployed Physical Components. Removing a Physical Component graphical object from the deploying Physical Component or Actor does not delete the deployment relationship towards the Physical Component. This tool does not modify the semantic model. 	
+|-
+| 	All Deployed PCs 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		Insert All Deployed PCs. Creates graphical objects for all Physical Component already deployed on all Physical Components and Actors appearing on the diagram. This tool does not modify the semantic model. 	
+|-
+| 	Physical Links 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
+|-
+| 	Physical Path 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model. 	
+|-
+| 	Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Physical Links. Create or delete graphical objects corresponding to already existing Categorized Physical Links and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Physical Link graphical object from the diagram does not delete the Physical Link from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Physical Links / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Physical Links and their representation as Category-based Physical Links. 	
+|-
+| 	Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Unsynchronized diagrams only&#93; Creates or deletes graphical objects corresponding to Physical Ports. This tool does not modify the semantic model. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Deploy Behavior PC 	
+| [[Image:Images/icons/full/obj16/PhysicalComponent.gif]] 
+| 		Creates a new Physlcal Component with a Kind BEHAVIOR and deployed on the target Physical Component. 	
+|-
+| 	Behavior PC 	
+| [[Image:Images/icons/full/obj16/PhysicalComponent.gif]] 
+| 		Creates a new Physical Component with a Kind BEHAVIOR and a Part typed by this Physical Component. The Part is created in the Component target of the click. 	
+|-
+| 	Reuse PC 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		&#91;Reusable Component&#93; Creates a new Part of an existing Behavior Physical Component into the targeted element. 	
+|-
+| 	Component Exchange 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	Component Exchange with Delegations 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. When necessary (for example when used to relate two sub components), Delegation relationships are also created. This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	Component Exchange with ports 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Reusable Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Parts. Component Ports are created automatically if the Source and / or Target are Parts instead of Ports. 	
+|-
+| 	Component Exchange without ports 	
+| 
+| 		&#91;Reusable Components&#93; Creates a Component Exchange of kind ASSEMBLY between the Source Part and Target Parts. 	
+|-
+| 	Component Exchange between types 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	Delegation 	
+| 
+| 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. This tool can be used directly from / to Component or from / to Component Ports. 	
+|-
+| 	In Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction IN  	
+|-
+| 	Out Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortOut.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction OUT  	
+|-
+| 	InOut Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPort.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction INOUT  	
+|-
+| 	Standard Port 	
+| [[Image:Images/icons/full/obj16/StandardPort.gif]] 
+| 		Creates a new Component Port initialized with the Kind FLOW and the direction UNSET  	
+|-
+| 	Manage Behavior PCs Deployment 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates new deployment relationships between selected Behavior Physical Component and the target Physical Component. The newly deployed Physical Components are automatically displayed on the target Physical Component. This tool modifies the semantic model. 	
+|-
+| 	Behavior PCs 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Behavior PCs. Creates or deletes graphical objects on the diagrams corresponding to existing Physical Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Behavior PCs 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Behavior PCs. Creates or deletes graphical objects on the diagrams corresponding to existing Physical Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model. 	
+|-
+| 	Deployed PCs 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Deployed PCs. Creates or delete graphical objects corresponding to already deployed Physical Components. Removing a Physical Component graphical object from the deploying Physical Component or Actor does not delete the deployment relationship towards the Physical Component. This tool does not modify the semantic model. 	
+|-
+| 	All Deployed PCs 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		Insert All Deployed PCs. Creates graphical objects for all Physical Component already deployed on all Physical Components and Actors appearing on the diagram. This tool does not modify the semantic model. 	
+|-
+| 	Component Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Create or delete graphical objects corresponding to existing Component Exchanges. The proposed Component Exchanges are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
+|-
+| 	Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Component Exchanges. Create or delete graphical objects corresponding to already existing Categorized Component Exchanges and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Component Exchange graphical object from the diagram does not delete the Component Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Component Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges. 	
+|-
+| 	Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Unsynchronized diagrams only&#93; Create or delete graphical objects corresponding to Component Ports. This tool does not modify the semantic model. 	
+|-
+| 	Physical Function 	
+| 
+| 		Creates a new Physical Function and allocates it to the target Physical Component or Actor. 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Create a new Duplicate allocated to the component type of the selected part 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Create a new Gather allocated to the component type of the selected part 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Create a new Route allocated to the component type of the selected part 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Create a new Select allocated to the component type of the selected part 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Create a new Split allocated to the component type of the selected part 	
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
+| 		Creates a new Functional Exchange between the Source and Target Physical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target. 	
+|-
+| 	Input Port 	
+| [[Image:Images/icons/full/obj16/InFlowPort.gif]] 
+| 		Creates a new Function Input Port on the target Function. 	
+|-
+| 	Output Port 	
+| [[Image:Images/icons/full/obj16/OutFlowPort.gif]] 
+| 		Creates a new Function Output Port on the target Function. 	
+|-
+| 	Port Allocation 	
+| [[Image:Images/icons/full/obj16/PortAllocation.gif]] 
+| 		Creates a new Port Allocation from the source Component Port to the target Function Port. 	
+|-
+| 	Manage Function Allocation 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Creates new allocation relationships between the selected Functions and the target Physical Component or Actor. The newly allocated Functions are automatically displayed on the target Physical Component or Actor. This tool modifies the semantic model. 	
+|-
+| 	Allocated Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Allocated Functions. Creates or deletes graphical objects corresponding to already allocated Functions. Removing a Function graphical object from the Physical Component or Actor does not delete the allocation relationship towards the Function. This tool does not modify the semantic model. 	
+|-
+| 	All Allocated Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert All Allocated Functions. Creates graphical objects for all Functions already allocated to all Physical Components and Actors appearing on the diagram. This tool does not modify the semantic model. 	
+|-
+| 	Functional Chains 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Chains. Creates or delete graphical objects corresponding to existing Functional Chains. Removing a Functional Chain graphical object from a diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model. 	
+|-
+| 	Functional Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Exchanges. Create or delete graphical objects corresponding to existing Functional Exchanges. The proposed Functional Exchanges are the one incoming and outgoing from the Function target of the click. Opposite Functions and allocating Physical Components or Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
+|-
+| 	Function Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Unsynchronized diagrams only&#93; Create or delete graphical objects corresponding to Function Ports. This tool does not modify the semantic model. 	
+|-
+| 	Switch Functional Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Physical Links and their representation as Category-based Physical Links. 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Functions from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the related elements contributing to a given Scenario.  Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented.  This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/PAB_Physical Architecture Blank.jpg|Sample will be available soon]]    
+== Physical Component Breakdown ==
+                                                                                                             
+{| border="1"
+|-
+| 	Node PC 	
+| [[Image:Images/icons/full/obj16/PhysicalComponentNode.gif]] 
+| 		Creates a new Node Physical Component in the target Physical Component 	
+|-
+| 	Behavior PC 	
+| 
+| 		Creates a new Behavior Physical Component in the target Physical Component 	
+|-
+| 	Create Part 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		&#91;Reusable Components&#93; Creates a new Part typed by the source Node Physical Component in the target Physical Component 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Sets the target Component as the new container of the source Component 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/PCBD_Physical Component Breakdown.jpg|Sample will be available soon]]    
+== Physical Data Flow Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                          
+{| border="1"
+|-
+| 	Physical Function 	
+| 
+| 		Creates a new Physical Function 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Creates a new Duplicate 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Creates a new Gather 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Creates a new Route 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Creates a new Select 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Creates a new Split 	
+|-
+| 	Actor Function 	
+| [[Image:Images/icons/full/obj16/ActorFunction.gif]] 
+| 		Creates a new Physical Function allocated to a new Physical Actor 	
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
+| 		Creates a new Functional Exchange between the Source and Target Physical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target. 	
+|-
+| 	Input Port 	
+| [[Image:Images/icons/full/obj16/InFlowPort.gif]] 
+| 		Creates a new Input Port on the target Function 	
+|-
+| 	Output Port 	
+| [[Image:Images/icons/full/obj16/OutFlowPort.gif]] 
+| 		Creates a new Output Port on the target Function 	
+|-
+| 	Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actor Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+|-
+| 	Functional Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Exchange. Create or delete graphical objects corresponding to already existing Functional Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Functional Exchange graphical object from the diagram does not delete the Functional Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Function Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Function Ports. Create or delete graphical objects corresponding to already existing Function Ports. Removing a Function Port graphical object from the diagram does not delete the Function Port from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Exchanges. Create or delete graphical objects corresponding to already existing Categorized Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Categorized Exchange graphical object from the diagram does not delete the Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Functional Chains 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Chain. Create or delete graphical objects corresponding to already existing Functional Chains. Removing a Functional Chain graphical object from the diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Functional Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Physical Links and their representation as Category-based Physical Links. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Functions from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the Functions and Functional Exchanges contributing to a given Scenario. This tool does not modify the semantic model. 	
+|-
+| 	Functional Chain Elements 	
+| [[Image:Images/icons/full/obj16/FunctionalChain.gif]] 
+| 		Insert all the Functions and Functional Exchanges contributing to a given Functional Chain.  	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/PDFB_Physical Data Flow Blank.jpg|Sample will be available soon]]    
+== Physical Function Breakdown ==
+                                                                                                                                                     
+{| border="1"
+|-
+| 	Physical Function 	
+| 
+| 		Creates a new Physical Function in the target Function 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Creates a new Duplicate Function in the target Function 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Creates a new Gather Function in the target Function 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Creates a new Route Function in the target Function 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Creates a new Select Function in the target Function 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Creates a new Split Function in the target Function 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Sets the target Function as the new container of the source Function 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/PFBD_Physical Function Breakdown.jpg|Sample will be available soon]]    
+== Physical Path Description ==
+                                                                                                                                               
+{| border="1"
+|-
+| 	Involve Part 	
+| 
+| 		&#91;Reusable Components&#93; Creates a new step referencing the selected Physical Component Part. 	
+|-
+| 	Involve Component 	
+| 
+| 		&#91;Singleton Components&#93; Creates a new step referencing the selected Physical Component. 	
+|-
+| 	Involve Physical Path 	
+| 
+| 		Creates a new step referencing the selected Physical Path. 	
+|-
+| 	Involve Physical Link 	
+| 
+| 		Creates a new step referencing one existing Physical Link between the Physical Components / Parts respectively referenced by the preceeding and following steps. 	
+|-
+| 	Involve Physical Link & Target Part 	
+| [[Image:Images/icons/full/obj16/PhysicalPathInvolvement.gif]] 
+| 		&#91;Reusable Components&#93; Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Component. 	
+|-
+| 	Involve Physical Link & Target Component 	
+| [[Image:Images/icons/full/obj16/PhysicalPathInvolvement.gif]] 
+| 		Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Component Part. 	
+|-
+| 	Involve Physical Link & Target Physical Path 	
+| [[Image:Images/icons/full/obj16/PhysicalPathReference.gif]] 
+| 		Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Path. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/PPD_Physical Path Description.jpg|Sample will be available soon]]    
+== System Architecture Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+{| border="1"
+|-
+| 	Actor 	
+| 
+| 		Create an Actor and its Part 	
+|-
+| 	Reuse Actor 	
+| [[Image:Images/icons/full/obj16/Insert.gif]] 
+| 		Create a Part of a chosen Actor 	
+|-
+| 	Component Exchange 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		Create a new component exchange binding a port of a part to another port of a part. Port binded must be of the same kind. If two flowports are linked, they must have complementary orientation. 	
+|-
+| 	Component Exchange with ports 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		Create a new component exchange binding a port of a part to another port of a part. Port binded must be of the same kind. If two flowports are linked, they must have complementary orientation. 	
+|-
+| 	Component Exchange without ports 	
+| 
+| 		Create a new component exchange binding a part to another part. 	
+|-
+| 	Component Exchange between types 	
+| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| 		Create a new component exchange binding a port of a part to another port of a part. Port binded must be of the same kind. If two flowports are linked, they must have complementary orientation. 	
+|-
+| 	Physical Link 	
+| 
+| 		Creates a new Physical Link between the source and target System Components or Actors. 	
+|-
+| 	In Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
+| 		Create an In Flow Port on the component type of the selected Part 	
+|-
+| 	Out Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPortOut.gif]] 
+| 		Create an Out Flow Port on the component type of the selected Part 	
+|-
+| 	InOut Flow Port 	
+| [[Image:Images/icons/full/obj16/FlowPort.gif]] 
+| 		Create an InOut Flow Port on the component type of the selected Part 	
+|-
+| 	Standard Port 	
+| [[Image:Images/icons/full/obj16/StandardPort.gif]] 
+| 		Create a Standard Port on the component type of the selected Part 	
+|-
+| 	Physical Port 	
+| [[Image:Images/icons/full/obj16/PhysicalPort.gif]] 
+| 		Creates a new Physical Port on the target System Component or Actor. 	
+|-
+| 	Actors 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Actors 	
+|-
+| 	Component Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Connections 	
+|-
+| 	Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Component Exchanges. Create or delete graphical objects corresponding to already existing Categorized Component Exchanges and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Component Exchange graphical object from the diagram does not delete the Component Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Component Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges. 	
+|-
+| 	Physical Links 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
+|-
+| 	Physical Path 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model. 	
+|-
+| 	Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Physical Links. Create or delete graphical objects corresponding to already existing Categorized Physical Links and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Physical Link graphical object from the diagram does not delete the Physical Link from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Physical Links / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Physical Links and their representation as Category-based Physical Links. 	
+|-
+| 	Component Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Ports 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	System Function 	
+| 
+| 		Create a new System Function 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Create a new Duplicate allocated to the component type of the selected part 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Create a new Gather allocated to the component type of the selected part 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Create a new Route allocated to the component type of the selected part 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Create a new Select allocated to the component type of the selected part 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Create a new Split allocated to the component type of the selected part 	
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
+| 		Create a new Functional Exchange 	
+|-
+| 	Input Port 	
+| [[Image:Images/icons/full/obj16/InFlowPort.gif]] 
+| 		Create a new Input Port on the selected Function 	
+|-
+| 	Output Port 	
+| [[Image:Images/icons/full/obj16/OutFlowPort.gif]] 
+| 		Create a new Output Port on the selected Function 	
+|-
+| 	Port Allocation 	
+| [[Image:Images/icons/full/obj16/PortAllocation.gif]] 
+| 
+|-
+| 	Manage Function Allocation 	
+| [[Image:Images/icons/full/obj16/Manage.gif]] 
+| 		Manage function allocation on the component type of the selected Part  	
+|-
+| 	Allocated Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Allocated Functions 	
+|-
+| 	All Allocated Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert All Allocated Functions 	
+|-
+| 	Functional Chains 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Chains 	
+|-
+| 	Functional Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove incoming and outgoing exchanges of the selected function 	
+|-
+| 	Function Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove ports of the selected function 	
+|-
+| 	Switch Functional Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges. 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Functions from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the related elements contributing to a given Scenario.  Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented.  This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/SAB_System Architecture Blank.jpg|Sample will be available soon]]    
+== System Data Flow Blank ==
+                                                                                                                                                                                                                                                                                                                                                                                    
+{| border="1"
+|-
+| 	System Function 	
+| 
+| 		Creates a new System Function 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Creates a new Duplicate 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Creates a new Gather 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Creates a new Route 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Creates a new Select 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Creates a new Split 	
+|-
+| 	Actor Function 	
+| [[Image:Images/icons/full/obj16/ActorFunction.gif]] 
+| 		Creates a new System Function allocated to a new System Actor 	
+|-
+| 	Functional Exchange 	
+| [[Image:Images/icons/full/obj16/FunctionalExchange.gif]] 
+| 		Creates a new Functional Exchange between the Source and Target System Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target. 	
+|-
+| 	Input Port 	
+| [[Image:Images/icons/full/obj16/InFlowPort.gif]] 
+| 		Creates a new Input Port on the target Function 	
+|-
+| 	Output Port 	
+| [[Image:Images/icons/full/obj16/OutFlowPort.gif]] 
+| 		Creates a new Output Port on the target Function 	
+|-
+| 	Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+|-
+| 	Actor Functions 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Actor Functions. Create or delete graphical objects corresponding to already existing Functions allocated to Actors. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model. 	
+|-
+| 	Functional Exchanges 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Exchange. Create or delete graphical objects corresponding to already existing Functional Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Functional Exchange graphical object from the diagram does not delete the Functional Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Function Ports 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Function Ports. Create or delete graphical objects corresponding to already existing Function Ports. Removing a Function Port graphical object from the diagram does not delete the Function Port from the model. This tool does not modify the semantic model. 	
+|-
+| 	Exchange Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		&#91;Available only when the diagram is unsynchronized&#93; Insert/Remove Categorized Exchanges. Create or delete graphical objects corresponding to already existing Categorized Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Categorized Exchange graphical object from the diagram does not delete the Exchange from the model. This tool does not modify the semantic model. 	
+|-
+| 	Functional Chains 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Insert/Remove Functional Chain. Create or delete graphical objects corresponding to already existing Functional Chains. Removing a Functional Chain graphical object from the diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model. 	
+|-
+| 	Switch Functional Exchanges / Categories 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges. 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Initialization from existing diagram 	
+| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+|-
+| 	Functions from Mode / State 	
+| [[Image:Images/icons/full/obj16/Mode.gif]] 
+| 		Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model. 	
+|-
+| 	Elements from Scenario 	
+| [[Image:Images/icons/full/obj16/Scenario.gif]] 
+| 		Insert all the Functions and Functional Exchanges contributing to a given Scenario. This tool does not modify the semantic model. 	
+|-
+| 	Functional Chain Elements 	
+| [[Image:Images/icons/full/obj16/FunctionalChain.gif]] 
+| 		Insert all the Functions and Functional Exchanges contributing to a given Functional Chain.  	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/SDFB_System Data Flow Blank.jpg|Sample will be available soon]]    
+== System Function Breakdown ==
+                                                                                                                                                     
+{| border="1"
+|-
+| 	System Function 	
+| 
+| 		Creates a new System Function in the target Function 	
+|-
+| 	Duplicate 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Duplicate.gif]] 
+| 		Creates a new Duplicate Function in the target Function 	
+|-
+| 	Gather 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Gather.gif]] 
+| 		Creates a new Gather Function in the target Function 	
+|-
+| 	Route 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Route.gif]] 
+| 		Creates a new Route Function in the target Function 	
+|-
+| 	Select 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Select.gif]] 
+| 		Creates a new Select Function in the target Function 	
+|-
+| 	Split 	
+| [[Image:Images/icons/full/obj16/FunctionKind_Split.gif]] 
+| 		Creates a new Split Function in the target Function 	
+|-
+| 	Contained In 	
+| [[Image:Images/icons/full/obj16/containedIn.png]] 
+| 		Sets the target Function as the new container of the source Function 	
+|-
+| 	Constraint 	
+| [[Image:Images/icons/full/obj16/Constraint.gif]] 
+| 		Create a new Constraint. 	
+|-
+| 	ConstraintElement 	
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
+| 		Allocate a Source Constraint to an available Target Capella Element. 	
+|-
+| 	Constraints 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|}    
+=== Sample ===
+[[Image:Images/diagrams/EOLE/SFBD_System Function Breakdown.jpg|Sample will be available soon]] 
+ 

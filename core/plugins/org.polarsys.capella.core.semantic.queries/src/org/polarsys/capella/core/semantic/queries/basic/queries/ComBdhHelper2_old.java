@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,10 +92,10 @@ public class ComBdhHelper2_old  {
     /**
      * @return all the subComponent : for the LC with partitions
      */
-    private List<Component> getSubComponents(Component object_p) {
+    private List<Component> getSubComponents(Component object) {
         List<Component> subLCs = new ArrayList<Component>();
-        if (!(object_p instanceof Actor)) {
-            Component currentLC = object_p;
+        if (!(object instanceof Actor)) {
+            Component currentLC = object;
             List<Partition> partitions = currentLC.getOwnedPartitions();
 
             for (Partition thePartition : partitions) {
@@ -111,10 +111,10 @@ public class ComBdhHelper2_old  {
     /**
      * @return all the subComponent : for the LC with partitions
      */
-    private List<AbstractActivity> getSubFunctions(AbstractActivity object_p) {
+    private List<AbstractActivity> getSubFunctions(AbstractActivity object) {
         List<AbstractActivity> fa = new ArrayList<AbstractActivity>();
-        if (object_p instanceof FunctionSpecification) {
-        	FunctionSpecification currentF = (FunctionSpecification) object_p;
+        if (object instanceof FunctionSpecification) {
+        	FunctionSpecification currentF = (FunctionSpecification) object;
             EList<ActivityNode> ownedNodes = currentF.getOwnedNodes();
             for (ActivityNode activityNode : ownedNodes) {
                 if (activityNode instanceof AbstractFunction) {
@@ -215,14 +215,10 @@ public class ComBdhHelper2_old  {
         PartitionableElement targetPE = (PartitionableElement) target.eContainer();
 
         if (currentPE != null && targetPE != null) {
-            List<Interface> currentPE_ImplIntList = new ArrayList<Interface>();
-            List<Interface> currentPE_UseIntList = new ArrayList<Interface>();
-            List<Interface> targetPE_ImplIntList = new ArrayList<Interface>();
-            List<Interface> targetPE_UseIntList = new ArrayList<Interface>();
-            currentPE_ImplIntList = ((Component) currentPE).getImplementedInterfaces();
-            currentPE_UseIntList = ((Component) currentPE).getUsedInterfaces();
-            targetPE_ImplIntList = ((Component) targetPE).getImplementedInterfaces();
-            targetPE_UseIntList = ((Component) targetPE).getUsedInterfaces();
+            List<Interface> currentPE_ImplIntList = ((Component) currentPE).getImplementedInterfaces();
+            List<Interface> currentPE_UseIntList = ((Component) currentPE).getUsedInterfaces();
+            List<Interface> targetPE_ImplIntList = ((Component) targetPE).getImplementedInterfaces();
+            List<Interface> targetPE_UseIntList = ((Component) targetPE).getUsedInterfaces();
 
             for (Interface interface1 : currentPE_ImplIntList) {
                 if (targetPE_UseIntList.contains(interface1))
@@ -252,14 +248,10 @@ public class ComBdhHelper2_old  {
         PartitionableElement targetPE = (PartitionableElement) target.eContainer();
 
         if (currentPE != null && targetPE != null) {
-            List<Interface> currentPE_ImplIntList = new ArrayList<Interface>();
-            List<Interface> currentPE_UseIntList = new ArrayList<Interface>();
-            List<Interface> targetPE_ImplIntList = new ArrayList<Interface>();
-            List<Interface> targetPE_UseIntList = new ArrayList<Interface>();
-            currentPE_ImplIntList = ((Component) currentPE).getImplementedInterfaces();
-            currentPE_UseIntList = ((Component) currentPE).getUsedInterfaces();
-            targetPE_ImplIntList = ((Component) targetPE).getImplementedInterfaces();
-            targetPE_UseIntList = ((Component) targetPE).getUsedInterfaces();
+            List<Interface> currentPE_ImplIntList = ((Component) currentPE).getImplementedInterfaces();
+            List<Interface> currentPE_UseIntList = ((Component) currentPE).getUsedInterfaces();
+            List<Interface> targetPE_ImplIntList = ((Component) targetPE).getImplementedInterfaces();
+            List<Interface> targetPE_UseIntList = ((Component) targetPE).getUsedInterfaces();
 
             if (!targetPE_UseIntList.isEmpty() && !currentPE_ImplIntList.isEmpty()) {
                 if (currentPE_ImplIntList.containsAll(targetPE_UseIntList))
@@ -710,12 +702,8 @@ public class ComBdhHelper2_old  {
      * @throws NotABreakDownObjectException
      */
     public boolean isSameDepth(PartitionableElement current, PartitionableElement target) {
-
-        List<PartitionableElement> currenParents = new ArrayList<PartitionableElement>();
-        List<PartitionableElement> targetParents = new ArrayList<PartitionableElement>();
-
-        currenParents = getParent(current);
-        targetParents = getParent(target);
+        List<PartitionableElement> currenParents = getParent(current);
+        List<PartitionableElement> targetParents = getParent(target);
 
         if (currenParents.isEmpty() || targetParents.isEmpty())
             return false;
@@ -759,13 +747,10 @@ public class ComBdhHelper2_old  {
      */
     public List<PartitionableElement> getCommonParent(PartitionableElement current, PartitionableElement target) {
         List<PartitionableElement> result = new ArrayList<PartitionableElement>();
-        List<PartitionableElement> currenParents = new ArrayList<PartitionableElement>();
-        List<PartitionableElement> targetParents = new ArrayList<PartitionableElement>();
+        List<PartitionableElement> currentParents = getAllAncestor(current);
+        List<PartitionableElement> targetParents = getAllAncestor(target);
 
-        currenParents = getAllAncestor(current);
-        targetParents = getAllAncestor(target);
-
-        for (PartitionableElement partitionableElement : currenParents) {
+        for (PartitionableElement partitionableElement : currentParents) {
             if (targetParents.contains(partitionableElement)) {
                 if (!result.contains(partitionableElement))
                     result.add(partitionableElement);
@@ -960,17 +945,13 @@ public class ComBdhHelper2_old  {
      * @throws NotABreakDownObjectException
      */
     public boolean isSameDepth(AbstractActivity current, AbstractActivity target)  {
+        List<AbstractActivity> currentParents = getParent(current);
+        List<AbstractActivity> targetParents = getParent(target);
 
-        List<AbstractActivity> currenParents = new ArrayList<AbstractActivity>();
-        List<AbstractActivity> targetParents = new ArrayList<AbstractActivity>();
-
-        currenParents = getParent(current);
-        targetParents = getParent(target);
-
-        if (currenParents.isEmpty() || targetParents.isEmpty())
+        if (currentParents.isEmpty() || targetParents.isEmpty())
             return false;
 
-        for (AbstractActivity partitionableElement : currenParents) {
+        for (AbstractActivity partitionableElement : currentParents) {
             if (targetParents.contains(partitionableElement)) {
                 return true;
             }
@@ -1009,13 +990,10 @@ public class ComBdhHelper2_old  {
      */
     public List<AbstractActivity> getCommonParent(AbstractActivity current, AbstractActivity target) {
         List<AbstractActivity> result = new ArrayList<AbstractActivity>();
-        List<AbstractActivity> currenParents = new ArrayList<AbstractActivity>();
-        List<AbstractActivity> targetParents = new ArrayList<AbstractActivity>();
+        List<AbstractActivity> currentParents = getAllAncestor(current);
+        List<AbstractActivity> targetParents = getAllAncestor(target);
 
-        currenParents = getAllAncestor(current);
-        targetParents = getAllAncestor(target);
-
-        for (AbstractActivity partitionableElement : currenParents) {
+        for (AbstractActivity partitionableElement : currentParents) {
             if (targetParents.contains(partitionableElement)) {
                 if (!result.contains(partitionableElement))
                     result.add(partitionableElement);

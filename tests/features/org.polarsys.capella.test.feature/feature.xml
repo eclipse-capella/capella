@@ -139,4 +139,25 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.polarsys.capella.test.modelprovider.local"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.test.explorer.activity.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.polarsys.capella.test.navigator.ju"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

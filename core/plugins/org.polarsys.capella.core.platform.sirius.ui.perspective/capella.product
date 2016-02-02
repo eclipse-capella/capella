@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Capella" id="org.polarsys.capella.core.platform.sirius.ui.perspective.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="Capella" id="org.polarsys.capella.core.platform.sirius.ui.perspective.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.1.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="icons/CapellaAbout.png"/>
@@ -58,6 +58,7 @@
       <plugin id="org.apache.batik.xml"/>
       <plugin id="org.apache.commons.lang"/>
       <plugin id="org.apache.log4j"/>
+      <plugin id="org.apache.lucene"/>
       <plugin id="org.apache.lucene.analysis"/>
       <plugin id="org.eclipse.ant.core"/>
       <plugin id="org.eclipse.ant.launching"/>
@@ -95,7 +96,6 @@
       <plugin id="org.eclipse.emf.codegen.ecore"/>
       <plugin id="org.eclipse.emf.common"/>
       <plugin id="org.eclipse.emf.common.ui"/>
-      <plugin id="org.eclipse.emf.compare"/>
       <plugin id="org.eclipse.emf.databinding"/>
       <plugin id="org.eclipse.emf.ecore"/>
       <plugin id="org.eclipse.emf.ecore.change"/>
