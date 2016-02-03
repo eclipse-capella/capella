@@ -39,9 +39,6 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -128,7 +125,6 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
 import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
 import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
-import org.polarsys.capella.core.data.information.impl.DataPkgImpl;
 import org.polarsys.capella.core.data.information.util.PropertyNamingHelper;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
@@ -1014,7 +1010,7 @@ public class InformationServices {
           DiagramServices.getDiagramServices().removeNodeListElementView(me.getValue());
         }
         // Check if the container is the Diagram or a Container Node
-        else if ((container instanceof DSemanticDiagramSpec) || (container instanceof DNodeContainerSpec)) {
+        else if ((container instanceof DSemanticDiagram) || (container instanceof DNodeContainer)) {
           // Remove the element of the view
           DiagramServices.getDiagramServices().removeNodeView((DNode) me.getValue());
         }
@@ -1078,7 +1074,7 @@ public class InformationServices {
         }
       } else if (((DSemanticDecorator) context).getTarget() instanceof Class) {
         mappingName = dataSubDataValueMappingName;
-      } else if (((DSemanticDecorator) context).getTarget() instanceof DataPkgImpl) {
+      } else if (((DSemanticDecorator) context).getTarget() instanceof DataPkg) {
         mappingName = dataDataValueMappingName;
       } else if (((DSemanticDecorator) context).getTarget() instanceof org.polarsys.capella.core.data.information.Collection) {
         mappingName = dataSubDataValueMappingName;
@@ -3146,9 +3142,9 @@ public class InformationServices {
     /*
      * If DNodeList (Class, DataType, etc)
      */
-    else if (elementView instanceof DNodeListSpec) {
+    else if (elementView instanceof DNodeList) {
       // get target
-      EObject nodeListTarget = ((DNodeListSpec) elementView).getTarget();
+      EObject nodeListTarget = ((DNodeList) elementView).getTarget();
       // if Class
       if (nodeListTarget instanceof Class) {
         Class currentClass = (Class) nodeListTarget;
