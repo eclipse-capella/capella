@@ -52,7 +52,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -6249,7 +6248,7 @@ public class CsServices {
 
   /**
    * Check if an edge represents a provides link. Be careful (for developers only), this code uses the
-   * targetFinderExpression of mappings of type EdgeMappingSpec to check if edges represent provides link. Since the
+   * targetFinderExpression of mappings of type EdgeMapping to check if edges represent provides link. Since the
    * targetFinderExpression property is a string built with class property name of the metamodel, we use literals of the
    * CsPackage for features 'requiredInterfaces' and 'providedInterfaces' so that a change concerning them in the
    * metamodel will make this code not compiling as a side effect.
@@ -6264,8 +6263,8 @@ public class CsServices {
       EObject target = currentEdge.getTarget();
       if (target instanceof ComponentPort) {
         IEdgeMapping mapping = currentEdge.getActualMapping();
-        if (mapping instanceof EdgeMappingSpec) {
-          String featureDef = ((EdgeMappingSpec) mapping).getTargetFinderExpression();
+        if (mapping instanceof EdgeMapping) {
+          String featureDef = ((EdgeMapping) mapping).getTargetFinderExpression();
           if (featureDef.equals("feature:" + CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES.getName())) { //$NON-NLS-1$
             return true;
           }
@@ -6277,7 +6276,7 @@ public class CsServices {
 
   /**
    * Check if an edge represents a requires link. Be careful (for developers only), this code uses the
-   * targetFinderExpression of mappings of type EdgeMappingSpec to check if edges represent requires link. Since the
+   * targetFinderExpression of mappings of type EdgeMapping to check if edges represent requires link. Since the
    * targetFinderExpression property is a string build with class property name of the metamodel, we use literals of the
    * CsPackage for features 'requiredInterfaces' and 'providedInterfaces' so that a change concerning them in the
    * metamodel will make this code not compiling as a side effect.
@@ -6292,8 +6291,8 @@ public class CsServices {
       EObject target = currentEdge.getTarget();
       if (target instanceof ComponentPort) {
         IEdgeMapping mapping = currentEdge.getActualMapping();
-        if (mapping instanceof EdgeMappingSpec) {
-          String featureDef = ((EdgeMappingSpec) mapping).getTargetFinderExpression();
+        if (mapping instanceof EdgeMapping) {
+          String featureDef = ((EdgeMapping) mapping).getTargetFinderExpression();
           if (featureDef.equals("feature:" + CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES.getName())) { //$NON-NLS-1$
             return true;
           }
