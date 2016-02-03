@@ -573,9 +573,9 @@ public class InformationServices {
 
     // If an unionproperty was present or unionproperty is required, make a
     // copy of the current property
-    if ((target instanceof Union) && !(targetProperty instanceof UnionProperty) && association.getNavigableMembers().contains(targetProperty)) {
+    if ((targetClass instanceof Union) && !(targetProperty instanceof UnionProperty) && association.getNavigableMembers().contains(targetProperty)) {
       createdProperty = InformationFactory.eINSTANCE.createUnionProperty();
-    } else if (!(target instanceof Union) && (targetProperty instanceof UnionProperty)) {
+    } else if (!(targetClass instanceof Union) && (targetProperty instanceof UnionProperty)) {
       createdProperty = InformationFactory.eINSTANCE.createProperty();
     }
 
@@ -600,9 +600,9 @@ public class InformationServices {
     }
 
     // Update container of navigable property
-    for (Property childproperty : getAssociationProperties(association)) {
-      if (property.eContainer().equals(source)) {
-        targetClass.getOwnedFeatures().add(childproperty);
+    for (Property childProperty : getAssociationProperties(association)) {
+      if (childProperty.eContainer().equals(sourceClass)) {
+        targetClass.getOwnedFeatures().add(childProperty);
       }
     }
 
@@ -1005,9 +1005,9 @@ public class InformationServices {
   }
 
   /**
+   * @param pkg
    * @param context
-   * @param aOperation
-   * @param diagram
+   * @param variableName
    */
   public ExchangeItem createExchangeItem(InterfacePkg pkg, Interface context, String variableName) {
     ExchangeItem item = InformationFactory.eINSTANCE.createExchangeItem();
@@ -1019,9 +1019,8 @@ public class InformationServices {
   }
 
   /**
-   * @param context
-   * @param aOperation
-   * @param diagram
+   * @param link
+   * @param item
    */
   public CommunicationLink changeExchangeItem(CommunicationLink link, ExchangeItem item) {
     CommunicationLinkExt.changeExchangeItem(link, item);
@@ -1336,9 +1335,9 @@ public class InformationServices {
 
   /**
    * This method is used to exclude a non valid relation ship (like : ExchangeItem,Collection,..)
+   * @param target
    * @param context
    * @param content
-   * @param target
    * @return
    */
   private boolean isValideRelationShip(EObject target, EObject context, DDiagramContents content) {
@@ -1515,7 +1514,7 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
-   * @param datapkg
+   * @param semantic
    * @param context
    */
   public AbstractDNode showCDBDataPkg(EObject semantic, DDiagramContents context) {
@@ -1574,7 +1573,7 @@ public class InformationServices {
 
   /**
    * used in common (Package dependencies & CDB)
-   * @param diagram
+   * @param elementView
    * @param selectedPkgs
    * @return
    */
@@ -1585,7 +1584,7 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
-   * @param datapkg
+   * @param semantic
    * @param context
    */
   public AbstractDNode showCDBInterfacePkg(EObject semantic, DDiagramContents context) {
@@ -1638,7 +1637,7 @@ public class InformationServices {
 
   /**
    * used in common (Package dependencies & CDB)
-   * @param diagram
+   * @param elementView
    * @param selectedPkgs
    * @return
    */
@@ -1684,7 +1683,7 @@ public class InformationServices {
 
   /**
    * used in common (Package dependencies)
-   * @param diagram
+   * @param elementView
    * @param selectedPkgs
    * @param existingPackages
    * @return
@@ -1968,7 +1967,7 @@ public class InformationServices {
 
   /**
    * used in common (CDB)
-   * @param diagram
+   * @param elementView
    * @param selectedTypes
    * @return
    */
@@ -2000,7 +1999,7 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
-   * @param datapkg
+   * @param semantic
    * @param context
    */
   public AbstractDNode showCDBType(EObject semantic, DDiagramContents context) {
@@ -2017,7 +2016,7 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
-   * @param datapkg
+   * @param semantic
    * @param context
    */
   public AbstractDNode showCDBInterface(EObject semantic, DDiagramContents context) {
@@ -2043,7 +2042,7 @@ public class InformationServices {
 
   /**
    * show the given dataPkg
-   * @param datapkg
+   * @param semantic
    * @param context
    */
   public AbstractDNode showCDBExchangeItem(EObject semantic, DDiagramContents context) {
@@ -2069,7 +2068,7 @@ public class InformationServices {
 
   /**
    * used in common (CDB)
-   * @param diagram
+   * @param diagramelementView
    * @param selectedInterfaces
    * @return
    */
@@ -2099,7 +2098,7 @@ public class InformationServices {
 
   /**
    * used in common (CDB)
-   * @param diagram
+   * @param elementView
    * @param selectedExchangeItems
    * @return
    */
@@ -2500,8 +2499,8 @@ public class InformationServices {
     // The manual refresh of the diagram does not take into account the EmptySting
     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
     if ((null != association) && (association instanceof Association)) {
+      Association assoc = (Association) association;
       if (!isHideAssociationLabelEnable(association, view)) {
-        Association assoc = (Association) association;
         System.out.println(assoc.getName());
         return assoc.getName();
       }
