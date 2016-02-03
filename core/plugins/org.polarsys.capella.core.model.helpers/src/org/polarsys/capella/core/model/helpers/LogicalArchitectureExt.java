@@ -73,36 +73,54 @@ public class LogicalArchitectureExt {
     return list;
   }
 
-  /**
-   * Gets all LogicalComponents from a LogicalComponent
-   * 
-   * 
-   * @param lc
-   *          the LogicalComponent
-   * @return list of LogicalComponent
-   */
-  static public List<LogicalComponent> getAllLCsFromLC(LogicalComponent lc) {
-    List<LogicalComponent> list = new ArrayList<LogicalComponent>();
-    if (null != lc) {
-      // Assumed that the lc is not decomposed (single level and multi level)
-      if ((lc.getSubLogicalComponents().size() == 0) && (lc.getOwnedLogicalArchitectures().size() == 0)) {
-        list.add(lc);
-      }
-      for (LogicalComponentPkg lcPkg : lc.getOwnedLogicalComponentPkgs()) {
-        list.addAll(LogicalComponentPkgExt.getAllLCsFromLCPkg(lcPkg));
-      }
-      for (LogicalArchitecture logArch : lc.getOwnedLogicalArchitectures()) {
-        list.addAll(getAllLCsFromLogicalArchitectureLayer(logArch));
-      }
-      for (LogicalComponent subLC : lc.getSubLogicalComponents()) {
-        if (subLC != lc) {
-          list.add(lc);
-          list.addAll(getAllLCsFromLC(subLC));
-        }
-      }
-    }
-    return list;
-  }
+	/**
+	 * Gets all LogicalComponents from a LogicalComponent
+	 * 
+	 * 
+	 * @param lc
+	 *            the LogicalComponent
+	 * @return list of LogicalComponent
+	 */
+	public static List<LogicalComponent> getAllLCsFromLC(LogicalComponent lc) {
+		List<LogicalComponent> list = new ArrayList<LogicalComponent>();
+		list.addAll(getAllLCsFromLC(lc, list));
+		return list;
+	}
+	  /**
+	   * Recursively add all LogicalComponents to the current list
+	   * 
+	   * @param sublc
+	   *  		the current subLogicalComponent
+	   * @param list
+	   *  		the current list of LC
+	   * @return list of LogicalComponent
+	   */
+	public static List<LogicalComponent> getAllLCsFromLC(
+			LogicalComponent subLC, List<LogicalComponent> lcs) {
+		List<LogicalComponent> list = new ArrayList<LogicalComponent>();
+		if (null != subLC) {
+			// Assumed that the lc is not decomposed (single level and multi
+			// level)
+			if ((subLC.getSubLogicalComponents().size() == 0)
+					&& (subLC.getOwnedLogicalArchitectures().size() == 0)) {
+				list.add(subLC);
+			}
+			for (LogicalComponentPkg lcPkg : subLC.getOwnedLogicalComponentPkgs()) {
+				list.addAll(LogicalComponentPkgExt.getAllLCsFromLCPkg(lcPkg));
+			}
+			for (LogicalArchitecture logArch : subLC.getOwnedLogicalArchitectures()) {
+				list.addAll(getAllLCsFromLogicalArchitectureLayer(logArch));
+			}
+			for (LogicalComponent sub : subLC.getSubLogicalComponents()) {
+				if (!lcs.contains(sub) || !lcs.contains(subLC)) {
+					list.add(sub);
+					list.add(subLC);
+					list.addAll(getAllLCsFromLC(sub, list));
+				}
+			}
+		}
+		return list;
+	}
 
   /**
    * Gets all LogicalComponents from a LogicalComponent
