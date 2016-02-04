@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,6 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     List<Object> availableElements = getAvailableElements(input, context);
-    CapellaElement inputElement = (CapellaElement) input;
     List<CapellaElement> currentElements = QueryInterpretor.executeQuery("GetCurrent_StateTransitionTrigger", input, context);//$NON-NLS-1$
     availableElements.removeAll(currentElements);
     return availableElements;
@@ -72,18 +71,18 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
   }
 
   /**
-   * @param state_p
-   * @param component_p
+   * @param state
+   * @param component
    * @return
    */
-  private static List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
+  private static List<CapellaElement> getElementsFromComponentAndSubComponents(Component component) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component_p);
-    subComponents.add(component_p);
+    Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component);
+    subComponents.add(component);
 
-    for (Component component : subComponents) {
-      availableElements.addAll(component.getAllocatedFunctions());
-      for (AbstractFunction function : component.getAllocatedFunctions()) {
+    for (Component cpnt : subComponents) {
+      availableElements.addAll(cpnt.getAllocatedFunctions());
+      for (AbstractFunction function : cpnt.getAllocatedFunctions()) {
         availableElements.addAll(FunctionExt.getOutGoingExchange(function));
         availableElements.addAll(FunctionExt.getIncomingExchange(function));
       }
