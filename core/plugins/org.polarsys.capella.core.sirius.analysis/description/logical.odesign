@@ -371,7 +371,7 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Root Container">
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide root container">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" viewConditionExpression="&lt;%current.target!=current.getParentDiagram().target%>"/>
       </filters>
       <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="&lt;%ownedFeatures.filter(&quot;Part&quot;).abstractType%>" nodeMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']"/>
