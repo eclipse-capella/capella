@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,11 +31,9 @@ import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.preference.PreferenceNode;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.custom.BusyIndicator;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPropertyPage;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.preferences.Activator;
@@ -54,19 +52,15 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
    */
   public static final String USEPROJECTSETTINGS = "useProjectSettings"; //$NON-NLS-1$
 
-  private static final String FALSE = "false"; //$NON-NLS-1$
   private static final String TRUE = "true"; //$NON-NLS-1$
 
   // Stores all created field editors
-  private List editors = new ArrayList();
+  private List<FieldEditor> editors = new ArrayList<FieldEditor>();
 
   private static Set<String> propertyPagesIdentifients = new HashSet<String>();
 
   // Stores owning element of properties
   private IAdaptable element;
-
-  // Additional buttons for property pages
-  private Button useWorkspaceSettingsButton, useProjectSettingsButton, configureButton;
 
   // Overlay preference store for property pages
   private IPreferenceStore propertiesStore;
@@ -139,7 +133,6 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
    * We override the addField method. This allows us to store each field editor added by subclasses in a list for later processing.
    * @see org.eclipse.jface.preference.FieldEditorPreferencePage#addField(org.eclipse.jface.preference.FieldEditor)
    */
-  @SuppressWarnings("unchecked")
   @Override
   protected void addField(FieldEditor editor) {
     editors.add(editor);
@@ -211,9 +204,9 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
    */
   protected void updateFieldEditors(boolean enabled) {
     Composite parent = getFieldEditorParent();
-    Iterator<?> it = editors.iterator();
+    Iterator<FieldEditor> it = editors.iterator();
     while (it.hasNext()) {
-      FieldEditor editor = (FieldEditor) it.next();
+      FieldEditor editor = it.next();
       editor.setEnabled(enabled, parent);
     }
   }
