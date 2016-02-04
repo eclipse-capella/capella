@@ -3961,8 +3961,8 @@ public class CsServices {
   }
 
   /**
-   * @param sourceElement
-   * @param targetElement
+   * @param source
+   * @param target
    * @return
    */
   private boolean isUndoublonLink(DSemanticDecorator source, DSemanticDecorator target) {
@@ -4692,8 +4692,8 @@ public class CsServices {
   }
 
   /**
-   * @param aNode
-   * @param component
+   * @param parent
+   * @param target
    * @return
    */
   Couple<DNodeContainer, Boolean> createViewOrGetPart(DragAndDropTarget parent, EObject target) {
@@ -4999,7 +4999,7 @@ public class CsServices {
    * return integer value according the link to be created 0 = non 1 = provided 2 = required 3 = provided + required
    * 
    * @param port
-   * @param interface
+   * @param interf
    * @return
    */
   public int getTypeOfTheLinkToCreate(ComponentPort port, Interface itf) {

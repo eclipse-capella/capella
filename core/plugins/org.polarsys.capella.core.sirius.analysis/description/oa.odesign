@@ -748,7 +748,7 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Allocated Interactions">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB%20Interaction']" semanticConditionExpression="&lt;%eContainer(&quot;OperationalAnalysis&quot;).eAllContents().filter(&quot;CommunicationMean&quot;)[allocatedFunctionalExchanges == current(1)].nSize() == 0%>"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB%20Interaction']" semanticConditionExpression="&lt;%hideAllocatedInteractions()%>"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Operational Activities">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']"/>
@@ -1954,7 +1954,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Role%20From%20Project%20Explorer']" name="Operational Role Blank" titleExpression="[ORB] &lt;%current.name%> - Operational Role Blank" domainClass="Component" preconditionExpression="&lt;%(current.isA(&quot;Entity&quot;) &amp;&amp; !current.isA(&quot;OperationalActor&quot;)) || current.isA(&quot;OperationalContext&quot;) || current.isA(&quot;EntityPkg&quot;) %>">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Allocated Interactions">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@edgeMappings[name='ORB%20Interaction']" semanticConditionExpression="&lt;%eContainer(&quot;OperationalAnalysis&quot;).getAllCommunicationMeans()[allocatedFunctionalExchanges == current(1)].nSize() == 0%>"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@edgeMappings[name='ORB%20Interaction']" semanticConditionExpression="&lt;%hideAllocatedInteractions()%>"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Interactions">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@edgeMappings[name='ORB%20Interaction']"/>
