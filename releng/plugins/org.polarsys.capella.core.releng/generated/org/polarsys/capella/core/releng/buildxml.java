@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20150211-1405
+//Generated with EGF 1.3.0.v20150924-1035
 package org.polarsys.capella.core.releng;
 
 import org.eclipse.egf.common.helper.*;
@@ -8,8 +8,7 @@ import org.eclipse.egf.model.pattern.*;
 import org.eclipse.egf.pattern.execution.*;
 import org.eclipse.egf.pattern.query.*;
 
-public class buildxml extends
-		org.eclipse.egf.portfolio.eclipse.build.buckminster.buildxml {
+public class buildxml extends org.eclipse.egf.portfolio.eclipse.build.buckminster.buildxml {
 	protected static String nl;
 
 	public static synchronized buildxml create(String lineSeparator) {
@@ -19,57 +18,26 @@ public class buildxml extends
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
-	protected final String TEXT_1 = "    <target name=\"install.buckminster\">"
-			+ NL
-			+ "        <available file=\"${tools}/buckminster/buckminster\" property=\"buckminster.exists\" />"
-			+ NL
-			+ "        <antcall target=\"do.install.buckminster\" />"
-			+ NL
-			+ "\t</target>"
-			+ NL
-			+ "\t"
-			+ NL
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
+	protected final String TEXT_1 = "    <target name=\"install.buckminster\">" + NL
+			+ "        <available file=\"${tools}/buckminster/buckminster\" property=\"buckminster.exists\" />" + NL
+			+ "        <antcall target=\"do.install.buckminster\" />" + NL + "\t</target>" + NL + "\t" + NL
 			+ "    <target name=\"do.install.buckminster\" unless=\"buckminster.exists\" depends=\"install.director\">"
-			+ NL
-			+ "        <echo message=\"Configuring headless buckminster with needed features\" />"
-			+ NL
-			+ "        <echo message=\"Headless site: ${bm.headless.site}\" />"
-			+ NL
-			+ "        <echo message=\"External site: ${bm.external.site}\" />"
-			+ NL
-			+ "        <eclipse.launch app=\"director\">"
-			+ NL
-			+ "            <args>"
-			+ NL
-			+ "                <jvmarg value=\"-Declipse.p2.mirrors=false\" />"
-			+ NL
-			+ "                <arg value=\"-r\" />"
-			+ NL
-			+ "                <arg value=\"${bm.headless.site}\" />"
-			+ NL
-			+ "                <arg value=\"-d\" />"
-			+ NL
-			+ "                <arg value=\"${tools}/buckminster\" />"
-			+ NL
-			+ "                <arg value=\"-p\" />"
-			+ NL
-			+ "                <arg value=\"Buckminster\" />"
-			+ NL
-			+ "                <arg value=\"-i\" />"
-			+ NL
-			+ "                <arg value=\"org.eclipse.buckminster.cmdline.product\" />"
-			+ NL
-			+ "                <arg value=\"-i\" />"
-			+ NL
-			+ "                <arg value=\"org.eclipse.buckminster.core.headless.feature.feature.group\" />"
-			+ NL
-			+ "                <arg value=\"-i\" />"
-			+ NL
-			+ "                <arg value=\"org.eclipse.buckminster.pde.headless.feature.feature.group\" />"
-			+ NL + "            </args>" + NL + "        </eclipse.launch>"
-			+ NL + "    </target>" + NL + "    ";
+			+ NL + "        <echo message=\"Configuring headless buckminster with needed features\" />" + NL
+			+ "        <echo message=\"Headless site: ${bm.headless.site}\" />" + NL
+			+ "        <echo message=\"External site: ${bm.external.site}\" />" + NL
+			+ "        <eclipse.launch app=\"director\">" + NL + "            <args>" + NL
+			+ "                <jvmarg value=\"-Declipse.p2.mirrors=false\" />" + NL
+			+ "                <arg value=\"-r\" />" + NL + "                <arg value=\"${bm.headless.site}\" />" + NL
+			+ "                <arg value=\"-d\" />" + NL + "                <arg value=\"${tools}/buckminster\" />"
+			+ NL + "                <arg value=\"-p\" />" + NL + "                <arg value=\"Buckminster\" />" + NL
+			+ "                <arg value=\"-i\" />" + NL
+			+ "                <arg value=\"org.eclipse.buckminster.cmdline.product\" />" + NL
+			+ "                <arg value=\"-i\" />" + NL
+			+ "                <arg value=\"org.eclipse.buckminster.core.headless.feature.feature.group\" />" + NL
+			+ "                <arg value=\"-i\" />" + NL
+			+ "                <arg value=\"org.eclipse.buckminster.pde.headless.feature.feature.group\" />" + NL
+			+ "            </args>" + NL + "        </eclipse.launch>" + NL + "    </target>" + NL + "    ";
 	protected final String TEXT_2 = NL;
 	protected final String TEXT_3 = NL;
 
@@ -104,8 +72,7 @@ public class buildxml extends
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_2);
@@ -123,8 +90,7 @@ public class buildxml extends
 			parameterValues.put("job", this.job);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
@@ -135,12 +101,11 @@ public class buildxml extends
 		return parameters;
 	}
 
-	protected void method_install_buckminster(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_install_buckminster(final StringBuffer stringBuffer, final PatternContext ctx)
+			throws Exception {
 
 		stringBuffer.append(TEXT_1);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "install_buckminster",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "install_buckminster", stringBuffer.toString());
 	}
 }

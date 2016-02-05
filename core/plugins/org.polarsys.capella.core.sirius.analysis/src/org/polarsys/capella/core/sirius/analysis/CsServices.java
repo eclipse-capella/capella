@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -3961,8 +3961,8 @@ public class CsServices {
   }
 
   /**
-   * @param sourceElement
-   * @param targetElement
+   * @param source
+   * @param target
    * @return
    */
   private boolean isUndoublonLink(DSemanticDecorator source, DSemanticDecorator target) {
@@ -4692,8 +4692,8 @@ public class CsServices {
   }
 
   /**
-   * @param aNode
-   * @param component
+   * @param parent
+   * @param target
    * @return
    */
   Couple<DNodeContainer, Boolean> createViewOrGetPart(DragAndDropTarget parent, EObject target) {
@@ -4999,7 +4999,7 @@ public class CsServices {
    * return integer value according the link to be created 0 = non 1 = provided 2 = required 3 = provided + required
    * 
    * @param port
-   * @param interface
+   * @param interf
    * @return
    */
   public int getTypeOfTheLinkToCreate(ComponentPort port, Interface itf) {
