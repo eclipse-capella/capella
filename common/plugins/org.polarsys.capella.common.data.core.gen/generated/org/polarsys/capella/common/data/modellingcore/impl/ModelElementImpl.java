@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -382,48 +382,4 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		result.append(')');
 		return result.toString();
 	}
-
-  /**
-   * @see org.eclipse.emf.ecore.impl.BasicEObjectImpl#eBasicSetContainer(org.eclipse.emf.ecore.InternalEObject, int,
-   *      org.eclipse.emf.common.notify.NotificationChain)
-   * @generated NOT
-   */
-  @Override
-  public NotificationChain eBasicSetContainer(InternalEObject newContainer_p, int newContainerFeatureID_p, NotificationChain messages_p) {
-//    SemanticEditingDomain capellaEditingDomain =
-//        (SemanticEditingDomain) ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName()).getEditingDomain();
-//    // Get element direct resource.
-//    Resource.Internal oldResource = eDirectResource();
-//    // If it happens to be the holding resource, the element should be moved to the container resource, instead of staying in this one.
-//    Resource holdingResource = capellaEditingDomain.getHoldingResource();
-//    if ((null != oldResource) && (oldResource == holdingResource)) {
-//      // Get the new container resource.
-//      Resource.Internal newResource = (Resource.Internal) newContainer_p.eResource();
-//      if (null != newResource) {
-//        oldResource.getContents().remove(this);
-//        oldResource.detached(this);
-//        // Detached subtree
-//        TreeIterator<EObject> eAllContents = eAllContents();
-//        while (eAllContents.hasNext()) {
-//          detachFromResource((InternalEObject) eAllContents.next(), holdingResource);
-//        }
-//      }
-//    }
-    return super.eBasicSetContainer(newContainer_p, newContainerFeatureID_p, messages_p);
-  }
-
-  /**
-   * Detach specified element from cross-referencer resource, if still attached to it.
-   * @param element_p
-   * @param resource_p
-   * @generated NOT
-   */
-  protected void detachFromResource(InternalEObject element_p, Resource resource_p) {
-//    // Get element direct resource.
-//    Resource.Internal oldResource = element_p.eDirectResource();
-//    if ((null != oldResource) && (oldResource == resource_p)) {
-//      oldResource.getContents().remove(element_p);
-//      oldResource.detached(element_p);
-//    }
-  }
 }
