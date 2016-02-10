@@ -37,9 +37,9 @@
 			<arg value="-import" />
 			<arg value="${test-location}" />
 
-<!--			<arg value="-suites" />      
-			<arg value="AllTestSuites" />
--->
+			<arg value="-suites" />      
+			<arg value="ActivityExplorer" />
+
 			<arg value="-testOptions" />      
 			<arg value="testExecTimeout=300;execTimeout=3600" />
 			
