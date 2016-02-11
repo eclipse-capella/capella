@@ -12,7 +12,6 @@ Content-Type: text/testcase
 Entry-Name: testcase-items
 
 _P21C4MEUEeWqb6y2_gGIKQ	// kind: 'test' name: 'DiagramCreation' path: 'ActivityExplorer/DiagramCreation.test'
-_nYMhoMNoEeWVyMGp52XeIQ	// kind: 'test' name: 'SessionSwitch' path: 'ActivityExplorer/SessionSwitch.test'
 _cZR30MN6EeWBxdbwkOo7Xg	// kind: 'test' name: 'ViewPointSelection' path: 'ActivityExplorer/ViewPointSelection.test'
 _oVQaQMN9EeWBxdbwkOo7Xg	// kind: 'test' name: 'PreferenceModification' path: 'ActivityExplorer/PreferenceModification.test'
 
