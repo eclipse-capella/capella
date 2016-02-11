@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,14 +43,14 @@ public class GetAvailable_Actor_UsedInterfaces extends AbstractQuery {
    * </p>
    * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (null == systemEngineering) {
       return availableElements;
     }
-    if (element_p instanceof Actor) {
-      Actor currentActor = (Actor) element_p;
+    if (element instanceof Actor) {
+      Actor currentActor = (Actor) element;
       availableElements.addAll(getInterfacesFromSystemEngineering(currentActor, systemEngineering));
       availableElements.addAll(getAllInterfacesFromShared(currentActor, systemEngineering));
     }
@@ -67,21 +67,21 @@ public class GetAvailable_Actor_UsedInterfaces extends AbstractQuery {
    * <p>
    * Refer MQRY_Actor_UsedInterfaces_11
    * </p>
-   * @param currentActor_pthe current {@link Actor}
-   * @param systemEngineering_pthe {@link SystemEngineering}
+   * @param currentActorthe current {@link Actor}
+   * @param systemEngineeringthe {@link SystemEngineering}
    * @return list of interfaces
    */
-  private List<CapellaElement> getInterfacesFromSystemEngineering(Actor currentActor_p, SystemEngineering systemEngineering_p) {
+  private List<CapellaElement> getInterfacesFromSystemEngineering(Actor currentActor, SystemEngineering systemEngineering) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemAnalysis sa = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering_p);
+    SystemAnalysis sa = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
     if (sa != null) {
       availableElements.addAll(InterfacePkgExt.getAllInterfaces(sa.getOwnedInterfacePkg()));
     }
-    OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering_p);
+    OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
     if (oa != null) {
       availableElements.addAll(InterfacePkgExt.getAllInterfaces(oa.getOwnedInterfacePkg()));
     }
-    List<Actor> allActors = ActorPkgExt.getAllActors(SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering_p).getOwnedActorPkg());
+    List<Actor> allActors = ActorPkgExt.getAllActors(SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering).getOwnedActorPkg());
     for (Actor actor : allActors) {
       availableElements.addAll(InterfacePkgExt.getAllInterfaces(actor.getOwnedInterfacePkg()));
     }
@@ -98,11 +98,11 @@ public class GetAvailable_Actor_UsedInterfaces extends AbstractQuery {
    * <p>
    * Refer MQRY_Actor_UsedInterfaces_12
    * </p>
-   * @param currentActor_pthe current {@link Actor}
-   * @param systemEngineering_pthe {@link SystemEngineering}
+   * @param currentActorthe current {@link Actor}
+   * @param systemEngineeringthe {@link SystemEngineering}
    * @return list of interfaces
    */
-  private List<CapellaElement> getAllInterfacesFromShared(Actor currentActor_p, SystemEngineering systemEngineering_p) {
+  private List<CapellaElement> getAllInterfacesFromShared(Actor currentActor, SystemEngineering systemEngineering) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     return availableElements;
   }

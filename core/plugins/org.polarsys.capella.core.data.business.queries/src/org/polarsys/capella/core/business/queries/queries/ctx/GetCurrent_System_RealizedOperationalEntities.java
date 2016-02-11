@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,10 +35,10 @@ public class GetCurrent_System_RealizedOperationalEntities extends AbstractQuery
 	 * Refer MQRY_Actor_RealizedOperationalActors_1
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof System) {
-			System currentSystem = (System) element_p;
+		if (element instanceof System) {
+			System currentSystem = (System) element;
 			for (OperationalEntityRealization realization : currentSystem.getOwnedEntityRealizations()) {
 				currentElements.add(realization.getAllocatedComponent());
 			}

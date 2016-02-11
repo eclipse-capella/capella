@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,16 +45,16 @@ public class GetAvailable_Mission_IncludedCapabilities extends AbstractQuery {
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof Mission) {
-			Mission currentMission = (Mission) element_p;
+		if (element instanceof Mission) {
+			Mission currentMission = (Mission) element;
 			availableElements.addAll(getRule_MQRY_Mission_CapabilityUseCase_Included_11(systemEngineering, currentMission));
-		} else if (element_p instanceof MissionPkg) {
+		} else if (element instanceof MissionPkg) {
 			availableElements.addAll(CapellaElementExt.getAllCapabilities(systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -69,14 +69,14 @@ public class GetAvailable_Mission_IncludedCapabilities extends AbstractQuery {
 	 * <p>
 	 * Refer MQRY_Mission_CapabilityUseCase_Included_11
 	 * </p>
-	 * @param sysEng_pthe SystemEngineering Pkg
-	 * @param currentMission_pthe current Mission
+	 * @param sysEngthe SystemEngineering Pkg
+	 * @param currentMissionthe current Mission
 	 * @return list of CapabilityUseCases
 	 */
-	private List<CapellaElement> getRule_MQRY_Mission_CapabilityUseCase_Included_11(SystemEngineering sysEng_p, Mission currentMission_p) {
+	private List<CapellaElement> getRule_MQRY_Mission_CapabilityUseCase_Included_11(SystemEngineering sysEng, Mission currentMission) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (Capability capabilityUseCase : CapellaElementExt.getAllCapabilities(sysEng_p)) {
-			if (AbstractCapabilityExt.isIncluded(capabilityUseCase, currentMission_p))
+		for (Capability capabilityUseCase : CapellaElementExt.getAllCapabilities(sysEng)) {
+			if (AbstractCapabilityExt.isIncluded(capabilityUseCase, currentMission))
 				continue;
 			availableElements.add(capabilityUseCase);
 		}

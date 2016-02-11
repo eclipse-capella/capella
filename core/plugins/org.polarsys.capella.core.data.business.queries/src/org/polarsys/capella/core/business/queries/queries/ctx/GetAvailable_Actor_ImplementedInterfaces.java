@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,14 +44,14 @@ public class GetAvailable_Actor_ImplementedInterfaces extends AbstractQuery {
    * </p>
    * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (null == systemEngineering) {
       return availableElements;
     }
-    if (element_p instanceof Actor) {
-      Actor currentActor = (Actor) element_p;
+    if (element instanceof Actor) {
+      Actor currentActor = (Actor) element;
       availableElements.addAll(getRule_MQRY_Actor_ImplInterfaces11(currentActor, systemEngineering));
       availableElements.addAll(getRule_MQRY_Actor_ImplInterfaces12(currentActor, systemEngineering));
     }
@@ -68,15 +68,15 @@ public class GetAvailable_Actor_ImplementedInterfaces extends AbstractQuery {
    * <p>
    * Refer MQRY_Actor_ImplInterfaces_11
    * </p>
-   * @param currentActor_pthe current {@link Actor}
-   * @param systemEngineering_pthe {@link SystemEngineering}
+   * @param currentActorthe current {@link Actor}
+   * @param systemEngineeringthe {@link SystemEngineering}
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_Actor_ImplInterfaces11(Actor currentActor_p, SystemEngineering systemEngineering_p) {
+  private List<CapellaElement> getRule_MQRY_Actor_ImplInterfaces11(Actor currentActor, SystemEngineering systemEngineering) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    availableElements.addAll(InterfacePkgExt.getAllInterfaces(SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering_p).getOwnedInterfacePkg()));
+    availableElements.addAll(InterfacePkgExt.getAllInterfaces(SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering).getOwnedInterfacePkg()));
 
-    List<Actor> allActors = ActorPkgExt.getAllActors(SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering_p).getOwnedActorPkg());
+    List<Actor> allActors = ActorPkgExt.getAllActors(SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering).getOwnedActorPkg());
     for (Actor actor : allActors) {
       availableElements.addAll(InterfacePkgExt.getAllInterfaces(actor.getOwnedInterfacePkg()));
     }
@@ -93,11 +93,11 @@ public class GetAvailable_Actor_ImplementedInterfaces extends AbstractQuery {
    * <p>
    * Refer MQRY_Actor_ImplInterfaces_12
    * </p>
-   * @param currentActor_pthe current {@link Actor}
-   * @param systemEngineering_pthe {@link SystemEngineering}
+   * @param currentActorthe current {@link Actor}
+   * @param systemEngineeringthe {@link SystemEngineering}
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_Actor_ImplInterfaces12(Actor currentActor_p, SystemEngineering systemEngineering_p) {
+  private List<CapellaElement> getRule_MQRY_Actor_ImplInterfaces12(Actor currentActor, SystemEngineering systemEngineering) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     return availableElements;
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,23 +50,23 @@ public class GetAvailable_PhysicalPath_AllocatedComponentExchanges extends Abstr
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalPath) {
-			availableElements.addAll(getRule_MQRY_PhysicalPath_AllocatedComponentExchanges_12((PhysicalPath) element_p));
+		if (element instanceof PhysicalPath) {
+			availableElements.addAll(getRule_MQRY_PhysicalPath_AllocatedComponentExchanges_12((PhysicalPath) element));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
 	}
 
 	/** 
-	 * @param element_p
+	 * @param element
 	 * @return
 	 */
-	private List<CapellaElement> getRule_MQRY_PhysicalPath_AllocatedComponentExchanges_12(PhysicalPath element_p) {
+	private List<CapellaElement> getRule_MQRY_PhysicalPath_AllocatedComponentExchanges_12(PhysicalPath element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		List<Component> terminalPCs = new ArrayList<Component>();
-		for (PhysicalPathInvolvement first : PhysicalPathExt.getFlatFirstPhysicalPathInvolvments(element_p)) {
+		for (PhysicalPathInvolvement first : PhysicalPathExt.getFlatFirstPhysicalPathInvolvments(element)) {
 			AbstractPathInvolvedElement involvedElt = first.getInvolvedElement();
 			if (involvedElt instanceof Part) {
 				AbstractType pc = ((Part) involvedElt).getAbstractType();
@@ -75,7 +75,7 @@ public class GetAvailable_PhysicalPath_AllocatedComponentExchanges extends Abstr
 				}
 			}
 		}
-		for (PhysicalPathInvolvement last : PhysicalPathExt.getFlatLastPhysicalPathInvolvments(element_p)) {
+		for (PhysicalPathInvolvement last : PhysicalPathExt.getFlatLastPhysicalPathInvolvments(element)) {
 			AbstractPathInvolvedElement involvedElt = last.getInvolvedElement();
 			if (involvedElt instanceof Part) {
 				AbstractType pc = ((Part) involvedElt).getAbstractType();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,27 +39,27 @@ public class GetAvailable_PhysicalPath_RealizedPhysicalPaths extends AbstractQue
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalPath) {
-			availableElements.addAll(getRule_MQRY_PhysicalPath_RealizedPhysicalPaths_11((PhysicalPath) element_p));
+		if (element instanceof PhysicalPath) {
+			availableElements.addAll(getRule_MQRY_PhysicalPath_RealizedPhysicalPaths_11((PhysicalPath) element));
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param element_p the physical path
+	 * @param element the physical path
 	 * @return list of physical paths
 	 */
-	private List<CapellaElement> getRule_MQRY_PhysicalPath_RealizedPhysicalPaths_11(PhysicalPath element_p) {
+	private List<CapellaElement> getRule_MQRY_PhysicalPath_RealizedPhysicalPaths_11(PhysicalPath element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		List<EObject> allPhysicalPaths = new ArrayList<EObject>();
-		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 		for (BlockArchitecture block : arch.getAllocatedArchitectures()) {
 			allPhysicalPaths.addAll(EObjectExt.getAll(block, CsPackage.Literals.PHYSICAL_PATH));
 		}
-		if (null != element_p) {
-			EList<PhysicalPathRealization> ownedPhysicalPathRealisations = element_p.getOwnedPhysicalPathRealizations();
+		if (null != element) {
+			EList<PhysicalPathRealization> ownedPhysicalPathRealisations = element.getOwnedPhysicalPathRealizations();
 			for (PhysicalPathRealization ownedPhysicalPathRealisation : ownedPhysicalPathRealisations) {
 				TraceableElement targetElement = ownedPhysicalPathRealisation.getTargetElement();
 				if (null != targetElement) {
