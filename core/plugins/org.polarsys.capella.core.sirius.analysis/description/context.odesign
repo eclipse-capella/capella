@@ -3979,7 +3979,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedExchanges%>">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $displayedExchanges.nContains($i)%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showConnectionInArchitectureBlank($elementView)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showABComponentExchange($elementView)%>"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$displayedExchanges%>">
@@ -4092,7 +4092,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedExchanges%>">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $displayedLinks.nContains($i)%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showConnectionInArchitectureBlank($elementView)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showABPhysicalLink($elementView)%>"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$displayedLinks%>">
