@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,10 +44,22 @@ public class ObfuscatorHelper {
    * generate Unreadable string.
    * @return
    */
-  public static String generateUnreadableString(String uncrypted_p) {
-    if ((uncrypted_p == null) || "".equals(uncrypted_p)) {
+  public static String generateUnreadableString(String uncrypted) {
+    if (uncrypted == null) {
+      return null;
+    }
+    if ("".equals(uncrypted)) {
       return "";
     }
-    return IdGenerator.createId().substring(0, 5); // don't generate hyper long string.
+
+    StringBuilder builder = new StringBuilder();
+    String createId = IdGenerator.createId();
+    for (int i = 0, j = 0; i < uncrypted.length(); i++, j++) {
+      if (j >= createId.length()) {
+        j = 0;
+      }
+      builder.append(createId.charAt(j));
+    }
+    return builder.toString();
   }
 }
