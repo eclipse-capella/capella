@@ -113,7 +113,13 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
     String defaultName = computeDefaultName(_selectedEObject, _description);
 
     if (!_forceDefaultName) {
-      String dialogTitle = "Type representation name"; //$NON-NLS-1$
+      
+      String label = _description.getLabel();
+      if (label == null || label.isEmpty()) {
+        label = _description.getName();
+      }
+      
+      String dialogTitle = "Type " + label + " name"; //$NON-NLS-1$ //$NON-NLS-2$
       Shell activeShell = Display.getDefault().getActiveShell();
       InputDialog representationNameDlg = new InputDialog(activeShell, dialogTitle, dialogTitle, defaultName, null);
       isCanceled = Window.CANCEL == representationNameDlg.open() ;

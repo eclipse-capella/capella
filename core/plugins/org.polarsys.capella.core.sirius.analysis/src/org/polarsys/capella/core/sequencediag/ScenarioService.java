@@ -78,6 +78,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
+import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -1208,4 +1209,21 @@ public class ScenarioService {
     return operatorkind;
   }
 
+  public String removeScenarioPrefix(EObject context, String name) {
+    
+    List<String> scenarioPrefixes = new ArrayList<String>();
+    scenarioPrefixes.add("["+DiagramNamingConstants.INTERFACE_SCENARIO_PREFIX+"]");
+    scenarioPrefixes.add("["+DiagramNamingConstants.EXCHANGE_SCENARIO_PREFIX +"]");
+    scenarioPrefixes.add("["+DiagramNamingConstants.FUNCTION_SCENARIO_PREFIX +"]");
+    scenarioPrefixes.add("["+DiagramNamingConstants.ACTIVITY_SCENARIO_PREFIX +"]");
+    scenarioPrefixes.add("["+DiagramNamingConstants.ENTITY_SCENARIO_PREFIX   +"]");
+    
+    for (String prefix : scenarioPrefixes) {
+      if (name.startsWith(prefix)) {
+        return name.substring(prefix.length()).trim();
+      }
+    }
+    
+    return name;
+  }
 }
