@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,8 @@
 package org.polarsys.capella.test.diagram.tools.ju.model;
 
 /**
- * In many cases, elements that we need to create in a model has common name. This class is used to define naming constants for these elements
+ * In many cases, elements that we need to create in a model has common name. This class is used to define naming
+ * constants for these elements
  */
 public class GenericModel {
 
@@ -55,6 +56,8 @@ public class GenericModel {
   public static String COMPONENT_PORT_3 = "COMPONENT_PORT_3";
   public static String COMPONENT_PORT_4 = "COMPONENT_PORT_4";
 
+  public static String SYSTEM = "System";
+
   public static String STATE_1 = "State 1";
   public static String STATE_2 = "State 2";
   public static String STATE_3 = "State 3";
@@ -62,8 +65,15 @@ public class GenericModel {
 
   public static String LC_1 = "LC 1";
   public static String LC_2 = "LC 2";
+  public static String LC_2_1 = "LC 2_1";
   public static String LC_3 = "LC 3";
   public static String LC_4 = "LC 4";
+
+  public static String PC_1 = "PC 1";
+  public static String PC_2 = "PC 2";
+  public static String PC_2_1 = "PC 2_1";
+  public static String PC_3 = "PC 3";
+  public static String PC_4 = "PC 4";
 
   public static String LA_1 = "LA 1";
   public static String LA_2 = "LA 2";

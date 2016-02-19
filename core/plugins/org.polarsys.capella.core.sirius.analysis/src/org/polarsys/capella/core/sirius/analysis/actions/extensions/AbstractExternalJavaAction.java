@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
 package org.polarsys.capella.core.sirius.analysis.actions.extensions;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
@@ -78,6 +80,7 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
 
   /**
    * Default implementation returns <code>true</code>.
+   * 
    * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#canExecute(java.util.Collection)
    */
   public boolean canExecute(Collection<? extends EObject> selections) {
@@ -87,10 +90,24 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
   /**
    * Get active {@link Shell}.<br>
    * This method must be called from the UI Thread.
+   * 
    * @return
    */
   protected Shell getShell() {
     return PlatformUI.getWorkbench().getDisplay().getActiveShell();
   }
 
+  public static Collection<EObject> getInitialSelection(Map<String, Object> parameters) {
+    if (parameters.containsKey(INITIAL_SELECTION) && (parameters.get(INITIAL_SELECTION) != null)) {
+      return (Collection) parameters.get(INITIAL_SELECTION);
+    }
+    return Collections.emptyList();
+  }
+
+  public static Collection<EObject> getScope(Map<String, Object> parameters) {
+    if (parameters.containsKey(SCOPE) && (parameters.get(SCOPE) != null)) {
+      return (Collection) parameters.get(SCOPE);
+    }
+    return Collections.emptyList();
+  }
 }

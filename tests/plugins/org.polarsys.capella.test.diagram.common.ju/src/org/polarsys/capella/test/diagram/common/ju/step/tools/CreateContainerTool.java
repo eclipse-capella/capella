@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,14 @@ public class CreateContainerTool extends CreateAbstractDNodeTool {
 
   public CreateContainerTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     super(context, toolName, containerView, newIdentifier);
+  }
+
+  public CreateContainerTool(DiagramContext context, String[] toolIdentifier, String containerView) {
+    super(context, toolIdentifier, containerView);
+  }
+
+  public CreateContainerTool(DiagramContext context, String[] toolIdentifier, String containerView, String newIdentifier) {
+    super(context, toolIdentifier, containerView, newIdentifier);
   }
 
   @Override

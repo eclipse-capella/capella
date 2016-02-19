@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,12 +13,8 @@ package org.polarsys.capella.test.diagram.tools.ju.cdb;
 import junit.framework.Test;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
-import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
-import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.cdb.InsertRemoveTypeTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.CDBCommunication;
 
 /**
@@ -31,12 +27,10 @@ public class InsertRemoveClass extends CDBCommunication {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    DiagramContext diagramContext = new CreateDiagramStep(context, SA__DATAPKG, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME).run();
+    CDBDiagram diagramContext = CDBDiagram.createDiagram(context, SA__DATAPKG);
 
-    new OpenDiagramStep(diagramContext).run();
-
-    new InsertRemoveTypeTool(diagramContext).insert(SA__DATAPKG__CLASS1, SA__DATAPKG__CLASS2);
-    new InsertRemoveTypeTool(diagramContext).remove(SA__DATAPKG__CLASS1, SA__DATAPKG__CLASS2);
+    diagramContext.removeType(SA__DATAPKG__CLASS1, SA__DATAPKG__CLASS2);
+    diagramContext.insertType(SA__DATAPKG__CLASS1, SA__DATAPKG__CLASS2);
   }
 
   public static Test suite() {

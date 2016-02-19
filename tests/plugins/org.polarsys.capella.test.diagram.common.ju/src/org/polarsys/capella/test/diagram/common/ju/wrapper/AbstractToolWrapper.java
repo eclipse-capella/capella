@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -128,55 +128,50 @@ public abstract class AbstractToolWrapper {
 
   /**
    * Write accessor on argument values.
-   * @param argumentType_p the target argument
-   * @param value_p its value
-   * @throws InvalidArgumentException
+   * @param argumentType the target argument
+   * @param value its value
    */
-  final public void setArgumentValue(ArgumentType argumentType_p, Object value_p) throws InvalidArgumentException {
-
-    if (!isArgumentTypeRequired(argumentType_p)) {
-      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType_p.getLiteral(), _tool.getName() }));
+  final public void setArgumentValue(ArgumentType argumentType, Object value) {
+    if (isArgumentTypeRequired(argumentType)) {
+      _arguments.put(argumentType, value);
     }
-
-    _arguments.put(argumentType_p, value_p);
-
     return;
   }
 
   /**
    * Accessor on the argument values.
-   * @param argumentType_p the target argument type
+   * @param argumentType the target argument type
    * @return the corresponding value, if sets
    * @throws InvalidArgumentException
    */
-  final public Object getArgumentValue(ArgumentType argumentType_p) throws InvalidArgumentException {
+  final public Object getArgumentValue(ArgumentType argumentType) throws InvalidArgumentException {
 
-    if (!isArgumentTypeRequired(argumentType_p)) {
-      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType_p.getLiteral(), _tool.getName() }));
+    if (!isArgumentTypeRequired(argumentType)) {
+      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType.getLiteral(), _tool.getName() }));
     }
 
-    return _arguments.get(argumentType_p);
+    return _arguments.get(argumentType);
   }
 
   /**
    * Check is the argument ArgumentType is well initialized
-   * @param argumentType_p the target ArgumentType
+   * @param argumentType the target ArgumentType
    * @return
    * @throws InvalidArgumentException
    */
-  final public boolean checkValue(ArgumentType argumentType_p) throws InvalidArgumentException {
+  final public boolean checkValue(ArgumentType argumentType) throws InvalidArgumentException {
 
     boolean ret = true;
 
-    if (!isArgumentTypeRequired(argumentType_p)) {
-      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType_p.getLiteral(), _tool.getName() }));
+    if (!isArgumentTypeRequired(argumentType)) {
+      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType.getLiteral(), _tool.getName() }));
     }
 
-    if (argumentType_p == ArgumentType.COLLECTION) {
-      return checkValueForCollectionType(argumentType_p);
+    if (argumentType == ArgumentType.COLLECTION) {
+      return checkValueForCollectionType(argumentType);
     }
 
-    Object matchingArgument = _arguments.get(argumentType_p);
+    Object matchingArgument = _arguments.get(argumentType);
 
     // FIXME DDiagram case should be to incorporate with a cleaner approach, even if
     // it seems to be "as" the Sirius approach
@@ -184,16 +179,16 @@ public abstract class AbstractToolWrapper {
       return true;
     }
 
-    if (!argumentType_p.getClassType().isAssignableFrom(matchingArgument.getClass())) {
+    if (!argumentType.getClassType().isAssignableFrom(matchingArgument.getClass())) {
       // the argument is not the good type of object
       ret = false;
     }
     // Let's check additional data for EObject
-    if (argumentType_p.getClassType().equals(EObject.class)) {
+    if (argumentType.getClassType().equals(EObject.class)) {
       EObject eObject = (EObject) matchingArgument;
       EClass eClass = eObject.eClass();
 
-      ArgumentData argData = getArgumentData(argumentType_p);
+      ArgumentData argData = getArgumentData(argumentType);
       EClass tgtEclass = argData.getEClass();
 
       if ((null != tgtEclass) && !tgtEclass.isSuperTypeOf(eClass)) {
@@ -205,18 +200,18 @@ public abstract class AbstractToolWrapper {
   }
 
   /**
-   * @param argumentType_p
+   * @param argumentType
    * @return
    * @see #checkValue
    */
   @SuppressWarnings("unchecked")
-  final protected boolean checkValueForCollectionType(ArgumentType argumentType_p) {
+  final protected boolean checkValueForCollectionType(ArgumentType argumentType) {
 
     boolean ret = true;
 
-    Object matchingArgument = _arguments.get(argumentType_p);
+    Object matchingArgument = _arguments.get(argumentType);
 
-    if (!argumentType_p.getClassType().isAssignableFrom(matchingArgument.getClass())) {
+    if (!argumentType.getClassType().isAssignableFrom(matchingArgument.getClass())) {
       // the argument is not the good type of object
       ret = false;
     }
@@ -225,7 +220,7 @@ public abstract class AbstractToolWrapper {
 
     if (!col.isEmpty()) {
 
-      ArgumentData argData = getArgumentData(argumentType_p);
+      ArgumentData argData = getArgumentData(argumentType);
       EClass tgtEclass = argData.getEClass();
 
       // Let's test all element
@@ -246,11 +241,11 @@ public abstract class AbstractToolWrapper {
     }
 
     // Let's check additional data for EObject
-    if (argumentType_p.getClassType().equals(EObject.class)) {
+    if (argumentType.getClassType().equals(EObject.class)) {
       EObject eObject = (EObject) matchingArgument;
       EClass eClass = eObject.eClass();
 
-      ArgumentData argData = getArgumentData(argumentType_p);
+      ArgumentData argData = getArgumentData(argumentType);
       EClass tgtEclass = argData.getEClass();
 
       if ((null != tgtEclass) && !tgtEclass.isSuperTypeOf(eClass)) {
@@ -269,16 +264,16 @@ public abstract class AbstractToolWrapper {
   }
 
   /**
-   * Check if the {@link ArgumentType} argumentType_p is required
-   * @param argumentType_p the {@link ArgumentType} to check
+   * Check if the {@link ArgumentType} argumentType is required
+   * @param argumentType the {@link ArgumentType} to check
    * @return true whether required
    */
-  protected boolean isArgumentTypeRequired(ArgumentType argumentType_p) {
+  protected boolean isArgumentTypeRequired(ArgumentType argumentType) {
 
     boolean ret = false;
 
     for (ArgumentData current : getArgumentTypes()) {
-      if (current.getType().equals(argumentType_p)) {
+      if (current.getType().equals(argumentType)) {
         ret = true;
         break;
       }
@@ -288,15 +283,15 @@ public abstract class AbstractToolWrapper {
   }
 
   /**
-   * return the {@link ArgumentData} corresponding to the {@link ArgumentType} argumentType_p
-   * @param argumentType_p the target ArgumentType_Enum
+   * return the {@link ArgumentData} corresponding to the {@link ArgumentType} argumentType
+   * @param argumentType the target ArgumentType_Enum
    * @return null whether not found
    */
-  protected ArgumentData getArgumentData(ArgumentType argumentType_p) {
+  protected ArgumentData getArgumentData(ArgumentType argumentType) {
     ArgumentData ret = null;
 
     for (ArgumentData current : getArgumentTypes()) {
-      if (current.getType().equals(argumentType_p)) {
+      if (current.getType().equals(argumentType)) {
         ret = current;
         break;
       }
