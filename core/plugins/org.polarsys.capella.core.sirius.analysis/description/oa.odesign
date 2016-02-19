@@ -120,7 +120,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Entities">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -133,7 +133,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1808,7 +1808,7 @@
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <toolSections name="Activities">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity in the target Operational Activity" name="Operational Activity" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity in the target Operational Activity" name="Operational Activity" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Operational Activity"/>
             </variable>
@@ -5320,150 +5320,46 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Insert/Remove Operational Entities. Creates or deletes graphical objects corresponding to already existing Operational Entities. Removing an Operational Entity graphical object from the diagram does not delete the Operational Entity from the model. This tool does not modify the semantic model." name="Show Hide Entity">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Operational Actors. Creates or deletes graphical objects corresponding to already existing Operational Actors. Removing an Operational Actor graphical object from the diagram does not delete the Operational Actor from the model. This tool does not modify the semantic model." name="Show/Hide OE" label="Operational Entities" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@containerMappings[name='COC_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="&lt;% $containerView.containers.target.filter(&quot;Entity&quot;)[!isA(&quot;OperationalActor&quot;)]%>"/>
-              </viewVariable>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="&lt;% $containerView.getOEBTarget() %>"/>
-                    <parameters name="scope" value="&lt;% $containerView.getAvailableEntitiesToInsert()[!isA(&quot;OperationalActor&quot;)] %>"/>
-                    <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Operational Entities to show in &lt;%$container.name%>."/>
-                    <parameters name="initialSelection" value="&lt;% $componentsInDiagram %>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $componentsInDiagram - $containerView.target %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.containers[target == $i].nSize > 0 %>">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.containers[target == $i].nFirst %>">
-                              <subModelOperations xsi:type="tool:DeleteView"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $selection %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$componentsInDiagram.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $i %>">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@containerMappings[name='COC_OperationalEntities']" containerViewExpression="&lt;%$diagram%>"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Show/Hide OA" label="Operational Actors" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@containerMappings[name='COC_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="&lt;% $containerView.containers.target.filter(&quot;OperationalActor&quot;)%>"/>
-              </viewVariable>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="&lt;% $containerView.getOEBTarget() %>"/>
-                    <parameters name="scope" value="&lt;% $containerView.getAvailableEntitiesToInsert()[isA(&quot;OperationalActor&quot;)] %>"/>
-                    <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Operational Actors to show in &lt;%$container.name%>."/>
-                    <parameters name="initialSelection" value="&lt;% $componentsInDiagram %>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $componentsInDiagram - $containerView.target %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.containers[target == $i].nSize > 0 %>">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.containers[target == $i].nFirst %>">
-                              <subModelOperations xsi:type="tool:DeleteView"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $selection %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$componentsInDiagram.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $i %>">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@containerMappings[name='COC_OperationalEntities']" containerViewExpression="&lt;%$diagram%>"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Operational Capabilities. Creates or deletes graphical objects corresponding to already existing Operational Capabilities. Removing an Operational Capability graphical object from the diagram does not delete the Operational Capability from the model. This tool does not modify the semantic model." name="Show/Hide Capabilities" label="Operational Capabilities" precondition="&lt;%$containerView.isA(&quot;DDiagram&quot;)%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='COC_OperationalCapabilities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="&lt;% $containerView.getNodesAndNodeListElements().target.filter(&quot;OperationalCapability&quot;)%>"/>
-            </viewVariable>
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OA" label="Operational Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="OperationalActor"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container %>">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectOCs" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;% $container.getAllOperationalCapabilities() %>"/>
-                  <parameters name="initialSelection" value="&lt;%$containerView.eContents().filter(&quot;DNode&quot;)[visible].target.filter(&quot;OperationalCapability&quot;)%>"/>
-                  <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select allocated Operational Capabilities to show in &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container %>">
-                    <subModelOperations xsi:type="tool:For" expression="&lt;% $componentsInDiagram - $containerView.target %>">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.getNodesAndNodeListElements()[target == $i].nSize > 0 %>">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getNodesAndNodeListElements()[target == $i].nFirst %>">
-                            <subModelOperations xsi:type="tool:DeleteView"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection%>">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$componentsInDiagram.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $i %>">
-                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='COC_OperationalCapabilities']" containerViewExpression="&lt;%$diagram%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Entities From Project Explorer" precondition="&lt;% $element.isA(&quot;Entity&quot;) &amp;&amp; $element.partitionableElementCanBeDropped($newViewContainer) %>" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@containerMappings[name='COC_OperationalEntities']" dragSource="PROJECT_EXPLORER">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide Operational Capabilities" label="Operational Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="OperationalCapability"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Operational Capabilities From Project Explorer" precondition="&lt;% $element.isA(&quot;OperationalCapability&quot;) &amp;&amp; $element.canBeDropped($newViewContainer) %>" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='COC_OperationalCapabilities']" dragSource="PROJECT_EXPLORER">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OE" label="Operational Entities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="Entity"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="&lt;% $element.isA(&quot;Constraint&quot;) &amp;&amp; $element.canBeDropped($newViewContainer) %>" forceRefresh="true" dragSource="PROJECT_EXPLORER">
-            <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%$elementView.getDiagramContainer()!=$elementView &amp;&amp; (isA(&quot;Entity&quot;) || isA(&quot;AbstractCapability&quot;)) %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
@@ -5558,6 +5454,34 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Entities From Project Explorer" precondition="&lt;% $element.isA(&quot;Entity&quot;) &amp;&amp; $element.partitionableElementCanBeDropped($newViewContainer) %>" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@containerMappings[name='COC_OperationalEntities']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Operational Capabilities From Project Explorer" precondition="&lt;% $element.isA(&quot;OperationalCapability&quot;) &amp;&amp; $element.canBeDropped($newViewContainer) %>" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='COC_OperationalCapabilities']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="&lt;% $element.isA(&quot;Constraint&quot;) &amp;&amp; $element.canBeDropped($newViewContainer) %>" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+            <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -5814,118 +5738,44 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Insert/Remove Operational Entities. Creates or deletes graphical objects corresponding to already existing Operational Entities. Removing an Operational Entity graphical object from the diagram does not delete the Operational Entity from the model. This tool does not modify the semantic model." name="Show Hide Entity">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Operational Actors. Creates or deletes graphical objects corresponding to already existing Operational Actors. Removing an Operational Actor graphical object from the diagram does not delete the Operational Actor from the model. This tool does not modify the semantic model." name="Show/Hide OE" label="Operational Entities" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@containerMappings[name='COC2_Entities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="&lt;% $containerView.containers.target.filter(&quot;Entity&quot;)[!isA(&quot;OperationalActor&quot;)]%>"/>
-              </viewVariable>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="&lt;% $containerView.getOEBTarget() %>"/>
-                    <parameters name="scope" value="&lt;% $containerView.getAvailableEntitiesToInsert()[!isA(&quot;OperationalActor&quot;)] %>"/>
-                    <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Operational Entities to show in &lt;%$container.name%>."/>
-                    <parameters name="initialSelection" value="&lt;% $componentsInDiagram %>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $componentsInDiagram - $containerView.target %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.containers[target == $i].nSize > 0 %>">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.containers[target == $i].nFirst %>">
-                              <subModelOperations xsi:type="tool:DeleteView"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $selection %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$componentsInDiagram.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $i %>">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@containerMappings[name='COC2_Entities']" containerViewExpression="&lt;%$diagram%>"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Show/Hide OA" label="Operational Actors" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@containerMappings[name='COC2_Entities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="&lt;% $containerView.containers.target.filter(&quot;OperationalActor&quot;)%>"/>
-              </viewVariable>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="&lt;% $containerView.getOEBTarget() %>"/>
-                    <parameters name="scope" value="&lt;% $containerView.getAvailableEntitiesToInsert()[isA(&quot;OperationalActor&quot;)] %>"/>
-                    <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Operational Actors to show in &lt;%$container.name%>."/>
-                    <parameters name="initialSelection" value="&lt;% $componentsInDiagram %>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getOEBTarget() %>">
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $componentsInDiagram - $containerView.target %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.containers[target == $i].nSize > 0 %>">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.containers[target == $i].nFirst %>">
-                              <subModelOperations xsi:type="tool:DeleteView"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:For" expression="&lt;% $selection %>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$componentsInDiagram.nContains($i)%>">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $i %>">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@containerMappings[name='COC2_Entities']" containerViewExpression="&lt;%$diagram%>"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Operational Capabilities. Creates or deletes graphical objects corresponding to already existing Operational Capabilities. Removing an Operational Capability graphical object from the diagram does not delete the Operational Capability from the model. This tool does not modify the semantic model." name="Show/Hide Operational Capabilities" label="Operational Capabilities" precondition="&lt;%$containerView.isA(&quot;DDiagram&quot;)%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@nodeMappings[name='COC2_OperationalCapabilities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="&lt;% $containerView.getNodesAndNodeListElements().target.filter(&quot;OperationalCapability&quot;)%>"/>
-            </viewVariable>
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OA" label="Operational Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="OperationalActor"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container %>">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectOCs" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;% $container.getAllOperationalCapabilities() %>"/>
-                  <parameters name="initialSelection" value="&lt;%$containerView.eContents().filter(&quot;DNode&quot;)[visible].target.filter(&quot;OperationalCapability&quot;)%>"/>
-                  <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select allocated Operational Capabilities to show in &lt;%$container.name%>."/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container %>">
-                    <subModelOperations xsi:type="tool:For" expression="&lt;% $componentsInDiagram - $containerView.target %>">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.getNodesAndNodeListElements()[target == $i].nSize > 0 %>">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerView.getNodesAndNodeListElements()[target == $i].nFirst %>">
-                            <subModelOperations xsi:type="tool:DeleteView"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection%>">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$componentsInDiagram.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $i %>">
-                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@nodeMappings[name='COC2_OperationalCapabilities']" containerViewExpression="&lt;%$diagram%>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide Operational Capabilities" label="Operational Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="OperationalCapability"/>
+            </element>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OE" label="Operational Entities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="Entity"/>
+            </element>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

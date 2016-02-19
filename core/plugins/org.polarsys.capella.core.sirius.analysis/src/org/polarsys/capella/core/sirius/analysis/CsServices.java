@@ -1360,7 +1360,7 @@ public class CsServices {
     return components;
   }
 
-  private Collection<Component> getSubComponents(EObject target) {
+  public Collection<Component> getSubComponents(EObject target) {
     Collection<Component> components = new ArrayList<Component>();
     if (null == target) {
       return components;

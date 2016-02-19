@@ -10683,7 +10683,7 @@
           </delete>
         </ownedSubLines>
         <ownedSubLines name="Sub Requirement Pkg" reusedSubLines="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" reusedInMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" domainClass="RequirementsPkg" semanticCandidatesExpression="&lt;%ownedRequirementPkgs%>" headerLabelExpression="feature:name">
-          <create name="System User Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System User Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10693,7 +10693,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10703,7 +10703,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10713,7 +10713,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Non Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Non Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10723,7 +10723,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="System Non Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+          <create name="System Non Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10733,7 +10733,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="Requirement Pkg" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']">
+          <create name="Requirement Pkg" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The semantic currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10755,7 +10755,7 @@
             </firstModelOperation>
           </delete>
         </ownedSubLines>
-        <create name="Requirement Pkg" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']">
+        <create name="Requirement Pkg" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='Sub%20Requirement%20Pkg']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10763,7 +10763,7 @@
             <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Req Pkg"/>
           </firstModelOperation>
         </create>
-        <create name="System User Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System User Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10773,7 +10773,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10783,7 +10783,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10793,7 +10793,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Non Functional Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Non Functional Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -10803,7 +10803,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="System Non Functional Interface Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']">
+        <create name="System Non Functional Interface Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Requirements']/@ownedLineMappings[name='Requirement%20Pkg']/@ownedSubLines[name='requirements%201']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -11789,105 +11789,44 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Capability Realizations. Create or delete graphical objects corresponding to already existing Capability Realizations. Removing a Capability Realization graphical object from the diagram does not delete the Capability Realization from the model. This tool does not modify the semantic model." name="Show/Hide Capability Realizations" label="Capability Realizations" precondition="&lt;%$containerView.isA(&quot;DDiagram&quot;)%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@nodeMappings[name='CRB%20CapabilityRealization']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="&lt;%$containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;)%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="&lt;%$ownedNodes[visible].target%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="&lt;%$containerView.target.getCRBShowHideCapabilityRealizations%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="Select Components to show in &lt;%$container.name%>."/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="&lt;%$containerView.target%>"/>
-            </viewVariable>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Show/Hide Capability Realizations" label="Capability Realizations" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="CapabilityRealization"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="true">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="showhide" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="&lt;% $context %>"/>
-                    <parameters name="scope" value="&lt;%$scope%>"/>
-                    <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="&lt;%$message%>"/>
-                    <parameters name="initialSelection" value="&lt;% getIntersection($visibleTargets, $scope) %>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selection != &quot;WIZARD_CANCELED&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.showHideCapabilityRealizations($selection,$diagram)%>"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Logical / Physical Component. Create or delete graphical objects representing existing Components. Removing a Component graphical object from a diagram does not delete the Component from the model. This tool does not modify the semantic model." name="Show/Hide Components" label="Components" precondition="&lt;%(isA(&quot;Component&quot;) || isA(&quot;CapabilityRealizationPkg&quot;) ) &amp;&amp; !isA(&quot;AbstractActor&quot;)%>" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="&lt;%$containerView.eContents().filter(&quot;DSemanticDecorator&quot;)%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="&lt;%$ownedNodes[visible].target%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="&lt;%$containerView.getCRBShowHideComponent%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="Select Components to show in &lt;%$container.name%>."/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="&lt;%$containerView.getCCIITarget()%>"/>
-            </viewVariable>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Show/Hide Components" label="Components" precondition="&lt;%(isA(&quot;Component&quot;) || isA(&quot;CapabilityRealizationPkg&quot;) ) &amp;&amp; !isA(&quot;AbstractActor&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="LogicalComponent"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="showhide" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $context %>"/>
-                  <parameters name="scope" value="&lt;%$scope%>"/>
-                  <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="&lt;%$message%>"/>
-                  <parameters name="initialSelection" value="&lt;% getIntersection($visibleTargets, $scope) %>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                    <subModelOperations xsi:type="tool_1:For" expression="&lt;% getIntersection($visibleTargets, $scope) - $selection %>">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $ownedNodes[target == $i]%>">
-                        <subModelOperations xsi:type="tool_1:DeleteView"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:For" expression="&lt;% $selection %>">
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                        <parameters name="context" value="&lt;% $container%>"/>
-                        <parameters name="variable" value="targetView"/>
-                        <parameters name="value" value="&lt;% $ownedNodes[target == $i]%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $targetView!=null %>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $targetView.show %>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $targetView==null %>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $i %>">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" containerViewExpression="&lt;% $containerView %>"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Logical / Physical Actors. Create or delete graphical objects representing existing Actors. Removing a Component graphical object from a diagram does not delete the Actor from the model. This tool does not modify the semantic model." name="Show/Hide Actors" label="Actors" precondition="&lt;%$containerView.isA(&quot;DDiagram&quot;)%>" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <filters precondition="&lt;% target.eContainer(&quot;EPBSArchitecture&quot;).nSize != 0%>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
-              <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
-            </filters>
-            <variable name="container"/>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="&lt;%$containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;)%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="&lt;%$ownedNodes[visible].target%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="&lt;%$containerView.target.getCRBShowHideActors%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="Select Components to show in &lt;%$container.name%>."/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="&lt;%$containerView.target%>"/>
-            </viewVariable>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Show/Hide Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="LogicalActor"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="true">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="showhide" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="&lt;% $context %>"/>
-                    <parameters name="scope" value="&lt;%$scope%>"/>
-                    <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="&lt;%$message%>"/>
-                    <parameters name="initialSelection" value="&lt;% getIntersection($visibleTargets, $scope) %>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selection != &quot;WIZARD_CANCELED&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.showHideActors($selection,$diagram)%>"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

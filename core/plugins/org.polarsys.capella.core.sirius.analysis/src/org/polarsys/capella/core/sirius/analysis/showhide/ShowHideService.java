@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,13 +24,19 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.ContextServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.LaServices;
+import org.polarsys.capella.core.sirius.analysis.OAServices;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 
@@ -48,70 +54,82 @@ public class ShowHideService {
   }
 
   /**
-   * @param view_p
-   * @param selectedElements_p
-   * @param visibleElments_p
-   * @param visibleElementViews_p
-   * @param showHideHandler_p
+   * @param view
+   * @param selectedElements
+   * @param visibleElments
+   * @param visibleElementViews
+   * @param showHideHandler
    * @return
    */
-  public DSemanticDecorator applyShowHide(DSemanticDecorator view_p, List<EObject> selectedElements_p, List<EObject> visibleElments_p, List<DDiagramElement> visibleElementViews_p,
-      AbstractShowHide showHideHandler_p) {
+  public DSemanticDecorator applyShowHide(DSemanticDecorator view, List<EObject> selectedElements, List<EObject> visibleElments, List<DDiagramElement> visibleElementViews,
+      AbstractShowHide showHideHandler) {
 
-    DiagramContext diagramContext = showHideHandler_p.new DiagramContext();
+    DiagramContext diagramContext = showHideHandler.new DiagramContext();
 
     // show
-    for (EObject eObj : selectedElements_p) {
-      showHideHandler_p.show(eObj, diagramContext);
+    for (EObject eObj : selectedElements) {
+      showHideHandler.show(eObj, diagramContext);
     }
 
     // hide
     Set<EObject> toBeRemoved = new HashSet<EObject>();
-    for (DDiagramElement node : visibleElementViews_p) {
-      if (!selectedElements_p.contains(node.getTarget())) {
+    for (DDiagramElement node : visibleElementViews) {
+      if (!selectedElements.contains(node.getTarget())) {
         toBeRemoved.add(node.getTarget());
       }
     }
     for (EObject aView : toBeRemoved) {
-      showHideHandler_p.hide(aView, diagramContext);
+      showHideHandler.hide(aView, diagramContext);
     }
 
-    return view_p;
+    return view;
 
   }
 
-  public void genericSelectElements(DSemanticDecorator view_p) {
+  public void genericSelectElements(DSemanticDecorator view) {
 
-    String eClass = (String) InterpreterUtil.getInterpreter(view_p).getVariable(SEMANTIC_CANDIDATE);
+    String eClass = (String) InterpreterUtil.getInterpreter(view).getVariable(SEMANTIC_CANDIDATE);
     Map<String, Object> parameters = new HashMap<String, Object>();
-    parameters.put(CONTEXT, view_p);
+    parameters.put(CONTEXT, view);
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view_p);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
 
-    List<EObject> scope_p = getShowHideAvailableElements(eClass, diagram);
-    parameters.put(SCOPE, scope_p);
+    List<EObject> scope = getShowHideAvailableElements(diagram, view, eClass);
+    parameters.put(SCOPE, scope);
 
     parameters.put(WIZARD_MESSAGE, Messages.ShowHideService_Select_element_wizard_message);
 
-    List<EObject> initialSelection = getAllDisplayedElements(eClass, diagram);
+    List<EObject> initialSelection = getAllDisplayedElements(eClass, view);
     parameters.put(INITIAL_SELECTION, initialSelection);
     parameters.put(RESULT_VARIABLE, RESULT_VARIABLE);
 
-    new SelectElementsFromTransferWizard().execute(null, parameters);
-    return;
+    IExternalJavaAction action= ExternalJavaActionProvider.INSTANCE.getJavaActionById(getJavaActionId());
+    action.execute(null, parameters);
+  }
+  
+  protected String getJavaActionId() {
+    // org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard
+    return SelectElementsFromTransferWizard.class.getName();
   }
 
-  public void genericShowHideElements(DSemanticDecorator view_p) {
-    @SuppressWarnings("unchecked")
-    List<EObject> selectedElements = (List<EObject>) InterpreterUtil.getInterpreter(view_p).getVariable(RESULT_VARIABLE);
-    String eClass = (String) InterpreterUtil.getInterpreter(view_p).getVariable(SEMANTIC_CANDIDATE);
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view_p);
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  public void genericShowHideElements(DSemanticDecorator view) {
+	  List<EObject> selectedElements = null;
+    Object variable = InterpreterUtil.getInterpreter(view).getVariable(RESULT_VARIABLE);
+    if(variable instanceof Object[]){
+    	selectedElements = (List<EObject>) (List)Arrays.asList((Object[])variable);
+    }else{
+    	selectedElements = (List<EObject>) variable;
+    }
+    String eClass = (String) InterpreterUtil.getInterpreter(view).getVariable(SEMANTIC_CANDIDATE);
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
     DiagramElementMapping mapping = DiagramServices.getDiagramServices().getMapping(eClass, diagram);
 
-    List<EObject> visibleElments = (List<EObject>) getAllDisplayedElementsForMapping(view_p, mapping);
+    List<EObject> visibleElments = (List<EObject>) getAllDisplayedElementsForMapping(view, mapping);
 
-    List<DDiagramElement> visibleElementViews = (List<DDiagramElement>) getAllDisplayedViewsForMapping(view_p, mapping);
+    List<DDiagramElement> visibleElementViews = (List<DDiagramElement>) getAllDisplayedViewsForMapping(view, mapping);
 
     if (selectedElements == null) {
       selectedElements = new ArrayList<EObject>();
@@ -125,51 +143,97 @@ public class ShowHideService {
 
     DDiagramContents content = new DDiagramContents(diagram);
 
-    AbstractShowHide shHide = ShowHideFactory.createShowHide(eClass, view_p.getTarget(), content);
+    AbstractShowHide shHide = ShowHideFactory.createShowHide(eClass, view.getTarget(), content);
 
-    ShowHideService.getService().applyShowHide(view_p, selectedElements, visibleElments, visibleElementViews, shHide);
+    ShowHideService.getService().applyShowHide(view, selectedElements, visibleElments, visibleElementViews, shHide);
 
   }
 
   /**
-   * @param eClass_p
-   * @param diagram_p
+   * @param eClass
+   * @param diagram
    * @return
    */
-  private List<EObject> getAllDisplayedElements(String eClass_p, DDiagram diagram_p) {
+  private List<EObject> getAllDisplayedElements(String eClass, DSemanticDecorator view) {
     List<EObject> result = new ArrayList<EObject>();
-    for (DDiagramElement dElt : diagram_p.getDiagramElements()) {
-      if (dElt.getTarget().eClass().getName().equals(eClass_p)) {
+    Collection<DDiagramElement> allNodes = DiagramServices.getDiagramServices().getAllAbstractNodes(view);
+    for (DDiagramElement dElt : allNodes) {
+      if (dElt.getTarget().eClass().getName().equals(eClass)) {
         result.add(dElt.getTarget());
       }
     }
     return result;
   }
 
-  private List<EObject> getShowHideAvailableElements(String type, DDiagram diagram_p) {
-    if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
+  private List<EObject> getShowHideAvailableElements(DDiagram diagram, DSemanticDecorator view, String type) {
+    if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (CtxPackage.Literals.CAPABILITY.getName().equals(type)) {
-        return ContextServices.getServices().getMCBCapabilities((DSemanticDecorator) diagram_p);
+        return ContextServices.getServices().getMCBCapabilities((DSemanticDecorator) diagram);
       } else if (CtxPackage.Literals.ACTOR.getName().equals(type)) {
-        return ContextServices.getServices().getAvailableActorsToInsertInMCB2((DSemanticDecorator) diagram_p);
+        return ContextServices.getServices().getAvailableActorsToInsertInMCB2((DSemanticDecorator) diagram);
       } else if (CtxPackage.Literals.MISSION.getName().equals(type)) {
-        return ContextServices.getServices().getMCBMissions((DSemanticDecorator) diagram_p);
+        return ContextServices.getServices().getMCBMissions((DSemanticDecorator) diagram);
+      }
+    }else if(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (CtxPackage.Literals.CAPABILITY.getName().equals(type)) {
+        return ContextServices.getServices().getMBCapabilities((DSemanticDecorator) diagram);
+      } else if (CtxPackage.Literals.ACTOR.getName().equals(type)) {
+        return ContextServices.getServices().getAvailableActorsToInsertInMB((DSemanticDecorator) diagram);
+      } else if (CtxPackage.Literals.MISSION.getName().equals(type)) {
+        return ContextServices.getServices().getMBMissions((DSemanticDecorator) diagram);
+      }
+    }else if(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (CtxPackage.Literals.CAPABILITY.getName().equals(type)) {
+        return ContextServices.getServices().getCCCapabilities((DSemanticDecorator) diagram);
+      } else if (CtxPackage.Literals.ACTOR.getName().equals(type)) {
+        return ContextServices.getServices().getAvailableActorsToInsertInCC((DSemanticDecorator) diagram);
+      } else if (CtxPackage.Literals.MISSION.getName().equals(type)) {
+        return ContextServices.getServices().getCCMissions((DSemanticDecorator) diagram);
+      }
+    }else if(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (CtxPackage.Literals.CAPABILITY.getName().equals(type)) {
+        return ContextServices.getServices().getCMCapabilities((DSemanticDecorator) diagram);
+      } else if (CtxPackage.Literals.ACTOR.getName().equals(type)) {
+        return ContextServices.getServices().getAvailableActorsToInsertInCM((DSemanticDecorator) diagram);
+      }
+    }else if(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (OaPackage.Literals.OPERATIONAL_CAPABILITY.getName().equals(type)) {
+        return OAServices.getService().getCOCOperationalCapabilities((DSemanticDecorator) diagram);
+      } else if (OaPackage.Literals.OPERATIONAL_ACTOR.getName().equals(type)) {
+        return OAServices.getService().getAvailableOperationalActorsToInsertInCOC((DSemanticDecorator) diagram);
+      } else if (OaPackage.Literals.ENTITY.getName().equals(type)) {
+        return OAServices.getService().getCOCEntities((DSemanticDecorator) diagram);
+      }
+    }else if(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (OaPackage.Literals.OPERATIONAL_CAPABILITY.getName().equals(type)) {
+        return OAServices.getService().getOCBOperationalCapabilities((DSemanticDecorator) diagram);
+      } else if (OaPackage.Literals.OPERATIONAL_ACTOR.getName().equals(type)) {
+        return OAServices.getService().getAvailableOperationalActorsToInsertInOCB((DSemanticDecorator) diagram);
+      } else if (OaPackage.Literals.ENTITY.getName().equals(type)) {
+        return OAServices.getService().getOCBEntities((DSemanticDecorator) diagram);
+      }
+    }else if(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())){
+      if (LaPackage.Literals.CAPABILITY_REALIZATION.getName().equals(type)) {
+        return LaServices.getInstance().getCRBCapabilityRealizations((DSemanticDecorator) diagram);
+      } else if (LaPackage.Literals.LOGICAL_ACTOR.getName().equals(type)) {
+        return LaServices.getInstance().getAvailableLogicalActorsToInsertInCRB((DSemanticDecorator) diagram);
+      } else if (LaPackage.Literals.LOGICAL_COMPONENT.getName().equals(type)) {
+        return LaServices.getInstance().getCRBComponents(view);
       }
     }
-
     return null;
   }
 
-  public Collection<DDiagramElement> getAllDisplayedViewsForMapping(DSemanticDecorator diagramElt_p, DiagramElementMapping mapping_p) {
-    return getAllDisplayedViewsForMappings(diagramElt_p, Arrays.asList(mapping_p));
+  public Collection<DDiagramElement> getAllDisplayedViewsForMapping(DSemanticDecorator diagramElt, DiagramElementMapping mapping) {
+    return getAllDisplayedViewsForMappings(diagramElt, Arrays.asList(mapping));
   }
 
-  public Collection<DDiagramElement> getAllDisplayedViewsForMappings(DSemanticDecorator diagramElt_p, List<DiagramElementMapping> mappings_p) {
+  public Collection<DDiagramElement> getAllDisplayedViewsForMappings(DSemanticDecorator diagramElt, List<DiagramElementMapping> mappings) {
     List<DDiagramElement> diagElements = new ArrayList<DDiagramElement>();
-    if (diagramElt_p instanceof DDiagram) {
-      DDiagram diagram = (DDiagram) diagramElt_p;
+    if (diagramElt instanceof DDiagram) {
+      DDiagram diagram = (DDiagram) diagramElt;
       DDiagramContents diagContents = new DDiagramContents(diagram);
-      for (DiagramElementMapping mapping : mappings_p) {
+      for (DiagramElementMapping mapping : mappings) {
         for (DDiagramElement element : diagContents.getDiagramElements(mapping)) {
           diagElements.add(element);
         }
@@ -178,13 +242,13 @@ public class ShowHideService {
     return diagElements;
   }
 
-  public Collection<EObject> getAllDisplayedElementsForMapping(DSemanticDecorator diagramElt_p, DiagramElementMapping mapping_p) {
-    return getAllDisplayedElementsForMappings(diagramElt_p, Arrays.asList(mapping_p));
+  public Collection<EObject> getAllDisplayedElementsForMapping(DSemanticDecorator diagramElt, DiagramElementMapping mapping) {
+    return getAllDisplayedElementsForMappings(diagramElt, Arrays.asList(mapping));
   }
 
-  public Collection<EObject> getAllDisplayedElementsForMappings(DSemanticDecorator diagramElt_p, List<DiagramElementMapping> mappings_p) {
+  public Collection<EObject> getAllDisplayedElementsForMappings(DSemanticDecorator diagramElt, List<DiagramElementMapping> mappings) {
     List<EObject> diagElements = new ArrayList<EObject>();
-    for (DDiagramElement diagElt : getAllDisplayedViewsForMappings(diagramElt_p, mappings_p)) {
+    for (DDiagramElement diagElt : getAllDisplayedViewsForMappings(diagramElt, mappings)) {
       diagElements.add(diagElt.getTarget());
     }
     return diagElements;

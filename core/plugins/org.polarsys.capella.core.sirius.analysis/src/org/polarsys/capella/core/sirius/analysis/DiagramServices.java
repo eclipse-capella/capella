@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,6 +76,8 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -238,19 +240,76 @@ public class DiagramServices {
    * @return
    */
   public DiagramElementMapping getMapping(String eClass, DDiagram diagram) {
-    String mappingName = null;
     if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (eClass.equals(CtxPackage.Literals.ACTOR.getName())) {
-        mappingName = IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME;
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME);
       }
       if (eClass.equals(CtxPackage.Literals.CAPABILITY.getName())) {
-        mappingName = IMappingNameConstants.MCB_CAPABILITY_MAPPING_NAME;
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.MCB_CAPABILITY_MAPPING_NAME);
       }
       if (eClass.equals(CtxPackage.Literals.MISSION.getName())) {
-        mappingName = IMappingNameConstants.MCB_MISSION_MAPPING_NAME;
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.MCB_MISSION_MAPPING_NAME);
       }
+    }else if(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (eClass.equals(CtxPackage.Literals.ACTOR.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.MB_COMPONENT_MAPPING_NAME);
+      }
+      if (eClass.equals(CtxPackage.Literals.CAPABILITY.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.MB_CAPABILITY_MAPPING_NAME);
+      }
+      if (eClass.equals(CtxPackage.Literals.MISSION.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.MB_MISSION_MAPPING_NAME);
+      }
+    }else if(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (eClass.equals(CtxPackage.Literals.ACTOR.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CC_COMPONENT_MAPPING_NAME);
+      }
+      if (eClass.equals(CtxPackage.Literals.CAPABILITY.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CC_CAPABILITY_MAPPING_NAME);
+      }
+      if (eClass.equals(CtxPackage.Literals.MISSION.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CC_MISSION_MAPPING_NAME);
+      }
+    }else if(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (eClass.equals(CtxPackage.Literals.ACTOR.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CM_COMPONENT_MAPPING_NAME);
+      }
+      if (eClass.equals(CtxPackage.Literals.CAPABILITY.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CM_CAPABILITY_MAPPING_NAME);
+      }
+    }else if(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (eClass.equals(OaPackage.Literals.OPERATIONAL_ACTOR.getName())) {
+        return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
+      }
+      if (eClass.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.COC_OC_MAPPING_NAME);
+      }
+      if (eClass.equals(OaPackage.Literals.ENTITY.getName())) {
+        return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
+      }
+    }else if(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())){
+      if (eClass.equals(OaPackage.Literals.OPERATIONAL_ACTOR.getName())) {
+        return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.OCB_OPERATIONAL_ENTITY_MAPPING_NAME);
+      }
+      if (eClass.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.OCB_OPERATIONAL_CAPABILITY_MAPPING_NAME);
+      }
+      if (eClass.equals(OaPackage.Literals.ENTITY.getName())) {
+        return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.OCB_OPERATIONAL_ENTITY_MAPPING_NAME);
+      }
+    }else if(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())){
+      if (eClass.equals(LaPackage.Literals.LOGICAL_ACTOR.getName())) {
+        return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING);
+      }
+      if (eClass.equals(LaPackage.Literals.CAPABILITY_REALIZATION.getName())) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING);
+      }
+      if (eClass.equals(LaPackage.Literals.LOGICAL_COMPONENT.getName())) {
+        return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING);
+      }
+    
     }
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+    return null;
   }
 
   public List<NodeMapping> getAllBorderedNodeMapping(AbstractNodeMapping mapping) {

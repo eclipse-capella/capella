@@ -566,4 +566,59 @@ public class OAServices {
   public boolean hideAllocatedInteractions(EObject obj) {
     return obj instanceof FunctionalExchange && ((FunctionalExchange) obj).getAllocatingComponentExchanges().isEmpty();
   }
+  
+  public List<EObject> getAvailableOperationalActorsToInsertInCOC(DSemanticDecorator diagram) {
+    List<EObject> result = new ArrayList<EObject>();
+    Collection<? extends Component> availableEntitiesToInsert = getAvailableEntitiesToInsert(diagram);
+    for(Component component : availableEntitiesToInsert){
+      if(component instanceof OperationalActor){
+        result.add(component);
+      }
+    }
+    return result;
+  }
+  
+  public List<EObject> getCOCOperationalCapabilities(DSemanticDecorator diagram) {
+    List<EObject> result = new ArrayList<EObject>();
+    EObject target = diagram.getTarget();
+    if (diagram instanceof DDiagram && target instanceof OperationalCapability) {
+       List<Object> operationalCapabilities = getAllOperationalCapabilities((OperationalCapability)target);
+       for(Object oc : operationalCapabilities){
+         result.add((EObject)oc);
+       }
+    }
+    return result;
+  }
+
+  public List<EObject> getCOCEntities(DSemanticDecorator diagram) {
+    List<EObject> result = new ArrayList<EObject>();
+    Collection<? extends Component> allComponents = getAvailableEntitiesToInsert(diagram);
+    for(Component component : allComponents){
+      if(component instanceof Entity && !(component instanceof OperationalActor)){
+        result.add(component);
+      }
+    }
+    return result;
+  }
+  
+  public List<EObject> getAvailableOperationalActorsToInsertInOCB(DSemanticDecorator diagram) {
+    return getAvailableOperationalActorsToInsertInCOC(diagram);
+  }
+  
+  public List<EObject> getOCBOperationalCapabilities(DSemanticDecorator diagram) {
+    List<EObject> result = new ArrayList<EObject>();
+    EObject target = diagram.getTarget();
+    if (diagram instanceof DDiagram && target instanceof OperationalCapabilityPkg) {
+       List<Object> operationalCapabilities = getAllOperationalCapabilities((OperationalCapabilityPkg)target);
+       for(Object oc : operationalCapabilities){
+         result.add((EObject)oc);
+       }
+    }
+    return result;
+  
+  }
+
+  public List<EObject> getOCBEntities(DSemanticDecorator diagram) {
+    return getCOCEntities(diagram);
+  }
 }
