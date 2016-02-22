@@ -120,7 +120,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Entities">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -133,7 +133,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -819,7 +819,7 @@
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Entity%20Breakdown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Entity%20Blank']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Role%20Blank']"/>
-          <subNodeMappings name="OAB_Activity" preconditionExpression="&lt;% isAllocatedFunction(current, $container)%>" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="OperationalActivity">
+          <subNodeMappings name="OAB_Activity" preconditionExpression="&lt;% current.isAllocatedFunction($container, $containerView)%>" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="OperationalActivity">
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Breakdown']"/>
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Interaction%20Blank']"/>
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
@@ -1583,7 +1583,7 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current %>">
                     <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectAllocatedFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                       <parameters name="context" value="&lt;% $container %>"/>
-                      <parameters name="scope" value="&lt;% $container.getShowableAllocatedFunctions()%>"/>
+                      <parameters name="scope" value="&lt;% $container.getShowableAllocatedFunctions($containerView)%>"/>
                       <parameters name="initialSelection" value="&lt;% $visibleFunctions %>"/>
                       <parameters name="resultVariable" value="selectedFunctions"/>
                       <parameters name="wizardMessage" value="Select allocated Operational Activities to show in &lt;%$container.name%>."/>
@@ -1759,6 +1759,13 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="borderLineStyle" value="dash">
+              <appliedOn href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@conditionnalStyles.0/@style"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Activity Breakdown" titleExpression="[OABD] &lt;%current.name%>" domainClass="OperationalActivity">
@@ -1808,7 +1815,7 @@
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <toolSections name="Activities">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity in the target Operational Activity" name="Operational Activity" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" elementsToSelect="&lt;%selectOnlyCreatedView()%>">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Activity in the target Operational Activity" name="Operational Activity" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Operational Activity"/>
             </variable>

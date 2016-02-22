@@ -2012,18 +2012,35 @@ public class CapellaServices {
    *          or role
    * @return is function allocated to component/role
    */
-  public static boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
-    boolean result = false;
+  public boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
     LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
+    
     if (container instanceof Component) {
       Component component = (Component) container;
-      for (ComponentFunctionalAllocation alloc : component.getOwnedFunctionalAllocation()) {
-        if (alloc.getTargetElement() instanceof AbstractFunction) {
-          AbstractFunction alfunc = (AbstractFunction) alloc.getTargetElement();
-          allocatedFunctions.add(alfunc);
-        }
+      allocatedFunctions.addAll(component.getAllocatedFunctions());
+      for (Component subComponent : ComponentExt.getAllSubUsedAndDeployedComponents(component)) {
+        allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
       }
     }
+    
+    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
+  }
+  
+  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
+    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
+    
+    if (container instanceof Component) {
+      Component component = (Component) container;
+      List<AbstractFunction> showableFunctions = FaServices.getFaServices().getShowableAllocatedFunctions(component, containerView);
+      allocatedFunctions.addAll(showableFunctions);
+    }
+    
+    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
+  }
+  
+  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container, LinkedList<AbstractFunction> allocatedFunctions) {
+    boolean result = false;
+    
     if (container instanceof Role) {
       Role role = (Role) container;
       for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
@@ -2033,6 +2050,7 @@ public class CapellaServices {
         }
       }
     }
+    
     if (allocatedFunctions.contains(function)) {
       result = true;
     } else if (!FunctionExt.isLeaf(function)) {
@@ -2043,6 +2061,7 @@ public class CapellaServices {
         result = true;
       }
     }
+    
     return result;
   }
 

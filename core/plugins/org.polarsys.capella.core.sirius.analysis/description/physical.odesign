@@ -1884,7 +1884,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="PAB_PhysicalFunction" detailDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Data%20Flow%20Blank'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Function%20Breakdown']" preconditionExpression="&lt;% isAllocatedFunction(current, $container.getComponentType())%>" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20Physical%20Function']" semanticCandidatesExpression="" createElements="false" domainClass="PhysicalFunction" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20FunctionPort']">
+        <nodeMappings name="PAB_PhysicalFunction" detailDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Data%20Flow%20Blank'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Function%20Breakdown']" preconditionExpression="&lt;% current.isAllocatedFunction($container.getComponentType(), $containerView)%>" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20Physical%20Function']" semanticCandidatesExpression="" createElements="false" domainClass="PhysicalFunction" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20FunctionPort']">
           <borderedNodeMappings name="PAB_Pin" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="&lt;% getAvailablePins($viewpoint,$containerView) %>" domainClass="ActivityNode">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3921,7 +3921,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType %>">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectAllocatedFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="&lt;% $containerType %>"/>
-                    <parameters name="scope" value="&lt;% $containerType.getShowableAllocatedFunctions()%>"/>
+                    <parameters name="scope" value="&lt;% $containerType.getShowableAllocatedFunctions($containerView)%>"/>
                     <parameters name="initialSelection" value="&lt;% $visibleFunctions %>"/>
                     <parameters name="resultVariable" value="selectedFunctions"/>
                     <parameters name="wizardMessage" value="Select allocated Functions to show in &lt;%$container.name%>."/>
@@ -4220,6 +4220,11 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']"/>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@conditionnalStyles.5/@style" attributeName="borderLineStyle" value="dash"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Actor - Logical Actor" label="Physical Actors - Logical Actors" domainClass="PhysicalArchitecture">
