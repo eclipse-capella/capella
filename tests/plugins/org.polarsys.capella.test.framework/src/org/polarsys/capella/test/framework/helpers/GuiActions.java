@@ -25,6 +25,7 @@ import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobManager;
@@ -35,6 +36,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.ui.IWorkbenchSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RenameResourceAction;
@@ -46,7 +48,10 @@ import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplor
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
+import org.polarsys.capella.test.framework.actions.headless.HeadlessNewProjectWizard;
+import org.polarsys.capella.test.framework.actions.headless.HeadlessWizardDialog;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 
 /**
@@ -58,13 +63,51 @@ import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSession
 public class GuiActions {
 
   /**
-   * Open a session by using the capella action @see OpenSessionAction.
+   * Creates a capella project by using the capella wizard @see NewProjectWizard.
    * 
-   * @param airdFile
-   *          the aird file
+   * @param projectName
+   *          the name of the project to create
    * @param openActivityExplorer
-   *          Open the ActivityExplorer on open session
+   *          must open AE ?
+   * @return the created eclipse project.
    */
+  public static IProject newProject(String projectName, boolean openActivityExplorer) {
+    // Set the Activity Explorer preference to the expected value
+    boolean originalPrefValue = ActivityExplorerActivator.getDefault().getPreferenceStore()
+        .getBoolean(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
+    if (originalPrefValue != openActivityExplorer) {
+      ActivityExplorerActivator.getDefault().getPreferenceStore()
+          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, openActivityExplorer);
+    }
+
+    IWorkbenchSite site = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().getActivePart()
+        .getSite();
+    NewProjectWizard wizard = new HeadlessNewProjectWizard(projectName);
+    wizard.init(PlatformUI.getWorkbench(), StructuredSelection.EMPTY);
+    HeadlessWizardDialog dialog = new HeadlessWizardDialog(site.getShell(), wizard);
+    dialog.setBlockOnOpen(false);
+    dialog.open();
+    dialog.clickOnOk();
+
+    // Reset the original value of the Activity Explorer preference
+    if (originalPrefValue != openActivityExplorer) {
+      ActivityExplorerActivator.getDefault().getPreferenceStore()
+          .setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, originalPrefValue);
+    }
+    flushASyncGuiThread();
+
+    return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+
+  }
+
+	/**
+	 * Open a session by using the capella action @see OpenSessionAction.
+	 * 
+	 * @param airdFile
+	 *            the aird file
+	 * @param openActivityExplorer
+	 *            Open the ActivityExplorer on open session
+	 */
   public static void openSession(IFile airdFile, boolean openActivityExplorer) {
     // Set the corresponding preference to the expected value
     boolean originalPrefValue = ActivityExplorerActivator.getDefault().getPreferenceStore()
