@@ -857,8 +857,12 @@ public class DiagramHelper {
     if (element instanceof DDiagram) {
       return new ArrayList<DDiagramElement>(((DDiagram) element).getOwnedDiagramElements());
     }
-    if (element instanceof DNodeContainer) {
-      return new ArrayList<DDiagramElement>(((DNodeContainer) element).getOwnedDiagramElements());
+    if (element instanceof AbstractDNode) {
+      List<DDiagramElement> ownedElements = new ArrayList<DDiagramElement>(((AbstractDNode) element).getOwnedBorderedNodes());
+      if (element instanceof DNodeContainer) {
+        ownedElements.addAll(((DNodeContainer) element).getOwnedDiagramElements());
+      }
+      return ownedElements;
     }
     return null;
   }

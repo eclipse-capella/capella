@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,64 +14,68 @@ import static org.junit.Assert.assertFalse;
 
 import java.util.Collection;
 
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
-public class CreateContainerTool extends AbstractToolStep<DDiagramElementContainer> {
-
-  String containerView;
-  String newIdentifier;
-
-  Collection<DDiagramElement> _elements;
-  Collection<DDiagramElement> _newElements;
-
-  public CreateContainerTool(DiagramContext context, String toolName, String containerView_p) {
+/**
+ * Test step to call an AbstractDNode (DDiagramElementContainer, DNode...) creation tool.
+ */
+public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractToolStep<T> {
+  protected String newIdentifier;
+  protected String containerView;
+  protected Class<T> expectedDiagramElementType;
+  
+  protected Collection<DDiagramElement> innerElementsBefore;
+  protected Collection<DDiagramElement> newElements;
+  
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, Class<T> expectedNodeType) {
     super(context, toolName);
-    containerView = containerView_p;
+    this.containerView = containerView;
+    this.expectedDiagramElementType = expectedNodeType;
   }
 
-  public CreateContainerTool(DiagramContext context, String toolName, String newIdentifier_p, String containerView_p) {
-    this(context, toolName, containerView_p);
-    newIdentifier = newIdentifier_p;
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String newIdentifier, String containerView_p, Class<T> expectedNodeType) {
+    this(context, toolName, containerView_p, expectedNodeType);
+    this.newIdentifier = newIdentifier;
   }
 
   @Override
   protected void preRunTest() {
     super.preRunTest();
     DSemanticDecorator element = getExecutionContext().getView(containerView);
-    _elements = DiagramHelper.getOwnedElements(element);
+    innerElementsBefore = DiagramHelper.getOwnedElements(element);
   }
 
   @Override
   protected void dispose() {
     super.dispose();
-    _elements = null;
-    _newElements = null;
+    innerElementsBefore = null;
+    newElements = null;
   }
 
   @Override
   protected void postRunTest() {
     super.postRunTest();
     DSemanticDecorator element = getExecutionContext().getView(containerView);
-    _newElements = DiagramHelper.getOwnedElements(element);
-    _newElements.removeAll(_elements);
+    newElements = DiagramHelper.getOwnedElements(element);
+    newElements.removeAll(innerElementsBefore);
 
-    if (_newElements.size() != 1) {
+    if (newElements.size() != 1) {
       assertFalse(true);
     }
-    if (!(_newElements.iterator().next() instanceof DDiagramElementContainer)) {
+    if (!(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
       assertFalse(true);
     }
 
   }
 
   @Override
-  public DDiagramElementContainer getResult() {
-    DDiagramElementContainer view = (DDiagramElementContainer) _newElements.iterator().next();
+  public T getResult() {
+    T view = expectedDiagramElementType.cast(newElements.iterator().next());
     if (newIdentifier != null) {
       getExecutionContext().putSemanticElement(newIdentifier, view.getTarget());
       getExecutionContext().putView(newIdentifier, view);
