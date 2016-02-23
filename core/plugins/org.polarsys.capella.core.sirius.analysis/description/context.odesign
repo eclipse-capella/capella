@@ -180,7 +180,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Actor"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -194,7 +194,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Capability"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -607,7 +607,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Actor"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -621,7 +621,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Capability"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1100,7 +1100,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Actor"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1114,7 +1114,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Capability"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1638,7 +1638,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Actor"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1652,7 +1652,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Capability"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>

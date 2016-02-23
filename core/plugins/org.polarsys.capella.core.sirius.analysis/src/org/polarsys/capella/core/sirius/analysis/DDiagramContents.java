@@ -158,8 +158,9 @@ public class DDiagramContents {
   public List<DDiagramElement> getVisibleDiagramElements(DiagramElementMapping mapping) {
     List<DDiagramElement> lstVisibleElements = new ArrayList<DDiagramElement>();
     for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping)) {
-      if (element.isVisible())
+      if (element.isVisible()) {
         lstVisibleElements.add(element);
+      }
     }
     return lstVisibleElements;
   }
@@ -180,6 +181,27 @@ public class DDiagramContents {
       return getDiagramElements(mapping);
     }
     return getDiagramElements((DDiagramElement) decorator, mapping);
+  }
+
+  public <T> Collection<T> asList(Iterable<T> iterable) {
+    Collection<T> result = new ArrayList<T>();
+    for (T t : iterable) {
+      result.add(t);
+    }
+    return result;
+  }
+
+  public Collection<EObject> asSemantic(Iterable<?> iterable) {
+    Collection<EObject> result = new ArrayList<EObject>();
+    for (Object t : iterable) {
+      if (t instanceof DSemanticDecorator) {
+        DSemanticDecorator view = (DSemanticDecorator) t;
+        if (!result.contains(view.getTarget())) {
+          result.add(view.getTarget());
+        }
+      }
+    }
+    return result;
   }
 
   /**
@@ -277,7 +299,8 @@ public class DDiagramContents {
    * @param containerView
    * @return
    */
-  public Collection<DDiagramElement> getDiagramElements(EObject target, DiagramElementMapping mapping, DSemanticDecorator containerView) {
+  public Collection<DDiagramElement> getDiagramElements(EObject target, DiagramElementMapping mapping,
+      DSemanticDecorator containerView) {
     if (!getMapDiagramElements().containsKey(target)) {
       return Collections.emptyList();
     }
@@ -386,8 +409,9 @@ public class DDiagramContents {
         if (element != null) {
           if (this.containsView(element)) {
             for (DDiagramElement view : this.getNodes(element)) {
-              if (view.isVisible())
+              if (view.isVisible()) {
                 return (DragAndDropTarget) view;
+              }
             }
           }
           toVisit.addAll(getParents(element, semantic));

@@ -103,6 +103,7 @@ import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Relationship;
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
@@ -249,8 +250,8 @@ public class CsServices {
       return true;
     }
 
-    IDiagramTraceability handler = DiagramTraceabilityHelper.getService()
-        .getTraceabilityHandler((DRepresentation) diagram, TRANSITION_TRACEABILITY);
+    IDiagramTraceability handler = DiagramTraceabilityHelper.getService().getTraceabilityHandler(
+        (DRepresentation) diagram, TRANSITION_TRACEABILITY);
     if (handler == null) {
       return true;
     }
@@ -455,8 +456,7 @@ public class CsServices {
   public static final String PREFERENCE_LISTENER_ID_PREFERENCE_MULTIPART = "multipart.allowed"; //$NON-NLS-1$
 
   @Deprecated
-  public static final String[] PREFERENCE_LISTENER_ID_PREFERENCES = new String[] {
-      PREFERENCE_LISTENER_ID_PREFERENCE_MULTIPART, };
+  public static final String[] PREFERENCE_LISTENER_ID_PREFERENCES = new String[] { PREFERENCE_LISTENER_ID_PREFERENCE_MULTIPART, };
 
   @Deprecated
   public EObject preferenceListener = null;
@@ -919,8 +919,8 @@ public class CsServices {
     // Remove all allocated interfaces
     removeAllAllocatedInterfaces(interfaces);
     // NEW CODE
-    interfaces = (List) QueryDebugger
-        .executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_CCE_INSERT_INTERFACE_FOR_LIB, context, interfaces);
+    interfaces = (List) QueryDebugger.executeQueryWithInclusionDebug(
+        QueryIdentifierConstants.GET_CCE_INSERT_INTERFACE_FOR_LIB, context, interfaces);
     // END CODE REFACTOR
     return interfaces;
   }
@@ -1068,8 +1068,8 @@ public class CsServices {
     BlockArchitecture architectureSource = ComponentExt.getRootBlockArchitecture(source);
     BlockArchitecture architectureTarget = ComponentExt.getRootBlockArchitecture(target);
 
-    return (architectureSource != null && architectureSource.equals(architectureTarget))
-        || (architectureSource == null && architectureTarget == null);
+    return ((architectureSource != null) && architectureSource.equals(architectureTarget))
+        || ((architectureSource == null) && (architectureTarget == null));
 
   }
 
@@ -1310,9 +1310,9 @@ public class CsServices {
         new QueryContext(), new RemoveActorsFilter());
     // NEW CODE
     // END CODE REFACTOR
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB, component, new RemoveActorsFilter(),
-        components);
+    components = (List) QueryDebugger
+        .executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB, component,
+            new RemoveActorsFilter(), components);
 
     return components;
   }
@@ -1427,8 +1427,8 @@ public class CsServices {
     // Add all children of deployed components
     for (DeployableElement deployed : PartExt.getDeployedElements(part)) {
       if ((deployed instanceof Part) && (((Part) deployed).getAbstractType() instanceof Component)) {
-        rsult.addAll(PartExt.getComponentsOfParts(
-            ComponentExt.getAllSubUsedParts((Component) ((Part) deployed).getAbstractType(), false)));
+        rsult.addAll(PartExt.getComponentsOfParts(ComponentExt.getAllSubUsedParts(
+            (Component) ((Part) deployed).getAbstractType(), false)));
       }
     }
     return rsult;
@@ -1599,8 +1599,8 @@ public class CsServices {
 
     if (((newSource instanceof PhysicalQuantity) && (newTarget instanceof NumericType))
         || ((newSource instanceof Component) && (newTarget instanceof Component))
-        || ((newSource instanceof GeneralizableElement) && (newTarget instanceof GeneralizableElement)
-            && newSource.eClass().equals(newTarget.eClass()))) {
+        || ((newSource instanceof GeneralizableElement) && (newTarget instanceof GeneralizableElement) && newSource
+            .eClass().equals(newTarget.eClass()))) {
 
       GeneralizableElement targetClass = (GeneralizableElement) newTarget;
       GeneralizableElement sourceClass = (GeneralizableElement) newSource;
@@ -1694,8 +1694,9 @@ public class CsServices {
     }
 
     if (((source instanceof PhysicalQuantity) && (target instanceof NumericType))
-        || ((source instanceof Component) && (target instanceof Component)) || ((source instanceof GeneralizableElement)
-            && (target instanceof GeneralizableElement) && source.eClass().equals(target.eClass()))) {
+        || ((source instanceof Component) && (target instanceof Component))
+        || ((source instanceof GeneralizableElement) && (target instanceof GeneralizableElement) && source.eClass()
+            .equals(target.eClass()))) {
 
       GeneralizableElement targetClass = (GeneralizableElement) target;
       GeneralizableElement sourceClass = (GeneralizableElement) source;
@@ -1771,8 +1772,8 @@ public class CsServices {
 
         AbstractDependenciesPkg sourcePkg = (AbstractDependenciesPkg) CapellaServices.getService().getParent(subObject,
             CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
-        AbstractDependenciesPkg targetPkg = (AbstractDependenciesPkg) CapellaServices.getService()
-            .getParent(targetObject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+        AbstractDependenciesPkg targetPkg = (AbstractDependenciesPkg) CapellaServices.getService().getParent(
+            targetObject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
 
         if (AbstractDependenciesPkgExt.isADependencyAvailable(sourcePkg, targetPkg)) {
           return true;
@@ -1821,12 +1822,10 @@ public class CsServices {
     EObject source = sourceObject;
     EObject target = targetObject;
 
-    if (!((source instanceof Component) || (source instanceof ComponentPort))
-        || (source instanceof ConfigurationItem)) {
+    if (!((source instanceof Component) || (source instanceof ComponentPort)) || (source instanceof ConfigurationItem)) {
       return false;
     }
-    if (!((target instanceof Component) || (target instanceof ComponentPort))
-        || (target instanceof ConfigurationItem)) {
+    if (!((target instanceof Component) || (target instanceof ComponentPort)) || (target instanceof ConfigurationItem)) {
       return false;
     }
     if ((source instanceof LogicalActor) && (target instanceof Component)) {
@@ -2483,16 +2482,16 @@ public class CsServices {
    * Returns whether given element is an abstract actor or a not-node physical component
    */
   protected boolean isAbstractActorOrNotNodeComponent(EObject source) {
-    return ((source instanceof AbstractActor) || ((source instanceof PhysicalComponent)
-        && (((PhysicalComponent) source).getNature() != PhysicalComponentNature.NODE)));
+    return ((source instanceof AbstractActor) || ((source instanceof PhysicalComponent) && (((PhysicalComponent) source)
+        .getNature() != PhysicalComponentNature.NODE)));
   }
 
   /**
    * Returns whether given element is an abstract actor or a node physical component
    */
   protected boolean isAbstractActorOrNodeComponent(EObject source) {
-    return ((source instanceof AbstractActor) || ((source instanceof PhysicalComponent)
-        && (((PhysicalComponent) source).getNature() == PhysicalComponentNature.NODE)));
+    return ((source instanceof AbstractActor) || ((source instanceof PhysicalComponent) && (((PhysicalComponent) source)
+        .getNature() == PhysicalComponentNature.NODE)));
   }
 
   /**
@@ -3192,8 +3191,7 @@ public class CsServices {
       CompositeFilterDescription cF = (CompositeFilterDescription) filter;
       if (cF.getFilters() != null) {
         for (Filter internalFilter : cF.getFilters()) {
-          if ((internalFilter instanceof MappingFilter)
-              && (internalFilter.getFilterKind() == FilterKind.HIDE_LITERAL)) {
+          if ((internalFilter instanceof MappingFilter) && (internalFilter.getFilterKind() == FilterKind.HIDE_LITERAL)) {
             MappingFilter hF = (MappingFilter) internalFilter;
             if (hF.getMappings() != null) {
               for (DiagramElementMapping mapping : hF.getMappings()) {
@@ -3896,8 +3894,7 @@ public class CsServices {
    * the edge. (check if the edge can be valid if the bounds (contained in source or target view) were correctly
    * settled)
    */
-  public boolean isValidLinkEdge(AbstractLink link, DSemanticDecorator source, DSemanticDecorator target,
-      boolean strict) {
+  public boolean isValidLinkEdge(AbstractLink link, DSemanticDecorator source, DSemanticDecorator target, boolean strict) {
 
     boolean valid = false;
     DSemanticDecorator sourceElement = source;
@@ -4006,8 +4003,8 @@ public class CsServices {
     }
     if (current != null) {
       if (current instanceof DDiagramElement) {
-        for (DSemanticDecorator child : DiagramServices.getDiagramServices()
-            .getDiagramElements((DDiagramElement) current)) {
+        for (DSemanticDecorator child : DiagramServices.getDiagramServices().getDiagramElements(
+            (DDiagramElement) current)) {
           if ((child.getTarget() != null) && child.getTarget().equals(targetElement.getTarget())) {
             valid = false;
           }
@@ -4589,23 +4586,8 @@ public class CsServices {
 
     // OLD CODE
     BlockArchitecture architecture = getArchitecture(component);
-
-    if (architecture instanceof SystemAnalysis) {
-      ActorPkg pkg = ((SystemAnalysis) architecture).getOwnedActorPkg();
-      if (pkg != null) {
-        components = ActorPkgExt.getAllActors(pkg);
-      }
-    } else if (architecture instanceof LogicalArchitecture) {
-      LogicalActorPkg pkg = ((LogicalArchitecture) architecture).getOwnedLogicalActorPkg();
-      if (pkg != null) {
-        components = ActorPkgExt.getAllActors(pkg);
-      }
-    } else if (architecture instanceof PhysicalArchitecture) {
-      PhysicalActorPkg pkg = ((PhysicalArchitecture) architecture).getOwnedPhysicalActorPkg();
-      if (pkg != null) {
-        components = ActorPkgExt.getAllActors(pkg);
-      }
-    }
+    Structure structure = BlockArchitectureExt.getActorPkg(architecture, false);
+    components = ActorPkgExt.getAllActors(structure);
 
     if (!isMultipartMode(architecture)) {
       Component context = getContext(architecture);
@@ -4617,8 +4599,8 @@ public class CsServices {
     }
 
     // NEW CODE
-    components = (List) QueryDebugger
-        .executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_AB_INSERT_ACTOR_FOR_LIB, component, components);
+    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
+        QueryIdentifierConstants.GET_AB_INSERT_ACTOR_FOR_LIB, component, components);
     // END CODE REFACTOR
 
     return components;
@@ -4810,12 +4792,12 @@ public class CsServices {
 
       } else if (contextualElement instanceof FunctionalChain) {
 
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt
-            .getFlatInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
+        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvementsOf(
+            (FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
           contextualFunctions.add((AbstractFunction) involvement.getInvolved());
         }
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt
-            .getFlatInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvementsOf(
+            (FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
           contextualFunctionExchanges.add((FunctionalExchange) involvement.getInvolved());
         }
         contextualFunctionalChains.add(contextualElement);
@@ -4885,8 +4867,7 @@ public class CsServices {
     return Collections.emptyList();
   }
 
-  public EObject showABPhysicalLink(Collection<EObject> contextualPhysicalLinks,
-      DSemanticDecorator currentElementView) {
+  public EObject showABPhysicalLink(Collection<EObject> contextualPhysicalLinks, DSemanticDecorator currentElementView) {
     ABServices.getService().showABPhysicalLink(contextualPhysicalLinks,
         new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
     return currentElementView;
@@ -4910,8 +4891,7 @@ public class CsServices {
   /**
    * used in context, logical, oa, physical
    */
-  public EObject showABPhysicalLink(EObject physicalLinkToShow,
-      DSemanticDecorator currentElementView) {
+  public EObject showABPhysicalLink(EObject physicalLinkToShow, DSemanticDecorator currentElementView) {
     return showABPhysicalLink(Collections.singleton(physicalLinkToShow), currentElementView);
   }
 
@@ -5112,8 +5092,7 @@ public class CsServices {
         if (abstractExchangeItem instanceof ExchangeItem) {
           // get all the component of the receiving communication link
           // of the current exchange
-          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(
-              abstractExchangeItem);
+          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(abstractExchangeItem);
           if (!oppositeComponentUsingCrossref.isEmpty()) {
             result.addAll(oppositeComponentUsingCrossref);
           }
@@ -5174,8 +5153,7 @@ public class CsServices {
       Collection<AbstractExchangeItem> exchangeItemsByKinds = getExchangeItemsByTransmitkinds(source);
       for (AbstractExchangeItem abstractExchangeItem : exchangeItemsByKinds) {
         if (abstractExchangeItem instanceof ExchangeItem) {
-          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(
-              abstractExchangeItem);
+          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(abstractExchangeItem);
           for (Component component : oppositeComponentUsingCrossref) {
             if (target.equals(component)) {
               if (result.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
@@ -5251,8 +5229,7 @@ public class CsServices {
       Collection<AbstractExchangeItem> exchangeItemsByKinds = getExchangeItemsByTransmitkinds(source);
       for (AbstractExchangeItem abstractExchangeItem : exchangeItemsByKinds) {
         if (abstractExchangeItem instanceof ExchangeItem) {
-          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(
-              abstractExchangeItem);
+          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(abstractExchangeItem);
           for (Component component : oppositeComponentUsingCrossref) {
             if (target.equals(component)) {
               // add to result only if interface1 is found in diagram
@@ -5326,8 +5303,7 @@ public class CsServices {
       Collection<AbstractExchangeItem> exchangeItemsByKinds = getExchangeItemsByTransmitkinds(source);
       for (AbstractExchangeItem abstractExchangeItem : exchangeItemsByKinds) {
         if (abstractExchangeItem instanceof ExchangeItem) {
-          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(
-              abstractExchangeItem);
+          List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(abstractExchangeItem);
           for (Component component : oppositeComponentUsingCrossref) {
             if (target.equals(component)) {
               // add to result only if interface1 is found in diagram
@@ -5390,8 +5366,8 @@ public class CsServices {
         CommunicationLinkKind.CALL, CommunicationLinkKind.WRITE, CommunicationLinkKind.PRODUCE,
         CommunicationLinkKind.TRANSMIT };
     // get exchange : filter by list of prepared kind
-    Collection<AbstractExchangeItem> exchangeItemsByKinds = CommunicationLinkExt
-        .getExchangeItemsByKinds(ownedCommunicationLinks, sending);
+    Collection<AbstractExchangeItem> exchangeItemsByKinds = CommunicationLinkExt.getExchangeItemsByKinds(
+        ownedCommunicationLinks, sending);
     return exchangeItemsByKinds;
   }
 
@@ -5531,8 +5507,7 @@ public class CsServices {
       Component parent = ComponentExt.getParent((Component) aContainer.getTarget());
       while (parent != null) {
         DNodeContainer parentGraphicalElement = componentsInDiagram.get(parent);
-        if ((null != parentGraphicalElement)
-            && !parentGraphicalElement.getOwnedDiagramElements().contains(aContainer)) {
+        if ((null != parentGraphicalElement) && !parentGraphicalElement.getOwnedDiagramElements().contains(aContainer)) {
           parentGraphicalElement.getOwnedDiagramElements().add(aContainer);
           break;
         }
@@ -5628,8 +5603,8 @@ public class CsServices {
 
     // create elements
     for (CapellaElement anElement : selectedOperations) {
-      EObject container = CapellaServices.getService().getBestGraphicalContainer(anElement, diagram,
-          anElement.eClass());
+      EObject container = CapellaServices.getService()
+          .getBestGraphicalContainer(anElement, diagram, anElement.eClass());
       if (!visibleElements.containsKey(anElement)) {
 
         if (anElement instanceof Component) {
@@ -6010,8 +5985,7 @@ public class CsServices {
   private ModelElement getProperTargetToMoveConstraint(ModelElement target, DDiagramElement targetDiagramEle) {
     DiagramElementMapping diagramElementMapping = targetDiagramEle.getDiagramElementMapping();
     if (null != diagramElementMapping) {
-      if (diagramElementMapping.getName()
-          .equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)) {
+      if (diagramElementMapping.getName().equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)) {
         return null;
       }
     }
@@ -6024,16 +5998,14 @@ public class CsServices {
    * @param target
    * @return
    */
-  private List<ModelElement> getTargetToAddAsConstraintedElement(ModelElement target,
-      DDiagramElement targetDiagramEle) {
+  private List<ModelElement> getTargetToAddAsConstraintedElement(ModelElement target, DDiagramElement targetDiagramEle) {
     List<ModelElement> result = new ArrayList<ModelElement>();
     // if targetDiagramElemnet deployed part
     // return the deployedElemnet link as target
     boolean flag = false;
     DiagramElementMapping diagramElementMapping = targetDiagramEle.getDiagramElementMapping();
     if (null != diagramElementMapping) {
-      if (diagramElementMapping.getName()
-          .equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)) {
+      if (diagramElementMapping.getName().equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)) {
         if (target instanceof Part) {
           Part part = (Part) target;
           EList<AbstractDeploymentLink> deployingLinks = part.getDeployingLinks();
@@ -6154,8 +6126,7 @@ public class CsServices {
       DEdge currentEdge = (DEdge) object;
       EObject target = currentEdge.getTarget();
 
-      if (((target instanceof ComponentPort) && isProvidedEdge(object))
-          || (target instanceof InterfaceImplementation)) {
+      if (((target instanceof ComponentPort) && isProvidedEdge(object)) || (target instanceof InterfaceImplementation)) {
         return isImplementedOrProvidedLinkEdgeNotRepresentedInChildrenComponent(object);
       }
       if (((target instanceof ComponentPort) && (isRequiredEdge(object))) || (target instanceof InterfaceUse)) {
@@ -6184,10 +6155,8 @@ public class CsServices {
                 target = edge.getTarget();
                 if (target instanceof InterfaceImplementation) {
                   Relationship childLink = (Relationship) target;
-                  if (((link instanceof InterfaceImplementation) && (childLink instanceof InterfaceImplementation)
-                      && (((InterfaceImplementation) link)
-                          .getImplementedInterface() == ((InterfaceImplementation) childLink)
-                              .getImplementedInterface()))) {
+                  if (((link instanceof InterfaceImplementation) && (childLink instanceof InterfaceImplementation) && (((InterfaceImplementation) link)
+                      .getImplementedInterface() == ((InterfaceImplementation) childLink).getImplementedInterface()))) {
                     return false;
                   }
                 }
@@ -6254,8 +6223,8 @@ public class CsServices {
                 target = edge.getTarget();
                 if (target instanceof InterfaceUse) {
                   Relationship childLink = (Relationship) target;
-                  if (((link instanceof InterfaceUse) && (childLink instanceof InterfaceUse)
-                      && (((InterfaceUse) link).getUsedInterface() == ((InterfaceUse) childLink).getUsedInterface()))) {
+                  if (((link instanceof InterfaceUse) && (childLink instanceof InterfaceUse) && (((InterfaceUse) link)
+                      .getUsedInterface() == ((InterfaceUse) childLink).getUsedInterface()))) {
                     return false;
                   }
                 }
