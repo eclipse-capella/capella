@@ -15,29 +15,29 @@ import static org.junit.Assert.assertFalse;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 
-public class CreateContainerTool extends CreateAbstractDNodeTool {
+public class CreateContainerTool extends CreateAbstractDNodeTool<DDiagramElementContainer> {
 
   public CreateContainerTool(DiagramContext context, String toolName, String containerView) {
-    super(context, toolName, containerView);
+    super(context, toolName, containerView, DDiagramElementContainer.class);
   }
 
   public CreateContainerTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
-    super(context, toolName, containerView, newIdentifier);
+    super(context, toolName, containerView, newIdentifier, DDiagramElementContainer.class);
   }
 
   public CreateContainerTool(DiagramContext context, String[] toolIdentifier, String containerView) {
-    super(context, toolIdentifier, containerView);
+    super(context, toolIdentifier, containerView, DDiagramElementContainer.class);
   }
 
   public CreateContainerTool(DiagramContext context, String[] toolIdentifier, String containerView, String newIdentifier) {
-    super(context, toolIdentifier, containerView, newIdentifier);
+    super(context, toolIdentifier, containerView, newIdentifier, DDiagramElementContainer.class);
   }
 
   @Override
   protected void postRunTest() {
     super.postRunTest();
 
-    if (!(_newElements.iterator().next() instanceof DDiagramElementContainer)) {
+    if (!(newElements.iterator().next() instanceof DDiagramElementContainer)) {
       assertFalse(true);
     }
 
