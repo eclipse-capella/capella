@@ -38,8 +38,8 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     this.expectedDiagramElementType = expectedNodeType;
   }
 
-  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView_p, String newIdentifier, Class<T> expectedNodeType) {
-    this(context, toolName, containerView_p, expectedNodeType);
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier, Class<T> expectedNodeType) {
+    this(context, toolName, containerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
   }
 
