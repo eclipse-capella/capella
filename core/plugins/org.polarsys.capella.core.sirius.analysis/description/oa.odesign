@@ -5336,7 +5336,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide Operational Capabilities" label="Operational Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="OperationalCapability"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5754,7 +5754,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide Operational Capabilities" label="Operational Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="OperationalCapability"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>

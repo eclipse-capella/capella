@@ -11791,7 +11791,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="Show/Hide Capability Realizations" label="Capability Realizations" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="CapabilityRealization"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -11805,7 +11805,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="Show/Hide Components" label="Components" precondition="&lt;%(isA(&quot;Component&quot;) || isA(&quot;CapabilityRealizationPkg&quot;) ) &amp;&amp; !isA(&quot;AbstractActor&quot;)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="LogicalComponent"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Component"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -11819,7 +11819,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="Show/Hide Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="LogicalActor"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>

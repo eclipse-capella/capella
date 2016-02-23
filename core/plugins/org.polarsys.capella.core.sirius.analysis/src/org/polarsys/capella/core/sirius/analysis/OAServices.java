@@ -282,7 +282,12 @@ public class OAServices {
    * @param view
    * @return available entities to insert in OEB
    */
+  @Deprecated
   public Collection<? extends Component> getAvailableEntitiesToInsert(DSemanticDecorator view) {
+    return getOEBEntities(view);
+  }
+
+  public Collection<? extends Component> getOEBEntities(DSemanticDecorator view) {
     EObject target = view.getTarget();
     if ((target instanceof Entity) || (target instanceof EntityPkg) || (target instanceof OperationalContext)
         || (target instanceof OperationalActor)) {
@@ -512,7 +517,10 @@ public class OAServices {
     return true;
   }
 
-  // return all the operational capabilities
+  /**
+   * @deprecated Will be removed, use CapabilityPkgExt.getAllAbstractCapabilities
+   */
+  @Deprecated
   public List<Object> getAllOperationalCapabilities(CapellaElement element) {
     BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(element);
     if (!(arch instanceof OperationalAnalysis)) {
@@ -564,61 +572,8 @@ public class OAServices {
   }
 
   public boolean hideAllocatedInteractions(EObject obj) {
-    return obj instanceof FunctionalExchange && ((FunctionalExchange) obj).getAllocatingComponentExchanges().isEmpty();
-  }
-  
-  public List<EObject> getAvailableOperationalActorsToInsertInCOC(DSemanticDecorator diagram) {
-    List<EObject> result = new ArrayList<EObject>();
-    Collection<? extends Component> availableEntitiesToInsert = getAvailableEntitiesToInsert(diagram);
-    for(Component component : availableEntitiesToInsert){
-      if(component instanceof OperationalActor){
-        result.add(component);
-      }
-    }
-    return result;
-  }
-  
-  public List<EObject> getCOCOperationalCapabilities(DSemanticDecorator diagram) {
-    List<EObject> result = new ArrayList<EObject>();
-    EObject target = diagram.getTarget();
-    if (diagram instanceof DDiagram && target instanceof OperationalCapability) {
-       List<Object> operationalCapabilities = getAllOperationalCapabilities((OperationalCapability)target);
-       for(Object oc : operationalCapabilities){
-         result.add((EObject)oc);
-       }
-    }
-    return result;
+    return (obj instanceof FunctionalExchange)
+        && ((FunctionalExchange) obj).getAllocatingComponentExchanges().isEmpty();
   }
 
-  public List<EObject> getCOCEntities(DSemanticDecorator diagram) {
-    List<EObject> result = new ArrayList<EObject>();
-    Collection<? extends Component> allComponents = getAvailableEntitiesToInsert(diagram);
-    for(Component component : allComponents){
-      if(component instanceof Entity && !(component instanceof OperationalActor)){
-        result.add(component);
-      }
-    }
-    return result;
-  }
-  
-  public List<EObject> getAvailableOperationalActorsToInsertInOCB(DSemanticDecorator diagram) {
-    return getAvailableOperationalActorsToInsertInCOC(diagram);
-  }
-  
-  public List<EObject> getOCBOperationalCapabilities(DSemanticDecorator diagram) {
-    List<EObject> result = new ArrayList<EObject>();
-    EObject target = diagram.getTarget();
-    if (diagram instanceof DDiagram && target instanceof OperationalCapabilityPkg) {
-       List<Object> operationalCapabilities = getAllOperationalCapabilities((OperationalCapabilityPkg)target);
-       for(Object oc : operationalCapabilities){
-         result.add((EObject)oc);
-       }
-    }
-    return result;
-  
-  }
-
-  public List<EObject> getOCBEntities(DSemanticDecorator diagram) {
-    return getCOCEntities(diagram);
-  }
 }

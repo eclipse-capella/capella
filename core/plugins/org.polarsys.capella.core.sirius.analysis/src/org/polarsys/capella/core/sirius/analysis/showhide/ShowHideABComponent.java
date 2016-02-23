@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,7 +58,6 @@ public class ShowHideABComponent extends AbstractShowHide {
    * {@inheritDoc}
    */
   @Override
-  @SuppressWarnings("unchecked")
   public HashMapSet<String, EObject> getRelatedObjects(EObject semantic_p, DiagramContext context_p) {
     HashMapSet<String, EObject> value = super.getRelatedObjects(semantic_p, context_p);
     ContextItemElement lastContext = context_p.getLast();
@@ -73,7 +72,8 @@ public class ShowHideABComponent extends AbstractShowHide {
           result.add(targetContainer);
 
           // Remove all parts of root component
-          result.remove((BlockArchitectureExt.getFirstComponent(BlockArchitectureExt.getRootBlockArchitecture(semantic_p))));
+          result.remove((BlockArchitectureExt.getFirstComponent(BlockArchitectureExt
+              .getRootBlockArchitecture(semantic_p))));
 
         }
       }
@@ -96,7 +96,8 @@ public class ShowHideABComponent extends AbstractShowHide {
       }
 
       // Remove all parts of root component
-      result2.removeAll((BlockArchitectureExt.getFirstComponent(BlockArchitectureExt.getRootBlockArchitecture(semantic_p)).getRepresentingPartitions()));
+      result2.removeAll((BlockArchitectureExt.getFirstComponent(BlockArchitectureExt
+          .getRootBlockArchitecture(semantic_p)).getRepresentingPartitions()));
       // Retrains to already visible containers, to use the existing container displayed instead of display all
       // available container. if none visible, we add element to diagram, not reveal parent
 
@@ -115,15 +116,17 @@ public class ShowHideABComponent extends AbstractShowHide {
         }
         result = resul3;
       }
-      value.putAll(CONTAINER, result);
 
     }
+
+    value.putAll(CONTAINER, result);
 
     return value;
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
 
     // Some restriction on revealing parts
     if ((originCouple_p.getValue() instanceof Part) || (originCouple_p.getValue() instanceof Entity)) {
@@ -141,7 +144,8 @@ public class ShowHideABComponent extends AbstractShowHide {
       DiagramElementMapping mapping = getMapping(originCouple_p.getValue(), context_p, relatedViews_p);
       for (ContextItemView view : originCouple_p.getViews()) {
         for (DSemanticDecorator dView : view.getViews().get(VIEWS)) {
-          if ((dView instanceof DDiagramElement) && !mapping.equals(((DDiagramElement) dView).getDiagramElementMapping())) {
+          if ((dView instanceof DDiagramElement)
+              && !mapping.equals(((DDiagramElement) dView).getDiagramElementMapping())) {
             return false;
           }
         }
@@ -163,11 +167,14 @@ public class ShowHideABComponent extends AbstractShowHide {
   protected boolean bypassRelatedElements(ContextItemElement originCouple_p, DiagramContext context_p) {
     // To avoid recurse to the top of containment, we don't show the part container if not a deployment
     if ((originCouple_p.getAncestor() != null)) {
-      if ((originCouple_p.getValue() instanceof Part) && (originCouple_p.getAncestor().getElement().getValue() instanceof Part)) {
-        if (!PartExt.getDeployingElements((Part) originCouple_p.getAncestor().getElement().getValue()).contains((originCouple_p.getValue()))) {
+      if ((originCouple_p.getValue() instanceof Part)
+          && (originCouple_p.getAncestor().getElement().getValue() instanceof Part)) {
+        if (!PartExt.getDeployingElements((Part) originCouple_p.getAncestor().getElement().getValue()).contains(
+            (originCouple_p.getValue()))) {
           return true;
         }
-      } else if ((originCouple_p.getValue() instanceof Entity) && (originCouple_p.getAncestor().getElement().getValue() instanceof Entity)) {
+      } else if ((originCouple_p.getValue() instanceof Entity)
+          && (originCouple_p.getAncestor().getElement().getValue() instanceof Entity)) {
         return true;
       }
     }
@@ -176,7 +183,8 @@ public class ShowHideABComponent extends AbstractShowHide {
   }
 
   @Override
-  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
     DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
 
     if (semantic_p instanceof Entity) {
@@ -201,7 +209,8 @@ public class ShowHideABComponent extends AbstractShowHide {
   }
 
   @Override
-  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p, Collection<DSemanticDecorator> targetViews_p) {
+  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p,
+      Collection<DSemanticDecorator> targetViews_p) {
     if ((semantic_p instanceof Part) || (semantic_p instanceof Entity)) {
       // If no container has been found for a part, use diagram to put the given part
       return Collections.singletonList((DSemanticDecorator) getContent().getDDiagram());
