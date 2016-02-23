@@ -39,8 +39,8 @@ public class CreateClass extends CDBCommunication {
 
     new OpenDiagramStep(diagramContext).run();
 
-    new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, IToolNameConstants.TOOL_CDB_CREATE_CLASS, GenericModel.CLASS_1, diagramContext.getDiagramId(), DDiagramElementContainer.class).run();
-    new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, IToolNameConstants.TOOL_CDB_CREATE_CLASS, GenericModel.CLASS_2, diagramContext.getDiagramId(), DDiagramElementContainer.class).run();
+    new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, IToolNameConstants.TOOL_CDB_CREATE_CLASS, diagramContext.getDiagramId(), GenericModel.CLASS_1, DDiagramElementContainer.class).run();
+    new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, IToolNameConstants.TOOL_CDB_CREATE_CLASS, diagramContext.getDiagramId(), GenericModel.CLASS_2, DDiagramElementContainer.class).run();
 
     new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_CDB_INSERT_REMOVE_TYPE).remove(GenericModel.CLASS_1, GenericModel.CLASS_2);
     new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_CDB_INSERT_REMOVE_TYPE).insert(GenericModel.CLASS_1, GenericModel.CLASS_2);
