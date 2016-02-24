@@ -68,7 +68,7 @@ public class MDCHK_StateFragment_ES_OES_AllocatedFunction extends AbstractValida
     // Is the StateFragment related AbstractFunction allocated by instance role's Component ?
     InstanceRole instanceRole = StateFragmentExt.getCoveredInstanceRole(stateFragment);
     AbstractInstance representedInstance = instanceRole.getRepresentedInstance();
-    if (representedInstance != null && !CapellaServices.isAllocatedFunction(representedInstance, relatedFunction, representedInstance.getAbstractType())) {
+    if (representedInstance != null && !CapellaServices.getService().isAllocatedFunction(representedInstance, relatedFunction, representedInstance.getAbstractType())) {
       Component component = InstanceRoleExt.getComponent(instanceRole);
       String relatedFunctionMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(relatedFunction, false);
       String scenarioMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(containingScenario, false);
