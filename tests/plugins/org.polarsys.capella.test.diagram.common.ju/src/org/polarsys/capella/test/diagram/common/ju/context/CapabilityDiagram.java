@@ -35,6 +35,13 @@ public class CapabilityDiagram extends CommonDiagram {
         .getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
+    if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(name)
+        || IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(name)
+        || IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(name)
+        || IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(name)) {
+      return MissionDiagram.createDiagram(executionContext, targetIdentifier, name);
+    }
+
     return (CapabilityDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
@@ -87,16 +94,16 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_OCB_CREATE_OPERATIONAL_ENTITY;
 
     } else if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MCB_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MB_CREATE_ACTOR;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CC_CREATE_ACTOR;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CM_CREATE_ACTOR;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
       name = IToolNameConstants.TOOL_CRB_CREATE_COMPONENT;
@@ -181,13 +188,13 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_MCB_CREATE_CAPABILITY_GENERALIZATION;
 
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MB_CREATE_CAPABILITY_EXPLOITATION;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_CC_CREATE_CAPABILITY_GENERALIZATION;
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CM_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
       name = IToolNameConstants.TOOL_CRB_CREATE_CAPABILITY_GENERALIZATION;
@@ -243,13 +250,13 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_MCB_CREATE_EXTENDS;
 
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MB_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_CC_CREATE_EXTENDS;
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CM_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
       name = IToolNameConstants.TOOL_CRB_CREATE_EXTENDS;
@@ -274,13 +281,13 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_MCB_CREATE_INCLUDES;
 
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MB_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_CC_CREATE_INCLUDES;
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CM_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
       name = IToolNameConstants.TOOL_CRB_CREATE_INCLUDES;
@@ -296,25 +303,25 @@ public class CapabilityDiagram extends CommonDiagram {
   public void createComponentExchange(String sourceId, String targetId, String id) {
     String name = null;
     if (isA(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_COC_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_OCB_CREATE_COMMUNICATION_MEAN;
 
     } else if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MCB_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MB_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CC_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CM_CREATE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
-      // name = IToolNameConstants.TOOL_CRB_CREATE_;
+      // Tool not defined
 
     }
     new CreateDEdgeTool(this, name, sourceId, targetId, id).run();
@@ -387,16 +394,16 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_OCB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
 
     } else if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MCB_INSERT_REMOVE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MB_INSERT_REMOVE_ACTORS;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CC_INSERT_REMOVE_ACTORS;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CM_INSERT_ACTORS;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
       name = IToolNameConstants.TOOL_CRB_INSERT_REMOVE_COMPONENTS;
@@ -418,16 +425,16 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_OCB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
 
     } else if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MCB_INSERT_REMOVE_;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_MB_INSERT_REMOVE_ACTORS;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CC_INSERT_REMOVE_ACTORS;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
-      // name = IToolNameConstants.TOOL_CM_INSERT_ACTORS;
+      // Tool not defined
 
     } else if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
       name = IToolNameConstants.TOOL_CRB_INSERT_REMOVE_COMPONENTS;
