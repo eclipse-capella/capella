@@ -15,17 +15,11 @@ import java.util.List;
 
 import junit.framework.Test;
 
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CCDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CDBDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CMDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.COCDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CRBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.IDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.LABDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MCBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.OCBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.PABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SFDBDiagramToolsTestSuite;
@@ -44,20 +38,14 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-//    tests.add(new MSDiagramToolsTestSuite());
-//    tests.add(new SFDBDiagramToolsTestSuite());
-//    tests.add(new CDBDiagramToolsTestSuite());
-//    tests.add(new LABDiagramToolsTestSuite());
-//    tests.add(new IDBDiagramToolsTestSuite());
-//    tests.add(new PABDiagramToolsTestSuite());
-//    tests.add(new SABDiagramToolsTestSuite());
-    tests.add(new CCDiagramToolsTestSuite());
-    tests.add(new CMDiagramToolsTestSuite());
-    tests.add(new COCDiagramToolsTestSuite());
-    tests.add(new CRBDiagramToolsTestSuite());
-    tests.add(new MBDiagramToolsTestSuite());
+    tests.add(new MSDiagramToolsTestSuite());
+    tests.add(new SFDBDiagramToolsTestSuite());
+    tests.add(new CDBDiagramToolsTestSuite());
+    tests.add(new LABDiagramToolsTestSuite());
+    tests.add(new IDBDiagramToolsTestSuite());
+    tests.add(new PABDiagramToolsTestSuite());
+    tests.add(new SABDiagramToolsTestSuite());
     tests.add(new MCBDiagramToolsTestSuite());
-    tests.add(new OCBDiagramToolsTestSuite());
     return tests;
   }
 

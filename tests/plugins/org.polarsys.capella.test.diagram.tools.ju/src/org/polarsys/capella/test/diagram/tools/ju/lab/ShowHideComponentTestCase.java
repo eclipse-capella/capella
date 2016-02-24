@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveContainerCreation;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
 /**
  * Test the case of removing components and actors in LAB diagram.
@@ -35,11 +35,10 @@ public class ShowHideComponentTestCase extends AbstractDiagramTestCase {
 
     DiagramContext diagramContext = new OpenDiagramStep(context, LAB_DIAGRAM).run();
 
-    new InsertRemoveContainerCreation(diagramContext, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART)
-        .remove(LC2);
+    new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART).remove(LC2);
     diagramContext.hasntView(LC2);
 
-    new InsertRemoveContainerCreation(diagramContext, IToolNameConstants.TOOL_LAB_INSERT_ACTOR).remove(LA1);
+    new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_LAB_INSERT_ACTOR).remove(LA1);
     diagramContext.hasntView(LA1);
   }
 

@@ -104,4 +104,18 @@ public class MissionDiagram extends CapabilityDiagram {
     new InsertRemoveTool(this, name, getDiagramId()).insert(id);
   }
 
+  public void removeMission(String id) {
+    String name = null;
+    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_MCB_INSERT_REMOVE_MISSIONS;
+
+    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_MB_INSERT_REMOVE_MISSIONS;
+
+    } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_CC_SHOW_MISSIONS;
+
+    }
+    new InsertRemoveTool(this, name, getDiagramId()).remove(id);
+  }
 }

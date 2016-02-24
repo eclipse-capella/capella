@@ -28,25 +28,40 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   protected String newIdentifier;
   protected String containerView;
   protected Class<T> expectedDiagramElementType;
-  
+
   protected Collection<DDiagramElement> elements;
   protected Collection<DDiagramElement> newElements;
-  
-  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, Class<T> expectedNodeType) {
+
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView) {
+    this(context, toolName, containerView, (Class<T>) null);
+  }
+
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView,
+      Class<T> expectedNodeType) {
     super(context, toolName);
     this.containerView = containerView;
     this.expectedDiagramElementType = expectedNodeType;
   }
 
-  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier, Class<T> expectedNodeType) {
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier,
+      Class<T> expectedNodeType) {
     this(context, toolName, containerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
   }
 
-  public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView, Class<T> expectedNodeType) {
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
+    this(context, toolName, containerView, newIdentifier, null);
+  }
+
+  public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView,
+      Class<T> expectedNodeType) {
     super(context, toolIdentifier[0], toolIdentifier[1]);
     this.containerView = containerView;
     this.expectedDiagramElementType = expectedNodeType;
+  }
+
+  public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView) {
+    this(context, toolIdentifier, containerView, (Class<T>) null);
   }
 
   public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView,
@@ -54,7 +69,12 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     this(context, toolIdentifier, containerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
   }
-  
+
+  public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView,
+      String newIdentifier) {
+    this(context, toolIdentifier, containerView, newIdentifier, null);
+  }
+
   @Override
   protected void preRunTest() {
     super.preRunTest();
@@ -79,7 +99,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     if (newElements.size() != 1) {
       assertFalse(true);
     }
-    if (!(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
+    if ((expectedDiagramElementType != null) && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
       assertFalse(true);
     }
 
@@ -87,7 +107,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
 
   @Override
   public T getResult() {
-    T view = expectedDiagramElementType.cast(newElements.iterator().next());
+    T view = (T) newElements.iterator().next();
     if (newIdentifier != null) {
       getExecutionContext().putSemanticElement(newIdentifier, view.getTarget());
       getExecutionContext().putView(newIdentifier, view);
