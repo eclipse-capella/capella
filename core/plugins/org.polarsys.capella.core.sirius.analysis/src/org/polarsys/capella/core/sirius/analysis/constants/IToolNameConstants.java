@@ -47,9 +47,9 @@ public interface IToolNameConstants {
   String TOOL_CC_RECONNECT_GENERALIZATION_SOURCE = "CB Reconnect Generalization Source"; //$NON-NLS-1$
   String TOOL_CC_RECONNECT_GENERALIZATION_TARGET = "CB Reconnect Generalization Target"; //$NON-NLS-1$
   // tool id
-  String TOOL_CC_SHOW_ACTORS = "Show Actors"; //$NON-NLS-1$
-  String TOOL_CC_SHOW_MISSIONS = "Show Missions"; //$NON-NLS-1$
-  String TOOL_CC_SHOW_CAPABILITY = "Show Capability"; //$NON-NLS-1$
+  String TOOL_CC_SHOW_ACTORS = "s/h Actors"; //$NON-NLS-1$
+  String TOOL_CC_SHOW_MISSIONS = "s/h Missions"; //$NON-NLS-1$
+  String TOOL_CC_SHOW_CAPABILITY = "s/h Capabilities"; //$NON-NLS-1$
 
   // CDB Tools - Class Diagram Blank
   // Classes Tools
@@ -230,8 +230,8 @@ public interface IToolNameConstants {
   String TOOL_CM_RECONNECT_GENERALIZATION_SOURCE = TOOL_CC_RECONNECT_GENERALIZATION_SOURCE;
   String TOOL_CM_RECONNECT_GENERALIZATION_TARGET = TOOL_CC_RECONNECT_GENERALIZATION_TARGET;
   // tool id
-  String TOOL_CM_INSERT_ACTORS = "Insert Actors"; //$NON-NLS-1$
-  String TOOL_CM_INSERT_CAPABILITIES = "Insert Capabilities"; //$NON-NLS-1$
+  String TOOL_CM_INSERT_ACTORS = "s/h Actors"; //$NON-NLS-1$
+  String TOOL_CM_INSERT_CAPABILITIES = "s/h Capabilities"; //$NON-NLS-1$
 
   // COC - Contextual Operational Capability tools
   String TOOL_COC_CREATE_OPERATIONAL_ENTITY = "Operational Entity"; //$NON-NLS-1$
@@ -249,6 +249,9 @@ public interface IToolNameConstants {
   String TOOL_COC_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_COC_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
 
+  String TOOL_COC_SHOW_HIDE_OPERATIONAL_ENTITY = "Show/Hide OE"; //$NON-NLS-1$
+  String TOOL_COC_SHOW_HIDE_OPERATIONAL_ACTORS = "Show/Hide OA"; //$NON-NLS-1$
+  String TOOL_COC_SHOW_HIDE_CAPABILITIES = "Show/Hide Operational Capabilities"; //$NON-NLS-1$
   // CRB tools - Capability Realization Blank
   // Labels
   String TOOL_CRB_CREATE_CAPABILITY_REALIZATION = "Capability Realization "; //$NON-NLS-1$
@@ -773,9 +776,9 @@ public interface IToolNameConstants {
   String TOOL_MB_RECONNECT_GENERALIZATION_SOURCE = TOOL_CC_RECONNECT_GENERALIZATION_SOURCE;
   String TOOL_MB_RECONNECT_GENERALIZATION_TARGET = TOOL_CC_RECONNECT_GENERALIZATION_TARGET;
   // tool id
-  String TOOL_MB_SHOW_ACTOR = "Show Actor"; //$NON-NLS-1$
-  String TOOL_MB_SHOW_MISSION = "Show Mission"; //$NON-NLS-1$
-  String TOOL_MB_SHOW_CAPABILITY = "Show Capability"; //$NON-NLS-1$
+  String TOOL_MB_SHOW_ACTOR = "s/h Actors"; //$NON-NLS-1$
+  String TOOL_MB_SHOW_MISSION = "s/h Missions"; //$NON-NLS-1$
+  String TOOL_MB_SHOW_CAPABILITY = "s/h Capabilities"; //$NON-NLS-1$
 
   // MCB tools - Mission Capabilities Blank
   String TOOL_MCB_CREATE_ACTOR = "Actor"; //$NON-NLS-1$
@@ -945,7 +948,7 @@ public interface IToolNameConstants {
 
   String TOOL_OCB_SHOW_HIDE_OPERATIONAL_ENTITY = "Show/Hide OE"; //$NON-NLS-1$
   String TOOL_OCB_SHOW_HIDE_OPERATIONAL_ACTORS = "Show/Hide OA"; //$NON-NLS-1$
-  String TOOL_OCB_SHOW_HIDE_CAPABILITIES = "Show/Hide Capabilities"; //$NON-NLS-1$
+  String TOOL_OCB_SHOW_HIDE_CAPABILITIES = "Show/Hide Operational Capabilities"; //$NON-NLS-1$
 
   // Operational Entity Blank Diagram Tools
   // Entities
