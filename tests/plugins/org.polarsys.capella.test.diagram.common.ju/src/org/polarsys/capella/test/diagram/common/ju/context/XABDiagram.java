@@ -28,7 +28,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveContainerCreation;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
 public class XABDiagram extends DiagramContext {
 
@@ -88,17 +88,16 @@ public class XABDiagram extends DiagramContext {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_INSERT_PHYSICAL_ACTOR;
     }
-    new InsertRemoveContainerCreation(this, name).remove(id);
+    new InsertRemoveTool(this, name).remove(id);
   }
 
   public void removeComponent(String id) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
-      new InsertRemoveContainerCreation(this, name).remove(id);
+      new InsertRemoveTool(this, name).remove(id);
     } else if (type == Type.LA) {
-      new InsertRemoveContainerCreation(this, new String[] {
-          IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART,
+      new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART,
           IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }).remove(id);
     }
 
@@ -162,7 +161,7 @@ public class XABDiagram extends DiagramContext {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_COMPONENT_EXCHANGE;
     }
-    new InsertRemoveContainerCreation(this, name, containerId).insert(id);
+    new InsertRemoveTool(this, name, containerId).insert(id);
   }
 
   public void insertPhysicalLink(String id, String containerId) {
@@ -174,7 +173,7 @@ public class XABDiagram extends DiagramContext {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_PHYSICAL_LINK;
     }
-    new InsertRemoveContainerCreation(this, name, containerId).insert(id);
+    new InsertRemoveTool(this, name, containerId).insert(id);
   }
 
   @Override

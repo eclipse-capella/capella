@@ -5327,7 +5327,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OA" label="Operational Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OA" label="Operational Actors" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
               <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="OperationalActor"/>
             </element>
@@ -5355,7 +5355,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OE" label="Operational Entities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Show/Hide OE" label="Operational Entities" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
               <subVariables xsi:type="tool:AcceleoVariable" name="semanticCandidate" computationExpression="Entity"/>
             </element>

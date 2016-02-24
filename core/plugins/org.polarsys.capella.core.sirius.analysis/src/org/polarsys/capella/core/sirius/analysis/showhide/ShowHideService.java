@@ -300,7 +300,7 @@ public class ShowHideService {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getMCBCapabilities((DSemanticDecorator) diagram);
       } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getMCBActors((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getMCBActors(view);
       } else if (CtxPackage.Literals.MISSION.equals(type)) {
         return ContextServices.getServices().getMCBMissions((DSemanticDecorator) diagram);
       }
@@ -309,7 +309,7 @@ public class ShowHideService {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getMBCapabilities((DSemanticDecorator) diagram);
       } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getMBActors((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getMBActors(view);
       } else if (CtxPackage.Literals.MISSION.equals(type)) {
         return ContextServices.getServices().getMBMissions((DSemanticDecorator) diagram);
       }
@@ -318,7 +318,7 @@ public class ShowHideService {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCCCapabilities((DSemanticDecorator) diagram);
       } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCCActors((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getCCActors(view);
       } else if (CtxPackage.Literals.MISSION.equals(type)) {
         return ContextServices.getServices().getCCMissions((DSemanticDecorator) diagram);
       }
@@ -326,7 +326,7 @@ public class ShowHideService {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCMCapabilities((DSemanticDecorator) diagram);
       } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCMActors((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getCMActors(view);
       }
 
     } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription()
@@ -334,9 +334,9 @@ public class ShowHideService {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCOCCapabilities((DSemanticDecorator) diagram);
       } else if (OaPackage.Literals.OPERATIONAL_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCOCActors((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getCOCActors(view);
       } else if (OaPackage.Literals.ENTITY.equals(type)) {
-        return ContextServices.getServices().getCOCEntities((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getCOCEntities(view);
       }
 
     } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram
@@ -346,14 +346,14 @@ public class ShowHideService {
       } else if (OaPackage.Literals.OPERATIONAL_ACTOR.equals(type)) {
         return ContextServices.getServices().getOCBActors((DSemanticDecorator) diagram);
       } else if (OaPackage.Literals.ENTITY.equals(type)) {
-        return ContextServices.getServices().getOCBEntities((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getOCBEntities(view);
       }
 
     } else if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCRBCapabilities((DSemanticDecorator) diagram);
       } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCRBActors((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getCRBActors(view);
       } else if (CsPackage.Literals.COMPONENT.equals(type)) {
         return ContextServices.getServices().getCRBComponents(view);
       }

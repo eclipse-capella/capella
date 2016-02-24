@@ -82,6 +82,10 @@ public class DiagramContext extends SessionContext {
     return diagramIdentifier;
   }
 
+  protected boolean isA(String diagramDescription) {
+    return DiagramHelper.getService().isA(_diagram, diagramDescription);
+  }
+
   public DSemanticDecorator getView(String semanticIdentifier) {
     if (getDiagramId().equals(semanticIdentifier)) {
       return (DSemanticDiagram) _diagram;
@@ -151,9 +155,28 @@ public class DiagramContext extends SessionContext {
 
   public void hasHiddenView(String identifier) {
     EObject eObject = getSemanticElement(identifier);
-    if (getView(identifier) instanceof DDiagramElement) {
-      boolean result = (getView(identifier) != null)
-          && DiagramServices.getDiagramServices().isHidden((DDiagramElement) getView(identifier));
+    DSemanticDecorator view = getView(identifier);
+    if (view == null) {
+      Assert.assertTrue("view is null", false);
+
+    } else if (view instanceof DDiagramElement) {
+      boolean result = DiagramServices.getDiagramServices().isHidden((DDiagramElement) view);
+      Assert.assertTrue(
+          NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
+              EObjectLabelProviderHelper.getText(eObject)), result);
+    } else {
+      Assert.assertTrue("view is diagram", false);
+    }
+  }
+
+  public void hasFilteredView(String identifier) {
+    EObject eObject = getSemanticElement(identifier);
+    DSemanticDecorator view = getView(identifier);
+    if (view == null) {
+      Assert.assertTrue("view is null", false);
+
+    } else if (view instanceof DDiagramElement) {
+      boolean result = DiagramServices.getDiagramServices().isFiltered((DDiagramElement) view);
       Assert.assertTrue(
           NLS.bind(CommonTestMessages.objectRepresentationStillAvailableOnDiagram,
               EObjectLabelProviderHelper.getText(eObject)), result);
@@ -186,6 +209,14 @@ public class DiagramContext extends SessionContext {
       Assert.assertTrue(object.eGet(feature).equals(value));
 
     }
+  }
+
+  /**
+   * @param i
+   */
+  public void hasCountViews(int i) {
+    Assert.assertTrue(getDiagram().getDiagramElements().size() == i);
+
   }
 
   public void mustBeOwnedBy(String objectId, String containerId) {
