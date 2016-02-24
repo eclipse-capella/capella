@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,9 +47,9 @@ public interface IToolNameConstants {
   String TOOL_CC_RECONNECT_GENERALIZATION_SOURCE = "CB Reconnect Generalization Source"; //$NON-NLS-1$
   String TOOL_CC_RECONNECT_GENERALIZATION_TARGET = "CB Reconnect Generalization Target"; //$NON-NLS-1$
   // tool id
-  String TOOL_CC_SHOW_ACTORS = "Show Actors"; //$NON-NLS-1$
-  String TOOL_CC_SHOW_MISSIONS = "Show Missions"; //$NON-NLS-1$
-  String TOOL_CC_SHOW_CAPABILITY = "Show Capability"; //$NON-NLS-1$
+  String TOOL_CC_SHOW_ACTORS = "s/h Actors"; //$NON-NLS-1$
+  String TOOL_CC_SHOW_MISSIONS = "s/h Missions"; //$NON-NLS-1$
+  String TOOL_CC_SHOW_CAPABILITY = "s/h Capabilities"; //$NON-NLS-1$
 
   // CDB Tools - Class Diagram Blank
   // Classes Tools
@@ -230,8 +230,8 @@ public interface IToolNameConstants {
   String TOOL_CM_RECONNECT_GENERALIZATION_SOURCE = TOOL_CC_RECONNECT_GENERALIZATION_SOURCE;
   String TOOL_CM_RECONNECT_GENERALIZATION_TARGET = TOOL_CC_RECONNECT_GENERALIZATION_TARGET;
   // tool id
-  String TOOL_CM_INSERT_ACTORS = "Insert Actors"; //$NON-NLS-1$
-  String TOOL_CM_INSERT_CAPABILITIES = "Insert Capabilities"; //$NON-NLS-1$
+  String TOOL_CM_INSERT_ACTORS = "s/h Actors"; //$NON-NLS-1$
+  String TOOL_CM_INSERT_CAPABILITIES = "s/h Capabilities"; //$NON-NLS-1$
 
   // COC - Contextual Operational Capability tools
   String TOOL_COC_CREATE_OPERATIONAL_ENTITY = "Operational Entity"; //$NON-NLS-1$
@@ -249,6 +249,9 @@ public interface IToolNameConstants {
   String TOOL_COC_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_COC_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
 
+  String TOOL_COC_SHOW_HIDE_OPERATIONAL_ENTITY = "Show/Hide OE"; //$NON-NLS-1$
+  String TOOL_COC_SHOW_HIDE_OPERATIONAL_ACTORS = "Show/Hide OA"; //$NON-NLS-1$
+  String TOOL_COC_SHOW_HIDE_CAPABILITIES = "Show/Hide Operational Capabilities"; //$NON-NLS-1$
   // CRB tools - Capability Realization Blank
   // Labels
   String TOOL_CRB_CREATE_CAPABILITY_REALIZATION = "Capability Realization "; //$NON-NLS-1$
@@ -773,9 +776,9 @@ public interface IToolNameConstants {
   String TOOL_MB_RECONNECT_GENERALIZATION_SOURCE = TOOL_CC_RECONNECT_GENERALIZATION_SOURCE;
   String TOOL_MB_RECONNECT_GENERALIZATION_TARGET = TOOL_CC_RECONNECT_GENERALIZATION_TARGET;
   // tool id
-  String TOOL_MB_SHOW_ACTOR = "Show Actor"; //$NON-NLS-1$
-  String TOOL_MB_SHOW_MISSION = "Show Mission"; //$NON-NLS-1$
-  String TOOL_MB_SHOW_CAPABILITY = "Show Capability"; //$NON-NLS-1$
+  String TOOL_MB_SHOW_ACTOR = "s/h Actors"; //$NON-NLS-1$
+  String TOOL_MB_SHOW_MISSION = "s/h Missions"; //$NON-NLS-1$
+  String TOOL_MB_SHOW_CAPABILITY = "s/h Capabilities"; //$NON-NLS-1$
 
   // MCB tools - Mission Capabilities Blank
   String TOOL_MCB_CREATE_ACTOR = "Actor"; //$NON-NLS-1$
@@ -841,6 +844,7 @@ public interface IToolNameConstants {
   String TOOL_OAB_CREATE_COMMUNICATION_MEAN = "Communication Mean"; //$NON-NLS-1$
   String TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES = "Operational Entities"; //$NON-NLS-1$
   String TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ACTORS = "Operational Actors"; //$NON-NLS-1$
+  @Deprecated
   String TOOL_OAB_INSERT_REMOVE_COMMUNICATION_MEANS = "Communication Means"; //$NON-NLS-1$
   String TOOL_OAB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_OAB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
@@ -944,7 +948,7 @@ public interface IToolNameConstants {
 
   String TOOL_OCB_SHOW_HIDE_OPERATIONAL_ENTITY = "Show/Hide OE"; //$NON-NLS-1$
   String TOOL_OCB_SHOW_HIDE_OPERATIONAL_ACTORS = "Show/Hide OA"; //$NON-NLS-1$
-  String TOOL_OCB_SHOW_HIDE_CAPABILITIES = "Show/Hide Capabilities"; //$NON-NLS-1$
+  String TOOL_OCB_SHOW_HIDE_CAPABILITIES = "Show/Hide Operational Capabilities"; //$NON-NLS-1$
 
   // Operational Entity Blank Diagram Tools
   // Entities
@@ -1073,6 +1077,7 @@ public interface IToolNameConstants {
   String TOOL_PAB_CREATE_PHYSICAL_LINK = "Physical Link"; //$NON-NLS-1$
   String TOOL_PAB_CREATE_PHYSICAL_PORT = "Physical Port"; //$NON-NLS-1$
   String TOOL_PAB_MANAGE_NODE_COMP_DEPLOYMENT = "Manage Node PCs Deployment"; //$NON-NLS-1$
+  @Deprecated
   String TOOL_PAB_INSERT_REMOVE_NODE_PCS = "Node PCs"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_REMOVE_ACTORS = "Actors"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS = "Deployed PCs"; //$NON-NLS-1$
@@ -1094,8 +1099,9 @@ public interface IToolNameConstants {
   String TOOL_PAB_CREATE_INOUTFLOW_PORT = "InOut Flow Port"; //$NON-NLS-1$
   String TOOL_PAB_CREATE_STANDARD_PORT = "Standard Port"; //$NON-NLS-1$
   String TOOL_PAB_MANAGE_BEHAVIOR_COMP_DEPLOYMENT = "Manage Behavior PCs Deployment"; //$NON-NLS-1$
-  String TOOL_PAB_INSERT_REMOVE_BEHAVIOR_PCS = "Behavior PCs"; //$NON-NLS-1$
 
+  @Deprecated
+  String TOOL_PAB_INSERT_REMOVE_BEHAVIOR_PCS = "Behavior PCs"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_ALL_DEPLOYED_PCS = "All Deployed PCs"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_REMOVE_COMPONENT_EXCHANGES = "Component Exchanges"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_REMOVE_COMPONENT_EXCHANGES_CATEGORIES = "Switch Component Exchanges / Categories"; //$NON-NLS-1$
@@ -1259,12 +1265,15 @@ public interface IToolNameConstants {
   String TOOL_SAB_CREATE_OUT_FLOW_PORT = "Out Flow Port"; //$NON-NLS-1$
   String TOOL_SAB_CREATE_INOUT_FLOW_PORT = "InOut Flow Port"; //$NON-NLS-1$
   String TOOL_SAB_CREATE_STANDARD_PORT = "Standard Port"; //$NON-NLS-1$
+
   // WARNING: label and id tool are different and are used in different tests
   String TOOL_SAB_CREATE_COMPONENT_EXCHANGE_LABEL = "Component Exchange"; //$NON-NLS-1$
   String TOOL_SAB_CREATE_PHYSICAL_LINK = "Physical Link"; //$NON-NLS-1$
   String TOOL_SAB_CREATE_PHYSICAL_PORT = "Physical Port"; //$NON-NLS-1$
   String TOOL_SAB_INSERT_REMOVE_ACTORS = "Actors"; //$NON-NLS-1$
+  @Deprecated
   String TOOL_SAB_INSERT_REMOVE_COMPONENT_EXCHANGES = "Component Exchanges"; //$NON-NLS-1$
+  @Deprecated
   String TOOL_SAB_INSERT_REMOVE_PHYSICAL_LINKS = "Physical Links"; //$NON-NLS-1$
   String TOOL_SAB_INSERT_REMOVE_PHYSICAL_PATH = "Physical Path"; //$NON-NLS-1$
   String TOOL_SAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES = "Switch Physical Links / Categories"; //$NON-NLS-1$
@@ -1313,7 +1322,16 @@ public interface IToolNameConstants {
   String TOOL_SAB_CREATE_OUTFLOW_PORT = "Out Flow Port"; //$NON-NLS-1$
   String TOOL_SAB_INSERT_ACTOR = "Show/Hide Actors"; //$NON-NLS-1$
   String TOOL_SAB_CREATE_COMPONENT_EXCHANGE = "Connection with ports"; //$NON-NLS-1$
+
   String TOOL_SAB_SHOW_HIDE_COMPONENT_EXCHANGE = "Show/Hide Connections"; //$NON-NLS-1$
+  String TOOL_LAB_SHOW_HIDE_COMPONENT_EXCHANGE = "Show/Hide Connections"; //$NON-NLS-1$
+  String TOOL_PAB_SHOW_HIDE_COMPONENT_EXCHANGE = "Show/Hide ComponentExchanges"; //$NON-NLS-1$
+  String TOOL_OAB_SHOW_HIDE_COMMUNICATION_MEAN = "Show/Hide Communication Mean"; //$NON-NLS-1$
+
+  String TOOL_SAB_SHOW_HIDE_PHYSICAL_LINK = "Show/Hide Physical Links"; //$NON-NLS-1$
+  String TOOL_LAB_SHOW_HIDE_PHYSICAL_LINK = "Show/Hide Physical Links"; //$NON-NLS-1$
+  String TOOL_PAB_SHOW_HIDE_PHYSICAL_LINK = "Show/Hide Physical Links"; //$NON-NLS-1$
+
   String TOOL_SAB_SHOW_HIDE_PORTS = "Show/Hide Ports"; //$NON-NLS-1$
   String TOOL_SAB_SHOW_HIDE_CONSTRAINTS = "Show/Hide Constraints"; //$NON-NLS-1$
   String TOOL_SAB_CREATE_FUNCTIONAL_CHAIN = "Functional Chain"; //$NON-NLS-1$
@@ -1408,6 +1426,7 @@ public interface IToolNameConstants {
   String TOOL_XAB_SHOW_ALL_ALLOCATED_FUNCTIONS = "Show All Allocated Functions"; //$NON-NLS-1$
   String TOOL_XAB_SHOW_HIDE_COMPONENTS = "Show/Hide Components"; //$NON-NLS-1$
   String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART = "Insert/Remove Components mono part"; //$NON-NLS-1$
+  String TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART = "Insert/remove Components mono part"; //$NON-NLS-1$
   String TOOL_XAB_MANAGE_FUNCTION_ALLOCATION = "Manage Function Allocation"; //$NON-NLS-1$
 
   //

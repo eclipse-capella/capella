@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
 public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
 
   protected String toolName;
+  protected String toolLabel;
 
   /**
    * The wrapper for the tool
@@ -39,11 +40,18 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
 
   /**
    * Constructor
+   * 
    * @param context
    */
   public AbstractToolStep(DiagramContext context, String toolName_p) {
     super(context);
     toolName = toolName_p;
+  }
+
+  public AbstractToolStep(DiagramContext context, String toolName_p, String toolLabel_p) {
+    super(context);
+    toolName = toolName_p;
+    toolLabel = toolLabel_p;
   }
 
   /**
@@ -107,8 +115,23 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
 
     // Let's find the tool
     // WARNING : CHECK TOOL ID NOT TOOL LABEL
-    AbstractToolDescription tool = toolHelper.getTool(toolName);
-    Assert.assertNotNull(NLS.bind(Messages.toolDoesNotExist, toolName), tool);
+    AbstractToolDescription tool = null;
+    if (toolLabel != null) {
+      tool = toolHelper.getToolByLabel(toolName, toolLabel);
+    }
+    if (tool == null) {
+      tool = toolHelper.getTool(toolName);
+    }
+    if (tool == null) {
+      tool = toolHelper.getToolByLabel(toolName);
+    }
+    if (tool == null) {
+      tool = toolHelper.getToolByLabel(toolLabel);
+    }
+
+    Assert.assertNotNull(
+        NLS.bind(Messages.toolDoesNotExist, toolName, getExecutionContext().getDiagram().getDescription().getName()),
+        tool);
 
     // Let's find it's wrapper
     // this case is treated as a test but it fully depends of the test

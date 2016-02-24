@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,27 +12,45 @@ package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
 import static org.junit.Assert.assertFalse;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
-import org.polarsys.capella.test.diagram.common.ju.headless.ITransfertWizardResult;
+import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 public class InsertRemoveContainerCreation extends AbstractToolStep {
 
   boolean initialized = false;
 
+  String containerId;
   String[] toInsert;
   String[] toRemove;
   String[] insertedElements;
   String[] removedElements;
 
   public InsertRemoveContainerCreation(DiagramContext context, String toolName) {
+    this(context, toolName, context.getDiagramId());
+  }
+
+  public InsertRemoveContainerCreation(DiagramContext context, String[] toolIdentifier) {
+    super(context, toolIdentifier[0], toolIdentifier[1]);
+    this.containerId = context.getDiagramId();
+  }
+
+  public InsertRemoveContainerCreation(DiagramContext context, String toolName, String containerId) {
     super(context, toolName);
+    this.containerId = containerId;
+  }
+
+  public InsertRemoveContainerCreation(DiagramContext context, String[] toolIdentifier, String containerId) {
+    super(context, toolIdentifier[0], toolIdentifier[1]);
+    this.containerId = containerId;
   }
 
   protected void initialize(String[] toInsert_input, String[] toRemove_input, String[] insertedElements_input,
@@ -94,12 +112,21 @@ public class InsertRemoveContainerCreation extends AbstractToolStep {
    */
   @Override
   protected void preRunTest() {
-    ITransfertWizardResult op = new ITransfertWizardResult() {
+    IHeadlessResult op = new IHeadlessResult() {
 
       @Override
       @SuppressWarnings({ "unchecked", "synthetic-access", "rawtypes" })
       public Object getResult(java.util.Collection<? extends EObject> selections, Map<String, Object> parameters) {
-        return getExecutionContext().getSemanticElements(insertedElements);
+        Collection<EObject> objects = new HashSet<EObject>();
+        DiagramContext context = getExecutionContext();
+        Collection<EObject> inserted = context.adaptTool(InsertRemoveContainerCreation.this, parameters,
+            context.getSemanticElements(insertedElements));
+        Collection<EObject> removed = context.adaptTool(InsertRemoveContainerCreation.this, parameters,
+            context.getSemanticElements(removedElements));
+        objects.addAll(AbstractExternalJavaAction.getInitialSelection(parameters));
+        objects.addAll(inserted);
+        objects.removeAll(removed);
+        return objects;
       }
     };
 
@@ -112,9 +139,10 @@ public class InsertRemoveContainerCreation extends AbstractToolStep {
    */
   @Override
   protected void initToolArguments() {
-    DDiagram container = getExecutionContext().getDiagram();
-    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, container);
-    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, ((DSemanticDecorator) container).getTarget());
+
+    EObject containerView = getExecutionContext().getView(containerId);
+    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
+    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, ((DSemanticDecorator) containerView).getTarget());
   }
 
   /**

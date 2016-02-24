@@ -343,8 +343,26 @@ While active, palette creation tools and drag and drop actions will display line
 '''Figure 32: Snap to Shapes activated for element during a Drag and Drop action'''
 
  
+Pressing the ALT shortcut while dragging the selected node will disable the Snape To Shapes (i.e. lines are not displayed).
+
+ 
 <br>
 <br>
+
+ 
+=== snape to shapes with inner nodes ===
+ 
+To align with an inner node, the user can press the F4 function key while dragging the selected node. The alignment lines will be displayed with respect to the closest inner node.
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_71e66c70.png|553x364px]]
+
+ 
+'''Figure 33: Snap to Shapes activated for inner element during a Drag action'''
 
  
 == Copy / Paste Layout ==
@@ -355,13 +373,13 @@ To initialize the layout of a diagram from an existing diagram, Capella provides
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m1cfa7de5.gif|333x40px]]
 
  
-'''Figure 33: Copy layout tool'''
+'''Figure 34: Copy layout tool'''
 
  
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_79d54579.gif|346x41px]]
 
  
-'''Figure 34: Paste layout tool'''
+'''Figure 35: Paste layout tool'''
 
  
 <br>
@@ -374,7 +392,7 @@ Copy the layout of the selected elements will only remember the layout for the c
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_277295ca.gif|546x290px]]
 
  
-'''Figure 35: Layout model'''
+'''Figure 36: Layout model'''
 
  
 Now we can initialize a new model and all the information we want to represent (or work on an existing one).
@@ -383,7 +401,7 @@ Now we can initialize a new model and all the information we want to represent (
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m275755e7.gif|513x270px]]
 
  
-'''Figure 36: New diagram with a default layout'''
+'''Figure 37: New diagram with a default layout'''
 
  
 To initialize the layout of this diagram we can &ldquo;paste the layout&rdquo; of the first diagram.
@@ -392,7 +410,7 @@ To initialize the layout of this diagram we can &ldquo;paste the layout&rdquo; o
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m3a4a06e5.gif|629x339px]]
 
  
-'''Figure 37: New diagram with the layout copied from the model'''
+'''Figure 38: New diagram with the layout copied from the model'''
 
  
 == Selection ==
@@ -405,13 +423,13 @@ When the selection is performed from left to right, the selected elements are th
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3c70f94e.gif|472x203px]]
 
  
-'''Figure 38: Left to right selection action'''
+'''Figure 39: Left to right selection action'''
 
  
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_4a5941a0.png|481x196px]]
 
  
-'''Figure 39: Left to right selection result'''
+'''Figure 40: Left to right selection result'''
 
  
 === Right to Left ===
@@ -426,20 +444,20 @@ When the selection is performed from right to left, the selected elements are th
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3c70f94e.gif|472x203px]]
 
  
-'''Figure 40: Right to left selection action'''
+'''Figure 41: Right to left selection action'''
 
  
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7899e751.gif|475x199px]]
 
  
-'''Figure 41: Right to left selection result'''
+'''Figure 42: Right to left selection result'''
 
  
 <br>
 <br>
 
  
-== Copy Paste of Notes ==
+== Copy Paste Of Notes ==
  
 To quickly copy paste Notes on a diagram, '''click on CTRL and move the Notes''': new Notes are created.
 
@@ -447,7 +465,7 @@ To quickly copy paste Notes on a diagram, '''click on CTRL and move the Notes'''
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m7dd84077.png|434x126px]]
 
  
-'''Figure 42: Duplicate note with shortcut.'''
+'''Figure 43: Duplicate note with shortcut.'''
 
  
 <br>
@@ -467,7 +485,7 @@ When creating elements with the palette of a diagram, '''holding the CTRL key al
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m10775b3b.png|563x353px]]
 
  
-'''Figure 43: Quick search in diagram.'''
+'''Figure 44: Quick search in diagram.'''
 
  
 Hidden elements are displayed in italic in this quick search. Selecting a visible element in this list will automatically do a focus on this element.
@@ -484,18 +502,96 @@ Note: right clicking on a Cross Table and choosing contextual menu &quot;Export/
 [[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m76e8132a.png|397x155px]]
 
  
-'''Figure 44: Export configuration.'''
+'''Figure 45: Export configuration.'''
 
  
 <br>
 <br>
 
  
-<br>
-<br>
+== Compound Move Of Edge With Label And Connected Ports ==
+ 
+On a diagram, it possible to move the group {edge, label, ports} in a single &ldquo;drag like&rdquo; operation when the user uses the F3 function key and drag/move the selected edge.
 
  
 <br>
 <br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_13847806.png|599x166px]]
+
+ 
+'''Figure 46: Compound Move.'''
+
+ 
+<br>
+<br>
+
+ 
+== Hide Container Border ==
+ 
+* To hide the border of a node in the diagram, you can set the Border 	Size to 0 in the Properties View / Style tab.
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m4699b621.png|615x369px]]
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_418ed8e3.png|439x190px]]
+
+ 
+'''Figure 47: Hide Border.'''
+
+ 
+<br>
+<br>
+
+ 
+* T[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_3db61b22.gif]]o 	hide the icon, set in the Properties View / Style tab the property 	Show Icon to false.
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_76539433.png|596x368px]]
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_6d5f4ebe.png|465x194px]]
+
+ 
+'''Figure 48: Hide Icon.'''
+
+ 
+<br>
+<br>
+
+ 
+* To hide the label, set in the Properties View / Appearance tab the 	font color to white.
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m4cfc019f.png|519x245px]]
+
+ 
+<br>
+<br>
+
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_67b668f.png|465x194px]]
+
+ 
+'''Figure 49: Hide Label.'''
+
+ 
+<br>
+<br>
+
+ 
+* By combining Border Size = 0, Show Icon = false and Font color set 	to white, you will have the following result:
+ 
+[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m5d8456b3.png|465x160px]]
+
+ 
+'''Figure 50: Hide Border/Icon/Label.'''
 
    

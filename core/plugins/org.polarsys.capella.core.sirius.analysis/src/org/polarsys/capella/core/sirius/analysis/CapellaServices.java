@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -181,10 +181,9 @@ import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 public class CapellaServices {
 
   public List<EObject> selectOnlyCreatedView(EObject eObject) {
-	  return Collections.singletonList((EObject) 
-			  InterpreterUtil.getInterpreter(eObject).getVariable("view"));
+    return Collections.singletonList((EObject) InterpreterUtil.getInterpreter(eObject).getVariable("view"));
   }
-	
+
   public boolean isInLib(EObject context) {
     Session session = SessionManager.INSTANCE.getSession(context);
     IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(session));
@@ -427,19 +426,18 @@ public class CapellaServices {
    * @param container
    * @return container + recursively all the containers of container
    */
-	public List<DDiagramElementContainer> getAllContainers(EObject container) {
-		List<DDiagramElementContainer> returnedList = new ArrayList<DDiagramElementContainer>();
-		if (container instanceof DDiagram) {
-			returnedList = ((DDiagram) container).getContainers();
-		} else if (container instanceof DDiagramElementContainer) {
-			returnedList.add((DDiagramElementContainer) container);
-			for (DDiagramElementContainer aContainer : ((DDiagramElementContainer) container)
-					.getContainers()) {
-				returnedList.addAll(getAllContainers(aContainer));
-			}
-		}
-		return returnedList;
-	}
+  public List<DDiagramElementContainer> getAllContainers(EObject container) {
+    List<DDiagramElementContainer> returnedList = new ArrayList<DDiagramElementContainer>();
+    if (container instanceof DDiagram) {
+      returnedList = ((DDiagram) container).getContainers();
+    } else if (container instanceof DDiagramElementContainer) {
+      returnedList.add((DDiagramElementContainer) container);
+      for (DDiagramElementContainer aContainer : ((DDiagramElementContainer) container).getContainers()) {
+        returnedList.addAll(getAllContainers(aContainer));
+      }
+    }
+    return returnedList;
+  }
 
   /**
    * used everywhere
@@ -2014,18 +2012,35 @@ public class CapellaServices {
    *          or role
    * @return is function allocated to component/role
    */
-  public static boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
-    boolean result = false;
+  public boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
     LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
+    
     if (container instanceof Component) {
       Component component = (Component) container;
-      for (ComponentFunctionalAllocation alloc : component.getOwnedFunctionalAllocation()) {
-        if (alloc.getTargetElement() instanceof AbstractFunction) {
-          AbstractFunction alfunc = (AbstractFunction) alloc.getTargetElement();
-          allocatedFunctions.add(alfunc);
-        }
+      allocatedFunctions.addAll(component.getAllocatedFunctions());
+      for (Component subComponent : ComponentExt.getAllSubUsedAndDeployedComponents(component)) {
+        allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
       }
     }
+    
+    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
+  }
+  
+  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
+    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
+    
+    if (container instanceof Component) {
+      Component component = (Component) container;
+      List<AbstractFunction> showableFunctions = FaServices.getFaServices().getShowableAllocatedFunctions(component, containerView);
+      allocatedFunctions.addAll(showableFunctions);
+    }
+    
+    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
+  }
+  
+  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container, LinkedList<AbstractFunction> allocatedFunctions) {
+    boolean result = false;
+    
     if (container instanceof Role) {
       Role role = (Role) container;
       for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
@@ -2035,6 +2050,7 @@ public class CapellaServices {
         }
       }
     }
+    
     if (allocatedFunctions.contains(function)) {
       result = true;
     } else if (!FunctionExt.isLeaf(function)) {
@@ -2045,6 +2061,7 @@ public class CapellaServices {
         result = true;
       }
     }
+    
     return result;
   }
 
