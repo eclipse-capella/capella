@@ -53,8 +53,8 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new RecRplTestSuite());
     tests.add(new FastLinkerTestsSuite());
     tests.add(new ActivityExplorerTestsSuite());
-    tests.add(new RenameModelTestSuite());
     tests.add(new DiagramToolsTestSuite());
+    tests.add(new RenameModelTestSuite());
     return tests;
   }
 
