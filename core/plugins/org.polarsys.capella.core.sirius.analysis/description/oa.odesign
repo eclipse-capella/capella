@@ -1320,7 +1320,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($element == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView%>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%eContents().filter(&quot;DDiagramElement&quot;)[target.filter(&quot;Role&quot;).nSize() > 0]%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%hide%>"/>
+                        <subModelOperations xsi:type="tool:DeleteView"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$containerView.eContents().filter(&quot;DDiagramElement&quot;)[target == $i].nSize() > 0%>">
