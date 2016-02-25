@@ -13,12 +13,10 @@ package org.polarsys.capella.test.diagram.tools.ju.lab;
 import junit.framework.Test;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
-import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
-import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 
 /**
  * Test the case of removing components and actors in LAB diagram.
@@ -33,13 +31,9 @@ public class ShowHideComponentTestCase extends AbstractDiagramTestCase {
     Session session = getSessionForTestModel(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    DiagramContext diagramContext = new OpenDiagramStep(context, LAB_DIAGRAM).run();
-
-    new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART).remove(LC2);
-    diagramContext.hasntView(LC2);
-
-    new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_LAB_INSERT_ACTOR).remove(LA1);
-    diagramContext.hasntView(LA1);
+    XABDiagram xabDiagram = XABDiagram.openDiagram(context, LAB_DIAGRAM, Type.LA);
+    xabDiagram.removeComponent(LC2);
+    xabDiagram.removeActor(LA1);
   }
 
   public static Test suite() {

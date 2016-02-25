@@ -49,8 +49,8 @@ public class OCBScenario extends EmptyProject {
     diagram.removeComponent(GenericModel.COMPONENT_2_1, GenericModel.COMPONENT_2);
     diagram.insertComponent(GenericModel.COMPONENT_2_1, GenericModel.COMPONENT_2);
 
-    diagram.removeComponent(GenericModel.ACTOR_5, GenericModel.COMPONENT_2);
-    diagram.insertComponent(GenericModel.ACTOR_5, GenericModel.COMPONENT_2);
+    diagram.removeActor(GenericModel.ACTOR_5, GenericModel.COMPONENT_2);
+    diagram.insertActor(GenericModel.ACTOR_5, GenericModel.COMPONENT_2);
 
     diagram.removeCapability(GenericModel.CAPABILITY_1);
     diagram.insertCapability(GenericModel.CAPABILITY_1);

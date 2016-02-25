@@ -326,8 +326,11 @@ public class CapabilityDiagram extends CommonDiagram {
     }
     new CreateDEdgeTool(this, name, sourceId, targetId, id).run();
   }
-
-  public void insertActor(String... id) {
+  public void insertActor(String id) {
+    insertActor(id, getDiagramId());
+  }
+  
+  public void insertActor(String id, String containerId) {
     String name = null;
     if (isA(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_COC_INSERT_REMOVE_OPERATIONAL_ACTORS;
@@ -351,10 +354,14 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_CRB_INSERT_REMOVE_ACTORS;
 
     }
-    new InsertRemoveTool(this, name, getDiagramId()).insert(id);
+    new InsertRemoveTool(this, name, containerId).insert(id);
   }
 
-  public void removeActor(String... id) {
+  public void removeActor(String id) {
+    removeActor(id, getDiagramId());
+  }
+  
+  public void removeActor(String id, String containerId) {
     String name = null;
     if (isA(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_COC_INSERT_REMOVE_OPERATIONAL_ACTORS;
@@ -378,7 +385,7 @@ public class CapabilityDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_CRB_INSERT_REMOVE_ACTORS;
 
     }
-    new InsertRemoveTool(this, name, getDiagramId()).remove(id);
+    new InsertRemoveTool(this, name, containerId).remove(id);
   }
 
   public void insertComponent(String id) {

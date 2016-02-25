@@ -85,10 +85,22 @@ public class MissionDiagram extends CapabilityDiagram {
     } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_MB_CREATE_ACTOR_INVOLVEMENT;
 
+    } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_CM_CREATE_ACTOR_INVOLVEMENT;
+
     }
     new CreateDEdgeTool(this, name, sourceId, targetId).run();
   }
 
+  public boolean canInsertMission() {
+    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
+      return true;
+      
+    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
+      return true;
+    }
+    return false;
+  }
   public void insertMission(String id) {
     String name = null;
     if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {

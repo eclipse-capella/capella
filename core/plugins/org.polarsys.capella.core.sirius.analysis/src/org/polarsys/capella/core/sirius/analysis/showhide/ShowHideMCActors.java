@@ -51,7 +51,7 @@ public class ShowHideMCActors extends ShowHideABComponent {
     if (semantic != item.getValue()) {
       return false;
     }
-    return filter.keepElement(semantic, qcontext);
+    return isConcerned(semantic);
   }
 
   /**

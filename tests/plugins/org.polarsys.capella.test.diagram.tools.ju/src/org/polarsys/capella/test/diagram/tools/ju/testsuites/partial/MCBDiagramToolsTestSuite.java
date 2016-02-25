@@ -22,6 +22,7 @@ import org.polarsys.capella.test.diagram.tools.ju.mcb.InsertRemoveScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.LACRBScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.MBScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.MCBScenario;
+import org.polarsys.capella.test.diagram.tools.ju.mcb.OCBHideEntityTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.OCBScenario;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -50,6 +51,7 @@ public class MCBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CMScenario());
     tests.add(new MBScenario());
     tests.add(new OCBScenario());
+    tests.add(new OCBHideEntityTestCase());
 
     return tests;
   }

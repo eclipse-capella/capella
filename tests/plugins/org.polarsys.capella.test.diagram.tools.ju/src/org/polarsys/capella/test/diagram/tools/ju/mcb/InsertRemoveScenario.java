@@ -62,7 +62,7 @@ public class InsertRemoveScenario extends EmptyProject {
     diagramContext.insertCapability(GenericModel.CAPABILITY_2);
     diagramContext.removeCapability(GenericModel.CAPABILITY_2);
 
-    if (diagramContext instanceof MissionDiagram) {
+    if (diagramContext instanceof MissionDiagram && ((MissionDiagram) diagramContext).canInsertMission()) {
       ((MissionDiagram) diagramContext).insertMission(GenericModel.MISSION_2);
       ((MissionDiagram) diagramContext).removeMission(GenericModel.MISSION_2);
     }

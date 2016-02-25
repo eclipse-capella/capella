@@ -25,6 +25,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
@@ -59,6 +60,15 @@ public class XABDiagram extends DiagramContext {
       @Override
       public DiagramContext getResult() {
         return new XABDiagram(type, getExecutionContext(), _diagram);
+      }
+    }.run().open();
+  }
+
+  public static XABDiagram openDiagram(SessionContext executionContext, String name, final BlockArchitectureExt.Type type) {
+    return (XABDiagram) new OpenDiagramStep(executionContext, name) {
+      @Override
+      public DiagramContext getResult() {
+        return new XABDiagram(type, getExecutionContext(), diagram);
       }
     }.run().open();
   }

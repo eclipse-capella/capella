@@ -344,7 +344,7 @@ public class ShowHideService {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getOCBCapabilities((DSemanticDecorator) diagram);
       } else if (OaPackage.Literals.OPERATIONAL_ACTOR.equals(type)) {
-        return ContextServices.getServices().getOCBActors((DSemanticDecorator) diagram);
+        return ContextServices.getServices().getOCBActors(view);
       } else if (OaPackage.Literals.ENTITY.equals(type)) {
         return ContextServices.getServices().getOCBEntities(view);
       }

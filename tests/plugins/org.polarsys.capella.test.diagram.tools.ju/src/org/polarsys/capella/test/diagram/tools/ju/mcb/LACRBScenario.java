@@ -94,14 +94,17 @@ public class LACRBScenario extends EmptyProject {
     diagram.insertComponent(GenericModel.COMPONENT_1);
     diagram.insertComponent(GenericModel.COMPONENT_2, GenericModel.COMPONENT_1);
 
-    diagram.removeActor(GenericModel.ACTOR_1, GenericModel.ACTOR_2);
-    diagram.insertActor(GenericModel.ACTOR_1, GenericModel.ACTOR_2);
+    diagram.removeActor(GenericModel.ACTOR_1);
+    diagram.removeActor(GenericModel.ACTOR_2);
+    diagram.insertActor(GenericModel.ACTOR_1);
+    diagram.insertActor(GenericModel.ACTOR_2);
 
     diagram.removeCapability(GenericModel.CAPABILITY_2);
     diagram.removeCapability(GenericModel.CAPABILITY_3);
     diagram.removeCapability(GenericModel.CAPABILITY_4);
     diagram.removeComponent(GenericModel.COMPONENT_1);
-    diagram.removeActor(GenericModel.ACTOR_1, GenericModel.ACTOR_2);
+    diagram.removeActor(GenericModel.ACTOR_1);
+    diagram.removeActor(GenericModel.ACTOR_2);
 
     diagram.insertAllRelationships(GenericModel.CAPABILITY_1);
 
