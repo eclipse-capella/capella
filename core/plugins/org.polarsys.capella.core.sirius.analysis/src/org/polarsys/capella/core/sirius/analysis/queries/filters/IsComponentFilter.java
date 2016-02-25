@@ -21,12 +21,12 @@ public class IsComponentFilter implements IQueryFilter {
 
   @Override
   public boolean keepElement(Object element, IQueryContext context) {
-    if (element instanceof Component) {
-      return !(element instanceof AbstractActor);
-    }
-    if (element instanceof Entity) {
-      return !(element instanceof OperationalActor);
-    }
+	  if (element instanceof Entity) {
+		  return !(element instanceof OperationalActor);
+	  }
+	  if (element instanceof Component) {
+		  return !(element instanceof AbstractActor);
+	  }
     return false;
   }
 
