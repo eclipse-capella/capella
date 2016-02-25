@@ -4568,7 +4568,7 @@ public class FaServices {
     showableFunctions.addAll(component.getAllocatedFunctions());
     
     // - parent functions where all of their children are in this component or in child components not displayed
-    Set<AbstractFunction> leaves = getleavesFunctionsOfSubComponentsNotDisplayed(component, containerView);
+    Set<AbstractFunction> leaves = getLeavesFunctionsOfSubComponentsNotDisplayed(component, containerView);
     Set<AbstractFunction> parentFunctions = AbstractFunctionExt.getRecursiveAllocatedFunctions(leaves, leaves);
     parentFunctions.removeAll(leaves);
     showableFunctions.addAll(parentFunctions);
@@ -4576,7 +4576,7 @@ public class FaServices {
     return showableFunctions;
   }
   
-  public Set<AbstractFunction> getleavesFunctionsOfSubComponentsNotDisplayed(Component component, DNodeContainer containerView) {
+  protected Set<AbstractFunction> getLeavesFunctionsOfSubComponentsNotDisplayed(Component component, DNodeContainer containerView) {
     Set<AbstractFunction> leaveFunctions = new HashSet<AbstractFunction>();
     
     // return all allocated functions of this component
@@ -4613,7 +4613,7 @@ public class FaServices {
       }
       
       if (!isDisplayed) {
-        leaveFunctions.addAll(getleavesFunctionsOfSubComponentsNotDisplayed(subComponent, containerView));
+        leaveFunctions.addAll(getLeavesFunctionsOfSubComponentsNotDisplayed(subComponent, containerView));
       }
     }
     
