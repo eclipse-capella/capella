@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,16 +11,11 @@
 package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.core.runtime.FileLocator;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
 /** 
  * Generic implementation of a test suite. This implementation supports libraries as test models.
@@ -65,18 +60,9 @@ public abstract class AutoLoadTestSuite extends BasicTestSuite {
   private File pluginFolder;
   
   /** Return the root folder of the current test plugin */
-  @Override
   protected File getPluginFolder() {
     if (pluginFolder == null) {
-  		Bundle bundle = FrameworkUtil.getBundle(getClass());
-  		URL fileURL = bundle.getEntry("/");    	 //$NON-NLS-1$
-  		try {
-  			pluginFolder = new File(FileLocator.resolve(fileURL).toURI());
-			} catch (URISyntaxException e1) {
-			    e1.printStackTrace();
-			} catch (IOException e1) {
-			    e1.printStackTrace();
-			}      
+      pluginFolder= IResourceHelpers.getPluginFolder(getClass());
     }
     return pluginFolder;
   }

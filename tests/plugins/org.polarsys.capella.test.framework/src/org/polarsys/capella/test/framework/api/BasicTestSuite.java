@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,6 @@
 package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import junit.framework.TestResult;
@@ -30,11 +28,10 @@ import org.polarsys.capella.test.framework.helpers.PerformanceHelper;
 public abstract class BasicTestSuite extends TestSuite implements BasicTestArtefact {
 
 	protected BasicTestSuite parentTestSuite;
-	private File pluginFolder;
 	private long executionDurationInMillis;
 	
 	@Override
-	public void setParentTestSuite(@SuppressWarnings("hiding") BasicTestSuite parentTestSuite) {
+	public void setParentTestSuite(BasicTestSuite parentTestSuite) {
 		this.parentTestSuite = parentTestSuite;
 	}
 	 
@@ -129,28 +126,24 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
   	return INPUT_MODEL_FOLDER_NAME; //$NON-NLS-1$
   }
 
-  
-  protected File getFileOrFolderInTestPlugin(String relativePath) {
-    return new File(getPluginFolder().toString() + "/" + relativePath); //$NON-NLS-1$
-  }
-  
+  /**
+   * Look for an existing folder in the plugin containing the current "real" class.<br>
+   * Then, if none is found, look in plugins containing super classes.<br>
+   * If no existing folder is found, return a path in the plugin containing the current "real" class.
+   * @param relativePath
+   * @return
+   */
   @Override
-  public File getFileOrFolderInTestModelRepository(String relativePath) {
-    return getFileOrFolderInTestPlugin(getRelativeModelsFolderName()+ "/" + relativePath);//$NON-NLS-1$
-  }
-  
-  /** Return the root folder of the current test plugin */
-  protected File getPluginFolder() {
-    if (pluginFolder == null) {
-  		try {
-  			pluginFolder = IResourceHelpers.getFileInPlugin(getClass(), "/"); //$NON-NLS-1$
-			} catch (URISyntaxException e1) {
-			    e1.printStackTrace();
-			} catch (IOException e1) {
-			    e1.printStackTrace();
-			}
-  		//pluginFolder = new File(FileHelper.getFileFullUrl(getPluginId() + "/").getFile()); //$NON-NLS-1$
+  public File getFolderInTestModelRepository(String relativePath) {
+    String pathInPlugin = getRelativeModelsFolderName() + "/" + relativePath;
+    Class<?> currentClass = getClass();
+    while (currentClass != BasicTestSuite.class) {
+      File testModelFolder = IResourceHelpers.getFileOrFolderInTestPlugin(currentClass, pathInPlugin);//$NON-NLS-1$
+      if (testModelFolder.exists() && testModelFolder.isDirectory()) {
+        return testModelFolder;
+      }
+      currentClass = currentClass.getSuperclass();
     }
-    return pluginFolder;
+    return IResourceHelpers.getFileOrFolderInTestPlugin(getClass(), pathInPlugin);//$NON-NLS-1$
   }
 }
