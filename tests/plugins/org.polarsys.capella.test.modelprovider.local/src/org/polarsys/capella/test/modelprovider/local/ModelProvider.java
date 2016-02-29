@@ -78,9 +78,11 @@ public class ModelProvider extends AbstractProvider{
 
   @Override
   protected void importCapellaProject(String relativeModelPath, BasicTestArtefact artefact) {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+    File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
     ModelProviderHelper.getInstance().importCapellaProject(relativeModelPath, sourceFolder);
   }
+  
+  @Override
   protected void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject){
     ModelProviderHelper.getInstance().removeCapellaProject(relativeModelPath, artefact, eraseProject);
   }

@@ -52,7 +52,7 @@ public abstract class AbstractProvider implements IModelProvider{
    */
   @Override
   public void requireTestModel(String relativeModelPath, BasicTestArtefact artefact) throws IOException {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+    File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
     System.out.println(">> require " + modelIdentifier);
     // load the model if it is not already the case
@@ -116,7 +116,7 @@ public abstract class AbstractProvider implements IModelProvider{
   }
 
   protected void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+    File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
     System.out.println(">> release " + modelIdentifier);
     if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
@@ -201,7 +201,7 @@ public abstract class AbstractProvider implements IModelProvider{
    *         Notice that the test model should have been required previously (@see method requireTestModel)
    */
   public static IProject getEclipseProjectForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+    File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
     if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)/*hasModelIdentifier2Owner(modelIdentifier)*/) {
       throw new IllegalArgumentException("No model has been loaded for identifier '" + relativeModelPath + "'");

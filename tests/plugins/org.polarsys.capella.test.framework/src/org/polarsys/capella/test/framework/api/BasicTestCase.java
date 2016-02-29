@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -47,12 +46,11 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 	private static final String TEST_METHOD_NAME = "test"; //$NON-NLS-1$
 	private static final String INPUT_MODEL_FOLDER_NAME = "model"; //$NON-NLS-1$
 
-	private File pluginFolder;
 	private long executionDurationInMillis;
 	protected BasicTestSuite parentTestSuite;
 
 	@Override
-	public void setParentTestSuite(@SuppressWarnings("hiding") BasicTestSuite parentTestSuite) {
+	public void setParentTestSuite(BasicTestSuite parentTestSuite) {
 		this.parentTestSuite = parentTestSuite;
 	}
   
@@ -138,8 +136,8 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 		// if (!project.isOpen()) {
 		// try {
 		// project.open(new NullProgressMonitor());
-		// } catch (CoreException exception_p) {
-		// exception_p.printStackTrace();
+		// } catch (CoreException exception) {
+		// exception.printStackTrace();
 		// }
 		// }
 		// Session session = getSessionForLoadedCapellaModel(modelName);
@@ -207,20 +205,9 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 		File targetFile = new File(target.getLocation().toOSString() + "/"); //$NON-NLS-1$
 		TestHelper.copy(sourceFile, targetFile);
 	}
-
-	/** Return the root folder of the current test plugin */
+	
 	protected File getPluginFolder() {
-		if (pluginFolder == null) {
-			try {
-				pluginFolder = IResourceHelpers.getFileInPlugin(getClass(), "/"); //$NON-NLS-1$
-			} catch (URISyntaxException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			//pluginFolder = new File(FileHelper.getFileFullUrl(getPluginId() + "/").getFile()); //$NON-NLS-1$
-		}
-		return pluginFolder;
+	  return IResourceHelpers.getPluginFolder(getClass());
 	}
 
 	/**
@@ -241,13 +228,34 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 		return null;
 	}
 
-	protected File getFileOrFolderInTestPlugin(String relativePath) {
-		return new File(getPluginFolder().toString() + "/" + relativePath); //$NON-NLS-1$
-	}
+	/**
+	 * Get file or folder in the plugin containing the current "real" class
+	 * @param relativePath
+	 * @return
+	 */
+  protected File getFileOrFolderInTestPlugin(String relativePath) {
+    return IResourceHelpers.getFileOrFolderInTestPlugin(getClass(), relativePath);
+  }
 
-	@Override
-	public File getFileOrFolderInTestModelRepository(String relativePath) {
-		return getFileOrFolderInTestPlugin(getRelativeModelsFolderName() + "/" + relativePath);//$NON-NLS-1$
-	}
+  /**
+   * Look for an existing folder in the plugin containing the current "real" class.<br>
+   * Then, if none is found, look in plugins containing super classes.<br>
+   * If no existing folder is found, return a path in the plugin containing the current "real" class.
+   * @param relativePath
+   * @return
+   */
+  @Override
+  public File getFolderInTestModelRepository(String relativePath) {
+    String pathInPlugin = getRelativeModelsFolderName() + "/" + relativePath;
+    Class<?> currentClass = getClass();
+    while (currentClass != BasicTestCase.class) {
+      File testModelFolder = IResourceHelpers.getFileOrFolderInTestPlugin(currentClass, pathInPlugin);//$NON-NLS-1$
+      if (testModelFolder.exists() && testModelFolder.isDirectory()) {
+        return testModelFolder;
+      }
+      currentClass = currentClass.getSuperclass();
+    }
+    return IResourceHelpers.getFileOrFolderInTestPlugin(getClass(), pathInPlugin);//$NON-NLS-1$
+  }
 
 }
