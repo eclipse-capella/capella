@@ -187,9 +187,9 @@ public class ContextServices {
     return getMCBActors(diagram);
   }
 
-  public List<EObject> getCOCActors(DSemanticDecorator diagram) {
+  public List<EObject> getCOCActors(DSemanticDecorator view) {
     List<EObject> result = new ArrayList<EObject>();
-    Collection<? extends Component> availableEntitiesToInsert = OAServices.getService().getOEBEntities(diagram);
+    Collection<? extends Component> availableEntitiesToInsert = OAServices.getService().getOEBEntities(view);
     for (Component component : availableEntitiesToInsert) {
       if (component instanceof OperationalActor) {
         result.add(component);
@@ -198,9 +198,9 @@ public class ContextServices {
     return result;
   }
 
-  public List<EObject> getCOCEntities(DSemanticDecorator diagram) {
+  public List<EObject> getCOCEntities(DSemanticDecorator view) {
     List<EObject> result = new ArrayList<EObject>();
-    Collection<? extends Component> allComponents = OAServices.getService().getAvailableEntitiesToInsert(diagram);
+    Collection<? extends Component> allComponents = OAServices.getService().getAvailableEntitiesToInsert(view);
     for (Component component : allComponents) {
       if ((component instanceof Entity) && !(component instanceof OperationalActor)) {
         result.add(component);
@@ -213,12 +213,12 @@ public class ContextServices {
     return getOCBCapabilities(diagram);
   }
 
-  public List<EObject> getOCBActors(DSemanticDecorator diagram) {
-    return getCOCActors(diagram);
+  public List<EObject> getOCBActors(DSemanticDecorator view) {
+    return getCOCActors(view);
   }
 
-  public List<EObject> getOCBEntities(DSemanticDecorator diagram) {
-    return getCOCEntities(diagram);
+  public List<EObject> getOCBEntities(DSemanticDecorator view) {
+    return getCOCEntities(view);
   }
 
   public List<EObject> getCRBComponents(DSemanticDecorator decorator) {

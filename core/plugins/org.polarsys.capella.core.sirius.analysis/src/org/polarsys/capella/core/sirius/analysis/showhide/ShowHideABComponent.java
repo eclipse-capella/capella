@@ -142,6 +142,10 @@ public class ShowHideABComponent extends AbstractShowHide {
 
       // We don't reveal a part if there is another view with the other mapping already revealed
       DiagramElementMapping mapping = getMapping(originCouple_p.getValue(), context_p, relatedViews_p);
+      if (mapping == null) {
+        return false;
+      }
+        
       for (ContextItemView view : originCouple_p.getViews()) {
         for (DSemanticDecorator dView : view.getViews().get(VIEWS)) {
           if ((dView instanceof DDiagramElement)

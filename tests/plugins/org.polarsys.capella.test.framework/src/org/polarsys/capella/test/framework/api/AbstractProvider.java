@@ -59,7 +59,7 @@ public abstract class AbstractProvider implements IModelProvider {
       System.out.println(">> require " + modelIdentifier);
       // load the model if it is not already the case
       if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
-        File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+        File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
         if (!sourceFolder.exists() || !sourceFolder.isDirectory()) {
           throw new IllegalArgumentException("test model '" + relativeModelPath + "' does not exist");
         }
@@ -110,7 +110,7 @@ public abstract class AbstractProvider implements IModelProvider {
   }
 
   protected static String getModelIdentifier(BasicTestArtefact artefact, String relativeModelPath) {
-    File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
+    File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
     String modelIdentifier = sourceFolder.toString();
     return modelIdentifier;
   }
@@ -137,7 +137,8 @@ public abstract class AbstractProvider implements IModelProvider {
   }
 
   protected void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
-    String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
+    File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
+    String modelIdentifier = sourceFolder.toString();
     System.out.println(">> release " + modelIdentifier);
     if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
       throw new IllegalArgumentException("test model '" + relativeModelPath + "' has not been loaded");
@@ -221,8 +222,9 @@ public abstract class AbstractProvider implements IModelProvider {
    *         Notice that the test model should have been required previously (@see method requireTestModel)
    */
   public static IProject getEclipseProjectForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
-    String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
-    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)/* hasModelIdentifier2Owner(modelIdentifier) */) {
+    File sourceFolder = artefact.getFolderInTestModelRepository(relativeModelPath);
+    String modelIdentifier = sourceFolder.toString();
+    if (!modelIdentifier2Owner.keySet().contains(modelIdentifier)/*hasModelIdentifier2Owner(modelIdentifier)*/) {
       throw new IllegalArgumentException("No model has been loaded for identifier '" + relativeModelPath + "'");
     }
     String projectName = getModelIdentifier2ProjectNameInWorkspace(modelIdentifier);

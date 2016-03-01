@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,29 @@ public class IResourceHelpers {
 		return new File(FileLocator.resolve(fileURL).toURI());
   }
 	
+  /**
+   * Returns the root folder of the plugin containing the given class
+   */
+  public static File getPluginFolder(Class<?> clazz) {
+    File pluginFolder = null;
+    try {
+      pluginFolder = getFileInPlugin(clazz, "/"); //$NON-NLS-1$
+    } catch (URISyntaxException e1) {
+      e1.printStackTrace();
+    } catch (IOException e1) {
+      e1.printStackTrace();
+    }
+
+    return pluginFolder;
+  }
+  
+  /**
+   * Returns a path in the plugin containing the given class  
+   */
+  public static File getFileOrFolderInTestPlugin(Class<?> clazz, String relativePath) {
+    return new File(IResourceHelpers.getPluginFolder(clazz).toString() + "/" + relativePath); //$NON-NLS-1$
+  }
+  
 	public static List<IResource> getIResourceFromSelection(ExecutionEvent event) {
     ISelection selection = HandlerUtil.getCurrentSelection(event);
     List<IResource> resources = new ArrayList<IResource>();
@@ -214,8 +237,8 @@ public class IResourceHelpers {
     attributes.setReadOnly(false);
     try {
       file.setResourceAttributes(attributes);
-    } catch (CoreException exception_p) {
-      exception_p.printStackTrace();
+    } catch (CoreException exception) {
+      exception.printStackTrace();
     }
   }
   
