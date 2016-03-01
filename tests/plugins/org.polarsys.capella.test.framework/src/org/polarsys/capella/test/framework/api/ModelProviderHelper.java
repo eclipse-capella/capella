@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,8 +77,8 @@ public class ModelProviderHelper {
   public void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
     Session session = AbstractProvider.getExistingSessionForTestModel(relativeModelPath, artefact);
     if (session.isOpen()) {
-      GuiActions.saveSession(session);
-      GuiActions.closeSession(session);
+      //GuiActions.saveSession(session);
+      GuiActions.closeSession(session, false);
     }
 
     IProject eclipseProject = AbstractProvider.getEclipseProjectForTestModel(relativeModelPath, artefact);

@@ -130,13 +130,15 @@ public class GuiActions {
   }
 
   /**
-   * Close several sessions at the same time by using the Capella action @see CloseSessionAction.
+   * Close several sessions at the same time by using the Capella action
+   * 
+   * @see CloseSessionAction.
    * 
    * @param sessions
    *          the list of sessions to close
    */
-  public static void closeSessions(List<Session> sessions) {
-    HeadlessCloseSessionAction closeSessionAction = new HeadlessCloseSessionAction(sessions);
+  public static void closeSessions(List<Session> sessions, boolean saveSession) {
+    HeadlessCloseSessionAction closeSessionAction = new HeadlessCloseSessionAction(sessions, saveSession);
     closeSessionAction.run();
     flushASyncGuiThread();
   }
@@ -160,10 +162,22 @@ public class GuiActions {
    * Close a session by using the capella action @see CloseSessionAction.
    * 
    * @param session
-   *          the session to close
+   *          the session to close (if session is dirty, it will be saved)
    */
   public static void closeSession(Session session) {
-    closeSessions(Collections.singletonList(session));
+    closeSessions(Collections.singletonList(session), true);
+  }
+
+  /**
+   * Close a session by using the capella action @see CloseSessionAction.
+   * 
+   * @param session
+   *          the session to close (if session is dirty, it will be saved)
+   * @param saveSession
+   *          wether or not the session shall be saved (if dirty)
+   */
+  public static void closeSession(Session session, boolean saveSession) {
+    closeSessions(Collections.singletonList(session), saveSession);
   }
 
   /**
