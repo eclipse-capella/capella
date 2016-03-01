@@ -21,6 +21,39 @@ public class GenericModel {
   public static String OBJECT_3 = "OBJECT 3";
   public static String OBJECT_4 = "OBJECT 4";
 
+  public static String ENTITY_1 = "ENTITY 1";
+  public static String ENTITY_2 = "ENTITY 2";
+  public static String ENTITY_3 = "ENTITY 3";
+  public static String ENTITY_4 = "ENTITY 4";
+
+  public static String ACTOR_1 = "ACTOR 1";
+  public static String ACTOR_2 = "ACTOR 2";
+  public static String ACTOR_3 = "ACTOR 3";
+  public static String ACTOR_4 = "ACTOR 4";
+  public static String ACTOR_5 = "ACTOR 5";
+  public static String ACTOR_6 = "ACTOR 6";
+
+  public static String CONSTRAINT_1 = "CONSTRAINT 1";
+  public static String CONSTRAINT_2 = "CONSTRAINT 2";
+  public static String CONSTRAINT_3 = "CONSTRAINT 3";
+  public static String CONSTRAINT_4 = "CONSTRAINT 4";
+
+  public static String CAPABILITY_1 = "CAPABILITY 1";
+  public static String CAPABILITY_2 = "CAPABILITY 2";
+  public static String CAPABILITY_3 = "CAPABILITY 3";
+  public static String CAPABILITY_4 = "CAPABILITY 4";
+
+  public static String COMPONENT_1 = "COMPONENT 1";
+  public static String COMPONENT_2 = "COMPONENT 2";
+  public static String COMPONENT_2_1 = "COMPONENT 2_1";
+  public static String COMPONENT_3 = "COMPONENT 3";
+  public static String COMPONENT_4 = "COMPONENT 4";
+
+  public static String MISSION_1 = "MISSION 1";
+  public static String MISSION_2 = "MISSION 2";
+  public static String MISSION_3 = "MISSION 3";
+  public static String MISSION_4 = "MISSION 4";
+
   public static String CLASS_1 = "Class 1";
   public static String CLASS_2 = "Class 2";
   public static String CLASS_3 = "Class 3";
@@ -103,4 +136,6 @@ public class GenericModel {
   public static String CL_2 = "CL_2";
   public static String CL_3 = "CL_3";
   public static String CL_4 = "CL_4";
+  public static String CL_5 = "CL_5";
+  public static String CL_6 = "CL_6";
 }

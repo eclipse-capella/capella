@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -39,13 +40,18 @@ public class ShowHideMCActors extends ShowHideABComponent {
   }
 
   @Override
+  protected boolean mustHide(DDiagramElement view, DiagramContext context) {
+    return true;
+  }
+
+  @Override
   protected boolean mustHide(ContextItemElement originCouple, DiagramContext context) {
     EObject semantic = originCouple.getValue();
     ContextItemElement item = context.getLast(ROOT);
     if (semantic != item.getValue()) {
       return false;
     }
-    return filter.keepElement(semantic, qcontext);
+    return isConcerned(semantic);
   }
 
   /**

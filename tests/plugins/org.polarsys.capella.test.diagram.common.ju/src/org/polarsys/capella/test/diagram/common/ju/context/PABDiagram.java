@@ -16,7 +16,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveContainerCreation;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
 public class PABDiagram extends XABDiagram {
 
@@ -53,31 +53,26 @@ public class PABDiagram extends XABDiagram {
   }
 
   public void removeBehaviorComponent(String id, String containerId) {
-    new InsertRemoveContainerCreation(this, new String[] {
-        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
+    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
         IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOR_PCS }, containerId).remove(id);
   }
 
   public void removeDeployedBehaviorComponent(String id, String containerId) {
-    new InsertRemoveContainerCreation(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId)
-        .remove(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).remove(id);
   }
 
   public void removeDeployedNodeComponent(String id, String containerId) {
-    new InsertRemoveContainerCreation(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId)
-        .remove(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).remove(id);
   }
 
   public void removeNodeComponent(String id, String containerId) {
-    new InsertRemoveContainerCreation(this, new String[] {
-        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
+    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
         IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_PCS }, containerId).remove(id);
 
   }
 
   public void insertNodeComponent(String id, String containerId) {
-    new InsertRemoveContainerCreation(this, new String[] {
-        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
+    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
         IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_PCS }, containerId).insert(id);
 
   }

@@ -546,7 +546,13 @@ public class DiagramServices {
   }
 
   public boolean isHidden(DDiagramElement context) {
-    return new DDiagramElementQuery(context).isHidden();
+    DDiagramElementQuery query = new DDiagramElementQuery(context);
+    return query.isHidden();
+  }
+
+  public boolean isFiltered(DDiagramElement context) {
+    DDiagramElementQuery query = new DDiagramElementQuery(context);
+    return query.isFiltered() || query.isIndirectlyFiltered();
   }
 
   public EObject hide(DDiagramElement context) {

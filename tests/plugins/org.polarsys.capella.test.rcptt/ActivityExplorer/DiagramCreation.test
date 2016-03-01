@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _P21C4MEUEeWqb6y2_gGIKQ
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 2/17/16 4:21 PM
+Save-Time: 2/24/16 5:23 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -41,7 +41,7 @@ with [get-editor "P1 - Activity Explorer"] {
         get-link "[OCB] Create a new Operational Capabilities diagram" | click
     }
 }
-get-window "Type representation name" | get-button OK | click
+get-window "Type Operational Capabilities Blank name" | get-button OK | click
 get-editor "[OCB] Operational Capabilities" | get-diagram -index 1 | get-edit-part 
     -name "[OCB] Operational Capabilities"
 
