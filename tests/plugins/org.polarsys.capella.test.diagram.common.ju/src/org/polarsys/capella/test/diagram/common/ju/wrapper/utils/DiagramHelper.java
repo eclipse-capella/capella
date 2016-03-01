@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.common.ju.wrapper.utils;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -104,6 +105,7 @@ public class DiagramHelper {
 
   /**
    * Set the auto refresh preference for diagram
+   * 
    * @param value
    */
   public static void setPreferenceAutoRefresh(final boolean value) {
@@ -113,6 +115,7 @@ public class DiagramHelper {
 
   /**
    * Set the refresh on opening preference for diagram
+   * 
    * @param value
    */
   public static void setPrefereneRefreshOnOpening(final boolean value) {
@@ -122,7 +125,9 @@ public class DiagramHelper {
 
   /**
    * Return the DRepresention with the given name, null otherwise
-   * @param session the current Session.
+   * 
+   * @param session
+   *          the current Session.
    * @param name
    * @return <code>null</code> if an error occurred.
    */
@@ -140,8 +145,11 @@ public class DiagramHelper {
   }
 
   /**
-   * Return the DRepresention with the given diagram name and ID, null otherwise To be used if several diagrams have the same name
-   * @param session the current Session.
+   * Return the DRepresention with the given diagram name and ID, null otherwise To be used if several diagrams have the
+   * same name
+   * 
+   * @param session
+   *          the current Session.
    * @param name
    * @param id
    * @return <code>null</code> if an error occurred.
@@ -169,8 +177,11 @@ public class DiagramHelper {
 
   /**
    * Checks if the session given by its AIRD file path contains the given representation (Diagram)
-   * @param representation, the representation to test
-   * @param filepath, the aird file path to open the related session
+   * 
+   * @param representation
+   *          , the representation to test
+   * @param filepath
+   *          , the aird file path to open the related session
    */
   @SuppressWarnings("nls")
   public static void checkDiagramInSession(DRepresentation representation, String filepath) {
@@ -180,13 +191,17 @@ public class DiagramHelper {
     Assert.assertTrue(
         MessageFormat.format("The representation {0}  is not in  the resource {1}", representation, filepath),
         containsRepresentation);
-    // Assert.assertTrue(MessageFormat.format(HelperMessages.diagramNotContainedInSession, representation.getName(), file.getName()), containsRepresentation);
+    // Assert.assertTrue(MessageFormat.format(HelperMessages.diagramNotContainedInSession, representation.getName(),
+    // file.getName()), containsRepresentation);
   }
 
   /**
-   * Return the DRepresention with the given name and platformSpecificElementId ( ie next.eResource().getURIFragment(next)), null otherwise. Use in case, we
-   * have diagrams with the same name in session.
-   * @param session the current Session.
+   * Return the DRepresention with the given name and platformSpecificElementId ( ie
+   * next.eResource().getURIFragment(next)), null otherwise. Use in case, we have diagrams with the same name in
+   * session.
+   * 
+   * @param session
+   *          the current Session.
    * @param n
    * @param platformSpecificElementId
    * @return <code>null</code> if an error occurred.
@@ -208,9 +223,13 @@ public class DiagramHelper {
   }
 
   /**
-   * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given semantic Object, null otherwise
-   * @param diagram the target diagram
-   * @param semanticObject the semantic object to reach
+   * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given semantic Object,
+   * null otherwise
+   * 
+   * @param diagram
+   *          the target diagram
+   * @param semanticObject
+   *          the semantic object to reach
    * @return null if not represented on the diagram
    */
   public static DDiagramElement getOnDiagram(final DDiagram diagram, final EObject semanticObject) {
@@ -226,8 +245,11 @@ public class DiagramHelper {
 
   /**
    * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given ID, null otherwise
-   * @param diagram the target diagram
-   * @param anID, the id of the object to reach
+   * 
+   * @param diagram
+   *          the target diagram
+   * @param anID
+   *          , the id of the object to reach
    * @return null if not represented on the diagram
    */
   public static DDiagramElement getOnDiagramByID(final DDiagram diagram, final String anID) {
@@ -242,9 +264,13 @@ public class DiagramHelper {
 
   /**
    * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given ID, null otherwise
-   * @param diagram the target diagram
-   * @param anID, the id of the object to reach
-   * @param aName, the name of the object to reach
+   * 
+   * @param diagram
+   *          the target diagram
+   * @param anID
+   *          , the id of the object to reach
+   * @param aName
+   *          , the name of the object to reach
    * @return null if not represented on the diagram
    */
   public static DDiagramElement getOnDiagramByIDAndName(final DDiagram diagram, final String anID, final String aName) {
@@ -263,8 +289,11 @@ public class DiagramHelper {
    * Container, null otherwise
    * <p>
    * Useful to select an InstanceRole
-   * @param diagram the target diagram
-   * @param semanticObject the semantic object to reach
+   * 
+   * @param diagram
+   *          the target diagram
+   * @param semanticObject
+   *          the semantic object to reach
    * @return null if not represented on the diagram
    */
   public static DDiagramElement getOnDiagramByIDandContainer(final DDiagram diagram, final String anID,
@@ -280,9 +309,13 @@ public class DiagramHelper {
   }
 
   /**
-   * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given semantic Object and which is not a DEdge, null otherwise
-   * @param diagram the target diagram
-   * @param semanticObject the semantic object to reach
+   * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given semantic Object
+   * and which is not a DEdge, null otherwise
+   * 
+   * @param diagram
+   *          the target diagram
+   * @param semanticObject
+   *          the semantic object to reach
    * @return null if not represented on the diagram
    */
   public static DDiagramElement getOnDiagramNodeElement(final DDiagram diagram, final EObject semanticObject) {
@@ -296,10 +329,15 @@ public class DiagramHelper {
   }
 
   /**
-   * Return the first {@link DDiagramElement} corresponding to the given EClass and to the first occurrence found for a given semantic Object, null otherwise
-   * @param diagram the target diagram
-   * @param semanticObject the semantic object to reach
-   * @param expectedSemanticMetaClass the expected EClass of the found DDiagramElement
+   * Return the first {@link DDiagramElement} corresponding to the given EClass and to the first occurrence found for a
+   * given semantic Object, null otherwise
+   * 
+   * @param diagram
+   *          the target diagram
+   * @param semanticObject
+   *          the semantic object to reach
+   * @param expectedSemanticMetaClass
+   *          the expected EClass of the found DDiagramElement
    * @return null if not represented on the diagram
    */
   public static DDiagramElement getDDiagramElementByEClass(final DDiagram diagram, final EObject semanticObject,
@@ -315,6 +353,7 @@ public class DiagramHelper {
 
   /**
    * Return the {@link DDiagramElement} corresponding to the given semanticObject, edge source and edge target
+   * 
    * @param diagram
    * @param semanticObject
    * @param source
@@ -338,6 +377,7 @@ public class DiagramHelper {
 
   /**
    * return the list of available {@link RepresentationDescription} on which a given semantic element can be created.
+   * 
    * @param session
    * @param semanticElement
    * @return
@@ -393,6 +433,7 @@ public class DiagramHelper {
 
   /**
    * Refresh the given diagram
+   * 
    * @param diagram
    * @return true if operation is ok (i.e. no exception trapped), false otherwise
    */
@@ -419,9 +460,13 @@ public class DiagramHelper {
 
   /**
    * Utility method in order to (de)activate layers onto diagram
-   * @param targetLayer the target {@link Layer}
-   * @param diagram the target {@link DDiagram}
-   * @param activate should we activate or deactivate the target layer.
+   * 
+   * @param targetLayer
+   *          the target {@link Layer}
+   * @param diagram
+   *          the target {@link DDiagram}
+   * @param activate
+   *          should we activate or deactivate the target layer.
    */
   public static void activateDiagramLayer(final Layer targetLayer, final DDiagram diagram, final boolean activate) {
     final AbstractCommand cmd = new AbstractNonDirtyingCommand() {
@@ -481,6 +526,7 @@ public class DiagramHelper {
 
   /**
    * Get The Diagram Editor
+   * 
    * @param session
    * @param diagram
    * @return diagram editor
@@ -497,6 +543,7 @@ public class DiagramHelper {
 
   /**
    * Open a 'diagram' e.g. a {@link DRepresentation}.
+   * 
    * @param session
    * @param drep
    * @return
@@ -588,8 +635,11 @@ public class DiagramHelper {
 
   /**
    * Get the note element of a diagram by its description
-   * @param diagram, which contains the note
-   * @param description, the description of the note
+   * 
+   * @param diagram
+   *          , which contains the note
+   * @param description
+   *          , the description of the note
    * @return
    */
 
@@ -624,8 +674,11 @@ public class DiagramHelper {
 
   /**
    * Get all note elements of a diagram
-   * @param diagram, which contains the note
-   * @param description, the description of the note
+   * 
+   * @param diagram
+   *          , which contains the note
+   * @param description
+   *          , the description of the note
    * @return
    */
 
@@ -688,8 +741,11 @@ public class DiagramHelper {
 
   /**
    * check if the given contextual elements of a diagram are the same than the calculated ones
-   * @param diagram, the diagram to test
-   * @param expectedContextualElementsList, list of expected contextual elements
+   * 
+   * @param diagram
+   *          , the diagram to test
+   * @param expectedContextualElementsList
+   *          , list of expected contextual elements
    */
   @SuppressWarnings("boxing")
   public static void checkDiagramContextualElements(DDiagram diagram, List<EObject> expectedContextualElementsList) {
@@ -754,9 +810,14 @@ public class DiagramHelper {
 
   /**
    * Utility method that checks whether some semantics objects should have a representation (or not) onto a diagram.
-   * @param diagram the target {@link DDiagram}
-   * @param list the list of semantic Object
-   * @param shouldBeAvailable defines whether the objects contained into the list should have a representation or not on the target diagram
+   * 
+   * @param diagram
+   *          the target {@link DDiagram}
+   * @param list
+   *          the list of semantic Object
+   * @param shouldBeAvailable
+   *          defines whether the objects contained into the list should have a representation or not on the target
+   *          diagram
    */
   @Deprecated
   public static void assertCheckObjectOnDiagram(DDiagram diagram, List<EObject> list, boolean shouldBeAvailable) {
@@ -769,9 +830,11 @@ public class DiagramHelper {
 
     for (EObject current : list) {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
-      Assert.assertTrue(NLS.bind(errMsg, new Object[] {
-          current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current.eClass()
-              .getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+      Assert.assertTrue(
+          NLS.bind(errMsg,
+              new Object[] {
+                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
+                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -785,9 +848,11 @@ public class DiagramHelper {
 
     for (EObject current : list) {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
-      Assert.assertTrue(NLS.bind(errMsg, new Object[] {
-          current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current.eClass()
-              .getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+      Assert.assertTrue(
+          NLS.bind(errMsg,
+              new Object[] {
+                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
+                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -803,13 +868,13 @@ public class DiagramHelper {
     if (element instanceof AbstractDNode) {
       return DiagramServices.getDiagramServices().getOwnedAbstractNodes(element);
     }
-    return null;
+    return Collections.emptyList();
   }
 
   public static List<DEdge> getEdges(DDiagram diagram, String elementId) {
     List<DEdge> edgeList = new ArrayList<DEdge>();
     for (DDiagramElement element : diagram.getDiagramElements()) {
-      if (element instanceof DEdge && element.getTarget() instanceof ModelElement
+      if ((element instanceof DEdge) && (element.getTarget() instanceof ModelElement)
           && ((ModelElement) element.getTarget()).getId().equals(elementId)) {
         edgeList.add((DEdge) element);
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,34 +12,56 @@ package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
 import static org.junit.Assert.assertFalse;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
-import org.polarsys.capella.test.diagram.common.ju.headless.ITransfertWizardResult;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper.ArgumentData;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 public class InsertRemoveTool extends AbstractToolStep {
 
   boolean initialized = false;
 
-  protected String container;
+  boolean insertAll = false;
+
+  boolean removeAll = false;
+
+  String containerId;
   protected String[] toInsert;
   protected String[] toRemove;
   protected String[] insertedElements;
   protected String[] removedElements;
 
   public InsertRemoveTool(DiagramContext context, String toolName) {
-    super(context, toolName);
+    this(context, toolName, context.getDiagramId());
   }
 
-  public InsertRemoveTool(DiagramContext context, String toolName, String container) {
+  public InsertRemoveTool(DiagramContext context, String[] toolIdentifier) {
+    this(context, toolIdentifier, context.getDiagramId());
+  }
+
+  public InsertRemoveTool(DiagramContext context, String toolName, String containerId) {
     super(context, toolName);
-    this.container = container;
+    this.containerId = containerId;
+  }
+
+  public InsertRemoveTool(DiagramContext context, String[] toolIdentifier, String containerId) {
+    super(context, toolIdentifier[0], toolIdentifier[1]);
+    this.containerId = containerId;
+  }
+
+  protected void initialize(boolean insertAll, boolean removeAll) {
+    this.insertAll = insertAll;
+    this.removeAll = removeAll;
+    initialize(null, null, null, null);
   }
 
   protected void initialize(String[] toInsert, String[] toRemove, String[] insertedElements, String[] removedElements) {
@@ -68,6 +90,11 @@ public class InsertRemoveTool extends AbstractToolStep {
       assertFalse("Please use insert/remove methods instead of run.", true);
     }
     return super.run();
+  }
+
+  public void insertAll() {
+    initialize(true, false);
+    run();
   }
 
   public void insert(String... toInsert) {
@@ -108,12 +135,29 @@ public class InsertRemoveTool extends AbstractToolStep {
    * @return
    */
   protected IHeadlessResult createOperation() {
-    return new ITransfertWizardResult() {
+    return new IHeadlessResult() {
 
       @Override
       @SuppressWarnings({ "unchecked", "synthetic-access", "rawtypes" })
       public Object getResult(java.util.Collection<? extends EObject> selections, Map<String, Object> parameters) {
-        return getExecutionContext().getSemanticElements(insertedElements);
+        if (insertAll) {
+          return AbstractExternalJavaAction.getScope(parameters);
+
+        } else if (removeAll) {
+          return Collections.emptyList();
+        }
+
+        Collection<EObject> objects = new HashSet<EObject>();
+        DiagramContext context = getExecutionContext();
+        Collection<EObject> inserted = context.adaptTool(InsertRemoveTool.this, parameters,
+            context.getSemanticElements(insertedElements));
+        Collection<EObject> removed = context.adaptTool(InsertRemoveTool.this, parameters,
+            context.getSemanticElements(removedElements));
+        objects.addAll(AbstractExternalJavaAction.getInitialSelection(parameters));
+        objects.addAll(inserted);
+        objects.removeAll(removed);
+        return new ArrayList<EObject>(objects);
+
       }
     };
   }
@@ -123,19 +167,9 @@ public class InsertRemoveTool extends AbstractToolStep {
    */
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator containerView = (DSemanticDecorator) getExecutionContext().getDiagram();
-    if (this.container != null) {
-      containerView = getExecutionContext().getView(this.container);
-    }
-
-    for (ArgumentData data : _toolWrapper.getArgumentTypes()) {
-      if (data.getType().equals(ArgumentType.CONTAINER)) {
-        _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
-      }
-      if (data.getType().equals(ArgumentType.CONTAINER_VIEW)) {
-        _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
-      }
-    }
+    DSemanticDecorator containerView = getExecutionContext().getView(this.containerId);
+    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
+    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
   }
 
   /**

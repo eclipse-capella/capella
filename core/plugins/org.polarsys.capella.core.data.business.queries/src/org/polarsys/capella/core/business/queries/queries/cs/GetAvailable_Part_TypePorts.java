@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,20 +30,20 @@ public class GetAvailable_Part_TypePorts extends AbstractQuery {
 		return (List) availableElements;
 	}
 
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof Part) {
-			Part property = (Part) element_p;
+		if (element instanceof Part) {
+			Part property = (Part) element;
 			availableElements.addAll(getRule_MQRY_PhysicalPart_TypePorts_11(property));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p.eContainer());
+		availableElements.remove(element.eContainer());
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_PhysicalPart_TypePorts_11(Part currentPhysicalPart_p) {
+	private List<CapellaElement> getRule_MQRY_PhysicalPart_TypePorts_11(Part currentPhysicalPart) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		PhysicalComponent pc = (PhysicalComponent) currentPhysicalPart_p.getType();
+		PhysicalComponent pc = (PhysicalComponent) currentPhysicalPart.getType();
 		if (pc != null) {
 			availableElements.addAll(pc.getOwnedPartitions());
 		}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,14 +33,14 @@ public class GetAvailable_EnumerationPropertyValue_Value extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof EnumerationPropertyValue) {
-			EnumerationPropertyType type = ((EnumerationPropertyValue) element_p).getType();
+		if (element instanceof EnumerationPropertyValue) {
+			EnumerationPropertyType type = ((EnumerationPropertyValue) element).getType();
 			if (type != null) {
 				availableElements.addAll(type.getOwnedLiterals());
 			}
-			EnumerationPropertyLiteral literal = ((EnumerationPropertyValue) element_p).getValue();
+			EnumerationPropertyLiteral literal = ((EnumerationPropertyValue) element).getValue();
 			if (literal != null) {
 				availableElements.remove(literal);
 			}

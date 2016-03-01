@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -4560,8 +4560,64 @@ public class FaServices {
 
   }
 
-  public List<AbstractFunction> getShowableAllocatedFunctions(Component component) {
-    return AbstractFunctionExt.getAllocatedFunctions(component);
+  public List<AbstractFunction> getShowableAllocatedFunctions(Component component, DNodeContainer containerView) {
+    // showable functions are:
+    List<AbstractFunction> showableFunctions = new ArrayList<AbstractFunction>();
+    
+    // - allocated functions of this components
+    showableFunctions.addAll(component.getAllocatedFunctions());
+    
+    // - parent functions where all of their children are in this component or in child components not displayed
+    Set<AbstractFunction> leaves = getLeavesFunctionsOfSubComponentsNotDisplayed(component, containerView);
+    Set<AbstractFunction> parentFunctions = AbstractFunctionExt.getRecursiveAllocatedFunctions(leaves, leaves);
+    parentFunctions.removeAll(leaves);
+    showableFunctions.addAll(parentFunctions);
+    
+    return showableFunctions;
+  }
+  
+  protected Set<AbstractFunction> getLeavesFunctionsOfSubComponentsNotDisplayed(Component component, DNodeContainer containerView) {
+    Set<AbstractFunction> leaveFunctions = new HashSet<AbstractFunction>();
+    
+    // return all allocated functions of this component
+    leaveFunctions.addAll(component.getAllocatedFunctions());
+    
+    // do not forget operational activities (function) in roles in entities (component)
+    if (component instanceof Entity) {
+      Entity entity = (Entity) component;
+      for (Role role : entity.getAllocatedRoles()) {
+        if (!DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), role)) {
+          leaveFunctions.addAll(role.getAllocatedOperationalActivities());
+        }
+      }
+    }
+    
+    // add leaves of sub components only if it is not displayed, recursively
+    Set<Component> subComponents = new HashSet<Component>();
+    subComponents.addAll(ComponentExt.getSubUsedComponents(component));
+    if (component instanceof PhysicalComponent) {
+      PhysicalComponent physicalComponent = (PhysicalComponent) component;
+      subComponents.addAll(physicalComponent.getDeployedPhysicalComponents());
+    }
+    for (Component subComponent : subComponents) {
+      boolean isDisplayed = false;
+      if (DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), subComponent)) {
+      isDisplayed = true;
+      } else {
+        for (Part representingPart : ComponentExt.getRepresentingParts(subComponent)) {
+          if (DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), representingPart)) {
+            isDisplayed = true;
+            break;
+          }
+        }
+      }
+      
+      if (!isDisplayed) {
+        leaveFunctions.addAll(getLeavesFunctionsOfSubComponentsNotDisplayed(subComponent, containerView));
+      }
+    }
+    
+    return leaveFunctions;
   }
 
   public List<AbstractFunction> getShowableAllocatedOperationalActivities(Role role) {

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: org.polarsys.capella.core.sirius.analysis;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.2.qualifier
 Bundle-Activator: org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator
 Export-Package: org.polarsys.capella.core.sequencediag,
  org.polarsys.capella.core.sequencediag.datas,
@@ -19,6 +19,7 @@ Export-Package: org.polarsys.capella.core.sequencediag,
  org.polarsys.capella.core.sirius.analysis.queries,
  org.polarsys.capella.core.sirius.analysis.queries.configurationItemServices,
  org.polarsys.capella.core.sirius.analysis.queries.csServices,
+ org.polarsys.capella.core.sirius.analysis.queries.filters,
  org.polarsys.capella.core.sirius.analysis.queries.interactionServices,
  org.polarsys.capella.core.sirius.analysis.refresh.extension,
  org.polarsys.capella.core.sirius.analysis.showhide,

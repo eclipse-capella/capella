@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,27 +39,27 @@ public class GetAvailable_PhysicalLink_RealizedPhysicalLinks extends AbstractQue
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalLink) {
-			availableElements.addAll(getRule_MQRY_PhysicalLink_RealizedPhysicalLinks_11((PhysicalLink) element_p));
+		if (element instanceof PhysicalLink) {
+			availableElements.addAll(getRule_MQRY_PhysicalLink_RealizedPhysicalLinks_11((PhysicalLink) element));
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param element_p the physical link
+	 * @param element the physical link
 	 * @return list of physical links
 	 */
-	private List<CapellaElement> getRule_MQRY_PhysicalLink_RealizedPhysicalLinks_11(PhysicalLink element_p) {
+	private List<CapellaElement> getRule_MQRY_PhysicalLink_RealizedPhysicalLinks_11(PhysicalLink element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		List<EObject> allPhysicalLinks = new ArrayList<EObject>();
-		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 		for (BlockArchitecture block : arch.getAllocatedArchitectures()) {
 			allPhysicalLinks.addAll(EObjectExt.getAll(block, CsPackage.Literals.PHYSICAL_LINK));
 		}
-		if (null != element_p) {
-			EList<PhysicalLinkRealization> ownedPhysicalLinkRealisations = element_p.getOwnedPhysicalLinkRealizations();
+		if (null != element) {
+			EList<PhysicalLinkRealization> ownedPhysicalLinkRealisations = element.getOwnedPhysicalLinkRealizations();
 			for (PhysicalLinkRealization ownedPhysicalLinkRealisation : ownedPhysicalLinkRealisations) {
 				TraceableElement targetElement = ownedPhysicalLinkRealisation.getTargetElement();
 				if (null != targetElement) {

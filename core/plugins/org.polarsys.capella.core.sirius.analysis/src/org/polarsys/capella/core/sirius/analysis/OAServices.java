@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -282,7 +282,12 @@ public class OAServices {
    * @param view
    * @return available entities to insert in OEB
    */
+  @Deprecated
   public Collection<? extends Component> getAvailableEntitiesToInsert(DSemanticDecorator view) {
+    return getOEBEntities(view);
+  }
+
+  public Collection<? extends Component> getOEBEntities(DSemanticDecorator view) {
     EObject target = view.getTarget();
     if ((target instanceof Entity) || (target instanceof EntityPkg) || (target instanceof OperationalContext)
         || (target instanceof OperationalActor)) {
@@ -512,7 +517,10 @@ public class OAServices {
     return true;
   }
 
-  // return all the operational capabilities
+  /**
+   * @deprecated Will be removed, use CapabilityPkgExt.getAllAbstractCapabilities
+   */
+  @Deprecated
   public List<Object> getAllOperationalCapabilities(CapellaElement element) {
     BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(element);
     if (!(arch instanceof OperationalAnalysis)) {
@@ -562,4 +570,10 @@ public class OAServices {
 
     return actor;
   }
+
+  public boolean hideAllocatedInteractions(EObject obj) {
+    return (obj instanceof FunctionalExchange)
+        && ((FunctionalExchange) obj).getAllocatingComponentExchanges().isEmpty();
+  }
+
 }

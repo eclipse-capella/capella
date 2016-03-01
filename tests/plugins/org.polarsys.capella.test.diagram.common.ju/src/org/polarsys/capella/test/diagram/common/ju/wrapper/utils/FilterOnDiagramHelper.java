@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.polarsys.capella.test.diagram.common.ju.wrapper.utils;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import junit.framework.Assert;
@@ -93,39 +94,49 @@ public class FilterOnDiagramHelper {
 
   /**
    * Apply a filter filterName on the diagram (and refresh the diagram)
+   * 
    * @param diagram
    * @param filterName
    * @return the FilterDescription with the name filterName
    */
   public static FilterDescription applyFilterOnDiagram(final DDiagram diagram, String filterName) {
-    FilterDescription filterDescription = null;
-    boolean found = false;
-    DiagramDescription description = diagram.getDescription();
-    EList<FilterDescription> filters = description.getFilters();
-
-    for (int i = 0; (i < filters.size()) && !found; i++) {
-      final FilterDescription aFilterDescription = filters.get(i);
-      if (aFilterDescription.getName().equalsIgnoreCase(filterName)) {
-        found = true;
-        filterDescription = aFilterDescription;
-        // Add the filter to the activated filters list & Refresh the diagram
-        AbstractCommand cmd = new AbstractReadWriteCommand() {
-          public void run() {
-            EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
-            activatedFilters.add(aFilterDescription);
-            if (null != diagram) {
-              // Refreshes the diagram:
-              DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
-            }
-          }
-        };
-        // Let's perform the job
-        TestHelper.getExecutionManager(diagram).execute(cmd);
+    final FilterDescription filterDescription = getFilterDescription(diagram, filterName);
+    Assert.assertNotNull(
+        MessageFormat.format("Filter \"{0}\" can not be found for diagram \"{1}\"", filterName, diagram.getName()),
+        filterDescription);
+    // Add the filter to the activated filters list & Refresh the diagram
+    AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+        activatedFilters.add(filterDescription);
+        // Refreshes the diagram:
+        DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
       }
-    }
+    };
+    // Let's perform the job
+    TestHelper.getExecutionManager(diagram).execute(cmd);
     return filterDescription;
   }
 
+  /**
+   * Get filter with specified name in specified diagram.
+   * @param diagram
+   * @param filterName
+   * @return
+   */
+  public static FilterDescription getFilterDescription(final DDiagram diagram, String filterName) {
+    DiagramDescription description = diagram.getDescription();
+    List<FilterDescription> filters = description.getFilters();
+
+    for (FilterDescription filterDescription : filters) {
+      if (filterDescription.getName().equalsIgnoreCase(filterName)) {
+        return filterDescription;
+      }
+    }
+    return null;
+  }
+  
   /**
    * Check if the elements are correctly filtered (not visible in diagram)
    * @param diagram
@@ -264,36 +275,26 @@ public class FilterOnDiagramHelper {
 
   /**
    * Remove a filter filterName on the diagram (and refresh the diagram)
+   * 
    * @param diagram
    * @param filterName
    * @return the FilterDescription with the name filterName
    */
   public static FilterDescription removeFilterOnDiagram(final DDiagram diagram, String filterName) {
-    FilterDescription filterDescription = null;
-    boolean found = false;
-    DiagramDescription description = diagram.getDescription();
-    EList<FilterDescription> filters = description.getFilters();
-
-    for (int i = 0; (i < filters.size()) && !found; i++) {
-      final FilterDescription aFilterDescription = filters.get(i);
-      if (aFilterDescription.getName().equalsIgnoreCase(filterName)) {
-        found = true;
-        filterDescription = aFilterDescription;
-        // Remove the filter to the activated filters list & refresh the diagram
-        AbstractCommand cmd = new AbstractReadWriteCommand() {
-          public void run() {
-            EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
-            activatedFilters.remove(aFilterDescription);
-            if (null != diagram) {
-              // Refreshes the diagram:
-              DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
-            }
-          }
-        };
-        // Let's perform the job
-        TestHelper.getExecutionManager(diagram).execute(cmd);
+    final FilterDescription filterDescription = getFilterDescription(diagram, filterName);
+    Assert.assertNotNull(
+        MessageFormat.format("Filter \"{0}\" can not be found for diagram \"{1}\"", filterName, diagram.getName()),
+        filterDescription);
+    AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+        activatedFilters.remove(filterDescription);
+        DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
       }
-    }
+    };
+    // Let's perform the job
+    TestHelper.getExecutionManager(diagram).execute(cmd);
     return filterDescription;
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,10 +34,10 @@ public class GetCurrent_PhysicalPort_AllocatedFunctionPorts extends AbstractQuer
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof Port) {
-			Port elt = (Port) element_p;
+		if (element instanceof Port) {
+			Port elt = (Port) element;
 			EList<PortAllocation> portAllocations = elt.getOutgoingPortAllocations();
 			for (PortAllocation portAllocation : portAllocations) {
 				if (portAllocation.getAllocatedPort() != null) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,14 +21,15 @@ import org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksF
  * Interface which have to be implemented by the classes with are used in order to short-cut GUI call from
  * {@link AffectToMessageDialogBox}
  */
+@Deprecated
 public interface IAffectToMessageResult extends IHeadlessResult {
   /**
    * the simulated result.
    * 
    * @param selections
-   *          @see {@link AffectToMessageDialogBox}
+   * @see {@link AffectToMessageDialogBox}
    * @param parameters
-   *          @see {@link AffectToMessageDialogBox}
+   * @see {@link AffectToMessageDialogBox}
    * @return the "left" list.
    * @see {@link SelectLinksFromTransferWizard}
    */

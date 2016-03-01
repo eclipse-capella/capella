@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 public class GetAvailable_CommunicationLink_ExchangeItem extends AbstractQuery {
 
   @Override
-  public List<Object> execute(Object element_p, IQueryContext context) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS, element_p, new QueryContext());
+  public List<Object> execute(Object element, IQueryContext context) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS, element, new QueryContext());
   }
 }

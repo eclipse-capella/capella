@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,11 +20,11 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AffectToMessageDialogBox;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
-import org.polarsys.capella.test.diagram.common.ju.headless.IAffectToMessageResult;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 
 /**
  * UI-free release of the {@link AffectToMessageDialogBox} class
+ * 
  * @deprecated
  */
 @Deprecated
@@ -32,7 +32,9 @@ public class HeadlessAffectToMessageDialogBox extends AffectToMessageDialogBox {
 
   /**
    * Mainly code duplication
-   * @see org.polarsys.capella.core.sirius.analysis.actions.extensions.AffectToMessage#execute(java.util.Collection, java.util.Map)
+   * 
+   * @see org.polarsys.capella.core.sirius.analysis.actions.extensions.AffectToMessage#execute(java.util.Collection,
+   *      java.util.Map)
    */
   @Override
   public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
@@ -51,13 +53,14 @@ public class HeadlessAffectToMessageDialogBox extends AffectToMessageDialogBox {
     }
     Scenario scenario = (Scenario) irToUse.eContainer();
 
-    //Assert.isNotNull(resultPortStrategyVariable);
+    // Assert.isNotNull(resultPortStrategyVariable);
     Assert.isNotNull(resultVariable);
 
     IHeadlessResult itwr = HeadlessResultOpProvider.INSTANCE.getCurrentOp();
 
-    Object result = ((IAffectToMessageResult) itwr).getResult(selections, parameters);
-    // InterpreterUtil.getInterpreter(scenario).setVariable(resultPortStrategyVariable, Boolean.valueOf(DialogProvider.getPortStrategie()));
+    Object result = itwr.getResult(selections, parameters);
+    // InterpreterUtil.getInterpreter(scenario).setVariable(resultPortStrategyVariable,
+    // Boolean.valueOf(DialogProvider.getPortStrategie()));
 
     InterpreterUtil.getInterpreter(scenario).setVariable(resultVariable, result);
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,6 +103,7 @@ import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Relationship;
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
@@ -1066,8 +1067,10 @@ public class CsServices {
   public boolean isSameArchitecture(NamedElement source, NamedElement target) {
     BlockArchitecture architectureSource = ComponentExt.getRootBlockArchitecture(source);
     BlockArchitecture architectureTarget = ComponentExt.getRootBlockArchitecture(target);
-    return ((architectureSource == null) && (architectureTarget == null))
-        || architectureSource.equals(architectureTarget);
+
+    return ((architectureSource != null) && architectureSource.equals(architectureTarget))
+        || ((architectureSource == null) && (architectureTarget == null));
+
   }
 
   /**
@@ -1282,11 +1285,7 @@ public class CsServices {
       if (container != null) {
         Component ownerPart = container;
         for (Partition partition : ownerPart.getOwnedPartitions()) {
-          if (components.contains(partition.getType())) {
             components.add((Component) partition.getType());
-          } else {
-            components.add((Component) partition.getType());
-          }
         }
       }
     }
@@ -1351,13 +1350,13 @@ public class CsServices {
     // OLD CODE
     Collection<Component> components = getSubComponents(target);
     // NEW CODE
-    components = (List) QueryDebugger.executeQueryWithInclusionDebug(
-        "GetCCIIShowHideComponent__Lib", target, components);//$NON-NLS-1$
+    components = (List) QueryDebugger.executeQueryWithInclusionDebug("GetCCIIShowHideComponent__Lib", target, //$NON-NLS-1$
+        components);
     // END CODE REFACTOR
     return components;
   }
 
-  private Collection<Component> getSubComponents(EObject target) {
+  public Collection<Component> getSubComponents(EObject target) {
     Collection<Component> components = new ArrayList<Component>();
     if (null == target) {
       return components;
@@ -2416,8 +2415,6 @@ public class CsServices {
 
     if (preSource instanceof PhysicalPort) {
       sourceValid = true;
-      sourceElement = (DSemanticDecorator) sourceElement.eContainer();
-
     } else if (preSource instanceof Part) {
       Type type = ((Part) preSource).getType();
       if ((type != null) && (type instanceof Component)) {
@@ -2429,8 +2426,6 @@ public class CsServices {
 
     if (preTarget instanceof PhysicalPort) {
       targetValid = true;
-      targetElement = (DSemanticDecorator) targetElement.eContainer();
-
     } else if (preTarget instanceof Part) {
       Type type = ((Part) preTarget).getType();
       if ((type != null) && (type instanceof Component)) {
@@ -3115,20 +3110,17 @@ public class CsServices {
       }
     }
 
-    if (source != null) {
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
-      // check the activation of the filters
-      if (diagram != null) {
-        for (FilterDescription filter : diagram.getActivatedFilters()) {
-          if (IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED.equals(filter.getName())) {
-            if (isFirstFilterActive(filter, diagram)) {
-              return false;
-            }
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
+    // check the activation of the filters
+    if (diagram != null) {
+      for (FilterDescription filter : diagram.getActivatedFilters()) {
+        if (IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED.equals(filter.getName())) {
+          if (isFirstFilterActive(filter, diagram)) {
+            return false;
           }
         }
       }
     }
-
     return true;
   }
 
@@ -3163,23 +3155,19 @@ public class CsServices {
           return false;
         }
       }
-
     }
 
-    if (source != null) {
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
-      // check the activation of the filters
-      if (diagram != null) {
-        for (FilterDescription filter : diagram.getActivatedFilters()) {
-          if (IMappingNameConstants.HIDE_CE_BY_GROUP.equals(filter.getName())) {
-            if (isFirstFilterActive(filter, diagram)) {
-              return false;
-            }
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
+    // check the activation of the filters
+    if (diagram != null) {
+      for (FilterDescription filter : diagram.getActivatedFilters()) {
+        if (IMappingNameConstants.HIDE_CE_BY_GROUP.equals(filter.getName())) {
+          if (isFirstFilterActive(filter, diagram)) {
+            return false;
           }
         }
       }
     }
-
     return true;
   }
 
@@ -3961,8 +3949,8 @@ public class CsServices {
   }
 
   /**
-   * @param sourceElement
-   * @param targetElement
+   * @param source
+   * @param target
    * @return
    */
   private boolean isUndoublonLink(DSemanticDecorator source, DSemanticDecorator target) {
@@ -4126,7 +4114,7 @@ public class CsServices {
     for (EObject semantic : sems) {
       if (semantic instanceof ComponentExchange) {
         if (((ComponentExchange) semantic).getKind() == ComponentExchangeKind.DELEGATION) {
-          return " "; //$NON-NLS-1$;
+          return " "; //$NON-NLS-1$ ;
         }
         exchanges.add((ComponentExchange) semantic);
       }
@@ -4153,7 +4141,7 @@ public class CsServices {
     for (EObject semantic : sems) {
       if (semantic instanceof ComponentExchange) {
         if (((ComponentExchange) semantic).getKind() == ComponentExchangeKind.DELEGATION) {
-          return " "; //$NON-NLS-1$;
+          return " "; //$NON-NLS-1$ ;
         }
         exchanges.add((ComponentExchange) semantic);
 
@@ -4186,7 +4174,7 @@ public class CsServices {
 
       if (semantic instanceof ComponentExchange) {
         if (((ComponentExchange) semantic).getKind() == ComponentExchangeKind.DELEGATION) {
-          return " "; //$NON-NLS-1$;
+          return " "; //$NON-NLS-1$ ;
         }
         InformationsExchanger port = ((ComponentExchange) semantic).getSource();
         EObject ownerComponent = port.eContainer();
@@ -4579,27 +4567,10 @@ public class CsServices {
    * Returns actors which should be inserted into the architecture of the component in the LAB diagram
    */
   public Collection<? extends Component> getABInsertActor(Component component) {
-    Collection<? extends Component> components = new HashSet<Component>();
-
     // OLD CODE
     BlockArchitecture architecture = getArchitecture(component);
-
-    if (architecture instanceof SystemAnalysis) {
-      ActorPkg pkg = ((SystemAnalysis) architecture).getOwnedActorPkg();
-      if (pkg != null) {
-        components = ActorPkgExt.getAllActors(pkg);
-      }
-    } else if (architecture instanceof LogicalArchitecture) {
-      LogicalActorPkg pkg = ((LogicalArchitecture) architecture).getOwnedLogicalActorPkg();
-      if (pkg != null) {
-        components = ActorPkgExt.getAllActors(pkg);
-      }
-    } else if (architecture instanceof PhysicalArchitecture) {
-      PhysicalActorPkg pkg = ((PhysicalArchitecture) architecture).getOwnedPhysicalActorPkg();
-      if (pkg != null) {
-        components = ActorPkgExt.getAllActors(pkg);
-      }
-    }
+    Structure structure = BlockArchitectureExt.getActorPkg(architecture, false);
+    List<AbstractActor> components = ActorPkgExt.getAllActors(structure);
 
     if (!isMultipartMode(architecture)) {
       Component context = getContext(architecture);
@@ -4692,8 +4663,8 @@ public class CsServices {
   }
 
   /**
-   * @param aNode
-   * @param component
+   * @param parent
+   * @param target
    * @return
    */
   Couple<DNodeContainer, Boolean> createViewOrGetPart(DragAndDropTarget parent, EObject target) {
@@ -4783,6 +4754,7 @@ public class CsServices {
     Collection<FunctionalExchange> contextualFunctionExchanges = new HashSet<FunctionalExchange>();
     Collection<EObject> contextualFunctionalChains = new HashSet<EObject>();
     Collection<EObject> contextualConnections = new HashSet<EObject>();
+    Collection<EObject> contextualPhysicalLinks = new HashSet<EObject>();
     Collection<EObject> contextualModes = new HashSet<EObject>();
     Collection<EObject> contextualScenarios = new HashSet<EObject>();
 
@@ -4794,15 +4766,9 @@ public class CsServices {
       } else if (contextualElement instanceof Component) {
         Collection<Part> parts = ComponentExt.getRepresentingParts((Component) contextualElement);
         contextualParts.addAll(parts);
-        for (Part part : parts) {
-          contextualConnections.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt
-              .getAllRelatedPhysicalLinks(part));
-        }
 
       } else if (contextualElement instanceof Part) {
         contextualParts.add(contextualElement);
-        contextualConnections.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt
-            .getAllRelatedPhysicalLinks((Part) contextualElement));
 
       } else if (contextualElement instanceof AbstractFunction) {
         contextualFunctions.add((AbstractFunction) contextualElement);
@@ -4836,6 +4802,13 @@ public class CsServices {
           contextualConnections.add(flow);
         }
       }
+
+      Collection<PhysicalLink> delagatesPhysicalLink = getAllDelegatesPhysicalLink(contextualPart);
+      for (PhysicalLink physicalLink : ABServices.getService().getRelatedPhysicalLink(contextualPart)) {
+        if (!delagatesPhysicalLink.contains(physicalLink)) {
+          contextualPhysicalLinks.add(physicalLink);
+        }
+      }
     }
 
     // Show a lot of things
@@ -4843,9 +4816,44 @@ public class CsServices {
     CsServices.getService().showABFunctionalExchange((Collection) contextualFunctionExchanges,
         (DSemanticDecorator) diagram);
     CsServices.getService().showABComponentExchange(contextualConnections, (DSemanticDecorator) diagram);
+    CsServices.getService().showABPhysicalLink(contextualPhysicalLinks, (DSemanticDecorator) diagram);
     FaServices.getFaServices().showABFunctionalChains(diagram, contextualFunctionalChains, context);
     ABServices.getService().showABScenarios((DSemanticDecorator) diagram, contextualScenarios);
     ABServices.getService().showABStateModes((DSemanticDecorator) diagram, contextualModes);
+  }
+
+  public Collection<PhysicalLink> getAllDelegatesPhysicalLink(EObject contextualPart) {
+    Collection<PhysicalLink> result = new ArrayList<PhysicalLink>();
+    for (PhysicalPort port : getContainedPhysicalPorts(contextualPart)) {
+      result.addAll(PortExt.getDelegatedPhysicalLinks(port));
+      result.addAll(PortExt.getDelegatingPhysicalLinks(port));
+    }
+    return result;
+  }
+
+  /**
+   * Get contained physical ports for a Part or Component
+   * 
+   * @param contextualPart
+   * @return
+   */
+  public List<PhysicalPort> getContainedPhysicalPorts(EObject contextualPart) {
+    if (contextualPart instanceof Component) {
+      return ((Component) contextualPart).getContainedPhysicalPorts();
+    } else if (contextualPart instanceof Part) {
+      Part part = (Part) contextualPart;
+      if (part.getAbstractType() instanceof Component) {
+        Component component = ((Component) part.getAbstractType());
+        return component.getContainedPhysicalPorts();
+      }
+    }
+    return Collections.emptyList();
+  }
+
+  public EObject showABPhysicalLink(Collection<EObject> contextualPhysicalLinks, DSemanticDecorator currentElementView) {
+    ABServices.getService().showABPhysicalLink(contextualPhysicalLinks,
+        new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
+    return currentElementView;
   }
 
   /**
@@ -4866,8 +4874,8 @@ public class CsServices {
   /**
    * used in context, logical, oa, physical
    */
-  public EObject showConnectionInArchitectureBlank(EObject exchangeToShow, DSemanticDecorator currentElementView) {
-    return showABComponentExchange(exchangeToShow, currentElementView);
+  public EObject showABPhysicalLink(EObject physicalLinkToShow, DSemanticDecorator currentElementView) {
+    return showABPhysicalLink(Collections.singleton(physicalLinkToShow), currentElementView);
   }
 
   /**
@@ -4999,7 +5007,7 @@ public class CsServices {
    * return integer value according the link to be created 0 = non 1 = provided 2 = required 3 = provided + required
    * 
    * @param port
-   * @param interface
+   * @param interf
    * @return
    */
   public int getTypeOfTheLinkToCreate(ComponentPort port, Interface itf) {
@@ -5093,9 +5101,9 @@ public class CsServices {
   public String getInterfaceExchangeItemLabel(EObject context, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
 
-    String result = ICommonConstants.EMPTY_STRING;
+    StringBuffer result = new StringBuffer();
     if ((null == sourceView) || (null == targetView)) {
-      return result;
+      return result.toString();
     }
     EObject src = sourceView.getTarget();
     EObject tar = targetView.getTarget();
@@ -5115,10 +5123,11 @@ public class CsServices {
         }
         for (Component component : components) {
           if (target.equals(component)) {
-            if (result.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-              result = result + interface1.getName();
+            if (result.toString().isEmpty()) {
+              result.append(interface1.getName());
             } else {
-              result = result + ", " + interface1.getName(); //$NON-NLS-1$
+              result.append(", "); //$NON-NLS-1$
+              result.append(interface1.getName()); 
             }
           }
         }
@@ -5131,19 +5140,18 @@ public class CsServices {
           List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(abstractExchangeItem);
           for (Component component : oppositeComponentUsingCrossref) {
             if (target.equals(component)) {
-              if (result.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-                result = result + abstractExchangeItem.getName();
+              if (result.toString().isEmpty()) {
+                result.append(abstractExchangeItem.getName());
               } else {
-                result = result + ", " + abstractExchangeItem.getName(); //$NON-NLS-1$
+                result.append(", "); //$NON-NLS-1$
+                result.append(abstractExchangeItem.getName());
               }
             }
           }
         }
       }
-
     }
-
-    return result;
+    return result.toString();
   }
 
   /**
@@ -5160,9 +5168,9 @@ public class CsServices {
   public String getInterfaceExchangeItemLabelDiagramBased(EObject context, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
 
-    String result = ICommonConstants.EMPTY_STRING;
+    StringBuffer result = new StringBuffer();
     if ((null == sourceView) || (null == targetView)) {
-      return result;
+      return result.toString();
     }
     EObject src = sourceView.getTarget();
     EObject tar = targetView.getTarget();
@@ -5174,7 +5182,7 @@ public class CsServices {
       DiagramServices diagramService = DiagramServices.getDiagramServices();
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
       if (null == diagram) {
-        return result;
+        return result.toString();
       }
 
       // used links to implementer component
@@ -5190,10 +5198,11 @@ public class CsServices {
           if (target.equals(component)) {
             // add to result only if interface1 is found in diagram
             if (diagramService.isOnDiagram(diagram, interface1)) {
-              if (result.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-                result = result + interface1.getName();
+              if (result.toString().isEmpty()) {
+                result.append(interface1.getName());
               } else {
-                result = result + ", " + interface1.getName(); //$NON-NLS-1$
+                result.append(", "); //$NON-NLS-1$
+                result.append(interface1.getName()); 
               }
             }
           }
@@ -5209,10 +5218,11 @@ public class CsServices {
             if (target.equals(component)) {
               // add to result only if interface1 is found in diagram
               if (diagramService.isOnDiagram(diagram, abstractExchangeItem)) {
-                if (result.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-                  result = result + abstractExchangeItem.getName();
+                if (result.toString().isEmpty()) {
+                  result.append(abstractExchangeItem.getName());
                 } else {
-                  result = result + ", " + abstractExchangeItem.getName(); //$NON-NLS-1$
+                  result.append(", "); //$NON-NLS-1$
+                  result.append(abstractExchangeItem.getName());
                 }
               }
             }
@@ -5221,8 +5231,7 @@ public class CsServices {
       }
 
     }
-
-    return result;
+    return result.toString();
   }
 
   /**
@@ -5347,14 +5356,14 @@ public class CsServices {
   }
 
   /**
-   * @used in common.odesign Return diagram label for state transition : mode and state diagram syntax : <Trigger>
-   *       [<Guard>] / <Effect> (Note : if no <Trigger> <TriggerDesecription> is displayed)
+   * @used in common.odesign Return diagram label for state transition : mode and state diagram syntax : <Trigger> [
+   *       <Guard>] / <Effect> (Note : if no <Trigger> <TriggerDesecription> is displayed)
    * @param context
    *          : StateTransition
    * @return : String
    */
   public String getStateTransitionLabel(EObject context) {
-    String result = ICommonConstants.EMPTY_STRING;
+    StringBuffer result = new StringBuffer();
 
     if ((null != context) && (context instanceof StateTransition)) {
       StateTransition transition = (StateTransition) context;
@@ -5372,19 +5381,19 @@ public class CsServices {
             TimeEvent timeEvent = (TimeEvent) trigger;
             name = "(" + timeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
           }
-          result += name;
+          result.append(name);
           if (trigger instanceof StateEvent) {
             Constraint triggerCondition = ((StateEvent) trigger).getExpression();
             if (triggerCondition != null) {
-              result += CapellaServices.getService().getConstraintLabel(triggerCondition);
+              result.append(CapellaServices.getService().getConstraintLabel(triggerCondition));
             } else {
-              result += trigger.getName();
+              result.append(trigger.getName());
             }
           }
           if (trigger != triggers.get(triggers.size() - 1)) {
-            result += ","; //$NON-NLS-1$
+            result.append(","); //$NON-NLS-1$
           } else {
-            result += " "; //$NON-NLS-1$
+            result.append(" "); //$NON-NLS-1$
           }
         }
       }
@@ -5392,25 +5401,25 @@ public class CsServices {
       if (triggers.isEmpty()) {
         String triggerDescription = transition.getTriggerDescription();
         if ((null != triggerDescription) && !triggerDescription.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-          result += triggerDescription;
+          result.append(triggerDescription);
         }
       }
 
       if (transition.getGuard() != null) {
         String constraintLabel = CapellaServices.getService().getConstraintLabel(transition.getGuard());
         if ((constraintLabel != null) && !constraintLabel.isEmpty()) {
-          result += " [" + constraintLabel + "] ";
+          result.append(" [" + constraintLabel + "] ");
         }
       }
 
       AbstractEvent effect = transition.getEffect();
       // Effect
       if (effect != null) {
-        result += " / " + effect.getName(); //$NON-NLS-1$
+        result.append(" / "); //$NON-NLS-1$
+        result.append(effect.getName()); 
       }
     }
-
-    return result;
+    return result.toString();
   }
 
   /**

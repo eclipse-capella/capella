@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,20 +63,20 @@ public class GetAvailable_Component_ImplementedInterfaces extends AbstractQuery 
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof Component) {
-			Component currentLC = (Component) element_p;
+		if (element instanceof Component) {
+			Component currentLC = (Component) element;
 			availableElements.addAll(getRule_MQRY_LC_ImplInterfaces_11(currentLC));
 			availableElements.addAll(getRule_MQRY_LC_ImplInterfaces_12(currentLC));
 			availableElements.addAll(getRule_MQRY_LC_ImplInterfaces_13(currentLC));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p);
+		availableElements.remove(element);
 		return availableElements;
 	}
 
@@ -88,14 +88,14 @@ public class GetAvailable_Component_ImplementedInterfaces extends AbstractQuery 
 	 * The owner logical component of the current one.(Refer
 	 * MQRY_LogicalComponent_ImplInterfaces_11).
 	 * </p>
-	 * @param currentLC_pthe current Logical Component
-	 * @param parentLC_pthe owner Logical Component
+	 * @param currentLCthe current Logical Component
+	 * @param parentLCthe owner Logical Component
 	 * @return list of interfaces
 	 */
-	private List<CapellaElement> getRule_MQRY_LC_ImplInterfaces_11(Component currentLC_p) {
+	private List<CapellaElement> getRule_MQRY_LC_ImplInterfaces_11(Component currentLC) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (Component component : ComponentExt.getDirectParents(currentLC_p)) {
-			availableElements.addAll(ComponentExt.getImplementedInterfacesFiltered(component, currentLC_p));
+		for (Component component : ComponentExt.getDirectParents(currentLC)) {
+			availableElements.addAll(ComponentExt.getImplementedInterfacesFiltered(component, currentLC));
 		}
 		return availableElements;
 	}
@@ -106,18 +106,18 @@ public class GetAvailable_Component_ImplementedInterfaces extends AbstractQuery 
 	 * packages) of the current logical component's parent (Refer
 	 * MQRY_LogicalComponent_ImplInterfaces_12).
 	 * </p>
-	 * @param currentLC_pthe current Logical Component
-	 * @param parentLC_pthe owner Logical Component
+	 * @param currentLCthe current Logical Component
+	 * @param parentLCthe owner Logical Component
 	 * @return list of interfaces
 	 */
-	private List<CapellaElement> getRule_MQRY_LC_ImplInterfaces_12(Component currentLC_p) {
+	private List<CapellaElement> getRule_MQRY_LC_ImplInterfaces_12(Component currentLC) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		Object parent = currentLC_p.eContainer();
+		Object parent = currentLC.eContainer();
 		if (null != parent) {
 			if (parent instanceof Component) {
-				availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(((Component) parent).getOwnedInterfacePkg(), currentLC_p, false));
+				availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(((Component) parent).getOwnedInterfacePkg(), currentLC, false));
 			} else if (parent instanceof BlockArchitecture) {
-				availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(((BlockArchitecture) parent).getOwnedInterfacePkg(), currentLC_p, false));
+				availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(((BlockArchitecture) parent).getOwnedInterfacePkg(), currentLC, false));
 			}
 		}
 		return availableElements;
@@ -129,14 +129,14 @@ public class GetAvailable_Component_ImplementedInterfaces extends AbstractQuery 
 	 * of the current LC's parent hierarchy((Refer
 	 * MQRY_LogicalComponent_ImplInterfaces_13).
 	 * </p>
-	 * @param currentLC_pthe current Logical Component
-	 * @param parentLC_pthe parent Logical Component
+	 * @param currentLCthe current Logical Component
+	 * @param parentLCthe parent Logical Component
 	 * @return list of interfaces
 	 */
-	private List<CapellaElement> getRule_MQRY_LC_ImplInterfaces_13(Component currentLC_p) {
+	private List<CapellaElement> getRule_MQRY_LC_ImplInterfaces_13(Component currentLC) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (Interface inter : ComponentExt.getInterfacesFromComponentParentHierarchy(currentLC_p)) {
-			if (ComponentExt.isImplementingInterface(currentLC_p, inter)) {
+		for (Interface inter : ComponentExt.getInterfacesFromComponentParentHierarchy(currentLC)) {
+			if (ComponentExt.isImplementingInterface(currentLC, inter)) {
 				continue;
 			}
 			availableElements.add(inter);

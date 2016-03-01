@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,43 +13,48 @@ package org.polarsys.capella.test.diagram.common.ju.step.crud;
 import junit.framework.Assert;
 
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
-import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.Messages;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * Test case that refreshes a given diagram.
  */
-public class RefreshDiagramStep extends AbstractTestStep {
+public class RefreshDiagramStep extends AbstractDiagramStep<DiagramContext> {
 
-  /** The target diagram */
-  protected DDiagram _diagram;
-  
-  public RefreshDiagramStep(SessionContext executionContext) {
+  public RefreshDiagramStep(DiagramContext executionContext) {
     super(executionContext);
   }
 
   /**
    * @see org.polarsys.capella.test.common.AbstractExtendedTest#preTestRun()
    */
+  @Override
   protected void preRunTest() {
     super.preRunTest();
-    Assert.assertNotNull(Messages.nullDiagram, _diagram);
+    Assert.assertNotNull(Messages.nullDiagram, getExecutionContext().getDiagram());
   }
 
   /**
    * Implement a diagram creation.
    */
+  @Override
   protected void runTest() {
-    boolean ret = DiagramHelper.refreshDiagram(_diagram);
+    TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
+      public void run() {
+        boolean ret = DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+        Assert.assertTrue(
+            NLS.bind(Messages.failToRefreshDiagram, new Object[] { getExecutionContext().getDiagram().getName() }), ret);
+      }
+    });
 
-    Assert.assertTrue(NLS.bind(Messages.failToRefreshDiagram, new Object[] { _diagram.getName() }), ret);
   }
 
   @Override
-  public Object getResult() {
-    return null;
+  public DiagramContext getResult() {
+    return getExecutionContext();
   }
 }

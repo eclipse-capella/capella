@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,12 +36,12 @@ public class GetAvailable_CapellaElement_Status extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (null == element_p) {
+		if (null == element) {
 			return availableElements;
 		}
-		Project project = (Project) EcoreUtil2.getFirstContainer(element_p, CapellamodellerPackage.Literals.PROJECT);
+		Project project = (Project) EcoreUtil2.getFirstContainer(element, CapellamodellerPackage.Literals.PROJECT);
 		if (null != project) {
 			for (EnumerationPropertyType enumeration : project.getOwnedEnumerationPropertyTypes()) {
 				if (enumeration.getName().equals(CapellaProjectHelper.PROGRESS_STATUS_KEYWORD)) {

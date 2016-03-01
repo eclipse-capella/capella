@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="System Descriptions" version="10.1.0.201507271600">
   <ownedViewpoints name="System Analysis" modelFileExtension="melodymodeller">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Contextual Mission" titleExpression="[CM] &lt;%current.name%> - Contextual Mission" domainClass="Mission">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Contextual Mission" titleExpression="[CM] &lt;%current.name%>" domainClass="Mission">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -178,46 +178,30 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert Actors" name="Insert Actors" label="Actors" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Actors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedActorPkg.eAllContents().filter(&quot;Actor&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedActors"/>
-                  <parameters name="wizardMessage" value="Select Actors to insert into &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedActors != &quot;WIZARD_CANCELED&quot; %>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedActors%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert Capabilities" name="Insert Capabilities" label="Capabilities" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='CapNode']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Capabilities" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedAbstractCapabilityPkg.eAllContents().filter(&quot;Capability&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedCapabilities"/>
-                  <parameters name="wizardMessage" value="Select Capabilities to insert into &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedCapabilities != &quot;WIZARD_CANCELED&quot; %>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedCapabilities%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='CapNode']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -267,7 +251,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Mission" label="" precondition="&lt;%isInLib()%>" titleExpression="[CM] &lt;%current.name%> - Contextual Mission" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Mission" label="" precondition="&lt;%isInLib()%>" titleExpression="[CM] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -430,7 +414,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Missions Blank" titleExpression="[MB] &lt;%current.name%> - Missions Blank" domainClass="MissionPkg">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Missions Blank" titleExpression="[MB] &lt;%current.name%>" domainClass="MissionPkg">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -621,68 +605,44 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove System Actors. Creates or deletes graphical objects corresponding to already existing System Actors. Removing a System Actor graphical object from the diagram does not delete the System Actor from the model. This tool does not modify the semantic model." name="Show Actor" label="Actors" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Actors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedActorPkg.eAllContents().filter(&quot;Actor&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedActors"/>
-                  <parameters name="wizardMessage" value="Select Actors to show in &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedActors != &quot;WIZARD_CANCELED&quot;%>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedActors%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Missions. Creates or deletes graphical objects corresponding to already existing Missions. Removing a Mission graphical object from the diagram does not delete the Mission from the model. This tool does not modify the semantic model." name="Show Mission" label="Missions" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Missions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eAllContents.filter(&quot;Mission&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedMissions"/>
-                  <parameters name="wizardMessage" value="Select Missions to show in &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedMissions !=  &quot;WIZARD_CANCELED&quot; %>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedMissions%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Capabilities. Creates or deletes graphical objects corresponding to already existing Capabilities. Removing a Capability graphical object from the diagram does not delete the Capability from the model. This tool does not modify the semantic model." name="Show Capability" label="Capabilities" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Missions" label="Missions" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Mission"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Capabilities" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedAbstractCapabilityPkg.eAllContents().filter(&quot;Capability&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedCapabilities"/>
-                  <parameters name="wizardMessage" value="Select Capabilities to show in &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedCapabilities != &quot;WIZARD_CANCELED&quot; %>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedCapabilities%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -890,7 +850,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Contextual Capability" titleExpression="[CC] &lt;%current.name%> - Contextual Capabilty" domainClass="Capability">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Contextual Capability" titleExpression="[CC] &lt;%current.name%>" domainClass="Capability">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
@@ -1138,68 +1098,44 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Actors. Create or delete graphical objects corresponding to existing Actors. Removing an Actor graphical does not delete this Actor. This tool does not modify the semantic model." name="Show Actors" label="Actors" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Actors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedActorPkg.eAllContents().filter(&quot;Actor&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedActors"/>
-                  <parameters name="wizardMessage" value="Select Actors to show in &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedActors != &quot;WIZARD_CANCELED&quot; %>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedActors%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Missions. Create or delete graphical objects corresponding to existing Missions. Removing a Mission graphical does not delete this Actor. This tool does not modify the semantic model." name="Show Missions" label="Missions" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='MissionNode3']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Missions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedMissionPkg.eAllContents().filter(&quot;Mission&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedMissions"/>
-                  <parameters name="wizardMessage" value="Select Missions to show in &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedMissions != &quot;WIZARD_CANCELED&quot;%>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedMissions%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='MissionNode3']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Capabilities. Create or delete graphical objects corresponding to existing Capabilities. Removing a Capability graphical does not delete this Actor. This tool does not modify the semantic model." name="Show Capability" label="Capabilities" precondition="&lt;%$containerView.filter(&quot;DDiagram&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Missions" label="Missions" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Mission"/>
+            </element>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Capabilities" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedAbstractCapabilityPkg.eAllContents().filter(&quot;Capability&quot;) - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target%>"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="selectedCapabilities"/>
-                  <parameters name="wizardMessage" value="Select Capabilities to show in &lt;%$container.name%>."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$selectedCapabilities != &quot;WIZARD_CANCELED&quot; %>">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedCapabilities%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']" containerViewExpression="&lt;%$containerView%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($resultVariable== &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1255,7 +1191,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability" precondition="&lt;%isInLib()%>" titleExpression="[CC] &lt;%current.name%> - Contextual Capabilty" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability" precondition="&lt;%isInLib()%>" titleExpression="[CC] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -1377,7 +1313,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%current.name%> - Interface Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1430,7 +1366,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Missions Capabilities Blank" titleExpression="[MCB] &lt;%current.name%> - Mission Capabilities Blank" domainClass="CapabilityPkg">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Missions Capabilities Blank" titleExpression="[MCB] &lt;%current.name%>" domainClass="CapabilityPkg">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -1702,7 +1638,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Actor"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1716,7 +1652,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capabilities" label="Capabilities" precondition="&lt;%$elementView.filter(&quot;DDiagram&quot;).nSize() > 0%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Capability"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1910,7 +1846,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%current.name%> - Interface Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1928,7 +1864,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Exchange Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="[ES] &lt;%current.name%> - Exchange Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Exchange Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="[ES] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1946,7 +1882,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Function Scenario" label="Function Scenario" precondition="&lt;%isInLib()%>" titleExpression="[FS] &lt;%current.name%> - Function Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Function Scenario" label="Function Scenario" precondition="&lt;%isInLib()%>" titleExpression="[FS] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -2119,7 +2055,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="System Function Breakdown" titleExpression="[SFBD] &lt;%current.name%> - System Function Breakdown" domainClass="SystemFunction">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="System Function Breakdown" titleExpression="[SFBD] &lt;%current.name%>" domainClass="SystemFunction">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -2320,7 +2256,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Function Breakdown" precondition="&lt;% isInLib() &amp;&amp; current.filter(&quot;SystemFunction&quot;).nSize() >0%>" titleExpression="[SFBD] &lt;%current.name%> - System Function Breakdown" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Function Breakdown" precondition="&lt;% isInLib() &amp;&amp; current.filter(&quot;SystemFunction&quot;).nSize() >0%>" titleExpression="[SFBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -2426,7 +2362,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="System Data Flow Blank" titleExpression="[SDFB] &lt;%current.name%> - System Data Flow Blank" domainClass="AbstractFunctionalChainContainer" preconditionExpression="&lt;%isA(&quot;SystemFunction&quot;) || isA(&quot;Capability&quot;)%>">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="System Data Flow Blank" titleExpression="[SDFB] &lt;%current.name%>" domainClass="AbstractFunctionalChainContainer" preconditionExpression="&lt;%isA(&quot;SystemFunction&quot;) || isA(&quot;Capability&quot;)%>">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -3005,7 +2941,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Data Flow Blank" precondition="&lt;%isInLib() &amp;&amp; (isA(&quot;SystemFunction&quot;) || isA(&quot;Capability&quot;))%>" titleExpression="[SDFB] &lt;%current.name%> - System Data Flow Blank" browseExpression="" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Data Flow Blank" precondition="&lt;%isInLib() &amp;&amp; (isA(&quot;SystemFunction&quot;) || isA(&quot;Capability&quot;))%>" titleExpression="[SDFB] &lt;%current.name%>" browseExpression="" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -3246,7 +3182,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="System Architecture Blank" titleExpression="[SAB] &lt;%current.name%> - System Architecture Blank" domainClass="NamedElement" preconditionExpression="&lt;%current.isA(&quot;System&quot;) || (current.isA(&quot;Part&quot;) &amp;&amp; current.getComponentType().isA(&quot;System&quot;) ) %>" defaultConcern="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="System Architecture Blank" titleExpression="[SAB] &lt;%current.name%>" domainClass="NamedElement" preconditionExpression="&lt;%current.isA(&quot;System&quot;) || (current.isA(&quot;Part&quot;) &amp;&amp; current.getComponentType().isA(&quot;System&quot;) ) %>" defaultConcern="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -3599,7 +3535,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="CA System Function" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Function%20Breakdown'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Data%20Flow%20Blank']" preconditionExpression="&lt;% isAllocatedFunction(current, $container.getComponentType())%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="" createElements="false" domainClass="SystemFunction" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20FunctionPort']">
+          <subNodeMappings name="CA System Function" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Function%20Breakdown'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Data%20Flow%20Blank']" preconditionExpression="&lt;% current.isAllocatedFunction($container.getComponentType(), $containerView)%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="" createElements="false" domainClass="SystemFunction" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20FunctionPort']">
             <borderedNodeMappings name="CA Flow Port on System Function" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="&lt;% getAvailablePins($viewpoint,$containerView) %>" domainClass="ActivityNode">
               <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3660,7 +3596,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%!isLeaf()%>">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
@@ -3979,7 +3915,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedExchanges%>">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $displayedExchanges.nContains($i)%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showConnectionInArchitectureBlank($elementView)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showABComponentExchange($elementView)%>"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$displayedExchanges%>">
@@ -4092,7 +4028,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$selectedExchanges%>">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $displayedLinks.nContains($i)%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showConnectionInArchitectureBlank($elementView)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showABPhysicalLink($elementView)%>"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="&lt;%$displayedLinks%>">
@@ -4315,7 +4251,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;System&quot;)%>" titleExpression="[SAB] &lt;%current.name%> - System Architecture Blank" browseExpression="&lt;%getComponentType()%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;System&quot;)%>" titleExpression="[SAB] &lt;%current.name%>" browseExpression="&lt;%getComponentType()%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -4682,7 +4618,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current %>">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectAllocatedFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="&lt;% $containerType %>"/>
-                    <parameters name="scope" value="&lt;% $containerType.getShowableAllocatedFunctions()%>"/>
+                    <parameters name="scope" value="&lt;% $containerType.getShowableAllocatedFunctions($containerView)%>"/>
                     <parameters name="initialSelection" value="&lt;% $visibleFunctions %>"/>
                     <parameters name="resultVariable" value="selectedFunctions"/>
                     <parameters name="wizardMessage" value="Select allocated Functions to show in &lt;%$container.name%>."/>
@@ -4963,9 +4899,14 @@
           </ownedTools>
           <reusedTools xsi:type="tool_1:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']"/>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@conditionnalStyles.5/@style" attributeName="borderLineStyle" value="dash"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Contextual System Actors" titleExpression="[CSA] &lt;%current.name%> - Contextual System Actors" domainClass="System">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Contextual System Actors" titleExpression="[CSA] &lt;%current.name%>" domainClass="System">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -5046,7 +4987,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual System Actors" precondition="&lt;%isA(&quot;System&quot;)%>" titleExpression="[CSA] &lt;%current.name%> - Contextual System Actors" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual System Actors" precondition="&lt;%isA(&quot;System&quot;)%>" titleExpression="[CSA] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>

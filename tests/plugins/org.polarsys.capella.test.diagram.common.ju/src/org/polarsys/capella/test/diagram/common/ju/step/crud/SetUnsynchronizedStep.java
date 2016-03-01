@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,10 @@ package org.polarsys.capella.test.diagram.common.ju.step.crud;
 
 import junit.framework.Assert;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStep;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 public class SetUnsynchronizedStep extends AbstractDiagramStep<DiagramContext> {
 
@@ -34,11 +36,17 @@ public class SetUnsynchronizedStep extends AbstractDiagramStep<DiagramContext> {
 
   @Override
   protected void runTest() {
-    getExecutionContext().getDiagram().setSynchronized(_synchronized);
-    if (_synchronized) {
-      Assert.assertTrue(getExecutionContext().getDiagram().isSynchronized());
-    } else {
-      Assert.assertTrue(!getExecutionContext().getDiagram().isSynchronized());
-    }
+
+    TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
+      public void run() {
+        getExecutionContext().getDiagram().setSynchronized(_synchronized);
+        if (_synchronized) {
+          Assert.assertTrue(getExecutionContext().getDiagram().isSynchronized());
+        } else {
+          Assert.assertTrue(!getExecutionContext().getDiagram().isSynchronized());
+        }
+      }
+    });
+
   }
 }

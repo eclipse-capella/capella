@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,10 +34,10 @@ public class GetCurrent_PhysicalLink_AllocatedComponentExchanges extends Abstrac
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalLink) {
-			PhysicalLink ele = (PhysicalLink) element_p;
+		if (element instanceof PhysicalLink) {
+			PhysicalLink ele = (PhysicalLink) element;
 			EList<ComponentExchangeAllocation> ownedComponentExchangeAllocation = ele.getOwnedComponentExchangeAllocations();
 			for (ComponentExchangeAllocation ownedComponentExchangeAll : ownedComponentExchangeAllocation) {
 				ComponentExchange componentExchangeAllocated = ownedComponentExchangeAll.getComponentExchangeAllocated();

@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.egf.pattern;visibility:=reexport,
  org.eclipse.egf.model.ftask;visibility:=reexport,
  org.eclipse.ui,
  org.eclipse.ui.ide,
- org.eclipse.pde.ui
+ org.eclipse.pde.ui,
+ org.eclipse.team.core
 Export-Package: org.polarsys.capella.core.releng
 Bundle-Localization: plugin

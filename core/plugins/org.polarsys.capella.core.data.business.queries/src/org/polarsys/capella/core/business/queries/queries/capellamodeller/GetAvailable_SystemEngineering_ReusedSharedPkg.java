@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,10 +48,10 @@ public class GetAvailable_SystemEngineering_ReusedSharedPkg extends AbstractQuer
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof SystemEngineering) {
-			SystemEngineering systemEngineering = (SystemEngineering) element_p;
+		if (element instanceof SystemEngineering) {
+			SystemEngineering systemEngineering = (SystemEngineering) element;
 			availableElements.addAll(getRule_MQRY_SystemEngineering_Reused_11(systemEngineering));
 		}
 		return availableElements;
@@ -60,12 +60,12 @@ public class GetAvailable_SystemEngineering_ReusedSharedPkg extends AbstractQuer
 	/** 
 	 * All the Shared Packages contained by the current Element's Project.
 	 */
-	private List<CapellaElement> getRule_MQRY_SystemEngineering_Reused_11(SystemEngineering currentSystemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_SystemEngineering_Reused_11(SystemEngineering currentSystemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		Project prj = CapellaQueries.getInstance().getRootQueries().getProject(currentSystemEngineering_p);
+		Project prj = CapellaQueries.getInstance().getRootQueries().getProject(currentSystemEngineering);
 		Set<EObject> sharedPkgSet = EObjectExt.getAll(prj, SharedmodelPackage.Literals.SHARED_PKG);
 		for (EObject obj : sharedPkgSet) {
-			if (!SystemEngineeringExt.getSharedPkgs(currentSystemEngineering_p).contains(obj))
+			if (!SystemEngineeringExt.getSharedPkgs(currentSystemEngineering).contains(obj))
 				availableElements.add((CapellaElement) obj);
 		}
 		return availableElements;

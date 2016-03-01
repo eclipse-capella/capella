@@ -307,7 +307,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Physical Function Breakdown" titleExpression="[PFBD] &lt;%current.name%> - Physical Function Breakdown" domainClass="PhysicalFunction" preconditionExpression="">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Physical Function Breakdown" titleExpression="[PFBD] &lt;%current.name%>" domainClass="PhysicalFunction" preconditionExpression="">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -503,7 +503,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Function Breakdown" precondition="&lt;%isInLib() &amp;&amp; current.filter(&quot;PhysicalFunction&quot;).nSize() > 0%>" titleExpression="[PFBD] &lt;%current.name%> - Physical Function Breakdown" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Function Breakdown" precondition="&lt;%isInLib() &amp;&amp; current.filter(&quot;PhysicalFunction&quot;).nSize() > 0%>" titleExpression="[PFBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -609,7 +609,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']" name="Physical Data Flow Blank" titleExpression="[PDFB] &lt;%current.name%> - Physical Data Flow Blank" domainClass="AbstractFunctionalChainContainer" preconditionExpression="&lt;%isA(&quot;PhysicalFunction&quot;) || (isA(&quot;CapabilityRealization&quot;) &amp;&amp; eContainer(&quot;BlockArchitecture&quot;).isA(&quot;PhysicalArchitecture&quot;))%>">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']" name="Physical Data Flow Blank" titleExpression="[PDFB] &lt;%current.name%>" domainClass="AbstractFunctionalChainContainer" preconditionExpression="&lt;%isA(&quot;PhysicalFunction&quot;) || (isA(&quot;CapabilityRealization&quot;) &amp;&amp; eContainer(&quot;BlockArchitecture&quot;).isA(&quot;PhysicalArchitecture&quot;))%>">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -1221,7 +1221,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Data Flow Blank" precondition="&lt;%isInLib() &amp;&amp; isA(&quot;PhysicalFunction&quot;) || isA(&quot;CapabilityRealization&quot;)%>" titleExpression="[PDFB] &lt;%current.name%> - Physical Data Flow Blank" browseExpression="" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Data Flow Blank" precondition="&lt;%isInLib() &amp;&amp; isA(&quot;PhysicalFunction&quot;) || isA(&quot;CapabilityRealization&quot;)%>" titleExpression="[PDFB] &lt;%current.name%>" browseExpression="" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -1441,7 +1441,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Physical Component Breakdown" titleExpression="[PCBD] &lt;%current.name%> - Physical Component Breakdown" domainClass="PhysicalComponent">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Physical Component Breakdown" titleExpression="[PCBD] &lt;%current.name%>" domainClass="PhysicalComponent">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -1598,7 +1598,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.dndABDComponent($source.eContainer, $target)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Component Breakdown" precondition="&lt;%isInLib() &amp;&amp; getComponentType().isA(&quot;PhysicalComponent&quot;)%>" titleExpression="[PCBD] &lt;%current.name%> - Physical Component Breakdown" browseExpression="&lt;%getComponentType%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Component Breakdown" precondition="&lt;%isInLib() &amp;&amp; getComponentType().isA(&quot;PhysicalComponent&quot;)%>" titleExpression="[PCBD] &lt;%current.name%>" browseExpression="&lt;%getComponentType%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -1757,7 +1757,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Component'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Components%20From%20Project%20Explorer']" name="Physical Architecture Blank" titleExpression="[PAB] &lt;%current.name%> - Physical Architecture Blank" domainClass="NamedElement" preconditionExpression="&lt;%current.isA(&quot;PhysicalComponent&quot;) || (current.isA(&quot;Part&quot;) &amp;&amp; current.getComponentType().isA(&quot;PhysicalComponent&quot;)) %>" defaultConcern="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Component'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Components%20From%20Project%20Explorer']" name="Physical Architecture Blank" titleExpression="[PAB] &lt;%current.name%>" domainClass="NamedElement" preconditionExpression="&lt;%current.isA(&quot;PhysicalComponent&quot;) || (current.isA(&quot;Part&quot;) &amp;&amp; current.getComponentType().isA(&quot;PhysicalComponent&quot;)) %>" defaultConcern="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -1884,7 +1884,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="PAB_PhysicalFunction" detailDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Data%20Flow%20Blank'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Function%20Breakdown']" preconditionExpression="&lt;% isAllocatedFunction(current, $container.getComponentType())%>" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20Physical%20Function']" semanticCandidatesExpression="" createElements="false" domainClass="PhysicalFunction" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20FunctionPort']">
+        <nodeMappings name="PAB_PhysicalFunction" detailDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Data%20Flow%20Blank'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Function%20Breakdown']" preconditionExpression="&lt;% current.isAllocatedFunction($container.getComponentType(), $containerView)%>" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20Physical%20Function']" semanticCandidatesExpression="" createElements="false" domainClass="PhysicalFunction" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20FunctionPort']">
           <borderedNodeMappings name="PAB_Pin" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="&lt;% getAvailablePins($viewpoint,$containerView) %>" domainClass="ActivityNode">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2765,7 +2765,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$selectedExchanges%>">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $displayedLinks.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.showConnectionInArchitectureBlank($elementView)%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.showABPhysicalLink($elementView)%>"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$displayedLinks%>">
@@ -2980,7 +2980,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;PhysicalComponent&quot;)%>" titleExpression="[PAB] &lt;%current.name%> - Physical Architecture Blank" browseExpression="" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;PhysicalComponent&quot;)%>" titleExpression="[PAB] &lt;%current.name%>" browseExpression="" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -3592,7 +3592,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$selectedExchanges%>">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $displayedExchanges.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.showConnectionInArchitectureBlank($elementView)%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.showABComponentExchange($elementView)%>"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$displayedExchanges%>">
@@ -3921,7 +3921,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType %>">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectAllocatedFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="&lt;% $containerType %>"/>
-                    <parameters name="scope" value="&lt;% $containerType.getShowableAllocatedFunctions()%>"/>
+                    <parameters name="scope" value="&lt;% $containerType.getShowableAllocatedFunctions($containerView)%>"/>
                     <parameters name="initialSelection" value="&lt;% $visibleFunctions %>"/>
                     <parameters name="resultVariable" value="selectedFunctions"/>
                     <parameters name="wizardMessage" value="Select allocated Functions to show in &lt;%$container.name%>."/>
@@ -4220,6 +4220,11 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']"/>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@conditionnalStyles.5/@style" attributeName="borderLineStyle" value="dash"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Actor - Logical Actor" label="Physical Actors - Logical Actors" domainClass="PhysicalArchitecture">
@@ -4318,7 +4323,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Dnd%20Component']" name="Physical Path Description" titleExpression="[PPD] &lt;%current.name%> - Physical Path Description" domainClass="PhysicalPath">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Dnd%20Component']" name="Physical Path Description" titleExpression="[PPD] &lt;%current.name%>" domainClass="PhysicalPath">
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
         <nodeMappings name="PPD_Part" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PhysicalPath%20Involvement']" semanticCandidatesExpression="&lt;%ownedPhysicalPathInvolvements[involvedElement.filter(&quot;Part&quot;)]%>" semanticElements="&lt;%current + involvedElement%>" synchronizationLock="true" domainClass="PhysicalPathInvolvement">
@@ -4546,7 +4551,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Path Description" precondition="&lt;%isInLib()%>" titleExpression="[PPD] &lt;%current.name%> - Physical Path Description" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Path Description" precondition="&lt;%isInLib()%>" titleExpression="[PPD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Path%20Description']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>

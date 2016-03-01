@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,6 +78,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
+import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -131,8 +132,8 @@ public class ScenarioService {
    * @return the moved end.
    */
   public EObject moveEndOnInstanceRole(final InteractionFragment toMove, final InteractionFragment previousEnd) {
-//    final Scenario scenario = (Scenario) previousEnd.eContainer();
-//    final InstanceRole covered = toMove.getCoveredInstanceRoles().get(0);
+    // final Scenario scenario = (Scenario) previousEnd.eContainer();
+    // final InstanceRole covered = toMove.getCoveredInstanceRoles().get(0);
 
     /*
      * First of all: move the messageEnd to the end of the list
@@ -428,8 +429,8 @@ public class ScenarioService {
     return builder;
   }
 
-  private static void appendExchangeItems(List<? extends AbstractExchangeItem> eiOnMessage,
-      AbstractEventOperation op, boolean showExchangeItemParameters, StringBuilder builder) {
+  private static void appendExchangeItems(List<? extends AbstractExchangeItem> eiOnMessage, AbstractEventOperation op,
+      boolean showExchangeItemParameters, StringBuilder builder) {
     List<? extends AbstractExchangeItem> eiOnOperation = Collections.emptyList();
     if (op instanceof ComponentExchange) {
       eiOnOperation = ((ComponentExchange) op).getConvoyedInformations();
@@ -453,8 +454,10 @@ public class ScenarioService {
   }
 
   private static void appendExchangeContext(SequenceMessage message, StringBuilder builder) {
-    builder.append(String.format(
-        "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
+    builder
+        .append(String
+            .format(
+                "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private static String getSafeName(AbstractNamedElement fe) {
@@ -983,7 +986,8 @@ public class ScenarioService {
       }
     }
     // Can not find a CombinedFragment containing the operand -> Stop here.
-    // FIXME this null value can not be returned in our context, but if it was returned, the diagram would be corrupted...
+    // FIXME this null value can not be returned in our context, but if it was returned, the diagram would be
+    // corrupted...
     if (null == cf) {
       return null;
     }
@@ -1166,7 +1170,8 @@ public class ScenarioService {
     } else if (context instanceof DDiagramElement) {
       DDiagramElement element = (DDiagramElement) context;
       EObject target = element.getTarget();
-      if ((null != target) && (target instanceof SequenceMessage) && (((SequenceMessage) target).getExchangeContext() != null)) {
+      if ((null != target) && (target instanceof SequenceMessage)
+          && (((SequenceMessage) target).getExchangeContext() != null)) {
         result.add(((SequenceMessage) target).getExchangeContext());
       }
     }
@@ -1188,7 +1193,8 @@ public class ScenarioService {
     for (DDiagramElement elem : diagram.getDiagramElements()) {
       if (elem.getTarget() instanceof Constraint) {
         allPresentConstraints.add((Constraint) elem.getTarget());
-      } else if ((elem.getTarget() instanceof SequenceMessage) && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)) {
+      } else if ((elem.getTarget() instanceof SequenceMessage)
+          && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)) {
         if ((context == diagram) || (context == elem)) {
           allAvailableExchangeContexts.add(((SequenceMessage) elem.getTarget()).getExchangeContext());
         }
@@ -1208,4 +1214,21 @@ public class ScenarioService {
     return operatorkind;
   }
 
+  public String removeScenarioPrefix(EObject context, String name) {
+
+    List<String> scenarioPrefixes = new ArrayList<String>();
+    scenarioPrefixes.add("[" + DiagramNamingConstants.INTERFACE_SCENARIO_PREFIX + "]");
+    scenarioPrefixes.add("[" + DiagramNamingConstants.EXCHANGE_SCENARIO_PREFIX + "]");
+    scenarioPrefixes.add("[" + DiagramNamingConstants.FUNCTION_SCENARIO_PREFIX + "]");
+    scenarioPrefixes.add("[" + DiagramNamingConstants.ACTIVITY_SCENARIO_PREFIX + "]");
+    scenarioPrefixes.add("[" + DiagramNamingConstants.ENTITY_SCENARIO_PREFIX + "]");
+
+    for (String prefix : scenarioPrefixes) {
+      if (name.startsWith(prefix)) {
+        return name.substring(prefix.length()).trim();
+      }
+    }
+
+    return name;
+  }
 }

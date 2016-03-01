@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,8 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl;
 import org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceImpl;
+import org.polarsys.capella.core.data.migration.ContributoryMigrationRunnable;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
-import org.polarsys.capella.core.data.migration.MigrationRunnable;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.kitalpha.emde.xmi.SAXExtensionXMIHandler;
 import org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl;
@@ -48,7 +48,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * 
  */
-public class ModelMigrationRunnable extends MigrationRunnable {
+public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
 
   public ModelMigrationRunnable(IFile file) {
     super(file);

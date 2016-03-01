@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -49,381 +50,395 @@ import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper
  */
 public abstract class MigrationRunnable extends AbstractMigrationRunnable {
 
-  public MigrationRunnable(IFile file) {
-    super(file);
-  }
+	public MigrationRunnable(IFile file) {
+		super(file);
+	}
 
-  @Override
-  public String getName() {
-    return getClass().getName();
-  }
+	@Override
+	public String getName() {
+		return getClass().getName();
+	}
 
-  protected boolean isTrackedResource(Resource resource) {
-    return true;
-  }
+	protected boolean isTrackedResource(Resource resource) {
+		return true;
+	}
 
-  @Override
-  public IStatus run(MigrationContext context, boolean checkVersion) {
+	protected IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
+		return Status.OK_STATUS;
+	}
 
-    IStatus result = Status.OK_STATUS;
-    LongRunningListenersRegistry.getInstance().operationStarting(getClass());
+	protected void postMigrationExecuteCommands(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) {
+	}
 
-    result = MigrationHelpers.getInstance().preMigrationExecute(_file, context, checkVersion);
-    if (!result.isOK()) {
-      return result;
-    }
+	protected void preSaveResource(ExecutionManager executionManager, Resource resource, MigrationContext context) {
+	}
 
-    ExecutionManager executionManager = ExecutionManagerRegistry.getInstance().addNewManager();
+	protected void postDispose(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) {
+	}
 
-    IProgressMonitor monitor = context.getProgressMonitor();
-    monitor.setTaskName(getName());
-    monitor.beginTask(getName(), 100);
+	protected void newResource(Resource resource, MigrationContext context) {
+	}
 
-    // Precondition
-    if (null == executionManager) {
-      return Status.CANCEL_STATUS;
-    }
+	@Override
+	public IStatus run(MigrationContext context, boolean checkVersion) {
 
-    // Get the resource set.
-    ResourceSet resourceSet = executionManager.getEditingDomain().getResourceSet();
-    // Create a local resource factory and set it as default one.
-    resourceSet.setResourceFactoryRegistry(createLocalResourceFactory(context));
-    // Register the mapping description.
-    registerExtendedMetaData(resourceSet, context);
+		LongRunningListenersRegistry.getInstance().operationStarting(getClass());
 
-    // Create a tracking modification adapter.
-    TrackingModificationAdapter trackingModificationAdapter = new TrackingModificationAdapter();
-    resourceSet.eAdapters().add(trackingModificationAdapter);
+		IStatus result = preMigrationExecute(_file, context, checkVersion);
+		if (!result.isOK()) {
+			return result;
+		}
 
-    // Execute migration against the execution manager.
-    try {
+		ExecutionManager executionManager = ExecutionManagerRegistry.getInstance().addNewManager();
 
-      if (result.isOK()) {
-        // Load all resources. A first step of migration is performed at loading (ecore2ecore and resource's
-        // loaderHelper create a migrated content of model)
-        context.setProgressMonitor(new SubProgressMonitor(monitor, 40));
-        result = performLoadResources(_file, executionManager, resourceSet, context);
-      }
+		IProgressMonitor monitor = context.getProgressMonitor();
+		monitor.setTaskName(getName());
+		monitor.beginTask(getName(), 100);
 
-      if (result.isOK()) {
-        // Perform additionalStuff into another command (a second step of migration is performed after model is loaded)
-        context.setProgressMonitor(new SubProgressMonitor(monitor, 40));
-        result = performPostMigrationExecute(executionManager, resourceSet, context);
-      }
+		// Precondition
+		if (null == executionManager) {
+			return Status.CANCEL_STATUS;
+		}
 
-      if (result.isOK()) {
-        // Save all required resources
-        context.setProgressMonitor(new SubProgressMonitor(monitor, 20));
-        result = performSaveResources(executionManager, resourceSet, context);
-      }
+		// Get the resource set.
+		ResourceSet resourceSet = executionManager.getEditingDomain().getResourceSet();
+		// Create a local resource factory and set it as default one.
+		resourceSet.setResourceFactoryRegistry(createLocalResourceFactory(context));
+		// Register the mapping description.
+		registerExtendedMetaData(resourceSet, context);
 
-    } catch (OutOfMemoryError error) {
-      MigrationHelpers.getInstance().onOutOfMemoryError(error, context);
-      throw error;
+		// Create a tracking modification adapter.
+		TrackingModificationAdapter trackingModificationAdapter = new TrackingModificationAdapter();
+		resourceSet.eAdapters().add(trackingModificationAdapter);
 
-    } finally {
-      dispose(executionManager, resourceSet, context);
-      monitor.done();
-    }
-    return result;
-  }
+		// Execute migration against the execution manager.
+		try {
 
-  /**
-   * Track modifications that set the related resource as modified.<br>
-   * This class is an EContentAdapter instance. Hence, add it to the resource set, will add it automatically to contained resources in the resource set.
-   */
-  class TrackingModificationAdapter extends EContentAdapter {
-    /**
-     * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
-     */
-    @Override
-    public void notifyChanged(Notification notification) {
-      super.notifyChanged(notification);
-      // Get the notifier.
-      Object notifier = notification.getNotifier();
-      // Searching for its resource container.
-      Resource resource = null;
-      if (notifier instanceof EObject) {
-        resource = ((EObject) notifier).eResource();
-      } else if (notifier instanceof Resource) {
-        resource = (Resource) notifier;
-      }
-      // Preconditions.
-      if ((null == resource) || (resource.getURI().isPlatformPlugin())) {
-        return;
-      }
-      if (!isTrackedResource(resource)) {
-        return;
-      }
+			if (result.isOK()) {
+				// Load all resources. A first step of migration is performed at loading (ecore2ecore and resource's
+				// loaderHelper create a migrated content of model)
+				context.setProgressMonitor(new SubProgressMonitor(monitor, 40));
+				result = performLoadResources(_file, executionManager, resourceSet, context);
+			}
 
-      switch (notification.getEventType()) {
-        case Notification.SET:
-        case Notification.UNSET:
-        case Notification.MOVE:
-        case Notification.ADD:
-        case Notification.REMOVE:
-        case Notification.ADD_MANY:
-        case Notification.REMOVE_MANY: {
-          setResourceAsModified(resource);
-          break;
-        }
-      }
-    }
+			if (result.isOK()) {
+				// Perform additionalStuff into another command (a second step of migration is performed after model is loaded)
+				context.setProgressMonitor(new SubProgressMonitor(monitor, 40));
+				result = performPostMigrationExecute(executionManager, resourceSet, context);
+			}
 
-    /**
-     * Set given resource as modified.
-     * @param resource
-     */
-    private void setResourceAsModified(Resource resource) {
-      if (!resource.isModified()) {
-        resource.setModified(true);
-      }
-    }
-  }
+			if (result.isOK()) {
+				// Save all required resources
+				context.setProgressMonitor(new SubProgressMonitor(monitor, 20));
+				result = performSaveResources(executionManager, resourceSet, context);
+			}
 
-  /**
-   * Create a Capella resource that supports migration.
-   */
-  public abstract XMLResource doCreateResource(URI uri, MigrationContext context);
+		} catch (OutOfMemoryError error) {
+			MigrationHelpers.getInstance().onOutOfMemoryError(error, context);
+			throw error;
 
-  /**
-   * Create a resource factory that delegates capella resource creation to {@link #doCreateResource(ExecutionManager, URI)}.
-   * @return a not <code>null</code> instance.
-   */
-  protected Registry createLocalResourceFactory(final MigrationContext context) {
-    Registry localResourceFactoryRegistry = new ResourceFactoryRegistryImpl() {
-      private Resource.Factory _factory;
+		} finally {
+			dispose(executionManager, resourceSet, context);
+			monitor.done();
+		}
+		return result;
+	}
 
-      /**
-       * @see org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl#delegatedGetFactory(org.eclipse.emf.common.util.URI)
-       */
-      @Override
-      public Resource.Factory delegatedGetFactory(URI uri) {
-        Resource.Factory result = null;
-        if (isHandledUri(uri)) {
-          if (null == _factory) {
-            _factory = new ResourceFactoryImpl() {
-              /**
-               * @see org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl#createResource(org.eclipse.emf.common.util.URI)
-               */
-              @Override
-              public Resource createResource(URI uri2) {
-                Resource resource = doCreateResource(uri2, context);
-                if (resource == null) {
-                  resource = Resource.Factory.Registry.INSTANCE.getFactory(uri2).createResource(uri2);
-                }
-                MigrationHelpers.getInstance().newResource(resource, context);
-                return resource;
-              }
-            };
-          }
-          result = _factory;
-        } else {
-          result = Resource.Factory.Registry.INSTANCE.getFactory(uri);
-        }
-        return result;
-      }
-    };
-    return localResourceFactoryRegistry;
-  }
+	/**
+	 * Track modifications that set the related resource as modified.<br>
+	 * This class is an EContentAdapter instance. Hence, add it to the resource set, will add it automatically to contained resources in the resource set.
+	 */
+	class TrackingModificationAdapter extends EContentAdapter {
+		/**
+		 * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
+		 */
+		@Override
+		public void notifyChanged(Notification notification) {
+			super.notifyChanged(notification);
+			// Get the notifier.
+			Object notifier = notification.getNotifier();
+			// Searching for its resource container.
+			Resource resource = null;
+			if (notifier instanceof EObject) {
+				resource = ((EObject) notifier).eResource();
+			} else if (notifier instanceof Resource) {
+				resource = (Resource) notifier;
+			}
+			// Preconditions.
+			if ((null == resource) || (resource.getURI().isPlatformPlugin())) {
+				return;
+			}
+			if (!isTrackedResource(resource)) {
+				return;
+			}
 
-  protected boolean isHandledUri(URI uri) {
-    return true;
-  }
+			switch (notification.getEventType()) {
+			case Notification.SET:
+			case Notification.UNSET:
+			case Notification.MOVE:
+			case Notification.ADD:
+			case Notification.REMOVE:
+			case Notification.ADD_MANY:
+			case Notification.REMOVE_MANY: {
+				setResourceAsModified(resource);
+				break;
+			}
+			}
+		}
 
-  protected void registerExtendedMetaData(ResourceSet resourceSet, MigrationContext context) {
+		/**
+		 * Set given resource as modified.
+		 * 
+		 * @param resource
+		 */
+		private void setResourceAsModified(Resource resource) {
+			if (!resource.isModified()) {
+				resource.setModified(true);
+			}
+		}
+	}
 
-    MigrationHelpers.getInstance().contributePackageRegistry(resourceSet.getPackageRegistry(), context);
-  }
+	/**
+	 * Create a Capella resource that supports migration.
+	 */
+	public abstract XMLResource doCreateResource(URI uri, MigrationContext context);
 
-  /**
-   * This method load all resources into a command
-   * @param executionManager
-   * @param resourceSet
-   * @param subProgressMonitor
-   * @return
-   */
-  protected IStatus performLoadResources(final IFile modelFileToMigrate, final ExecutionManager executionManager, final ResourceSet resourceSet,
-      final MigrationContext context) {
-    final IStatus[] result = new IStatus[] { Status.OK_STATUS };
+	/**
+	 * Create a resource factory that delegates capella resource creation to {@link #doCreateResource(ExecutionManager, URI)}.
+	 * 
+	 * @return a not <code>null</code> instance.
+	 */
+	protected Registry createLocalResourceFactory(final MigrationContext context) {
+		Registry localResourceFactoryRegistry = new ResourceFactoryRegistryImpl() {
+			private Resource.Factory _factory;
 
-    executionManager.execute(new AbstractReadWriteCommand() {
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public void commandRolledBack() {
-        result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
-      }
+			/**
+			 * @see org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl#delegatedGetFactory(org.eclipse.emf.common.util.URI)
+			 */
+			@Override
+			public Resource.Factory delegatedGetFactory(URI uri) {
+				Resource.Factory result = null;
+				if (isHandledUri(uri)) {
+					if (null == _factory) {
+						_factory = new ResourceFactoryImpl() {
+							/**
+							 * @see org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl#createResource(org.eclipse.emf.common.util.URI)
+							 */
+							@Override
+							public Resource createResource(URI uri2) {
+								Resource resource = doCreateResource(uri2, context);
+								if (resource == null) {
+									resource = Resource.Factory.Registry.INSTANCE.getFactory(uri2).createResource(uri2);
+								}
+								newResource(resource, context);
+								return resource;
+							}
+						};
+					}
+					result = _factory;
+				} else {
+					result = Resource.Factory.Registry.INSTANCE.getFactory(uri);
+				}
+				return result;
+			}
+		};
+		return localResourceFactoryRegistry;
+	}
 
-      public void run() {
-        context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_LoadResources, 1); // We are not able to
-                                                                                                   // know how resources
-                                                                                                   // will be loaded
-        context.getProgressMonitor().subTask(Messages.MigrationAction_Command_LoadResources);
-        try {
-          // Add resource to migration resource set and loads it.
-          resourceSet.getResource(FileHelper.getFileFullUri(modelFileToMigrate.getFullPath().toString()), true);
-          // Make sure the model is fully loaded.
-          int resourcesCount = resourceSet.getResources().size();
-          int previousResourcesCount = 0;
-          while (resourcesCount != previousResourcesCount) {
-            previousResourcesCount = resourcesCount;
-            EcoreUtil.resolveAll(resourceSet);
-            resourcesCount = resourceSet.getResources().size();
-          }
+	protected boolean isHandledUri(URI uri) {
+		return true;
+	}
 
-          result[0] = analyseResourceSet(resourceSet);
+	protected void registerExtendedMetaData(ResourceSet resourceSet, MigrationContext context) {
 
-          context.getProgressMonitor().worked(1);
-        } catch (Exception exception) {
-          String errMsg = CapellaSessionHelper.handleLoadingErrors(exception);
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, errMsg, exception);
-        } finally {
-          context.getProgressMonitor().done();
-        }
-      }
-    });
-    return result[0];
-  }
+	}
 
-  protected IStatus analyseResourceSet(ResourceSet resourceSet) {
-    return CapellaSessionHelper.checkModelsCompliancy(resourceSet) ? Status.OK_STATUS : Status.CANCEL_STATUS;
-  }
+	/**
+	 * This method load all resources into a command
+	 * 
+	 * @param executionManager
+	 * @param resourceSet
+	 * @param subProgressMonitor
+	 * @return
+	 */
+	protected IStatus performLoadResources(final IFile modelFileToMigrate, final ExecutionManager executionManager, final ResourceSet resourceSet, final MigrationContext context) {
+		final IStatus[] result = new IStatus[] { Status.OK_STATUS };
 
-  /**
-   * This method calls the sub-method postMigrationExecute into a transaction command
-   * @param executionManager
-   * @param resourceSet
-   */
-  protected IStatus performPostMigrationExecute(final ExecutionManager executionManager, final ResourceSet resourceSet, final MigrationContext context) {
-    final IStatus[] result = new IStatus[] { Status.OK_STATUS };
+		executionManager.execute(new AbstractReadWriteCommand() {
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void commandRolledBack() {
+				result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
+			}
 
-    executionManager.execute(new AbstractReadWriteCommand() {
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public void commandRolledBack() {
-        result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
-      }
+			public void run() {
+				context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_LoadResources, 1); // We are not able to
+																											// know how resources
+																											// will be loaded
+				context.getProgressMonitor().subTask(Messages.MigrationAction_Command_LoadResources);
+				try {
+					// Add resource to migration resource set and loads it.
+					resourceSet.getResource(FileHelper.getFileFullUri(modelFileToMigrate.getFullPath().toString()), true);
+					// Make sure the model is fully loaded.
+					int resourcesCount = resourceSet.getResources().size();
+					int previousResourcesCount = 0;
+					while (resourcesCount != previousResourcesCount) {
+						previousResourcesCount = resourcesCount;
+						EcoreUtil.resolveAll(resourceSet);
+						resourcesCount = resourceSet.getResources().size();
+					}
 
-      public void run() {
-        try {
-          // Do additional stuff.
-          context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_ProcessingMigration, 1);
-          context.getProgressMonitor().subTask(Messages.MigrationAction_Command_ProcessingMigration);
-          postMigrationExecute(executionManager, resourceSet, context);
-          context.getProgressMonitor().worked(1);
-        } catch (Exception exception) {
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
-        } finally {
-          context.getProgressMonitor().done();
-        }
-      }
-    });
+					result[0] = analyseResourceSet(resourceSet);
 
-    MigrationHelpers.getInstance().postMigrationExecuteCommands(executionManager, resourceSet, context);
+					context.getProgressMonitor().worked(1);
+				} catch (Exception exception) {
+					String errMsg = CapellaSessionHelper.handleLoadingErrors(exception);
+					result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, errMsg, exception);
+				} finally {
+					context.getProgressMonitor().done();
+				}
+			}
+		});
+		return result[0];
+	}
 
-    return result[0];
-  }
+	protected IStatus analyseResourceSet(ResourceSet resourceSet) {
+		return Status.OK_STATUS;
+	}
 
-  /**
-   * This method save all required resources into a command
-   * @param executionManager
-   * @param resourceSet
-   * @param subProgressMonitor
-   * @return
-   */
-  protected IStatus performSaveResources(final ExecutionManager executionManager, final ResourceSet resourceSet, final MigrationContext context) {
-    final IStatus[] result = new IStatus[] { Status.OK_STATUS };
-    // Run the save operation within another command to make sure validateEdit prompt a dialog to make files writable
-    // with an SCM.
-    executionManager.execute(new AbstractReadWriteCommand() {
-      public void run() {
-        try {
-          // Pre-condition.
-          if (Status.OK_STATUS != result[0]) {
-            return;
-          }
+	/**
+	 * This method calls the sub-method postMigrationExecute into a transaction command
+	 * 
+	 * @param executionManager
+	 * @param resourceSet
+	 */
+	protected IStatus performPostMigrationExecute(final ExecutionManager executionManager, final ResourceSet resourceSet, final MigrationContext context) {
+		final IStatus[] result = new IStatus[] { Status.OK_STATUS };
 
-          context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_SaveResources, resourceSet.getResources().size());
-          context.getProgressMonitor().subTask(Messages.MigrationAction_Command_SaveResources);
-          // No Error raised, let'save the modified resources.
-          for (Resource resource : resourceSet.getResources()) {
-            if (resource.isModified()
-            // crossreferencer resource is modified but shall not be saved
-                && resource.getURI().isPlatformResource()) {
-              // Force to make file writeable : mandatory for aird migration since no notification is received with an
-              // EObject as notifier.
-              // Without that, files are made writable silently that is not consistent with .melodymodeller migration
-              // process.
-              context.getProgressMonitor().subTask(NLS.bind(Messages.MigrationAction_Command_SaveResource, resource.getURI().toString()));
+		executionManager.execute(new AbstractReadWriteCommand() {
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void commandRolledBack() {
+				result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
+			}
 
-              MigrationHelpers.getInstance().preSaveResource(executionManager, resource, context);
+			public void run() {
+				try {
+					// Do additional stuff.
+					context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_ProcessingMigration, 1);
+					context.getProgressMonitor().subTask(Messages.MigrationAction_Command_ProcessingMigration);
+					postMigrationExecute(executionManager, resourceSet, context);
+					context.getProgressMonitor().worked(1);
+				} catch (Exception exception) {
+					result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
+				} finally {
+					context.getProgressMonitor().done();
+				}
+			}
+		});
 
-              IUserEnforcedHelper userEnforcedHelper = SolFaCommonActivator.getDefault().getUserEnforcedHelper();
-              userEnforcedHelper.makeFileWritable(org.polarsys.capella.common.helpers.EcoreUtil2.getFile(resource));
-              resource.save(Collections.emptyMap());
-            }
-            context.getProgressMonitor().worked(1);
-          }
+		postMigrationExecuteCommands(executionManager, resourceSet, context);
+		return result[0];
+	}
 
-        } catch (Exception exception) {
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
+	/**
+	 * This method save all required resources into a command
+	 * 
+	 * @param executionManager
+	 * @param resourceSet
+	 * @param subProgressMonitor
+	 * @return
+	 */
+	protected IStatus performSaveResources(final ExecutionManager executionManager, final ResourceSet resourceSet, final MigrationContext context) {
+		final IStatus[] result = new IStatus[] { Status.OK_STATUS };
+		// Run the save operation within another command to make sure validateEdit prompt a dialog to make files writable
+		// with an SCM.
+		executionManager.execute(new AbstractReadWriteCommand() {
+			public void run() {
+				try {
+					// Pre-condition.
+					if (Status.OK_STATUS != result[0]) {
+						return;
+					}
 
-        } finally {
-          context.getProgressMonitor().done();
-        }
-      }
-    });
+					context.getProgressMonitor().beginTask(Messages.MigrationAction_Command_SaveResources, resourceSet.getResources().size());
+					context.getProgressMonitor().subTask(Messages.MigrationAction_Command_SaveResources);
+					// No Error raised, let'save the modified resources.
+					for (Resource resource : resourceSet.getResources()) {
+						if (resource.isModified()
+								// crossreferencer resource is modified but shall not be saved
+								&& resource.getURI().isPlatformResource()) {
+							// Force to make file writeable : mandatory for aird migration since no notification is received with an
+							// EObject as notifier.
+							// Without that, files are made writable silently that is not consistent with .melodymodeller migration
+							// process.
+							context.getProgressMonitor().subTask(NLS.bind(Messages.MigrationAction_Command_SaveResource, resource.getURI().toString()));
 
-    return result[0];
-  }
+							preSaveResource(executionManager, resource, context);
 
-  protected void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) throws IOException {
+							IUserEnforcedHelper userEnforcedHelper = SolFaCommonActivator.getDefault().getUserEnforcedHelper();
+							userEnforcedHelper.makeFileWritable(org.polarsys.capella.common.helpers.EcoreUtil2.getFile(resource));
+							resource.save(Collections.emptyMap());
+						}
+						context.getProgressMonitor().worked(1);
+					}
 
-    MigrationHelpers.getInstance().postMigrationExecute(executionManager, resourceSet, context);
+				} catch (Exception exception) {
+					result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), exception); //$NON-NLS-1$
 
-  }
+				} finally {
+					context.getProgressMonitor().done();
+				}
+			}
+		});
 
-  /**
-   * Call after migration execution.<br>
-   * This method is not run within TED transactions.
-   */
-  protected void dispose(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) {
-    // Remove the execution manager from the registry.
-    ExecutionManagerRegistry.getInstance().removeManager(executionManager);
-    // Dispose the editing domain that is supposed to clean all the previous stuff !
-    TransactionalEditingDomain editingDomain = executionManager.getEditingDomain();
-    EList<Resource> resources = resourceSet.getResources();
-    // Additional clean stuffs on the resource set since we can't do that within the TED dispose due to memory leaks
-    // cause by the Sirius session when
-    // disposing...
+		return result[0];
+	}
 
-    boolean isResolving = CrossReferencerHelper.resolutionEnabled();
-    try {
-      // We want to disable CrossReferencing resolution while we unload a resource
-      CrossReferencerHelper.enableResolution(false);
-      for (Resource resource : resources) {
-        resource.unload();
-        resource.eAdapters().clear(); // remove any adapters
-      }
-    } finally {
-      CrossReferencerHelper.enableResolution(isResolving);
-    }
+	protected void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) throws IOException {
+	}
 
-    // Don't put the unload loop in the dispose of the ED otherwise we will have memory leaks on Sirius session close
-    // operation.
-    editingDomain.dispose();
-    if ((editingDomain.getCommandStack() != null) && (editingDomain.getCommandStack() instanceof InternalTransactionalCommandStack)) {
-      ((InternalTransactionalCommandStack) editingDomain.getCommandStack()).dispose();
-    }
-    // Finally clear the resource set.
-    resources.clear();
+	/**
+	 * Call after migration execution.<br>
+	 * This method is not run within TED transactions.
+	 */
+	protected void dispose(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) {
+		// Remove the execution manager from the registry.
+		ExecutionManagerRegistry.getInstance().removeManager(executionManager);
+		// Dispose the editing domain that is supposed to clean all the previous stuff !
+		TransactionalEditingDomain editingDomain = executionManager.getEditingDomain();
+		EList<Resource> resources = resourceSet.getResources();
+		// Additional clean stuffs on the resource set since we can't do that within the TED dispose due to memory leaks
+		// cause by the Sirius session when
+		// disposing...
 
-    MigrationHelpers.getInstance().dispose(executionManager, resourceSet, context);
-    LongRunningListenersRegistry.getInstance().operationEnded(getClass());
-  }
+		boolean isResolving = CrossReferencerHelper.resolutionEnabled();
+		try {
+			// We want to disable CrossReferencing resolution while we unload a resource
+			CrossReferencerHelper.enableResolution(false);
+			for (Resource resource : resources) {
+				resource.unload();
+				resource.eAdapters().clear(); // remove any adapters
+			}
+		} finally {
+			CrossReferencerHelper.enableResolution(isResolving);
+		}
+
+		// Don't put the unload loop in the dispose of the ED otherwise we will have memory leaks on Sirius session close
+		// operation.
+		editingDomain.dispose();
+		if ((editingDomain.getCommandStack() != null) && (editingDomain.getCommandStack() instanceof InternalTransactionalCommandStack)) {
+			((InternalTransactionalCommandStack) editingDomain.getCommandStack()).dispose();
+		}
+		// Finally clear the resource set.
+		resources.clear();
+
+		postDispose(executionManager, resourceSet, context);
+		LongRunningListenersRegistry.getInstance().operationEnded(getClass());
+	}
 
 }

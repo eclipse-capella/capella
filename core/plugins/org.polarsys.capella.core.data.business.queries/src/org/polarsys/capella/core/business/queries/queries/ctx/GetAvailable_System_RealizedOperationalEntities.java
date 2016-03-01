@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,14 +40,14 @@ public class GetAvailable_System_RealizedOperationalEntities extends AbstractQue
 	 * Refer MQRY_System_RealizedOperationalEntities_1
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof System) {
-			System currentSystem = (System) element_p;
+		if (element instanceof System) {
+			System currentSystem = (System) element;
 			availableElements.addAll(getRule_MQRY_System_RealizedOperationalEntities_11(systemEngineering, currentSystem));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -58,13 +58,13 @@ public class GetAvailable_System_RealizedOperationalEntities extends AbstractQue
 	 * Gets all the entities in the Operational Analysis,
 	 * except the entities that are already realized by the current system.
 	 * Refer MQRY_System_RealizedOperationalEntities_1
-	 * @param sysEng_pthe {@link SystemEngineering}
-	 * @param currentSystem_pthe current System
+	 * @param sysEngthe {@link SystemEngineering}
+	 * @param currentSystemthe current System
 	 * @return list of {@link CapellaElement}
 	 */
-	private List<CapellaElement> getRule_MQRY_System_RealizedOperationalEntities_11(SystemEngineering sysEng_p, System currentSystem_p) {
+	private List<CapellaElement> getRule_MQRY_System_RealizedOperationalEntities_11(SystemEngineering sysEng, System currentSystem) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (EObject opEntity : EObjectExt.getAll(sysEng_p, OaPackage.Literals.ENTITY)) {
+		for (EObject opEntity : EObjectExt.getAll(sysEng, OaPackage.Literals.ENTITY)) {
 			availableElements.add((CapellaElement) opEntity);
 		}
 		return availableElements;

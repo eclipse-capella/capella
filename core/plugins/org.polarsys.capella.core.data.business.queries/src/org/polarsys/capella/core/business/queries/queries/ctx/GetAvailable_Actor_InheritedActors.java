@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,12 +53,12 @@ public class GetAvailable_Actor_InheritedActors extends AbstractQuery {
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		boolean isElementFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -69,8 +69,8 @@ public class GetAvailable_Actor_InheritedActors extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Actor) {
-			Actor currentActor = (Actor) element_p;
+		if (element instanceof Actor) {
+			Actor currentActor = (Actor) element;
 			if (!isElementFromSharedPkg)
 				availableElements.addAll(getRule_MQRY_Actor_Inherited_11(systemEngineering, currentActor));
 			availableElements.addAll(getRule_MQRY_Actor_Inherited_12(systemEngineering, currentActor));
@@ -90,21 +90,21 @@ public class GetAvailable_Actor_InheritedActors extends AbstractQuery {
 	 * <p>
 	 * Refer MQRY_Actor_Inherited_11
 	 * </p>
-	 * @param sysEng_pthe {@link SystemEngineering}
-	 * @param currentActor_pthe current {@link Actor}
+	 * @param sysEngthe {@link SystemEngineering}
+	 * @param currentActorthe current {@link Actor}
 	 * @return list of Actors
 	 */
-	private List<CapellaElement> getRule_MQRY_Actor_Inherited_11(SystemEngineering sysEng_p, Actor currentActor_p) {
+	private List<CapellaElement> getRule_MQRY_Actor_Inherited_11(SystemEngineering sysEng, Actor currentActor) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng_p);
+		SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
 		ActorPkg actorPkg = ca.getOwnedActorPkg();
 		if (actorPkg != null) {
 			for (Actor actor : ActorPkgExt.getAllActors(actorPkg)) {
-				if ((actor == null) || currentActor_p.equals(actor)) {
+				if ((actor == null) || currentActor.equals(actor)) {
 					continue;
 				}
-				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentActor_p).contains(actor)
-						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(actor).contains(currentActor_p)) {
+				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentActor).contains(actor)
+						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(actor).contains(currentActor)) {
 					availableElements.add(actor);
 				}
 			}
@@ -112,18 +112,18 @@ public class GetAvailable_Actor_InheritedActors extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Actor_Inherited_12(SystemEngineering systemEngineering_p, Actor currentActor_p) {
+	private List<CapellaElement> getRule_MQRY_Actor_Inherited_12(SystemEngineering systemEngineering, Actor currentActor) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<SharedPkg> sharedPkgs = SystemEngineeringExt.getSharedPkgs(systemEngineering_p);
+		List<SharedPkg> sharedPkgs = SystemEngineeringExt.getSharedPkgs(systemEngineering);
 		for (SharedPkg sharedPkg : sharedPkgs) {
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
 				for (Actor actor : GenericPkgExt.getAllActors(pkg)) {
-					if ((actor == null) || currentActor_p.equals(actor)) {
+					if ((actor == null) || currentActor.equals(actor)) {
 						continue;
 					}
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentActor_p).contains(actor)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(actor).contains(currentActor_p)) {
+					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentActor).contains(actor)
+							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(actor).contains(currentActor)) {
 						availableElements.add(actor);
 					}
 				}

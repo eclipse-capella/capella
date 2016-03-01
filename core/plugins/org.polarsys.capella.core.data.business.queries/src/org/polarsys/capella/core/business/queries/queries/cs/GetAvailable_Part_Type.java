@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,12 +55,12 @@ public class GetAvailable_Part_Type extends AbstractQuery {
     return (List) availableElements;
   }
 
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    EObject container = element_p.eContainer();
-    BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+    EObject container = element.eContainer();
+    BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
     Set<EObject> setOfAvailableElements = new HashSet<EObject>();
-    if (element_p instanceof Part) {
+    if (element instanceof Part) {
       if (container instanceof Entity) {
         setOfAvailableElements = EObjectExt.getAll(arch, OaPackage.Literals.ENTITY);
         if (setOfAvailableElements.contains(container)) {
@@ -91,23 +91,23 @@ public class GetAvailable_Part_Type extends AbstractQuery {
       } else if (container instanceof EPBSContext) {
         setOfAvailableElements.add(((EPBSArchitecture) arch).getOwnedConfigurationItem());
       } else if (container instanceof LogicalComponent) {
-        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element_p);
+        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element);
         for (EObject anObject : availableComponentsByNamespaceOfParts) {
-          if (!EcoreUtil.isAncestor(anObject, element_p) && (anObject instanceof LogicalComponent)) {
+          if (!EcoreUtil.isAncestor(anObject, element) && (anObject instanceof LogicalComponent)) {
             setOfAvailableElements.add(anObject);
           }
         }
       } else if (container instanceof PhysicalComponent) {
-        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element_p);
+        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element);
         for (EObject anObject : availableComponentsByNamespaceOfParts) {
-          if (!EcoreUtil.isAncestor(anObject, element_p) && (anObject instanceof PhysicalComponent)) {
+          if (!EcoreUtil.isAncestor(anObject, element) && (anObject instanceof PhysicalComponent)) {
             setOfAvailableElements.add(anObject);
           }
         }
       } else if (container instanceof ConfigurationItem) {
-        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element_p);
+        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element);
         for (EObject anObject : availableComponentsByNamespaceOfParts) {
-          if (!EcoreUtil.isAncestor(anObject, element_p) && (anObject instanceof ConfigurationItem)) {
+          if (!EcoreUtil.isAncestor(anObject, element) && (anObject instanceof ConfigurationItem)) {
             setOfAvailableElements.add(anObject);
           }
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,16 +41,16 @@ public class GetAvailable_Actor_RealizedCapabilities extends AbstractQuery {
 	 * current actor. Refer MQRY_Actor_Capabilities_1
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof Actor) {
-			Actor currentActor = (Actor) element_p;
+		if (element instanceof Actor) {
+			Actor currentActor = (Actor) element;
 			availableElements.addAll(getRule_MQRY_Actor_Capabilities_11(systemEngineering, currentActor));
-		} else if (element_p instanceof ActorPkg) {
+		} else if (element instanceof ActorPkg) {
 			availableElements.addAll(CapellaElementExt.getAllCapabilities(systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -61,14 +61,14 @@ public class GetAvailable_Actor_RealizedCapabilities extends AbstractQuery {
 	 * Gets all the capabilities in the Functional Aspect Package and all of its
 	 * sub packages, except the capabilities that are already involved with the
 	 * current actor. Refer MQRY_Actor_Capabilities_1
-	 * @param sysEng_pthe {@link SystemEngineering}
-	 * @param currentActor_pthe current Actor
+	 * @param sysEngthe {@link SystemEngineering}
+	 * @param currentActorthe current Actor
 	 * @return list of {@link CapabilityUseCase}
 	 */
-	private List<CapellaElement> getRule_MQRY_Actor_Capabilities_11(SystemEngineering sysEng_p, Actor currentActor_p) {
+	private List<CapellaElement> getRule_MQRY_Actor_Capabilities_11(SystemEngineering sysEng, Actor currentActor) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (Capability capabilityUseCase : CapellaElementExt.getAllCapabilities(sysEng_p)) {
-			if (CapabilityExt.hasInvolved(capabilityUseCase, currentActor_p))
+		for (Capability capabilityUseCase : CapellaElementExt.getAllCapabilities(sysEng)) {
+			if (CapabilityExt.hasInvolved(capabilityUseCase, currentActor))
 				continue;
 			availableElements.add(capabilityUseCase);
 		}

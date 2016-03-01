@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,16 +46,16 @@ public class GetAvailable_Capability_IncludedCapabilities extends AbstractQuery 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
 	@Deprecated
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof Capability) {
-			Capability currentCapabilityUseCase = (Capability) element_p;
+		if (element instanceof Capability) {
+			Capability currentCapabilityUseCase = (Capability) element;
 			availableElements.addAll(getRule_MQRY_Capability_Extended_11(systemEngineering, currentCapabilityUseCase, true));
-		} else if (element_p instanceof CapabilityPkg) {
+		} else if (element instanceof CapabilityPkg) {
 			availableElements.addAll(getRule_MQRY_Capability_Extended_11(systemEngineering, null, false));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -73,20 +73,20 @@ public class GetAvailable_Capability_IncludedCapabilities extends AbstractQuery 
 	 * Refer MQRY_Capability_Extended_11
 	 * </p>
 	 * @deprecated
-	 * @param sysEng_pthe system engineering
-	 * @param currentCapabilityUseCase_pthe current capability
+	 * @param sysEngthe system engineering
+	 * @param currentCapabilityUseCasethe current capability
 	 * @param isFilterRequiredflag for checking with current capability
 	 * @return list of {@link CapabilityUseCase}
 	 */
 	@Deprecated
-	private List<CapellaElement> getRule_MQRY_Capability_Extended_11(SystemEngineering sysEng_p, Capability currentCapabilityUseCase_p, boolean isFilterRequired) {
+	private List<CapellaElement> getRule_MQRY_Capability_Extended_11(SystemEngineering sysEng, Capability currentCapabilityUseCase, boolean isFilterRequired) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (Capability capabilityUseCase : CapellaElementExt.getAllCapabilities(sysEng_p)) {
+		for (Capability capabilityUseCase : CapellaElementExt.getAllCapabilities(sysEng)) {
 			if (isFilterRequired) {
-				if (currentCapabilityUseCase_p.equals(capabilityUseCase))
+				if (currentCapabilityUseCase.equals(capabilityUseCase))
 					continue;
-				if (!AbstractCapabilityExt.isSuperCapability(currentCapabilityUseCase_p, capabilityUseCase)
-						&& !AbstractCapabilityExt.isSuperCapability(capabilityUseCase, currentCapabilityUseCase_p)) {
+				if (!AbstractCapabilityExt.isSuperCapability(currentCapabilityUseCase, capabilityUseCase)
+						&& !AbstractCapabilityExt.isSuperCapability(capabilityUseCase, currentCapabilityUseCase)) {
 					availableElements.add(capabilityUseCase);
 				}
 			} else {

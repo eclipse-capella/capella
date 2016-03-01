@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,10 +38,10 @@ public class GetAvailable_PhysicalLink_Categories extends AbstractQuery {
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalLink) {
-			PhysicalLink physicalLink = (PhysicalLink) element_p;
+		if (element instanceof PhysicalLink) {
+			PhysicalLink physicalLink = (PhysicalLink) element;
 			availableElements.addAll(getRule_MQRY_PhysicalLink_Categories_11(physicalLink));
 			List<CapellaElement> currentElements = getCurrentElements(physicalLink, false);
 			if (!currentElements.isEmpty() && !availableElements.isEmpty()) {
@@ -51,9 +51,9 @@ public class GetAvailable_PhysicalLink_Categories extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_PhysicalLink_Categories_11(PhysicalLink physicalLink_p) {
+	private List<CapellaElement> getRule_MQRY_PhysicalLink_Categories_11(PhysicalLink physicalLink) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(physicalLink_p);
+		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(physicalLink);
 		availableElements.addAll(getElementsFromBlockArchitecture(arch));
 		return availableElements;
 	}
@@ -61,10 +61,10 @@ public class GetAvailable_PhysicalLink_Categories extends AbstractQuery {
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalLink) {
-			PhysicalLink physicalLink = (PhysicalLink) element_p;
+		if (element instanceof PhysicalLink) {
+			PhysicalLink physicalLink = (PhysicalLink) element;
 			EList<PhysicalLinkCategory> categories = physicalLink.getCategories();
 			for (PhysicalLinkCategory categorie : categories) {
 				currentElements.add(categorie);
@@ -75,13 +75,13 @@ public class GetAvailable_PhysicalLink_Categories extends AbstractQuery {
 
 	/** 
 	 * Gets all the physical link categories from the BlockArchitecture
-	 * @param arch_p
+	 * @param arch
 	 * @return list of PhysicalLinkCategories
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (arch_p != null) {
-			for (EObject obj : EObjectExt.getAll(arch_p, CsPackage.Literals.PHYSICAL_LINK_CATEGORY)) {
+		if (arch != null) {
+			for (EObject obj : EObjectExt.getAll(arch, CsPackage.Literals.PHYSICAL_LINK_CATEGORY)) {
 				availableElements.add((CapellaElement) obj);
 			}
 		}

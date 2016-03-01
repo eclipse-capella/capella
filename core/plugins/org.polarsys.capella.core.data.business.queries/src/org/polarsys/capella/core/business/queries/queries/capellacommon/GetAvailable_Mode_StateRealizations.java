@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,38 +37,38 @@ public class GetAvailable_Mode_StateRealizations extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof AbstractState) {
-			availableElements.addAll(getRule_MQRY_State_AvailableStates_11((AbstractState) element_p));
+		if (element instanceof AbstractState) {
+			availableElements.addAll(getRule_MQRY_State_AvailableStates_11((AbstractState) element));
 		}
 		return availableElements;
 	}
 
 	/** 
 	 * same level Visibility Layer
-	 * @param state_p
+	 * @param state
 	 */
-	protected List<CapellaElement> getRule_MQRY_State_AvailableStates_11(AbstractState state_p) {
+	protected List<CapellaElement> getRule_MQRY_State_AvailableStates_11(AbstractState state) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(state_p);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(state);
 		if (null != currentBlockArchitecture) {
 			for (BlockArchitecture previousBlockArchitecture : BlockArchitectureExt.getPreviousBlockArchitectures(currentBlockArchitecture)) {
-				availableElements.addAll(getElementsFromBlockArchitecture(previousBlockArchitecture, state_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(previousBlockArchitecture, state));
 			}
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param arch_p
-	 * @param state_p
+	 * @param arch
+	 * @param state
 	 * @return
 	 */
-	protected List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, AbstractState state_p) {
+	protected List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, AbstractState state) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (arch_p != null) {
-			TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch_p, false);
+		if (arch != null) {
+			TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch, false);
 			while (allContents.hasNext()) {
 				Object object = allContents.next();
 				if (object instanceof AbstractState) {
@@ -76,20 +76,20 @@ public class GetAvailable_Mode_StateRealizations extends AbstractQuery {
 				}
 			}
 		}
-		for (CapellaElement elt : getCurrentElements(state_p, false)) {
+		for (CapellaElement elt : getCurrentElements(state, false)) {
 			availableElements.remove(elt);
 		}
-		availableElements.remove(state_p);
+		availableElements.remove(state);
 		return availableElements;
 	}
 
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof AbstractState) {
-			for (AbstractStateRealization link : ((AbstractState) element_p).getOwnedAbstractStateRealizations()) {
+		if (element instanceof AbstractState) {
+			for (AbstractStateRealization link : ((AbstractState) element).getOwnedAbstractStateRealizations()) {
 				currentElements.add(link.getRealizedAbstractState());
 			}
 		}
