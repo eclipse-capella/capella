@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,39 +37,39 @@ public class GetAvailable_InteractionUse_ReferencedScenario extends AbstractQuer
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		Scenario scenario = getAvailableRelatedScenario(element_p);
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		Scenario scenario = getAvailableRelatedScenario(element);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(element);
 		if (currentBlockArchitecture != null && scenario != null) {
 			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, scenario.getKind()));
 			availableElements.remove(scenario);
 		}
-		for (CapellaElement element : getCurrentElements(element_p, false)) {
-			availableElements.remove(element);
+		for (CapellaElement elt : getCurrentElements(element, false)) {
+			availableElements.remove(elt);
 		}
 		return availableElements;
 	}
 
-	protected Scenario getAvailableRelatedScenario(CapellaElement element_p) {
-		if (element_p instanceof InteractionUse) {
-			return (Scenario) ((InteractionUse) element_p).eContainer();
-		} else if (element_p instanceof Scenario) {
-			return (Scenario) element_p;
+	protected Scenario getAvailableRelatedScenario(CapellaElement element) {
+		if (element instanceof InteractionUse) {
+			return (Scenario) ((InteractionUse) element).eContainer();
+		} else if (element instanceof Scenario) {
+			return (Scenario) element;
 		}
 		return null;
 	}
 
 	/** 
-	 * @param arch_p
+	 * @param arch
 	 * @return
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, ScenarioKind kind_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, ScenarioKind kind) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch_p, true);
+		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch, true);
 		while (allContents.hasNext()) {
 			Object object = allContents.next();
-			if ((object instanceof Scenario) && ((Scenario) object).getKind().equals(kind_p)) {
+			if ((object instanceof Scenario) && ((Scenario) object).getKind().equals(kind)) {
 				availableElements.add((CapellaElement) object);
 			}
 		}
@@ -79,20 +79,20 @@ public class GetAvailable_InteractionUse_ReferencedScenario extends AbstractQuer
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		Scenario scenario = getCurrentRelatedScenario(element_p);
+		Scenario scenario = getCurrentRelatedScenario(element);
 		if (scenario != null) {
 			currentElements.add(scenario);
 		}
 		return currentElements;
 	}
 
-	protected Scenario getCurrentRelatedScenario(CapellaElement element_p) {
-		if (element_p instanceof InteractionUse) {
-			return ((InteractionUse) element_p).getReferencedScenario();
-		} else if (element_p instanceof Scenario) {
-			return (Scenario) element_p;
+	protected Scenario getCurrentRelatedScenario(CapellaElement element) {
+		if (element instanceof InteractionUse) {
+			return ((InteractionUse) element).getReferencedScenario();
+		} else if (element instanceof Scenario) {
+			return (Scenario) element;
 		}
 		return null;
 	}

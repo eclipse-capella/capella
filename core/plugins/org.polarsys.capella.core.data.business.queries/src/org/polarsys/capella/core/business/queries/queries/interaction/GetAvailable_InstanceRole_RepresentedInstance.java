@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -113,17 +113,17 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  private java.util.Collection<? extends CapellaElement> getAvailableElementsForEntities(Scenario scenario_p) {
+  private java.util.Collection<? extends CapellaElement> getAvailableElementsForEntities(Scenario scenario) {
     List<Part> excluded = new ArrayList<Part>();
-    for (InstanceRole ir : scenario_p.getOwnedInstanceRoles()) {
+    for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
       if (ir.getRepresentedInstance() instanceof Part) {
         excluded.add((Part) ir.getRepresentedInstance());
       }
     }
-    return ScenarioExt.getAllComponents(scenario_p, excluded);
+    return ScenarioExt.getAllComponents(scenario, excluded);
   }
 
 }
