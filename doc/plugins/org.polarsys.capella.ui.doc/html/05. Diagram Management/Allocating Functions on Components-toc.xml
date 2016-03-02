@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc-diagmt.xml#contribution"  topic="html/05. Diagram Management/Allocating Functions on Components.html" label="Allocating Functions on Components">
+	<topic href="html/05. Diagram Management/Allocating Functions on Components.html" label="Allocating Functions on Components">
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Allocating Leaves Functions" label="Allocating Leaves Functions">
+    </topic>
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Show / Hide Allocated Functions" label="Show / Hide Allocated Functions">
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Represent Allocated Functions on parent Components" label="Represent Allocated Functions on parent Components">
+    </topic>
+    <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Represent parent Functions allocation" label="Represent parent Functions allocation">
+    </topic>
+    </topic>
+	</topic>
+</toc>

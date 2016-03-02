@@ -1,0 +1,120 @@
+<!--
+ Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+    Thales - initial API and implementation
+-->
+<!--?xml version='1.0' encoding='utf-8' ?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  <link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="Allocating_Functions_on_Components">Allocating Functions on Components</h1>
+		<h2 id="Allocating_Leaves_Functions">Allocating Leaves Functions</h2>
+		<p>Allocating Functions (or Operational Activities) on System, Actors and Components (or Entities, Operational Actors and Roles for Operational Activities) can be done using the reference in the property view, or via the tool Manage Function Allocation in a diagram.</p>
+		<p>
+			<img height="367" width="127" border="0" src="Images/AllocatingFunctions_ManageFunctionAllocation.png"/>
+		</p>
+		<p>In both case, only leaves functions (i.e. functions without child functions) can be allocated directly.</p>
+		<p>
+			<img height="688" width="1024" border="0" src="Images/AllocatingFunctions_LeavesAllocation.png"/>
+		</p>
+		<p>Allocating those functions will modify the selected diagram and the model by completing the "allocated functions" reference for the selected component.</p>
+		<p>
+			<img height="297" width="481" border="0" src="Images/AllocatingFunctions_AllocatedFunctionReference.png"/>
+		</p>
+		<h2 id="Insert.2FRemove_Allocated_Functions">Insert/Remove Allocated Functions</h2>
+		<p>Let's consider that we have the following functions tree.</p>
+		<pre><img height="331" width="380" border="0" src="Images/AllocatingFunctions_FunctionalBreakdown.png"/>
+</pre>
+		<p>We have seen that the leaves functions can be allocated that way.
+
+			<img height="180" width="575" border="0" src="Images/AllocatingFunctions_FunctionAllocatedOnComponents.png"/>
+		</p>
+		<h3 id="Represent_parent_Functions_allocation">Represent parent Functions allocation</h3>
+		<p>When a parent function have all its leaves allocated on the same component, and/or on its sub component, it is possible to represent this parent function as an allocated one.</p>
+		<p>For instance, in the last picture,  
+			<i>"LF A 1"</i> and 
+			<i>"LF A 2"</i> are two child functions of 
+			<i>"LF A"</i>. As both 
+			<i>"LF A 1"</i> and 
+			<i>"LF A 2"</i> are allocated on 
+			<i>"LC A 1"</i>, it is possible to represent 
+			<i>"LF A"</i> as allocated on 
+			<i>"LC A"</i>.
+		</p>
+		<p>
+			<img height="688" width="1024" border="0" src="Images/AllocatingFunctions_RepresentParentFunction_LF_A.png"/>
+		</p>
+		<p>To do this, we shall use the "Allocated Function" tool in 
+			<i>"LC A 1"</i> and add 
+			<i>"LF A"</i>.
+		</p>
+		<p>
+			<img height="367" width="127" border="0" src="Images/AllocatingFunctions_AllocatedFunctions.png"/>
+		</p>
+		<p>
+			<img height="688" width="1024" border="0" src="Images/AllocatingFunctions_RepresentParentFunction_LF_A.png"/>
+		</p>
+		<p>The resulting diagram displays 
+			<i>"LF A"</i> as allocated in 
+			<i>"LC A"</i>.
+		</p>
+		<p>
+			<img height="182" width="573" border="0" src="Images/AllocatingFunctions_LF_1_and_LF_2_replaced.png"/>
+		</p>
+		<p>
+			<img height="16" width="16" border="0" src="Images/5.1. Diagram concepts_html_3c78e109.png"/> As a parent function 
+			<i>"LF A"</i> appears in italic to differenciate it from allocated leaves.
+		</p>
+		<h3 id="Represent_Allocated_Functions_on_parent_Components">Represent Allocated Functions on parent Components</h3>
+		<p>When the component allocating a function is not represented in the diagram, the allocated function can also be represented on one of its parent component.</p>
+		<p>For instance, in the last picture,  
+			<i>"LF B 1"</i> and 
+			<i>"LF B 2"</i> are allocated respectively on 
+			<i>"LC B 1"</i> and 
+			<i>"LC B 2"</i>. If we hide on this component, then the corresponding function can be represented in 
+			<i>"LC B"</i>.
+		</p>
+		<p>To do this, we shall use the "Allocated Component" tool in 
+			<i>"LC B"</i> and remove 
+			<i>"LF B 1"</i> and 
+			<i>"LF B 2"</i>. Hence, we can use the "Allocated Function" tool in 
+			<i>"LC B"</i> and add 
+			<i>"LF B 1"</i> and 
+			<i>"LF B 2"</i>.
+		</p>
+		<p>The resulting diagram displays 
+			<i>"LF A"</i> as allocated in 
+			<i>"LC A"</i>.
+		</p>
+		<p>
+			<img height="174" width="576" border="0" src="Images/AllocatingFunctions_LF_B_1_and_LF_B_2_displayed_on_LC_B.png"/>
+		</p>
+		<p>
+			<img height="16" width="16" border="0" src="Images/5.1. Diagram concepts_html_3c78e109.png"/> As Functions allocated on a subcomponent, 
+			<i>"LF B 1"</i> and 
+			<i>"LF B 2"</i> appears with a dashed border to differenciate them from functions allocated on this component.
+		</p>
+		<p>We can also chose to display 
+			<i>"LF B"</i> in 
+			<i>"LC B"</i>.
+		</p>
+		<p>
+			<img height="172" width="420" border="0" src="Images/AllocatingFunctions_LF_B_displayed_in_LC_B.png"/>
+		</p>
+		<p>And finally if we hide both 
+			<i>"LC A"</i> and 
+			<i>"LC B"</i> it is possible to represent 
+			<i>"LF"</i> in the System.
+		</p>
+		<p>
+			<img height="145" width="363" border="0" src="Images/AllocatingFunctions_on_LogicalSystem.png"/>
+		</p>
+	</body>
+</html>
