@@ -225,6 +225,17 @@ logo_capella_big.png
 5.6. Diagrams Tips and Tricks_html_67b668f.png
 5.6. Diagrams Tips and Tricks_html_6d5f4ebe.png
 5.6. Diagrams Tips and Tricks_html_71e66c70.png
+AllocatingFunctions_AllocatedFunctionReference.png
+AllocatingFunctions_FunctionalBreakdown.png
+AllocatingFunctions_FunctionAllocatedOnComponents.png
+AllocatingFunctions_LC_B_1_and_LC_B_2_hidden.png
+AllocatingFunctions_LeavesAllocation.png
+AllocatingFunctions_LF_1_and_LF_2_replaced.png
+AllocatingFunctions_LF_B_1_and_LF_B_2_displayed_on_LC_B.png
+AllocatingFunctions_LF_B_displayed_in_LC_B.png
+AllocatingFunctions_ManageFunctionAllocation.png
+AllocatingFunctions_on_LogicalSystem.png
+AllocatingFunctions_RepresentParentFunction_LF_A.png
 
 4.01. Melody Advance Perspective_html_m226282b1.png
 4.02. Tips and Tricks_html_22ef5f2.png
