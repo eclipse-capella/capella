@@ -1320,7 +1320,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($element == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView%>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%eContents().filter(&quot;DDiagramElement&quot;)[target.filter(&quot;Role&quot;).nSize() > 0]%>">
-                        <subModelOperations xsi:type="tool:DeleteView"/>
+                      <subModelOperations xsi:type="tool:DeleteView"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$containerView.eContents().filter(&quot;DDiagramElement&quot;)[target == $i].nSize() > 0%>">
@@ -1760,10 +1760,8 @@
           </ownedTools>
         </toolSections>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="borderLineStyle" value="dash">
-              <appliedOn href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@conditionnalStyles.0/@style"/>
-            </featureCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;% !current.isAllocatedInThisComponent($container.getComponentType()) %>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']/@style" attributeName="borderLineStyle" value="dash"/>
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>
