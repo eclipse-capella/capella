@@ -24,9 +24,9 @@ public class HeadlessCloseSessionAction extends CloseSessionAction {
 
   protected List<Session> sessionsToClose = new ArrayList<Session>();
 
-  public HeadlessCloseSessionAction(List<Session> sessionsToClose, boolean saveSession) {
+  public HeadlessCloseSessionAction(List<Session> inputSessionsToClose, boolean saveSession) {
     super();
-    sessionsToClose.addAll(sessionsToClose);
+    sessionsToClose.addAll(inputSessionsToClose);
     showDialog(false);
     shouldSaveIfNoDialog(saveSession);
   }
