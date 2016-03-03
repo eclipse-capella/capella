@@ -45,7 +45,7 @@ public class CapabilityDiagram extends CommonDiagram {
     return (CapabilityDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
-        return new CapabilityDiagram(type, getExecutionContext(), _diagram);
+        return new CapabilityDiagram(type, getExecutionContext(), diagram);
       }
     }.run().open();
   }

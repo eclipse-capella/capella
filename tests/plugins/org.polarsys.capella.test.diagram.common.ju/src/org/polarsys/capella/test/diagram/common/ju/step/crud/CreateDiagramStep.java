@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.common.ju.step.crud;
 import junit.framework.Assert;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -25,7 +26,9 @@ import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
+import org.polarsys.capella.test.diagram.common.ju.headless.selector.HeadlessCapellaAnalysisSelector;
 import org.polarsys.capella.test.diagram.common.ju.step.Messages;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * Test case that creates a diagram based on a semantic element.
@@ -35,27 +38,36 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
   /**
    * Created diagram.
    */
-  protected DDiagram _diagram;
+  protected DDiagram diagram;
 
   protected RepresentationDescription description;
 
   protected EObject target;
 
-  protected boolean _isSynchronized;
+  protected boolean isSynchronized;
+
+  protected URI selectedURI;
 
   public CreateDiagramStep(SessionContext executionContext, String targetIdentifier, String diagramDescription) {
-    this(executionContext, executionContext.getSemanticElement(targetIdentifier), diagramDescription);
+    this(executionContext, executionContext.getSemanticElement(targetIdentifier), diagramDescription, TestHelper
+        .getAirdResource(executionContext.getSession()).getURI());
+  }
+
+  public CreateDiagramStep(SessionContext executionContext, String targetIdentifier, String diagramDescription,
+      URI selectedURI) {
+    this(executionContext, executionContext.getSemanticElement(targetIdentifier), diagramDescription, selectedURI);
   }
 
   /**
    * Default constructor.
    */
-  public CreateDiagramStep(SessionContext executionContext, EObject target_p, String diagramDescription) {
+  public CreateDiagramStep(SessionContext executionContext, EObject target, String diagramDescription, URI selectedURI) {
     super(executionContext);
-    target = target_p;
-    _isSynchronized = true;
+    this.target = target;
+    isSynchronized = true;
     description = org.polarsys.capella.core.diagram.helpers.DiagramHelper.getService().getDescription(
         executionContext.getSession(), diagramDescription);
+    this.selectedURI = selectedURI;
   }
 
   /**
@@ -67,6 +79,8 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
     Assert.assertNotNull(Messages.nullSession, getExecutionContext().getSession());
     Assert.assertNotNull(Messages.nullSemanticObject, target);
     Assert.assertNotNull(Messages.nullRepresentationDesc, description);
+
+    HeadlessCapellaAnalysisSelector.INSTANCE.setSelectedURI(selectedURI);
   }
 
   /**
@@ -76,12 +90,12 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
   protected void runTest() {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
       public void run() {
-        _diagram = (DDiagram) DialectManager.INSTANCE.createRepresentation(description.getName(), target, description,
+        diagram = (DDiagram) DialectManager.INSTANCE.createRepresentation(description.getName(), target, description,
             getExecutionContext().getSession(), new NullProgressMonitor());
 
         // synchronization of this diagram
-        if ((null != _diagram) && (_diagram instanceof DDiagram)) {
-          _diagram.setSynchronized(_isSynchronized);
+        if ((null != diagram) && (diagram instanceof DDiagram)) {
+          diagram.setSynchronized(isSynchronized);
         }
       }
     };
@@ -91,7 +105,7 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
 
     Assert.assertNotNull(
         NLS.bind(Messages.failToCreateDriagram,
-            new Object[] { description.getName(), EObjectLabelProviderHelper.getText(target) }), _diagram);
+            new Object[] { description.getName(), EObjectLabelProviderHelper.getText(target) }), diagram);
 
     // If the diagram was created, we notify the session manager about it.
     SessionManager.INSTANCE.notifyRepresentationCreated(getExecutionContext().getSession());
@@ -102,6 +116,6 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
    */
   @Override
   public DiagramContext getResult() {
-    return new DiagramContext(getExecutionContext(), _diagram);
+    return new DiagramContext(getExecutionContext(), diagram);
   }
 }
