@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,24 +41,24 @@ public class GetAvailable_ComponentPort_ConnectedPorts extends AbstractQuery {
 		return (List) availableElements;
 	}
 
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof Part) {
-			Part property = (Part) element_p;
+		if (element instanceof Part) {
+			Part property = (Part) element;
 			availableElements.addAll(getRule_MQRY_StandardPort_ConnectedPorts_11(property));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.removeAll(getCurrentElements(element_p, false));
+		availableElements.removeAll(getCurrentElements(element, false));
 		availableElements.remove(thePort);
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_StandardPort_ConnectedPorts_11(Part currentPhysicalPart_p) {
+	private List<CapellaElement> getRule_MQRY_StandardPort_ConnectedPorts_11(Part currentPhysicalPart) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
 		if (query != null) {
-			List<CapellaElement> pcs = query.getAvailableElements(currentPhysicalPart_p);
-			pcs.add((CapellaElement) currentPhysicalPart_p.eContainer());
+			List<CapellaElement> pcs = query.getAvailableElements(currentPhysicalPart);
+			pcs.add((CapellaElement) currentPhysicalPart.eContainer());
 			List<Partition> allports = new ArrayList<Partition>(1);
 			for (CapellaElement capellaElement : pcs) {
 				if (capellaElement instanceof PhysicalComponent) {
@@ -75,9 +75,9 @@ public class GetAvailable_ComponentPort_ConnectedPorts extends AbstractQuery {
 		return availableElements;
 	}
 
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>(1);
-		if (element_p instanceof Part && thePort != null) {
+		if (element instanceof Part && thePort != null) {
 			for (ComponentExchange connection : thePort.getComponentExchanges()) {
 				currentElements.addAll(FunctionalExt.getRelatedPorts(connection));
 			}

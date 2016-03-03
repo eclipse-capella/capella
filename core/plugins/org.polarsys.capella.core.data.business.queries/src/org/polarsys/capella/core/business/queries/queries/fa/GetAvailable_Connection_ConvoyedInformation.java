@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,51 +43,51 @@ public class GetAvailable_Connection_ConvoyedInformation extends AbstractQuery {
   /**
    * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (null == systemEngineering) {
       return availableElements;
     }
-    availableElements.addAll(getRule_MQRY_Connection_ExchangeItems_11(systemEngineering, element_p));
+    availableElements.addAll(getRule_MQRY_Connection_ExchangeItems_11(systemEngineering, element));
     return availableElements;
   }
 
   /**
    * get the root architecture of the current
-   * @param systemEng_p : SystemEngineering
-   * @param connection_p : Connection
+   * @param systemEng : SystemEngineering
+   * @param connection : Connection
    * @return
    */
-  private List<CapellaElement> getRule_MQRY_Connection_ExchangeItems_11(SystemEngineering systemEng_p, CapellaElement connection_p) {
+  private List<CapellaElement> getRule_MQRY_Connection_ExchangeItems_11(SystemEngineering systemEng, CapellaElement connection) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     BlockArchitecture arch = null;
-    arch = SystemEngineeringExt.getRootBlockArchitecture(connection_p);
-    availableElements.addAll(getElementsFromBlockArchitecture(arch, connection_p));
+    arch = SystemEngineeringExt.getRootBlockArchitecture(connection);
+    availableElements.addAll(getElementsFromBlockArchitecture(arch, connection));
     return availableElements;
   }
 
   /**
    * return the ExchageItem from current and all the above levels
-   * @param compExchange_p
-   * @param arch_p
+   * @param compExchange
+   * @param arch
    * @return
    */
   @SuppressWarnings("unchecked")
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, CapellaElement compExchange_p) {
+  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, CapellaElement compExchange) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    if (arch_p != null) {
-      List<DataPkg> allDataPkgs = DataPkgExt.getAllDataPkgs(compExchange_p);
+    if (arch != null) {
+      List<DataPkg> allDataPkgs = DataPkgExt.getAllDataPkgs(compExchange);
       for (DataPkg dataPkg : allDataPkgs) {
         availableElements.addAll((Collection<? extends CapellaElement>) AbstractExchangeItemPkgExt.getAllAbstractExchangeItems(dataPkg));
       }
-      List<InterfacePkg> allInterfacePkgs = InterfacePkgExt.getAllInterfacePkgs(compExchange_p);
+      List<InterfacePkg> allInterfacePkgs = InterfacePkgExt.getAllInterfacePkgs(compExchange);
       for (InterfacePkg interfacePkg : allInterfacePkgs) {
         availableElements.addAll((Collection<? extends CapellaElement>) AbstractExchangeItemPkgExt.getAllAbstractExchangeItems(interfacePkg));
       }
     }
-    if (compExchange_p instanceof ComponentExchange) {
-      EList<AbstractExchangeItem> convoyedInformations = ((ComponentExchange) compExchange_p).getConvoyedInformations();
+    if (compExchange instanceof ComponentExchange) {
+      EList<AbstractExchangeItem> convoyedInformations = ((ComponentExchange) compExchange).getConvoyedInformations();
       for (AbstractExchangeItem abstractExchangeItem : convoyedInformations) {
         if (null != abstractExchangeItem) {
           availableElements.remove(abstractExchangeItem);

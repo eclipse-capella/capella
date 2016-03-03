@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,141 +66,141 @@ public class GetAvailable_OperationalProcess_AvailableInStates extends AbstractQ
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof FunctionalChain) {
-			availableElements.addAll(getAvailableElmentsFromCurrentLevel(systemEngineering, element_p));
+		if (element instanceof FunctionalChain) {
+			availableElements.addAll(getAvailableElmentsFromCurrentLevel(systemEngineering, element));
 		}
 		return availableElements;
 	}
 
 	/** 
 	 * look for states and modes from Current And Higher Levels
-	 * @param systemEng_p
-	 * @param ele_p
+	 * @param systemEng
+	 * @param ele
 	 * @return
 	 */
-	protected List<CapellaElement> getAvailableElmentsFromCurrentLevel(SystemEngineering systemEng_p, CapellaElement ele_p) {
+	protected List<CapellaElement> getAvailableElmentsFromCurrentLevel(SystemEngineering systemEng, CapellaElement ele) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		BlockArchitecture blockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele_p);
+		BlockArchitecture blockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele);
 		if (blockArchitecture instanceof OperationalAnalysis) {
-			getElementsFromOperationalAnalysisLayer(ele_p, blockArchitecture, availableElements);
+			getElementsFromOperationalAnalysisLayer(ele, blockArchitecture, availableElements);
 		} else if (blockArchitecture instanceof SystemAnalysis) {
-			getElementsFromSystemAnalysisLayer(ele_p, blockArchitecture, availableElements);
+			getElementsFromSystemAnalysisLayer(ele, blockArchitecture, availableElements);
 		} else if (blockArchitecture instanceof LogicalArchitecture) {
-			getElementsFromLogicalLayer(ele_p, blockArchitecture, availableElements);
+			getElementsFromLogicalLayer(ele, blockArchitecture, availableElements);
 		} else if (blockArchitecture instanceof PhysicalArchitecture) {
-			getElementsFromPhysicalLayer(ele_p, blockArchitecture, availableElements);
+			getElementsFromPhysicalLayer(ele, blockArchitecture, availableElements);
 		} else if (blockArchitecture instanceof EPBSArchitecture) {
-			getElementsFromEPBSLayer(ele_p, blockArchitecture, availableElements);
+			getElementsFromEPBSLayer(ele, blockArchitecture, availableElements);
 		}
 		return availableElements;
 	}
 
 	/** 
 	 * Retrieve Components from OperationalAnalysis Layer + look for available modes and states
-	 * @param ele_p
+	 * @param ele
 	 * @param systemEngineering
-	 * @param availableElements_p
+	 * @param availableElements
 	 */
-	protected void getElementsFromOperationalAnalysisLayer(CapellaElement ele_p, BlockArchitecture blockArch_p, List<CapellaElement> availableElements_p) {
-		OperationalAnalysis oa = (OperationalAnalysis) blockArch_p;
+	protected void getElementsFromOperationalAnalysisLayer(CapellaElement ele, BlockArchitecture blockArch, List<CapellaElement> availableElements) {
+		OperationalAnalysis oa = (OperationalAnalysis) blockArch;
 		EntityPkg ownedEntityPkg = oa.getOwnedEntityPkg();
 		List<Entity> allEntity = OperationalAnalysisExt.getAllEntity(ownedEntityPkg);
 		for (Entity entity : allEntity) {
-			availableElements_p.addAll(getElementsFromBlockArchitecture(entity, ele_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(entity, ele));
 		}
 	}
 
 	/** 
 	 * Retrieve Components from  SystemAnslysis Layer + look for available modes and states
-	 * @param ele_p
-	 * @param blockArch_p
-	 * @param availableElements_p
+	 * @param ele
+	 * @param blockArch
+	 * @param availableElements
 	 */
-	protected void getElementsFromSystemAnalysisLayer(CapellaElement ele_p, BlockArchitecture blockArch_p, List<CapellaElement> availableElements_p) {
-		SystemAnalysis ca = (SystemAnalysis) blockArch_p;
+	protected void getElementsFromSystemAnalysisLayer(CapellaElement ele, BlockArchitecture blockArch, List<CapellaElement> availableElements) {
+		SystemAnalysis ca = (SystemAnalysis) blockArch;
 		SystemContext ownedSystemContext = ca.getOwnedSystemContext();
-		availableElements_p.addAll(getElementsFromBlockArchitecture(ownedSystemContext, ele_p));
+		availableElements.addAll(getElementsFromBlockArchitecture(ownedSystemContext, ele));
 		System ownedSystem = ca.getOwnedSystem();
-		availableElements_p.addAll(getElementsFromBlockArchitecture(ownedSystem, ele_p));
+		availableElements.addAll(getElementsFromBlockArchitecture(ownedSystem, ele));
 		ActorPkg ownedActorPkg = ca.getOwnedActorPkg();
 		List<Actor> allActors = ActorPkgExt.getAllActors(ownedActorPkg);
 		for (Actor actor : allActors) {
-			availableElements_p.addAll(getElementsFromBlockArchitecture(actor, ele_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(actor, ele));
 		}
 	}
 
 	/** 
 	 * Retrieve Components from Logical layer + look for available modes and states
-	 * @param ele_p
-	 * @param blockArch_p
-	 * @param availableElements_p
+	 * @param ele
+	 * @param blockArch
+	 * @param availableElements
 	 */
-	protected void getElementsFromLogicalLayer(CapellaElement ele_p, BlockArchitecture blockArch_p, List<CapellaElement> availableElements_p) {
-		LogicalArchitecture logArch = (LogicalArchitecture) blockArch_p;
+	protected void getElementsFromLogicalLayer(CapellaElement ele, BlockArchitecture blockArch, List<CapellaElement> availableElements) {
+		LogicalArchitecture logArch = (LogicalArchitecture) blockArch;
 		LogicalContext ownedLogicalContext = logArch.getOwnedLogicalContext();
-		availableElements_p.addAll(getElementsFromBlockArchitecture(ownedLogicalContext, ele_p));
+		availableElements.addAll(getElementsFromBlockArchitecture(ownedLogicalContext, ele));
 		List<LogicalComponent> allLCsFromLogicalArchitectureLayer = LogicalArchitectureExt.getAllLCsFromLogicalArchitectureLayer(logArch);
 		for (LogicalComponent logicalComponent : allLCsFromLogicalArchitectureLayer) {
-			availableElements_p.addAll(getElementsFromBlockArchitecture(logicalComponent, ele_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(logicalComponent, ele));
 		}
 		List<LogicalActor> allLAsFromLAPkg = LogicalActorPkgExt.getAllLAsFromLAPkg(logArch.getOwnedLogicalActorPkg());
 		for (LogicalActor logicalActor : allLAsFromLAPkg) {
-			availableElements_p.addAll(getElementsFromBlockArchitecture(logicalActor, ele_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(logicalActor, ele));
 		}
 	}
 
 	/** 
 	 * Retrieve Components from Physical layer + look for available modes and states
-	 * @param ele_p
-	 * @param blockArch_p
-	 * @param availableElements_p
+	 * @param ele
+	 * @param blockArch
+	 * @param availableElements
 	 */
-	protected void getElementsFromPhysicalLayer(CapellaElement ele_p, BlockArchitecture blockArch_p, List<CapellaElement> availableElements_p) {
-		PhysicalArchitecture phyArch = (PhysicalArchitecture) blockArch_p;
+	protected void getElementsFromPhysicalLayer(CapellaElement ele, BlockArchitecture blockArch, List<CapellaElement> availableElements) {
+		PhysicalArchitecture phyArch = (PhysicalArchitecture) blockArch;
 		PhysicalContext ownedPhysicalContext = phyArch.getOwnedPhysicalContext();
-		availableElements_p.addAll(getElementsFromBlockArchitecture(ownedPhysicalContext, ele_p));
+		availableElements.addAll(getElementsFromBlockArchitecture(ownedPhysicalContext, ele));
 		List<PhysicalComponent> allPhysicalComponents = PhysicalArchitectureExt.getAllPhysicalComponents(phyArch);
 		for (PhysicalComponent physicalComponent : allPhysicalComponents) {
-			availableElements_p.addAll(getElementsFromBlockArchitecture(physicalComponent, ele_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(physicalComponent, ele));
 		}
 		List<PhysicalActor> allPAsFromPAPkg = PhysicalActorPkgExt.getAllPAsFromPAPkg((phyArch.getOwnedPhysicalActorPkg()));
 		for (PhysicalActor physicalActor : allPAsFromPAPkg) {
-			availableElements_p.addAll(getElementsFromBlockArchitecture(physicalActor, ele_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(physicalActor, ele));
 		}
 	}
 
 	/** 
 	 * Retrieve Components form EPBS Layer + look for available modes and states
-	 * @param ele_p a model element
-	 * @param blockArchitecture_p
-	 * @param availableElements_p
+	 * @param ele a model element
+	 * @param blockArchitecture
+	 * @param availableElements
 	 */
-	protected void getElementsFromEPBSLayer(CapellaElement ele_p, BlockArchitecture blockArchitecture_p, List<CapellaElement> availableElements_p) {
-		EPBSArchitecture epbsArch = (EPBSArchitecture) blockArchitecture_p;
+	protected void getElementsFromEPBSLayer(CapellaElement ele, BlockArchitecture blockArchitecture, List<CapellaElement> availableElements) {
+		EPBSArchitecture epbsArch = (EPBSArchitecture) blockArchitecture;
 		EPBSContext ownedEPBSContext = epbsArch.getOwnedEPBSContext();
-		availableElements_p.addAll(getElementsFromBlockArchitecture(ownedEPBSContext, ele_p));
+		availableElements.addAll(getElementsFromBlockArchitecture(ownedEPBSContext, ele));
 		List<ConfigurationItem> allConfigurationItems = SystemEngineeringExt.getAllConfigurationItems(epbsArch);
 		for (ConfigurationItem configurationItem : allConfigurationItems) {
-			availableElements_p.addAll(getElementsFromBlockArchitecture(configurationItem, ele_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(configurationItem, ele));
 		}
 	}
 
 	/** 
 	 * get all the States and Modes from current Component
-	 * @param ele_p
-	 * @param comp_p
+	 * @param ele
+	 * @param comp
 	 * @return
 	 */
-	protected List<CapellaElement> getElementsFromBlockArchitecture(Component comp_p, CapellaElement ele_p) {
+	protected List<CapellaElement> getElementsFromBlockArchitecture(Component comp, CapellaElement ele) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (comp_p != null) {
-			EList<StateMachine> ownedStateMachines = comp_p.getOwnedStateMachines();
+		if (comp != null) {
+			EList<StateMachine> ownedStateMachines = comp.getOwnedStateMachines();
 			for (StateMachine stateMachine : ownedStateMachines) {
 				TreeIterator<Object> allContents = EcoreUtil.getAllContents(stateMachine, false);
 				while (allContents.hasNext()) {
@@ -211,7 +211,7 @@ public class GetAvailable_OperationalProcess_AvailableInStates extends AbstractQ
 				}
 			}
 		}
-		List<CapellaElement> currentElements = getCurrentElements(ele_p, false);
+		List<CapellaElement> currentElements = getCurrentElements(ele, false);
 		availableElements.removeAll(currentElements);
 		return availableElements;
 	}
@@ -219,10 +219,10 @@ public class GetAvailable_OperationalProcess_AvailableInStates extends AbstractQ
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof FunctionalChain) {
-			FunctionalChain ele = (FunctionalChain) element_p;
+		if (element instanceof FunctionalChain) {
+			FunctionalChain ele = (FunctionalChain) element;
 			EList<State> availableInStates = ele.getAvailableInStates();
 			for (State abstractStateMode : availableInStates) {
 				currentElements.add(abstractStateMode);

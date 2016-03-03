@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,10 +41,10 @@ public class GetAvailable_Role_AllocatedActivities extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof Role) {
-			availableElements.addAll(getRule_MQRY_Role_AvailableActivities_11((Role) element_p));
+		if (element instanceof Role) {
+			availableElements.addAll(getRule_MQRY_Role_AvailableActivities_11((Role) element));
 		}
 		return availableElements;
 	}
@@ -52,9 +52,9 @@ public class GetAvailable_Role_AllocatedActivities extends AbstractQuery {
 	/** 
 	 * same level Visibility Layer
 	 */
-	private List<CapellaElement> getRule_MQRY_Role_AvailableActivities_11(Role ele_p) {
+	private List<CapellaElement> getRule_MQRY_Role_AvailableActivities_11(Role ele) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele_p);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele);
 		if (currentBlockArchitecture != null) {
 			availableElements.addAll(FunctionExt.getAllLeafAbstractFunctions(currentBlockArchitecture));
 		}
@@ -67,7 +67,7 @@ public class GetAvailable_Role_AllocatedActivities extends AbstractQuery {
 			}
 		}
 		availableElements.removeAll(listToRemove);
-		for (CapellaElement element : getCurrentElements(ele_p, false)) {
+		for (CapellaElement element : getCurrentElements(ele, false)) {
 			availableElements.remove(element);
 		}
 		return availableElements;
@@ -76,10 +76,10 @@ public class GetAvailable_Role_AllocatedActivities extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof Role) {
-			for (ActivityAllocation anActivityAllocation : ((Role) element_p).getOwnedActivityAllocations()) {
+		if (element instanceof Role) {
+			for (ActivityAllocation anActivityAllocation : ((Role) element).getOwnedActivityAllocations()) {
 				TraceableElement targetElement = anActivityAllocation.getTargetElement();
 				if (targetElement instanceof OperationalActivity) {
 					currentElements.add((CapellaElement) targetElement);

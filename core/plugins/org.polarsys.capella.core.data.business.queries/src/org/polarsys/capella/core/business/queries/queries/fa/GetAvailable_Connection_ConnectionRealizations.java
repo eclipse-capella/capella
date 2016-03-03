@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,36 +42,36 @@ public class GetAvailable_Connection_ConnectionRealizations extends AbstractQuer
 		return (List) availableElements;
 	}
 
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering syseng = SystemEngineeringExt.getSystemEngineering(element_p);
-		if (element_p instanceof ComponentExchange) {
-			ComponentExchange ele = (ComponentExchange) element_p;
+		SystemEngineering syseng = SystemEngineeringExt.getSystemEngineering(element);
+		if (element instanceof ComponentExchange) {
+			ComponentExchange ele = (ComponentExchange) element;
 			availableElements.addAll(getElementsFromBlockArchitecture(syseng, ele));
 		}
 		return availableElements;
 	}
 
-	private Collection<? extends CapellaElement> getElementsFromBlockArchitecture(SystemEngineering sysEng_p, ComponentExchange currentElement_p) {
+	private Collection<? extends CapellaElement> getElementsFromBlockArchitecture(SystemEngineering sysEng, ComponentExchange currentElement) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture rootBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(currentElement_p);
+		BlockArchitecture rootBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(currentElement);
 		if (rootBlockArchitecture instanceof SystemAnalysis) {
-			OperationalAnalysis ownedOperationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng_p);
+			OperationalAnalysis ownedOperationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
 			for (EObject aComponentExchange : EObjectExt.getAll(ownedOperationalAnalysis, OaPackage.Literals.COMMUNICATION_MEAN)) {
 				availableElements.add((CapellaElement) aComponentExchange);
 			}
 		} else if (rootBlockArchitecture instanceof LogicalArchitecture) {
-			SystemAnalysis ownedContextArchitecture = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng_p);
+			SystemAnalysis ownedContextArchitecture = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
 			for (EObject aComponentExchange : EObjectExt.getAll(ownedContextArchitecture, FaPackage.Literals.COMPONENT_EXCHANGE)) {
 				availableElements.add((CapellaElement) aComponentExchange);
 			}
 		} else if (rootBlockArchitecture instanceof PhysicalArchitecture) {
-			LogicalArchitecture ownedLogicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng_p);
+			LogicalArchitecture ownedLogicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng);
 			for (EObject aComponentExchange : EObjectExt.getAll(ownedLogicalArchitecture, FaPackage.Literals.COMPONENT_EXCHANGE)) {
 				availableElements.add((CapellaElement) aComponentExchange);
 			}
 		}
-		List<CapellaElement> currentElements = getCurrentElements(currentElement_p, false);
+		List<CapellaElement> currentElements = getCurrentElements(currentElement, false);
 		for (CapellaElement capellaElement : currentElements) {
 			availableElements.remove(capellaElement);
 		}
@@ -81,10 +81,10 @@ public class GetAvailable_Connection_ConnectionRealizations extends AbstractQuer
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ComponentExchange) {
-			ComponentExchange ele = (ComponentExchange) element_p;
+		if (element instanceof ComponentExchange) {
+			ComponentExchange ele = (ComponentExchange) element;
 			EList<ComponentExchangeRealization> ownedComponentExchangeRealisations = ele.getOwnedComponentExchangeRealizations();
 			for (ComponentExchangeRealization componentExchangeRealisation : ownedComponentExchangeRealisations) {
 				currentElements.add((CapellaElement) componentExchangeRealisation.getTargetElement());

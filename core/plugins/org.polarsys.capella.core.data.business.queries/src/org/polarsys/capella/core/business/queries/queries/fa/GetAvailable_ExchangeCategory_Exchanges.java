@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,12 +38,12 @@ public class GetAvailable_ExchangeCategory_Exchanges extends AbstractQuery {
 	/** 
 	 * @see IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ExchangeCategory) {
-			BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		if (element instanceof ExchangeCategory) {
+			BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 			if (null != arch) {
-				availableElements.addAll(getElementsFromBlockArchitecture(arch, (ExchangeCategory) element_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(arch, (ExchangeCategory) element));
 			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -51,16 +51,16 @@ public class GetAvailable_ExchangeCategory_Exchanges extends AbstractQuery {
 	}
 
 	/** 
-	 * get all the functional exchanges from 'exchangeCategory_p' parent Block Architecture
-	 * @param arch_p 
-	 * @param exchangeCategory_p
+	 * get all the functional exchanges from 'exchangeCategory' parent Block Architecture
+	 * @param arch 
+	 * @param exchangeCategory
 	 * @return list of FunctionalExchange
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, ExchangeCategory exchangeCategory_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, ExchangeCategory exchangeCategory) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (arch_p != null) {
-			for (EObject obj : EObjectExt.getAll(arch_p, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
-				if (!exchangeCategory_p.getExchanges().contains(obj)) {
+		if (arch != null) {
+			for (EObject obj : EObjectExt.getAll(arch, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+				if (!exchangeCategory.getExchanges().contains(obj)) {
 					availableElements.add((CapellaElement) obj);
 				}
 			}
