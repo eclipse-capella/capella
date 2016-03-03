@@ -34,7 +34,7 @@ public class IDBDiagram extends DiagramContext {
         IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME) {
       @Override
       public DiagramContext getResult() {
-        return new IDBDiagram(getExecutionContext(), _diagram);
+        return new IDBDiagram(getExecutionContext(), diagram);
       }
     }.run().open();
   }

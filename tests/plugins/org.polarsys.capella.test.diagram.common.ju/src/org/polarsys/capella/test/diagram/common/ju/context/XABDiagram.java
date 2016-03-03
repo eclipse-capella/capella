@@ -59,7 +59,7 @@ public class XABDiagram extends DiagramContext {
     return (XABDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
-        return new XABDiagram(type, getExecutionContext(), _diagram);
+        return new XABDiagram(type, getExecutionContext(), diagram);
       }
     }.run().open();
   }

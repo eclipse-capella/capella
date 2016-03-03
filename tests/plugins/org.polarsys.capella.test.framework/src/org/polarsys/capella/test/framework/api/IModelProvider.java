@@ -10,22 +10,27 @@
  *******************************************************************************/
 package org.polarsys.capella.test.framework.api;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 
 public interface IModelProvider {
-  
+
   void requireTestModel(String relativeModelPath, BasicTestArtefact artefact) throws Exception;
-  
+
   void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact);
-  
+
   void setUp() throws Exception;
-  
+
   void tearDown() throws Exception;
-  
+
   Session getSessionForTestModel(String relativeModelPath, BasicTestArtefact artefact);
-  
+
   CapellaModel getTestModel(String relativeModelPath, BasicTestCase basicTestCase);
-  
+
   String getProjectSuffix();
+
+  Resource getAirdResource(Session session);
+
+  Resource getSemanticResource(Session session);
 }
