@@ -16,6 +16,7 @@ import java.util.List;
 import junit.framework.Test;
 
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideComponentExchanges;
+import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideFunctions;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHidePhysicalLinks;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -37,6 +38,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new ShowHideComponentExchanges());
     tests.add(new ShowHidePhysicalLinks());
+    tests.add(new ShowHideFunctions());
     return tests;
   }
 
