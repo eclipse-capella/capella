@@ -2038,6 +2038,17 @@ public class CapellaServices {
     return isAllocatedFunctionCommon(function, container, allocatedFunctions);
   }
   
+  public boolean isAllocatedInThisComponent(AbstractFunction function, EObject container) {
+    
+    List<AbstractFunctionalBlock> allocationBlocks = FunctionExt.getMotherFunctionAllocation(function);
+    if (allocationBlocks.size() == 1) {
+      AbstractFunctionalBlock allocationBlock = allocationBlocks.get(0);
+      return container == allocationBlock;
+    }
+    
+    return false;
+  }
+  
   protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container, LinkedList<AbstractFunction> allocatedFunctions) {
     boolean result = false;
     

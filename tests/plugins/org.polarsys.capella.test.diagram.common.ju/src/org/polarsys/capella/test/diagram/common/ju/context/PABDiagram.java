@@ -30,7 +30,7 @@ public class PABDiagram extends XABDiagram {
         IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME) {
       @Override
       public DiagramContext getResult() {
-        return new PABDiagram(getExecutionContext(), _diagram);
+        return new PABDiagram(getExecutionContext(), diagram);
       }
     }.run().open();
   }

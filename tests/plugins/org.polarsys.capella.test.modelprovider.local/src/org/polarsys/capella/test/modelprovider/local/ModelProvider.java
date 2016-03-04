@@ -11,10 +11,16 @@
 package org.polarsys.capella.test.modelprovider.local;
 
 import java.io.File;
+import java.util.List;
 import java.util.Set;
 
+import junit.framework.Assert;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
@@ -84,9 +90,39 @@ public class ModelProvider extends AbstractProvider {
       ModelProviderHelper.getInstance().importCapellaProject(relativeModelPath, sourceFolder);
     }
   }
-  
+
   @Override
-  protected void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject){
+  protected void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
     ModelProviderHelper.getInstance().removeCapellaProject(relativeModelPath, artefact, eraseProject);
+  }
+
+  @Override
+  public Resource getAirdResource(Session session) {
+    if (session != null) {
+      Resource diagramResource = session.getSessionResource();
+      return diagramResource;
+    }
+    return null;
+  }
+
+  @Override
+  public Resource getSemanticResource(Session session) {
+    Resource semanticResource = null;
+    DAnalysis root = null;
+    try {
+      Resource diagramResource = session.getSessionResource();
+      root = (DAnalysis) diagramResource.getContents().get(0);
+    } catch (Exception exception_p) {
+      exception_p.printStackTrace();
+      Assert.fail(exception_p.getMessage());
+      return semanticResource;
+    }
+
+    List<EObject> models = root.getModels();
+    if (!models.isEmpty()) {
+      EObject semanticElementRoot = models.get(0);
+      semanticResource = semanticElementRoot.eResource();
+    }
+    return semanticResource;
   }
 }

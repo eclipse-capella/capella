@@ -59,7 +59,7 @@ public class XABDiagram extends DiagramContext {
     return (XABDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
-        return new XABDiagram(type, getExecutionContext(), _diagram);
+        return new XABDiagram(type, getExecutionContext(), diagram);
       }
     }.run().open();
   }
@@ -173,6 +173,23 @@ public class XABDiagram extends DiagramContext {
     }
     new InsertRemoveTool(this, name, containerId).insert(id);
   }
+  
+  public void insertComponent(String id, String containerId) {
+    this.insertComponent(id, id, containerId);
+  }
+  
+  public void insertComponent(String toInsertId, String insertedId, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS;
+    }
+    
+    new InsertRemoveTool(this, name, containerId).insert(new String[]{toInsertId}, new String[]{insertedId}, null);
+  }
 
   public void insertPhysicalLink(String id, String containerId) {
     String name = null;
@@ -182,6 +199,20 @@ public class XABDiagram extends DiagramContext {
       name = IToolNameConstants.TOOL_LAB_SHOW_HIDE_PHYSICAL_LINK;
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_PHYSICAL_LINK;
+    }
+    new InsertRemoveTool(this, name, containerId).insert(id);
+  }
+  
+  public void allocateFunction(String id, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_ALLOCATED_ACTIVITIES;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
     }
     new InsertRemoveTool(this, name, containerId).insert(id);
   }

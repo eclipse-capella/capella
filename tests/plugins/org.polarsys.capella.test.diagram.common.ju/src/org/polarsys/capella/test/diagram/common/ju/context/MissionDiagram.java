@@ -35,7 +35,7 @@ public class MissionDiagram extends CapabilityDiagram {
     return (MissionDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
-        return new MissionDiagram(type, getExecutionContext(), _diagram);
+        return new MissionDiagram(type, getExecutionContext(), diagram);
       }
     }.run().open();
   }
