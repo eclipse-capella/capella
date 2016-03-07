@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,9 +48,9 @@ public class GetAvailable_FunctionalExchange_Categories extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_FunctionalExchange_Categories_11(FunctionalExchange functionalExchange_p) {
+	private List<CapellaElement> getRule_MQRY_FunctionalExchange_Categories_11(FunctionalExchange functionalExchange) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(functionalExchange_p);
+		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(functionalExchange);
 		availableElements.addAll(getElementsFromBlockArchitecture(arch));
 		return availableElements;
 	}
@@ -58,10 +58,10 @@ public class GetAvailable_FunctionalExchange_Categories extends AbstractQuery {
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof FunctionalExchange) {
-			FunctionalExchange functionalExchange = (FunctionalExchange) element_p;
+		if (element instanceof FunctionalExchange) {
+			FunctionalExchange functionalExchange = (FunctionalExchange) element;
 			EList<ExchangeCategory> categories = functionalExchange.getCategories();
 			for (ExchangeCategory categorie : categories) {
 				currentElements.add(categorie);
@@ -72,13 +72,13 @@ public class GetAvailable_FunctionalExchange_Categories extends AbstractQuery {
 
 	/** 
 	 * Gets all the exchange categories from the BlockArchitecture
-	 * @param arch_p
+	 * @param arch
 	 * @return list of ExchangeCategories
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (arch_p != null) {
-			for (EObject obj : EObjectExt.getAll(arch_p, FaPackage.Literals.EXCHANGE_CATEGORY)) {
+		if (arch != null) {
+			for (EObject obj : EObjectExt.getAll(arch, FaPackage.Literals.EXCHANGE_CATEGORY)) {
 				availableElements.add((CapellaElement) obj);
 			}
 		}

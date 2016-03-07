@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,10 +30,10 @@ public class GetAvailable_ConfigurationItem_UsedInterfaces extends AbstractQuery
     return (List) availableElements;
   }
 
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof ConfigurationItem) {
-      for (AbstractPhysicalArtifact physicalArtifact : ((ConfigurationItem) element_p).getAllocatedPhysicalArtifacts()) {
+    if (element instanceof ConfigurationItem) {
+      for (AbstractPhysicalArtifact physicalArtifact : ((ConfigurationItem) element).getAllocatedPhysicalArtifacts()) {
         if (physicalArtifact instanceof PhysicalComponent) {
           availableElements.addAll(((PhysicalComponent) physicalArtifact).getUsedInterfaces());
         }

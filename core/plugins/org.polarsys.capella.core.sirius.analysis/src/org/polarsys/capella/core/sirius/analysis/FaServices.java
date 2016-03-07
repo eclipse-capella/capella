@@ -4563,25 +4563,25 @@ public class FaServices {
   public List<AbstractFunction> getShowableAllocatedFunctions(Component component, DNodeContainer containerView) {
     // showable functions are:
     List<AbstractFunction> showableFunctions = new ArrayList<AbstractFunction>();
-    
+
     // - allocated functions of this components
     showableFunctions.addAll(component.getAllocatedFunctions());
-    
+
     // - parent functions where all of their children are in this component or in child components not displayed
     Set<AbstractFunction> leaves = getLeavesFunctionsOfSubComponentsNotDisplayed(component, containerView);
-    Set<AbstractFunction> parentFunctions = AbstractFunctionExt.getRecursiveAllocatedFunctions(leaves, leaves);
-    parentFunctions.removeAll(leaves);
-    showableFunctions.addAll(parentFunctions);
-    
+    Set<AbstractFunction> allFunctions = AbstractFunctionExt.getRecursiveAllocatedFunctions(leaves, leaves);
+    showableFunctions.addAll(allFunctions);
+
     return showableFunctions;
   }
-  
-  protected Set<AbstractFunction> getLeavesFunctionsOfSubComponentsNotDisplayed(Component component, DNodeContainer containerView) {
+
+  protected Set<AbstractFunction> getLeavesFunctionsOfSubComponentsNotDisplayed(Component component,
+      DNodeContainer containerView) {
     Set<AbstractFunction> leaveFunctions = new HashSet<AbstractFunction>();
-    
+
     // return all allocated functions of this component
     leaveFunctions.addAll(component.getAllocatedFunctions());
-    
+
     // do not forget operational activities (function) in roles in entities (component)
     if (component instanceof Entity) {
       Entity entity = (Entity) component;
@@ -4591,7 +4591,7 @@ public class FaServices {
         }
       }
     }
-    
+
     // add leaves of sub components only if it is not displayed, recursively
     Set<Component> subComponents = new HashSet<Component>();
     subComponents.addAll(ComponentExt.getSubUsedComponents(component));
@@ -4602,7 +4602,7 @@ public class FaServices {
     for (Component subComponent : subComponents) {
       boolean isDisplayed = false;
       if (DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), subComponent)) {
-      isDisplayed = true;
+        isDisplayed = true;
       } else {
         for (Part representingPart : ComponentExt.getRepresentingParts(subComponent)) {
           if (DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), representingPart)) {
@@ -4611,7 +4611,7 @@ public class FaServices {
           }
         }
       }
-      
+
       if (!isDisplayed) {
         leaveFunctions.addAll(getLeavesFunctionsOfSubComponentsNotDisplayed(subComponent, containerView));
       }

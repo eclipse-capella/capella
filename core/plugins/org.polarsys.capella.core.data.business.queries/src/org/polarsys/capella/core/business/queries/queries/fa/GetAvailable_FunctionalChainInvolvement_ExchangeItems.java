@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,10 +35,10 @@ public class GetAvailable_FunctionalChainInvolvement_ExchangeItems extends Abstr
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> result = new ArrayList<CapellaElement>();
-		if (element_p instanceof FunctionalChainInvolvement) {
-			InvolvedElement involvedElement = ((FunctionalChainInvolvement) element_p).getInvolved();
+		if (element instanceof FunctionalChainInvolvement) {
+			InvolvedElement involvedElement = ((FunctionalChainInvolvement) element).getInvolved();
 			if (involvedElement instanceof FunctionalExchange) {
 				for (AbstractExchangeItem exchangeItem : ((FunctionalExchange) involvedElement).getExchangedItems()) {
 					result.add((ExchangeItem) exchangeItem);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,9 +36,9 @@ public class GetAvailable_FunctionalChain_RealizedFunctionalChains extends Abstr
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+		BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element);
 		if (null != rootBlockArchitecture) {
 			EList<BlockArchitecture> allocatedArchitectures = rootBlockArchitecture.getAllocatedArchitectures();
 			for (BlockArchitecture blockArchitecture : allocatedArchitectures) {
@@ -51,7 +51,7 @@ public class GetAvailable_FunctionalChain_RealizedFunctionalChains extends Abstr
 			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p);
+		availableElements.remove(element);
 		return availableElements;
 	}
 

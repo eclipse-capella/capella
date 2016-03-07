@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,20 +32,20 @@ public class GetCurrent_InteractionUse_ReferencedScenario extends AbstractQuery 
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		Scenario scenario = getCurrentRelatedScenario(element_p);
+		Scenario scenario = getCurrentRelatedScenario(element);
 		if (scenario != null) {
 			currentElements.add(scenario);
 		}
 		return currentElements;
 	}
 
-	protected Scenario getCurrentRelatedScenario(CapellaElement element_p) {
-		if (element_p instanceof InteractionUse) {
-			return ((InteractionUse) element_p).getReferencedScenario();
-		} else if (element_p instanceof Scenario) {
-			return (Scenario) element_p;
+	protected Scenario getCurrentRelatedScenario(CapellaElement element) {
+		if (element instanceof InteractionUse) {
+			return ((InteractionUse) element).getReferencedScenario();
+		} else if (element instanceof Scenario) {
+			return (Scenario) element;
 		}
 		return null;
 	}

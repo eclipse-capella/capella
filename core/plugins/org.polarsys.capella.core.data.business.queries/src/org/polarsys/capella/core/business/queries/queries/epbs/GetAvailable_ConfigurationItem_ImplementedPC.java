@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,14 +47,14 @@ public class GetAvailable_ConfigurationItem_ImplementedPC extends AbstractQuery 
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof ConfigurationItem) {
-			ConfigurationItem currentCI = (ConfigurationItem) element_p;
+		if (element instanceof ConfigurationItem) {
+			ConfigurationItem currentCI = (ConfigurationItem) element;
 			availableElements.addAll(getRule_MQRY_ConfigurationItem_ImplementedPC_11(currentCI, systemEngineering));
 			availableElements.addAll(getRule_MQRY_ConfigurationItem_ImplementedPLink_11(currentCI));
 			availableElements.addAll(getRule_MQRY_ConfigurationItem_ImplementedPPort_11(currentCI));
@@ -67,24 +67,24 @@ public class GetAvailable_ConfigurationItem_ImplementedPC extends AbstractQuery 
 	 * Gets all the PhysicalComponents contained in the Physical Architecture Layer. Except those that are already implemented by a ConfigurationItem (unique
 	 * implementor)
 	 */
-	private List<CapellaElement> getRule_MQRY_ConfigurationItem_ImplementedPC_11(ConfigurationItem currentConfigurationItem_p,
-			SystemEngineering systemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_ConfigurationItem_ImplementedPC_11(ConfigurationItem currentConfigurationItem,
+			SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		PhysicalArchitecturePkg physicalArchPkg = SystemEngineeringExt.getOwnedPhysicalArchitecturePkg(systemEngineering_p);
+		PhysicalArchitecturePkg physicalArchPkg = SystemEngineeringExt.getOwnedPhysicalArchitecturePkg(systemEngineering);
 		if (null != physicalArchPkg) {
 			for (PhysicalArchitecture physicalArch : physicalArchPkg.getOwnedPhysicalArchitectures()) {
 				for (PhysicalComponent pc : PhysicalArchitectureExt.getAllPhysicalComponents(physicalArch)) {
-					if (ConfigurationItemExt.hasImplementedPC(currentConfigurationItem_p, pc)) {
+					if (ConfigurationItemExt.hasImplementedPC(currentConfigurationItem, pc)) {
 						continue;
 					}
 					availableElements.add(pc);
 				}
 			}
 		}
-		PhysicalArchitecture physicalArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering_p);
+		PhysicalArchitecture physicalArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
 		if (null != physicalArch) {
 			for (PhysicalComponent pc : PhysicalArchitectureExt.getAllPhysicalComponents(physicalArch)) {
-				if (ConfigurationItemExt.hasImplementedPC(currentConfigurationItem_p, pc)) {
+				if (ConfigurationItemExt.hasImplementedPC(currentConfigurationItem, pc)) {
 					continue;
 				}
 				availableElements.add(pc);
@@ -95,28 +95,28 @@ public class GetAvailable_ConfigurationItem_ImplementedPC extends AbstractQuery 
 
 	/** 
 	 */
-	private List<CapellaElement> getRule_MQRY_ConfigurationItem_ImplementedPLink_11(ConfigurationItem configurationItem_p) {
-		return getElementsFromBlockArchitecture(configurationItem_p, CsPackage.Literals.PHYSICAL_LINK);
+	private List<CapellaElement> getRule_MQRY_ConfigurationItem_ImplementedPLink_11(ConfigurationItem configurationItem) {
+		return getElementsFromBlockArchitecture(configurationItem, CsPackage.Literals.PHYSICAL_LINK);
 	}
 
 	/** 
 	 */
-	private List<CapellaElement> getRule_MQRY_ConfigurationItem_ImplementedPPort_11(ConfigurationItem configurationItem_p) {
-		return getElementsFromBlockArchitecture(configurationItem_p, CsPackage.Literals.PHYSICAL_PORT);
+	private List<CapellaElement> getRule_MQRY_ConfigurationItem_ImplementedPPort_11(ConfigurationItem configurationItem) {
+		return getElementsFromBlockArchitecture(configurationItem, CsPackage.Literals.PHYSICAL_PORT);
 	}
 
 	/** 
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(ConfigurationItem configurationItem_p, EClass cls_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(ConfigurationItem configurationItem, EClass cls) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		EPBSArchitecture arch = (EPBSArchitecture) SystemEngineeringExt.getRootBlockArchitecture(configurationItem_p);
+		EPBSArchitecture arch = (EPBSArchitecture) SystemEngineeringExt.getRootBlockArchitecture(configurationItem);
 		if (arch != null) {
 			for (BlockArchitecture block : arch.getAllocatedArchitectures()) {
 				TreeIterator<Object> allContents = EcoreUtil.getAllContents(block, false);
 				while (allContents.hasNext()) {
 					EObject object = (EObject) allContents.next();
-					if (object.eClass().equals(cls_p)) {
-						if (!configurationItem_p.getAllocatedPhysicalArtifacts().contains(object)) {
+					if (object.eClass().equals(cls)) {
+						if (!configurationItem.getAllocatedPhysicalArtifacts().contains(object)) {
 							availableElements.add((CapellaElement) object);
 						}
 					}

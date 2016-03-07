@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,37 +37,37 @@ public class GetAvailable_OperationalCapability_InvolvedEntities extends Abstrac
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof OperationalCapability) {
-			availableElements.addAll(getRule_MQRY_OperationalCapability_AvailableEntities((OperationalCapability) element_p));
+		if (element instanceof OperationalCapability) {
+			availableElements.addAll(getRule_MQRY_OperationalCapability_AvailableEntities((OperationalCapability) element));
 		}
 		return availableElements;
 	}
 
 	/** 
 	 * same level visibility layer
-	 * @param ele_p
+	 * @param ele
 	 */
-	private List<CapellaElement> getRule_MQRY_OperationalCapability_AvailableEntities(OperationalCapability ele_p) {
+	private List<CapellaElement> getRule_MQRY_OperationalCapability_AvailableEntities(OperationalCapability ele) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele_p);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele);
 		if (currentBlockArchitecture != null) {
 			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture));
 		}
-		for (CapellaElement element : getCurrentElements(ele_p, false)) {
+		for (CapellaElement element : getCurrentElements(ele, false)) {
 			availableElements.remove(element);
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param arch_p
+	 * @param arch
 	 * @return
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch_p, true);
+		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch, true);
 		while (allContents.hasNext()) {
 			Object object = allContents.next();
 			if (object instanceof Entity) {
@@ -80,10 +80,10 @@ public class GetAvailable_OperationalCapability_InvolvedEntities extends Abstrac
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof OperationalCapability) {
-			OperationalCapability ele = (OperationalCapability) element_p;
+		if (element instanceof OperationalCapability) {
+			OperationalCapability ele = (OperationalCapability) element;
 			for (EntityOperationalCapabilityInvolvement inv : ele.getOwnedEntityOperationalCapabilityInvolvements()) {
 				Entity entity = inv.getEntity();
 				if (null != entity) {

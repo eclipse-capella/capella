@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,17 +40,17 @@ public class GetAvailable_FunctionalExchange_FunctionalExchangeRealizations exte
 		return (List) availableElements;
 	}
 
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		List<BlockArchitecture> exploredArchitectures = new ArrayList<BlockArchitecture>();
-		EObject currentArchitecture = element_p;
+		EObject currentArchitecture = element;
 		while (!(currentArchitecture instanceof BlockArchitecture)) {
 			currentArchitecture = currentArchitecture.eContainer();
 			if (currentArchitecture == null) {
 				return availableElements;
 			}
 		}
-		SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (sysEng == null) {
 			return availableElements;
 		}
@@ -59,7 +59,7 @@ public class GetAvailable_FunctionalExchange_FunctionalExchangeRealizations exte
 		} else if (currentArchitecture instanceof LogicalArchitecture) {
 			exploredArchitectures.add(SystemEngineeringExt.getOwnedSystemAnalysis(sysEng));
 		} else if (currentArchitecture instanceof PhysicalArchitecture) {
-			exploredArchitectures.addAll(SystemEngineeringExt.getAllLogicalArchitecture(element_p));
+			exploredArchitectures.addAll(SystemEngineeringExt.getAllLogicalArchitecture(element));
 		} else {
 			return availableElements;
 		}
@@ -68,7 +68,7 @@ public class GetAvailable_FunctionalExchange_FunctionalExchangeRealizations exte
 				availableElements.add((CapellaElement) aFunctionalExchange);
 			}
 		}
-		List<CapellaElement> currentElements = getCurrentElements(element_p, false);
+		List<CapellaElement> currentElements = getCurrentElements(element, false);
 		for (CapellaElement capellaElement : currentElements) {
 			availableElements.remove(capellaElement);
 		}
@@ -78,10 +78,10 @@ public class GetAvailable_FunctionalExchange_FunctionalExchangeRealizations exte
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof FunctionalExchange) {
-			FunctionalExchange ele = (FunctionalExchange) element_p;
+		if (element instanceof FunctionalExchange) {
+			FunctionalExchange ele = (FunctionalExchange) element;
 			EList<FunctionalExchangeRealization> ownedFunctionalExchangeRealisations = ele.getOwnedFunctionalExchangeRealizations();
 			for (FunctionalExchangeRealization functionalExchangeRealisation : ownedFunctionalExchangeRealisations) {
 				currentElements.add((CapellaElement) functionalExchangeRealisation.getTargetElement());

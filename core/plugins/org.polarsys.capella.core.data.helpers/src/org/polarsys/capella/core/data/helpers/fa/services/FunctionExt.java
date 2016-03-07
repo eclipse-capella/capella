@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.core.data.helpers.fa.services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -48,12 +49,12 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 public class FunctionExt {
 
   /**
-   * @param fct_p
+   * @param fct
    * @return
    */
-  public static List<AbstractFunction> getRealizedFunctions(AbstractFunction fct_p) {
+  public static List<AbstractFunction> getRealizedFunctions(AbstractFunction fct) {
     List<AbstractFunction> result = new ArrayList<AbstractFunction>();
-    for (AbstractTrace trace : fct_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : fct.getOutgoingTraces()) {
       if (trace instanceof FunctionRealization) {
         result.add(((FunctionRealization) trace).getAllocatedFunction());
       }
@@ -62,12 +63,12 @@ public class FunctionExt {
   }
 
   /**
-   * @param fct_p
+   * @param fct
    * @return
    */
-  public static List<AbstractFunction> getRealizingFunctions(AbstractFunction fct_p) {
+  public static List<AbstractFunction> getRealizingFunctions(AbstractFunction fct) {
     List<AbstractFunction> result = new ArrayList<AbstractFunction>();
-    for (AbstractTrace trace : fct_p.getIncomingTraces()) {
+    for (AbstractTrace trace : fct.getIncomingTraces()) {
       if (trace instanceof FunctionRealization) {
         result.add(((FunctionRealization) trace).getAllocatingFunction());
       }
@@ -78,44 +79,44 @@ public class FunctionExt {
   /**
    * Checks if is leaf.
    * 
-   * @param function_p
+   * @param function
    *          the given function
    * @return true, if is leaf
    */
-  public static final boolean isLeaf(AbstractFunction function_p) {
-    if (function_p == null) {
+  public static final boolean isLeaf(AbstractFunction function) {
+    if (function == null) {
       return false;
     }
 
-    return function_p.getSubFunctions().size() == 0;
+    return function.getSubFunctions().size() == 0;
   }
 
-  public static boolean isControlNodeOneOutput(AbstractFunction function_p) {
-    return (function_p.getKind() == FunctionKind.GATHER) || (function_p.getKind() == FunctionKind.ROUTE);
+  public static boolean isControlNodeOneOutput(AbstractFunction function) {
+    return (function.getKind() == FunctionKind.GATHER) || (function.getKind() == FunctionKind.ROUTE);
   }
 
-  public static boolean isControlNodeOneInput(AbstractFunction function_p) {
-    return (function_p.getKind() == FunctionKind.DUPLICATE) || (function_p.getKind() == FunctionKind.SPLIT) || (function_p.getKind() == FunctionKind.SELECT);
+  public static boolean isControlNodeOneInput(AbstractFunction function) {
+    return (function.getKind() == FunctionKind.DUPLICATE) || (function.getKind() == FunctionKind.SPLIT) || (function.getKind() == FunctionKind.SELECT);
   }
 
-  public static boolean isDuplicateFunction(AbstractFunction function_p) {
-    return (function_p.getKind() == FunctionKind.DUPLICATE);
+  public static boolean isDuplicateFunction(AbstractFunction function) {
+    return (function.getKind() == FunctionKind.DUPLICATE);
   }
 
-  public static boolean isGatherFunction(AbstractFunction function_p) {
-    return (function_p.getKind() == FunctionKind.GATHER);
+  public static boolean isGatherFunction(AbstractFunction function) {
+    return (function.getKind() == FunctionKind.GATHER);
   }
 
-  public static boolean isRouteFunction(AbstractFunction function_p) {
-    return (function_p.getKind() == FunctionKind.ROUTE);
+  public static boolean isRouteFunction(AbstractFunction function) {
+    return (function.getKind() == FunctionKind.ROUTE);
   }
 
-  public static boolean isSelectFunction(AbstractFunction function_p) {
-    return (function_p.getKind() == FunctionKind.SELECT);
+  public static boolean isSelectFunction(AbstractFunction function) {
+    return (function.getKind() == FunctionKind.SELECT);
   }
 
-  public static boolean isSplitFunction(AbstractFunction function_p) {
-    return (function_p.getKind() == FunctionKind.SPLIT);
+  public static boolean isSplitFunction(AbstractFunction function) {
+    return (function.getKind() == FunctionKind.SPLIT);
   }
 
   // used only for OperationalAnalysis Layer Elements
@@ -184,13 +185,13 @@ public class FunctionExt {
   /**
    * Returns all outgoing exchanges of the function.
    * 
-   * @param function_p
+   * @param function
    *          the function
    * @return all outgoing exchanges
    */
-  public static List<FunctionalExchange> getOutGoingExchange(AbstractFunction function_p) {
+  public static List<FunctionalExchange> getOutGoingExchange(AbstractFunction function) {
     List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
-    EList<ActivityEdge> outgoing = function_p.getOutgoing();
+    EList<ActivityEdge> outgoing = function.getOutgoing();
     for (ActivityEdge activityEdge : outgoing) {
       result.add((FunctionalExchange) activityEdge);
     }
@@ -201,21 +202,21 @@ public class FunctionExt {
   /**
    * Returns all outgoing exchanges of the function including those of its sub-functions.
    * 
-   * @param function_p
+   * @param function
    *          the function
    * @return all outgoing exchanges
    */
-  public static List<FunctionalExchange> getAllOutgoingExchanges(AbstractFunction function_p) {
-    if (function_p.getOwnedFunctions().isEmpty())
-      return getOutGoingExchange(function_p);
+  public static List<FunctionalExchange> getAllOutgoingExchanges(AbstractFunction function) {
+    if (function.getOwnedFunctions().isEmpty())
+      return getOutGoingExchange(function);
 
-    List<FunctionalExchange> result = getOutGoingExchange(function_p);
+    List<FunctionalExchange> result = getOutGoingExchange(function);
 
-    for (AbstractFunction abstractFunction : function_p.getOwnedFunctions()) {
+    for (AbstractFunction abstractFunction : function.getOwnedFunctions()) {
       List<FunctionalExchange> outgoings = getAllOutgoingExchanges(abstractFunction);
       for (FunctionalExchange activityEdge : outgoings) {
         // If the functional exchange of the sub-function goes out of the scope of the function
-        if (!EcoreUtil2.isContainedBy(activityEdge.getTarget(), function_p))
+        if (!EcoreUtil2.isContainedBy(activityEdge.getTarget(), function))
           result.add((FunctionalExchange) activityEdge);
       }
     }
@@ -225,21 +226,21 @@ public class FunctionExt {
   /**
    * Returns all incoming exchanges of the function including those of its sub-functions.
    * 
-   * @param function_p
+   * @param function
    *          the function
    * @return all incoming exchanges
    */
-  public static List<FunctionalExchange> getAllIncomingExchanges(AbstractFunction function_p) {
-    if (function_p.getOwnedFunctions().isEmpty())
-      return getIncomingExchange(function_p);
+  public static List<FunctionalExchange> getAllIncomingExchanges(AbstractFunction function) {
+    if (function.getOwnedFunctions().isEmpty())
+      return getIncomingExchange(function);
 
-    List<FunctionalExchange> result = getIncomingExchange(function_p);
+    List<FunctionalExchange> result = getIncomingExchange(function);
 
-    for (AbstractFunction abstractFunction : function_p.getOwnedFunctions()) {
+    for (AbstractFunction abstractFunction : function.getOwnedFunctions()) {
       List<FunctionalExchange> incomings = getAllIncomingExchanges(abstractFunction);
       for (FunctionalExchange activityEdge : incomings) {
         // If the functional exchange of the sub-function goes out of the scope of the function
-        if (!EcoreUtil2.isContainedBy(activityEdge.getSource(), function_p))
+        if (!EcoreUtil2.isContainedBy(activityEdge.getSource(), function))
           result.add((FunctionalExchange) activityEdge);
       }
     }
@@ -249,17 +250,17 @@ public class FunctionExt {
   /**
    * Returns all incoming and outgoing exchanges of the function including those of its sub-functions.
    * 
-   * @param function_p
+   * @param function
    *          the function
    * @return all incoming and outgoing exchanges
    */
-  public static List<FunctionalExchange> getAllExchanges(AbstractFunction function_p) {
+  public static List<FunctionalExchange> getAllExchanges(AbstractFunction function) {
     List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
-    List<FunctionalExchange> ingoing = getAllIncomingExchanges(function_p);
+    List<FunctionalExchange> ingoing = getAllIncomingExchanges(function);
     for (FunctionalExchange activityEdge : ingoing) {
       result.add((FunctionalExchange) activityEdge);
     }
-    List<FunctionalExchange> outgoing = getAllOutgoingExchanges(function_p);
+    List<FunctionalExchange> outgoing = getAllOutgoingExchanges(function);
     for (FunctionalExchange activityEdge : outgoing) {
       result.add((FunctionalExchange) activityEdge);
     }
@@ -269,13 +270,13 @@ public class FunctionExt {
   /**
    * Returns all incoming exchanges of the function.
    * 
-   * @param function_p
+   * @param function
    *          the function
    * @return all incoming exchanges
    */
-  public static List<FunctionalExchange> getIncomingExchange(AbstractFunction function_p) {
+  public static List<FunctionalExchange> getIncomingExchange(AbstractFunction function) {
     List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
-    List<ActivityEdge> ingoing = function_p.getIncoming();
+    List<ActivityEdge> ingoing = function.getIncoming();
     for (ActivityEdge activityEdge : ingoing) {
       result.add((FunctionalExchange) activityEdge);
     }
@@ -286,17 +287,17 @@ public class FunctionExt {
   /**
    * Returns all incoming and outgoing exchanges of the function.
    * 
-   * @param function_p
+   * @param function
    *          the function
    * @return all incoming and outgoing exchanges
    */
-  public static List<FunctionalExchange> getExchanges(AbstractFunction function_p) {
+  public static List<FunctionalExchange> getExchanges(AbstractFunction function) {
     List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
-    List<ActivityEdge> ingoing = function_p.getIncoming();
+    List<ActivityEdge> ingoing = function.getIncoming();
     for (ActivityEdge activityEdge : ingoing) {
       result.add((FunctionalExchange) activityEdge);
     }
-    EList<ActivityEdge> outgoing = function_p.getOutgoing();
+    EList<ActivityEdge> outgoing = function.getOutgoing();
     for (ActivityEdge activityEdge : outgoing) {
       result.add((FunctionalExchange) activityEdge);
     }
@@ -306,18 +307,18 @@ public class FunctionExt {
   /**
    * Gets the owned function ports.
    * 
-   * @param function_p
+   * @param function
    *          the given abstractFunction
    * @return the owned function ports
    */
-  public static List<Port> getOwnedFunctionPorts(AbstractFunction function_p) {
+  public static List<Port> getOwnedFunctionPorts(AbstractFunction function) {
     List<Port> ports = new ArrayList<Port>();
-    for (InputPin inpin : function_p.getInputs()) {
+    for (InputPin inpin : function.getInputs()) {
       if (inpin instanceof Port) {
         ports.add((Port) inpin);
       }
     }
-    for (OutputPin outpin : function_p.getOutputs()) {
+    for (OutputPin outpin : function.getOutputs()) {
       if (outpin instanceof Port) {
         ports.add((Port) outpin);
       }
@@ -328,12 +329,12 @@ public class FunctionExt {
   /**
    * Returns the outgoing abstract function of the exchange.
    * 
-   * @param exchange_p
+   * @param exchange
    *          the exchange
    * @return function
    */
-  public static AbstractFunction getOutGoingAbstractFunction(FunctionalExchange exchange_p) {
-    ActivityNode target = exchange_p.getTarget();
+  public static AbstractFunction getOutGoingAbstractFunction(FunctionalExchange exchange) {
+    ActivityNode target = exchange.getTarget();
     if (target instanceof FunctionInputPort) {
       EObject container = ((FunctionInputPort) target).eContainer();
       if (container != null) {
@@ -349,12 +350,12 @@ public class FunctionExt {
   /**
    * Returns the incoming abstract function of the exchange.
    * 
-   * @param exchange_p
+   * @param exchange
    *          the exchange
    * @return function
    */
-  public static AbstractFunction getIncomingAbstractFunction(FunctionalExchange exchange_p) {
-    ActivityNode source = exchange_p.getSource();
+  public static AbstractFunction getIncomingAbstractFunction(FunctionalExchange exchange) {
+    ActivityNode source = exchange.getSource();
     if (source instanceof FunctionOutputPort) {
       EObject container = ((FunctionOutputPort) source).eContainer();
       if (container != null) {
@@ -370,39 +371,39 @@ public class FunctionExt {
   /**
    * Returns owned function pkgs
    * 
-   * @param function_p
+   * @param function
    * @return
    */
-  public static Collection<? extends FunctionPkg> getOwnedFunctionPkgs(AbstractFunction function_p) {
+  public static Collection<? extends FunctionPkg> getOwnedFunctionPkgs(AbstractFunction function) {
     // Add functions contained into owned function packages
     Collection<? extends FunctionPkg> pkgs = Collections.emptyList();
-    if (function_p instanceof OperationalActivity) {
-      pkgs = ((OperationalActivity) function_p).getOwnedOperationalActivityPkgs();
-    } else if (function_p instanceof SystemFunction) {
-      pkgs = ((SystemFunction) function_p).getOwnedSystemFunctionPkgs();
-    } else if (function_p instanceof LogicalFunction) {
-      pkgs = ((LogicalFunction) function_p).getOwnedLogicalFunctionPkgs();
-    } else if (function_p instanceof PhysicalFunction) {
-      pkgs = ((PhysicalFunction) function_p).getOwnedPhysicalFunctionPkgs();
+    if (function instanceof OperationalActivity) {
+      pkgs = ((OperationalActivity) function).getOwnedOperationalActivityPkgs();
+    } else if (function instanceof SystemFunction) {
+      pkgs = ((SystemFunction) function).getOwnedSystemFunctionPkgs();
+    } else if (function instanceof LogicalFunction) {
+      pkgs = ((LogicalFunction) function).getOwnedLogicalFunctionPkgs();
+    } else if (function instanceof PhysicalFunction) {
+      pkgs = ((PhysicalFunction) function).getOwnedPhysicalFunctionPkgs();
     }
     return pkgs;
   }
 
   /**
-   * @param aFunction_p
+   * @param aFunction
    * @return
    */
-  public static Collection<? extends FunctionPkg> getAllFunctionPkgs(AbstractFunction aFunction_p) {
+  public static Collection<? extends FunctionPkg> getAllFunctionPkgs(AbstractFunction aFunction) {
     List<FunctionPkg> returnedList = new ArrayList<FunctionPkg>();
-    if (aFunction_p == null) {
+    if (aFunction == null) {
       return returnedList;
     }
 
-    for (AbstractFunction aSubFunction : aFunction_p.getOwnedFunctions()) {
+    for (AbstractFunction aSubFunction : aFunction.getOwnedFunctions()) {
       returnedList.addAll(FunctionExt.getAllFunctionPkgs(aSubFunction));
     }
 
-    for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(aFunction_p)) {
+    for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(aFunction)) {
       returnedList.addAll(FunctionPkgExt.getAllFunctionPkgs(aFunctionPkg));
     }
 
@@ -412,20 +413,20 @@ public class FunctionExt {
   /**
    * Gets the all abstract functions.
    * 
-   * @param function_p
+   * @param function
    *          the given abstractFunction
-   * @return function_p and all abstractFunctions contained recursively in function_p
+   * @return function and all abstractFunctions contained recursively in function
    */
-  public static List<AbstractFunction> getAllAbstractFunctions(AbstractFunction function_p) {
+  public static List<AbstractFunction> getAllAbstractFunctions(AbstractFunction function) {
     List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
 
-    if (function_p != null) {
-      returnedList.add(function_p);
+    if (function != null) {
+      returnedList.add(function);
 
-      for (AbstractFunction anAbstractFunction : function_p.getOwnedFunctions()) {
+      for (AbstractFunction anAbstractFunction : function.getOwnedFunctions()) {
         returnedList.addAll(getAllAbstractFunctions(anAbstractFunction));
       }
-      for (FunctionPkg obj : getOwnedFunctionPkgs(function_p)) {
+      for (FunctionPkg obj : getOwnedFunctionPkgs(function)) {
         returnedList.addAll(FunctionPkgExt.getAllAbstractFunctions(obj));
       }
     }
@@ -436,15 +437,15 @@ public class FunctionExt {
   /**
    * Gets the all leaf abstract functions.
    * 
-   * @param arch_p
+   * @param arch
    *          the given blockArchitecture
-   * @return all function in arch_p that do not contain any subFunctions
+   * @return all function in arch that do not contain any subFunctions
    */
-  public static List<AbstractFunction> getAllLeafAbstractFunctions(AbstractFunction function_p) {
+  public static List<AbstractFunction> getAllLeafAbstractFunctions(AbstractFunction function) {
     List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-    for (AbstractFunction function : getAllAbstractFunctions(function_p)) {
-      if (isLeaf(function)) {
-        returnedList.add(function);
+    for (AbstractFunction abstractFunction : getAllAbstractFunctions(function)) {
+      if (isLeaf(abstractFunction)) {
+        returnedList.add(abstractFunction);
       }
     }
     return returnedList;
@@ -453,13 +454,13 @@ public class FunctionExt {
   /**
    * Gets the all leaf abstract functions.
    * 
-   * @param arch_p
+   * @param arch
    *          the given blockArchitecture
-   * @return all function in arch_p that do not contain any subFunctions
+   * @return all function in arch that do not contain any subFunctions
    */
-  public static List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch_p) {
+  public static List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch) {
     List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-    for (AbstractFunction function : getAllAbstractFunctions(arch_p)) {
+    for (AbstractFunction function : getAllAbstractFunctions(arch)) {
       if (isLeaf(function)) {
         returnedList.add(function);
       }
@@ -470,23 +471,23 @@ public class FunctionExt {
   /**
    * Gets the all abstract functions.
    * 
-   * @param blockArchitecture_p
+   * @param blockArchitecture
    *          the given blockArchitecture
-   * @return all abstractFunctions in blockArchitecture_p
+   * @return all abstractFunctions in blockArchitecture
    */
-  public static List<AbstractFunction> getAllAbstractFunctions(BlockArchitecture blockArchitecture_p) {
-    return FunctionPkgExt.getAllAbstractFunctions(blockArchitecture_p.getOwnedFunctionPkg());
+  public static List<AbstractFunction> getAllAbstractFunctions(BlockArchitecture blockArchitecture) {
+    return FunctionPkgExt.getAllAbstractFunctions(blockArchitecture.getOwnedFunctionPkg());
   }
 
   /**
-   * return the root function of the breakdown where is located function_p
+   * return the root function of the breakdown where is located function
    * 
-   * @param function_p
+   * @param function
    * @return
    */
-  public static AbstractFunction getRootFunction(AbstractFunction function_p) {
-    EObject currentFunction = function_p;
-    EObject currentContainer = function_p.eContainer();
+  public static AbstractFunction getRootFunction(AbstractFunction function) {
+    EObject currentFunction = function;
+    EObject currentContainer = function.eContainer();
 
     while ((currentContainer instanceof AbstractFunction)) {
       currentFunction = currentContainer;
@@ -500,12 +501,12 @@ public class FunctionExt {
    * 
    * @return
    */
-  public static Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function_p) {
+  public static Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function) {
     Collection<AbstractFunction> result = new ArrayList<AbstractFunction>();
 
-    result.addAll(function_p.getOwnedFunctions());
+    result.addAll(function.getOwnedFunctions());
 
-    for (FunctionPkg pkg : FunctionExt.getOwnedFunctionPkgs(function_p)) {
+    for (FunctionPkg pkg : FunctionExt.getOwnedFunctionPkgs(function)) {
       result.addAll(FunctionPkgExt.getFirstLevelAbstractFunctions(pkg));
     }
     return result;
@@ -514,12 +515,12 @@ public class FunctionExt {
   /**
    * Returns the first parent function (a function can be contained into an internal package)
    * 
-   * @param function_p
+   * @param function
    *          a function
    * @return the list of parent functions
    */
-  public static AbstractFunction getParentFunction(AbstractFunction function_p) {
-    EObject parent = EcoreUtil2.getFirstContainer(function_p, FaPackage.Literals.ABSTRACT_FUNCTION);
+  public static AbstractFunction getParentFunction(AbstractFunction function) {
+    EObject parent = EcoreUtil2.getFirstContainer(function, FaPackage.Literals.ABSTRACT_FUNCTION);
     if (parent != null) {
       return (AbstractFunction) parent;
     }
@@ -530,24 +531,24 @@ public class FunctionExt {
    * Returns the first abstract function related to the given activityNode. FunctionalExchange is an ActivityEdge which
    * can be connected to a Port or an OperationalActivity
    * 
-   * @param node_p
+   * @param node
    * @return
    */
-  public static AbstractFunction getRelatedFunction(ActivityNode node_p) {
-    if (node_p instanceof AbstractFunction) {
-      return (AbstractFunction) node_p;
+  public static AbstractFunction getRelatedFunction(ActivityNode node) {
+    if (node instanceof AbstractFunction) {
+      return (AbstractFunction) node;
     }
-    return (AbstractFunction) EcoreUtil2.getFirstContainer(node_p, FaPackage.Literals.ABSTRACT_FUNCTION);
+    return (AbstractFunction) EcoreUtil2.getFirstContainer(node, FaPackage.Literals.ABSTRACT_FUNCTION);
   }
 
   /**
-   * @param function_p
+   * @param function
    *          a function
    * @return the list of parent functions
    */
-  public static List<AbstractFunction> getParentFunctions(AbstractFunction function_p) {
+  public static List<AbstractFunction> getParentFunctions(AbstractFunction function) {
     List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-    EObject parent = function_p.eContainer();
+    EObject parent = function.eContainer();
     while ((parent != null) && (parent instanceof AbstractFunction)) {
       returnedList.add((AbstractFunction) parent);
       parent = parent.eContainer();
@@ -556,15 +557,15 @@ public class FunctionExt {
   }
 
   /**
-   * Retrieve all functional exchanges owned by the given function_p
+   * Retrieve all functional exchanges owned by the given function
    * 
-   * @param function_p
+   * @param function
    * @return
    */
-  public static Collection<FunctionalExchange> getAllOwnedFunctionalExchanges(AbstractFunction function_p) {
+  public static Collection<FunctionalExchange> getAllOwnedFunctionalExchanges(AbstractFunction function) {
     EList<FunctionalExchange> functionExchanges = new BasicEList<FunctionalExchange>();
 
-    List<AbstractFunction> subFunctions = getAllAbstractFunctions(function_p);
+    List<AbstractFunction> subFunctions = getAllAbstractFunctions(function);
     for (AbstractFunction abstractFunction : subFunctions) {
       functionExchanges.addAll(abstractFunction.getOwnedFunctionalExchanges());
     }
@@ -572,45 +573,45 @@ public class FunctionExt {
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  public static boolean isControlNode(AbstractFunction element_p) {
-    return !FunctionKind.FUNCTION.equals(element_p.getKind());
+  public static boolean isControlNode(AbstractFunction element) {
+    return !FunctionKind.FUNCTION.equals(element.getKind());
   }
 
   /**
    * is [FUNCTIONKIND = FUNCTION] and not AcotorFunction or ControlNode
    * 
-   * @param element_p
+   * @param element
    * @return
    */
-  public static boolean isFunction(AbstractFunction element_p) {
-    if (null == element_p) {
+  public static boolean isFunction(AbstractFunction element) {
+    if (null == element) {
       return false;
     }
     // check if not ActorFunction
-    EList<AbstractFunctionalBlock> allocationBlocks = element_p.getAllocationBlocks();
+    EList<AbstractFunctionalBlock> allocationBlocks = element.getAllocationBlocks();
     for (AbstractFunctionalBlock abstractFunctionalBlock : allocationBlocks) {
       if (abstractFunctionalBlock instanceof AbstractActor) {
         return false;
       }
     }
-    return FunctionKind.FUNCTION.equals(element_p.getKind());
+    return FunctionKind.FUNCTION.equals(element.getKind());
   }
 
   /**
    * is [FUNCTIONKIND = FUNCTION] with few Actor allocation and not of kind ControlNode
    * 
-   * @param element_p
+   * @param element
    * @return
    */
-  public static boolean isActorFunction(AbstractFunction element_p) {
-    if (null == element_p) {
+  public static boolean isActorFunction(AbstractFunction element) {
+    if (null == element) {
       return false;
     }
     // check if ActorFunction
-    EList<AbstractFunctionalBlock> allocationBlocks = element_p.getAllocationBlocks();
+    EList<AbstractFunctionalBlock> allocationBlocks = element.getAllocationBlocks();
     for (AbstractFunctionalBlock abstractFunctionalBlock : allocationBlocks) {
       if (abstractFunctionalBlock instanceof AbstractActor) {
         return true;
@@ -622,12 +623,12 @@ public class FunctionExt {
   /**
    * Return true if it is root function
    * 
-   * @param element_p
+   * @param element
    * @return boolean
    */
-  public static boolean isRootFunction(EObject element_p) {
-    if ((null != element_p) && (element_p instanceof AbstractFunction)) {
-      AbstractFunction currentFunction = (AbstractFunction) element_p;
+  public static boolean isRootFunction(EObject element) {
+    if ((null != element) && (element instanceof AbstractFunction)) {
+      AbstractFunction currentFunction = (AbstractFunction) element;
       AbstractFunction rootFunction = FunctionExt.getRootFunction(currentFunction);
       if ((null != rootFunction) && rootFunction.equals(currentFunction)) {
         return true;
@@ -637,4 +638,52 @@ public class FunctionExt {
     return false;
   }
 
+  /**
+   * Given a mother function that has sub functions, this method
+   * <b>calculates</b> the allocation of the mother function to a
+   * component/actor/entity. The rule is that <b>a mother function is
+   * allocated to a component/actor/entity if and only if all of its sub
+   * functions are allocated to this component/actor/entity</b>.
+   * 
+   * Note that in case the mother function is already allocated to a
+   * component/actor/entity or in case the mother function is a leaf function,
+   * the method returns its allocation(s).
+   * 
+   * @param motherFunction
+   *            the mother function to calculate component/actor/entity
+   *            allocation on
+   * @return the <b>calculated</b> list of components/actors/entities the
+   *         mother function is allocated to
+   */
+  public static List<AbstractFunctionalBlock> getMotherFunctionAllocation(AbstractFunction motherFunction) {
+    List<AbstractFunctionalBlock> result = new ArrayList<AbstractFunctionalBlock>();
+
+    // If motherFunction is already allocated to a component/actor
+    EList<AbstractFunctionalBlock> motherComponentAllocation = motherFunction.getAllocationBlocks();
+    if (null != motherComponentAllocation && !motherComponentAllocation.isEmpty()) {
+      result = motherComponentAllocation;
+    } else {
+      // Get all leaves functions of the motherFunction
+      List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(motherFunction);
+      if (null != leaves && !leaves.isEmpty()) {
+        Iterator<AbstractFunction> it = leaves.iterator();
+
+        // Get first leaf component allocation to initialize the result
+        EList<AbstractFunctionalBlock> firstLeafComponentAllocation = it.next().getAllocationBlocks();
+        if (null != firstLeafComponentAllocation && !firstLeafComponentAllocation.isEmpty()) {
+          result.addAll(firstLeafComponentAllocation);
+        }
+
+        // Iterate over leaves and do the intersection with result
+        while (it.hasNext()) {
+          EList<AbstractFunctionalBlock> otherLeafComponentAllocation = it.next().getAllocationBlocks();
+          if (null != otherLeafComponentAllocation && !otherLeafComponentAllocation.isEmpty()) {
+            result.retainAll(otherLeafComponentAllocation);
+          }
+        }
+      }
+    }
+
+    return result;
+  }
 }

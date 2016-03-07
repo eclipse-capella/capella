@@ -28,7 +28,7 @@ public class CDBDiagram extends DiagramContext {
         DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME) {
       @Override
       public DiagramContext getResult() {
-        return new CDBDiagram(getExecutionContext(), _diagram);
+        return new CDBDiagram(getExecutionContext(), diagram);
       }
     }.run().open();
   }

@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -87,7 +88,7 @@ public class InsertRemoveTool extends AbstractToolStep {
   @Override
   public Object run() {
     if (!initialized) {
-      assertFalse("Please use insert/remove methods instead of run.", true);
+      fail("Please use insert/remove methods instead of run.");
     }
     return super.run();
   }

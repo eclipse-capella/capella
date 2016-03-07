@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,6 @@ public class GetAvailable_ComponentPort_ProvidedInterfaces extends AbstractQuery
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement element = (CapellaElement) input;
-    List<Object> result = new ArrayList<Object>();
-
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     List<CapellaElement> tempAvailableElements = new ArrayList<CapellaElement>(1);
 
@@ -66,16 +64,16 @@ public class GetAvailable_ComponentPort_ProvidedInterfaces extends AbstractQuery
   }
 
   // same level
-  private List<CapellaElement> getRule_MQRY_Port_ProvidedInterfaces_11(SystemEngineering systemEng_p, Port element_p) {
+  private List<CapellaElement> getRule_MQRY_Port_ProvidedInterfaces_11(SystemEngineering systemEng, Port element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     BlockArchitecture arch = null;
-    arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+    arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 
-    availableElements.addAll(getElementsFromBlockArchitecture(arch, element_p));
+    availableElements.addAll(getElementsFromBlockArchitecture(arch, element));
 
     // For the layer visibility
     if (!(arch instanceof OperationalAnalysis)) {
-      availableElements.addAll(getRule_MQRY_Port_ProvidedInterfaces_11_1(systemEng_p, element_p));
+      availableElements.addAll(getRule_MQRY_Port_ProvidedInterfaces_11_1(systemEng, element));
     }
 
     return availableElements;
@@ -84,36 +82,36 @@ public class GetAvailable_ComponentPort_ProvidedInterfaces extends AbstractQuery
   /*
    * For the layer visibility
    */
-  private List<CapellaElement> getRule_MQRY_Port_ProvidedInterfaces_11_1(SystemEngineering systemEng_p, Port element_p) {
+  private List<CapellaElement> getRule_MQRY_Port_ProvidedInterfaces_11_1(SystemEngineering systemEng, Port element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     BlockArchitecture arch = null;
-    arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+    arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 
-    OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEng_p);
+    OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEng);
     if (null != oa) {
-      availableElements.addAll(getElementsFromBlockArchitecture(oa, element_p));
+      availableElements.addAll(getElementsFromBlockArchitecture(oa, element));
     } else {
-      SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEng_p);
-      availableElements.addAll(getElementsFromBlockArchitecture(ca, element_p));
+      SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEng);
+      availableElements.addAll(getElementsFromBlockArchitecture(ca, element));
     }
 
     if (null != arch) {
       if (((null != oa) && (arch instanceof LogicalArchitecture)) || (arch instanceof PhysicalArchitecture)) {
-        SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(systemEng_p);
-        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, element_p));
+        SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(systemEng);
+        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, element));
       }
       if ((arch instanceof PhysicalArchitecture)) {
-        LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEng_p);
-        availableElements.addAll(getElementsFromBlockArchitecture(logArch, element_p));
+        LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEng);
+        availableElements.addAll(getElementsFromBlockArchitecture(logArch, element));
       }
     }
     return availableElements;
   }
 
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, Port element_p) {
+  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, Port element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 
-    InterfacePkg interfacePkg = arch_p.getOwnedInterfacePkg();
+    InterfacePkg interfacePkg = arch.getOwnedInterfacePkg();
 
     if (interfacePkg != null) {
       for (Interface inter : InterfacePkgExt.getAllInterfaces(interfacePkg)) {
@@ -123,10 +121,10 @@ public class GetAvailable_ComponentPort_ProvidedInterfaces extends AbstractQuery
       }
     }
 
-    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       InterfacePkg intPkg = cpnt.getOwnedInterfacePkg();
       if (null != intPkg) {
-        EObject container = element_p.eContainer();
+        EObject container = element.eContainer();
         if ((container != null) && (container instanceof Component)) {
           availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(intPkg, cpnt, false));
         }

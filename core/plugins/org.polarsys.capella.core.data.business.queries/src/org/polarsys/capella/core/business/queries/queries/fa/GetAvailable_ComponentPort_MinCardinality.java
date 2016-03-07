@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,12 +30,12 @@ public class GetAvailable_ComponentPort_MinCardinality extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-//		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+//		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 //		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 //		boolean isPropertyFromSharedPkg = false;
 //		if (null == systemEngineering) {
-//			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+//			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 //			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 //				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 //					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -46,8 +46,8 @@ public class GetAvailable_ComponentPort_MinCardinality extends AbstractQuery {
 //			if (systemEngineering == null)
 //				return availableElements;
 //		}
-//		if (element_p instanceof ComponentPort) {
-//			ComponentPort property = (ComponentPort) element_p;
+//		if (element instanceof ComponentPort) {
+//			ComponentPort property = (ComponentPort) element;
 //			if (!isPropertyFromSharedPkg) {
 //				availableElements.addAll(getRule_MQRY_StandardPort_MinCard_11(property));
 //				availableElements.addAll(getRule_MQRY_StandardPort_MinCard_12(property));
@@ -65,10 +65,10 @@ public class GetAvailable_ComponentPort_MinCardinality extends AbstractQuery {
 //	 * Component Architecture Decomposition package, or a Component Architecture
 //	 * root package).
 //	 */
-//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_11(ComponentPort currentProperty_p) {
+//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_11(ComponentPort currentProperty) {
 //		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-//		PhysicalComponent classifier = (PhysicalComponent) currentProperty_p.eContainer();
-//		NumericValue minCard = currentProperty_p.getOwnedMinCard();
+//		PhysicalComponent classifier = (PhysicalComponent) currentProperty.eContainer();
+//		NumericValue minCard = currentProperty.getOwnedMinCard();
 //		ComponentArchitecture arch = PhysicalComponentExt.getOwningPhysicalArchitecture(classifier);
 //		if (null != arch) {
 //			DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
@@ -90,10 +90,10 @@ public class GetAvailable_ComponentPort_MinCardinality extends AbstractQuery {
 //	 * subpackages) of the current Element's parents hierarchy according to
 //	 * layer visibility and multiple decomposition rules.
 //	 */
-//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_12(ComponentPort currentProperty_p) {
+//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_12(ComponentPort currentProperty) {
 //		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-//		PhysicalComponent classifier = (PhysicalComponent) currentProperty_p.eContainer();
-//		NumericValue minCard = currentProperty_p.getOwnedMinCard();
+//		PhysicalComponent classifier = (PhysicalComponent) currentProperty.eContainer();
+//		NumericValue minCard = currentProperty.getOwnedMinCard();
 //		List<DataPkg> dataPkgList = ClassifierExt.getDataPkgsFromParentHierarchy(classifier);
 //		for (DataPkg dataPkg : dataPkgList) {
 //			if (null != dataPkg) {
@@ -113,10 +113,10 @@ public class GetAvailable_ComponentPort_MinCardinality extends AbstractQuery {
 //	 * All the NumericValues contained by the Data Package (and all of its
 //	 * subpackages) of the Shared Assets Package.
 //	 */
-//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_13(ComponentPort currentProperty_p, SystemEngineering systemEngineering_p) {
+//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_13(ComponentPort currentProperty, SystemEngineering systemEngineering) {
 //		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-//		NumericValue minCard = currentProperty_p.getOwnedMinCard();
-//		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+//		NumericValue minCard = currentProperty.getOwnedMinCard();
+//		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 //			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 //			if (null != dataPkg) {
 //				for (DataValue value : DataPkgExt.getAllDataValues(dataPkg)) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,33 +61,33 @@ import org.polarsys.capella.core.sirius.ui.session.ISessionAdvisor;
 public class SessionHelper {
   /**
    * Utility method in order to perform a pre checking on a Session about the saveable state of its embedded resource.
-   * @param session_p the target Session
-   * @param unsaveableFiles_p return the list of unsaveable resources, otherwise an empty one.
+   * @param session the target Session
+   * @param unsaveableFiles return the list of unsaveable resources, otherwise an empty one.
    * @return <code>true</code> if session can be saved, <code>false</code> otherwise.
    */
-  public static boolean areSessionResourcesSaveable(final Session session_p, Collection<IFile> unsaveableFiles_p) {
+  public static boolean areSessionResourcesSaveable(final Session session, Collection<IFile> unsaveableFiles) {
     // Preconditions
-    if ((null == session_p) || (null == unsaveableFiles_p) || !(session_p instanceof DAnalysisSession)) {
+    if ((null == session) || (null == unsaveableFiles) || !(session instanceof DAnalysisSession)) {
       return false;
     }
     boolean ret = true;
     // Let's obtain all resources for this session.
-    Collection<Resource> allResources = getAllAirdResources(session_p);
-    allResources.addAll(session_p.getSemanticResources());
+    Collection<Resource> allResources = getAllAirdResources(session);
+    allResources.addAll(session.getSemanticResources());
 
     // Let's check it
     for (Resource resource : allResources) {
       if (null != resource) {
-        // check whether physical device is available
+        // check whether we have the write permission to the folder containing the resource
         IFile file = EcoreUtil2.getFile(resource);
         if (null != file) {
           IPath path = file.getLocation();
-          IPath device = path.removeLastSegments(path.segmentCount());
-          File dir = device.toFile();
+          IPath parentFolderPath = path.removeLastSegments(1);
+          File dir = parentFolderPath.toFile();
 
           if (!dir.canWrite()) {
             ret = false;
-            unsaveableFiles_p.add(file);
+            unsaveableFiles.add(file);
           }
         }
       }
@@ -99,8 +99,8 @@ public class SessionHelper {
    * Do close the active sessions.<br>
    * The caller must be in the UI Thread.
    */
-  public static void closeUiSessions(final List<?> list_p) {
-    Iterator<?> resources = list_p.iterator();
+  public static void closeUiSessions(final List<?> list) {
+    Iterator<?> resources = list.iterator();
     while (resources.hasNext()) {
       IResource resource = (IResource) resources.next();
       if (IResource.PROJECT == resource.getType()) {
@@ -115,21 +115,21 @@ public class SessionHelper {
 
   /**
    * Get the underlying analysis file (i.e aird file)
-   * @param session_p
+   * @param session
    * @return the root aird resource used to open specified session.
    */
-  public static IFile getFirstAnalysisFile(DAnalysisSession session_p) {
-    return EcoreUtil2.getFile(session_p.getSessionResource());
+  public static IFile getFirstAnalysisFile(DAnalysisSession session) {
+    return EcoreUtil2.getFile(session.getSessionResource());
   }
 
   /**
    * Get the Capella project (only one instance) for given session.
-   * @param session_p
+   * @param session
    * @return must be not <code>null</code>.
    */
-  public static Project getCapellaProject(Session session_p) {
+  public static Project getCapellaProject(Session session) {
     Project result = null;
-    Iterator<Resource> semanticResources = session_p.getSemanticResources().iterator();
+    Iterator<Resource> semanticResources = session.getSemanticResources().iterator();
     // Iterate over semantic resources to search for a capella project.
     while (semanticResources.hasNext()) {
       Resource semanticResource = semanticResources.next();
@@ -145,10 +145,10 @@ public class SessionHelper {
   /**
    * Get a session for given diagram file (i.e aird file).<br>
    * Only compare the given file with the first diagram resource.
-   * @param firstDiagramResourceFile_p the file is expected to be the first diagram file contained in a session.
+   * @param firstDiagramResourceFile the file is expected to be the first diagram file contained in a session.
    * @return <code>null</code> if no session found among all active sessions.
    */
-  public static Session getSession(IFile firstDiagramResourceFile_p) {
+  public static Session getSession(IFile firstDiagramResourceFile) {
     Session result = null;
     // Iterate over active sessions to search the ones that semantic
     // resources are contained by the project.
@@ -157,7 +157,7 @@ public class SessionHelper {
       Session session = allActiveSessions.next();
       if (session instanceof DAnalysisSession) {
         IFile sessionAnalysisFile = getFirstAnalysisFile((DAnalysisSession) session);
-        if (firstDiagramResourceFile_p.equals(sessionAnalysisFile)) {
+        if (firstDiagramResourceFile.equals(sessionAnalysisFile)) {
           // Found.
           result = session;
         }
@@ -171,7 +171,7 @@ public class SessionHelper {
    * @param selectedElement_p
    * @return <code>null</code> if no session found among all active sessions.
    */
-  public static Session getSessionForDiagramFile(IFile diagramResourceFile_p) {
+  public static Session getSessionForDiagramFile(IFile diagramResourceFile) {
     Session result = null;
     // Iterate over active sessions to search the ones that semantic
     // resources are contained by the project.
@@ -179,7 +179,7 @@ public class SessionHelper {
     while (allActiveSessions.hasNext() && (null == result)) {
       Session session = allActiveSessions.next();
       if (session instanceof DAnalysisSession) {
-        if (isAnalysisFileInvolvedIn((DAnalysisSession) session, diagramResourceFile_p)) {
+        if (isAnalysisFileInvolvedIn((DAnalysisSession) session, diagramResourceFile)) {
           // Found.
           result = session;
         }
@@ -190,13 +190,13 @@ public class SessionHelper {
 
   /**
    * Get a session from a representation resource.
-   * @param airdResource_p
+   * @param airdResource
    * @return
    */
-  public static Session getSession(Resource airdResource_p) {
+  public static Session getSession(Resource airdResource) {
     Session result = null;
     for (Session session : SessionManager.INSTANCE.getSessions()) {
-      if (getAllAirdResources(session).contains(airdResource_p)) {
+      if (getAllAirdResources(session).contains(airdResource)) {
         result = session;
         break;
       }
@@ -208,9 +208,9 @@ public class SessionHelper {
    * Get the sessions from structured selection.
    * @return a not <code>null</code> list.
    */
-  public static List<Couple<Session, IFile>> getSessionsFromSelection(IStructuredSelection selection_p) {
+  public static List<Couple<Session, IFile>> getSessionsFromSelection(IStructuredSelection selection) {
     List<Couple<Session, IFile>> sessions = new ArrayList<Couple<Session, IFile>>(0);
-    Iterator<?> iterator = selection_p.iterator();
+    Iterator<?> iterator = selection.iterator();
     while (iterator.hasNext()) {
       Object selectedElement = iterator.next();
       if (selectedElement instanceof IFile) {
@@ -226,17 +226,17 @@ public class SessionHelper {
 
   /**
    * Get project all active sessions (among all active sessions) in given project.
-   * @param project_p
+   * @param project
    * @return a not <code>null</code> array.
    * use getExistingSessions instead
    */
   @Deprecated
-  public static Session getSessions(IProject project_p) {
+  public static Session getSessions(IProject project) {
     // Sessions are children of IProjects, get all active sessions.
     // Iterate over active sessions to search the ones that semantic
     // resources are contained by the project.
     try {
-      ModelingProject modelingProject = (ModelingProject) project_p.getNature(CapellaResourceHelper.CAPELLA_PROJECT_NATURE);
+      ModelingProject modelingProject = (ModelingProject) project.getNature(CapellaResourceHelper.CAPELLA_PROJECT_NATURE);
 
       if (modelingProject == null) {
         return null;
@@ -253,12 +253,12 @@ public class SessionHelper {
   /**
    * Get active sessions from the given project
    */
-  public static Collection<Session> getExistingSessions(IProject project_p) {
+  public static Collection<Session> getExistingSessions(IProject project) {
     // Sessions are children of IProjects, get all active sessions.
     // Iterate over active sessions to search the ones that semantic
     // resources are contained by the project.
     Collection<Session> sessions = new ArrayList<Session>();
-    List<IFile> files = new IFileRequestor().search(project_p, CapellaResourceHelper.AIRD_FILE_EXTENSION, false);
+    List<IFile> files = new IFileRequestor().search(project, CapellaResourceHelper.AIRD_FILE_EXTENSION, false);
     for (IFile mmFile : files) {
       Session session = SessionManager.INSTANCE.getExistingSession(EcoreUtil2.getURI(mmFile));
       if (session != null) {
@@ -270,25 +270,25 @@ public class SessionHelper {
 
   /**
    * Whether or not given analysis file is involved in given session.
-   * @param session_p
-   * @param analysisFile_p
+   * @param session
+   * @param analysisFile
    * @return <code>true</code> means the given session contained given analysis file.
    */
-  public static boolean isAnalysisFileInvolvedIn(DAnalysisSession session_p, IFile analysisFile_p) {
+  public static boolean isAnalysisFileInvolvedIn(DAnalysisSession session, IFile analysisFile) {
     boolean result = false;
 
     try {
       // Precondition.
-      if ((null == session_p) || (null == analysisFile_p)) {
+      if ((null == session) || (null == analysisFile)) {
         return result;
       }
       // Get all resources involved in the session.
-      Collection<Resource> allAnalysisResources = getAllAirdResources(session_p);
+      Collection<Resource> allAnalysisResources = getAllAirdResources(session);
 
       Iterator<Resource> analysisResources = allAnalysisResources.iterator();
       while (analysisResources.hasNext()) {
         Resource resource = analysisResources.next();
-        if (analysisFile_p.equals(EcoreUtil2.getFile(resource))) {
+        if (analysisFile.equals(EcoreUtil2.getFile(resource))) {
           result = true;
           break;
         }
@@ -301,12 +301,12 @@ public class SessionHelper {
 
   /**
    * Get all aird resources contained in specified session.
-   * @param session_p
+   * @param session
    * @return a not <code>null</code> collection.
    */
-  public static Collection<Resource> getAllAirdResources(Session session_p) {
-    Collection<Resource> allAnalysisResources = new HashSet<Resource>(session_p.getReferencedSessionResources());
-    allAnalysisResources.add(session_p.getSessionResource());
+  public static Collection<Resource> getAllAirdResources(Session session) {
+    Collection<Resource> allAnalysisResources = new HashSet<Resource>(session.getReferencedSessionResources());
+    allAnalysisResources.add(session.getSessionResource());
     return allAnalysisResources;
   }
 
@@ -343,9 +343,9 @@ public class SessionHelper {
   /**
    * Activate viewpoints in the given session
    */
-  public static void activateViewpoints(final Session session_p, final Collection<Viewpoint> viewpoints_p) {
+  public static void activateViewpoints(final Session session, final Collection<Viewpoint> viewpoints) {
 
-    ExecutionManager manager = TransactionHelper.getExecutionManager(session_p);
+    ExecutionManager manager = TransactionHelper.getExecutionManager(session);
 
     // Select the viewpoints in TED way as of Sirius 4.15
     manager.execute(new AbstractNonDirtyingCommand() {
@@ -353,8 +353,8 @@ public class SessionHelper {
       public void run() {
         ViewpointSelectionCallback viewpointSelectionCallback = new ViewpointSelectionCallback();
         // Activate all viewpoints
-        for (Viewpoint viewpoint : viewpoints_p) {
-          viewpointSelectionCallback.selectViewpoint(viewpoint, session_p, new NullProgressMonitor());
+        for (Viewpoint viewpoint : viewpoints) {
+          viewpointSelectionCallback.selectViewpoint(viewpoint, session, new NullProgressMonitor());
         }
       }
     });

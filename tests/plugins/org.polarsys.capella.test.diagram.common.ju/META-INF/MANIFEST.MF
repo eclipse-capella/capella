@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-SymbolicName: org.polarsys.capella.test.diagram.common.ju
+Bundle-SymbolicName: org.polarsys.capella.test.diagram.common.ju;singleton:=true
 Bundle-Version: 1.0.2.qualifier
 Bundle-Activator: org.polarsys.capella.test.diagram.common.ju.TestDiagramCommonPlugin
 Require-Bundle: org.eclipse.ui,

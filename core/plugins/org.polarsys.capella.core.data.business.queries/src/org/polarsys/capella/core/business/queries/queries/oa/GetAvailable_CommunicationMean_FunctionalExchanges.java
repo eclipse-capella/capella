@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,26 +46,26 @@ public class GetAvailable_CommunicationMean_FunctionalExchanges extends Abstract
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 		if (null == arch) {
 			return availableElements;
 		}
-		if (element_p instanceof CommunicationMean) {
-			CommunicationMean currentCapabilityUseCase = (CommunicationMean) element_p;
+		if (element instanceof CommunicationMean) {
+			CommunicationMean currentCapabilityUseCase = (CommunicationMean) element;
 			availableElements.addAll(getRule_MQRY_RealizableExchangesFromCommunicationMean(arch, currentCapabilityUseCase));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_RealizableExchangesFromCommunicationMean(BlockArchitecture sysEng_p, CommunicationMean element_p) {
+	private List<CapellaElement> getRule_MQRY_RealizableExchangesFromCommunicationMean(BlockArchitecture sysEng, CommunicationMean element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		Entity sourceEntity = (Entity) element_p.getSource();
-		Entity targetEntity = (Entity) element_p.getTarget();
+		Entity sourceEntity = (Entity) element.getSource();
+		Entity targetEntity = (Entity) element.getTarget();
 		availableElements.addAll(getAllocationFunctionalExchangeByRoles(sourceEntity, targetEntity));
-		EList<FunctionalExchange> functionalExchanges = element_p.getAllocatedFunctionalExchanges();
+		EList<FunctionalExchange> functionalExchanges = element.getAllocatedFunctionalExchanges();
 		for (FunctionalExchange functionalExchange : functionalExchanges) {
 			availableElements.remove(functionalExchange);
 		}
@@ -73,18 +73,18 @@ public class GetAvailable_CommunicationMean_FunctionalExchanges extends Abstract
 	}
 
 	/** 
-	 * @param sourceEntity_p
-	 * @param targetEntity_p
+	 * @param sourceEntity
+	 * @param targetEntity
 	 * @return
 	 */
-	private Collection<? extends FunctionalExchange> getAllocationFunctionalExchangeByRoles(Entity sourceEntity_p, Entity targetEntity_p) {
+	private Collection<? extends FunctionalExchange> getAllocationFunctionalExchangeByRoles(Entity sourceEntity, Entity targetEntity) {
 		List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
 		List<AbstractFunction> sourceActivities = new ArrayList<AbstractFunction>();
 		List<AbstractFunction> targetActivities = new ArrayList<AbstractFunction>();
-		List<PartitionableElement> allSourceDescendants = CapellaElementExt.getAllDescendants(sourceEntity_p);
-		allSourceDescendants.add(sourceEntity_p);
-		List<PartitionableElement> allTargetDescendants = CapellaElementExt.getAllDescendants(targetEntity_p);
-		allTargetDescendants.add(targetEntity_p);
+		List<PartitionableElement> allSourceDescendants = CapellaElementExt.getAllDescendants(sourceEntity);
+		allSourceDescendants.add(sourceEntity);
+		List<PartitionableElement> allTargetDescendants = CapellaElementExt.getAllDescendants(targetEntity);
+		allTargetDescendants.add(targetEntity);
 		for (PartitionableElement partitionableElement : allSourceDescendants) {
 			if (partitionableElement instanceof Entity) {
 				for (RoleAllocation ra : ((Entity) partitionableElement).getOwnedRoleAllocations()) {

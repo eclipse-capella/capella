@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,40 +40,40 @@ public class GetAvailable_Scenario_RealizedScenario extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(element);
 		if (currentBlockArchitecture != null) {
 			List<BlockArchitecture> previousBlockArchitectures = BlockArchitectureExt.getPreviousBlockArchitectures(currentBlockArchitecture);
 			if (!previousBlockArchitectures.isEmpty()) {
 				availableElements
-						.addAll(getElementsFromBlockArchitecture(previousBlockArchitectures.get(previousBlockArchitectures.size() - 1), ((Scenario) element_p)));
+						.addAll(getElementsFromBlockArchitecture(previousBlockArchitectures.get(previousBlockArchitectures.size() - 1), ((Scenario) element)));
 			}
-			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, (Scenario) element_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, (Scenario) element));
 		}
-		availableElements.remove(element_p);
-		for (CapellaElement element : getCurrentElements(element_p, false)) {
-			availableElements.remove(element);
+		availableElements.remove(element);
+		for (CapellaElement elt : getCurrentElements(element, false)) {
+			availableElements.remove(elt);
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param arch_p
+	 * @param arch
 	 * @return
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, Scenario scenario_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, Scenario scenario) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		ScenarioKind kind = scenario_p.getKind();
+		ScenarioKind kind = scenario.getKind();
 		if (kind == ScenarioKind.UNSET) {
 			return availableElements;
 		}
-		TreeIterator<EObject> allContents = EcoreUtil.getAllContents(arch_p, true);
+		TreeIterator<EObject> allContents = EcoreUtil.getAllContents(arch, true);
 		EObject eobject = null;
 		while (allContents.hasNext()) {
 			eobject = allContents.next();
 			if (eobject instanceof Scenario) {
-				if (ScenarioExt.canRealize(scenario_p, (Scenario) eobject)) {
+				if (ScenarioExt.canRealize(scenario, (Scenario) eobject)) {
 					availableElements.add((CapellaElement) eobject);
 				}
 			}
@@ -84,10 +84,10 @@ public class GetAvailable_Scenario_RealizedScenario extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof Scenario) {
-			for (ScenarioRealization realization : ((Scenario) element_p).getOwnedScenarioRealization()) {
+		if (element instanceof Scenario) {
+			for (ScenarioRealization realization : ((Scenario) element).getOwnedScenarioRealization()) {
 				currentElements.add((CapellaElement) realization.getTargetElement());
 			}
 		}

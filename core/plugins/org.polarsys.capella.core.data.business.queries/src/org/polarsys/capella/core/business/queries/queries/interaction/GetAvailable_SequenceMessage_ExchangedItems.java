@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,10 +36,10 @@ public class GetAvailable_SequenceMessage_ExchangedItems extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof SequenceMessage) {
-			AbstractEventOperation op = ((SequenceMessage) element_p).getInvokedOperation();
+		if (element instanceof SequenceMessage) {
+			AbstractEventOperation op = ((SequenceMessage) element).getInvokedOperation();
 			if (op instanceof FunctionalExchange) {
 				for (AbstractExchangeItem item : ((FunctionalExchange) op).getExchangedItems()) {
 					if (item instanceof ExchangeItem) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,14 +48,14 @@ public class GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture extends
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof EPBSArchitecture) {
-			EPBSArchitecture epbsArchitecture = (EPBSArchitecture) element_p;
+		if (element instanceof EPBSArchitecture) {
+			EPBSArchitecture epbsArchitecture = (EPBSArchitecture) element;
 			availableElements.addAll(getRule_MQRY_EPBSArchitecture_Allocation_11(epbsArchitecture));
 		}
 		return availableElements;
@@ -65,10 +65,10 @@ public class GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture extends
 	 * All the Physical Architectures contained by the current Element's
 	 * alternative decomposition hierarchy.
 	 */
-	private List<CapellaElement> getRule_MQRY_EPBSArchitecture_Allocation_11(EPBSArchitecture currentEPBSArchitecture_p) {
+	private List<CapellaElement> getRule_MQRY_EPBSArchitecture_Allocation_11(EPBSArchitecture currentEPBSArchitecture) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering parentSystemEngineering = EPBSArchitectureExt.getParentSystemEngineering(currentEPBSArchitecture_p);
-		List<BlockArchitecture> currentPA = currentEPBSArchitecture_p.getAllocatedArchitectures();
+		SystemEngineering parentSystemEngineering = EPBSArchitectureExt.getParentSystemEngineering(currentEPBSArchitecture);
+		List<BlockArchitecture> currentPA = currentEPBSArchitecture.getAllocatedArchitectures();
 		for (PhysicalArchitecture pa : SystemEngineeringExt.getAllPhysicalArchitectures(parentSystemEngineering)) {
 			if (null == pa || currentPA.contains(pa))
 				continue;
