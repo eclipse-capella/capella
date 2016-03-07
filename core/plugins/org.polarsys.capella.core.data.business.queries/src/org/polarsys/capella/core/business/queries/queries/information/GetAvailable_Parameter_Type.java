@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,13 +79,13 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		Classifier classifierToRemove = null;
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		boolean isParameterFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			if (sharedPkg != null) {
 				for (ReuseLink link : sharedPkg.getReuseLinks()) {
 					if (SystemEngineeringExt.getSystemEngineering(link) != null) {
@@ -98,8 +98,8 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Parameter) {
-			Parameter parameter = (Parameter) element_p;
+		if (element instanceof Parameter) {
+			Parameter parameter = (Parameter) element;
 			EObject eContainer = parameter.eContainer();
 			if (eContainer != null && eContainer instanceof Service) {
 				EObject eContainer2 = eContainer.eContainer();
@@ -126,12 +126,12 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_11(Parameter currenParameter_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_11(Parameter currenParameter) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		EObject container = currenParameter_p.eContainer();
+		EObject container = currenParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currenParameter_p.getType();
+			AbstractType type = currenParameter.getType();
 			BlockArchitecture compArch = OperationExt.getRootBlockArchitecture(operation);
 			availableElements.addAll(getElementsFromBlockArchitecture(compArch, type));
 			Component comp = OperationExt.getRootComponent(operation);
@@ -149,12 +149,12 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_12(Parameter currentParameter_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_12(Parameter currentParameter) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		EObject container = currentParameter_p.eContainer();
+		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter_p.getType();
+			AbstractType type = currentParameter.getType();
 			List<DataPkg> dataPkgList = OperationExt.getDataPkgsFromParentHierarchy(operation);
 			for (DataPkg dataPkg : dataPkgList) {
 				for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
@@ -163,17 +163,17 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 					availableElements.add(element);
 				}
 			}
-			availableElements.addAll(getRule_MQRY_Parameter_Type_12_1(currentParameter_p));
+			availableElements.addAll(getRule_MQRY_Parameter_Type_12_1(currentParameter));
 		}
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_13(Parameter currentParameter_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_13(Parameter currentParameter) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		EObject container = currentParameter_p.eContainer();
+		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter_p.getType();
+			AbstractType type = currentParameter.getType();
 			BlockArchitecture compArch = OperationExt.getRootBlockArchitecture(operation);
 			if (null != compArch) {
 				for (CapellaElement element : InterfacePkgExt.getAllInterfaces(compArch.getOwnedInterfacePkg())) {
@@ -195,26 +195,26 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_14(Parameter currentParameter_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_14(Parameter currentParameter) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		EObject container = currentParameter_p.eContainer();
+		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter_p.getType();
+			AbstractType type = currentParameter.getType();
 			for (CapellaElement element : OperationExt.getOwnedInterfacesFromParentHierarchy(operation)) {
 				if (element.equals(type))
 					continue;
 				availableElements.add(element);
 			}
-			availableElements.addAll(getRule_MQRY_Parameter_Type_14_1(currentParameter_p));
+			availableElements.addAll(getRule_MQRY_Parameter_Type_14_1(currentParameter));
 		}
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_15(Parameter currenParameter_p, SystemEngineering systemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_15(Parameter currenParameter, SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		AbstractType type = currenParameter_p.getType();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+		AbstractType type = currenParameter.getType();
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 			if (dataPkg != null) {
 				for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
@@ -245,10 +245,10 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_16(Parameter currenParameter_p, SystemEngineering systemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_16(Parameter currenParameter, SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		AbstractType type = currenParameter_p.getType();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+		AbstractType type = currenParameter.getType();
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
 				for (CapellaElement element : GenericPkgExt.getAllInterfaces(pkg)) {
@@ -282,14 +282,14 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_12_1(Parameter currentParameter_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_12_1(Parameter currentParameter) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		EObject container = currentParameter_p.eContainer();
+		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter_p.getType();
+			AbstractType type = currentParameter.getType();
 			BlockArchitecture arch = OperationExt.getRootBlockArchitecture(operation);
-			SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentParameter_p);
+			SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentParameter);
 			OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
 			if (null != oa) {
 				availableElements.addAll(getElementsFromBlockArchitecture(oa, type));
@@ -315,14 +315,14 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Parameter_Type_14_1(Parameter currentParameter_p) {
+	private List<CapellaElement> getRule_MQRY_Parameter_Type_14_1(Parameter currentParameter) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		EObject container = currentParameter_p.eContainer();
+		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter_p.getType();
+			AbstractType type = currentParameter.getType();
 			BlockArchitecture arch = OperationExt.getRootBlockArchitecture(operation);
-			SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentParameter_p);
+			SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentParameter);
 			OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
 			if (null != oa) {
 				if (null != oa) {

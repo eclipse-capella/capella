@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,12 +57,12 @@ public class GetAvailable_StringType_Property extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.common.ui.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		boolean isElementFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -73,8 +73,8 @@ public class GetAvailable_StringType_Property extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof StringType) {
-			StringType currentBooleanType = (StringType) element_p;
+		if (element instanceof StringType) {
+			StringType currentBooleanType = (StringType) element;
 			if (!isElementFromSharedPkg) {
 				availableElements.addAll(getRule_MQRY_BooleanValue_Type_11(currentBooleanType));
 			}
@@ -84,84 +84,84 @@ public class GetAvailable_StringType_Property extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_BooleanValue_Type_11(StringType currentBooleanType_p) {
+	private List<CapellaElement> getRule_MQRY_BooleanValue_Type_11(StringType currentBooleanType) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		List<DataPkg> dataPkgList = DataValueExt.getDataPkgsFromParentHierarchy(currentBooleanType_p);
+		List<DataPkg> dataPkgList = DataValueExt.getDataPkgsFromParentHierarchy(currentBooleanType);
 		for (DataPkg dataPkg : dataPkgList) {
-			getAllPropertyFromDataPkg(availableElements, dataPkg, currentBooleanType_p);
+			getAllPropertyFromDataPkg(availableElements, dataPkg, currentBooleanType);
 		}
-		availableElements.addAll(getRule_MQRY_BooleanValue_Type_11_1(currentBooleanType_p));
+		availableElements.addAll(getRule_MQRY_BooleanValue_Type_11_1(currentBooleanType));
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_BooleanValue_Type_13(StringType currentBooleanType_p, SystemEngineering systemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_BooleanValue_Type_13(StringType currentBooleanType, SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
 				for (org.polarsys.capella.core.data.information.Class object : GenericPkgExt.getAllClasses(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType_p);
+					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
 				}
 				for (Exception object : GenericPkgExt.getAllExceptions(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType_p);
+					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
 				}
 				for (Message object : GenericPkgExt.getAllMessages(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType_p);
+					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
 				}
 				for (Signal object : GenericPkgExt.getAllSignals(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType_p);
+					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
 				}
 			}
 		}
 		return availableElements;
 	}
 
-	private void getAllPropertyFromDataPkg(List<CapellaElement> availableElements_p, DataPkg dataPkg_p, DataType type) {
-		if (null != dataPkg_p) {
-			for (CapellaElement dataType : DataPkgExt.getAllClassifierFromDataPkg(dataPkg_p)) {
+	private void getAllPropertyFromDataPkg(List<CapellaElement> availableElements, DataPkg dataPkg, DataType type) {
+		if (null != dataPkg) {
+			for (CapellaElement dataType : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
 				if (dataType instanceof Classifier) {
-					getAllPropertiesFromClassifier(availableElements_p, (Classifier) dataType, type);
+					getAllPropertiesFromClassifier(availableElements, (Classifier) dataType, type);
 				}
 			}
 		}
 	}
 
-	private List<CapellaElement> getRule_MQRY_BooleanValue_Type_11_1(StringType currentBooleanType_p) {
+	private List<CapellaElement> getRule_MQRY_BooleanValue_Type_11_1(StringType currentBooleanType) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentBooleanType_p);
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentBooleanType_p);
+		BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentBooleanType);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentBooleanType);
 		OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
 		if (null != oa) {
-			availableElements.addAll(getElementsFromBlockArchitecture(oa, currentBooleanType_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(oa, currentBooleanType));
 		} else {
 			SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-			availableElements.addAll(getElementsFromBlockArchitecture(ca, currentBooleanType_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(ca, currentBooleanType));
 		}
 		if (arch != null) {
 			if (null != oa && (arch instanceof LogicalArchitecture) || (arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
 				SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-				availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentBooleanType_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentBooleanType));
 			}
 			if ((arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
 				LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-				availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentBooleanType_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentBooleanType));
 			}
 			if ((arch instanceof EPBSArchitecture)) {
 				PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-				availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentBooleanType_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentBooleanType));
 			}
 		}
 		return availableElements;
 	}
 
-	private void getAllPropertiesFromClassifier(List<CapellaElement> availableElements_p, Classifier classifier_p, DataType type) {
-		EList<Feature> ownedFeatures = classifier_p.getOwnedFeatures();
+	private void getAllPropertiesFromClassifier(List<CapellaElement> availableElements, Classifier classifier, DataType type) {
+		EList<Feature> ownedFeatures = classifier.getOwnedFeatures();
 		for (Feature feature : ownedFeatures) {
 			if (feature instanceof Property) {
 				AbstractType abstractType = ((Property) feature).getAbstractType();
 				if (null != abstractType)
 					if (abstractType instanceof StringType) {
-						availableElements_p.add(feature);
+						availableElements.add(feature);
 					}
 			}
 		}

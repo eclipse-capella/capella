@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,22 +42,22 @@ public class GetAvailable_BooleanType_DefaultValue extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     // GET THE PARAMETERS AND INITIALIZE RESULTING LIST
-    CapellaElement element_p = (CapellaElement) input;
+    CapellaElement element = (CapellaElement) input;
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     // GET AVAILABLE ELEMENTS
     // get all data in the root data package of each allocated architectures
-    BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+    BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element);
     for (BlockArchitecture blockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(currentBlockArchitecture)) {
       DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
       if (dataPkg != null) {
-        result.addAll(getDataFromLevel(dataPkg, element_p));
+        result.addAll(getDataFromLevel(dataPkg, element));
       }
     }
     // get all data and primitive types in the data packages of each parents components
-    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (dataPkg != null) {
-        result.addAll(getDataFromLevel(dataPkg, element_p));
+        result.addAll(getDataFromLevel(dataPkg, element));
         List<CapellaElement> allTypes = new ArrayList<CapellaElement>();
         allTypes.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
         allTypes = QueryInterpretor.executeFilter(allTypes, new KeepPrimitiveClassInstanceOfSpecificEClassFilter(InformationPackage.Literals.CLASS));
@@ -67,7 +67,7 @@ public class GetAvailable_BooleanType_DefaultValue extends AbstractQuery {
     }
     // get all values in the data packages of each parent components of realized components
     Component currentCpnt =
-        (element_p instanceof Component) ? (Component) element_p : (Component) EcoreUtil2.getFirstContainer(element_p, CsPackage.Literals.COMPONENT);
+        (element instanceof Component) ? (Component) element : (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
     if (currentCpnt != null) {
       for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
         List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
@@ -75,7 +75,7 @@ public class GetAvailable_BooleanType_DefaultValue extends AbstractQuery {
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (dataPkg != null) {
-            for (CapellaElement data : getDataFromLevel(dataPkg, element_p)) {
+            for (CapellaElement data : getDataFromLevel(dataPkg, element)) {
               if (!result.contains(data)) {
                 result.add(data);
               }
@@ -85,9 +85,9 @@ public class GetAvailable_BooleanType_DefaultValue extends AbstractQuery {
       }
     }
     // get unlevelized data
-    if (element_p instanceof BooleanType) {
-      List<GeneralizableElement> rootSupertypes = GeneralizableElementExt.getRootSupertypes((BooleanType) element_p);
-      rootSupertypes.add((GeneralizableElement) element_p);
+    if (element instanceof BooleanType) {
+      List<GeneralizableElement> rootSupertypes = GeneralizableElementExt.getRootSupertypes((BooleanType) element);
+      rootSupertypes.add((GeneralizableElement) element);
       for (CapellaElement melElem : rootSupertypes) {
         if (melElem instanceof BooleanType) {
           BooleanType rootBooleanType = (BooleanType) melElem;
@@ -100,16 +100,16 @@ public class GetAvailable_BooleanType_DefaultValue extends AbstractQuery {
     return (List) result;
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement dataType_p) {
-    if (dataType_p instanceof BooleanType) {
+  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement dataType) {
+    if (dataType instanceof BooleanType) {
       List<EClass> searchedUntypedEclasses = new ArrayList<EClass>();
-      BooleanType booleanType = (BooleanType) dataType_p;
+      BooleanType booleanType = (BooleanType) dataType;
       searchedUntypedEclasses.add(DatavaluePackage.Literals.BOOLEAN_REFERENCE);
       searchedUntypedEclasses.add(DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE);
-      List<CapellaElement> returnValue = CapellaElementsHelperForBusinessQueries.getDataValuesInstancesOf(dataPkg_p, searchedUntypedEclasses, true, false);
-      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg_p, booleanType, false, true,
+      List<CapellaElement> returnValue = CapellaElementsHelperForBusinessQueries.getDataValuesInstancesOf(dataPkg, searchedUntypedEclasses, true, false);
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg, booleanType, false, true,
           DatavaluePackage.Literals.BOOLEAN_REFERENCE, null));
-      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg_p, booleanType, false));
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg, booleanType, false));
       return returnValue;
     }
     return Collections.emptyList();

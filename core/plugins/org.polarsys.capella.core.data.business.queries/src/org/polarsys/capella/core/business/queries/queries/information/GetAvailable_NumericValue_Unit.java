@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,14 +62,14 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
    * Refer MQRY_PhysicalDimension_DefaultUnit_1
    * </p>
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (systemEngineering == null) {
       return availableElements;
     }
-    if (element_p instanceof NumericValue) {
-      NumericValue currentNumericValue = (NumericValue) element_p;
+    if (element instanceof NumericValue) {
+      NumericValue currentNumericValue = (NumericValue) element;
       availableElements.addAll(getRule_MQRY_NumericValue_Unit_11(currentNumericValue));
       availableElements.addAll(getRule_MQRY_NumericValue_Unit_12(currentNumericValue));
     }
@@ -77,15 +77,15 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_NumericValue_Unit_11(NumericValue currentNumericValue_p) {
+  private List<CapellaElement> getRule_MQRY_NumericValue_Unit_11(NumericValue currentNumericValue) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    EObject container = currentNumericValue_p.eContainer();
+    EObject container = currentNumericValue.eContainer();
     while (container != null) {
       if (container instanceof Component) {
         DataPkg componentDataPkg = ((Component) container).getOwnedDataPkg();
         if (componentDataPkg != null) {
           for (Unit u : DataPkgExt.getAllUnits((((Component) container).getOwnedDataPkg()))) {
-            if (!u.equals(currentNumericValue_p.getUnit())) {
+            if (!u.equals(currentNumericValue.getUnit())) {
               availableElements.add(u);
             }
           }
@@ -93,20 +93,20 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
       }
       container = container.eContainer();
     }
-    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentNumericValue_p);
-    availableElements.addAll(getElementsFromBlockArchitecture(arch, currentNumericValue_p.getUnit()));
+    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentNumericValue);
+    availableElements.addAll(getElementsFromBlockArchitecture(arch, currentNumericValue.getUnit()));
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_NumericValue_Unit_12(NumericValue currentNumericValue_p) {
+  private List<CapellaElement> getRule_MQRY_NumericValue_Unit_12(NumericValue currentNumericValue) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    EObject container = currentNumericValue_p.eContainer();
+    EObject container = currentNumericValue.eContainer();
     if (container instanceof DataPkg) {
       List<DataPkg> dataPkgList = DataPkgExt.getDataPkgsFromParentHierarchy((DataPkg) container);
       for (DataPkg dataPkg : dataPkgList) {
         if (null != dataPkg) {
           for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-            if (unit.equals(currentNumericValue_p.getUnit())) {
+            if (unit.equals(currentNumericValue.getUnit())) {
               continue;
             }
             availableElements.add(unit);
@@ -114,7 +114,7 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
         }
       }
     }
-    availableElements.addAll(getRule_MQRY_NumericValue_Unit_12_1(currentNumericValue_p));
+    availableElements.addAll(getRule_MQRY_NumericValue_Unit_12_1(currentNumericValue));
     return availableElements;
   }
 
@@ -134,29 +134,29 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_NumericValue_Unit_12_1(NumericValue currentNumericValue_p) {
+  private List<CapellaElement> getRule_MQRY_NumericValue_Unit_12_1(NumericValue currentNumericValue) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentNumericValue_p);
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentNumericValue_p);
+    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentNumericValue);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentNumericValue);
     OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
     if (null != oa) {
-      availableElements.addAll(getElementsFromBlockArchitecture(oa, currentNumericValue_p.getUnit()));
+      availableElements.addAll(getElementsFromBlockArchitecture(oa, currentNumericValue.getUnit()));
     } else {
       SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-      availableElements.addAll(getElementsFromBlockArchitecture(ca, currentNumericValue_p.getUnit()));
+      availableElements.addAll(getElementsFromBlockArchitecture(ca, currentNumericValue.getUnit()));
     }
     if (arch != null) {
       if (((null != oa) && (arch instanceof LogicalArchitecture)) || (arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
         SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentNumericValue_p.getUnit()));
+        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentNumericValue.getUnit()));
       }
       if ((arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
         LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-        availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentNumericValue_p.getUnit()));
+        availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentNumericValue.getUnit()));
       }
       if ((arch instanceof EPBSArchitecture)) {
         PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-        availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentNumericValue_p.getUnit()));
+        availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentNumericValue.getUnit()));
       }
     }
     return availableElements;

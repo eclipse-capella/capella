@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,12 +56,12 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		boolean isElementFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -72,8 +72,8 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Union) {
-			Union union = (Union) element_p;
+		if (element instanceof Union) {
+			Union union = (Union) element;
 			if (!isElementFromSharedPkg) {
 				availableElements.addAll(getRule_MQRY_Union_Descriminant_11(union));
 				availableElements.addAll(getRule_MQRY_Union_Descriminant_12(union));
@@ -84,13 +84,13 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Union_Descriminant_11(Union currentUnion_p) {
+	private List<CapellaElement> getRule_MQRY_Union_Descriminant_11(Union currentUnion) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		UnionProperty disc = currentUnion_p.getDiscriminant();
+		UnionProperty disc = currentUnion.getDiscriminant();
 		Type type = null;
 		if (disc != null)
 			type = disc.getType();
-		DataPkg classPkg = ClassExt.getRootOwnerDataPkg(currentUnion_p);
+		DataPkg classPkg = ClassExt.getRootOwnerDataPkg(currentUnion);
 		if (classPkg != null) {
 			ComponentArchitecture parentComponentArchitecture = DataPkgExt.getRootComponentArchitecture(classPkg);
 			availableElements.addAll(getElementsFromComponentArchitecture(parentComponentArchitecture, type));
@@ -111,13 +111,13 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Union_Descriminant_12(Union currentUnion_p) {
+	private List<CapellaElement> getRule_MQRY_Union_Descriminant_12(Union currentUnion) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		UnionProperty disc = currentUnion_p.getDiscriminant();
+		UnionProperty disc = currentUnion.getDiscriminant();
 		Type type = null;
 		if (disc != null)
 			type = disc.getType();
-		DataPkg classPkg = ClassExt.getRootOwnerDataPkg(currentUnion_p);
+		DataPkg classPkg = ClassExt.getRootOwnerDataPkg(currentUnion);
 		if (classPkg != null) {
 			for (DataPkg dataPkg : StructureExt.getDataPkgsFromParentHierarchy(classPkg)) {
 				if (null != dataPkg) {
@@ -129,17 +129,17 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 				}
 			}
 		}
-		availableElements.addAll(getRule_MQRY_Union_Descriminant_12_1(currentUnion_p));
+		availableElements.addAll(getRule_MQRY_Union_Descriminant_12_1(currentUnion));
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Union_Descriminant_13(Union currentUnion_p, SystemEngineering systemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_Union_Descriminant_13(Union currentUnion, SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		UnionProperty disc = currentUnion_p.getDiscriminant();
+		UnionProperty disc = currentUnion.getDiscriminant();
 		Type type = null;
 		if (disc != null)
 			type = disc.getType();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 			if (dataPkg != null) {
 				for (DataType element : DataPkgExt.getAllDataTypes(dataPkg)) {
@@ -175,13 +175,13 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Union_Descriminant_12_1(Union currentUnion_p) {
+	private List<CapellaElement> getRule_MQRY_Union_Descriminant_12_1(Union currentUnion) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		UnionProperty disc = currentUnion_p.getDiscriminant();
+		UnionProperty disc = currentUnion.getDiscriminant();
 		Type type = null;
 		if (disc != null)
 			type = disc.getType();
-		DataPkg classPkg = ClassExt.getRootOwnerDataPkg(currentUnion_p);
+		DataPkg classPkg = ClassExt.getRootOwnerDataPkg(currentUnion);
 		if (classPkg != null) {
 			SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(classPkg);
 			SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);

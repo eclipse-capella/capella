@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,12 +60,12 @@ public class GetAvailable_Signal_InheritedSignals extends AbstractQuery {
 	 * </p>
 	 * @see IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		boolean isSignalFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -76,16 +76,16 @@ public class GetAvailable_Signal_InheritedSignals extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Signal) {
+		if (element instanceof Signal) {
 			if (!isSignalFromSharedPkg) {
-				availableElements.addAll(getRule_MQRY_Signal_Inherited_11((Signal) element_p, systemEngineering));
-				availableElements.addAll(getRule_MQRY_Signal_Inherited_12((Signal) element_p, systemEngineering));
-				availableElements.addAll(getRule_MQRY_Signal_Inherited_13((Signal) element_p, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Signal_Inherited_11((Signal) element, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Signal_Inherited_12((Signal) element, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Signal_Inherited_13((Signal) element, systemEngineering));
 			}
-			availableElements.addAll(getRule_MQRY_Signal_Inherited_14((Signal) element_p, systemEngineering));
+			availableElements.addAll(getRule_MQRY_Signal_Inherited_14((Signal) element, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p);
+		availableElements.remove(element);
 		return availableElements;
 	}
 

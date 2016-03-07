@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,12 +74,12 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		boolean isElementFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -90,8 +90,8 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Exception) {
-			Exception exception = (Exception) element_p;
+		if (element instanceof Exception) {
+			Exception exception = (Exception) element;
 			if (!isElementFromSharedPkg) {
 				availableElements.addAll(getRule_MQRY_Exception_Inherited_11(exception));
 				availableElements.addAll(getRule_MQRY_Exception_Inherited_12(exception));
@@ -103,15 +103,15 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Exception_Inherited_11(Exception currentException_p) {
+	private List<CapellaElement> getRule_MQRY_Exception_Inherited_11(Exception currentException) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		DataPkg exceptionPkg = ExceptionExt.getRootOwnerDataPkg(currentException_p);
+		DataPkg exceptionPkg = ExceptionExt.getRootOwnerDataPkg(currentException);
 		if (null != exceptionPkg) {
 			for (Exception exception : exceptionPkg.getOwnedExceptions()) {
-				if ((exception == null) || (exception.equals(currentException_p)))
+				if ((exception == null) || (exception.equals(currentException)))
 					continue;
-				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException_p).contains(exception)
-						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException_p)) {
+				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
+						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
 					availableElements.add(exception);
 				}
 			}
@@ -119,19 +119,19 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Exception_Inherited_12(Exception currentException_p) {
+	private List<CapellaElement> getRule_MQRY_Exception_Inherited_12(Exception currentException) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		DataPkg exceptionPkg = ExceptionExt.getRootOwnerDataPkg(currentException_p);
+		DataPkg exceptionPkg = ExceptionExt.getRootOwnerDataPkg(currentException);
 		if (null != exceptionPkg) {
 			ComponentArchitecture arch = DataPkgExt.getRootComponentArchitecture(exceptionPkg);
 			if (null != arch) {
 				DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
 				if (null != dataPkg) {
 					for (Exception exception : DataPkgExt.getAllExceptions(dataPkg)) {
-						if ((exception == null) || (exception.equals(currentException_p)))
+						if ((exception == null) || (exception.equals(currentException)))
 							continue;
-						if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException_p).contains(exception)
-								&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException_p)) {
+						if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
+								&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
 							availableElements.add(exception);
 						}
 					}
@@ -143,10 +143,10 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 					DataPkg dataPkg = ((LogicalComponent) comp).getOwnedDataPkg();
 					if (null != dataPkg) {
 						for (Exception exception : DataPkgExt.getAllExceptions(dataPkg)) {
-							if ((exception == null) || (exception.equals(currentException_p)))
+							if ((exception == null) || (exception.equals(currentException)))
 								continue;
-							if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException_p).contains(exception)
-									&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException_p)) {
+							if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
+									&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
 								availableElements.add(exception);
 							}
 						}
@@ -157,15 +157,15 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Exception_Inherited_13(Exception currentException_p) {
+	private List<CapellaElement> getRule_MQRY_Exception_Inherited_13(Exception currentException) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		DataPkg dataPkg = ExceptionExt.getRootOwnerDataPkg(currentException_p);
+		DataPkg dataPkg = ExceptionExt.getRootOwnerDataPkg(currentException);
 		if (null != dataPkg) {
 			for (Exception exception : DataPkgExt.getExceptionsFromParentHierarchy(dataPkg)) {
-				if ((exception == null) || (exception.equals(currentException_p)))
+				if ((exception == null) || (exception.equals(currentException)))
 					continue;
-				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException_p).contains(exception)
-						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException_p)) {
+				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
+						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
 					availableElements.add(exception);
 				}
 			}
@@ -173,16 +173,16 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Exception_Inherited_14(Exception currentException_p, SystemEngineering systemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_Exception_Inherited_14(Exception currentException, SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 			if (null != dataPkg) {
 				for (Exception exception : DataPkgExt.getAllExceptions(dataPkg)) {
-					if ((exception == null) || (exception.equals(currentException_p)))
+					if ((exception == null) || (exception.equals(currentException)))
 						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException_p).contains(exception)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException_p)) {
+					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
+							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
 						availableElements.add(exception);
 					}
 				}
@@ -190,10 +190,10 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
 				for (Exception exception : GenericPkgExt.getAllExceptions(pkg)) {
-					if ((exception == null) || (exception.equals(currentException_p)))
+					if ((exception == null) || (exception.equals(currentException)))
 						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException_p).contains(exception)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException_p)) {
+					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
+							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
 						availableElements.add(exception);
 					}
 				}

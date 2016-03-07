@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,10 +47,10 @@ public class GetAvailable_ExchangeItemElement_ReferencedProperties extends Abstr
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ExchangeItemElement) {
-			availableElements.addAll(getRule_MQRY_ExchangeItemElement_AvailableProperties_11((ExchangeItemElement) element_p));
+		if (element instanceof ExchangeItemElement) {
+			availableElements.addAll(getRule_MQRY_ExchangeItemElement_AvailableProperties_11((ExchangeItemElement) element));
 			availableElements = ListExt.removeDuplicates(availableElements);
 		}
 		return availableElements;
@@ -58,28 +58,28 @@ public class GetAvailable_ExchangeItemElement_ReferencedProperties extends Abstr
 
 	/** 
 	 * same level Visibility Layer
-	 * @param exchange_p
+	 * @param exchange
 	 */
-	private List<CapellaElement> getRule_MQRY_ExchangeItemElement_AvailableProperties_11(ExchangeItemElement exchange_p) {
+	private List<CapellaElement> getRule_MQRY_ExchangeItemElement_AvailableProperties_11(ExchangeItemElement exchange) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(exchange_p);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(exchange);
 		if (null != currentBlockArchitecture) {
-			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, exchange_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, exchange));
 			for (BlockArchitecture previousBlockArchitecture : BlockArchitectureExt.getPreviousBlockArchitectures(currentBlockArchitecture)) {
-				availableElements.addAll(getElementsFromBlockArchitecture(previousBlockArchitecture, exchange_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(previousBlockArchitecture, exchange));
 			}
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param arch_p
-	 * @param exchangeItemEle_p
+	 * @param arch
+	 * @param exchangeItemEle
 	 * @return
 	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, ExchangeItemElement exchangeItemEle_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, ExchangeItemElement exchangeItemEle) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		AbstractType abstractType = exchangeItemEle_p.getAbstractType();
+		AbstractType abstractType = exchangeItemEle.getAbstractType();
 		if (abstractType instanceof Class) {
 			Class cls = (Class) abstractType;
 			List<GeneralizableElement> allSuperGeneralizableElements = GeneralizableElementExt.getAllSuperGeneralizableElements(cls);
@@ -94,10 +94,10 @@ public class GetAvailable_ExchangeItemElement_ReferencedProperties extends Abstr
 				}
 			}
 		}
-		for (CapellaElement elt : getCurrentElements(exchangeItemEle_p, false)) {
+		for (CapellaElement elt : getCurrentElements(exchangeItemEle, false)) {
 			availableElements.remove(elt);
 		}
-		availableElements.remove(exchangeItemEle_p);
+		availableElements.remove(exchangeItemEle);
 		return availableElements;
 	}
 
@@ -110,10 +110,10 @@ public class GetAvailable_ExchangeItemElement_ReferencedProperties extends Abstr
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ExchangeItemElement) {
-			ExchangeItemElement exchange = (ExchangeItemElement) element_p;
+		if (element instanceof ExchangeItemElement) {
+			ExchangeItemElement exchange = (ExchangeItemElement) element;
 			currentElements.addAll(exchange.getReferencedProperties());
 		}
 		return currentElements;

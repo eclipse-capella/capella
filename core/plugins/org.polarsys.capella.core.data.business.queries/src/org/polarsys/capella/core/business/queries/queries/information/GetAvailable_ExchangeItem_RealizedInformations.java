@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,9 +37,9 @@ public class GetAvailable_ExchangeItem_RealizedInformations extends AbstractQuer
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element_p);
+		BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element);
 		if (currentBlockArchitecture != null) {
 			for (BlockArchitecture previousBlockArchitecture : BlockArchitectureExt.getPreviousBlockArchitectures(currentBlockArchitecture)) {
 				for (EObject elt : EObjectExt.getAll(previousBlockArchitecture, ModellingcorePackage.Literals.ABSTRACT_EXCHANGE_ITEM)) {
@@ -48,7 +48,7 @@ public class GetAvailable_ExchangeItem_RealizedInformations extends AbstractQuer
 			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p);
+		availableElements.remove(element);
 		return availableElements;
 	}
 

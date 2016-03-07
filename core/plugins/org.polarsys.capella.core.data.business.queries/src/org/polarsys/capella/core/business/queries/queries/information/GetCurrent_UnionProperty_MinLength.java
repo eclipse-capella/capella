@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,14 +34,14 @@ public class GetCurrent_UnionProperty_MinLength extends AbstractQuery {
 		return (List) currentElements;
 	}
 
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p,
-			boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element,
+			boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (!systemEngineeringExists(element_p)) {
+		if (!systemEngineeringExists(element)) {
 			return currentElements;
 		}
-		if (element_p instanceof UnionProperty) {
-			UnionProperty property = (UnionProperty) element_p;
+		if (element instanceof UnionProperty) {
+			UnionProperty property = (UnionProperty) element;
 			if (property.getOwnedMinLength() != null) {
 				currentElements.add(property.getOwnedMinLength());
 			}
@@ -51,14 +51,14 @@ public class GetCurrent_UnionProperty_MinLength extends AbstractQuery {
 
 	/** 
 	 * Verifies that there is a "system engineering folder" above the given capella element
-	 * @param element_p the given capella element
+	 * @param element the given capella element
 	 * @return <code>true</code> if there is such folder, <code>false</code> otherwise
 	 */
-	public boolean systemEngineeringExists(CapellaElement element_p) {
+	public boolean systemEngineeringExists(CapellaElement element) {
 		SystemEngineering systemEngineering = CapellaQueries.getInstance()
-				.getRootQueries().getSystemEngineering(element_p);
+				.getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt

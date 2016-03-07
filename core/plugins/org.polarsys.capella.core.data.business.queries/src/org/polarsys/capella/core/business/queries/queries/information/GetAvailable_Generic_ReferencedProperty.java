@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,23 +44,23 @@ public class GetAvailable_Generic_ReferencedProperty extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) {
     // GET THE PARAMETERS AND INITIALIZE RESULTING LIST
     List<Object> parameters = (List<Object>) input;
-    CapellaElement element_p = (CapellaElement) parameters.get(0);
+    CapellaElement element = (CapellaElement) parameters.get(0);
     List<EClass> types = (List<EClass>) parameters.get(1);
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     // GET AVAILABLE ELEMENTS
     // get all data in the root data package of each allocated architectures
-    BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+    BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element);
     for (BlockArchitecture blockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(currentBlockArchitecture)) {
       DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
       if (dataPkg != null) {
-        result.addAll(getDataFromLevel(dataPkg, element_p, types));
+        result.addAll(getDataFromLevel(dataPkg, element, types));
       }
     }
     // get all data and primitive types in the data packages of each parents components
-    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (dataPkg != null) {
-        result.addAll(getDataFromLevel(dataPkg, element_p, types));
+        result.addAll(getDataFromLevel(dataPkg, element, types));
         List<CapellaElement> allTypes = new ArrayList<CapellaElement>();
         allTypes.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
         allTypes = QueryInterpretor.executeFilter(allTypes, new KeepPrimitiveClassInstanceOfSpecificEClassFilter(InformationPackage.Literals.CLASS));
@@ -70,7 +70,7 @@ public class GetAvailable_Generic_ReferencedProperty extends AbstractQuery {
     }
     // get all values in the data packages of each parent components of realized components
     Component currentCpnt =
-        (element_p instanceof Component) ? (Component) element_p : (Component) EcoreUtil2.getFirstContainer(element_p, CsPackage.Literals.COMPONENT);
+        (element instanceof Component) ? (Component) element : (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
     if (currentCpnt != null) {
       for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
         List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
@@ -78,7 +78,7 @@ public class GetAvailable_Generic_ReferencedProperty extends AbstractQuery {
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (dataPkg != null) {
-            for (CapellaElement data : getDataFromLevel(dataPkg, element_p, types)) {
+            for (CapellaElement data : getDataFromLevel(dataPkg, element, types)) {
               if (!result.contains(data)) {
                 result.add(data);
               }
@@ -91,12 +91,12 @@ public class GetAvailable_Generic_ReferencedProperty extends AbstractQuery {
     return (List) result;
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p, List<EClass> types) {
-    if (capellaElement_p instanceof DataValue) {
-      DataValue dataValue = (DataValue) capellaElement_p;
+  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement, List<EClass> types) {
+    if (capellaElement instanceof DataValue) {
+      DataValue dataValue = (DataValue) capellaElement;
       AbstractType type = dataValue.getAbstractType();
       if ((type != null) && (type instanceof GeneralizableElement)) {
-        List<CapellaElement> list = CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg_p, (GeneralizableElement) type, false);
+        List<CapellaElement> list = CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg, (GeneralizableElement) type, false);
         List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
         for (CapellaElement element : list) {
           if (element instanceof Property) {
@@ -108,7 +108,7 @@ public class GetAvailable_Generic_ReferencedProperty extends AbstractQuery {
         }
         return returnValue;
       }
-      return CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg_p, null, true);
+      return CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg, null, true);
     }
     return Collections.emptyList();
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,11 +45,11 @@ public class GetCurrent_Class_InheritedClasses extends AbstractQuery {
    * Refer MQRY_Class_Inherited_1
    * </p>
    */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (null == systemEngineering) {
-      SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+      SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
       for (ReuseLink link : sharedPkg.getReuseLinks()) {
         if (SystemEngineeringExt.getSystemEngineering(link) != null) {
           systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -60,8 +60,8 @@ public class GetCurrent_Class_InheritedClasses extends AbstractQuery {
         return currentElements;
       }
     }
-    if (element_p instanceof Class) {
-      Class currentClass = (Class) element_p;
+    if (element instanceof Class) {
+      Class currentClass = (Class) element;
       currentElements.addAll(currentClass.getSuper());
       currentElements = ListExt.removeDuplicates(currentElements);
       currentElements.remove(currentClass);
