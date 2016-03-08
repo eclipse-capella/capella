@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,40 +19,40 @@ import java.util.List;
 public interface ICategory {
 	/**
 	 * Return a set of elements resulting from a query.
-	 * @param currentElement_p
+	 * @param currentElement 
 	 * @return
 	 */
-	public List<Object> compute(Object currentElement_p);
+	public List<Object> compute(Object currentElement);
 	
 	/**
 	 * Id setter.
-	 * @param id_p
+	 * @param id 
 	 */
-	public void setId(String id_p);
+	public void setId(String id);
 	
 	/**
 	 * Add Sub category id.
-	 * @param id_p
+	 * @param id 
 	 */
-	public void addSubCategoryId(String id_p);
+	public void addSubCategoryId(String id);
 	
 	/**
 	 * Set Query object. Could be a basic query or a navigation query.
-	 * @param query_p
+	 * @param query 
 	 */
-	public void setQuery(Object query_p);
+	public void setQuery(Object query);
 	
 	/**
 	 * 
-	 * @param element_p
+	 * @param element 
 	 */
-	public void setTypeFullyQualifiedName(String element_p);
+	public void setTypeFullyQualifiedName(String element);
 
   /**
-   * @param currentElement_p
+   * @param currentElement 
    * @return true if 
    */
-  public boolean isAvailableForType(Object currentElement_p);
+  public boolean isAvailableForType(Object currentElement);
   
   /**
    * SubCategory Ids getter.
@@ -62,9 +62,9 @@ public interface ICategory {
   
   /**
    * Name setter.
-   * @param categoryName_p
+   * @param categoryName 
    */
-  public void setName(String categoryName_p);
+  public void setName(String categoryName);
   
   /**
    * Name getter.
@@ -74,9 +74,9 @@ public interface ICategory {
   
   /**
    * IsTopLevel setter.
-   * @param isTopLevel_p
+   * @param isTopLevel 
    */
-  public void setIsTopLevel(boolean isTopLevel_p);
+  public void setIsTopLevel(boolean isTopLevel);
   
   /**
    * Return true if Category is top level category. 
@@ -93,7 +93,12 @@ public interface ICategory {
   
   /**
    * Set item queries.
-   * @param queries_p set of queries.
+   * @param queries  set of queries.
    */
-  public void addItemQuery(Object queries_p);
+  public void addItemQuery(Object queries);
+  
+  /**
+   * @return the category identifier.
+   */
+  public String getCategoryId();
 }
