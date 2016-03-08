@@ -101,8 +101,8 @@ public class MigrationHelpers implements IMigrationContribution {
     // Retrieve all commands that will need to be run to perform the
     // migration
     LinkedList<AbstractMigrationRunnable> runnables = new LinkedList<AbstractMigrationRunnable>();
-    for (IResource file : files) {
-      for (AbstractMigrationContributor contributor : currentContributors) {
+    for (AbstractMigrationContributor contributor : currentContributors) {
+      for (IResource file : files) {
         if (contributor.isValidResource(file)) {
           AbstractMigrationRunnable runnable = contributor.getRunnable((IFile) file);
           runnables.add(runnable);
