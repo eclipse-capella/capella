@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,17 +49,17 @@ public class GetAvailable_CapabilityRealization_InteractingComponents extends Ab
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof CapabilityRealization) {
-			CapabilityRealization currentCapabilityUseCase = (CapabilityRealization) element_p;
+		if (element instanceof CapabilityRealization) {
+			CapabilityRealization currentCapabilityUseCase = (CapabilityRealization) element;
 			availableElements.addAll(getRule_MQRY_CapabilityUseCase_Actors_11(ca.getOwnedActorPkg(), currentCapabilityUseCase));
-		} else if (element_p instanceof CapabilityRealizationPkg) {
+		} else if (element instanceof CapabilityRealizationPkg) {
 			ActorPkg actorPkg = ca.getOwnedActorPkg();
 			if (actorPkg != null) {
 				availableElements.addAll(ActorPkgExt.getAllActors(actorPkg));
@@ -78,15 +78,15 @@ public class GetAvailable_CapabilityRealization_InteractingComponents extends Ab
 	 * <p>
 	 * Refer MQRY_CapabilityRealization_Actors_11
 	 * </p>
-	 * @param actorPkg_pthe ActorPkg
-	 * @param currentCapabilityUseCase_pthe current CapabilityUseCase
+	 * @param actorPkgthe ActorPkg
+	 * @param currentCapabilityUseCasethe current CapabilityUseCase
 	 * @return list of Actors
 	 */
-	private List<CapellaElement> getRule_MQRY_CapabilityUseCase_Actors_11(ActorPkg actorPkg_p, CapabilityRealization currentCapability_p) {
+	private List<CapellaElement> getRule_MQRY_CapabilityUseCase_Actors_11(ActorPkg actorPkg, CapabilityRealization currentCapability) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (actorPkg_p != null) {
-			for (Actor actor : ActorPkgExt.getAllActors(actorPkg_p)) {
-				if ((actor == null) || (ActorExt.isInteracting(actor, currentCapability_p))) {
+		if (actorPkg != null) {
+			for (Actor actor : ActorPkgExt.getAllActors(actorPkg)) {
+				if ((actor == null) || (ActorExt.isInteracting(actor, currentCapability))) {
 					continue;
 				}
 				availableElements.add(actor);

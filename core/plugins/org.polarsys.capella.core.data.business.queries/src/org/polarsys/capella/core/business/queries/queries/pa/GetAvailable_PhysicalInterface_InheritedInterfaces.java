@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,12 +63,12 @@ public class GetAvailable_PhysicalInterface_InheritedInterfaces extends Abstract
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		boolean isInterfaceFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -79,16 +79,16 @@ public class GetAvailable_PhysicalInterface_InheritedInterfaces extends Abstract
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Interface) {
+		if (element instanceof Interface) {
 			if (!isInterfaceFromSharedPkg) {
-				availableElements.addAll(getRule_MQRY_Interface_Inherited_11((Interface) element_p, systemEngineering));
-				availableElements.addAll(getRule_MQRY_Interface_Inherited_12((Interface) element_p, systemEngineering));
-				availableElements.addAll(getRule_MQRY_Interface_Inherited_13((Interface) element_p, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Interface_Inherited_11((Interface) element, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Interface_Inherited_12((Interface) element, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Interface_Inherited_13((Interface) element, systemEngineering));
 			}
-			availableElements.addAll(getRule_MQRY_Interface_Inherited_14((Interface) element_p, systemEngineering));
+			availableElements.addAll(getRule_MQRY_Interface_Inherited_14((Interface) element, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p);
+		availableElements.remove(element);
 		return availableElements;
 	}
 

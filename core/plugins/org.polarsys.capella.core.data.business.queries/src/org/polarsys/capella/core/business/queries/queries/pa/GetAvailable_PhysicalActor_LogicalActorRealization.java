@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,26 +41,26 @@ public class GetAvailable_PhysicalActor_LogicalActorRealization extends Abstract
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof PhysicalActor) {
-			PhysicalActor actor = (PhysicalActor) element_p;
+		if (element instanceof PhysicalActor) {
+			PhysicalActor actor = (PhysicalActor) element;
 			availableElements.addAll(getRule_MQRY_LogicalActor_ActorRealization_11(systemEngineering, actor));
 		}
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_LogicalActor_ActorRealization_11(SystemEngineering systemEng_p, PhysicalActor element_p) {
+	private List<CapellaElement> getRule_MQRY_LogicalActor_ActorRealization_11(SystemEngineering systemEng, PhysicalActor element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		LogicalArchitecture arch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEng_p);
+		LogicalArchitecture arch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEng);
 		LogicalActorPkg ownedActorPkg = arch.getOwnedLogicalActorPkg();
 		List<LogicalActor> allActors = ActorPkgExt.getAllActors(ownedActorPkg);
-		if (null != element_p) {
-			EList<LogicalActorRealization> ownedActorRealisations = element_p.getOwnedLogicalActorRealizations();
+		if (null != element) {
+			EList<LogicalActorRealization> ownedActorRealisations = element.getOwnedLogicalActorRealizations();
 			for (LogicalActorRealization actRealisation : ownedActorRealisations) {
 				TraceableElement targetElement = actRealisation.getTargetElement();
 				if (null != targetElement) {
