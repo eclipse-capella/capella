@@ -2,6 +2,9 @@
 <buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_AkGK4UHIEeG_UKzFyZlgCA" name="CapellaTestSuite">
   <properties xmi:id="_p3uccEHOEeG_UKzFyZlgCA" key="usedTP" value="${publish}/CapellaTP" type="INLINED"/>
   <properties xmi:id="_ASPhsEHPEeG_UKzFyZlgCA" key="launch_configs" value="org.polarsys.capella.core.releng.junit/launch_configs"/>
+  <steps xsi:type="buildcore:ReuseStep" xmi:id="_CwJ_YOXmEeW5-KghTjb63g" name="Install Jacoco">
+    <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_aY7c8OXlEeW5-KghTjb63g"/>
+  </steps>
   <steps xsi:type="buildcore:ReuseStep" xmi:id="_XJNb4F16EeGnJaeCI-TkHw" name="InitializeEnv">
     <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_NB1YMNRAEeK9L_VQW76S8A"/>
   </steps>
