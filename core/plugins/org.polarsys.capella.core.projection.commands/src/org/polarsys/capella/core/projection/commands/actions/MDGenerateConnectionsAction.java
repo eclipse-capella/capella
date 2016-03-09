@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,7 @@ public class MDGenerateConnectionsAction extends AbstractTigAction implements IO
   /**
    * This variable stores the diagram where the "generate component exchanges" has been launched
    */
-  protected DDiagram _diagram;
+  protected DDiagram diagram;
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
@@ -51,16 +51,16 @@ public class MDGenerateConnectionsAction extends AbstractTigAction implements IO
        * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
        */
       @SuppressWarnings({ "synthetic-access", "unchecked", "rawtypes" })
-      public void run(IProgressMonitor progressMonitor_p) throws InvocationTargetException, InterruptedException {
-        progressMonitor_p.beginTask(PROGRESS_BAR_NAME, IProgressMonitor.UNKNOWN);
-        final IProgressMonitor pm = progressMonitor_p;
+      public void run(IProgressMonitor progressMonitor) throws InvocationTargetException, InterruptedException {
+        progressMonitor.beginTask(PROGRESS_BAR_NAME, IProgressMonitor.UNKNOWN);
+        final IProgressMonitor pm = progressMonitor;
         getExecutionManager().execute(new MDGenerateConnectionsCommand((Collection) getSelectedElements()));
         getExecutionManager().execute(new AbstractReadWriteCommand() {
           public void run() {
 
-            if (null != _diagram) {
+            if (null != diagram) {
               // Refreshes the diagram:
-              DialectManager.INSTANCE.refresh(_diagram, pm);
+              DialectManager.INSTANCE.refresh(diagram, pm);
             }
           }
         });
@@ -79,10 +79,10 @@ public class MDGenerateConnectionsAction extends AbstractTigAction implements IO
    *      org.eclipse.jface.viewers.ISelection)
    */
   @Override
-  public void selectionChanged(IAction arg0_p, ISelection selection_p) {
-    if (selection_p instanceof StructuredSelection) {
-      StructuredSelection selection = (StructuredSelection) selection_p;
-      Object firstElement = selection.getFirstElement();
+  public void selectionChanged(IAction arg0, ISelection selection) {
+    if (selection instanceof StructuredSelection) {
+      StructuredSelection structuredselection = (StructuredSelection) selection;
+      Object firstElement = structuredselection.getFirstElement();
       if (firstElement instanceof IGraphicalEditPart) {
         IGraphicalEditPart gep = (IGraphicalEditPart) firstElement;
         Object model = gep.getModel();
@@ -91,12 +91,12 @@ public class MDGenerateConnectionsAction extends AbstractTigAction implements IO
           EObject element = node.getElement();
           if (element instanceof DDiagramElement) {
             DDiagramElement dnode = (DDiagramElement) element;
-            _diagram = dnode.getParentDiagram();
+            diagram = dnode.getParentDiagram();
           }
         }
       }
     }
     // calls the super implementation
-    super.selectionChanged(arg0_p, selection_p);
+    super.selectionChanged(arg0, selection);
   }
 }

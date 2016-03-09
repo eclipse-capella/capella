@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,22 +37,22 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     // pre-condition: call contributed filters
-    if (filterNotification(notification_p)) {
+    if (filterNotification(notification)) {
       return;
     }
 
     // pre-condition: only SET notifications are wanted
-    if (notification_p.getEventType() != Notification.SET) {
+    if (notification.getEventType() != Notification.SET) {
       return;
     }
 
-    EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
+    EStructuralFeature feature = (EStructuralFeature) notification.getFeature();
     if (feature != null) {
       if (feature.equals(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME)) {
-        final String value = notification_p.getNewStringValue();
-        Object notifier = notification_p.getNotifier();
+        final String value = notification.getNewStringValue();
+        Object notifier = notification.getNotifier();
         // Check the project that contains given notifier is not in Reusable Components mode.
         if (!TriStateBoolean.False.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) notifier))) {
           return;
@@ -90,8 +90,8 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
           }
         }
       } else if (feature.equals(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
-        Object value = notification_p.getNewValue();
-        Object notifier = notification_p.getNotifier();
+        Object value = notification.getNewValue();
+        Object notifier = notification.getNotifier();
         // Check the project that contains given notifier is not in Reusable Components mode.
         if (!TriStateBoolean.False.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) notifier))) {
           return;
@@ -99,7 +99,7 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
         if ((notifier instanceof Partition) && (value instanceof AbstractType)) {
           final Partition part = (Partition) notifier;
           final AbstractType type = (AbstractType) value;
-          if ((type != null) && (part != null) && !StringUtils.equals(part.getName(), type.getName())) {
+          if (!StringUtils.equals(part.getName(), type.getName())) {
             executeCommand(part, new AbstractReadWriteCommand() {
               public void run() {
                 part.setName(type.getName());
@@ -113,14 +113,14 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
   }
 
   /**
-   * @param part_p
-   * @param name_p
+   * @param part
+   * @param name
    */
-  protected void renameInstanceRole(Partition part_p, String name_p) {
-    for (EObject role : EObjectExt.getReferencers(part_p, InteractionPackage.Literals.INSTANCE_ROLE,
+  protected void renameInstanceRole(Partition part, String name) {
+    for (EObject role : EObjectExt.getReferencers(part, InteractionPackage.Literals.INSTANCE_ROLE,
         InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE)) {
-      if ((role != null) && !StringUtils.equals(((InstanceRole) role).getName(), name_p)) {
-        ((InstanceRole) role).setName(name_p);
+      if ((role != null) && !StringUtils.equals(((InstanceRole) role).getName(), name)) {
+        ((InstanceRole) role).setName(name);
       }
     }
   }

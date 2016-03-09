@@ -62,13 +62,13 @@ public class GetCurrent_Property_Type extends AbstractQuery {
       AbstractType type = property.getType();
       EObject container = property.eContainer();
       if (!(container instanceof Association) && (container instanceof Classifier)) {
-        if ((null != type) && (null != container)) {
+        if (null != type) {
           currentElements.add((CapellaElement) type);
         }
       } else {
         EObject container2 = container.eContainer();
         if (container2 instanceof Structure) {
-          if ((null != type) && (null != container2)) {
+          if (null != type) {
             currentElements.add((CapellaElement) type);
           }
         }
