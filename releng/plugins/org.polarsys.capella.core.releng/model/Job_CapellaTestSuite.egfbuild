@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_AkGK4UHIEeG_UKzFyZlgCA" name="CapellaTestSuite">
+<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmi:id="_AkGK4UHIEeG_UKzFyZlgCA" name="CapellaTestSuite">
   <properties xmi:id="_p3uccEHOEeG_UKzFyZlgCA" key="usedTP" value="${publish}/CapellaTP" type="INLINED"/>
   <properties xmi:id="_ASPhsEHPEeG_UKzFyZlgCA" key="launch_configs" value="org.polarsys.capella.core.releng.junit/launch_configs"/>
   <steps xsi:type="buildcore:ReuseStep" xmi:id="_CwJ_YOXmEeW5-KghTjb63g" name="Install Jacoco">
@@ -10,5 +10,8 @@
   </steps>
   <steps xsi:type="buildcore:ReuseStep" xmi:id="_72hZIJMMEeKKWIqJCUuOog" name="Run TestSuites">
     <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_ZHUroJMLEeKKWIqJCUuOog"/>
+  </steps>
+  <steps xsi:type="buildfile:CopyStep" xmi:id="_Us6FsObfEeWbCK5nzmM_BQ" name="Save Jacoco report" destinationFolderPath="${publish}/org.polarsys.capella.test.feature/site.p2/">
+    <filePaths>${result}/jacoco.exec</filePaths>
   </steps>
 </buildcore:Job>
