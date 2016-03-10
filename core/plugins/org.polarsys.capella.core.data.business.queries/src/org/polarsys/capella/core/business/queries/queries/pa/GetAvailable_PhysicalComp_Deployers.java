@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,10 +36,10 @@ public class GetAvailable_PhysicalComp_Deployers extends AbstractQuery {
 
 	/** 
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalComponent) {
-			PhysicalComponent pc = (PhysicalComponent) element_p;
+		if (element instanceof PhysicalComponent) {
+			PhysicalComponent pc = (PhysicalComponent) element;
 			List<CapellaElement> candidates = getRule_MQRY_PC_Deployers_11(pc);
 			for (CapellaElement capellaElement : candidates) {
 				if (!PhysicalComponentExt.isDeployedOn((PhysicalComponent) capellaElement, pc)) {
@@ -48,24 +48,24 @@ public class GetAvailable_PhysicalComp_Deployers extends AbstractQuery {
 			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p.eContainer());
-		availableElements.remove(element_p);
-		availableElements.removeAll(getCurrentElements(element_p, false));
+		availableElements.remove(element.eContainer());
+		availableElements.remove(element);
+		availableElements.removeAll(getCurrentElements(element, false));
 		return availableElements;
 	}
 
 	/** 
-	 * get all the PC within current PC's SystemEngineering if currentPC_p is a
+	 * get all the PC within current PC's SystemEngineering if currentPC is a
 	 * PhysicalNode, it can not be deployed on PhysicalComponent. Other cases
 	 * are possible
-	 * @param currentPC_pactual element
-	 * @return all PC within currentPC_p's SystemEngineering
+	 * @param currentPCactual element
+	 * @return all PC within currentPC's SystemEngineering
 	 */
-	private List<CapellaElement> getRule_MQRY_PC_Deployers_11(PhysicalComponent currentPC_p) {
+	private List<CapellaElement> getRule_MQRY_PC_Deployers_11(PhysicalComponent currentPC) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<PhysicalComponent> comps = SystemEngineeringExt.getAllPhysicalComponents(currentPC_p);
+		List<PhysicalComponent> comps = SystemEngineeringExt.getAllPhysicalComponents(currentPC);
 		for (PhysicalComponent physicalComponent : comps) {
-			if (currentPC_p instanceof PhysicalNode) {
+			if (currentPC instanceof PhysicalNode) {
 				if (physicalComponent instanceof PhysicalNode) {
 					availableElements.add(physicalComponent);
 				}
@@ -78,10 +78,10 @@ public class GetAvailable_PhysicalComp_Deployers extends AbstractQuery {
 
 	/** 
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof PhysicalComponent) {
-			PhysicalComponent pc = (PhysicalComponent) element_p;
+		if (element instanceof PhysicalComponent) {
+			PhysicalComponent pc = (PhysicalComponent) element;
 			for (AbstractDeploymentLink abstractDeployment : pc.getDeployingLinks()) {
 				if (abstractDeployment instanceof TypeDeploymentLink) {
 					currentElements.add(abstractDeployment.getLocation());

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,10 +37,10 @@ public class GetAvailable_CapabilityRealization_InvolvedFunctionalChains extends
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof AbstractCapability) {
-			availableElements.addAll(getRule_MQRY_AbstractCapability_AvailableFunctionalChains_11((AbstractCapability) element_p));
+		if (element instanceof AbstractCapability) {
+			availableElements.addAll(getRule_MQRY_AbstractCapability_AvailableFunctionalChains_11((AbstractCapability) element));
 		}
 		return availableElements;
 	}
@@ -48,25 +48,25 @@ public class GetAvailable_CapabilityRealization_InvolvedFunctionalChains extends
 	/** 
 	 * same level Visibility Layer
 	 */
-	protected List<CapellaElement> getRule_MQRY_AbstractCapability_AvailableFunctionalChains_11(AbstractCapability ele_p) {
+	protected List<CapellaElement> getRule_MQRY_AbstractCapability_AvailableFunctionalChains_11(AbstractCapability ele) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele_p);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele);
 		if (currentBlockArchitecture != null) {
 			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture));
 		}
-		for (CapellaElement element : getCurrentElements(ele_p, false)) {
+		for (CapellaElement element : getCurrentElements(ele, false)) {
 			availableElements.remove(element);
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param arch_p
+	 * @param arch
 	 * @return
 	 */
-	protected List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p) {
+	protected List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch_p, true);
+		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch, true);
 		while (allContents.hasNext()) {
 			Object object = allContents.next();
 			if (object instanceof FunctionalChain) {
@@ -79,10 +79,10 @@ public class GetAvailable_CapabilityRealization_InvolvedFunctionalChains extends
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof AbstractCapability) {
-			AbstractCapability ele = (AbstractCapability) element_p;
+		if (element instanceof AbstractCapability) {
+			AbstractCapability ele = (AbstractCapability) element;
 			for (FunctionalChainAbstractCapabilityInvolvement inv : ele.getOwnedFunctionalChainAbstractCapabilityInvolvements()) {
 				currentElements.add(inv.getFunctionalChain());
 			}

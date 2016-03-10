@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,13 +38,13 @@ public class GetAvailable_DeployConf_Deployments extends AbstractQuery {
 	 * get all the deployment links into the current physical architecture
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof DeploymentConfiguration) {
-			availableElements.addAll(getRule_MQRY_DeployConf_Deployments_11((DeploymentConfiguration) element_p));
+		if (element instanceof DeploymentConfiguration) {
+			availableElements.addAll(getRule_MQRY_DeployConf_Deployments_11((DeploymentConfiguration) element));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.removeAll(getCurrentElements(element_p, false));
+		availableElements.removeAll(getCurrentElements(element, false));
 		return availableElements;
 	}
 
@@ -52,9 +52,9 @@ public class GetAvailable_DeployConf_Deployments extends AbstractQuery {
 	 * All the AbstractDeploymentLinks contained into current
 	 * PhysicalArchitecture
 	 */
-	private List<CapellaElement> getRule_MQRY_DeployConf_Deployments_11(DeploymentConfiguration deployment_p) {
+	private List<CapellaElement> getRule_MQRY_DeployConf_Deployments_11(DeploymentConfiguration deployment) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		PhysicalArchitecture pa = (PhysicalArchitecture) EcoreUtil2.getFirstContainer(deployment_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+		PhysicalArchitecture pa = (PhysicalArchitecture) EcoreUtil2.getFirstContainer(deployment, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
 		if (null != pa) {
 			List<PhysicalComponent> comps = PhysicalArchitectureExt.getAllPhysicalComponents(pa);
 			for (PhysicalComponent theComp : comps) {
@@ -68,7 +68,7 @@ public class GetAvailable_DeployConf_Deployments extends AbstractQuery {
 	 * All the deployment links traced by a DeploymentConfigurationLink
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
 		return currentElements;
 	}

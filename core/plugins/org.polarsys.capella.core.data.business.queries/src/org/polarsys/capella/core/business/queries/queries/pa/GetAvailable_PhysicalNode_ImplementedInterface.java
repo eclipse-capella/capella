@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,16 +48,16 @@ public class GetAvailable_PhysicalNode_ImplementedInterface extends AbstractQuer
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof PhysicalComponent) {
-			PhysicalComponent currentPC = (PhysicalComponent) element_p;
+		if (element instanceof PhysicalComponent) {
+			PhysicalComponent currentPC = (PhysicalComponent) element;
 			availableElements.addAll(getRule_MQRY_PC_ImplInterfaces_11(systemEngineering, currentPC));
-		} else if (element_p instanceof PhysicalArchitecture || element_p instanceof PhysicalComponentPkg) {
+		} else if (element instanceof PhysicalArchitecture || element instanceof PhysicalComponentPkg) {
 			availableElements.addAll(getRule_MQRY_PC_ImplInterfaces_11(systemEngineering, null));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -76,13 +76,13 @@ public class GetAvailable_PhysicalNode_ImplementedInterface extends AbstractQuer
 	 * <p>
 	 * Refer MQRY_ PhysicalComponent_ImplInterfaces_11
 	 * </p>
-	 * @param systemEngineering_pthe {@link System}
-	 * @param currentPC_pthe current {@link PhysicalComponent}
+	 * @param systemEngineeringthe {@link System}
+	 * @param currentPCthe current {@link PhysicalComponent}
 	 * @return list of interfaces
 	 */
-	private List<CapellaElement> getRule_MQRY_PC_ImplInterfaces_11(SystemEngineering systemEngineering_p, PhysicalComponent currentPC_p) {
+	private List<CapellaElement> getRule_MQRY_PC_ImplInterfaces_11(SystemEngineering systemEngineering, PhysicalComponent currentPC) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		availableElements.addAll(PhysicalArchitectureExt.getOwnedInterfacesFromPhysicalLayerFiltered(systemEngineering_p, currentPC_p, false));
+		availableElements.addAll(PhysicalArchitectureExt.getOwnedInterfacesFromPhysicalLayerFiltered(systemEngineering, currentPC, false));
 		return availableElements;
 	}
 

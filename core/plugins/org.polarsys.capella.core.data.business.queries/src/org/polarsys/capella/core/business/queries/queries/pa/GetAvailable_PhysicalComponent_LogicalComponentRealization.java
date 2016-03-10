@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,15 +41,15 @@ public class GetAvailable_PhysicalComponent_LogicalComponentRealization extends 
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof PhysicalComponent) {
-			PhysicalComponent element = (PhysicalComponent) element_p;
-			availableElements.addAll(getRule_MQRY_LogicalComponent_FunctionalAllocation_11(systemEngineering, element));
+		if (element instanceof PhysicalComponent) {
+			PhysicalComponent elt = (PhysicalComponent) element;
+			availableElements.addAll(getRule_MQRY_LogicalComponent_FunctionalAllocation_11(systemEngineering, elt));
 		}
 		return availableElements;
 	}
@@ -58,14 +58,14 @@ public class GetAvailable_PhysicalComponent_LogicalComponentRealization extends 
 	 * <p>
 	 * Gets all the owned FunctionalAllocation targetElement of the system.
 	 * </p>
-	 * @param element_pthe system
+	 * @param elementthe system
 	 * @return list of Function
 	 */
-	private List<CapellaElement> getRule_MQRY_LogicalComponent_FunctionalAllocation_11(SystemEngineering systemEng_p, PhysicalComponent element_p) {
+	private List<CapellaElement> getRule_MQRY_LogicalComponent_FunctionalAllocation_11(SystemEngineering systemEng, PhysicalComponent element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<LogicalComponent> allComp = SystemEngineeringExt.getAllAbstractLogicalComponents(element_p);
-		if (null != element_p) {
-			EList<LogicalComponentRealization> ownedLogicalComponentRealisations = element_p.getOwnedLogicalComponentRealizations();
+		List<LogicalComponent> allComp = SystemEngineeringExt.getAllAbstractLogicalComponents(element);
+		if (null != element) {
+			EList<LogicalComponentRealization> ownedLogicalComponentRealisations = element.getOwnedLogicalComponentRealizations();
 			for (LogicalComponentRealization ownedLogicalComponentRealisation : ownedLogicalComponentRealisations) {
 				TraceableElement targetElement = ownedLogicalComponentRealisation.getTargetElement();
 				if (null != targetElement && targetElement instanceof LogicalComponent) {

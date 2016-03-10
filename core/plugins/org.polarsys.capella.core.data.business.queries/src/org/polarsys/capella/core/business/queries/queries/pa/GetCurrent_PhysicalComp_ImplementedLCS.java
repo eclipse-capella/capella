@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,14 +41,14 @@ public class GetCurrent_PhysicalComp_ImplementedLCS extends AbstractQuery {
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
 		if (null == systemEngineering) {
 			return currentElements;
 		}
-		if (element_p instanceof PhysicalComponent) {
-			PhysicalComponent currentPC = (PhysicalComponent) element_p;
+		if (element instanceof PhysicalComponent) {
+			PhysicalComponent currentPC = (PhysicalComponent) element;
 			for (LogicalComponentRealization lcImplementation : currentPC.getLogicalComponentRealizations()) {
 				currentElements.add(lcImplementation.getAllocatedComponent());
 			}

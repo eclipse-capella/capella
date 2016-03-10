@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,14 +41,14 @@ public class GetAvailable_PhysicalComponent_FunctionalAllocation extends Abstrac
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof PhysicalComponent) {
-			PhysicalComponent comp = (PhysicalComponent) element_p;
+		if (element instanceof PhysicalComponent) {
+			PhysicalComponent comp = (PhysicalComponent) element;
 			if (!(comp.getNature() == PhysicalComponentNature.NODE)) {
 				availableElements.addAll(getRule_MQRY_Component_FunctionalAllocation_11(SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering)));
 			}
@@ -60,12 +60,12 @@ public class GetAvailable_PhysicalComponent_FunctionalAllocation extends Abstrac
 	 * <p>
 	 * Gets available functions to be allocated to the component
 	 * </p>
-	 * @param element_p the component
+	 * @param element the component
 	 * @return list of Function
 	 */
-	protected List<CapellaElement> getRule_MQRY_Component_FunctionalAllocation_11(BlockArchitecture arch_p) {
+	protected List<CapellaElement> getRule_MQRY_Component_FunctionalAllocation_11(BlockArchitecture arch) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<AbstractFunction> allLeafFunctions = FunctionExt.getAllLeafAbstractFunctions(arch_p);
+		List<AbstractFunction> allLeafFunctions = FunctionExt.getAllLeafAbstractFunctions(arch);
 		List<AbstractFunction> listTORemove = new ArrayList<AbstractFunction>();
 		for (AbstractFunction function : allLeafFunctions) {
 			if (!function.getAllocationBlocks().isEmpty()) {
