@@ -29,6 +29,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.ClearDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.RefreshDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.SetContextualElementsStep;
@@ -192,6 +193,10 @@ public class DiagramContext extends SessionContext {
 
   public void refreshDiagram() {
     new RefreshDiagramStep(this).run();
+  }
+
+  public void clearDiagram() {
+    new ClearDiagramStep(this).run();
   }
 
   public void mustBeInstanceOf(String objectId, EClass clazz) {

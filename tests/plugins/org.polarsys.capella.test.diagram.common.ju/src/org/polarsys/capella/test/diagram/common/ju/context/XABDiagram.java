@@ -56,6 +56,10 @@ public class XABDiagram extends DiagramContext {
       name = IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
     }
 
+    if (type == Type.PA) {
+      return PABDiagram.createDiagram(executionContext, targetIdentifier);
+    }
+
     return (XABDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
@@ -64,7 +68,8 @@ public class XABDiagram extends DiagramContext {
     }.run().open();
   }
 
-  public static XABDiagram openDiagram(SessionContext executionContext, String name, final BlockArchitectureExt.Type type) {
+  public static XABDiagram openDiagram(SessionContext executionContext, String name,
+      final BlockArchitectureExt.Type type) {
     return (XABDiagram) new OpenDiagramStep(executionContext, name) {
       @Override
       public DiagramContext getResult() {
@@ -102,13 +107,17 @@ public class XABDiagram extends DiagramContext {
   }
 
   public void removeComponent(String id) {
+    removeComponent(id, getDiagramId());
+  }
+
+  public void removeComponent(String id, String containerId) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
       new InsertRemoveTool(this, name).remove(id);
     } else if (type == Type.LA) {
       new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART,
-          IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }).remove(id);
+          IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }, containerId).remove(id);
     }
 
   }
@@ -116,7 +125,7 @@ public class XABDiagram extends DiagramContext {
   public void createComponent(String id, String containerId) {
     String name = null;
     if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAB_CREATE_OA;
+      name = IToolNameConstants.TOOL_OAB_CREATE_OE;
 
     } else if (type == Type.LA) {
       name = IToolNameConstants.TOOL_LAB_CREATE_COMPONENT;
@@ -173,22 +182,18 @@ public class XABDiagram extends DiagramContext {
     }
     new InsertRemoveTool(this, name, containerId).insert(id);
   }
-  
-  public void insertComponent(String id, String containerId) {
-    this.insertComponent(id, id, containerId);
-  }
-  
-  public void insertComponent(String toInsertId, String insertedId, String containerId) {
+
+  public void insertComponent(String toInsertId, String containerId) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
     } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS;
+      name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART;
     } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS;
+      // Nothing here.. need to specify which kind of component
     }
-    
-    new InsertRemoveTool(this, name, containerId).insert(new String[]{toInsertId}, new String[]{insertedId}, null);
+
+    new InsertRemoveTool(this, name, containerId).insert(toInsertId);
   }
 
   public void insertPhysicalLink(String id, String containerId) {
@@ -202,8 +207,22 @@ public class XABDiagram extends DiagramContext {
     }
     new InsertRemoveTool(this, name, containerId).insert(id);
   }
-  
-  public void allocateFunction(String id, String containerId) {
+
+  public void manageAllocatedFunction(String id, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_MANAGE_ACTIVITY_ALLOCATION;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_MANAGE_FUNCTION_ALLOCATION;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_MANAGE_FUNCTION_ALLOCATION;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_MANAGE_FUNCTION_ALLOCATION;
+    }
+    new InsertRemoveTool(this, name, containerId).insert(id);
+  }
+
+  public void insertAllocatedFunction(String id, String containerId) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_ALLOCATED_ACTIVITIES;
@@ -215,6 +234,20 @@ public class XABDiagram extends DiagramContext {
       name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
     }
     new InsertRemoveTool(this, name, containerId).insert(id);
+  }
+
+  public void removeAllocatedFunction(String id, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_ALLOCATED_ACTIVITIES;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    }
+    new InsertRemoveTool(this, name, containerId).remove(id);
   }
 
   @Override

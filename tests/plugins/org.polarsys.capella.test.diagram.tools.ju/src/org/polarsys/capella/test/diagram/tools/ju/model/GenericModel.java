@@ -44,8 +44,13 @@ public class GenericModel {
   public static String CAPABILITY_4 = "CAPABILITY 4";
 
   public static String COMPONENT_1 = "COMPONENT 1";
+  public static String COMPONENT_1_1 = "COMPONENT 1_1";
+  public static String COMPONENT_1_1_1 = "COMPONENT 1_1_1";
+  public static String COMPONENT_1_1_2 = "COMPONENT 1_1_2";
+  public static String COMPONENT_1_2 = "COMPONENT 1_2";
   public static String COMPONENT_2 = "COMPONENT 2";
   public static String COMPONENT_2_1 = "COMPONENT 2_1";
+  public static String COMPONENT_2_2 = "COMPONENT 2_2";
   public static String COMPONENT_3 = "COMPONENT 3";
   public static String COMPONENT_4 = "COMPONENT 4";
 
@@ -80,6 +85,9 @@ public class GenericModel {
   public static String FUNCTION_4 = "Function 4";
 
   public static String FUNCTION_1_1 = "Function 1_1";
+  public static String FUNCTION_1_1_1 = "Function 1_1_1";
+  public static String FUNCTION_1_1_2 = "Function 1_1_2";
+
   public static String FUNCTION_1_2 = "Function 1_2";
   public static String FUNCTION_1_3 = "Function 1_3";
   public static String FUNCTION_1_4 = "Function 1_4";

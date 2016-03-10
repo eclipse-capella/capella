@@ -2014,7 +2014,7 @@ public class CapellaServices {
    */
   public boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
     LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
-    
+
     if (container instanceof Component) {
       Component component = (Component) container;
       allocatedFunctions.addAll(component.getAllocatedFunctions());
@@ -2022,36 +2022,35 @@ public class CapellaServices {
         allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
       }
     }
-    
+
     return isAllocatedFunctionCommon(function, container, allocatedFunctions);
   }
-  
+
   public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
     LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
-    
-    if (container instanceof Component) {
-      Component component = (Component) container;
-      List<AbstractFunction> showableFunctions = FaServices.getFaServices().getShowableAllocatedFunctions(component, containerView);
-      allocatedFunctions.addAll(showableFunctions);
-    }
-    
+
+    List<AbstractFunction> showableFunctions = FaServices.getFaServices().getShowableAllocatedFunctions(container,
+        containerView);
+    allocatedFunctions.addAll(showableFunctions);
+
     return isAllocatedFunctionCommon(function, container, allocatedFunctions);
   }
-  
+
   public boolean isAllocatedInThisComponent(AbstractFunction function, EObject container) {
-    
+
     List<AbstractFunctionalBlock> allocationBlocks = FunctionExt.getMotherFunctionAllocation(function);
     if (allocationBlocks.size() == 1) {
       AbstractFunctionalBlock allocationBlock = allocationBlocks.get(0);
       return container == allocationBlock;
     }
-    
+
     return false;
   }
-  
-  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container, LinkedList<AbstractFunction> allocatedFunctions) {
+
+  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container,
+      LinkedList<AbstractFunction> allocatedFunctions) {
     boolean result = false;
-    
+
     if (container instanceof Role) {
       Role role = (Role) container;
       for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
@@ -2061,7 +2060,7 @@ public class CapellaServices {
         }
       }
     }
-    
+
     if (allocatedFunctions.contains(function)) {
       result = true;
     } else if (!FunctionExt.isLeaf(function)) {
@@ -2072,7 +2071,7 @@ public class CapellaServices {
         result = true;
       }
     }
-    
+
     return result;
   }
 
