@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,15 +13,16 @@ package org.polarsys.capella.test.diagram.common.ju.step;
 import org.eclipse.osgi.util.NLS;
 
 /**
- * Basic Test class messages. 
+ * Basic Test class messages.
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.test.diagram.common.ju.step.messages"; //$NON-NLS-1$
-  
+
   public static String nullSession;
   public static String nullSemanticObject;
   public static String nullDiagram;
   public static String failToRefreshDiagram;
+  public static String emptyDiagram;
   public static String failToCreateDriagram;
   public static String nullRepresentationDesc;
   public static String cannotGetDeltaOnDiagramElement;
