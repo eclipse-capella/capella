@@ -360,10 +360,26 @@
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.la:LogicalArchitecture"
         id="01328aff-38df-48ea-bddf-bf388b7e0bcb" name="Logical Architecture">
+      <ownedPropertyValuePkgs xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValuePkg"
+          id="aee81c11-9865-4ca3-80ed-843f48c36586" name="PropertyValuePkg">
+        <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
+            id="6a119245-9324-4e6f-b380-76dcf22c9539" name="BooleanPropertyValue"/>
+        <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:FloatPropertyValue"
+            id="40b0f93b-6724-4da2-9bc8-48c4eb680585" name="FloatPropertyValue"/>
+        <ownedPropertyValueGroups xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValueGroup"
+            id="287b862e-cfd3-492c-ad2d-b654d3152ddf" name="PropertyValueGroup">
+          <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:StringPropertyValue"
+              id="43e50bcb-5de3-4c59-919f-070015a68cf7" name="StringPropertyValue"
+              value="TEST"/>
+        </ownedPropertyValueGroups>
+      </ownedPropertyValuePkgs>
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.la:LogicalFunctionPkg"
           id="7b1116f0-775f-4fb7-b190-e3020a4b8f55" name="Logical Functions">
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
             id="e6a86efd-1b45-416c-80e7-1e424788b0ec" name="Root Logical Function">
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="3cb38702-d351-48a7-8e7f-27700bc83ff8" name="LogicalFunction 1" appliedPropertyValues="#40b0f93b-6724-4da2-9bc8-48c4eb680585"
+              appliedPropertyValueGroups="#287b862e-cfd3-492c-ad2d-b654d3152ddf"/>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="e133ade4-c80f-421f-8fd2-a8a8e0fa6fa5" targetElement="#564457a4-ab94-47ab-a8c8-fb27b9c1c15f"
               sourceElement="#e6a86efd-1b45-416c-80e7-1e424788b0ec"/>
@@ -379,6 +395,8 @@
           id="00550f8b-a639-4384-afa6-522d3d9cfd64" name="Logical Context">
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="873d5d36-8c0f-40ec-9db3-b1354dde3242"
             name="Logical System" abstractType="#096703b9-355f-4722-ac4b-e98d582fe114"/>
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="492dbcf4-a890-41de-83f5-20062111d3aa"
+            name="LA 1" abstractType="#56afef9c-56e7-450c-912d-b9811275bf26"/>
       </ownedLogicalContext>
       <ownedLogicalComponent xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
           id="096703b9-355f-4722-ac4b-e98d582fe114" name="Logical System">
@@ -387,7 +405,14 @@
             sourceElement="#096703b9-355f-4722-ac4b-e98d582fe114"/>
       </ownedLogicalComponent>
       <ownedLogicalActorPkg xsi:type="org.polarsys.capella.core.data.la:LogicalActorPkg"
-          id="faff0481-1105-49e9-9daf-9f6df45ddae2" name="Logical Actors"/>
+          id="faff0481-1105-49e9-9daf-9f6df45ddae2" name="Logical Actors">
+        <ownedLogicalActors xsi:type="org.polarsys.capella.core.data.la:LogicalActor"
+            id="56afef9c-56e7-450c-912d-b9811275bf26" name="LA 1" appliedPropertyValues="#6a119245-9324-4e6f-b380-76dcf22c9539">
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="164051ff-7008-49fc-8ba0-286a23b8dae2" targetElement="#3cb38702-d351-48a7-8e7f-27700bc83ff8"
+              sourceElement="#56afef9c-56e7-450c-912d-b9811275bf26"/>
+        </ownedLogicalActors>
+      </ownedLogicalActorPkg>
       <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
           id="198d7956-01f9-4acb-a7af-85be5958c0e3" targetElement="#32788d6f-df93-4444-ab9d-11a2b030227b"
           sourceElement="#01328aff-38df-48ea-bddf-bf388b7e0bcb"/>

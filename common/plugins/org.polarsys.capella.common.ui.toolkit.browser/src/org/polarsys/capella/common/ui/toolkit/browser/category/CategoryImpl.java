@@ -80,16 +80,16 @@ public class CategoryImpl implements ICategory {
    * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#setId(java.lang.String)
    */
   public void setId(String pId) {
-    id = pId;
+    this.id = pId;
   }
 
   /**
    * Add an id to the sub categories id list.
    * @param id 
    */
-  public void addSubCategoryId(String id) {
-    if (id != null && !id.isEmpty())
-      subCategoriesIds.add(id);
+  public void addSubCategoryId(String pId) {
+    if (pId != null && !pId.isEmpty())
+      subCategoriesIds.add(pId);
   }
 
   /**
@@ -132,7 +132,7 @@ public class CategoryImpl implements ICategory {
    */
   public void setIsTopLevel(boolean isTopLevel) {
     // if redefined by different extensions, return (A or... Z)
-    isTopLevel |= isTopLevel;
+    this.isTopLevel |= isTopLevel;
   }
 
   /**
