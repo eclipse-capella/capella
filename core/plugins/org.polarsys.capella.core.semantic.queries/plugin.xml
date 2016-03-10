@@ -33,6 +33,71 @@
             </basicQuery>
          </categoryQuery>
       </category>
+      <!-- Property Values / Group -->
+      <category
+          id="org.polarsys.capella.core.semantic.queries.CapellaElement_applied_property_values"
+          isTopLevel="true"
+          name="Applied Property Values">
+       <availableForType
+             class="org.polarsys.capella.core.data.capellacore.CapellaElement">
+       </availableForType>
+       <targetBrowserId
+             id="ReferencedElementBrowser">
+       </targetBrowserId>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaElement_applied_property_values">
+          </basicQuery>
+       </categoryQuery>
+    </category>
+    <category
+          id="org.polarsys.capella.core.semantic.queries.CapellaElement_applied_property_value_groups"
+          isTopLevel="true"
+          name="Applied Property Value Groups">
+       <availableForType
+             class="org.polarsys.capella.core.data.capellacore.CapellaElement">
+       </availableForType>
+       <targetBrowserId
+             id="ReferencedElementBrowser">
+       </targetBrowserId>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaElement_applied_property_value_groups">
+          </basicQuery>
+       </categoryQuery>
+    </category>
+    <category
+          id="org.polarsys.capella.core.semantic.queries.PropertyValue_applying_valued_element"
+          isTopLevel="true"
+          name="Valued Elements">
+       <availableForType
+             class="org.polarsys.capella.core.data.capellacore.AbstractPropertyValue">
+       </availableForType>
+       <targetBrowserId
+             id="ReferencingElementBrowser">
+       </targetBrowserId>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyValue_applying_valued_element">
+          </basicQuery>
+       </categoryQuery>
+    </category>
+    <category
+          id="org.polarsys.capella.core.semantic.queries.PropertyValueGroup_applying_valued_element"
+          isTopLevel="true"
+          name="Valued Elements">
+       <availableForType
+             class="org.polarsys.capella.core.data.capellacore.PropertyValueGroup">
+       </availableForType>
+       <targetBrowserId
+             id="ReferencingElementBrowser">
+       </targetBrowserId>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyValueGroup_applying_valued_element">
+          </basicQuery>
+       </categoryQuery>
+    </category>
       <category
             id="------------- Component ----------------">
       </category>
