@@ -1214,19 +1214,10 @@ public class ScenarioService {
     return operatorkind;
   }
 
-  public String removeScenarioPrefix(EObject context, String name) {
+  public String addScenarioPrefix(String name, String prefix) {
 
-    List<String> scenarioPrefixes = new ArrayList<String>();
-    scenarioPrefixes.add("[" + DiagramNamingConstants.INTERFACE_SCENARIO_PREFIX + "]");
-    scenarioPrefixes.add("[" + DiagramNamingConstants.EXCHANGE_SCENARIO_PREFIX + "]");
-    scenarioPrefixes.add("[" + DiagramNamingConstants.FUNCTION_SCENARIO_PREFIX + "]");
-    scenarioPrefixes.add("[" + DiagramNamingConstants.ACTIVITY_SCENARIO_PREFIX + "]");
-    scenarioPrefixes.add("[" + DiagramNamingConstants.ENTITY_SCENARIO_PREFIX + "]");
-
-    for (String prefix : scenarioPrefixes) {
-      if (name.startsWith(prefix)) {
-        return name.substring(prefix.length()).trim();
-      }
+    if (!name.startsWith(prefix)) {
+      name = prefix + " " + name;
     }
 
     return name;

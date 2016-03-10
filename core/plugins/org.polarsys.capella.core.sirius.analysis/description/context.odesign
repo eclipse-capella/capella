@@ -1313,7 +1313,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1846,7 +1846,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="[IS] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1864,7 +1864,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Exchange Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="[ES] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Exchange Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[ES]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1882,7 +1882,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Function Scenario" label="Function Scenario" precondition="&lt;%isInLib()%>" titleExpression="[FS] &lt;%removeScenarioPrefix(current.name)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Function Scenario" label="Function Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[FS]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
