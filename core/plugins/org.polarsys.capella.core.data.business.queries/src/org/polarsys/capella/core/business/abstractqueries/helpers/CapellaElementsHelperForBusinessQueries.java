@@ -253,7 +253,7 @@ public class CapellaElementsHelperForBusinessQueries {
           CapellaElement elt = (CapellaElement) object;
           if (
           // There is an element to avoid and it is not the current one OR there is no element to avoid
-              (capellaElement.equals(null) || !elt.equals(capellaElement))
+              (capellaElement==null || !elt.equals(capellaElement))
               // AND
               &&
               // The current element is an instance of the wanted <code>EClass</code>
