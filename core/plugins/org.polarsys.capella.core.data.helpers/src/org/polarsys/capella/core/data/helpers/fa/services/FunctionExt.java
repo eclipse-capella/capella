@@ -13,7 +13,6 @@ package org.polarsys.capella.core.data.helpers.fa.services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -41,7 +40,6 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 
 /**
@@ -649,129 +647,5 @@ public class FunctionExt {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Given a mother function/activity that has sub functions, this method
-	 * <b>calculates</b> the allocation of the mother function to a
-	 * component/actor/entity.
-	 * 
-	 * The rule is that <b>a mother function/activity is allocated to a
-	 * component/actor/entity if and only if all of its sub functions are
-	 * allocated to this component/actor/entity</b>.
-	 * 
-	 * Note that in case the mother function/activity is already allocated to a
-	 * component/actor/entity or in case the mother function/activity is a leaf
-	 * function, the method returns its allocation(s).
-	 * 
-	 * @param motherFunction
-	 *            the mother function/activity to calculate
-	 *            component/actor/entity allocation on
-	 * @return the <b>calculated</b> list of components/actors/entities the
-	 *         mother function is allocated to
-	 */
-	public static List<AbstractFunctionalBlock> getMotherFunctionAllocation(AbstractFunction motherFunction) {
-		List<AbstractFunctionalBlock> result = new ArrayList<AbstractFunctionalBlock>();
-
-		// If motherFunction is already allocated to a component/actor
-		EList<AbstractFunctionalBlock> motherComponentAllocation = motherFunction.getAllocationBlocks();
-		if (null != motherComponentAllocation && !motherComponentAllocation.isEmpty()) {
-			result = motherComponentAllocation;
-		} else {
-			// Get all leaves functions of the motherFunction
-			List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(motherFunction);
-			if (null != leaves && !leaves.isEmpty()) {
-				Iterator<AbstractFunction> it = leaves.iterator();
-
-				// Get first leaf component allocation to initialize the result
-				EList<AbstractFunctionalBlock> firstLeafComponentAllocation = it.next().getAllocationBlocks();
-				if (null != firstLeafComponentAllocation && !firstLeafComponentAllocation.isEmpty()) {
-					result.addAll(firstLeafComponentAllocation);
-				}
-
-				// Iterate over leaves and do the intersection with result
-				while (it.hasNext()) {
-					EList<AbstractFunctionalBlock> otherLeafComponentAllocation = it.next().getAllocationBlocks();
-					if (null != otherLeafComponentAllocation && !otherLeafComponentAllocation.isEmpty()) {
-						result.retainAll(otherLeafComponentAllocation);
-					}
-				}
-			}
-		}
-
-		return result;
-	}
-
-	/**
-	 * Given a mother activity that has sub activities, this method
-	 * <b>calculates</b> the allocation of the mother activity to a
-	 * role.
-	 * 
-	 * The rule is that <b>a mother activity is allocated to a role if and only
-	 * if all of its sub activities are allocated to this role</b>.
-	 * 
-	 * Note that in case the mother activity is already allocated to a role or
-	 * in case the mother activity is a leaf activity, the method returns its
-	 * allocation(s).
-	 * 
-	 * @param motherFunction
-	 *            the mother activity to calculate role allocation on
-	 * @return the <b>calculated</b> list of roles the mother activity is
-	 *         allocated to
-	 */
-	public static List<Role> getMotherActivityRoleAllocation(AbstractFunction motherFunction) {
-		List<Role> result = new ArrayList<Role>();
-
-		// Consider only Operational Activity
-		if (motherFunction instanceof OperationalActivity) {
-			OperationalActivity motherActivity = (OperationalActivity) motherFunction;
-
-			// If motherActivity is already allocated to a role
-			EList<Role> motherRoleAllocation = motherActivity.getAllocatingRoles();
-			if (null != motherRoleAllocation && !motherRoleAllocation.isEmpty()) {
-				result = motherRoleAllocation;
-			} else {
-				// Get all leaves activities of the motherActivity
-				List<OperationalActivity> leaves = FunctionExt.getAllLeafOperationalActivities(motherActivity);
-				if (null != leaves && !leaves.isEmpty()) {
-					Iterator<OperationalActivity> it = leaves.iterator();
-
-					// Get first leaf role allocation to initialize the
-					// result
-					EList<Role> firstLeafComponentAllocation = it.next().getAllocatingRoles();
-					if (null != firstLeafComponentAllocation && !firstLeafComponentAllocation.isEmpty()) {
-						result.addAll(firstLeafComponentAllocation);
-					}
-
-					// Iterate over leaves and do the intersection with result
-					while (it.hasNext()) {
-						EList<Role> otherLeafComponentAllocation = it.next().getAllocatingRoles();
-						if (null != otherLeafComponentAllocation && !otherLeafComponentAllocation.isEmpty()) {
-							result.retainAll(otherLeafComponentAllocation);
-						}
-					}
-				}
-			}
-		}
-
-		return result;
-	}
-
-	/**
-	 * Given an Operational Activity, returns all leaves of type Operational
-	 * Activity
-	 * 
-	 * @param activity
-	 *            The mother Operational Activity
-	 * @return the list of leaves of type Operational Activity
-	 */
-	public static List<OperationalActivity> getAllLeafOperationalActivities(OperationalActivity activity) {
-		List<OperationalActivity> result = new ArrayList<OperationalActivity>();
-		for (AbstractFunction abstractFunction : getAllAbstractFunctions(activity)) {
-			if (isLeaf(abstractFunction) && (abstractFunction instanceof OperationalActivity)) {
-				result.add((OperationalActivity) abstractFunction);
-			}
-		}
-		return result;
 	}
 }

@@ -17,9 +17,9 @@ import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
+import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 
 /**
  * This query allow to display in the semantic browser a mother activity
@@ -63,7 +63,7 @@ public class AbstractFunction_mother_activity_allocation implements IQuery {
 			// - Actor Allocation
 			// - Entity Allocation
 			// - Role Allocation
-			if (!FunctionExt.isLeaf(motherActivity)) {
+			if (!AbstractFunctionExt.isLeaf(motherActivity)) {
 				// Check block allocation
 				EList<AbstractFunctionalBlock> blockAllocations = motherActivity.getAllocationBlocks();
 
@@ -71,7 +71,7 @@ public class AbstractFunction_mother_activity_allocation implements IQuery {
 				// that do the job so only get the leaves allocation in case the
 				// mother is not already allocated
 				if ((null == blockAllocations) || blockAllocations.isEmpty()) {
-					result.addAll(FunctionExt.getMotherFunctionAllocation(motherActivity));
+					result.addAll(AbstractFunctionExt.getMotherFunctionAllocation(motherActivity));
 				}
 
 				// Check roles allocation
@@ -81,7 +81,7 @@ public class AbstractFunction_mother_activity_allocation implements IQuery {
 				// that do the job so only get the leaves allocation in case the
 				// mother is not already allocated
 				if ((null == roleAllocations) || roleAllocations.isEmpty()) {
-					result.addAll(FunctionExt.getMotherActivityRoleAllocation(motherActivity));
+					result.addAll(AbstractFunctionExt.getMotherActivityRoleAllocation(motherActivity));
 				}
 			}
 		}

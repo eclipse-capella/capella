@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
+import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 
 /**
  * This query allow to display in the semantic browser a mother function
@@ -71,7 +72,7 @@ public class AbstractFunction_mother_function_allocation implements IQuery {
 				// that do the job so only get the leaves allocation in case the
 				// mother is not already allocated
 				if ((null == blockAllocations) || blockAllocations.isEmpty()) {
-					result.addAll(FunctionExt.getMotherFunctionAllocation(motherFunction));
+					result.addAll(AbstractFunctionExt.getMotherFunctionAllocation(motherFunction));
 				}
 			}
 		}

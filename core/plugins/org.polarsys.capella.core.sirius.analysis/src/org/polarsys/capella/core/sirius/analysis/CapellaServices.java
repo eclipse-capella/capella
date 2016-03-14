@@ -2038,7 +2038,7 @@ public class CapellaServices {
 
   public boolean isAllocatedInThisComponent(AbstractFunction function, EObject container) {
 
-    List<AbstractFunctionalBlock> allocationBlocks = FunctionExt.getMotherFunctionAllocation(function);
+    List<AbstractFunctionalBlock> allocationBlocks = AbstractFunctionExt.getMotherFunctionAllocation(function);
     if (allocationBlocks.size() == 1) {
       AbstractFunctionalBlock allocationBlock = allocationBlocks.get(0);
       return container == allocationBlock;
