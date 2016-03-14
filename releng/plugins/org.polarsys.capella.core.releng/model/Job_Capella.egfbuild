@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmi:id="_P5DYAF4qEeGjYKPu-vkVIA" name="Capella">
+<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_P5DYAF4qEeGjYKPu-vkVIA" name="Capella">
   <properties xmi:id="_P5DYAV4qEeGjYKPu-vkVIA" key="product" value="${publish}/product" type="INLINED"/>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_6PJ4wHn1EeOTFv-zjnXYvg" name="build4Helios" enabled="false">
     <properties xmi:id="_86zmsHn1EeOTFv-zjnXYvg" key="eclipseCodeName" value="helios" type="INLINED"/>
@@ -36,6 +36,13 @@
     <properties xmi:id="_GPiesYgeEeOdzI3OsQ-7WQ" key="eclipseCodeName" value="kepler" type="INLINED"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_GPiesogeEeOdzI3OsQ-7WQ" name="Build All">
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
+    </steps>
+  </steps>
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_LkfoEOnyEeWL_q5RF2Gh7A" name="RunTestSuites">
+    <properties xmi:id="_NcEGUOn1EeWL_q5RF2Gh7A" key="usedTP" value="${publish}/CapellaTP" type="INLINED"/>
+    <steps xsi:type="buildstep:AntStep" xmi:id="_dcQhkOn3EeWL_q5RF2Gh7A" name="InitCapellaEnvForTests" targetName="untar.capella.linux" xml="&lt;target name=&quot;untar.capella.linux&quot;>&#xD;&#xA;&#x9;&lt;gunzip dest=&quot;${usedTP}.tar&quot;>&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${publish}&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;capella-*-linux-gtk-x86_64-*.tar.gz&quot; />&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/gunzip>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;untar src=&quot;${usedTP}.tar&quot; dest=&quot;${usedTP}&quot; />&#xD;&#xA;&#xD;&#xA;&#x9;&lt;delete file=&quot;${usedTP}.tar&quot; />&#xD;&#xA;&lt;/target>"/>
+    <steps xsi:type="buildcore:ReuseStep" xmi:id="_78yZwOn5EeWL_q5RF2Gh7A" name="RunCapellaTestSuites">
+      <reusedStep xsi:type="buildcore:StepContainer" href="Job_CapellaTestSuite.egfbuild#_8w87QOnxEeWL_q5RF2Gh7A"/>
     </steps>
   </steps>
   <scms xsi:type="buildscm:GIT" xmi:id="_3X68kIIHEeSlQoYFN3Mlmg">
