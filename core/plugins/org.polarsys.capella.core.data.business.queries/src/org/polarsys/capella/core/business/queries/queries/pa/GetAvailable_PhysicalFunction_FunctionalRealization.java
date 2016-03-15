@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,30 +39,30 @@ public class GetAvailable_PhysicalFunction_FunctionalRealization extends Abstrac
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof AbstractFunction) {
-			AbstractFunction element = (AbstractFunction) element_p;
-			availableElements.addAll(getRule_MQRY_AbstractFunction_RealizedFunctions_11(element));
+		if (element instanceof AbstractFunction) {
+			AbstractFunction elt = (AbstractFunction) element;
+			availableElements.addAll(getRule_MQRY_AbstractFunction_RealizedFunctions_11(elt));
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param element_p the abstract function
+	 * @param element the abstract function
 	 * @return list of Function
 	 */
-	protected List<CapellaElement> getRule_MQRY_AbstractFunction_RealizedFunctions_11(AbstractFunction element_p) {
+	protected List<CapellaElement> getRule_MQRY_AbstractFunction_RealizedFunctions_11(AbstractFunction element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		List<EObject> allFunctions = new ArrayList<EObject>();
-		if (null != element_p) {
-			BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		if (null != element) {
+			BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 			if (arch != null) {
 				for (BlockArchitecture block : arch.getAllocatedArchitectures()) {
 					allFunctions.addAll(EObjectExt.getAll(block, FaPackage.Literals.ABSTRACT_FUNCTION));
 				}
 			}
-			EList<FunctionRealization> ownedFunctionRealisations = element_p.getOwnedFunctionRealizations();
+			EList<FunctionRealization> ownedFunctionRealisations = element.getOwnedFunctionRealizations();
 			for (FunctionRealization ownedFunctionRealisation : ownedFunctionRealisations) {
 				TraceableElement targetElement = ownedFunctionRealisation.getTargetElement();
 				if (null != targetElement) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,18 +81,18 @@ public class EStructuralFeatureProperty extends AbstractProperty implements IEdi
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty#getValue(org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext)
    */
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     Collection<Object> values = new LinkedHashSet<Object>();
 
     EClass clazz = getRelatedEClass();
 
-    for (Object object : context_p.getSourceAsList()) {
+    for (Object object : context.getSourceAsList()) {
       if (object instanceof EObject) {
         EObject element = (EObject) object;
         EStructuralFeature feature = element.eClass().getEStructuralFeature(getRelatedEReference());
         if ((element != null) && (feature != null)) {
           if ((clazz == null) || clazz.isSuperTypeOf(element.eClass())) {
-            Object result = getFeatureValue(context_p, element, feature);
+            Object result = getFeatureValue(context, element, feature);
             if (result != null) {
               values.add(result);
             }
@@ -107,25 +107,25 @@ public class EStructuralFeatureProperty extends AbstractProperty implements IEdi
   }
 
   /**
-   * @param element_p
-   * @param feature_p
+   * @param element
+   * @param feature
    * @return
    */
-  protected Object getFeatureValue(IPropertyContext context_p, EObject element_p, EStructuralFeature feature_p) {
-    if (feature_p.isMany()) {
-      return new ArrayList<Object>((EList) element_p.eGet(feature_p));
+  protected Object getFeatureValue(IPropertyContext context, EObject element, EStructuralFeature feature) {
+    if (feature.isMany()) {
+      return new ArrayList<Object>((EList) element.eGet(feature));
     }
-    return element_p.eGet(feature_p);
+    return element.eGet(feature);
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty#setValue(org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext)
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     EClass clazz = getRelatedEClass();
 
-    for (Object object : context_p.getSourceAsList()) {
+    for (Object object : context.getSourceAsList()) {
       if (object instanceof EObject) {
         EObject element = (EObject) object;
         EStructuralFeature feature = element.eClass().getEStructuralFeature(getRelatedEReference());
@@ -135,7 +135,7 @@ public class EStructuralFeatureProperty extends AbstractProperty implements IEdi
           if ((clazz == null) || clazz.isSuperTypeOf(element.eClass())) {
             if (element.eClass().getEAllStructuralFeatures().contains(feature)) {
               if (feature.isMany()) {
-                Collection<EObject> result = (Collection) context_p.getCurrentValue(this);
+                Collection<EObject> result = (Collection) context.getCurrentValue(this);
                 Collection<EObject> current = (Collection) element.eGet(feature);
 
                 for (EObject res : new ArrayList<EObject>(current)) {
@@ -149,7 +149,7 @@ public class EStructuralFeatureProperty extends AbstractProperty implements IEdi
                   }
                 }
               } else {
-                Object result = context_p.getCurrentValue(this);
+                Object result = context.getCurrentValue(this);
                 element.eSet(feature, result);
               }
             }
@@ -163,16 +163,15 @@ public class EStructuralFeatureProperty extends AbstractProperty implements IEdi
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty#toType(java.lang.Object,
    *      org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext)
    */
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty#validate(java.lang.Object,
    *      org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext)
    */
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
-  // Nothing to do
 }

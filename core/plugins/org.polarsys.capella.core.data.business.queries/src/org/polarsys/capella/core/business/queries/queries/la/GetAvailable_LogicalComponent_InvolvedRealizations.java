@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,14 +51,14 @@ public class GetAvailable_LogicalComponent_InvolvedRealizations extends Abstract
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof LogicalComponent) {
-			LogicalComponent currentLC = (LogicalComponent) element_p;
+		if (element instanceof LogicalComponent) {
+			LogicalComponent currentLC = (LogicalComponent) element;
 			availableElements.addAll(getRule_MQRY_LogicalComponentRealizations_11(currentLC));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -71,20 +71,20 @@ public class GetAvailable_LogicalComponent_InvolvedRealizations extends Abstract
 	 * all of its sub-packages) of the current Logical Component's parent (Refer
 	 * MQRY_LogicalComponent_Realizations_11)
 	 * </p>
-	 * @param currentLC_pthe current LogicalComponent
-	 * @param parentLC_pthe parent
+	 * @param currentLCthe current LogicalComponent
+	 * @param parentLCthe parent
 	 * @return list of {@link CapabilityRealizationUseCase}
 	 */
-	private List<CapellaElement> getRule_MQRY_LogicalComponentRealizations_11(LogicalComponent currentLC_p) {
+	private List<CapellaElement> getRule_MQRY_LogicalComponentRealizations_11(LogicalComponent currentLC) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		Object parent = currentLC_p.eContainer();
+		Object parent = currentLC.eContainer();
 		if (null != parent) {
 			if (parent instanceof LogicalComponentPkg) {
 				LogicalComponentPkg rootLCPkg = LogicalComponentPkgExt.getRootLogicalComponentPkg((LogicalComponentPkg) parent);
 				parent = rootLCPkg.eContainer();
 			}
 			if (parent instanceof LogicalComponent || parent instanceof LogicalArchitecture) {
-				availableElements.addAll(SystemComponentExt.getCapabilityRealizationUseCasesFiltered(currentLC_p, (CapellaElement) parent));
+				availableElements.addAll(SystemComponentExt.getCapabilityRealizationUseCasesFiltered(currentLC, (CapellaElement) parent));
 			}
 		}
 		return availableElements;

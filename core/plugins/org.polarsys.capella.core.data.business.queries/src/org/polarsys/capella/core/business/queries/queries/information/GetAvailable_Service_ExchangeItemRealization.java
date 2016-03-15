@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,43 +47,43 @@ public class GetAvailable_Service_ExchangeItemRealization extends AbstractQuery 
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof Service) {
-			Service service = (Service) element_p;
+		if (element instanceof Service) {
+			Service service = (Service) element;
 			availableElements.addAll(getRule_MQRY_Service_ItemRealization_11(systemEngineering, service));
 		}
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11(SystemEngineering systemEng_p, Service currentProperty_p) {
+	private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11(SystemEngineering systemEng, Service currentProperty) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		BlockArchitecture arch = null;
-		arch = SystemEngineeringExt.getRootBlockArchitecture(currentProperty_p);
-		availableElements.addAll(getElementsFromBlockArchitecture(arch, currentProperty_p));
+		arch = SystemEngineeringExt.getRootBlockArchitecture(currentProperty);
+		availableElements.addAll(getElementsFromBlockArchitecture(arch, currentProperty));
 		if (!(arch instanceof OperationalAnalysis)) {
-			availableElements.addAll(getRule_MQRY_Service_ItemRealization_11_1(systemEng_p, currentProperty_p));
+			availableElements.addAll(getRule_MQRY_Service_ItemRealization_11_1(systemEng, currentProperty));
 		}
 		return availableElements;
 	}
 
 	/** 
-	 * @param currentProperty_p_p 
-	 * @param oa_p
+	 * @param currentProperty 
+	 * @param oa
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, Service currentProperty_p) {
+	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, Service currentProperty) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (arch_p != null) {
-			DataPkg ownedDataPkg = arch_p.getOwnedDataPkg();
+		if (arch != null) {
+			DataPkg ownedDataPkg = arch.getOwnedDataPkg();
 			if (null != ownedDataPkg) {
 				availableElements.addAll((Collection<? extends CapellaElement>) AbstractExchangeItemPkgExt.getAllAbstractExchangeItems(ownedDataPkg));
-				EList<ExchangeItemRealization> ownedExchangeItemRealisation = currentProperty_p.getOwnedExchangeItemRealizations();
+				EList<ExchangeItemRealization> ownedExchangeItemRealisation = currentProperty.getOwnedExchangeItemRealizations();
 				for (ExchangeItemRealization exchangeItemRealisation : ownedExchangeItemRealisation) {
 					TraceableElement targetElement = exchangeItemRealisation.getTargetElement();
 					if (null != targetElement && targetElement instanceof AbstractExchangeItem) {
@@ -95,30 +95,30 @@ public class GetAvailable_Service_ExchangeItemRealization extends AbstractQuery 
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11_1(SystemEngineering systemEng_p, Service currentProperty_p) {
+	private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11_1(SystemEngineering systemEng, Service currentProperty) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		BlockArchitecture arch = null;
-		arch = SystemEngineeringExt.getRootBlockArchitecture(currentProperty_p);
-		SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentProperty_p);
+		arch = SystemEngineeringExt.getRootBlockArchitecture(currentProperty);
+		SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentProperty);
 		OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
 		if (null != oa) {
-			availableElements.addAll(getElementsFromBlockArchitecture(oa, currentProperty_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(oa, currentProperty));
 		} else {
 			SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
-			availableElements.addAll(getElementsFromBlockArchitecture(ca, currentProperty_p));
+			availableElements.addAll(getElementsFromBlockArchitecture(ca, currentProperty));
 		}
 		if (null != arch) {
 			if (null != oa && (arch instanceof LogicalArchitecture) || (arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
 				SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
-				availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentProperty_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentProperty));
 			}
 			if ((arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
 				LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng);
-				availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentProperty_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentProperty));
 			}
 			if ((arch instanceof EPBSArchitecture)) {
 				PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
-				availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentProperty_p));
+				availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentProperty));
 			}
 		}
 		return availableElements;

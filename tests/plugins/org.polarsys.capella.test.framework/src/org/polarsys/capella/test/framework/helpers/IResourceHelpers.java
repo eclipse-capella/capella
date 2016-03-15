@@ -43,208 +43,204 @@ import org.osgi.framework.FrameworkUtil;
  * @author Erwan Brottier
  */
 public class IResourceHelpers {
-	
-  public static File getFileInPlugin(Class<?> oneClassInThePlugin, String relativeFilePath) throws URISyntaxException, IOException {
+
+	public static File getFileInPlugin(Class<?> oneClassInThePlugin, String relativeFilePath)
+			throws URISyntaxException, IOException {
 		Bundle bundle = FrameworkUtil.getBundle(oneClassInThePlugin);
 		URL fileURL = bundle.getEntry(relativeFilePath);
 		return new File(FileLocator.resolve(fileURL).toURI());
-  }
-	
-  /**
-   * Returns the root folder of the plugin containing the given class
-   */
-  public static File getPluginFolder(Class<?> clazz) {
-    File pluginFolder = null;
-    try {
-      pluginFolder = getFileInPlugin(clazz, "/"); //$NON-NLS-1$
-    } catch (URISyntaxException e1) {
-      e1.printStackTrace();
-    } catch (IOException e1) {
-      e1.printStackTrace();
-    }
+	}
 
-    return pluginFolder;
-  }
-  
-  /**
-   * Returns a path in the plugin containing the given class  
-   */
-  public static File getFileOrFolderInTestPlugin(Class<?> clazz, String relativePath) {
-    return new File(IResourceHelpers.getPluginFolder(clazz).toString() + "/" + relativePath); //$NON-NLS-1$
-  }
-  
+	/**
+	 * Returns the root folder of the plugin containing the given class
+	 */
+	public static File getPluginFolder(Class<?> clazz) {
+		File pluginFolder = null;
+		try {
+			pluginFolder = getFileInPlugin(clazz, "/"); //$NON-NLS-1$
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+		return pluginFolder;
+	}
+
+	/**
+	 * Returns a path in the plugin containing the given class
+	 */
+	public static File getFileOrFolderInTestPlugin(Class<?> clazz, String relativePath) {
+		return new File(IResourceHelpers.getPluginFolder(clazz).toString() + "/" + relativePath); //$NON-NLS-1$
+	}
+
 	public static List<IResource> getIResourceFromSelection(ExecutionEvent event) {
-    ISelection selection = HandlerUtil.getCurrentSelection(event);
-    List<IResource> resources = new ArrayList<IResource>();
-    if (selection instanceof IStructuredSelection) {
-      for (Object select : ((IStructuredSelection) selection).toList()) {
-        IResource resource = null;
-        if (select instanceof IResource)
-          resource = (IResource) select;
-        else if (select instanceof JavaElement)
-          resource = ((JavaElement) select).getResource();
-        resources.add(resource);
-      }
-    }
-    return resources;
-  }
-	
+		ISelection selection = HandlerUtil.getCurrentSelection(event);
+		List<IResource> resources = new ArrayList<IResource>();
+		if (selection instanceof IStructuredSelection) {
+			for (Object select : ((IStructuredSelection) selection).toList()) {
+				IResource resource = null;
+				if (select instanceof IResource)
+					resource = (IResource) select;
+				else if (select instanceof JavaElement)
+					resource = ((JavaElement) select).getResource();
+				resources.add(resource);
+			}
+		}
+		return resources;
+	}
+
 	public static List<IFile> getIFilesFromSelection(ExecutionEvent event) {
 		List<IFile> result = new ArrayList<IFile>();
 		for (IResource resource : getIResourceFromSelection(event))
 			if (resource instanceof IFile)
-				result.add((IFile) resource);			
+				result.add((IFile) resource);
 		return result;
-  }
+	}
 
 	public static List<IProject> getIProjectFromSelection(ExecutionEvent event) {
 		List<IProject> result = new ArrayList<IProject>();
 		for (IResource resource : getIResourceFromSelection(event))
 			if (resource instanceof IProject)
-				result.add((IProject) resource);			
+				result.add((IProject) resource);
 		return result;
-  }	
-	
-  public static String readFileAsString(File file) {
-    StringBuffer fileData = new StringBuffer();
-    try {
-      BufferedReader reader = new BufferedReader(new FileReader(file));
-      char[] buf = new char[1024];
-      int numRead = 0;
-      while ((numRead = reader.read(buf)) != -1) {
-        String readData = String.valueOf(buf, 0, numRead);
-        fileData.append(readData);
-      }
-      reader.close();
-    } catch (Exception exception) {
-      exception.printStackTrace();
-    }
-    return fileData.toString();
-  }
+	}
 
-  public static String readFileAsString(URL fileUrl) {
-    try {
-      File file = new File(fileUrl.toURI());
-      return readFileAsString(file);
-    } catch (URISyntaxException exception) {
-      exception.printStackTrace();
-    }
-    return null;
-  }
+	public static String readFileAsString(File file) {
+		StringBuffer fileData = new StringBuffer();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			char[] buf = new char[1024];
+			int numRead = 0;
+			while ((numRead = reader.read(buf)) != -1) {
+				String readData = String.valueOf(buf, 0, numRead);
+				fileData.append(readData);
+			}
+			reader.close();
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+		return fileData.toString();
+	}
 
-  
-  public static void writeStringInFile(File file, String data) {
-  	File folder = file.getParentFile();
-  	if (!folder.exists())
-  		folder.mkdirs();
-  	try {
-      FileWriter fileWriter = new FileWriter(file.getAbsolutePath());
-      fileWriter.write(data);
-      fileWriter.close();
-    } catch (IOException exception) {
-      exception.printStackTrace();
-    }
-  }
+	public static String readFileAsString(URL fileUrl) {
+		try {
+			File file = new File(fileUrl.toURI());
+			return readFileAsString(file);
+		} catch (URISyntaxException exception) {
+			exception.printStackTrace();
+		}
+		return null;
+	}
 
+	public static void writeStringInFile(File file, String data) {
+		File folder = file.getParentFile();
+		if (!folder.exists())
+			folder.mkdirs();
+		try {
+			FileWriter fileWriter = new FileWriter(file.getAbsolutePath());
+			fileWriter.write(data);
+			fileWriter.close();
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
+	}
 
-  
-  public static String readFileAsString(IFile file) {
-  	return readFileAsString(convertToFile(file));
-  }
-  
-  public static void writeStringInFile(IFile file, String data) {
-  	writeStringInFile(convertToFile(file), data);
-  }
+	public static String readFileAsString(IFile file) {
+		return readFileAsString(convertToFile(file));
+	}
 
-  
-  
-  /**
-   * Creates a file in the given parent with the given relative path. Adds the given content in the new file. Be careful, the file is overwritten if it already
-   * exist.
-   */
-  public static IFile createFile(IContainer parent, String relativeFilePath, String content) {
-    IFile file = null;
-    if (parent instanceof IProject) {
-      file = ((IProject) parent).getFile("/" + relativeFilePath); //$NON-NLS-1$
-    } else {
-      file = ((IFolder) parent).getFile("/" + relativeFilePath); //$NON-NLS-1$
-    }
-    InputStream source = new ByteArrayInputStream(content.getBytes());
-    try {
-      if (file.exists()) {
-        file.delete(true, null);
-      }
-      file.create(source, true, null);
-    } catch (CoreException exception) {
-      exception.printStackTrace();
-    }
-    return file;
-  }
+	public static void writeStringInFile(IFile file, String data) {
+		writeStringInFile(convertToFile(file), data);
+	}
 
-  public static IFile createFile(IContainer parent, String relativeFilePath) {
-    return createFile(parent, relativeFilePath, ""); //$NON-NLS-1$
-  }
+	/**
+	 * Creates a file in the given parent with the given relative path. Adds the
+	 * given content in the new file. Be careful, the file is overwritten if it
+	 * already exist.
+	 */
+	public static IFile createFile(IContainer parent, String relativeFilePath, String content) {
+		IFile file = null;
+		if (parent instanceof IProject) {
+			file = ((IProject) parent).getFile("/" + relativeFilePath); //$NON-NLS-1$
+		} else {
+			file = ((IFolder) parent).getFile("/" + relativeFilePath); //$NON-NLS-1$
+		}
+		InputStream source = new ByteArrayInputStream(content.getBytes());
+		try {
+			if (file.exists()) {
+				file.delete(true, null);
+			}
+			file.create(source, true, null);
+		} catch (CoreException exception) {
+			exception.printStackTrace();
+		}
+		return file;
+	}
 
-  public static List<IFile> getIFilesIn(IContainer container) {
-    return new IFileRequestor().search(container);
-  }
+	public static IFile createFile(IContainer parent, String relativeFilePath) {
+		return createFile(parent, relativeFilePath, ""); //$NON-NLS-1$
+	}
 
-  public static List<IFile> getIFilesIn(IContainer container, String fileExtension) {
-    return new IFileRequestor().search(container, fileExtension);
-  }
+	public static List<IFile> getIFilesIn(IContainer container) {
+		return new IFileRequestor().search(container);
+	}
 
-  public static IProject getProjectFromIContainer(IContainer container) {
-    IContainer newContainer = container;
-    while (!(newContainer instanceof IProject)) {
-      newContainer = newContainer.getParent();
-    }
-    return (IProject) newContainer;
-  }
+	public static List<IFile> getIFilesIn(IContainer container, String fileExtension) {
+		return new IFileRequestor().search(container, fileExtension);
+	}
 
-  public static IProject getProjectFromIFile(IFile file) {
-    return getProjectFromIContainer(file.getParent());
-  }
+	public static IProject getProjectFromIContainer(IContainer container) {
+		IContainer newContainer = container;
+		while (!(newContainer instanceof IProject)) {
+			newContainer = newContainer.getParent();
+		}
+		return (IProject) newContainer;
+	}
 
-  public static IProject getProjectFromIFile(IFolder folder) {
-    return getProjectFromIContainer(folder);
-  }
+	public static IProject getProjectFromIFile(IFile file) {
+		return getProjectFromIContainer(file.getParent());
+	}
 
-  public static IFolder createFolder(IFolder folder) {
-    if (!folder.exists()) {
-      try {
-        folder.create(true, false, null);
-      } catch (CoreException exception) {
-        exception.printStackTrace();
-      }
-    }
-    return folder;
-  }
+	public static IProject getProjectFromIFile(IFolder folder) {
+		return getProjectFromIContainer(folder);
+	}
 
-  public static File convertToFile(IResource file) {
-    return file.getRawLocation().makeAbsolute().toFile();
-  }
+	public static IFolder createFolder(IFolder folder) {
+		if (!folder.exists()) {
+			try {
+				folder.create(true, false, null);
+			} catch (CoreException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return folder;
+	}
 
-  public static void refresh(IResource resource) {
-    try {
-      resource.refreshLocal(IResource.DEPTH_INFINITE, null);
-    } catch (CoreException exception) {
-      exception.printStackTrace();
-    }
-  }
+	public static File convertToFile(IResource file) {
+		return file.getRawLocation().makeAbsolute().toFile();
+	}
 
-  public static void setFileAsWritable(IFile file) {
-    ResourceAttributes attributes = file.getResourceAttributes();
-    attributes.setReadOnly(false);
-    try {
-      file.setResourceAttributes(attributes);
-    } catch (CoreException exception) {
-      exception.printStackTrace();
-    }
-  }
-  
-  public static IProject getEclipseProjectInWorkspace(String projectName) {
-    return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-  }
+	public static void refresh(IResource resource) {
+		try {
+			resource.refreshLocal(IResource.DEPTH_INFINITE, null);
+		} catch (CoreException exception) {
+			exception.printStackTrace();
+		}
+	}
 
+	public static void setFileAsWritable(IFile file) {
+		ResourceAttributes attributes = file.getResourceAttributes();
+		attributes.setReadOnly(false);
+		try {
+			file.setResourceAttributes(attributes);
+		} catch (CoreException exception) {
+			exception.printStackTrace();
+		}
+	}
+
+	public static IProject getEclipseProjectInWorkspace(String projectName) {
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+	}
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,16 +44,16 @@ public class GetAvailable_CapabilityRealization_InheritedCapabilities extends Ab
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(element_p);
+		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(element);
 		if (null == currentBlockArchitecture) {
 			return availableElements;
 		}
-		if (element_p instanceof CapabilityRealization) {
-			CapabilityRealization currentCapabilityUseCase = (CapabilityRealization) element_p;
+		if (element instanceof CapabilityRealization) {
+			CapabilityRealization currentCapabilityUseCase = (CapabilityRealization) element;
 			availableElements.addAll(getRule_MQRY_CapabilityRealizationUseCase_Inherited_11(currentBlockArchitecture, currentCapabilityUseCase, true));
-		} else if (element_p instanceof CapabilityRealizationPkg) {
+		} else if (element instanceof CapabilityRealizationPkg) {
 			availableElements.addAll(getRule_MQRY_CapabilityRealizationUseCase_Inherited_11(currentBlockArchitecture, null, false));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -69,22 +69,22 @@ public class GetAvailable_CapabilityRealization_InheritedCapabilities extends Ab
 	 * <p>
 	 * Refer MQRY_Capability_Inherited_11
 	 * </p>
-	 * @param blockArch_pthe system engineering
-	 * @param currentCapabilityUseCase_pthe current capability
+	 * @param blockArchthe system engineering
+	 * @param currentCapabilityUseCasethe current capability
 	 * @param isFilterRequiredflag for checking with current capability
 	 * @return list of {@link CapabilityRealizationUseCase}
 	 */
-	private List<CapellaElement> getRule_MQRY_CapabilityRealizationUseCase_Inherited_11(BlockArchitecture blockArch_p,
-			CapabilityRealization currentCapabilityUseCase_p, boolean isFilterRequired) {
+	private List<CapellaElement> getRule_MQRY_CapabilityRealizationUseCase_Inherited_11(BlockArchitecture blockArch,
+			CapabilityRealization currentCapabilityUseCase, boolean isFilterRequired) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (CapabilityRealization capabilityUseCase : CapellaElementExt.getAllCapabilityRealization(blockArch_p)) {
+		for (CapabilityRealization capabilityUseCase : CapellaElementExt.getAllCapabilityRealization(blockArch)) {
 			if (capabilityUseCase instanceof CapabilityRealization) {
 				if (isFilterRequired) {
-					if (currentCapabilityUseCase_p.equals(capabilityUseCase)) {
+					if (currentCapabilityUseCase.equals(capabilityUseCase)) {
 						continue;
 					}
-					if (!AbstractCapabilityExt.isSuperCapability(currentCapabilityUseCase_p, capabilityUseCase)
-							&& !AbstractCapabilityExt.isSuperCapability(capabilityUseCase, currentCapabilityUseCase_p)) {
+					if (!AbstractCapabilityExt.isSuperCapability(currentCapabilityUseCase, capabilityUseCase)
+							&& !AbstractCapabilityExt.isSuperCapability(capabilityUseCase, currentCapabilityUseCase)) {
 						availableElements.add(capabilityUseCase);
 					}
 				} else {

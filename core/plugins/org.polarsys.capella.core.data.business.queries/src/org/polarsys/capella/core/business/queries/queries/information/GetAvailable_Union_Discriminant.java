@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,15 +35,15 @@ public class GetAvailable_Union_Discriminant extends AbstractQuery {
 		return (List) availableElements;
 	}
 
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof Union) {
-			Union union = (Union) element_p;
+		if (element instanceof Union) {
+			Union union = (Union) element;
 			availableElements.addAll(getDiscreteDatatypesProperties(union));
 			List<GeneralizableElement> unionInheritanceHierarchy = GeneralizableElementExt.getAllSuperGeneralizableElements(union);
-			for (CapellaElement element : unionInheritanceHierarchy) {
-				if (element instanceof Union) {
-					Union inheritedUnion = (Union) element;
+			for (CapellaElement elt : unionInheritanceHierarchy) {
+				if (elt instanceof Union) {
+					Union inheritedUnion = (Union) elt;
 					availableElements.addAll(getDiscreteDatatypesProperties(inheritedUnion));
 				}
 			}
@@ -53,12 +53,12 @@ public class GetAvailable_Union_Discriminant extends AbstractQuery {
 
 	/** 
 	 * Gets the owned properties of the given <code>Union</code> which are both DataType and Discrete
-	 * @param union_p the union
+	 * @param union the union
 	 * @return a <code>List</code> containing <code>CapellaElement</code> instances
 	 */
-	protected List<CapellaElement> getDiscreteDatatypesProperties(Union union_p) {
+	protected List<CapellaElement> getDiscreteDatatypesProperties(Union union) {
 		List<CapellaElement> properties = new ArrayList<CapellaElement>();
-		for (Feature aFeature : union_p.getOwnedFeatures()) {
+		for (Feature aFeature : union.getOwnedFeatures()) {
 			if (aFeature instanceof UnionProperty) {
 				Type type = ((UnionProperty) aFeature).getType();
 				if (((type instanceof DataType) && ((DataType) type).isDiscrete()) || ((type instanceof Class) && ((Class) type).isIsPrimitive())) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,12 +46,12 @@ public class GetAvailable_Service_ReferencedMessage extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		boolean isServiceFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			if (sharedPkg != null) {
 				for (ReuseLink link : sharedPkg.getReuseLinks()) {
 					if (SystemEngineeringExt.getSystemEngineering(link) != null) {
@@ -64,8 +64,8 @@ public class GetAvailable_Service_ReferencedMessage extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Service) {
-			Service currentService = (Service) element_p;
+		if (element instanceof Service) {
+			Service currentService = (Service) element;
 			if (!isServiceFromSharedPkg) {
 				availableElements.addAll(getRule_MQRY_Service_Ref_11(currentService));
 				availableElements.addAll(getRule_MQRY_Service_Ref_12(currentService));
@@ -83,10 +83,10 @@ public class GetAvailable_Service_ReferencedMessage extends AbstractQuery {
 	 * root package).
 	 * @return list of Messages
 	 */
-	private List<CapellaElement> getRule_MQRY_Service_Ref_11(Service currentService_p) {
+	private List<CapellaElement> getRule_MQRY_Service_Ref_11(Service currentService) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		availableElements.addAll(ServiceExt.getFilteredMessages(currentService_p, ServiceExt.getMessageFromRootComponentArchitecture(currentService_p)));
-		availableElements.addAll(ServiceExt.getFilteredMessages(currentService_p, ServiceExt.getMessageFromRootComponent(currentService_p)));
+		availableElements.addAll(ServiceExt.getFilteredMessages(currentService, ServiceExt.getMessageFromRootComponentArchitecture(currentService)));
+		availableElements.addAll(ServiceExt.getFilteredMessages(currentService, ServiceExt.getMessageFromRootComponent(currentService)));
 		return availableElements;
 	}
 
@@ -96,10 +96,10 @@ public class GetAvailable_Service_ReferencedMessage extends AbstractQuery {
 	 * layer visibility and multiple decomposition rules.
 	 * @return
 	 */
-	private List<CapellaElement> getRule_MQRY_Service_Ref_12(Service currentService_p) {
+	private List<CapellaElement> getRule_MQRY_Service_Ref_12(Service currentService) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		availableElements.addAll(ServiceExt.getFilteredMessages(currentService_p, ServiceExt.getMessagesFromParentHierarchy(currentService_p)));
-		availableElements.addAll(getRule_MQRY_Service_Ref_12_1(currentService_p));
+		availableElements.addAll(ServiceExt.getFilteredMessages(currentService, ServiceExt.getMessagesFromParentHierarchy(currentService)));
+		availableElements.addAll(getRule_MQRY_Service_Ref_12_1(currentService));
 		return availableElements;
 	}
 
@@ -108,25 +108,25 @@ public class GetAvailable_Service_ReferencedMessage extends AbstractQuery {
 	 * subpackages) of the SharedPkg
 	 * @return
 	 */
-	private List<CapellaElement> getRule_MQRY_Service_Ref_13(Service currentService_p, SystemEngineering sysEng_p) {
+	private List<CapellaElement> getRule_MQRY_Service_Ref_13(Service currentService, SystemEngineering sysEng) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(sysEng_p)) {
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(sysEng)) {
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
-				availableElements.addAll(ServiceExt.getFilteredMessages(currentService_p, GenericPkgExt.getAllMessages(pkg)));
+				availableElements.addAll(ServiceExt.getFilteredMessages(currentService, GenericPkgExt.getAllMessages(pkg)));
 			}
 			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 			if (dataPkg != null) {
-				availableElements.addAll(ServiceExt.getFilteredMessages(currentService_p, DataPkgExt.getAllMessages(dataPkg)));
+				availableElements.addAll(ServiceExt.getFilteredMessages(currentService, DataPkgExt.getAllMessages(dataPkg)));
 			}
 		}
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Service_Ref_12_1(Service currentService_p) {
+	private List<CapellaElement> getRule_MQRY_Service_Ref_12_1(Service currentService) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		ComponentArchitecture arch = ServiceExt.getRootComponentArchitecture(currentService_p);
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentService_p);
+		ComponentArchitecture arch = ServiceExt.getRootComponentArchitecture(currentService);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentService);
 		SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
 		availableElements.addAll(ServiceExt.getMessagesFromComponentArchitecture(ca));
 		if (arch != null) {

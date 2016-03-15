@@ -16,6 +16,7 @@ import java.util.List;
 import junit.framework.Test;
 
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CDBDiagramToolsTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ESDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.IDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.LABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MCBDiagramToolsTestSuite;
@@ -48,6 +49,7 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new SABDiagramToolsTestSuite());
     tests.add(new MCBDiagramToolsTestSuite());
     tests.add(new XABDiagramToolsTestSuite());
+    tests.add(new ESDiagramToolsTestSuite());
     return tests;
   }
 

@@ -51,7 +51,13 @@ import org.polarsys.capella.core.tiger.impl.Transfo;
  */
 public class TigerRelationshipHelper {
 
-  protected static Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
+	/**
+	 * Constructor
+	 */
+  private TigerRelationshipHelper() {
+	}
+
+protected static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
   
   /**
    * The name of the property which holds the transformation UID
@@ -63,7 +69,7 @@ public class TigerRelationshipHelper {
    * <p/>
    * It uses the meta-model to proceed a model action.
    * @param relatedElement The new element to be linked
-   * @param relationshipString The relation name
+   * @param relationship The relation
    */
   @SuppressWarnings( { "unchecked" })
   public static boolean attachElementByRel(EObject element, EObject relatedElement, EReference relationship) {
@@ -110,7 +116,7 @@ public class TigerRelationshipHelper {
       }
     }
 
-    if (done && _logger.isInfoEnabled()) {
+    if (done && logger.isInfoEnabled()) {
       String nlsKey = null;
       if (relationship.isContainment()) {
         nlsKey = Messages.TigerRelationshipHelper_ContainedBy;
@@ -118,7 +124,7 @@ public class TigerRelationshipHelper {
         nlsKey = Messages.TigerRelationshipHelper_ReferencedBy;
       }
       String text = NLS.bind(nlsKey, new Object[] { EObjectLabelProviderHelper.getText(relatedElement), EObjectLabelProviderHelper.getText(element), relationship.getName() });
-      _logger.info(new EmbeddedMessage(text, _logger.getName(), new Object[] { relatedElement, element }));
+      logger.info(new EmbeddedMessage(text, logger.getName(), new Object[] { relatedElement, element }));
     } else if (!alreadyExist) {
       String nlsKey = null;
       if (relationship.isContainment()) {
@@ -127,11 +133,11 @@ public class TigerRelationshipHelper {
         nlsKey = Messages.TigerRelationshipHelper_ShouldBeReferencedBy;
       }
       String text = NLS.bind(nlsKey, new Object[] { EObjectLabelProviderHelper.getText(relatedElement), EObjectLabelProviderHelper.getText(element), relationship.getName() });
-      _logger.warn(new EmbeddedMessage(text, _logger.getName(), new Object[] { relatedElement, element }));
+      logger.warn(new EmbeddedMessage(text, logger.getName(), new Object[] { relatedElement, element }));
     }
     
 
-    if (_logger.isDebugEnabled()){
+    if (logger.isDebugEnabled()){
       String message = "          => Attempt attach " + DebugHelper.elementToString(element) + "---" + relationship.getName() + "--->" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                        + DebugHelper.elementToString(relatedElement);
   
@@ -140,7 +146,7 @@ public class TigerRelationshipHelper {
       else
         message += " -> [KO] "; //$NON-NLS-1$
   
-      _logger.debug(message);
+      logger.debug(message);
     }
     return done;
 
@@ -196,7 +202,7 @@ public class TigerRelationshipHelper {
           for (EObject bestElement : retrieveBestElements(targetElement, sourceElement, (EClass) reference.getEType(), transfo)) {
 
             if (reference.isMany() || resultTarget == null
-                || (resultTarget != null && (resultTarget.equals(sourceElement) || resultTarget.equals(bestElement)))) {
+                || ((resultTarget.equals(sourceElement) || resultTarget.equals(bestElement)))) {
               if (bestElement != sourceElement) {
                 detachElementByRel(targetElement, sourceElement, reference);
               }
@@ -757,12 +763,12 @@ public class TigerRelationshipHelper {
       }
     }
 
-    if (done && _logger.isInfoEnabled()) {
+    if (done && logger.isInfoEnabled()) {
       String text = NLS.bind("Element ''{0}'' has been removed from ''{1}'' ({2})",  //$NON-NLS-1$
           new Object[] { EObjectLabelProviderHelper.getText(relatedElement), 
                          EObjectLabelProviderHelper.getText(element), 
                          relationship.getName() });
-      _logger.info(new EmbeddedMessage(text, _logger.getName(), new Object[] { relatedElement, element }));
+      logger.info(new EmbeddedMessage(text, logger.getName(), new Object[] { relatedElement, element }));
     }
     return done;
 
@@ -855,8 +861,8 @@ public class TigerRelationshipHelper {
       if (clazzAttribute.isSuperTypeOf(clazz)) {
         Object value = sourceElement.eGet(attribute);
         targetElement.eSet(attribute, value);
-        if (_logger.isDebugEnabled()){
-          _logger.debug("       => Update attribute " //$NON-NLS-1$
+        if (logger.isDebugEnabled()){
+          logger.debug("       => Update attribute " //$NON-NLS-1$
                           + attribute.getName() + " on element " + DebugHelper.elementToString(targetElement)); //$NON-NLS-1$
         }
       }
@@ -882,13 +888,13 @@ public class TigerRelationshipHelper {
             && ((valueTarget == null) || ((valueTarget instanceof String) && (((String) valueTarget).length() == 0))) && !valueSource.equals(valueTarget)) {
           targetElement.eSet(attribute, valueSource);
           if (!((valueTarget == null) || (((String) valueTarget).length() == 0))) {
-            if (_logger.isInfoEnabled()){
+            if (logger.isInfoEnabled()){
               String text = NLS.bind(Messages.TigerRelationshipHelper_UpdateAttribute, new Object[] { attribute.getName(), 
                                                                                                       EObjectLabelProviderHelper.getText(targetElement), 
                                                                                                       DebugHelper.elementToString(valueTarget), 
                                                                                                       DebugHelper.elementToString(valueSource) });
               
-              _logger.info(new EmbeddedMessage(text, _logger.getName(), targetElement));
+              logger.info(new EmbeddedMessage(text, logger.getName(), targetElement));
             }
           }
 
@@ -929,10 +935,10 @@ public class TigerRelationshipHelper {
             Object valueTarget = targetElement.eGet(attribute);
             if (((valueSource == null) && (valueTarget != null)) || ((valueSource != null) && !valueSource.equals(valueTarget))) {
               if (!(valueTarget == null)) {
-                if (_logger.isInfoEnabled()){
+                if (logger.isInfoEnabled()){
                   String text = NLS.bind(Messages.TigerRelationshipHelper_UpdateAttribute, 
                       new Object[] { attribute.getName(), EObjectLabelProviderHelper.getText(targetElement), DebugHelper.elementToString(valueTarget), DebugHelper.elementToString(valueSource) }); 
-                  _logger.info(new EmbeddedMessage(text, _logger.getName(), targetElement)); 
+                  logger.info(new EmbeddedMessage(text, logger.getName(), targetElement)); 
                 }
               }
               targetElement.eSet(attribute, valueSource);

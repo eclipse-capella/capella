@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,22 +63,30 @@ import org.polarsys.capella.core.model.utils.EClassExt;
  * This class is a helper whose purpose is to give some utility methods for the business queries involving capella elements.
  */
 public class CapellaElementsHelperForBusinessQueries {
-  /**
-   * Filters the given capella elements list to return only the discrete datatypes
-   * @param elements the list
-   * @return the filtered list
-   */
-  public static List<CapellaElement> getOnlyDiscreteDatatypes(List<CapellaElement> elements) {
-    List<CapellaElement> onlyDiscreteDatatypes = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements) {
-      if ((element instanceof DataType) && ((DataType) element).isDiscrete()) {
-        onlyDiscreteDatatypes.add(element);
-      }
-    }
-    return onlyDiscreteDatatypes;
-  }
+  
+	
+	/**
+	 *  Constructor
+	 */
+	private CapellaElementsHelperForBusinessQueries() {
+		}
+	
+	/**
+	 * Filters the given capella elements list to return only the discrete datatypes
+	 * @param elements the list
+	 * @return the filtered list
+	 */
+	public static List<CapellaElement> getOnlyDiscreteDatatypes(List<CapellaElement> elements) {
+		List<CapellaElement> onlyDiscreteDatatypes = new ArrayList<CapellaElement>();
+		for (CapellaElement element : elements) {
+			if ((element instanceof DataType) && ((DataType) element).isDiscrete()) {
+				onlyDiscreteDatatypes.add(element);
+			}
+		}
+		return onlyDiscreteDatatypes;
+	}
 
-  /**
+/**
    * Filters the given list to avoid elements which cannot be instantiated as an instance of the given eclass
    * @param list the list
    * @param eclass the eclass
@@ -187,8 +195,7 @@ public class CapellaElementsHelperForBusinessQueries {
             } else if (acceptSubClassifiers) {
               // of not, tests with every one of the numeric type super classifiers if acceptSuperClassifiers is true
               for (CapellaElement superClassifier : superClassifiers) {
-                if (dataValueType == superClassifier) {
-                  if (
+                if ((dataValueType.equals(superClassifier)) &&
                   // if there is no restriction to some classes
                   ((null == restrictToInstancesOf) || (0 == restrictToInstancesOf.size()))
                   // OR
@@ -197,7 +204,6 @@ public class CapellaElementsHelperForBusinessQueries {
                       canBeInstanciatedAs(dataValue, restrictToInstancesOf)) {
                     availableElements.add(dataValue);
                     break;
-                  }
                 }
               }
             }
@@ -245,9 +251,9 @@ public class CapellaElementsHelperForBusinessQueries {
       for (EObject object : allElements) {
         if (object instanceof CapellaElement) {
           CapellaElement elt = (CapellaElement) object;
-          if ((
+          if (
           // There is an element to avoid and it is not the current one OR there is no element to avoid
-              ((null != elt) && (elt != capellaElement)) || (null == capellaElement))
+              (capellaElement==null || !elt.equals(capellaElement))
               // AND
               &&
               // The current element is an instance of the wanted <code>EClass</code>
@@ -293,11 +299,6 @@ public class CapellaElementsHelperForBusinessQueries {
           for (EClass eClass : eClasses) {
             // Check for each one of the searched EClasses
             if (
-            // dataValue is not null
-            (null != dataValue
-            // AND
-                )
-                &&
                 // Its is an instance of one of the searched type
                 canBeInstanciatedAs(dataValue, eClass)
                 // AND
@@ -857,12 +858,10 @@ public class CapellaElementsHelperForBusinessQueries {
 
     List<CapellaElement> dataValues = getDataValues(dataPkg);
     for (CapellaElement dataValue : dataValues) {
-      if (dataValue instanceof DataValue) {
-        if (DataValueExt.isDataValueConsitantWithDataType((DataValue) dataValue, dataType)) {
+      if ((dataValue instanceof DataValue) &&
+        DataValueExt.isDataValueConsitantWithDataType((DataValue) dataValue, dataType)) {
           result.add(dataValue);
-        }
       }
-
     }
     return result;
   }

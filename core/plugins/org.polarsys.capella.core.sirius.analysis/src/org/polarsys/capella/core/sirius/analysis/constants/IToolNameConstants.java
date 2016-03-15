@@ -1131,6 +1131,8 @@ public interface IToolNameConstants {
   String TOOL_PAB_INSERT_REMOVE_CATEGORIES = "Categories"; //$NON-NLS-1$
   // multi parts tools
   String TOOL_PAB_REUSE_PC = "Reuse PC"; //$NON-NLS-1$
+  String TOOL_PAB_REUSE_NODE_PC = "Reuse Node PC"; //$NON-NLS-1$
+  String TOOL_PAB_REUSE_BEHAVIOR_PC = "Reuse Behavior PC"; //$NON-NLS-1$
   String TOOL_PAB_REUSE_PHYSICAL_ACTOR = "Reuse Physical Actor"; //$NON-NLS-1$
   String TOOL_PAB_CREATE_COMPONENT_EXCHANGE_WITH_PORTS = "Component Exchange with ports"; //$NON-NLS-1$
   String TOOL_PAB_CREATE_COMPONENT_EXCHANGE_WITHOUT_PORTS = "Component Exchange without ports"; //$NON-NLS-1$

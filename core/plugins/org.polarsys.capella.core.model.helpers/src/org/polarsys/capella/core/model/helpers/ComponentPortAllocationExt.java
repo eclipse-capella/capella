@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,13 +31,19 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
  */
 public class ComponentPortAllocationExt {
 
+	/**
+	 * Constructor
+	 */
+  protected ComponentPortAllocationExt() {
+	}
+
   /**
    * Return source port of the connection (mono Part mode)
-   * @param connection_p
+   * @param connection
    * @return Part
    */
-  public static Port getSourcePort(ComponentPortAllocation connection_p) {
-    TraceableElement source = connection_p.getSourceElement();
+  public static Port getSourcePort(ComponentPortAllocation connection) {
+    TraceableElement source = connection.getSourceElement();
     if (source instanceof ComponentPortAllocationEnd) {
       return ((ComponentPortAllocationEnd) source).getPort();
     } else if (source instanceof Port) {
@@ -66,12 +72,12 @@ public class ComponentPortAllocationExt {
   /**
    * Returns source Part of the connection (MultiPart mode) if component exchange is not linked to a part, returns null. (don't returns the first representing
    * partition of connected source component)
-   * @param connection_p
+   * @param connection
    * @return
    */
   @Deprecated
-  public static Part getSourcePart(ComponentPortAllocation connection_p) {
-    TraceableElement source = connection_p.getSourceElement();
+  public static Part getSourcePart(ComponentPortAllocation connection) {
+    TraceableElement source = connection.getSourceElement();
     if (source instanceof ComponentPortAllocationEnd) {
       return ((ComponentPortAllocationEnd) source).getPart();
     } else if (source instanceof Part) {
@@ -85,12 +91,12 @@ public class ComponentPortAllocationExt {
    * Returns source Parts of the connection If component exchange is related to one part, returns a singleton of related part. If component exchange is related
    * to a component, returns representing parts of the component
    */
-  public static Collection<Part> getSourceParts(ComponentPortAllocation connection_p) {
-    Part part = getSourcePart(connection_p);
+  public static Collection<Part> getSourceParts(ComponentPortAllocation connection) {
+    Part part = getSourcePart(connection);
     if (part != null) {
       return Collections.singletonList(part);
     }
-    Component sourceComponent = getSourceComponent(connection_p);
+    Component sourceComponent = getSourceComponent(connection);
     if (sourceComponent != null) {
       return ComponentExt.getRepresentingParts(sourceComponent);
     }
@@ -100,12 +106,12 @@ public class ComponentPortAllocationExt {
   /**
    * Return target Part of the connection (MultiPart mode) if component exchange is not linked to a part, returns null. (don't returns the first representing
    * partition of connected target component)
-   * @param connection_p
+   * @param connection
    * @return
    */
   @Deprecated
-  public static Part getTargetPart(ComponentPortAllocation connection_p) {
-    TraceableElement target = connection_p.getTargetElement();
+  public static Part getTargetPart(ComponentPortAllocation connection) {
+    TraceableElement target = connection.getTargetElement();
     if (target instanceof ComponentPortAllocationEnd) {
       return ((ComponentPortAllocationEnd) target).getPart();
     } else if (target instanceof Part) {
@@ -118,12 +124,12 @@ public class ComponentPortAllocationExt {
    * Returns target Parts of the connection If component exchange is related to one part, returns a singleton of related part. If component exchange is related
    * to a component, returns representing parts of the component
    */
-  public static Collection<Part> getTargetParts(ComponentPortAllocation connection_p) {
-    Part part = getTargetPart(connection_p);
+  public static Collection<Part> getTargetParts(ComponentPortAllocation connection) {
+    Part part = getTargetPart(connection);
     if (part != null) {
       return Collections.singletonList(part);
     }
-    Component targetComponent = getTargetComponent(connection_p);
+    Component targetComponent = getTargetComponent(connection);
     if (targetComponent != null) {
       return ComponentExt.getRepresentingParts(targetComponent);
     }
@@ -132,22 +138,22 @@ public class ComponentPortAllocationExt {
 
   /**
    * Move the given component exchange to common ancestor
-   * @param exchange_p
+   * @param exchange
    * @return whether the component exchange has been moved
    */
-  public static boolean attachToDefaultContainer(ComponentPortAllocation exchange_p) {
-    return attachTo(exchange_p, getDefaultContainer(exchange_p));
+  public static boolean attachToDefaultContainer(ComponentPortAllocation exchange) {
+    return attachTo(exchange, getDefaultContainer(exchange));
   }
 
   /**
    * Attach the given component exchange to the given abstract functional block
-   * @param exchange_p
-   * @param container_p
+   * @param exchange
+   * @param container
    * @return
    */
-  public static boolean attachTo(ComponentPortAllocation exchange_p, PhysicalPort container_p) {
-    if ((container_p != null) && !container_p.equals(exchange_p.eContainer())) {
-      (container_p).getOwnedComponentPortAllocations().add(exchange_p);
+  public static boolean attachTo(ComponentPortAllocation exchange, PhysicalPort container) {
+    if ((container != null) && !container.equals(exchange.eContainer())) {
+      (container).getOwnedComponentPortAllocations().add(exchange);
       return true;
     }
     return false;
@@ -156,20 +162,20 @@ public class ComponentPortAllocationExt {
   /**
    * The best container is the common ancestor of source/target parts. if no parts, we use common ancestor of components (which can happen in OA or if user has
    * deleted parts)
-   * @param exchange_p
+   * @param exchange
    * @return a not null element
    */
-  public static PhysicalPort getDefaultContainer(ComponentPortAllocation exchange_p) {
-    return (PhysicalPort) getSourcePort(exchange_p);
+  public static PhysicalPort getDefaultContainer(ComponentPortAllocation exchange) {
+    return (PhysicalPort) getSourcePort(exchange);
   }
 
   /**
    * Return best source element of the Connection
-   * @param connection_p
+   * @param connection
    * @return ModelElement
    */
-  public static Component getSourceComponent(ComponentPortAllocation connection_p) {
-    TraceableElement source = connection_p.getSourceElement();
+  public static Component getSourceComponent(ComponentPortAllocation connection) {
+    TraceableElement source = connection.getSourceElement();
     // connection end
     if (source instanceof ComponentPortAllocationEnd) {
       Partition part = ((ComponentPortAllocationEnd) source).getPart();
@@ -183,11 +189,9 @@ public class ComponentPortAllocationExt {
     // part
     else if (source instanceof Part) {
       Part part = (Part) source;
-      if (null != part) {
-        AbstractType abstractType = part.getType();
-        if ((null != abstractType) && (abstractType instanceof Component)) {
-          return (Component) abstractType;
-        }
+      AbstractType abstractType = part.getType();
+      if ((null != abstractType) && (abstractType instanceof Component)) {
+        return (Component) abstractType;
       }
     }
     // component port
@@ -214,11 +218,11 @@ public class ComponentPortAllocationExt {
 
   /**
    * Return best target element of the Connection
-   * @param connection_p
+   * @param connection
    * @return ModelElement
    */
-  public static Component getTargetComponent(ComponentPortAllocation connection_p) {
-    TraceableElement target = connection_p.getTargetElement();
+  public static Component getTargetComponent(ComponentPortAllocation connection) {
+    TraceableElement target = connection.getTargetElement();
     // connection end
     if (target instanceof ComponentPortAllocationEnd) {
       Partition part = ((ComponentPortAllocationEnd) target).getPart();
@@ -232,11 +236,9 @@ public class ComponentPortAllocationExt {
     // part
     else if (target instanceof Part) {
       Part part = (Part) target;
-      if (null != part) {
-        AbstractType abstractType = part.getType();
-        if ((null != abstractType) && (abstractType instanceof Component)) {
-          return (Component) abstractType;
-        }
+      AbstractType abstractType = part.getType();
+      if ((null != abstractType) && (abstractType instanceof Component)) {
+        return (Component) abstractType;
       }
     }
     // component port

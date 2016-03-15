@@ -31,12 +31,12 @@ public class GetCurrent_ComponentInstance_Deployments extends AbstractQuery {
 	}
 
 	/** 
-	 * @param onlyGenerated_p
+	 * @param onlyGenerated
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ComponentInstance) {
-			ComponentInstance pc = (ComponentInstance) element_p;
+		if (element instanceof ComponentInstance) {
+			ComponentInstance pc = (ComponentInstance) element;
 			List<AbstractDeploymentLink> links = pc.getDeploymentLinks();
 			for (AbstractDeploymentLink abstractDeployment : links) {
 				if (abstractDeployment instanceof TypeDeploymentLink) {

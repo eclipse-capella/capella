@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,10 +51,10 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
     return (List) availableElements;
   }
 
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = getSuperAvailableElements(element_p);
-    if (element_p instanceof Collection) {
-      Type type = ((Collection) element_p).getType();
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    List<CapellaElement> availableElements = getSuperAvailableElements(element);
+    if (element instanceof Collection) {
+      Type type = ((Collection) element).getType();
       if (type instanceof GeneralizableElement) {
         List<CapellaElement> filteredElements = new ArrayList<CapellaElement>();
         for (CapellaElement availableElement : availableElements) {
@@ -77,41 +77,41 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
   /**
    * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
-  public List<CapellaElement> getSuperAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getSuperAvailableElements(CapellaElement element) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
     // Gets the current block architecture:
-    BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element_p);
+    BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element);
     // At least gets the values in the operational Analysis Layer
-    SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element_p);
+    SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element);
     OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
-    returnValue.addAll(getDataFromLevel(operationalAnalysis, element_p));
+    returnValue.addAll(getDataFromLevel(operationalAnalysis, element));
     //
     if (!(currentBlockArchitecture instanceof OperationalAnalysis)) {
       //
       SystemAnalysis systemAnalysis = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-      returnValue.addAll(getDataFromLevel(systemAnalysis, element_p));
+      returnValue.addAll(getDataFromLevel(systemAnalysis, element));
       //
       if (!(currentBlockArchitecture instanceof SystemAnalysis)) {
         LogicalArchitecture logicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-        returnValue.addAll(getDataFromLevel(logicalArchitecture, element_p));
+        returnValue.addAll(getDataFromLevel(logicalArchitecture, element));
         //
         if (!(currentBlockArchitecture instanceof LogicalArchitecture)) {
           //
           PhysicalArchitecture physicalArchitecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-          returnValue.addAll(getDataFromLevel(physicalArchitecture, element_p));
+          returnValue.addAll(getDataFromLevel(physicalArchitecture, element));
           //
           if (!(currentBlockArchitecture instanceof PhysicalArchitecture)) {
             EPBSArchitecture epbsArchitecture = SystemEngineeringExt.getEPBSArchitecture((systemEngineering));
-            returnValue.addAll(getDataFromLevel(epbsArchitecture, element_p));
+            returnValue.addAll(getDataFromLevel(epbsArchitecture, element));
           }
         }
       }
     }
-    returnValue.addAll(getDataFromComponentHierarchy(element_p));
+    returnValue.addAll(getDataFromComponentHierarchy(element));
 
-    returnValue.addAll(getDataFromRealizedComponentsHierarchy(element_p));
+    returnValue.addAll(getDataFromRealizedComponentsHierarchy(element));
 
-    returnValue.addAll(getTypesFromComponentHierarchy(element_p));
+    returnValue.addAll(getTypesFromComponentHierarchy(element));
 
     // Filter unNamed Capella Elements
     returnValue = filterUnNamedElements(returnValue);
@@ -121,29 +121,29 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
 
   /**
    * This method purpose is to get the available data related to the given element in the given layer
-   * @param blockArchitecture_p the layer
-   * @param capellaElement_p the capella element
+   * @param blockArchitecture the layer
+   * @param capellaElement the capella element
    * @return the available elements
    */
-  public List<CapellaElement> getDataFromLevel(BlockArchitecture blockArchitecture_p, CapellaElement capellaElement_p) {
-    if (null != blockArchitecture_p) {
-      DataPkg dataPkg = blockArchitecture_p.getOwnedDataPkg();
+  public List<CapellaElement> getDataFromLevel(BlockArchitecture blockArchitecture, CapellaElement capellaElement) {
+    if (null != blockArchitecture) {
+      DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
       if (null != dataPkg) {
-        return getDataFromLevel(dataPkg, capellaElement_p);
+        return getDataFromLevel(dataPkg, capellaElement);
       }
     }
     return Collections.emptyList();
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
+  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
     // First gets the available elements regarding the types
     List<CapellaElement> availableElemsInTermOfTypes =
-        CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg_p, getAvailableEclassForSuperType(), capellaElement_p);
+        CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, getAvailableEclassForSuperType(), capellaElement);
     // Then verify that there is no generalization cycle
     for (CapellaElement elem : availableElemsInTermOfTypes) {
-      if ((elem instanceof GeneralizableElement) && (capellaElement_p instanceof GeneralizableElement)
-          && GeneralizableElementExt.isInheritancyCycleCompatible((GeneralizableElement) elem, (GeneralizableElement) capellaElement_p)) {
+      if ((elem instanceof GeneralizableElement) && (capellaElement instanceof GeneralizableElement)
+          && GeneralizableElementExt.isInheritancyCycleCompatible((GeneralizableElement) elem, (GeneralizableElement) capellaElement)) {
         returnValue.add(elem);
       }
     }
@@ -157,13 +157,13 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
   /**
 	   * 
 	   */
-  protected List<CapellaElement> getDataFromComponentHierarchy(CapellaElement element_p) {
+  protected List<CapellaElement> getDataFromComponentHierarchy(CapellaElement element) {
     List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
 
-    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
-        allDatas.addAll(getDataFromLevel(dataPkg, element_p));
+        allDatas.addAll(getDataFromLevel(dataPkg, element));
       }
     }
 
@@ -173,12 +173,12 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
   /**
 	   * 
 	   */
-  protected List<CapellaElement> getDataFromRealizedComponentsHierarchy(CapellaElement element_p) {
+  protected List<CapellaElement> getDataFromRealizedComponentsHierarchy(CapellaElement element) {
     List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
 
-    Component currentCpnt = (element_p instanceof Component) ? (Component) element_p : null;
+    Component currentCpnt = (element instanceof Component) ? (Component) element : null;
     if (null == currentCpnt) {
-      currentCpnt = (Component) EcoreUtil2.getFirstContainer(element_p, CsPackage.Literals.COMPONENT);
+      currentCpnt = (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
     }
 
     if (null != currentCpnt) {
@@ -189,7 +189,7 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (null != dataPkg) {
-            for (CapellaElement data : getDataFromLevel(dataPkg, element_p)) {
+            for (CapellaElement data : getDataFromLevel(dataPkg, element)) {
               if (!allDatas.contains(data)) {
                 allDatas.add(data);
               }
@@ -205,10 +205,10 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
   /**
 	   * 
 	   */
-  protected List<CapellaElement> getTypesFromComponentHierarchy(CapellaElement element_p) {
+  protected List<CapellaElement> getTypesFromComponentHierarchy(CapellaElement element) {
     List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
 
-    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
         allDatas.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
@@ -224,16 +224,16 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
 
   /**
    * Removes the non primitives Collections from the given list
-   * @param elements_p the list to handle
+   * @param elements the list to handle
    * @return the processed list
    */
-  protected List<CapellaElement> removeNonPrimitiveCollections(List<CapellaElement> elements_p) {
+  protected List<CapellaElement> removeNonPrimitiveCollections(List<CapellaElement> elements) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements_p) {
+    for (CapellaElement element : elements) {
       if (element instanceof Collection) {
         Collection currentCollection = (Collection) element;
         if (currentCollection.isIsPrimitive()) {
-          // non primitive class or primitive class regarding the removePrimitive_p attribute
+          // non primitive class or primitive class regarding the removePrimitive attribute
           returnValue.add(currentCollection);
         }
       } else {
@@ -245,16 +245,16 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
 
   /**
    * Removes the non primitives classes from the given list
-   * @param elements_p the list to handle
+   * @param elements the list to handle
    * @return the processed list
    */
-  protected List<CapellaElement> removeNonPrimitiveClasses(List<CapellaElement> elements_p) {
+  protected List<CapellaElement> removeNonPrimitiveClasses(List<CapellaElement> elements) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements_p) {
+    for (CapellaElement element : elements) {
       if (element instanceof Class) {
         Class currentClass = (Class) element;
         if (currentClass.isIsPrimitive()) {
-          // non primitive class or primitive class regarding the removePrimitive_p attribute
+          // non primitive class or primitive class regarding the removePrimitive attribute
           returnValue.add(currentClass);
         }
       } else {
@@ -266,12 +266,12 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
 
   /**
    * filter unNamed Capella Elements
-   * @param list_p
+   * @param list
    * @return : List<CapellaElement>
    */
-  protected List<CapellaElement> filterUnNamedElements(List<CapellaElement> list_p) {
+  protected List<CapellaElement> filterUnNamedElements(List<CapellaElement> list) {
     List<CapellaElement> result = new ArrayList<CapellaElement>(1);
-    for (CapellaElement capellaElement : list_p) {
+    for (CapellaElement capellaElement : list) {
       if (capellaElement instanceof AbstractNamedElement) {
         String name = ((AbstractNamedElement) capellaElement).getName();
         if ((null != name) && !ICommonConstants.EMPTY_STRING.equals(name)) {

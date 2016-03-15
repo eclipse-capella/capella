@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,10 +37,10 @@ public class GetAvailable_ComponentInstance_Deployers extends AbstractQuery {
 
 	/** 
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ComponentInstance) {
-			ComponentInstance pc = (ComponentInstance) element_p;
+		if (element instanceof ComponentInstance) {
+			ComponentInstance pc = (ComponentInstance) element;
 			List<CapellaElement> candidates = getRule_MQRY_PO_Deployers_11(pc);
 			for (CapellaElement capellaElement : candidates) {
 				if (!ComponentInstanceExt.isDeployedOn((ComponentInstance) capellaElement, pc)) {
@@ -49,21 +49,21 @@ public class GetAvailable_ComponentInstance_Deployers extends AbstractQuery {
 			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p.eContainer());
-		availableElements.remove(element_p);
-		availableElements.removeAll(getCurrentElements(element_p, false));
+		availableElements.remove(element.eContainer());
+		availableElements.remove(element);
+		availableElements.removeAll(getCurrentElements(element, false));
 		return availableElements;
 	}
 
 	/** 
 	 * get all the available POs
-	 * @param currentPO_pactual element
+	 * @param currentPOactual element
 	 * @return all POs available from the instantiated PhysicalComponent
 	 */
-	private List<CapellaElement> getRule_MQRY_PO_Deployers_11(ComponentInstance currentPO_p) {
+	private List<CapellaElement> getRule_MQRY_PO_Deployers_11(ComponentInstance currentPO) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<AbstractPhysicalInstance> allPOs = SystemEngineeringExt.getAllPhysicalObject(currentPO_p);
-		Type instantiatedPC = currentPO_p.getType();
+		List<AbstractPhysicalInstance> allPOs = SystemEngineeringExt.getAllPhysicalObject(currentPO);
+		Type instantiatedPC = currentPO.getType();
 		for (AbstractPhysicalInstance physObj : allPOs) {
 			if (physObj instanceof ComponentInstance) {
 				for (AbstractDeploymentLink abstDepl : ((ComponentInstance) physObj).getType().getDeploymentLinks()) {
@@ -77,12 +77,12 @@ public class GetAvailable_ComponentInstance_Deployers extends AbstractQuery {
 	}
 
 	/** 
-	 * @param onlyGenerated_p
+	 * @param onlyGenerated
 	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ComponentInstance) {
-			ComponentInstance pc = (ComponentInstance) element_p;
+		if (element instanceof ComponentInstance) {
+			ComponentInstance pc = (ComponentInstance) element;
 			List<AbstractDeploymentLink> links = pc.getDeployingLinks();
 			for (AbstractDeploymentLink abstractDeployment : links) {
 				if (abstractDeployment instanceof TypeDeploymentLink) {

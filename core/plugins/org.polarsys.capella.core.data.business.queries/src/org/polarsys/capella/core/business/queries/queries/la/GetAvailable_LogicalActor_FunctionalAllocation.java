@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,12 +56,12 @@ public class GetAvailable_LogicalActor_FunctionalAllocation extends AbstractQuer
 	 * <p>
 	 * Gets available functions to be allocated to the component
 	 * </p>
-	 * @param element_p the component
+	 * @param element the component
 	 * @return list of Function
 	 */
-	protected List<CapellaElement> getRule_MQRY_Component_FunctionalAllocation_11(BlockArchitecture arch_p) {
+	protected List<CapellaElement> getRule_MQRY_Component_FunctionalAllocation_11(BlockArchitecture arch) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<AbstractFunction> allLeafFunctions = FunctionExt.getAllLeafAbstractFunctions(arch_p);
+		List<AbstractFunction> allLeafFunctions = FunctionExt.getAllLeafAbstractFunctions(arch);
 		List<AbstractFunction> listTORemove = new ArrayList<AbstractFunction>();
 		for (AbstractFunction function : allLeafFunctions) {
 			if (!function.getAllocationBlocks().isEmpty()) {

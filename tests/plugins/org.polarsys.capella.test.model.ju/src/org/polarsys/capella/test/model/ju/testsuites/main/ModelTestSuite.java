@@ -20,6 +20,7 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
 import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecomposition;
+import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogLabel;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
 
 /**
@@ -42,6 +43,7 @@ public class ModelTestSuite extends BasicTestSuite {
     // tests.add(new DetachTestSuite());
     tests.add(new SortSelectionTestSuite());
     tests.add(new SortContentTestSuite());
+    tests.add(new NewDiagramDialogLabel());
     return tests;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,26 +41,26 @@ public class GetAvailable_LogicalActor_ActorRealization extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null == systemEngineering) {
 			return availableElements;
 		}
-		if (element_p instanceof LogicalActor) {
-			LogicalActor logicalActor = (LogicalActor) element_p;
+		if (element instanceof LogicalActor) {
+			LogicalActor logicalActor = (LogicalActor) element;
 			availableElements.addAll(getRule_MQRY_LogicalActor_ActorRealization_11(systemEngineering, logicalActor));
 		}
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_LogicalActor_ActorRealization_11(SystemEngineering systemEng_p, LogicalActor element_p) {
+	private List<CapellaElement> getRule_MQRY_LogicalActor_ActorRealization_11(SystemEngineering systemEng, LogicalActor element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		SystemAnalysis arch = SystemEngineeringExt.getOwnedSystemAnalysis(systemEng_p);
+		SystemAnalysis arch = SystemEngineeringExt.getOwnedSystemAnalysis(systemEng);
 		ActorPkg ownedActorPkg = arch.getOwnedActorPkg();
 		List<Actor> allActors = ActorPkgExt.getAllActors(ownedActorPkg);
-		if (null != element_p) {
-			EList<SystemActorRealization> ownedActorRealisations = element_p.getOwnedSystemActorRealizations();
+		if (null != element) {
+			EList<SystemActorRealization> ownedActorRealisations = element.getOwnedSystemActorRealizations();
 			for (SystemActorRealization actRealisation : ownedActorRealisations) {
 				TraceableElement targetElement = actRealisation.getTargetElement();
 				if (null != targetElement) {

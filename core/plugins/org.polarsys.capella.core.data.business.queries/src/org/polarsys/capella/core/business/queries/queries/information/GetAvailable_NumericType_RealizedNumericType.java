@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,16 +37,16 @@ public class GetAvailable_NumericType_RealizedNumericType extends AbstractQuery 
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (null != systemEngineering) {
 			for (EObject elt : EObjectExt.getAll(systemEngineering, getEClass())) {
 				availableElements.add((CapellaElement) elt);
 			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p);
+		availableElements.remove(element);
 		return availableElements;
 	}
 

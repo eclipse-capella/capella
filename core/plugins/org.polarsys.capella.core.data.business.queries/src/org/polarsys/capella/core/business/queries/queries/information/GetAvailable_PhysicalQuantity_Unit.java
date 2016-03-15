@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,12 +65,12 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
    * Refer MQRY_PhysicalDimension_DefaultUnit_1
    * </p>
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     boolean isElementFromSharedPkg = false;
     if (null == systemEngineering) {
-      SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+      SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
       for (ReuseLink link : sharedPkg.getReuseLinks()) {
         if (SystemEngineeringExt.getSystemEngineering(link) != null) {
           systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -82,8 +82,8 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
         return availableElements;
       }
     }
-    if (element_p instanceof PhysicalQuantity) {
-      PhysicalQuantity currentPhysicalDimension = (PhysicalQuantity) element_p;
+    if (element instanceof PhysicalQuantity) {
+      PhysicalQuantity currentPhysicalDimension = (PhysicalQuantity) element;
       if (!isElementFromSharedPkg) {
         availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_11(currentPhysicalDimension));
         availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_12(currentPhysicalDimension));
@@ -94,18 +94,18 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_11(PhysicalQuantity currentPhysicalDimension_p) {
+  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_11(PhysicalQuantity currentPhysicalDimension) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    EObject container = currentPhysicalDimension_p.eContainer();
-    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentPhysicalDimension_p);
-    availableElements.addAll(getElementsFromBlockArchitecture(arch, currentPhysicalDimension_p.getUnit()));
+    EObject container = currentPhysicalDimension.eContainer();
+    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentPhysicalDimension);
+    availableElements.addAll(getElementsFromBlockArchitecture(arch, currentPhysicalDimension.getUnit()));
     if (container instanceof DataPkg) {
       Component comp = DataPkgExt.getRootComponent((DataPkg) container);
       if (null != comp) {
         DataPkg dataPkg = comp.getOwnedDataPkg();
         if (null != dataPkg) {
           for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-            if (unit.equals(currentPhysicalDimension_p.getUnit())) {
+            if (unit.equals(currentPhysicalDimension.getUnit())) {
               continue;
             }
             availableElements.add(unit);
@@ -116,15 +116,15 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_12(PhysicalQuantity currentPhysicalDimension_p) {
+  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_12(PhysicalQuantity currentPhysicalDimension) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    EObject container = currentPhysicalDimension_p.eContainer();
+    EObject container = currentPhysicalDimension.eContainer();
     if (container instanceof DataPkg) {
       List<DataPkg> dataPkgList = DataPkgExt.getDataPkgsFromParentHierarchy((DataPkg) container);
       for (DataPkg dataPkg : dataPkgList) {
         if (null != dataPkg) {
           for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-            if (unit.equals(currentPhysicalDimension_p.getUnit())) {
+            if (unit.equals(currentPhysicalDimension.getUnit())) {
               continue;
             }
             availableElements.add(unit);
@@ -132,17 +132,17 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
         }
       }
     }
-    availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_12_1(currentPhysicalDimension_p));
+    availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_12_1(currentPhysicalDimension));
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_13(PhysicalQuantity currentPhysicalDimension_p, SystemEngineering systemEngineering_p) {
+  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_13(PhysicalQuantity currentPhysicalDimension, SystemEngineering systemEngineering) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
       DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
       if (null != dataPkg) {
         for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-          if (unit.equals(currentPhysicalDimension_p.getUnit())) {
+          if (unit.equals(currentPhysicalDimension.getUnit())) {
             continue;
           }
           availableElements.add(unit);
@@ -151,7 +151,7 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
       GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
       if (pkg != null) {
         for (Unit unit : GenericPkgExt.getAllUnits(pkg)) {
-          if (unit.equals(currentPhysicalDimension_p.getUnit())) {
+          if (unit.equals(currentPhysicalDimension.getUnit())) {
             continue;
           }
           availableElements.add(unit);
@@ -177,29 +177,29 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_12_1(PhysicalQuantity currentPhysicalDimension_p) {
+  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_12_1(PhysicalQuantity currentPhysicalDimension) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentPhysicalDimension_p);
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentPhysicalDimension_p);
+    BlockArchitecture arch = DataPkgExt.getRootBlockArchitecture(currentPhysicalDimension);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentPhysicalDimension);
     OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
     if (null != oa) {
-      availableElements.addAll(getElementsFromBlockArchitecture(oa, currentPhysicalDimension_p.getUnit()));
+      availableElements.addAll(getElementsFromBlockArchitecture(oa, currentPhysicalDimension.getUnit()));
     } else {
       SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-      availableElements.addAll(getElementsFromBlockArchitecture(ca, currentPhysicalDimension_p.getUnit()));
+      availableElements.addAll(getElementsFromBlockArchitecture(ca, currentPhysicalDimension.getUnit()));
     }
     if (arch != null) {
       if (((null != oa) && (arch instanceof LogicalArchitecture)) || (arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
         SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentPhysicalDimension_p.getUnit()));
+        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentPhysicalDimension.getUnit()));
       }
       if ((arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
         LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-        availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentPhysicalDimension_p.getUnit()));
+        availableElements.addAll(getElementsFromBlockArchitecture(logArch, currentPhysicalDimension.getUnit()));
       }
       if ((arch instanceof EPBSArchitecture)) {
         PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-        availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentPhysicalDimension_p.getUnit()));
+        availableElements.addAll(getElementsFromBlockArchitecture(physArch, currentPhysicalDimension.getUnit()));
       }
     }
     return availableElements;

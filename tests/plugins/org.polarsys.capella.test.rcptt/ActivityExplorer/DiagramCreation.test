@@ -41,7 +41,7 @@ with [get-editor "P1 - Activity Explorer"] {
         get-link "[OCB] Create a new Operational Capabilities diagram" | click
     }
 }
-get-window "Type Operational Capabilities Blank name" | get-button OK | click
+get-window "New Operational Capabilities Blank" | get-button OK | click
 get-editor "[OCB] Operational Capabilities" | get-diagram -index 1 | get-edit-part 
     -name "[OCB] Operational Capabilities"
 

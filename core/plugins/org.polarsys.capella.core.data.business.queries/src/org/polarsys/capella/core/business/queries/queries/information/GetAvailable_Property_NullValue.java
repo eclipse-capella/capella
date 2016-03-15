@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,22 +45,22 @@ public class GetAvailable_Property_NullValue extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     // GET THE PARAMETERS AND INITIALIZE RESULTING LIST
-    CapellaElement element_p = (CapellaElement) input;
+    CapellaElement element = (CapellaElement) input;
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     // GET AVAILABLE ELEMENTS
     // get all data in the root data package of each allocated architectures
-    BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+    BlockArchitecture currentBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element);
     for (BlockArchitecture blockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(currentBlockArchitecture)) {
       DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
       if (dataPkg != null) {
-        result.addAll(getDataFromLevel(dataPkg, element_p));
+        result.addAll(getDataFromLevel(dataPkg, element));
       }
     }
     // get all data and primitive types in the data packages of each parents components
-    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (dataPkg != null) {
-        result.addAll(getDataFromLevel(dataPkg, element_p));
+        result.addAll(getDataFromLevel(dataPkg, element));
         List<CapellaElement> allTypes = new ArrayList<CapellaElement>();
         allTypes.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
         allTypes = QueryInterpretor.executeFilter(allTypes, new KeepPrimitiveClassInstanceOfSpecificEClassFilter(InformationPackage.Literals.CLASS));
@@ -70,7 +70,7 @@ public class GetAvailable_Property_NullValue extends AbstractQuery {
     }
     // get all values in the data packages of each parent components of realized components
     Component currentCpnt =
-        (element_p instanceof Component) ? (Component) element_p : (Component) EcoreUtil2.getFirstContainer(element_p, CsPackage.Literals.COMPONENT);
+        (element instanceof Component) ? (Component) element : (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
     if (currentCpnt != null) {
       for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
         List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
@@ -78,7 +78,7 @@ public class GetAvailable_Property_NullValue extends AbstractQuery {
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (dataPkg != null) {
-            for (CapellaElement data : getDataFromLevel(dataPkg, element_p)) {
+            for (CapellaElement data : getDataFromLevel(dataPkg, element)) {
               if (!result.contains(data)) {
                 result.add(data);
               }
@@ -87,27 +87,27 @@ public class GetAvailable_Property_NullValue extends AbstractQuery {
         }
       }
     }
-    result.addAll(getUnlevelizedData(element_p));
+    result.addAll(getUnlevelizedData(element));
     result = QueryInterpretor.executeFilter(result, new RemoveUnnamedElementFilter());
     return (List) result;
   }
 
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
-    if (capellaElement_p instanceof MultiplicityElement) {
+  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
+    if (capellaElement instanceof MultiplicityElement) {
       List<EReference> features = Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE);
       List<CapellaElement> returnValue =
-          CapellaElementsHelperForBusinessQueries.getStandardApplicableValuesForMultiplicityElementInLevel(dataPkg_p, (MultiplicityElement) capellaElement_p,
+          CapellaElementsHelperForBusinessQueries.getStandardApplicableValuesForMultiplicityElementInLevel(dataPkg, (MultiplicityElement) capellaElement,
               features);
-      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesWithTypeOf(dataPkg_p, capellaElement_p));
+      returnValue.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesWithTypeOf(dataPkg, capellaElement));
       return returnValue;
     }
     return Collections.emptyList();
   }
 
-  public List<CapellaElement> getUnlevelizedData(CapellaElement capellaElement_p) {
+  public List<CapellaElement> getUnlevelizedData(CapellaElement capellaElement) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    if (capellaElement_p instanceof Property) {
-      AbstractType type = ((Property) capellaElement_p).getAbstractType();
+    if (capellaElement instanceof Property) {
+      AbstractType type = ((Property) capellaElement).getAbstractType();
       if (type != null) {
         if (type instanceof Enumeration) {
           List<GeneralizableElement> rootSupertypes = GeneralizableElementExt.getRootSupertypes((Enumeration) type);

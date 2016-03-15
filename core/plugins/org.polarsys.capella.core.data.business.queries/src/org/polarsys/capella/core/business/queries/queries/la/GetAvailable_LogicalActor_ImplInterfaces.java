@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,29 +43,29 @@ public class GetAvailable_LogicalActor_ImplInterfaces extends AbstractQuery {
   /**
    * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (null == systemEngineering) {
       return availableElements;
     }
-    if (element_p instanceof LogicalActor) {
-      LogicalActor ele = (LogicalActor) element_p;
+    if (element instanceof LogicalActor) {
+      LogicalActor ele = (LogicalActor) element;
       availableElements.addAll(getRule_MQRY_Service_ItemRealization_11(systemEngineering, ele));
       availableElements.addAll(getRule_MQRY_Actor_UsedInterfaces12(ele, systemEngineering));
     }
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11(SystemEngineering systemEng_p, LogicalActor actor_p) {
+  private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11(SystemEngineering systemEng, LogicalActor actor) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     BlockArchitecture arch = null;
-    arch = SystemEngineeringExt.getRootBlockArchitecture(actor_p);
+    arch = SystemEngineeringExt.getRootBlockArchitecture(actor);
     if (null != arch) {
-      availableElements.addAll(getElementsFromBlockArchitecture(arch, actor_p));
+      availableElements.addAll(getElementsFromBlockArchitecture(arch, actor));
     }
     if (!(arch instanceof OperationalAnalysis)) {
-      availableElements.addAll(getRule_MQRY_Service_ItemRealization_11_1(systemEng_p, actor_p));
+      availableElements.addAll(getRule_MQRY_Service_ItemRealization_11_1(systemEng, actor));
     }
     return availableElements;
   }
@@ -80,47 +80,47 @@ public class GetAvailable_LogicalActor_ImplInterfaces extends AbstractQuery {
    * <p>
    * Refer MQRY_Actor_UsedInterfaces_12
    * </p>
-   * @param currentActor_pthe current {@link Actor}
-   * @param systemEngineering_pthe {@link SystemEngineering}
+   * @param currentActorthe current {@link Actor}
+   * @param systemEngineeringthe {@link SystemEngineering}
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_Actor_UsedInterfaces12(Component currentActor_p, SystemEngineering systemEngineering_p) {
+  private List<CapellaElement> getRule_MQRY_Actor_UsedInterfaces12(Component currentActor, SystemEngineering systemEngineering) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     return availableElements;
   }
 
   /**
-   * get all the Interface categories from 'functionalExchange_p' parent Block Architecture
-   * @param currentProperty_p_p
-   * @param oa_p
+   * get all the Interface categories from 'functionalExchange' parent Block Architecture
+   * @param currentProperty
+   * @param oa
    * @return list of ExchangeCategories
    */
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, LogicalActor element_p) {
+  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, LogicalActor element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    availableElements.addAll(InterfacePkgExt.getAllInterfaces(arch_p.getOwnedInterfacePkg()));
-    if (arch_p instanceof LogicalArchitecture) {
-      LogicalActorPkg ownedLogicalActorPkg = ((LogicalArchitecture) arch_p).getOwnedLogicalActorPkg();
+    availableElements.addAll(InterfacePkgExt.getAllInterfaces(arch.getOwnedInterfacePkg()));
+    if (arch instanceof LogicalArchitecture) {
+      LogicalActorPkg ownedLogicalActorPkg = ((LogicalArchitecture) arch).getOwnedLogicalActorPkg();
       availableElements.addAll(LogicalActorPkgExt.getAllInterfacesFromLogicalActorPkg(ownedLogicalActorPkg));
     }
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11_1(SystemEngineering systemEng_p, LogicalActor currentProperty_p) {
+  private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11_1(SystemEngineering systemEng, LogicalActor currentProperty) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     BlockArchitecture arch = null;
-    arch = SystemEngineeringExt.getRootBlockArchitecture(currentProperty_p);
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentProperty_p);
+    arch = SystemEngineeringExt.getRootBlockArchitecture(currentProperty);
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentProperty);
     OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
     if (null != oa) {
-      availableElements.addAll(getElementsFromBlockArchitecture(oa, currentProperty_p));
+      availableElements.addAll(getElementsFromBlockArchitecture(oa, currentProperty));
     } else {
       SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
-      availableElements.addAll(getElementsFromBlockArchitecture(ca, currentProperty_p));
+      availableElements.addAll(getElementsFromBlockArchitecture(ca, currentProperty));
     }
     if (null != arch) {
       if (((null != oa) && (arch instanceof LogicalArchitecture)) || (arch instanceof PhysicalArchitecture)) {
         SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
-        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentProperty_p));
+        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch, currentProperty));
       }
     }
     return availableElements;

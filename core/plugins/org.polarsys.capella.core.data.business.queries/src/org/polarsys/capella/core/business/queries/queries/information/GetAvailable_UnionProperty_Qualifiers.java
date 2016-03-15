@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,32 +65,32 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element_p);
-		SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element_p);
+		BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element);
+		SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element);
 		OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
-		returnValue.addAll(getDataFromLevel(operationalAnalysis, element_p));
+		returnValue.addAll(getDataFromLevel(operationalAnalysis, element));
 		if (!(currentBlockArchitecture instanceof OperationalAnalysis)) {
 			SystemAnalysis systemAnalysis = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-			returnValue.addAll(getDataFromLevel(systemAnalysis, element_p));
+			returnValue.addAll(getDataFromLevel(systemAnalysis, element));
 			if (!(currentBlockArchitecture instanceof SystemAnalysis)) {
 				LogicalArchitecture logicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-				returnValue.addAll(getDataFromLevel(logicalArchitecture, element_p));
+				returnValue.addAll(getDataFromLevel(logicalArchitecture, element));
 				if (!(currentBlockArchitecture instanceof LogicalArchitecture)) {
 					PhysicalArchitecture physicalArchitecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-					returnValue.addAll(getDataFromLevel(physicalArchitecture, element_p));
+					returnValue.addAll(getDataFromLevel(physicalArchitecture, element));
 					if (!(currentBlockArchitecture instanceof PhysicalArchitecture)) {
 						EPBSArchitecture epbsArchitecture = SystemEngineeringExt.getEPBSArchitecture((systemEngineering));
-						returnValue.addAll(getDataFromLevel(epbsArchitecture, element_p));
+						returnValue.addAll(getDataFromLevel(epbsArchitecture, element));
 					}
 				}
 			}
 		}
-		returnValue.addAll(getUnlevelizedData(element_p));
-		returnValue.addAll(getDataFromComponentHierarchy(element_p));
-		returnValue.addAll(getDataFromRealizedComponentsHierarchy(element_p));
-		returnValue.addAll(getTypesFromComponentHierarchy(element_p));
+		returnValue.addAll(getUnlevelizedData(element));
+		returnValue.addAll(getDataFromComponentHierarchy(element));
+		returnValue.addAll(getDataFromRealizedComponentsHierarchy(element));
+		returnValue.addAll(getTypesFromComponentHierarchy(element));
 		returnValue = filterUnNamedElements(returnValue);
 		return returnValue;
 	}
@@ -98,21 +98,21 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery#getDataFromLevel(org.polarsys.capella.core.data.cs.BlockArchitecture,org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
-		if (!(capellaElement_p instanceof UnionProperty)) {
+	public List<CapellaElement> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
+		if (!(capellaElement instanceof UnionProperty)) {
 			return Collections.emptyList();
 		}
-		UnionProperty unionProperty = (UnionProperty) capellaElement_p;
+		UnionProperty unionProperty = (UnionProperty) capellaElement;
 		AbstractType discriminantType = getParentUnionDiscriminantType(unionProperty);
 		if (discriminantType instanceof BooleanType) {
-			return filterAvailableData(getApplicableQualifiersForDiscriminantType(dataPkg_p, (BooleanType) discriminantType), unionProperty);
+			return filterAvailableData(getApplicableQualifiersForDiscriminantType(dataPkg, (BooleanType) discriminantType), unionProperty);
 		} else if (discriminantType instanceof Enumeration) {
-			return filterAvailableData(getApplicableQualifiersForDiscriminantType(dataPkg_p, (Enumeration) discriminantType), unionProperty);
+			return filterAvailableData(getApplicableQualifiersForDiscriminantType(dataPkg, (Enumeration) discriminantType), unionProperty);
 		} else {
 			if (discriminantType instanceof DataType) {
-				List<CapellaElement> dataValuesCorrespondingToDataType = CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg_p,
+				List<CapellaElement> dataValuesCorrespondingToDataType = CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg,
 						(DataType) discriminantType, false, true, null);
-				dataValuesCorrespondingToDataType.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg_p, (DataType) discriminantType, false));
+				dataValuesCorrespondingToDataType.addAll(CapellaElementsHelperForBusinessQueries.getPropertiesTypedBy(dataPkg, (DataType) discriminantType, false));
 				return filterAvailableData(dataValuesCorrespondingToDataType, unionProperty);
 			}
 			return Collections.emptyList();
@@ -122,12 +122,12 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 	/** 
 	 * @see org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery#getUnlevelizedData(org.polarsys.capella.core.data.capellacore.CapellaElement)
 	 */
-	public List<CapellaElement> getUnlevelizedData(CapellaElement capellaElement_p) {
+	public List<CapellaElement> getUnlevelizedData(CapellaElement capellaElement) {
 		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		if (!(capellaElement_p instanceof UnionProperty)) {
+		if (!(capellaElement instanceof UnionProperty)) {
 			return returnValue;
 		}
-		UnionProperty unionProperty = (UnionProperty) capellaElement_p;
+		UnionProperty unionProperty = (UnionProperty) capellaElement;
 		AbstractType discriminantType = getParentUnionDiscriminantType(unionProperty);
 		if (discriminantType instanceof BooleanType) {
 			return filterAvailableData(getApplicableQualifiersForDiscriminantType((BooleanType) discriminantType), unionProperty);
@@ -140,11 +140,11 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Returns discriminant type of the parent <code>Union</code> of the given <code>UnionProperty</code>
-	 * @param currentProperty_p the given <code>UnionProperty</code>
+	 * @param currentProperty the given <code>UnionProperty</code>
 	 * @return the discriminant type of the parent union if there is any, null otherwise
 	 */
-	protected AbstractType getParentUnionDiscriminantType(UnionProperty currentProperty_p) {
-		UnionProperty discriminant = getParentUnionDiscriminant(currentProperty_p);
+	protected AbstractType getParentUnionDiscriminantType(UnionProperty currentProperty) {
+		UnionProperty discriminant = getParentUnionDiscriminant(currentProperty);
 		if (null != discriminant) {
 			return discriminant.getAbstractType();
 		}
@@ -153,14 +153,14 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Filters the given list in order to skip the elements which shall be skipped for an affectation to the given <code>UnionProperty</code> qualifier.
-	 * @param list_p the list
-	 * @param unionProperty_p the union property
+	 * @param list the list
+	 * @param unionProperty the union property
 	 * @return the filtered list
 	 */
-	public List<CapellaElement> filterAvailableData(List<CapellaElement> list_p, UnionProperty unionProperty_p) {
+	public List<CapellaElement> filterAvailableData(List<CapellaElement> list, UnionProperty unionProperty) {
 		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		for (CapellaElement capellaElement : list_p) {
-			if (capellaElement instanceof DataValue && !shallBeSkipped((DataValue) capellaElement, unionProperty_p)) {
+		for (CapellaElement capellaElement : list) {
+			if (capellaElement instanceof DataValue && !shallBeSkipped((DataValue) capellaElement, unionProperty)) {
 				returnValue.add(capellaElement);
 			}
 		}
@@ -169,40 +169,40 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Gets the applicable qualifiers for the given discriminant type
-	 * @param dataPkg_p the data package where the search is done
-	 * @param booleanType_p the discriminant type
+	 * @param dataPkg the data package where the search is done
+	 * @param booleanType the discriminant type
 	 * @return the applicable qualifiers
 	 */
-	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(DataPkg dataPkg_p, BooleanType booleanType_p) {
+	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(DataPkg dataPkg, BooleanType booleanType) {
 		List<EClass> booleanReferencesAndExpression = new ArrayList<EClass>();
 		booleanReferencesAndExpression.add(DatavaluePackage.Literals.BOOLEAN_REFERENCE);
 		booleanReferencesAndExpression.add(DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE);
-		return CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg_p, booleanType_p, false, true, booleanReferencesAndExpression, null);
+		return CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg, booleanType, false, true, booleanReferencesAndExpression, null);
 	}
 
 	/** 
 	 * Gets the applicable qualifiers for the given discriminant type
-	 * @param dataPkg_p the data package where the search is done
-	 * @param enumeration_p the discriminant type
+	 * @param dataPkg the data package where the search is done
+	 * @param enumeration the discriminant type
 	 * @return the applicable qualifiers
 	 */
-	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(DataPkg dataPkg_p, Enumeration enumeration_p) {
-		List<CapellaElement> returnValue = CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg_p, enumeration_p, false, true,
+	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(DataPkg dataPkg, Enumeration enumeration) {
+		List<CapellaElement> returnValue = CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg, enumeration, false, true,
 				DatavaluePackage.Literals.ENUMERATION_REFERENCE, null);
-		returnValue.addAll(CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg_p, enumeration_p, false, true,
+		returnValue.addAll(CapellaElementsHelperForBusinessQueries.getValuesTypedBy(dataPkg, enumeration, false, true,
 				DatavaluePackage.Literals.ABSTRACT_EXPRESSION_VALUE, null));
 		return returnValue;
 	}
 
 	/** 
 	 * Gets the applicable qualifiers for the given discriminant type
-	 * @param blockArchitecture_p the layer where the search is done
-	 * @param booleanType_p the discriminant type
+	 * @param blockArchitecture the layer where the search is done
+	 * @param booleanType the discriminant type
 	 * @return the applicable qualifiers
 	 */
-	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(BooleanType booleanType_p) {
+	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(BooleanType booleanType) {
 		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		List<GeneralizableElement> rootSuperClassifiers = GeneralizableElementExt.getRootSupertypes(booleanType_p);
+		List<GeneralizableElement> rootSuperClassifiers = GeneralizableElementExt.getRootSupertypes(booleanType);
 		for (CapellaElement capellaElement : rootSuperClassifiers) {
 			if (capellaElement instanceof BooleanType) {
 				BooleanType rootBooleanType = (BooleanType) capellaElement;
@@ -214,13 +214,13 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Gets the applicable qualifiers for the given discriminant type
-	 * @param blockArchitecture_p the layer where the search is done
-	 * @param enumeration_p the discriminant type
+	 * @param blockArchitecture the layer where the search is done
+	 * @param enumeration the discriminant type
 	 * @return the applicable qualifiers
 	 */
-	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(Enumeration enumeration_p) {
+	protected List<CapellaElement> getApplicableQualifiersForDiscriminantType(Enumeration enumeration) {
 		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		List<GeneralizableElement> rootSuperClassifiers = GeneralizableElementExt.getRootSupertypes(enumeration_p);
+		List<GeneralizableElement> rootSuperClassifiers = GeneralizableElementExt.getRootSupertypes(enumeration);
 		for (CapellaElement capellaElement : rootSuperClassifiers) {
 			if (capellaElement instanceof Enumeration) {
 				Enumeration rootEnumerationType = (Enumeration) capellaElement;
@@ -232,11 +232,11 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Returns discriminant of the parent <code>Union</code> of the given <code>UnionProperty</code>
-	 * @param currentProperty_p the given <code>UnionProperty</code>
+	 * @param currentProperty the given <code>UnionProperty</code>
 	 * @return the discriminant of the parent union if there is any, null otherwise
 	 */
-	protected static UnionProperty getParentUnionDiscriminant(UnionProperty currentProperty_p) {
-		EObject container = currentProperty_p.eContainer();
+	protected static UnionProperty getParentUnionDiscriminant(UnionProperty currentProperty) {
+		EObject container = currentProperty.eContainer();
 		if (container instanceof Union) {
 			Union union = (Union) container;
 			return union.getDiscriminant();
@@ -246,17 +246,17 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Allows to know if the given data value shall be skipped for the available values for the given <code>UnionProperty</code> qualifiers.
-	 * @param value_p the data value
-	 * @param unionProperty_p the union property
+	 * @param value the data value
+	 * @param unionProperty the union property
 	 * @return <code>true</code> if it shall be skipped, <code>false</code> otherwise
 	 */
-	protected boolean shallBeSkipped(DataValue value_p, UnionProperty unionProperty_p) {
-		if (isParentUnionVariant(unionProperty_p)) {
+	protected boolean shallBeSkipped(DataValue value, UnionProperty unionProperty) {
+		if (isParentUnionVariant(unionProperty)) {
 			return false;
 		}
-		List<DataValue> qualifiers = getAllParentUnionUnionPropertiesQualifiers(unionProperty_p);
-		for (DataValue value : qualifiers) {
-			if (value == value_p) {
+		List<DataValue> qualifiers = getAllParentUnionUnionPropertiesQualifiers(unionProperty);
+		for (DataValue val : qualifiers) {
+			if (val == value) {
 				return true;
 			}
 		}
@@ -265,11 +265,11 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Allows to know if the given <code>UnionProperty</code>'s parent union is a variant or not
-	 * @param currentProperty_p the union property
+	 * @param currentProperty the union property
 	 * @return <code>true</code> if it is, <code>false</code> otherwise
 	 */
-	protected static boolean isParentUnionVariant(UnionProperty currentProperty_p) {
-		EObject container = currentProperty_p.eContainer();
+	protected static boolean isParentUnionVariant(UnionProperty currentProperty) {
+		EObject container = currentProperty.eContainer();
 		if (container instanceof Union) {
 			Union union = (Union) container;
 			return union.getKind() == UnionKind.VARIANT ? true : false;
@@ -279,12 +279,12 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * This method allows to get all qualifiers of all union properties contained by the union parent of the given <code>UnionProperty</code>.
-	 * @param currentProperty_p the given union property
+	 * @param currentProperty the given union property
 	 * @return the list of all qualifiers
 	 */
-	protected static List<DataValue> getAllParentUnionUnionPropertiesQualifiers(UnionProperty currentProperty_p) {
+	protected static List<DataValue> getAllParentUnionUnionPropertiesQualifiers(UnionProperty currentProperty) {
 		List<DataValue> returnValue = new ArrayList<DataValue>();
-		EObject container = currentProperty_p.eContainer();
+		EObject container = currentProperty.eContainer();
 		if (container instanceof Union) {
 			Union union = (Union) container;
 			EList<Property> properties = union.getContainedProperties();
@@ -300,15 +300,15 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * This method purpose is to get the available data related to the given element in the given layer
-	 * @param blockArchitecture_p the layer
-	 * @param capellaElement_p the capella element
+	 * @param blockArchitecture the layer
+	 * @param capellaElement the capella element
 	 * @return the available elements
 	 */
-	public List<CapellaElement> getDataFromLevel(BlockArchitecture blockArchitecture_p, CapellaElement capellaElement_p) {
-		if (null != blockArchitecture_p) {
-			DataPkg dataPkg = blockArchitecture_p.getOwnedDataPkg();
+	public List<CapellaElement> getDataFromLevel(BlockArchitecture blockArchitecture, CapellaElement capellaElement) {
+		if (null != blockArchitecture) {
+			DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
 			if (null != dataPkg) {
-				return getDataFromLevel(dataPkg, capellaElement_p);
+				return getDataFromLevel(dataPkg, capellaElement);
 			}
 		}
 		return Collections.emptyList();
@@ -316,12 +316,12 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 */
-	protected List<CapellaElement> getDataFromComponentHierarchy(CapellaElement element_p) {
+	protected List<CapellaElement> getDataFromComponentHierarchy(CapellaElement element) {
 		List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
-		for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+		for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
 			DataPkg dataPkg = cpnt.getOwnedDataPkg();
 			if (null != dataPkg) {
-				allDatas.addAll(getDataFromLevel(dataPkg, element_p));
+				allDatas.addAll(getDataFromLevel(dataPkg, element));
 			}
 		}
 		return allDatas;
@@ -329,11 +329,11 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 */
-	protected List<CapellaElement> getDataFromRealizedComponentsHierarchy(CapellaElement element_p) {
+	protected List<CapellaElement> getDataFromRealizedComponentsHierarchy(CapellaElement element) {
 		List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
-		Component currentCpnt = (element_p instanceof Component) ? (Component) element_p : null;
+		Component currentCpnt = (element instanceof Component) ? (Component) element : null;
 		if (null == currentCpnt) {
-			currentCpnt = (Component) EcoreUtil2.getFirstContainer(element_p, CsPackage.Literals.COMPONENT);
+			currentCpnt = (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
 		}
 		if (null != currentCpnt) {
 			for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
@@ -342,7 +342,7 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 				for (Component cpnt : componentHierarchy) {
 					DataPkg dataPkg = cpnt.getOwnedDataPkg();
 					if (null != dataPkg) {
-						for (CapellaElement data : getDataFromLevel(dataPkg, element_p)) {
+						for (CapellaElement data : getDataFromLevel(dataPkg, element)) {
 							if (!allDatas.contains(data)) {
 								allDatas.add(data);
 							}
@@ -356,9 +356,9 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 */
-	protected List<CapellaElement> getTypesFromComponentHierarchy(CapellaElement element_p) {
+	protected List<CapellaElement> getTypesFromComponentHierarchy(CapellaElement element) {
 		List<CapellaElement> allDatas = new ArrayList<CapellaElement>();
-		for (Component cpnt : CapellaElementExt.getComponentHierarchy(element_p)) {
+		for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
 			DataPkg dataPkg = cpnt.getOwnedDataPkg();
 			if (null != dataPkg) {
 				allDatas.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
@@ -371,12 +371,12 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * filter unNamed Capella Elements
-	 * @param list_p
+	 * @param list
 	 * @return : List<CapellaElement>
 	 */
-	protected List<CapellaElement> filterUnNamedElements(List<CapellaElement> list_p) {
+	protected List<CapellaElement> filterUnNamedElements(List<CapellaElement> list) {
 		List<CapellaElement> result = new ArrayList<CapellaElement>(1);
-		for (CapellaElement capellaElement : list_p) {
+		for (CapellaElement capellaElement : list) {
 			if (capellaElement instanceof AbstractNamedElement) {
 				String name = ((AbstractNamedElement) capellaElement).getName();
 				if ((null != name) && !ICommonConstants.EMPTY_STRING.equals(name)) {
@@ -389,34 +389,34 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Removes the non primitives classes from the given list
-	 * @param elements_p the list to handle
+	 * @param elements the list to handle
 	 * @return the processed list
 	 */
-	protected List<CapellaElement> removeNonPrimitiveClasses(List<CapellaElement> elements_p) {
-		return removePrimitiveOrNonPrimitiveClasses(elements_p, false);
+	protected List<CapellaElement> removeNonPrimitiveClasses(List<CapellaElement> elements) {
+		return removePrimitiveOrNonPrimitiveClasses(elements, false);
 	}
 
 	/** 
 	 * Removes the non primitives Collections from the given list
-	 * @param elements_p the list to handle
+	 * @param elements the list to handle
 	 * @return the processed list
 	 */
-	protected List<CapellaElement> removeNonPrimitiveCollections(List<CapellaElement> elements_p) {
-		return removePrimitiveOrNonPrimitiveCollections(elements_p, false);
+	protected List<CapellaElement> removeNonPrimitiveCollections(List<CapellaElement> elements) {
+		return removePrimitiveOrNonPrimitiveCollections(elements, false);
 	}
 
 	/** 
 	 * Allows to remove primitive or non primitive classes from a list
-	 * @param elements_p the list
-	 * @param removePrimitive_p <code>true</code> if you want to remove the primitive classes, <code>false</code> if you want to remove the non primitive classes
+	 * @param elements the list
+	 * @param removePrimitive <code>true</code> if you want to remove the primitive classes, <code>false</code> if you want to remove the non primitive classes
 	 * @return the processed list
 	 */
-	protected List<CapellaElement> removePrimitiveOrNonPrimitiveClasses(List<CapellaElement> elements_p, boolean removePrimitive_p) {
+	protected List<CapellaElement> removePrimitiveOrNonPrimitiveClasses(List<CapellaElement> elements, boolean removePrimitive) {
 		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		for (CapellaElement element : elements_p) {
+		for (CapellaElement element : elements) {
 			if (element instanceof Class) {
 				Class currentClass = (Class) element;
-				if ((!removePrimitive_p && currentClass.isIsPrimitive()) || (removePrimitive_p && !currentClass.isIsPrimitive())) {
+				if ((!removePrimitive && currentClass.isIsPrimitive()) || (removePrimitive && !currentClass.isIsPrimitive())) {
 					returnValue.add(currentClass);
 				}
 			} else {
@@ -428,17 +428,17 @@ public class GetAvailable_UnionProperty_Qualifiers extends AbstractQuery {
 
 	/** 
 	 * Allows to remove primitive or non primitive Collections from a list
-	 * @param elements_p the list
-	 * @param removePrimitive_p <code>true</code> if you want to remove the primitive Collections, <code>false</code> if you want to remove the non primitive
+	 * @param elements the list
+	 * @param removePrimitive <code>true</code> if you want to remove the primitive Collections, <code>false</code> if you want to remove the non primitive
 	 * Collections
 	 * @return the processed list
 	 */
-	protected List<CapellaElement> removePrimitiveOrNonPrimitiveCollections(List<CapellaElement> elements_p, boolean removePrimitive_p) {
+	protected List<CapellaElement> removePrimitiveOrNonPrimitiveCollections(List<CapellaElement> elements, boolean removePrimitive) {
 		List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-		for (CapellaElement element : elements_p) {
+		for (CapellaElement element : elements) {
 			if (element instanceof Collection) {
 				Collection currentCollection = (Collection) element;
-				if ((!removePrimitive_p && currentCollection.isIsPrimitive()) || (removePrimitive_p && !currentCollection.isIsPrimitive())) {
+				if ((!removePrimitive && currentCollection.isIsPrimitive()) || (removePrimitive && !currentCollection.isIsPrimitive())) {
 					returnValue.add(currentCollection);
 				}
 			} else {

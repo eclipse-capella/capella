@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,12 +72,12 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		boolean isMessageFromSharedPkg = false;
 		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
 			for (ReuseLink link : sharedPkg.getReuseLinks()) {
 				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
 					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
@@ -88,8 +88,8 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 			if (systemEngineering == null)
 				return availableElements;
 		}
-		if (element_p instanceof Message) {
-			Message currentMessage = (Message) element_p;
+		if (element instanceof Message) {
+			Message currentMessage = (Message) element;
 			if (!isMessageFromSharedPkg) {
 				availableElements.addAll(getRule_MQRY_Message_Inherited_11(currentMessage));
 				availableElements.addAll(getRule_MQRY_Message_Inherited_12(currentMessage));
@@ -101,15 +101,15 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Message_Inherited_11(Message currentMessage_p) {
+	private List<CapellaElement> getRule_MQRY_Message_Inherited_11(Message currentMessage) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		DataPkg messagePkg = MessageExt.getRootOwnerDataPkg(currentMessage_p);
+		DataPkg messagePkg = MessageExt.getRootOwnerDataPkg(currentMessage);
 		if (null != messagePkg) {
 			for (Message message : DataPkgExt.getAllMessages(messagePkg)) {
-				if ((message == null) || (message.equals(currentMessage_p)))
+				if ((message == null) || (message.equals(currentMessage)))
 					continue;
-				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage_p).contains(message)
-						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage_p)) {
+				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
+						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
 					availableElements.add(message);
 				}
 			}
@@ -117,19 +117,19 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Message_Inherited_12(Message currentMessage_p) {
+	private List<CapellaElement> getRule_MQRY_Message_Inherited_12(Message currentMessage) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		DataPkg messagePkg = MessageExt.getRootOwnerDataPkg(currentMessage_p);
+		DataPkg messagePkg = MessageExt.getRootOwnerDataPkg(currentMessage);
 		if (null != messagePkg) {
 			ComponentArchitecture arch = DataPkgExt.getRootComponentArchitecture(messagePkg);
 			if (null != arch) {
 				DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
 				if (null != dataPkg) {
 					for (Message message : DataPkgExt.getAllMessages(dataPkg)) {
-						if ((message == null) || (message.equals(currentMessage_p)))
+						if ((message == null) || (message.equals(currentMessage)))
 							continue;
-						if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage_p).contains(message)
-								&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage_p)) {
+						if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
+								&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
 							availableElements.add(message);
 						}
 					}
@@ -141,10 +141,10 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 					DataPkg dataPkg = ((LogicalComponent) comp).getOwnedDataPkg();
 					if (null != dataPkg) {
 						for (Message message : DataPkgExt.getAllMessages(dataPkg)) {
-							if ((message == null) || (message.equals(currentMessage_p)))
+							if ((message == null) || (message.equals(currentMessage)))
 								continue;
-							if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage_p).contains(message)
-									&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage_p)) {
+							if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
+									&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
 								availableElements.add(message);
 							}
 						}
@@ -155,15 +155,15 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Message_Inherited_13(Message currentMessage_p) {
+	private List<CapellaElement> getRule_MQRY_Message_Inherited_13(Message currentMessage) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		DataPkg messagePkg = MessageExt.getRootOwnerDataPkg(currentMessage_p);
+		DataPkg messagePkg = MessageExt.getRootOwnerDataPkg(currentMessage);
 		if (null != messagePkg) {
 			for (Message message : DataPkgExt.getMessagesFromParentHierarchy(messagePkg)) {
-				if ((message == null) || (message.equals(currentMessage_p)))
+				if ((message == null) || (message.equals(currentMessage)))
 					continue;
-				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage_p).contains(message)
-						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage_p)) {
+				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
+						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
 					availableElements.add(message);
 				}
 			}
@@ -171,16 +171,16 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 		return availableElements;
 	}
 
-	private List<CapellaElement> getRule_MQRY_Message_Inherited_14(Message currentMessage_p, SystemEngineering systemEngineering_p) {
+	private List<CapellaElement> getRule_MQRY_Message_Inherited_14(Message currentMessage, SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 			if (null != dataPkg) {
 				for (Message message : DataPkgExt.getAllMessages(dataPkg)) {
-					if ((message == null) || (message.equals(currentMessage_p)))
+					if ((message == null) || (message.equals(currentMessage)))
 						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage_p).contains(message)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage_p)) {
+					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
+							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
 						availableElements.add(message);
 					}
 				}
@@ -188,10 +188,10 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
 				for (Message message : GenericPkgExt.getAllMessages(pkg)) {
-					if ((message == null) || (message.equals(currentMessage_p)))
+					if ((message == null) || (message.equals(currentMessage)))
 						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage_p).contains(message)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage_p)) {
+					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
+							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
 						availableElements.add(message);
 					}
 				}

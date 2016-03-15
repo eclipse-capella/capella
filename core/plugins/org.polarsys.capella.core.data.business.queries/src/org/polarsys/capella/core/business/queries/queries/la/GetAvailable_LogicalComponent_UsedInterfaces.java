@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -101,14 +101,14 @@ public class GetAvailable_LogicalComponent_UsedInterfaces extends AbstractQuery 
    * <p>
    * The owner logical component of the current one.(Refer MQRY_LogicalComponent_UsedInterfaces_11).
    * </p>
-   * @param currentLC_p the current Logical Component
-   * @param parentLC_p the owner Logical Component
+   * @param currentLC the current Logical Component
+   * @param parentLC the owner Logical Component
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_11(LogicalComponent currentLC_p) {
+  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_11(LogicalComponent currentLC) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 
-    Component parentLC = LogicalComponentExt.getParentContainer(currentLC_p);
+    Component parentLC = LogicalComponentExt.getParentContainer(currentLC);
     if (parentLC instanceof LogicalComponent) {
       availableElements.addAll(ComponentExt.getUsedInterfaces(parentLC));
     }
@@ -120,13 +120,13 @@ public class GetAvailable_LogicalComponent_UsedInterfaces extends AbstractQuery 
    * Gets all the interfaces contained by the interface package (and sub packages) of the current logical component's parent (Refer
    * MQRY_LogicalComponent_UsedInterfaces_12).
    * </p>
-   * @param currentLC_p the current Logical Component
-   * @param parentLC_p the owner Logical Component
+   * @param currentLC the current Logical Component
+   * @param parentLC the owner Logical Component
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_12(LogicalComponent currentLC_p) {
+  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_12(LogicalComponent currentLC) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    Object parent = currentLC_p.eContainer();
+    Object parent = currentLC.eContainer();
     if (null != parent) {
       if (parent instanceof LogicalComponentPkg) {
         LogicalComponentPkg rootLCPkg = LogicalComponentPkgExt.getRootLogicalComponentPkg((LogicalComponentPkg) parent);
@@ -146,14 +146,14 @@ public class GetAvailable_LogicalComponent_UsedInterfaces extends AbstractQuery 
    * Gets all the interfaces contained by the interface package(sub packages) of the current LC's parent hierarchy((Refer
    * MQRY_LogicalComponent_UsedInterfaces_13).
    * </p>
-   * @param currentLC_p the current Logical Component
-   * @param parentLC_p the parent Logical Component
+   * @param currentLC the current Logical Component
+   * @param parentLC the parent Logical Component
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_13(LogicalComponent currentLC_p) {
+  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_13(LogicalComponent currentLC) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     // all the interfaces in the parent hierarchy
-    for (Interface inter : LogicalComponentExt.getInterfacesFromLCParentHierarchy(currentLC_p)) {
+    for (Interface inter : LogicalComponentExt.getInterfacesFromLCParentHierarchy(currentLC)) {
       availableElements.add(inter);
     }
     return availableElements;
@@ -163,13 +163,13 @@ public class GetAvailable_LogicalComponent_UsedInterfaces extends AbstractQuery 
    * <p>
    * All the interfaces used/implemented by the same level LCs((Refer MQRY_LogicalComponent_UsedInterfaces_14).
    * </p>
-   * @param currentLC_p the current Logical Component
-   * @param parentLC_p the parent Logical Component
+   * @param currentLC the current Logical Component
+   * @param parentLC the parent Logical Component
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_14(LogicalComponent currentLC_p) {
+  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_14(LogicalComponent currentLC) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    Object parent = currentLC_p.eContainer();
+    Object parent = currentLC.eContainer();
     if (null != parent) {
       if (parent instanceof LogicalComponentPkg) {
         LogicalComponentPkg rootLCPkg = LogicalComponentPkgExt.getRootLogicalComponentPkg((LogicalComponentPkg) parent);
@@ -178,14 +178,14 @@ public class GetAvailable_LogicalComponent_UsedInterfaces extends AbstractQuery 
       if (parent instanceof LogicalComponent) {
         LogicalComponent parentLC = (LogicalComponent) parent;
         for (LogicalComponent lc : LogicalComponentExt.getSameLevelComponents(parentLC)) {
-          if ((lc == null) || (lc.equals(currentLC_p))) {
+          if ((lc == null) || (lc.equals(currentLC))) {
             continue;
           }
         }
       } else if (parent instanceof LogicalArchitecture) {
         LogicalArchitecture arch = (LogicalArchitecture) parent;
         for (LogicalComponent lc : LogicalArchitectureExt.getSameLevelComponents(arch)) {
-          if ((lc == null) || (lc.equals(currentLC_p))) {
+          if ((lc == null) || (lc.equals(currentLC))) {
             continue;
           }
 
@@ -200,13 +200,13 @@ public class GetAvailable_LogicalComponent_UsedInterfaces extends AbstractQuery 
    * All the Interfaces contained by the Interface Package (and all of its sub-packages) of the current Logical Component.((Refer
    * MQRY_LogicalComponent_UsedInterfaces_15).
    * </p>
-   * @param currentLC_p the current Logical Component
-   * @param parentLogArch_p the parent Logical Architecture
+   * @param currentLC the current Logical Component
+   * @param parentLogArch the parent Logical Architecture
    * @return list of interfaces
    */
-  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_15(LogicalComponent currentLC_p) {
+  private List<CapellaElement> getRule_MQRY_LC_UsedInterfaces_15(LogicalComponent currentLC) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    if (null != currentLC_p) {
+    if (null != currentLC) {
     }
     return availableElements;
   }

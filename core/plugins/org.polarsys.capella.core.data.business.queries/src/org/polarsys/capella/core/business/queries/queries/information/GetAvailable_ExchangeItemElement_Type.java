@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,12 +51,12 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
    * Except The current type itself
    * </p>
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     boolean isParameterFromSharedPkg = false;
     if (null == systemEngineering) {
-      SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+      SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element);
       if (sharedPkg != null) {
         for (ReuseLink link : sharedPkg.getReuseLinks()) {
           if (SystemEngineeringExt.getSystemEngineering(link) != null) {
@@ -70,8 +70,8 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
         return availableElements;
       }
     }
-    if (element_p instanceof ExchangeItemElement) {
-      ExchangeItemElement parameter = (ExchangeItemElement) element_p;
+    if (element instanceof ExchangeItemElement) {
+      ExchangeItemElement parameter = (ExchangeItemElement) element;
       if (!isParameterFromSharedPkg) {
         availableElements.addAll(getRule_MQRY_Parameter_Type_11(parameter));
         availableElements.addAll(getRule_MQRY_Parameter_Type_12(parameter));
@@ -79,16 +79,16 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
       availableElements.addAll(getRule_MQRY_Parameter_Type_15(parameter, systemEngineering));
     }
     availableElements = ListExt.removeDuplicates(availableElements);
-    if (element_p instanceof ExchangeItemElement) {
-      ExchangeItemElement parameter = (ExchangeItemElement) element_p;
+    if (element instanceof ExchangeItemElement) {
+      ExchangeItemElement parameter = (ExchangeItemElement) element;
       availableElements.remove(parameter.getType());
     }
     return availableElements;
   }
 
-  private List<CapellaElement> getRule_MQRY_Parameter_Type_11(ExchangeItemElement currenParameter_p) {
+  private List<CapellaElement> getRule_MQRY_Parameter_Type_11(ExchangeItemElement currenParameter) {
     List<CapellaElement> allAllocatedDatas = new ArrayList<CapellaElement>();
-    BlockArchitecture block = ComponentExt.getRootBlockArchitecture(currenParameter_p);
+    BlockArchitecture block = ComponentExt.getRootBlockArchitecture(currenParameter);
     for (BlockArchitecture current : BlockArchitectureExt.getAllAllocatedArchitectures(block)) {
       DataPkg pkg = DataPkgExt.getDataPkgOfBlockArchitecture(current);
       allAllocatedDatas.addAll(DataPkgExt.getAllTypesFromDataPkg(pkg));
@@ -98,9 +98,9 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
 
   /** 
 	 */
-  private List<CapellaElement> getRule_MQRY_Parameter_Type_12(ExchangeItemElement currentParameter_p) {
+  private List<CapellaElement> getRule_MQRY_Parameter_Type_12(ExchangeItemElement currentParameter) {
     List<CapellaElement> allAllocatedDatas = new ArrayList<CapellaElement>();
-    for (Component cpnt : CapellaElementExt.getComponentHierarchy(currentParameter_p)) {
+    for (Component cpnt : CapellaElementExt.getComponentHierarchy(currentParameter)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
         allAllocatedDatas.addAll(DataPkgExt.getAllTypesFromDataPkg(dataPkg));
@@ -109,10 +109,10 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
     return allAllocatedDatas;
   }
 
-  private List<CapellaElement> getRule_MQRY_Parameter_Type_15(ExchangeItemElement currenParameter_p, SystemEngineering systemEngineering_p) {
+  private List<CapellaElement> getRule_MQRY_Parameter_Type_15(ExchangeItemElement currenParameter, SystemEngineering systemEngineering) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    AbstractType type = currenParameter_p.getType();
-    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+    AbstractType type = currenParameter.getType();
+    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
       DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
       if (dataPkg != null) {
         for (CapellaElement element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
