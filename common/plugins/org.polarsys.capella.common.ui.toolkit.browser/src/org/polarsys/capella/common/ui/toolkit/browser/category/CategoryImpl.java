@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,38 +72,38 @@ public class CategoryImpl implements ICategory {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#isAvailableForType(java.lang.Object)
    */
-  public boolean isAvailableForType(Object element_p) {
-    return TypeHelper.getInstance().isInstanceOf(element_p, qualifiedName);
+  public boolean isAvailableForType(Object element) {
+    return TypeHelper.getInstance().isInstanceOf(element, qualifiedName);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#setId(java.lang.String)
    */
-  public void setId(String id_p) {
-    id = id_p;
+  public void setId(String pId) {
+    this.id = pId;
   }
 
   /**
    * Add an id to the sub categories id list.
-   * @param id_p
+   * @param id 
    */
-  public void addSubCategoryId(String id_p) {
-    if (id_p != null && !id_p.isEmpty())
-      subCategoriesIds.add(id_p);
+  public void addSubCategoryId(String pId) {
+    if (pId != null && !pId.isEmpty())
+      subCategoriesIds.add(pId);
   }
 
   /**
    * Add a category
    */
-  public void setQuery(Object query_p) {
-    categoryQuery = query_p;
+  public void setQuery(Object query) {
+    categoryQuery = query;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#setTypeFullyQualifiedName(java.lang.String)
    */
-  public void setTypeFullyQualifiedName(String element_p) {
-    qualifiedName = element_p;
+  public void setTypeFullyQualifiedName(String element) {
+    qualifiedName = element;
   }
 
   /**
@@ -116,23 +116,23 @@ public class CategoryImpl implements ICategory {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#compute()
    */
-  public List<Object> compute(Object currentElement_p) {
-    return QueryAdapter.getInstance().compute(currentElement_p, categoryQuery);
+  public List<Object> compute(Object currentElement) {
+    return QueryAdapter.getInstance().compute(currentElement, categoryQuery);
   }
 
   /**
-   * @param name_p the name to set
+   * @param name  the name to set
    */
-  public void setName(String name_p) {
-    name = name_p;
+  public void setName(String pName) {
+    name = pName;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#setIsTopLevel(boolean)
    */
-  public void setIsTopLevel(boolean isTopLevel_p) {
+  public void setIsTopLevel(boolean isTopLevel) {
     // if redefined by different extensions, return (A or... Z)
-    isTopLevel |= isTopLevel_p;
+    this.isTopLevel |= isTopLevel;
   }
 
   /**
@@ -158,11 +158,18 @@ public class CategoryImpl implements ICategory {
   }
 
   /**
-   * @param itemQueries_p the itemQueries to set
+   * @param itemQueries  the itemQueries to set
    */
   public void addItemQuery(Object query) {
     if (query != null)
       itemQueries.add(query);
   }
 
+  /**
+   * @return the category identifier
+   */
+  @Override
+  public String getCategoryId() {
+	return this.id;
+  }
 }

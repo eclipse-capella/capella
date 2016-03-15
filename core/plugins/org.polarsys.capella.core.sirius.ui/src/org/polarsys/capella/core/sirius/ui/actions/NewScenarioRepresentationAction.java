@@ -32,30 +32,30 @@ import org.polarsys.capella.core.data.interaction.Scenario;
  * The action allowing to create new representations.
  */
 public class NewScenarioRepresentationAction extends NewRepresentationAction {
-  private AbstractCapability _selectedEObject;
+  private AbstractCapability selectedEObject;
 
   /**
    * Constructs an action allowing to create new representations.
-   * @param description_p The representation description.
-   * @param selectedEObject_p The selected capability.
-   * @param session_p The current session.
+   * @param description The representation description.
+   * @param selectedEObject The selected capability.
+   * @param session The current session.
    */
-  public NewScenarioRepresentationAction(RepresentationDescription description_p, AbstractCapability selectedEObject_p, Session session_p) {
-    this(description_p, selectedEObject_p, session_p, false, true);
+  public NewScenarioRepresentationAction(RepresentationDescription description, AbstractCapability selectedEObject, Session session) {
+    this(description, selectedEObject, session, false, true);
   }
 
   /**
    * Constructs an action allowing to create new representations.
-   * @param description_p The representation description.
-   * @param selectedEObject_p The selected capability.
-   * @param session_p The current session.
-   * @param forceDefaultName_p
-   * @param openRepresentation_p
+   * @param description The representation description.
+   * @param selectedEObject The selected capability.
+   * @param session The current session.
+   * @param forceDefaultName
+   * @param openRepresentation
    */
-  public NewScenarioRepresentationAction(RepresentationDescription description_p, AbstractCapability selectedEObject_p, Session session_p,
-      boolean forceDefaultName_p, boolean openRepresentation_p) {
-    super(description_p, selectedEObject_p, session_p);
-    _selectedEObject = selectedEObject_p;
+  public NewScenarioRepresentationAction(RepresentationDescription description, AbstractCapability selectedEObject, Session session,
+      boolean forceDefaultName, boolean openRepresentation) {
+    super(description, selectedEObject, session);
+    this.selectedEObject = selectedEObject;
   }
 
   /**
@@ -64,18 +64,19 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
   @Override
   public void run() {
     // 1 - Computes the default representation name.
-    String defaultName = computeDefaultName(_selectedEObject, _description);
+    String defaultName = computeDefaultName(selectedEObject, description);
 
-    if (!_forceDefaultName) {
+    if (!forceDefaultName) {
       
-      String label = _description.getLabel();
+      String label = description.getLabel();
       if (label == null || label.isEmpty()) {
-        label = _description.getName();
+        label = description.getName();
       }
       
-      String dialogTitle = "Type " + label + " name"; //$NON-NLS-1$ //$NON-NLS-2$
+      String dialogTitle = "New "+label; //$NON-NLS-1$
+      String dialogMessage = "Name:"; //$NON-NLS-1$
       Shell activeShell = Display.getDefault().getActiveShell();
-      InputDialog representationNameDlg = new InputDialog(activeShell, dialogTitle, dialogTitle, defaultName, null);
+      InputDialog representationNameDlg = new InputDialog(activeShell, dialogTitle, dialogMessage, defaultName, null);
       if (Window.OK == representationNameDlg.open()) {
         defaultName = representationNameDlg.getValue();
       } else {
@@ -85,13 +86,13 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
 
     // Do not call ToggleCanonicalRefresh anymore since Sirius 4.18.
     // Executes the NewRepresentationCommand.
-    NewScenarioRepresentationCommand command = new NewScenarioRepresentationCommand(defaultName, _selectedEObject, _description, _session);
-    TransactionHelper.getExecutionManager(_session).execute(command);
+    NewScenarioRepresentationCommand command = new NewScenarioRepresentationCommand(defaultName, selectedEObject, description, session);
+    TransactionHelper.getExecutionManager(session).execute(command);
 
     if (null != command.getRepresentation()) {
-      SessionManager.INSTANCE.notifyRepresentationCreated(_session);
-      if (_openRepresentation) {
-        DialectUIManager.INSTANCE.openEditor(_session, command.getRepresentation(), new NullProgressMonitor());
+      SessionManager.INSTANCE.notifyRepresentationCreated(session);
+      if (openRepresentation) {
+        DialectUIManager.INSTANCE.openEditor(session, command.getRepresentation(), new NullProgressMonitor());
       }
     }
   }
@@ -99,25 +100,25 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
   // The command allowing to create a new representation.
   private class NewScenarioRepresentationCommand extends AbstractReadWriteCommand {
     // The representation name.
-    private String _newName;
+    private String newName;
     // The new representation.
-    private DRepresentation _representation;
+    private DRepresentation representation;
 
     // Fields.
-    private RepresentationDescription _repDescription;
-    private Session _currentSession;
+    private RepresentationDescription repDescription;
+    private Session currentSession;
 
     /**
      * Constructs the command allowing to create a new representation.
-     * @param newName_p The new representation name.
-     * @param eObject_p The selected EObject.
-     * @param repDescription_p The current representation description.
-     * @param session_p The current session.
+     * @param newName The new representation name.
+     * @param eObject The selected EObject.
+     * @param repDescription The current representation description.
+     * @param session The current session.
      */
-    public NewScenarioRepresentationCommand(String newName_p, AbstractCapability eObject_p, RepresentationDescription repDescription_p, Session session_p) {
-      _newName = newName_p;
-      _repDescription = repDescription_p;
-      _currentSession = session_p;
+    public NewScenarioRepresentationCommand(String newName, AbstractCapability eObject, RepresentationDescription repDescription, Session session) {
+      this.newName = newName;
+      this.repDescription = repDescription;
+      this.currentSession = session;
     }
 
     /**
@@ -133,7 +134,7 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
      */
     @Override
     public void commandRolledBack() {
-      _representation = null;
+      representation = null;
     }
 
     /**
@@ -141,7 +142,7 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
      * @return The new representation.
      */
     public DRepresentation getRepresentation() {
-      return _representation;
+      return representation;
     }
 
     /**
@@ -151,10 +152,10 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
     public void run() {
       NullProgressMonitor monitor = new NullProgressMonitor();
       Scenario scenario = InteractionFactory.eINSTANCE.createScenario();
-      scenario.setName(_newName);
-      _selectedEObject.getOwnedScenarios().add(scenario);
+      scenario.setName(newName);
+      selectedEObject.getOwnedScenarios().add(scenario);
 
-      _representation = DialectManager.INSTANCE.createRepresentation(_newName, scenario, _repDescription, _currentSession, monitor);
+      representation = DialectManager.INSTANCE.createRepresentation(newName, scenario, repDescription, currentSession, monitor);
     }
   }
 }

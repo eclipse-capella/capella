@@ -141,6 +141,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -566,10 +567,10 @@ public class FaServices {
 
     if (DiagramHelper.getService().isArchitectureBlank(diagram)
         || DiagramHelper.getService().hasKind(diagram, DiagramDescriptionConstants.ROLE_BLANK_DIAGRAM_NAME)) {
-      return FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) function, diagram);
+      return FaServices.getFaServices().getMappingABAbstractFunction(function, diagram);
     }
 
-    return FaServices.getFaServices().getMappingDFFunction((AbstractFunction) function, diagram);
+    return FaServices.getFaServices().getMappingDFFunction(function, diagram);
 
   }
 
@@ -1969,7 +1970,7 @@ public class FaServices {
 
         // retrieve newly created views
         for (DSemanticDecorator aView : views) {
-          if (aFunction.equals(aView.getTarget()) && aView instanceof AbstractDNode) {
+          if (aFunction.equals(aView.getTarget()) && (aView instanceof AbstractDNode)) {
             showHideCategories.put(aFunction, (AbstractDNode) aView);
           }
         }
@@ -1981,7 +1982,7 @@ public class FaServices {
     for (AbstractFunction aFunction : selectedFunctions) {
       if (!visibleFunctions.contains(aFunction)) {
         AbstractDNode node = showHideCategories.get(aFunction);
-        if (node != null && CapellaServices.getService().isSynchronized(diagram)) {
+        if ((node != null) && CapellaServices.getService().isSynchronized(diagram)) {
           HashMapSet<ExchangeCategory, EObject> scope = (HashMapSet) getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(
               node, content);
           HashMapSet<EObject, EObject> selectedElements = new HashMapSet<EObject, EObject>((Map) scope);
@@ -4560,63 +4561,65 @@ public class FaServices {
 
   }
 
-  public List<AbstractFunction> getShowableAllocatedFunctions(Component component, DNodeContainer containerView) {
+  public List<AbstractFunction> getShowableAllocatedFunctions(EObject componentOrPart, DNodeContainer containerView) {
+
     // showable functions are:
     List<AbstractFunction> showableFunctions = new ArrayList<AbstractFunction>();
 
-    // - allocated functions of this components
-    showableFunctions.addAll(component.getAllocatedFunctions());
+    if (componentOrPart instanceof Part) {
+      // - allocated functions of this components
+      showableFunctions.addAll(((Component) CsServices.getService().getComponentType((Part) componentOrPart))
+          .getAllocatedFunctions());
+
+    } else if (componentOrPart instanceof Component) {
+      // - allocated functions of this components
+      showableFunctions.addAll(((Component) componentOrPart).getAllocatedFunctions());
+    }
 
     // - parent functions where all of their children are in this component or in child components not displayed
-    Set<AbstractFunction> leaves = getLeavesFunctionsOfSubComponentsNotDisplayed(component, containerView);
+    Set<AbstractFunction> leaves = getLeavesFunctionsOfSubComponentsNotDisplayed(componentOrPart, containerView);
     Set<AbstractFunction> allFunctions = AbstractFunctionExt.getRecursiveAllocatedFunctions(leaves, leaves);
     showableFunctions.addAll(allFunctions);
 
     return showableFunctions;
   }
 
-  protected Set<AbstractFunction> getLeavesFunctionsOfSubComponentsNotDisplayed(Component component,
+  protected Set<AbstractFunction> getLeavesFunctionsOfSubComponentsNotDisplayed(EObject componentOrPart,
       DNodeContainer containerView) {
     Set<AbstractFunction> leaveFunctions = new HashSet<AbstractFunction>();
 
-    // return all allocated functions of this component
-    leaveFunctions.addAll(component.getAllocatedFunctions());
+    // retrieve all allocated functions of this component or entities (including roles)
+    if (componentOrPart instanceof Part) {
+      leaveFunctions.addAll(((Component) (((Part) componentOrPart).getAbstractType())).getAllocatedFunctions());
 
-    // do not forget operational activities (function) in roles in entities (component)
-    if (component instanceof Entity) {
-      Entity entity = (Entity) component;
+    } else if (componentOrPart instanceof Component) {
+      leaveFunctions.addAll(((Component) componentOrPart).getAllocatedFunctions());
+    }
+
+    if (componentOrPart instanceof Entity) {
+      Entity entity = (Entity) componentOrPart;
       for (Role role : entity.getAllocatedRoles()) {
-        if (!DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), role)) {
+        if (!DiagramServices.getDiagramServices().isOnDiagram(containerView, role)) {
           leaveFunctions.addAll(role.getAllocatedOperationalActivities());
         }
       }
     }
 
     // add leaves of sub components only if it is not displayed, recursively
-    Set<Component> subComponents = new HashSet<Component>();
-    subComponents.addAll(ComponentExt.getSubUsedComponents(component));
-    if (component instanceof PhysicalComponent) {
-      PhysicalComponent physicalComponent = (PhysicalComponent) component;
-      subComponents.addAll(physicalComponent.getDeployedPhysicalComponents());
-    }
-    for (Component subComponent : subComponents) {
-      boolean isDisplayed = false;
-      if (DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), subComponent)) {
-        isDisplayed = true;
-      } else {
-        for (Part representingPart : ComponentExt.getRepresentingParts(subComponent)) {
-          if (DiagramServices.getDiagramServices().isOnDiagram(containerView.getParentDiagram(), representingPart)) {
-            isDisplayed = true;
-            break;
-          }
-        }
-      }
+    Set<EObject> subComponents = new HashSet<EObject>();
+    if (componentOrPart instanceof Component) {
+      subComponents.addAll(ComponentExt.getSubUsedComponents((Component) componentOrPart));
 
-      if (!isDisplayed) {
+    } else if (componentOrPart instanceof Part) {
+      subComponents.addAll(PartExt.getSubUsedAndDeployedParts((Part) componentOrPart));
+    }
+
+    for (EObject subComponent : subComponents) {
+      if (!DiagramServices.getDiagramServices().isOnDiagram(containerView, subComponent)) {
         leaveFunctions.addAll(getLeavesFunctionsOfSubComponentsNotDisplayed(subComponent, containerView));
       }
     }
-    
+
     return leaveFunctions;
   }
 
@@ -5661,8 +5664,9 @@ public class FaServices {
     Collection<DDiagramElement> invisibleCategoryEdges = new HashSet<DDiagramElement>();
     for (DDiagramElement element : content.getDiagramElements(FaServices.getFaServices().getMappingFECategory(
         currentDiagram))) {
-      if (!element.isVisible())
+      if (!element.isVisible()) {
         invisibleCategoryEdges.add(element);
+      }
     }
 
     for (DDiagramElement categoryEdge : invisibleCategoryEdges) {
@@ -5670,13 +5674,14 @@ public class FaServices {
       EObject srcFunc = ((DDiagramElement) ((DEdge) categoryEdge).getSourceNode().eContainer()).getTarget();
       EObject tarFunc = ((DDiagramElement) ((DEdge) categoryEdge).getTargetNode().eContainer()).getTarget();
 
-      if (categoryObj != null && categoryObj instanceof ExchangeCategory) {
+      if ((categoryObj != null) && (categoryObj instanceof ExchangeCategory)) {
         AbstractShowHide invCatSwitch = new ShowHideInvisibleExchangeCategory(content);
         DiagramContext ctx = invCatSwitch.new DiagramContext();
         if (selectedElements.contains(categoryObj)) {
           showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, true);
-        } else
+        } else {
           showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, false);
+        }
       }
     }
 
@@ -5691,16 +5696,18 @@ public class FaServices {
    * @return The best container for a function, taking into account hidden functions
    */
   public static EObject getBestFunctionContainer(EObject abstractFunction, DDiagramContents content) {
-    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
+    if ((abstractFunction != null) && (abstractFunction instanceof AbstractFunction)) {
       if (!content.getDiagramElements(abstractFunction).isEmpty()) {
         boolean bVisible = false;
         for (DDiagramElement element : content.getDiagramElements(abstractFunction)) {
-          if (element.isVisible())
+          if (element.isVisible()) {
             bVisible = true;
+          }
         }
         // If there is at least one representative view for the function, return the function itself
-        if (bVisible)
+        if (bVisible) {
           return abstractFunction;
+        }
       }
       // Else, return its best container
       DragAndDropTarget node = content.getBestContainer(abstractFunction);
@@ -5709,7 +5716,7 @@ public class FaServices {
           return null;
         }
       }
-      if (node instanceof DSemanticDecorator && (!(node instanceof DDiagram))) {
+      if ((node instanceof DSemanticDecorator) && (!(node instanceof DDiagram))) {
         return ((DSemanticDecorator) node).getTarget();
       }
       return abstractFunction.eContainer();
@@ -5835,16 +5842,18 @@ public class FaServices {
   public HashMapSet<EObject, EObject> getShowHideFECategoriesScope(DSemanticDecorator context) {
     HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
     EObject abstractFunction = context.getTarget();
-    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
-      for (FunctionalExchange fe : FunctionExt.getOutGoingExchange((AbstractFunction) abstractFunction))
+    if ((abstractFunction != null) && (abstractFunction instanceof AbstractFunction)) {
+      for (FunctionalExchange fe : FunctionExt.getOutGoingExchange((AbstractFunction) abstractFunction)) {
         for (ExchangeCategory value : fe.getCategories()) {
           result.put(value, FunctionExt.getOutGoingAbstractFunction(fe));
         }
+      }
 
-      for (FunctionalExchange fe : FunctionExt.getIncomingExchange((AbstractFunction) abstractFunction))
+      for (FunctionalExchange fe : FunctionExt.getIncomingExchange((AbstractFunction) abstractFunction)) {
         for (ExchangeCategory value : fe.getCategories()) {
           result.put(value, FunctionExt.getIncomingAbstractFunction(fe));
         }
+      }
     }
     return result;
   }
@@ -5860,20 +5869,22 @@ public class FaServices {
     HashMapSet<EObject, Map.Entry<EObject, EObject>> result = new HashMapSet<EObject, Map.Entry<EObject, EObject>>();
     EObject abstractFunction = context.getTarget();
 
-    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
-      for (FunctionalExchange fe : FunctionExt.getAllOutgoingExchanges((AbstractFunction) abstractFunction))
+    if ((abstractFunction != null) && (abstractFunction instanceof AbstractFunction)) {
+      for (FunctionalExchange fe : FunctionExt.getAllOutgoingExchanges((AbstractFunction) abstractFunction)) {
         for (ExchangeCategory value : fe.getCategories()) {
           Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(
               FunctionExt.getIncomingAbstractFunction(fe), FunctionExt.getOutGoingAbstractFunction(fe));
           result.put(value, srcTar);
         }
+      }
 
-      for (FunctionalExchange fe : FunctionExt.getAllIncomingExchanges((AbstractFunction) abstractFunction))
+      for (FunctionalExchange fe : FunctionExt.getAllIncomingExchanges((AbstractFunction) abstractFunction)) {
         for (ExchangeCategory value : fe.getCategories()) {
           Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(
               FunctionExt.getIncomingAbstractFunction(fe), FunctionExt.getOutGoingAbstractFunction(fe));
           result.put(value, srcTar);
         }
+      }
     }
     return result;
   }

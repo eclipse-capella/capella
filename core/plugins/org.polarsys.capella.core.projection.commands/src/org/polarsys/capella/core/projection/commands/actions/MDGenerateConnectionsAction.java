@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.projection.commands.actions;
 
 import java.lang.reflect.InvocationTargetException;
@@ -36,11 +35,29 @@ import org.polarsys.capella.core.projection.commands.MDGenerateConnectionsComman
  * This action launches the automatic component exchanges generation.
  */
 public class MDGenerateConnectionsAction extends AbstractTigAction implements IObjectActionDelegate {
-  final String PROGRESS_BAR_NAME = Messages.MDGenerateConnectionsAction_CreatingExchange;
+	
+
+final String PROGRESS_BAR_NAME = Messages.MDGenerateConnectionsAction_CreatingExchange;
   /**
    * This variable stores the diagram where the "generate component exchanges" has been launched
    */
   protected DDiagram diagram;
+  
+  /**
+   * Constructor
+   */
+  public MDGenerateConnectionsAction() {
+		super();
+	}
+  
+  /**
+   * Constructor
+   * @param diagram
+   */
+  public MDGenerateConnectionsAction(DDiagram diagram) {
+	super();
+	this.diagram = diagram;
+  }
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
@@ -68,8 +85,8 @@ public class MDGenerateConnectionsAction extends AbstractTigAction implements IO
     };
     try {
       new ProgressMonitorDialog(getActiveShell()).run(false, false, runnable);
-    } catch (Exception exception_p) {
-      throw new RuntimeException(exception_p);
+    } catch (Exception exception) {
+      throw new RuntimeException(exception);
     }
   }
 
@@ -81,8 +98,7 @@ public class MDGenerateConnectionsAction extends AbstractTigAction implements IO
   @Override
   public void selectionChanged(IAction arg0, ISelection selection) {
     if (selection instanceof StructuredSelection) {
-      StructuredSelection structuredselection = (StructuredSelection) selection;
-      Object firstElement = structuredselection.getFirstElement();
+      Object firstElement = ((StructuredSelection) selection).getFirstElement();
       if (firstElement instanceof IGraphicalEditPart) {
         IGraphicalEditPart gep = (IGraphicalEditPart) firstElement;
         Object model = gep.getModel();

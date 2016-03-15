@@ -68,12 +68,21 @@ public class PABDiagram extends XABDiagram {
   public void removeNodeComponent(String id, String containerId) {
     new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
         IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_PCS }, containerId).remove(id);
-
   }
 
   public void insertNodeComponent(String id, String containerId) {
     new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
         IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_PCS }, containerId).insert(id);
+  }
+
+  public void reuseBehaviorComponent(String id, String containerId) {
+    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_REUSE_BEHAVIOR_PC }, containerId).insert(id);
+  }
+
+  public void insertBehaviorComponent(String id, String containerId) {
+    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
+        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOR_PCS }, containerId).insert(id);
 
   }
+
 }
