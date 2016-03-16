@@ -197,11 +197,11 @@ public class CapellaElementsHelperForBusinessQueries {
               for (CapellaElement superClassifier : superClassifiers) {
                 if (superClassifier.equals(dataValueType) &&
                   // if there is no restriction to some classes
-                  ((null == restrictToInstancesOf) || (0 == restrictToInstancesOf.size()))
+                  ((null == restrictToInstancesOf) || (0 == restrictToInstancesOf.size())
                   // OR
                       ||
                       // The list is restricted to the given types
-                      canBeInstanciatedAs(dataValue, restrictToInstancesOf)) {
+                      canBeInstanciatedAs(dataValue, restrictToInstancesOf))) {
                     availableElements.add(dataValue);
                     break;
                 }
