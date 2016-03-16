@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -678,7 +679,6 @@ public class ComponentExt {
 
     LinkedList<Part> subs = new LinkedList<Part>();
     List<Part> initial = new LinkedList<Part>();
-    List<Part> internal = new ArrayList<Part>();
 
     initial.addAll(parts);
     subs.addAll(parts);
@@ -689,13 +689,13 @@ public class ComponentExt {
         visited.add(sub);
 
         if ((sub.getAbstractType() != null) && (sub.getAbstractType() instanceof Component)) {
-          internal = ComponentExt.getSubParts((Component) sub.getAbstractType(), false);
+          List<Part> internal = ComponentExt.getSubParts((Component) sub.getAbstractType(), false);
           comps.addAll(internal);
           subs.addAll(internal);
         }
 
         if (useDeploymentLinks) {
-          internal = PartExt.getDeployedParts(sub);
+          List<Part> internal = PartExt.getDeployedParts(sub);
           comps.addAll(internal);
           subs.addAll(internal);
         }
@@ -715,14 +715,13 @@ public class ComponentExt {
     Collection<Component> visited = new ArrayList<Component>();
 
     LinkedList<Component> subs = new LinkedList<Component>();
-    List<Component> internal = new ArrayList<Component>();
 
     subs.add(component);
     while (subs.size() > 0) {
       Component sub = subs.removeFirst();
       if (!visited.contains(sub)) {
         visited.add(sub);
-        internal = ComponentExt.getSubUsedComponents(sub);
+        List<Component> internal = ComponentExt.getSubUsedComponents(sub);
         comps.addAll(internal);
         subs.addAll(internal);
       }
@@ -823,7 +822,7 @@ public class ComponentExt {
   /**
    * Returns parents and brothers of parents components of parts of the given object
    */
-  static public Collection<EObject> getAvailableComponentsByNamespaceOfParts(LinkedList<EObject> ownerParts) {
+  static public Collection<EObject> getAvailableComponentsByNamespaceOfParts(Deque<EObject> ownerParts) {
     Collection<EObject> components = new java.util.HashSet<EObject>();
 
     // Access from all hierarchy of components and blockarchitectures, all sub components and actors
@@ -859,6 +858,13 @@ public class ComponentExt {
     return getAvailableComponentsByNamespaceOfParts(ownerParts);
   }
 
+  /**
+   * This method is deprecated: cycles can occur in multi part mode.
+   * @param c1
+   * @param c2
+   * @return
+   */
+  @Deprecated
   public static Component getCommonComponentAncestor(Component c1, Component c2) {
     Component ancestor = c1;
     if (isComponentAncestor(c2, ancestor)) {
@@ -1029,6 +1035,25 @@ public class ComponentExt {
     return getFirstCommonComponentAncestor(source, target, false);
   }
 
+  /**
+   * Get the most common ancestor of all given components. Returns <code>null</code> if none can be found.
+   * @param components
+   * @return
+   */
+  public static Component getFirstCommonComponentAncestor(List<Component> components) {
+    if (components == null || components.isEmpty()) {
+      return null;
+    }
+    Component commonAncestor = components.get(0);
+    for (int i = 1; i < components.size(); ++i) {
+      commonAncestor = (Component) getFirstCommonComponentAncestor(commonAncestor, components.get(i), true);
+      if (commonAncestor == null) {
+        return null;
+      }
+    }
+    return commonAncestor;
+  }
+  
   /**
    * This method retrieves the implemented AND provided (by Ports) interfaces
    * @param component the component whose used and provided interfaces will be retrieved
@@ -2049,11 +2074,9 @@ public class ComponentExt {
     superGeneralizableElements.add(component);
     for (CapellaElement generalizableElement : superGeneralizableElements) {
       if (generalizableElement instanceof Component) {
-        if (generalizableElement != null) {
-          for (InterfaceImplementation interfaceImpl : ((Component) generalizableElement).getImplementedInterfaceLinks()) {
-            if ((null != interfaceImpl.getImplementedInterface()) && interfaceImpl.getImplementedInterface().equals(itf)) {
-              return true;
-            }
+        for (InterfaceImplementation interfaceImpl : ((Component) generalizableElement).getImplementedInterfaceLinks()) {
+          if ((null != interfaceImpl.getImplementedInterface()) && interfaceImpl.getImplementedInterface().equals(itf)) {
+            return true;
           }
         }
       }
@@ -2124,11 +2147,9 @@ public class ComponentExt {
     superGeneralizableElements.add(component);
     for (CapellaElement generalizableElement : superGeneralizableElements) {
       if (generalizableElement instanceof Component) {
-        if (generalizableElement != null) {
-          for (InterfaceUse interfaceUse : ((Component) generalizableElement).getUsedInterfaceLinks()) {
-            if ((null != interfaceUse.getUsedInterface()) && interfaceUse.getUsedInterface().equals(itf)) {
-              return true;
-            }
+        for (InterfaceUse interfaceUse : ((Component) generalizableElement).getUsedInterfaceLinks()) {
+          if ((null != interfaceUse.getUsedInterface()) && interfaceUse.getUsedInterface().equals(itf)) {
+            return true;
           }
         }
       }
@@ -2137,7 +2158,7 @@ public class ComponentExt {
   }
 
   private static Collection<EObject> createComponentExchangeAndDelegations(LinkedList<Part> sourceResults, ComponentPort sourcePort,
-      LinkedList<Part> targetResults, ComponentPort targetPort) {
+      Deque<Part> targetResults, ComponentPort targetPort) {
 
     Collection<EObject> results = new HashSet<EObject>();
 
@@ -2290,10 +2311,10 @@ public class ComponentExt {
     for (Partition partition : component.getOwnedPartitions()) {
       if ((partition instanceof ComponentPort) && ((ComponentPort) partition).getProvidedInterfaces().contains(interf)) {
         stdPort = (ComponentPort) partition;
+        stdPort.getProvidedInterfaces().remove(interf);
         break;
       }
     }
-    stdPort.getProvidedInterfaces().remove(interf);
   }
 
   /**
@@ -2304,10 +2325,10 @@ public class ComponentExt {
     for (Partition partition : component.getOwnedPartitions()) {
       if ((partition instanceof ComponentPort) && ((ComponentPort) partition).getRequiredInterfaces().contains(interf)) {
         stdPort = (ComponentPort) partition;
+        stdPort.getRequiredInterfaces().remove(interf);
         break;
       }
     }
-    stdPort.getRequiredInterfaces().remove(interf);
   }
 
   /**
