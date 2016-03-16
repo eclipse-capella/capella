@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper;
 
 /**
@@ -16,9 +17,9 @@ package org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper;
 public class EObjectWrapper extends BrowserElementWrapper {
   /**
    * Constructor.
-   * @param element_p
+   * @param element
    */
-  public EObjectWrapper(Object element_p) {
-    super(element_p);
+  public EObjectWrapper(Object element) {
+    super(element);
   }
 }

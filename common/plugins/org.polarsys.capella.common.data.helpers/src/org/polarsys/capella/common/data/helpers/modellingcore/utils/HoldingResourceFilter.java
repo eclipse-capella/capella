@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.data.helpers.modellingcore.utils;
 
 import org.eclipse.emf.ecore.EObject;
@@ -36,11 +37,11 @@ public class HoldingResourceFilter {
     return _instance;
   }
 
-  public boolean isHoldByHoldingResource(EObject obj_p) {
-    //    SemanticEditingDomain editDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain(obj_p);
+  public boolean isHoldByHoldingResource(EObject obj) {
+    //    SemanticEditingDomain editDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain(obj);
     //    HoldingResource holdRes = editDomain.getHoldingResource();
 
-    //    return ((obj_p.eResource() != null) && obj_p.eResource().equals(holdRes));
+    //    return ((obj.eResource() != null) && obj.eResource().equals(holdRes));
     return false;
   }
 }

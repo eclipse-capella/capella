@@ -138,8 +138,8 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
    * @param iMarkerResolution_p
    * @return
    */
-  protected IContributionItem createContributionItem(final Collection<IMarker> markers_p,
-      final IMarkerResolution resolution_p) {
+  protected IContributionItem createContributionItem(final Collection<IMarker> markers,
+      final IMarkerResolution resolution) {
     return new ActionContributionItem(new Action() {
 
       /**
@@ -147,7 +147,7 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
        */
       @Override
       public String getText() {
-        return resolution_p.getLabel();
+        return resolution.getLabel();
       }
 
       /**
@@ -156,8 +156,8 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
       @Override
       public ImageDescriptor getImageDescriptor() {
         ImageDescriptor imgDesc = null;
-        if (resolution_p instanceof IMarkerResolution2) {
-          Image img = ((IMarkerResolution2) resolution_p).getImage();
+        if (resolution instanceof IMarkerResolution2) {
+          Image img = ((IMarkerResolution2) resolution).getImage();
           if (img != null) {
             imgDesc = ImageDescriptor.createFromImage(img);
           } else {
@@ -175,8 +175,8 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
       @Override
       public String getDescription() {
         String desc = null;
-        if (resolution_p instanceof IMarkerResolution2) {
-          desc = ((IMarkerResolution2) resolution_p).getDescription();
+        if (resolution instanceof IMarkerResolution2) {
+          desc = ((IMarkerResolution2) resolution).getDescription();
         } else {
           desc = super.getDescription();
         }
@@ -192,11 +192,11 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
         IRunnableWithProgress resolutionsRunnable = new IRunnableWithProgress() {
           @Override
           public void run(IProgressMonitor monitor) {
-            if (resolution_p instanceof WorkbenchMarkerResolution) {
-              ((WorkbenchMarkerResolution) resolution_p).run(markers_p.toArray(new IMarker[0]), monitor);
+            if (resolution instanceof WorkbenchMarkerResolution) {
+              ((WorkbenchMarkerResolution) resolution).run(markers.toArray(new IMarker[0]), monitor);
             } else {
-              for (IMarker marker : markers_p) {
-                resolution_p.run(marker);
+              for (IMarker marker : markers) {
+                resolution.run(marker);
               }
             }
           }

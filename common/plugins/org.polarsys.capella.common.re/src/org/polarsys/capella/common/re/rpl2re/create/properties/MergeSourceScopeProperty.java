@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,24 +36,24 @@ public class MergeSourceScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
 
     Collection<EObject> scopeElements = new HashSet<EObject>();
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_SOURCE));
 
-    scopeElements.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllElements(source));
+    scopeElements.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getAllElements(source));
 
-    scopeElements.addAll((Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__SCOPE)));
+    scopeElements.addAll((Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SCOPE)));
 
-    Collection<EObject> sharedElements = (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
+    Collection<EObject> sharedElements = (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
     if (sharedElements != null) {
       scopeElements.addAll(sharedElements);
     }
 
     Collection<EObject> invalidSharedElements =
-        (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS));
+        (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS));
     if (invalidSharedElements != null) {
       scopeElements.removeAll(invalidSharedElements);
     }
@@ -65,7 +65,7 @@ public class MergeSourceScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -81,15 +81,15 @@ public class MergeSourceScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
 
   }
 
@@ -106,7 +106,7 @@ public class MergeSourceScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
+  public void updatedValue(IProperty property, IPropertyContext context) {
     //Nothing here
   }
 }

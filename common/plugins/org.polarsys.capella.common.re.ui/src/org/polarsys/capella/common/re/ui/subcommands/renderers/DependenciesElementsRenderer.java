@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.renderers;
 
 import java.util.ArrayList;
@@ -30,8 +31,8 @@ public class DependenciesElementsRenderer extends SelectionElementsRenderer {
   }
 
   @Override
-  protected ISelection getInitialSelection(IRendererContext context_p) {
-    Object value = context_p.getPropertyContext().getCurrentValue(context_p.getProperty(this));
+  protected ISelection getInitialSelection(IRendererContext context) {
+    Object value = context.getPropertyContext().getCurrentValue(context.getProperty(this));
     return new StructuredSelection(new ArrayList((Collection) value));
   }
 

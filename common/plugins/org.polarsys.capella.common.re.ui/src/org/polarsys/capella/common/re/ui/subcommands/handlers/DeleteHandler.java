@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.Collection;
@@ -37,10 +38,10 @@ public class DeleteHandler extends SubCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    ISelection selection = HandlerUtil.getCurrentSelection(event_p);
-    IRenderer renderer = ExecutionEventUtil.getRenderer(event_p);
-    IRendererContext context = ExecutionEventUtil.getRendererContext(event_p);
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    ISelection selection = HandlerUtil.getCurrentSelection(event);
+    IRenderer renderer = ExecutionEventUtil.getRenderer(event);
+    IRendererContext context = ExecutionEventUtil.getRendererContext(event);
 
     Collection<Object> selectiona =
         ((selection == null) || (selection.isEmpty())) ? context.getPropertyContext().getSourceAsList() : ((IStructuredSelection) selection).toList();
@@ -54,16 +55,16 @@ public class DeleteHandler extends SubCommandHandler {
   }
 
   /**
-   * @param currentValue_p
-   * @param selectiona_p
+   * @param currentValue
+   * @param selectiona
    */
-  protected void delete(Collection<EObject> currentValue_p, Collection<Object> selectiona_p) {
-    currentValue_p.removeAll(selectiona_p);
+  protected void delete(Collection<EObject> currentValue, Collection<Object> selectiona) {
+    currentValue.removeAll(selectiona);
   }
 
   @Override
-  public void setEnabled(Object evaluationContext_p) {
-    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
+  public void setEnabled(Object evaluationContext) {
+    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
 
     if (!(variable instanceof Collection)) {
       setBaseEnabled(false);
@@ -75,12 +76,12 @@ public class DeleteHandler extends SubCommandHandler {
         if (selection.iterator().next() instanceof CatalogElementLink) {
 
           setBaseEnabled(true);
-          super.setEnabled(evaluationContext_p);
+          super.setEnabled(evaluationContext);
           return;
 
         }
 
-        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext_p);
+        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
         if (rendererContext == null) {
 
           setBaseEnabled(false);
@@ -103,6 +104,6 @@ public class DeleteHandler extends SubCommandHandler {
       }
     }
 
-    super.setEnabled(evaluationContext_p);
+    super.setEnabled(evaluationContext);
   }
 }

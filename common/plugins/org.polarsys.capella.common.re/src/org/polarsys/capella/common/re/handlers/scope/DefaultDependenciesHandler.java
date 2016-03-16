@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,117 +33,116 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class DefaultDependenciesHandler implements IDependenciesHandler {
 
-  public IScopeHandler getSharedHandler(IContext context_p) {
-    if (!context_p.exists(IReConstants.SHARED_ELEMENTS_SCOPE_HANDLER)) {
+  public IScopeHandler getSharedHandler(IContext context) {
+    if (!context.exists(IReConstants.SHARED_ELEMENTS_SCOPE_HANDLER)) {
       DefaultScopeHandler handler = new DefaultScopeHandler();
-      initSharedHandler(handler, context_p);
-      context_p.put(IReConstants.SHARED_ELEMENTS_SCOPE_HANDLER, handler);
+      initSharedHandler(handler, context);
+      context.put(IReConstants.SHARED_ELEMENTS_SCOPE_HANDLER, handler);
     }
-    return (IScopeHandler) context_p.get(IReConstants.SHARED_ELEMENTS_SCOPE_HANDLER);
+    return (IScopeHandler) context.get(IReConstants.SHARED_ELEMENTS_SCOPE_HANDLER);
   }
 
-  protected void initSharedHandler(DefaultScopeHandler handler_p, IContext context_p) {
-    handler_p.addScopeRetriever(new SharedElementsScopeRetriever(), context_p);
+  protected void initSharedHandler(DefaultScopeHandler handler, IContext context) {
+    handler.addScopeRetriever(new SharedElementsScopeRetriever(), context);
   }
 
-  public IScopeHandler getDependenciesHandler(IContext context_p) {
-    if (!context_p.exists(IReConstants.DEPENDENCIES_SCOPE_HANDLER)) {
+  public IScopeHandler getDependenciesHandler(IContext context) {
+    if (!context.exists(IReConstants.DEPENDENCIES_SCOPE_HANDLER)) {
       DefaultScopeHandler handler = new DefaultScopeHandler();
-      initDependenciesHandler(handler, context_p);
-      context_p.put(IReConstants.DEPENDENCIES_SCOPE_HANDLER, handler);
+      initDependenciesHandler(handler, context);
+      context.put(IReConstants.DEPENDENCIES_SCOPE_HANDLER, handler);
     }
-    return (IScopeHandler) context_p.get(IReConstants.DEPENDENCIES_SCOPE_HANDLER);
+    return (IScopeHandler) context.get(IReConstants.DEPENDENCIES_SCOPE_HANDLER);
   }
 
-  protected void initDependenciesHandler(DefaultScopeHandler handler_p, IContext context_p) {
-    handler_p.addScopeRetriever(new RuleRequiredElementsScopeRetriever(), context_p);
+  protected void initDependenciesHandler(DefaultScopeHandler handler, IContext context) {
+    handler.addScopeRetriever(new RuleRequiredElementsScopeRetriever(), context);
   }
 
-  public Collection getSharedElements(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
-    return retrieveElements(getSharedHandler(context_p), elements_p, scopeElements, context_p);
+  public Collection getSharedElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
+    return retrieveElements(getSharedHandler(context), elements, scopeElements, context);
   }
 
-  public Collection getDependencies(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
-    return retrieveElements(getDependenciesHandler(context_p), elements_p, scopeElements, context_p);
+  public Collection getDependencies(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
+    return retrieveElements(getDependenciesHandler(context), elements, scopeElements, context);
   }
 
-  public Collection retrieveElements(IScopeHandler handler, Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
-    Collection<EObject> values = new ArrayList<EObject>();
-    IContext context = context_p;
-    IContextScopeHandler scopeHandler = ContextScopeHandlerHelper.getInstance(context);
+  public Collection retrieveElements(IScopeHandler handler, Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
+    IContext ctx = context;
+    IContextScopeHandler scopeHandler = ContextScopeHandlerHelper.getInstance(ctx);
 
-    scopeHandler.clear(ITransitionConstants.INITIAL_SOURCE_SCOPE, context);
-    scopeHandler.clear(ITransitionConstants.SOURCE_SCOPE, context);
+    scopeHandler.clear(ITransitionConstants.INITIAL_SOURCE_SCOPE, ctx);
+    scopeHandler.clear(ITransitionConstants.SOURCE_SCOPE, ctx);
 
-    scopeHandler.clear(IReConstants.REQUIRED_ELEMENTS, context);
-    scopeHandler.clear(IReConstants.SHARED_ELEMENTS, context);
+    scopeHandler.clear(IReConstants.REQUIRED_ELEMENTS, ctx);
+    scopeHandler.clear(IReConstants.SHARED_ELEMENTS, ctx);
 
-    scopeHandler.addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, elements_p, context);
-    scopeHandler.addAll(ITransitionConstants.SOURCE_SCOPE, elements_p, context);
+    scopeHandler.addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, elements, ctx);
+    scopeHandler.addAll(ITransitionConstants.SOURCE_SCOPE, elements, ctx);
 
-    handler.computeScope(elements_p, context);
+    handler.computeScope(elements, ctx);
 
-    Collection<EObject> result = new ArrayList<EObject>(handler.getScope(context_p));
+    Collection<EObject> result = new ArrayList<EObject>(handler.getScope(context));
 
     for (EObject scopeElement : scopeElements) {
       result.remove(scopeElement);
       if (scopeElement instanceof CatalogElement) {
-        result.removeAll(ReplicableElementHandlerHelper.getInstance(context_p).getAllElements((CatalogElement) scopeElement));
+        result.removeAll(ReplicableElementHandlerHelper.getInstance(context).getAllElements((CatalogElement) scopeElement));
       }
     }
     return result;
   }
 
-  public Collection getRelatedElements(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
-    return retrieveRelatedElements(getRelatedElementsHandler(context_p), elements_p, scopeElements, context_p);
+  public Collection getRelatedElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
+    return retrieveRelatedElements(getRelatedElementsHandler(context), elements, scopeElements, context);
   }
 
-  public IScopeHandler getRelatedElementsHandler(IContext context_p) {
-    if (!context_p.exists(IReConstants.RELATED_ELEMENTS_SCOPE_HANDLER)) {
+  public IScopeHandler getRelatedElementsHandler(IContext context) {
+    if (!context.exists(IReConstants.RELATED_ELEMENTS_SCOPE_HANDLER)) {
       DefaultScopeHandler handler = new DefaultScopeHandler();
-      initRelatedElementsHandler(handler, context_p);
-      context_p.put(IReConstants.RELATED_ELEMENTS_SCOPE_HANDLER, handler);
+      initRelatedElementsHandler(handler, context);
+      context.put(IReConstants.RELATED_ELEMENTS_SCOPE_HANDLER, handler);
     }
-    return (IScopeHandler) context_p.get(IReConstants.RELATED_ELEMENTS_SCOPE_HANDLER);
+    return (IScopeHandler) context.get(IReConstants.RELATED_ELEMENTS_SCOPE_HANDLER);
   }
 
-  protected void initRelatedElementsHandler(DefaultScopeHandler handler_p, IContext context_p) {
-    handler_p.addScopeRetriever(new ReferencerScopeRetriever(), context_p);
-    handler_p.addScopeFilter(new CatalogElementLinkFilter(), context_p);
+  protected void initRelatedElementsHandler(DefaultScopeHandler handler, IContext context) {
+    handler.addScopeRetriever(new ReferencerScopeRetriever(), context);
+    handler.addScopeFilter(new CatalogElementLinkFilter(), context);
   }
 
-  public Collection retrieveRelatedElements(IScopeHandler handler, Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
+  public Collection retrieveRelatedElements(IScopeHandler handler, Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
     Collection<EObject> values = new ArrayList<EObject>();
-    IContext context = context_p;
-    IContextScopeHandler scopeHandler = ContextScopeHandlerHelper.getInstance(context);
+    IContext ctx = context;
+    IContextScopeHandler scopeHandler = ContextScopeHandlerHelper.getInstance(ctx);
 
-    scopeHandler.clear(ITransitionConstants.INITIAL_SOURCE_SCOPE, context);
-    scopeHandler.clear(ITransitionConstants.SOURCE_SCOPE, context);
-    scopeHandler.addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, scopeElements, context);
-    scopeHandler.addAll(ITransitionConstants.SOURCE_SCOPE, scopeElements, context);
+    scopeHandler.clear(ITransitionConstants.INITIAL_SOURCE_SCOPE, ctx);
+    scopeHandler.clear(ITransitionConstants.SOURCE_SCOPE, ctx);
+    scopeHandler.addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, scopeElements, ctx);
+    scopeHandler.addAll(ITransitionConstants.SOURCE_SCOPE, scopeElements, ctx);
 
-    handler.computeScope(scopeElements, context);
-    values = new HashSet<EObject>(handler.getScope(context));
+    handler.computeScope(scopeElements, ctx);
+    values = new HashSet<EObject>(handler.getScope(ctx));
     values.remove(null);
 
-    values.addAll(ReplicableElementHandlerHelper.getInstance(context).getLinkingReplicableElements(context,
-        (Collection) scopeHandler.getCollection(ITransitionConstants.INITIAL_SOURCE_SCOPE, context)));
+    values.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getLinkingReplicableElements(ctx,
+        (Collection) scopeHandler.getCollection(ITransitionConstants.INITIAL_SOURCE_SCOPE, ctx)));
 
     return values;
   }
 
-  public Collection retrieveScopeElements(IScopeHandler handler, Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
+  public Collection retrieveScopeElements(IScopeHandler handler, Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
     Collection<EObject> values = new ArrayList<EObject>();
-    IContext context = context_p;
-    IContextScopeHandler scopeHandler = ContextScopeHandlerHelper.getInstance(context);
+    IContext ctx = context;
+    IContextScopeHandler scopeHandler = ContextScopeHandlerHelper.getInstance(ctx);
 
-    scopeHandler.clear(ITransitionConstants.INITIAL_SOURCE_SCOPE, context);
-    scopeHandler.clear(ITransitionConstants.SOURCE_SCOPE, context);
-    scopeHandler.addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, elements_p, context);
-    scopeHandler.addAll(ITransitionConstants.SOURCE_SCOPE, elements_p, context);
+    scopeHandler.clear(ITransitionConstants.INITIAL_SOURCE_SCOPE, ctx);
+    scopeHandler.clear(ITransitionConstants.SOURCE_SCOPE, ctx);
+    scopeHandler.addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, elements, ctx);
+    scopeHandler.addAll(ITransitionConstants.SOURCE_SCOPE, elements, ctx);
 
-    handler.computeScope(elements_p, context);
-    values = new HashSet<EObject>(handler.getScope(context));
+    handler.computeScope(elements, ctx);
+    values = new HashSet<EObject>(handler.getScope(ctx));
     values.remove(null);
 
     return values;
@@ -153,7 +152,7 @@ public class DefaultDependenciesHandler implements IDependenciesHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -161,7 +160,7 @@ public class DefaultDependenciesHandler implements IDependenciesHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -169,49 +168,49 @@ public class DefaultDependenciesHandler implements IDependenciesHandler {
    * {@inheritDoc}
    */
   @Override
-  public Collection getScopeElements(Collection<EObject> elements_p, Collection<EObject> scopeElements_p, IContext context_p) {
-    return retrieveScopeElements(getScopeElementsHandler(context_p), elements_p, scopeElements_p, context_p);
+  public Collection getScopeElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
+    return retrieveScopeElements(getScopeElementsHandler(context), elements, scopeElements, context);
   }
 
-  public IScopeHandler getScopeElementsHandler(IContext context_p) {
-    if (!context_p.exists(IReConstants.SCOPE_COMPUTATION_SCOPE_HANDLER)) {
+  public IScopeHandler getScopeElementsHandler(IContext context) {
+    if (!context.exists(IReConstants.SCOPE_COMPUTATION_SCOPE_HANDLER)) {
       DefaultScopeHandler handler = new DefaultScopeHandler();
-      initScopeElementsHandler(handler, context_p);
-      context_p.put(IReConstants.SCOPE_COMPUTATION_SCOPE_HANDLER, handler);
+      initScopeElementsHandler(handler, context);
+      context.put(IReConstants.SCOPE_COMPUTATION_SCOPE_HANDLER, handler);
     }
-    return (IScopeHandler) context_p.get(IReConstants.SCOPE_COMPUTATION_SCOPE_HANDLER);
+    return (IScopeHandler) context.get(IReConstants.SCOPE_COMPUTATION_SCOPE_HANDLER);
   }
 
   /**
-   * @param handler_p
-   * @param context_p
+   * @param handler
+   * @param context
    */
-  protected void initScopeElementsHandler(DefaultScopeHandler handler_p, IContext context_p) {
-    handler_p.addScopeRetriever(new ContainmentScopeRetriever(), context_p);
+  protected void initScopeElementsHandler(DefaultScopeHandler handler, IContext context) {
+    handler.addScopeRetriever(new ContainmentScopeRetriever(), context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Collection getComplementaryScopeElements(Collection<EObject> elements_p, Collection<EObject> scopeElements_p, IContext context_p) {
-    return retrieveScopeElements(getComplementaryScopeElementsHandler(context_p), elements_p, scopeElements_p, context_p);
+  public Collection getComplementaryScopeElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
+    return retrieveScopeElements(getComplementaryScopeElementsHandler(context), elements, scopeElements, context);
   }
 
-  public IScopeHandler getComplementaryScopeElementsHandler(IContext context_p) {
-    if (!context_p.exists(IReConstants.SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER)) {
+  public IScopeHandler getComplementaryScopeElementsHandler(IContext context) {
+    if (!context.exists(IReConstants.SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER)) {
       DefaultScopeHandler handler = new DefaultScopeHandler();
-      initComplementaryScopeElementsHandler(handler, context_p);
-      context_p.put(IReConstants.SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER, handler);
+      initComplementaryScopeElementsHandler(handler, context);
+      context.put(IReConstants.SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER, handler);
     }
-    return (IScopeHandler) context_p.get(IReConstants.SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER);
+    return (IScopeHandler) context.get(IReConstants.SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER);
   }
 
   /**
-   * @param handler_p
-   * @param context_p
+   * @param handler
+   * @param context
    */
-  protected void initComplementaryScopeElementsHandler(DefaultScopeHandler handler_p, IContext context_p) {
+  protected void initComplementaryScopeElementsHandler(DefaultScopeHandler handler, IContext context) {
 
   }
 

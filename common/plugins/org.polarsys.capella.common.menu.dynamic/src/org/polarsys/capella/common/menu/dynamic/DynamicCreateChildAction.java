@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.menu.dynamic;
 
 import java.util.Collection;
@@ -42,13 +43,13 @@ import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContri
 public class DynamicCreateChildAction extends CreateChildAction {
   /**
    * Constructor.
-   * @param editingDomain_p
-   * @param selection_p
-   * @param descriptor_p
+   * @param editingDomain
+   * @param selection
+   * @param descriptor
    */
-  public DynamicCreateChildAction(EditingDomain editingDomain_p, ISelection selection_p, Object descriptor_p) {
-    super((IWorkbenchPart)null, selection_p, descriptor_p);
-    editingDomain = editingDomain_p;
+  public DynamicCreateChildAction(EditingDomain editingDomain, ISelection selection, Object descriptor) {
+    super((IWorkbenchPart)null, selection, descriptor);
+    this.editingDomain = editingDomain;
   }
 
   /**

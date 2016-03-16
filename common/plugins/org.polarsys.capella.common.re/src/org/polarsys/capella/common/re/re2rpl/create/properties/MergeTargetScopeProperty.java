@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,29 +38,29 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     //Compute scope and additional elements
 
-    IContext context = (IContext) context_p.getSource();
+    IContext ctx = (IContext) context.getSource();
     Collection<EObject> scopeElements = new HashSet<EObject>();
     CatalogElement target =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET));
 
-    scopeElements.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllElements(target));
+    scopeElements.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getAllElements(target));
 
-    Collection<EObject> sharedElements = (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
+    Collection<EObject> sharedElements = (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
     if (sharedElements != null) {
       scopeElements.addAll(sharedElements);
     }
 
     Collection<EObject> invalidSharedElements =
-        (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS));
+        (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS));
     if (invalidSharedElements != null) {
       scopeElements.removeAll(invalidSharedElements);
     }
 
-    for (CatalogElementLink link : (Collection<CatalogElementLink>) (Collection) ContextScopeHandlerHelper.getInstance(context).getCollection(
-        IReConstants.VIRTUAL_LINKS, context)) {
+    for (CatalogElementLink link : (Collection<CatalogElementLink>) (Collection) ContextScopeHandlerHelper.getInstance(ctx).getCollection(
+        IReConstants.VIRTUAL_LINKS, ctx)) {
       scopeElements.remove(link.getTarget());
     }
 
@@ -71,7 +71,7 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -87,15 +87,15 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
 
   }
 
@@ -112,7 +112,7 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
+  public void updatedValue(IProperty property, IPropertyContext context) {
     //Nothing here
   }
 

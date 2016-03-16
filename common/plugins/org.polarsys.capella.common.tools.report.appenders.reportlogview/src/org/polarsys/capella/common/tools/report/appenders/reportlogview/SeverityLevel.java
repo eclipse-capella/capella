@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import org.apache.log4j.Level;
@@ -26,9 +27,9 @@ public enum SeverityLevel {
   ERROR("Error", MarkerViewPlugin.getDefault().getImage("error.gif")), //$NON-NLS-1$ //$NON-NLS-2$
   FATAL("Fatal", MarkerViewPlugin.getDefault().getImage("fatal.gif")); //$NON-NLS-1$ //$NON-NLS-2$
 
-  SeverityLevel(String representation_p, Image image_p) {
-    representation = representation_p;
-    image = image_p;
+  SeverityLevel(String representation, Image image) {
+    this.representation = representation;
+    this.image = image;
   }
 
   private Image image;

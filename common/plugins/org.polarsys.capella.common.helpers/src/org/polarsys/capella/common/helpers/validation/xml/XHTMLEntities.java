@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -285,16 +285,16 @@ public enum XHTMLEntities {
   final String characterEntityRef;
   final String hexadecimalEntityRef;
   
-  XHTMLEntities(char c_p){
-    this(c_p, false);
+  XHTMLEntities(char c){
+    this(c, false);
   }
 
   @SuppressWarnings("boxing")
-  XHTMLEntities(char c_p, boolean isXML_p){
-    c = c_p;
+  XHTMLEntities(char c, boolean isXML){
+    this.c = c;
     characterEntityRef = "&" + entityName() + ";"; //$NON-NLS-1$ //$NON-NLS-2$
-    hexadecimalEntityRef = String.format("&#x%04x;", (int) c_p); //$NON-NLS-1$
-    isXML = isXML_p;
+    hexadecimalEntityRef = String.format("&#x%04x;", (int) c); //$NON-NLS-1$
+    this.isXML = isXML;
   }
 
   /**
@@ -352,18 +352,17 @@ public enum XHTMLEntities {
    * 
    * @return the argument string builder
    */
-  public static StringBuilder unescapeHTMLRefs(StringBuilder input_p){
+  public static StringBuilder unescapeHTMLRefs(StringBuilder input){
     for (XHTMLEntities ent : values()){
       if (!ent.isXML()){
         int index;
         String entityRef = ent.asCharacterEntityRef();
-        while ((index = input_p.indexOf(entityRef)) != -1){
-          input_p.delete(index, index + entityRef.length());
-          input_p.insert(index, ent.character());
+        while ((index = input.indexOf(entityRef)) != -1){
+          input.delete(index, index + entityRef.length());
+          input.insert(index, ent.character());
         }
       }
     }
-    return input_p;
+    return input;
   }
-
 }

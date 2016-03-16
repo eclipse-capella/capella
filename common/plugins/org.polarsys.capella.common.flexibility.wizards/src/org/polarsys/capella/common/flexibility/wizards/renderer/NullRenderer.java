@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import org.eclipse.swt.SWT;
@@ -30,18 +31,18 @@ public class NullRenderer extends AbstractRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void performRender(Composite parent_p, IRendererContext rendererContext_p) {
+  public void performRender(Composite parent, IRendererContext rendererContext) {
     if (true) {
       return;
     }
     //Nothing here
-    Composite composite = new Composite(parent_p, SWT.NONE);
+    Composite composite = new Composite(parent, SWT.NONE);
 
-    if (parent_p.getLayout() instanceof GridLayout) {
+    if (parent.getLayout() instanceof GridLayout) {
       GridData data = new GridData(GridData.FILL_HORIZONTAL);
       GridLayout layout = new GridLayout();
       layout.numColumns = 1;
-      composite.setBackground(parent_p.getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
+      composite.setBackground(parent.getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
       layout.makeColumnsEqualWidth = false;
       layout.marginWidth = 1;
       layout.marginHeight = 1;
@@ -66,7 +67,7 @@ public class NullRenderer extends AbstractRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext propertyContext_p, Object newValue_p) {
+  public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
     //Nothing here
   }
 
@@ -74,7 +75,7 @@ public class NullRenderer extends AbstractRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void dispose(IRendererContext context_p) {
+  public void dispose(IRendererContext context) {
 
   }
 
@@ -82,9 +83,9 @@ public class NullRenderer extends AbstractRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void initialize(IProperty property_p, IRendererContext rendererContext_p) {
+  public void initialize(IProperty property, IRendererContext rendererContext) {
     if (label != null) {
-      label.setText(property_p.getId());
+      label.setText(property.getId());
     }
   }
 

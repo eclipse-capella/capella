@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.lib;
 
 import java.text.MessageFormat;
@@ -27,32 +28,32 @@ public class NameHelper {
    * Set string to the given object that is unique in the given container. The string is set to the place of the given attribute. The string set will be based
    * on the default one and associated with an digit. First parameter in the pattern will be an int : {0} Second parameter in the pattern will be the default
    * string : {1}
-   * @param object_p
+   * @param object
    *          named element.
-   * @param container_p
+   * @param container
    *          container of named element.
-   * @param attribute_p
+   * @param attribute
    *          EAttribute for naming feature.
-   * @param defaultString_p
-   *          default string of the object_p. First parameter in the pattern {1}
-   * @param pattern_p
+   * @param defaultString
+   *          default string of the object. First parameter in the pattern {1}
+   * @param pattern
    *          pattern that the resulting string will match.
    */
   @SuppressWarnings("boxing")
-  public static void setUniqueString(EObject object_p, EObject container_p, EAttribute attribute_p, String defaultString_p, String pattern_p) {
+  public static void setUniqueString(EObject object, EObject container, EAttribute attribute, String defaultString, String pattern) {
     int counter = 0;
 
-    List<EObject> siblings = container_p.eContents();
+    List<EObject> siblings = container.eContents();
 
     // retrieving the naming attribute feature.
     if (siblings != null && !siblings.isEmpty()) {
       List<String> existingNames = new ArrayList<String>();
 
       // list existing names.
-      if (attribute_p != null) {
+      if (attribute != null) {
         for (Object sibling : siblings) {
           EObject eSibling = (EObject) sibling;
-          Object attributeValue = eSibling.eGet(attribute_p);
+          Object attributeValue = eSibling.eGet(attribute);
           if (attributeValue instanceof String) {
             String name = (String) attributeValue;
             if (null != name && !name.equals("")) { //$NON-NLS-1$
@@ -61,13 +62,13 @@ public class NameHelper {
           }
         }
 
-        String copiedEObjectName = defaultString_p;
+        String copiedEObjectName = defaultString;
         while (existingNames.contains(copiedEObjectName)) {
-          copiedEObjectName = MessageFormat.format(pattern_p, new Object[] { counter++, defaultString_p });
+          copiedEObjectName = MessageFormat.format(pattern, new Object[] { counter++, defaultString });
         }
 
         // finally set a proper name.
-        object_p.eSet(attribute_p, copiedEObjectName);
+        object.eSet(attribute, copiedEObjectName);
       }
     }
   }
@@ -75,11 +76,11 @@ public class NameHelper {
   /**
    * Retrieve the attribute which symbolizes the name of the given object. Research is based on business specific annotations hold by a eAttribute in the
    * metaclass.
-   * @param eObject_p
+   * @param eObject
    * @return namingAttribute
    */
-  public static EAttribute getNamingAttribute(EObject eObject_p) {
-    for (EAttribute eAttribute : eObject_p.eClass().getEAllAttributes()) {
+  public static EAttribute getNamingAttribute(EObject eObject) {
+    for (EAttribute eAttribute : eObject.eClass().getEAllAttributes()) {
       EAnnotation businessAnnotation = eAttribute.getEAnnotation(BUSINESS_INFORMATION_SOURCE);
       if (businessAnnotation!= null && businessAnnotation.getDetails().containsKey(NAMING_ATTRIBUTE_KEY)) {
         return eAttribute;

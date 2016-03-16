@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.shared.id.handler;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,9 +28,9 @@ public abstract class AbstractIdHandler implements IIdHandler {
   /**
    * {@inheritDoc}
    */
-  public EObject getEObject(String id_p, IScope scope) {
+  public EObject getEObject(String id, IScope scope) {
     for (Resource resource : scope.getResources()) {
-      EObject obj = resource.getEObject(id_p);
+      EObject obj = resource.getEObject(id);
       if (null != obj) return obj;
     }
     return null;

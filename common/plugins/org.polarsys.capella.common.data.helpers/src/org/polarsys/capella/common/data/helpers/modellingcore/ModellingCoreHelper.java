@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.data.helpers.modellingcore;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -31,29 +32,29 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 public class ModellingCoreHelper implements IHelper {
 
 	@Override
-  public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+  public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
-		if (object_p instanceof ValueSpecification){
-		  ret = ValueSpecificationHelper.getInstance().doSwitch((ValueSpecification) object_p, feature_p);
+		if (object instanceof ValueSpecification){
+		  ret = ValueSpecificationHelper.getInstance().doSwitch((ValueSpecification) object, feature);
 		}
-		else if (object_p instanceof AbstractTypedElement){
-		  ret = AbstractTypedElementHelper.getInstance().doSwitch((AbstractTypedElement) object_p, feature_p);
+		else if (object instanceof AbstractTypedElement){
+		  ret = AbstractTypedElementHelper.getInstance().doSwitch((AbstractTypedElement) object, feature);
 		}
-		else if (object_p instanceof TraceableElement) {
-			ret = TraceableElementHelper.getInstance().doSwitch((TraceableElement) object_p, feature_p);
+		else if (object instanceof TraceableElement) {
+			ret = TraceableElementHelper.getInstance().doSwitch((TraceableElement) object, feature);
 		}
-    else if (object_p instanceof InformationsExchanger) {
-      ret = InformationsExchangerHelper.getInstance().doSwitch((InformationsExchanger) object_p, feature_p);
+    else if (object instanceof InformationsExchanger) {
+      ret = InformationsExchangerHelper.getInstance().doSwitch((InformationsExchanger) object, feature);
     }
-		else if (object_p instanceof AbstractType) {
-			ret = AbstractTypeHelper.getInstance().doSwitch((AbstractType) object_p, feature_p);
+		else if (object instanceof AbstractType) {
+			ret = AbstractTypeHelper.getInstance().doSwitch((AbstractType) object, feature);
 		}
-    else if (object_p instanceof ModelElement) {
-      ret = ModelElementHelper.getInstance().doSwitch((ModelElement) object_p, feature_p);
+    else if (object instanceof ModelElement) {
+      ret = ModelElementHelper.getInstance().doSwitch((ModelElement) object, feature);
     }
 
-		if(null != ret || feature_p.getUpperBound() == 1)
+		if(null != ret || feature.getUpperBound() == 1)
 			return ret;
 		
 		throw new HelperNotFoundException();

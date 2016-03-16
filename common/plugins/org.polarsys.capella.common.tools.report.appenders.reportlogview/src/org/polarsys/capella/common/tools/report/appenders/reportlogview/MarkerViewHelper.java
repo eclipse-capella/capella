@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,33 +45,32 @@ public class MarkerViewHelper {
   private final IMarkerSource markerSource;
   private final String viewId;
 
-  public MarkerViewHelper(IMarkerSource markerSource_p, String viewId_p) {
-    markerSource = markerSource_p;
-    viewId = viewId_p;
+  public MarkerViewHelper(IMarkerSource markerSource, String viewId) {
+    this.markerSource = markerSource;
+    this.viewId = viewId;
   }
 
   /**
    * Find markers for specified marker type. We search the LightMarkerRegistry and the given resource.
-   * @param markerType_p
-   * @param resultingCollection_p A not <code>null</code> collection that should host matching markers.
-   * @param filterElements_p Should elements be filtered ? <code>true</code> if so (see {@link #keepMarker(IMarker)} then), <code>false</code> otherwise.
-   * @param resource_p the resource to check for additional markers (apart from the LightMarkerRegistry)
+   * @param markerType
+   * @param resultingCollection A not <code>null</code> collection that should host matching markers.
+   * @param resource the resource to check for additional markers (apart from the LightMarkerRegistry)
    */
-  private void findMarkersFor(String markerType_p, Collection<IMarker> resultingCollection_p, IResource resource_p) {
+  private void findMarkersFor(String markerType, Collection<IMarker> resultingCollection, IResource resource) {
     try {
       // search 'classic' workspace markers
-      if (resource_p != null) {
-        IMarker[] markers = resource_p.findMarkers(markerType_p, false, IResource.DEPTH_INFINITE);
+      if (resource != null) {
+        IMarker[] markers = resource.findMarkers(markerType, false, IResource.DEPTH_INFINITE);
         if (null != markers) {
           for (IMarker marker : markers) {
-            resultingCollection_p.add(marker);
+            resultingCollection.add(marker);
           }
         }
       }
       // search light markers
       for (IMarker marker : markerSource.getMarkers()) {
-        if (markerType_p.equals(marker.getType())) {
-          resultingCollection_p.add(marker);
+        if (markerType.equals(marker.getType())) {
+          resultingCollection.add(marker);
         }
       }
     } catch (CoreException e) {
@@ -81,12 +80,12 @@ public class MarkerViewHelper {
 
   /**
    * Find the marker types to show in the given view, as defined via extension point.
-   * @param viewId_p
+   * @param viewId
    * @return
    */
-  String[] getMarkersToMatchId(String viewId_p) {
+  String[] getMarkersToMatchId(String viewId) {
     // filters declared via extension point
-    String[] markerIDs = ReportLogViewExtPointUtil.getMarkersID(viewId_p);
+    String[] markerIDs = ReportLogViewExtPointUtil.getMarkersID(viewId);
     if (null == markerIDs) {
       // default
       markerIDs = new String[] { MarkerView.MARKER_ID };
@@ -94,8 +93,8 @@ public class MarkerViewHelper {
     return markerIDs;
   }
 
-  public Collection<IMarker> findMarkers(IResource resource_p) {
-    return findMarkers(resource_p, null);
+  public Collection<IMarker> findMarkers(IResource resource) {
+    return findMarkers(resource, null);
   }
 
   /**
@@ -103,12 +102,11 @@ public class MarkerViewHelper {
    * comparator passed as the second argument. ATTENTION: If you pass a comparator, make sure it returns only 0 for elements that are equal in the sense of
    * object.equals(). This is because the backing collection is a TreeSet.
    * @see TreeSet
-   * @param resource_p - may be null
-   * @param comparator_p - may be null
+   * @param resource - may be null
+   * @param comparator - may be null
    * @return
    */
-  public Collection<IMarker> findMarkers(IResource resource_p, Comparator<IMarker> comparator_p) {
-    Comparator<IMarker> comparator = comparator_p;
+  public Collection<IMarker> findMarkers(IResource resource, Comparator<IMarker> comparator) {
     Collection<IMarker> result = null;
     if (comparator == null) {
       result = new HashSet<IMarker>();
@@ -116,7 +114,7 @@ public class MarkerViewHelper {
       result = new TreeSet<IMarker>(comparator);
     }
     for (String markerType : getMarkersToMatchId(viewId)) {
-      findMarkersFor(markerType, result, resource_p);
+      findMarkersFor(markerType, result, resource);
     }
     return result;
   }
@@ -138,22 +136,22 @@ public class MarkerViewHelper {
   
   /**
    * Returns the validation rule id for the given marker or null if the argument is not a validation marker
-   * @param marker_p the marker
-   * @param qualified_p whether the rule should be qualified or not
+   * @param marker the marker
+   * @param qualified whether the rule should be qualified or not
    * @return
    */
-  public static String getRuleID(IMarker marker_p, boolean qualified_p){
+  public static String getRuleID(IMarker marker, boolean qualified){
     
     String result = null;
 
     // the deprecated attribute has preference for backwards compatibility
-//    result = marker_p.getAttribute(IValidationConstants.TAG_RULE_ID, null);
+//    result = marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
     
 //    if (result == null){
-      Diagnostic diag = (Diagnostic) marker_p.getAdapter(Diagnostic.class);
+      Diagnostic diag = (Diagnostic) marker.getAdapter(Diagnostic.class);
       if (diag instanceof ConstraintStatusDiagnostic) {
         result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
-        if (!qualified_p){
+        if (!qualified){
         
           int lastDot = result.lastIndexOf('.');
           if ((lastDot >= 0) && (lastDot < (result.length() - 1))) {
@@ -175,15 +173,15 @@ public class MarkerViewHelper {
   }
 
   /**
-   * Get an unqualified ID from a qualified one. It just strips averything from ruleId_p up to the last '.'
-   * @param ruleId_p
+   * Get an unqualified ID from a qualified one. It just strips averything from ruleId up to the last '.'
+   * @param ruleId
    * @return the unqualified rule id
    * @deprecated this method will be removed soon
    */
   @Deprecated
-  public String getUnqualifiedRuleId(String ruleId_p) {
+  public String getUnqualifiedRuleId(String ruleId) {
     // show the unqualified name
-    String result = ruleId_p;
+    String result = ruleId;
     int lastDot = result.lastIndexOf('.');
     if ((lastDot >= 0) && (lastDot < (result.length() - 1))) {
       result = result.substring(lastDot + 1, result.length());
@@ -192,12 +190,12 @@ public class MarkerViewHelper {
   }
   
   /**
-   * @param marker_p
+   * @param marker
    * @return
    */
-  public static IConstraintDescriptor getConstraintDescriptor(IMarker marker_p) {
+  public static IConstraintDescriptor getConstraintDescriptor(IMarker marker) {
     IConstraintDescriptor descriptor = null;
-    Diagnostic d = (Diagnostic) marker_p.getAdapter(Diagnostic.class);
+    Diagnostic d = (Diagnostic) marker.getAdapter(Diagnostic.class);
     if (d instanceof ConstraintStatusDiagnostic) {
       descriptor = ((ConstraintStatusDiagnostic) d).getConstraintStatus().getConstraint().getDescriptor();
     }
@@ -205,16 +203,16 @@ public class MarkerViewHelper {
   }
 
   /**
-   * @param marker_p
+   * @param marker
    * @return the marker's diagnostic, if it has one. null otherwise.
    */
-  public static Diagnostic getDiagnostic(IMarker marker_p) {
-    return (Diagnostic) marker_p.getAdapter(Diagnostic.class);
+  public static Diagnostic getDiagnostic(IMarker marker) {
+    return (Diagnostic) marker.getAdapter(Diagnostic.class);
   }
 
-  public static Category getCategory(IMarker marker_p) {
+  public static Category getCategory(IMarker marker) {
     Category result = null;
-    Diagnostic diag = getDiagnostic(marker_p);
+    Diagnostic diag = getDiagnostic(marker);
     if ((diag != null) && (diag instanceof ConstraintStatusDiagnostic)) {
       Set<Category> cats = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getCategories();
       if (!cats.isEmpty()) {
@@ -226,12 +224,12 @@ public class MarkerViewHelper {
 
   /**
    * Finds EObjects that are attached to this marker. The resulting list will not contain duplicates.
-   * @param marker_p the marker to inspect
+   * @param marker the marker to inspect
    * @return A List of EObjects that are attached to the marker. Never null. May be empty.
    */
-  public static List<EObject> getModelElementsFromMarker(IMarker marker_p) {
+  public static List<EObject> getModelElementsFromMarker(IMarker marker) {
     Set<EObject> result = new LinkedHashSet<EObject>(); // preserve order
-    Diagnostic diag = getDiagnostic(marker_p);
+    Diagnostic diag = getDiagnostic(marker);
     if (diag != null){
       for (Object o : diag.getData()){
         if (o instanceof EObject){
@@ -245,12 +243,12 @@ public class MarkerViewHelper {
   /**
    * Checks whether the given marker violates any of the basic EObject constraints
    * defined in {@link org.eclipse.emf.ecore.util.EObjectValidator}
-   * @param marker_p
+   * @param marker
    * @return
    */
-  public static boolean isEcore(IMarker marker_p) {
+  public static boolean isEcore(IMarker marker) {
     boolean result = false;
-    Diagnostic diag = getDiagnostic(marker_p);
+    Diagnostic diag = getDiagnostic(marker);
     if ((diag != null) && (diag.getSource() != null) && diag.getSource().equals(ECORE_DIAGNOSTIC_SOURCE)) {
       result = true;
     }

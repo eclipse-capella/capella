@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,9 +41,9 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
   }
 
   @Override
-  public boolean isEnabled(IPropertyContext context_p) {
+  public boolean isEnabled(IPropertyContext context) {
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     return source != null;
   }
 
@@ -51,18 +51,18 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     if (_currentName == null) {
-      IContext context = (IContext) context_p.getSource();
+      IContext ctx = (IContext) context.getSource();
       CatalogElement source =
-          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+          (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
       if (source != null) {
         CatalogElementPkg location =
-            (CatalogElementPkg) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_SOURCE));
+            (CatalogElementPkg) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_SOURCE));
         if ((source.getName() != null) && !(source.getName().isEmpty())) {
           _currentName = source.getName();
         } else {
-          _currentName = ReplicableElementHandlerHelper.getInstance(context).getInitialReplicaName(context, location);
+          _currentName = ReplicableElementHandlerHelper.getInstance(ctx).getInitialReplicaName(ctx, location);
         }
       }
     }
@@ -73,14 +73,13 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     boolean isValid = true;
-    IContext context = (IContext) context_p.getSource();
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     if (source != null) {
 
-      if ((newValue_p == null) || ((newValue_p instanceof String) && ((String) newValue_p).isEmpty())) {
+      if ((newValue == null) || ((newValue instanceof String) && ((String) newValue).isEmpty())) {
         isValid = false;
       }
       if (!isValid) {
@@ -102,22 +101,22 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    if (value_p == null) {
+  public Object toType(Object value, IPropertyContext context) {
+    if (value == null) {
       return null;
     }
-    return value_p.toString();
+    return value.toString();
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     if (element != null) {
-      element.setName((String) context_p.getCurrentValue(this));
+      element.setName((String) context.getCurrentValue(this));
     }
   }
 
@@ -125,8 +124,8 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    if (IReConstants.PROPERTY__LOCATION_SOURCE.equals(property_p.getId())) {
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    if (IReConstants.PROPERTY__LOCATION_SOURCE.equals(property.getId())) {
       _currentName = null;
     }
   }
@@ -135,7 +134,7 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
    * {@inheritDoc}
    */
   @Override
-  public boolean isModified(IPropertyContext context_p) {
+  public boolean isModified(IPropertyContext context) {
     return true;
   }
 }

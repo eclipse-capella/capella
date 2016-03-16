@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.renderers;
 
 import java.util.Collection;
@@ -36,7 +37,7 @@ public class ScopeElementsRenderer extends SelectListRenderer {
   }
 
   @Override
-  protected void doubleClicked(ISelection doubleClickedElement_p, IRendererContext context_p) {
+  protected void doubleClicked(ISelection doubleClickedElement, IRendererContext context) {
     // Nothing here
 
   }
@@ -45,7 +46,7 @@ public class ScopeElementsRenderer extends SelectListRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected IContentProvider createContentProvider(IRendererContext context_p) {
+  protected IContentProvider createContentProvider(IRendererContext context) {
     return new DataContentProvider();
   }
 
@@ -53,20 +54,20 @@ public class ScopeElementsRenderer extends SelectListRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected Object createInput(IProperty property_p, IRendererContext context_p) {
-    Object value = context_p.getPropertyContext().getCurrentValue(property_p);
+  protected Object createInput(IProperty property, IRendererContext context) {
+    Object value = context.getPropertyContext().getCurrentValue(property);
 
     if ((value != null) && (value instanceof Collection)) {
       Collection<EObject> scopeElements = (Collection) value;
       TreeData data = new TreeData(scopeElements, null);
       return data;
     }
-    return new ListData(Collections.emptyList(), context_p.getPropertyContext());
+    return new ListData(Collections.emptyList(), context.getPropertyContext());
   }
 
   @Override
-  protected ILabelProvider getLabelProvider(IRendererContext context_p) {
-    return context_p.getLabelProvider();
+  protected ILabelProvider getLabelProvider(IRendererContext context) {
+    return context.getLabelProvider();
   }
 
 }

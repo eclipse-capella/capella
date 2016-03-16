@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.queries.queryContext;
 
 import java.util.Hashtable;
@@ -28,22 +29,22 @@ public abstract class AbstractQueryContext implements IPrivateQueryContext {
   }
 
   @Override
-  public List<Object> getResultFromCache(Integer queryId, Object semanticsObject_p) {
+  public List<Object> getResultFromCache(Integer queryId, Object semanticsObject) {
     Hashtable<Object, List<Object>> cacheTable = queryIdentifierToCacheTable.get(queryId);
     if (cacheTable == null) {
       return null;
     }
-    return cacheTable.get(semanticsObject_p);
+    return cacheTable.get(semanticsObject);
   }
 
   @Override
-  public void addInCache(Integer queryId, Object semanticsObject_p, List<Object> res_p) {
+  public void addInCache(Integer queryId, Object semanticsObject, List<Object> res) {
     Hashtable<Object, List<Object>> cacheTable = queryIdentifierToCacheTable.get(queryId);
     if (cacheTable == null) {
       cacheTable = new Hashtable<Object, List<Object>>();
       queryIdentifierToCacheTable.put(queryId, cacheTable);
     }
-    cacheTable.put(semanticsObject_p, res_p);
+    cacheTable.put(semanticsObject, res);
   }
 
   @Override

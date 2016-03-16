@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.model.copypaste;
 
 import java.util.ArrayList;
@@ -45,19 +46,19 @@ public class SharedInitializeCopyCommand extends InitializeCopyCommand {
     /**
      * 
      */
-    public PendingQualification(EObject src_p, EReference reference_p) {
-      _src = src_p;
-      _reference = reference_p;
+    public PendingQualification(EObject src, EReference reference) {
+      _src = src;
+      _reference = reference;
     }
 
     /**
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj_p) {
-      if (!(obj_p instanceof PendingQualification))
+    public boolean equals(Object obj) {
+      if (!(obj instanceof PendingQualification))
         return false;
-      PendingQualification other = (PendingQualification) obj_p;
+      PendingQualification other = (PendingQualification) obj;
       return _src.equals(other._src) && _reference.equals(other._reference);
     }
 
@@ -77,12 +78,12 @@ private static final String PLUGIN_ID = "org.polarsys.capella.common.model.Dropp
   private static List<String> _droppedReferences = null;
 
   /**
-   * @param domain_p
-   * @param owner_p
-   * @param copyHelper_p
+   * @param domain
+   * @param owner
+   * @param copyHelper
    */
-  public SharedInitializeCopyCommand(EditingDomain domain_p, EObject owner_p, Helper copyHelper_p) {
-    super(domain_p, owner_p, copyHelper_p);
+  public SharedInitializeCopyCommand(EditingDomain domain, EObject owner, Helper copyHelper) {
+    super(domain, owner, copyHelper);
   }
 
   /**
@@ -193,9 +194,9 @@ private void loadDroppedReferences() {
    * Check if the reference is value on the owner, either by direct reference or table pending.
    * @return
    */
-  private boolean isReferenceSet(EReference reference_p) {
-    PendingQualification pq = new PendingQualification(owner, reference_p);
-    return owner.eIsSet(reference_p) || _pendingReferences.containsKey(pq);
+  private boolean isReferenceSet(EReference reference) {
+    PendingQualification pq = new PendingQualification(owner, reference);
+    return owner.eIsSet(reference) || _pendingReferences.containsKey(pq);
   }
 
 }

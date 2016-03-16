@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.jface.viewers.CellLabelProvider;
@@ -27,19 +28,19 @@ public abstract class AbstractTooltipLabelProvider extends CellLabelProvider imp
 
   /**
    * Constructor.
-   * @param labelProvider_p label provider that provides the text and the image for given element.
+   * @param labelProvider label provider that provides the text and the image for given element.
    */
-  protected AbstractTooltipLabelProvider(ILabelProvider labelProvider_p) {
-    _labelProvider = labelProvider_p;
+  protected AbstractTooltipLabelProvider(ILabelProvider labelProvider) {
+    _labelProvider = labelProvider;
   }
 
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
   @Override
-  public void addListener(ILabelProviderListener listener_p) {
-    super.addListener(listener_p);
-    _labelProvider.addListener(listener_p);
+  public void addListener(ILabelProviderListener listener) {
+    super.addListener(listener);
+    _labelProvider.addListener(listener);
   }
 
   /**
@@ -54,8 +55,8 @@ public abstract class AbstractTooltipLabelProvider extends CellLabelProvider imp
   /**
    * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
    */
-  public Image getImage(Object element_p) {
-    return _labelProvider.getImage(element_p);
+  public Image getImage(Object element) {
+    return _labelProvider.getImage(element);
   }
 
   /**
@@ -68,40 +69,40 @@ public abstract class AbstractTooltipLabelProvider extends CellLabelProvider imp
   /**
    * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
    */
-  public String getText(Object element_p) {
-    return _labelProvider.getText(element_p);
+  public String getText(Object element) {
+    return _labelProvider.getText(element);
   }
 
   /**
    * @see org.eclipse.jface.viewers.CellLabelProvider#getToolTipText(java.lang.Object)
    */
   @Override
-  public abstract String getToolTipText(Object element_p);
+  public abstract String getToolTipText(Object element);
 
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
    */
   @Override
-  public boolean isLabelProperty(Object element_p, String property_p) {
-    return super.isLabelProperty(element_p, property_p) && _labelProvider.isLabelProperty(element_p, property_p);
+  public boolean isLabelProperty(Object element, String property) {
+    return super.isLabelProperty(element, property) && _labelProvider.isLabelProperty(element, property);
   }
 
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
   @Override
-  public void removeListener(ILabelProviderListener listener_p) {
-    super.removeListener(listener_p);
-    _labelProvider.removeListener(listener_p);
+  public void removeListener(ILabelProviderListener listener) {
+    super.removeListener(listener);
+    _labelProvider.removeListener(listener);
   }
 
   /**
    * @see org.eclipse.jface.viewers.CellLabelProvider#update(org.eclipse.jface.viewers.ViewerCell)
    */
   @Override
-  public void update(ViewerCell viewer_p) {
-    Object element = viewer_p.getElement();
-    viewer_p.setText(getText(element));
-    viewer_p.setImage(getImage(element));
+  public void update(ViewerCell viewer) {
+    Object element = viewer.getElement();
+    viewer.setText(getText(element));
+    viewer.setImage(getImage(element));
   }
 }

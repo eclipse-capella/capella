@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import java.util.ArrayList;
@@ -55,62 +56,62 @@ public abstract class FieldsViewer extends Viewer {
 
   /**
    * Constructor.
-   * @param parent_p The parent composite.
+   * @param parent The parent composite.
    */
-  public FieldsViewer(Composite parent_p) {
-    this(parent_p, SWT.NONE /* No style */);
+  public FieldsViewer(Composite parent) {
+    this(parent, SWT.NONE /* No style */);
   }
 
   /**
    * Constructor.
-   * @param parent_p The parent composite.
+   * @param parent The parent composite.
    */
-  public FieldsViewer(Composite parent_p, boolean isMultipleSelection_p) {
-    this(parent_p, isMultipleSelection_p, SWT.NONE /* No style */, AbstractTreeViewer.ALL_LEVELS);
+  public FieldsViewer(Composite parent, boolean isMultipleSelection) {
+    this(parent, isMultipleSelection, SWT.NONE /* No style */, AbstractTreeViewer.ALL_LEVELS);
   }
 
   /**
    * Constructor.
-   * @param parent_p The parent composite.
-   * @param isMultipleSelection_p
-   * @param style_p
-   *  @param viewerExpandLevel_p
+   * @param parent The parent composite.
+   * @param isMultipleSelection
+   * @param style
+   *  @param viewerExpandLevel
    */
-  public FieldsViewer(Composite parent_p, boolean isMultipleSelection_p, int style_p, int viewerExpandLevel_p) {
-    _isMultipleSelection = isMultipleSelection_p;
-    _viewerExpandLevel = viewerExpandLevel_p;
-    initialize(parent_p, style_p);
+  public FieldsViewer(Composite parent, boolean isMultipleSelection, int style, int viewerExpandLevel) {
+    _isMultipleSelection = isMultipleSelection;
+    _viewerExpandLevel = viewerExpandLevel;
+    initialize(parent, style);
   }
 
   /**
    * Constructor.
-   * @param parent_p The parent composite.
-   * @param page_p The page where fields display messages.
+   * @param parent The parent composite.
+   * @param page The page where fields display messages.
    */
-  public FieldsViewer(Composite parent_p, DialogPage page_p) {
-    this(parent_p, SWT.NONE /* No style */);
-    setPage(page_p);
+  public FieldsViewer(Composite parent, DialogPage page) {
+    this(parent, SWT.NONE /* No style */);
+    setPage(page);
   }
 
   /**
    * Constructor.
-   * @param parent_p The parent composite.
-   * @param style_p
+   * @param parent The parent composite.
+   * @param style
    */
-  public FieldsViewer(Composite parent_p, int style_p) {
-    initialize(parent_p, style_p);
+  public FieldsViewer(Composite parent, int style) {
+    initialize(parent, style);
   }
 
   /**
    * Creates the control.
-   * @param parent_p The parent composite.
+   * @param parent The parent composite.
    */
-  protected void createControl(Composite parent_p) {
-    parent_p.addDisposeListener(new DisposeListener() {
+  protected void createControl(Composite parent) {
+    parent.addDisposeListener(new DisposeListener() {
       /**
        * {@inheritDoc}
        */
-      public void widgetDisposed(DisposeEvent e_p) {
+      public void widgetDisposed(DisposeEvent e) {
         dispose();
       }
     });
@@ -118,11 +119,11 @@ public abstract class FieldsViewer extends Viewer {
 
   /**
    * Creates the internal composite.
-   * @param parent_p The parent composite.
+   * @param parent The parent composite.
    * @return The internal composite.
    */
-  protected Composite createInternalComposite(Composite parent_p) {
-    return new Composite(parent_p, SWT.NONE);
+  protected Composite createInternalComposite(Composite parent) {
+    return new Composite(parent, SWT.NONE);
   }
 
   /**
@@ -157,19 +158,19 @@ public abstract class FieldsViewer extends Viewer {
 
   /**
    * Gets the event listeners map.
-   * @param eventType_p The event type.
+   * @param eventType The event type.
    * @return The event listeners map.
    */
-  public HashMap<Listener, Integer> getEventListeners(int eventType_p) {
+  public HashMap<Listener, Integer> getEventListeners(int eventType) {
     return _eventListeners;
   }
 
   /**
    * Gets the events providers map.
-   * @param eventType_p The event type.
+   * @param eventType The event type.
    * @return the event providers map.
    */
-  public HashMap<Control, Integer> getEventProviders(int eventType_p) {
+  public HashMap<Control, Integer> getEventProviders(int eventType) {
     return _eventProviders;
   }
 
@@ -205,8 +206,8 @@ public abstract class FieldsViewer extends Viewer {
 
   /**
    * Registers the specified control to listen the specified event types.
-   * @param eventTypes_p The event types support OR'ed values (use the '|' character to separate values).
-   * @param control_p The control which listen to the event.
+   * @param eventTypes The event types support OR'ed values (use the '|' character to separate values).
+   * @param control The control which listen to the event.
    * @see SWT#Activate
    * @see SWT#Close
    * @see SWT#Collapse
@@ -238,19 +239,19 @@ public abstract class FieldsViewer extends Viewer {
    * @see SWT#Traverse
    * @see SWT#Verify
    */
-  public void handleEvents(int eventTypes_p, Listener control_p) {
-    _eventListeners.put(control_p, Integer.valueOf(eventTypes_p));
+  public void handleEvents(int eventTypes, Listener control) {
+    _eventListeners.put(control, Integer.valueOf(eventTypes));
   }
 
   /**
    * Initialize this viewer.
-   * @param parent_p
-   * @param style_p
+   * @param parent
+   * @param style
    */
-  protected void initialize(Composite parent_p, int style_p) {
+  protected void initialize(Composite parent, int style) {
     _fields = new ArrayList<FieldEditor>(0);
-    _style = style_p;
-    _composite = createInternalComposite(parent_p);
+    _style = style;
+    _composite = createInternalComposite(parent);
     createControl(_composite);
   }
 
@@ -267,8 +268,8 @@ public abstract class FieldsViewer extends Viewer {
 
   /**
    * Registers the specified control to propagate the specified event types.
-   * @param eventTypes_p The event types support OR'ed values (use the '|' character to separate values).
-   * @param control_p The control which listen to the event.
+   * @param eventTypes The event types support OR'ed values (use the '|' character to separate values).
+   * @param control The control which listen to the event.
    * @see SWT#Activate
    * @see SWT#Close
    * @see SWT#Collapse
@@ -300,8 +301,8 @@ public abstract class FieldsViewer extends Viewer {
    * @see SWT#Traverse
    * @see SWT#Verify
    */
-  public void propagateEvents(int eventTypes_p, Control control_p) {
-    _eventProviders.put(control_p, Integer.valueOf(eventTypes_p));
+  public void propagateEvents(int eventTypes, Control control) {
+    _eventProviders.put(control, Integer.valueOf(eventTypes));
   }
 
   /**
@@ -316,29 +317,29 @@ public abstract class FieldsViewer extends Viewer {
 
   /**
    * Registers the specified field to the current viewer.
-   * @param field_p The field to register.
+   * @param field The field to register.
    */
-  public void registerField(FieldEditor field_p) {
-    if (!_fields.contains(field_p)) {
-      _fields.add(field_p);
+  public void registerField(FieldEditor field) {
+    if (!_fields.contains(field)) {
+      _fields.add(field);
     }
   }
 
   /**
    * Enable the viewer or not.
-   * @param enabled_p <code>true</code> to enable the viewer else <code>false</code>.
+   * @param enabled <code>true</code> to enable the viewer else <code>false</code>.
    */
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     for (FieldEditor field : _fields) {
       // Enable the vertical scrollbar and disable the Text field only for CSstringFieldEditor
       if (field instanceof CStringFieldEditor) {
         CStringFieldEditor cstField = (CStringFieldEditor) field;
-        cstField.getTextControl().setEditable(enabled_p);
+        cstField.getTextControl().setEditable(enabled);
       } else if (field instanceof MdeFieldEditor) {
         MdeFieldEditor mdeField = (MdeFieldEditor) field;
-        mdeField.setEnabled(enabled_p);
+        mdeField.setEnabled(enabled);
       } else {
-        field.setEnabled(enabled_p, this.getControl());
+        field.setEnabled(enabled, this.getControl());
       }
     }
   }
@@ -347,18 +348,18 @@ public abstract class FieldsViewer extends Viewer {
    * @see org.eclipse.jface.viewers.Viewer#setInput(java.lang.Object)
    */
   @Override
-  public abstract void setInput(Object input_p);
+  public abstract void setInput(Object input);
 
 
   /**
    * Sets the page where field controls displays messages.
-   * @param page_p The page where to display messages.
+   * @param page The page where to display messages.
    */
-  public void setPage(DialogPage page_p) {
+  public void setPage(DialogPage page) {
     for (FieldEditor field : _fields) {
-      field.setPage(page_p);
-      if (page_p instanceof IPropertyChangeListener) {
-        field.setPropertyChangeListener((IPropertyChangeListener) page_p);
+      field.setPage(page);
+      if (page instanceof IPropertyChangeListener) {
+        field.setPropertyChangeListener((IPropertyChangeListener) page);
       }
     }
   }
@@ -367,17 +368,17 @@ public abstract class FieldsViewer extends Viewer {
    * @see org.eclipse.jface.viewers.Viewer#setSelection(org.eclipse.jface.viewers.ISelection, boolean)
    */
   @Override
-  public void setSelection(ISelection selection_p, boolean reveal_p) {
+  public void setSelection(ISelection selection, boolean reveal) {
     // Do nothing.
   }
 
   /**
    * Loads data into the viewer.
-   * @param store_p The store.
+   * @param store The store.
    */
-  public void setStore(IPreferenceStore store_p) {
+  public void setStore(IPreferenceStore store) {
     for (FieldEditor field : _fields) {
-      field.setPreferenceStore(store_p);
+      field.setPreferenceStore(store);
     }
   }
 
@@ -392,12 +393,12 @@ public abstract class FieldsViewer extends Viewer {
 
   /**
    * Unregisters the specified field from the current viewer.
-   * @param field_p The field to unregister.
+   * @param field The field to unregister.
    */
-  public void unregisterField(FieldEditor field_p) {
-    if (_fields.contains(field_p)) {
-      _fields.remove(field_p);
-      field_p.setPropertyChangeListener(null);
+  public void unregisterField(FieldEditor field) {
+    if (_fields.contains(field)) {
+      _fields.remove(field);
+      field.setPropertyChangeListener(null);
     }
   }
 }

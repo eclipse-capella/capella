@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui;
 
 import org.eclipse.core.runtime.IStatus;
@@ -49,7 +50,7 @@ public abstract class PropertyPreferencePage extends PreferencePage implements P
    * {@inheritDoc}
    */
   @Override
-  public void init(IWorkbench workbench_p) {
+  public void init(IWorkbench workbench) {
     IPropertyContext context = getContext();
     if (context != null) {
       context.registerListener(this);
@@ -103,7 +104,7 @@ public abstract class PropertyPreferencePage extends PreferencePage implements P
    * {@inheritDoc}
    */
   @Override
-  protected Control createContents(Composite parent_p) {
+  protected Control createContents(Composite parent) {
     ILabelProvider labelProvider = getLabelProvider();
     PropertyControl control = new PropertyControl(labelProvider, getContext(), getRendererContext()) {
 
@@ -112,7 +113,7 @@ public abstract class PropertyPreferencePage extends PreferencePage implements P
         return true;
       }
     };
-    return control.createControl(parent_p);
+    return control.createControl(parent);
   }
 
   protected void applyToStatusLine(IStatus status) {
@@ -162,7 +163,7 @@ public abstract class PropertyPreferencePage extends PreferencePage implements P
   /**
    * {@inheritDoc}
    */
-  public void update(PropertyChangedEvent event_p) {
+  public void update(PropertyChangedEvent event) {
     applyToStatusLine(findMostSevere());
   }
 

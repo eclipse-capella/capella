@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,17 +27,17 @@ public class InitialSourceProperty extends AbstractContextProperty implements IR
 	   * {@inheritDoc}
 	   */
 	  @Override
-	  public Collection<Object> getChoiceValues(IPropertyContext context_p) {
-	    IContext context = getContext(context_p);
+	  public Collection<Object> getChoiceValues(IPropertyContext context) {
+	    IContext ctx = getContext(context);
 	    //return ReplicableElementHandlerHelper.getInstance(context).getAllDefinedRecReplicableElements(context);
-	    return ReplicableElementHandlerHelper.getInstance(context).getAllDefinedReplicableElements(context);
+	    return ReplicableElementHandlerHelper.getInstance(ctx).getAllDefinedReplicableElements(ctx);
 	  }
 
 	  @Override
-	  protected Object getInitialValue(IPropertyContext context_p) {
+	  protected Object getInitialValue(IPropertyContext context) {
 	    Object element = null;
-	    IContext context = getContext(context_p);
-	    Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(context).getIndirectlySelectedReplicableElements(context);
+	    IContext ctx = getContext(context);
+	    Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(ctx).getIndirectlySelectedReplicableElements(ctx);
 	    if (!selectedElements.isEmpty()) {
 	      element = selectedElements.iterator().next();
 	    }
@@ -57,8 +57,8 @@ public class InitialSourceProperty extends AbstractContextProperty implements IR
 	   * {@inheritDoc}
 	   */
 	  @Override
-	  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-	    if ((newValue_p == null) || !(newValue_p instanceof CatalogElement)) {
+	  public IStatus validate(Object newValue, IPropertyContext context) {
+	    if ((newValue == null) || !(newValue instanceof CatalogElement)) {
 	      return new Status(IStatus.ERROR, "n", "Select a RPL to detach");
 	    }
 	    return Status.OK_STATUS;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.libraries.manager;
 
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ import org.polarsys.capella.common.libraries.IModelIdentifier;
 
 public class LibraryManagerExt {
 
-  public static Collection<IModelIdentifier> getAllUnavailableReferences(IModel referencingModel_p) {
+  public static Collection<IModelIdentifier> getAllUnavailableReferences(IModel referencingModel) {
     LinkedHashSet<IModelIdentifier> visited = new LinkedHashSet<IModelIdentifier>();
     ArrayList<IModelIdentifier> result = new ArrayList<IModelIdentifier>();
     LinkedList<IModel> toVisit = new LinkedList<IModel>();
-    toVisit.add(referencingModel_p);
+    toVisit.add(referencingModel);
 
     while (!toVisit.isEmpty()) {
       IModel model = toVisit.removeFirst();
@@ -48,14 +49,14 @@ public class LibraryManagerExt {
     return result;
   }
 
-  public static Collection<IModel> getReferences(IModel referencingModel_p) {
-    return referencingModel_p.getAvailableReferences();
+  public static Collection<IModel> getReferences(IModel referencingModel) {
+    return referencingModel.getAvailableReferences();
   }
 
-  public static Collection<IModel> getAllReferences(IModel referencingModel_p) {
+  public static Collection<IModel> getAllReferences(IModel referencingModel) {
     LinkedHashSet<IModel> visited = new LinkedHashSet<IModel>();
     LinkedList<IModel> toVisit = new LinkedList<IModel>();
-    toVisit.add(referencingModel_p);
+    toVisit.add(referencingModel);
 
     while (!toVisit.isEmpty()) {
       IModel model = toVisit.removeFirst();
@@ -65,15 +66,15 @@ public class LibraryManagerExt {
       }
     }
 
-    visited.remove(referencingModel_p);
+    visited.remove(referencingModel);
     return visited;
   }
 
-  public static Collection<IModel> getAllActivesReferences(IModel referencingModel_p) {
+  public static Collection<IModel> getAllActivesReferences(IModel referencingModel) {
 
     LinkedList<IModel> result = new LinkedList<IModel>();
-    for (IModel model : getAllReferences(referencingModel_p)) {
-      if (referencingModel_p.isActive(model)) {
+    for (IModel model : getAllReferences(referencingModel)) {
+      if (referencingModel.isActive(model)) {
         result.add(model);
       }
     }
@@ -81,11 +82,11 @@ public class LibraryManagerExt {
     return result;
   }
 
-  public static Collection<IModel> getActivesReferences(IModel referencingModel_p) {
+  public static Collection<IModel> getActivesReferences(IModel referencingModel) {
 
     LinkedList<IModel> result = new LinkedList<IModel>();
-    for (IModel model : referencingModel_p.getAvailableReferences()) {
-      if (referencingModel_p.isActive(model)) {
+    for (IModel model : referencingModel.getAvailableReferences()) {
+      if (referencingModel.isActive(model)) {
         result.add(model);
       }
     }

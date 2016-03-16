@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.project.utils;
 
 import java.util.Collection;
@@ -30,39 +31,39 @@ public class ProjectUtils {
   
   /**
    * Check whether a {@link IProject} nature is of given type.
-   * @param project_p the target {@link IProject}
-   * @param natureIdToMatch_p the nature to match id.
+   * @param project the target {@link IProject}
+   * @param natureIdToMatch the nature to match id.
    * @return <code>true</code> whether no nature was defined (e.g. empty or <code>null</code> value as argument.)
    */
-  public static boolean isProjectOfType(final IProject project_p, final String natureIdToMatch_p) {
+  public static boolean isProjectOfType(final IProject project, final String natureIdToMatch) {
     return 
-      null == natureIdToMatch_p || natureIdToMatch_p.equals(ICommonConstants.EMPTY_STRING) ?
+      null == natureIdToMatch || natureIdToMatch.equals(ICommonConstants.EMPTY_STRING) ?
          true :
-         isProjectOfType(project_p, Collections.singleton(natureIdToMatch_p)
+         isProjectOfType(project, Collections.singleton(natureIdToMatch)
     );
   }
   
   /**
    * Check whether a {@link IProject} nature is of given type.
-   * @param project_p the target {@link IProject}
-   * @param natureIdsToMatch_p the nature to match ids.
+   * @param project the target {@link IProject}
+   * @param natureIdsToMatch the nature to match ids.
    * @return <code>true</code> whether no nature was defined (e.g. empty or <code>null</code> value as argument.)
    */
-  public static boolean isProjectOfType(final IProject project_p, final Collection<String> natureIdsToMatch_p) {
+  public static boolean isProjectOfType(final IProject project, final Collection<String> natureIdsToMatch) {
     
     boolean result = false;
     
     if ( // No filtering on nature
-        null == natureIdsToMatch_p ||
-        natureIdsToMatch_p.isEmpty()
+        null == natureIdsToMatch ||
+        natureIdsToMatch.isEmpty()
     ) {
       return true;
     }
     
     try {
-      String[] projectNatures = project_p.getDescription().getNatureIds();
-      result = matche(projectNatures, natureIdsToMatch_p);
-    } catch (CoreException exception_p) {
+      String[] projectNatures = project.getDescription().getNatureIds();
+      result = matche(projectNatures, natureIdsToMatch);
+    } catch (CoreException exception) {
       result = false;
     }
     
@@ -71,19 +72,19 @@ public class ProjectUtils {
    
   /**
    * Get all accessible project projects on workspace of a given nature. 
-   * @param natureIdToMatch_p the type of project id (or <code>null</code>)
+   * @param natureIdToMatch the type of project id (or <code>null</code>)
    * @return an empty {@link Collection} whether no result was found.
    */
-  public static Collection<IProject> getAllProjectsOfType(String natureIdToMatch_p) {
-    return getAllProjectsOfType(Collections.singleton(natureIdToMatch_p));
+  public static Collection<IProject> getAllProjectsOfType(String natureIdToMatch) {
+    return getAllProjectsOfType(Collections.singleton(natureIdToMatch));
   }
   
   /**
    * Get all accessible project projects on workspace of a given nature. 
-   * @param natureIdsToMatch_p the type of project ids (or <code>null</code>)
+   * @param natureIdsToMatch the type of project ids (or <code>null</code>)
    * @return an empty {@link Collection} whether no result was found.
    */
-  public static Collection<IProject> getAllProjectsOfType(final Collection<String> natureIdsToMatch_p) {
+  public static Collection<IProject> getAllProjectsOfType(final Collection<String> natureIdsToMatch) {
     
     Set<IProject> result = new HashSet<IProject>();
     
@@ -91,8 +92,8 @@ public class ProjectUtils {
     IProject[] projects = root.getRoot().getProjects();
 
     boolean shouldBeFilteredWithNature = 
-      null != natureIdsToMatch_p && 
-      !natureIdsToMatch_p.isEmpty()
+      null != natureIdsToMatch && 
+      !natureIdsToMatch.isEmpty()
     ;
     
     IProject project = null;
@@ -104,7 +105,7 @@ public class ProjectUtils {
       keep = project.isAccessible(); // Project open
       
       if ( keep && shouldBeFilteredWithNature ) { // Nature of the project ok.
-       keep = isProjectOfType(project, natureIdsToMatch_p);
+       keep = isProjectOfType(project, natureIdsToMatch);
       }
       
       // To conclude
@@ -118,11 +119,11 @@ public class ProjectUtils {
   }
   
   /** for internal use */
-  static private boolean matche(final String[] a_p, final Collection<String> b_p) {
+  static private boolean matche(final String[] a, final Collection<String> b) {
     boolean result = false;
     
-    for (String str: a_p) {
-      if ( b_p.contains(str)) {
+    for (String str: a) {
+      if ( b.contains(str)) {
         result = true;
         break;
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.config.registry;
 
 import java.util.Enumeration;
@@ -186,35 +187,35 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * @param componentName_p
+   * @param componentName
    * @return
    */
-  public Logger subscribe(String componentName_p) {
-    if (!_configurations.containsKey(componentName_p)) {
+  public Logger subscribe(String componentName) {
+    if (!_configurations.containsKey(componentName)) {
 
       ConfigurationInstance oConfigurationInstance = copyConfig(_configurations.get(ReportManagerConstants.LOG_OUTPUT_DEFAULT));
 
       if (null != oConfigurationInstance) {
-        oConfigurationInstance.setComponentName(componentName_p);
+        oConfigurationInstance.setComponentName(componentName);
         synchronized (_configurations) {
-          _configurations.put(componentName_p, oConfigurationInstance);
+          _configurations.put(componentName, oConfigurationInstance);
         }
         saveConfiguration();
       }
     }
 
-    Logger theLog = Logger.getLogger(componentName_p);
+    Logger theLog = Logger.getLogger(componentName);
 
     return theLog;
   }
 
   /**
-   * @param componentName_p
+   * @param componentName
    */
-  public void unSubscribe(String componentName_p) {
-    if (_configurations.containsKey(componentName_p)) {
+  public void unSubscribe(String componentName) {
+    if (_configurations.containsKey(componentName)) {
       synchronized (_configurations) {
-        _configurations.remove(componentName_p);
+        _configurations.remove(componentName);
       }
     }
     saveConfiguration();
@@ -239,19 +240,19 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * @param componentName_p
+   * @param componentName
    */
-  public void beginLoggingSession(String componentName_p) {
-    beginLoggingSession(componentName_p, null);
+  public void beginLoggingSession(String componentName) {
+    beginLoggingSession(componentName, null);
   }
 
   /**
-   * @param componentName_p
-   * @param loggedElement_p
+   * @param componentName
+   * @param loggedElement
    */
-  public void beginLoggingSession(String componentName_p, Object loggedElement_p) {
+  public void beginLoggingSession(String componentName, Object loggedElement) {
     for (IFlushableAppenders _appender : getFlushableAppenders()) {
-      _appender.flush(componentName_p, loggedElement_p);
+      _appender.flush(componentName, loggedElement);
     }
   }
 
@@ -267,8 +268,8 @@ public class ReportManagerRegistry {
   /**
    * @see org.polarsys.capella.common.tools.report.config.registry.IReportManagerRegistry#getComponentConfiguration(java.lang.String)
    */
-  public ConfigurationInstance getComponentConfiguration(String componentName_p) {
-    ConfigurationInstance oConfigurationInstance = _configurations.get(componentName_p);
+  public ConfigurationInstance getComponentConfiguration(String componentName) {
+    ConfigurationInstance oConfigurationInstance = _configurations.get(componentName);
     if (null != oConfigurationInstance) {
       return oConfigurationInstance;
     }
@@ -292,11 +293,11 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * @param map_p the _configurationMap to set
+   * @param map the _configurationMap to set
    */
-  public void setConfigurations(HashMap<String, ConfigurationInstance> map_p) {
+  public void setConfigurations(HashMap<String, ConfigurationInstance> map) {
     synchronized (_configurations) {
-      _configurations = map_p;
+      _configurations = map;
     }
   }
 

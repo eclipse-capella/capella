@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -33,19 +34,19 @@ public class DataLabelProvider extends MDEAdapterFactoryLabelProvider implements
 
   /**
    * Constructor.
-   * @param adapterFactory_p
+   * @param adapterFactory
    */
-  public DataLabelProvider(AdapterFactory adapterFactory_p) {
-    super(adapterFactory_p);
+  public DataLabelProvider(AdapterFactory adapterFactory) {
+    super(adapterFactory);
   }
 
   /**
    * Constructor.
-   * @param editingDomain_p
-   * @param adapterFactory_p
+   * @param editingDomain
+   * @param adapterFactory
    */
-  public DataLabelProvider(TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p) {
-    super(editingDomain_p, adapterFactory_p);
+  public DataLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory) {
+    super(editingDomain, adapterFactory);
   }
 
   /**
@@ -66,7 +67,7 @@ public class DataLabelProvider extends MDEAdapterFactoryLabelProvider implements
    * @see org.eclipse.jface.viewers.IColorProvider#getBackground(java.lang.Object)
    */
   @Override
-  public Color getBackground(Object element_p) {
+  public Color getBackground(Object element) {
     // Do nothing.
     return null;
   }
@@ -75,11 +76,11 @@ public class DataLabelProvider extends MDEAdapterFactoryLabelProvider implements
    * @see org.eclipse.jface.viewers.IFontProvider#getFont(java.lang.Object)
    */
   @Override
-  public Font getFont(Object element_p) {
+  public Font getFont(Object element) {
     Font result = null;
     if (_viewer != null) {
       AbstractData input = (AbstractData) _viewer.getInput();
-      if (!input.isValid(element_p)) {
+      if (!input.isValid(element)) {
         result = getInvalidElementFont();
       }
     }
@@ -90,11 +91,11 @@ public class DataLabelProvider extends MDEAdapterFactoryLabelProvider implements
    * @see org.eclipse.jface.viewers.IColorProvider#getForeground(java.lang.Object)
    */
   @Override
-  public Color getForeground(Object element_p) {
+  public Color getForeground(Object element) {
     Color result = null;
     if (_viewer != null) {
       AbstractData input = (AbstractData) _viewer.getInput();
-      if (!input.isValid(element_p)) {
+      if (!input.isValid(element)) {
         result = getInvalidElementColor();
       } else {
         result = getValidElementColor();
@@ -130,9 +131,9 @@ public class DataLabelProvider extends MDEAdapterFactoryLabelProvider implements
 
   /**
    * Set the viewer that uses this label provider to render text and images.
-   * @param viewer_p
+   * @param viewer
    */
-  public void setViewer(TreeViewer viewer_p) {
-    _viewer = viewer_p;
+  public void setViewer(TreeViewer viewer) {
+    _viewer = viewer;
   }
 }

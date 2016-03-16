@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.queries;
 
 import java.util.ArrayList;
@@ -32,12 +33,12 @@ public class CatalogElement_AllUsedCatalogElements extends AbstractQuery {
    * {@inheritDoc}
    */
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) {
-    if ((input_p != null) && (input_p instanceof CatalogElement)) {
+  public List<Object> execute(Object input, IQueryContext context) {
+    if ((input != null) && (input instanceof CatalogElement)) {
       List<Object> objs = new ArrayList<Object>();
 
       LinkedList<CatalogElement> elements = new LinkedList<CatalogElement>();
-      elements.add((CatalogElement) input_p);
+      elements.add((CatalogElement) input);
       String queryUsedELements = CatalogElement_UsedElements.class.getSimpleName();
 
       HashSet<CatalogElement> visited = new HashSet<CatalogElement>();
@@ -47,7 +48,7 @@ public class CatalogElement_AllUsedCatalogElements extends AbstractQuery {
           visited.add(element);
           objs.add(element);
 
-          Collection<EObject> usedElements = QueryInterpretor.executeQuery(queryUsedELements, element, context_p);
+          Collection<EObject> usedElements = QueryInterpretor.executeQuery(queryUsedELements, element, context);
           for (EObject usedElement : usedElements) {
             if (usedElement instanceof CatalogElement) {
               objs.add(usedElement);

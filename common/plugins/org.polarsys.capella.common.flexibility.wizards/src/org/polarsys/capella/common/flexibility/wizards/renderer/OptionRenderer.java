@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import java.util.ArrayList;
@@ -38,17 +39,17 @@ public class OptionRenderer extends AbstractRenderer {
    * @see org.polarsys.capella.common.flexibility.wizards.schema.IRenderer#render(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  public void performRender(Composite parent_p, final IRendererContext rendererContext_p) {
+  public void performRender(Composite parent, final IRendererContext rendererContext) {
 
-    final IProperty property = rendererContext_p.getProperty(this);
-    IPropertyContext propertyContext = rendererContext_p.getPropertyContext();
+    final IProperty property = rendererContext.getProperty(this);
+    IPropertyContext propertyContext = rendererContext.getPropertyContext();
 
-    options = new Group(parent_p, SWT.NONE);
+    options = new Group(parent, SWT.NONE);
     options.setText(property.getName());
     options.setData(property);
     options.setEnabled(property.isEnabled(propertyContext));
 
-    if (parent_p.getLayout() instanceof GridLayout) {
+    if (parent.getLayout() instanceof GridLayout) {
       options.setLayout(new GridLayout(1, false));
       options.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     }
@@ -62,16 +63,16 @@ public class OptionRenderer extends AbstractRenderer {
       dataExport.setToolTipText(option.getDescription());
       dataExport.addSelectionListener(new SelectionListener() {
 
-        public void widgetSelected(SelectionEvent e_p) {
-          Object newValue = ((Button) e_p.widget).getData();
+        public void widgetSelected(SelectionEvent e) {
+          Object newValue = ((Button) e.widget).getData();
           if ((newValue != null) && (newValue instanceof IPropertyOption)) {
             String value = ((IPropertyOption) newValue).getValue();
-            changeValue(property, rendererContext_p, value);
-            updatedValue(property, rendererContext_p, value);
+            changeValue(property, rendererContext, value);
+            updatedValue(property, rendererContext, value);
           }
         }
 
-        public void widgetDefaultSelected(SelectionEvent e_p) {
+        public void widgetDefaultSelected(SelectionEvent e) {
           // Nothing here
         }
       });
@@ -79,25 +80,25 @@ public class OptionRenderer extends AbstractRenderer {
     }
   }
 
-  public void initialize(IProperty property_p, IRendererContext propertyContext_p) {
-    Object value = propertyContext_p.getPropertyContext().getDefaultValue(property_p);
-    updatedValue(property_p, propertyContext_p, value);
+  public void initialize(IProperty property, IRendererContext propertyContext) {
+    Object value = propertyContext.getPropertyContext().getDefaultValue(property);
+    updatedValue(property, propertyContext, value);
   }
 
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext propertyContext_p, Object newValue_p) {
-    if (property_p.equals(propertyContext_p.getProperty(this))) {
+  public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
+    if (property.equals(propertyContext.getProperty(this))) {
       for (Button button : buttons) {
         if ((button.getData() != null) && (button.getData() instanceof IPropertyOption)) {
           IPropertyOption option = (IPropertyOption) button.getData();
-          button.setSelection(option.getValue().equals(newValue_p));
+          button.setSelection(option.getValue().equals(newValue));
         }
       }
     }
   }
 
   @Override
-  public void dispose(IRendererContext context_p) {
+  public void dispose(IRendererContext context) {
     options.dispose();
   }
 

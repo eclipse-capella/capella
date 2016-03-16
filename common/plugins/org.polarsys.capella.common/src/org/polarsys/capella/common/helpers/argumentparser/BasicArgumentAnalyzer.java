@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers.argumentparser;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class BasicArgumentAnalyzer extends ArgumentAnalyzer {
 
   /**
    * Constructor
-   * @param numberOfArgument_p
+   * @param numberOfArgument
    */
   public BasicArgumentAnalyzer(int numberOfArgument) {
     
@@ -41,21 +42,21 @@ public class BasicArgumentAnalyzer extends ArgumentAnalyzer {
    * @see org.polarsys.capella.common.helpers.argumentparser.ArgumentAnalyzer#parse(java.lang.String[])
    */
   @Override
-  public void parse(String[] arguments_p) throws ArgumentAnalyzerException {
+  public void parse(String[] arguments) throws ArgumentAnalyzerException {
     
     int nbOfExpectedData = _flags.get(IArgumentAnalyzerConstant.NOFLAG_ID).getNumberOfData();
     
     if (
         nbOfExpectedData != IArgumentAnalyzerConstant.UNDEFINED_NUMBER_OF_EXPECTED_DATA &&
-        arguments_p.length != nbOfExpectedData
+        arguments.length != nbOfExpectedData
     ) {
       throw new ArgumentAnalyzerException(
           NLS.bind(Messages.expectedDataDoesNotMatchBasicCase,
-          new Object[]{ String.valueOf( arguments_p.length), String.valueOf(nbOfExpectedData)} )
+          new Object[]{ String.valueOf( arguments.length), String.valueOf(nbOfExpectedData)} )
       );
     }
     
-    ArrayList<String> args = getArgumentData(IArgumentAnalyzerConstant.NOFLAG_ID, arguments_p, -1);
+    ArrayList<String> args = getArgumentData(IArgumentAnalyzerConstant.NOFLAG_ID, arguments, -1);
     
     if ( 
         nbOfExpectedData != IArgumentAnalyzerConstant.UNDEFINED_NUMBER_OF_EXPECTED_DATA &&
@@ -79,7 +80,7 @@ public class BasicArgumentAnalyzer extends ArgumentAnalyzer {
    * @see org.polarsys.capella.common.helpers.argumentparser.ArgumentAnalyzer#addFlag(java.lang.String, org.polarsys.capella.common.helpers.argumentparser.ArgumentAnalyzer.Flag)
    */
   @Override
-  public void addFlag(String id_p, Flag flag_p) throws ArgumentAnalyzerException {
+  public void addFlag(String id, Flag flag) throws ArgumentAnalyzerException {
     throw new ArgumentAnalyzerException(Messages.opsNotSupported);
   }
   
@@ -87,17 +88,17 @@ public class BasicArgumentAnalyzer extends ArgumentAnalyzer {
    * @see org.polarsys.capella.common.helpers.argumentparser.ArgumentAnalyzer#addFlag(java.lang.String, java.lang.String, boolean, int)
    */
   @Override
-  public void addFlag(String id_p, String flagName_p, boolean isMandatory_p, int nbData_p) throws ArgumentAnalyzerException {
+  public void addFlag(String id, String flagName, boolean isMandatory, int nbData) throws ArgumentAnalyzerException {
     throw new ArgumentAnalyzerException(Messages.opsNotSupported);
   }
   
   @Override
-  public List<String> getFlagArgs(String id_p) throws ArgumentAnalyzerException {
+  public List<String> getFlagArgs(String id) throws ArgumentAnalyzerException {
     throw new ArgumentAnalyzerException(Messages.opsNotSupported);
   }
 
   @Override
-  public boolean isArgHasBeenFound(String flagId_p) throws ArgumentAnalyzerException {
+  public boolean isArgHasBeenFound(String flagId) throws ArgumentAnalyzerException {
     throw new ArgumentAnalyzerException(Messages.opsNotSupported);
   }
   

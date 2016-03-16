@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.property;
 
 import org.eclipse.core.runtime.IStatus;
@@ -38,39 +39,39 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
   /**
    * {@inheritDoc}
    */
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     IEclipsePreferences preference = getScope().getNode(getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__SCOPE));
     String argument = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__DEFAULT);
     String preferenceId = getId();
     if (isArgumentSet(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__PREFERENCE_ID)) {
       preferenceId = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__PREFERENCE_ID);
     }
-    boolean value = preference.getBoolean(preferenceId, ((Boolean) toType(argument, context_p)).booleanValue());
+    boolean value = preference.getBoolean(preferenceId, ((Boolean) toType(argument, context)).booleanValue());
     return Boolean.valueOf(value);
   }
 
   /**
    * {@inheritDoc}
    */
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    Boolean value = Boolean.TRUE;
+  public Object toType(Object value, IPropertyContext context) {
+    Boolean result = Boolean.TRUE;
     try {
-      if (value_p instanceof Boolean) {
-        value = (Boolean) value_p;
-      } else if (value_p instanceof String) {
-        value = Boolean.valueOf((String) value_p);
+      if (value instanceof Boolean) {
+        result = (Boolean) value;
+      } else if (value instanceof String) {
+        result = Boolean.valueOf((String) value);
       }
     } catch (Exception e) {
       //Nothing here
     }
-    return value;
+    return result;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    if (newValue_p == null) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
+    if (newValue == null) {
       return Status.CANCEL_STATUS;
     }
     return Status.OK_STATUS;
@@ -79,9 +80,9 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
   /**
    * {@inheritDoc}
    */
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     IEclipsePreferences preference = getScope().getNode(getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__SCOPE));
-    Object value = context_p.getCurrentValue(this);
+    Object value = context.getCurrentValue(this);
     if (value != null) {
       preference.put(getId(), value.toString());
     }
@@ -90,8 +91,8 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
   /**
    * {@inheritDoc}
    */
-  public Object getDefaultValue(IPropertyContext context_p) {
+  public Object getDefaultValue(IPropertyContext context) {
     String argument = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__DEFAULT);
-    return ((Boolean) toType(argument, context_p)).booleanValue();
+    return ((Boolean) toType(argument, context)).booleanValue();
   }
 }

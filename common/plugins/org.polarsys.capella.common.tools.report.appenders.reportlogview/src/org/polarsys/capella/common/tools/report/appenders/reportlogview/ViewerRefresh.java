@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.concurrent.Executors;
@@ -51,15 +52,15 @@ class ViewerRefresh implements Runnable, IViewerRefresh {
     /* delay time units */
     final protected TimeUnit timeunit;
 
-    ViewerRefresh(ScheduledExecutorService service_p, MarkerView view_p, long delay_p, TimeUnit timeunit_p){
-      scheduler = service_p;
-      view = view_p;
-      delay = delay_p;
-      timeunit = timeunit_p;
+    ViewerRefresh(ScheduledExecutorService service, MarkerView view, long delay, TimeUnit timeunit){
+      this.scheduler = service;
+      this.view = view;
+      this.delay = delay;
+      this.timeunit = timeunit;
     }
     
-    ViewerRefresh(MarkerView view_p, long delay_p, TimeUnit timeunit_p){
-      this(Executors.newScheduledThreadPool(1), view_p, delay_p, timeunit_p);
+    ViewerRefresh(MarkerView view, long delay, TimeUnit timeunit){
+      this(Executors.newScheduledThreadPool(1), view, delay, timeunit);
     }
 
     

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import java.util.ArrayList;
@@ -50,20 +51,20 @@ public class BrowseRenderer extends TextRenderer {
     return true;
   }
 
-  protected void setBrowseEnabled(boolean enabled_p) {
+  protected void setBrowseEnabled(boolean enabled) {
     if (browse != null) {
-      browse.setEnabled(enabled_p);
+      browse.setEnabled(enabled);
     }
   }
 
-  protected void setDeleteEnabled(boolean enabled_p) {
+  protected void setDeleteEnabled(boolean enabled) {
     if (delete != null) {
-      delete.setEnabled(enabled_p);
+      delete.setEnabled(enabled);
     }
   }
 
   @Override
-  protected boolean isEditable(IProperty property_p, IRendererContext context_p) {
+  protected boolean isEditable(IProperty property, IRendererContext context) {
     return false;
   }
 
@@ -76,21 +77,21 @@ public class BrowseRenderer extends TextRenderer {
   }
 
   @Override
-  protected void initializeControls(final Composite parent_p, final IRendererContext context_p) {
-    super.initializeControls(parent_p, context_p);
+  protected void initializeControls(final Composite parent, final IRendererContext context) {
+    super.initializeControls(parent, context);
 
-    ToolBar toolbar = new ToolBar(parent_p, SWT.HORIZONTAL);
+    ToolBar toolbar = new ToolBar(parent, SWT.HORIZONTAL);
     if (isBrowseButton()) {
       browse = new ToolItem(toolbar, SWT.PUSH);
       browse.setToolTipText(getBrowseText());
       browse.setImage(Activator.getDefault().getImage("full/etool16/browse.gif"));
       browse.addSelectionListener(new SelectionListener() {
 
-        public void widgetSelected(SelectionEvent event_p) {
-          proceedBrowse(parent_p.getShell(), context_p);
+        public void widgetSelected(SelectionEvent event) {
+          proceedBrowse(parent.getShell(), context);
         }
 
-        public void widgetDefaultSelected(SelectionEvent e_p) {
+        public void widgetDefaultSelected(SelectionEvent e) {
           // Nothing to do
         }
       });
@@ -102,11 +103,11 @@ public class BrowseRenderer extends TextRenderer {
       delete.setImage(Activator.getDefault().getImage("full/etool16/delete_edit.gif"));
       delete.addSelectionListener(new SelectionListener() {
 
-        public void widgetSelected(SelectionEvent event_p) {
-          proceedDelete(parent_p.getShell(), context_p);
+        public void widgetSelected(SelectionEvent event) {
+          proceedDelete(parent.getShell(), context);
         }
 
-        public void widgetDefaultSelected(SelectionEvent e_p) {
+        public void widgetDefaultSelected(SelectionEvent e) {
           // Nothing to do
         }
       });
@@ -120,49 +121,49 @@ public class BrowseRenderer extends TextRenderer {
     return "Browse available elements";
   }
 
-  protected void proceedDelete(Shell shell_p, IRendererContext context_p) {
-    IProperty property = context_p.getProperty(this);
+  protected void proceedDelete(Shell shell, IRendererContext context) {
+    IProperty property = context.getProperty(this);
     if (property instanceof IRestraintProperty) {
       IRestraintProperty restraintProperty = (IRestraintProperty) property;
 
       if (!restraintProperty.isMany()) {
-        changeValue(property, context_p, context_p.getPropertyContext().getDefaultValue(property));
-        updatedValue(property, context_p, context_p.getPropertyContext().getDefaultValue(property));
+        changeValue(property, context, context.getPropertyContext().getDefaultValue(property));
+        updatedValue(property, context, context.getPropertyContext().getDefaultValue(property));
       } else {
         ArrayList<Object> result = new ArrayList<Object>();
-        changeValue(property, context_p, result);
-        updatedValue(property, context_p, result);
+        changeValue(property, context, result);
+        updatedValue(property, context, result);
       }
     }
   }
 
   /**
-   * @param shell_p
+   * @param shell
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  protected void proceedBrowse(Shell shell_p, IRendererContext context_p) {
-    IProperty property = context_p.getProperty(this);
+  protected void proceedBrowse(Shell shell, IRendererContext context) {
+    IProperty property = context.getProperty(this);
     if (property instanceof IRestraintProperty) {
-      IPropertyContext propertyContext = context_p.getPropertyContext();
+      IPropertyContext propertyContext = context.getPropertyContext();
       IRestraintProperty restraintProperty = (IRestraintProperty) property;
       if (!restraintProperty.isMany()) {
         Collection<EObject> scope = new HashSet<EObject>();
-        EObject current = (EObject) propertyContext.getCurrentValue(context_p.getProperty(this));
+        EObject current = (EObject) propertyContext.getCurrentValue(context.getProperty(this));
         scope.add(current);
         scope.add((EObject) restraintProperty.getValue(propertyContext));
         scope.addAll((Collection) restraintProperty.getChoiceValues(propertyContext));
         scope.remove(null);
 
         SelectElementsDialog dialog =
-            new SelectElementsDialog(shell_p, TransactionHelper.getEditingDomain(scope), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+            new SelectElementsDialog(shell, TransactionHelper.getEditingDomain(scope), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
                 "Selection wizard", //$NON-NLS-1$
                 "Select element.", //$NON-NLS-1$
                 new ArrayList<EObject>(scope), false, null);
         if (dialog.open() == Window.OK) {
           List<?> dialogResult = dialog.getResult();
           if (dialogResult != null) {
-            changeValue(property, context_p, dialogResult.get(0));
-            updatedValue(property, context_p, dialogResult.get(0));
+            changeValue(property, context, dialogResult.get(0));
+            updatedValue(property, context, dialogResult.get(0));
           }
         }
 
@@ -179,7 +180,7 @@ public class BrowseRenderer extends TextRenderer {
 
         Collection<EObject> list = CollectionExt.mergeCollections(left, right);
 
-        TransferTreeListDialog dialog = new TransferTreeListDialog(shell_p, "Selection wizard", //$NON-NLS-1$
+        TransferTreeListDialog dialog = new TransferTreeListDialog(shell, "Selection wizard", //$NON-NLS-1$
             "Select elements.", //$NON-NLS-1$
             TransactionHelper.getEditingDomain(list), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
         dialog.setLeftInput(new ArrayList<EObject>(left), null);
@@ -192,16 +193,16 @@ public class BrowseRenderer extends TextRenderer {
               result.add(res);
             }
           }
-          changeValue(property, context_p, result);
-          updatedValue(property, context_p, result);
+          changeValue(property, context, result);
+          updatedValue(property, context, result);
         }
       }
     }
   }
 
   @Override
-  public void dispose(IRendererContext context_p) {
-    super.dispose(context_p);
+  public void dispose(IRendererContext context) {
+    super.dispose(context);
     if (browse != null) {
       browse.dispose();
     }

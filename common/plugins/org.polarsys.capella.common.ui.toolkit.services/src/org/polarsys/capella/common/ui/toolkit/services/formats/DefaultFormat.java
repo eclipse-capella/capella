@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.formats;
 
 import java.util.regex.Pattern;
@@ -26,22 +27,22 @@ public class DefaultFormat implements IFormat {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.services.formats.IFormat#format(String, Pattern)
    */
-  public String format(String input_p, Pattern pattern_p) {
-    String value = input_p;
-    if (null != pattern_p) {
-      value = doFormatText(input_p, pattern_p);
+  public String format(String input, Pattern pattern) {
+    String value = input;
+    if (null != pattern) {
+      value = doFormatText(input, pattern);
     }
     return value;
   }
 
   /**
    * Does the format action with the specified input accordin to the specified pattern. <b>This default implementation returns the input value.</b>
-   * @param input_p The input to format.
-   * @param pattern_p The pattern cannot be null.
+   * @param input The input to format.
+   * @param pattern The pattern cannot be null.
    * @return The formatted value else the input.
    * @see #format(String, Pattern)
    */
-  protected String doFormatText(String input_p, Pattern pattern_p) {
-    return input_p;
+  protected String doFormatText(String input, Pattern pattern) {
+    return input;
   }
 }

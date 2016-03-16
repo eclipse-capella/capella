@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.platform.sirius.session;
 
 import org.eclipse.sirius.business.api.session.Session;
@@ -23,10 +24,10 @@ public class ClosedSessionListener implements SessionListener {
 
   /**
    * Constructor.
-   * @param session_p
+   * @param session
    */
-  public ClosedSessionListener(Session session_p) {
-    _monitoredSession = session_p;
+  public ClosedSessionListener(Session session) {
+    _monitoredSession = session;
   }
 
   /**
@@ -40,9 +41,9 @@ public class ClosedSessionListener implements SessionListener {
   /**
    * Call when notified for Closed session event i.e {@link SessionListener#CLOSED}.<br>
    * Default implementation automatically unregisters this listener from closed session.
-   * @param monitoredSession_p
+   * @param monitoredSession
    */
-  protected void handleClosedSession(Session monitoredSession_p) {
+  protected void handleClosedSession(Session monitoredSession) {
     // Unregister from the session
     _monitoredSession.removeListener(this);
     _monitoredSession = null;
@@ -51,17 +52,17 @@ public class ClosedSessionListener implements SessionListener {
   /**
    * Call when notified for Closing session event i.e {@link SessionListener#CLOSING}.<br>
    * Default implementation does nothing.
-   * @param monitoredSession_p
+   * @param monitoredSession
    */
-  protected void handleClosingSession(Session monitoredSession_p) {
+  protected void handleClosingSession(Session monitoredSession) {
     // Do nothing.
   }
 
   /**
    * {@inheritDoc}
    */
-  public void notify(int changeKind_p) {
-    switch (changeKind_p) {
+  public void notify(int changeKind) {
+    switch (changeKind) {
       case SessionListener.CLOSING:
         handleClosingSession(_monitoredSession);
       break;

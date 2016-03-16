@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,22 +32,22 @@ public class SourceElementProperty extends org.polarsys.capella.common.re.rpl2re
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    Collection result = (Collection) context.get("SCOPE_ELEMENTS_PROPERTY");
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY");
 
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
 
     if (result == null) {
       result = new HashSet<EObject>();
-      Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+      Collection<Object> selection = (Collection<Object>) ctx.get(ITransitionConstants.TRANSITION_SOURCES);
       if ((selection != null) && (selection.size() > 0)) {
-        result = DependenciesHandlerHelper.getInstance(context).getScopeElements((Collection) selection, result, context);
+        result = DependenciesHandlerHelper.getInstance(ctx).getScopeElements((Collection) selection, result, ctx);
         result.remove(element);
-        result.addAll(ReplicableElementHandlerHelper.getInstance(context).getElements(element));
+        result.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getElements(element));
         // TODO Add replica elements to scope
-        context.put("SCOPE_ELEMENTS_PROPERTY", toType(result, context_p));
+        ctx.put("SCOPE_ELEMENTS_PROPERTY", toType(result, context));
       }
 
     }
@@ -64,11 +64,11 @@ public class SourceElementProperty extends org.polarsys.capella.common.re.rpl2re
   }
 
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
 
-    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property_p.getId())) {
-      context.put("SCOPE_ELEMENTS_PROPERTY", null);
+    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property.getId())) {
+      ctx.put("SCOPE_ELEMENTS_PROPERTY", null);
     }
   }
 

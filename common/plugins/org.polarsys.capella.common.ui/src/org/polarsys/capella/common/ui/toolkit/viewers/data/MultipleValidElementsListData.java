@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
 import java.util.ArrayList;
@@ -21,11 +22,11 @@ import java.util.List;
 public class MultipleValidElementsListData extends ListData implements IMoveableData {
   /**
    * Constructor.
-   * @param displayedElements_p
-   * @param context_p
+   * @param displayedElements
+   * @param context
    */
-  public MultipleValidElementsListData(List<? extends Object> displayedElements_p, Object context_p) {
-    super(displayedElements_p, context_p);
+  public MultipleValidElementsListData(List<? extends Object> displayedElements, Object context) {
+    super(displayedElements, context);
   }
 
   /**
@@ -40,16 +41,16 @@ public class MultipleValidElementsListData extends ListData implements IMoveable
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#initializeValidElementCollection(java.util.List)
    */
   @Override
-  protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements_p) {
-    return new ArrayList<Object>(displayedElements_p);
+  protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements) {
+    return new ArrayList<Object>(displayedElements);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.IMoveableData#swap(java.lang.Object, int, int)
    */
-  public void swap(Object child_p, int index_p, int newIndex_p) {
+  public void swap(Object child, int index, int newIndex) {
     // Swap elements in list.
-    Collections.swap((List<?>) _rootElements, index_p, newIndex_p);
-    Collections.swap((List<?>) _validElements, index_p, newIndex_p);
+    Collections.swap((List<?>) _rootElements, index, newIndex);
+    Collections.swap((List<?>) _validElements, index, newIndex);
   }
 }

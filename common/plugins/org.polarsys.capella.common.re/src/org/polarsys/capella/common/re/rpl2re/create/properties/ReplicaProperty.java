@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,9 +34,9 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    return context.get("RPL");
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    return ctx.get("RPL");
   }
 
   /**
@@ -51,22 +51,22 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -82,17 +82,17 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    if (IReConstants.PROPERTY__LOCATION_TARGET.equals(property_p.getId())) {
-      IContext context = (IContext) context_p.getSource();
-      EObject location = (EObject) context_p.getCurrentValue(property_p);
-      if (!ReplicableElementHandlerHelper.getInstance(context).isDefaultLocation(location, context)) {
-        CatalogElement element = ReplicableElementHandlerHelper.getInstance(context).createReplica();
-        context.put("RPL", element);
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    if (IReConstants.PROPERTY__LOCATION_TARGET.equals(property.getId())) {
+      IContext ctx = (IContext) context.getSource();
+      EObject location = (EObject) context.getCurrentValue(property);
+      if (!ReplicableElementHandlerHelper.getInstance(ctx).isDefaultLocation(location, ctx)) {
+        CatalogElement element = ReplicableElementHandlerHelper.getInstance(ctx).createReplica();
+        ctx.put("RPL", element);
       } else {
-        Object r = context.get("RPL");
+        Object r = ctx.get("RPL");
         if (r != null) {
-          context.put("RPL", null);
+          ctx.put("RPL", null);
         }
       }
     }
@@ -102,7 +102,7 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public boolean isModified(IPropertyContext context_p) {
+  public boolean isModified(IPropertyContext context) {
     return true;
   }
 

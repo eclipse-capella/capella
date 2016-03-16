@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers.export;
 
 import java.io.IOException;
@@ -32,23 +33,18 @@ public class CSVExporter extends AbstractExporter {
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void export(OutputStream stream_p, Object data_p) throws IOException, ClassCastException {
-   
-    List<String[]> data = (List<String[]>) data_p;
-    
-    export(stream_p, data);
-    
-    return;
+  public void export(OutputStream stream, Object data) throws IOException, ClassCastException {
+    export(stream, (List<String[]>) data);
   }
   
   /**
    * @see #export(OutputStream, Object)
    */
-  public void export(OutputStream stream_p, List<String[]> data_p) throws IOException  {
+  public void export(OutputStream stream, List<String[]> data) throws IOException  {
         
-    CSVWriter writer= new CSVWriter(stream_p, _delimiter);
+    CSVWriter writer= new CSVWriter(stream, _delimiter);
     
-    for (String[] line: data_p) {
+    for (String[] line: data) {
       if (null == line || line.length == 0) {
         writer.endRecord();
       }

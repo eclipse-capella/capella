@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,28 +30,24 @@ public class LinkSelectionAdapterFactory implements IAdapterFactory {
 
     /**
      * Constructor.
-     * @param linkSelection_p
+     * @param linkSelection
      */
-    public LinkSelectionWrapper(ILinkSelection linkSelection_p) {
-      _linkSelection = linkSelection_p;
+    public LinkSelectionWrapper(ILinkSelection linkSelection) {
+      _linkSelection = linkSelection;
     }
 
     /**
      * {@inheritDoc}
      */
-    public Object getParent(Object child_p, Object context_p) {
+    public Object getParent(Object child, Object context) {
       Object result = null;
       // Preconditions:
-      if (!(child_p instanceof EObject)) {
+      if (!(child instanceof EObject)) {
         return result;
       }
-      EObject context = null;
-      try {
-        context = (null != context_p) ? (EObject) context_p : null;
-      } catch (ClassCastException exception_p) {
-        return result;
+      if (context instanceof EObject) {
+        result = _linkSelection.getDisplayedTarget((EObject) child, (EObject) context);
       }
-      result = _linkSelection.getDisplayedTarget((EObject) child_p, context);
       return result;
     }
   }
@@ -59,12 +55,11 @@ public class LinkSelectionAdapterFactory implements IAdapterFactory {
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("unchecked")
-  public Object getAdapter(Object adaptableObject_p, Class adapterType_p) {
+  public Object getAdapter(Object adaptableObject, Class adapterType) {
     Object result = null;
     // Handle Link Selection adaptation.
-    if ((adaptableObject_p instanceof EClass) && ITreeContentAdapter.class.equals(adapterType_p)) {
-      ILinkSelection linkSelection = LinkSelectionProvider.getInstance().getContribution((EClass) adaptableObject_p);
+    if ((adaptableObject instanceof EClass) && ITreeContentAdapter.class.equals(adapterType)) {
+      ILinkSelection linkSelection = LinkSelectionProvider.getInstance().getContribution((EClass) adaptableObject);
       if (null != linkSelection) {
         result = new LinkSelectionWrapper(linkSelection);
       }
@@ -75,7 +70,6 @@ public class LinkSelectionAdapterFactory implements IAdapterFactory {
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("unchecked")
   public Class[] getAdapterList() {
     return new Class[] { ITreeContentAdapter.class };
   }

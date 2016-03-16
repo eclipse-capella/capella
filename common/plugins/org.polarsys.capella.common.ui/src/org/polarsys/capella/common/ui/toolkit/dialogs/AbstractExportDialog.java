@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.ArrayList;
@@ -120,11 +121,11 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
 
   protected abstract List<String[]> getExportableData();
 
-  protected List<String[]> getExportableData(String str_p) {
+  protected List<String[]> getExportableData(String str) {
     Date date = new Date();
     List<String[]> result = new ArrayList<String[]>();
 
-    result.add(new String[] { NLS.bind(Messages.exportRootFileNameLabel, str_p) });
+    result.add(new String[] { NLS.bind(Messages.exportRootFileNameLabel, str) });
 
     result.add(new String[] { NLS.bind(Messages.exportDateLabel, date) });
 
@@ -135,10 +136,10 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
   }
 
   /**
-   * @param data_p the data to set
+   * @param data the data to set
    */
-  public void setData(Object data_p) {
-    _data = data_p;
+  public void setData(Object data) {
+    _data = data;
     if (null != _viewer) {
       _viewer.setInput(_data);
     }
@@ -150,21 +151,21 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
 
   /**
    * Set a context menu manager filler.
-   * @param filler_p
+   * @param filler
    */
-  public void setContextMenuManagerFiller(AbstractContextMenuFiller filler_p) {
-    _contextMenuManagerFiller = filler_p;
+  public void setContextMenuManagerFiller(AbstractContextMenuFiller filler) {
+    _contextMenuManagerFiller = filler;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#doCreateDialogArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void doCreateDialogArea(Composite parent_p) {
+  protected void doCreateDialogArea(Composite parent) {
     GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
     gridData.heightHint = 300;
-    parent_p.setLayoutData(gridData);
-    AbstractRegExpViewer abstractViewer = createViewer(parent_p);
+    parent.setLayoutData(gridData);
+    AbstractRegExpViewer abstractViewer = createViewer(parent);
 
     // Install a context menu manager filler if any.
     if (null != _contextMenuManagerFiller) {
@@ -178,9 +179,9 @@ public abstract class AbstractExportDialog extends AbstractViewerDialog {
 
   /**
    * Create a 2 level tree.
-   * @param parent_p the parent composite
+   * @param parent the parent composite
    */
-  protected abstract AbstractRegExpViewer createViewer(Composite parent_p);
+  protected abstract AbstractRegExpViewer createViewer(Composite parent);
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#getResult()

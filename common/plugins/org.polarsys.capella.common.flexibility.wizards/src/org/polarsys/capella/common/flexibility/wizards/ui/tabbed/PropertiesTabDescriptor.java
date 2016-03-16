@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.Collection;
@@ -30,10 +31,10 @@ public class PropertiesTabDescriptor extends AbstractTabDescriptor {
   IRendererContext _rendererContext;
   IPropertyGroup _group;
 
-  public PropertiesTabDescriptor(IPropertyContext context_p, IRendererContext rendererContext_p, IPropertyGroup group_p) {
-    _propertyContext = context_p;
-    _rendererContext = rendererContext_p;
-    _group = group_p;
+  public PropertiesTabDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup group) {
+    _propertyContext = context;
+    _rendererContext = rendererContext;
+    _group = group;
   }
 
   @Override
@@ -80,14 +81,13 @@ public class PropertiesTabDescriptor extends AbstractTabDescriptor {
   }
 
   /**
-   * @param context_p
-   * @param properties_p
-   * @param renderers_p
-   * @param group_p
+   * @param context
+   * @param rendererContext
+   * @param group
    * @return
    */
-  protected ISectionDescriptor createSectionDescriptor(IPropertyContext context_p, IRendererContext rendererContext_p, IPropertyGroup group_p) {
-    return new PropertiesSectionDescriptor(context_p, rendererContext_p, group_p);
+  protected ISectionDescriptor createSectionDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup group) {
+    return new PropertiesSectionDescriptor(context, rendererContext, group);
   }
 
 }

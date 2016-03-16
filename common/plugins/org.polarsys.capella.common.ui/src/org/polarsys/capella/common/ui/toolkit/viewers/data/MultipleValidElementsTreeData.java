@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
 import java.util.ArrayList;
@@ -21,27 +22,27 @@ import java.util.List;
 public class MultipleValidElementsTreeData extends TreeData implements IMoveableData {
   /**
    * Constructor.
-   * @param displayedElements_p
-   * @param context_p
+   * @param displayedElements
+   * @param context
    */
-  public MultipleValidElementsTreeData(List<? extends Object> displayedElements_p, Object context_p) {
-    super(displayedElements_p, context_p);
+  public MultipleValidElementsTreeData(List<? extends Object> displayedElements, Object context) {
+    super(displayedElements, context);
   }
 
   /**
    * Build valid elements.
-   * @param validElements_p
-   * @param rootElement_p
+   * @param validElements
+   * @param rootElement
    */
-  private void buildValidElements(List<Object> validElements_p, Object rootElement_p) {
+  private void buildValidElements(List<Object> validElements, Object rootElement) {
     // Get children of this root element.
-    Collection<Object> children = _childrenForRootElements.get(rootElement_p);
+    Collection<Object> children = _childrenForRootElements.get(rootElement);
     // Loop over children
     for (Object child : children) {
       if (_childrenForRootElements.containsKey(child)) {
-        buildValidElements(validElements_p, child);
+        buildValidElements(validElements, child);
       } else if (isValid(child)) {
-        validElements_p.add(child);
+        validElements.add(child);
       }
     }
   }
@@ -73,17 +74,17 @@ public class MultipleValidElementsTreeData extends TreeData implements IMoveable
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#initializeValidElementCollection(java.util.List)
    */
   @Override
-  protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements_p) {
-    return new ArrayList<Object>(displayedElements_p);
+  protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements) {
+    return new ArrayList<Object>(displayedElements);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.IMoveableData#swap(java.lang.Object, int, int)
    */
-  public void swap(Object child_p, int index_p, int newIndex_p) {
+  public void swap(Object child, int index, int newIndex) {
     // Get children list that contains elements.
-    List<Object> children = (List<Object>) _childrenForRootElements.get(getParent(child_p));
+    List<Object> children = (List<Object>) _childrenForRootElements.get(getParent(child));
     // Swap element.
-    Collections.swap(children, index_p, newIndex_p);
+    Collections.swap(children, index, newIndex);
   }
 }

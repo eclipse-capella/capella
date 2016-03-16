@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import org.polarsys.capella.common.activator.AbstractCommonActivator;
  */
 public class MdeCommonActivator extends AbstractCommonActivator {
   // The shared instance
-  private static MdeCommonActivator __plugin;
+  private static MdeCommonActivator plugin;
 
   /**
    * {@inheritDoc}
@@ -27,7 +27,7 @@ public class MdeCommonActivator extends AbstractCommonActivator {
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
-    __plugin = this;
+    plugin = this;
   }
 
   /**
@@ -35,7 +35,7 @@ public class MdeCommonActivator extends AbstractCommonActivator {
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-    __plugin = null;
+    plugin = null;
     super.stop(context);
   }
 
@@ -44,6 +44,6 @@ public class MdeCommonActivator extends AbstractCommonActivator {
    * @return the shared instance
    */
   public static MdeCommonActivator getDefault() {
-    return __plugin;
+    return plugin;
   }
 }

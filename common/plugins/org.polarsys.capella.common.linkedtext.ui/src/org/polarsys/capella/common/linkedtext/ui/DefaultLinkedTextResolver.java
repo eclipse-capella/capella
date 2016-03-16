@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.linkedtext.ui;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,20 +23,20 @@ public class DefaultLinkedTextResolver implements LinkedTextDocument.Resolver {
 
   private final Predicate<Resource> _include;
   
-  public DefaultLinkedTextResolver(Predicate<Resource> include_p){
-    _include = include_p;
+  public DefaultLinkedTextResolver(Predicate<Resource> include){
+    _include = include;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Object getTarget(Object base_p, String href_p) {
-    if (base_p instanceof EObject){
-      ResourceSet rs = ((EObject) base_p).eResource().getResourceSet();
+  public Object getTarget(Object base, String href) {
+    if (base instanceof EObject){
+      ResourceSet rs = ((EObject) base).eResource().getResourceSet();
       for (Resource res : rs.getResources()){
         if (_include.apply(res)){
-          EObject target = res.getEObject(href_p);
+          EObject target = res.getEObject(href);
           if (target != null){
             return target;
           }
@@ -49,9 +50,9 @@ public class DefaultLinkedTextResolver implements LinkedTextDocument.Resolver {
    * {@inheritDoc}
    */
   @Override
-  public String getHref(Object base_p, Object target_p) {
-    if (target_p instanceof EObject){
-      return EcoreUtil.getID((EObject) target_p);
+  public String getHref(Object base, Object target) {
+    if (target instanceof EObject){
+      return EcoreUtil.getID((EObject) target);
     }
     return null;
   }

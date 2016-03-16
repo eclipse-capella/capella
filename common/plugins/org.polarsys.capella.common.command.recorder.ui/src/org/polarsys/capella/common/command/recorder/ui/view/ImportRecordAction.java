@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.ui.view;
 
 import java.io.File;
@@ -137,7 +138,7 @@ public class ImportRecordAction extends Action implements IMenuCreator {
   /**
    * {@inheritDoc}
    */
-  public Menu getMenu(Menu parent_p) {
+  public Menu getMenu(Menu parent) {
     return null;
   }
 
@@ -146,7 +147,7 @@ public class ImportRecordAction extends Action implements IMenuCreator {
 	 * 
 	 * @see IMenuCreator#getMenu(Control)
 	 */
-	protected void createMenuItems(Menu menu_p) {
+	protected void createMenuItems(Menu menu) {
 
 	  _actions.clear();
 	  
@@ -164,7 +165,7 @@ public class ImportRecordAction extends Action implements IMenuCreator {
       Action action = null;
       if ( !files.isEmpty() ) {
         IMenuManager subMenu = new MenuManager(dir.getName());
-        subMenu.fill(menu_p, -1);        
+        subMenu.fill(menu, -1);        
         for (File file: files) {
           action = new RecordAction(file);
           subMenu.add(action);          

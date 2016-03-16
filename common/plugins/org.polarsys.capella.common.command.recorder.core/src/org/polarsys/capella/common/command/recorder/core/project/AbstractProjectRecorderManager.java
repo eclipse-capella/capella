@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.project;
 
 import java.util.ArrayList;
@@ -116,34 +117,34 @@ abstract public class AbstractProjectRecorderManager extends AbstractRecorderMan
   /**
    * Add a single recorder to a given project if no recorder
    * have been already set for this project.  
-   * @param project_p the target project
-   * @param createNewRecordFile_p Should we force the creation of a new Record file
+   * @param project the target project
+   * @param createNewRecordFile Should we force the creation of a new Record file
    */
-  protected void addProjectRecorder(IProject project_p, boolean createNewRecordFile_p) {
+  protected void addProjectRecorder(IProject project, boolean createNewRecordFile) {
     
     if (
-        null != project_p &&
-        !isProjectHasBeenAlreadyAdded(project_p) &&
-        ProjectUtils.isProjectOfType(project_p, getMatchingNatures())
+        null != project &&
+        !isProjectHasBeenAlreadyAdded(project) &&
+        ProjectUtils.isProjectOfType(project, getMatchingNatures())
     ) {
-      addRecorder(createProjectRecorder(project_p), createNewRecordFile_p);
+      addRecorder(createProjectRecorder(project), createNewRecordFile);
     }
     
     return;
   }
   
   /** default implementation */
-  protected abstract AbstractProjectRecorder createProjectRecorder(IProject project_p);
+  protected abstract AbstractProjectRecorder createProjectRecorder(IProject project);
   
   /**
    * Returns the recorder affected to a given project.
-   * @param project_p the target {@link IProject}
+   * @param project the target {@link IProject}
    * @return <code>null</code> whether no recorders has been already affected to this project
    */
-  protected AbstractProjectRecorder getRecorder(IProject project_p) {
+  protected AbstractProjectRecorder getRecorder(IProject project) {
     for (AbstractRecorder recorder: _recorders) {
       if (
-          ((AbstractProjectRecorder) recorder).getProject().equals(project_p)
+          ((AbstractProjectRecorder) recorder).getProject().equals(project)
       ) {
         return (AbstractProjectRecorder) recorder;
       }
@@ -154,24 +155,24 @@ abstract public class AbstractProjectRecorderManager extends AbstractRecorderMan
 
   /**
    * Check whether a recorders is set for a given project.
-   * @param project_p the target {@link IProject}
+   * @param project the target {@link IProject}
    * @return
    */
-  protected boolean isProjectHasBeenAlreadyAdded(IProject project_p) {
-    return (null != getRecorder(project_p));    
+  protected boolean isProjectHasBeenAlreadyAdded(IProject project) {
+    return (null != getRecorder(project));    
   }
   
   /**
    * {@inheritDoc}
    */
-  public void resourceChanged(IResourceChangeEvent event_p) {
+  public void resourceChanged(IResourceChangeEvent event) {
 
   //we are only interested in POST_CHANGE events
-    if (event_p.getType() != IResourceChangeEvent.POST_CHANGE) {
+    if (event.getType() != IResourceChangeEvent.POST_CHANGE) {
        return;
     }
     
-    IResourceDelta rootDelta = event_p.getDelta();
+    IResourceDelta rootDelta = event.getDelta();
     
     //get the delta, if any
     IResourceDelta docDelta = rootDelta.findMember(new Path("/")); //$NON-NLS-1$

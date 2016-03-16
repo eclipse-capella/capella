@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.scope;
 
 import java.util.Collection;
@@ -31,7 +32,7 @@ public class ContainmentScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -39,7 +40,7 @@ public class ContainmentScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -47,18 +48,18 @@ public class ContainmentScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public Collection<? extends EObject> retrieveRelatedElements(EObject element_p, IContext context_p) {
+  public Collection<? extends EObject> retrieveRelatedElements(EObject element, IContext context) {
 
     Collection<EObject> referencedElements = new HashSet<EObject>();
-    if (!isFilteredElement(element_p, context_p)) {
+    if (!isFilteredElement(element, context)) {
 
-      for (EReference reference : element_p.eClass().getEAllReferences()) {
-        if (reference.isContainment() && !isFilteredReference(reference, element_p, context_p)) {
+      for (EReference reference : element.eClass().getEAllReferences()) {
+        if (reference.isContainment() && !isFilteredReference(reference, element, context)) {
 
           if (reference.isMany()) {
-            referencedElements.addAll((EList) element_p.eGet(reference));
+            referencedElements.addAll((EList) element.eGet(reference));
           } else {
-            referencedElements.add((EObject) element_p.eGet(reference));
+            referencedElements.add((EObject) element.eGet(reference));
           }
         }
       }
@@ -68,21 +69,21 @@ public class ContainmentScopeRetriever implements IScopeRetriever {
   }
 
   /**
-   * @param element_p
-   * @param context_p
+   * @param element
+   * @param context
    * @return
    */
-  protected boolean isFilteredElement(EObject element_p, IContext context_p) {
-    return element_p instanceof CatalogElement;
+  protected boolean isFilteredElement(EObject element, IContext context) {
+    return element instanceof CatalogElement;
   }
 
   /**
-   * @param reference_p
-   * @param element_p
-   * @param context_p
+   * @param reference
+   * @param element
+   * @param context
    * @return
    */
-  protected boolean isFilteredReference(EReference reference_p, EObject element_p, IContext context_p) {
+  protected boolean isFilteredReference(EReference reference, EObject element, IContext context) {
     return false;
   }
 
@@ -90,7 +91,7 @@ public class ContainmentScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public Collection<? extends EObject> retrieveSharedElements(IContext context_p) {
+  public Collection<? extends EObject> retrieveSharedElements(IContext context) {
     return null;
   }
 

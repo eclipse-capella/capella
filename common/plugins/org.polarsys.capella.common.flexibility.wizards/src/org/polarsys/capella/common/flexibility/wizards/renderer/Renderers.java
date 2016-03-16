@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import java.util.ArrayList;
@@ -60,32 +61,32 @@ public class Renderers implements IRenderers, ILoadableRenderers {
   }
 
   /**
-   * @param parent_p the parent to set
+   * @param parent the parent to set
    */
-  public void addParent(IRenderers parent_p) {
-    if (!getParents().contains(parent_p)) {
-      getParents().add(parent_p);
+  public void addParent(IRenderers parent) {
+    if (!getParents().contains(parent)) {
+      getParents().add(parent);
     }
   }
 
-  public void addGroupRenderer(String group_p, IGroupRenderer renderer_p) {
-    getMapGroupRenderers().put(group_p, renderer_p);
+  public void addGroupRenderer(String group, IGroupRenderer renderer) {
+    getMapGroupRenderers().put(group, renderer);
   }
 
-  public void addPropertyRenderer(String property_p, IPropertyRenderer renderer_p) {
-    getMapPropertyRenderers().put(property_p, renderer_p);
+  public void addPropertyRenderer(String property, IPropertyRenderer renderer) {
+    getMapPropertyRenderers().put(property, renderer);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IPropertyRenderer createRenderer(IProperty property_p) {
-    if (getMapPropertyRenderers().containsKey(property_p.getId())) {
-      return getMapPropertyRenderers().get(property_p.getId());
+  public IPropertyRenderer createRenderer(IProperty property) {
+    if (getMapPropertyRenderers().containsKey(property.getId())) {
+      return getMapPropertyRenderers().get(property.getId());
     }
     for (IRenderers parent : getParents()) {
-      IPropertyRenderer result = parent.createRenderer(property_p);
+      IPropertyRenderer result = parent.createRenderer(property);
       if (result != null) {
         return result;
       }
@@ -103,11 +104,11 @@ public class Renderers implements IRenderers, ILoadableRenderers {
   /**
    * {@inheritDoc}
    */
-  public Collection<IPropertyGroup> getGroups(IProperties properties_p, IPropertyGroup group_p) {
-    if (properties_p == null) {
+  public Collection<IPropertyGroup> getGroups(IProperties properties, IPropertyGroup group) {
+    if (properties == null) {
       return Collections.emptyList();
     }
-    final List<IPropertyGroup> values = properties_p.getGroups(group_p);
+    final List<IPropertyGroup> values = properties.getGroups(group);
     List<IPropertyGroup> result = new ArrayList<IPropertyGroup>(values);
     return result;
   }
@@ -115,11 +116,11 @@ public class Renderers implements IRenderers, ILoadableRenderers {
   /**
    * {@inheritDoc}
    */
-  public Collection<IProperty> getItems(IProperties properties_p, IPropertyGroup group_p) {
-    if (properties_p == null) {
+  public Collection<IProperty> getItems(IProperties properties, IPropertyGroup group) {
+    if (properties == null) {
       return Collections.emptyList();
     }
-    final List<IProperty> values = properties_p.getItems(group_p);
+    final List<IProperty> values = properties.getItems(group);
     List<IProperty> result = new ArrayList<IProperty>(values);
     return result;
   }
@@ -136,12 +137,12 @@ public class Renderers implements IRenderers, ILoadableRenderers {
    * {@inheritDoc}
    */
   @Override
-  public IGroupRenderer createRenderer(IPropertyGroup propertyGroup_p) {
-    if (getMapGroupRenderers().containsKey(propertyGroup_p.getId())) {
-      return getMapGroupRenderers().get(propertyGroup_p.getId());
+  public IGroupRenderer createRenderer(IPropertyGroup propertyGroup) {
+    if (getMapGroupRenderers().containsKey(propertyGroup.getId())) {
+      return getMapGroupRenderers().get(propertyGroup.getId());
     }
     for (IRenderers parent : getParents()) {
-      IGroupRenderer result = parent.createRenderer(propertyGroup_p);
+      IGroupRenderer result = parent.createRenderer(propertyGroup);
       if (result != null) {
         return result;
       }

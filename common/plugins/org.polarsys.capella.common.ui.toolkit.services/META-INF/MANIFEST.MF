@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.ui.toolkit.services
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.common.ui.toolkit.services.behaviors,
  org.polarsys.capella.common.ui.toolkit.services.formats,
@@ -10,5 +10,5 @@ Export-Package: org.polarsys.capella.common.ui.toolkit.services.behaviors,
 Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
  org.polarsys.capella.common.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin

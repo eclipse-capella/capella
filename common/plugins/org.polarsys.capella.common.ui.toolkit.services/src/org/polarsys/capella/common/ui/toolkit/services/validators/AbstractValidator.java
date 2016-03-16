@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.validators;
 
 /**
@@ -24,10 +25,10 @@ public abstract class AbstractValidator implements IValidator {
    * <p>
    * It is the responsibility of the caller to fully format the message.
    * </p>
-   * @param errorMessage_p The message displayed when {@link #isValid(Object)} returned <code>false</code>.
+   * @param errorMessage The message displayed when {@link #isValid(Object)} returned <code>false</code>.
    */
-  protected AbstractValidator(String errorMessage_p) {
-    _errorMessage = errorMessage_p;
+  protected AbstractValidator(String errorMessage) {
+    _errorMessage = errorMessage;
   }
 
   /**
@@ -40,9 +41,9 @@ public abstract class AbstractValidator implements IValidator {
 
   /**
    * Set the error message to given one.
-   * @param errorMessage_p the errorMessage to set
+   * @param errorMessage the errorMessage to set
    */
-  protected void setErrorMessage(String errorMessage_p) {
-    _errorMessage = errorMessage_p;
+  protected void setErrorMessage(String errorMessage) {
+    _errorMessage = errorMessage;
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.ArrayList;
@@ -32,8 +33,8 @@ class SeverityContentProvider extends AbstractMarkerViewContentProvider implemen
    */
   private Map<SeverityLevel, List<IMarker>> markers = new HashMap<SeverityLevel,List<IMarker>>();
   
-  public SeverityContentProvider(TreeViewer viewer_p, MarkerViewHelper helper_p, IViewerRefresh refresh_p){
-    super(viewer_p, helper_p, refresh_p);
+  public SeverityContentProvider(TreeViewer viewer, MarkerViewHelper helper, IViewerRefresh refresh){
+    super(viewer, helper, refresh);
     for (SeverityLevel level : SeverityLevel.values()){
       markers.put(level, new ArrayList<IMarker>());      
     }
@@ -60,7 +61,7 @@ class SeverityContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized Object[] getElements(Object inputElement_p) {
+  public synchronized Object[] getElements(Object inputElement) {
     List<SeverityLevel> result = new ArrayList<SeverityLevel>();
     for (SeverityLevel level : SeverityLevel.values()){
        if (!markers.get(level).isEmpty()){
@@ -73,9 +74,9 @@ class SeverityContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized Object[] getChildren(Object parentElement_p) {
+  public synchronized Object[] getChildren(Object parentElement) {
     Object[] result = noChildren;
-    List<IMarker> children = markers.get(parentElement_p);
+    List<IMarker> children = markers.get(parentElement);
     if (children != null){
       result = children.toArray();
     }
@@ -85,10 +86,10 @@ class SeverityContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     Object parent = null;
-    if (element_p instanceof IMarker){
-      parent = SeverityLevel.getLevel((IMarker) element_p);
+    if (element instanceof IMarker){
+      parent = SeverityLevel.getLevel((IMarker) element);
     }
     return parent; 
   }
@@ -96,8 +97,8 @@ class SeverityContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized boolean hasChildren(Object element_p) {
-    List<IMarker> children = markers.get(element_p);
+  public synchronized boolean hasChildren(Object element) {
+    List<IMarker> children = markers.get(element);
     return children != null && children.size() > 0;
   }
 
@@ -105,10 +106,10 @@ class SeverityContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerAdded(IMarker marker_p) {
-    SeverityLevel level = SeverityLevel.getLevel(marker_p);
+  public synchronized void markerAdded(IMarker marker) {
+    SeverityLevel level = SeverityLevel.getLevel(marker);
     if (level != null){
-      markers.get(level).add(marker_p);
+      markers.get(level).add(marker);
       viewerRefresh.refresh();
     }
    }
@@ -116,9 +117,9 @@ class SeverityContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerDeleted(IMarker marker_p) {
+  public synchronized void markerDeleted(IMarker marker) {
     for (SeverityLevel level : SeverityLevel.values()){
-      if (markers.get(level).remove(marker_p)){
+      if (markers.get(level).remove(marker)){
         viewerRefresh.refresh();
         break;
       }

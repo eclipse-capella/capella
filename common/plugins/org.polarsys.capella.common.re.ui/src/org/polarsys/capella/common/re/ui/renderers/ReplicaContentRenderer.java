@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,14 +67,14 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    * {@inheritDoc}
    */
   @Override
-  protected void createTreeViewer(Composite parent_p, IRendererContext context_p) {
-    super.createTreeViewer(parent_p, context_p);
+  protected void createTreeViewer(Composite parent, IRendererContext context) {
+    super.createTreeViewer(parent, context);
 
     // We allow renaming of elements in this dialog
     final TreeViewer viewer = getViewer().getClientViewer();
 
     viewer.setColumnProperties(new String[] { "name" });
-    viewer.setCellModifier(new NameCellModifier(viewer, context_p));
+    viewer.setCellModifier(new NameCellModifier(viewer, context));
     viewer.setCellEditors(new CellEditor[] { new TextCellEditor(viewer.getTree()) });
 
     // Weird code used for TreeViewer
@@ -97,7 +97,7 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    * {@inheritDoc}
    */
   @Override
-  protected IContentProvider createContentProvider(IRendererContext context_p) {
+  protected IContentProvider createContentProvider(IRendererContext context) {
     return new DataContentProvider() {
 
     };
@@ -117,18 +117,18 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    * {@inheritDoc}
    */
   @Override
-  protected void doubleClicked(ISelection doubleClickedElement_p, IRendererContext rendererContext_p) {
-    super.doubleClicked(doubleClickedElement_p, rendererContext_p);
-    IProperty property = rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__CLICK_SELECTION);
-    rendererContext_p.getPropertyContext().setCurrentValue(property, ((IStructuredSelection) doubleClickedElement_p).toList());
+  protected void doubleClicked(ISelection doubleClickedElement, IRendererContext rendererContext) {
+    super.doubleClicked(doubleClickedElement, rendererContext);
+    IProperty property = rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__CLICK_SELECTION);
+    rendererContext.getPropertyContext().setCurrentValue(property, ((IStructuredSelection) doubleClickedElement).toList());
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void performRender(Composite parent_p, IRendererContext rendererContext_p) {
-    super.performRender(parent_p, rendererContext_p);
+  public void performRender(Composite parent, IRendererContext rendererContext) {
+    super.performRender(parent, rendererContext);
 
     int ops = DND.DROP_COPY | DND.DROP_MOVE;
 
@@ -137,18 +137,18 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
     getViewer().getClientViewer().addDragSupport(ops, transfers, new DragSourceListener() {
 
       @Override
-      public void dragStart(DragSourceEvent event_p) {
+      public void dragStart(DragSourceEvent event) {
         LocalSelectionTransfer.getTransfer().setSelection(getViewer().getClientViewer().getSelection());
-        event_p.doit = true;
+        event.doit = true;
       }
 
       @Override
-      public void dragSetData(DragSourceEvent event_p) {
+      public void dragSetData(DragSourceEvent event) {
         // Nothing here
       }
 
       @Override
-      public void dragFinished(DragSourceEvent event_p) {
+      public void dragFinished(DragSourceEvent event) {
         // Nothing here
       }
     });
@@ -176,14 +176,14 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    * {@inheritDoc}
    */
   @Override
-  protected Object createInput(IProperty property_p, final IRendererContext context_p) {
-    Object value = context_p.getPropertyContext().getCurrentValue(property_p);
+  protected Object createInput(IProperty property, final IRendererContext context) {
+    Object value = context.getPropertyContext().getCurrentValue(property);
     if ((value != null) && (value instanceof Collection)) {
       Collection<EObject> scopeElements = new HashSet<EObject>((Collection) value);
 
       if (!scopeElements.isEmpty()) {
-        IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
-        Object replica = context_p.getPropertyContext().getCurrentValue(property);
+        IProperty prop = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
+        Object replica = context.getPropertyContext().getCurrentValue(prop);
         scopeElements.add((EObject) replica);
       }
 
@@ -193,28 +193,28 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
          * {@inheritDoc}
          */
         @Override
-        protected Object doGetParent(Object element_p) {
-          if (element_p instanceof CatalogElement) {
+        protected Object doGetParent(Object element) {
+          if (element instanceof CatalogElement) {
             // display all catalog elements as a root item
             return null;
           }
 
-          if (element_p instanceof CatalogElementLink) {
-            CatalogElementLink link = (CatalogElementLink) element_p;
-            IContext context = (IContext) context_p.getPropertyContext().getSource();
-            EObject location = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
+          if (element instanceof CatalogElementLink) {
+            CatalogElementLink link = (CatalogElementLink) element;
+            IContext ctx = (IContext) context.getPropertyContext().getSource();
+            EObject location = LocationHandlerHelper.getInstance(ctx).getCurrentLocation(link, ctx);
             if ((location != null) && (location instanceof CatalogElementLink)) {
               return location;
             }
-            location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+            location = LocationHandlerHelper.getInstance(ctx).getLocation(link, link.getOrigin(), ctx);
             if ((location != null) && (location instanceof CatalogElementLink)) {
               return location;
             }
 
-            IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
-            Object replica = context_p.getPropertyContext().getCurrentValue(property);
+            IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
+            Object replica = context.getPropertyContext().getCurrentValue(property);
             if (!(location instanceof CatalogElementLink) && !(location instanceof CatalogElementPkg)) {
-              for (CatalogElementLink link2 : ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks((CatalogElement) replica)) {
+              for (CatalogElementLink link2 : ReplicableElementHandlerHelper.getInstance(ctx).getAllElementsLinks((CatalogElement) replica)) {
                 if (link2.getTarget().equals(location)) {
                   return link2;
                 }
@@ -223,40 +223,40 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
 
             return replica;
           }
-          return super.doGetParent(element_p);
+          return super.doGetParent(element);
         }
 
       };
       return data;
     }
-    return new ListData(Collections.emptyList(), context_p.getPropertyContext());
+    return new ListData(Collections.emptyList(), context.getPropertyContext());
   }
 
   @Override
-  protected IStatus getStatus(Object element_p, IRendererContext context_p) {
+  protected IStatus getStatus(Object element, IRendererContext context) {
 
-    if (element_p instanceof CatalogElementLink) {
-      CatalogElementLink link = (CatalogElementLink) element_p;
-      IContext context = (IContext) context_p.getPropertyContext().getSource();
+    if (element instanceof CatalogElementLink) {
+      CatalogElementLink link = (CatalogElementLink) element;
+      IContext ctx = (IContext) context.getPropertyContext().getSource();
 
-      IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
-      Object replica = context_p.getPropertyContext().getCurrentValue(property);
+      IProperty property = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
+      Object replica = context.getPropertyContext().getCurrentValue(property);
 
       if (!replica.equals(link.getSource())) {
         return new Status(IStatus.OK, "  ", "custom location");
       }
 
-      EObject location = LocationHandlerHelper.getInstance(context).getCurrentLocation((CatalogElementLink) element_p, context);
+      EObject location = LocationHandlerHelper.getInstance(ctx).getCurrentLocation((CatalogElementLink) element, ctx);
       if (location != null) {
         return new Status(IStatus.INFO, "  ", "custom location");
       }
-      location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+      location = LocationHandlerHelper.getInstance(ctx).getLocation(link, link.getOrigin(), ctx);
       if (location == null) {
-        EObject defaultLocation = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
+        EObject defaultLocation = LocationHandlerHelper.getInstance(ctx).getDefaultLocation(link, link.getOrigin(), ctx);
 
         Object value =
-            context_p.getPropertyContext().getCurrentValue(
-                context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
+            context.getPropertyContext().getCurrentValue(
+                context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
         if (Boolean.FALSE.equals(value) || (defaultLocation == null)) {
           return new Status(IStatus.WARNING, "  ", "no location");
         }
@@ -270,14 +270,14 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    * {@inheritDoc}
    */
   @Override
-  protected ILabelProvider createLabelProvider(final IRendererContext rendererContext_p) {
-    return new ReplicaLabelProvider(rendererContext_p.getPropertyContext(), super.createLabelProvider(rendererContext_p));
+  protected ILabelProvider createLabelProvider(final IRendererContext rendererContext) {
+    return new ReplicaLabelProvider(rendererContext.getPropertyContext(), super.createLabelProvider(rendererContext));
   }
 
   @Override
-  public boolean reloadInputRequired(Object input_p, Object input2_p) {
-    TreeData data1 = (TreeData) input_p;
-    TreeData data2 = (TreeData) input2_p;
+  public boolean reloadInputRequired(Object input, Object input2) {
+    TreeData data1 = (TreeData) input;
+    TreeData data2 = (TreeData) input2;
     if ((data1 == null) || (data2 == null)) {
       return true;
     }
@@ -291,55 +291,55 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext context_p, Object newValue_p) {
+  public void updatedValue(IProperty property, IRendererContext context, Object newValue) {
     if (!isDisposed()) {
-      super.updatedValue(property_p, context_p, newValue_p);
+      super.updatedValue(property, context, newValue);
       getViewer().getClientViewer().refresh();
     }
   }
 
   @Override
-  public void initialize(IProperty property_p, IRendererContext rendererContext_p) {
-    super.initialize(property_p, rendererContext_p);
-    rendererContext_p.getPropertyContext().registerListener(this,
-        rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__CLICK_SELECTION));
-    rendererContext_p.getPropertyContext().registerListener(this,
-        rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__TARGET_NAME));
-    rendererContext_p.getPropertyContext().registerListener(this,
-        rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX));
+  public void initialize(IProperty property, IRendererContext rendererContext) {
+    super.initialize(property, rendererContext);
+    rendererContext.getPropertyContext().registerListener(this,
+        rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__CLICK_SELECTION));
+    rendererContext.getPropertyContext().registerListener(this,
+        rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__TARGET_NAME));
+    rendererContext.getPropertyContext().registerListener(this,
+        rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void selectionChange(IStructuredSelection selection_p, IRendererContext context_p) {
-    super.selectionChange(selection_p, context_p);
+  public void selectionChange(IStructuredSelection selection, IRendererContext context) {
+    super.selectionChange(selection, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void update(PropertyChangedEvent event_p) {
+  public void update(PropertyChangedEvent event) {
 
     if (isDisposed()) {
       return;
     }
-    if (IReConstants.PROPERTY__CLICK_SELECTION.equals(event_p.getProperty().getId())) {
+    if (IReConstants.PROPERTY__CLICK_SELECTION.equals(event.getProperty().getId())) {
       List initialSelection = ((IStructuredSelection) getViewer().getClientViewer().getSelection()).toList();
       List selection = new ArrayList(initialSelection);
       List list =
-          (List) event_p.getPropertyContext().getCurrentValue(event_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__CLICK_SELECTION));
+          (List) event.getPropertyContext().getCurrentValue(event.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__CLICK_SELECTION));
       selection.removeAll(list);
       if (initialSelection.isEmpty() || !selection.isEmpty()) {
         getViewer().getClientViewer().setSelection(new StructuredSelection(list), true);
       }
 
-    } else if (IReConstants.PROPERTY__TARGET_NAME.equals(event_p.getProperty().getId())) {
+    } else if (IReConstants.PROPERTY__TARGET_NAME.equals(event.getProperty().getId())) {
       getViewer().getClientViewer().refresh();
 
-    } else if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX.equals(event_p.getProperty().getId())) {
+    } else if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX.equals(event.getProperty().getId())) {
       getViewer().getClientViewer().refresh();
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.jface.viewers.IContentProvider;
@@ -32,22 +33,22 @@ public class TransferListViewer extends AbstractTransferViewer2 {
 
   /**
    * Constructs the transfer list viewer. ListViewers used as left and right viewers are instantiated with default {@link ListViewer} style bits.
-   * @param parent_p parent composite of this viewer.
-   * @param style_p style of this viewer.
+   * @param parent parent composite of this viewer.
+   * @param style style of this viewer.
    */
-  public TransferListViewer(Composite parent_p, int style_p) {
-    this(parent_p, style_p, DEFAULT_LIST_VIEWER_STYLE, DEFAULT_LIST_VIEWER_STYLE);
+  public TransferListViewer(Composite parent, int style) {
+    this(parent, style, DEFAULT_LIST_VIEWER_STYLE, DEFAULT_LIST_VIEWER_STYLE);
   }
 
   /**
    * Constructs the transfer list viewer.
-   * @param parent_p parent composite of this viewer.
-   * @param style_p style of this viewer.
-   * @param leftViewerStyleBits_p style bits used for the left list viewer.
-   * @param rightViewerStyleBits_p style bits used for the right list viewer.
+   * @param parent parent composite of this viewer.
+   * @param style style of this viewer.
+   * @param leftViewerStyleBits style bits used for the left list viewer.
+   * @param rightViewerStyleBits style bits used for the right list viewer.
    */
-  public TransferListViewer(Composite parent_p, int style_p, int leftViewerStyleBits_p, int rightViewerStyleBits_p) {
-    super(parent_p, style_p, leftViewerStyleBits_p, rightViewerStyleBits_p);
+  public TransferListViewer(Composite parent, int style, int leftViewerStyleBits, int rightViewerStyleBits) {
+    super(parent, style, leftViewerStyleBits, rightViewerStyleBits);
     DefaultListContentProvider provider = new DefaultListContentProvider();
     setLeftContentProvider(provider);
     setRightContentProvider(provider);
@@ -61,15 +62,15 @@ public class TransferListViewer extends AbstractTransferViewer2 {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractTransferViewer#doLeftViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected StructuredViewer doLeftViewer(Composite parent_p) {
-    return new ListViewer(parent_p, getLeftViewerStyleBits());
+  protected StructuredViewer doLeftViewer(Composite parent) {
+    return new ListViewer(parent, getLeftViewerStyleBits());
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractTransferViewer#doRightViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected StructuredViewer doRightViewer(Composite parent_p) {
-    return new ListViewer(parent_p, getRightViewerStyleBits());
+  protected StructuredViewer doRightViewer(Composite parent) {
+    return new ListViewer(parent, getRightViewerStyleBits());
   }
 }

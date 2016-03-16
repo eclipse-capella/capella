@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,21 +24,21 @@ import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 public class EObjectCouple extends Couple<EObject, EObject> {
   /**
    * Default constructor
-   * @param key_p
-   * @param value_p
+   * @param key
+   * @param value
    */
-  public EObjectCouple(EReference key_p, EClass value_p) {
-    super(key_p, value_p);
+  public EObjectCouple(EReference key, EClass value) {
+    super(key, value);
   }
 
   /**
    * @see java.lang.Object#equals(java.lang.Object)
    */
   @Override
-  public boolean equals(Object obj_p) {
-    boolean cr = super.equals(obj_p);
-    if (!cr && (obj_p instanceof EObjectCouple)) {
-      EObjectCouple eObjectCouple = (EObjectCouple) obj_p;
+  public boolean equals(Object obj) {
+    boolean cr = super.equals(obj);
+    if (!cr && (obj instanceof EObjectCouple)) {
+      EObjectCouple eObjectCouple = (EObjectCouple) obj;
       cr = (getKey() == eObjectCouple.getKey());
       cr = (cr) ? (getValue() == eObjectCouple.getValue()) : false;
     }

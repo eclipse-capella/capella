@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.ArrayList;
@@ -54,25 +55,25 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
 
     /**
      * Constructor.
-     * @param value_p Real semantic element.
+     * @param value Real semantic element.
      */
-    ElementNode(Object value_p) {
-      super(value_p);
+    ElementNode(Object value) {
+      super(value);
     }
 
     /**
      * Add a new child.
-     * @param child_p
+     * @param child
      */
-    void addChild(ElementNode child_p) {
+    void addChild(ElementNode child) {
       // Create children structure, if needed.
       if (null == _children) {
         _children = new ArrayList<ElementNode>(1);
       }
       // Do not use a set instead, order might be of interest here.
-      if (!_children.contains(child_p)) {
-        _children.add(child_p);
-        child_p.setParent(this);
+      if (!_children.contains(child)) {
+        _children.add(child);
+        child.setParent(this);
       }
     }
 
@@ -80,10 +81,10 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
      * @see org.eclipse.jface.viewers.TreeNode#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object object_p) {
+    public boolean equals(Object object) {
       boolean result = false;
-      if (object_p instanceof TreeNode) {
-        TreeNode treeNode = (TreeNode) object_p;
+      if (object instanceof TreeNode) {
+        TreeNode treeNode = (TreeNode) object;
         result = Util.equals(this.value, treeNode.getValue());
         result = (result) ? Util.equals(getParent(), treeNode.getParent()) : false;
       }
@@ -138,36 +139,36 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
 
     /**
      * Remove an existing child.
-     * @param child_p
+     * @param child
      */
-    void removeChild(ElementNode child_p) {
+    void removeChild(ElementNode child) {
       if (null != _children) {
-        _children.remove(child_p);
+        _children.remove(child);
       }
     }
 
     /**
-     * @param initialCheckState_p the initialCheckState to set
+     * @param initialCheckState the initialCheckState to set
      */
-    void setInitialCheckedState(boolean initialCheckState_p) {
-      _initialCheckedState = initialCheckState_p;
+    void setInitialCheckedState(boolean initialCheckState) {
+      _initialCheckedState = initialCheckState;
     }
 
     /**
      * Set parent element node.
-     * @param parent_p
+     * @param parent
      */
-    void setParent(ElementNode parent_p) {
+    void setParent(ElementNode parent) {
       ElementNode previousParent = getParent();
       // Remove child from previously known parent.
       if (null != previousParent) {
         previousParent.removeChild(this);
       }
       // Set new parent.
-      super.setParent(parent_p);
+      super.setParent(parent);
       // Add this as child to new parent.
-      if (null != parent_p) {
-        parent_p.addChild(this);
+      if (null != parent) {
+        parent.addChild(this);
       }
     }
 
@@ -190,32 +191,32 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
      * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getColumnImage(java.lang.Object, int)
      */
     @Override
-    public Image getColumnImage(Object object_p, int columnIndex_p) {
-      return super.getColumnImage(((TreeNode) object_p).getValue(), columnIndex_p);
+    public Image getColumnImage(Object object, int columnIndex) {
+      return super.getColumnImage(((TreeNode) object).getValue(), columnIndex);
     }
 
     /**
      * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getColumnText(java.lang.Object, int)
      */
     @Override
-    public String getColumnText(Object object_p, int columnIndex_p) {
-      return super.getColumnText(((TreeNode) object_p).getValue(), columnIndex_p);
+    public String getColumnText(Object object, int columnIndex) {
+      return super.getColumnText(((TreeNode) object).getValue(), columnIndex);
     }
 
     /**
      * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getImage(java.lang.Object)
      */
     @Override
-    public Image getImage(Object object_p) {
-      return super.getImage(((TreeNode) object_p).getValue());
+    public Image getImage(Object object) {
+      return super.getImage(((TreeNode) object).getValue());
     }
 
     /**
      * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getText(java.lang.Object)
      */
     @Override
-    public String getText(Object object_p) {
-      return super.getText(((TreeNode) object_p).getValue());
+    public String getText(Object object) {
+      return super.getText(((TreeNode) object).getValue());
     }
   }
 
@@ -226,25 +227,25 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
 
   /**
    * Constructor.
-   * @param parentShell_p
-   * @param title_p
-   * @param message_p
+   * @param parentShell
+   * @param title
+   * @param message
    */
-  public CheckboxTreeDialog(Shell parentShell_p, String title_p, String message_p, AdapterFactoryEditingDomain editingDomain_p) {
-    super(parentShell_p, title_p, message_p, Messages.CheckboxTreeDialog_Window_Title);
-    _editingDomain = editingDomain_p;
+  public CheckboxTreeDialog(Shell parentShell, String title, String message, AdapterFactoryEditingDomain editingDomain) {
+    super(parentShell, title, message, Messages.CheckboxTreeDialog_Window_Title);
+    _editingDomain = editingDomain;
   }
 
   /**
    * Check initial selection.
-   * @param viewer_p
-   * @param rootNodes_p
+   * @param viewer
+   * @param rootNodes
    */
   @SuppressWarnings("unchecked")
-  private void checkInitialSelection(CheckboxTreeViewer viewer_p, List<ElementNode> rootNodes_p) {
+  private void checkInitialSelection(CheckboxTreeViewer viewer, List<ElementNode> rootNodes) {
     ArrayList<TreeNode> checkedElements = new ArrayList<TreeNode>(0);
     // Loop over root nodes.
-    for (ElementNode rootNode : rootNodes_p) {
+    for (ElementNode rootNode : rootNodes) {
       // Is child node checked for current root node ?
       for (TreeNode childNode : rootNode.getChildren()) {
         if (((ElementNode) childNode).isInitialCheckedState()) {
@@ -253,25 +254,25 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
       }
     }
     // Check all child nodes that have to be checked !
-    viewer_p.setCheckedElements(checkedElements.toArray());
+    viewer.setCheckedElements(checkedElements.toArray());
   }
 
   /**
    * Create the {@link CheckboxTreeViewer}.
-   * @param dialogAreaComposite_p
+   * @param dialogAreaComposite
    * @return a not <code>null</code> instance.
    */
-  protected RegExpCheckboxTreeViewer createCheckboxTreeViewer(Composite dialogAreaComposite_p) {
-    return new RegExpCheckboxTreeViewer(dialogAreaComposite_p);
+  protected RegExpCheckboxTreeViewer createCheckboxTreeViewer(Composite dialogAreaComposite) {
+    return new RegExpCheckboxTreeViewer(dialogAreaComposite);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#doCreateDialogArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void doCreateDialogArea(Composite parent_p) {
+  protected void doCreateDialogArea(Composite parent) {
     // Create the checkbox tree viewer with a regular expression.
-    _checkboxTreeViewer = createCheckboxTreeViewer(parent_p);
+    _checkboxTreeViewer = createCheckboxTreeViewer(parent);
     // Get the client viewer i.e the checkbox tree viewer itself.
     CheckboxTreeViewer viewer = _checkboxTreeViewer.getClientViewer();
     // Install a sorter which uses the default collator to sort strings.
@@ -357,12 +358,12 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
 
   /**
    * Set data input.
-   * @param selectableElements_p all selectable (i.e checkable) elements.<br>
+   * @param selectableElements all selectable (i.e checkable) elements.<br>
    *          <code>T</code> corresponds to a <b>root</b> node with its collection of <b>leaf</b> nodes i.e <code>Collection&lt;U&gt;</code>.
-   * @param checkedElements_p checked elements at creation time.<br>
-   *          Same explanations as previous parameter <code>selectableElements_p</code>.
+   * @param checkedElements checked elements at creation time.<br>
+   *          Same explanations as previous parameter <code>selectableElements</code>.
    */
-  public void setInput(Map<T, Collection<U>> selectableElements_p, Map<T, Collection<U>> checkedElements_p) {
-    _rootNodes = getRootNodes(selectableElements_p, checkedElements_p);
+  public void setInput(Map<T, Collection<U>> selectableElements, Map<T, Collection<U>> checkedElements) {
+    _rootNodes = getRootNodes(selectableElements, checkedElements);
   }
 }

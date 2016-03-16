@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,11 +29,11 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyGroup;
 public class ReplicaGroupRenderer extends HorizontalGroupRenderer {
 
   @Override
-  protected Composite createGroup(Composite parent_p, IPropertyGroup group_p, IPropertyContext context, IRendererContext rendererContext_p) {
+  protected Composite createGroup(Composite parent, IPropertyGroup group, IPropertyContext context, IRendererContext rendererContext) {
 
     Composite parentComposite = null;
 
-    parentComposite = new Composite(parent_p, SWT.NONE);
+    parentComposite = new Composite(parent, SWT.NONE);
     GridLayout gridLayout = new GridLayout(1, true);
     gridLayout.marginHeight = 0;
     gridLayout.marginWidth = 0;
@@ -41,8 +41,8 @@ public class ReplicaGroupRenderer extends HorizontalGroupRenderer {
     parentComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
     Group newGroup = new Group(parentComposite, SWT.NONE);
-    newGroup.setText(getGroupName(group_p));
-    newGroup.setData(group_p);
+    newGroup.setText(getGroupName(group));
+    newGroup.setData(group);
     GridLayout gridLayout2 = new GridLayout(1, true);
     gridLayout2.marginHeight = 0;
     gridLayout2.marginWidth = 0;
@@ -62,12 +62,12 @@ public class ReplicaGroupRenderer extends HorizontalGroupRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected Composite renderGroup(Composite parent_p, IPropertyGroup group_p, IPropertyContext context, IRendererContext rendererContext_p,
+  protected Composite renderGroup(Composite parent, IPropertyGroup group, IPropertyContext context, IRendererContext rendererContext,
       ILabelProvider labelProvider) {
-    Composite parent = super.renderGroup(parent_p, group_p, context, rendererContext_p, labelProvider);
+    Composite prt = super.renderGroup(parent, group, context, rendererContext, labelProvider);
 
     try {
-      ((SashForm) parent).setWeights(new int[] { 40, 60 });
+      ((SashForm) prt).setWeights(new int[] { 40, 60 });
     } catch (Exception e) {
       
     }
@@ -75,13 +75,13 @@ public class ReplicaGroupRenderer extends HorizontalGroupRenderer {
     GridLayout gridLayout3 = new GridLayout(1, true);
     gridLayout3.marginHeight = 0;
     gridLayout3.marginWidth = 0;
-    parent.setLayout(gridLayout3);
+    prt.setLayout(gridLayout3);
     GridData layoutData = new GridData(GridData.FILL_BOTH);
     layoutData.minimumHeight = 300;
     layoutData.minimumWidth = 600;
-    parent.setLayoutData(layoutData);
+    prt.setLayoutData(layoutData);
 
-    return parent;
+    return prt;
   }
 
 }

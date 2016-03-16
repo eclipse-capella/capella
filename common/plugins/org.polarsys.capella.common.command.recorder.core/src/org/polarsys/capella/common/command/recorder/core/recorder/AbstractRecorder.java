@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.recorder;
 
 import java.util.ArrayList;
@@ -69,12 +70,12 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
    * @see org.eclipse.emf.transaction.ResourceSetListenerImpl#resourceSetChanged(org.eclipse.emf.transaction.ResourceSetChangeEvent)
    */
   @Override
-  public void resourceSetChanged(ResourceSetChangeEvent event_p) {
+  public void resourceSetChanged(ResourceSetChangeEvent event) {
 
-    _events.add(new Data(new Date(), event_p.getNotifications()));
+    _events.add(new Data(new Date(), event.getNotifications()));
 
     if (null != _manager) {
-      _manager.recorderChanged(this, event_p);
+      _manager.recorderChanged(this, event);
     }
 
     return;
@@ -101,42 +102,42 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
   /**
    * {@inheritDoc}
    */
-  public void notify(Session updatedSession_p, int notification_p) {
+  public void notify(Session updatedSession, int notification) {
     // Do nothing.
   }
 
   /**
    * {@inheritDoc}
    */
-  public void viewpointDeselected(Viewpoint deselectedViewpoint_p) {
+  public void viewpointDeselected(Viewpoint deselectedViewpoint) {
     // Do nothing.
   }
 
   /**
    * {@inheritDoc}
    */
-  public void viewpointSelected(Viewpoint selectedViewpoint_p) {
+  public void viewpointSelected(Viewpoint selectedViewpoint) {
     // Do nothing.
   }
 
   /**
    * {@inheritDoc}
    */
-  public void notifyAddSession(Session newSession_p) {
+  public void notifyAddSession(Session newSession) {
     // Do nothing.
   }
 
   /**
    * {@inheritDoc}
    */
-  public void notifyRemoveSession(Session removedSession_p) {
+  public void notifyRemoveSession(Session removedSession) {
     // Do nothing.
   }
 
   /**
    * {@inheritDoc}
    */
-  public void notifyUpdatedSession(Session updated_p) {
+  public void notifyUpdatedSession(Session updated) {
     // Do nothing.
   }
 }

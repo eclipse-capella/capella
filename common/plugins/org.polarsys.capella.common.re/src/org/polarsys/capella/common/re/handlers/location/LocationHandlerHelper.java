@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.location;
 
 import org.polarsys.capella.common.re.constants.IReConstants;
@@ -16,11 +17,11 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class LocationHandlerHelper {
 
-  public static ILocationHandler getInstance(IContext context_p) {
-    if (!context_p.exists(IReConstants.LOCATION_HANDLER)) {
+  public static ILocationHandler getInstance(IContext context) {
+    if (!context.exists(IReConstants.LOCATION_HANDLER)) {
       IHandler handler = new DefaultLocationHandler();
-      context_p.put(IReConstants.LOCATION_HANDLER, handler);
+      context.put(IReConstants.LOCATION_HANDLER, handler);
     }
-    return (ILocationHandler) context_p.get(IReConstants.LOCATION_HANDLER);
+    return (ILocationHandler) context.get(IReConstants.LOCATION_HANDLER);
   }
 }

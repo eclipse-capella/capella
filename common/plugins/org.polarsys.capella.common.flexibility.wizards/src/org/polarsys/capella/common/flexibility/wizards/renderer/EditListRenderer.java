@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import java.util.Collection;
@@ -32,8 +33,8 @@ public class EditListRenderer extends SelectListRenderer {
   }
 
   @Override
-  protected Object createInput(IProperty property_p, IRendererContext propertyContext_p) {
-    Object value = propertyContext_p.getPropertyContext().getCurrentValue(property_p);
+  protected Object createInput(IProperty property, IRendererContext propertyContext) {
+    Object value = propertyContext.getPropertyContext().getCurrentValue(property);
     if ((value != null) && (value instanceof Collection)) {
       Collection<Object> dataa = (Collection) value;
       TreeData data = new TreeData(dataa, null);
@@ -43,21 +44,21 @@ public class EditListRenderer extends SelectListRenderer {
   }
 
   @Override
-  public void initialize(IProperty property_p, IRendererContext propertyContext_p) {
-    Object value = propertyContext_p.getPropertyContext().getDefaultValue(property_p);
-    updatedValue(property_p, propertyContext_p, value);
-    reloadInput(property_p, propertyContext_p);
-    getViewer().getClientViewer().setSelection(getInitialSelection(propertyContext_p));
-    selectionChange(new StructuredSelection(), propertyContext_p);
+  public void initialize(IProperty property, IRendererContext propertyContext) {
+    Object value = propertyContext.getPropertyContext().getDefaultValue(property);
+    updatedValue(property, propertyContext, value);
+    reloadInput(property, propertyContext);
+    getViewer().getClientViewer().setSelection(getInitialSelection(propertyContext));
+    selectionChange(new StructuredSelection(), propertyContext);
   }
 
   @Override
-  public void selectionChange(IStructuredSelection selection_p, IRendererContext context_p) {
+  public void selectionChange(IStructuredSelection selection, IRendererContext context) {
     //Nothing here
   }
 
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext propertyContext_p, Object newValue_p) {
-    reloadInput(property_p, propertyContext_p);
+  public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
+    reloadInput(property, propertyContext);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.validators;
 
 /**
@@ -19,18 +20,18 @@ public abstract class RegExpValidatorFactory {
 
   /**
    * Creates a new regular expression validator with the given identifier.
-   * @param validatorId_p The identifier of the validator factory.
+   * @param validatorId The identifier of the validator factory.
    */
-  protected RegExpValidatorFactory(String validatorId_p) {
-    _id = validatorId_p;
+  protected RegExpValidatorFactory(String validatorId) {
+    _id = validatorId;
   }
 
   /**
    * Creates a new standard regular expression validator.
-   * @param errorMessage_p The error message.
+   * @param errorMessage The error message.
    * @return The regular expression validator.
    */
-  public abstract RegExpValidator create(String errorMessage_p, int style_p);
+  public abstract RegExpValidator create(String errorMessage, int style);
 
   /**
    * Gets the identifier of this validator factory.
@@ -48,8 +49,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, "\\d*|\\*", style_p); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, "\\d*|\\*", style); //$NON-NLS-1$
     }
   };
 
@@ -61,8 +62,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, "\\p{Lower}", style_p); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, "\\p{Lower}", style); //$NON-NLS-1$
     }    
   };
   
@@ -75,8 +76,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, "\\{Upper}", style_p); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, "\\{Upper}", style); //$NON-NLS-1$
     }    
   };
   
@@ -88,8 +89,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, "\\D+(.| )+", style_p); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, "\\D+(.| )+", style); //$NON-NLS-1$
     }
   };
   
@@ -101,8 +102,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, "[^\\p{Punct}]*", style_p); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, "[^\\p{Punct}]*", style); //$NON-NLS-1$
     }
   };
   
@@ -114,8 +115,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, "[^\\s]*", style_p); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, "[^\\s]*", style); //$NON-NLS-1$
     }
   };
   
@@ -127,8 +128,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, "[1]{0,1}\\d{0,2}|[2][0-5]{0,2}", style_p); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, "[1]{0,1}\\d{0,2}|[2][0-5]{0,2}", style); //$NON-NLS-1$
     }
   };
   
@@ -140,8 +141,8 @@ public abstract class RegExpValidatorFactory {
      * @see org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidatorFactory#create(java.lang.String)
      */
     @Override
-    public RegExpValidator create(String errorMessage_p, int style_p) {
-      return new RegExpValidator(errorMessage_p, ".+", RegExpValidator.NONE); //$NON-NLS-1$
+    public RegExpValidator create(String errorMessage, int style) {
+      return new RegExpValidator(errorMessage, ".+", RegExpValidator.NONE); //$NON-NLS-1$
     }    
   };
 }

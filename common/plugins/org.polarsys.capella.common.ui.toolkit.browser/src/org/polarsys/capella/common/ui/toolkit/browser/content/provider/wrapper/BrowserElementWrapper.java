@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper;
 
 import org.eclipse.jface.util.Util;
@@ -25,13 +26,13 @@ public abstract class BrowserElementWrapper {
   /**
    * Constructor.
    */
-  public BrowserElementWrapper(Object element_p) {
-    element = element_p;
+  public BrowserElementWrapper(Object element) {
+    this.element = element;
   }
 
   /**
    * Get underlying element.
-   * @return the element_p
+   * @return the element
    */
   public Object getElement() {
     return element;

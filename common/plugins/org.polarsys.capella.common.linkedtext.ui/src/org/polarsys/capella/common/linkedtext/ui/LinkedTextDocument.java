@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.linkedtext.ui;
 
 import java.util.ArrayList;
@@ -69,19 +70,19 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
     
     /**
      * Given a hyperlink reference and a base object compute and return the target object.
-     * @param base_p the base object
-     * @param href_p the hyperlink reference
+     * @param base the base object
+     * @param href the hyperlink reference
      * @return the referenced target object or null if the reference cannot be resolved.
      */
-    public Object getTarget(Object base_p, String href_p);
+    public Object getTarget(Object base, String href);
     
     /**
      * Given a base and a target object, computes a hyperlink reference
-     * @param base_p the base object
+     * @param base the base object
      * @param target the target object
      * @return
      */
-    public String getHref(Object base_p, Object target);
+    public String getHref(Object base, Object target);
   }
 
   private final static Pattern pattern = Pattern.compile("<a href=\"([^\"]*)\"/>");
@@ -100,13 +101,13 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
    * is used as a reference element when resolving hyperlink references. The label provider
    * is used to obtain a text presentation for resolved target objects.
    * 
-   * @param documentBase_p the document base
-   * @param labelProvider_p the label provider
+   * @param documentBase the document base
+   * @param labelProvider the label provider
    */
-  public LinkedTextDocument(Object documentBase_p, ILabelProvider labelProvider_p, Resolver resolver_p){
-    _labelProvider = labelProvider_p;
-    _documentBase = documentBase_p;
-    _resolver = resolver_p;
+  public LinkedTextDocument(Object documentBase, ILabelProvider labelProvider, Resolver resolver){
+    _labelProvider = labelProvider;
+    _documentBase = documentBase;
+    _resolver = resolver;
     
     _labelProvider.addListener(this);
   }
@@ -148,19 +149,19 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
    * @param labelProvider_p the label provider used to obtain text presentations for hyperlink targets
    * @return the loaded document
    */
-  public static LinkedTextDocument load(Input input_p){
+  public static LinkedTextDocument load(Input input){
     
-    LinkedTextDocument doc = new LinkedTextDocument(input_p.getDocumentBase(), input_p.getLabelProvider(), input_p.getResolver());
+    LinkedTextDocument doc = new LinkedTextDocument(input.getDocumentBase(), input.getLabelProvider(), input.getResolver());
     List<LinkedTextHyperlink> links = new ArrayList<LinkedTextHyperlink>();
 
-    if(input_p.getText() != null) {
-    Matcher m = pattern.matcher(input_p.getText());
+    if(input.getText() != null) {
+    Matcher m = pattern.matcher(input.getText());
     StringBuilder builder = new StringBuilder();
     int offset = 0;
     while (m.find()){
       int start = m.start();
       if (start > offset){
-        builder.append(StringEscapeUtils.unescapeHtml(input_p.getText().substring(offset, start)));
+        builder.append(StringEscapeUtils.unescapeHtml(input.getText().substring(offset, start)));
       }
       final int labelStart = builder.length();
 
@@ -176,7 +177,7 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
       links.add(hl);
       offset = m.end();
     }
-    builder.append(StringEscapeUtils.unescapeHtml(input_p.getText().substring(offset, input_p.getText().length())));
+    builder.append(StringEscapeUtils.unescapeHtml(input.getText().substring(offset, input.getText().length())));
     doc.set(builder.toString());
     for (Position pos : links){
       try {
@@ -223,13 +224,13 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
    * {@inheritDoc}
    */
   @Override
-  public void labelProviderChanged(LabelProviderChangedEvent event_p) {
+  public void labelProviderChanged(LabelProviderChangedEvent event) {
     for (LinkedTextHyperlink hl : getHyperlinks()){
       String newText = null;
-      if (event_p.getElements() == null) {
+      if (event.getElements() == null) {
         newText = _labelProvider.getText(hl.getTarget());
       } else {
-        for (Object element : event_p.getElements()){
+        for (Object element : event.getElements()){
           if (element == hl.getTarget()){
             newText = _labelProvider.getText(hl.getTarget());
             break;

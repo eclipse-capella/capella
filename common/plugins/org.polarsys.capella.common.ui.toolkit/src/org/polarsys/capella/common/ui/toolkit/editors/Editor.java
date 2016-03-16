@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.editors;
 
 import java.util.ArrayList;
@@ -40,12 +41,12 @@ public abstract class Editor extends Wizard {
 
   /**
    * Constructs the generic editor.
-   * @param pageContentProvider_p The page content provider.
-   * @param store_p The data binding controller.
+   * @param pageContentProvider The page content provider.
+   * @param store The data binding controller.
    */
-  public Editor(IPageContentProvider pageContentProvider_p, IPreferenceStore store_p) {
-    _page = new EditorPage(pageContentProvider_p);
-    _store = store_p;
+  public Editor(IPageContentProvider pageContentProvider, IPreferenceStore store) {
+    _page = new EditorPage(pageContentProvider);
+    _store = store;
   }
 
   /**
@@ -59,41 +60,41 @@ public abstract class Editor extends Wizard {
 
   /**
    * Sets the current editor enable or not.
-   * @param enabled_p <code>True</code> to enable the editor else false.
+   * @param enabled <code>True</code> to enable the editor else false.
    */
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if (null != _page) {
-      _page.setEnabled(enabled_p);
+      _page.setEnabled(enabled);
     }
   }
 
   /**
    * Turns the editor into the consult mode.
-   * @param consult_p <code>True</code> to enable the consult mode else <code>false</code>.
+   * @param consult <code>True</code> to enable the consult mode else <code>false</code>.
    */
-  public void setConsultMode(boolean consult_p) {
+  public void setConsultMode(boolean consult) {
     if (null != _page) {
-      _page.setConsultMode(consult_p);
+      _page.setConsultMode(consult);
     }
   }
 
   /**
    * Sets the title of the underlined page.
-   * @param title_p The page title.
+   * @param title The page title.
    */
-  public void setPageTitle(String title_p) {
+  public void setPageTitle(String title) {
     if (null != _page) {
-      _page.setTitle(title_p);
+      _page.setTitle(title);
     }
   }
 
   /**
    * Sets the image of the page header.
-   * @param image_p The image of the page header.
+   * @param image The image of the page header.
    */
-  public void setPageImage(ImageDescriptor image_p) {
+  public void setPageImage(ImageDescriptor image) {
     if (null != _page) {
-      _page.setImageDescriptor(image_p);
+      _page.setImageDescriptor(image);
     }
   }
 
@@ -110,11 +111,11 @@ public abstract class Editor extends Wizard {
 
   /**
    * Sets the description of the underlined page.
-   * @param description_p The page description.
+   * @param description The page description.
    */
-  public void setPageDescription(String description_p) {
+  public void setPageDescription(String description) {
     if (null != _page) {
-      _page.setDescription(description_p);
+      _page.setDescription(description);
     }
   }
 
@@ -162,25 +163,25 @@ public abstract class Editor extends Wizard {
 
     /**
      * Constructs the editor page.
-     * @param contentProvider_p The page content provider.
+     * @param contentProvider The page content provider.
      */
-    public EditorPage(IPageContentProvider contentProvider_p) {
-      super(contentProvider_p.getId());
-      _contentProvider = contentProvider_p;
-      setTitle(contentProvider_p.getPageTitle());
-      setDescription(contentProvider_p.getPageDescription());
+    public EditorPage(IPageContentProvider contentProvider) {
+      super(contentProvider.getId());
+      _contentProvider = contentProvider;
+      setTitle(contentProvider.getPageTitle());
+      setDescription(contentProvider.getPageDescription());
       setPageComplete(false);
     }
 
     /**
      * Constructs the editor page.
-     * @param contentProvider_p The page content provider.
-     * @param titleImage_p The page title image.
+     * @param contentProvider The page content provider.
+     * @param titleImage The page title image.
      */
-    public EditorPage(IPageContentProvider contentProvider_p, ImageDescriptor titleImage_p) {
-      super(contentProvider_p.getId(), contentProvider_p.getPageTitle(), titleImage_p);
-      _contentProvider = contentProvider_p;
-      setDescription(contentProvider_p.getPageDescription());
+    public EditorPage(IPageContentProvider contentProvider, ImageDescriptor titleImage) {
+      super(contentProvider.getId(), contentProvider.getPageTitle(), titleImage);
+      _contentProvider = contentProvider;
+      setDescription(contentProvider.getPageDescription());
       setPageComplete(false);
     }
 
@@ -204,14 +205,14 @@ public abstract class Editor extends Wizard {
      * @see WizardPage#createControl(Composite)
      */
     @SuppressWarnings("synthetic-access")
-    public void createControl(Composite parent_p) {
+    public void createControl(Composite parent) {
       ITabDescriptor[] descriptors = _contentProvider.getTabDescriptors();
       if ((null == descriptors) || (0 == descriptors.length)) {
         return;
       }
 
       // Adds the tab folder, if descriptors exists.
-      _folder = new TabFolder(parent_p, SWT.TOP);
+      _folder = new TabFolder(parent, SWT.TOP);
 
       // Parses descriptors list and builds tab items.
       for (int i = 0; i < descriptors.length; i++) {
@@ -260,10 +261,10 @@ public abstract class Editor extends Wizard {
 
     /**
      * Turns the editor page into consult mode.
-     * @param consult_p <code>True</code> to enable the consult mode else <code>false</code>.
+     * @param consult <code>True</code> to enable the consult mode else <code>false</code>.
      */
-    public void setConsultMode(boolean consult_p) {
-      _consultMode = consult_p;
+    public void setConsultMode(boolean consult) {
+      _consultMode = consult;
     }
 
     /**
@@ -276,18 +277,18 @@ public abstract class Editor extends Wizard {
 
     /**
      * Enable or not the page content.
-     * @param enabled_p <code>True</code> to enable the page else <code>false</code>.
+     * @param enabled <code>True</code> to enable the page else <code>false</code>.
      */
-    public void setEnabled(boolean enabled_p) {
+    public void setEnabled(boolean enabled) {
       if (!_consultMode) {
         // Registers the new state.
-        _isEnabled = enabled_p;
+        _isEnabled = enabled;
 
         // Updates state.
         if (null != _folder) {
           for (int i = 0; i < _folder.getItemCount(); i++) {
             TabItem tab = _folder.getItem(i);
-            tab.getControl().setEnabled(enabled_p);
+            tab.getControl().setEnabled(enabled);
           }
         }
       }
@@ -308,13 +309,13 @@ public abstract class Editor extends Wizard {
     /**
      * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
      */
-    public void propertyChange(PropertyChangeEvent event_p) {
+    public void propertyChange(PropertyChangeEvent event) {
       // Filters the events.
-      if (FieldEditor.IS_VALID.equals(event_p.getProperty())) {
-        if (event_p.getSource() instanceof MdeFieldEditor) {
-          MdeFieldEditor field = (MdeFieldEditor) event_p.getSource();
+      if (FieldEditor.IS_VALID.equals(event.getProperty())) {
+        if (event.getSource() instanceof MdeFieldEditor) {
+          MdeFieldEditor field = (MdeFieldEditor) event.getSource();
 
-          if (((Boolean) event_p.getNewValue()).booleanValue()) {
+          if (((Boolean) event.getNewValue()).booleanValue()) {
             // Update the foreground color.
             if (null != field.getValueControl()) {
               if (null != foreground) {

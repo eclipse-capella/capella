@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,16 +31,16 @@ public class AllElementsRenderer extends SelectListRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected IContentProvider createContentProvider(IRendererContext context_p) {
-    IContext context = ((IContext) context_p.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
-    TransactionalEditingDomain domain = (TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
+  protected IContentProvider createContentProvider(IRendererContext context) {
+    IContext ctx = ((IContext) context.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
+    TransactionalEditingDomain domain = (TransactionalEditingDomain) ctx.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
     return new AdapterFactoryContentProvider(((AdapterFactoryEditingDomain) domain).getAdapterFactory());
   }
 
   @Override
-  protected ILabelProvider createLabelProvider(IRendererContext context_p) {
-    IContext context = ((IContext) context_p.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
-    TransactionalEditingDomain domain = (TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
+  protected ILabelProvider createLabelProvider(IRendererContext context) {
+    IContext ctx = ((IContext) context.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
+    TransactionalEditingDomain domain = (TransactionalEditingDomain) ctx.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
     return new MDEAdapterFactoryLabelProvider(((AdapterFactoryEditingDomain) domain).getAdapterFactory());
   }
 
@@ -48,8 +48,8 @@ public class AllElementsRenderer extends SelectListRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected Object createInput(IProperty property_p, IRendererContext context_p) {
-    return context_p.getPropertyContext().getCurrentValue(property_p);
+  protected Object createInput(IProperty property, IRendererContext context) {
+    return context.getPropertyContext().getCurrentValue(property);
   }
 
 }

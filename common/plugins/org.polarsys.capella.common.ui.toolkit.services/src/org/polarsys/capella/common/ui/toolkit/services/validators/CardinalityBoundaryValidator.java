@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.validators;
 
 /**
@@ -17,9 +18,9 @@ public class CardinalityBoundaryValidator extends RegExpValidator {
 
   /**
    * Constructs the cardinality boundary validator.
-   * @param errorMessage_p The error message.
+   * @param errorMessage The error message.
    */
-  public CardinalityBoundaryValidator(String errorMessage_p, int style_p) {
-    super(errorMessage_p, "\\*|\\d*", style_p); //$NON-NLS-1$
+  public CardinalityBoundaryValidator(String errorMessage, int style) {
+    super(errorMessage, "\\*|\\d*", style); //$NON-NLS-1$
   }
 }

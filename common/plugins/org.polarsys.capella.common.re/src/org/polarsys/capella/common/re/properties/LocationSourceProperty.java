@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,17 +39,17 @@ public class LocationSourceProperty extends AbstractProperty implements IEditabl
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    Collection selection = (Collection) context.get(ITransitionConstants.TRANSITION_SOURCES);
-    return ReplicableElementHandlerHelper.getInstance(context).getRootPackage((EObject) (selection.iterator().next()));
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    Collection selection = (Collection) ctx.get(ITransitionConstants.TRANSITION_SOURCES);
+    return ReplicableElementHandlerHelper.getInstance(ctx).getRootPackage((EObject) (selection.iterator().next()));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -65,17 +65,17 @@ public class LocationSourceProperty extends AbstractProperty implements IEditabl
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Collection<Object> getChoiceValues(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    Collection<Object> values = ReplicableElementHandlerHelper.getInstance(context).getAllDefinedCatalogElementPkgs(context);
+  public Collection<Object> getChoiceValues(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    Collection<Object> values = ReplicableElementHandlerHelper.getInstance(ctx).getAllDefinedCatalogElementPkgs(ctx);
     return values;
   }
 
@@ -91,12 +91,12 @@ public class LocationSourceProperty extends AbstractProperty implements IEditabl
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
 
     if ((element != null) && (element.eContainer() == null)) {
-      EObject location = (EObject) context_p.getCurrentValue(this);
+      EObject location = (EObject) context.getCurrentValue(this);
 
       if (location instanceof CatalogElementPkg) {
         CatalogElementPkg pkg = (CatalogElementPkg) location;
@@ -106,9 +106,9 @@ public class LocationSourceProperty extends AbstractProperty implements IEditabl
   }
 
   @Override
-  public boolean isEnabled(IPropertyContext context_p) {
+  public boolean isEnabled(IPropertyContext context) {
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     return source != null;
   }
 
@@ -124,7 +124,7 @@ public class LocationSourceProperty extends AbstractProperty implements IEditabl
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
+  public void updatedValue(IProperty property, IPropertyContext context) {
     //Nothing here
   }
 
@@ -132,7 +132,7 @@ public class LocationSourceProperty extends AbstractProperty implements IEditabl
    * {@inheritDoc}
    */
   @Override
-  public boolean isModified(IPropertyContext context_p) {
+  public boolean isModified(IPropertyContext context) {
     return true;
   }
 

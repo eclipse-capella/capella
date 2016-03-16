@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.renderers;
 
 import org.eclipse.emf.ecore.EObject;
@@ -31,48 +32,48 @@ public class ReplicaLabelProvider extends DefaultLabelProvider {
   IPropertyContext _context;
 
   /**
-   * @param labelProvider_p
+   * @param labelProvider
    */
-  public ReplicaLabelProvider(IPropertyContext context_p, ILabelProvider labelProvider_p) {
-    super(labelProvider_p);
-    _context = context_p;
+  public ReplicaLabelProvider(IPropertyContext context, ILabelProvider labelProvider) {
+    super(labelProvider);
+    _context = context;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Image getImage(Object object_p) {
+  public Image getImage(Object object) {
 
-    if (object_p instanceof CatalogElementLink) {
-      if (((CatalogElementLink) object_p).getTarget() instanceof CatalogElement) {
+    if (object instanceof CatalogElementLink) {
+      if (((CatalogElementLink) object).getTarget() instanceof CatalogElement) {
         IProperty property = _context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
         Object replica = _context.getCurrentValue(property);
         return super.getImage(replica);
       }
-      return getImage(((CatalogElementLink) object_p).getTarget());
+      return getImage(((CatalogElementLink) object).getTarget());
     }
 
-    if (object_p instanceof CatalogElement) {
+    if (object instanceof CatalogElement) {
       IProperty property = _context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
       Object replica = _context.getCurrentValue(property);
-      if (object_p.equals(replica)) {
+      if (object.equals(replica)) {
         return super.getImage(replica);
       }
     }
-    return super.getImage(object_p);
+    return super.getImage(object);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public String getText(Object object_p) {
+  public String getText(Object object) {
     IContext context = (IContext) _context.getSource();
 
-    if (object_p instanceof EObject) {
-      return AttributesHandlerHelper.getInstance(context).getCurrentName((EObject) object_p, context, _context);
+    if (object instanceof EObject) {
+      return AttributesHandlerHelper.getInstance(context).getCurrentName((EObject) object, context, _context);
     }
-    return super.getText(object_p);
+    return super.getText(object);
   }
 }

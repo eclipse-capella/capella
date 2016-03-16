@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.fields;
 
 import org.eclipse.jface.dialogs.DialogPage;
@@ -47,9 +48,9 @@ public interface IMdeFieldEditor {
 
   /**
    * Sets the field input behavior.
-   * @param behavior_p The input behavior.
+   * @param behavior The input behavior.
    */
-  public void setInputBehavior(IInputBehavior behavior_p);
+  public void setInputBehavior(IInputBehavior behavior);
 
   /**
    * Gets the field input behavior.
@@ -65,9 +66,9 @@ public interface IMdeFieldEditor {
 
   /**
    * Sets the field validator.
-   * @param validator_p The validator.
+   * @param validator The validator.
    */
-  public void setValidator(IValidator validator_p);
+  public void setValidator(IValidator validator);
 
   /**
    * Gets the field validator.
@@ -83,15 +84,15 @@ public interface IMdeFieldEditor {
 
   /**
    * Sets whether or not the value control in the field is enabled.
-   * @param enabled_p <code>True</code> to enable else <code>false</code>.
+   * @param enabled <code>True</code> to enable else <code>false</code>.
    */
-  public void setValueEnabled(boolean enabled_p);
+  public void setValueEnabled(boolean enabled);
 
   /**
    * Sets whether or not the helper control in the field is enabled.
-   * @param enabled_p <code>True</code> to enable else <code>false</code>.
+   * @param enabled <code>True</code> to enable else <code>false</code>.
    */
-  public void setHelperEnabled(boolean enabled_p);
+  public void setHelperEnabled(boolean enabled);
 
   /**
    * Checks if the value control is enabled.
@@ -107,9 +108,9 @@ public interface IMdeFieldEditor {
 
   /**
    * Sets the page to be the receiver.
-   * @param page_p The dialog page.
+   * @param page The dialog page.
    */
-  public void setFieldPage(DialogPage page_p);
+  public void setFieldPage(DialogPage page);
 
   /**
    * Gets the page that the field sends messages to.
@@ -135,7 +136,7 @@ public interface IMdeFieldEditor {
 
   /**
    * Layouts the current field editor into the specified number of columns.
-   * @param numColumns_p The number of columns.
+   * @param numColumns The number of columns.
    */
-  public void layout(int numColumns_p);
+  public void layout(int numColumns);
 }

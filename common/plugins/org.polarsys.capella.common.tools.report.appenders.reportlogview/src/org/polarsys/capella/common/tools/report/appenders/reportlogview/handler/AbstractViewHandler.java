@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.handler;
 
 import java.util.ArrayList;
@@ -25,16 +26,16 @@ import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
  */
 abstract class AbstractViewHandler extends AbstractUiHandler {
 
-  protected MarkerView getView(ExecutionEvent event_p) {
-    IWorkbenchPart activePart = (IWorkbenchPart) getVariableValue(event_p, ISources.ACTIVE_PART_NAME);
+  protected MarkerView getView(ExecutionEvent event) {
+    IWorkbenchPart activePart = (IWorkbenchPart) getVariableValue(event, ISources.ACTIVE_PART_NAME);
     if (activePart != null && activePart instanceof MarkerView) {
       return (MarkerView) activePart;
     }
     return null;
   }
 
-  protected Collection<?> getSelection(ExecutionEvent event_p) {
-    IEvaluationContext context = (IEvaluationContext) event_p.getApplicationContext();
+  protected Collection<?> getSelection(ExecutionEvent event) {
+    IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
     Object value = context.getDefaultVariable();
 
     if (value == null) {

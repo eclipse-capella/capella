@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,28 +42,28 @@ public class ScopeHandler extends DefaultScopeHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
-    return super.init(context_p);
+  public IStatus init(IContext context) {
+    return super.init(context);
   }
 
   @Override
-  public IStatus computeScope(Collection<EObject> bootstrap_p, IContext context_p) {
-    String scope = (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE);
-    IPropertyContext context = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p, scope);
+  public IStatus computeScope(Collection<EObject> bootstrap, IContext context) {
+    String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
+    IPropertyContext ctx = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
 
     //don't forget to write all ! some properties needs to be written
-    context.writeAll();
+    ctx.writeAll();
 
-    ContextScopeHandlerHelper.getInstance(context_p).clear(ITransitionConstants.TRANSITION_SCOPE, context_p);
-    ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.TRANSITION_SCOPE,
-        (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SCOPE)), context_p);
+    ContextScopeHandlerHelper.getInstance(context).clear(ITransitionConstants.TRANSITION_SCOPE, context);
+    ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.TRANSITION_SCOPE,
+        (Collection) ctx.getCurrentValue(ctx.getProperties().getProperty(IReConstants.PROPERTY__SCOPE)), context);
 
     return Status.OK_STATUS;
 
   }
 
   @Override
-  public IStatus dispose(IContext iContext_p) {
+  public IStatus dispose(IContext iContext) {
     return Status.OK_STATUS;
   }
 

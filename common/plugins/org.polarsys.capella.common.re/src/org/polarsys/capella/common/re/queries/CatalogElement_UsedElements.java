@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.queries;
 
 import java.util.ArrayList;
@@ -28,10 +29,10 @@ public class CatalogElement_UsedElements extends AbstractQuery {
    * {@inheritDoc}
    */
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) {
-    if ((input_p != null) && (input_p instanceof CatalogElement)) {
+  public List<Object> execute(Object input, IQueryContext context) {
+    if ((input != null) && (input instanceof CatalogElement)) {
       List<Object> objs = new ArrayList<Object>();
-      for (CatalogElementLink link : ((CatalogElement) input_p).getOwnedLinks()) {
+      for (CatalogElementLink link : ((CatalogElement) input).getOwnedLinks()) {
         if (link.getTarget() != null) {
           objs.add(link.getTarget());
         }

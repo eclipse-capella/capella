@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,43 +50,43 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
 
   /**
    * Constructs the regular expression viewer.
-   * @param parent_p The parent composite.
+   * @param parent The parent composite.
    */
-  public AbstractRegExpViewer(Composite parent_p) {
-    super(parent_p, SWT.NONE /* No style */);
+  public AbstractRegExpViewer(Composite parent) {
+    super(parent, SWT.NONE /* No style */);
   }
 
   /**
    * Constructs the regular expression viewer.
-   * @param parent_p : The parent composite.
-   * @param isMultipleSelection_p : multiple selection in tree option : default value : false
+   * @param parent : The parent composite.
+   * @param isMultipleSelection : multiple selection in tree option : default value : false
    */
-  public AbstractRegExpViewer(Composite parent_p, boolean isMultipleSelection_p) {
-    super(parent_p, isMultipleSelection_p);
+  public AbstractRegExpViewer(Composite parent, boolean isMultipleSelection) {
+    super(parent, isMultipleSelection);
   }
 
   /**
    * Constructs the regular expression viewer.
-   * @param parent_p : The parent composite.
-   * @param isMultipleSelection_p : multiple selection in tree option : default value : false
-   * @param style_p
+   * @param parent : The parent composite.
+   * @param isMultipleSelection : multiple selection in tree option : default value : false
+   * @param style
    */
-  public AbstractRegExpViewer(Composite parent_p, boolean isMultipleSelection_p, int style_p, int viewerExpandLevel_p) {
-    super(parent_p, isMultipleSelection_p, style_p, viewerExpandLevel_p);
+  public AbstractRegExpViewer(Composite parent, boolean isMultipleSelection, int style, int viewerExpandLevel) {
+    super(parent, isMultipleSelection, style, viewerExpandLevel);
   }
 
   /**
    * Adds the given filter to this viewer, and triggers refiltering and resorting of the elements.<br>
    * If you want to add more than one filter consider using {@link #setFilters(ViewerFilter[])}.<br>
    * Only works if client viewer ({@link #getClientViewer()} is {@link StructuredViewer}.
-   * @param filter_p a viewer filter
+   * @param filter a viewer filter
    * @see #setFilters(ViewerFilter[])
    */
-  public void addFilter(ViewerFilter filter_p) {
+  public void addFilter(ViewerFilter filter) {
     Viewer clientViewer = getClientViewer();
     // Don't add twice internal filter.
-    if ((clientViewer instanceof StructuredViewer) && !_filter.equals(filter_p)) {
-      ((StructuredViewer) clientViewer).addFilter(filter_p);
+    if ((clientViewer instanceof StructuredViewer) && !_filter.equals(filter)) {
+      ((StructuredViewer) clientViewer).addFilter(filter);
     }
   }
 
@@ -94,17 +94,17 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer#createControl(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void createControl(Composite parent_p) {
-    super.createControl(parent_p);
+  protected void createControl(Composite parent) {
+    super.createControl(parent);
     // Set a layout.
     GridLayout layout = new GridLayout(1, true);
-    parent_p.setLayout(layout);
+    parent.setLayout(layout);
     // Create the pattern filter.
     _filter = createPatternFilter();
     // Create the filter widgets.
-    createFilterText(parent_p);
+    createFilterText(parent);
     // Creates the client viewer.
-    _clientViewer = doClientViewer(parent_p);
+    _clientViewer = doClientViewer(parent);
     // Handle viewer filter attachment.
     handleViewerFilterAttachment(_filter);
     // Layouts the client area.
@@ -122,11 +122,11 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
 
   /**
    * Create the filter text widgets.
-   * @param parent_p
+   * @param parent
    */
-  protected void createFilterText(Composite parent_p) {
+  protected void createFilterText(Composite parent) {
     // The group.
-    Group group = new Group(parent_p, SWT.SHADOW_ETCHED_IN);
+    Group group = new Group(parent, SWT.SHADOW_ETCHED_IN);
     group.setText(Messages.getString("AbstractRegExpViewer.group.label")); //$NON-NLS-1$
     GridData gdData = new GridData(GridData.FILL_HORIZONTAL);
     group.setLayoutData(gdData);
@@ -145,9 +145,9 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
     _regExpText.setLayoutData(gdData);
     _regExpText.addModifyListener(new ModifyListener() {
       @SuppressWarnings("synthetic-access")
-      public void modifyText(ModifyEvent event_p) {
+      public void modifyText(ModifyEvent event) {
         // Set the new pattern entered by the end-user.
-        _filter.setPattern(((Text) event_p.widget).getText());
+        _filter.setPattern(((Text) event.widget).getText());
         handlePatternApplied(getClientViewer());
       }
     });
@@ -164,9 +164,9 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
        *      java.lang.Object)
        */
       @Override
-      protected boolean isParentMatch(Viewer viewer_p, Object parentElement_p, Object element_p) {
-        if (viewer_p instanceof AbstractTreeViewer) {
-          return super.isParentMatch(viewer_p, parentElement_p, element_p);
+      protected boolean isParentMatch(Viewer viewer, Object parentElement, Object element) {
+        if (viewer instanceof AbstractTreeViewer) {
+          return super.isParentMatch(viewer, parentElement, element);
         }
         // Returning false for non Tree-based viewers.
         return false;
@@ -197,9 +197,9 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
 
   /**
    * Creates the client area viewer.
-   * @param parent_p This regular expression composite.
+   * @param parent This regular expression composite.
    */
-  protected abstract Viewer doClientViewer(Composite parent_p);
+  protected abstract Viewer doClientViewer(Composite parent);
 
   /**
    * Gets the client viewer created by {@link #doClientViewer(Composite)}.
@@ -238,23 +238,23 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
   /**
    * Handle pattern applied.<br>
    * Default implementation refreshes the client viewer if this one is an instance of {@link StructuredViewer}.
-   * @param clientViewer_p the client viewer created by {@link #doClientViewer(Composite)}.
+   * @param clientViewer the client viewer created by {@link #doClientViewer(Composite)}.
    */
-  protected void handlePatternApplied(Viewer clientViewer_p) {
+  protected void handlePatternApplied(Viewer clientViewer) {
     // Refresh the viewer to take into account the new pattern filter.
-    if (clientViewer_p instanceof StructuredViewer) {
-      ViewerHelper.refresh((StructuredViewer) clientViewer_p);
+    if (clientViewer instanceof StructuredViewer) {
+      ViewerHelper.refresh((StructuredViewer) clientViewer);
     }
   }
 
   /**
    * Handle {@link ViewerFilter} attachment.<br>
    * Default implementation attaches the filter to the client viewer if this one is an instance of {@link StructuredViewer}.
-   * @param filter_p
+   * @param filter
    */
-  protected void handleViewerFilterAttachment(ViewerFilter filter_p) {
+  protected void handleViewerFilterAttachment(ViewerFilter filter) {
     if ((null != _clientViewer) && (_clientViewer instanceof StructuredViewer)) {
-      ((StructuredViewer) _clientViewer).addFilter(filter_p);
+      ((StructuredViewer) _clientViewer).addFilter(filter);
     }
   }
 
@@ -270,7 +270,7 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
        * {@inheritDoc}
        */
       @SuppressWarnings("synthetic-access")
-      public void menuAboutToShow(IMenuManager manager_p) {
+      public void menuAboutToShow(IMenuManager manager) {
         if (null != _contextMenuManagerFiller) {
           _contextMenuManagerFiller.fillMenuManager(_contextMenuManager, _clientViewer.getSelection());
         }
@@ -285,52 +285,52 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
    * Has no effect if the identical filter is not registered.<br>
    * If you want to remove more than one filter consider using {@link #setFilters(ViewerFilter[])}.<br>
    * Only works if client viewer ({@link #getClientViewer()} is {@link StructuredViewer}.
-   * @param filter_p a viewer filter
+   * @param filter a viewer filter
    * @see setFilters(ViewerFilter[])
    */
-  public void removeFilter(ViewerFilter filter_p) {
+  public void removeFilter(ViewerFilter filter) {
     Viewer clientViewer = getClientViewer();
-    if ((clientViewer instanceof StructuredViewer) && !_filter.equals(filter_p)) {
-      ((StructuredViewer) clientViewer).removeFilter(filter_p);
+    if ((clientViewer instanceof StructuredViewer) && !_filter.equals(filter)) {
+      ((StructuredViewer) clientViewer).removeFilter(filter);
     }
   }
 
   /**
    * Set context menu manager filler.<br>
    * The underlying context menu manager removes all items when the menu is about to show. Hence, this filler is called to fill in again the menu.
-   * @param contextMenuManagerFiller_p
+   * @param contextMenuManagerFiller
    */
-  public void setContextMenuManagerFiller(AbstractContextMenuFiller contextMenuManagerFiller_p) {
-    _contextMenuManagerFiller = contextMenuManagerFiller_p;
+  public void setContextMenuManagerFiller(AbstractContextMenuFiller contextMenuManagerFiller) {
+    _contextMenuManagerFiller = contextMenuManagerFiller;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer#setEnabled(boolean)
    */
   @Override
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     if ((null != _regExpText) && !_regExpText.isDisposed()) {
-      _regExpText.setEnabled(enabled_p);
+      _regExpText.setEnabled(enabled);
     }
     if ((null != _clientViewer) && !_clientViewer.getControl().isDisposed()) {
-      _clientViewer.getControl().setEnabled(enabled_p);
+      _clientViewer.getControl().setEnabled(enabled);
     }
   }
 
   /**
    * Sets the filters, replacing any previous filters, and triggers refiltering and resorting of the elements.<br>
    * Only works if client viewer ({@link #getClientViewer()} is {@link StructuredViewer}.
-   * @param filters_p an array of viewer filters
+   * @param filters an array of viewer filters
    */
-  public void setFilters(ViewerFilter[] filters_p) {
+  public void setFilters(ViewerFilter[] filters) {
     Viewer clientViewer = getClientViewer();
     if (clientViewer instanceof StructuredViewer) {
       // Don't forget to keep the reg exp filter.
-      ViewerFilter[] filters = new ViewerFilter[filters_p.length + 1];
-      System.arraycopy(filters_p, 0, filters, 0, filters_p.length);
-      filters[filters_p.length] = _filter;
+      ViewerFilter[] filts = new ViewerFilter[filters.length + 1];
+      System.arraycopy(filters, 0, filts, 0, filters.length);
+      filts[filters.length] = _filter;
       // Set filters.
-      ((StructuredViewer) clientViewer).setFilters(filters);
+      ((StructuredViewer) clientViewer).setFilters(filts);
     }
   }
 
@@ -338,10 +338,10 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer#setInput(java.lang.Object)
    */
   @Override
-  public void setInput(Object input_p) {
+  public void setInput(Object input) {
     Viewer clientViewer = getClientViewer();
     if (null != clientViewer) {
-      clientViewer.setInput(input_p);
+      clientViewer.setInput(input);
     }
   }
 }

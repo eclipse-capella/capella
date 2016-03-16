@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.behaviors;
 
 import java.util.regex.Matcher;
@@ -34,14 +35,14 @@ public class CardinalityInputBehavior extends AbstractInputBehavior {
 
   /**
    * Gets the cardinality bounds values from the input value.
-   * @param input_p The input value.
+   * @param input The input value.
    * @return The cardinality bounds.
    */
   @Override
-  public int[] getValue(String input_p) {
+  public int[] getValue(String input) {
     int[] bounds = new int[2];
 
-    Matcher matcher = getValidator().getPattern().matcher(input_p);
+    Matcher matcher = getValidator().getPattern().matcher(input);
     if (!matcher.matches()) {
       bounds[0] = Integer.MIN_VALUE;
       bounds[1] = Integer.MIN_VALUE;
@@ -72,25 +73,25 @@ public class CardinalityInputBehavior extends AbstractInputBehavior {
 
   /**
    * Converts the cardinality bounds values into a string representation.
-   * @param min_p The lower cardinality bound.
-   * @param max_p The uppper cardinality bound.
+   * @param min The lower cardinality bound.
+   * @param max The uppper cardinality bound.
    * @return The string representation value.
    */
-  public String convertBounds(int min_p, int max_p) {
+  public String convertBounds(int min, int max) {
     // The minimum bound.
     String strMin = CardinalityInputBehavior.EMPTY_STRING;
-    if (Integer.MAX_VALUE == min_p) {
+    if (Integer.MAX_VALUE == min) {
       strMin = CardinalityInputBehavior.UNLIMITED_BOUND;
     } else {
-      strMin = Integer.toString(min_p);
+      strMin = Integer.toString(min);
     }
 
     // The maximum bound.
     String strMax = CardinalityInputBehavior.EMPTY_STRING;
-    if (Integer.MAX_VALUE == max_p) {
+    if (Integer.MAX_VALUE == max) {
       strMax = CardinalityInputBehavior.UNLIMITED_BOUND;
     } else {
-      strMax = Integer.toString(max_p);
+      strMax = Integer.toString(max);
     }
 
     // Returns the converted value.

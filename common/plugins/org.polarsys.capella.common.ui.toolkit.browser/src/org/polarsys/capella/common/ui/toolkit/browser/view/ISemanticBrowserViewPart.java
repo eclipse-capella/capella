@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.view;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,9 +27,9 @@ public interface ISemanticBrowserViewPart extends IViewPart {
   /**
    * Launch an action contextual to the given element.
    * Like : setting the input of every viewers referenced by the viewpart.
-   * @param input_p
+   * @param input
    */
-  void setInput(Object input_p);
+  void setInput(Object input);
   
   /**
    * Retrieve element root (current element to whole viewers contained by the viewpart)
@@ -68,5 +69,5 @@ public interface ISemanticBrowserViewPart extends IViewPart {
   
   public ISemanticBrowserModel getModel();
   
-  public void setInputOnViewers(Object input_p);
+  public void setInputOnViewers(Object input);
 }

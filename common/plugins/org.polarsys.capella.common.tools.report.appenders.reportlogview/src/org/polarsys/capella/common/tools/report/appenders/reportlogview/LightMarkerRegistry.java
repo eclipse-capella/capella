@@ -111,49 +111,49 @@ public class LightMarkerRegistry implements IMarkerSource {
    * A shortcut for
    * 
    * <pre>
-   * <code>createMarker(fileResource_p, diagnostic_p, MarkerView.MARKER_ID);</code>
+   * <code>createMarker(fileResource, diagnostic, MarkerView.MARKER_ID);</code>
    * </pre>
    */
-  public IMarker createMarker(IResource fileResource_p, Diagnostic diagnostic_p) {
-    return createMarker(fileResource_p, diagnostic_p, MarkerView.MARKER_ID);
+  public IMarker createMarker(IResource fileResource, Diagnostic diagnostic) {
+    return createMarker(fileResource, diagnostic, MarkerView.MARKER_ID);
   }
 
   /**
    * A shortcut for
    * 
    * <pre>
-   * <code>createMarker(fileResource_p, diagnostic_p, markerType_p, null);</code>
+   * <code>createMarker(fileResource, diagnostic, markerType, null);</code>
    * </pre>
    */
-  public IMarker createMarker(IResource fileResource_p, Diagnostic diagnostic_p, String markerType_p) {
-    return createMarker(fileResource_p, diagnostic_p, markerType_p, null);
+  public IMarker createMarker(IResource fileResource, Diagnostic diagnostic, String markerType) {
+    return createMarker(fileResource, diagnostic, markerType, null);
   }
 
   /**
    * Create a marker of a specific type and apply the given modification. The returned marker should not be changed
    * since listeners won't be notified about such changes.
    * 
-   * @param fileResource_p
+   * @param fileResource
    *          the resource to which to attach the marker
-   * @param diagnostic_p
+   * @param diagnostic
    *          the diagnostic that backs the message, severity and elements of the marker
-   * @param modification_p
+   * @param modification
    *          a callback that may be used to tune the marker before listeners are notified about its creation. may be
    *          null.
    */
-  public IMarker createMarker(IResource fileResource_p, Diagnostic diagnostic_p, String markerType_p,
-      IMarkerModification modification_p) {
-    LightMarker marker = new LightMarker(fileResource_p, markerType_p, diagnostic_p);
+  public IMarker createMarker(IResource fileResource, Diagnostic diagnostic, String markerType,
+      IMarkerModification modification) {
+    LightMarker marker = new LightMarker(fileResource, markerType, diagnostic);
 
     // try {
     // // also store the rule id directly on the marker
-    // marker.setAttribute(IValidationConstants.TAG_RULE_ID, getRuleId(diagnostic_p));
+    // marker.setAttribute(IValidationConstants.TAG_RULE_ID, getRuleId(diagnostic));
     // } catch (CoreException e) {
     // e.printStackTrace();
     // }
 
-    if (modification_p != null) {
-      modification_p.modify(marker);
+    if (modification != null) {
+      modification.modify(marker);
     }
 
     _registry.add(marker);
@@ -187,12 +187,12 @@ public class LightMarkerRegistry implements IMarkerSource {
     IResource resource;
     private Diagnostic diagnostic;
 
-    LightMarker(IResource resource_p, String markerType_p, Diagnostic diagnostic_p) {
+    LightMarker(IResource resource, String markerType, Diagnostic diagnostic) {
       attributes = new HashMap<String, Object>();
-      resource = resource_p;
-      diagnostic = diagnostic_p;
+      this.resource = resource;
+      this.diagnostic = diagnostic;
       id = System.nanoTime();
-      type = markerType_p;
+      this.type = markerType;
       creationTime = System.currentTimeMillis();
     }
 
@@ -216,19 +216,19 @@ public class LightMarkerRegistry implements IMarkerSource {
     /**
      * @see org.eclipse.core.resources.IMarker#getAttribute(java.lang.String)
      */
-    public Object getAttribute(String attributeName_p) throws CoreException {
+    public Object getAttribute(String attributeName) throws CoreException {
 
       // values in the attribute map take precedence for backwards compatibility
-      Object attribute = attributes.get(attributeName_p);
+      Object attribute = attributes.get(attributeName);
       if (attribute != null) {
         return attribute;
       }
 
       // otherwise attribute values are read from the embedded diagnostic
-      if (IMarker.MESSAGE.equals(attributeName_p)) {
+      if (IMarker.MESSAGE.equals(attributeName)) {
         return diagnostic.getMessage();
       }
-      if (IMarker.SEVERITY.equals(attributeName_p)) {
+      if (IMarker.SEVERITY.equals(attributeName)) {
         if (diagnostic.getSeverity() < Diagnostic.WARNING) {
           return IMarker.SEVERITY_INFO;
         } else if (diagnostic.getSeverity() < Diagnostic.ERROR) {
@@ -238,11 +238,11 @@ public class LightMarkerRegistry implements IMarkerSource {
         }
       }
 
-      if (IValidationConstants.TAG_RULE_ID.equals(attributeName_p)) {
+      if (IValidationConstants.TAG_RULE_ID.equals(attributeName)) {
         return diagnostic.getMessage();
       }
 
-      if (MarkerViewUtil.PATH_ATTRIBUTE.equals(attributeName_p)) {
+      if (MarkerViewUtil.PATH_ATTRIBUTE.equals(attributeName)) {
         String pathAttributes = ICommonConstants.EMPTY_STRING;
         for (Object data : diagnostic.getData()) {
           if (data instanceof ModelElement) {
@@ -253,16 +253,16 @@ public class LightMarkerRegistry implements IMarkerSource {
         return pathAttributes;
       }
 
-      return attributes.get(attributeName_p);
+      return attributes.get(attributeName);
     }
 
     /**
      * @see org.eclipse.core.resources.IMarker#getAttribute(java.lang.String, int)
      */
-    public int getAttribute(String attributeName_p, int defaultValue_p) {
+    public int getAttribute(String attributeName, int defaultValue) {
       Object result = null;
       try {
-        result = getAttribute(attributeName_p);
+        result = getAttribute(attributeName);
       } catch (CoreException e) {
         MarkerViewPlugin.getDefault().getLog()
             .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
@@ -270,16 +270,16 @@ public class LightMarkerRegistry implements IMarkerSource {
       if (result instanceof Integer) {
         return ((Integer) result).intValue();
       }
-      return defaultValue_p;
+      return defaultValue;
     }
 
     /**
      * @see org.eclipse.core.resources.IMarker#getAttribute(java.lang.String, java.lang.String)
      */
-    public String getAttribute(String attributeName_p, String defaultValue_p) {
+    public String getAttribute(String attributeName, String defaultValue) {
       Object result = null;
       try {
-        result = getAttribute(attributeName_p);
+        result = getAttribute(attributeName);
       } catch (CoreException e) {
         MarkerViewPlugin.getDefault().getLog()
             .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
@@ -287,16 +287,16 @@ public class LightMarkerRegistry implements IMarkerSource {
       if (result instanceof String) {
         return (String) result;
       }
-      return defaultValue_p;
+      return defaultValue;
     }
 
     /**
      * @see org.eclipse.core.resources.IMarker#getAttribute(java.lang.String, boolean)
      */
-    public boolean getAttribute(String attributeName_p, boolean defaultValue_p) {
+    public boolean getAttribute(String attributeName, boolean defaultValue) {
       Object result = null;
       try {
-        result = getAttribute(attributeName_p);
+        result = getAttribute(attributeName);
       } catch (CoreException e) {
         MarkerViewPlugin.getDefault().getLog()
             .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
@@ -304,7 +304,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       if (result instanceof Boolean) {
         return ((Boolean) result).booleanValue();
       }
-      return defaultValue_p;
+      return defaultValue;
     }
 
     /**
@@ -322,10 +322,10 @@ public class LightMarkerRegistry implements IMarkerSource {
     /**
      * @see org.eclipse.core.resources.IMarker#getAttributes(java.lang.String[])
      */
-    public Object[] getAttributes(String[] attributeNames_p) throws CoreException {
-      Object[] res = new Object[attributeNames_p.length];
-      for (int i = 0; i < attributeNames_p.length; i++) {
-        res[i] = getAttribute(attributeNames_p[i]);
+    public Object[] getAttributes(String[] attributeNames) throws CoreException {
+      Object[] res = new Object[attributeNames.length];
+      for (int i = 0; i < attributeNames.length; i++) {
+        res[i] = getAttribute(attributeNames[i]);
       }
       return res;
     }
@@ -361,39 +361,39 @@ public class LightMarkerRegistry implements IMarkerSource {
     /**
      * @see org.eclipse.core.resources.IMarker#isSubtypeOf(java.lang.String)
      */
-    public boolean isSubtypeOf(String superType_p) throws CoreException {
+    public boolean isSubtypeOf(String superType) throws CoreException {
       return false;
     }
 
     /**
      * @see org.eclipse.core.resources.IMarker#setAttribute(java.lang.String, int)
      */
-    public void setAttribute(String attributeName_p, int value_p) throws CoreException {
-      attributes.put(attributeName_p, Integer.valueOf(value_p));
+    public void setAttribute(String attributeName, int value) throws CoreException {
+      attributes.put(attributeName, Integer.valueOf(value));
     }
 
     /**
      * @see org.eclipse.core.resources.IMarker#setAttribute(java.lang.String, java.lang.Object)
      */
-    public void setAttribute(String attributeName_p, Object value_p) throws CoreException {
-      attributes.put(attributeName_p, value_p);
+    public void setAttribute(String attributeName, Object value) throws CoreException {
+      attributes.put(attributeName, value);
     }
 
     /**
      * @see org.eclipse.core.resources.IMarker#setAttribute(java.lang.String, boolean)
      */
-    public void setAttribute(String attributeName_p, boolean value_p) throws CoreException {
-      attributes.put(attributeName_p, Boolean.valueOf(value_p));
+    public void setAttribute(String attributeName, boolean value) throws CoreException {
+      attributes.put(attributeName, Boolean.valueOf(value));
     }
 
     /**
      * @see org.eclipse.core.resources.IMarker#setAttributes(java.util.Map)
      */
     @SuppressWarnings("rawtypes")
-    public void setAttributes(Map attributes_p) throws CoreException {
-      for (Object key : attributes_p.keySet()) {
+    public void setAttributes(Map attributes) throws CoreException {
+      for (Object key : attributes.keySet()) {
         if ((key != null) && (key instanceof String)) {
-          attributes.put((String) key, attributes_p.get(key));
+          this.attributes.put((String) key, attributes.get(key));
         }
       }
     }
@@ -401,10 +401,10 @@ public class LightMarkerRegistry implements IMarkerSource {
     /**
      * @see org.eclipse.core.resources.IMarker#setAttributes(java.lang.String[], java.lang.Object[])
      */
-    public void setAttributes(String[] attributeNames_p, Object[] values_p) throws CoreException {
-      for (int i = 0; i < attributeNames_p.length; i++) {
-        String key = attributeNames_p[i];
-        Object value = values_p[i];
+    public void setAttributes(String[] attributeNames, Object[] values) throws CoreException {
+      for (int i = 0; i < attributeNames.length; i++) {
+        String key = attributeNames[i];
+        Object value = values[i];
         attributes.put(key, value);
       }
     }
@@ -415,8 +415,8 @@ public class LightMarkerRegistry implements IMarkerSource {
      * @see org.eclipse.emf.common.util.Diagnostic
      */
     @SuppressWarnings("rawtypes")
-    public Object getAdapter(Class adapter_p) {
-      if (adapter_p == Diagnostic.class) {
+    public Object getAdapter(Class adapter) {
+      if (adapter == Diagnostic.class) {
         return diagnostic;
       }
       return null;
@@ -440,8 +440,8 @@ public class LightMarkerRegistry implements IMarkerSource {
     /**
      * {@inheritDoc}
      */
-    public void modify(IMarker marker_p) {
-      theMarker = marker_p;
+    public void modify(IMarker marker) {
+      theMarker = marker;
     }
 
     public IMarker getMarker() {
@@ -452,14 +452,14 @@ public class LightMarkerRegistry implements IMarkerSource {
   /**
    * {@inheritDoc}
    */
-  public void addListener(IMarkerSourceListener listener_p) {
-    listeners.add(listener_p);
+  public void addListener(IMarkerSourceListener listener) {
+    listeners.add(listener);
   }
 
   /**
    * {@inheritDoc}
    */
-  public void removeListener(IMarkerSourceListener listener_p) {
-    listeners.remove(listener_p);
+  public void removeListener(IMarkerSourceListener listener) {
+    listeners.remove(listener);
   }
 }

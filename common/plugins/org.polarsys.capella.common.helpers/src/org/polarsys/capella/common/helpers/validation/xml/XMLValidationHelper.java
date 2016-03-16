@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,12 +48,12 @@ public class XMLValidationHelper {
   public XMLValidationHelper() {
     try {
       parser = SAXParserFactory.newInstance().newSAXParser();
-    } catch (ParserConfigurationException exception_p) {
+    } catch (ParserConfigurationException exception) {
       HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception_p.getMessage(), exception_p));
-    } catch (SAXException exception_p) {
+          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
+    } catch (SAXException exception) {
       HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception_p.getMessage(), exception_p));
+          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
     } finally {
       if (parser == null){
         throw new RuntimeException("Cannot get a SAXParser instance"); //$NON-NLS-1$
@@ -71,14 +71,14 @@ public class XMLValidationHelper {
     SAXExceptions handler = new SAXExceptions();
     try {
       parser.parse(new InputSource(new StringReader(text)), handler);
-    } catch (IOException exception_p) {
+    } catch (IOException exception) {
       HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception_p.getMessage(), exception_p));
-    } catch (SAXException exception_p) {
-      if (!(exception_p instanceof SAXParseException)){
+          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
+    } catch (SAXException exception) {
+      if (!(exception instanceof SAXParseException)){
         // SAXParseExceptions are stored already in the handler, so skip them here.
         HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception_p.getMessage(), exception_p));
+          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
       }
     }
     return handler.getExceptions();

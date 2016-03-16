@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers.argumentparser;
 
 import java.util.ArrayList;
@@ -99,56 +100,56 @@ public class ArgumentAnalyzer {
   
   /**
    * Add flag to the argument analyzer
-   * @param id_p id of the flag
-   * @param flagName_p name of the flag
-   * @param isMandatory_p is this flag mandatory
-   * @param nbData_p number of expected data for this argument
+   * @param id id of the flag
+   * @param flagName name of the flag
+   * @param isMandatory is this flag mandatory
+   * @param nbData number of expected data for this argument
    * @throws ArgumentAnalyzerException
    */
-  public void addFlag(String id_p, String flagName_p, boolean isMandatory_p, int nbData_p) throws ArgumentAnalyzerException {
+  public void addFlag(String id, String flagName, boolean isMandatory, int nbData) throws ArgumentAnalyzerException {
 
     // Id must be unique
-    if ( _flags.keySet().contains(id_p) ) {
-      throw new ArgumentAnalyzerException(NLS.bind(Messages.duplicatedId, id_p));
+    if ( _flags.keySet().contains(id) ) {
+      throw new ArgumentAnalyzerException(NLS.bind(Messages.duplicatedId, id));
     }
     
     // duplicated name for flag are only allowed with the strictMode.
-    if (getNumberOfFlagDefinedWithName(flagName_p) != 0 && false == _strictMode ) {
-      throw new ArgumentAnalyzerException(NLS.bind(Messages.duplicatedNameOnlyAllowedWithStrictMode, flagName_p));
+    if (getNumberOfFlagDefinedWithName(flagName) != 0 && false == _strictMode ) {
+      throw new ArgumentAnalyzerException(NLS.bind(Messages.duplicatedNameOnlyAllowedWithStrictMode, flagName));
     }
     
-    _flags.put(id_p, new Flag(flagName_p, isMandatory_p, nbData_p));
+    _flags.put(id, new Flag(flagName, isMandatory, nbData));
 
     return;
   }
   
   /**
    * Add flag to the argument analyzer
-   * @param id_p id of the flag
-   * @param flag_p The new argument.
-   * @throws ArgumentAnalyzerException id_p must be unique
+   * @param id id of the flag
+   * @param flag The new argument.
+   * @throws ArgumentAnalyzerException id must be unique
    * @see {@link Flag}
    */
-  public void addFlag(String id_p, Flag flag_p) throws ArgumentAnalyzerException {
-    addFlag(id_p, flag_p.getName(), flag_p.isMandatory(), flag_p.getNumberOfData());
+  public void addFlag(String id, Flag flag) throws ArgumentAnalyzerException {
+    addFlag(id, flag.getName(), flag.isMandatory(), flag.getNumberOfData());
     return;
   }
   
   
   /**
    * Main job method.
-   * @param arguments_p arguments line to analyze.
+   * @param arguments arguments line to analyze.
    * @throws ArgumentAnalyzerException
    */
-  public void parse(String[] arguments_p) throws ArgumentAnalyzerException {
+  public void parse(String[] arguments) throws ArgumentAnalyzerException {
  
     // Let's clean older result
     _values.clear();
     
     if ( true == _strictMode ) {
-      strictModeParsing(arguments_p);
+      strictModeParsing(arguments);
     } else {
-      defaultModeParsing(arguments_p);
+      defaultModeParsing(arguments);
     }
     
     return;
@@ -156,65 +157,65 @@ public class ArgumentAnalyzer {
   
   /**
    * Check is a given flag has been found during the parsing.
-   * @param flagId_p the target flag Id.
+   * @param flagId the target flag Id.
    * @return
    */
-  public boolean isArgHasBeenFound(String flagId_p) throws ArgumentAnalyzerException{
+  public boolean isArgHasBeenFound(String flagId) throws ArgumentAnalyzerException{
     
-    if (!_flags.containsKey(flagId_p)) {
+    if (!_flags.containsKey(flagId)) {
       throw new ArgumentAnalyzerException(
-          NLS.bind(Messages.unexpectedFlag, flagId_p)
+          NLS.bind(Messages.unexpectedFlag, flagId)
       );
     }
     
-    return _values.containsKey(flagId_p);
+    return _values.containsKey(flagId);
   }
   
   /**
    * 
-   * @param flagId_p the target flag Id
+   * @param flagId the target flag Id
    * @return a {@link List} containing the arguments for the target flag.
    * If no arguments are expected, an empty {@link List} is returned.
    * Whether the flag is not mandatory and has not been found, <code>null</code> is returned 
    * @throws ArgumentAnalyzerException
    */
-  public List<String> getFlagArgs(String flagId_p) throws ArgumentAnalyzerException {
+  public List<String> getFlagArgs(String flagId) throws ArgumentAnalyzerException {
     
     List<String> results = null;
     
-    if ( isArgHasBeenFound(flagId_p) ) {
-       results = _values.get(flagId_p);
-    } else if ( getFlag(flagId_p).isMandatory() ) {
-      throw new ArgumentAnalyzerException(NLS.bind(Messages.flagNotFound,flagId_p));
+    if ( isArgHasBeenFound(flagId) ) {
+       results = _values.get(flagId);
+    } else if ( getFlag(flagId).isMandatory() ) {
+      throw new ArgumentAnalyzerException(NLS.bind(Messages.flagNotFound,flagId));
     }
     
     return results;
   }
   
-  protected boolean isFlagDefined(String id_p) {
-   return _flags.containsKey(id_p); 
+  protected boolean isFlagDefined(String id) {
+   return _flags.containsKey(id); 
   }
   
   /**
    * 
-   * @param id_p
+   * @param id
    * @return
    */
-  protected Flag getFlag(String id_p) {
-    return _flags.get(id_p);
+  protected Flag getFlag(String id) {
+    return _flags.get(id);
   }
   
   /**
    * Return the cardinality of {@link Flag} with a specific name
-   * @param flagName_p 
+   * @param flagName 
    * @return the number of occurrence of this flag
    */
-  protected int getNumberOfFlagDefinedWithName(String flagName_p) {
+  protected int getNumberOfFlagDefinedWithName(String flagName) {
     
     int result = 0;
     
     for (Flag flag: _flags.values()) {
-      if (flag.getName().equals(flagName_p)) {
+      if (flag.getName().equals(flagName)) {
         result++;
       }
     }
@@ -224,15 +225,15 @@ public class ArgumentAnalyzer {
   
   /**
    * check whether, at least, one {@link Flag} named have been defined
-   * @param flagName_p 
+   * @param flagName 
    * @return 
    */
-  protected boolean isFlagWithNameDefined(String flagName_p) {
+  protected boolean isFlagWithNameDefined(String flagName) {
     
     boolean b= false;
     
     for (Flag flag: _flags.values()) {
-      if (flag.getName().equals(flagName_p)) {
+      if (flag.getName().equals(flagName)) {
         b = true;
         break;
       }
@@ -243,15 +244,15 @@ public class ArgumentAnalyzer {
   
   /**
    * Return a {@link List} of Id of {@link Flag}s with a specific name
-   * @param flagName_p
-   * @return a {@link List} of flagId which are named flagName_p
+   * @param flagName
+   * @return a {@link List} of flagId which are named flagName
    */
-  protected List<String> getFlagIdPerName(String flagName_p) {
+  protected List<String> getFlagIdPerName(String flagName) {
     
     List<String> result = new ArrayList<String>();
     
     for (String currentId: _flags.keySet()) {
-      if (_flags.get(currentId).getName().equals(flagName_p)) {
+      if (_flags.get(currentId).getName().equals(flagName)) {
         result.add(currentId);
       }
     }
@@ -276,10 +277,10 @@ public class ArgumentAnalyzer {
   
   /**
    * parsing is based on arguments.
-   * @param arguments_p cmd line arguments
+   * @param arguments cmd line arguments
    * @throws ArgumentAnalyzerException
    */
-  protected void defaultModeParsing(String[] arguments_p) throws ArgumentAnalyzerException {
+  protected void defaultModeParsing(String[] arguments) throws ArgumentAnalyzerException {
     
     String currentArg = null;
     String currentId = null;
@@ -290,9 +291,9 @@ public class ArgumentAnalyzer {
     //
     // first of all, let's abruptly check command lines
     //
-    for (int i = 0; i < arguments_p.length; i++) {
+    for (int i = 0; i < arguments.length; i++) {
       
-      currentArg = arguments_p[i];
+      currentArg = arguments[i];
       
       if ( isFlagWithNameDefined(currentArg) ) {
         
@@ -304,7 +305,7 @@ public class ArgumentAnalyzer {
         currentId = list.get(0);
         flag = getFlag(currentId);
         
-        args = getArgumentData(currentId, arguments_p, i);
+        args = getArgumentData(currentId, arguments, i);
         
         _values.put(currentId, args);
         i += args.size();
@@ -355,12 +356,12 @@ public class ArgumentAnalyzer {
   
   /**
    * parsing is based on Flags (and ordered.)
-   * @param arguments_p cmd line arguments
+   * @param arguments cmd line arguments
    * @throws ArgumentAnalyzerException
    */
-  protected void strictModeParsing(String[] arguments_p) throws ArgumentAnalyzerException {
+  protected void strictModeParsing(String[] arguments) throws ArgumentAnalyzerException {
     
-    // We simply parse the ordered list of Flag and arguments_p must be compliant.
+    // We simply parse the ordered list of Flag and arguments must be compliant.
     
     
     Flag currentFlag;
@@ -374,11 +375,11 @@ public class ArgumentAnalyzer {
     
     while (it.hasNext()) {
       
-      if (idx >= arguments_p.length) {
+      if (idx >= arguments.length) {
         throw new ArgumentAnalyzerException(Messages.strictModeParseFailed);
       }
       
-      currentFlagFromCmdLine = arguments_p[idx];
+      currentFlagFromCmdLine = arguments[idx];
       
       currentFlagId = it.next();
       currentFlag = _flags.get(currentFlagId);
@@ -400,7 +401,7 @@ public class ArgumentAnalyzer {
       
       if ( currentMatch ) { 
         foundArg++;
-        ArrayList<String> args = getArgumentData(currentFlagId, arguments_p, idx);
+        ArrayList<String> args = getArgumentData(currentFlagId, arguments, idx);
         idx+= args.size() + 1; // For flag itself
         _values.put(currentFlagId, args);
         
@@ -418,23 +419,23 @@ public class ArgumentAnalyzer {
   /**
    * for Internal use
    * @param currentFlagId
-   * @param arguments_p
-   * @param currentIndex_p
+   * @param arguments
+   * @param currentIndex
    * @return
    * @throws ArgumentAnalyzerException
    */
-  protected ArrayList<String> getArgumentData(String currentFlagId, String[] arguments_p, int currentIndex_p ) throws ArgumentAnalyzerException {
+  protected ArrayList<String> getArgumentData(String currentFlagId, String[] arguments, int currentIndex ) throws ArgumentAnalyzerException {
     
     ArrayList<String> args = new ArrayList<String>();
     
-    int i = currentIndex_p + 1;
+    int i = currentIndex + 1;
     
     Flag flag = getFlag(currentFlagId);
     
     if (flag.getNumberOfData() == IArgumentAnalyzerConstant.UNDEFINED_NUMBER_OF_EXPECTED_DATA) {
-      for (int j = i  ; j < arguments_p.length -1 ; j++) { 
-        if (!isFlagDefined(arguments_p[++i])) {
-          args.add(arguments_p[i]);
+      for (int j = i  ; j < arguments.length -1 ; j++) { 
+        if (!isFlagDefined(arguments[++i])) {
+          args.add(arguments[i]);
         } else { // We found a flag
           i--;
           break;
@@ -442,7 +443,7 @@ public class ArgumentAnalyzer {
       }
     } else {
       for (int j = 0 ; j < flag.getNumberOfData(); j++) { 
-        if (i>= arguments_p.length ||  isFlagWithNameDefined(arguments_p[i])) {
+        if (i>= arguments.length ||  isFlagWithNameDefined(arguments[i])) {
           throw new ArgumentAnalyzerException(
               NLS.bind(Messages.expectedDataDoesNotMatch,
                   new Object[]{ flag.getName(), currentFlagId, String.valueOf(flag.getNumberOfData()) }
@@ -450,7 +451,7 @@ public class ArgumentAnalyzer {
           );
         }
         // Add it.
-        args.add(arguments_p[i]);
+        args.add(arguments[i]);
         i++;
       }
     }

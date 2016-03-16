@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import java.util.List;
@@ -19,8 +29,8 @@ public class DelegateSelectionProviderWrapper implements ISelectionProvider {
    * 
    * @param selectionProvider_p
    */
-  public DelegateSelectionProviderWrapper(List<ISelectionProvider> selectionProviders_p) {
-    _delegates = selectionProviders_p;
+  public DelegateSelectionProviderWrapper(List<ISelectionProvider> selectionProviders) {
+    _delegates = selectionProviders;
   }
 
   /**
@@ -63,12 +73,12 @@ public class DelegateSelectionProviderWrapper implements ISelectionProvider {
    * @param delegate_p
    *          the delegate to set
    */
-  public void setDelegates(List<ISelectionProvider> delegates_p) {
-    _delegates = delegates_p;
+  public void setDelegates(List<ISelectionProvider> delegates) {
+    _delegates = delegates;
   }
 
-  public void setActiveDelegate(ISelectionProvider delegates_p) {
-    _activeDelegate = delegates_p;
+  public void setActiveDelegate(ISelectionProvider delegates) {
+    _activeDelegate = delegates;
   }
 
   /**

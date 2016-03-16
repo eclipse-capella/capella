@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,12 +44,12 @@ public class StringMatcher {
     int end; // exclusive
 
     /**
-     * @param start_p
-     * @param end_p
+     * @param start
+     * @param end
      */
-    public Position(int start_p, int end_p) {
-      this.start = start_p;
-      this.end = end_p;
+    public Position(int start, int end) {
+      this.start = start;
+      this.end = end;
     }
 
     /**
@@ -98,8 +98,8 @@ public class StringMatcher {
    * Find the first occurrence of the pattern between <code>start</code)(inclusive) 
    * and <code>end</code>(exclusive).  
    * @param text the String object to search in 
-   * @param start_p the starting index of the search range, inclusive
-   * @param end_p the ending index of the search range, exclusive
+   * @param start the starting index of the search range, inclusive
+   * @param end the ending index of the search range, exclusive
    * @return an <code>StringMatcher.Position</code> object that keeps the starting 
    * (inclusive) and ending positions (exclusive) of the first occurrence of the 
    * pattern in the specified range of the text; return null if not found or subtext
@@ -107,27 +107,27 @@ public class StringMatcher {
    * Note that for pattern like "*abc*" with leading and trailing stars, position of "abc"
    * is returned. For a pattern like"*??*" in text "abcdf", (1,3) is returned
    */
-  public StringMatcher.Position find(String text, int start_p, int end_p) {
+  public StringMatcher.Position find(String text, int start, int end) {
     if (text == null) {
       throw new IllegalArgumentException();
     }
-    int start = start_p;
-    int end = end_p;
+    int s = start;
+    int e = end;
     int tlen = text.length();
-    if (start < 0) {
-      start = 0;
+    if (s < 0) {
+      s = 0;
     }
-    if (end > tlen) {
-      end = tlen;
+    if (e > tlen) {
+      e = tlen;
     }
-    if (end < 0 || start >= end) {
+    if (e < 0 || s >= e) {
       return null;
     }
     if (fLength == 0) {
-      return new Position(start, start);
+      return new Position(s, s);
     }
     if (fIgnoreWildCards) {
-      int x = posIn(text, start, end);
+      int x = posIn(text, s, e);
       if (x < 0) {
         return null;
       }
@@ -136,15 +136,15 @@ public class StringMatcher {
 
     int segCount = fSegments.length;
     if (segCount == 0) {
-      return new Position(start, end);
+      return new Position(s, e);
     }
 
-    int curPos = start;
+    int curPos = s;
     int matchStart = -1;
     int i;
-    for (i = 0; i < segCount && curPos < end; ++i) {
+    for (i = 0; i < segCount && curPos < e; ++i) {
       String current = fSegments[i];
-      int nextMatch = regExpPosIn(text, curPos, end, current);
+      int nextMatch = regExpPosIn(text, curPos, e, current);
       if (nextMatch < 0) {
         return null;
       }
@@ -175,43 +175,43 @@ public class StringMatcher {
    * Given the starting (inclusive) and the ending (exclusive) positions in the <code>text</code>, determine if the given substring matches with aPattern
    * @return true if the specified portion of the text matches the pattern
    * @param text a String object that contains the substring to match
-   * @param start_p marks the starting position (inclusive) of the substring
-   * @param end_p marks the ending index (exclusive) of the substring
+   * @param start marks the starting position (inclusive) of the substring
+   * @param end marks the ending index (exclusive) of the substring
    */
-  public boolean match(String text, int start_p, int end_p) {
+  public boolean match(String text, int start, int end) {
     if (null == text) {
       throw new IllegalArgumentException();
     }
-    int start = start_p;
-    int end = end_p;
-    if (start > end) {
+    int s = start;
+    int e = end;
+    if (s > e) {
       return false;
     }
 
     if (fIgnoreWildCards) {
-      return (end - start == fLength) && fPattern.regionMatches(fIgnoreCase, 0, text, start, fLength);
+      return (e - s == fLength) && fPattern.regionMatches(fIgnoreCase, 0, text, s, fLength);
     }
     int segCount = fSegments.length;
     if (segCount == 0 && (fHasLeadingStar || fHasTrailingStar)) {
       return true;
     }
-    if (start == end) {
+    if (s == e) {
       return fLength == 0;
     }
     if (fLength == 0) {
-      return start == end;
+      return s == e;
     }
 
     int tlen = text.length();
-    if (start < 0) {
-      start = 0;
+    if (s < 0) {
+      s = 0;
     }
-    if (end > tlen) {
-      end = tlen;
+    if (e > tlen) {
+      e = tlen;
     }
 
-    int tCurPos = start;
-    int bound = end - fBound;
+    int tCurPos = s;
+    int bound = e - fBound;
     if (bound < 0) {
       return false;
     }
@@ -221,7 +221,7 @@ public class StringMatcher {
 
     /* process first segment */
     if (!fHasLeadingStar) {
-      if (!regExpRegionMatches(text, start, current, 0, segLength)) {
+      if (!regExpRegionMatches(text, s, current, 0, segLength)) {
         return false;
       }
       ++i;
@@ -229,7 +229,7 @@ public class StringMatcher {
     }
     if ((fSegments.length == 1) && (!fHasLeadingStar) && (!fHasTrailingStar)) {
       // only one segment to match, no wildcards specified
-      return tCurPos == end;
+      return tCurPos == e;
     }
     /* process middle segments */
     while (i < segCount) {
@@ -237,12 +237,12 @@ public class StringMatcher {
       int currentMatch;
       int k = current.indexOf(fSingleWildCard);
       if (k < 0) {
-        currentMatch = textPosIn(text, tCurPos, end, current);
+        currentMatch = textPosIn(text, tCurPos, e, current);
         if (currentMatch < 0) {
           return false;
         }
       } else {
-        currentMatch = regExpPosIn(text, tCurPos, end, current);
+        currentMatch = regExpPosIn(text, tCurPos, e, current);
         if (currentMatch < 0) {
           return false;
         }
@@ -252,9 +252,9 @@ public class StringMatcher {
     }
 
     /* process final segment */
-    if (!fHasTrailingStar && tCurPos != end) {
+    if (!fHasTrailingStar && tCurPos != e) {
       int clen = current.length();
-      return regExpRegionMatches(text, end - clen, current, 0, clen);
+      return regExpRegionMatches(text, e - clen, current, 0, clen);
     }
     return i == segCount;
   }
@@ -385,14 +385,14 @@ public class StringMatcher {
    * @param p String, String, a simple regular expression that may contain '?'
    * @param ignoreCase boolean indicating wether code>p</code> is case sensitive
    */
-  protected boolean regExpRegionMatches(String text, int tStart_p, String p, int pStart_p, int plen_p) {
-    int tStart = tStart_p;
-    int pStart = pStart_p;
-    int plen = plen_p;
+  protected boolean regExpRegionMatches(String text, int tStart, String p, int pStart, int plen) {
+    int tS = tStart;
+    int pS = pStart;
+    int len = plen;
 
-    while (plen-- > 0) {
-      char tchar = text.charAt(tStart++);
-      char pchar = p.charAt(pStart++);
+    while (len-- > 0) {
+      char tchar = text.charAt(tS++);
+      char pchar = p.charAt(pS++);
 
       /* process wild cards */
       if (!fIgnoreWildCards) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -31,37 +32,37 @@ public class TransferTreeViewer extends AbstractTransferViewer2 {
 
   /**
    * Constructs the transfer tree viewer. TreeViewers used as left and right viewers are instantiated with default {@link TreeViewer} style bits.
-   * @param parent_p parent composite of this viewer.
-   * @param style_p style of this viewer.
+   * @param parent parent composite of this viewer.
+   * @param style style of this viewer.
    */
-  public TransferTreeViewer(Composite parent_p, int style_p) {
-    this(parent_p, style_p, DEFAULT_TREE_VIEWER_STYLE, DEFAULT_TREE_VIEWER_STYLE);
+  public TransferTreeViewer(Composite parent, int style) {
+    this(parent, style, DEFAULT_TREE_VIEWER_STYLE, DEFAULT_TREE_VIEWER_STYLE);
   }
 
   /**
    * Constructs the transfer tree viewer.
-   * @param parent_p parent composite of this viewer.
-   * @param style_p style of this viewer.
-   * @param leftViewerStyleBits_p style bits used for the left tree viewer.
-   * @param rightViewerStyleBits_p style bits used for the right tree viewer.
+   * @param parent parent composite of this viewer.
+   * @param style style of this viewer.
+   * @param leftViewerStyleBits style bits used for the left tree viewer.
+   * @param rightViewerStyleBits style bits used for the right tree viewer.
    */
-  public TransferTreeViewer(Composite parent_p, int style_p, int leftViewerStyleBits_p, int rightViewerStyleBits_p) {
-    super(parent_p, style_p, leftViewerStyleBits_p, rightViewerStyleBits_p);
+  public TransferTreeViewer(Composite parent, int style, int leftViewerStyleBits, int rightViewerStyleBits) {
+    super(parent, style, leftViewerStyleBits, rightViewerStyleBits);
   }
 
   /**
    * @see AbstractTransferViewer#doLeftViewer(AbstractTransferViewer)
    */
   @Override
-  protected StructuredViewer doLeftViewer(Composite parent_p) {
-    return new TreeViewer(parent_p, getLeftViewerStyleBits());
+  protected StructuredViewer doLeftViewer(Composite parent) {
+    return new TreeViewer(parent, getLeftViewerStyleBits());
   }
 
   /**
    * @see AbstractTransferViewer#doRightViewer(AbstractTransferViewer)
    */
   @Override
-  protected StructuredViewer doRightViewer(Composite parent_p) {
-    return new TreeViewer(parent_p, getRightViewerStyleBits());
+  protected StructuredViewer doRightViewer(Composite parent) {
+    return new TreeViewer(parent, getRightViewerStyleBits());
   }
 }

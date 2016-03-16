@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.Collection;
@@ -36,9 +37,9 @@ public class SuffixableHandler extends SubCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event_p);
-    IRendererContext rcontext = ExecutionEventUtil.getRendererContext(event_p);
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
+    IRendererContext rcontext = ExecutionEventUtil.getRendererContext(event);
     IContext context = (IContext) rcontext.getPropertyContext().getSource();
 
     for (Object selectedItem : selection.toList()) {
@@ -52,8 +53,8 @@ public class SuffixableHandler extends SubCommandHandler {
   }
 
   @Override
-  public void setEnabled(Object evaluationContext_p) {
-    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
+  public void setEnabled(Object evaluationContext) {
+    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
 
     if (!(variable instanceof Collection)) {
       setBaseEnabled(false);
@@ -65,12 +66,12 @@ public class SuffixableHandler extends SubCommandHandler {
         if (selection.iterator().next() instanceof CatalogElementLink) {
 
           setBaseEnabled(true);
-          super.setEnabled(evaluationContext_p);
+          super.setEnabled(evaluationContext);
           return;
 
         }
 
-        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext_p);
+        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
         if (rendererContext == null) {
           setBaseEnabled(false);
         } else {
@@ -98,6 +99,6 @@ public class SuffixableHandler extends SubCommandHandler {
       }
     }
 
-    super.setEnabled(evaluationContext_p);
+    super.setEnabled(evaluationContext);
   }
 }

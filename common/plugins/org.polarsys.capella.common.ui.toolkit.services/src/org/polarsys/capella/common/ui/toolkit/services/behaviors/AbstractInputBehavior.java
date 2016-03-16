@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.behaviors;
 
 import org.polarsys.capella.common.ui.toolkit.services.formats.IFormat;
@@ -26,24 +27,24 @@ public abstract class AbstractInputBehavior implements IInputBehavior {
 
   /**
    * Constructs the abstract implementation of the input behavior.
-   * @param validator_p The validator.
-   * @param format_p The format.
+   * @param validator The validator.
+   * @param format The format.
    */
-  protected AbstractInputBehavior(RegExpValidator validator_p, IFormat format_p) {
-    _validator = validator_p;
-    _format = format_p;
+  protected AbstractInputBehavior(RegExpValidator validator, IFormat format) {
+    _validator = validator;
+    _format = format;
   }
 
   /**
    * Constructs the abstract implementation of the input behavior.
-   * @param validator_p The validator.
-   * @param format_p The format.
-   * @param defaultValues_p The default values.
+   * @param validator The validator.
+   * @param format The format.
+   * @param defaultValues The default values.
    */
-  protected AbstractInputBehavior(RegExpValidator validator_p, IFormat format_p, String[] defaultValues_p) {
-    _validator = validator_p;
-    _format = format_p;
-    _defaultValues = defaultValues_p;
+  protected AbstractInputBehavior(RegExpValidator validator, IFormat format, String[] defaultValues) {
+    _validator = validator;
+    _format = format;
+    _defaultValues = defaultValues;
   }
 
   /**
@@ -65,19 +66,19 @@ public abstract class AbstractInputBehavior implements IInputBehavior {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.services.behaviors.IInputBehavior#format(java.lang.String)
    */
-  public String format(String input_p) {
+  public String format(String input) {
     if ((null == _format) || (null == _validator)) {
-      return input_p;
+      return input;
     }
-    return _format.format(input_p, _validator.getPattern());
+    return _format.format(input, _validator.getPattern());
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.services.behaviors.IInputBehavior#isValid(java.lang.String)
    */
-  public boolean isValid(String value_p) {
+  public boolean isValid(String value) {
     if (null != _validator) {
-      return (null == _validator.isValid(value_p));
+      return (null == _validator.isValid(value));
     }
     return false;
   }
@@ -92,5 +93,5 @@ public abstract class AbstractInputBehavior implements IInputBehavior {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.services.behaviors.IInputBehavior#getValue(java.lang.String)
    */
-  public abstract Object getValue(String input_p);
+  public abstract Object getValue(String input);
 }

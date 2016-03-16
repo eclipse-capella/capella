@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.ArrayList;
@@ -37,11 +38,11 @@ public class PropertiesTabDescriptorProvider implements ITabDescriptorProvider {
 
   protected IRenderers _renderers = null;
 
-  protected IProperties getProperties(Collection<Object> selection_p) {
+  protected IProperties getProperties(Collection<Object> selection) {
     return null;
   }
 
-  protected IRenderers createRenderers(IProperties properties_p) {
+  protected IRenderers createRenderers(IProperties properties) {
     return null;
   }
 
@@ -73,12 +74,12 @@ public class PropertiesTabDescriptorProvider implements ITabDescriptorProvider {
   }
 
   /**
-   * @param selection_p
+   * @param selection
    */
-  protected Collection<Object> getSources(ISelection selection_p) {
+  protected Collection<Object> getSources(ISelection selection) {
     Collection<Object> result = new ArrayList<Object>();
-    if (selection_p != null) {
-      Iterator<Object> itSelection = ((IStructuredSelection) selection_p).iterator();
+    if (selection != null) {
+      Iterator<Object> itSelection = ((IStructuredSelection) selection).iterator();
       while (itSelection.hasNext()) {
         Object element = itSelection.next();
         Object adapted = adapt(element);
@@ -93,20 +94,20 @@ public class PropertiesTabDescriptorProvider implements ITabDescriptorProvider {
   }
 
   /**
-   * @param next_p
+   * @param next
    * @return
    */
-  protected Object adapt(Object next_p) {
-    return next_p;
+  protected Object adapt(Object next) {
+    return next;
   }
 
   /**
    * {@inheritDoc}
    */
-  public ITabDescriptor[] getTabDescriptors(IWorkbenchPart part_p, ISelection selection_p) {
+  public ITabDescriptor[] getTabDescriptors(IWorkbenchPart part, ISelection selection) {
     Collection<ITabDescriptor> desc = new ArrayList<ITabDescriptor>();
 
-    IProperties properties = getProperties(getSources(selection_p));
+    IProperties properties = getProperties(getSources(selection));
     for (final IPropertyGroup mainGroup : properties.getGroups(IPropertyGroup.EMPTY)) {
       if (mainGroup.getParentId() == null) {
         desc.add(createTabDescriptor(getPropertyContext(), getRendererContext(), mainGroup));
@@ -117,13 +118,12 @@ public class PropertiesTabDescriptorProvider implements ITabDescriptorProvider {
   }
 
   /**
-   * @param context_p
-   * @param properties_p
-   * @param renderers_p
-   * @param mainGroup_p
+   * @param context
+   * @param rendererContext
+   * @param mainGroup
    * @return
    */
-  protected ITabDescriptor createTabDescriptor(IPropertyContext context_p, IRendererContext rendererContext_p, IPropertyGroup mainGroup_p) {
-    return new PropertiesTabDescriptor(context_p, rendererContext_p, mainGroup_p);
+  protected ITabDescriptor createTabDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup mainGroup) {
+    return new PropertiesTabDescriptor(context, rendererContext, mainGroup);
   }
 }

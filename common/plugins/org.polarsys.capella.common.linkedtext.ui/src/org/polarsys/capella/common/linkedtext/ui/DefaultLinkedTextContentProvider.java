@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.linkedtext.ui;
 
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class DefaultLinkedTextContentProvider implements IStructuredContentProvi
   private final Predicate<EObject> _includeEObject;
   private final Object[] _empty = new Object[0];
   
-  public DefaultLinkedTextContentProvider(Predicate<EObject> includeObject_p){
-    _includeEObject = includeObject_p;
+  public DefaultLinkedTextContentProvider(Predicate<EObject> includeObject){
+    _includeEObject = includeObject;
   }
 
   /**
@@ -42,7 +43,7 @@ public class DefaultLinkedTextContentProvider implements IStructuredContentProvi
    * {@inheritDoc}
    */
   @Override
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
     /**/
   }
 
@@ -50,17 +51,17 @@ public class DefaultLinkedTextContentProvider implements IStructuredContentProvi
    * {@inheritDoc}
    */
   @Override
-  public Object[] getElements(Object inputElement_p) {
-    if (inputElement_p instanceof EObject){
+  public Object[] getElements(Object inputElement) {
+    if (inputElement instanceof EObject){
       Collection<EObject> targets = new ArrayList<EObject>();
-      EObject root = EcoreUtil.getRootContainer((EObject) inputElement_p);
+      EObject root = EcoreUtil.getRootContainer((EObject) inputElement);
       for (TreeIterator<EObject> it = EcoreUtil.getAllContents(root, true); it.hasNext();){
         EObject next = it.next();
         if (_includeEObject.apply(next)){
           targets.add(next);
         }
       }
-      fillAdditionalElements((EObject) inputElement_p, targets);
+      fillAdditionalElements((EObject) inputElement, targets);
       return targets.toArray();
     }
     return _empty;
@@ -78,9 +79,9 @@ public class DefaultLinkedTextContentProvider implements IStructuredContentProvi
    * should also assure that additionally added objects hold the predicate returned via
    * getEObjectPredicate().
    * 
-   * @param result_p the collection to add to
+   * @param result the collection to add to
    */
-  protected void fillAdditionalElements(EObject inputElement_p, Collection<EObject> result_p){
+  protected void fillAdditionalElements(EObject inputElement, Collection<EObject> result){
     /* nop */
   }
   

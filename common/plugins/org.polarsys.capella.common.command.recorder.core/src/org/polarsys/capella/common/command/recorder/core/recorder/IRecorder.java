@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.recorder;
 
 import java.io.IOException;
@@ -29,7 +30,7 @@ public interface IRecorder {
   public String getRelativePath();
   
   /** write recorders data to an output stream */
-  public void write(Writer writer_p) throws IOException;
+  public void write(Writer writer) throws IOException;
   
   /** Extra data linked to this writer */
   public String getExtra();

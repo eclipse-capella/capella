@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,30 +35,30 @@ public class DependenciesProperty extends AbstractProperty implements ICompoundP
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
 
-    IContext context = (IContext) context_p.getSource();
-    if (!context.exists(IReConstants.PROPERTY__DEPENDENCIES) || (context.get(IReConstants.PROPERTY__DEPENDENCIES) == null)) {
-      Collection<EObject> scopeElements = (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
+    IContext ctx = (IContext) context.getSource();
+    if (!ctx.exists(IReConstants.PROPERTY__DEPENDENCIES) || (ctx.get(IReConstants.PROPERTY__DEPENDENCIES) == null)) {
+      Collection<EObject> scopeElements = (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
       if (scopeElements == null) {
-        context.put(IReConstants.PROPERTY__DEPENDENCIES, Collections.emptyList());
+        ctx.put(IReConstants.PROPERTY__DEPENDENCIES, Collections.emptyList());
       } else {
-        Object values = DependenciesHandlerHelper.getInstance(context).getDependencies(scopeElements, scopeElements, context);
-        context.put(IReConstants.PROPERTY__DEPENDENCIES, new HashSet<Object>((Collection) values));
+        Object values = DependenciesHandlerHelper.getInstance(ctx).getDependencies(scopeElements, scopeElements, ctx);
+        ctx.put(IReConstants.PROPERTY__DEPENDENCIES, new HashSet<Object>((Collection) values));
       }
     }
 
-    return context.get(IReConstants.PROPERTY__DEPENDENCIES);
+    return ctx.get(IReConstants.PROPERTY__DEPENDENCIES);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    if (newValue_p instanceof Collection) {
-      if (!((Collection) newValue_p).isEmpty()) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
+    if (newValue instanceof Collection) {
+      if (!((Collection) newValue).isEmpty()) {
         return new Status(IStatus.WARNING, getId(), "Some elements have missing dependencies");
       }
     }
@@ -77,8 +77,8 @@ public class DependenciesProperty extends AbstractProperty implements ICompoundP
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
@@ -93,8 +93,8 @@ public class DependenciesProperty extends AbstractProperty implements ICompoundP
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    context.put(IReConstants.PROPERTY__DEPENDENCIES, null);
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    ctx.put(IReConstants.PROPERTY__DEPENDENCIES, null);
   }
 }

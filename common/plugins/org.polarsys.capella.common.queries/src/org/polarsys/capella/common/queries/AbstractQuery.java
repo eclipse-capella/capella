@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.queries;
 
 
@@ -19,8 +20,8 @@ public abstract class AbstractQuery implements IQuery {
   private String extendedQueryIdentifier;
 
   @Override
-  public void setIdentifier(String identifier_p) {
-    identifier = identifier_p;
+  public void setIdentifier(String identifier) {
+    this.identifier = identifier;
   }
 
   @Override
@@ -29,8 +30,8 @@ public abstract class AbstractQuery implements IQuery {
   }
 
   @Override
-  public void setExtendedQueryIdentifier(String extendedQueryIdentifier_p) {
-    extendedQueryIdentifier = extendedQueryIdentifier_p;
+  public void setExtendedQueryIdentifier(String extendedQueryIdentifier) {
+    this.extendedQueryIdentifier = extendedQueryIdentifier;
   }
 
   @Override

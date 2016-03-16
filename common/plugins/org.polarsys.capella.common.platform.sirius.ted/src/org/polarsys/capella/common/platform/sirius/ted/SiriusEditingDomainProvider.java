@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.platform.sirius.ted;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -27,17 +28,17 @@ public class SiriusEditingDomainProvider implements IEditingDomainFactory {
   /**
    * {@inheritDoc}
    */
-  public TransactionalEditingDomain createEditingDomain(ResourceSet arg0_p) {
+  public TransactionalEditingDomain createEditingDomain(ResourceSet arg0) {
     return createEditingDomain();
   }
 
   /**
    * {@inheritDoc}
    */
-  public TransactionalEditingDomain getEditingDomain(ResourceSet arg0_p) {
+  public TransactionalEditingDomain getEditingDomain(ResourceSet arg0) {
     TransactionalEditingDomain result = null;
     // Get the execution manager from its id.
-    ExecutionManager capellaExecutionManager = ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionUtil.getEditingDomain(arg0_p));
+    ExecutionManager capellaExecutionManager = ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionUtil.getEditingDomain(arg0));
     if (null != capellaExecutionManager) {
       // Get the editing domain.
       result = capellaExecutionManager.getEditingDomain();

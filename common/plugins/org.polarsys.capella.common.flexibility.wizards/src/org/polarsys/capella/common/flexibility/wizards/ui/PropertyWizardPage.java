@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui;
 
 import org.eclipse.core.runtime.IStatus;
@@ -52,13 +53,13 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
     return _renderers;
   }
 
-  public PropertyWizardPage(String pageName, IPropertyContext context_p, IRendererContext renderers_p) {
+  public PropertyWizardPage(String pageName, IPropertyContext context, IRendererContext renderers) {
     super(pageName);
-    this._context = context_p;
-    this._renderers = renderers_p;
+    this._context = context;
+    this._renderers = renderers;
 
-    IPropertyContext context = getContext();
-    context.registerListener(this);
+    IPropertyContext ctx = getContext();
+    ctx.registerListener(this);
   }
 
   /**
@@ -95,10 +96,10 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
   /**
    * {@inheritDoc} 
    */
-  public void createControl(Composite parent_p) {
+  public void createControl(Composite parent) {
     ILabelProvider labelProvider = getLabelProvider();
     PropertyControl control = new PropertyControl(labelProvider, getContext(), getRendererContext());
-    setControl(control.createControl(parent_p));
+    setControl(control.createControl(parent));
 
     update(null);
   }
@@ -167,7 +168,7 @@ public class PropertyWizardPage extends WizardPage implements PropertyChangeList
   /**
    * {@inheritDoc}
    */
-  public void update(PropertyChangedEvent event_p) {
+  public void update(PropertyChangedEvent event) {
     findMostSevere();
     applyToStatusLine();
     setPageComplete(isPageComplete());

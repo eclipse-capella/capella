@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.group.renderer;
 
 import org.eclipse.swt.layout.GridLayout;
@@ -25,11 +26,11 @@ public class HorizontalGroupRenderer extends DefaultGroupRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected Layout createGroupLayout(IPropertyGroup group_p, IRendererContext rendererContext_p) {
+  protected Layout createGroupLayout(IPropertyGroup group, IRendererContext rendererContext) {
 
-    int nbGroups = rendererContext_p.getRenderers().getGroups(rendererContext_p.getPropertyContext().getProperties(), group_p).size();
-    int nbProperties = rendererContext_p.getRenderers().getItems(rendererContext_p.getPropertyContext().getProperties(), group_p).size();
-    GridLayout layout = (GridLayout) super.createGroupLayout(group_p, rendererContext_p);
+    int nbGroups = rendererContext.getRenderers().getGroups(rendererContext.getPropertyContext().getProperties(), group).size();
+    int nbProperties = rendererContext.getRenderers().getItems(rendererContext.getPropertyContext().getProperties(), group).size();
+    GridLayout layout = (GridLayout) super.createGroupLayout(group, rendererContext);
     layout.numColumns = nbGroups + nbProperties;
 
     return layout;

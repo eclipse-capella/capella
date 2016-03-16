@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,31 +68,31 @@ public class SharedCutPasteClipboard {
 
   /**
    * Set clipboard content.
-   * @param selection_p
+   * @param selection
    */
-  public void setClipboard(Collection<?> selection_p) {
+  public void setClipboard(Collection<?> selection) {
     clear();
-    if (null == selection_p) {
+    if (null == selection) {
       return;
     }
-    _clipboard = new ArrayList<Object>(selection_p);
+    _clipboard = new ArrayList<Object>(selection);
   }
 
   /**
    * Is given object a cut one ?
-   * @param cutElement_p
+   * @param cutElement
    * @return <code>true</code> means given object is cut.
    */
-  public boolean isObjectCut(Object cutElement_p) {
+  public boolean isObjectCut(Object cutElement) {
     boolean result = false;
-    if ((_clipboard == null) || !(cutElement_p instanceof EObject)) {
+    if ((_clipboard == null) || !(cutElement instanceof EObject)) {
       return result;
     }
-    if (_clipboard.contains(cutElement_p)) {
+    if (_clipboard.contains(cutElement)) {
       result = true;
     } else {
-      EObject cutElement = (EObject) cutElement_p;
-      EObject cutElementContainer = cutElement.eContainer();
+      EObject cutElt = (EObject) cutElement;
+      EObject cutElementContainer = cutElt.eContainer();
       if (null != cutElementContainer) {
         result = isObjectCut(cutElementContainer);
       }

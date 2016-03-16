@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ public class StringProperty extends AbstractProperty implements IEditablePropert
   /**
    * {@inheritDoc}
    */
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     if (_value == null) {
       _value = "";
     }
@@ -38,7 +38,7 @@ public class StringProperty extends AbstractProperty implements IEditablePropert
   /**
    * {@inheritDoc}
    */
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -52,18 +52,18 @@ public class StringProperty extends AbstractProperty implements IEditablePropert
   /**
    * {@inheritDoc}
    */
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p.toString();
+  public Object toType(Object value, IPropertyContext context) {
+    return value.toString();
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
-    _value = (String) context_p.getCurrentValue(this);
-    IContext context = (IContext) context_p.getSource();
-    context.put(getId(), _value);
+  public void setValue(IPropertyContext context) {
+    _value = (String) context.getCurrentValue(this);
+    IContext ctx = (IContext) context.getSource();
+    ctx.put(getId(), _value);
   }
 
 }

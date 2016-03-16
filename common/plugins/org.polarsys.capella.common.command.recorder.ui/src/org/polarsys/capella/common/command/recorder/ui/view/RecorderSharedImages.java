@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.ui.view;
 
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -37,12 +38,12 @@ public final class RecorderSharedImages {
   public static final String DESC_SET = PATH_VIEW + "set.gif"; //$NON-NLS-1$
   public static final String DESC_UNDO = PATH_VIEW + "undo.gif"; //$NON-NLS-1$
 
-  public static ImageDescriptor getImageDescriptor(String key_p) {
-    return RecorderUIActivator.getDefault().getImageDescriptor(key_p);
+  public static ImageDescriptor getImageDescriptor(String key) {
+    return RecorderUIActivator.getDefault().getImageDescriptor(key);
   }
 
-  public static Image getImage(String key_p) {
-    return RecorderUIActivator.getDefault().getImage(key_p);
+  public static Image getImage(String key) {
+    return RecorderUIActivator.getDefault().getImage(key);
   }
 
 }

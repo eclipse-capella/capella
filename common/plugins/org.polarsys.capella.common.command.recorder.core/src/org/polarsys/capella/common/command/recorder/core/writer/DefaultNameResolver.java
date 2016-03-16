@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.writer;
 
 import org.eclipse.emf.ecore.EObject;
@@ -23,12 +24,12 @@ public class DefaultNameResolver implements INameResolver {
   /**
    * {@inheritDoc}
    */
-  public String getReadableName(EObject eobject_p) {
+  public String getReadableName(EObject eobject) {
 
     String result = null;
     
-    if ( null != eobject_p) {
-      result = eobject_p.eClass().getName();
+    if ( null != eobject) {
+      result = eobject.eClass().getName();
     }
     
     return result;
@@ -37,7 +38,7 @@ public class DefaultNameResolver implements INameResolver {
   /**
    * {@inheritDoc}
    */
-  public String getID(EObject eobject_p) {
+  public String getID(EObject eobject) {
     return ICommonConstants.EMPTY_STRING;
   }
 

@@ -26,18 +26,18 @@ public class FeatureHelper {
 
   /**
    * Get the Capella feature version.
-   * @param fullVersionNumber_p
+   * @param fullVersionNumber
    * @return a not <code>null</code> string.
    */
-  public static String getCapellaVersion(boolean fullVersionNumber_p) {
-    return (fullVersionNumber_p) ? FeatureHelper.getFullVersionNumber(CAPELLA_FEATURE_ID) : FeatureHelper.getShortVersionNumber(CAPELLA_FEATURE_ID);
+  public static String getCapellaVersion(boolean fullVersionNumber) {
+    return (fullVersionNumber) ? FeatureHelper.getFullVersionNumber(CAPELLA_FEATURE_ID) : FeatureHelper.getShortVersionNumber(CAPELLA_FEATURE_ID);
   }
   
   /**
    * Get the current feature version from the runtime platform.<br>
    * @return the full version number including a qualifier if any (e.g 1.2.0.20100118-1720)
    */
-  public static String getFullVersionNumber(String featureId_p) {
+  public static String getFullVersionNumber(String featureId) {
     String version = null;
     // Get bundle providers.
     IBundleGroupProvider[] bundleGroupProviders = Platform.getBundleGroupProviders();
@@ -46,7 +46,7 @@ public class FeatureHelper {
       IBundleGroup[] bundleGroups = bundleGroupProvider.getBundleGroups();
       // Loop over bundles to retrieve the feature.
       for (IBundleGroup bundleGroup : bundleGroups) {
-        if (featureId_p.equals(bundleGroup.getIdentifier())) {
+        if (featureId.equals(bundleGroup.getIdentifier())) {
           version = bundleGroup.getVersion();
           break;
         }
@@ -61,11 +61,11 @@ public class FeatureHelper {
 
   /**
    * Get the current feature version from the runtime platform.<br>
-   * @param featureId_p
+   * @param featureId
    * @return the short version number i.e 3 numbers separated by '.' character (e.g 1.2.0).
    */
-  public static String getShortVersionNumber(String featureId_p) {
-    String fullVersionNumber = getFullVersionNumber(featureId_p);
+  public static String getShortVersionNumber(String featureId) {
+    String fullVersionNumber = getFullVersionNumber(featureId);
     return (null != fullVersionNumber) ? fullVersionNumber.substring(0, 5) : null;
   }
 }

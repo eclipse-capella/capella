@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.project;
 
 import org.eclipse.core.resources.IFile;
@@ -42,17 +43,17 @@ abstract public class AbstractProjectRecorder extends AbstractRecorder {
   public NotificationFilter getFilter() {        
     return new NotificationFilter.Custom() {
       @Override
-      public boolean matches(Notification notification_p) {
+      public boolean matches(Notification notification) {
         boolean b = false;
         
         // ENotification only
-        if ( notification_p  instanceof ENotificationImpl ) {
+        if ( notification  instanceof ENotificationImpl ) {
           b = true;
         }
         
         if (b) { // From this project
           EObject eObj = ( (EObject)
-              ((ENotificationImpl) notification_p).getNotifier()
+              ((ENotificationImpl) notification).getNotifier()
           );
           if ( null != eObj && null != eObj.eResource() ) {
             IFile file = WorkspaceSynchronizer.getFile(eObj.eResource());

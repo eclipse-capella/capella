@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.loader;
 
 import java.util.ArrayList;
@@ -46,16 +47,16 @@ public class PropertiesLoader {
 
   }
 
-  protected Properties getStoredProperties(String idProperties_p) {
-    return _propertiesMap.get(idProperties_p);
+  protected Properties getStoredProperties(String idProperties) {
+    return _propertiesMap.get(idProperties);
   }
 
-  protected void setStoredProperties(String idProperties_p, Properties properties_p) {
-    _propertiesMap.put(idProperties_p, properties_p);
+  protected void setStoredProperties(String idProperties, Properties properties) {
+    _propertiesMap.put(idProperties, properties);
   }
 
-  public IProperties getProperties(String idProperties_p) {
-    Properties storedProperties = getStoredProperties(idProperties_p);
+  public IProperties getProperties(String idProperties) {
+    Properties storedProperties = getStoredProperties(idProperties);
     if (storedProperties != null) {
       return storedProperties;
     }
@@ -69,16 +70,16 @@ public class PropertiesLoader {
     LinkedList<String> createPropertiesId = new LinkedList<String>();
 
     //Create a properties for initial propertiesId
-    Properties rootProperties = getStoredProperties(idProperties_p);
+    Properties rootProperties = getStoredProperties(idProperties);
     if (rootProperties == null) {
-      rootProperties = new Properties(idProperties_p);
+      rootProperties = new Properties(idProperties);
       createdProperties.add(rootProperties);
-      createPropertiesId.add(idProperties_p);
-      setStoredProperties(idProperties_p, rootProperties);
+      createPropertiesId.add(idProperties);
+      setStoredProperties(idProperties, rootProperties);
     }
 
     //Retrieve a list of idProperties to visit
-    initToVisit(initialIds, idProperties_p);
+    initToVisit(initialIds, idProperties);
     toVisitId.addAll(initialIds);
 
     HashMap<Properties, HashSet<String>> mapInheritancy = new HashMap<Properties, HashSet<String>>();
@@ -191,7 +192,7 @@ public class PropertiesLoader {
             item.setId(propertyId);
             item.setGroupId(group_id);
             item.setEnabled(Boolean.valueOf(enabled).booleanValue());
-          } catch (CoreException exception_p) {
+          } catch (CoreException exception) {
             // Nothing here
           }
 
@@ -272,19 +273,19 @@ public class PropertiesLoader {
   }
 
   /**
-   * Returns a list parent propertiesId for the given properties_p. 
+   * Returns a list parent propertiesId for the given properties. 
    * 
    * By default, read <inheritance> link through eclipse extensions
-   * @param properties_p
+   * @param properties
    * @return
    */
-  protected Collection<String> computeInheritancy(Properties properties_p) {
+  protected Collection<String> computeInheritancy(Properties properties) {
     ArrayList<String> parents = new ArrayList<String>();
 
     for (IConfigurationElement extension : extensions) {
       if (PropertiesSchemaConstants.PropertiesSchema_PROPERTIES.equals(extension.getName())) {
         String id = extension.getAttribute(PropertiesSchemaConstants.PropertiesSchema_PROPERTIES__ID);
-        if (id.equals(properties_p.getPropertiesId())) {
+        if (id.equals(properties.getPropertiesId())) {
           for (IConfigurationElement parent : extension.getChildren(PropertiesSchemaConstants.PropertiesSchema_INHERITANCE)) {
             String propertiesId = parent.getAttribute(PropertiesSchemaConstants.PropertiesSchema_INHERITANCE__PROPERTIES);
             if (propertiesId == null) {
@@ -300,11 +301,11 @@ public class PropertiesLoader {
   }
 
   /**
-   * @param toVisitId_p
-   * @param idProperties_p
+   * @param toVisitId
+   * @param idProperties
    */
-  protected void initToVisit(LinkedList<String> toVisitId_p, String idProperties_p) {
-    toVisitId_p.add(idProperties_p);
+  protected void initToVisit(LinkedList<String> toVisitId, String idProperties) {
+    toVisitId.add(idProperties);
   }
 
 }

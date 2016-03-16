@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.services.helper;
 
 import java.util.ArrayList;
@@ -30,21 +31,21 @@ public class UserEnforcedHelper implements IUserEnforcedHelper2 {
   /**
    * @see org.polarsys.capella.common.mdsofa.common.helper.IUserEnforcedHelper#makeFileWritable(org.eclipse.core.resources.IFile)
    */
-  public IStatus makeFileWritable(final IFile file_p) {
-    return makeFilesWritable(new IFile[] { file_p });
+  public IStatus makeFileWritable(final IFile file) {
+    return makeFilesWritable(new IFile[] { file });
   }
 
   /**
    * @see org.polarsys.capella.common.mdsofa.common.helper.IUserEnforcedHelper#makeFileWritable(org.eclipse.core.resources.IFile, java.lang.Object)
    */
-  public IStatus makeFileWritable(IFile file_p, Object display_p) {
-    return makeFilesWritable(new IFile[] { file_p }, display_p);
+  public IStatus makeFileWritable(IFile file, Object display) {
+    return makeFilesWritable(new IFile[] { file }, display);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.services.helper.IUserEnforcedHelper2#makeFilesWritable(org.eclipse.core.resources.IFile[])
    */
-  public IStatus makeFilesWritable(final IFile[] files_p) {
+  public IStatus makeFilesWritable(final IFile[] files) {
     // Resulting status.
     final IStatus[] result = new IStatus[] { Status.CANCEL_STATUS };
     // Get display, if any.
@@ -53,7 +54,7 @@ public class UserEnforcedHelper implements IUserEnforcedHelper2 {
     // Execute through a runnable.
     Runnable makeFileWritableRunnable = new Runnable() {
       public void run() {
-        result[0] = makeFilesWritable(files_p, display);
+        result[0] = makeFilesWritable(files, display);
       }
     };
     // Whether it is displaying a user interface dialog or not, the execution is always synchronous.
@@ -70,14 +71,14 @@ public class UserEnforcedHelper implements IUserEnforcedHelper2 {
   /**
    * @see org.polarsys.capella.common.ui.services.helper.IUserEnforcedHelper2#makeFilesWritable(org.eclipse.core.resources.IFile[], java.lang.Object)
    */
-  public IStatus makeFilesWritable(final IFile[] files_p, Object display_p) {
+  public IStatus makeFilesWritable(final IFile[] files, Object display) {
     // Given files must not be null.
-    if (null == files_p) {
+    if (null == files) {
       return Status.CANCEL_STATUS;
     }
     ArrayList<IFile> existingFiles = new ArrayList<IFile>(0);
     // Loop over given files to check if all exist or not.
-    for (IFile file : files_p) {
+    for (IFile file : files) {
       // If file does not exist, then it is writable, hence ignore it.
       if (file.exists()) {
         existingFiles.add(file);
@@ -90,9 +91,9 @@ public class UserEnforcedHelper implements IUserEnforcedHelper2 {
     // Resulting shell.
     Shell shell = null;
     // Given display object must indeed be a display.
-    if (display_p instanceof Display) {
+    if (display instanceof Display) {
       // Get shell from display.
-      shell = ((Display) display_p).getActiveShell();
+      shell = ((Display) display).getActiveShell();
     }
     // If a shell is active, use it to make sure an end-user confirmation is performed (as needed).
     // Try validate prompt behavior otherwise.

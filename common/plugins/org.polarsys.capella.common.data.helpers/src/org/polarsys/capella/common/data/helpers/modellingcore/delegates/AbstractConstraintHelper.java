@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.data.helpers.modellingcore.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -23,13 +24,13 @@ public class AbstractConstraintHelper {
     return instance;
   }
 
-  public Object doSwitch(AbstractConstraint element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(AbstractConstraint element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__CONTEXT)) {
-      ret = element_p.eContainer();
+    if (feature.equals(ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__CONTEXT)) {
+      ret = element.eContainer();
     } else {
-      ret = ModelElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = ModelElementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -29,11 +30,11 @@ public class PropertyDialog extends WizardDialog {
   ProgressMonitorPart part = null;
 
   /**
-   * @param parentShell_p
-   * @param newWizard_p
+   * @param parentShell
+   * @param newWizard
    */
-  public PropertyDialog(Shell parentShell_p, IWizard newWizard_p) {
-    super(parentShell_p, newWizard_p);
+  public PropertyDialog(Shell parentShell, IWizard newWizard) {
+    super(parentShell, newWizard);
   }
 
   /**
@@ -66,11 +67,11 @@ public class PropertyDialog extends WizardDialog {
    * {@inheritDoc}
    */
   @Override
-  protected Button createButton(Composite parent_p, int id_p, String label_p, boolean defaultButton_p) {
-    if (id_p == IDialogConstants.FINISH_ID) {
-      return super.createButton(parent_p, id_p, IDialogConstants.OK_LABEL, defaultButton_p);
+  protected Button createButton(Composite parent, int id, String label, boolean defaultButton) {
+    if (id == IDialogConstants.FINISH_ID) {
+      return super.createButton(parent, id, IDialogConstants.OK_LABEL, defaultButton);
     }
-    return super.createButton(parent_p, id_p, label_p, defaultButton_p);
+    return super.createButton(parent, id, label, defaultButton);
   }
 
 }

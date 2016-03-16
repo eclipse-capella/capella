@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.model.helpers;
 
 /**
@@ -29,26 +30,26 @@ public class HelperNotFoundException extends RuntimeException {
 
   /**
    * Constructor.
-   * @param message_p
-   * @param cause_p
+   * @param message
+   * @param cause
    */
-  public HelperNotFoundException(String message_p, Throwable cause_p) {
-    super(message_p, cause_p);
+  public HelperNotFoundException(String message, Throwable cause) {
+    super(message, cause);
   }
 
   /**
    * Constructor.
-   * @param message_p
+   * @param message
    */
-  public HelperNotFoundException(String message_p) {
-    super(message_p);
+  public HelperNotFoundException(String message) {
+    super(message);
   }
 
   /**
    * Constructor.
-   * @param cause_p
+   * @param cause
    */
-  public HelperNotFoundException(Throwable cause_p) {
-    super(cause_p);
+  public HelperNotFoundException(Throwable cause) {
+    super(cause);
   }
 }

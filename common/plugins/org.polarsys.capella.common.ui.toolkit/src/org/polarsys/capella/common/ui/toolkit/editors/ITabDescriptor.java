@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.editors;
 
 import org.eclipse.swt.widgets.Composite;
@@ -34,8 +35,8 @@ public interface ITabDescriptor {
 
   /**
    * Gets the tab content.
-   * @param parent_p The parent tab.
+   * @param parent The parent tab.
    * @return The tab content.
    */
-  public FieldsViewer getContent(Composite parent_p);
+  public FieldsViewer getContent(Composite parent);
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.provider;
 
 import java.lang.ref.WeakReference;
@@ -45,10 +46,10 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
   protected Collection<EObject> toRefresh = new HashSet<EObject>();
 
   /**
-   * @param adapterFactory_p
+   * @param adapterFactory
    */
-  public GroupedAdapterFactoryContentProvider(AdapterFactory adapterFactory_p) {
-    super(adapterFactory_p);
+  public GroupedAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
+    super(adapterFactory);
   }
 
   protected ResourceSetListener getListener() {
@@ -66,9 +67,9 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
          * {@inheritDoc}
          */
         @Override
-        public void resourceSetChanged(ResourceSetChangeEvent event_p) {
-          super.resourceSetChanged(event_p);
-          if (refreshRequired(event_p)) {
+        public void resourceSetChanged(ResourceSetChangeEvent event) {
+          super.resourceSetChanged(event);
+          if (refreshRequired(event)) {
             runRefresh();
           }
         }
@@ -78,14 +79,14 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
   }
 
   /**
-   * @param event_p
+   * @param event
    * @return
    */
-  protected boolean refreshRequired(ResourceSetChangeEvent event_p) {
-    if (SiriusSessionListener.isOpeningSession(event_p.getEditingDomain())) {
+  protected boolean refreshRequired(ResourceSetChangeEvent event) {
+    if (SiriusSessionListener.isOpeningSession(event.getEditingDomain())) {
       return false;
     }
-    if (SiriusSessionListener.isClosingSession(event_p.getEditingDomain())) {
+    if (SiriusSessionListener.isClosingSession(event.getEditingDomain())) {
       return false;
     }
 
@@ -116,7 +117,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
 
       UIJob job = new UIJob(viewer.getControl().getDisplay(), Messages.GroupedAdapterFactoryContentProvider_RefreshViewer) {
         @Override
-        public IStatus runInUIThread(IProgressMonitor monitor_p) {
+        public IStatus runInUIThread(IProgressMonitor monitor) {
           processRefresh();
           return Status.OK_STATUS;
         }
@@ -166,36 +167,36 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     }
   }
 
-  public synchronized void addNotification(Notification notification_p) {
+  public synchronized void addNotification(Notification notification) {
     if (notifications == null) {
       notifications = new ArrayList<Notification>();
     }
-    notifications.add(notification_p);
+    notifications.add(notification);
   }
 
   /**
-   * @param notifications_p
+   * @param notifications
    */
-  protected synchronized void addNotifications(List<Notification> notifications_p) {
-    if (notifications == null) {
-      notifications = new ArrayList<Notification>();
+  protected synchronized void addNotifications(List<Notification> notifications) {
+    if (this.notifications == null) {
+      this.notifications = new ArrayList<Notification>();
     }
-    notifications.addAll(notifications_p);
+    this.notifications.addAll(notifications);
   }
 
-  public synchronized void addObject(EObject eObject_p) {
+  public synchronized void addObject(EObject eObject) {
     if (toRefresh == null) {
       toRefresh = new HashSet<EObject>();
     }
-    toRefresh.add(eObject_p);
+    toRefresh.add(eObject);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
-    addNotification(notification_p);
+  public void notifyChanged(Notification notification) {
+    addNotification(notification);
   }
 
   /**
@@ -209,26 +210,26 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
 
     /**
      * Constructor.
-     * @param eventType_p
-     * @param newValue_p
-     * @param notifier_p
+     * @param eventType
+     * @param newValue
+     * @param notifier
      */
-    public ChangeNotification(Object notifier_p, Object feature_p, Object newValue_p, int eventType_p) {
-      _notifierReference = new WeakReference<Object>(notifier_p);
-      _featureReference = new WeakReference<Object>(feature_p);
-      _newValueReference = new WeakReference<Object>(newValue_p);
-      _eventType = eventType_p;
+    public ChangeNotification(Object notifier, Object feature, Object newValue, int eventType) {
+      _notifierReference = new WeakReference<Object>(notifier);
+      _featureReference = new WeakReference<Object>(feature);
+      _newValueReference = new WeakReference<Object>(newValue);
+      _eventType = eventType;
     }
 
     /**
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object object_p) {
-      boolean cr = super.equals(object_p);
+    public boolean equals(Object object) {
+      boolean cr = super.equals(object);
 
-      if (!cr && (object_p instanceof ChangeNotification)) {
-        ChangeNotification notification = (ChangeNotification) object_p;
+      if (!cr && (object instanceof ChangeNotification)) {
+        ChangeNotification notification = (ChangeNotification) object;
         cr = true;
 
         if (!(((_notifierReference.get() == null) && (notification._notifierReference.get() == null)) || ((_notifierReference.get() != null) && _notifierReference

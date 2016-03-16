@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ef.internal.command;
 
 import org.eclipse.emf.common.command.AbstractCommand.NonDirtying;
@@ -21,28 +22,28 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 public abstract class AbstractNonDirtyingRecordingCommand extends RecordingCommand implements NonDirtying {
   /**
    * Constructor.
-   * @param domain_p
+   * @param domain
    */
-  public AbstractNonDirtyingRecordingCommand(TransactionalEditingDomain domain_p) {
-    super(domain_p);
+  public AbstractNonDirtyingRecordingCommand(TransactionalEditingDomain domain) {
+    super(domain);
   }
 
   /**
    * Constructor.
-   * @param domain_p
-   * @param label_p
+   * @param domain
+   * @param label
    */
-  public AbstractNonDirtyingRecordingCommand(TransactionalEditingDomain domain_p, String label_p) {
-    super(domain_p, label_p);
+  public AbstractNonDirtyingRecordingCommand(TransactionalEditingDomain domain, String label) {
+    super(domain, label);
   }
 
   /**
    * Constructor.
-   * @param domain_p
-   * @param label_p
-   * @param description_p
+   * @param domain
+   * @param label
+   * @param description
    */
-  public AbstractNonDirtyingRecordingCommand(TransactionalEditingDomain domain_p, String label_p, String description_p) {
-    super(domain_p, label_p, description_p);
+  public AbstractNonDirtyingRecordingCommand(TransactionalEditingDomain domain, String label, String description) {
+    super(domain, label, description);
   }
 }
