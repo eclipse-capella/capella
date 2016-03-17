@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,8 +99,8 @@ public class HoldingResourceHelper {
     if ((newContainer != null) && (newContainer.eResource() != null) && (element != null) && (element.eResource() != null)) {
       if (HoldingResourceHelper.isHoldByHoldingResource(element)) {
         if (!HoldingResourceHelper.isHoldByHoldingResource(newContainer)) {
-          ((ResourceImpl) element.eResource()).getContents().remove(element);
-          ((ResourceImpl) newContainer.eResource()).attached(element);
+          ((Resource.Internal) element.eResource()).getContents().remove(element);
+          ((Resource.Internal) newContainer.eResource()).attached(element);
 
           // the elements of the sub-tree shall also be moved
           for (EObject o : element.eContents()) {
