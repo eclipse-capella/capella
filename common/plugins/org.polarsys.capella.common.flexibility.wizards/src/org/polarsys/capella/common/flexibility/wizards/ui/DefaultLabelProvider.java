@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui;
 
 import java.util.Collection;
@@ -34,10 +35,10 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
   private ILabelProvider _labelProvider = null;
 
   /**
-   * @param adapterFactory_p
+   * @param labelProvider
    */
-  public DefaultLabelProvider(ILabelProvider labelProvider_p) {
-    _labelProvider = labelProvider_p;
+  public DefaultLabelProvider(ILabelProvider labelProvider) {
+    _labelProvider = labelProvider;
   }
 
   public DefaultLabelProvider() {
@@ -47,33 +48,33 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
    * {@inheritDoc}
    */
   @Override
-  public Image getImage(Object object_p) {
-    if (object_p instanceof Collection<?>) {
-      if (((Collection) object_p).size() == 1) {
-        return getImage(((Collection) object_p).iterator().next());
+  public Image getImage(Object object) {
+    if (object instanceof Collection<?>) {
+      if (((Collection) object).size() == 1) {
+        return getImage(((Collection) object).iterator().next());
       }
     }
     if (_labelProvider != null) {
-      return _labelProvider.getImage(object_p);
+      return _labelProvider.getImage(object);
     }
-    if (object_p instanceof IAdaptable) {
-      IItemLabelProvider labelProvider = (IItemLabelProvider) ((IAdaptable) object_p).getAdapter(IItemLabelProvider.class);
+    if (object instanceof IAdaptable) {
+      IItemLabelProvider labelProvider = (IItemLabelProvider) ((IAdaptable) object).getAdapter(IItemLabelProvider.class);
       if (labelProvider != null) {
-        return ExtendedImageRegistry.getInstance().getImage(labelProvider.getImage(object_p));
+        return ExtendedImageRegistry.getInstance().getImage(labelProvider.getImage(object));
       }
     }
-    if (object_p instanceof EObject) {
-      return EObjectLabelProviderHelper.getImage((EObject) object_p);
+    if (object instanceof EObject) {
+      return EObjectLabelProviderHelper.getImage((EObject) object);
     }
     return null;
 
   }
 
   @Override
-  public String getText(Object object_p) {
+  public String getText(Object object) {
 
-    if (object_p instanceof Collection<?>) {
-      Collection<?> col = (Collection<?>) object_p;
+    if (object instanceof Collection<?>) {
+      Collection<?> col = (Collection<?>) object;
       StringBuffer result = new StringBuffer();
       int i = 0;
       for (Object a : col) {
@@ -87,24 +88,24 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
     }
 
     if (_labelProvider != null) {
-      return _labelProvider.getText(object_p);
+      return _labelProvider.getText(object);
     }
-    if (object_p instanceof IAdaptable) {
-      IItemLabelProvider labelProvider = (IItemLabelProvider) ((IAdaptable) object_p).getAdapter(IItemLabelProvider.class);
+    if (object instanceof IAdaptable) {
+      IItemLabelProvider labelProvider = (IItemLabelProvider) ((IAdaptable) object).getAdapter(IItemLabelProvider.class);
       if (labelProvider != null) {
-        return labelProvider.getText(object_p);
+        return labelProvider.getText(object);
       }
     }
-    return EObjectLabelProviderHelper.getText(object_p);
+    return EObjectLabelProviderHelper.getText(object);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void addListener(ILabelProviderListener listener_p) {
+  public void addListener(ILabelProviderListener listener) {
     if (_labelProvider != null) {
-      _labelProvider.addListener(listener_p);
+      _labelProvider.addListener(listener);
     }
   }
 
@@ -122,10 +123,10 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
    * {@inheritDoc}
    */
   @Override
-  public boolean isLabelProperty(Object element_p, String property_p) {
+  public boolean isLabelProperty(Object element, String property) {
 
     if (_labelProvider != null) {
-      return _labelProvider.isLabelProperty(element_p, property_p);
+      return _labelProvider.isLabelProperty(element, property);
     }
     return false;
   }
@@ -134,9 +135,9 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
    * {@inheritDoc}
    */
   @Override
-  public void removeListener(ILabelProviderListener listener_p) {
+  public void removeListener(ILabelProviderListener listener) {
     if (_labelProvider != null) {
-      _labelProvider.removeListener(listener_p);
+      _labelProvider.removeListener(listener);
     }
   }
 
@@ -144,9 +145,9 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
    * {@inheritDoc}
    */
   @Override
-  public Font getFont(Object element_p) {
+  public Font getFont(Object element) {
     if (_labelProvider instanceof IFontProvider) {
-      return ((IFontProvider) _labelProvider).getFont(element_p);
+      return ((IFontProvider) _labelProvider).getFont(element);
     }
     return null;
   }
@@ -155,9 +156,9 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
    * {@inheritDoc}
    */
   @Override
-  public Color getForeground(Object element_p) {
+  public Color getForeground(Object element) {
     if (_labelProvider instanceof IColorProvider) {
-      return ((IColorProvider) _labelProvider).getForeground(element_p);
+      return ((IColorProvider) _labelProvider).getForeground(element);
     }
     return null;
   }
@@ -166,9 +167,9 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
    * {@inheritDoc}
    */
   @Override
-  public Color getBackground(Object element_p) {
+  public Color getBackground(Object element) {
     if (_labelProvider instanceof IColorProvider) {
-      return ((IColorProvider) _labelProvider).getBackground(element_p);
+      return ((IColorProvider) _labelProvider).getBackground(element);
     }
     return null;
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
   private Map<Object, List<IMarker>> markers; // markers that live under a validation rule id
   private List<IMarker> messages; // markers that live directly under the root (e.g logs from transition)
 
-  public PreferenceRuleSetLabelProvider(TreeViewer viewer_p, MarkerViewHelper helper_p, IViewerRefresh refresh_p) {
-    super(viewer_p, helper_p, refresh_p);
+  public PreferenceRuleSetLabelProvider(TreeViewer viewer, MarkerViewHelper helper, IViewerRefresh refresh) {
+    super(viewer, helper, refresh);
     refillCache();
   }
 
@@ -43,10 +44,10 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
     }
   }
 
-  private Object findKey(IMarker marker_p) {
-    Object key = MarkerViewHelper.getConstraintDescriptor(marker_p);
+  private Object findKey(IMarker marker) {
+    Object key = MarkerViewHelper.getConstraintDescriptor(marker);
     if (key == null) {
-      Diagnostic d = MarkerViewHelper.getDiagnostic(marker_p);
+      Diagnostic d = MarkerViewHelper.getDiagnostic(marker);
       if (d != null) {
         key = MarkerViewHelper.OTHER_RULES;
       }
@@ -57,12 +58,12 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
   /**
    * {@inheritDoc}
    */
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     Object parent = null;
-    if (element_p instanceof IMarker) {
-      parent = MarkerViewHelper.getConstraintDescriptor((IMarker) element_p);
+    if (element instanceof IMarker) {
+      parent = MarkerViewHelper.getConstraintDescriptor((IMarker) element);
       if (parent == null) {
-        Diagnostic d = MarkerViewHelper.getDiagnostic((IMarker) element_p);
+        Diagnostic d = MarkerViewHelper.getDiagnostic((IMarker) element);
         if (d != null) {
           parent = MarkerViewHelper.OTHER_RULES;
         }
@@ -74,7 +75,7 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
   /**
    * {@inheritDoc}
    */
-  public synchronized Object[] getElements(Object inputElement_p) {
+  public synchronized Object[] getElements(Object inputElement) {
     Object[] elems = new Object[markers.size() + messages.size()];
     int i = 0;
     Set<?> keys = markers.keySet();
@@ -90,8 +91,8 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
   /**
    * {@inheritDoc}
    */
-  public synchronized Object[] getChildren(Object parentElement_p) {
-    List<IMarker> children = markers.get(parentElement_p);
+  public synchronized Object[] getChildren(Object parentElement) {
+    List<IMarker> children = markers.get(parentElement);
     if (children != null) {
       return children.toArray();
     }
@@ -101,8 +102,8 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
   /**
    * {@inheritDoc}
    */
-  public synchronized boolean hasChildren(Object element_p) {
-    if (element_p == viewer.getInput()) {
+  public synchronized boolean hasChildren(Object element) {
+    if (element == viewer.getInput()) {
       Set<?> keys = markers.keySet();
       for (Object key : keys) {
         List<IMarker> children = markers.get(key);
@@ -113,24 +114,24 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
       return !messages.isEmpty();
     }
 
-    List<IMarker> children = markers.get(element_p);
+    List<IMarker> children = markers.get(element);
     if ((children != null) && (children.size() > 0)) {
       return true;
     }
     return false;
   }
 
-  private void markerAddedIntern(IMarker marker_p) {
-    Object key = findKey(marker_p);
+  private void markerAddedIntern(IMarker marker) {
+    Object key = findKey(marker);
     if (key != null) {
       List<IMarker> markersForKey = markers.get(key);
       if (markersForKey == null) {
         markersForKey = new ArrayList<IMarker>();
         markers.put(key, markersForKey);
       }
-      markersForKey.add(marker_p);
+      markersForKey.add(marker);
     } else {
-      messages.add(marker_p);
+      messages.add(marker);
     }
     viewerRefresh.refresh();
 
@@ -139,26 +140,26 @@ public class PreferenceRuleSetLabelProvider extends AbstractMarkerViewContentPro
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerAdded(IMarker marker_p) {
-    markerAddedIntern(marker_p);
+  public synchronized void markerAdded(IMarker marker) {
+    markerAddedIntern(marker);
   }
 
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerDeleted(IMarker marker_p) {
+  public synchronized void markerDeleted(IMarker marker) {
     boolean removed = false;
     for (Object key : markers.keySet()) {
       List<IMarker> children = markers.get(key);
       if (children != null) {
-        removed = children.remove(marker_p);
+        removed = children.remove(marker);
         if (removed) {
           break;
         }
       }
     }
     if (!removed) {
-      messages.remove(marker_p);
+      messages.remove(marker);
     }
     viewerRefresh.refresh();
   }

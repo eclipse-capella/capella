@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
 import java.util.ArrayList;
@@ -47,24 +48,24 @@ public abstract class AbstractData {
 
   /**
    * Constructor.
-   * @param displayedElements_p
-   * @param context_p optional parameter.
+   * @param displayedElements
+   * @param context optional parameter.
    */
-  protected AbstractData(Collection<? extends Object> displayedElements_p, Object context_p) {
-    _context = context_p;
+  protected AbstractData(Collection<? extends Object> displayedElements, Object context) {
+    _context = context;
     _rootElements = initializeRootElementCollection();
-    _validElements = initializeValidElementCollection(displayedElements_p);
-    for (Object modelElement : displayedElements_p) {
+    _validElements = initializeValidElementCollection(displayedElements);
+    for (Object modelElement : displayedElements) {
       addElement(modelElement);
     }
   }
 
   /**
    * Add all given elements.
-   * @param elements_p must be not <code>null</code>.
+   * @param elements must be not <code>null</code>.
    */
-  public void addAllElements(Object[] elements_p) {
-    for (Object element : elements_p) {
+  public void addAllElements(Object[] elements) {
+    for (Object element : elements) {
       addElement(element);
       addValidElement(element);
     }
@@ -72,18 +73,18 @@ public abstract class AbstractData {
 
   /**
    * Add given element in root ones.
-   * @param element_p
+   * @param element
    */
-  public void addElement(Object element_p) {
-    _rootElements.add(element_p);
+  public void addElement(Object element) {
+    _rootElements.add(element);
   }
 
   /**
    * Add given element in valid ones.
-   * @param element_p
+   * @param element
    */
-  protected void addValidElement(Object element_p) {
-    _validElements.add(element_p);
+  protected void addValidElement(Object element) {
+    _validElements.add(element);
   }
 
   /**
@@ -96,10 +97,10 @@ public abstract class AbstractData {
 
   /**
    * Get children for given element.
-   * @param element_p
+   * @param element
    * @return a not <code>null</code> array.
    */
-  public abstract Object[] getChildren(Object element_p);
+  public abstract Object[] getChildren(Object element);
 
   /**
    * Get the context given at construction time.
@@ -126,10 +127,10 @@ public abstract class AbstractData {
 
   /**
    * Get parent of given object.
-   * @param element_p
+   * @param element
    * @return <code>null</code> if no parent.
    */
-  public abstract Object getParent(Object element_p);
+  public abstract Object getParent(Object element);
 
   /**
    * Get valid elements.
@@ -151,19 +152,19 @@ public abstract class AbstractData {
   /**
    * Initialize internal data structure for valid elements.<br>
    * Default implementation uses {@link HashSet} to avoid duplicated elements.
-   * @param displayedElements_p
+   * @param displayedElements
    */
-  protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements_p) {
-    return new HashSet<Object>(displayedElements_p);
+  protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements) {
+    return new HashSet<Object>(displayedElements);
   }
 
   /**
    * Is given element valid ?
-   * @param elment_p
+   * @param elment
    * @return <code>true</code> means valid.
    */
-  public boolean isValid(Object elment_p) {
-    return _validElements.contains(elment_p);
+  public boolean isValid(Object elment) {
+    return _validElements.contains(elment);
   }
 
   /**
@@ -177,10 +178,10 @@ public abstract class AbstractData {
 
   /**
    * Remove all given elements.
-   * @param elements_p must be not <code>null</code>.
+   * @param elements must be not <code>null</code>.
    */
-  public void removeAllElements(Object[] elements_p) {
-    for (Object element : elements_p) {
+  public void removeAllElements(Object[] elements) {
+    for (Object element : elements) {
       removeElement(element);
       removeValidElement(element);
     }
@@ -188,25 +189,25 @@ public abstract class AbstractData {
 
   /**
    * Remove given element from root ones.
-   * @param element_p
+   * @param element
    */
-  public void removeElement(Object element_p) {
-    _rootElements.remove(element_p);
+  public void removeElement(Object element) {
+    _rootElements.remove(element);
   }
 
   /**
    * Remove given element from root ones.
-   * @param element_p
+   * @param element
    */
-  public void removeValidElement(Object element_p) {
-    _validElements.remove(element_p);
+  public void removeValidElement(Object element) {
+    _validElements.remove(element);
   }
 
   /**
    * Set given object as the one notified (i.e call {@link Runnable#run()} on it) when valid elements change.
-   * @param notifiedForValidElementsChanges_p the notifiedForValidElementsChanges to set
+   * @param notifiedForValidElementsChanges the notifiedForValidElementsChanges to set
    */
-  public void setNotifiedForValidElementsChanges(Runnable notifiedForValidElementsChanges_p) {
-    _notifiedForValidElementsChanges = notifiedForValidElementsChanges_p;
+  public void setNotifiedForValidElementsChanges(Runnable notifiedForValidElementsChanges) {
+    _notifiedForValidElementsChanges = notifiedForValidElementsChanges;
   }
 }

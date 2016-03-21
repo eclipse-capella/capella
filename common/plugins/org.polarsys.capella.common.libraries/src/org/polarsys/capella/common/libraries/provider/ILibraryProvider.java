@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.libraries.provider;
 
 import java.util.Collection;
@@ -32,32 +33,32 @@ public interface ILibraryProvider {
   /**
    * Returns the related model if the object is linked to a model provided by this provider or null otherwise
    */
-  public IModel getModel(EObject object_p);
+  public IModel getModel(EObject object);
 
   /**
    * Returns the root model for the given editing domain
    */
-  public IModel getModel(TransactionalEditingDomain domain_p);
+  public IModel getModel(TransactionalEditingDomain domain);
 
   /**
    * Returns a model for the given identifier and the specific editing domain
    */
-  public IModel getModelDefinition(IModelIdentifier identifier_p, TransactionalEditingDomain domain_p);
+  public IModel getModelDefinition(IModelIdentifier identifier, TransactionalEditingDomain domain);
 
   /**
    * Add a listener to be notified on provider state changed
    */
-  public void addListener(ILibraryProviderListener listener_p);
+  public void addListener(ILibraryProviderListener listener);
 
   /**
    * Remove an already registered listener 
    */
-  public void removeListener(ILibraryProviderListener listener_p);
+  public void removeListener(ILibraryProviderListener listener);
 
   /**
-   * @param semanticUri_p
+   * @param semanticUri
    * @return
    */
-  public IModelIdentifier getModelIdentifier(URI semanticUri_p);
+  public IModelIdentifier getModelIdentifier(URI semanticUri);
 
 }

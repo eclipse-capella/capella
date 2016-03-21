@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.services.helper;
 
 import java.util.List;
@@ -65,64 +66,64 @@ public class FormHelper {
   /**
    * Create a new composite and set the layout using
    * {@link #updateCompositeLayoutWithLayoutType(Composite, org.polarsys.capella.common.mdsofa.common.ui.helper.FormHelper.LayoutType, int)} method.
-   * @param toolkit_p
-   * @param parent_p
-   * @param numColumns_p
+   * @param toolkit
+   * @param parent
+   * @param numColumns
    * @return
    */
-  public static Composite createCompositeWithLayoutType(FormToolkit toolkit_p, Composite parent_p, LayoutType layoutType_p, int numColumns_p,
-      boolean equalWidth_p) {
-    Composite result = toolkit_p.createComposite(parent_p);
-    updateCompositeLayoutWithLayoutType(result, layoutType_p, numColumns_p, equalWidth_p);
+  public static Composite createCompositeWithLayoutType(FormToolkit toolkit, Composite parent, LayoutType layoutType, int numColumns,
+      boolean equalWidth) {
+    Composite result = toolkit.createComposite(parent);
+    updateCompositeLayoutWithLayoutType(result, layoutType, numColumns, equalWidth);
     return result;
   }
 
   /**
    * Create a user text widget with preceding label.<br>
    * Requires at least a two columns layout so that both the label and the text are displayed on the same line.
-   * @param toolkit_p
-   * @param parent_p
-   * @param labelMessage_p
-   * @param initialText_p
-   * @param editable_p
+   * @param toolkit
+   * @param parent
+   * @param labelMessage
+   * @param initialText
+   * @param editable
    * @return
    */
-  public static Couple<Label, Text> createLabelAndText(FormToolkit toolkit_p, Composite parent_p, String labelMessage_p, String initialText_p,
-      boolean editable_p) {
+  public static Couple<Label, Text> createLabelAndText(FormToolkit toolkit, Composite parent, String labelMessage, String initialText,
+      boolean editable) {
     // Create label.
-    Label label = toolkit_p.createLabel(parent_p, labelMessage_p, SWT.WRAP);
-    label.setForeground(toolkit_p.getColors().getColor(IFormColors.TITLE));
+    Label label = toolkit.createLabel(parent, labelMessage, SWT.WRAP);
+    label.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
     // Create text.
-    Text text = new Text(parent_p, SWT.BORDER);
+    Text text = new Text(parent, SWT.BORDER);
     text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     // Set existing value.
-    if (null != initialText_p) {
-      text.setText(initialText_p);
+    if (null != initialText) {
+      text.setText(initialText);
     }
     // Set editable state.
-    text.setEditable(editable_p);
+    text.setEditable(editable);
     return new Couple<Label, Text>(label, text);
   }
 
   /**
    * Create a user text widget with preceding label and following button.<br>
    * Requires at least a three columns layout so that the label, the text and the button are displayed on the same line.
-   * @param toolkit_p
-   * @param parent_p
-   * @param labelMessage_p
-   * @param buttonLabel_p
-   * @param listener_p
+   * @param toolkit
+   * @param parent
+   * @param labelMessage
+   * @param buttonLabel
+   * @param listener
    * @return
    */
-  public static Couple<Text, Button> createLabelTextAndButton(FormToolkit toolkit_p, Composite parent_p, String labelMessage_p, String buttonLabel_p,
-      SelectionListener listener_p) {
+  public static Couple<Text, Button> createLabelTextAndButton(FormToolkit toolkit, Composite parent, String labelMessage, String buttonLabel,
+      SelectionListener listener) {
     // Create label and text.
-    Couple<Label, Text> labelAndText = createLabelAndText(toolkit_p, parent_p, labelMessage_p, null, true);
+    Couple<Label, Text> labelAndText = createLabelAndText(toolkit, parent, labelMessage, null, true);
     // Create button.
-    Button button = toolkit_p.createButton(parent_p, buttonLabel_p, SWT.PUSH);
+    Button button = toolkit.createButton(parent, buttonLabel, SWT.PUSH);
     // Add button listener.
-    if (null != listener_p) {
-      button.addSelectionListener(listener_p);
+    if (null != listener) {
+      button.addSelectionListener(listener);
     }
     return new Couple<Text, Button>(labelAndText.getValue(), button);
   }
@@ -130,46 +131,46 @@ public class FormHelper {
   /**
    * Create a link with a label description.<br>
    * Requires a two columns layout so that both the link and the label are displayed on the same line.
-   * @param toolkit_p
-   * @param parent_p
-   * @param icon_p
-   * @param linkText_p
-   * @param linkRef_p
-   * @param linkDescription_p can be <code>null</code>, if not necessary. Description is rendered as a tooltip.
-   * @param listener_p
+   * @param toolkit
+   * @param parent
+   * @param icon
+   * @param linkText
+   * @param linkRef
+   * @param linkDescription can be <code>null</code>, if not necessary. Description is rendered as a tooltip.
+   * @param listener
    */
-  public static void createLinkWithDescription(FormToolkit toolkit_p, Composite parent_p, Image icon_p, String linkText_p, Object linkRef_p,
-      String linkDescription_p, IHyperlinkListener listener_p) {
-    ImageHyperlink specificationLink = toolkit_p.createImageHyperlink(parent_p, SWT.WRAP);
-    specificationLink.setText(linkText_p);
-    if (null != linkDescription_p) {
-      specificationLink.setToolTipText(linkDescription_p);
+  public static void createLinkWithDescription(FormToolkit toolkit, Composite parent, Image icon, String linkText, Object linkRef,
+      String linkDescription, IHyperlinkListener listener) {
+    ImageHyperlink specificationLink = toolkit.createImageHyperlink(parent, SWT.WRAP);
+    specificationLink.setText(linkText);
+    if (null != linkDescription) {
+      specificationLink.setToolTipText(linkDescription);
     }
-    specificationLink.setImage(icon_p);
-    specificationLink.setHref(linkRef_p);
-    specificationLink.addHyperlinkListener(listener_p);
+    specificationLink.setImage(icon);
+    specificationLink.setHref(linkRef);
+    specificationLink.addHyperlinkListener(listener);
   }
 
   /**
    * Create a rich {@link FormText} with specified parameters.
-   * @param toolkit_p
-   * @param parent_p
-   * @param content_p
-   * @param listener_p
+   * @param toolkit
+   * @param parent
+   * @param content
+   * @param listener
    */
-  public static FormText createRichText(FormToolkit toolkit_p, Composite parent_p, String content_p, IHyperlinkListener listener_p) {
+  public static FormText createRichText(FormToolkit toolkit, Composite parent, String content, IHyperlinkListener listener) {
     // Create the form text.
-    FormText text = toolkit_p.createFormText(parent_p, false);
-    if (null != content_p) {
+    FormText text = toolkit.createFormText(parent, false);
+    if (null != content) {
       try {
         // Set its pseudo HTML content.
-        text.setText(content_p, true, false);
+        text.setText(content, true, false);
       } catch (SWTException e) {
         text.setText(e.getMessage(), false, false);
       }
     }
-    if (null != listener_p) {
-      text.addHyperlinkListener(listener_p);
+    if (null != listener) {
+      text.addHyperlinkListener(listener);
     }
     return text;
   }
@@ -177,19 +178,19 @@ public class FormHelper {
   /**
    * Create a section with a composite child using given child layout type.<br>
    * Created section layouts in filling and grabbing in both directions.
-   * @param toolkit_p
-   * @param parent_p
-   * @param sectionStyle_p
-   * @param layoutType_p
-   * @param childNumColumns_p
-   * @param equalWidth_p
+   * @param toolkit
+   * @param parent
+   * @param sectionStyle
+   * @param layoutType
+   * @param childNumColumns
+   * @param equalWidth
    * @return
    */
-  public static Couple<Section, Composite> createSectionWithChildComposite(FormToolkit toolkit_p, Composite parent_p, int sectionStyle_p,
-      LayoutType layoutType_p, int childNumColumns_p, boolean equalWidth_p) {
-    Section resultingSection = toolkit_p.createSection(parent_p, sectionStyle_p);
-    updateControlLayoutDataWithLayoutTypeData(resultingSection, layoutType_p);
-    Composite childComposite = createCompositeWithLayoutType(toolkit_p, resultingSection, layoutType_p, childNumColumns_p, equalWidth_p);
+  public static Couple<Section, Composite> createSectionWithChildComposite(FormToolkit toolkit, Composite parent, int sectionStyle,
+      LayoutType layoutType, int childNumColumns, boolean equalWidth) {
+    Section resultingSection = toolkit.createSection(parent, sectionStyle);
+    updateControlLayoutDataWithLayoutTypeData(resultingSection, layoutType);
+    Composite childComposite = createCompositeWithLayoutType(toolkit, resultingSection, layoutType, childNumColumns, equalWidth);
     resultingSection.setClient(childComposite);
     return new Couple<Section, Composite>(resultingSection, childComposite);
   }
@@ -197,29 +198,29 @@ public class FormHelper {
   /**
    * Create a section with specified title and description.<br>
    * The created section layouts its content according to the {@link TableWrapLayout}.
-   * @param toolkit_p
-   * @param parent_p
-   * @param title_p
-   * @param description_p can be <code>null</code>
+   * @param toolkit
+   * @param parent
+   * @param title
+   * @param description can be <code>null</code>
    * @return a {@link Couple} containing the child composite and the created section.
    */
-  public static Couple<Section, Composite> createSectionWithDescription(FormToolkit toolkit_p, Composite parent_p, String title_p, String description_p) {
+  public static Couple<Section, Composite> createSectionWithDescription(FormToolkit toolkit, Composite parent, String title, String description) {
     // Create the section style.
     int sectionStyle = ExpandableComposite.TITLE_BAR;
-    if (null != description_p) {
+    if (null != description) {
       // Add description style.
       sectionStyle |= Section.DESCRIPTION;
     }
     // Create the section.
     Couple<Section, Composite> createdSectionWithChildComposite =
-        createSectionWithChildComposite(toolkit_p, parent_p, sectionStyle, LayoutType.GRID_LAYOUT, 1, true);
+        createSectionWithChildComposite(toolkit, parent, sectionStyle, LayoutType.GRID_LAYOUT, 1, true);
     // Get created section.
     Section section = createdSectionWithChildComposite.getKey();
     // Set it its title.
-    section.setText(title_p);
+    section.setText(title);
     // Set it its description if necessary.
-    if (null != description_p) {
-      section.setDescription(description_p);
+    if (null != description) {
+      section.setDescription(description);
     }
     return createdSectionWithChildComposite;
   }
@@ -227,37 +228,37 @@ public class FormHelper {
   /**
    * Create a section with specified title and description.<br>
    * The created section layouts its content according to the {@link TableWrapLayout}.
-   * @param managedForm_p
-   * @param parent_p
-   * @param title_p
-   * @param description_p can be <code>null</code>
+   * @param managedForm
+   * @param parent
+   * @param title
+   * @param description can be <code>null</code>
    * @return a {@link Couple} containing the child composite and the created section.
    */
-  public static Couple<Section, Composite> createTwistieSectionWithDescription(final IManagedForm managedForm_p, Composite parent_p, String title_p,
-      String description_p) {
+  public static Couple<Section, Composite> createTwistieSectionWithDescription(final IManagedForm managedForm, Composite parent, String title,
+      String description) {
     // Create the section style.
     int sectionStyle = ExpandableComposite.TWISTIE | ExpandableComposite.TITLE_BAR;
-    if (null != description_p) {
+    if (null != description) {
       // Add description style.
       sectionStyle |= Section.DESCRIPTION;
     }
     // Create the section.
     Couple<Section, Composite> createdSectionWithChildComposite =
-        createSectionWithChildComposite(managedForm_p.getToolkit(), parent_p, sectionStyle, LayoutType.TABLEWRAP_LAYOUT, 1, true);
+        createSectionWithChildComposite(managedForm.getToolkit(), parent, sectionStyle, LayoutType.TABLEWRAP_LAYOUT, 1, true);
     // Get created section.
     Section section = createdSectionWithChildComposite.getKey();
     section.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
     // Set it its title.
-    section.setText(title_p);
+    section.setText(title);
     // Set it its description if necessary.
-    if (null != description_p) {
-      section.setDescription(description_p);
+    if (null != description) {
+      section.setDescription(description);
     }
     // Handle expansion.
     section.addExpansionListener(new ExpansionAdapter() {
       @Override
       public void expansionStateChanged(ExpansionEvent e) {
-        managedForm_p.reflow(false);
+        managedForm.reflow(false);
       }
     });
     return createdSectionWithChildComposite;
@@ -265,52 +266,52 @@ public class FormHelper {
 
   /**
    * Create a twistie section with a title, a description and a toolbar.
-   * @param sectionContainer_p
-   * @param managedForm_p
-   * @param title_p
-   * @param description_p can be <code>null</code>
-   * @param isExpanded_p Is the section expanded at startup.
-   * @param toolbarActions_p can be <code>null</code>
+   * @param sectionContainer
+   * @param managedForm
+   * @param title
+   * @param description can be <code>null</code>
+   * @param isExpanded Is the section expanded at startup.
+   * @param toolbarActions can be <code>null</code>
    * @return
    */
-  public static Couple<Section, Composite> createTwistieSectionWithToolbar(Composite sectionContainer_p, IManagedForm managedForm_p, String title_p,
-      String description_p, boolean isExpanded_p, List<? extends IAction> toolbarActions_p) {
+  public static Couple<Section, Composite> createTwistieSectionWithToolbar(Composite sectionContainer, IManagedForm managedForm, String title,
+      String description, boolean isExpanded, List<? extends IAction> toolbarActions) {
     // Create the section.
-    Couple<Section, Composite> createdSection = FormHelper.createTwistieSectionWithDescription(managedForm_p, sectionContainer_p, title_p, description_p);
+    Couple<Section, Composite> createdSection = FormHelper.createTwistieSectionWithDescription(managedForm, sectionContainer, title, description);
     // Make this section expanded at construction time.
     Section section = createdSection.getKey();
-    section.setExpanded(isExpanded_p);
+    section.setExpanded(isExpanded);
     // Create the toolbar for the section.
-    if (null != toolbarActions_p) {
-      createSectionToolbar(section, toolbarActions_p);
+    if (null != toolbarActions) {
+      createSectionToolbar(section, toolbarActions);
     }
     return createdSection;
   }
 
   /**
    * Force control size.
-   * @param control_p
-   * @param widthInChars_p The expected width, in number of chars to display.
-   * @param heightInChars_p The expected height, in number of chars to display.
+   * @param control
+   * @param widthInChars The expected width, in number of chars to display.
+   * @param heightInChars The expected height, in number of chars to display.
    */
-  public static void forceControlSize(Control control_p, int widthInChars_p, int heightInChars_p) {
+  public static void forceControlSize(Control control, int widthInChars, int heightInChars) {
     // Preconditions.
-    if ((null == control_p) || (0 >= widthInChars_p) || (0 >= heightInChars_p)) {
+    if ((null == control) || (0 >= widthInChars) || (0 >= heightInChars)) {
       return;
     }
     // Get font metrics.
-    GC gc = new GC(control_p);
+    GC gc = new GC(control);
     FontMetrics fontMetrics = gc.getFontMetrics();
     gc.dispose();
     // Get layout data.
-    Object layoutData = control_p.getLayoutData();
+    Object layoutData = control.getLayoutData();
     if (layoutData instanceof GridData) {
       GridData data = (GridData) layoutData;
-      data.widthHint = Dialog.convertWidthInCharsToPixels(fontMetrics, widthInChars_p);
-      data.heightHint = Dialog.convertHeightInCharsToPixels(fontMetrics, heightInChars_p);
+      data.widthHint = Dialog.convertWidthInCharsToPixels(fontMetrics, widthInChars);
+      data.heightHint = Dialog.convertHeightInCharsToPixels(fontMetrics, heightInChars);
     } else if (layoutData instanceof TableWrapData) {
       TableWrapData data = (TableWrapData) layoutData;
-      data.heightHint = Dialog.convertHeightInCharsToPixels(fontMetrics, heightInChars_p);
+      data.heightHint = Dialog.convertHeightInCharsToPixels(fontMetrics, heightInChars);
     }
   }
 
@@ -318,26 +319,26 @@ public class FormHelper {
    * Update given composite with given layout type and given number of columns (if it makes any sense).<br>
    * Also set the layout data to
    * {@link #updateControlLayoutDataWithLayoutTypeData(Composite, org.polarsys.capella.common.mdsofa.common.ui.helper.FormHelper.LayoutType)}.
-   * @param composite_p
-   * @param layoutType_p
-   * @param numColumns_p
+   * @param composite
+   * @param layoutType
+   * @param numColumns
    */
-  public static Object updateCompositeLayoutWithLayoutType(Composite composite_p, LayoutType layoutType_p, int numColumns_p, boolean equalWidth_p) {
+  public static Object updateCompositeLayoutWithLayoutType(Composite composite, LayoutType layoutType, int numColumns, boolean equalWidth) {
     Layout selectedLayout = null;
-    if (LayoutType.GRID_LAYOUT.equals(layoutType_p)) {
+    if (LayoutType.GRID_LAYOUT.equals(layoutType)) {
       GridLayout layout = new GridLayout();
-      layout.numColumns = numColumns_p;
-      layout.makeColumnsEqualWidth = equalWidth_p;
+      layout.numColumns = numColumns;
+      layout.makeColumnsEqualWidth = equalWidth;
       selectedLayout = layout;
-    } else if (LayoutType.TABLEWRAP_LAYOUT.equals(layoutType_p)) {
+    } else if (LayoutType.TABLEWRAP_LAYOUT.equals(layoutType)) {
       TableWrapLayout layout = new TableWrapLayout();
-      layout.numColumns = numColumns_p;
-      layout.makeColumnsEqualWidth = equalWidth_p;
+      layout.numColumns = numColumns;
+      layout.makeColumnsEqualWidth = equalWidth;
       selectedLayout = layout;
     }
     // Do not set neither layout if layout could not be created.
     if (null != selectedLayout) {
-      composite_p.setLayout(selectedLayout);
+      composite.setLayout(selectedLayout);
     }
     return selectedLayout;
   }
@@ -345,36 +346,36 @@ public class FormHelper {
   /**
    * Update given control layout data depending on given layout type.<br>
    * Replace layout data is set to fill/grab in both directions, if it makes any sense.
-   * @param control_p
+   * @param control
    */
-  public static Object updateControlLayoutDataWithLayoutTypeData(Control control_p, LayoutType layoutType_p) {
+  public static Object updateControlLayoutDataWithLayoutTypeData(Control control, LayoutType layoutType) {
     Object layoutData = null;
-    if (LayoutType.GRID_LAYOUT.equals(layoutType_p)) {
+    if (LayoutType.GRID_LAYOUT.equals(layoutType)) {
       layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
-    } else if (LayoutType.TABLEWRAP_LAYOUT.equals(layoutType_p)) {
+    } else if (LayoutType.TABLEWRAP_LAYOUT.equals(layoutType)) {
       layoutData = new TableWrapData(TableWrapData.FILL_GRAB);
     }
     // Do not set layout data if it could not be created.
     if (null != layoutData) {
-      control_p.setLayoutData(layoutData);
+      control.setLayoutData(layoutData);
     }
     return layoutData;
   }
 
   /**
    * Create a section toolbar in given section filled in with provided actions.
-   * @param section_p
-   * @param actions_p
+   * @param section
+   * @param actions
    */
-  public static void createSectionToolbar(Section section_p, List<? extends IAction> actions_p) {
+  public static void createSectionToolbar(Section section, List<? extends IAction> actions) {
     // Preconditions.
-    if ((null == actions_p) || actions_p.isEmpty() || (null == section_p)) {
+    if ((null == actions) || actions.isEmpty() || (null == section)) {
       return;
     }
     // Create a toolbar manager.
     ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT);
     // Create the widget against the section widget.
-    ToolBar toolbar = toolBarManager.createControl(section_p);
+    ToolBar toolbar = toolBarManager.createControl(section);
     // Create cursor to provide the end-user with an UI feedback.
     final Cursor handCursor = new Cursor(Display.getCurrent(), SWT.CURSOR_HAND);
     toolbar.setCursor(handCursor);
@@ -387,30 +388,30 @@ public class FormHelper {
       }
     });
     // Loop over provided actions.
-    for (IAction action : actions_p) {
+    for (IAction action : actions) {
       toolBarManager.add(action);
     }
     toolBarManager.update(true);
-    section_p.setTextClient(toolbar);
+    section.setTextClient(toolbar);
   }
 
   /**
    * Adapt specified composite to {@link FormToolkit} recursively.
-   * @param toolkit_p
-   * @param composite_p
+   * @param toolkit
+   * @param composite
    */
-  public static void adaptRecursively(FormToolkit toolkit_p, Composite composite_p) {
+  public static void adaptRecursively(FormToolkit toolkit, Composite composite) {
     // Preconditions.
-    if ((null == composite_p) || (null == toolkit_p)) {
+    if ((null == composite) || (null == toolkit)) {
       return;
     }
-    toolkit_p.adapt(composite_p, true, true);
-    Control[] children = composite_p.getChildren();
+    toolkit.adapt(composite, true, true);
+    Control[] children = composite.getChildren();
     for (Control control : children) {
       if (null != control) {
-        toolkit_p.adapt(control, true, true);
+        toolkit.adapt(control, true, true);
         if (control instanceof Composite) {
-          adaptRecursively(toolkit_p, (Composite) control);
+          adaptRecursively(toolkit, (Composite) control);
         }
       }
     }
@@ -418,21 +419,21 @@ public class FormHelper {
 
   /**
    * Adapt background color of specified composite and its children.
-   * @param composite_p
-   * @param color_p
-   * @param ignoreEditableTextField_p <code>true</code> means editable text field won't be modified.
+   * @param composite
+   * @param color
+   * @param ignoreEditableTextField <code>true</code> means editable text field won't be modified.
    */
-  public static void adaptBackgroundColor(Composite composite_p, Color color_p, boolean ignoreEditableTextField_p) {
+  public static void adaptBackgroundColor(Composite composite, Color color, boolean ignoreEditableTextField) {
     // Preconditions.
-    if ((null == composite_p) || (null == color_p)) {
+    if ((null == composite) || (null == color)) {
       return;
     }
-    composite_p.setBackground(color_p);
-    Control[] children = composite_p.getChildren();
+    composite.setBackground(color);
+    Control[] children = composite.getChildren();
     for (Control control : children) {
       if (null != control) {
         boolean applyColor = true;
-        if ((control instanceof Text) && !ignoreEditableTextField_p && ((Text) control).getEditable()) {
+        if ((control instanceof Text) && !ignoreEditableTextField && ((Text) control).getEditable()) {
           applyColor = false;
         }
         if (control instanceof Label) {
@@ -441,10 +442,10 @@ public class FormHelper {
           }
         }
         if (applyColor) {
-          control.setBackground(color_p);
+          control.setBackground(color);
         }
         if (control instanceof Composite) {
-          adaptBackgroundColor((Composite) control, color_p, ignoreEditableTextField_p);
+          adaptBackgroundColor((Composite) control, color, ignoreEditableTextField);
         }
       }
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,8 +53,8 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
   }
 
   @Override
-  public void performRender(Composite parent_p, IRendererContext rendererContext_p) {
-    super.performRender(parent_p, rendererContext_p);
+  public void performRender(Composite parent, IRendererContext rendererContext) {
+    super.performRender(parent, rendererContext);
 
   }
 
@@ -62,13 +62,13 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
   * {@inheritDoc}
   */
   @Override
-  protected Object createInput(IProperty property_p, IRendererContext propertyContext_p) {
-    return super.createInput(property_p, propertyContext_p);
+  protected Object createInput(IProperty property, IRendererContext propertyContext) {
+    return super.createInput(property, propertyContext);
   }
 
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext propertyContext_p, Object newValue_p) {
-    AbstractData data = (AbstractData) super.createInput(property_p, propertyContext_p);
+  public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
+    AbstractData data = (AbstractData) super.createInput(property, propertyContext);
     AbstractData menu = (AbstractData) getViewer().getClientViewer().getInput();
 
     if (menu != null) {
@@ -77,7 +77,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
       getViewer().getClientViewer().refresh();
 
     } else {
-      reloadInput(property_p, propertyContext_p);
+      reloadInput(property, propertyContext);
 
     }
   }
@@ -86,14 +86,14 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
    * {@inheritDoc}
    */
   @Override
-  protected ILabelProvider createLabelProvider(final IRendererContext rendererContext_p) {
-    _defaultProvider = super.createLabelProvider(rendererContext_p);
+  protected ILabelProvider createLabelProvider(final IRendererContext rendererContext) {
+    _defaultProvider = super.createLabelProvider(rendererContext);
 
     final InstanciationLabelDecorator decorator = new InstanciationLabelDecorator();
 
-    return new DefaultLabelProvider(rendererContext_p.getLabelProvider()) {
+    return new DefaultLabelProvider(rendererContext.getLabelProvider()) {
 
-      public Font getBold(Font font_p) {
+      public Font getBold(Font font) {
         Font result = JFaceResources.getFontRegistry().getBold(JFaceResources.getFontRegistry().defaultFont().getFontData()[0].getName());
         return result;
       }
@@ -102,44 +102,44 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
        * {@inheritDoc}
        */
       @Override
-      public Color getBackground(Object element_p) {
-        return ((IColorProvider) _defaultProvider).getBackground(element_p);
+      public Color getBackground(Object element) {
+        return ((IColorProvider) _defaultProvider).getBackground(element);
       }
 
       @Override
-      public Color getForeground(Object element_p) {
+      public Color getForeground(Object element) {
 
-        IStatus status = isImportant(element_p, rendererContext_p);
+        IStatus status = isImportant(element, rendererContext);
         if (status.matches(IStatus.INFO)) {
           return Display.getCurrent().getSystemColor(SWT.COLOR_DARK_MAGENTA);
         }
 
-        return ((IColorProvider) _defaultProvider).getForeground(element_p);
+        return ((IColorProvider) _defaultProvider).getForeground(element);
       }
 
       /**
        * {@inheritDoc}
        */
       @Override
-      public String getText(Object object_p) {
-        if (object_p instanceof EStructuralFeature) {
-          return ((EStructuralFeature) object_p).getName();
+      public String getText(Object object) {
+        if (object instanceof EStructuralFeature) {
+          return ((EStructuralFeature) object).getName();
         }
 
         Collection<EObject> scopeElements =
-            (Collection) rendererContext_p.getPropertyContext().getCurrentValue(
-                rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
+            (Collection) rendererContext.getPropertyContext().getCurrentValue(
+                rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
         Collection<EObject> allScopeElements =
-            (Collection) rendererContext_p.getPropertyContext().getCurrentValue(
-                rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__ALL_SCOPE));
+            (Collection) rendererContext.getPropertyContext().getCurrentValue(
+                rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__ALL_SCOPE));
 
-        String text = super.getText(object_p);
-        if (allScopeElements.contains(object_p)) {
-          text = decorator.decorateText(text, object_p);
+        String text = super.getText(object);
+        if (allScopeElements.contains(object)) {
+          text = decorator.decorateText(text, object);
         }
 
-        IStatus status = isImportant(object_p, rendererContext_p);
+        IStatus status = isImportant(object, rendererContext);
         if (!status.isOK() && !status.getMessage().isEmpty()) {
           return NLS.bind("{0} [{1}]", text, status.getMessage());
         }
@@ -151,43 +151,43 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
        * {@inheritDoc}
        */
       @Override
-      public Font getFont(Object element_p) {
-        Font f = super.getFont(element_p);
+      public Font getFont(Object element) {
+        Font f = super.getFont(element);
         if (f == null) {
-          f = ((IFontProvider) _defaultProvider).getFont(element_p);
+          f = ((IFontProvider) _defaultProvider).getFont(element);
         }
 
-        IStatus status = isImportant(element_p, rendererContext_p);
+        IStatus status = isImportant(element, rendererContext);
 
         if ((status == null) || status.isOK()) {
-          return super.getFont(element_p);
+          return super.getFont(element);
 
         } else if (status.matches(IStatus.WARNING)) {
           return getBold(f);
 
         }
-        return super.getFont(element_p);
+        return super.getFont(element);
       }
 
-      protected IStatus isImportant(Object element_p, IRendererContext rendererContext_p) {
+      protected IStatus isImportant(Object element, IRendererContext context) {
         Collection<EObject> scopeElements =
-            (Collection) rendererContext_p.getPropertyContext().getCurrentValue(
-                rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
+            (Collection) context.getPropertyContext().getCurrentValue(
+                context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
         Collection<EObject> allScopeElements =
-            (Collection) rendererContext_p.getPropertyContext().getCurrentValue(
-                rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__ALL_SCOPE));
+            (Collection) context.getPropertyContext().getCurrentValue(
+                context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__ALL_SCOPE));
 
-        if (!allScopeElements.contains(element_p)) {
+        if (!allScopeElements.contains(element)) {
           return Status.OK_STATUS;
         }
 
-        if (!scopeElements.contains(element_p)) {
+        if (!scopeElements.contains(element)) {
           return new Status(IStatus.INFO, "dd", "");
         }
 
-        IContext context = (IContext) rendererContext_p.getPropertyContext().getSource();
-        if (AttributesHandlerHelper.getInstance(context).isSuffixable(element_p, context)) {
+        IContext ctx = (IContext) context.getPropertyContext().getSource();
+        if (AttributesHandlerHelper.getInstance(ctx).isSuffixable(element, ctx)) {
           return new Status(IStatus.WARNING, "dd", "+SUFFIX");
         }
 
@@ -197,26 +197,26 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
   @Override
-  protected IStatus getStatus(Object element_p, IRendererContext rendererContext_p) {
+  protected IStatus getStatus(Object element, IRendererContext rendererContext) {
     Collection<EObject> scopeElements =
-        (Collection) rendererContext_p.getPropertyContext().getCurrentValue(
-            rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
+        (Collection) rendererContext.getPropertyContext().getCurrentValue(
+            rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
-    if (!scopeElements.contains(element_p)) {
+    if (!scopeElements.contains(element)) {
       return Status.OK_STATUS;
     }
 
-    IContext context = (IContext) rendererContext_p.getPropertyContext().getSource();
-    IStatus status = getDependenciesStatus(Collections.singletonList((EObject) element_p), scopeElements, context);
+    IContext context = (IContext) rendererContext.getPropertyContext().getSource();
+    IStatus status = getDependenciesStatus(Collections.singletonList((EObject) element), scopeElements, context);
     return status;
   }
 
-  public IStatus getDependenciesStatus(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
-    Collection<EObject> values = DependenciesHandlerHelper.getInstance(context_p).getDependencies(elements_p, scopeElements, context_p);
+  public IStatus getDependenciesStatus(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context) {
+    Collection<EObject> values = DependenciesHandlerHelper.getInstance(context).getDependencies(elements, scopeElements, context);
     if (values.isEmpty()) {
       return Status.OK_STATUS;
     }
@@ -224,10 +224,10 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
   }
 
   @Override
-  public void initialize(IProperty property_p, IRendererContext rendererContext_p) {
-    super.initialize(property_p, rendererContext_p);
-    rendererContext_p.getPropertyContext().registerListener(this,
-        rendererContext_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES));
+  public void initialize(IProperty property, IRendererContext rendererContext) {
+    super.initialize(property, rendererContext);
+    rendererContext.getPropertyContext().registerListener(this,
+        rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES));
   }
 
   /**
@@ -239,25 +239,25 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
   }
 
   @Override
-  protected void initializeControls(final Composite parent_p, final IRendererContext context_p) {
-    super.initializeControls(parent_p, context_p);
+  protected void initializeControls(final Composite parent, final IRendererContext context) {
+    super.initializeControls(parent, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void dispose(IRendererContext context_p) {
-    super.dispose(context_p);
+  public void dispose(IRendererContext context) {
+    super.dispose(context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void update(PropertyChangedEvent event_p) {
+  public void update(PropertyChangedEvent event) {
 
-    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES.equals(event_p.getProperty().getId())) {
+    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIXES.equals(event.getProperty().getId())) {
       getViewer().getClientViewer().refresh();
 
     }

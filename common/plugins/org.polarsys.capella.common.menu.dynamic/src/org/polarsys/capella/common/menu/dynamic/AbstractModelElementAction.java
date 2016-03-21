@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.menu.dynamic;
 
 import org.eclipse.emf.common.command.Command;
@@ -28,11 +29,11 @@ public abstract class AbstractModelElementAction extends AbstractNavigatorAction
 
   /**
    * Constructor.
-   * @param shell_p
-   * @param selectionProvider_p
+   * @param shell
+   * @param selectionProvider
    */
-  protected AbstractModelElementAction(Shell shell_p, ISelectionProvider selectionProvider_p) {
-    super(shell_p, selectionProvider_p);
+  protected AbstractModelElementAction(Shell shell, ISelectionProvider selectionProvider) {
+    super(shell, selectionProvider);
     // Set action id based on class name.
     setId(getClass().getName());
   }
@@ -41,9 +42,9 @@ public abstract class AbstractModelElementAction extends AbstractNavigatorAction
    * @see org.polarsys.capella.common.mdsofa.rootasset.ui.workbench.action.navigator.AbstractNavigatorAction#setSelectedElement(java.lang.Object)
    */
   @Override
-  public void setSelectedElement(Object object_p) {
-    if (object_p instanceof Element) {
-      _modelElement = (Element) object_p;
+  public void setSelectedElement(Object object) {
+    if (object instanceof Element) {
+      _modelElement = (Element) object;
     }
   }
 
@@ -57,10 +58,10 @@ public abstract class AbstractModelElementAction extends AbstractNavigatorAction
 
   /**
    * Execute the command.
-   * @param editingDomain_p
-   * @param command_p
+   * @param editingDomain
+   * @param command
    */
-  protected void executeCommand(AdapterFactoryEditingDomain editingDomain_p, Command command_p) {
-    editingDomain_p.getCommandStack().execute(command_p);
+  protected void executeCommand(AdapterFactoryEditingDomain editingDomain, Command command) {
+    editingDomain.getCommandStack().execute(command);
   }
 }

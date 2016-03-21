@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.progress.model;
 
 import java.util.HashMap;
@@ -73,7 +74,7 @@ public abstract class AbstractBusinessThread
    * Runs a step
    * @param progressInfo_p
    */
-  public abstract void doRun(HashMap<String, Object> info_p);
+  public abstract void doRun(HashMap<String, Object> info);
 
   /**
    * @return The started step
@@ -92,10 +93,10 @@ public abstract class AbstractBusinessThread
 
   /**
    * Specifies wether this thread is running or not
-   * @param running_p
+   * @param running
    */
-  public synchronized void setRunning(boolean running_p) {
-    _isRunning = running_p;
+  public synchronized void setRunning(boolean running) {
+    _isRunning = running;
   }
 
   /**
@@ -108,7 +109,7 @@ public abstract class AbstractBusinessThread
   /**
    * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
    */
-  public void update(Observable o_p, Object arg_p) {
+  public void update(Observable o, Object arg) {
     setRunning(!isRunning());
   }  
 }

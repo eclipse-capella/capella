@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.linkedtext.ui;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -58,7 +59,7 @@ public class EmbeddedLinkedTextEditorConfiguration extends SourceViewerConfigura
    * {@inheritDoc}
    */
   @Override
-  public IContentAssistant getContentAssistant(final ISourceViewer sourceViewer_p) {
+  public IContentAssistant getContentAssistant(final ISourceViewer sourceViewer) {
     ContentAssistant ca = new ContentAssistant();
     final LinkedTextCompletionProcessor completionProcessor = new LinkedTextCompletionProcessor(getCompletionProcessorContentProvider());
     ca.setContentAssistProcessor(completionProcessor, IDocument.DEFAULT_CONTENT_TYPE);
@@ -80,7 +81,7 @@ public class EmbeddedLinkedTextEditorConfiguration extends SourceViewerConfigura
    * {@inheritDoc}
    */
   @Override
-  public IPresentationReconciler getPresentationReconciler(final ISourceViewer sourceViewer_p) {
+  public IPresentationReconciler getPresentationReconciler(final ISourceViewer sourceViewer) {
 
     final PresentationReconciler reconciler = new PresentationReconciler();
     final IThemeManager manager = PlatformUI.getWorkbench().getThemeManager();
@@ -93,25 +94,25 @@ public class EmbeddedLinkedTextEditorConfiguration extends SourceViewerConfigura
     theme.addPropertyChangeListener(new IPropertyChangeListener() {
       
       @Override
-      public void propertyChange(PropertyChangeEvent event_p) {
-        if (event_p.getProperty().equals(HYPERLINK_COLOR)){
+      public void propertyChange(PropertyChangeEvent event) {
+        if (event.getProperty().equals(HYPERLINK_COLOR)){
           hyperlinkColor.set(manager.getCurrentTheme().getColorRegistry().get(HYPERLINK_COLOR));
-          sourceViewer_p.invalidateTextPresentation();
+          sourceViewer.invalidateTextPresentation();
         }
-        else if (event_p.getProperty().equals(FONT)){
+        else if (event.getProperty().equals(FONT)){
           font.set(manager.getCurrentTheme().getFontRegistry().get(FONT));
-          sourceViewer_p.invalidateTextPresentation();
+          sourceViewer.invalidateTextPresentation();
         }
       }
     });
 
     reconciler.setDamager(new IPresentationDamager() {
       @Override
-      public IRegion getDamageRegion(ITypedRegion partition_p, DocumentEvent event_p, boolean documentPartitioningChanged_p) {
-        return new Region(event_p.getOffset(), event_p.getText().length());
+      public IRegion getDamageRegion(ITypedRegion partition, DocumentEvent event, boolean documentPartitioningChanged) {
+        return new Region(event.getOffset(), event.getText().length());
       }
       @Override
-      public void setDocument(IDocument document_p) {
+      public void setDocument(IDocument document) {
         /**/
       }
     }, IDocument.DEFAULT_CONTENT_TYPE);
@@ -122,18 +123,18 @@ public class EmbeddedLinkedTextEditorConfiguration extends SourceViewerConfigura
       private IDocument doc;
       
       @Override
-      public void setDocument(IDocument document_p) {
-        doc = document_p;
+      public void setDocument(IDocument document) {
+        doc = document;
       }
 
       @Override
-      public void createPresentation(TextPresentation presentation_p, ITypedRegion damage_p) {
+      public void createPresentation(TextPresentation presentation, ITypedRegion damage) {
 
         // FIXME optimize? This always repairs the whole document range
 
         StyleRange normal = new StyleRange(0, doc.getLength(), defaultTextAttribute.getForeground(), defaultTextAttribute.getBackground());
         normal.font = font.get();
-        presentation_p.mergeStyleRange(normal);
+        presentation.mergeStyleRange(normal);
           
         for (LinkedTextHyperlink hl : ((LinkedTextDocument)doc).getHyperlinks()){
           StyleRange range = new StyleRange(hl.getOffset(), hl.getLength(), hyperlinkColor.get(), defaultTextAttribute.getBackground());
@@ -141,7 +142,7 @@ public class EmbeddedLinkedTextEditorConfiguration extends SourceViewerConfigura
             range.strikeout = true;
             range.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
           }
-          presentation_p.mergeStyleRange(range);
+          presentation.mergeStyleRange(range);
         }
       }
     }, IDocument.DEFAULT_CONTENT_TYPE);

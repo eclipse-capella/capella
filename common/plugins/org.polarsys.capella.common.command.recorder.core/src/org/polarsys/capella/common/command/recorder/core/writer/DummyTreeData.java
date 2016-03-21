@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.writer;
 
 import java.util.ArrayList;
@@ -43,13 +44,13 @@ public class DummyTreeData {
     return _data;
   }
   
-  public void setData(Object data_p) {
-    _data = data_p;
+  public void setData(Object data) {
+    _data = data;
     return;
   }
   
-  public void setSubData(Object subData_p) {
-	_subData = subData_p;
+  public void setSubData(Object subData) {
+	_subData = subData;
 	return;
   }
   
@@ -75,12 +76,12 @@ public class DummyTreeData {
     return (null != _children && !_children.isEmpty());
   }
   
-  public void addChild(DummyTreeData child_p) {
+  public void addChild(DummyTreeData child) {
 
     if (null == _children) {
       _children = new ArrayList<DummyTreeData>();
     }
-    _children.add(child_p);
+    _children.add(child);
 
     return;
 

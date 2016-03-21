@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.consonance.ui.sirius;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
@@ -34,42 +35,42 @@ public class SiriusMatchPolicy extends GMFMatchPolicy {
    * @see org.eclipse.emf.diffmerge.gmf.GMFMatchPolicy#getSemanticID(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IModelScope, boolean)
    */
   @Override
-  protected IComparableStructure<?> getSemanticID(EObject element_p, IModelScope scope_p,
-      boolean inScopeOnly_p) {
+  protected IComparableStructure<?> getSemanticID(EObject element, IModelScope scope,
+      boolean inScopeOnly) {
     // Intended return types: ComparableLinkedList<String>,
     //  ComparableTreeMap<String, ComparableLinkedList<String>>
     IComparableStructure<?> result = null;
-    if (element_p instanceof DDiagramElement)
-      result = getDDiagramElementSemanticID((DDiagramElement)element_p, scope_p, inScopeOnly_p);
+    if (element instanceof DDiagramElement)
+      result = getDDiagramElementSemanticID((DDiagramElement)element, scope, inScopeOnly);
     if (result == null)
-      result = super.getSemanticID(element_p, scope_p, inScopeOnly_p);
+      result = super.getSemanticID(element, scope, inScopeOnly);
     return result;
   }
   
   /**
    * Return a semantic ID for the given diagram element
-   * @param diagramElement_p a non-null diagram element
-   * @param scope_p a non-null scope that covers element_p
-   * @param inScopeOnly_p whether only the scope may be considered, or the underlying EMF model
+   * @param diagramElement a non-null diagram element
+   * @param scope a non-null scope that covers element
+   * @param inScopeOnly whether only the scope may be considered, or the underlying EMF model
    * @return a potentially null 
    */
-  protected IComparableStructure<?> getDDiagramElementSemanticID(DDiagramElement diagramElement_p,
-      IModelScope scope_p, boolean inScopeOnly_p) {
+  protected IComparableStructure<?> getDDiagramElementSemanticID(DDiagramElement diagramElement,
+      IModelScope scope, boolean inScopeOnly) {
     // The semantic ID is defined from the diagram and the represented element,
     // the assumption being that an element cannot be represented more than once
     // in the same diagram.
     ComparableTreeMap<String, IComparableStructure<String>> result = null;
-    DDiagram diagram = diagramElement_p.getParentDiagram();
-    EObject represented = diagramElement_p.getTarget();
+    DDiagram diagram = diagramElement.getParentDiagram();
+    EObject represented = diagramElement.getTarget();
     if (diagram != null && represented != null) {
-      IComparableStructure<String> typeID = getEncapsulateOrNull(diagramElement_p.eClass().getName());
+      IComparableStructure<String> typeID = getEncapsulateOrNull(diagramElement.eClass().getName());
       @SuppressWarnings("unchecked")
       IComparableStructure<String> diagramID =
-      (IComparableStructure<String>)getMatchID(diagram, scope_p);
+      (IComparableStructure<String>)getMatchID(diagram, scope);
       if (diagramID != null) {
         @SuppressWarnings("unchecked")
         IComparableStructure<String> representedID =
-        (IComparableStructure<String>)getMatchID(represented, scope_p);
+        (IComparableStructure<String>)getMatchID(represented, scope);
         if (representedID != null) {
           result = new ComparableTreeMap<String, IComparableStructure<String>>();
           result.put("SEMANTIC_ID_TYPE", typeID); //$NON-NLS-1$
@@ -85,24 +86,24 @@ public class SiriusMatchPolicy extends GMFMatchPolicy {
    * @see org.eclipse.emf.diffmerge.gmf.GMFMatchPolicy#getUniqueName(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IModelScope, boolean)
    */
   @Override
-  protected String getUniqueName(EObject element_p, IModelScope scope_p, boolean inScopeOnly_p) {
+  protected String getUniqueName(EObject element, IModelScope scope, boolean inScopeOnly) {
     String result = null;
-    if (element_p instanceof DRepresentationContainer) {
-      Viewpoint viewpoint = ((DRepresentationContainer)element_p).getViewpoint();
+    if (element instanceof DRepresentationContainer) {
+      Viewpoint viewpoint = ((DRepresentationContainer)element).getViewpoint();
       if (viewpoint != null)
         result = viewpoint.getName();
-    } else if (element_p instanceof DRepresentation) {
-      result = ((DRepresentation)element_p).getName();
-    } else if (element_p instanceof AnnotationEntry) {
-      AnnotationEntry annotation = (AnnotationEntry)element_p;
-      if (getContainer(element_p, scope_p, inScopeOnly_p) instanceof DDiagram &&
+    } else if (element instanceof DRepresentation) {
+      result = ((DRepresentation)element).getName();
+    } else if (element instanceof AnnotationEntry) {
+      AnnotationEntry annotation = (AnnotationEntry)element;
+      if (getContainer(element, scope, inScopeOnly) instanceof DDiagram &&
           annotation.getSource() != null) {
         // AnnotationEntry in a DDiagram
         result = "ANNOTATION_" + annotation.getSource(); //$NON-NLS-1$
       }
     }
     if (result == null)
-      result = super.getUniqueName(element_p, scope_p, inScopeOnly_p);
+      result = super.getUniqueName(element, scope, inScopeOnly);
     return result;
   }
   
@@ -110,9 +111,9 @@ public class SiriusMatchPolicy extends GMFMatchPolicy {
    * @see org.eclipse.emf.diffmerge.gmf.GMFMatchPolicy#isDiscriminatingContainment(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference)
    */
   @Override
-  protected boolean isDiscriminatingContainment(EObject element_p, EReference containment_p) {
-    return super.isDiscriminatingContainment(element_p, containment_p) ||
-        containment_p == DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters();
+  protected boolean isDiscriminatingContainment(EObject element, EReference containment) {
+    return super.isDiscriminatingContainment(element, containment) ||
+        containment == DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters();
   }
   
 }

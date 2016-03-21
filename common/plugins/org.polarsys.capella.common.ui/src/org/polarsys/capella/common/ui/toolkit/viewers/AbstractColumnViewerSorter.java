@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.jface.viewers.ColumnViewer;
@@ -57,15 +58,15 @@ public abstract class AbstractColumnViewerSorter extends ViewerComparator {
     return;
   }
   
-  public void update(int direction_p) {
+  public void update(int direction) {
     
     Table table = _column.getColumn().getParent();
     
     table.setSortColumn(_column.getColumn());
-    _direction = direction_p;
+    _direction = direction;
     _viewer.setComparator(this);
       
-      if( direction_p == ASC ) {
+      if( direction == ASC ) {
         table.setSortDirection(SWT.DOWN);
       } else {
         table.setSortDirection(SWT.UP);
@@ -77,9 +78,9 @@ public abstract class AbstractColumnViewerSorter extends ViewerComparator {
   }
 
   @Override
-  public int compare(Viewer viewer_p, Object e1_p, Object e2_p) {
-    return _direction * doCompare(viewer_p, e1_p, e2_p);
+  public int compare(Viewer viewer, Object e1, Object e2) {
+    return _direction * doCompare(viewer, e1, e2);
   }
   
-  protected abstract int doCompare(Viewer viewer_p, Object e1_p, Object e2_p);
+  protected abstract int doCompare(Viewer viewer, Object e1, Object e2);
 }

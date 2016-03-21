@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.output;
 
 import java.io.File;
@@ -53,7 +54,7 @@ public class OutputRecorder implements IOutputManager {
       if ( null != _writer) {
         try {
           _writer.close();
-        } catch (IOException exception_p) {
+        } catch (IOException exception) {
           // Do nothing
         }
         _writer = null;
@@ -62,8 +63,8 @@ public class OutputRecorder implements IOutputManager {
     }
 
     /** Write accessor */
-    public void setFile(File file_p) {
-      _file = file_p;
+    public void setFile(File file) {
+      _file = file;
       return;
     }
     
@@ -79,9 +80,9 @@ public class OutputRecorder implements IOutputManager {
           
           OutputStream stream = new FileOutputStream(_file, true);
           _writer = OutputHelper.logForStream(stream);
-        } catch (FileNotFoundException exception_p) {
+        } catch (FileNotFoundException exception) {
           //Do nothing
-        } catch (IOException exIoException_p) {
+        } catch (IOException exIoException) {
           //Do nothing
         }
       }
@@ -101,16 +102,16 @@ public class OutputRecorder implements IOutputManager {
   /**
    * {@inheritDoc}
    */
-  public Writer getWriter(IRecorder recorder_p) {
+  public Writer getWriter(IRecorder recorder) {
    
     boolean shouldChangeOfFile = false;
     
     OutputData data = null;
-    if ( _map.containsKey(recorder_p) ) {
-      data = _map.get(recorder_p);
+    if ( _map.containsKey(recorder) ) {
+      data = _map.get(recorder);
     } else {
       data = new OutputData();
-      _map.put(recorder_p, data);
+      _map.put(recorder, data);
     }
     
     if ( null == data.getWriter() ) {
@@ -120,7 +121,7 @@ public class OutputRecorder implements IOutputManager {
     }
     
     if (shouldChangeOfFile) {
-        data.setFile(OutputHelper.createNewLogFile(recorder_p));
+        data.setFile(OutputHelper.createNewLogFile(recorder));
         data.setWriter();
     }
     
@@ -130,29 +131,29 @@ public class OutputRecorder implements IOutputManager {
   /**
    * {@inheritDoc}
    */
-  public void registerRecorder(IRecorder recorder_p, boolean isNewRecordFileShouldBeCreated_p) {
+  public void registerRecorder(IRecorder recorder, boolean isNewRecordFileShouldBeCreated) {
     
     // Check directory
-    File dir = OutputHelper.getDir(recorder_p);
+    File dir = OutputHelper.getDir(recorder);
     if ( !dir.exists() ) {
       dir.mkdir();
     }
 
     OutputData data = null;
     
-    if (_map.containsKey(recorder_p)) {
-      removeRecorder(recorder_p);
+    if (_map.containsKey(recorder)) {
+      removeRecorder(recorder);
     }
     
     data = new OutputData();
-    _map.put(recorder_p, data);
+    _map.put(recorder, data);
     
     
     // Initialize the file that is going to be used
-    if ( true == isNewRecordFileShouldBeCreated_p ) {
-      data.setFile(OutputHelper.createNewLogFile(recorder_p));
+    if ( true == isNewRecordFileShouldBeCreated ) {
+      data.setFile(OutputHelper.createNewLogFile(recorder));
     } else {
-      List<File> recordFiles = OutputHelper.getRecordFiles(recorder_p);
+      List<File> recordFiles = OutputHelper.getRecordFiles(recorder);
       File file = null;
       if (!recordFiles.isEmpty() ) {
         File lastAvailable = recordFiles.get(0);
@@ -161,12 +162,12 @@ public class OutputRecorder implements IOutputManager {
             OutputHelper.isOverSized(lastAvailable) ||
             OutputHelper.isOutOfTime(lastAvailable, null)
         ) {
-          file = OutputHelper.createNewLogFile(recorder_p);
+          file = OutputHelper.createNewLogFile(recorder);
         } else {
           file = recordFiles.get(0);
         }
       } else {
-        file = OutputHelper.createNewLogFile(recorder_p);
+        file = OutputHelper.createNewLogFile(recorder);
       }
       data.setFile(file);
       data.setWriter();
@@ -178,13 +179,13 @@ public class OutputRecorder implements IOutputManager {
   /**
    * {@inheritDoc}
    */
-  public void removeRecorder(IRecorder recorder_p) {
+  public void removeRecorder(IRecorder recorder) {
     
-    OutputData data = _map.get(recorder_p);
+    OutputData data = _map.get(recorder);
     
     if ( null != data ) {
       data.clear();
-      _map.remove(recorder_p);
+      _map.remove(recorder);
     }
     
     return;

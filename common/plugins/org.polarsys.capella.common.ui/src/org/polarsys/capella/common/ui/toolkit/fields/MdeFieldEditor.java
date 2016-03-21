@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.fields;
 
 import org.eclipse.jface.dialogs.DialogPage;
@@ -49,56 +50,56 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   /**
    * Constructs the MDE field editor with the specified field name and specified label text. Sets the default label control style to {@link SWT#LEFT} and the
    * default value control to {@link SWT#NONE}.
-   * @param name_p The field name.
-   * @param labelText_p The label text.
-   * @param parent_p The parent control.
+   * @param name The field name.
+   * @param labelText The label text.
+   * @param parent The parent control.
    */
-  protected MdeFieldEditor(String name_p, String labelText_p, Composite parent_p) {
-    this(name_p, labelText_p, parent_p, SWT.LEFT, SWT.NONE);
+  protected MdeFieldEditor(String name, String labelText, Composite parent) {
+    this(name, labelText, parent, SWT.LEFT, SWT.NONE);
   }
 
   /**
    * Constructs the MDE field editor with the specified name, specified text label and applies the specified styles respectively to the label control and the
    * value control. For the label control style unsupported values are filtered : {@link SWT#SEPARATOR}, {@link SWT#WRAP}.
-   * @param name_p The field name.
-   * @param labelText_p The label text.
-   * @param parent_p The parent control.
-   * @param labelStyle_p The label control style {@link Label}.
-   * @param valueStyle_p The value control style according to the value control type.
+   * @param name The field name.
+   * @param labelText The label text.
+   * @param parent The parent control.
+   * @param labelStyle The label control style {@link Label}.
+   * @param valueStyle The value control style according to the value control type.
    */
-  protected MdeFieldEditor(String name_p, String labelText_p, Composite parent_p, int labelStyle_p, int valueStyle_p) {
-    init(name_p, labelText_p, labelStyle_p, valueStyle_p);
-    createControl(parent_p);
+  protected MdeFieldEditor(String name, String labelText, Composite parent, int labelStyle, int valueStyle) {
+    init(name, labelText, labelStyle, valueStyle);
+    createControl(parent);
   }
 
   /**
    * Initializes the field with the given property name and label.
-   * @param name_p The field name.
-   * @param text_p The label text of the field.
-   * @param labelStyle_p The label style.
-   * @param valueStyle_p The value control style.
+   * @param name The field name.
+   * @param text The label text of the field.
+   * @param labelStyle The label style.
+   * @param valueStyle The value control style.
    */
-  protected void init(String name_p, String text_p, int labelStyle_p, int valueStyle_p) {
-    if (null == name_p) {
+  protected void init(String name, String text, int labelStyle, int valueStyle) {
+    if (null == name) {
       throw new NullPointerException("The property name should not be null value."); //$NON-NLS-1$
     }
-    if (null == text_p) {
+    if (null == text) {
       throw new NullPointerException("The label text should not be null value."); //$NON-NLS-1$
     }
 
     // Checks styles.
-    _labelStyle = checkLabelStyle(labelStyle_p);
-    _valueStyle = checkValueStyle(valueStyle_p);
+    _labelStyle = checkLabelStyle(labelStyle);
+    _valueStyle = checkValueStyle(valueStyle);
 
     // Sets the label text and field name.
-    setLabelText(text_p);
-    setPreferenceName(name_p);
+    setLabelText(text);
+    setPreferenceName(name);
   }
 
   // Checks the label style. Does not allow the SEPARATOR style and the WRAP style.
   // In case of SWT.NONE style value, it applies a correction and return the default label style value SWT.LEFT.
-  private int checkLabelStyle(int labelStyle_p) {
-    int newStyle = labelStyle_p;
+  private int checkLabelStyle(int labelStyle) {
+    int newStyle = labelStyle;
     if (0 != (SWT.SEPARATOR & newStyle)) {
       newStyle = newStyle - SWT.SEPARATOR;
     }
@@ -115,11 +116,11 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
 
   /**
    * Checks the style of the value control and updates it. <br/> <b>WARNING : This default implementation returns the specified style.</b>
-   * @param valueStyle_p The value control style.
+   * @param valueStyle The value control style.
    * @return The updated value control style.
    */
-  protected int checkValueStyle(int valueStyle_p) {
-    return valueStyle_p;
+  protected int checkValueStyle(int valueStyle) {
+    return valueStyle;
   }
 
   /**
@@ -127,17 +128,17 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
    * @see org.eclipse.jface.preference.FieldEditor#createControl(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void createControl(Composite parent_p) {
-    Layout layout = parent_p.getLayout();
+  protected void createControl(Composite parent) {
+    Layout layout = parent.getLayout();
     if (!(layout instanceof GridLayout)) {
       GridLayout gdLayout = new GridLayout();
       gdLayout.numColumns = getNumberOfControls();
       gdLayout.horizontalSpacing = HORIZONTAL_GAP;
-      parent_p.setLayout(gdLayout);
-      doFillIntoGrid(parent_p, gdLayout.numColumns);
+      parent.setLayout(gdLayout);
+      doFillIntoGrid(parent, gdLayout.numColumns);
     } else {
       GridLayout gdLayout = (GridLayout)layout;
-      doFillIntoGrid(parent_p, gdLayout.numColumns);
+      doFillIntoGrid(parent, gdLayout.numColumns);
     }
   }
 
@@ -146,8 +147,8 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
    * TODO propagate in the manufacturers the label style.
    */
   @Override
-  public Label getLabelControl(Composite parent_p) {
-    Label label = super.getLabelControl(parent_p);
+  public Label getLabelControl(Composite parent) {
+    Label label = super.getLabelControl(parent);
     GridData gd = new GridData();
     gd.horizontalAlignment = SWT.FILL;
     label.setLayoutData(gd);
@@ -164,24 +165,24 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
 
   /**
    * Sets the error message that will be displayed when and if an error occurs.
-   * @param message_p The error message.
+   * @param message The error message.
    */
-  public void setErrorMessage(String message_p) {
-    _errorMessage = message_p;
+  public void setErrorMessage(String message) {
+    _errorMessage = message;
   }
 
   /**
    * @see org.eclipse.jface.preference.FieldEditor#doFillIntoGrid(org.eclipse.swt.widgets.Composite, int)
    */
   @Override
-  protected abstract void doFillIntoGrid(Composite parent_p, int numColumns_p);
+  protected abstract void doFillIntoGrid(Composite parent, int numColumns);
 
   /**
    * Gets the value from the specified control.
-   * @param control_p The value control.
+   * @param control The value control.
    * @return The value.
    */
-  protected abstract Object getValue(Control control_p);
+  protected abstract Object getValue(Control control);
 
   // /////////////////////////////////// PUBLIC API ////////////////////////////////////
 
@@ -212,8 +213,8 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   /**
    * @see IMdeFieldEditor#setInputBehavior(IInputBehavior)
    */
-  public void setInputBehavior(IInputBehavior behavior_p) {
-    _inputBehavior = behavior_p;
+  public void setInputBehavior(IInputBehavior behavior) {
+    _inputBehavior = behavior;
   }
 
   /**
@@ -233,8 +234,8 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   /**
    * @see IMdeFieldEditor#setValidator(IValidator)
    */
-  public void setValidator(IValidator validator_p) {
-    _validator = validator_p;
+  public void setValidator(IValidator validator) {
+    _validator = validator;
   }
 
   @Override
@@ -315,8 +316,8 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   /**
    * @see org.polarsys.capella.common.ui.toolkit.fields.IMdeFieldEditor#setFieldPage(org.eclipse.jface.dialogs.DialogPage)
    */
-  public void setFieldPage(DialogPage page_p) {
-    setPage(page_p);
+  public void setFieldPage(DialogPage page) {
+    setPage(page);
   }
 
   /**
@@ -334,10 +335,10 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   /**
    * @see org.polarsys.capella.common.ui.toolkit.fields.IMdeFieldEditor#setHelperEnabled(boolean)
    */
-  public void setHelperEnabled(boolean enabled_p) {
+  public void setHelperEnabled(boolean enabled) {
     Control helperControl = getHelperControl();
     if (null != helperControl) {
-      helperControl.setEnabled(enabled_p);
+      helperControl.setEnabled(enabled);
     }
   }
 
@@ -356,10 +357,10 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   /**
    * @see org.polarsys.capella.common.ui.toolkit.fields.IMdeFieldEditor#setValueEnabled(boolean)
    */
-  public void setValueEnabled(boolean enabled_p) {
+  public void setValueEnabled(boolean enabled) {
     Control valueControl = getValueControl();
     if (null != valueControl) {
-      valueControl.setEnabled(enabled_p);
+      valueControl.setEnabled(enabled);
     }
   }
 
@@ -402,29 +403,29 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   /**
    * @see org.polarsys.capella.common.ui.toolkit.fields.IMdeFieldEditor#layout(int)
    */
-  public void layout(int numColumns_p) {
-    adjustForNumColumns(numColumns_p);
+  public void layout(int numColumns) {
+    adjustForNumColumns(numColumns);
   }
 
 
   /**
    * Sets the MDE field editor enable or not.
-   * @param enabled_p <code>True</code> to enable the MDE field editor else <code>false</code>.
+   * @param enabled <code>True</code> to enable the MDE field editor else <code>false</code>.
    */
-  public void setEnabled(boolean enabled_p) {
+  public void setEnabled(boolean enabled) {
     Control control = getLabelControl();
     if (null != control) {
-    	control.setEnabled(enabled_p);
+    	control.setEnabled(enabled);
 	} 
    
     control = getValueControl();
     if (null != control) {
-      control.setEnabled(enabled_p);
+      control.setEnabled(enabled);
     }
 
     control = getHelperControl();
     if (null != control) {
-      control.setEnabled(enabled_p);
+      control.setEnabled(enabled);
     }
   }
 }

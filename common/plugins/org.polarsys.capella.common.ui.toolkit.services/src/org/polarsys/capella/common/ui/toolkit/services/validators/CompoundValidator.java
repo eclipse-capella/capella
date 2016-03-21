@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.validators;
 
 import java.util.ArrayList;
@@ -37,32 +38,32 @@ public class CompoundValidator extends AbstractValidator {
   /**
    * Constructor.<br>
    * Construct a compound validator with given validator as first one.
-   * @param validator_p
+   * @param validator
    */
-  public CompoundValidator(IValidator validator_p) {
+  public CompoundValidator(IValidator validator) {
     this();
-    addValidator(validator_p);
+    addValidator(validator);
   }
 
   /**
    * Add given validator into the list of {@link IValidator} tested when {@link #isValid(Object)} method is called.
-   * @param validator_p
+   * @param validator
    */
-  public void addValidator(IValidator validator_p) {
-    _validators.add(validator_p);
+  public void addValidator(IValidator validator) {
+    _validators.add(validator);
   }
 
   /**
    * Validate given value against all contained validators.
    * @see IValidator#isValid(java.lang.Object)
    */
-  public String isValid(Object value_p) {
+  public String isValid(Object value) {
     String errorMessage = null;
     Iterator<IValidator> validators = _validators.iterator();
     // Iterate over all contained validators, stop as soon as an error is encountered.
     while (validators.hasNext() && (null == errorMessage)) {
       IValidator currentValidator = validators.next();
-      errorMessage = currentValidator.isValid(value_p);
+      errorMessage = currentValidator.isValid(value);
     }
     return errorMessage;
   }

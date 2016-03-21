@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers;
 
 import java.text.MessageFormat;
@@ -43,67 +44,67 @@ public class EcoreUtil2 {
   public static String defaultPattern = "{1} {0}"; //$NON-NLS-1$
 
   /**
-   * Attach 'tgtElt_p' to the same container as 'srcElt_p', with the same containment feature.
-   * @param srcElt_p
-   * @param tgtElt_p
+   * Attach 'tgtElt' to the same container as 'srcElt', with the same containment feature.
+   * @param srcElt
+   * @param tgtElt
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static void attachLikeSourceContainer(EObject srcElt_p, EObject tgtElt_p) {
-    EObject container = srcElt_p.eContainer();
-    EStructuralFeature eStructFeatureFound = srcElt_p.eContainingFeature();
+  public static void attachLikeSourceContainer(EObject srcElt, EObject tgtElt) {
+    EObject container = srcElt.eContainer();
+    EStructuralFeature eStructFeatureFound = srcElt.eContainingFeature();
     if (eStructFeatureFound != null) {
       if (!eStructFeatureFound.isMany()) {
-        container.eSet(eStructFeatureFound, tgtElt_p);
+        container.eSet(eStructFeatureFound, tgtElt);
       } else {
-        ((Collection) container.eGet(eStructFeatureFound)).add(tgtElt_p);
+        ((Collection) container.eGet(eStructFeatureFound)).add(tgtElt);
       }
     }
   }
 
   /**
-   * Attach 'tgtElt_p' to its container 'tgtContainer_p' with the same containment feature as the one between 'srcElt_p' and its own container.
-   * @param srcElt_p
-   * @param tgtElt_p
-   * @param tgtContainer_p
+   * Attach 'tgtElt' to its container 'tgtContainer' with the same containment feature as the one between 'srcElt' and its own container.
+   * @param srcElt
+   * @param tgtElt
+   * @param tgtContainer
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static void attachLikeSourceContainmentFeature(EObject srcElt_p, EObject tgtElt_p, EObject tgtContainer_p) {
-    EStructuralFeature eStructFeatureFound = srcElt_p.eContainingFeature();
+  public static void attachLikeSourceContainmentFeature(EObject srcElt, EObject tgtElt, EObject tgtContainer) {
+    EStructuralFeature eStructFeatureFound = srcElt.eContainingFeature();
     if (eStructFeatureFound != null) {
       if (!eStructFeatureFound.isMany()) {
-        tgtContainer_p.eSet(eStructFeatureFound, tgtElt_p);
+        tgtContainer.eSet(eStructFeatureFound, tgtElt);
       } else {
-        ((Collection) tgtContainer_p.eGet(eStructFeatureFound)).add(tgtElt_p);
+        ((Collection) tgtContainer.eGet(eStructFeatureFound)).add(tgtElt);
       }
     }
   }
 
   /**
-   * @param current_p
-   * @param nameString_p
-   * @param feature_p
-   * @param attribute_p
+   * @param current
+   * @param nameString
+   * @param feature
+   * @param attribute
    */
-  private static boolean checkElementName(EObject current_p, String nameString_p, EStructuralFeature feature_p, EAttribute attribute_p) {
-    Object name = current_p.eGet(attribute_p);
-    if ((name != null) && name.equals(nameString_p)) {
+  private static boolean checkElementName(EObject current, String nameString, EStructuralFeature feature, EAttribute attribute) {
+    Object name = current.eGet(attribute);
+    if ((name != null) && name.equals(nameString)) {
       return false;
     }
     return true;
   }
 
   /**
-   * @param list_p
-   * @param nameString_p
-   * @param feature_p
-   * @param attribute_p
+   * @param list
+   * @param nameString
+   * @param feature
+   * @param attribute
    */
-  private static boolean checkListName(Collection<? extends EObject> list_p, String nameString_p, EStructuralFeature feature_p, EAttribute attribute_p) {
-    Iterator<? extends EObject> elements = list_p.iterator();
+  private static boolean checkListName(Collection<? extends EObject> list, String nameString, EStructuralFeature feature, EAttribute attribute) {
+    Iterator<? extends EObject> elements = list.iterator();
     boolean isUnique = true;
     while (elements.hasNext() && isUnique) {
       EObject currentEObject = elements.next();
-      isUnique = checkElementName(currentEObject, nameString_p, feature_p, attribute_p);
+      isUnique = checkElementName(currentEObject, nameString, feature, attribute);
     }
     return isUnique;
   }
@@ -111,23 +112,23 @@ public class EcoreUtil2 {
   /**
    * Get all contents for given elements.<br>
    * Returned collection contains given elements and their subtree elements.
-   * @param elements_p
+   * @param elements
    * @return a not <code>null</code> collection.
    */
-  public static Collection<?> getAllContents(Collection<?> elements_p) {
-    Set<Object> allElements = new HashSet<Object>(elements_p);
-    TreeIterator<EObject> eAllContents = org.eclipse.emf.ecore.util.EcoreUtil.getAllContents(elements_p, true);
+  public static Collection<?> getAllContents(Collection<?> elements) {
+    Set<Object> allElements = new HashSet<Object>(elements);
+    TreeIterator<EObject> eAllContents = org.eclipse.emf.ecore.util.EcoreUtil.getAllContents(elements, true);
     while (eAllContents.hasNext()) {
       allElements.add(eAllContents.next());
     }
     return allElements;
   }
 
-  public static EObject getCommonAncestor(Collection<? extends EObject> list_p) {
-    if (list_p.isEmpty()) {
+  public static EObject getCommonAncestor(Collection<? extends EObject> list) {
+    if (list.isEmpty()) {
       return null;
     }
-    Iterator<? extends EObject> listIterator = list_p.iterator();
+    Iterator<? extends EObject> listIterator = list.iterator();
     EObject commonAncestor = listIterator.next();
     while (listIterator.hasNext()) {
       EObject anObject = listIterator.next();
@@ -157,19 +158,19 @@ public class EcoreUtil2 {
 
   /**
    * This method returns the number of container to be parsed before to reach the specified class type
-   * @param elt_p
+   * @param elt
    * @return
    */
-  public static int getContainmentLevel(EObject elt_p, EClass cls_p) {
+  public static int getContainmentLevel(EObject elt, EClass cls) {
     int level = 0;
 
-    if (elt_p != null) {
-      if (cls_p.isSuperTypeOf(elt_p.eClass())) {
+    if (elt != null) {
+      if (cls.isSuperTypeOf(elt.eClass())) {
         level = 0;
       } else {
-        EObject container = elt_p.eContainer();
+        EObject container = elt.eContainer();
         if (container != null) {
-          level = 1 + getContainmentLevel(container, cls_p);
+          level = 1 + getContainmentLevel(container, cls);
         }
       }
     }
@@ -179,38 +180,38 @@ public class EcoreUtil2 {
 
   /**
    * Return the file where is persisted given EMF object.
-   * @param resource_p
+   * @param resource
    * @return <code>null</code> if given object is not persisted.
    */
-  public static IFile getFile(Resource resource_p) {
+  public static IFile getFile(Resource resource) {
     IFile result = null;
     // Precondition.
-    if (null == resource_p) {
+    if (null == resource) {
       return result;
     }
-    result = WorkspaceSynchronizer.getFile(resource_p);
+    result = WorkspaceSynchronizer.getFile(resource);
     return result;
   }
 
   /**
    * Returns the URI from the path (with compatible encoding for EMF.getResource(URI) method)
    */
-  public static URI getURI(IFile file_p) {
-    return URI.createPlatformResourceURI(file_p.getFullPath().toOSString(), true);
+  public static URI getURI(IFile file) {
+    return URI.createPlatformResourceURI(file.getFullPath().toOSString(), true);
   }
 
   /**
    * Return the project where is persisted given EMF object.
-   * @param object_p
+   * @param object
    * @return <code>null</code> if given object is not persisted.
    */
-  public static IProject getProject(EObject object_p) {
+  public static IProject getProject(EObject object) {
     IProject result = null;
     // Preconditions.
-    if ((null == object_p) || (object_p.eResource() == null)) {
+    if ((null == object) || (object.eResource() == null)) {
       return result;
     }
-    IFile res = WorkspaceSynchronizer.getFile(object_p.eResource());
+    IFile res = WorkspaceSynchronizer.getFile(object.eResource());
     if (res != null) {
       result = res.getProject();
     }
@@ -219,66 +220,66 @@ public class EcoreUtil2 {
 
   /**
    * Gets the first container with the specified class type of the specified element.
-   * @param elt_p The element to check container.
-   * @param cls_p The expected container class.
+   * @param elt The element to check container.
+   * @param cls The expected container class.
    * @return The corresponding container elsewhere <code>null</code>.
    */
-  public static EObject getFirstContainer(EObject elt_p, EClass cls_p) {
+  public static EObject getFirstContainer(EObject elt, EClass cls) {
     EObject container = null;
 
-    if (elt_p != null) {
-      container = elt_p.eContainer();
+    if (elt != null) {
+      container = elt.eContainer();
     }
 
     if (container == null) {
       return null;
     }
 
-    if (cls_p.isSuperTypeOf(container.eClass())) {
+    if (cls.isSuperTypeOf(container.eClass())) {
       return container;
     }
 
-    return getFirstContainer(container, cls_p);
+    return getFirstContainer(container, cls);
   }
 
   /**
    * Gets the first container with the specified class type of the specified elements.
-   * @param elt_p The element to check container.
-   * @param cls_p The expected container classes list.
+   * @param elt The element to check container.
+   * @param cls The expected container classes list.
    * @return The corresponding container elsewhere <code>null</code>.
    */
-  public static EObject getFirstContainer(EObject elt_p, List<EClass> cls_p) {
+  public static EObject getFirstContainer(EObject elt, List<EClass> cls) {
     EObject container = null;
 
-    if (elt_p != null) {
-      container = elt_p.eContainer();
+    if (elt != null) {
+      container = elt.eContainer();
     }
 
     if (container == null) {
       return null;
     }
 
-    for (EClass cls : cls_p) {
-      if (cls.isSuperTypeOf(container.eClass())) {
+    for (EClass c : cls) {
+      if (c.isSuperTypeOf(container.eClass())) {
         return container;
       }
     }
 
-    return getFirstContainer(container, cls_p);
+    return getFirstContainer(container, cls);
   }
 
   /**
    * Collect all elements that reference (containment relationships are not taken into account) given one.<br>
    * In fact that collects Non Navigable Inverse References for given element.<br>
    * Derived features are ignored too.
-   * @param referencedElement_p
-   * @param crossReferencer_p cross referencer used to retrieve referencing elements.
+   * @param referencedElement
+   * @param crossReferencer cross referencer used to retrieve referencing elements.
    * @return a not <code>null</code> collection.
    */
-  public static Collection<EObject> getReferencingElements(final EObject referencedElement_p, ECrossReferenceAdapter crossReferencer_p) {
+  public static Collection<EObject> getReferencingElements(final EObject referencedElement, ECrossReferenceAdapter crossReferencer) {
     HashSet<EObject> referencingElements = new HashSet<EObject>(0);
     // Search inverses relations for selected model element.
-    Collection<Setting> inverseReferences = crossReferencer_p.getNonNavigableInverseReferences(referencedElement_p, true);
+    Collection<Setting> inverseReferences = crossReferencer.getNonNavigableInverseReferences(referencedElement, true);
     // Elements that reference selected model element.
     // Loop over inverse references to collect referencing elements.
     for (Setting setting : inverseReferences) {
@@ -300,15 +301,15 @@ public class EcoreUtil2 {
 
   /**
    * Get the resource container i.e the first parent container serialized in its own resource.
-   * @param eObject_p
+   * @param eObject
    * @return should be not <code>null</code>.
    */
-  public static EObject getResourceContainer(EObject eObject_p) {
-    EObject result = eObject_p;
-    if (null != eObject_p) {
-      EObject parentContainer = eObject_p.eContainer();
+  public static EObject getResourceContainer(EObject eObject) {
+    EObject result = eObject;
+    if (null != eObject) {
+      EObject parentContainer = eObject.eContainer();
       if (null == parentContainer) {
-        result = eObject_p;
+        result = eObject;
       } else {
         if (null != ((InternalEObject) parentContainer).eDirectResource()) {
           result = parentContainer;
@@ -322,12 +323,12 @@ public class EcoreUtil2 {
 
   /**
    * Get resource URI.
-   * @param resource_p
+   * @param resource
    * @return
    */
-  public static URI getResourceURI(Resource resource_p) {
-    ResourceSet resourceSet = resource_p.getResourceSet();
-    URI uri = resource_p.getURI();
+  public static URI getResourceURI(Resource resource) {
+    ResourceSet resourceSet = resource.getResourceSet();
+    URI uri = resource.getURI();
     if (null != resourceSet) {
       uri = resourceSet.getURIConverter().normalize(uri);
     }
@@ -335,17 +336,17 @@ public class EcoreUtil2 {
   }
 
   /**
-   * @param namedElement_p
-   * @param attribute_p
-   * @param prefix_p
-   * @param space_p
-   * @param recursive_p
+   * @param namedElement
+   * @param attribute
+   * @param prefix
+   * @param space
+   * @param recursive
    */
   @SuppressWarnings("unchecked")
-  public static String getUniqueName(EObject namedElement_p, EAttribute attribute_p, String prefix_p, boolean space_p, boolean recursive_p) {
-    EObject parent = namedElement_p.eContainer();
-    StringBuilder name = new StringBuilder(prefix_p);
-    if (space_p) {
+  public static String getUniqueName(EObject namedElement, EAttribute attribute, String prefix, boolean space, boolean recursive) {
+    EObject parent = namedElement.eContainer();
+    StringBuilder name = new StringBuilder(prefix);
+    if (space) {
       name.append(" "); //$NON-NLS-1$
     }
 
@@ -354,8 +355,8 @@ public class EcoreUtil2 {
       return nameString;
     }
 
-    EStructuralFeature feature = namedElement_p.eContainingFeature();
-    if (recursive_p) {
+    EStructuralFeature feature = namedElement.eContainingFeature();
+    if (recursive) {
       EStructuralFeature parentFeature = parent.eContainingFeature();
       while (feature == parentFeature) {
         parent = parent.eContainer();
@@ -367,13 +368,13 @@ public class EcoreUtil2 {
       boolean isUnique = false;
 
       Collection<? extends EObject> list = new ArrayList((Collection<? extends EObject>) parent.eGet(feature));
-      list.remove(namedElement_p);
+      list.remove(namedElement);
 
       int i = list.size() + 1;
       name.append(i);
       while (!isUnique) {
         nameString = name.toString();
-        isUnique = checkListName(list, nameString, feature, attribute_p);
+        isUnique = checkListName(list, nameString, feature, attribute);
         if (!isUnique) {
           if (nameString.endsWith(Integer.valueOf(i).toString())) {
             name.delete(name.length() - Integer.valueOf(i).toString().length(), name.length());
@@ -388,43 +389,42 @@ public class EcoreUtil2 {
 
   /**
    * Gets a unique name for the specified object.
-   * @param object_p the object to set name.
-   * @param container_p the object container.
-   * @param feature_p the feature.
-   * @param attribute_p The name attribute.
-   * @param defaultString_p The default string.
-   * @param pattern_p The name pattern.
+   * @param object the object to set name.
+   * @param container the object container.
+   * @param feature the feature.
+   * @param attribute The name attribute.
+   * @param defaultString The default string.
    */
   @SuppressWarnings("unchecked")
-  public static String getUniqueName(EObject object_p, EObject container_p, EStructuralFeature feature_p, EAttribute attribute_p, String defaultString_p) {
+  public static String getUniqueName(EObject object, EObject container, EStructuralFeature feature, EAttribute attribute, String defaultString) {
     String resultName = ICommonConstants.EMPTY_STRING;
 
-    if ((feature_p == null) || feature_p.isMany()) {
+    if ((feature == null) || feature.isMany()) {
       int counter = 0;
 
       List<EObject> siblings = new ArrayList<EObject>();
-      if (feature_p != null) {
-        siblings.addAll((Collection<EObject>) container_p.eGet(feature_p));
+      if (feature != null) {
+        siblings.addAll((Collection<EObject>) container.eGet(feature));
       } else {
-        siblings.addAll(container_p.eContents());
+        siblings.addAll(container.eContents());
       }
-      siblings.remove(object_p);
+      siblings.remove(object);
 
       // retrieving the naming attribute feature.
       if ((siblings != null) && !siblings.isEmpty()) {
         List<String> existingNames = new ArrayList<String>();
         // list existing names.
-        if (attribute_p != null) {
+        if (attribute != null) {
           for (Object sibling : siblings) {
             EObject eSibling = (EObject) sibling;
             
             //eGet doesn't raise an exception if 'java assert' option is not enabled
             //See https://polarsys.org/bugs/show_bug.cgi?id=389
-            if(!eSibling.eClass().getEAllStructuralFeatures().contains(attribute_p)){
+            if(!eSibling.eClass().getEAllStructuralFeatures().contains(attribute)){
             	continue;
             }
             
-            Object attributeValue = eSibling.eGet(attribute_p);
+            Object attributeValue = eSibling.eGet(attribute);
             if (attributeValue instanceof String) {
               String name = (String) attributeValue;
               if (!name.equals(ICommonConstants.EMPTY_STRING)) {
@@ -434,36 +434,36 @@ public class EcoreUtil2 {
           }
           counter = siblings.size();
           do {
-            resultName = MessageFormat.format(defaultPattern, new Object[] { Integer.valueOf(++counter), defaultString_p });
+            resultName = MessageFormat.format(defaultPattern, new Object[] { Integer.valueOf(++counter), defaultString });
           } while (existingNames.contains(resultName));
         }
       } else {
-        resultName = MessageFormat.format(defaultPattern, new Object[] { Integer.valueOf(++counter), defaultString_p });
+        resultName = MessageFormat.format(defaultPattern, new Object[] { Integer.valueOf(++counter), defaultString });
       }
     } else {
-      resultName = defaultString_p;
+      resultName = defaultString;
     }
     return resultName;
   }
 
   /**
    * Is given object contained by an object which is an instance of specified container class.
-   * @param eObject_p the element to check the container.
-   * @param containerClass_p The expected container class.
+   * @param eObject the element to check the container.
+   * @param containerClass The expected container class.
    * @return <code>true</code> if the container class matches, <code>false</code> otherwise.
    */
-  public static boolean isContainedBy(EObject eObject_p, final Class<?> containerClass_p) {
+  public static boolean isContainedBy(EObject eObject, final Class<?> containerClass) {
     // Precondition.
-    if (null == containerClass_p) {
+    if (null == containerClass) {
       return false;
     }
-    boolean result = isContainnedBy(eObject_p, new RunnableWithBooleanResult() {
+    boolean result = isContainnedBy(eObject, new RunnableWithBooleanResult() {
       /**
        * {@inheritDoc}
        */
       public void run() {
         EObject container = getObject();
-        setResult(Boolean.valueOf(containerClass_p.isInstance(container)));
+        setResult(Boolean.valueOf(containerClass.isInstance(container)));
       }
     });
     return result;
@@ -471,22 +471,22 @@ public class EcoreUtil2 {
 
   /**
    * Checks if the specified element container class is same as specified class.
-   * @param elt_p the element to check the container.
-   * @param cls_p The expected container class.
+   * @param elt the element to check the container.
+   * @param cls The expected container class.
    * @return <code>True</code> if the container class is good else <code>false</code>.
    */
-  public static boolean isContainedBy(EObject elt_p, final EClass cls_p) {
+  public static boolean isContainedBy(EObject elt, final EClass cls) {
     // Precondition.
-    if (null == cls_p) {
+    if (null == cls) {
       return false;
     }
-    boolean result = isContainnedBy(elt_p, new RunnableWithBooleanResult() {
+    boolean result = isContainnedBy(elt, new RunnableWithBooleanResult() {
       /**
        * {@inheritDoc}
        */
       public void run() {
         EObject container = getObject();
-        setResult(Boolean.valueOf(cls_p.isSuperTypeOf(container.eClass())));
+        setResult(Boolean.valueOf(cls.isSuperTypeOf(container.eClass())));
       }
     });
     return result;
@@ -494,22 +494,22 @@ public class EcoreUtil2 {
 
   /**
    * Checks if the specified element is contained by the specified container.
-   * @param elt_p the element to check.
-   * @param container_p The container to check.
+   * @param elt the element to check.
+   * @param container The container to check.
    * @return <code>True</code> if the container class is good else <code>false</code>.
    */
-  public static boolean isContainedBy(EObject elt_p, final EObject container_p) {
+  public static boolean isContainedBy(EObject elt, final EObject container) {
     // Precondition.
-    if (null == container_p) {
+    if (null == container) {
       return false;
     }
-    boolean result = isContainnedBy(elt_p, new RunnableWithBooleanResult() {
+    boolean result = isContainnedBy(elt, new RunnableWithBooleanResult() {
       /**
        * {@inheritDoc}
        */
       public void run() {
-        EObject container = getObject();
-        setResult(Boolean.valueOf(container_p == container));
+        EObject owner = getObject();
+        setResult(Boolean.valueOf(container == owner));
       }
     });
     return result;
@@ -517,70 +517,70 @@ public class EcoreUtil2 {
 
   /**
    * Is specified object contained by a container matching specified condition.
-   * @param eObject_p
-   * @param containmentCondition_p
+   * @param eObject
+   * @param containmentCondition
    * @return
    */
-  private static boolean isContainnedBy(EObject eObject_p, RunnableWithBooleanResult containmentCondition_p) {
+  private static boolean isContainnedBy(EObject eObject, RunnableWithBooleanResult containmentCondition) {
     boolean result = false;
     // Preconditions:
-    if ((null == eObject_p) || (null == containmentCondition_p)) {
+    if ((null == eObject) || (null == containmentCondition)) {
       return result;
     }
     // Get object's container.
-    EObject container = eObject_p.eContainer();
+    EObject container = eObject.eContainer();
     if (null == container) {
       return result;
     }
     // Set the container.
-    containmentCondition_p.setObject(container);
+    containmentCondition.setObject(container);
     // Execute the runnable.
-    containmentCondition_p.run();
-    if (containmentCondition_p.getResult().booleanValue()) {
+    containmentCondition.run();
+    if (containmentCondition.getResult().booleanValue()) {
       result = true;
     } else {
-      result = isContainnedBy(container, containmentCondition_p);
+      result = isContainnedBy(container, containmentCondition);
     }
     return result;
   }
 
   /**
    * Allows to know if an <code>EClass</code> is equal or a super class of another <code>EClass</code>
-   * @param class1_p an EClass
-   * @param class2_p an EClass
-   * @return <code>true</code> if class1_p is equal to class_2 or is a super class of class_2, <code>false</code> otherwise.
+   * @param class1 an EClass
+   * @param class2 an EClass
+   * @return <code>true</code> if class1 is equal to class_2 or is a super class of class_2, <code>false</code> otherwise.
    */
-  public static boolean isEqualOrSuperClass(EClass class1_p, EClass class2_p) {
-    return (null != class1_p) && (null != class2_p) && (class1_p.equals(class2_p) || class2_p.getEAllSuperTypes().contains(class1_p));
+  public static boolean isEqualOrSuperClass(EClass class1, EClass class2) {
+    return (null != class1) && (null != class2) && (class1.equals(class2) || class2.getEAllSuperTypes().contains(class1));
   }
 
   /**
-   * @param elt_p
-   * @param cls_p
+   * @param elt
+   * @param cls
    * @return
    */
-  public static boolean isOrIsContainedBy(EObject elt_p, EClass cls_p) {
+  public static boolean isOrIsContainedBy(EObject elt, EClass cls) {
     boolean result = true;
 
-    result = cls_p.isSuperTypeOf(elt_p.eClass());
+    result = cls.isSuperTypeOf(elt.eClass());
     if (!result) {
-      result |= isContainedBy(elt_p, cls_p);
+      result |= isContainedBy(elt, cls);
     }
 
     return result;
   }
 
   /**
-   * @param elt_p
-   * @param container_p
+   * @param elt
+   * @param container
    * @return
    */
-  public static boolean isOrIsContainedBy(EObject elt_p, EObject container_p) {
+  public static boolean isOrIsContainedBy(EObject elt, EObject container) {
     boolean result = true;
 
-    result = elt_p == container_p;
+    result = elt == container;
     if (!result) {
-      result |= isContainedBy(elt_p, container_p);
+      result |= isContainedBy(elt, container);
     }
 
     return result;
@@ -588,30 +588,30 @@ public class EcoreUtil2 {
 
   /**
    * Is given file resource in read only ?
-   * @param resource_p
+   * @param resource
    * @return <code>false</code> if given resource is not file-based; otherwise it depends on the underlying file.
    */
-  public static boolean isReadOnly(Resource resource_p) {
+  public static boolean isReadOnly(Resource resource) {
     // Precondition.
-    if (null == resource_p) {
+    if (null == resource) {
       return false;
     }
-    IFile file = getFile(resource_p);
+    IFile file = getFile(resource);
     return (null != file) ? file.isReadOnly() : false;
   }
 
   /**
    * Removes the element's container.
-   * @param elt_p
+   * @param elt
    */
-  public static void removeContainer(EObject elt_p) {
-    EObject container = elt_p.eContainer();
-    EStructuralFeature eStructFeatureFound = elt_p.eContainingFeature();
+  public static void removeContainer(EObject elt) {
+    EObject container = elt.eContainer();
+    EStructuralFeature eStructFeatureFound = elt.eContainingFeature();
     if (eStructFeatureFound != null) {
       if (!eStructFeatureFound.isMany()) {
         container.eSet(eStructFeatureFound, null);
       } else {
-        ((Collection<?>) container.eGet(eStructFeatureFound)).remove(elt_p);
+        ((Collection<?>) container.eGet(eStructFeatureFound)).remove(elt);
       }
     }
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,21 +55,21 @@ public class QueryInterpretor {
 	 * @throws NonExistingQuery
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> List<T> executeQuery(String queryIdentifier, Object semanticsObject_p, IQueryContext context, IQueryFilter filter) {
+	public static <T> List<T> executeQuery(String queryIdentifier, Object semanticsObject, IQueryContext context, IQueryFilter filter) {
 		if (context == null) {
 			throw new IllegalArgumentException("the context shall not be null"); //$NON-NLS-1$
 		}
 
-		Object semanticsObject = semanticsObject_p;
-		if (semanticsObject == null) {
-			semanticsObject = NONE_VALUE;
+		Object semanticsObj = semanticsObject;
+		if (semanticsObj == null) {
+			semanticsObj = NONE_VALUE;
 		}
 
 		IPrivateQueryContext theContext = (IPrivateQueryContext) context;
 		if (theContext.getExecutionLevel() == 0) {
 			FormatedLogger.addTextLn("QUERY CALL : " + queryIdentifier, Log.QUERY_INTERPRETOR); //$NON-NLS-1$
 		}
-		FormatedLogger.addTextLn("QueryInterpretor.executeQuery(" + queryIdentifier + ", " + semanticsObject + ")", Log.QUERY_INTERPRETOR); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		FormatedLogger.addTextLn("QueryInterpretor.executeQuery(" + queryIdentifier + ", " + semanticsObj + ")", Log.QUERY_INTERPRETOR); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		FormatedLogger.addTextLn("{", Log.QUERY_INTERPRETOR); //$NON-NLS-1$
 		FormatedLogger.incIndent(Log.QUERY_INTERPRETOR);
 
@@ -78,19 +78,19 @@ public class QueryInterpretor {
 		List<IQuery> queries = getQuerySetForQueryIdentifier(queryIdentifier);
 		for (IQuery query : queries) {
 			Integer queryId = queryToId.get(query);
-			List<Object> res = theContext.getResultFromCache(queryId, semanticsObject);
+			List<Object> res = theContext.getResultFromCache(queryId, semanticsObj);
 			if (res == null) {
 				FormatedLogger.addTextLn("execute " + query.getIdentifier() + " {", Log.QUERY_INTERPRETOR); //$NON-NLS-1$ //$NON-NLS-2$
 				FormatedLogger.incIndent(Log.QUERY_INTERPRETOR);
 				theContext.incCallLevel();
-				res = query.execute(semanticsObject, theContext);
+				res = query.execute(semanticsObj, theContext);
 				theContext.decCallLevel();
-				theContext.addInCache(queryId, semanticsObject, res);
+				theContext.addInCache(queryId, semanticsObj, res);
 				FormatedLogger.decIndent(Log.QUERY_INTERPRETOR);
 				FormatedLogger.addTextLn("}", Log.QUERY_INTERPRETOR); //$NON-NLS-1$
 
 			} else {
-				FormatedLogger.addTextLn("retrieve from cache for " + query.getIdentifier() + "[" + queryId + "]" + " " + semanticsObject, //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+				FormatedLogger.addTextLn("retrieve from cache for " + query.getIdentifier() + "[" + queryId + "]" + " " + semanticsObj, //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 						Log.QUERY_INTERPRETOR);
 			}
 
@@ -165,8 +165,8 @@ public class QueryInterpretor {
 				query.setExtendedQueryIdentifier(queryIdentifier2ExtendedQueryIdentifier.get(queryIdentifier));
 				identifier2Query.put(queryIdentifier, query);
 				queryToId.put(query, new Integer(queryIdCounter++));
-			} catch (CoreException exception_p) {
-				exception_p.printStackTrace();
+			} catch (CoreException exception) {
+				exception.printStackTrace();
 			}
 		}
 		return query;

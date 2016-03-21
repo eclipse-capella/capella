@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.traceability;
 
 import java.util.List;
@@ -32,30 +33,30 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class MatchTraceabilityHandler extends LevelBasedTraceabilityHandler implements INotifyListener {
   ExtendedComparison _comparison;
 
-  public MatchTraceabilityHandler(ExtendedComparison comparison_p, String identifier_p) {
-    super(identifier_p);
-    _comparison = comparison_p;
+  public MatchTraceabilityHandler(ExtendedComparison comparison, String identifier) {
+    super(identifier);
+    _comparison = comparison;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
-    initializeRootMappings(context_p);
-    return super.init(context_p);
+  public IStatus init(IContext context) {
+    initializeRootMappings(context);
+    return super.init(context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected EObject getLevelElement(EObject source_p, IContext context_p) {
+  protected EObject getLevelElement(EObject source, IContext context) {
     return null;
   }
 
-  protected CatalogElementLink getOriginLink(CatalogElementLink link_p) {
-    CatalogElementLink result = link_p;
+  protected CatalogElementLink getOriginLink(CatalogElementLink link) {
+    CatalogElementLink result = link;
     while (result.getOrigin() != null) {
       result = result.getOrigin();
     }
@@ -67,16 +68,16 @@ public class MatchTraceabilityHandler extends LevelBasedTraceabilityHandler impl
    */
   @Override
   @Deprecated
-  public String getId(EObject element_p, IContext context_p) {
-    return super.getId(element_p, context_p);
+  public String getId(EObject element, IContext context) {
+    return super.getId(element, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void initializeRootMappings(IContext context_p) {
-    super.initializeRootMappings(context_p);
+  protected void initializeRootMappings(IContext context) {
+    super.initializeRootMappings(context);
 
     if (_comparison != null) { //Update replica
       _comparison.getMapping().getContents();
@@ -101,7 +102,7 @@ public class MatchTraceabilityHandler extends LevelBasedTraceabilityHandler impl
         EObject target = match.get(Role.TARGET);
 
         if ((reference != null) && (target != null)) {
-          addMappings(reference, target, context_p);
+          addMappings(reference, target, context);
         }
       }
     }
@@ -111,7 +112,7 @@ public class MatchTraceabilityHandler extends LevelBasedTraceabilityHandler impl
    * {@inheritDoc}
    */
   @Override
-  public void notifyChanged(INotifyChangeEvent event_p, IContext context_p) {
+  public void notifyChanged(INotifyChangeEvent event, IContext context) {
     //Nothing here
   }
 

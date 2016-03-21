@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers.selection;
 
 import java.util.ArrayList;
@@ -70,12 +71,12 @@ public class LinkSelectionProvider {
    * Get a contribution for given meta-class.
    * @return <code>null</code> if not found.
    */
-  public ILinkSelection getContribution(EClass metaclass_p) {
+  public ILinkSelection getContribution(EClass metaclass) {
     List<ILinkSelection> allContributions = getAllContributions();
     EClass matchedEClass = null;
     ILinkSelection returnedSelection = null;
     for (ILinkSelection contrib : allContributions) {
-      if (EcoreUtil2.isEqualOrSuperClass(contrib.getEClass(), metaclass_p)) {
+      if (EcoreUtil2.isEqualOrSuperClass(contrib.getEClass(), metaclass)) {
         {
           if ((null == matchedEClass) || (EcoreUtil2.isEqualOrSuperClass(matchedEClass, contrib.getEClass()))) {
             matchedEClass = contrib.getEClass();

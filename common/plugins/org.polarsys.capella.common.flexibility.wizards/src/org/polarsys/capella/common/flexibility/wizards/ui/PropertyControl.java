@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui;
 
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -70,10 +71,10 @@ public class PropertyControl {
     return false;
   }
 
-  public PropertyControl(ILabelProvider labelProvider_p, IPropertyContext context_p, IRendererContext renderers_p) {
-    this._context = context_p;
-    this._renderers = renderers_p;
-    this._labelProvider = labelProvider_p;
+  public PropertyControl(ILabelProvider labelProvider, IPropertyContext context, IRendererContext renderers) {
+    this._context = context;
+    this._renderers = renderers;
+    this._labelProvider = labelProvider;
     initRendererContext();
   }
 
@@ -85,13 +86,13 @@ public class PropertyControl {
       ((IPolicifiedRendererContext) _renderers).addRendererPolicy(new AbstractRendererPolicy() {
 
         @Override
-        public boolean match(IPropertyGroup property_p) {
+        public boolean match(IPropertyGroup property) {
           return true;
         }
 
         @Override
-        public IGroupRenderer createRenderer(IPropertyGroup group_p) {
-          if (group_p.getParentId() == null) {
+        public IGroupRenderer createRenderer(IPropertyGroup group) {
+          if (group.getParentId() == null) {
             if (isFlat()) {
               return new FlatGroupRenderer();
             }
@@ -104,30 +105,30 @@ public class PropertyControl {
   }
 
   /**
-   * @param mainGroup_p
+   * @param group
    * @return
    */
-  protected String getGroupName(IPropertyGroup group_p) {
-    if ((group_p.getName() == null) || (group_p.getName().length() == 0)) {
+  protected String getGroupName(IPropertyGroup group) {
+    if ((group.getName() == null) || (group.getName().length() == 0)) {
       return ICommonConstants.EMPTY_STRING;
     }
-    return ICommonConstants.WHITE_SPACE_CHARACTER + group_p.getName() + ICommonConstants.WHITE_SPACE_CHARACTER;
+    return ICommonConstants.WHITE_SPACE_CHARACTER + group.getName() + ICommonConstants.WHITE_SPACE_CHARACTER;
   }
 
   /**
    * {@inheritDoc}
    */
-  public Control createControl(Composite parent_p) {
+  public Control createControl(Composite parent) {
     IPropertyContext context = getPropertyContext();
     IRendererContext rendererContext = getRendererContext();
 
     IRenderers renderers = getRendererContext().getRenderers();
     if ((context == null) || (renderers == null)) {
-      return parent_p;
+      return parent;
     }
 
     IProperties properties = context.getProperties();
-    Composite topLevel = new Composite(parent_p, SWT.NONE);
+    Composite topLevel = new Composite(parent, SWT.NONE);
     GridLayout mainLayout = new GridLayout();
     mainLayout.marginHeight = 0;
     mainLayout.marginWidth = 0;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.scope;
 
 import java.util.Collection;
@@ -35,7 +36,7 @@ public class SharedElementsScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -43,7 +44,7 @@ public class SharedElementsScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -51,28 +52,28 @@ public class SharedElementsScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public Collection<? extends EObject> retrieveRelatedElements(EObject element_p, IContext context_p) {
+  public Collection<? extends EObject> retrieveRelatedElements(EObject element, IContext context) {
 
     //We retrieve shared elements only for elements in the initial source scope.
-    if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.INITIAL_SOURCE_SCOPE, element_p, context_p)) {
+    if (!ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.INITIAL_SOURCE_SCOPE, element, context)) {
       return Collections.emptyList();
     }
 
     //For catalog elements used in the REC, we don't retrieve shared elements. (shared elements will be in that case theirs REC)
-    if (element_p instanceof CatalogElement) {
+    if (element instanceof CatalogElement) {
       return Collections.emptyList();
     }
 
     Collection<EObject> referencedElements = new HashSet<EObject>();
-    for (EReference reference : element_p.eClass().getEAllReferences()) {
+    for (EReference reference : element.eClass().getEAllReferences()) {
       if (reference.isDerived() || reference.isContainment() || reference.isContainer() || reference.isTransient() || (reference.getEOpposite() != null)) {
         continue;
       }
 
       if (reference.isMany()) {
-        referencedElements.addAll((EList) element_p.eGet(reference));
+        referencedElements.addAll((EList) element.eGet(reference));
       } else {
-        referencedElements.add((EObject) element_p.eGet(reference));
+        referencedElements.add((EObject) element.eGet(reference));
       }
     }
 
@@ -83,7 +84,7 @@ public class SharedElementsScopeRetriever implements IScopeRetriever {
    * {@inheritDoc}
    */
   @Override
-  public Collection<? extends EObject> retrieveSharedElements(IContext context_p) {
+  public Collection<? extends EObject> retrieveSharedElements(IContext context) {
     return null;
   }
 

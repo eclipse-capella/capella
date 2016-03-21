@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -26,17 +27,17 @@ import org.eclipse.swt.widgets.Shell;
 public class AbstractMessageDialog extends MessageDialog {
 
   /**
-   * @param parentShell_p
-   * @param dialogTitle_p
-   * @param dialogTitleImage_p
-   * @param dialogMessage_p
-   * @param dialogImageType_p
-   * @param dialogButtonLabels_p
-   * @param defaultIndex_p
+   * @param parentShell
+   * @param dialogTitle
+   * @param dialogTitleImage
+   * @param dialogMessage
+   * @param dialogImageType
+   * @param dialogButtonLabels
+   * @param defaultIndex
    */
-  public AbstractMessageDialog(Shell parentShell_p, String dialogTitle_p, Image dialogTitleImage_p, String dialogMessage_p, int dialogImageType_p,
-      String[] dialogButtonLabels_p, int defaultIndex_p) {
-    super(parentShell_p, dialogTitle_p, dialogTitleImage_p, dialogMessage_p, dialogImageType_p, dialogButtonLabels_p, defaultIndex_p);
+  public AbstractMessageDialog(Shell parentShell, String dialogTitle, Image dialogTitleImage, String dialogMessage, int dialogImageType,
+      String[] dialogButtonLabels, int defaultIndex) {
+    super(parentShell, dialogTitle, dialogTitleImage, dialogMessage, dialogImageType, dialogButtonLabels, defaultIndex);
   }
 
   /**

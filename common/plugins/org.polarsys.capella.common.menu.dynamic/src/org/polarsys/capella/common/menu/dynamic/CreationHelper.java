@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.menu.dynamic;
 
 import java.util.Collection;
@@ -36,84 +37,84 @@ public class CreationHelper {
 
   /**
    * Call the creation helper
-   * @param createdElement_p
+   * @param createdElement
    * @return
    */
-  public static EObject performContributionCommands(EObject createdElement_p) {
-    EditingDomain editingDomain = TransactionHelper.getEditingDomain(createdElement_p);
+  public static EObject performContributionCommands(EObject createdElement) {
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(createdElement);
     if (null != editingDomain) {
       editingDomain.getCommandStack().execute(
         CreationHelper.getContributorsCommand(editingDomain,
-          createdElement_p,
-          createdElement_p.eContainer(),
-          createdElement_p.eClass(),
-          createdElement_p.eContainmentFeature()));
+          createdElement,
+          createdElement.eContainer(),
+          createdElement.eClass(),
+          createdElement.eContainmentFeature()));
     }
-    return createdElement_p;
+    return createdElement;
   }
 
   /**
    * Call the creation helper
-   * @param createdElement_p
-   * @param container_p
+   * @param createdElement
+   * @param container
    * @return
    */
-  public static EObject performContributionCommands(EObject createdElement_p, EObject container_p) {
-    EditingDomain editingDomain = TransactionHelper.getEditingDomain(createdElement_p);
+  public static EObject performContributionCommands(EObject createdElement, EObject container) {
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(createdElement);
     if (null != editingDomain) {
       editingDomain.getCommandStack().execute(
         CreationHelper.getContributorsCommand(editingDomain,
-          createdElement_p,
-          container_p,
-          createdElement_p.eClass(),
-          createdElement_p.eContainmentFeature()));
+          createdElement,
+          container,
+          createdElement.eClass(),
+          createdElement.eContainmentFeature()));
     }
-    return createdElement_p;
+    return createdElement;
   }
 
   /**
    * This returns a composite command containing the naming command, followed by all the contribution commands.
-   * @param editingDomain_p
-   * @param createdElement_p
+   * @param editingDomain
+   * @param createdElement
    * @return
    */
-  public static StrictCompoundCommand getAdditionnalCommand(EditingDomain editingDomain_p, ModelElement createdElement_p) {
-    return getAdditionnalCommand(editingDomain_p, createdElement_p, createdElement_p.eContainer(), createdElement_p.eClass(),
-        createdElement_p.eContainmentFeature(), createdElement_p.eClass().getName());
+  public static StrictCompoundCommand getAdditionnalCommand(EditingDomain editingDomain, ModelElement createdElement) {
+    return getAdditionnalCommand(editingDomain, createdElement, createdElement.eContainer(), createdElement.eClass(),
+        createdElement.eContainmentFeature(), createdElement.eClass().getName());
   }
 
   /**
    * This returns a composite command containing the naming command, followed by all the contribution commands.
-   * @param editingDomain_p
-   * @param namedElement_p
-   * @param owner_p
-   * @param objectClass_p
-   * @param feature_p
+   * @param editingDomain
+   * @param namedElement
+   * @param owner
+   * @param objectClass
+   * @param feature
    * @param namingPrefix_p
    * @return
    */
-  public static StrictCompoundCommand getAdditionnalCommand(final EditingDomain editingDomain_p, ModelElement namedElement_p, final EObject owner_p,
-      final EClass objectClass_p, final EStructuralFeature feature_p) {
-    return getAdditionnalCommand(editingDomain_p, namedElement_p, owner_p, objectClass_p, feature_p, namedElement_p.eClass().getName());
+  public static StrictCompoundCommand getAdditionnalCommand(final EditingDomain editingDomain, ModelElement namedElement, final EObject owner,
+      final EClass objectClass, final EStructuralFeature feature) {
+    return getAdditionnalCommand(editingDomain, namedElement, owner, objectClass, feature, namedElement.eClass().getName());
   }
 
   /**
    * This returns a composite command containing the naming command, followed by all the contribution commands.
-   * @param editingDomain_p
-   * @param namedElement_p
-   * @param owner_p
-   * @param objectClass_p
-   * @param feature_p
-   * @param namingPrefix_p
+   * @param editingDomain
+   * @param namedElement
+   * @param owner
+   * @param objectClass
+   * @param feature
+   * @param namingPrefix
    * @return
    */
-  public static StrictCompoundCommand getAdditionnalCommand(final EditingDomain editingDomain_p, ModelElement namedElement_p, final EObject owner_p,
-      final EClass objectClass_p, final EStructuralFeature feature_p, String namingPrefix_p) {
+  public static StrictCompoundCommand getAdditionnalCommand(final EditingDomain editingDomain, ModelElement namedElement, final EObject owner,
+      final EClass objectClass, final EStructuralFeature feature, String namingPrefix) {
     StrictCompoundCommand cc = new StrictCompoundCommand();
 
-    if (namedElement_p instanceof AbstractNamedElement) {
+    if (namedElement instanceof AbstractNamedElement) {
       // do the naming
-      final Command namingCmd = getNamingCommand(editingDomain_p, (AbstractNamedElement) namedElement_p, (ModelElement) owner_p, feature_p, namingPrefix_p);
+      final Command namingCmd = getNamingCommand(editingDomain, (AbstractNamedElement) namedElement, (ModelElement) owner, feature, namingPrefix);
       cc.append(namingCmd);
 
       Command contributionCmd = new CommandWrapper() {
@@ -124,7 +125,7 @@ public class CreationHelper {
             Object createdElt = res.iterator().next();
             if (createdElt instanceof EObject) {
               // call all the execution contributors
-              return getContributorsCommand((EObject) createdElt, owner_p, objectClass_p, feature_p);
+              return getContributorsCommand((EObject) createdElt, owner, objectClass, feature);
             }
           }
           return new IdentityCommand();
@@ -140,44 +141,44 @@ public class CreationHelper {
 
   /**
    * This returns a composite command containing the naming command, followed by all the contribution commands.
-   * @param editingDomain_p
-   * @param createdElement_p
-   * @param namingPrefix_p
+   * @param editingDomain
+   * @param createdElement
+   * @param namingPrefix
    * @return
    */
-  public static StrictCompoundCommand getAdditionnalCommand(EditingDomain editingDomain_p, ModelElement createdElement_p, String namingPrefix_p) {
-    return getAdditionnalCommand(editingDomain_p, createdElement_p, createdElement_p.eContainer(), createdElement_p.eClass(),
-        createdElement_p.eContainmentFeature(), namingPrefix_p);
+  public static StrictCompoundCommand getAdditionnalCommand(EditingDomain editingDomain, ModelElement createdElement, String namingPrefix) {
+    return getAdditionnalCommand(editingDomain, createdElement, createdElement.eContainer(), createdElement.eClass(),
+        createdElement.eContainmentFeature(), namingPrefix);
   }
 
   /**
    * This returns a composite command containing all the contributions.<br/>
    * If no contributors were declared, returns an IdentityCommand.
-   * @param createdElement_p
-   * @param owner_p
-   * @param objectClass_p
-   * @param feature_p
+   * @param createdElement
+   * @param owner
+   * @param objectClass
+   * @param feature
    */
-  public static CompoundCommand getContributorsCommand(EObject createdElement_p, EObject owner_p, EClass objectClass_p, EStructuralFeature feature_p) {
-    EditingDomain editingDomain = TransactionHelper.getEditingDomain(owner_p != null ? owner_p : createdElement_p);
-    return getContributorsCommand(editingDomain, createdElement_p, owner_p, objectClass_p, feature_p);
+  public static CompoundCommand getContributorsCommand(EObject createdElement, EObject owner, EClass objectClass, EStructuralFeature feature) {
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(owner != null ? owner : createdElement);
+    return getContributorsCommand(editingDomain, createdElement, owner, objectClass, feature);
   }
 
   /**
    * This returns a composite command containing all the contributions.<br/>
    * If no contributors were declared, returns an IdentityCommand.
-   * @param editingDomain_p
-   * @param createdElement_p
-   * @param owner_p
-   * @param objectClass_p
-   * @param feature_p
+   * @param editingDomain
+   * @param createdElement
+   * @param owner
+   * @param objectClass
+   * @param feature
    */
-  private static CompoundCommand getContributorsCommand(EditingDomain editingDomain_p, EObject createdElement_p, EObject owner_p, EClass objectClass_p,
-      EStructuralFeature feature_p) {
+  private static CompoundCommand getContributorsCommand(EditingDomain editingDomain, EObject createdElement, EObject owner, EClass objectClass,
+      EStructuralFeature feature) {
     CompoundCommand cmd = new CompoundCommand();
 
-    for (IMDEMenuItemContribution contribution : ActionContributionProvider.getInstance().getAllActionContributions(objectClass_p)) {
-      Command contributionCommand = contribution.executionContribution(editingDomain_p, (ModelElement) owner_p, (ModelElement) createdElement_p, feature_p);
+    for (IMDEMenuItemContribution contribution : ActionContributionProvider.getInstance().getAllActionContributions(objectClass)) {
+      Command contributionCommand = contribution.executionContribution(editingDomain, (ModelElement) owner, (ModelElement) createdElement, feature);
       if (contributionCommand != null) {
         cmd.append(contributionCommand);
       }
@@ -192,27 +193,27 @@ public class CreationHelper {
 
   /**
    * This returns a simple default naming command.
-   * @param editingDomain_p
-   * @param namedElement_p
-   * @param owner_p
-   * @param feature_p
+   * @param editingDomain
+   * @param namedElement
+   * @param owner
+   * @param feature
    */
-  public static Command getNamingCommand(EditingDomain editingDomain_p, AbstractNamedElement namedElement_p, ModelElement owner_p, EStructuralFeature feature_p) {
-    return new SetCommand(editingDomain_p, namedElement_p, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, EcoreUtil2.getUniqueName(namedElement_p,
-        owner_p, feature_p, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, namedElement_p.eClass().getName()));
+  public static Command getNamingCommand(EditingDomain editingDomain, AbstractNamedElement namedElement, ModelElement owner, EStructuralFeature feature) {
+    return new SetCommand(editingDomain, namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, EcoreUtil2.getUniqueName(namedElement,
+        owner, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, namedElement.eClass().getName()));
   }
 
   /**
    * This returns a simple default naming command.
-   * @param editingDomain_p
-   * @param namedElement_p
-   * @param owner_p
-   * @param feature_p
-   * @param prefix_p
+   * @param editingDomain
+   * @param namedElement
+   * @param owner
+   * @param feature
+   * @param prefix
    */
-  public static Command getNamingCommand(EditingDomain editingDomain_p, AbstractNamedElement namedElement_p, ModelElement owner_p,
-      EStructuralFeature feature_p, String prefix_p) {
-    return new SetCommand(editingDomain_p, namedElement_p, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, EcoreUtil2.getUniqueName(namedElement_p,
-        owner_p, feature_p, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, prefix_p));
+  public static Command getNamingCommand(EditingDomain editingDomain, AbstractNamedElement namedElement, ModelElement owner,
+      EStructuralFeature feature, String prefix) {
+    return new SetCommand(editingDomain, namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, EcoreUtil2.getUniqueName(namedElement,
+        owner, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, prefix));
   }
 }

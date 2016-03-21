@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.ArrayList;
@@ -58,8 +59,8 @@ public class CheckedTreeSelectionWithUndefinedElementsDialog extends CheckedTree
     return uncheckedElements;
   }
 
-  public void setUndefinedElements(List<Object> undefinedElements_p) {
-    undefinedElements = undefinedElements_p;
+  public void setUndefinedElements(List<Object> undefinedElements) {
+    this.undefinedElements = undefinedElements;
   }
 
   public List<Object> getUndefinedElements() {
@@ -72,9 +73,9 @@ public class CheckedTreeSelectionWithUndefinedElementsDialog extends CheckedTree
    * @param labelProvider
    * @param contentProvider
    */
-  public CheckedTreeSelectionWithUndefinedElementsDialog(Shell parent, ILabelProvider labelProvider, ITreeContentProvider contentProvider_p) {
-    super(parent, labelProvider, contentProvider_p);
-    contentProvider = contentProvider_p;
+  public CheckedTreeSelectionWithUndefinedElementsDialog(Shell parent, ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
+    super(parent, labelProvider, contentProvider);
+    this.contentProvider = contentProvider;
     checkedElements = new ArrayList<Object>();
     uncheckedElements = new ArrayList<Object>();
     initialCheckedElements = new ArrayList<Object>();
@@ -85,9 +86,9 @@ public class CheckedTreeSelectionWithUndefinedElementsDialog extends CheckedTree
    * Store the input for being used in the listener
    */
   @Override
-  public void setInput(Object input_p) {
-    super.setInput(input_p);
-    input = input_p;
+  public void setInput(Object input) {
+    super.setInput(input);
+    this.input = input;
   }
 
   /**

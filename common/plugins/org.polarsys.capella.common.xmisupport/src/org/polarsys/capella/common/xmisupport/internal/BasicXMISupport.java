@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.xmisupport.internal;
 
 import java.util.Map;
@@ -31,12 +32,12 @@ public class BasicXMISupport implements XMISupport {
   /**
    * {@inheritDoc}
    */
-  public String getID(EObject e_p) {
+  public String getID(EObject e) {
     String result = null;
-    Resource resource = e_p.eResource();
+    Resource resource = e.eResource();
 
     if (resource instanceof XMIResource) {
-      result = ((XMIResource) e_p.eResource()).getID(e_p);
+      result = ((XMIResource) e.eResource()).getID(e);
     } else if (resource != null) {
       XMIResourceAdapter adapter = _loadedBackends.get(resource);
       if (adapter == null) {
@@ -54,10 +55,10 @@ public class BasicXMISupport implements XMISupport {
         }
       }
       if (adapter != null) {
-        result = adapter.get(e_p);
+        result = adapter.get(e);
         if (result == null) {
           result = EcoreUtil.generateUUID();
-          adapter.put(e_p, result);
+          adapter.put(e, result);
         }
       }
     }

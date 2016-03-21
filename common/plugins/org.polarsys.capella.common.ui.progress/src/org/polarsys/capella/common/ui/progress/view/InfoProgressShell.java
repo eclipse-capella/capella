@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.progress.view;
 
 import java.util.HashMap;
@@ -64,9 +65,9 @@ public class InfoProgressShell
   } 
   
   
-  public InfoProgressShell(Display display_p, Observer observer_p) {
-    _display = display_p;
-    _model = observer_p;
+  public InfoProgressShell(Display display, Observer observer) {
+    _display = display;
+    _model = observer;
     this.addObserver(_model);
     if (_model instanceof Observable) {
       Observable observable = (Observable) _model;
@@ -91,8 +92,8 @@ public class InfoProgressShell
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setTitle(java.lang.String)
    */
-  public void setTitle(String titleString_p) {
-    sShell.setText(titleString_p);
+  public void setTitle(String titleString) {
+    sShell.setText(titleString);
   }
   
   /**
@@ -105,53 +106,53 @@ public class InfoProgressShell
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setMaximum(int)
    */
-  public void setMaximum(int valueI_p) {
-    _progressBar.setMaximum(valueI_p);
+  public void setMaximum(int valueI) {
+    _progressBar.setMaximum(valueI);
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setSelection(int)
    */
-  public void setSelection(int valueI_p) {
-    _progressBar.setSelection(valueI_p);
-    float pourcent = ((float) valueI_p / (float) getMaximum()) * 100.0F;
+  public void setSelection(int valueI) {
+    _progressBar.setSelection(valueI);
+    float pourcent = ((float) valueI / (float) getMaximum()) * 100.0F;
     sShell.setText( (int)pourcent + "%"); //$NON-NLS-1$
   }
   
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setStoppable(boolean)
    */
-  public void setStoppable(boolean isStoppable_p) {
-    _isStoppable = isStoppable_p;
+  public void setStoppable(boolean isStoppable) {
+    _isStoppable = isStoppable;
     _cancelOrClose.setEnabled(_isStoppable);
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setDisposeAtEnd(boolean)
    */
-  public void setDisposeAtEnd(boolean disposeAtEnd_p) {
-    _disposeAtEnd = disposeAtEnd_p;
+  public void setDisposeAtEnd(boolean disposeAtEnd) {
+    _disposeAtEnd = disposeAtEnd;
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setVisible(boolean)
    */
-  public void setVisible(boolean visibleB_p) {
-    sShell.setVisible(visibleB_p);
+  public void setVisible(boolean visibleB) {
+    sShell.setVisible(visibleB);
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setDetailMode(boolean)
    */
   @SuppressWarnings("nls")
-  public void setDetailMode(boolean showDetailB_p) {
-    _textArea.setVisible(showDetailB_p);
+  public void setDetailMode(boolean showDetailB) {
+    _textArea.setVisible(showDetailB);
 
     Rectangle rect = sShell.getBounds();
     _topBounds = new Rectangle(rect.x, rect.y, _topBounds.width, _topBounds.height);
     _bounds = new Rectangle(rect.x, rect.y, _bounds.width, _bounds.height);
 
-    if(!showDetailB_p) {
+    if(!showDetailB) {
       _details.setText(">>");
       sShell.setBounds(_topBounds);
     } else {
@@ -177,15 +178,15 @@ public class InfoProgressShell
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#setMessage(java.lang.String)
    */
-  public void setMessage(String messageString_p) {
-    _message.setText(messageString_p);
+  public void setMessage(String messageString) {
+    _message.setText(messageString);
   }
 
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#appendDetailedMessage(java.lang.String)
    */
-  public void appendDetailedMessage(String messageString_p) {
-    _detailedMessageCache.append(messageString_p);
+  public void appendDetailedMessage(String messageString) {
+    _detailedMessageCache.append(messageString);
     _detailedMessageCache.append(System.getProperty("line.separator")); //$NON-NLS-1$
     
     try {
@@ -253,14 +254,14 @@ public class InfoProgressShell
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#update(java.util.Observable, java.lang.Object)
    */
   @SuppressWarnings("unchecked")
-  public void update(Observable o_p, final Object arg_p) {
+  public void update(Observable o, final Object arg) {
     
     if (_display.isDisposed())
       return;
     
     try {
-      if (arg_p instanceof Integer) {
-        final Integer progress = (Integer) arg_p;
+      if (arg instanceof Integer) {
+        final Integer progress = (Integer) arg;
         _display.asyncExec(new Runnable() {
           @SuppressWarnings("boxing")
           public void run() {
@@ -271,8 +272,8 @@ public class InfoProgressShell
         });
       }
       else {
-        if (arg_p instanceof HashMap) {
-          HashMap<String,Object> progress = (HashMap<String,Object>) arg_p;
+        if (arg instanceof HashMap) {
+          HashMap<String,Object> progress = (HashMap<String,Object>) arg;
           update(progress);
         }
       }
@@ -284,8 +285,8 @@ public class InfoProgressShell
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.ui.progress.view.IProgressListener#update(java.util.HashMap)
    */
-  public void update(final HashMap<String, Object> properties_p) {
-    String detailedMessage = (String) properties_p.get("DetailedMessage"); //$NON-NLS-1$
+  public void update(final HashMap<String, Object> properties) {
+    String detailedMessage = (String) properties.get("DetailedMessage"); //$NON-NLS-1$
     if(detailedMessage!=null)
       appendDetailedMessage(detailedMessage);
     
@@ -295,35 +296,35 @@ public class InfoProgressShell
         if(isDisposed())
           return;
         
-        Integer min = (Integer)properties_p.get("Min");//$NON-NLS-1$
+        Integer min = (Integer)properties.get("Min");//$NON-NLS-1$
         if(min != null)
           _progressBar.setMinimum(min);
         
         if(isDisposed())
           return;
         
-        Integer max = (Integer)properties_p.get("Max");//$NON-NLS-1$
+        Integer max = (Integer)properties.get("Max");//$NON-NLS-1$
         if(max != null)
           setMaximum(max);
         
         if(isDisposed())
           return;          
         
-        Integer progress = (Integer)properties_p.get("Progress");//$NON-NLS-1$
+        Integer progress = (Integer)properties.get("Progress");//$NON-NLS-1$
         if(progress != null)
           setSelection(progress);
         
         if(isDisposed())
           return;              
         
-        Boolean finished = (Boolean)properties_p.get("Finished");//$NON-NLS-1$
+        Boolean finished = (Boolean)properties.get("Finished");//$NON-NLS-1$
         if(finished != null)
           setFinished(finished);
         
         if(isDisposed())
           return;              
         
-        String message = (String)properties_p.get("Message");//$NON-NLS-1$
+        String message = (String)properties.get("Message");//$NON-NLS-1$
         if(message != null)
           setMessage(message);
         
@@ -332,10 +333,10 @@ public class InfoProgressShell
   }
   
   /**
-   * @param finished_p
+   * @param finished
    */
-  protected void setFinished(boolean finished_p) {
-    if(finished_p) {
+  protected void setFinished(boolean finished) {
+    if(finished) {
       setSelection(getMaximum());
       
       if(_disposeAtEnd) {

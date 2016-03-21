@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers.selection;
 
 import java.util.List;
@@ -31,14 +32,14 @@ public interface ILinkSelection {
   
   /**
    * This method must be implemented
-   * @param object_p a given link (extends <code>EObject</code>)
+   * @param object a given link (extends <code>EObject</code>)
    *        
-   * @param context_p the context of the link
+   * @param context the context of the link
    *        the context is a Node Object from which we want to know all the links that relies this element
    * @return the target to be displayed in the selection tree wizard
    *         is often the source or the target (or their container) of the link
    */
-  public EObject getDisplayedTarget (EObject object_p, EObject context_p);
+  public EObject getDisplayedTarget (EObject object, EObject context);
 
   /**
    * This method must be implemented

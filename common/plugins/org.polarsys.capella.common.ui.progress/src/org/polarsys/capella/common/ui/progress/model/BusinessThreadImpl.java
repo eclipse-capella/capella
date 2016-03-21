@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.progress.model;
 
 import java.util.HashMap;
@@ -29,13 +30,13 @@ public class BusinessThreadImpl extends AbstractBusinessThread {
   
   @Override
   @SuppressWarnings("nls")
-  public void doRun(HashMap<String, Object> info_p) {
-    String message = "Step " + info_p.get("Progress")
-      + " on " + info_p.get("Max") 
-      + " started at " + info_p.get("Min") 
-      + " step is " + info_p.get("Step");
-    info_p.put("Message", message);
-    info_p.put("DetailedMessage", message);
+  public void doRun(HashMap<String, Object> info) {
+    String message = "Step " + info.get("Progress")
+      + " on " + info.get("Max") 
+      + " started at " + info.get("Min") 
+      + " step is " + info.get("Step");
+    info.put("Message", message);
+    info.put("DetailedMessage", message);
     
     try {
       Thread.sleep(100);

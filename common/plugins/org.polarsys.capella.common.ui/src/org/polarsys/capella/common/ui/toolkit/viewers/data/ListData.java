@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
 import java.util.Collection;
@@ -18,18 +19,18 @@ import java.util.Collection;
 public class ListData extends AbstractData {
   /**
    * Constructor.
-   * @param displayedElements_p
-   * @param context_p optional parameter.
+   * @param displayedElements
+   * @param context optional parameter.
    */
-  public ListData(Collection<? extends Object> displayedElements_p, Object context_p) {
-    super(displayedElements_p, context_p);
+  public ListData(Collection<?> displayedElements, Object context) {
+    super(displayedElements, context);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#getChildren(java.lang.Object)
    */
   @Override
-  public Object[] getChildren(Object element_p) {
+  public Object[] getChildren(Object element) {
     return NO_CHILD;
   }
 
@@ -37,7 +38,7 @@ public class ListData extends AbstractData {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#getParent(java.lang.Object)
    */
   @Override
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     // Not needed
     return null;
   }

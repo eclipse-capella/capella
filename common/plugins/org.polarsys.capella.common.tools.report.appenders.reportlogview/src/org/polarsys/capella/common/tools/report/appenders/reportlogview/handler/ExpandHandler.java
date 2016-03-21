@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -34,12 +35,12 @@ public class ExpandHandler extends AbstractHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException { 
-    IWorkbenchPart part = HandlerUtil.getActivePart(event_p);
+  public Object execute(ExecutionEvent event) throws ExecutionException { 
+    IWorkbenchPart part = HandlerUtil.getActivePart(event);
     if (part instanceof MarkerView){
       MarkerView view = (MarkerView) part;
 
-      switch (Expand.valueOf(event_p.getParameter(PARAMETER_ID))){
+      switch (Expand.valueOf(event.getParameter(PARAMETER_ID))){
         case NONE: {
           try {
             view.getViewer().getTree().setRedraw(false);

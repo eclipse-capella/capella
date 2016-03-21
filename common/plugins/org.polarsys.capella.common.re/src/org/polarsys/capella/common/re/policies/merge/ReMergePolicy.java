@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.policies.merge;
 
 import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
@@ -23,36 +24,36 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class ReMergePolicy extends org.polarsys.capella.core.transition.common.policies.merge.ExtMergePolicy {
 
   /**
-   * @param context_p
+   * @param context
    */
-  public ReMergePolicy(IContext context_p) {
-    super(context_p);
+  public ReMergePolicy(IContext context) {
+    super(context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean copy(EObject source_p) {
+  public boolean copy(EObject source) {
     IContext context = getContext();
 
     if (ReplicableElementHandlerHelper.getInstance(context).getSource(context) == null) {
-      return !ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.UNMERGEABLE_ELEMENTS, source_p, context);
+      return !ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.UNMERGEABLE_ELEMENTS, source, context);
     }
 
-    return super.copy(source_p);
+    return super.copy(source);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean copyExtrinsicIDs(IFeaturedModelScope sourceScope_p, IFeaturedModelScope targetScope_p) {
+  public boolean copyExtrinsicIDs(IFeaturedModelScope sourceScope, IFeaturedModelScope targetScope) {
     return false;
   }
 
   @Override
-  protected boolean requiresNewIntrinsicID(EObject element_p, IFeaturedModelScope scope_p) {
+  protected boolean requiresNewIntrinsicID(EObject element, IFeaturedModelScope scope) {
     return true;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,32 +43,32 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     CatalogElement target =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
 
-    IContext context = (IContext) context_p.getSource();
+    IContext ctx = (IContext) context.getSource();
 
-    if (context.get(LINKS) != null) {
-      return context.get(LINKS);
+    if (ctx.get(LINKS) != null) {
+      return ctx.get(LINKS);
     }
     Collection<EObject> links = new HashSet<EObject>();
 
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
 
-    ReplicableElementHandlerHelper.getInstance(context).createInitialReplica(source, target, context);
+    ReplicableElementHandlerHelper.getInstance(ctx).createInitialReplica(source, target, ctx);
 
     Collection<CatalogElementLink> toDelete = new HashSet<CatalogElementLink>();
 
     if (IReConstants.ENABLE_SUB_INSTANCIATION()) {
-      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(target)) {
+      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(ctx).getAllElementsLinks(target)) {
         toDelete.add(link.getOrigin());
         links.add(link);
       }
 
     } else {
-      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(target)) {
+      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(ctx).getElementsLinks(target)) {
         toDelete.add(link.getOrigin());
         links.add(link);
         }
@@ -79,17 +79,17 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
     Collection<CatalogElement> usedSource = new ArrayList<CatalogElement>();
     usedSource.add(source);
     if (IReConstants.ENABLE_SUB_INSTANCIATION()) {
-      usedSource.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllUsedReplicableElements(source));
+      usedSource.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getAllUsedReplicableElements(source));
     }
 
     Collection<CatalogElement> usedTarget = new ArrayList<CatalogElement>();
     usedTarget.add(target);
     if (IReConstants.ENABLE_SUB_INSTANCIATION()) {
-      usedTarget.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllUsedReplicableElements(target));
+      usedTarget.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getAllUsedReplicableElements(target));
     }
 
     for (CatalogElement element : usedSource) {
-      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(element)) {
+      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(ctx).getElementsLinks(element)) {
         toCreate.put(element, link);
       }
     }
@@ -106,11 +106,11 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
       }
 
       Collection<CatalogElementLink> targetLinks =
-          ReplicableElementHandlerHelper.getInstance(context).createTargetLinks(targetElement, toCreate.get(element), context);
+          ReplicableElementHandlerHelper.getInstance(ctx).createTargetLinks(targetElement, toCreate.get(element), ctx);
       links.addAll(targetLinks);
     }
 
-    context.put(LINKS, links);
+    ctx.put(LINKS, links);
     return links;
 
   }
@@ -119,28 +119,28 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
+  public IStatus validate(Object newValue, IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
 
-    Object useDefault = context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
+    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
     boolean isUseDefault = !(Boolean.FALSE.equals(useDefault));
 
-    HashSet<CatalogElementLink> links = (HashSet<CatalogElementLink>) newValue_p;
+    HashSet<CatalogElementLink> links = (HashSet<CatalogElementLink>) newValue;
     HashSet<CatalogElementLink> linksInvalid = new HashSet<CatalogElementLink>();
 
     for (CatalogElementLink link : links) {
-      EObject currentLocation = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
+      EObject currentLocation = LocationHandlerHelper.getInstance(ctx).getCurrentLocation(link, ctx);
       if (currentLocation != null) {
         continue;
       }
 
-      EObject location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+      EObject location = LocationHandlerHelper.getInstance(ctx).getLocation(link, link.getOrigin(), ctx);
       if (location != null) {
         continue;
       }
 
       if (isUseDefault) {
-        EObject defaultLocation = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
+        EObject defaultLocation = LocationHandlerHelper.getInstance(ctx).getDefaultLocation(link, link.getOrigin(), ctx);
         if (defaultLocation != null) {
           continue;
         }
@@ -167,40 +167,40 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     //Nothing yet+
-    IContext context = (IContext) context_p.getSource();
+    IContext ctx = (IContext) context.getSource();
     
-    HashSet<CatalogElementLink> links = (HashSet) context_p.getCurrentValue(this);
-    Object useDefault = context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
+    HashSet<CatalogElementLink> links = (HashSet) context.getCurrentValue(this);
+    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
     boolean isUseDefault = !(Boolean.FALSE.equals(useDefault));
 
     if (links != null) {
 
       for (CatalogElementLink link : links) {
-        EObject currentLocation = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
+        EObject currentLocation = LocationHandlerHelper.getInstance(ctx).getCurrentLocation(link, ctx);
         if (currentLocation != null) {
           continue;
         }
 
-        EObject location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+        EObject location = LocationHandlerHelper.getInstance(ctx).getLocation(link, link.getOrigin(), ctx);
         if (location != null) {
-          LocationHandlerHelper.getInstance(context).setCurrentLocation(link, location, context);
+          LocationHandlerHelper.getInstance(ctx).setCurrentLocation(link, location, ctx);
           continue;
         }
 
         if (isUseDefault) {
-          EObject defaultLocation = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
+          EObject defaultLocation = LocationHandlerHelper.getInstance(ctx).getDefaultLocation(link, link.getOrigin(), ctx);
           if (defaultLocation != null) {
-            LocationHandlerHelper.getInstance(context).setCurrentLocation(link, defaultLocation, context);
+            LocationHandlerHelper.getInstance(ctx).setCurrentLocation(link, defaultLocation, ctx);
             continue;
           }
         }
@@ -208,11 +208,11 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
     }
 
     CatalogElement replica =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
 
-    for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(replica)) {
-      if (ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, link, context)) {
-        ContextScopeHandlerHelper.getInstance(context).add(IReConstants.CREATED_LINKS_TO_KEEP, link, context);
+    for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(ctx).getAllElementsLinks(replica)) {
+      if (ContextScopeHandlerHelper.getInstance(ctx).contains(IReConstants.CREATED_LINKS, link, ctx)) {
+        ContextScopeHandlerHelper.getInstance(ctx).add(IReConstants.CREATED_LINKS_TO_KEEP, link, ctx);
       }
     }
 
@@ -231,18 +231,18 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property_p.getId())) {
-      IContext context = (IContext) context_p.getSource();
-      context.put(LINKS, null);
-      ReplicableElementHandlerHelper.getInstance(context).cleanVirtualLinks(context);
-      LocationHandlerHelper.getInstance(context).cleanLocations(context);
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property.getId())) {
+      IContext ctx = (IContext) context.getSource();
+      ctx.put(LINKS, null);
+      ReplicableElementHandlerHelper.getInstance(ctx).cleanVirtualLinks(ctx);
+      LocationHandlerHelper.getInstance(ctx).cleanLocations(ctx);
 
-    } else if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property_p.getId())) {
-      IContext context = (IContext) context_p.getSource();
-      context.put(LINKS, null);
-      ReplicableElementHandlerHelper.getInstance(context).cleanVirtualLinks(context);
-      LocationHandlerHelper.getInstance(context).cleanLocations(context);
+    } else if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property.getId())) {
+      IContext ctx = (IContext) context.getSource();
+      ctx.put(LINKS, null);
+      ReplicableElementHandlerHelper.getInstance(ctx).cleanVirtualLinks(ctx);
+      LocationHandlerHelper.getInstance(ctx).cleanLocations(ctx);
     }
     //Nothing here
   }
@@ -251,7 +251,7 @@ public class DeleteReplicaContentProperty extends AbstractProperty implements IC
    * {@inheritDoc}
    */
   @Override
-  public boolean isModified(IPropertyContext context_p) {
+  public boolean isModified(IPropertyContext context) {
     return true;
   }
 

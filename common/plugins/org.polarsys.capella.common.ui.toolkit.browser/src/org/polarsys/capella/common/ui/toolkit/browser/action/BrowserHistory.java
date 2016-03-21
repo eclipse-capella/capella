@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.action;
 
 import java.lang.ref.WeakReference;
@@ -33,10 +34,10 @@ public class BrowserHistory {
 
     /**
      * Constructor.
-     * @param realObject_p The underlying object to navigate to.
+     * @param realObject The underlying object to navigate to.
      */
-    protected BrowserNavigationHistoryEntry(Object realObject_p) {
-      _referencedObject = new WeakReference<Object>(realObject_p);
+    protected BrowserNavigationHistoryEntry(Object realObject) {
+      _referencedObject = new WeakReference<Object>(realObject);
     }
 
     /**
@@ -90,10 +91,10 @@ public class BrowserHistory {
 
   /**
    * Add specified action as browser history listener.
-   * @param action_p
+   * @param action
    */
-  public void addActionAsListener(SemanticBrowserHistoryAction action_p) {
-    _actionAsListeners.add(action_p);
+  public void addActionAsListener(SemanticBrowserHistoryAction action) {
+    _actionAsListeners.add(action);
   }
 
   /**
@@ -162,10 +163,10 @@ public class BrowserHistory {
 
   /**
    * Go to specified navigation entry.
-   * @param navigationEntry_p
+   * @param navigationEntry
    */
-  public void goTo(BrowserNavigationHistoryEntry navigationEntry_p) {
-    _currentEntryIndex = _entries.indexOf(navigationEntry_p);
+  public void goTo(BrowserNavigationHistoryEntry navigationEntry) {
+    _currentEntryIndex = _entries.indexOf(navigationEntry);
   }
 
   /**
@@ -179,11 +180,11 @@ public class BrowserHistory {
 
   /**
    * Enable / Disable the update method to avoid re-entrance.
-   * @param doUpdate_p the _shouldDoUpdate to set
+   * @param doUpdate the _shouldDoUpdate to set
    * @see #update(Object).
    */
-  public void setDoUpdate(boolean doUpdate_p) {
-    _shouldDoUpdate = doUpdate_p;
+  public void setDoUpdate(boolean doUpdate) {
+    _shouldDoUpdate = doUpdate;
   }
 
   /**
@@ -198,20 +199,20 @@ public class BrowserHistory {
   
   /**
    * Update is called when an new input is set. Add element to the history. Update index. retain backward history.
-   * @param realObject_p
+   * @param realObject
    */
-  public void update(Object realObject_p) {
+  public void update(Object realObject) {
     // Clean dead entries i.e entries that reference objects which are no
     // longer loaded.
     cleanDeadEntries();
-    if (_shouldDoUpdate && (null != realObject_p)) {
+    if (_shouldDoUpdate && (null != realObject)) {
       // retain backward history only.
       if (_entries.size() == MAX_SIZE) {
         _entries.remove(0); // remove the oldest entry.
       }
       // Add new entry.
       removeForwardEntries();
-      _entries.add(new BrowserNavigationHistoryEntry(realObject_p));
+      _entries.add(new BrowserNavigationHistoryEntry(realObject));
       _currentEntryIndex = _entries.size() - 1;
     }
     // Notify actions to update them.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.ArrayList;
@@ -41,49 +42,49 @@ public class PropertiesSection extends AbstractPropertySection {
   IRendererContext _rendererContext;
   IPropertyGroup _group;
 
-  public PropertiesSection(IPropertyContext context_p, IRendererContext renderers_p, IPropertyGroup group_p) {
-    init(context_p, renderers_p, group_p);
+  public PropertiesSection(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
+    init(context, renderers, group);
   }
 
   protected PropertiesSection() {
   }
 
-  protected void init(IPropertyContext context_p, IRendererContext renderers_p, IPropertyGroup group_p) {
-    _propertyContext = context_p;
-    _group = group_p;
-    _rendererContext = renderers_p;
+  protected void init(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
+    _propertyContext = context;
+    _group = group;
+    _rendererContext = renderers;
     initRendererContext(_rendererContext);
   }
 
   /**
    * 
    */
-  protected void initRendererContext(final IRendererContext rendererContext_p) {
+  protected void initRendererContext(final IRendererContext rendererContext) {
 
-    if (rendererContext_p instanceof IPolicifiedRendererContext) {
-      ((IPolicifiedRendererContext) rendererContext_p).addRendererPolicy(new AbstractRendererPolicy() {
+    if (rendererContext instanceof IPolicifiedRendererContext) {
+      ((IPolicifiedRendererContext) rendererContext).addRendererPolicy(new AbstractRendererPolicy() {
 
         @Override
-        public boolean match(IPropertyGroup group_p) {
+        public boolean match(IPropertyGroup group) {
           return true;
         }
 
         @Override
-        public IGroupRenderer createRenderer(IPropertyGroup group_p) {
+        public IGroupRenderer createRenderer(IPropertyGroup group) {
           // Sub groups should not use this renderer !
-          for (IPropertyGroup group : rendererContext_p.getPropertyContext().getProperties().getGroups(IPropertyGroup.EMPTY)) {
-            if (group.getId().equals(group_p.getParentId())) {
+          for (IPropertyGroup grp : rendererContext.getPropertyContext().getProperties().getGroups(IPropertyGroup.EMPTY)) {
+            if (grp.getId().equals(group.getParentId())) {
               return new SectionGroupRenderer();
             }
           }
           return new DefaultGroupRenderer() {
             @Override
-            protected boolean isDisplayLabel(IPropertyGroup group_p) {
+            protected boolean isDisplayLabel(IPropertyGroup group) {
               return true;
             }
 
             @Override
-            protected String getGroupName(IPropertyGroup group_p) {
+            protected String getGroupName(IPropertyGroup group) {
               return "";
             }
           };
@@ -93,8 +94,8 @@ public class PropertiesSection extends AbstractPropertySection {
     }
   }
 
-  protected void write(final IPropertyContext context_p) {
-    if ((context_p != null) && context_p.isModified()) {
+  protected void write(final IPropertyContext context) {
+    if ((context != null) && context.isModified()) {
       AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
         @Override
         public String getName() {
@@ -102,20 +103,20 @@ public class PropertiesSection extends AbstractPropertySection {
         }
 
         public void run() {
-          context_p.writeAll();
+          context.writeAll();
         }
       };
-      TransactionHelper.getExecutionManager((Collection) context_p.getSourceAsList()).execute(cmd);
+      TransactionHelper.getExecutionManager((Collection) context.getSourceAsList()).execute(cmd);
     }
   }
 
   /**
-   * @param selection_p
+   * @param selection
    */
   @SuppressWarnings("unchecked")
-  protected Object getSource(ISelection selection_p) {
+  protected Object getSource(ISelection selection) {
     Collection<Object> objects = new ArrayList<Object>();
-    Iterator<Object> e = ((IStructuredSelection) selection_p).iterator();
+    Iterator<Object> e = ((IStructuredSelection) selection).iterator();
     while (e.hasNext()) {
       objects.add(e.next());
     }
@@ -125,18 +126,18 @@ public class PropertiesSection extends AbstractPropertySection {
     return objects;
   }
 
-  protected void setContext(ISelection selection_p) {
-    _propertyContext.setSource(getSource(selection_p));
+  protected void setContext(ISelection selection) {
+    _propertyContext.setSource(getSource(selection));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setInput(final IWorkbenchPart part_p, final ISelection selection_p) {
+  public void setInput(final IWorkbenchPart part, final ISelection selection) {
     write(_propertyContext);
-    _propertyContext.setSource(getSource(selection_p));
-    super.setInput(part_p, selection_p);
+    _propertyContext.setSource(getSource(selection));
+    super.setInput(part, selection);
   }
 
   /**
@@ -179,19 +180,19 @@ public class PropertiesSection extends AbstractPropertySection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent_p, TabbedPropertySheetPage aTabbedPropertySheetPage_p) {
-    super.createControls(parent_p, aTabbedPropertySheetPage_p);
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
     try {
-      parent_p.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+      parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
       IGroupRenderer groupRenderer = _rendererContext.getRenderer(_group);
       if (groupRenderer != null) {
-        groupRenderer.render(parent_p, _rendererContext);
+        groupRenderer.render(parent, _rendererContext);
       }
 
     } catch (Exception e) {
       e.printStackTrace();
     }
-    parent_p.pack();
+    parent.pack();
   }
 
 }

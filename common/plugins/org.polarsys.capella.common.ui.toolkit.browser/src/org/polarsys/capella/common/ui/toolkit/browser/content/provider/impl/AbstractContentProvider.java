@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl;
 
 import java.util.HashMap;
@@ -62,9 +63,9 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
   /**
    * Constructor.
    */
-  public AbstractContentProvider(AdapterFactory adapterFactory_p, ISemanticBrowserModel model_p) {
-    super(adapterFactory_p);
-    model = model_p;
+  public AbstractContentProvider(AdapterFactory adapterFactory, ISemanticBrowserModel model) {
+    super(adapterFactory);
+    this.model = model;
     _semanticParentHashMap = new HashMap<BrowserElementWrapper, BrowserElementWrapper>(0);
   }
 
@@ -84,13 +85,13 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    * @param gatheredElements
    * @param gatheredCategories
    */
-  protected void getCategoryChildren(ICategory category_p, BrowserElementWrapper wrapper, Set<Object> gatheredElements) {
+  protected void getCategoryChildren(ICategory category, BrowserElementWrapper wrapper, Set<Object> gatheredElements) {
     // lookup for the element that we need to query on.
     EObject elementToQuery = lookUpModelElement(wrapper);
 
     // Gather subCategories & compute queries attached to the category.
-    gatheredElements.addAll(category_p.compute(elementToQuery));
-    gatheredElements.addAll(CategoryRegistry.getInstance().gatherSubCategories(getBrowserId(), elementToQuery, category_p));
+    gatheredElements.addAll(category.compute(elementToQuery));
+    gatheredElements.addAll(CategoryRegistry.getInstance().gatherSubCategories(getBrowserId(), elementToQuery, category));
   }
 
   /**
@@ -157,9 +158,9 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         // Wrap given element. This input element can't be a Category because a category element is computed.
         result = getChildren(new EObjectWrapper(parentElement));
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       BrowserActivator.getDefault().getLog()
-          .log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID, "Error while getting children for " + parentElement, exception_p)); //$NON-NLS-1$
+          .log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID, "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
       result = new Object[0];
     }
     return result;
@@ -201,23 +202,23 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    * {@inheritDoc}
    */
   @Override
-  public Object[] getElements(Object rootElement_p) {
-    return getChildren(rootElement_p);
+  public Object[] getElements(Object rootElement) {
+    return getChildren(rootElement);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Object getParent(Object element_p) {
-    return _semanticParentHashMap.get(element_p);
+  public Object getParent(Object element) {
+    return _semanticParentHashMap.get(element);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean hasChildren(Object element_p) {
+  public boolean hasChildren(Object element) {
     return true;
   }
 
@@ -225,17 +226,17 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    * {@inheritDoc}
    */
   @Override
-  public void inputChanged(Viewer viewer_p, Object oldInput, Object newInput) {
-    if (null == viewer) {
-      viewer = viewer_p;
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+    if (null == this.viewer) {
+      this.viewer = viewer;
     }
     if (newInput instanceof BrowserElementWrapper) {
       if (oldInput == null) {
-        inputChanged(viewer_p, new EObjectWrapper(null), ((BrowserElementWrapper) newInput).getElement());
+        inputChanged(viewer, new EObjectWrapper(null), ((BrowserElementWrapper) newInput).getElement());
       } else if (oldInput instanceof BrowserElementWrapper) {
-        inputChanged(viewer_p, ((BrowserElementWrapper) oldInput).getElement(), ((BrowserElementWrapper) newInput).getElement());
+        inputChanged(viewer, ((BrowserElementWrapper) oldInput).getElement(), ((BrowserElementWrapper) newInput).getElement());
       } else if (oldInput instanceof EObject) {
-        inputChanged(viewer_p, oldInput, ((BrowserElementWrapper) newInput).getElement());
+        inputChanged(viewer, oldInput, ((BrowserElementWrapper) newInput).getElement());
       }
     } else if (newInput instanceof EObject) {
       // clear cache.
@@ -252,11 +253,11 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
 
   /**
    * Look up a model element for specified wrapper.
-   * @param wrapper_p
+   * @param wrapper
    * @return
    */
-  private EObject lookUpModelElement(BrowserElementWrapper wrapper_p) {
-    BrowserElementWrapper parentWrapper = _semanticParentHashMap.get(wrapper_p);
+  private EObject lookUpModelElement(BrowserElementWrapper wrapper) {
+    BrowserElementWrapper parentWrapper = _semanticParentHashMap.get(wrapper);
     if (parentWrapper instanceof CategoryWrapper) {
       return lookUpModelElement(parentWrapper);
     }
@@ -264,14 +265,14 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
   }
 
   @Override
-  protected boolean refreshRequired(ResourceSetChangeEvent event_p) {
+  protected boolean refreshRequired(ResourceSetChangeEvent event) {
     boolean result = false;
     synchronized (this) {
       if (refreshRequired) {
         result = true;
       }
     }
-    return result || super.refreshRequired(event_p);
+    return result || super.refreshRequired(event);
   }
 
   /**
@@ -279,10 +280,10 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    * {@inheritDoc}
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
 
-    if (notification_p instanceof IViewerNotification) {
-      final IViewerNotification viewerNotification = (IViewerNotification) notification_p;
+    if (notification instanceof IViewerNotification) {
+      final IViewerNotification viewerNotification = (IViewerNotification) notification;
       if (!viewerNotification.isContentRefresh()) {
         Object element = viewerNotification.getElement();
         Object wrappedElement = wrapElement(element);
@@ -336,15 +337,15 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
 
   /**
    * Wrap element in the proper wrapper.
-   * @param gatherElement_p
+   * @param gatherElement
    * @return
    */
-  private BrowserElementWrapper wrapElement(Object gatherElement_p) {
+  private BrowserElementWrapper wrapElement(Object gatherElement) {
     BrowserElementWrapper wrapper = null;
-    if ((gatherElement_p != null) && (gatherElement_p instanceof EObject)) {
-      wrapper = new EObjectWrapper(gatherElement_p);
-    } else if (gatherElement_p instanceof ICategory) {
-      wrapper = new CategoryWrapper(gatherElement_p);
+    if ((gatherElement != null) && (gatherElement instanceof EObject)) {
+      wrapper = new EObjectWrapper(gatherElement);
+    } else if (gatherElement instanceof ICategory) {
+      wrapper = new CategoryWrapper(gatherElement);
     }
     return wrapper;
   }

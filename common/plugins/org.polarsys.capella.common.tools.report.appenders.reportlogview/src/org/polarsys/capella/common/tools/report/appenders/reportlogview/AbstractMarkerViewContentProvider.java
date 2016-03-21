@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.Collection;
@@ -37,20 +38,20 @@ abstract class AbstractMarkerViewContentProvider implements ITreeContentProvider
   protected Object input;
   protected final Object[] noChildren = {};
   
-  public AbstractMarkerViewContentProvider(TreeViewer viewer_p, MarkerViewHelper helper_p, IViewerRefresh viewerRefresh_p){
-    helper = helper_p;
-    viewer = viewer_p;
-    setViewerRefresh(viewerRefresh_p);
+  public AbstractMarkerViewContentProvider(TreeViewer viewer, MarkerViewHelper helper, IViewerRefresh viewerRefresh){
+    this.helper = helper;
+    this.viewer = viewer;
+    setViewerRefresh(viewerRefresh);
   }
   
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
-    input = newInput_p;
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+    input = newInput;
   }
   
   @SuppressWarnings("synthetic-access")
-  public void setViewerRefresh(IViewerRefresh refresh_p){
-    if (refresh_p != null){
-      viewerRefresh = refresh_p;
+  public void setViewerRefresh(IViewerRefresh refresh){
+    if (refresh != null){
+      viewerRefresh = refresh;
     } else {
       viewerRefresh = new NullViewerRefresh();
     }
@@ -90,7 +91,7 @@ abstract class AbstractMarkerViewContentProvider implements ITreeContentProvider
   /**
    * {@inheritDoc}
    */
-  public void markerChanged(IMarkerDelta marker_p) {
+  public void markerChanged(IMarkerDelta marker) {
     /* currently unused */
   }
   

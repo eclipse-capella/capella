@@ -34,21 +34,21 @@ public abstract class AbstractWizardPage extends WizardPage {
 
   /**
    * Constructor.
-   * @param pageName_p
+   * @param pageName
    */
-  public AbstractWizardPage(String pageName_p) {
-    super(pageName_p);
+  public AbstractWizardPage(String pageName) {
+    super(pageName);
     initialize();
   }
 
   /**
    * Constructor.
-   * @param pageName_p
-   * @param title_p
-   * @param titleImage_p
+   * @param pageName
+   * @param title
+   * @param titleImage
    */
-  public AbstractWizardPage(String pageName_p, String title_p, ImageDescriptor titleImage_p) {
-    super(pageName_p, title_p, titleImage_p);
+  public AbstractWizardPage(String pageName, String title, ImageDescriptor titleImage) {
+    super(pageName, title, titleImage);
     initialize();
   }
 
@@ -63,12 +63,12 @@ public abstract class AbstractWizardPage extends WizardPage {
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
-  public void createControl(Composite parent_p) {
+  public void createControl(Composite parent) {
     // Configure page title and description.
     setTitle(getPageTitle());
     setDescription(getPageDescription());
     // Create parent composite.
-    Composite content = createComposite(parent_p, getContentNumColumn());
+    Composite content = createComposite(parent, getContentNumColumn());
     // Initialize dialog units.
     initializeDialogUnits(content);
     // Handle the composite enable property depending on implementors.
@@ -80,7 +80,7 @@ public abstract class AbstractWizardPage extends WizardPage {
     // Compute the preferred size of the content
     Point size = content.computeSize(SWT.DEFAULT, SWT.DEFAULT);
     // Modify the layout data of the content's parent.
-    GridData gridData = (GridData) parent_p.getLayoutData();
+    GridData gridData = (GridData) parent.getLayoutData();
     // Set the height hint of the max between current value and the new
     // one based on the created content.
     gridData.heightHint = Math.max(size.y + 10, gridData.heightHint);
@@ -94,9 +94,9 @@ public abstract class AbstractWizardPage extends WizardPage {
 
   /**
    * Handle page content enablement.
-   * @param content_p
+   * @param content
    */
-  protected abstract void handlePageContentEnablement(Composite content_p);
+  protected abstract void handlePageContentEnablement(Composite content);
 
   /**
    * Update page buttons according data status.
@@ -123,15 +123,15 @@ public abstract class AbstractWizardPage extends WizardPage {
 
   /**
    * Create the page content.
-   * @param parent_p
+   * @param parent
    */
-  protected abstract void createPageArea(Composite parent_p);
+  protected abstract void createPageArea(Composite parent);
 
   /**
    * Handle the layout of this page.
-   * @param parent_p
+   * @param parent
    */
-  protected void handlePageLayout(Composite parent_p) {
+  protected void handlePageLayout(Composite parent) {
     // Do nothing.
   }
 
@@ -179,14 +179,14 @@ public abstract class AbstractWizardPage extends WizardPage {
 
   /**
    * Create a default composite to host page widgets.
-   * @param parent_p
-   * @param numColumns_p
+   * @param parent
+   * @param numColumns
    * @return
    */
-  private Composite createComposite(Composite parent_p, int numColumns_p) {
-    Composite composite = new Composite(parent_p, SWT.NONE);
+  private Composite createComposite(Composite parent, int numColumns) {
+    Composite composite = new Composite(parent, SWT.NONE);
     GridLayout layout = new GridLayout();
-    layout.numColumns = numColumns_p;
+    layout.numColumns = numColumns;
     composite.setLayout(layout);
     setControl(composite);
     return composite;

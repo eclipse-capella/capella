@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.widgets.handler;
 
 import java.util.ArrayList;
@@ -28,23 +29,23 @@ public abstract class SelectionChangedHandler {
 
   /**
    * Add a control in the list of managed controls.
-   * @param control_p The control.
+   * @param control The control.
    */
-  public void addControl(Control control_p) {
+  public void addControl(Control control) {
     // Lazy pattern creation.
     if (null == _controls) {
       _controls = new ArrayList<Control>(1);
     }
-    _controls.add(control_p);
+    _controls.add(control);
   }
 
   /**
    * Handle selection and recompute the enable state of all managed controls.
-   * @param selection_p The selection.
+   * @param selection The selection.
    */
-  public void handleSelection(ISelection selection_p) {
+  public void handleSelection(ISelection selection) {
     // Delegate the enable computation to class that overrides this class.
-    boolean enabled = doHandleSelection(selection_p);
+    boolean enabled = doHandleSelection(selection);
     // Set the enable state to the control.
     for (Control control : _controls) {
       control.setEnabled(enabled);
@@ -53,8 +54,8 @@ public abstract class SelectionChangedHandler {
 
   /**
    * Handle selection to enable or disable the managed controls.
-   * @param selection_p The selection.
+   * @param selection The selection.
    * @return <code>True</code> means enable, <code>false</code> means disable.
    */
-  protected abstract boolean doHandleSelection(ISelection selection_p);
+  protected abstract boolean doHandleSelection(ISelection selection);
 }

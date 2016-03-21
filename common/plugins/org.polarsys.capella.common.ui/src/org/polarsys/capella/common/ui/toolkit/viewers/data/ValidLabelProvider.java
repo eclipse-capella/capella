@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
 import org.eclipse.jface.viewers.IColorProvider;
@@ -32,29 +33,29 @@ public class ValidLabelProvider implements ILabelProvider, IColorProvider, IFont
   /**
    * @param adapterFactory_p
    */
-  public ValidLabelProvider(ILabelProvider labelProvider_p) {
-    _labelProvider = labelProvider_p;
+  public ValidLabelProvider(ILabelProvider labelProvider) {
+    _labelProvider = labelProvider;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Image getImage(Object object_p) {
-    return _labelProvider.getImage(object_p);
+  public Image getImage(Object object) {
+    return _labelProvider.getImage(object);
   }
 
   @Override
-  public String getText(Object object_p) {
-    return _labelProvider.getText(object_p);
+  public String getText(Object object) {
+    return _labelProvider.getText(object);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void addListener(ILabelProviderListener listener_p) {
-    _labelProvider.addListener(listener_p);
+  public void addListener(ILabelProviderListener listener) {
+    _labelProvider.addListener(listener);
   }
 
   /**
@@ -76,28 +77,28 @@ public class ValidLabelProvider implements ILabelProvider, IColorProvider, IFont
    * {@inheritDoc}
    */
   @Override
-  public boolean isLabelProperty(Object element_p, String property_p) {
-    return _labelProvider.isLabelProperty(element_p, property_p);
+  public boolean isLabelProperty(Object element, String property) {
+    return _labelProvider.isLabelProperty(element, property);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void removeListener(ILabelProviderListener listener_p) {
-    _labelProvider.removeListener(listener_p);
+  public void removeListener(ILabelProviderListener listener) {
+    _labelProvider.removeListener(listener);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Font getFont(Object element_p) {
-    if (!isValid(element_p)) {
+  public Font getFont(Object element) {
+    if (!isValid(element)) {
       return getInvalidElementFont();
     }
     if (_labelProvider instanceof IFontProvider) {
-      return ((IFontProvider) _labelProvider).getFont(element_p);
+      return ((IFontProvider) _labelProvider).getFont(element);
     }
     return null;
   }
@@ -106,12 +107,12 @@ public class ValidLabelProvider implements ILabelProvider, IColorProvider, IFont
    * {@inheritDoc}
    */
   @Override
-  public Color getForeground(Object element_p) {
-    if (!isValid(element_p)) {
+  public Color getForeground(Object element) {
+    if (!isValid(element)) {
       return getInvalidElementColor();
     }
     if (_labelProvider instanceof IColorProvider) {
-      return ((IColorProvider) _labelProvider).getForeground(element_p);
+      return ((IColorProvider) _labelProvider).getForeground(element);
     }
     return null;
   }
@@ -142,21 +143,21 @@ public class ValidLabelProvider implements ILabelProvider, IColorProvider, IFont
    * {@inheritDoc}
    */
   @Override
-  public Color getBackground(Object element_p) {
-    if (!isValid(element_p)) {
+  public Color getBackground(Object element) {
+    if (!isValid(element)) {
       return getInvalidElementBackground();
     }
     if (_labelProvider instanceof IColorProvider) {
-      return ((IColorProvider) _labelProvider).getBackground(element_p);
+      return ((IColorProvider) _labelProvider).getBackground(element);
     }
     return null;
   }
 
   /**
-   * @param element_p
+   * @param element
    * @return
    */
-  protected boolean isValid(Object element_p) {
+  protected boolean isValid(Object element) {
     return true;
   }
 

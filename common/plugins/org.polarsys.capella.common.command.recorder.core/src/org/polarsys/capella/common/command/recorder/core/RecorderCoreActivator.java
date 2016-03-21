@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.polarsys.capella.common.mdsofa.common.activator.AbstractActivator;
 public class RecorderCoreActivator extends AbstractActivator {
 
   // The shared instance
-  private static RecorderCoreActivator __plugin;
+  private static RecorderCoreActivator plugin;
   /*
    * 
    */
@@ -40,7 +40,7 @@ public class RecorderCoreActivator extends AbstractActivator {
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
-    __plugin = this;
+    plugin = this;
     new RecorderCorePreferenceInitializer();
   }
 
@@ -49,7 +49,7 @@ public class RecorderCoreActivator extends AbstractActivator {
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-    __plugin = null;
+    plugin = null;
     super.stop(context);
   }
 
@@ -58,6 +58,6 @@ public class RecorderCoreActivator extends AbstractActivator {
    * @return the shared instance
    */
   public static RecorderCoreActivator getDefault() {
-    return __plugin;
+    return plugin;
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.Collection;
@@ -34,10 +35,10 @@ public class DependenciesScopeHandler extends SubCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    ISelection selection = HandlerUtil.getCurrentSelection(event_p);
-    IRenderer renderer = ExecutionEventUtil.getRenderer(event_p);
-    IRendererContext context = ExecutionEventUtil.getRendererContext(event_p);
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    ISelection selection = HandlerUtil.getCurrentSelection(event);
+    IRenderer renderer = ExecutionEventUtil.getRenderer(event);
+    IRendererContext context = ExecutionEventUtil.getRendererContext(event);
 
     Collection<Object> selectiona =
         ((selection == null) || (selection.isEmpty())) ? context.getPropertyContext().getSourceAsList() : ((IStructuredSelection) selection).toList();
@@ -62,8 +63,8 @@ public class DependenciesScopeHandler extends SubCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(Object evaluationContext_p) {
-    IEvaluationContext context = (IEvaluationContext) evaluationContext_p;
+  public void setEnabled(Object evaluationContext) {
+    IEvaluationContext context = (IEvaluationContext) evaluationContext;
     if (context != null) {
       IRendererContext rendererContext = ExecutionEventUtil.getRendererContext(context);
       if ((rendererContext != null) && (rendererContext.getPropertyContext() != null) && (rendererContext.getPropertyContext().getProperties() != null)) {
@@ -74,7 +75,7 @@ public class DependenciesScopeHandler extends SubCommandHandler {
         }
       }
     }
-    super.setEnabled(evaluationContext_p);
+    super.setEnabled(evaluationContext);
   }
 
 }

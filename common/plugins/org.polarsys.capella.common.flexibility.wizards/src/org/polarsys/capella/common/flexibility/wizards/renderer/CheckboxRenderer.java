@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import org.eclipse.swt.SWT;
@@ -27,51 +28,51 @@ public class CheckboxRenderer extends AbstractRenderer {
    * @see org.polarsys.capella.common.flexibility.wizards.schema.IRenderer#render(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  public void performRender(Composite parent_p, final IRendererContext rendererContext_p) {
+  public void performRender(Composite parent, final IRendererContext rendererContext) {
 
-    final IProperty property = rendererContext_p.getProperty(this);
-    dataExport = new Button(parent_p, SWT.CHECK);
+    final IProperty property = rendererContext.getProperty(this);
+    dataExport = new Button(parent, SWT.CHECK);
     dataExport.setText(property.getName());
     dataExport.setToolTipText(property.getDescription());
 
     dataExport.setData(property);
-    dataExport.setEnabled(property.isEnabled(rendererContext_p.getPropertyContext()));
+    dataExport.setEnabled(property.isEnabled(rendererContext.getPropertyContext()));
 
     dataExport.addSelectionListener(new SelectionListener() {
 
-      public void widgetSelected(SelectionEvent e_p) {
-        boolean newValue = ((Button) e_p.widget).getSelection();
+      public void widgetSelected(SelectionEvent e) {
+        boolean newValue = ((Button) e.widget).getSelection();
         Boolean value = Boolean.valueOf(newValue);
-        changeValue(property, rendererContext_p, value);
-        updatedValue(property, rendererContext_p, value);
+        changeValue(property, rendererContext, value);
+        updatedValue(property, rendererContext, value);
       }
 
-      public void widgetDefaultSelected(SelectionEvent e_p) {
+      public void widgetDefaultSelected(SelectionEvent e) {
         // Nothing here
       }
     });
   }
 
-  public void initialize(IProperty property_p, IRendererContext propertyContext_p) {
-    Object value = propertyContext_p.getPropertyContext().getDefaultValue(property_p);
-    updatedValue(property_p, propertyContext_p, value);
+  public void initialize(IProperty property, IRendererContext propertyContext) {
+    Object value = propertyContext.getPropertyContext().getDefaultValue(property);
+    updatedValue(property, propertyContext, value);
   }
 
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext rendererContext_p, Object newValue_p) {
+  public void updatedValue(IProperty property, IRendererContext rendererContext, Object newValue) {
     if (isDisposed()) {
       return;
     }
-    IProperty property = rendererContext_p.getProperty(this);
-    if (property_p.equals(property)) {
-      dataExport.setSelection(Boolean.valueOf(newValue_p.toString()).booleanValue());
-      dataExport.setEnabled(property.isEnabled(rendererContext_p.getPropertyContext()));
+    IProperty prop = rendererContext.getProperty(this);
+    if (property.equals(prop)) {
+      dataExport.setSelection(Boolean.valueOf(newValue.toString()).booleanValue());
+      dataExport.setEnabled(prop.isEnabled(rendererContext.getPropertyContext()));
     }
   }
 
   @Override
-  public void dispose(IRendererContext context_p) {
-    super.dispose(context_p);
+  public void dispose(IRendererContext context) {
+    super.dispose(context);
     dataExport.dispose();
   }
 

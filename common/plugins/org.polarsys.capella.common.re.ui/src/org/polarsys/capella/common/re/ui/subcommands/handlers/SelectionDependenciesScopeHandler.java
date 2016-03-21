@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,10 +37,10 @@ public class SelectionDependenciesScopeHandler extends SelectionCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(Object evaluationContext_p) {
-    IEvaluationContext evaluationContext = (IEvaluationContext) evaluationContext_p;
-    IRendererContext rendererContext = ExecutionEventUtil.getRendererContext(evaluationContext);
-    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
+  public void setEnabled(Object evaluationContext) {
+    IEvaluationContext context = (IEvaluationContext) evaluationContext;
+    IRendererContext rendererContext = ExecutionEventUtil.getRendererContext(context);
+    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
 
     if (!(variable instanceof List)) {
       setBaseEnabled(false);
@@ -72,7 +72,7 @@ public class SelectionDependenciesScopeHandler extends SelectionCommandHandler {
         }
       }
     }
-    super.setEnabled(evaluationContext_p);
+    super.setEnabled(evaluationContext);
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.swt.SWT;
@@ -34,18 +35,18 @@ public class GeneralViewer extends FieldsViewer {
 
   /**
    * Constructs the general viewer.
-   * @param parent_p The parent composite.
+   * @param parent The parent composite.
    */
-  public GeneralViewer(Composite parent_p) {
-    super(parent_p);
+  public GeneralViewer(Composite parent) {
+    super(parent);
   }
 
   /**
    * Creates the client area content. Default implementation of this method does nothing. This method is intented to be subclassed to specialize the
    * GeneralViewer.
-   * @param clientArea_p The client area.
+   * @param clientArea The client area.
    */
-  protected void createClientContent(Composite clientArea_p) {
+  protected void createClientContent(Composite clientArea) {
     // Do nothing.
   }
 
@@ -53,19 +54,19 @@ public class GeneralViewer extends FieldsViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer#createControl(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void createControl(final Composite parent_p) {
-    super.createControl(parent_p);
+  protected void createControl(final Composite parent) {
+    super.createControl(parent);
     GridLayout layout = new GridLayout();
-    parent_p.setLayout(layout);
+    parent.setLayout(layout);
     layout.numColumns = 2;
     layout.verticalSpacing = 9;
 
     // Splitter (between fixed attributes part & customized attributes part).
-    final Sash sash = new Sash(parent_p, SWT.HORIZONTAL);
+    final Sash sash = new Sash(parent, SWT.HORIZONTAL);
     GridData gdData = new GridData(SWT.FILL, SWT.BOTTOM, true, false, 2, 1);
     gdData.heightHint = 1;
     sash.setLayoutData(gdData);
-    sash.setBackground(parent_p.getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
+    sash.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
     sash.addListener(SWT.Selection, new Listener() {
       /**
        * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
@@ -81,12 +82,12 @@ public class GeneralViewer extends FieldsViewer {
         data.minimumHeight = data.minimumHeight + delta;
         data.heightHint = data.minimumHeight;
 
-        parent_p.layout(true, true);
+        parent.layout(true, true);
       }
     });
     
     // Customizable area.
-    _customPart = new Composite(parent_p, SWT.NONE);
+    _customPart = new Composite(parent, SWT.NONE);
     gdData = new GridData(GridData.FILL_BOTH);
     gdData.horizontalSpan = 2;
     gdData.grabExcessHorizontalSpace = true;
@@ -132,7 +133,7 @@ public class GeneralViewer extends FieldsViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer#setInput(java.lang.Object)
    */
   @Override
-  public void setInput(Object input_p) {
+  public void setInput(Object input) {
     // Do nothing.
   }
 }

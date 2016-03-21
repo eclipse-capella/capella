@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
 import java.util.HashMap;
@@ -32,19 +33,19 @@ public class RendererSelectionService extends SourceSelectionService {
   /**
    * Creates a new SelectionService.
    */
-  public RendererSelectionService(IRendererContext context_p, IRenderer renderer_p, ISelectionProvider activeProvider_p) {
-    super(activeProvider_p);
-    _context = context_p;
-    _renderer = renderer_p;
+  public RendererSelectionService(IRendererContext context, IRenderer renderer, ISelectionProvider activeProvider) {
+    super(activeProvider);
+    _context = context;
+    _renderer = renderer;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void selectionChanged(SelectionChangedEvent event_p) {
-    fireSourceChanged(11, ISources.ACTIVE_CURRENT_SELECTION_NAME, event_p.getSelection());
-    fireSelection(event_p.getSelection());
+  public void selectionChanged(SelectionChangedEvent event) {
+    fireSourceChanged(11, ISources.ACTIVE_CURRENT_SELECTION_NAME, event.getSelection());
+    fireSelection(event.getSelection());
   }
 
   /**

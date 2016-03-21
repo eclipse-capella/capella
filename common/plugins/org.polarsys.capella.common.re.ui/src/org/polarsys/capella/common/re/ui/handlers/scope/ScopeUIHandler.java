@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,25 +46,25 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class ScopeUIHandler extends ScopeHandler {
 
   @Override
-  public IStatus computeScope(Collection<EObject> bootstrap_p, IContext context_p) {
-    String scope = (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE);
-    IPropertyContext context = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p, scope);
-    IRenderers renderers = new RenderersLoader().getRenderers(context.getProperties());
-    IRendererContext rendererContext = new RendererContext(renderers, context) {
+  public IStatus computeScope(Collection<EObject> bootstrap, IContext context) {
+    String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
+    IPropertyContext ctx = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
+    IRenderers renderers = new RenderersLoader().getRenderers(ctx.getProperties());
+    IRendererContext rendererContext = new RendererContext(renderers, ctx) {
 
       /**
        * {@inheritDoc}
        */
       @Override
-      public IGroupRenderer createDefaultRenderer(IPropertyGroup propertyGroup_p) {
-        if ("org.polarsys.capella.common.re.description.location".equals(propertyGroup_p.getId())) {
+      public IGroupRenderer createDefaultRenderer(IPropertyGroup propertyGroup) {
+        if ("org.polarsys.capella.common.re.description.location".equals(propertyGroup.getId())) {
           return new FlatSectionGroupRenderer();
         }
-        if ("org.polarsys.capella.common.re.description.replicableElementGroup.child".equals(propertyGroup_p.getId())) {
+        if ("org.polarsys.capella.common.re.description.replicableElementGroup.child".equals(propertyGroup.getId())) {
           return new FlatGroupRenderer() {
 
             @Override
-            protected Layout createGroupLayout(IPropertyGroup group_p, IRendererContext rendererContext_p) {
+            protected Layout createGroupLayout(IPropertyGroup group, IRendererContext rendererContext) {
               GridLayout layout = new GridLayout(1, false);
               layout.marginWidth = 0;
               layout.marginHeight = 00;
@@ -75,17 +75,17 @@ public class ScopeUIHandler extends ScopeHandler {
              * {@inheritDoc}
              */
             @Override
-            protected boolean isDisplayLabel(IPropertyGroup group_p) {
+            protected boolean isDisplayLabel(IPropertyGroup group) {
               return true;
             }
 
           };
         }
-        if ("org.polarsys.capella.common.re.description.replicableElementGroup".equals(propertyGroup_p.getId())) {
+        if ("org.polarsys.capella.common.re.description.replicableElementGroup".equals(propertyGroup.getId())) {
           return new FlatGroupRenderer() {
 
             @Override
-            protected Layout createGroupLayout(IPropertyGroup group_p, IRendererContext rendererContext_p) {
+            protected Layout createGroupLayout(IPropertyGroup group, IRendererContext rendererContext) {
               GridLayout layout = new GridLayout(1, false);
               layout.marginWidth = 0;
               layout.marginHeight = 00;
@@ -96,14 +96,14 @@ public class ScopeUIHandler extends ScopeHandler {
              * {@inheritDoc}
              */
             @Override
-            protected boolean isDisplayLabel(IPropertyGroup group_p) {
+            protected boolean isDisplayLabel(IPropertyGroup group) {
               return false;
             }
 
           };
         }
 
-        return super.createDefaultRenderer(propertyGroup_p);
+        return super.createDefaultRenderer(propertyGroup);
       }
 
     };
@@ -112,7 +112,7 @@ public class ScopeUIHandler extends ScopeHandler {
     rendererContext.putParameter(CTabGroupRenderer.PARAMETER_SCROLL_MINIMAL_HEIGHT, Integer.valueOf(600));
 
     // Instantiates and initializes the wizard
-    TransitionOptionsWizard wizard = new TransitionOptionsWizard(context, rendererContext) {
+    TransitionOptionsWizard wizard = new TransitionOptionsWizard(ctx, rendererContext) {
 
       @Override
       protected String getDescription() {
@@ -132,9 +132,9 @@ public class ScopeUIHandler extends ScopeHandler {
     int result = dialog.open();
 
     if (result == Window.OK) {
-      ContextScopeHandlerHelper.getInstance(context_p).clear(ITransitionConstants.TRANSITION_SCOPE, context_p);
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.TRANSITION_SCOPE,
-          (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SCOPE)), context_p);
+      ContextScopeHandlerHelper.getInstance(context).clear(ITransitionConstants.TRANSITION_SCOPE, context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.TRANSITION_SCOPE,
+          (Collection) ctx.getCurrentValue(ctx.getProperties().getProperty(IReConstants.PROPERTY__SCOPE)), context);
       return Status.OK_STATUS;
     } else {
       return Status.CANCEL_STATUS;

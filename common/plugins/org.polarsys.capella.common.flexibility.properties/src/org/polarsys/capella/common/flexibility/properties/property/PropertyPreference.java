@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.property;
 
 import org.eclipse.core.runtime.IStatus;
@@ -39,7 +40,7 @@ public class PropertyPreference extends AbstractProperty implements IEditablePro
   /**
    * {@inheritDoc}
    */
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     IEclipsePreferences preference = getScope().getNode(getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__SCOPE));
     String defaultValue = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__DEFAULT);
 
@@ -54,15 +55,15 @@ public class PropertyPreference extends AbstractProperty implements IEditablePro
   /**
    * {@inheritDoc}
    */
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    if (newValue_p == null) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
+    if (newValue == null) {
       return Status.CANCEL_STATUS;
     }
     return Status.OK_STATUS;
@@ -71,15 +72,15 @@ public class PropertyPreference extends AbstractProperty implements IEditablePro
   /**
    * {@inheritDoc}
    */
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     IEclipsePreferences preference = getScope().getNode(getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__SCOPE));
-    Object value = context_p.getCurrentValue(this);
+    Object value = context.getCurrentValue(this);
     if (value != null) {
       preference.put(getId(), value.toString());
     }
     try {
       preference.flush();
-    } catch (BackingStoreException exception_p) {
+    } catch (BackingStoreException exception) {
       //Nothing
     }
   }

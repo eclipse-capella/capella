@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.property;
 
 import java.util.ArrayList;
@@ -33,11 +34,11 @@ public class EAdaptableFeatureProperty extends EStructuralFeatureProperty {
    */
   @Override
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     EClass clazz = getRelatedEClass();
     int i = 1;
 
-    for (Object object : context_p.getSourceAsList()) {
+    for (Object object : context.getSourceAsList()) {
       if (object instanceof EObject) {
         EObject element = (EObject) object;
         EStructuralFeature feature = element.eClass().getEStructuralFeature(getRelatedEReference());
@@ -46,7 +47,7 @@ public class EAdaptableFeatureProperty extends EStructuralFeatureProperty {
           if ((clazz == null) || clazz.isSuperTypeOf(element.eClass())) {
             if (element.eClass().getEAllStructuralFeatures().contains(feature)) {
               if (feature.isMany()) {
-                Object value = context_p.getCurrentValue(this);
+                Object value = context.getCurrentValue(this);
                 Collection<Object> result = null;
 
                 if (value instanceof Collection) {
@@ -68,7 +69,7 @@ public class EAdaptableFeatureProperty extends EStructuralFeatureProperty {
                   }
                 }
               } else {
-                Object result = adaptValue(context_p.getCurrentValue(this), i++);
+                Object result = adaptValue(context.getCurrentValue(this), i++);
                 element.eSet(feature, result);
               }
             }
@@ -79,17 +80,17 @@ public class EAdaptableFeatureProperty extends EStructuralFeatureProperty {
   }
 
   /**
-   * @param currentValue_p
-   * @param i_p
+   * @param currentValue
+   * @param i
    * @return
    */
-  private Object adaptValue(Object currentValue_p, int i_p) {
-    if (currentValue_p instanceof String) {
-      String result = (String) currentValue_p;
-      result = result.replace("$i", "" + i_p);
+  private Object adaptValue(Object currentValue, int i) {
+    if (currentValue instanceof String) {
+      String result = (String) currentValue;
+      result = result.replace("$i", "" + i);
       return result;
     }
-    return currentValue_p;
+    return currentValue;
   }
 
 }

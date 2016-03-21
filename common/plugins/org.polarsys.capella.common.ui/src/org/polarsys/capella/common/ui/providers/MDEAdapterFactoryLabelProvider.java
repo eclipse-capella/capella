@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.providers;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -32,32 +33,32 @@ public class MDEAdapterFactoryLabelProvider extends CapellaTransactionalAdapterF
 
   /**
    * Constructor.
-   * @param adapterFactory_p
+   * @param adapterFactory
    */
-  public MDEAdapterFactoryLabelProvider(AdapterFactory adapterFactory_p) {
-    super(adapterFactory_p);
+  public MDEAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
+    super(adapterFactory);
   }
 
   /**
    * Constructor.
-   * @param editingDomain_p
-   * @param adapterFactory_p
+   * @param editingDomain
+   * @param adapterFactory
    */
-  public MDEAdapterFactoryLabelProvider(TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p) {
-    super(editingDomain_p, adapterFactory_p);
+  public MDEAdapterFactoryLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory) {
+    super(editingDomain, adapterFactory);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Image getImage(Object object_p) {
-    Image result = super.getImage(object_p);
+  public Image getImage(Object object) {
+    Image result = super.getImage(object);
 
     // Delegation for CDO usage for instance.
     ILabelProviderDelegation delegatedLabelProvider = getDelegatedLabelProvider();
     if (null != delegatedLabelProvider) {
-      Image decoratedImage = delegatedLabelProvider.getImage(result, object_p);
+      Image decoratedImage = delegatedLabelProvider.getImage(result, object);
       result = (null != decoratedImage) ? decoratedImage : result;
     }
     return result;
@@ -67,13 +68,13 @@ public class MDEAdapterFactoryLabelProvider extends CapellaTransactionalAdapterF
    * {@inheritDoc}
    */
   @Override
-  public String getText(Object object_p) {
-    String text = super.getText(object_p);
+  public String getText(Object object) {
+    String text = super.getText(object);
 
     // Delegation for CDO usage for instance.
     ILabelProviderDelegation delegatedLabelProvider = getDelegatedLabelProvider();
     if (null != delegatedLabelProvider) {
-      text = delegatedLabelProvider.getText(text, object_p);
+      text = delegatedLabelProvider.getText(text, object);
     }
 
     return text;

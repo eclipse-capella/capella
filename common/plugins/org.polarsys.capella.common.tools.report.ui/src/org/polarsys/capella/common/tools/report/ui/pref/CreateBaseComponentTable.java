@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.ui.pref;
 
 import java.util.ArrayList;
@@ -44,24 +45,24 @@ public class CreateBaseComponentTable {
   StackLayout _stackLayout = new StackLayout();
 
   /**
-   * @param composite_p
-   * @param style_p
-   * @param _registry_p
-   * @param page_p
-   * @param levelsName_p
+   * @param composite
+   * @param style
+   * @param registry
+   * @param page
+   * @param levelsName
    */
-  public CreateBaseComponentTable(Composite composite_p, int style_p, ReportManagerRegistry _registry_p, IReportManagerPrefPage page_p, String[] levelsName_p) {
-    _registry = _registry_p;
-    _lineLevelNames = levelsName_p;
+  public CreateBaseComponentTable(Composite composite, int style, ReportManagerRegistry registry, IReportManagerPrefPage page, String[] levelsName) {
+    _registry = registry;
+    _lineLevelNames = levelsName;
     // Initialize appenders name list
-    _appendersName.addAll(_registry_p.getAppenders().keySet());
+    _appendersName.addAll(registry.getAppenders().keySet());
     // new create table
-    createLoggingTable(composite_p, _registry_p, levelsName_p);
+    createLoggingTable(composite, registry, levelsName);
   }
 
-  private void createLoggingTable(Composite composite_p, ReportManagerRegistry _registry_p, String[] levelsName_p) {
+  private void createLoggingTable(Composite composite, ReportManagerRegistry registry, String[] levelsName) {
     // new container, for the style
-    Group group = new Group(composite_p, SWT.SHADOW_OUT);
+    Group group = new Group(composite, SWT.SHADOW_OUT);
     group.setText("Report options"); //$NON-NLS-1$
 
     // in this group, add a StackLayout. Each page will contain the
@@ -71,7 +72,7 @@ public class CreateBaseComponentTable {
 
     // for each component, create a Group
 
-    for (Object obj : _registry_p.getComponentsList()) {
+    for (Object obj : registry.getComponentsList()) {
       String componentName = (String) obj;
 
       // create a group
@@ -96,7 +97,7 @@ public class CreateBaseComponentTable {
       }
 
       // Next : one line by LogLevel.
-      for (String levelName : levelsName_p) {
+      for (String levelName : levelsName) {
         // First entry of the line : name of level
         Label levelLabel2 = new Label(componentGroup, 0);
         levelLabel2.setText(levelName);
@@ -157,41 +158,41 @@ public class CreateBaseComponentTable {
 
   /**
    * Retrieve state selection button for each level for current component (given in parameter) and store them
-   * @param configurationMap_p
+   * @param configurationMap
    */
-  public void updateConfigurationHashMap(HashMap<String, ConfigurationInstance> configurationMap_p) {
+  public void updateConfigurationHashMap(HashMap<String, ConfigurationInstance> configurationMap) {
     for (Object componentName_obj : _registry.getComponentsList()) {
       String componentName = (String) componentName_obj;
-      updateConfigurationHashMap(componentName, configurationMap_p);
-    }
-  }
-
-  /**
-   * @param componentName_p
-   * @param configurationMap_p
-   */
-  public void updateConfigurationHashMap(String componentName_p, HashMap<String, ConfigurationInstance> configurationMap_p) {
-    ConfigurationInstance instance = configurationMap_p.get(componentName_p);
-    List<OutputConfiguration> opConf = instance.getOutputConfiguration();
-    Iterator<OutputConfiguration> opConfIter = opConf.listIterator();
-
-    while (opConfIter.hasNext()) {
-      OutputConfiguration opConfiguration = opConfIter.next();
-      updateConfigurationHashMap(componentName_p, opConfiguration);
+      updateConfigurationHashMap(componentName, configurationMap);
     }
   }
 
   /**
    * @param componentName
-   * @param configuration_p The configuration to update.
+   * @param configurationMap
    */
-  public void updateConfigurationHashMap(String componentName, OutputConfiguration configuration_p) {
-    List<LogLevel> logLevel = configuration_p.getLogLevel();
+  public void updateConfigurationHashMap(String componentName, HashMap<String, ConfigurationInstance> configurationMap) {
+    ConfigurationInstance instance = configurationMap.get(componentName);
+    List<OutputConfiguration> opConf = instance.getOutputConfiguration();
+    Iterator<OutputConfiguration> opConfIter = opConf.listIterator();
+
+    while (opConfIter.hasNext()) {
+      OutputConfiguration opConfiguration = opConfIter.next();
+      updateConfigurationHashMap(componentName, opConfiguration);
+    }
+  }
+
+  /**
+   * @param componentName
+   * @param configuration The configuration to update.
+   */
+  public void updateConfigurationHashMap(String componentName, OutputConfiguration configuration) {
+    List<LogLevel> logLevel = configuration.getLogLevel();
     Iterator<LogLevel> logLevelIter = logLevel.listIterator();
     try {
       while (logLevelIter.hasNext()) {
         LogLevel ll = logLevelIter.next();
-        String key = computeButtonKey(componentName, ll.getName(), configuration_p.getOutputName());
+        String key = computeButtonKey(componentName, ll.getName(), configuration.getOutputName());
         Button button = _buttons.get(key);
         boolean state = button.getSelection();
         ll.setValue(state);

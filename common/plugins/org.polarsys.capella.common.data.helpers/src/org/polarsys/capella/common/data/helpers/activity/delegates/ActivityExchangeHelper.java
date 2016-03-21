@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.data.helpers.activity.delegates;
 
 import java.util.ArrayList;
@@ -33,20 +34,20 @@ public class ActivityExchangeHelper {
     return instance;
   }
 
-  public Object doSwitch(ActivityExchange element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(ActivityExchange element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(ActivityPackage.Literals.ACTIVITY_EXCHANGE__REALIZING_ACTIVITY_FLOWS)) {
-      ret = getRealizingActivityFlows(element_p);
+    if (feature.equals(ActivityPackage.Literals.ACTIVITY_EXCHANGE__REALIZING_ACTIVITY_FLOWS)) {
+      ret = getRealizingActivityFlows(element);
     }
 
     return ret;
   }
 
-  protected List<ActivityEdge> getRealizingActivityFlows(ActivityExchange element_p) {
+  protected List<ActivityEdge> getRealizingActivityFlows(ActivityExchange element) {
     List<ActivityEdge> ret = new ArrayList<ActivityEdge>();
 
-    for (AbstractRelationship relationship : element_p.getRealizations()) {
+    for (AbstractRelationship relationship : element.getRealizations()) {
       if (relationship instanceof ActivityEdge) {
         ret.add((ActivityEdge) relationship);
       }

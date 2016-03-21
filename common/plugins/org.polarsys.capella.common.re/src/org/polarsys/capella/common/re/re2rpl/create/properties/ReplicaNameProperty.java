@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,17 +45,17 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
 
     if (_currentName == null) {
 
       CatalogElement element =
-          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
-      String suffix = (String) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX));
+          (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+      String suffix = (String) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX));
 
-      IContext context = (IContext) context_p.getSource();
-      if (AttributesHandlerHelper.getInstance(context).hasCustomName(element, context)) {
-        _currentName = AttributesHandlerHelper.getInstance(context).getCurrentName(element, context, context_p);
+      IContext ctx = (IContext) context.getSource();
+      if (AttributesHandlerHelper.getInstance(ctx).hasCustomName(element, ctx)) {
+        _currentName = AttributesHandlerHelper.getInstance(ctx).getCurrentName(element, ctx, context);
 
       } else {
         _lastSuffix = suffix;
@@ -81,10 +81,10 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     boolean isValid = true;
 
-    if ((newValue_p == null) || ((newValue_p instanceof String) && ((String) newValue_p).isEmpty())) {
+    if ((newValue == null) || ((newValue instanceof String) && ((String) newValue).isEmpty())) {
       isValid = false;
     }
     if (!isValid) {
@@ -105,50 +105,50 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
+  public Object toType(Object value, IPropertyContext context) {
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
-    IContext context = (IContext) context_p.getSource();
-    AttributesHandlerHelper.getInstance(context).setCustomName(element, (String) value_p, context);
-    return value_p.toString();
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+    IContext ctx = (IContext) context.getSource();
+    AttributesHandlerHelper.getInstance(ctx).setCustomName(element, (String) value, ctx);
+    return value.toString();
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
-    IContext context = (IContext) context_p.getSource();
-    AttributesHandlerHelper.getInstance(context).setCustomName(element, (String) context_p.getCurrentValue(this), context);
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+    IContext ctx = (IContext) context.getSource();
+    AttributesHandlerHelper.getInstance(ctx).setCustomName(element, (String) context.getCurrentValue(this), ctx);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    String value = (String) context_p.getCurrentValue(this);
-    IContext context = (IContext) context_p.getSource();
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    String value = (String) context.getCurrentValue(this);
+    IContext ctx = (IContext) context.getSource();
 
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
-    if (AttributesHandlerHelper.getInstance(context).hasCustomName(element, context)) {
-      value = AttributesHandlerHelper.getInstance(context).getCurrentName(element, context, context_p);
+        (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+    if (AttributesHandlerHelper.getInstance(ctx).hasCustomName(element, ctx)) {
+      value = AttributesHandlerHelper.getInstance(ctx).getCurrentName(element, ctx, context);
     }
     if ((value == null) || value.isEmpty()) {
       _currentName = null;
 
     } else {
-      if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property_p.getId())) {
+      if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property.getId())) {
         if ((_lastSourceName != null) && value.startsWith(_lastSourceName)) {
           _currentName = null;
         } else {
           _currentName = value;
         }
 
-      } else if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX.equals(property_p.getId())) {
+      } else if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX.equals(property.getId())) {
         if ((_lastSuffix != null) && value.endsWith(_lastSuffix)) {
           if ((_lastSourceName != null) && value.startsWith(_lastSourceName)) {
             _currentName = null;
@@ -166,7 +166,7 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
    * {@inheritDoc}
    */
   @Override
-  public boolean isModified(IPropertyContext context_p) {
+  public boolean isModified(IPropertyContext context) {
     return true;
   }
 

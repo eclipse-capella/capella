@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.linkedtext.ui;
 
 import org.eclipse.jface.text.BadLocationException;
@@ -35,8 +36,8 @@ public class EmbeddedLinkedTextEditor {
   private LinkedTextDocument.Input _input;
   private LinkedTextDocument _document;
   
-  public EmbeddedLinkedTextEditor(Composite parent_p, int style_p){
-    sv = createSourceViewer(parent_p, style_p);
+  public EmbeddedLinkedTextEditor(Composite parent, int style){
+    sv = createSourceViewer(parent, style);
     sv.getTextWidget().addKeyListener(new InputKeyListener(sv));
     sv.getTextWidget().setAlwaysShowScrollBars(false);
   }
@@ -45,19 +46,19 @@ public class EmbeddedLinkedTextEditor {
    * Set the input for this editor. This may currently be called just once, reuse is not supported 
    * and subsequent calls will throw IllegalStateException.
    * 
-   * @param input_p the linked text editor input.
+   * @param input the linked text editor input.
    */
-  public void setInput(LinkedTextDocument.Input input_p) {
+  public void setInput(LinkedTextDocument.Input input) {
     if (_input != null){
       throw new IllegalStateException("Reuse of EmbeddedLinkedTextEditor instances is not yet supported"); //$NON-NLS-1$
     }
-    _input = input_p;
+    _input = input;
     _document = LinkedTextDocument.load(_input);
 
     // save the document back to the model when changed
     _document.addDocumentListener(new IDocumentListener() {
       @Override
-      public void documentChanged(final DocumentEvent event_p) {
+      public void documentChanged(final DocumentEvent event) {
         sv.getControl().getDisplay().asyncExec(new Runnable(){
           @Override
           public void run(){
@@ -66,14 +67,14 @@ public class EmbeddedLinkedTextEditor {
         });
       }
       @Override
-      public void documentAboutToBeChanged(DocumentEvent event_p) {
+      public void documentAboutToBeChanged(DocumentEvent event) {
         //nop
       }
     });
     
     sv.getTextWidget().addDisposeListener(new DisposeListener() {
       @Override
-      public void widgetDisposed(DisposeEvent e_p) {
+      public void widgetDisposed(DisposeEvent e) {
         if (_document != null){
           _document.dispose();
         }
@@ -101,18 +102,18 @@ public class EmbeddedLinkedTextEditor {
       // backspace and del should delete the entire link
       viewer.appendVerifyKeyListener(new VerifyKeyListener() {
         @Override
-        public void verifyKey(VerifyEvent event_p) {
-          if (event_p.keyCode == SWT.BS){
+        public void verifyKey(VerifyEvent event) {
+          if (event.keyCode == SWT.BS){
             final LinkedTextHyperlink hl = getHyperlinkOverOrBeforeCaret(viewer);
             if (hl != null){
-              event_p.doit = false;
-              postDelete(hl, event_p.display);
+              event.doit = false;
+              postDelete(hl, event.display);
             }
-          } else if (event_p.keyCode == SWT.DEL){
+          } else if (event.keyCode == SWT.DEL){
             final LinkedTextHyperlink hl = getHyperlinkOverOrAfterCaret(viewer);
             if (hl != null){
-              event_p.doit = false;
-              postDelete(hl, event_p.display);
+              event.doit = false;
+              postDelete(hl, event.display);
             }
           }
         }
@@ -137,13 +138,13 @@ public class EmbeddedLinkedTextEditor {
       // this blocks edition that would destroy hyperlinks
       viewer.getTextWidget().addVerifyListener(new VerifyListener() {
         @Override
-        public void verifyText(VerifyEvent event_p) {
+        public void verifyText(VerifyEvent event) {
           LinkedTextDocument doc = (LinkedTextDocument) viewer.getInput();
           for (LinkedTextHyperlink h : doc.getHyperlinks()){
-            if (h.overlapsWith(event_p.start, event_p.end - event_p.start)){
+            if (h.overlapsWith(event.start, event.end - event.start)){
               // guard additional case of typing directly before a link 
-              if (!(event_p.start == event_p.end && h.getOffset() == event_p.start)){
-                event_p.doit = false;
+              if (!(event.start == event.end && h.getOffset() == event.start)){
+                event.doit = false;
               }
             }
           } 
@@ -202,20 +203,20 @@ public class EmbeddedLinkedTextEditor {
 
       final SourceViewer _sv;
 
-      InputKeyListener(SourceViewer viewer_p){
-        _sv = viewer_p;
+      InputKeyListener(SourceViewer viewer){
+        _sv = viewer;
       }
 
       @Override
-      public void keyReleased(KeyEvent e_p) {
+      public void keyReleased(KeyEvent e) {
         /*nop*/
       }
 
       @Override
-      public void keyPressed(KeyEvent e_p) {
-        switch (e_p.keyCode) {
+      public void keyPressed(KeyEvent e) {
+        switch (e.keyCode) {
           case ' ':
-            if ((e_p.stateMask & SWT.CTRL) == SWT.CTRL && getHyperlinkOverCaret(_sv) == null) {
+            if ((e.stateMask & SWT.CTRL) == SWT.CTRL && getHyperlinkOverCaret(_sv) == null) {
               _sv.doOperation(ISourceViewer.CONTENTASSIST_PROPOSALS);
             }
           }

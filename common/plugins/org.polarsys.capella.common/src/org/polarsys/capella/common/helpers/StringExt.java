@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers;
 
 /**
@@ -17,22 +18,22 @@ package org.polarsys.capella.common.helpers;
 public class StringExt {
 
 	/**
-	 * Find the last occurrence of "find_p" in the "source_p" String and replace it by "replace_p".
+	 * Find the last occurrence of "find" in the "source" String and replace it by "replace".
 	 * 
-	 * @param find_p String to find
-	 * @param replace_p String to replace
-	 * @param source_p the source String to process.
+	 * @param find String to find
+	 * @param replace String to replace
+	 * @param source the source String to process.
 	 * @return the replace result.
 	 */
-	public static String replaceLast(String find_p, String replace_p, String source_p) {
-		String source = ""; //$NON-NLS-1$
+	public static String replaceLast(String find, String replace, String source) {
+		String src = ""; //$NON-NLS-1$
 		String result = ""; //$NON-NLS-1$
 
-		if (source_p.indexOf(find_p) >= 0) {
-			result += source_p.substring(0, source_p.lastIndexOf(find_p)) + replace_p;
-			source = source_p.substring(source_p.lastIndexOf(find_p) + find_p.length());
+		if (source.indexOf(find) >= 0) {
+			result += source.substring(0, source.lastIndexOf(find)) + replace;
+			src = source.substring(source.lastIndexOf(find) + find.length());
 		}
-		result += source;
+		result += src;
 
 		return result;
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 
 package org.polarsys.capella.common.ui.services;
 
@@ -36,13 +37,13 @@ public class UIUtil {
 
   /**
    * Close the corresponding diagram view.
-   * @param element_p a model element
+   * @param element a model element
    */
-  public void closeDiagram(ModelElement element_p) {
-    if (element_p != null) {
+  public void closeDiagram(ModelElement element) {
+    if (element != null) {
       IDiagramServices selector = getDiagramServices();
       if (selector != null) {
-        selector.closeDiagram(element_p);
+        selector.closeDiagram(element);
       }
     }
   }
@@ -77,37 +78,37 @@ public class UIUtil {
 
   /**
    * Open the corresponding diagram view.
-   * @param element_p a model element
+   * @param element a model element
    */
-  public void openDiagram(ModelElement element_p) {
-    if (element_p != null) {
+  public void openDiagram(ModelElement element) {
+    if (element != null) {
       IDiagramServices selector = getDiagramServices();
       if (selector != null) {
-        selector.openDiagram(element_p);
+        selector.openDiagram(element);
       }
     }
   }
 
   /**
    * Refresh the corresponding diagram view.
-   * @param diagram_p a diagram
+   * @param diagram a diagram
    */
-  public void refreshActiveDiagram(EObject diagram_p) {
+  public void refreshActiveDiagram(EObject diagram) {
     IDiagramServices selector = getDiagramServices();
     if (selector != null) {
-      selector.refreshActiveDiagram(diagram_p);
+      selector.refreshActiveDiagram(diagram);
     }
   }
 
   /**
    * Set the focus on the corresponding view element in the package explorer.
-   * @param element_p a model element
+   * @param element a model element
    */
-  public void selectInPackageExplorer(EObject element_p) {
-    if (element_p != null) {
+  public void selectInPackageExplorer(EObject element) {
+    if (element != null) {
       ISelectorInPackageExplorer selector = getSelectorInPackageExplorer();
       if (selector != null) {
-        selector.selectInPackageExplorer(element_p);
+        selector.selectInPackageExplorer(element);
       }
     }
   }
@@ -131,9 +132,9 @@ public class UIUtil {
   }
 
   /**
-   * @param isDialogOpen_p the isDialogOpen to set
+   * @param isDialogOpen the isDialogOpen to set
    */
-  public static void setDialogOpen(boolean isDialogOpen_p) {
-    _isDialogOpen = isDialogOpen_p;
+  public static void setDialogOpen(boolean isDialogOpen) {
+    _isDialogOpen = isDialogOpen;
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.widgets.filter;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -68,11 +69,11 @@ public class FilteredTree extends Composite {
   class NotifyingTreeViewer extends TreeViewer {
     /**
      * Constructor.
-     * @param parent_p
+     * @param parent
      * @param style
      */
-    public NotifyingTreeViewer(Composite parent_p, int style) {
-      super(parent_p, style);
+    public NotifyingTreeViewer(Composite parent, int style) {
+      super(parent, style);
       setUseHashlookup(true);
     }
 
@@ -131,9 +132,9 @@ public class FilteredTree extends Composite {
     }
 
     @Override
-    public void remove(Object parent_p, Object[] elements) {
+    public void remove(Object parent, Object[] elements) {
       getPatternFilter().clearCaches();
-      super.remove(parent_p, elements);
+      super.remove(parent, elements);
     }
 
     @Override
@@ -235,25 +236,25 @@ public class FilteredTree extends Composite {
   /**
    * Create a new instance of the receiver. Subclasses that wish to override the default creation behavior may use this constructor, but must ensure that the
    * <code>init(composite, int, PatternFilter)</code> method is called in the overriding constructor.
-   * @param parent_p the parent <code>Composite</code>
+   * @param parent the parent <code>Composite</code>
    * @see #init(int, PatternFilter)
    * @since 3.3
    */
-  protected FilteredTree(Composite parent_p) {
-    super(parent_p, SWT.NONE);
-    parent = parent_p;
+  protected FilteredTree(Composite parent) {
+    super(parent, SWT.NONE);
+    this.parent = parent;
     _isAutoFiltering = false;
   }
 
   /**
    * Create a new instance of the receiver.
-   * @param parent_p the parent <code>Composite</code>
+   * @param parent the parent <code>Composite</code>
    * @param treeStyle the style bits for the <code>Tree</code>
    * @param filter the filter to be used
    */
-  public FilteredTree(Composite parent_p, int treeStyle, PatternFilter filter) {
-    super(parent_p, SWT.NONE);
-    parent = parent_p;
+  public FilteredTree(Composite parent, int treeStyle, PatternFilter filter) {
+    super(parent, SWT.NONE);
+    this.parent = parent;
     _isAutoFiltering = false;
     init(treeStyle, filter);
   }
@@ -275,14 +276,14 @@ public class FilteredTree extends Composite {
 
   /**
    * Create the button that clears the text.
-   * @param parent_p parent <code>Composite</code> of toolbar button
+   * @param parent parent <code>Composite</code> of toolbar button
    */
-  protected void createClearText(Composite parent_p) {
+  protected void createClearText(Composite parent) {
     // only create the button if the text widget doesn't support one natively
     if (!hasNativeClearButton()) {
       if (null == filterToolBar) {
         filterToolBar = new ToolBarManager(SWT.FLAT | SWT.HORIZONTAL);
-        filterToolBar.createControl(parent_p);
+        filterToolBar.createControl(parent);
       }
 
       IAction clearTextAction = new Action(ICommonConstants.EMPTY_STRING, IAction.AS_PUSH_BUTTON) {
@@ -304,10 +305,10 @@ public class FilteredTree extends Composite {
 
   /**
    * Create the filtered tree's controls. Subclasses should override.
-   * @param parent_p
+   * @param parent
    * @param treeStyle
    */
-  protected void createControl(Composite parent_p, int treeStyle) {
+  protected void createControl(Composite parent, int treeStyle) {
     GridLayout layout = new GridLayout();
     layout.marginHeight = 0;
     layout.marginWidth = 0;
@@ -321,7 +322,7 @@ public class FilteredTree extends Composite {
       filterLayout.marginWidth = 0;
       filterComposite.setLayout(filterLayout);
       filterComposite.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
-      filterComposite.setFont(parent_p.getFont());
+      filterComposite.setFont(parent.getFont());
 
       createFilterControls(filterComposite);
     }
@@ -340,21 +341,21 @@ public class FilteredTree extends Composite {
   /**
    * @param filteredTree_p
    */
-  protected Composite createFilterGroup(Composite parent_p) {
-    filterComposite = new Group(parent_p, SWT.NONE);
+  protected Composite createFilterGroup(Composite parent) {
+    filterComposite = new Group(parent, SWT.NONE);
     ((Group) filterComposite).setText(Messages.FilteredTree_Group_Title);
     return filterComposite;
   }
 
   /**
    * Create the filter controls. By default, a text and corresponding tool bar button that clears the contents of the text is created. Subclasses may override.
-   * @param parent_p parent <code>Composite</code> of the filter controls
+   * @param parent parent <code>Composite</code> of the filter controls
    * @return the <code>Composite</code> that contains the filter controls
    */
-  protected Composite createFilterControls(Composite parent_p) {
-    createMessageArea(parent_p);
-    createFilterText(parent_p);
-    createClearText(parent_p);
+  protected Composite createFilterControls(Composite parent) {
+    createMessageArea(parent);
+    createFilterText(parent);
+    createClearText(parent);
     if (filterToolBar != null) {
       filterToolBar.update(false);
       if (filterToolBar.getSize() == 1) {
@@ -362,16 +363,16 @@ public class FilteredTree extends Composite {
         filterToolBar.getControl().setVisible(false);
       }
     }
-    return parent_p;
+    return parent;
   }
 
   /**
    * Creates the filter text and adds listeners. This method calls {@link #doCreateFilterText(Composite)} to create the text control. Subclasses should override
    * {@link #doCreateFilterText(Composite)} instead of overriding this method.
-   * @param parent_p <code>Composite</code> of the filter text
+   * @param parent <code>Composite</code> of the filter text
    */
-  protected void createFilterText(Composite parent_p) {
-    filterText = doCreateFilterText(parent_p);
+  protected void createFilterText(Composite parent) {
+    filterText = doCreateFilterText(parent);
     filterText.getAccessible().addAccessibleListener(new AccessibleAdapter() {
       /**
        * @see org.eclipse.swt.accessibility.AccessibleListener#getName(org.eclipse.swt.accessibility.AccessibleEvent)
@@ -413,11 +414,11 @@ public class FilteredTree extends Composite {
        * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
        */
       @Override
-      public void keyPressed(KeyEvent event_p) {
+      public void keyPressed(KeyEvent event) {
         boolean hasItems = getViewer().getTree().getItemCount() > 0;
-        if (hasItems && (event_p.keyCode == SWT.ARROW_DOWN)) {
+        if (hasItems && (event.keyCode == SWT.ARROW_DOWN)) {
           treeViewer.getTree().setFocus();
-        } else if ((event_p.character == SWT.CR) && handle(event_p, IKeyLookup.CR_NAME) && !isAutoFiltering()) {
+        } else if ((event.character == SWT.CR) && handle(event, IKeyLookup.CR_NAME) && !isAutoFiltering()) {
           handleCRKeyStoke();
         }
       }
@@ -448,12 +449,12 @@ public class FilteredTree extends Composite {
 
   /**
    * Creates the message text widget and sets layout data.
-   * @param parent_p the parent composite of the message area.
+   * @param parent the parent composite of the message area.
    */
-  protected Label createMessageArea(Composite parent_p) {
-    Label label = new Label(parent_p, SWT.NONE);
+  protected Label createMessageArea(Composite parent) {
+    Label label = new Label(parent, SWT.NONE);
     label.setText(Messages.FilteredTree_Title);
-    label.setFont(parent_p.getFont());
+    label.setFont(parent.getFont());
     GridData data = new GridData();
     data.grabExcessVerticalSpace = false;
     data.grabExcessHorizontalSpace = true;
@@ -590,12 +591,12 @@ public class FilteredTree extends Composite {
   /**
    * Creates and set up the tree and tree viewer. This method calls {@link #doCreateTreeViewer(Composite, int)} to create the tree viewer. Subclasses should
    * override {@link #doCreateTreeViewer(Composite, int)} instead of overriding this method.
-   * @param parent_p parent <code>Composite</code>
+   * @param parent parent <code>Composite</code>
    * @param style SWT style bits used to create the tree
    * @return the tree
    */
-  protected Control createTreeControl(Composite parent_p, int style) {
-    treeViewer = doCreateTreeViewer(parent_p, style);
+  protected Control createTreeControl(Composite parent, int style) {
+    treeViewer = doCreateTreeViewer(parent, style);
     GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
     treeViewer.getControl().setLayoutData(data);
     treeViewer.getControl().addDisposeListener(new DisposeListener() {
@@ -618,23 +619,23 @@ public class FilteredTree extends Composite {
 
   /**
    * Creates the text control for entering the filter text. Subclasses may override.
-   * @param parent_p the parent composite
+   * @param parent the parent composite
    * @return the text widget
    * @since 3.3
    */
-  protected Text doCreateFilterText(Composite parent_p) {
-    return new Text(parent_p, SWT.SINGLE | SWT.BORDER | SWT.SEARCH);
+  protected Text doCreateFilterText(Composite parent) {
+    return new Text(parent, SWT.SINGLE | SWT.BORDER | SWT.SEARCH);
   }
 
   /**
    * Creates the tree viewer. Subclasses may override.
-   * @param parent_p the parent composite
+   * @param parent the parent composite
    * @param style SWT style bits used to create the tree viewer
    * @return the tree viewer
    * @since 3.3
    */
-  protected TreeViewer doCreateTreeViewer(Composite parent_p, int style) {
-    return new NotifyingTreeViewer(parent_p, style);
+  protected TreeViewer doCreateTreeViewer(Composite parent, int style) {
+    return new NotifyingTreeViewer(parent, style);
   }
 
   /**
@@ -705,28 +706,28 @@ public class FilteredTree extends Composite {
   /**
    * Handle the tree viewer expansion when the pattern filter is reset to null.<br>
    * Default implementation tries to expand specified elements if any. Otherwise, expandToLevel operation is performed.
-   * @param expandedElements_p
+   * @param expandedElements
    * @see #getExpansionLevelWhenNoFilter().
    */
-  protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements_p) {
-    handleTreeViewerExpansionWhenNoFilter(null, expandedElements_p);
+  protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements) {
+    handleTreeViewerExpansionWhenNoFilter(null, expandedElements);
   }
 
   /**
    * Handle the tree viewer expansion when the pattern filter is reset to null.<br>
    * Default implementation tries to expand specified elements if any. Otherwise, expandToLevel operation is performed.
    * @param currentSelection
-   * @param expandedElements_p
+   * @param expandedElements
    * @see #getExpansionLevelWhenNoFilter().
    */
-  protected void handleTreeViewerExpansionWhenNoFilter(ISelection currentSelection_p, Object[] expandedElements_p) {
-    if (expandedElements_p.length == 0) {
+  protected void handleTreeViewerExpansionWhenNoFilter(ISelection currentSelection, Object[] expandedElements) {
+    if (expandedElements.length == 0) {
       treeViewer.expandToLevel(getExpansionLevelWhenNoFilter());
     } else {
-      treeViewer.setExpandedElements(expandedElements_p);
+      treeViewer.setExpandedElements(expandedElements);
     }
-    if (null != currentSelection_p) {
-      treeViewer.setSelection(currentSelection_p, true);
+    if (null != currentSelection) {
+      treeViewer.setSelection(currentSelection, true);
     }
   }
 
@@ -762,10 +763,10 @@ public class FilteredTree extends Composite {
   }
 
   /**
-   * @param isAutoFiltering_p the isAutoFiltering to set
+   * @param isAutoFiltering the isAutoFiltering to set
    */
-  protected void setAutoFiltering(boolean isAutoFiltering_p) {
-    _isAutoFiltering = isAutoFiltering_p;
+  protected void setAutoFiltering(boolean isAutoFiltering) {
+    _isAutoFiltering = isAutoFiltering;
   }
 
   /**

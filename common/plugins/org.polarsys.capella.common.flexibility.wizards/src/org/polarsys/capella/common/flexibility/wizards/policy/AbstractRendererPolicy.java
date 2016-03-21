@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.policy;
 
 import org.polarsys.capella.common.flexibility.wizards.schema.IGroupRenderer;
@@ -24,7 +25,7 @@ public class AbstractRendererPolicy implements IRendererPolicy {
    * {@inheritDoc}
    */
   @Override
-  public boolean match(IProperty property_p) {
+  public boolean match(IProperty property) {
     return false;
   }
 
@@ -32,7 +33,7 @@ public class AbstractRendererPolicy implements IRendererPolicy {
    * {@inheritDoc}
    */
   @Override
-  public boolean match(IPropertyGroup property_p) {
+  public boolean match(IPropertyGroup property) {
     return false;
   }
 
@@ -40,7 +41,7 @@ public class AbstractRendererPolicy implements IRendererPolicy {
    * {@inheritDoc}
    */
   @Override
-  public IPropertyRenderer createRenderer(IProperty property_p) {
+  public IPropertyRenderer createRenderer(IProperty property) {
     return null;
   }
 
@@ -48,7 +49,7 @@ public class AbstractRendererPolicy implements IRendererPolicy {
    * {@inheritDoc}
    */
   @Override
-  public IGroupRenderer createRenderer(IPropertyGroup group_p) {
+  public IGroupRenderer createRenderer(IPropertyGroup group) {
     return null;
   }
 

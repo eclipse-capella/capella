@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.schema;
 
 import java.util.List;
@@ -25,18 +26,18 @@ public interface IProperty {
 
   public String getDescription();
 
-  public Object getValue(IPropertyContext context_p);
+  public Object getValue(IPropertyContext context);
 
-  public IStatus validate(Object newValue, IPropertyContext context_p);
+  public IStatus validate(Object newValue, IPropertyContext context);
 
   public Object getType();
 
-  public Object toType(Object value_p, IPropertyContext context_p);
+  public Object toType(Object value, IPropertyContext context);
 
   public List<IPropertyOption> getOptions();
 
-  public boolean isEnabled(IPropertyContext context_p);
+  public boolean isEnabled(IPropertyContext context);
 
-  public String getParameter(String key_p);
+  public String getParameter(String key);
 
 }

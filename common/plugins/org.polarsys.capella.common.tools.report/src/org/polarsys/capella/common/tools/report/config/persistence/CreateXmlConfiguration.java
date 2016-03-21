@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.config.persistence;
 
 import java.io.File;
@@ -47,17 +48,17 @@ public class CreateXmlConfiguration {
 
   /**
    * Create default XML configuration file.
-   * @param componentName_p name of current business component
-   * @param map_p map of available appenders
+   * @param componentName name of current business component
+   * @param map map of available appenders
    * @return
    * 
    */
-  public ConfigurationInstance createDefaultConfiguration(String componentName_p, HashMap<String, Appender> map_p) {
+  public ConfigurationInstance createDefaultConfiguration(String componentName, HashMap<String, Appender> map) {
 
-    Set<String> appenders = map_p.keySet();
+    Set<String> appenders = map.keySet();
 
     ConfigurationInstance confInstance = _factory.createConfigurationInstance();
-    confInstance.setComponentName(componentName_p);
+    confInstance.setComponentName(componentName);
 
 
     // list of outputConfigs
@@ -81,27 +82,27 @@ public class CreateXmlConfiguration {
    * 
    * 
    */
-  private void createLogConfig(OutputConfiguration outputConfiguration_p, boolean logLevelValue_p) {
-    List<LogLevel> logLevelListFile = outputConfiguration_p.getLogLevel();
+  private void createLogConfig(OutputConfiguration outputConfiguration, boolean logLevelValue) {
+    List<LogLevel> logLevelListFile = outputConfiguration.getLogLevel();
 
     logLevelListFile.clear();
 
-    logLevelListFile.add(buildLogLevel(logLevelValue_p, ReportManagerConstants.LOG_LEVEL_INFO));
+    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_INFO));
     logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-    logLevelListFile.add(buildLogLevel(logLevelValue_p, ReportManagerConstants.LOG_LEVEL_WARN));
-    logLevelListFile.add(buildLogLevel(logLevelValue_p, ReportManagerConstants.LOG_LEVEL_ERROR));
-    logLevelListFile.add(buildLogLevel(logLevelValue_p, ReportManagerConstants.LOG_LEVEL_FATAL));
+    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_WARN));
+    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_ERROR));
+    logLevelListFile.add(buildLogLevel(logLevelValue, ReportManagerConstants.LOG_LEVEL_FATAL));
 
   }
 
   /**
-   * @param logLevelValue_p
+   * @param logLevelValue
    * @return
    */
-  private LogLevel buildLogLevel(boolean logLevelValue_p, String logLevelInfo) {
+  private LogLevel buildLogLevel(boolean logLevelValue, String logLevelInfo) {
     LogLevel infoLevelFile = _factory.createLogLevel();
     infoLevelFile.setName(logLevelInfo);
-    infoLevelFile.setValue(logLevelValue_p);
+    infoLevelFile.setValue(logLevelValue);
     return infoLevelFile;
   }
 
@@ -167,15 +168,15 @@ public class CreateXmlConfiguration {
 
   /**
    * save configuraion hashmap to configuration file
-   * @param configurationMap_p
+   * @param configurationMap
    */
-  public void saveConfiguration(HashMap<String, ConfigurationInstance> configurationMap_p) {
+  public void saveConfiguration(HashMap<String, ConfigurationInstance> configurationMap) {
 
     
     ReportConfigurationFile repConffile = _factory.createReportConfigurationFile();
     repConffile.setFileFormatVersion(ReportManagerConstants.FILEFORMAT_VERSION);
     repConffile.setReportManagerVersion(ReportManagerConstants.REPORTMANAGER_VERSION);
-    Collection<ConfigurationInstance> confInst = configurationMap_p.values();
+    Collection<ConfigurationInstance> confInst = configurationMap.values();
     List<ConfigurationInstance> confInstanceList = repConffile.getConfigurationInstance();
     confInstanceList.addAll(confInst);
     repConffile.setConfigurationInstance(confInstanceList);

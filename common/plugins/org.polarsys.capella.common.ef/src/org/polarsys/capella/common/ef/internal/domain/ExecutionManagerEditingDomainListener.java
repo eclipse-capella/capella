@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ef.internal.domain;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -21,13 +22,13 @@ import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 public class ExecutionManagerEditingDomainListener implements IEditingDomainListener {
 
   @Override
-  public void createdEditingDomain(EditingDomain editingDomain_p) {
+  public void createdEditingDomain(EditingDomain editingDomain) {
     //Nothing here
   }
 
   @Override
-  public void disposedEditingDomain(EditingDomain editingDomain_p) {
-    ExecutionManager manager = ExecutionManagerRegistry.getInstance().getExecutionManager(editingDomain_p);
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+    ExecutionManager manager = ExecutionManagerRegistry.getInstance().getExecutionManager(editingDomain);
     if (manager != null) {
       ExecutionManagerRegistry.getInstance().removeManager(manager);
     }

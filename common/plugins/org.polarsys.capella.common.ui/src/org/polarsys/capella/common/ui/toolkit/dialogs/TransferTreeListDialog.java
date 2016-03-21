@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -114,61 +114,61 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
   /**
    * Constructor.<br>
    * DEFAULT_TREE_VIEWER_STYLE is used for both left and right viewers.
-   * @param parentShell_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param editingDomain_ps
-   * @param adapterFactory_p
+   * @param parentShell
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param editingDomains
+   * @param adapterFactory
    */
-  public TransferTreeListDialog(Shell parentShell_p, String dialogTitle_p, String dialogMessage_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p) {
-    this(parentShell_p, dialogTitle_p, dialogMessage_p,
-      new DataLabelProvider(editingDomain_p, adapterFactory_p),
-      new DataLabelProvider(editingDomain_p, adapterFactory_p),
+  public TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory) {
+    this(parentShell, dialogTitle, dialogMessage,
+      new DataLabelProvider(editingDomain, adapterFactory),
+      new DataLabelProvider(editingDomain, adapterFactory),
       DEFAULT_TREE_VIEWER_STYLE, DEFAULT_TREE_VIEWER_STYLE,
       AbstractTreeViewer.ALL_LEVELS, AbstractTreeViewer.ALL_LEVELS);
   }
 
   /**
    * Constructor.
-   * @param parentShell_p
-   * @param leftLabelProvider_p
-   * @param rightLabelProvider_p
-   * @param leftViewerStyle_p
-   * @param rightViewerStyle_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param leftViewerExpandLevel_p
-   * @param rightViewerExpandLevel_p
+   * @param parentShell
+   * @param leftLabelProvider
+   * @param rightLabelProvider
+   * @param leftViewerStyle
+   * @param rightViewerStyle
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param leftViewerExpandLevel
+   * @param rightViewerExpandLevel
    */
-  protected TransferTreeListDialog(Shell parentShell_p, String dialogTitle_p, String dialogMessage_p,
-    DataLabelProvider leftLabelProvider_p, DataLabelProvider rightLabelProvider_p,
-    int leftViewerStyle_p, int rightViewerStyle_p, int leftViewerExpandLevel_p, int rightViewerExpandLevel_p)
+  protected TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
+    DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider,
+    int leftViewerStyle, int rightViewerStyle, int leftViewerExpandLevel, int rightViewerExpandLevel)
   {
-    super(parentShell_p, dialogTitle_p, dialogMessage_p, Messages.TransferTreeListDialog_Shell_Title);
+    super(parentShell, dialogTitle, dialogMessage, Messages.TransferTreeListDialog_Shell_Title);
     // Left viewer.
-    _leftLabelProvider = leftLabelProvider_p;
-    _leftViewerStyle = leftViewerStyle_p;
-    _leftViewerExpandLevel = leftViewerExpandLevel_p;
+    _leftLabelProvider = leftLabelProvider;
+    _leftViewerStyle = leftViewerStyle;
+    _leftViewerExpandLevel = leftViewerExpandLevel;
     // Right viewer.
-    _rightLabelProvider = rightLabelProvider_p;
-    _rightViewerStyle = rightViewerStyle_p;
-    _rightViewerExpandLevel = rightViewerExpandLevel_p;
+    _rightLabelProvider = rightLabelProvider;
+    _rightViewerStyle = rightViewerStyle;
+    _rightViewerExpandLevel = rightViewerExpandLevel;
   }
 
   /**
    * Constructor.<br>
    * DEFAULT_TREE_VIEWER_STYLE is used for both left and right viewers.
-   * @param parentShell_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param leftLabelProvider_p
-   * @param rightLabelProvider_p
+   * @param parentShell
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param leftLabelProvider
+   * @param rightLabelProvider
    */
-  public TransferTreeListDialog(Shell parentShell_p, String dialogTitle_p, String dialogMessage_p,
-    DataLabelProvider leftLabelProvider_p, DataLabelProvider rightLabelProvider_p)
+  public TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
+    DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider)
   {
-    this(parentShell_p, dialogTitle_p, dialogMessage_p,
-      leftLabelProvider_p, rightLabelProvider_p,
+    this(parentShell, dialogTitle, dialogMessage,
+      leftLabelProvider, rightLabelProvider,
       DEFAULT_TREE_VIEWER_STYLE, DEFAULT_TREE_VIEWER_STYLE,
       AbstractTreeViewer.ALL_LEVELS, AbstractTreeViewer.ALL_LEVELS);
   }
@@ -176,51 +176,51 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
   /**
    * Constructor.<br>
    * DEFAULT_TREE_VIEWER_STYLE is used for both left and right viewers.
-   * @param parentShell_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param leftLabelProvider_p
-   * @param rightLabelProvider_p
-   * @param leftViewerExpandLevel_p
-   * @param rightViewerExpandLevel_p
+   * @param parentShell
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param leftLabelProvider
+   * @param rightLabelProvider
+   * @param leftViewerExpandLevel
+   * @param rightViewerExpandLevel
    */
-  public TransferTreeListDialog(Shell parentShell_p, String dialogTitle_p, String dialogMessage_p,
-    DataLabelProvider leftLabelProvider_p, DataLabelProvider rightLabelProvider_p,
-    int leftViewerExpandLevel_p, int rightViewerExpandLevel_p)
+  public TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
+    DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider,
+    int leftViewerExpandLevel, int rightViewerExpandLevel)
   {
-    this(parentShell_p, dialogTitle_p, dialogMessage_p,
-      leftLabelProvider_p, rightLabelProvider_p,
+    this(parentShell, dialogTitle, dialogMessage,
+      leftLabelProvider, rightLabelProvider,
       DEFAULT_TREE_VIEWER_STYLE, DEFAULT_TREE_VIEWER_STYLE,
-      leftViewerExpandLevel_p, rightViewerExpandLevel_p);
+      leftViewerExpandLevel, rightViewerExpandLevel);
   }
 
   /**
    * Create right viewer data at dialog creation time.<br>
    * Default implementation creates a {@link TreeData}.
    * @param elements
-   * @param context_p
+   * @param context
    * @return a not <code>null</code> {@link AbstractData} instance.
    */
-  protected AbstractData createRightViewerData(List<? extends EObject> elements, Object context_p) {
-    return new TreeData(elements, context_p);
+  protected AbstractData createRightViewerData(List<? extends EObject> elements, Object context) {
+    return new TreeData(elements, context);
   }
 
   /**
    * Create {@link TransferTreeListViewer}.
-   * @param parent_p
+   * @param parent
    * @return a not <code>null</code> instance.
    */
-  protected TransferTreeListViewer createTransferTreeListViewer(Composite parent_p) {
-    return new TransferTreeListViewer(parent_p, TRANSFER_TREE_STYLE, _leftViewerStyle, _rightViewerStyle, _leftViewerExpandLevel, _rightViewerExpandLevel);
+  protected TransferTreeListViewer createTransferTreeListViewer(Composite parent) {
+    return new TransferTreeListViewer(parent, TRANSFER_TREE_STYLE, _leftViewerStyle, _rightViewerStyle, _leftViewerExpandLevel, _rightViewerExpandLevel);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#doCreateDialogArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void doCreateDialogArea(Composite parent_p) {
+  protected void doCreateDialogArea(Composite parent) {
     // Create the transfer tree list viewer.
-    _transferViewer = createTransferTreeListViewer(parent_p);
+    _transferViewer = createTransferTreeListViewer(parent);
     // Initialize left viewer.
     initializeLeftViewer(_transferViewer);
     // Initialize right viewer.
@@ -241,8 +241,8 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
     * {@inheritDoc}
  	*/
 	@Override
-	protected Control createContents(Composite parent_p) {
-		Control result = super.createContents(parent_p);
+	protected Control createContents(Composite parent) {
+		Control result = super.createContents(parent);
 		// set the size of the window
 	    result.getShell().setMinimumSize(1024, 688);
 		return result;
@@ -329,18 +329,18 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
 
   /**
    * Handle selection enablement for AbstractTransferViewer2.REMOVE_SELECTED_BUTTON & AbstractTransferViewer2.ADD_SELECTED_BUTTON buttons.
-   * @param initialInput_p
-   * @param selection_p
+   * @param initialInput
+   * @param selection
    * @return <code>true</code> means valid.
    */
-  protected boolean handleSelectionForAddAndRemoveButton(AbstractData initialInput_p, ISelection selection_p) {
+  protected boolean handleSelectionForAddAndRemoveButton(AbstractData initialInput, ISelection selection) {
     boolean result = false;
-    if (!selection_p.isEmpty()) {
+    if (!selection.isEmpty()) {
       result = true;
-      StructuredSelection selection = (StructuredSelection) selection_p;
-      Object[] selectedElements = selection.toArray();
+      StructuredSelection sel = (StructuredSelection) selection;
+      Object[] selectedElements = sel.toArray();
       for (Object object : selectedElements) {
-        result &= initialInput_p.isValid(object);
+        result &= initialInput.isValid(object);
         if (!result) {
           break;
         }
@@ -357,9 +357,9 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
    * <li>the label provider</li>.
    * <li>Initial input.</li>.
    * </ul>
-   * @param transferViewer_p
+   * @param transferViewer
    */
-  protected void initializeLeftViewer(TransferTreeListViewer transferViewer_p) {
+  protected void initializeLeftViewer(TransferTreeListViewer transferViewer) {
     _transferViewer.setLeftContentProvider(getLeftContentProvider());
     DataLabelProvider leftLabelProvider = getLeftLabelProvider();
     _transferViewer.setLeftLabelProvider(leftLabelProvider);
@@ -387,9 +387,9 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
    * <li>the label provider</li>.
    * <li>Initial input.</li>.
    * </ul>
-   * @param transferViewer_p
+   * @param transferViewer
    */
-  protected void initializeRightViewer(TransferTreeListViewer transferViewer_p) {
+  protected void initializeRightViewer(TransferTreeListViewer transferViewer) {
     _transferViewer.setRightContentProvider(getRightContentProvider());
     DataLabelProvider rightLabelProvider = getRightLabelProvider();
     _transferViewer.setRightLabelProvider(rightLabelProvider);
@@ -412,59 +412,59 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
 
   /**
    * Register selection handlers that drive the transfer buttons.
-   * @param transferViewer_p
+   * @param transferViewer
    */
-  protected void registerSelectionHandler(final TransferTreeListViewer transferViewer_p) {
+  protected void registerSelectionHandler(final TransferTreeListViewer transferViewer) {
     // Register a selection handler to drive the add button i.e selection is coming from left viewer.
-    transferViewer_p.setSelectionChangedHandler(new SelectionChangedHandler() {
+    transferViewer.setSelectionChangedHandler(new SelectionChangedHandler() {
       @Override
-      protected boolean doHandleSelection(ISelection selection_p) {
-        return handleSelectionForAddAndRemoveButton(transferViewer_p.getLeftInput(), selection_p);
+      protected boolean doHandleSelection(ISelection selection) {
+        return handleSelectionForAddAndRemoveButton(transferViewer.getLeftInput(), selection);
       }
     }, AbstractTransferViewer2.ADD_SELECTED_BUTTON);
     // Register a selection handler to drive the remove button i.e selection is coming from right viewer.
-    transferViewer_p.setSelectionChangedHandler(new SelectionChangedHandler() {
+    transferViewer.setSelectionChangedHandler(new SelectionChangedHandler() {
       @Override
-      protected boolean doHandleSelection(ISelection selection_p) {
-        return handleSelectionForAddAndRemoveButton(transferViewer_p.getRightInput(), selection_p);
+      protected boolean doHandleSelection(ISelection selection) {
+        return handleSelectionForAddAndRemoveButton(transferViewer.getRightInput(), selection);
       }
     }, AbstractTransferViewer2.REMOVE_SELECTED_BUTTON);
     // Force '>' & '<' buttons to update their enablement state according to registered handlers.
-    transferViewer_p.getLeftViewer().setSelection(StructuredSelection.EMPTY);
-    transferViewer_p.getRightViewer().setSelection(StructuredSelection.EMPTY);
+    transferViewer.getLeftViewer().setSelection(StructuredSelection.EMPTY);
+    transferViewer.getRightViewer().setSelection(StructuredSelection.EMPTY);
   }
 
   /**
    * Set the content provider for left viewer.
-   * @param leftContentProvider_p must be not <code>null</code>.
+   * @param leftContentProvider must be not <code>null</code>.
    */
-  public void setLeftContentProvider(DataContentProvider leftContentProvider_p) {
-    _leftContentProvider = leftContentProvider_p;
+  public void setLeftContentProvider(DataContentProvider leftContentProvider) {
+    _leftContentProvider = leftContentProvider;
   }
 
   /**
    * Set left input.
-   * @param elements_p
-   * @param context_p optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
+   * @param elements
+   * @param context optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
    */
-  public void setLeftInput(List<? extends EObject> elements_p, Object context_p) {
-    _leftInput = new Couple<List<? extends EObject>, Object>(elements_p, context_p);
+  public void setLeftInput(List<? extends EObject> elements, Object context) {
+    _leftInput = new Couple<List<? extends EObject>, Object>(elements, context);
   }
 
   /**
    * Set the content provider for the right viewer.
-   * @param rightContentProvider_p
+   * @param rightContentProvider
    */
-  public void setRightContentProvider(DataContentProvider rightContentProvider_p) {
-    _rightContentProvider = rightContentProvider_p;
+  public void setRightContentProvider(DataContentProvider rightContentProvider) {
+    _rightContentProvider = rightContentProvider;
   }
 
   /**
    * Set right input.
-   * @param elements_p
-   * @param context_p optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
+   * @param elements
+   * @param context optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
    */
-  public void setRightInput(List<? extends EObject> elements_p, Object context_p) {
-    _rightInput = new Couple<List<? extends EObject>, Object>(elements_p, context_p);
+  public void setRightInput(List<? extends EObject> elements, Object context) {
+    _rightInput = new Couple<List<? extends EObject>, Object>(elements, context);
   }
 }

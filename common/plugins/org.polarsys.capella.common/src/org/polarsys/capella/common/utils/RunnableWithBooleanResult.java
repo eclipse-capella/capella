@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.utils;
 
 import org.eclipse.core.runtime.IStatus;
@@ -46,24 +47,24 @@ public abstract class RunnableWithBooleanResult implements RunnableWithResult {
 
   /**
    * Set an object can be used in run method if set.
-   * @param object_p
+   * @param object
    */
-  public void setObject(EObject object_p) {
-    _object = object_p;
+  public void setObject(EObject object) {
+    _object = object;
   }
 
   /**
    * Sets my result.
-   * @param result_p my boolean result
+   * @param result my boolean result
    */
-  protected final void setResult(Object result_p) {
-    _result = (Boolean) result_p;
+  protected final void setResult(Object result) {
+    _result = (Boolean) result;
   }
 
   /**
    * {@inheritDoc}
    */
-  public final void setStatus(IStatus status_p) {
-    _status = status_p;
+  public final void setStatus(IStatus status) {
+    _status = status;
   }
 }

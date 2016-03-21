@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.Arrays;
@@ -36,22 +37,22 @@ public class MdeElementListSelectionDialog extends AbstractMdeElementListSelecti
 
   /**
    * Constructs a list selection dialog.
-   * @param parent_p The parent for the list.
-   * @param renderer_p {@link ILabelProvider} for the list
-   * @param statusRenderer_p {@link ILabelProvider} for the status
+   * @param parent The parent for the list.
+   * @param renderer {@link ILabelProvider} for the list
+   * @param statusRenderer {@link ILabelProvider} for the status
    */
-  public MdeElementListSelectionDialog(Shell parent_p, ILabelProvider renderer_p, ILabelProvider statusRenderer_p) {
-    super(parent_p, renderer_p);
+  public MdeElementListSelectionDialog(Shell parent, ILabelProvider renderer, ILabelProvider statusRenderer) {
+    super(parent, renderer);
     
-    _statusRenderer = statusRenderer_p;
+    _statusRenderer = statusRenderer;
   }
 
   /**
    * Sets the elements of the list.
-   * @param elements_p the elements of the list.
+   * @param elements the elements of the list.
    */
-  public void setElements(Object[] elements_p) {
-    _elements = elements_p;
+  public void setElements(Object[] elements) {
+    _elements = elements;
   }
 
   /**
@@ -66,8 +67,8 @@ public class MdeElementListSelectionDialog extends AbstractMdeElementListSelecti
    * @see org.eclipse.ui.dialogs.AbstractElementListSelectionDialog#createMessageArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected Label createMessageArea(Composite composite_p) {
-    Label lbl = super.createMessageArea(composite_p);
+  protected Label createMessageArea(Composite composite) {
+    Label lbl = super.createMessageArea(composite);
     lbl.setText(Messages.getString("FilteredTree_FilterMessageTitle")); //$NON-NLS-1$
     return lbl;
   }
@@ -76,22 +77,22 @@ public class MdeElementListSelectionDialog extends AbstractMdeElementListSelecti
    * @see org.eclipse.ui.dialogs.AbstractElementListSelectionDialog#createFilterText(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected Text createFilterText(Composite parent_p) {
-    Label regExpLabel = new Label(parent_p, SWT.NONE);
+  protected Text createFilterText(Composite parent) {
+    Label regExpLabel = new Label(parent, SWT.NONE);
     GridData gdData = new GridData(GridData.FILL_HORIZONTAL);
     regExpLabel.setText(Messages.getString("FilteredTree_FilterMessageText")); //$NON-NLS-1$
     regExpLabel.setLayoutData(gdData);
 
-    return super.createFilterText(parent_p);
+    return super.createFilterText(parent);
   }
 
   /**
    * @see org.eclipse.ui.dialogs.ElementListSelectionDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected Control createDialogArea(Composite parent_p) {
+  protected Control createDialogArea(Composite parent) {
     // Calls the super method.
-    Composite contents = (Composite) super.createDialogArea(parent_p);
+    Composite contents = (Composite) super.createDialogArea(parent);
 
     createMessageArea(contents);
     createFilterText(contents);
@@ -113,8 +114,8 @@ public class MdeElementListSelectionDialog extends AbstractMdeElementListSelecti
        * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
        */
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        updateStatusBar(event_p);
+      public void widgetSelected(SelectionEvent event) {
+        updateStatusBar(event);
       }
     };
 
@@ -124,9 +125,9 @@ public class MdeElementListSelectionDialog extends AbstractMdeElementListSelecti
 
   /**
    * Updates the status bar.
-   * @param event_p The selection event.
+   * @param event The selection event.
    */
-  protected void updateStatusBar(SelectionEvent event_p) {
+  protected void updateStatusBar(SelectionEvent event) {
     Object[] objectSet = _filteredList.getSelection();
     if (objectSet.length > 0) {
       Object object = _filteredList.getSelection()[0];

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.queries.internal;
 
 import java.util.List;
@@ -20,9 +21,9 @@ public interface IPrivateQueryContext extends IQueryContext {
 
   public int getExecutionLevel();
 
-  public List<Object> getResultFromCache(Integer queryId, Object semanticsObject_p);
+  public List<Object> getResultFromCache(Integer queryId, Object semanticsObject);
 
-  public void addInCache(Integer queryId, Object semanticsObject_p, List<Object> res_p);
+  public void addInCache(Integer queryId, Object semanticsObject, List<Object> res);
 
   public void incCallLevel();
 

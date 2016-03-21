@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.activities;
 
 import java.util.Collection;
@@ -28,10 +29,10 @@ public class FinalizeTransitionActivity extends org.polarsys.capella.core.transi
   public static final String ID = "org.polarsys.capella.common.re.activities.FinalizeTransitionActivity"; //$NON-NLS-1$
 
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
-    super._run(activityParams_p);
+    super._run(activityParams);
 
     //All newly created valid links should not be removed. Other links should be. 
     ReplicableElementHandlerHelper.getInstance(context).cleanVirtualLinks(context);

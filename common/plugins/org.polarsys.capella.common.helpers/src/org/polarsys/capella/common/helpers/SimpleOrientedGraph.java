@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers;
 
 import java.util.ArrayList;
@@ -30,8 +31,8 @@ public class SimpleOrientedGraph<T> {
     graph = new HashMap<T, List<T>>();
   }
   
-  public SimpleOrientedGraph (Map<T,List<T>> graph_p){
-    graph = graph_p;
+  public SimpleOrientedGraph (Map<T,List<T>> graph){
+    this.graph = graph;
   }
   
   public boolean isAConnectedGraph(){
@@ -59,27 +60,27 @@ public class SimpleOrientedGraph<T> {
     return true;
   }
   
-  public Set<T> getNotOrientedNeighbours(T node_p){
+  public Set<T> getNotOrientedNeighbours(T node){
     Set<T> returnedList = new HashSet<T>();
-    if (graph.containsKey(node_p)){
-      returnedList.addAll(graph.get(node_p));
+    if (graph.containsKey(node)){
+      returnedList.addAll(graph.get(node));
     }
     for (Entry<T, List<T>> me : graph.entrySet()){
-      if (me.getValue().contains(node_p)){
+      if (me.getValue().contains(node)){
         returnedList.add(me.getKey());
       }
     }
     return returnedList;
   }
   
-  public void addNode (T node_p, T neighbour_p){
-    if (graph.containsKey(node_p)){
-      graph.get(node_p).add(neighbour_p);
+  public void addNode (T node, T neighbour){
+    if (graph.containsKey(node)){
+      graph.get(node).add(neighbour);
     }
     else {
       List<T> newList = new ArrayList<T>();
-      newList.add(neighbour_p);
-      graph.put(node_p, newList);
+      newList.add(neighbour);
+      graph.put(node, newList);
     }
   }
   
@@ -98,15 +99,15 @@ public class SimpleOrientedGraph<T> {
   /**
    * detect a cycle in the graph
    */
-  public boolean containsACycle(T aNode_p, Set<T> visitedNodes_p){
-    Set<T> visitedNodes = new HashSet<T>(visitedNodes_p);
-    visitedNodes.add(aNode_p);
-    if (graph.containsKey(aNode_p)){
-      for (T aNext : graph.get(aNode_p)){
-        if (visitedNodes.contains(aNext)){
+  public boolean containsACycle(T aNode, Set<T> visitedNodes) {
+    Set<T> nodes = new HashSet<T>(visitedNodes);
+    nodes.add(aNode);
+    if (graph.containsKey(aNode)){
+      for (T aNext : graph.get(aNode)){
+        if (nodes.contains(aNext)){
           return true;
         }
-        if (containsACycle(aNext, visitedNodes)){
+        if (containsACycle(aNext, nodes)){
           return true;
         }
       }

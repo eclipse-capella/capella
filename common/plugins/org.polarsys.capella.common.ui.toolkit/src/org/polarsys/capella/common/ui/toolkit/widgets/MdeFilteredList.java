@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -104,36 +104,36 @@ public class MdeFilteredList extends Composite {
     }
 
     @SuppressWarnings("unchecked")
-    private void internalSort(Object[] keys, Object[] values, int left_p, int right_p) {
-      int left = left_p;
-      int right = right_p;
-      int original_left = left;
-      int original_right = right;
+    private void internalSort(Object[] keys, Object[] values, int left, int right) {
+      int l = left;
+      int r = right;
+      int original_left = l;
+      int original_right = r;
 
-      Object mid = keys[(left + right) / 2];
+      Object mid = keys[(l + r) / 2];
       do {
-        while (fComparator.compare(keys[left], mid) < 0) {
-          left++;
+        while (fComparator.compare(keys[l], mid) < 0) {
+          l++;
         }
 
-        while (fComparator.compare(mid, keys[right]) < 0) {
-          right--;
+        while (fComparator.compare(mid, keys[r]) < 0) {
+          r--;
         }
 
-        if (left <= right) {
-          swap(keys, left, right);
-          swap(values, left, right);
-          left++;
-          right--;
+        if (l <= r) {
+          swap(keys, l, r);
+          swap(values, l, r);
+          l++;
+          r--;
         }
-      } while (left <= right);
+      } while (l <= r);
 
-      if (original_left < right) {
-        internalSort(keys, values, original_left, right);
+      if (original_left < r) {
+        internalSort(keys, values, original_left, r);
       }
 
-      if (left < original_right) {
-        internalSort(keys, values, left, original_right);
+      if (l < original_right) {
+        internalSort(keys, values, l, original_right);
       }
     }
 
@@ -236,15 +236,15 @@ public class MdeFilteredList extends Composite {
     /**
      * Create a new instance of label.
      * @param newString
-     * @param image_p
+     * @param image
      */
-    public Label(String newString, Image image_p) {
+    public Label(String newString, Image image) {
       if (newString == null) {
         this.string = ICommonConstants.EMPTY_STRING;
       } else {
         this.string = newString;
       }
-      this.image = image_p;
+      this.image = image;
     }
 
     /**

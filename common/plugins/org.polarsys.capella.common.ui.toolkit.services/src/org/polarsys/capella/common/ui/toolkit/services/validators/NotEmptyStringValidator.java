@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.validators;
 
 import org.apache.log4j.Logger;
@@ -25,28 +26,27 @@ public class NotEmptyStringValidator extends AbstractValidator {
 
   /**
    * Constructs the not empty string validator.
-   * @param errorMessage_p The message displayed when {@link #isValid(Object)} returned <code>false</code>.
+   * @param errorMessage The message displayed when {@link #isValid(Object)} returned <code>false</code>.
    */
-  public NotEmptyStringValidator(String errorMessage_p) {
-    super(errorMessage_p);
+  public NotEmptyStringValidator(String errorMessage) {
+    super(errorMessage);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.services.validators.IValidator#isValid(java.lang.Object)
    */
-  public String isValid(Object value_p) {
+  public String isValid(Object value) {
     String result = getErrorMessage();
-    // Value must be a string here.
-    String stringValue = null;
     try {
-      stringValue = (String) value_p;
+      // Value must be a string here.
+      String stringValue = (String) value;
       // Test that the string is not empty.
       boolean isValid = (null != stringValue) && (stringValue.length() > 0);
       if (isValid) {
         // Returning null indicates that the value is valid.
         result = null;
       }
-    } catch (ClassCastException exception_p) {
+    } catch (ClassCastException exception) {
       StringBuilder loggerMessage = new StringBuilder("NotEmptyStringValidator.isValid(..) _ "); //$NON-NLS-1$
       __logger.debug(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI));
     }

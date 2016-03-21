@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.manager;
 
 import java.io.File;
@@ -104,14 +105,14 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
     }
     
     /** Write accessor on operation date */
-    public void setDate(Date date_p) {
-      _date = date_p;
+    public void setDate(Date date) {
+      _date = date;
       return;
     }
     
     /** Write accessor on current operation label */
-    public void setLabel(final String label_p) {
-      _operationLabel = label_p;
+    public void setLabel(final String label) {
+      _operationLabel = label;
       return;
     }
 
@@ -122,22 +123,22 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
     
     /**
      * Start operation initialization
-     * @param startEvent_p
+     * @param startEvent
      * @return <code>true</code> whether all is ok, <code>false</code> in case of wrong start event
      */
-    public void operationStarted(final int startEvent_p) {
+    public void operationStarted(final int startEvent) {
       
-      if ( IRecorderManagerConstants.NONE == startEvent_p) {
+      if ( IRecorderManagerConstants.NONE == startEvent) {
         init();
       } else {
         int expectedFinishOperation = IRecorderManagerConstants.NONE;
         try {
-          expectedFinishOperation = RecorderManagerUtils.getExpectedClosingEvent(startEvent_p);
-        } catch (RecorderException exception_p) {
+          expectedFinishOperation = RecorderManagerUtils.getExpectedClosingEvent(startEvent);
+        } catch (RecorderException exception) {
           _isValid = false;
           return;
         } 
-        _doublet[START_IDX] = startEvent_p;
+        _doublet[START_IDX] = startEvent;
         _doublet[END_IDX] =  expectedFinishOperation;
         
       }
@@ -191,30 +192,30 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
 /**
  * Plug an {@link AbstractRecorder} to this recorder manager.
  * Does nothing whether the recorder has been already added. 
- * @param recorder_p the {@link AbstractRecorder} to add.
- * @param createNewRecordFile_p Should we force the creation of a new Record file
+ * @param recorder the {@link AbstractRecorder} to add.
+ * @param createNewRecord Should we force the creation of a new Record file
  */
-  public void addRecorder(AbstractRecorder recorder_p, boolean createNewRecord_p) {
+  public void addRecorder(AbstractRecorder recorder, boolean createNewRecord) {
     
-    _recorders.add(recorder_p);
-    _outputManager.registerRecorder(recorder_p, createNewRecord_p);
+    _recorders.add(recorder);
+    _outputManager.registerRecorder(recorder, createNewRecord);
     for (TransactionalEditingDomain editingDomain : ExecutionManagerRegistry.getInstance().getAllEditingDomains()) {
-      editingDomain.addResourceSetListener(recorder_p);
+      editingDomain.addResourceSetListener(recorder);
     }
-    SessionManager.INSTANCE.addSessionsListener(recorder_p);
+    SessionManager.INSTANCE.addSessionsListener(recorder);
   }
 
   /**
    * Remove an {@link AbstractRecorder} from this recorder manager.
-   * @param recorder_p
+   * @param recorder
    */
-  public void removeRecorder(AbstractRecorder recorder_p) {
-    _recorders.remove(recorder_p);
-    _outputManager.removeRecorder(recorder_p);
+  public void removeRecorder(AbstractRecorder recorder) {
+    _recorders.remove(recorder);
+    _outputManager.removeRecorder(recorder);
     for (TransactionalEditingDomain editingDomain : ExecutionManagerRegistry.getInstance().getAllEditingDomains()) {
-	  editingDomain.removeResourceSetListener(recorder_p);
+	  editingDomain.removeResourceSetListener(recorder);
 	}
-    SessionManager.INSTANCE.removeSessionsListener(recorder_p);
+    SessionManager.INSTANCE.removeSessionsListener(recorder);
   }
   
   /** Remove all recorder(s) plugged to this manager */
@@ -273,7 +274,7 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
       } else {
         shutDown();
       }
-    } catch (RecorderException exception_p) {
+    } catch (RecorderException exception) {
       // Do nothing
     }
   }
@@ -336,7 +337,7 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
   /**	
    * {@inheritDoc}
    */
-  public void recorderChanged(IRecorder recorder_p, Object object_p) {
+  public void recorderChanged(IRecorder recorder, Object object) {
     if (! _hlc.isOperationInProgress() ) {
       _hlc.operationStarted(IRecorderManagerConstants.NONE);
       initOperation();
@@ -354,9 +355,9 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
     }
   }
   
-  final public void setOutPutManager(IOutputManager outputManager_p) {
-    if (null != outputManager_p) {
-      _outputManager = outputManager_p;
+  final public void setOutPutManager(IOutputManager outputManager) {
+    if (null != outputManager) {
+      _outputManager = outputManager;
     } else {
       _outputManager = getOutputManager();
     }
@@ -374,11 +375,11 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
   /**
    * @see org.eclipse.core.commands.operations.IOperationHistoryListener#historyNotification(org.eclipse.core.commands.operations.OperationHistoryEvent)
    */
-  public void historyNotification(OperationHistoryEvent event_p) {
+  public void historyNotification(OperationHistoryEvent event) {
 
-    IUndoableOperation op = event_p.getOperation();
+    IUndoableOperation op = event.getOperation();
     
-    int eventType = event_p.getEventType();
+    int eventType = event.getEventType();
     
     switch (eventType) {
       case OperationHistoryEvent.ABOUT_TO_EXECUTE:
@@ -415,7 +416,7 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
         
         try {
           expectedStartOps = RecorderManagerUtils.getExpectedOpeningEvent(eventType);
-        } catch (RecorderException exception_p) {
+        } catch (RecorderException exception) {
           // Wrong event caught, let's initialize op and clean current records
           initOperation();
           return;
@@ -442,7 +443,7 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
   }
   
   /** Write new operation to a given writer */
-  abstract public void writeOperation(Writer writer_p) throws IOException;
+  abstract public void writeOperation(Writer writer) throws IOException;
   
   /**
    * {@inheritDoc}
@@ -462,7 +463,7 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
           writer.flush();
         }
       }
-    } catch (IOException exception_p) {
+    } catch (IOException exception) {
       __logger.info(RecorderMessages.abstractRecorderManager_cannotwrite);
     }
   }

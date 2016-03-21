@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.libraries;
 
 import java.util.Collection;
@@ -35,7 +36,7 @@ public interface IModel {
   /**
    * Returns whether a referenced library can be edited or not through the current model
    */
-  public AccessPolicy getAccess(IModel library_p);
+  public AccessPolicy getAccess(IModel library);
 
   /**
    * Returns whether the given referenced library is active or not. active means that a referenced library will be used by queries
@@ -75,7 +76,7 @@ public interface IModel {
     /**
      * Set the access to the given model
      */
-    public void setAccess(IModel library_p, AccessPolicy access_p);
+    public void setAccess(IModel library, AccessPolicy access);
 
     /**
      * Set the given library as active or not
@@ -85,7 +86,7 @@ public interface IModel {
     /**
      * Returns the default access that will be given on an unreferenced library that will be added as reference
      */
-    public AccessPolicy getDefaultNewAccess(IModel referencedLibrary_p);
+    public AccessPolicy getDefaultNewAccess(IModel referencedLibrary);
   }
 
 }

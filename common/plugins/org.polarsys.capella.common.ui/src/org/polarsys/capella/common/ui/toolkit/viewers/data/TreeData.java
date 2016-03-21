@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,12 +38,12 @@ public class TreeData extends AbstractData {
 
   /**
    * Constructor.
-   * @param displayedElements_p
-   * @param context_p optional parameter.
+   * @param displayedElements
+   * @param context optional parameter.
    */
-  public TreeData(Collection<? extends Object> displayedElements_p, Object context_p) {
-    super(displayedElements_p, context_p);
-    // Lazy creation pattern, needed if displayedElements_p is empty to avoid _childrenForRootElements to be null.
+  public TreeData(Collection<? extends Object> displayedElements, Object context) {
+    super(displayedElements, context);
+    // Lazy creation pattern, needed if displayedElements is empty to avoid _childrenForRootElements to be null.
     if (null == _childrenForRootElements) {
       _childrenForRootElements = new HashMap<Object, Collection<Object>>(0);
     }
@@ -53,13 +53,13 @@ public class TreeData extends AbstractData {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#addElement(java.lang.Object)
    */
   @Override
-  public void addElement(Object element_p) {
+  public void addElement(Object element) {
     // Lazy creation pattern.
     if (null == _childrenForRootElements) {
       _childrenForRootElements = new HashMap<Object, Collection<Object>>(0);
     }
     // Get the parent of given element.
-    Object currentElement = element_p;
+    Object currentElement = element;
     Object parent = doGetParent(currentElement);
     if (null == parent) {
       // if null, given element is a root one.
@@ -117,49 +117,49 @@ public class TreeData extends AbstractData {
   /**
    * Get a parent for given element.<br>
    * Default implementation is based on meta-model structure.
-   * @param element_p
+   * @param element
    * @return <code>null</code> if not found or filter out by {@link #filterComputedParent(Object)}.
    */
-  protected Object doGetParent(Object element_p) {
+  protected Object doGetParent(Object element) {
     Object parent = null;
-    if (!(element_p instanceof EObject)) {
+    if (!(element instanceof EObject)) {
       return parent;
     }
-    EObject element = (EObject) element_p;
+    EObject elt = (EObject) element;
     // Search for a "contributed" way to get a parent (ILinkSelection for instance).
     ITreeContentAdapter linkSelectionAdapter = null;
     Object context = getContext();
     if (null != context) {
-      linkSelectionAdapter = (ITreeContentAdapter) AdapterManagerHelper.getAdapter(element.eClass(), ITreeContentAdapter.class);// LinkSelectionProvider.getInstance().getContribution(element.eClass());
+      linkSelectionAdapter = (ITreeContentAdapter) AdapterManagerHelper.getAdapter(elt.eClass(), ITreeContentAdapter.class);// LinkSelectionProvider.getInstance().getContribution(element.eClass());
     }
     if (null != linkSelectionAdapter) {
       // Use it to get the parent.
-      parent = linkSelectionAdapter.getParent(element, (context == UNDEFINED_CONTEXT) ? null : context);
+      parent = linkSelectionAdapter.getParent(elt, (context == UNDEFINED_CONTEXT) ? null : context);
     } else {
       // Parent is computed from meta-model structure.
-      IEditingDomainItemProvider provider = getItemProvider(element);
+      IEditingDomainItemProvider provider = getItemProvider(elt);
       if (null != provider) {
-        parent = provider.getParent(element);
+        parent = provider.getParent(elt);
       } else {
         // Last chance based on containment.
-        parent = element.eContainer();
+        parent = elt.eContainer();
       }
     }
-    return (null != parent) ? filterComputedParent(parent, element_p) /* Last chance to filter the computed parent */: null;
+    return (null != parent) ? filterComputedParent(parent, element) /* Last chance to filter the computed parent */: null;
   }
 
   /**
    * Filter computed parent for specified element.<br>
    * Default behavior filters out EMF {@link Resource}.
-   * @param parent_p computed parent for <code>element_p</code>
-   * @param element_p
+   * @param parent computed parent for <code>element</code>
+   * @param element
    * @return
    */
-  protected Object filterComputedParent(Object parent_p, Object element_p) {
-    if (parent_p instanceof Resource) {
+  protected Object filterComputedParent(Object parent, Object element) {
+    if (parent instanceof Resource) {
       return null;
     }
-    return parent_p;
+    return parent;
   }
 
   /**
@@ -167,9 +167,9 @@ public class TreeData extends AbstractData {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#getChildren(java.lang.Object)
    */
   @Override
-  public Object[] getChildren(Object element_p) {
+  public Object[] getChildren(Object element) {
     Object[] result = NO_CHILD;
-    Collection<Object> children = _childrenForRootElements.get(element_p);
+    Collection<Object> children = _childrenForRootElements.get(element);
     if ((null != children) && !children.isEmpty()) {
       result = children.toArray();
     }
@@ -178,15 +178,15 @@ public class TreeData extends AbstractData {
 
   /**
    * Get {@link IEditingDomainItemProvider} for given element.
-   * @param element_p
+   * @param element
    * @param result
    * @return <code>null</code> if not found.
    */
-  private IEditingDomainItemProvider getItemProvider(EObject element_p) {
+  private IEditingDomainItemProvider getItemProvider(EObject element) {
     IEditingDomainItemProvider result = null;
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(element_p);
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(element);
     if (null != editingDomain) {
-      result = (IEditingDomainItemProvider) editingDomain.getAdapterFactory().adapt(element_p, IEditingDomainItemProvider.class);
+      result = (IEditingDomainItemProvider) editingDomain.getAdapterFactory().adapt(element, IEditingDomainItemProvider.class);
     }
     return result;
   }
@@ -195,13 +195,13 @@ public class TreeData extends AbstractData {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#getParent(java.lang.Object)
    */
   @Override
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     Object result = null;
     Iterator<Entry<Object, Collection<Object>>> iterator = _childrenForRootElements.entrySet().iterator();
     // Iterate over children map to search for a children collection that contains given element.
     while (iterator.hasNext()) {
       Map.Entry<Object, Collection<Object>> entry = iterator.next();
-      if (entry.getValue().contains(element_p)) {
+      if (entry.getValue().contains(element)) {
         result = entry.getKey();
         break;
       }
@@ -213,8 +213,8 @@ public class TreeData extends AbstractData {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#removeAllElements(java.lang.Object[])
    */
   @Override
-  public void removeAllElements(Object[] elements_p) {
-    super.removeAllElements(elements_p);
+  public void removeAllElements(Object[] elements) {
+    super.removeAllElements(elements);
     if (getValidElements().isEmpty()) {
       clearData();
     }
@@ -224,14 +224,14 @@ public class TreeData extends AbstractData {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData#removeElement(java.lang.Object)
    */
   @Override
-  public void removeElement(Object element_p) {
-    super.removeElement(element_p);
+  public void removeElement(Object element) {
+    super.removeElement(element);
 
     // Check if given element to remove has children ?
-    Collection<Object> childrenForElement = _childrenForRootElements.get(element_p);
+    Collection<Object> childrenForElement = _childrenForRootElements.get(element);
     if (null != childrenForElement) {
       if (childrenForElement.isEmpty()) {
-        _childrenForRootElements.remove(element_p);
+        _childrenForRootElements.remove(element);
       } else {
         // Not empty node, don't remove it.
         return;
@@ -247,7 +247,7 @@ public class TreeData extends AbstractData {
       Map.Entry<Object, Collection<Object>> entry = iterator.next();
       // Remove it from the children set.
       Collection<Object> values = entry.getValue();
-      if (values.remove(element_p)) {
+      if (values.remove(element)) {
         Object parent = entry.getKey();
         if (values.isEmpty() && !isValid(parent)) {
           removedNodes.add(parent);

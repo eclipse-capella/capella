@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.action;
 
 import java.util.Collections;
@@ -52,14 +53,14 @@ public class SemanticBrowserHistoryAction extends Action implements IMenuCreator
 
     /**
      * Constructor.
-     * @param navigationEntry_p
-     * @param text_p
-     * @param imageDescriptor_p
+     * @param navigationEntry
+     * @param text
+     * @param imageDescriptor
      */
-    public HistoryItemAction(BrowserNavigationHistoryEntry navigationEntry_p, String text_p, ImageDescriptor imageDescriptor_p) {
-      super(text_p, imageDescriptor_p);
+    public HistoryItemAction(BrowserNavigationHistoryEntry navigationEntry, String text, ImageDescriptor imageDescriptor) {
+      super(text, imageDescriptor);
       // object related to the clicked item.
-      _navigationEntry = navigationEntry_p;
+      _navigationEntry = navigationEntry;
     }
 
     /**
@@ -84,12 +85,14 @@ public class SemanticBrowserHistoryAction extends Action implements IMenuCreator
 
   /**
    * Constructor.
-   * @param semanticBrowserView_p_p
+   * @param window
+   * @param semanticBrowserView
+   * @param forward
    */
-  public SemanticBrowserHistoryAction(IWorkbenchWindow window_p, ISemanticBrowserViewPart semanticBrowserView_p, boolean forward_p) {
-    _semanticBrowserViewPart = semanticBrowserView_p;
-    ISharedImages sharedImages = window_p.getWorkbench().getSharedImages();
-    if (forward_p) {
+  public SemanticBrowserHistoryAction(IWorkbenchWindow window, ISemanticBrowserViewPart semanticBrowserView, boolean forward) {
+    _semanticBrowserViewPart = semanticBrowserView;
+    ISharedImages sharedImages = window.getWorkbench().getSharedImages();
+    if (forward) {
       setText("&Forward"); //$NON-NLS-1$
       setToolTipText("Forward"); //$NON-NLS-1$
       setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_FORWARD));
@@ -103,32 +106,31 @@ public class SemanticBrowserHistoryAction extends Action implements IMenuCreator
       setId(BACKWARD_ACTION_ID);
     }
 
-    _browserHistory = semanticBrowserView_p.getHistory();
+    _browserHistory = semanticBrowserView.getHistory();
     _browserHistory.addActionAsListener(this);
-    _forward = forward_p;
+    _forward = forward;
     setMenuCreator(this);
     setEnabled(false);
   }
 
   /**
    * Create History action for given object.
-   * @param index_p
-   * @param entry_p
+   * @param navigationEntry
    * @return
    */
-  private HistoryItemAction createHistoryAction(BrowserNavigationHistoryEntry navigationEntry_p) {
+  private HistoryItemAction createHistoryAction(BrowserNavigationHistoryEntry navigationEntry) {
     // Precondition :
-    if (!navigationEntry_p.isValid()) {
+    if (!navigationEntry.isValid()) {
       return null;
     }
-    Object realObject = navigationEntry_p.getRealObject();
+    Object realObject = navigationEntry.getRealObject();
     ILabelProvider labelProvider = AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider();
     Image image = labelProvider.getImage(realObject);
     ImageDescriptor imgDescriptor = null;
     if (image != null) {
       imgDescriptor = ImageDescriptor.createFromImage(image);
     }
-    HistoryItemAction goToAction = new HistoryItemAction(navigationEntry_p, labelProvider.getText(realObject), imgDescriptor);
+    HistoryItemAction goToAction = new HistoryItemAction(navigationEntry, labelProvider.getText(realObject), imgDescriptor);
     return goToAction;
   }
 
@@ -150,22 +152,22 @@ public class SemanticBrowserHistoryAction extends Action implements IMenuCreator
   /**
    * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Control)
    */
-  public Menu getMenu(Control parent_p) {
+  public Menu getMenu(Control parent) {
     MenuManager menuManager = new MenuManager();
-    final Menu menu = menuManager.createContextMenu(parent_p);
+    final Menu menu = menuManager.createContextMenu(parent);
     menuManager.addMenuListener(new IMenuListener() {
       /**
        * {@inheritDoc}
        */
       @SuppressWarnings("synthetic-access")
-      public void menuAboutToShow(IMenuManager manager_p) {
+      public void menuAboutToShow(IMenuManager manager) {
         // Retrieve entries for the menu.
         List<BrowserNavigationHistoryEntry> navigationEntries = getAvailableNavigationEntries();
         // Populate the menu with entries.
         for (BrowserNavigationHistoryEntry entry : navigationEntries) {
           HistoryItemAction historyEntryAction = createHistoryAction(entry);
           if (null != historyEntryAction) {
-            manager_p.add(historyEntryAction);
+            manager.add(historyEntryAction);
           }
         }
       }
@@ -191,7 +193,7 @@ public class SemanticBrowserHistoryAction extends Action implements IMenuCreator
   /**
    * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Menu)
    */
-  public Menu getMenu(Menu parent_p) {
+  public Menu getMenu(Menu parent) {
     // Not applicable.
     return null;
   }

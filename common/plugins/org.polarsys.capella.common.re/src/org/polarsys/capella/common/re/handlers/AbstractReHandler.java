@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers;
 
 import java.util.ArrayList;
@@ -33,14 +34,14 @@ import org.polarsys.capella.core.transition.common.commands.TransitionCommand;
  */
 public abstract class AbstractReHandler extends AbstractHandler {
 
-  protected Collection<Object> getInitialSelection(Object evaluationContext_p) {
-    IEvaluationContext context = (IEvaluationContext) evaluationContext_p;
+  protected Collection<Object> getInitialSelection(Object evaluationContext) {
+    IEvaluationContext context = (IEvaluationContext) evaluationContext;
     return getSemanticObjects((Collection<Object>) context.getDefaultVariable());
   }
 
-  public Collection<Object> getSemanticObjects(Collection<Object> elements_p) {
+  public Collection<Object> getSemanticObjects(Collection<Object> elements) {
     Collection<Object> result = new ArrayList<Object>();
-    for (Object object : elements_p) {
+    for (Object object : elements) {
       Object semantic = resolveSemanticObject(object);
       if (semantic != null) {
         result.add(semantic);
@@ -49,15 +50,15 @@ public abstract class AbstractReHandler extends AbstractHandler {
     return result;
   }
 
-  public Object resolveSemanticObject(Object object_p) {
+  public Object resolveSemanticObject(Object object) {
     Object semantic = null;
 
-    if (object_p != null) {
-      if (object_p instanceof EObject) {
-        semantic = object_p;
+    if (object != null) {
+      if (object instanceof EObject) {
+        semantic = object;
 
-      } else if (object_p instanceof IAdaptable) {
-        Object adapter = ((IAdaptable) object_p).getAdapter(EObject.class);
+      } else if (object instanceof IAdaptable) {
+        Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
         if (adapter instanceof EObject) {
           semantic = adapter;
         }
@@ -66,23 +67,23 @@ public abstract class AbstractReHandler extends AbstractHandler {
     return semantic;
   }
 
-  protected abstract ICommand createCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p);
+  protected abstract ICommand createCommand(Collection<Object> selection, IProgressMonitor progressMonitor);
 
   /**
    * {@inheritDoc}
    */
-  public Object execute(final ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(final ExecutionEvent event) throws ExecutionException {
     try {
       LongRunningListenersRegistry.getInstance().operationStarting(getClass());
-      ICommand cmd = createCommand(getSelection(event_p), new NullProgressMonitor());
+      ICommand cmd = createCommand(getSelection(event), new NullProgressMonitor());
       if (cmd instanceof TransitionCommand) {
         try {
-          ((TransitionCommand) cmd).setName(event_p.getCommand().getDescription());
+          ((TransitionCommand) cmd).setName(event.getCommand().getDescription());
         } catch (NotDefinedException ex) {
           // silent exception
         }
       }
-      TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(getSelection(event_p))).execute(cmd);
+      TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(getSelection(event))).execute(cmd);
     } finally {
       LongRunningListenersRegistry.getInstance().operationEnded(getClass());
     }
@@ -90,8 +91,8 @@ public abstract class AbstractReHandler extends AbstractHandler {
     return null;
   }
 
-  protected Collection<Object> getSelection(ExecutionEvent event_p) {
-    IEvaluationContext context = (IEvaluationContext) event_p.getApplicationContext();
+  protected Collection<Object> getSelection(ExecutionEvent event) {
+    IEvaluationContext context = (IEvaluationContext) event.getApplicationContext();
     Object ae = context.getDefaultVariable();
     if (ae instanceof Collection) {
       return (Collection) ae;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.ui.view;
 
 import java.io.File;
@@ -43,9 +44,9 @@ abstract public class AbstractRecorderView extends ViewPart {
 
   /**
    * Load a record file
-   * @param file_p
+   * @param file
    */
-  abstract protected boolean loadRecord(File file_p);
+  abstract protected boolean loadRecord(File file);
 
   /**
    * Return the Recorder Manager in use
@@ -66,7 +67,7 @@ abstract public class AbstractRecorderView extends ViewPart {
   /**
    * Create the TreeViewer
    */
-  abstract protected TreeViewer createTreeViewer(Composite parent_p);
+  abstract protected TreeViewer createTreeViewer(Composite parent);
   
   /**
    * Load a record file
@@ -118,9 +119,9 @@ abstract public class AbstractRecorderView extends ViewPart {
    * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  public void createPartControl(Composite parent_p) {
+  public void createPartControl(Composite parent) {
     
-    _treeViewer = createTreeViewer(parent_p);
+    _treeViewer = createTreeViewer(parent);
      
     createActions();
     
@@ -179,7 +180,7 @@ abstract public class AbstractRecorderView extends ViewPart {
         if (true == oldState) {
           try {
             mgr.shutDown();
-          } catch (RecorderException exception_p) {/** Do nothing */}
+          } catch (RecorderException exception) {/** Do nothing */}
         }
         
         File root = OutputHelper.getRootDirectoryForStorage();
@@ -189,7 +190,7 @@ abstract public class AbstractRecorderView extends ViewPart {
         if (true == oldState) {
           try {
             mgr.startup();
-          } catch (RecorderException exception_p) { /** Do nothing */}
+          } catch (RecorderException exception) { /** Do nothing */}
         }
         
         

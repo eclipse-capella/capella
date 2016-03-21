@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.ArrayList;
@@ -45,10 +46,10 @@ public class SelectionCommandHandler extends SubCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    ISelection selection = HandlerUtil.getCurrentSelection(event_p);
-    IRenderer renderer = ExecutionEventUtil.getRenderer(event_p);
-    IRendererContext context = ExecutionEventUtil.getRendererContext(event_p);
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    ISelection selection = HandlerUtil.getCurrentSelection(event);
+    IRenderer renderer = ExecutionEventUtil.getRenderer(event);
+    IRendererContext context = ExecutionEventUtil.getRendererContext(event);
 
     String scope = getScope();
     String propertyId = scope;
@@ -104,26 +105,26 @@ public class SelectionCommandHandler extends SubCommandHandler {
   }
 
   /**
-   * @param values_p
-   * @param currentValue_p
+   * @param values
+   * @param currentValue
    */
-  protected void fillValue(Collection values_p, Collection currentValue_p) {
-    values_p.addAll(currentValue_p);
+  protected void fillValue(Collection values, Collection currentValue) {
+    values.addAll(currentValue);
   }
 
   /**
-   * @param selection_p
-   * @param context_p
+   * @param selection
+   * @param context
    * @param renderer_p
    * @return 
    */
-  protected Object getPropertySource(ISelection selection_p, IRendererContext context_p) {
+  protected Object getPropertySource(ISelection selection, IRendererContext context) {
     Collection<Object> result = new ArrayList<Object>();
-    if (selection_p != null) {
-      result.addAll(((IStructuredSelection) selection_p).toList());
+    if (selection != null) {
+      result.addAll(((IStructuredSelection) selection).toList());
     }
-    result.add(context_p.getPropertyContext());
-    result.addAll(context_p.getPropertyContext().getSourceAsList());
+    result.add(context.getPropertyContext());
+    result.addAll(context.getPropertyContext().getSourceAsList());
     return result;
   }
 
@@ -138,9 +139,9 @@ public class SelectionCommandHandler extends SubCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(Object evaluationContext_p) {
+  public void setEnabled(Object evaluationContext) {
 
-    super.setEnabled(evaluationContext_p);
+    super.setEnabled(evaluationContext);
 
   }
 }

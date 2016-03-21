@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.output;
 
 import java.io.BufferedWriter;
@@ -54,35 +55,35 @@ public class OutputHelper {
 
   /**
    * Return all records files for a given recorder
-   * @param recorder_p the target {@link Recorder}.
+   * @param recorder the target {@link Recorder}.
    * @return a sorted (from the newer to the older one) list of record files, an empty ones whether no records was found.
    */
-  static public List<File> getRecordFiles(IRecorder recorder_p) {
-    return getRecordFiles(getDir(recorder_p));
+  static public List<File> getRecordFiles(IRecorder recorder) {
+    return getRecordFiles(getDir(recorder));
   }
 
   /**
    * Return all records files in a given directory
-   * @param directory_p the target directory
+   * @param dir the target directory
    * @return a sorted (from the newer to the older one) list of record files, an empty ones whether no records was found.
    */
-  public static List<File> getRecordFiles(final File dir_p) {
+  public static List<File> getRecordFiles(final File dir) {
 
     List<File> result = new ArrayList<File>();
 
-    if (isDirectoryOk(dir_p)) {
+    if (isDirectoryOk(dir)) {
       FilenameFilter filter = new FilenameFilter() {
         @SuppressWarnings("synthetic-access")
-        public boolean accept(File directory_p, String name_p) {
+        public boolean accept(File directory, String name) {
           return (
-              isDirectoryOk(directory_p) && 
-              null != name_p && 
-              name_p.endsWith(LOG_EXT)
+              isDirectoryOk(directory) && 
+              null != name && 
+              name.endsWith(LOG_EXT)
           );
         }
       };
 
-      File[] files = dir_p.listFiles(filter);
+      File[] files = dir.listFiles(filter);
       if ( null != files && 0 < files.length ) {
         result.add(files[0]);
         File file = null;
@@ -113,16 +114,16 @@ public class OutputHelper {
 
   /**
    * Return the list of deprecated record files in a given directory.
-   * @param dir_p the target directory
+   * @param dir the target directory
    * @return
    */
-  public static List<File> getDeprecatedRecordFiles(File dir_p) {
+  public static List<File> getDeprecatedRecordFiles(File dir) {
 
     List<File> result = new ArrayList<File>();
 
     Date date = new Date();
 
-    List<File> files = getRecordFiles(dir_p);
+    List<File> files = getRecordFiles(dir);
     int sz = files.size();
     Iterator<File> it = files.iterator();
 
@@ -145,20 +146,20 @@ public class OutputHelper {
 
   /**
    * Check whether a given {@link File} is too old
-   * @param file_p the given file
-   * @param refData_p the reference date. Whether <code>null</code>, the execution time is take
+   * @param file the given file
+   * @param refDate the reference date. Whether <code>null</code>, the execution time is take
    * @return <code>true</code> if the file is not a valid one or <code>null</code>.
    */
-  public static boolean isOutOfTime(File file_p, Date refDate_p) {
+  public static boolean isOutOfTime(File file, Date refDate) {
 
     boolean result = true;
 
-    if (null == file_p || !file_p.exists()) {
+    if (null == file || !file.exists()) {
       result = true;
     } else {
-      Date date = (null == refDate_p ? new Date() : refDate_p);
+      Date date = (null == refDate ? new Date() : refDate);
       long ref = date.getTime() - (RecorderCorePreferenceServices.getHistoryDelay() * 1000 * 24 * 3600);
-      result = file_p.lastModified() < ref;
+      result = file.lastModified() < ref;
     }
 
     return result;
@@ -173,46 +174,46 @@ public class OutputHelper {
 
   /**
    * Return the directory for a given recorder or, whether no recorder is given as input, the root directory
-   * @param recorder_p the target recorder or <code>null</code>
+   * @param recorder the target recorder or <code>null</code>
    * @return
    */
-  public static File getDir(IRecorder recorder_p) {
+  public static File getDir(IRecorder recorder) {
 
     String path = RecorderCorePreferenceServices.getRootRecordPath();
     
     if (
-        null != recorder_p && 
-        null != recorder_p.getRelativePath() &&
-        0 != recorder_p.getRelativePath().length()
+        null != recorder && 
+        null != recorder.getRelativePath() &&
+        0 != recorder.getRelativePath().length()
     ) {
-      path += FILE_SEPARATOR + recorder_p.getRelativePath();
+      path += FILE_SEPARATOR + recorder.getRelativePath();
     }
 
     return new File(path);
   }
 
   /** check whether a file exceed the upper allowed size for records */
-  public static boolean isOverSized(File file_p) {
+  public static boolean isOverSized(File file) {
 
     // in bytes
     long max = RecorderCorePreferenceServices.getMaxFileSize() * 1024 * 1024;
 
-    long sz = file_p.length(); // in bytes
+    long sz = file.length(); // in bytes
 
     return (sz >= max);
   }
 
   /**
    * Create a new log file for a given recorder
-   * @param recorder_p
+   * @param recorder
    * @return
    */
-  public static File createNewLogFile(IRecorder recorder_p) {
+  public static File createNewLogFile(IRecorder recorder) {
     File result = null;
 
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-hh-mm"); //$NON-NLS-1$
 
-    String pathname = getDir(recorder_p).getPath() + FILE_SEPARATOR + dateFormat.format(new Date()) + LOG_EXT;
+    String pathname = getDir(recorder).getPath() + FILE_SEPARATOR + dateFormat.format(new Date()) + LOG_EXT;
 
     result = new File(pathname);
 
@@ -221,24 +222,24 @@ public class OutputHelper {
 
   /**
    * Remove all deprecated records in a given directory
-   * @param dir_p the target dir_p
+   * @param dir the target dir
    */
-  public static void cleanUpStorageArea(File dir_p) {
-    deleteFiles(getDeprecatedRecordFiles(dir_p));
+  public static void cleanUpStorageArea(File dir) {
+    deleteFiles(getDeprecatedRecordFiles(dir));
     return;
   }
 
   /**
    * remove all deprecated records for theses recorders
-   * @param recorders_p the target recorders
+   * @param recorders the target recorders
    */
-  public static void cleanUpStorageAreaForRecords(Set<? extends IRecorder> recorders_p) {
+  public static void cleanUpStorageAreaForRecords(Set<? extends IRecorder> recorders) {
 
     List<File> allDirectories = getDirectSubDirectory(getRootDirectoryForStorage());
 
     // clean up recorders
     File dir = null;
-    for (IRecorder recorder : recorders_p) {
+    for (IRecorder recorder : recorders) {
       dir = getDir(recorder);
       if (allDirectories.contains(dir)) {
         allDirectories.remove(dir);
@@ -251,19 +252,19 @@ public class OutputHelper {
 
   /**
    * Remove all the given log file in a given directory
-   * @param dir_p the target directory
-   * @param deleteFolder_p
+   * @param dir the target directory
+   * @param deleteFolder
    * @return <code>true</code> whether all is ok, <code>false</code> otherwise
    */
-  public static boolean cleanAllRecordsFile(File dir_p, boolean deleteFolder_p) {
+  public static boolean cleanAllRecordsFile(File dir, boolean deleteFolder) {
 
     boolean result = false;
 
-    if (isDirectoryOk(dir_p)) {
-      if (true == deleteFolder_p) {
-        result = dir_p.delete();
+    if (isDirectoryOk(dir)) {
+      if (true == deleteFolder) {
+        result = dir.delete();
       } else {
-        deleteFiles(getRecordFiles(dir_p)); // records
+        deleteFiles(getRecordFiles(dir)); // records
       }
     }
 
@@ -273,15 +274,15 @@ public class OutputHelper {
 
   /**
    * Return all direct sub-directory for a given directory
-   * @param dir_p the target directory
+   * @param dir the target directory
    * @return an empty {@link List} whether the target directory is not valid or whether it has no sub directory
    */
-  public static List<File> getDirectSubDirectory(final File dir_p) {
+  public static List<File> getDirectSubDirectory(final File dir) {
 
     List<File> result = new ArrayList<File>();
 
-    if (isDirectoryOk(dir_p)) {
-      File[] files = dir_p.listFiles();
+    if (isDirectoryOk(dir)) {
+      File[] files = dir.listFiles();
       File current = null;
       for (int i = 0; i < files.length; i++) {
         current = files[i];
@@ -296,26 +297,26 @@ public class OutputHelper {
 
   /**
    * Delete files.
-   * @param files_p
+   * @param files
    * @return
    */
-  public static boolean deleteFiles(List<File> files_p) {
-    return (files_p == null || files_p.isEmpty()) ? true : deleteFiles(files_p.toArray(new File[] {}));
+  public static boolean deleteFiles(List<File> files) {
+    return (files == null || files.isEmpty()) ? true : deleteFiles(files.toArray(new File[] {}));
   }
 
   /**
    * Delte files
-   * @param files_p
+   * @param files
    * @return
    */
-  public static boolean deleteFiles(File[] files_p) {
+  public static boolean deleteFiles(File[] files) {
     boolean result = true;
 
-    if (null == files_p) {
+    if (null == files) {
       result = false;
     } else {
-      for (int i = 0; i < files_p.length; i++) {
-        result &= deleteFile(files_p[i]);
+      for (int i = 0; i < files.length; i++) {
+        result &= deleteFile(files[i]);
       }
     }
 
@@ -324,14 +325,14 @@ public class OutputHelper {
 
   /**
    * Delete file.
-   * @param file_p
+   * @param file
    * @return
    */
-  public static boolean deleteFile(File file_p) {
+  public static boolean deleteFile(File file) {
     
-    if (null != file_p && file_p.exists()) {
-      if (file_p.isDirectory()) {
-        File[] files = file_p.listFiles();
+    if (null != file && file.exists()) {
+      if (file.isDirectory()) {
+        File[] files = file.listFiles();
         for (int i = 0; i < files.length; i++) {
           if (files[i].isDirectory()) {
             deleteFile(files[i]);
@@ -340,20 +341,20 @@ public class OutputHelper {
           }
         }
       }
-      file_p.delete();
+      file.delete();
     }
     
     return true;
   }
 
   /** For internal use */
-  private static boolean isDirectoryOk(File dir_p) {
-    return (null != dir_p && dir_p.exists() && dir_p.isDirectory());
+  private static boolean isDirectoryOk(File dir) {
+    return (null != dir && dir.exists() && dir.isDirectory());
   }
 
   /** For internal use */
-  private static boolean isOlder(File file1_p, File file2_p) {
-    return file1_p.lastModified() < file2_p.lastModified();
+  private static boolean isOlder(File file1, File file2) {
+    return file1.lastModified() < file2.lastModified();
   }
 
 }

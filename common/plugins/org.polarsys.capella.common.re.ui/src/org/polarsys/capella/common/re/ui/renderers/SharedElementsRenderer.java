@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class SharedElementsRenderer extends BrowseRenderer {
 
   @Override
-  protected Color getDefaultColor(Display display_p) {
-    return display_p.getSystemColor(SWT.COLOR_WIDGET_BACKGROUND);
+  protected Color getDefaultColor(Display display) {
+    return display.getSystemColor(SWT.COLOR_WIDGET_BACKGROUND);
   }
 
   @Override
@@ -48,23 +48,23 @@ public class SharedElementsRenderer extends BrowseRenderer {
   }
 
   @Override
-  protected void proceedBrowse(Shell shell_p, IRendererContext context_p) {
-    IContext context = (IContext) context_p.getPropertyContext().getSource();
+  protected void proceedBrowse(Shell shell, IRendererContext context) {
+    IContext ctx = (IContext) context.getPropertyContext().getSource();
 
-    if (context.exists(IReConstants.COMMAND__CURRENT_VALUE)) {
-      String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
+    if (ctx.exists(IReConstants.COMMAND__CURRENT_VALUE)) {
+      String value = (String) ctx.get(IReConstants.COMMAND__CURRENT_VALUE);
       if (IReConstants.COMMAND__CREATE_REPLICABLE_ELEMENT.equals(value) || IReConstants.COMMAND__UPDATE_CURRENT_REPLICA_FROM_REPLICA.equals(value)
           || IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
 
-    	IPropertyContext propertyContext = context_p.getPropertyContext();
-    	Collection current = (Collection) propertyContext.getCurrentValue(context_p.getProperty(this));
+    	IPropertyContext propertyContext = context.getPropertyContext();
+    	Collection current = (Collection) propertyContext.getCurrentValue(context.getProperty(this));
 
     	Collection<EObject> scope = new HashSet<EObject>();
         scope.addAll(current);
         scope.remove(null);
 
         SelectElementsDialog dialog =
-            new SelectElementsDialog(shell_p,
+            new SelectElementsDialog(shell,
             	TransactionHelper.getEditingDomain(scope),
             	((AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(scope)).getAdapterFactory(),
             	"External elements", //$NON-NLS-1$
@@ -72,7 +72,7 @@ public class SharedElementsRenderer extends BrowseRenderer {
               new ArrayList<EObject>(scope), false, null);
         dialog.open();
       } else {
-        super.proceedBrowse(shell_p, context_p);
+        super.proceedBrowse(shell, context);
       }
     }
   }
@@ -81,14 +81,14 @@ public class SharedElementsRenderer extends BrowseRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext rendererContext_p, Object newValue_p) {
-    super.updatedValue(property_p, rendererContext_p, newValue_p);
+  public void updatedValue(IProperty property, IRendererContext rendererContext, Object newValue) {
+    super.updatedValue(property, rendererContext, newValue);
 
     if (!isDisposed()) {
-      IStatus diag_p = property_p.validate(rendererContext_p.getPropertyContext().getCurrentValue(property_p), rendererContext_p.getPropertyContext());
-      boolean value = !diag_p.isOK();
-      if (property_p instanceof IRestraintProperty) {
-        value = value || !((IRestraintProperty) property_p).getChoiceValues(rendererContext_p.getPropertyContext()).isEmpty();
+      IStatus diag = property.validate(rendererContext.getPropertyContext().getCurrentValue(property), rendererContext.getPropertyContext());
+      boolean value = !diag.isOK();
+      if (property instanceof IRestraintProperty) {
+        value = value || !((IRestraintProperty) property).getChoiceValues(rendererContext.getPropertyContext()).isEmpty();
       }
       setBrowseEnabled(value);
     }
@@ -115,7 +115,7 @@ public class SharedElementsRenderer extends BrowseRenderer {
   }
 
   @Override
-  protected boolean isEditable(IProperty property_p, IRendererContext context_p) {
+  protected boolean isEditable(IProperty property, IRendererContext context) {
     return false;
   }
 
@@ -131,15 +131,15 @@ public class SharedElementsRenderer extends BrowseRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected ILabelProvider getLabelProvider(final IRendererContext context_p) {
+  protected ILabelProvider getLabelProvider(final IRendererContext context) {
     if (provider == null) {
-      provider = new DefaultLabelProvider(super.getLabelProvider(context_p)) {
+      provider = new DefaultLabelProvider(super.getLabelProvider(context)) {
 
         @Override
-        public String getText(Object object_p) {
-          IProperty property = context_p.getProperty(SharedElementsRenderer.this);
+        public String getText(Object object) {
+          IProperty property = context.getProperty(SharedElementsRenderer.this);
 
-          IStatus valid = property.validate(context_p.getPropertyContext().getCurrentValue(property), context_p.getPropertyContext());
+          IStatus valid = property.validate(context.getPropertyContext().getCurrentValue(property), context.getPropertyContext());
           if ((valid != null) && !valid.isOK()) {
             return valid.getMessage();
           }

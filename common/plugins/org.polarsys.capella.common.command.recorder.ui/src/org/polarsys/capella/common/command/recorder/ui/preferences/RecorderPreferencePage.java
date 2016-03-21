@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.ui.preferences;
 
 import java.io.File;
@@ -205,12 +206,12 @@ public class RecorderPreferencePage extends AbstractDefaultPreferencePage {
    * @see org.eclipse.jface.preference.FieldEditorPreferencePage#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
    */
   @Override
-  public void propertyChange(PropertyChangeEvent event_p) {
-    super.propertyChange(event_p);
+  public void propertyChange(PropertyChangeEvent event) {
+    super.propertyChange(event);
 
-    if ((event_p.getSource() instanceof FieldEditor)
-        && ((FieldEditor) event_p.getSource()).getPreferenceName().equals(IRecorderCorePreferenceConstants.RECORDER_STATE_PREF_ID)) {
-      enableDisableOptions(((Boolean) event_p.getNewValue()).booleanValue());
+    if ((event.getSource() instanceof FieldEditor)
+        && ((FieldEditor) event.getSource()).getPreferenceName().equals(IRecorderCorePreferenceConstants.RECORDER_STATE_PREF_ID)) {
+      enableDisableOptions(((Boolean) event.getNewValue()).booleanValue());
     }
 
     return;
@@ -225,10 +226,10 @@ public class RecorderPreferencePage extends AbstractDefaultPreferencePage {
   }
 
   /** state of the field editors */
-  protected void enableDisableOptions(boolean state_p) {
+  protected void enableDisableOptions(boolean state) {
 
     for (Map.Entry<FieldEditor, Composite> entry : _dynFieldEditors.entrySet()) {
-      entry.getKey().setEnabled(state_p, entry.getValue());
+      entry.getKey().setEnabled(state, entry.getValue());
     }
 
     return;

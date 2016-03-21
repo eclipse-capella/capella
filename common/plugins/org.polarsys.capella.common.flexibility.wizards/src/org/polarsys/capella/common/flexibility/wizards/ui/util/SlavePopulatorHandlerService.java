@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
 import java.util.Collection;
@@ -51,29 +52,29 @@ public class SlavePopulatorHandlerService implements IHandlerService {
   IServiceLocator _serviceLocator;
 
   /**
-   * @param delegated_p
-   * @param serviceLocator_p
+   * @param delegated
+   * @param serviceLocator
    */
-  public SlavePopulatorHandlerService(IHandlerService delegated_p, IServiceLocator serviceLocator_p) {
+  public SlavePopulatorHandlerService(IHandlerService delegated, IServiceLocator serviceLocator) {
     super();
-    _delegated = delegated_p;
-    _serviceLocator = serviceLocator_p;
+    _delegated = delegated;
+    _serviceLocator = serviceLocator;
   }
 
   /**
-   * @param provider_p
+   * @param provider
    * @see org.eclipse.ui.services.IServiceWithSources#addSourceProvider(org.eclipse.ui.ISourceProvider)
    */
-  public void addSourceProvider(ISourceProvider provider_p) {
-    _delegated.addSourceProvider(provider_p);
+  public void addSourceProvider(ISourceProvider provider) {
+    _delegated.addSourceProvider(provider);
   }
 
   /**
-   * @param provider_p
+   * @param provider
    * @see org.eclipse.ui.services.IServiceWithSources#removeSourceProvider(org.eclipse.ui.ISourceProvider)
    */
-  public void removeSourceProvider(ISourceProvider provider_p) {
-    _delegated.removeSourceProvider(provider_p);
+  public void removeSourceProvider(ISourceProvider provider) {
+    _delegated.removeSourceProvider(provider);
   }
 
   /**
@@ -85,100 +86,100 @@ public class SlavePopulatorHandlerService implements IHandlerService {
   }
 
   /**
-   * @param activation_p
+   * @param activation
    * @return
    * @see org.eclipse.ui.handlers.IHandlerService#activateHandler(org.eclipse.ui.handlers.IHandlerActivation)
    */
-  public IHandlerActivation activateHandler(IHandlerActivation activation_p) {
-    return _delegated.activateHandler(activation_p);
+  public IHandlerActivation activateHandler(IHandlerActivation activation) {
+    return _delegated.activateHandler(activation);
   }
 
   /**
-   * @param commandId_p
-   * @param handler_p
+   * @param commandId
+   * @param handler
    * @return
    * @see org.eclipse.ui.handlers.IHandlerService#activateHandler(java.lang.String, org.eclipse.core.commands.IHandler)
    */
-  public IHandlerActivation activateHandler(String commandId_p, IHandler handler_p) {
-    return _delegated.activateHandler(commandId_p, handler_p);
+  public IHandlerActivation activateHandler(String commandId, IHandler handler) {
+    return _delegated.activateHandler(commandId, handler);
   }
 
   /**
-   * @param commandId_p
-   * @param handler_p
-   * @param expression_p
+   * @param commandId
+   * @param handler
+   * @param expression
    * @return
    * @see org.eclipse.ui.handlers.IHandlerService#activateHandler(java.lang.String, org.eclipse.core.commands.IHandler, org.eclipse.core.expressions.Expression)
    */
-  public IHandlerActivation activateHandler(String commandId_p, IHandler handler_p, Expression expression_p) {
-    return _delegated.activateHandler(commandId_p, handler_p, expression_p);
+  public IHandlerActivation activateHandler(String commandId, IHandler handler, Expression expression) {
+    return _delegated.activateHandler(commandId, handler, expression);
   }
 
   /**
-   * @param commandId_p
-   * @param handler_p
-   * @param expression_p
-   * @param global_p
+   * @param commandId
+   * @param handler
+   * @param expression
+   * @param global
    * @return
    * @see org.eclipse.ui.handlers.IHandlerService#activateHandler(java.lang.String, org.eclipse.core.commands.IHandler, org.eclipse.core.expressions.Expression, boolean)
    */
-  public IHandlerActivation activateHandler(String commandId_p, IHandler handler_p, Expression expression_p, boolean global_p) {
-    return _delegated.activateHandler(commandId_p, handler_p, expression_p, global_p);
+  public IHandlerActivation activateHandler(String commandId, IHandler handler, Expression expression, boolean global) {
+    return _delegated.activateHandler(commandId, handler, expression, global);
   }
 
   /**
-   * @param commandId_p
-   * @param handler_p
-   * @param expression_p
-   * @param sourcePriorities_p
+   * @param commandId
+   * @param handler
+   * @param expression
+   * @param sourcePriorities
    * @return
    * @deprecated
    * @see org.eclipse.ui.handlers.IHandlerService#activateHandler(java.lang.String, org.eclipse.core.commands.IHandler, org.eclipse.core.expressions.Expression, int)
    */
   @Deprecated
-  public IHandlerActivation activateHandler(String commandId_p, IHandler handler_p, Expression expression_p, int sourcePriorities_p) {
-    return _delegated.activateHandler(commandId_p, handler_p, expression_p, sourcePriorities_p);
+  public IHandlerActivation activateHandler(String commandId, IHandler handler, Expression expression, int sourcePriorities) {
+    return _delegated.activateHandler(commandId, handler, expression, sourcePriorities);
   }
 
   /**
-   * @param command_p
-   * @param event_p
+   * @param command
+   * @param event
    * @return
    * @see org.eclipse.ui.handlers.IHandlerService#createExecutionEvent(org.eclipse.core.commands.Command, org.eclipse.swt.widgets.Event)
    */
-  public ExecutionEvent createExecutionEvent(Command command_p, Event event_p) {
-    return _delegated.createExecutionEvent(command_p, event_p);
+  public ExecutionEvent createExecutionEvent(Command command, Event event) {
+    return _delegated.createExecutionEvent(command, event);
   }
 
   /**
-   * @param command_p
-   * @param event_p
+   * @param command
+   * @param event
    * @return
    * @see org.eclipse.ui.handlers.IHandlerService#createExecutionEvent(org.eclipse.core.commands.ParameterizedCommand, org.eclipse.swt.widgets.Event)
    */
-  public ExecutionEvent createExecutionEvent(ParameterizedCommand command_p, Event event_p) {
-    return _delegated.createExecutionEvent(command_p, event_p);
+  public ExecutionEvent createExecutionEvent(ParameterizedCommand command, Event event) {
+    return _delegated.createExecutionEvent(command, event);
   }
 
   /**
-   * @param activation_p
+   * @param activation
    * @see org.eclipse.ui.handlers.IHandlerService#deactivateHandler(org.eclipse.ui.handlers.IHandlerActivation)
    */
-  public void deactivateHandler(IHandlerActivation activation_p) {
-    _delegated.deactivateHandler(activation_p);
+  public void deactivateHandler(IHandlerActivation activation) {
+    _delegated.deactivateHandler(activation);
   }
 
   /**
-   * @param activations_p
+   * @param activations
    * @see org.eclipse.ui.handlers.IHandlerService#deactivateHandlers(java.util.Collection)
    */
-  public void deactivateHandlers(Collection activations_p) {
-    _delegated.deactivateHandlers(activations_p);
+  public void deactivateHandlers(Collection activations) {
+    _delegated.deactivateHandlers(activations);
   }
 
   /**
-   * @param commandId_p
-   * @param event_p
+   * @param commandId
+   * @param event
    * @return
    * @throws ExecutionException
    * @throws NotDefinedException
@@ -186,13 +187,13 @@ public class SlavePopulatorHandlerService implements IHandlerService {
    * @throws NotHandledException
    * @see org.eclipse.ui.handlers.IHandlerService#executeCommand(java.lang.String, org.eclipse.swt.widgets.Event)
    */
-  public Object executeCommand(String commandId_p, Event event_p) throws ExecutionException, NotDefinedException, NotEnabledException, NotHandledException {
-    return _delegated.executeCommand(commandId_p, event_p);
+  public Object executeCommand(String commandId, Event event) throws ExecutionException, NotDefinedException, NotEnabledException, NotHandledException {
+    return _delegated.executeCommand(commandId, event);
   }
 
   /**
-   * @param command_p
-   * @param event_p
+   * @param command
+   * @param event
    * @return
    * @throws ExecutionException
    * @throws NotDefinedException
@@ -200,15 +201,15 @@ public class SlavePopulatorHandlerService implements IHandlerService {
    * @throws NotHandledException
    * @see org.eclipse.ui.handlers.IHandlerService#executeCommand(org.eclipse.core.commands.ParameterizedCommand, org.eclipse.swt.widgets.Event)
    */
-  public Object executeCommand(ParameterizedCommand command_p, Event event_p) throws ExecutionException, NotDefinedException, NotEnabledException,
+  public Object executeCommand(ParameterizedCommand command, Event event) throws ExecutionException, NotDefinedException, NotEnabledException,
       NotHandledException {
-    return command_p.executeWithChecks(event_p, getCurrentState());
+    return command.executeWithChecks(event, getCurrentState());
   }
 
   /**
-   * @param command_p
-   * @param event_p
-   * @param context_p
+   * @param command
+   * @param event
+   * @param context
    * @return
    * @throws ExecutionException
    * @throws NotDefinedException
@@ -216,18 +217,18 @@ public class SlavePopulatorHandlerService implements IHandlerService {
    * @throws NotHandledException
    * @see org.eclipse.ui.handlers.IHandlerService#executeCommandInContext(org.eclipse.core.commands.ParameterizedCommand, org.eclipse.swt.widgets.Event, org.eclipse.core.expressions.IEvaluationContext)
    */
-  public Object executeCommandInContext(ParameterizedCommand command_p, Event event_p, IEvaluationContext context_p) throws ExecutionException,
+  public Object executeCommandInContext(ParameterizedCommand command, Event event, IEvaluationContext context) throws ExecutionException,
       NotDefinedException, NotEnabledException, NotHandledException {
-    return _delegated.executeCommandInContext(command_p, event_p, context_p);
+    return _delegated.executeCommandInContext(command, event, context);
   }
 
   /**
-   * @param includeSelection_p
+   * @param includeSelection
    * @return
    * @see org.eclipse.ui.handlers.IHandlerService#createContextSnapshot(boolean)
    */
-  public IEvaluationContext createContextSnapshot(boolean includeSelection_p) {
-    return _delegated.createContextSnapshot(includeSelection_p);
+  public IEvaluationContext createContextSnapshot(boolean includeSelection) {
+    return _delegated.createContextSnapshot(includeSelection);
   }
 
   /**
@@ -254,12 +255,12 @@ public class SlavePopulatorHandlerService implements IHandlerService {
   }
 
   /**
-   * @param handler_p
-   * @param helpContextId_p
+   * @param handler
+   * @param helpContextId
    * @see org.eclipse.ui.handlers.IHandlerService#setHelpContextId(org.eclipse.core.commands.IHandler, java.lang.String)
    */
-  public void setHelpContextId(IHandler handler_p, String helpContextId_p) {
-    _delegated.setHelpContextId(handler_p, helpContextId_p);
+  public void setHelpContextId(IHandler handler, String helpContextId) {
+    _delegated.setHelpContextId(handler, helpContextId);
   }
 
 }

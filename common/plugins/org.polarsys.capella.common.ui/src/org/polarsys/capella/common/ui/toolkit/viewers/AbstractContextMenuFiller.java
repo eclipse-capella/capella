@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.jface.action.IMenuManager;
@@ -27,8 +28,8 @@ public abstract class AbstractContextMenuFiller {
 
   /**
    * Fill specified menu manager
-   * @param contextMenuManager_p
-   * @param selection_p
+   * @param contextMenuManager
+   * @param selection
    */
-  public abstract void fillMenuManager(IMenuManager contextMenuManager_p, ISelection selection_p);
+  public abstract void fillMenuManager(IMenuManager contextMenuManager, ISelection selection);
 }

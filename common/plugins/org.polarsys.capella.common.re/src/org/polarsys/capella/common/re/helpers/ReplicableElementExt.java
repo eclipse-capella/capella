@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.helpers;
 
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ import org.polarsys.capella.common.re.RePackage;
 public class ReplicableElementExt {
 
   /**
-   * Returns replicable elements referencing the given element_p
+   * Returns replicable elements referencing the given element
    */
-  public static Collection<CatalogElement> getReferencingReplicableElements(EObject element_p) {
+  public static Collection<CatalogElement> getReferencingReplicableElements(EObject element) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
-    Collection<EObject> links = EObjectExt.getReferencers(element_p, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
+    Collection<EObject> links = EObjectExt.getReferencers(element, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
     for (EObject object : links) {
       if (object instanceof CatalogElementLink) {
         CatalogElementLink link = (CatalogElementLink) object;
@@ -44,11 +45,11 @@ public class ReplicableElementExt {
   }
   
   /**
-   * Returns replicable elements referencing the given element_p
+   * Returns replicable elements referencing the given element
    */
-  public static Collection<CatalogElement> getReferencingReplicas(EObject element_p) {
+  public static Collection<CatalogElement> getReferencingReplicas(EObject element) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
-    Collection<EObject> links = EObjectExt.getReferencers(element_p, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
+    Collection<EObject> links = EObjectExt.getReferencers(element, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
     for (EObject object : links) {
       if (object instanceof CatalogElementLink) {
         CatalogElementLink link = (CatalogElementLink) object;
@@ -63,9 +64,9 @@ public class ReplicableElementExt {
   /**
    * Returns replicable elements links referencing the given element_p
    */
-  public static Collection<CatalogElementLink> getReferencingLinks(EObject source_p) {
+  public static Collection<CatalogElementLink> getReferencingLinks(EObject source) {
     ArrayList<CatalogElementLink> elements = new ArrayList<CatalogElementLink>();
-    Collection<EObject> links = EObjectExt.getReferencers(source_p, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
+    Collection<EObject> links = EObjectExt.getReferencers(source, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
     for (EObject object : links) {
       if (object instanceof CatalogElementLink) {
         CatalogElementLink link = (CatalogElementLink) object;
@@ -75,10 +76,10 @@ public class ReplicableElementExt {
     return elements;
   }
 
-  public static EObject getReferencingElement(CatalogElement source_p, EObject originElement_p) {
-    for (CatalogElementLink link : source_p.getOwnedLinks()) {
+  public static EObject getReferencingElement(CatalogElement source, EObject originElement) {
+    for (CatalogElementLink link : source.getOwnedLinks()) {
       if ((link.getTarget() != null) && (link.getOrigin() != null)) {
-        if ((link.getOrigin().getTarget() != null) && link.getOrigin().getTarget().equals(originElement_p)) {
+        if ((link.getOrigin().getTarget() != null) && link.getOrigin().getTarget().equals(originElement)) {
           return link.getTarget();
         }
       }
@@ -89,9 +90,9 @@ public class ReplicableElementExt {
   /**
    * Returns replicable elements links referencing the given element_p
    */
-  public static Collection<CatalogElement> getReplicas(CatalogElement source_p) {
+  public static Collection<CatalogElement> getReplicas(CatalogElement source) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
-    Collection<EObject> links = EObjectExt.getReferencers(source_p, RePackage.Literals.CATALOG_ELEMENT__ORIGIN);
+    Collection<EObject> links = EObjectExt.getReferencers(source, RePackage.Literals.CATALOG_ELEMENT__ORIGIN);
     for (EObject object : links) {
       if (object instanceof CatalogElement) {
         CatalogElement link = (CatalogElement) object;

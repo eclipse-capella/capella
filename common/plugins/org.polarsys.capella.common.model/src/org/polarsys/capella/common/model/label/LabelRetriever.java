@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.model.label;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -21,35 +22,35 @@ public class LabelRetriever {
   public static final String UNNAMED_ELEMENT = "[Unnamed element]"; //$NON-NLS-1$
   public static final String SEPARATOR = "/"; //$NON-NLS-1$
 
-  public static String getLabel(EObject object_p) {
+  public static String getLabel(EObject object) {
     String result = null;
     // TODO: When the shared model will provide the NamedElement, it will be used
     // ***BeginTemp
-    EStructuralFeature nameAttribute = object_p.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
+    EStructuralFeature nameAttribute = object.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
     if (nameAttribute != null) {
-      result = (String) object_p.eGet(nameAttribute);
+      result = (String) object.eGet(nameAttribute);
     }
     // ***Endtemp
     if (result == null || result.equals("")) { //$NON-NLS-1$
       result = UNNAMED_ELEMENT;
     }
     if (result == null || result.equals("")) { //$NON-NLS-1$
-      result = object_p.toString();
+      result = object.toString();
     }
     return result;
   }
 
-  public static String getFullLabel(EObject object_p) {
+  public static String getFullLabel(EObject object) {
     String result;
-    result = getFullPath(object_p) + getLabel(object_p);
+    result = getFullPath(object) + getLabel(object);
     return result;
   }
 
   @SuppressWarnings("nls")
-  public static String getFullPath(EObject object_p) {
+  public static String getFullPath(EObject object) {
     String result;
-    EObject eContainer = object_p.eContainer();
-    if (eContainer == object_p) 
+    EObject eContainer = object.eContainer();
+    if (eContainer == object) 
       return "";
     if (eContainer != null) {
       result = getFullPath(eContainer) + getLabel(eContainer) + SEPARATOR;
@@ -59,14 +60,14 @@ public class LabelRetriever {
     return result;
   }
 
-  public static String getLabel(ENamedElement namedElement_p) {
+  public static String getLabel(ENamedElement namedElement) {
     String result = null;
-    EAnnotation businessAnnotation = namedElement_p.getEAnnotation(BUSINESS_INFORMATION_SOURCE);
+    EAnnotation businessAnnotation = namedElement.getEAnnotation(BUSINESS_INFORMATION_SOURCE);
     if (businessAnnotation != null && businessAnnotation.getDetails().containsKey(LABEL_KEY)) {
       result = businessAnnotation.getDetails().get(LABEL_KEY);
     }
     if (result == null || result.equals("")) { //$NON-NLS-1$
-      result = namedElement_p.getName();
+      result = namedElement.getName();
     }
     return result;
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,15 +26,15 @@ public class ReplicaProperty extends InitialTargetProperty {
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    CatalogElement rootElement = (CatalogElement) context.get(TARGET);
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    CatalogElement rootElement = (CatalogElement) ctx.get(TARGET);
 
     if (rootElement == null) {
-      Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(context).getIndirectlySelectedReplicableElements(context);
+      Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(ctx).getIndirectlySelectedReplicableElements(ctx);
       if (!selectedElements.isEmpty()) {
         rootElement = selectedElements.iterator().next();
-        context.put(TARGET, rootElement);
+        ctx.put(TARGET, rootElement);
       }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.handler;
 
 import java.util.Collection;
@@ -35,18 +36,18 @@ public class DeleteHandler extends AbstractViewHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    MarkerView view = getView(event_p);
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    MarkerView view = getView(event);
     
     boolean oldRefreshState = view.isAutomaticRefresh(); 
     view.setAutomaticRefresh(false);
-    Collection<?> selection = getSelection(event_p);
+    Collection<?> selection = getSelection(event);
     view.getViewer().setSelection(StructuredSelection.EMPTY); 
     for (Object o : selection){
       delete(view, o);       
     }
     view.getViewer().refresh();
-    getView(event_p).setAutomaticRefresh(oldRefreshState);
+    getView(event).setAutomaticRefresh(oldRefreshState);
     return null;
   }
   

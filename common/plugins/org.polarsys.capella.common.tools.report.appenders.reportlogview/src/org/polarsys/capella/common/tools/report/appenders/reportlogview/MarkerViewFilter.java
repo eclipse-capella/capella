@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.EnumSet;
@@ -69,8 +70,8 @@ public class MarkerViewFilter extends ViewerFilter {
   private Viewer viewer;
   
   
-  public MarkerViewFilter(Viewer viewer_p){
-    viewer = viewer_p;
+  public MarkerViewFilter(Viewer viewer){
+    this.viewer = viewer;
     hookSeverityFilter();
     hookSelectionFilter();
     
@@ -89,8 +90,8 @@ public class MarkerViewFilter extends ViewerFilter {
     // add listener to refresh after the filter is changed
     s.addListener(new IStateListener(){
       @SuppressWarnings("synthetic-access")
-      public void handleStateChange(State state_p, Object oldValue_p) {
-        SelectionFilter filter = SelectionFilter.valueOf(state_p.getValue().toString());
+      public void handleStateChange(State state, Object oldValue) {
+        SelectionFilter filter = SelectionFilter.valueOf(state.getValue().toString());
         if (filter != selectionFilter){
           selectionFilter = filter;
           viewer.refresh();
@@ -126,9 +127,9 @@ public class MarkerViewFilter extends ViewerFilter {
       // FIXME should remove those listeners on dispose
       state.addListener(new IStateListener(){
         @SuppressWarnings("synthetic-access")
-        public void handleStateChange(State state_p, Object oldValue_p) {
+        public void handleStateChange(State state, Object oldValue) {
           SeverityLevel level = severityLevelMap.get(commandId);
-          if ((Boolean) state_p.getValue()){
+          if ((Boolean) state.getValue()){
             if (activeLevels.add(level)){
               viewer.refresh();
             }
@@ -149,9 +150,9 @@ public class MarkerViewFilter extends ViewerFilter {
     ALL;
   }
   
-  void setSelectionFilter(SelectionFilter filter_p){
-    if (filter_p != selectionFilter){
-      selectionFilter = filter_p;
+  void setSelectionFilter(SelectionFilter filter){
+    if (filter != selectionFilter){
+      selectionFilter = filter;
       viewer.refresh();
     }
   }
@@ -159,21 +160,21 @@ public class MarkerViewFilter extends ViewerFilter {
   /**
    * Update the selection. Usually you want to call viewer.refresh()
    * after setting the new selection via this method.
-   * @param selection_p
+   * @param selection
    */
-  void setSelection(ISelection selection_p){
+  void setSelection(ISelection selection){
     boolean refreshViewer = false;
     
     Object first = null;
-    if (selection_p instanceof IStructuredSelection){
-      first = ((IStructuredSelection) selection_p).getFirstElement();
+    if (selection instanceof IStructuredSelection){
+      first = ((IStructuredSelection) selection).getFirstElement();
     }
     
     if (first != selectedElement){ 
       if (selectionFilter == SelectionFilter.SELECTION){
         refreshViewer = true;
       }
-      IProject newProject = getProject(selection_p);
+      IProject newProject = getProject(selection);
       if (newProject != project){
         project = newProject;
         if (selectionFilter == SelectionFilter.PROJECT){
@@ -188,35 +189,35 @@ public class MarkerViewFilter extends ViewerFilter {
   }
   
   /**
-   * @param selection_p
+   * @param selection
    * @return
    */
-  protected IProject getProject(ISelection selection_p) {
+  protected IProject getProject(ISelection selection) {
     IProject result = null;
-    if (selection_p instanceof IStructuredSelection){
-      Object first = ((IStructuredSelection) selection_p).getFirstElement();
+    if (selection instanceof IStructuredSelection){
+      Object first = ((IStructuredSelection) selection).getFirstElement();
       result = getProject(first);
     }
     return result;
     }
     
-    protected IProject getProject(Object selection_p){
+    protected IProject getProject(Object selection){
       IProject result = null;
-      if (selection_p instanceof IResource){
-        result = ((IResource) selection_p).getProject();
-      } else if (selection_p instanceof EObject){
-        Resource resource = ((EObject) selection_p).eResource();
+      if (selection instanceof IResource){
+        result = ((IResource) selection).getProject();
+      } else if (selection instanceof EObject){
+        Resource resource = ((EObject) selection).eResource();
         if (resource != null){
-          URI uri = ((EObject) selection_p).eResource().getURI();
+          URI uri = ((EObject) selection).eResource().getURI();
           if (uri != null && uri.isPlatformResource()){
             String platformResourceString = uri.toPlatformString(true);
             result = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformResourceString)).getProject();
           }
         }
-      } else if (selection_p instanceof IAdaptable){
-        IResource resource = (IResource) ((IAdaptable) selection_p).getAdapter(IResource.class);
+      } else if (selection instanceof IAdaptable){
+        IResource resource = (IResource) ((IAdaptable) selection).getAdapter(IResource.class);
         if (resource == null){
-          Platform.getAdapterManager().getAdapter(selection_p, IResource.class);
+          Platform.getAdapterManager().getAdapter(selection, IResource.class);
         }
         if (resource != null){
           result = resource.getProject();
@@ -229,32 +230,32 @@ public class MarkerViewFilter extends ViewerFilter {
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
+  public boolean select(Viewer viewer, Object parentElement, Object element) {
     boolean result = true;
-    if (element_p instanceof IMarker){
+    if (element instanceof IMarker){
 
       // severity level
-      SeverityLevel level = SeverityLevel.getLevel((IMarker) element_p);
+      SeverityLevel level = SeverityLevel.getLevel((IMarker) element);
       if (level != null){
         result = activeLevels.contains(level);
       }
 
       switch (selectionFilter){
         case ALL: break;
-        case PROJECT:   result &= select(project,         viewer_p, parentElement_p, (IMarker) element_p);   break;
-        case SELECTION: result &= select(selectedElement, viewer_p, parentElement_p, (IMarker) element_p); break;
+        case PROJECT:   result &= select(project,         viewer, parentElement, (IMarker) element);   break;
+        case SELECTION: result &= select(selectedElement, viewer, parentElement, (IMarker) element); break;
       }
       
     } else {
       // if it's not a marker:
       // at least one child is visible => element visible
       // TODO this recurses, and possibly invokes the filter more than once for a single element => memorization
-      TreeViewer client = (TreeViewer) viewer_p;
+      TreeViewer client = (TreeViewer) viewer;
       ITreeContentProvider provider = (ITreeContentProvider) client.getContentProvider();
-      Object[] children = provider.getChildren(element_p);
+      Object[] children = provider.getChildren(element);
       result = false;
       for (Object o : children){
-        if (select(viewer_p, element_p, o)){
+        if (select(viewer, element, o)){
           result = true;
           break;
         }
@@ -279,18 +280,18 @@ public class MarkerViewFilter extends ViewerFilter {
    * (@see MarkerViewHelper.getModelElementsFromMarker)
    * 
    * Subclasses may override to support more complex use cases.
-   * @param selection_p the element that is selected.
+   * @param selection the element that is selected.
    * @return whether the marker should show or not.
    */
-  protected boolean select(Object selection_p, Viewer viewer_p, Object parent_p, IMarker marker_p) {
+  protected boolean select(Object selection, Viewer viewer, Object parent, IMarker marker) {
     boolean result = false;
-    if (selection_p instanceof IResource){
-      result = select((IResource) selection_p, viewer_p, parent_p, marker_p);
-    } else if (selection_p instanceof EObject){
-      List<EObject> affected = MarkerViewHelper.getModelElementsFromMarker(marker_p);
+    if (selection instanceof IResource){
+      result = select((IResource) selection, viewer, parent, marker);
+    } else if (selection instanceof EObject){
+      List<EObject> affected = MarkerViewHelper.getModelElementsFromMarker(marker);
       if (affected.size() > 0){
         EObject firstAffected = affected.get(0);
-        if (EcoreUtil.isAncestor((EObject) selection_p, firstAffected)){
+        if (EcoreUtil.isAncestor((EObject) selection, firstAffected)){
           result = true;
         }
       }
@@ -308,29 +309,29 @@ public class MarkerViewFilter extends ViewerFilter {
    * This implementation returns true (shows the marker) if the markers 
    * resource is 'contained' in the selected resource.
    * 
-   * @param resource_p the selected resource
-   * @param viewer_p the viewer
-   * @param parent_p element parent
-   * @param marker_p the marker
+   * @param resource the selected resource
+   * @param viewer the viewer
+   * @param parent element parent
+   * @param marker the marker
    * @return whether the marker should show or not.
    * @see ViewerFilter.select()
    */
-  private boolean select(IResource resource_p, Viewer viewer_p, Object parent_p, IMarker marker_p) {
+  private boolean select(IResource resource, Viewer viewer, Object parent, IMarker marker) {
     boolean result = false;
     
     // FIXME how would this work with CDO?
     
-    if (resource_p == null)
+    if (resource == null)
       return result;
     
-    IResource markerResource = marker_p.getResource();
+    IResource markerResource = marker.getResource();
     
     if (markerResource != null){
       // this would be the usual case if we created markers with
       // resource.createMarker(), but see LightMarkerRegistry.
       MarkerResourceVisitor vis = new MarkerResourceVisitor(markerResource);
       try {
-        resource_p.accept(vis);
+        resource.accept(vis);
       } catch (CoreException e) {
         MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
       }
@@ -348,16 +349,16 @@ public class MarkerViewFilter extends ViewerFilter {
 //          URI rsURI = res.getURI();
 //          if (rsURI.isPlatformResource()){
 //
-//            String prefix = resource_p.getFullPath().toString();
+//            String prefix = resource.getFullPath().toString();
 //
 //            // make sure to filter markers for project /hello, if project /helloworld is selected
-//            if (!(resource_p instanceof IFile)){
+//            if (!(resource instanceof IFile)){
 //              prefix += "/"; //$NON-NLS-1$
 //            }
 //
 //            // now check if the marker contains an EObject that's persisted in this EMF resource
 //            if (rsURI.toPlatformString(true).startsWith(prefix)){
-//              List<EObject> affected = MarkerViewHelper.getModelElementsFromMarker(marker_p);
+//              List<EObject> affected = MarkerViewHelper.getModelElementsFromMarker(marker);
 //              for (EObject affectedObject : affected){
 //                if (affectedObject.eResource() == res){
 //                  result = true;
@@ -378,12 +379,12 @@ public class MarkerViewFilter extends ViewerFilter {
     public IResource target; // find this resource
     private boolean found = false;
 
-    public MarkerResourceVisitor(IResource target_p){
-      target = target_p;
+    public MarkerResourceVisitor(IResource target){
+      this.target = target;
     }
     
-    public boolean visit(IResource resource_p) throws CoreException {
-        if (resource_p == target){
+    public boolean visit(IResource resource) throws CoreException {
+        if (resource == target){
           found = true;
           return false;
         } 

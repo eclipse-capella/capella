@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers.operations;
 
 import java.util.Collection;
@@ -54,7 +55,7 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
           ILongRunningListener listener = (ILongRunningListener) configurationElement.createExecutableExtension(ExtensionPointHelper.ATT_CLASS);
           // Add new listener to collection.
           _listeners.add(listener);
-        } catch (Exception exception_p) {
+        } catch (Exception exception) {
           // Unable to instantiate this listener.
           // Skip it.
         }
@@ -66,7 +67,7 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#isListenerFor(java.lang.Class)
    */
-  public boolean isListenerFor(Class<?> longRunningOperationClass_p) {
+  public boolean isListenerFor(Class<?> longRunningOperationClass) {
     // Not relevant here.
     return false;
   }
@@ -74,7 +75,7 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#operationAborted(java.lang.Class)
    */
-  public void operationAborted(Class<?> operationClass_p) {
+  public void operationAborted(Class<?> operationClass) {
     // No listeners resolved yet.
     if (null == _listeners) {
       getListeners();
@@ -83,11 +84,11 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
     for (ILongRunningListener listener : _listeners) {
       try {
         // Check listener compatibility.
-        if (listener.isListenerFor(operationClass_p)) {
+        if (listener.isListenerFor(operationClass)) {
           // Operation aborted.
-          listener.operationAborted(operationClass_p);
+          listener.operationAborted(operationClass);
         }
-      } catch (Throwable t_p) {
+      } catch (Throwable t) {
         // There is no way the operation will fail because of an exception.
       }
     }
@@ -96,7 +97,7 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#operationEnded(java.lang.Class)
    */
-  public void operationEnded(Class<?> operationClass_p) {
+  public void operationEnded(Class<?> operationClass) {
     // No listeners resolved yet.
     if (null == _listeners) {
       getListeners();
@@ -105,11 +106,11 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
     for (ILongRunningListener listener : _listeners) {
       try {
         // Check listener compatibility.
-        if (listener.isListenerFor(operationClass_p)) {
+        if (listener.isListenerFor(operationClass)) {
           // Operation Ended.
-          listener.operationEnded(operationClass_p);
+          listener.operationEnded(operationClass);
         }
-      } catch (Throwable t_p) {
+      } catch (Throwable t) {
         // There is no way the operation will fail because of an exception.
       }
     }
@@ -118,7 +119,7 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
   /**
    * @see org.polarsys.capella.common.helpers.operations.ILongRunningListener#operationStarting(java.lang.Class)
    */
-  public void operationStarting(Class<?> operationClass_p) {
+  public void operationStarting(Class<?> operationClass) {
     // No listeners resolved yet.
     if (null == _listeners) {
       getListeners();
@@ -127,13 +128,13 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
     for (ILongRunningListener listener : _listeners) {
       try {
         // Check listener compatibility.
-        if (listener.isListenerFor(operationClass_p)) {
+        if (listener.isListenerFor(operationClass)) {
           // Operation starting.
-          listener.operationStarting(operationClass_p);
+          listener.operationStarting(operationClass);
         }
-      } catch (Throwable t_p) {
+      } catch (Throwable t) {
         // There is no way the operation will fail because of an exception.
-        t_p.printStackTrace();
+        t.printStackTrace();
       }
     }
   }

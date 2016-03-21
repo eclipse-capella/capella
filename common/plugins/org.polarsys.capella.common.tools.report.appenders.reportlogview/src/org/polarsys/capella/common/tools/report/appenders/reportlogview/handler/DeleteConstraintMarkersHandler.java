@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.handler;
 
 import java.util.ArrayList;
@@ -44,11 +45,11 @@ public class DeleteConstraintMarkersHandler extends AbstractViewHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    IConstraintDescriptor descriptor = getConstraintDescriptor(HandlerUtil.getCurrentSelection(event_p));
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    IConstraintDescriptor descriptor = getConstraintDescriptor(HandlerUtil.getCurrentSelection(event));
     if (descriptor != null) {
       List<IMarker> delete = new ArrayList<IMarker>();
-      MarkerView view = getView(event_p);
+      MarkerView view = getView(event);
       List<IMarkerSource> sources = view.getMarkerSources();
       for (IMarkerSource source : sources) {
         for (IMarker m : source.getMarkers()) {
