@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.transition.common.transposer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -19,86 +20,81 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.polarsys.capella.common.utils.graph.CycleDetectionUtils;
+import org.polarsys.capella.common.utils.graph.IDirectedGraph;
 import org.polarsys.capella.core.transition.common.exception.TransitionException;
 import org.polarsys.kitalpha.transposer.analyzer.graph.Edge;
 import org.polarsys.kitalpha.transposer.analyzer.graph.Graph;
+import org.polarsys.kitalpha.transposer.analyzer.graph.GraphElement;
 import org.polarsys.kitalpha.transposer.analyzer.graph.Vertex;
 import org.polarsys.kitalpha.transposer.scheduler.api.IScheduler;
 import org.polarsys.kitalpha.transposer.scheduler.api.ITransposerTask;
 
 /**
  * 
- * Nothing more than GenericScheduler. 
- * Only the topologicalSorter is different.
+ * Nothing more than GenericScheduler. Only the topologicalSorter is different.
  *
  */
 public class ExtendedScheduler implements IScheduler {
 
-  protected ExtendedTopologicalSorter _TopologicalSorter;
+  protected ExtendedTopologicalSorter topologicalSorter;
 
-  public Graph _model;
+  public Graph model;
 
   /**
    * @return the model
    */
   public Graph getModel() {
-    return _model;
+    return model;
   }
 
   /**
    * @return the topologicalScheduler
    */
   protected ExtendedTopologicalSorter getTopologicalSorter() {
-    return _TopologicalSorter;
+    return topologicalSorter;
   }
 
   /**
-   * @param model_p the model to set
+   * @param model
+   *          the model to set
    */
-  public void setModel(Graph model_p) {
-    _model = model_p;
+  public void setModel(Graph model) {
+    this.model = model;
   }
 
   /**
-   * @param topologicalScheduler_p the topologicalScheduler to set
+   * @param topologicalScheduler
+   *          the topologicalScheduler to set
    */
-  protected void setTopologicalSorter(ExtendedTopologicalSorter topologicalScheduler_p) {
-    _TopologicalSorter = topologicalScheduler_p;
+  protected void setTopologicalSorter(ExtendedTopologicalSorter topologicalScheduler) {
+    this.topologicalSorter = topologicalScheduler;
   }
 
   /**
    * Visited elements (complementary of notVisited).
    */
-  private Set<Vertex<?>> _visited;
+  private Set<Vertex<?>> visited;
 
   /**
    * Not visited elements (complementary of visited).
    */
-  private Set<Vertex<?>> _notVisited;
+  private Set<Vertex<?>> notVisited;
 
   /**
    * Collected "back" tracks that cause cycles.
    */
-  private Set<Edge<?>> _backTracks;
+  private Set<Edge<?>> backTracks;
 
   /**
    * Set of tasks that represents the result of the scheduling graph.
    */
-  private List<ITransposerTask<Vertex<?>>> _scheduleResult;
-
-  /**
-   * Path that we are currently browsing
-   */
-  private List<Edge<?>> _browsedPath;
+  private List<ITransposerTask<Vertex<?>>> scheduleResult;
 
   /**
    * Set of discovered tracks in the graph.
    */
-  private Set<LinkedList<Edge<?>>> _foundCycles;
-
-  private IProgressMonitor _monitor = null;
-
-  private int _monitorSize;
+  private Set<LinkedList<Edge<?>>> foundCycles;
 
   /**
    * Default Constructor.
@@ -110,99 +106,73 @@ public class ExtendedScheduler implements IScheduler {
 
   /**
    * Initialize all necessary variables.
-   * @param model_p
+   * 
+   * @param modelp
    */
-  public ExtendedScheduler(Graph model_p) {
-    setModel(model_p);
+  public ExtendedScheduler(Graph modelp) {
+    setModel(modelp);
     init();
   }
 
   /**
-   * In-depth tour which starts with "peaks" of the model that are retrieved by a call to {@ link} getAllModelSummits. Following this visit, we can consider 
-   * that any element in {@link notVisited} is not helpful and did not need to be transformed.
+   * In-depth tour which starts with "peaks" of the model that are retrieved by a call to {@ link} getAllModelSummits.
+   * Following this visit, we can consider that any element in {@link notVisited} is not helpful and did not need to be
+   * transformed.
    */
   private void depthFirstVisitGlobal() {
-    List<Vertex<?>> summits = getAllModelSummits();
+    final List<GraphElement<?>> summits = getAllModelSummits();
 
-    for (Vertex<?> currentSummit : summits) {
-      depthFirstVisitLocalWithCycleSearch(currentSummit);
+    IDirectedGraph<GraphElement<?>> iDirectedGraph = new IDirectedGraph<GraphElement<?>>() {
+
+      @Override
+      public Iterator<GraphElement<?>> getSucessors(GraphElement<?> source) {
+        if (source instanceof Vertex<?>) {
+
+          setVisited((Vertex<?>) source);
+          ArrayList<GraphElement<?>> arrayList = new ArrayList<GraphElement<?>>();
+          arrayList.addAll(((Vertex<?>) source).getOutgoingEdges());
+
+          return arrayList.iterator();
+        }
+        Vertex<?> target = ((Edge<?>) source).getTarget();
+        Iterator<?> iterator = Collections.singletonList(target).iterator();
+
+        return (Iterator<GraphElement<?>>) iterator;
+      }
+
+      @Override
+      public Iterator<GraphElement<?>> getNodes() {
+        return summits.iterator();
+      }
+    };
+
+    List<List<GraphElement<?>>> cycles = CycleDetectionUtils.getCycles(iDirectedGraph);
+
+    for (List<GraphElement<?>> cycle : cycles) {
+      LinkedList<Edge<?>> edgeCycle = new LinkedList<Edge<?>>();
+      for (GraphElement<?> graphElement : cycle) {
+        if (graphElement instanceof Edge<?>) {
+          edgeCycle.add((Edge<?>) graphElement);
+        }
+      }
+      if (!edgeCycle.isEmpty()) {
+        foundCycles.add(edgeCycle);
+
+      }
     }
 
     identifyBacktracksFromCycles();
   }
 
   /**
-   * In-depth tour of the graph with cycle search, from a given "peak".
-   * @param currentVertex the starting peak.
-   */
-  private void depthFirstVisitLocalWithCycleSearch(Vertex<?> currentVertex) {
-
-    if (_monitor != null) {
-      _monitor.subTask("Visiting vertex " + currentVertex.getName()); //$NON-NLS-1$
-      if (_monitorSize != 0) {
-        _monitor.worked(1 / _monitorSize);
-      }
-    }
-
-    List<Edge<?>> currentVertexEdges = currentVertex.getOutgoingEdges();
-    for (Edge<?> currentEdge : currentVertexEdges) {
-      if (!_browsedPath.contains(currentEdge)) {
-        Vertex<?> nextVertex = currentEdge.getTarget();
-
-        // if we find a cycle
-        int index = indexOfVertexInPath(_browsedPath, nextVertex);
-        if ((index > -1) || (nextVertex == currentVertex)) {
-          LinkedList<Edge<?>> currentCycle = new LinkedList<Edge<?>>();
-          if (index > -1) {
-            for (int i = index; i < _browsedPath.size(); i++) {
-              currentCycle.add(_browsedPath.get(i));
-            }
-          }
-          currentCycle.add(currentEdge);
-
-          // we store it
-          if (isNewCycle(currentCycle)) {
-            _foundCycles.add(currentCycle);
-          }
-
-        } else if (!isVisited(currentVertex)) {
-          // otherwise we continue
-          _browsedPath.add(currentEdge);
-          depthFirstVisitLocalWithCycleSearch(nextVertex);
-        }
-      }
-    }
-
-    setVisited(currentVertex);
-    // and once you have finished visiting a node (and all its descendants, we return back to 1)
-    if (_browsedPath.size() > 0) {
-      _browsedPath.remove(_browsedPath.size() - 1);
-    }
-  }
-
-  /**
-   * @param currentCycle_p
-   * @return
-   */
-  private boolean isNewCycle(LinkedList<Edge<?>> currentCycle_p) {
-    for (LinkedList<Edge<?>> alreadyKnownCycle : _foundCycles) {
-      // check cycle length && composition
-      if ((alreadyKnownCycle.size() == currentCycle_p.size()) && alreadyKnownCycle.containsAll(currentCycle_p)) {
-
-        return false;
-      }
-    }
-    return true;
-  }
-
-  /**
    * Return all hierarchically main peaks, ie all the {@link Vertex} that are "HotSpot".
+   * 
    * @return
    */
-  private List<Vertex<?>> getAllModelSummits() {
-    List<Vertex<?>> summits = new ArrayList<Vertex<?>>();
+  private List<GraphElement<?>> getAllModelSummits() {
+    List<GraphElement<?>> summits = new ArrayList<GraphElement<?>>();
 
-    for (Vertex<?> vertex : _model.getVertices()) {
+    for (Vertex<?> vertex : model.getVertices()) {
       if (vertex.isHotSpot()) {
         summits.add(vertex);
       }
@@ -214,65 +184,67 @@ public class ExtendedScheduler implements IScheduler {
    *
    */
   public Set<Edge<?>> getBackTracks() {
-    return _backTracks;
+    return backTracks;
   }
 
   /**
-   * @return the _foundCycles
+   * @return the foundCycles
    */
   public Set<LinkedList<Edge<?>>> getFoundCycles() {
-    return _foundCycles;
+    return foundCycles;
   }
 
   /**
    *
    */
   public Set<Vertex<?>> getNotVisited() {
-    return _notVisited;
+    return notVisited;
   }
 
   /**
    *
    */
   public List<ITransposerTask<Vertex<?>>> getScheduleResult() {
-    return _scheduleResult;
+    return scheduleResult;
   }
 
   /**
    * @return the visited
    */
   public Set<Vertex<?>> getVisited() {
-    return _visited;
+    return visited;
   }
 
   /**
-   * Algorithm that decides in discovered cycles which are backtracks. This algorithm, for each cycle, finds a backtrack (if none of its arcs is not already in 
-   * the list of backtracks). Arcs considered as critical can not be considered as backtracks, we will choose another arc.
+   * Algorithm that decides in discovered cycles which are backtracks. This algorithm, for each cycle, finds a backtrack
+   * (if none of its arcs is not already in the list of backtracks). Arcs considered as critical can not be considered
+   * as backtracks, we will choose another arc.
    */
   private void identifyBacktracksFromCycles() {
     // All identified cycles are scanned
-    for (LinkedList<Edge<?>> currentCycle : _foundCycles) {
+    for (LinkedList<Edge<?>> currentCycle : foundCycles) {
       if (currentCycle.size() == 1) {
-        //With Region and InvolvedState, a region have premises on involvedStates, and ownedStates have premise on ownedRegion
+        // With Region and InvolvedState, a region have premises on involvedStates, and ownedStates have premise on
+        // ownedRegion
         for (Edge<?> edge : currentCycle) {
-          if (!_backTracks.contains(edge)) {
-            _backTracks.add(edge);
+          if (!backTracks.contains(edge)) {
+            backTracks.add(edge);
           }
         }
       } else if (currentCycle.size() == 2) {
         for (Edge<?> edge : currentCycle) {
-          if (!_backTracks.contains(edge) && !edge.isCritical()) {
-            _backTracks.add(edge);
+          if (!backTracks.contains(edge) && !edge.isCritical()) {
+            backTracks.add(edge);
           }
         }
       } else {
         boolean alreadyBacktracked = false;
 
-        // Check if one of the arcs is already in backtracks 
+        // Check if one of the arcs is already in backtracks
         // If this is the case, there is nothing to do
         // Otherwise, we must determine which arc can be considered as backtrack
         for (Edge<?> edge : currentCycle) {
-          if (_backTracks.contains(edge)) {
+          if (backTracks.contains(edge)) {
             alreadyBacktracked = true;
             break;
           }
@@ -288,7 +260,7 @@ public class ExtendedScheduler implements IScheduler {
           while (iterator.hasNext() && (!done)) {
             Edge<?> currentEdge = iterator.next();
             if (!currentEdge.isCritical()) {
-              _backTracks.add(currentEdge);
+              backTracks.add(currentEdge);
               done = true;
             }
           }
@@ -301,96 +273,76 @@ public class ExtendedScheduler implements IScheduler {
     }
   }
 
-  /**
-   * Return the index of a "peak" in a path
-   * @param path the path in which the "peak" is searched
-   * @param vertex the searched "peak"
-   * @return the index of a "peak" in the path (or -1 if not found)
-   */
-  private int indexOfVertexInPath(List<Edge<?>> path, Vertex<?> vertex) {
-    int i = 0;
-    for (Edge<?> edge : path) {
-      if ((edge.getSource() == vertex)) {
-        return i;
-      }
-      i++;
-    }
-    return -1;
-  }
 
   /**
    * initializer
    */
   private void init() {
-    _visited = new HashSet<Vertex<?>>();
-    _notVisited = new HashSet<Vertex<?>>();
-    _backTracks = new HashSet<Edge<?>>();
-    _foundCycles = new HashSet<LinkedList<Edge<?>>>();
-    _browsedPath = new ArrayList<Edge<?>>();
-    _scheduleResult = new LinkedList<ITransposerTask<Vertex<?>>>();
+    visited = new HashSet<Vertex<?>>();
+    notVisited = new HashSet<Vertex<?>>();
+    backTracks = new HashSet<Edge<?>>();
+    foundCycles = new HashSet<LinkedList<Edge<?>>>();
+    scheduleResult = new LinkedList<ITransposerTask<Vertex<?>>>();
   }
 
   public void dispose() {
-    _visited = null;
-    _notVisited = null;
-    _backTracks = null;
-    _foundCycles = null;
-    _browsedPath = null;
-    _scheduleResult = null;
-    _monitor = null;
+    visited = null;
+    notVisited = null;
+    backTracks = null;
+    foundCycles = null;
+    scheduleResult = null;
   }
 
   /**
    * Return true is the node has already been visited (if not, it is notTransposable)
-   * @param t The current {@link Vertex}
+   * 
+   * @param t
+   *          The current {@link Vertex}
    * @return true is the {@link Vertex} has already been visited, false otherwise
    */
   private boolean isVisited(Vertex<?> t) {
-    return _visited.contains(t);
+    return visited.contains(t);
   }
 
   /**
    * Remove all graph elements from the visited list, and add all of them in the "not visited" list.
    */
   private void markAllAsNotVisited() {
-    _notVisited.addAll(_model.getVertices());
-    _visited.clear();
+    notVisited.addAll(model.getVertices());
+    visited.clear();
   }
 
   /**
    *
    */
-  public void schedule(Comparator<Vertex<?>> comparator, IProgressMonitor monitor_p) {
+  public void schedule(Comparator<Vertex<?>> comparator, IProgressMonitor monitor) {
     init();
 
     /* mark elements as not visited */
     markAllAsNotVisited();
 
-    if (monitor_p != null) {
-      _monitor = monitor_p;
-      _monitorSize = _notVisited.size();
-      monitor_p.beginTask("Transposer Scheduling", 3); //$NON-NLS-1$
-      monitor_p.subTask("Cycle search"); //$NON-NLS-1$
+    if (monitor != null) {
+      monitor.beginTask("Transposer Scheduling", 3); //$NON-NLS-1$
+      monitor.subTask("Cycle search"); //$NON-NLS-1$
     }
 
     /*
-     * Launch In-depth tour:
-     * <UL>
-     * <LI>Identify the "topological" vertices of the model (hot spot) </LI>
-     * <LI>Descends recursively into the model from these nodes</LI>
-     * <LI>Doing it identifies backtracks</LI>
+     * Launch In-depth tour: <UL> <LI>Identify the "topological" vertices of the model (hot spot) </LI> <LI>Descends
+     * recursively into the model from these nodes</LI> <LI>Doing it identifies backtracks</LI>
      */
     depthFirstVisitGlobal();
 
     /*
-     * Now, all backtracks have been discovered and are stored in BackTRacks. The topological sort is run, with a list of links to ignore. 
-     * Once we have an order of the elements to be addressed, backtracks are concatenated. We keep the CycleWeak release that allows to 
-     * captures an exception in an unfavorable case.
+     * Now, all backtracks have been discovered and are stored in BackTRacks. The topological sort is run, with a list
+     * of links to ignore. Once we have an order of the elements to be addressed, backtracks are concatenated. We keep
+     * the CycleWeak release that allows to captures an exception in an unfavorable case.
      */
+    HashSet<Vertex<?>> vertices = new HashSet<Vertex<?>>();
+    vertices.addAll(model.getVertices());
     try {
-      setTopologicalSorter(new ExtendedTopologicalSorter(_visited, _backTracks));
-      getTopologicalSorter().sort(monitor_p);
-      _scheduleResult = getTopologicalSorter().getWork(monitor_p);
+      setTopologicalSorter(new ExtendedTopologicalSorter(vertices, backTracks));
+      getTopologicalSorter().sort(monitor);
+      scheduleResult = getTopologicalSorter().getWork(monitor);
       getTopologicalSorter().dispose();
     } catch (TransitionException e) {
       e.printStackTrace();
@@ -399,12 +351,14 @@ public class ExtendedScheduler implements IScheduler {
 
   /**
    * Mark a vertex as visited.
-   * @param t Current {@link Vertex}
+   * 
+   * @param t
+   *          Current {@link Vertex}
    */
   private void setVisited(Vertex<?> t) {
     if (!isVisited(t)) {
-      _visited.add(t);
-      _notVisited.remove(t);
+      visited.add(t);
+      notVisited.remove(t);
     }
   }
 
