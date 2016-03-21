@@ -54,6 +54,9 @@
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_78yZwOn5EeWL_q5RF2Gh7A" name="RunCapellaTestSuites">
       <reusedStep xsi:type="buildcore:StepContainer" href="Job_CapellaTestSuite.egfbuild#_8w87QOnxEeWL_q5RF2Gh7A"/>
     </steps>
+    <steps xsi:type="buildcore:ReuseStep" xmi:id="_wSoCMO06EeW8IfWbl-F86g" name="RunRCPTTTestSuites">
+      <reusedStep xsi:type="buildcore:StepContainer" href="Job_CapellaRcpttTestSuite.egfbuild#_EiyIsO07EeW8IfWbl-F86g"/>
+    </steps>
   </steps>
   <scms xsi:type="buildscm:GIT" xmi:id="_3X68kIIHEeSlQoYFN3Mlmg">
     <locations xmi:id="_3007AIIHEeSlQoYFN3Mlmg" protocol="https://" url="www.polarsys.org/r/capella/capella" localPath=""/>
