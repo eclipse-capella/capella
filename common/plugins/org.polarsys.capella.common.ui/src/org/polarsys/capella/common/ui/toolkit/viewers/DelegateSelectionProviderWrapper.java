@@ -27,7 +27,7 @@ public class DelegateSelectionProviderWrapper implements ISelectionProvider {
   /**
    * Constructor.
    * 
-   * @param selectionProvider_p
+   * @param selectionProviders
    */
   public DelegateSelectionProviderWrapper(List<ISelectionProvider> selectionProviders) {
     _delegates = selectionProviders;
@@ -70,7 +70,7 @@ public class DelegateSelectionProviderWrapper implements ISelectionProvider {
   /**
    * Set the delegate
    * 
-   * @param delegate_p
+   * @param delegates
    *          the delegate to set
    */
   public void setDelegates(List<ISelectionProvider> delegates) {

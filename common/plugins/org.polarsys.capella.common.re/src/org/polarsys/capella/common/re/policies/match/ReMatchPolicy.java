@@ -74,7 +74,7 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
 
     Collection<CatalogElementLink> usedLinks = ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(elt, queryContext);
 
-    //Retrieve a link using the element_p in the given CatalogElement and its owned elements.
+    //Retrieve a link using the element in the given CatalogElement and its owned elements.
     //We consider that an element cannot be used two time in several CatalogElement used by the given CatalogElement
     CatalogElementLink link = null;
     Collection<EObject> links = EObjectExt.getReferencers(element, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);

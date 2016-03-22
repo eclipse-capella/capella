@@ -201,14 +201,14 @@ public class CreateXmlConfiguration {
       marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
       marshaller.marshal(repConffile, new FileOutputStream(FILE_PATH));
 
-    } catch (PropertyException exception_p) {
-      exception_p.printStackTrace();
+    } catch (PropertyException exception) {
+      exception.printStackTrace();
 
-    } catch (FileNotFoundException exception_p) {
-      exception_p.printStackTrace();
+    } catch (FileNotFoundException exception) {
+      exception.printStackTrace();
 
-    } catch (JAXBException exception_p) {
-      exception_p.printStackTrace();
+    } catch (JAXBException exception) {
+      exception.printStackTrace();
     }
   }
 

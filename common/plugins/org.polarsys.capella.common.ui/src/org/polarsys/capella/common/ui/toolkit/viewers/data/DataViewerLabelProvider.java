@@ -22,7 +22,7 @@ public class DataViewerLabelProvider extends ValidLabelProvider {
   private TreeViewer _viewer;
 
   /**
-   * @param adapterFactory_p
+   * @param labelProvider
    */
   public DataViewerLabelProvider(ILabelProvider labelProvider) {
     super(labelProvider);

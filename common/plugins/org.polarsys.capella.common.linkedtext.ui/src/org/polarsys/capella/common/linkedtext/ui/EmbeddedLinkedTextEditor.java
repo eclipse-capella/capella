@@ -124,8 +124,8 @@ public class EmbeddedLinkedTextEditor {
             public void run(){
               try {
                 viewer.getDocument().replace(hl.getOffset(), hl.getLength(), ""); //$NON-NLS-1$
-              } catch (BadLocationException exception_p) {
-                exception_p.printStackTrace();
+              } catch (BadLocationException exception) {
+                exception.printStackTrace();
               }
               // FIXME, default position updater will shrink pos to size 0, not delete it.
               // so we must explicitly delete it

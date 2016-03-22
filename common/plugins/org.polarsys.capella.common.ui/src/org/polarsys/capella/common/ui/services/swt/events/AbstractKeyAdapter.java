@@ -42,7 +42,7 @@ public class AbstractKeyAdapter extends KeyAdapter {
     KeyStroke keyStroke = SWTKeySupport.convertAcceleratorToKeyStroke(SWTKeySupport.convertEventToUnmodifiedAccelerator(event));
     try {
       result = keyStroke.equals(KeyStroke.getInstance(keyRepresentation));
-    } catch (ParseException exception_p) {
+    } catch (ParseException exception) {
       // Ignore errors.
     }
     return result;

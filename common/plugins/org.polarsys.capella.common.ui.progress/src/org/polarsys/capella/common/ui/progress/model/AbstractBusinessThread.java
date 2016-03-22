@@ -58,7 +58,7 @@ public abstract class AbstractBusinessThread
       while(!_isRunning) { 
         try {
           Thread.sleep(10);
-        } catch (InterruptedException exception_p) {
+        } catch (InterruptedException exception) {
           // 
         } 
       }
@@ -72,7 +72,7 @@ public abstract class AbstractBusinessThread
   
   /**
    * Runs a step
-   * @param progressInfo_p
+   * @param info
    */
   public abstract void doRun(HashMap<String, Object> info);
 

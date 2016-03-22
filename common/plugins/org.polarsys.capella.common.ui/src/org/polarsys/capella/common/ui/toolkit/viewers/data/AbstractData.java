@@ -143,7 +143,6 @@ public abstract class AbstractData {
   /**
    * Initialize internal data structure for root elements.<br>
    * Default implementation uses {@link HashSet} to avoid duplicated elements.
-   * @param displayedElements_p
    */
   protected Collection<Object> initializeRootElementCollection() {
     return new HashSet<Object>(0);

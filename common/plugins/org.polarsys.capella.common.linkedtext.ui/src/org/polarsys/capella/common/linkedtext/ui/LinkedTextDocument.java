@@ -141,12 +141,9 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
   }
 
   /**
-   * Load a LinkedTextDocument from a raw string.
+   * Load a LinkedTextDocument from an Input.
    * 
-   * @param raw_p the raw text in the given language
-   * @param documentBase the document base object
-   * @param resolver_p the resolver to resolve and deresolve hyperlink references
-   * @param labelProvider_p the label provider used to obtain text presentations for hyperlink targets
+   * @param input the input in the given language
    * @return the loaded document
    */
   public static LinkedTextDocument load(Input input){
@@ -182,9 +179,9 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
     for (Position pos : links){
       try {
         doc.addPosition(LinkedTextCategories.HYPERLINK.name(), pos);
-      } catch (BadLocationException exception_p) {
-        exception_p.printStackTrace(); //FIXME
-      } catch (BadPositionCategoryException exception_p) {
+      } catch (BadLocationException exception) {
+        exception.printStackTrace(); //FIXME
+      } catch (BadPositionCategoryException exception) {
         /* there's always a hyperlink category */
       }
     }
@@ -197,7 +194,7 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
     replace(hl.getOffset(), 0, _labelProvider.getText(hl.getTarget()));
     try {
       addPosition(LinkedTextCategories.HYPERLINK.name(), hl);
-    } catch (BadPositionCategoryException exception_p) {
+    } catch (BadPositionCategoryException exception) {
       /* there's always a hyperlink category */
     }
     resumeListenerNotification();
@@ -214,7 +211,7 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
           result.add((LinkedTextHyperlink) pos);
         }
       }
-    } catch (BadPositionCategoryException exception_p) {
+    } catch (BadPositionCategoryException exception) {
       /* there's always a hyperlink category */
     }
     return result;
@@ -240,9 +237,9 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
       if (newText != null){
         try {
           replace(hl.getOffset(), hl.getLength(), newText);
-        } catch (BadLocationException exception_p) {
+        } catch (BadLocationException exception) {
           // FIXME
-          exception_p.printStackTrace();
+          exception.printStackTrace();
         }
       }
     }
@@ -268,17 +265,17 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
         try {
           String segment = get(offset, current.getOffset() - offset);
           builder.append(StringEscapeUtils.escapeHtml(segment));
-        } catch (BadLocationException exception_p) {
-          exception_p.printStackTrace();
+        } catch (BadLocationException exception) {
+          exception.printStackTrace();
         }
         
         String href = null;
         if (current.getTarget() == null){
           try {
             href = get(current.getOffset(), current.getLength());
-          } catch (BadLocationException exception_p) {
+          } catch (BadLocationException exception) {
             // FIXME
-            exception_p.printStackTrace();
+            exception.printStackTrace();
           }
         } else {
           href = getResolver().getHref(getDocumentBase(), current.getTarget());
@@ -293,8 +290,8 @@ public class LinkedTextDocument extends Document implements ILabelProviderListen
     try {
       String segment = get(offset, getLength() - offset);
       builder.append(StringEscapeUtils.escapeHtml(segment));
-    } catch (BadLocationException exception_p) {
-      exception_p.printStackTrace();
+    } catch (BadLocationException exception) {
+      exception.printStackTrace();
     }
 
     return builder.toString();

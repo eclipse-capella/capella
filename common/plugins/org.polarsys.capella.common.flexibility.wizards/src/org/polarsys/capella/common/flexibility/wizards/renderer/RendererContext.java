@@ -73,7 +73,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
   }
 
   /**
-   * @param context_p
+   * @param propertyContext
    */
   public void setPropertyContext(IPropertyContext propertyContext) {
 

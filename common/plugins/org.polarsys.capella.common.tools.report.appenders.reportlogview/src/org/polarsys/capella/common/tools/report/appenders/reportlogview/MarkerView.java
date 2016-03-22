@@ -272,10 +272,7 @@ public class MarkerView extends ViewPart {
   }
 
   /** 
-   * Install a custom viewer refresh on the marker view. 
-   * @param refresh_p the viewer refresh. may be null, 
-   * in which case you must refresh the viewer manually, 
-   * e.g. after a bulk operation.
+   * @param enabled
    */
   public void setAutomaticRefresh(boolean enabled){
     if (enabled){
@@ -300,7 +297,7 @@ public class MarkerView extends ViewPart {
    * group state passed as the parameter. Valid values
    * can be looked up in plugin.xml, under the 'group by'
    * menu contribution.
-   * @param currentState_p
+   * @param flavour
    */
   private void setFlavour(Flavour flavour) {
     if (flavour == Flavour.RULE){

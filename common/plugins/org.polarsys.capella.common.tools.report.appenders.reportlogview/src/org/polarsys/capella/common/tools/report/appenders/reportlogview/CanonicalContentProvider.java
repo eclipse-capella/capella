@@ -30,7 +30,7 @@ class CanonicalContentProvider extends AbstractMarkerViewContentProvider impleme
   /**
    * @param viewer
    * @param helper
-   * @param comparator_p
+   * @param refresh
    */
   public CanonicalContentProvider(TreeViewer viewer, MarkerViewHelper helper, IViewerRefresh refresh) {
     super(viewer, helper, refresh);

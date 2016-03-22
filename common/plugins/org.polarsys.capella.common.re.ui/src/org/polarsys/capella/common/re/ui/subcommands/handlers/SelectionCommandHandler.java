@@ -115,7 +115,6 @@ public class SelectionCommandHandler extends SubCommandHandler {
   /**
    * @param selection
    * @param context
-   * @param renderer_p
    * @return 
    */
   protected Object getPropertySource(ISelection selection, IRendererContext context) {

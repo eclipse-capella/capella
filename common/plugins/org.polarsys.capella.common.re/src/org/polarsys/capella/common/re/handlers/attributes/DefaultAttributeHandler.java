@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,7 +103,7 @@ public class DefaultAttributeHandler implements IAttributeHandler {
           value += suffix;
         }
         // If element name doesn't have the same name than the source name, we ignore it
-        // String oriName = getDefaultName(((CatalogElementLink) object_p).getOrigin().getTarget(), context_p, pContext_p);
+        // String oriName = getDefaultName(((CatalogElementLink) object).getOrigin().getTarget(), context, pContext);
         // if (value.equals(oriName)) {
         // value += suffix;
         // }

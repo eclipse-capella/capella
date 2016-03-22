@@ -61,8 +61,8 @@ public enum SeverityLevel {
         // to integrate Log4J levels..
         result = getLevel((Level) severity);
       }
-    } catch (CoreException exception_p) {
-      exception_p.printStackTrace();
+    } catch (CoreException exception) {
+      exception.printStackTrace();
     }
     return result;
   }

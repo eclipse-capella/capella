@@ -29,8 +29,8 @@ public class ReConfiguration extends ExtendedTraceabilityConfiguration {
   }
 
   /**
-   * @param source_p
-   * @param target_p
+   * @param origin
+   * @param replica
    */
   public ReConfiguration(CatalogElement origin, CatalogElement replica) {
     _origin = origin;

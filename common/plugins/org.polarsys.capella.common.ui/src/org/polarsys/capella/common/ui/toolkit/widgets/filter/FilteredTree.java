@@ -339,7 +339,7 @@ public class FilteredTree extends Composite {
   }
 
   /**
-   * @param filteredTree_p
+   * @param parent
    */
   protected Composite createFilterGroup(Composite parent) {
     filterComposite = new Group(parent, SWT.NONE);

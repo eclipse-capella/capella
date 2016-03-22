@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -113,10 +113,10 @@ public class AttachmentActivity extends AbstractActivity {
   }
 
   /**
-   * @param context_p
-   * @param object_p
-   * @param b_p
-   * @param targetElement_p
+   * @param context
+   * @param object
+   * @param b
+   * @param targetElement
    */
   protected void updateElement(IContext context, EObject object, boolean b, CatalogElement targetElement) {
     if (object instanceof CatalogElementLink) {
@@ -135,10 +135,10 @@ public class AttachmentActivity extends AbstractActivity {
   }
 
   /**
-   * @param context_p
-   * @param object_p
-   * @param b_p
-   * @param target_p
+   * @param context
+   * @param link1
+   * @param linkSuffixable
+   * @param target1
    */
   protected void storeUnsynchronizedFeatures(IContext context, EObject link1, EObject linkSuffixable, CatalogElement target1) {
     if (link1 instanceof CatalogElementLink) {
@@ -181,8 +181,8 @@ public class AttachmentActivity extends AbstractActivity {
 
   /**
    * Initialize the transformation traceability handler and set it into context via TRANSFORMATION_HANDLER
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
   protected IStatus initializeTraceabilityAttachmentHandler(IContext context, ActivityParameters activityParams) {
@@ -273,8 +273,10 @@ public class AttachmentActivity extends AbstractActivity {
   }
 
   /**
-   * @param source_p
-   * @param currentLocation_p
+   * @param context
+   * @param source
+   * @param container
+   * @param feature
    * @return
    */
   protected boolean attachElement(IContext context, EObject source, EObject container, EStructuralFeature feature) {

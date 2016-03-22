@@ -36,7 +36,7 @@ public class SelectElementAction extends Action {
   EObject eObject;
 
   /**
-   * @param contentProvider_p
+   * @param eObject
    */
   public SelectElementAction(EObject eObject) {
     this.eObject = eObject;
@@ -70,7 +70,7 @@ public class SelectElementAction extends Action {
         IViewPart explorerView = activePage.showView(__EXPLORER_VIEW_ID);
         ISelection newSelection = new StructuredSelection(elem);
         explorerView.getViewSite().getSelectionProvider().setSelection(newSelection);
-      } catch (PartInitException exception_p) {
+      } catch (PartInitException exception) {
         // nothing
       }
     }

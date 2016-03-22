@@ -70,7 +70,7 @@ public class ExecutionManagerRegistry {
 
   /**
    * Remove manager from all maps.
-   * @param id_p The unique manager ID, also being the ID of its editing domain provider. Must be not <code>null</code>.
+   * @param executionManager
    */
   public void removeManager(ExecutionManager executionManager) {
     if ((executionManager != null) && (executionManager.getEditingDomain() != null)) {

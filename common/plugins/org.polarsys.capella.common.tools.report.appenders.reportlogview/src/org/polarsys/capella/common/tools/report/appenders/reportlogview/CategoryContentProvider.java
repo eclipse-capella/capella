@@ -41,7 +41,7 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * @param viewer
    * @param helper 
-   * @param comparator_p
+   * @param refresh
    */
   public CategoryContentProvider(TreeViewer viewer, MarkerViewHelper helper, IViewerRefresh refresh) {
     super(viewer, helper, refresh);

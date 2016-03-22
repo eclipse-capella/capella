@@ -61,8 +61,8 @@ public class LinkedTextCompletionProposal implements ICompletionProposal {
        try {
         document.replace(_startOffset, _endOffset - _startOffset, ""); //$NON-NLS-1$
         ((LinkedTextDocument) document).insertHyperlink(LinkedTextHyperlink.create(_startOffset, _labelProvider.getText(_target).length(), _target));
-      } catch (BadLocationException exception_p) {
-        exception_p.printStackTrace();
+      } catch (BadLocationException exception) {
+        exception.printStackTrace();
       }
     }
 

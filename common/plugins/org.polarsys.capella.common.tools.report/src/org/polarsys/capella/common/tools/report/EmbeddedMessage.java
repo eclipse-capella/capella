@@ -99,7 +99,7 @@ public class EmbeddedMessage {
     try {
       name = (String) theElement.getClass().getMethod("getFullLabel", new Class[] {}).invoke(theElement, (Object[]) new Class[] {}); //$NON-NLS-1$
       
-    } catch (Throwable exception_p) {
+    } catch (Throwable exception) {
     } finally {
       if (name == null) {
         name = theElement.toString();

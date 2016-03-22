@@ -90,7 +90,6 @@ public class CreationHelper {
    * @param owner
    * @param objectClass
    * @param feature
-   * @param namingPrefix_p
    * @return
    */
   public static StrictCompoundCommand getAdditionnalCommand(final EditingDomain editingDomain, ModelElement namedElement, final EObject owner,

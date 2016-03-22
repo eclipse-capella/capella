@@ -135,7 +135,8 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
   }
 
   /**
-   * @param iMarkerResolution_p
+   * @param markers
+   * @param resolution
    * @return
    */
   protected IContributionItem createContributionItem(final Collection<IMarker> markers,
@@ -205,12 +206,12 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
             .getShell());
         try {
           PlatformUI.getWorkbench().getProgressService().runInUI(context, resolutionsRunnable, null);
-        } catch (InvocationTargetException exception_p) {
+        } catch (InvocationTargetException exception) {
           StatusManager.getManager().handle(
-              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
-        } catch (InterruptedException exception_p) {
+              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
+        } catch (InterruptedException exception) {
           StatusManager.getManager().handle(
-              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
+              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
         }
       }
     });

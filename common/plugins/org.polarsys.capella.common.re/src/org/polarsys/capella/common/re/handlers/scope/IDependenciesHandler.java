@@ -24,12 +24,12 @@ public interface IDependenciesHandler extends IHandler {
 
   /**
    * Shared elements are elements which are not in the scopeElements but which will be shared by both ReplicableElement and Replica
-   * Retrieve the sharedElements for the given element_p
+   * Retrieve the sharedElements for the given element
    */
   public Collection<EObject> getSharedElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context);
 
   /**
-   * Retrieve elements which are dependent of the given element_p but should be included in the scope
+   * Retrieve elements which are dependent of the given element but should be included in the scope
    * these elements, not included in the scope, will raise a warning to the user indicates him to include them (or not)
    */
   public Collection<EObject> getDependencies(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context);

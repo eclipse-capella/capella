@@ -35,8 +35,7 @@ public class ExecutionManager {
   private TransactionalEditingDomain _editingDomain;
 
   /**
-   * Set editing domain provider to use.
-   * @param editingDomainProvider_p A not <code>null</code> editing domain instance.
+   *
    */
   public ExecutionManager() {
     // Get editing domain.
@@ -76,7 +75,7 @@ public class ExecutionManager {
   protected void executeReadOnlyCommand(ICommand command, TransactionalEditingDomain editingDomain) {
     try {
       editingDomain.runExclusive(command);
-    } catch (InterruptedException ie_p) {
+    } catch (InterruptedException ie) {
       command.commandInterrupted();
     }
   }
@@ -90,9 +89,9 @@ public class ExecutionManager {
     TransactionalCommandStack stack = (TransactionalCommandStack) editingDomain.getCommandStack();
     try {
       stack.execute(createRecordingCommand(command, editingDomain), command.getExecutionOptions());
-    } catch (InterruptedException exception_p) {
+    } catch (InterruptedException exception) {
       command.commandInterrupted();
-    } catch (RollbackException exception_p) {
+    } catch (RollbackException exception) {
       command.commandRolledBack();
     }
   }

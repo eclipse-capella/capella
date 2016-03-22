@@ -39,7 +39,7 @@ public abstract class AbstractLocateInViewPartHandler extends AbstractLocateInWo
     if (null != targetedPartId) {
       try {
         return getWorkbenchWindow(event).getActivePage().showView(targetedPartId);
-      } catch (PartInitException exception_p) {
+      } catch (PartInitException exception) {
         // Do nothing.
       }
     }

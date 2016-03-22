@@ -62,7 +62,7 @@ public class ReplicableElementExt {
   }
 
   /**
-   * Returns replicable elements links referencing the given element_p
+   * Returns replicable elements links referencing the given element
    */
   public static Collection<CatalogElementLink> getReferencingLinks(EObject source) {
     ArrayList<CatalogElementLink> elements = new ArrayList<CatalogElementLink>();
@@ -88,7 +88,7 @@ public class ReplicableElementExt {
   }
 
   /**
-   * Returns replicable elements links referencing the given element_p
+   * Returns replicable elements links referencing the given element
    */
   public static Collection<CatalogElement> getReplicas(CatalogElement source) {
     ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();

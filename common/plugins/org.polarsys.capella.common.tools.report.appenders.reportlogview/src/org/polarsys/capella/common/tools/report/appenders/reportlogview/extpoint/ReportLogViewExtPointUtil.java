@@ -72,8 +72,8 @@ public class ReportLogViewExtPointUtil {
               IReportLogViewExtPointConstants.FILTER_PROVIDER_ATT
           )
         ;
-      } catch (Exception exception_p) {
-        exception_p.printStackTrace();
+      } catch (Exception exception) {
+        exception.printStackTrace();
       }
     }
     

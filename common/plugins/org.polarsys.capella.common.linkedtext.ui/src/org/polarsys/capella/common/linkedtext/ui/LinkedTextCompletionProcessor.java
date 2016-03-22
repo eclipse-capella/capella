@@ -67,8 +67,8 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
           result = res.toArray(new ICompletionProposal[res.size()]);
         }
       }
-    } catch (BadLocationException exception_p) {
-      exception_p.printStackTrace();
+    } catch (BadLocationException exception) {
+      exception.printStackTrace();
       //FIXME
     }
     return result;

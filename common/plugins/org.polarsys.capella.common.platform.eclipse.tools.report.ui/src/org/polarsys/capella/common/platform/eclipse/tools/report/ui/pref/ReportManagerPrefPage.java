@@ -105,8 +105,8 @@ public class ReportManagerPrefPage extends PreferencePage implements
 	    try {
 	      String componentName = (String) f.get(null);
 	      _registry.subscribe(componentName);
-	    } catch (Exception exception_p) {
-	      ReportManagerActivator.getDefault().getLog().log(new Status(IStatus.ERROR, ReportManagerActivator.getDefault().getBundle().getSymbolicName(), exception_p.getMessage(), exception_p));
+	    } catch (Exception exception) {
+	      ReportManagerActivator.getDefault().getLog().log(new Status(IStatus.ERROR, ReportManagerActivator.getDefault().getBundle().getSymbolicName(), exception.getMessage(), exception));
 	    }
 	  }
 

@@ -31,7 +31,7 @@ public class ValidLabelProvider implements ILabelProvider, IColorProvider, IFont
   private ILabelProvider _labelProvider;
 
   /**
-   * @param adapterFactory_p
+   * @param labelProvider
    */
   public ValidLabelProvider(ILabelProvider labelProvider) {
     _labelProvider = labelProvider;

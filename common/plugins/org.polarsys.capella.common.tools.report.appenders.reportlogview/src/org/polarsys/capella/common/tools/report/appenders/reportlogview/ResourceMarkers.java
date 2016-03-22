@@ -116,8 +116,8 @@ class ResourceMarkers implements IResourceChangeListener, IMarkerSource {
         for (IMarker m : resource.findMarkers(t, false, IResource.DEPTH_INFINITE)){
           result.add(m);
         }
-      } catch (CoreException exception_p) {
-          exception_p.printStackTrace();
+      } catch (CoreException exception) {
+          exception.printStackTrace();
       }
     }
     return result;

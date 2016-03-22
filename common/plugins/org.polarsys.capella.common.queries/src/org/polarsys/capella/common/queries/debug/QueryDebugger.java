@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,10 +57,10 @@ public class QueryDebugger {
 				System.out.println("!! ORACLE COMPARISON FAILED !!");
 				System.out.println("assertSetIncludedInSet failed for query " + queryIdentifier);
 			}
-		} catch (Exception exception_p) {
-			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception_p);
+		} catch (Exception exception) {
+			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception);
 			System.out.println("!! BUG DURING QUERY CALL !!");
-			exception_p.printStackTrace();
+			exception.printStackTrace();
 		}
 		return result;
 	}
@@ -84,10 +84,10 @@ public class QueryDebugger {
 					System.out.println("  " + element);
 				}
 			}
-		} catch (Exception exception_p) {
-			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception_p);
+		} catch (Exception exception) {
+			Logger.getLogger(IReportManagerDefaultComponents.MODEL).debug("BUG DURING QUERY CALL !!" + queryIdentifier, exception);
 			System.out.println("!! BUG DURING QUERY CALL !!");
-			exception_p.printStackTrace();
+			exception.printStackTrace();
 		}
 		return result;
 	}

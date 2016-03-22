@@ -82,7 +82,7 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * @param configurationInstance_p
+   * @param source
    * @return
    */
   protected ConfigurationInstance copyConfig(ConfigurationInstance source) {
@@ -112,7 +112,8 @@ public class ReportManagerRegistry {
   }
 
   /**
-   * @param configurationInstance_p
+   * @param source
+   * @param target
    * @return
    */
   protected void copyValuesOfConfigurationInstance(ConfigurationInstance source, ConfigurationInstance target) {
@@ -173,8 +174,8 @@ public class ReportManagerRegistry {
       EmbeddedMessageRenderer emRenderer = new EmbeddedMessageRenderer();
       h.addRenderer(EmbeddedMessage.class, emRenderer);
 
-    } catch (Throwable exception_p) {
-      exception_p.printStackTrace();
+    } catch (Throwable exception) {
+      exception.printStackTrace();
     }
 
     Enumeration<?> appenders = Logger.getRootLogger().getAllAppenders();

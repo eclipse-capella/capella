@@ -48,12 +48,12 @@ public class DisableConstraintHandler extends AbstractHandler {
     IHandlerService service = (IHandlerService) window.getService(IHandlerService.class);
     try {
       service.executeCommand(DeleteConstraintMarkersHandler.COMMAND_ID, null);
-    } catch (NotDefinedException exception_p) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception_p.getMessage(), exception_p);
-    } catch (NotEnabledException exception_p) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception_p.getMessage(), exception_p);
-    } catch (NotHandledException exception_p) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception_p.getMessage(), exception_p);
+    } catch (NotDefinedException exception) {
+      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+    } catch (NotEnabledException exception) {
+      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+    } catch (NotHandledException exception) {
+      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
     }
 
     IConstraintDescriptor descriptor = getConstraintDescriptor(HandlerUtil.getCurrentSelection(event));

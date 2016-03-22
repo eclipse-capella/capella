@@ -210,15 +210,15 @@ class MarkerViewColumns {
    * Provide a ContentProvider to Column mapping. Must be called after installing a new content provider on the marker view's viewer.
    */
   void update(AbstractMarkerViewContentProvider provider) {
-    Class<?> providerClass_p = provider.getClass();
-    if (providerClass_p != providerClass) {
+    Class<?> providerClass = provider.getClass();
+    if (providerClass != this.providerClass) {
       disposeAll();
       for (Class<?> c : columnFactories.keySet()) {
-        if (c.isAssignableFrom(providerClass_p)) {
-          columnFactories.get(providerClass_p).run();
+        if (c.isAssignableFrom(providerClass)) {
+          columnFactories.get(providerClass).run();
         }
       }
-      providerClass = provider.getClass();
+      this.providerClass = provider.getClass();
     }
   }
 
