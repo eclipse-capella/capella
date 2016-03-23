@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.fa.impl;
 
 import java.util.Collection;
@@ -667,8 +668,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -714,8 +715,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1082,8 +1083,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<Requirement> resultAsList = (Collection<Requirement>) result;
 		return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1129,8 +1130,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<SequenceMessage> resultAsList = (Collection<SequenceMessage>) result;
 		return new EcoreEList.UnmodifiableEList<SequenceMessage>(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1398,8 +1399,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
 		return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_EXCHANGE__REALIZING_ACTIVITY_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1456,8 +1457,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		
 		try {
 			return (ExchangeLink) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -1584,8 +1585,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ExchangeSpecificationRealization> resultAsList = (Collection<ExchangeSpecificationRealization>) result;
 		return new EcoreEList.UnmodifiableEList<ExchangeSpecificationRealization>(this, FaPackage.Literals.EXCHANGE_SPECIFICATION__OUTGOING_EXCHANGE_SPECIFICATION_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1631,8 +1632,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ExchangeSpecificationRealization> resultAsList = (Collection<ExchangeSpecificationRealization>) result;
 		return new EcoreEList.UnmodifiableEList<ExchangeSpecificationRealization>(this, FaPackage.Literals.EXCHANGE_SPECIFICATION__INCOMING_EXCHANGE_SPECIFICATION_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1742,8 +1743,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.COMPONENT_EXCHANGE__ALLOCATED_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1789,8 +1790,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchangeRealization> resultAsList = (Collection<ComponentExchangeRealization>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchangeRealization>(this, FaPackage.Literals.COMPONENT_EXCHANGE__INCOMING_COMPONENT_EXCHANGE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1836,8 +1837,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchangeRealization> resultAsList = (Collection<ComponentExchangeRealization>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchangeRealization>(this, FaPackage.Literals.COMPONENT_EXCHANGE__OUTGOING_COMPONENT_EXCHANGE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1883,8 +1884,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchangeFunctionalExchangeAllocation> resultAsList = (Collection<ComponentExchangeFunctionalExchangeAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchangeFunctionalExchangeAllocation>(this, FaPackage.Literals.COMPONENT_EXCHANGE__OUTGOING_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1995,8 +1996,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		
 		try {
 			return (Port) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -2054,8 +2055,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		
 		try {
 			return (Part) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -2113,8 +2114,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		
 		try {
 			return (Port) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -2172,8 +2173,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		
 		try {
 			return (Part) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -2238,8 +2239,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, FaPackage.Literals.COMPONENT_EXCHANGE__ALLOCATOR_PHYSICAL_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2285,8 +2286,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchange> resultAsList = (Collection<ComponentExchange>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchange>(this, FaPackage.Literals.COMPONENT_EXCHANGE__REALIZED_COMPONENT_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2332,8 +2333,8 @@ public class ComponentExchangeImpl extends AbstractTypeImpl implements Component
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchange> resultAsList = (Collection<ComponentExchange>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchange>(this, FaPackage.Literals.COMPONENT_EXCHANGE__REALIZING_COMPONENT_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

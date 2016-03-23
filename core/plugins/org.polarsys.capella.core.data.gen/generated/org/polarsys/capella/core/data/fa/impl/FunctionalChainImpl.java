@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.fa.impl;
 
 import java.util.Collection;
@@ -254,8 +255,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -301,8 +302,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -416,8 +417,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -463,8 +464,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -510,8 +511,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -557,8 +558,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<InvolvedElement> resultAsList = (Collection<InvolvedElement>) result;
 		return new EcoreEList.UnmodifiableEList<InvolvedElement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -604,8 +605,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -651,8 +652,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<AbstractFunctionalBlock> resultAsList = (Collection<AbstractFunctionalBlock>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractFunctionalBlock>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -716,8 +717,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -763,8 +764,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<Capability> resultAsList = (Collection<Capability>) result;
 		return new EcoreEList.UnmodifiableEList<Capability>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -810,8 +811,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
 		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -857,8 +858,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -904,8 +905,8 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

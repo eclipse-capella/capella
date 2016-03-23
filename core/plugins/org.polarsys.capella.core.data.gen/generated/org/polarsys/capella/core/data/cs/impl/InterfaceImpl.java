@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
@@ -321,8 +322,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<InterfaceAllocation> resultAsList = (Collection<InterfaceAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<InterfaceAllocation>(this, CsPackage.Literals.INTERFACE_ALLOCATOR__PROVISIONED_INTERFACE_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -368,8 +369,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.INTERFACE_ALLOCATOR__ALLOCATED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -473,8 +474,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
 		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.INTERFACE__IMPLEMENTOR_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -520,8 +521,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
 		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.INTERFACE__USER_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -567,8 +568,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<InterfaceImplementation> resultAsList = (Collection<InterfaceImplementation>) result;
 		return new EcoreEList.UnmodifiableEList<InterfaceImplementation>(this, CsPackage.Literals.INTERFACE__INTERFACE_IMPLEMENTATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -614,8 +615,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<InterfaceUse> resultAsList = (Collection<InterfaceUse>) result;
 		return new EcoreEList.UnmodifiableEList<InterfaceUse>(this, CsPackage.Literals.INTERFACE__INTERFACE_USES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -661,8 +662,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<InterfaceAllocation> resultAsList = (Collection<InterfaceAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<InterfaceAllocation>(this, CsPackage.Literals.INTERFACE__PROVISIONING_INTERFACE_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -708,8 +709,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.INTERFACE__ALLOCATING_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -755,8 +756,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
 		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.INTERFACE__ALLOCATING_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -802,8 +803,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<ExchangeItem> resultAsList = (Collection<ExchangeItem>) result;
 		return new EcoreEList.UnmodifiableEList<ExchangeItem>(this, CsPackage.Literals.INTERFACE__EXCHANGE_ITEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -867,8 +868,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
 		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.INTERFACE__REQUIRING_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -914,8 +915,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, CsPackage.Literals.INTERFACE__REQUIRING_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -961,8 +962,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
 		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.INTERFACE__PROVIDING_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1008,8 +1009,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, CsPackage.Literals.INTERFACE__PROVIDING_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1055,8 +1056,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.INTERFACE__REALIZING_LOGICAL_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1102,8 +1103,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.INTERFACE__REALIZED_CONTEXT_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1149,8 +1150,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.INTERFACE__REALIZING_PHYSICAL_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1196,8 +1197,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.INTERFACE__REALIZED_LOGICAL_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

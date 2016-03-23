@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.capellacommon.impl;
 
 import java.util.Collection;
@@ -218,8 +219,8 @@ public class StateImpl extends AbstractStateImpl implements State {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -265,8 +266,8 @@ public class StateImpl extends AbstractStateImpl implements State {
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -312,8 +313,8 @@ public class StateImpl extends AbstractStateImpl implements State {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

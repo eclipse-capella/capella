@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.capellamodeller.impl;
 
 import java.util.Collection;
@@ -135,8 +136,8 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
 		@SuppressWarnings("unchecked")
 		Collection<OperationalAnalysis> resultAsList = (Collection<OperationalAnalysis>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalAnalysis>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -182,8 +183,8 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
 		@SuppressWarnings("unchecked")
 		Collection<SystemAnalysis> resultAsList = (Collection<SystemAnalysis>) result;
 		return new EcoreEList.UnmodifiableEList<SystemAnalysis>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -229,8 +230,8 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
 		@SuppressWarnings("unchecked")
 		Collection<LogicalArchitecture> resultAsList = (Collection<LogicalArchitecture>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -276,8 +277,8 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalArchitecture> resultAsList = (Collection<PhysicalArchitecture>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -323,8 +324,8 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
 		@SuppressWarnings("unchecked")
 		Collection<EPBSArchitecture> resultAsList = (Collection<EPBSArchitecture>) result;
 		return new EcoreEList.UnmodifiableEList<EPBSArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -370,8 +371,8 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
 		@SuppressWarnings("unchecked")
 		Collection<SharedPkg> resultAsList = (Collection<SharedPkg>) result;
 		return new EcoreEList.UnmodifiableEList<SharedPkg>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

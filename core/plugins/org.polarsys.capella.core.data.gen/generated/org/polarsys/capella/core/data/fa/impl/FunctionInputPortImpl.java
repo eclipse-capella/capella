@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.fa.impl;
 
 import java.util.Collection;
@@ -335,8 +336,8 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 		
 		try {
 			return (ActivityPartition) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -394,8 +395,8 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 		
 		try {
 			return (InterruptibleActivityRegion) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -453,8 +454,8 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 		
 		try {
 			return (InterruptibleActivityRegion) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -501,8 +502,8 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 		@SuppressWarnings("unchecked")
 		Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
 		return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -548,8 +549,8 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 		@SuppressWarnings("unchecked")
 		Collection<ActivityEdge> resultAsList = (Collection<ActivityEdge>) result;
 		return new EcoreEList.UnmodifiableEList<ActivityEdge>(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -951,8 +952,8 @@ public class FunctionInputPortImpl extends FunctionPortImpl implements FunctionI
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

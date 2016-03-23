@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.oa.impl;
 
 import java.util.Collection;
@@ -249,8 +250,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -296,8 +297,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -343,8 +344,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -390,8 +391,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -437,8 +438,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<RoleAllocation> resultAsList = (Collection<RoleAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<RoleAllocation>(this, OaPackage.Literals.ENTITY__ROLE_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -555,8 +556,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<Entity> resultAsList = (Collection<Entity>) result;
 		return new EcoreEList.UnmodifiableEList<Entity>(this, OaPackage.Literals.ENTITY__SUB_ENTITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -656,8 +657,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, OaPackage.Literals.ENTITY__ALLOCATED_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -703,8 +704,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<Role> resultAsList = (Collection<Role>) result;
 		return new EcoreEList.UnmodifiableEList<Role>(this, OaPackage.Literals.ENTITY__ALLOCATED_ROLES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -750,8 +751,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
 		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, OaPackage.Literals.ENTITY__REALIZING_SYSTEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -797,8 +798,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<Actor> resultAsList = (Collection<Actor>) result;
 		return new EcoreEList.UnmodifiableEList<Actor>(this, OaPackage.Literals.ENTITY__REALIZING_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -844,8 +845,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 		@SuppressWarnings("unchecked")
 		Collection<OperationalCapability> resultAsList = (Collection<OperationalCapability>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalCapability>(this, OaPackage.Literals.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
@@ -285,8 +286,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
 		return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -332,8 +333,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
 		return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -397,8 +398,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -444,8 +445,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -563,8 +564,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<ConfigurationItem> resultAsList = (Collection<ConfigurationItem>) result;
 		return new EcoreEList.UnmodifiableEList<ConfigurationItem>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -610,8 +611,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -657,8 +658,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -704,8 +705,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -751,8 +752,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -834,8 +835,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, CsPackage.Literals.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -881,8 +882,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, CsPackage.Literals.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -928,8 +929,8 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, CsPackage.Literals.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

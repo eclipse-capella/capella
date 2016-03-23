@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
@@ -498,8 +499,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Generalization> resultAsList = (Collection<Generalization>) result;
 		return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -545,8 +546,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Generalization> resultAsList = (Collection<Generalization>) result;
 		return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -592,8 +593,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
 		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -639,8 +640,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
 		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -704,8 +705,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Property> resultAsList = (Collection<Property>) result;
 		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -751,8 +752,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Partition> resultAsList = (Collection<Partition>) result;
 		return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -798,8 +799,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Partition> resultAsList = (Collection<Partition>) result;
 		return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -863,8 +864,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<InterfaceAllocation> resultAsList = (Collection<InterfaceAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<InterfaceAllocation>(this, CsPackage.Literals.INTERFACE_ALLOCATOR__PROVISIONED_INTERFACE_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -910,8 +911,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.INTERFACE_ALLOCATOR__ALLOCATED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -975,8 +976,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1022,8 +1023,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1069,8 +1070,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1116,8 +1117,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1163,8 +1164,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1210,8 +1211,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1257,8 +1258,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1304,8 +1305,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1351,8 +1352,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1398,8 +1399,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1463,8 +1464,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<InterfaceUse> resultAsList = (Collection<InterfaceUse>) result;
 		return new EcoreEList.UnmodifiableEList<InterfaceUse>(this, CsPackage.Literals.COMPONENT__USED_INTERFACE_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1510,8 +1511,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.COMPONENT__USED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1575,8 +1576,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<InterfaceImplementation> resultAsList = (Collection<InterfaceImplementation>) result;
 		return new EcoreEList.UnmodifiableEList<InterfaceImplementation>(this, CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACE_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1622,8 +1623,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1669,8 +1670,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentAllocation> resultAsList = (Collection<ComponentAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentAllocation>(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1716,8 +1717,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentAllocation> resultAsList = (Collection<ComponentAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentAllocation>(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1763,8 +1764,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
 		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1810,8 +1811,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
 		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1857,8 +1858,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1904,8 +1905,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1951,8 +1952,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, CsPackage.Literals.COMPONENT__CONTAINED_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1998,8 +1999,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Part> resultAsList = (Collection<Part>) result;
 		return new EcoreEList.UnmodifiableEList<Part>(this, CsPackage.Literals.COMPONENT__CONTAINED_PARTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2045,8 +2046,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, CsPackage.Literals.COMPONENT__CONTAINED_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

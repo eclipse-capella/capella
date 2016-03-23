@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.interaction.impl;
 
 import java.util.Collection;
@@ -481,8 +482,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		@SuppressWarnings("unchecked")
 		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
 		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -528,8 +529,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		@SuppressWarnings("unchecked")
 		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
 		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -961,8 +962,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1008,8 +1009,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		@SuppressWarnings("unchecked")
 		Collection<Part> resultAsList = (Collection<Part>) result;
 		return new EcoreEList.UnmodifiableEList<Part>(this, InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1055,8 +1056,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		@SuppressWarnings("unchecked")
 		Collection<Scenario> resultAsList = (Collection<Scenario>) result;
 		return new EcoreEList.UnmodifiableEList<Scenario>(this, InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1102,8 +1103,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		@SuppressWarnings("unchecked")
 		Collection<Scenario> resultAsList = (Collection<Scenario>) result;
 		return new EcoreEList.UnmodifiableEList<Scenario>(this, InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1149,8 +1150,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		@SuppressWarnings("unchecked")
 		Collection<Scenario> resultAsList = (Collection<Scenario>) result;
 		return new EcoreEList.UnmodifiableEList<Scenario>(this, InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

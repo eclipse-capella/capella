@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
@@ -366,8 +367,8 @@ public abstract class AbstractPhysicalLinkEndImpl extends ModelElementImpl imple
 		@SuppressWarnings("unchecked")
 		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -413,8 +414,8 @@ public abstract class AbstractPhysicalLinkEndImpl extends ModelElementImpl imple
 		@SuppressWarnings("unchecked")
 		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -781,8 +782,8 @@ public abstract class AbstractPhysicalLinkEndImpl extends ModelElementImpl imple
 		@SuppressWarnings("unchecked")
 		Collection<Requirement> resultAsList = (Collection<Requirement>) result;
 		return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -828,8 +829,8 @@ public abstract class AbstractPhysicalLinkEndImpl extends ModelElementImpl imple
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

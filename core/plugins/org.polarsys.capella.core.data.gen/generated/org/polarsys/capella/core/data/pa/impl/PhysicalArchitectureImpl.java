@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.pa.impl;
 
 import java.util.Collection;
@@ -585,8 +586,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 		
 		try {
 			return (CapabilityRealizationPkg) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -644,8 +645,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 		
 		try {
 			return (PhysicalFunctionPkg) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -728,8 +729,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<LogicalArchitectureRealization> resultAsList = (Collection<LogicalArchitectureRealization>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalArchitectureRealization>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -775,8 +776,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<LogicalArchitecture> resultAsList = (Collection<LogicalArchitecture>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalArchitecture>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -822,8 +823,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<EPBSArchitecture> resultAsList = (Collection<EPBSArchitecture>) result;
 		return new EcoreEList.UnmodifiableEList<EPBSArchitecture>(this, PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

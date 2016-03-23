@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.&#xA; All rights reserved. This program and the accompanying materials&#xA; are made available under the terms of the Eclipse Public License v1.0&#xA; which accompanies this distribution, and is available at&#xA; http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA; Contributors:&#xA;    Thales - initial API and implementation"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.&#xD;&#xA; All rights reserved. This program and the accompanying materials&#xD;&#xA; are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA; which accompanies this distribution, and is available at&#xD;&#xA; http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA; Contributors:&#xD;&#xA;    Thales - initial API and implementation"
     modelDirectory="/org.polarsys.capella.common.libraries.gen/generated/" modelPluginID="org.polarsys.capella.common.libraries.gen"
     modelName="Libraries" nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore"
-    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.polarsys.kitalpha.emde.model/model/eMDE.genmodel#//emde">
+    containmentProxies="true" complianceLevel="6.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.polarsys.kitalpha.emde.model/model/eMDE.genmodel#//emde">
   <foreignModel>libraries.ecore</foreignModel>
   <genPackages prefix="Libraries" basePackage="org.polarsys.capella.common" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"

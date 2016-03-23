@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.capellacommon.impl;
 
 import java.util.Collection;
@@ -250,8 +251,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		@SuppressWarnings("unchecked")
 		Collection<AbstractState> resultAsList = (Collection<AbstractState>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractState>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -297,8 +298,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		@SuppressWarnings("unchecked")
 		Collection<AbstractState> resultAsList = (Collection<AbstractState>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractState>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -380,8 +381,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		@SuppressWarnings("unchecked")
 		Collection<Region> resultAsList = (Collection<Region>) result;
 		return new EcoreEList.UnmodifiableEList<Region>(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

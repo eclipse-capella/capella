@@ -255,8 +255,8 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 	 * @generated
 	 */
 	@Override
-	protected Command createInitializeCopyCommand(EditingDomain domain_p, EObject owner_p, Helper helper_p) {
-		return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
+	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
+		return new SharedInitializeCopyCommand(domain, owner, helper);
 	}
 
   /**
@@ -265,11 +265,11 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
    *      java.lang.Object, java.lang.String, java.lang.String[])
    */
   @Override
-  protected ItemPropertyDescriptor createItemPropertyDescriptor(AdapterFactory adapterFactory_p, ResourceLocator resourceLocator_p, String displayName_p,
-      String description_p, EStructuralFeature feature_p, boolean isSettable_p, boolean multiLine_p, boolean sortChoices_p, Object staticImage_p,
-      String category_p, String[] filterFlags_p) {
-    return new ModelElementItemPropertyDescriptor(adapterFactory_p, resourceLocator_p, displayName_p, description_p, feature_p, isSettable_p, multiLine_p,
-        sortChoices_p, staticImage_p, category_p, filterFlags_p);
+  protected ItemPropertyDescriptor createItemPropertyDescriptor(AdapterFactory adapterFactory, ResourceLocator resourceLocator, String displayName,
+      String description, EStructuralFeature feature, boolean isSettable, boolean multiLine, boolean sortChoices, Object staticImage,
+      String category, String[] filterFlags) {
+    return new ModelElementItemPropertyDescriptor(adapterFactory, resourceLocator, displayName, description, feature, isSettable, multiLine,
+        sortChoices, staticImage, category, filterFlags);
   }
 
 }

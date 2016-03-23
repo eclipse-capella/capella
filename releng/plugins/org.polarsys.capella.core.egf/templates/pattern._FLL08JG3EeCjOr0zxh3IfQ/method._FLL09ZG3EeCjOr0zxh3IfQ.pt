@@ -7,7 +7,7 @@
 <%if (genModel.useClassOverrideAnnotation()) {%>
 	@Override
 <%}%>
-	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createInitializeCopyCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain_p, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner_p, <%=genModel.getImportedName("org.eclipse.emf.edit.command.CopyCommand.Helper")%> helper_p) {
-		return new <%=genModel.getImportedName("org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand")%>(domain_p, owner_p, helper_p);
+	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createInitializeCopyCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.edit.command.CopyCommand.Helper")%> helper) {
+		return new <%=genModel.getImportedName("org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand")%>(domain, owner, helper);
 	}
 	// end-capella-code

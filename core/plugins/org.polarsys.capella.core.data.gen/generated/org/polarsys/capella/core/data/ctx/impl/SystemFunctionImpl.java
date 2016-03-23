@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.ctx.impl;
 
 import java.util.Collection;
@@ -170,8 +171,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		@SuppressWarnings("unchecked")
 		Collection<Actor> resultAsList = (Collection<Actor>) result;
 		return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -217,8 +218,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		@SuppressWarnings("unchecked")
 		Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
 		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -264,8 +265,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		@SuppressWarnings("unchecked")
 		Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -311,8 +312,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		@SuppressWarnings("unchecked")
 		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -358,8 +359,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		@SuppressWarnings("unchecked")
 		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
 		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -405,8 +406,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		@SuppressWarnings("unchecked")
 		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
 		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

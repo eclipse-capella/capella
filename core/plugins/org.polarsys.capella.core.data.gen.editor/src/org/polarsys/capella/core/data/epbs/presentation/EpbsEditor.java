@@ -1,14 +1,14 @@
-/**
- *
- *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- * 
- *  Contributors:
- *     Thales - initial API and implementation
- */
+/*******************************************************************************
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
 
 package org.polarsys.capella.core.data.epbs.presentation;
 
@@ -22,14 +22,22 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
+import java.util.HashMap;
+import java.util.HashMap;
 import java.util.HashMap;
 import java.util.HashMap;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map;
 import java.util.Map;
 import java.util.Map;
 import java.util.Map;
@@ -46,6 +54,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -67,6 +77,8 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -149,6 +161,8 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -181,6 +195,8 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
+import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
+import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.epbs.provider.EpbsItemProviderAdapterFactory;
@@ -1113,22 +1129,22 @@ public class EpbsEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection<EmdeViewerFilterAction> getEmdeViewerFilterActions(Resource resource_p) {
-		if (resource_p == null || resource_p.getContents().isEmpty()) {
+	protected Collection<EmdeViewerFilterAction> getEmdeViewerFilterActions(Resource resource) {
+		if (resource == null || resource.getContents().isEmpty()) {
 			return null;
 		}
 		// Cached extension actions		
-		if (viewerFilterActions.get(resource_p) != null) {
-			return viewerFilterActions.get(resource_p);
+		if (viewerFilterActions.get(resource) != null) {
+			return viewerFilterActions.get(resource);
 		}	
 		// Create new extension actions
 		Collection<EmdeViewerFilterAction> extensionActions = new ArrayList<EmdeViewerFilterAction>();		
-		String extensibleModelURI = resource_p.getContents().get(0).eClass().getEPackage().getNsURI();
-		ModelExtensionManager helper = ModelExtensionHelper.getInstance(resource_p);
+		String extensibleModelURI = resource.getContents().get(0).eClass().getEPackage().getNsURI();
+		ModelExtensionManager helper = ModelExtensionHelper.getInstance(resource);
 		ExtensibleModel extensibleModel = ModelExtensionDescriptor.INSTANCE.getExtensibleModel(extensibleModelURI);
 		if (extensibleModel != null) {		
 			for (ExtendedModel extendedModel : extensibleModel.getAllExtendedModels()) {
-				EmdeViewerFilterAction filterAction = new EmdeViewerFilterAction(resource_p, extensibleModel, extendedModel) {
+				EmdeViewerFilterAction filterAction = new EmdeViewerFilterAction(resource, extensibleModel, extendedModel) {
 					@Override
 					public void run() {
 						ISelection selection = getSelection();
@@ -1154,7 +1170,7 @@ public class EpbsEditor
 				extensionActions.add(filterAction);
 			}
 		}
-		viewerFilterActions.put(resource_p, extensionActions);		
+		viewerFilterActions.put(resource, extensionActions);		
 		return extensionActions;
 	}	  	
 

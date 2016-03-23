@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.la.impl;
 
 import java.util.Collection;
@@ -209,8 +210,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractActor> resultAsList = (Collection<AbstractActor>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractActor>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -256,8 +257,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<SystemComponent> resultAsList = (Collection<SystemComponent>) result;
 		return new EcoreEList.UnmodifiableEList<SystemComponent>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -303,8 +304,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -350,8 +351,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<SystemComponentCapabilityRealizationInvolvement> resultAsList = (Collection<SystemComponentCapabilityRealizationInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<SystemComponentCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -397,8 +398,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<Capability> resultAsList = (Collection<Capability>) result;
 		return new EcoreEList.UnmodifiableEList<Capability>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -444,8 +445,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
 		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -491,8 +492,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
 		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

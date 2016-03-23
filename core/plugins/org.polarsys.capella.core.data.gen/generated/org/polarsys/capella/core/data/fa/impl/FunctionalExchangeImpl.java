@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.fa.impl;
 
 import java.util.Collection;
@@ -579,8 +580,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -669,8 +670,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		
 		try {
 			return (ActivityPartition) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -728,8 +729,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		
 		try {
 			return (InterruptibleActivityRegion) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -787,8 +788,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		
 		try {
 			return (StructuredActivityNode) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -1535,8 +1536,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<AbstractTypedElement> resultAsList = (Collection<AbstractTypedElement>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractTypedElement>(this, ModellingcorePackage.Literals.ABSTRACT_TYPE__ABSTRACT_TYPED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1582,8 +1583,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<SequenceMessage> resultAsList = (Collection<SequenceMessage>) result;
 		return new EcoreEList.UnmodifiableEList<SequenceMessage>(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1647,8 +1648,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__INVOLVING_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1712,8 +1713,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchange> resultAsList = (Collection<ComponentExchange>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchange>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__ALLOCATING_COMPONENT_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1759,8 +1760,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchangeFunctionalExchangeAllocation> resultAsList = (Collection<ComponentExchangeFunctionalExchangeAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchangeFunctionalExchangeAllocation>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1806,8 +1807,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalExchangeRealization> resultAsList = (Collection<FunctionalExchangeRealization>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalExchangeRealization>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_FUNCTIONAL_EXCHANGE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1853,8 +1854,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalExchangeRealization> resultAsList = (Collection<FunctionalExchangeRealization>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalExchangeRealization>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__OUTGOING_FUNCTIONAL_EXCHANGE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1947,8 +1948,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		
 		try {
 			return (FunctionOutputPort) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -2006,8 +2007,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		
 		try {
 			return (FunctionInputPort) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -2054,8 +2055,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__REALIZED_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2101,8 +2102,8 @@ public class FunctionalExchangeImpl extends NamedElementImpl implements Function
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalExchange> resultAsList = (Collection<FunctionalExchange>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalExchange>(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE__REALIZING_FUNCTIONAL_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
