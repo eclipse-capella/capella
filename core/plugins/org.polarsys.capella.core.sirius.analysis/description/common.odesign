@@ -2631,7 +2631,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:DirectEditLabel" documentation="This editis reused in diffrent diagrams" name="Constraint Content" forceRefresh="true">
+            <tools xsi:type="tool:DirectEditLabel" documentation="This editis reused in diffrent diagrams" name="Constraint Content" forceRefresh="true" inputLabelExpression="feature:name">
               <mask mask="{0}"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
