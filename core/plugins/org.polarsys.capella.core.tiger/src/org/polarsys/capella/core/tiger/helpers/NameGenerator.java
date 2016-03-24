@@ -97,6 +97,8 @@ public class NameGenerator {
     else if (instance instanceof SignalInstance) {
       component =((SignalInstance) instance).getType();
     }
+    assert component!=null;
+    
     String representedInstanceName = component.getName();
     
     executionEnd.setName("[[ " //$NON-NLS-1$
@@ -125,6 +127,8 @@ public class NameGenerator {
     else if (instance instanceof SignalInstance) {
       component = ((SignalInstance) instance).getType();
     }
+    assert component!=null;
+    
     String componentName = component.getName();
     String representedInstanceName = component.getName();  
     instanceRole.setName("[[ " //$NON-NLS-1$

@@ -83,12 +83,12 @@ public class MDCHK_SequenceMessage_NameValidation extends AbstractValidationRule
         AbstractExchangeItem allocatedItem = itemAllocation.getAllocatedItem();
         if (null != allocatedItem) {
           opName =  allocatedItem.getName();
-          if ((null == opName && null != seqMsgName) || !opName.equals(seqMsgName)) {
+          if ((null == opName && null != seqMsgName) || (opName != null && !opName.equals(seqMsgName))) {
             status = ctx_p.createFailureStatus(new Object[] { seqMsg.getName(), opName, InformationPackage.Literals.OPERATION.getName() });
           }
         }
       } else {
-        if ((null == opName && null != seqMsgName) || !opName.equals(seqMsgName)) {
+        if ((null == opName && null != seqMsgName) || (opName != null && !opName.equals(seqMsgName))) {
           status =  ctx_p.createFailureStatus(new Object[] { seqMsg.getName(), opName, InformationPackage.Literals.OPERATION.getName() });
         }
       }
