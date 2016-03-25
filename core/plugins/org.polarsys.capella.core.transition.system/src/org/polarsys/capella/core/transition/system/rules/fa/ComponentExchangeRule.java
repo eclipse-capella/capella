@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.fa;
 
 import java.util.ArrayList;
@@ -48,108 +49,108 @@ public class ComponentExchangeRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     // Nothing here. We don't want to add container
   }
 
   @Override
-  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getBestContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture targetA =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
 
     Component target =
-        (Component) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(element_p.eContainer(), context_p, CsPackage.Literals.COMPONENT);
+        (Component) TransformationHandlerHelper.getInstance(context).getBestTracedElement(element.eContainer(), context, CsPackage.Literals.COMPONENT);
     if ((target == null) || (target instanceof AbstractActor)) {
       return null;
     }
-    return super.getBestContainer(element_p, result_p, context_p);
+    return super.getBestContainer(element, result, context);
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getContext(target);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    retrieveSource(source_p, result_p, context_p);
-    retrieveTarget(source_p, result_p, context_p);
+    retrieveSource(source, result, context);
+    retrieveTarget(source, result, context);
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      ComponentExchange element = (ComponentExchange) source_p;
-      result_p.addAll(element.getOutgoingComponentExchangeFunctionalExchangeAllocations());
-      result_p.addAll(element.getConvoyedInformations());
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      ComponentExchange element = (ComponentExchange) source;
+      result.addAll(element.getOutgoingComponentExchangeFunctionalExchangeAllocations());
+      result.addAll(element.getConvoyedInformations());
 
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE,
-          element.getOutgoingComponentExchangeFunctionalExchangeAllocations(), context_p);
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getConvoyedInformations(), context_p);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
+          element.getOutgoingComponentExchangeFunctionalExchangeAllocations(), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getConvoyedInformations(), context);
     }
   }
 
   /**
-   * @param source_p
-   * @param result_p
-   * @param context_p
+   * @param eObject1
+   * @param result
+   * @param context
    */
-  protected void retrieveSource(EObject source_p, List<EObject> result_p, IContext context_p) {
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      ComponentExchange element = (ComponentExchange) source_p;
+  protected void retrieveSource(EObject eObject1, List<EObject> result, IContext context) {
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, eObject1, context)) {
+      ComponentExchange element = (ComponentExchange) eObject1;
       EObject source = element.getSource();
-      result_p.add(source);
+      result.add(source);
       if (!(source instanceof Entity)) {
-        ContextScopeHandlerHelper.getInstance(context_p).add(ITransitionConstants.SOURCE_SCOPE, source, context_p);
+        ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, source, context);
       }
     }
   }
 
   /**
-   * @param source_p
-   * @param result_p
-   * @param context_p
+   * @param source
+   * @param result
+   * @param context
    */
-  protected void retrieveTarget(EObject source_p, List<EObject> result_p, IContext context_p) {
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      ComponentExchange element = (ComponentExchange) source_p;
+  protected void retrieveTarget(EObject source, List<EObject> result, IContext context) {
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      ComponentExchange element = (ComponentExchange) source;
       EObject target = element.getTarget();
-      result_p.add(target);
+      result.add(target);
       if (!(target instanceof Entity)) {
-        ContextScopeHandlerHelper.getInstance(context_p).add(ITransitionConstants.SOURCE_SCOPE, target, context_p);
+        ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, target, context);
       }
     }
   }
 
-  protected void premicesExchangeRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET));
+  protected void premicesExchangeRelated(EObject element, ArrayList<IPremise> needed) {
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE));
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET));
   }
 
-  protected void attachExchangeRelated(EObject element_p, EObject result_p, IContext context_p) {
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE,
-        context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET,
-        context_p);
-  }
-
-  @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    attachExchangeRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p,
-        ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__CONVOYED_INFORMATIONS, context_p);
+  protected void attachExchangeRelated(EObject element, EObject result, IContext context) {
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE,
+        context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET,
+        context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    premicesExchangeRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__CONVOYED_INFORMATIONS));
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    attachExchangeRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result,
+        ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__CONVOYED_INFORMATIONS, context);
+  }
+
+  @Override
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    premicesExchangeRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__CONVOYED_INFORMATIONS));
   }
 }

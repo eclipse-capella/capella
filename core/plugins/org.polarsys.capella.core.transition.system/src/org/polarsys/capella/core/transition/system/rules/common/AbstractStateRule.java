@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.common;
 
 import java.util.ArrayList;
@@ -38,36 +39,36 @@ public class AbstractStateRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    if (source_p instanceof State) {
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    if (source instanceof State) {
 
-      result_p.addAll(((State) source_p).getOwnedRegions());
+      result.addAll(((State) source).getOwnedRegions());
     }
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES));
+    needed.addAll(createDefaultPrecedencePremices(element, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS));
 
-    if (element_p instanceof State) {
-      needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.STATE__DO_ACTIVITY));
+    if (element instanceof State) {
+      needed.addAll(createDefaultPrecedencePremices(element, CapellacommonPackage.Literals.STATE__DO_ACTIVITY));
     }
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES, context_p);
-    AttachmentHelper.getInstance(context_p)
-        .attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ISTATE__REFERENCED_STATES, context);
+    AttachmentHelper.getInstance(context)
+        .attachTracedElements(element, result, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS, context);
 
-    if (element_p instanceof State) {
-      AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE__DO_ACTIVITY, context_p);
-      AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE__ENTRY, context_p);
-      AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE__EXIT, context_p);
+    if (element instanceof State) {
+      AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacommonPackage.Literals.STATE__DO_ACTIVITY, context);
+      AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacommonPackage.Literals.STATE__ENTRY, context);
+      AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacommonPackage.Literals.STATE__EXIT, context);
     }
   }
 }

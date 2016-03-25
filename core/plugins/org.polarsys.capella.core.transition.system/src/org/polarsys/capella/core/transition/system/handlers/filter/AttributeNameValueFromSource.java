@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.filter;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -25,9 +26,9 @@ public class AttributeNameValueFromSource extends AttributeStringValueFromSource
    * @return
    */
   @Override
-  public boolean isMergeableAttribute(EAttribute attribute_p, EObject source_p, EObject target_p, Object oldValue_p, Object newValue_p) {
+  public boolean isMergeableAttribute(EAttribute attribute, EObject source, EObject target, Object oldValue, Object newValue) {
     // Merge name of element if name is same as EClass of the element
-    if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(attribute_p)) {
+    if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(attribute)) {
       return true;
     }
     return false;
@@ -38,23 +39,23 @@ public class AttributeNameValueFromSource extends AttributeStringValueFromSource
    * @return
    */
   @Override
-  public boolean isMergeableAttributeValue(EAttribute attribute_p, EObject source_p, EObject target_p, Object oldValue_p, Object newValue_p) {
+  public boolean isMergeableAttributeValue(EAttribute attribute, EObject source, EObject target, Object oldValue, Object newValue) {
     // Merge name of element if name is same as EClass of the element
-    if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(attribute_p)) {
-      if ((oldValue_p == null) || ((oldValue_p instanceof String) && (((String) oldValue_p).length() == 0))) {
+    if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(attribute)) {
+      if ((oldValue == null) || ((oldValue instanceof String) && (((String) oldValue).length() == 0))) {
         return true;
 
-      } else if (oldValue_p.equals(target_p.eClass().getName())) {
+      } else if (oldValue.equals(target.eClass().getName())) {
         return true;
       }
-      if (oldValue_p.equals("System State Machine")) {
+      if (oldValue.equals("System State Machine")) {
         return true;
       }
-      if (oldValue_p.equals("Default Region")) {
+      if (oldValue.equals("Default Region")) {
         return true;
       }
     }
-    return super.isMergeableAttributeValue(attribute_p, source_p, target_p, oldValue_p, newValue_p);
+    return super.isMergeableAttributeValue(attribute, source, target, oldValue, newValue);
   }
 
 }

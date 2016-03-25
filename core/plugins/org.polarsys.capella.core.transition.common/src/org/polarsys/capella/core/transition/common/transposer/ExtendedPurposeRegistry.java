@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer;
 
 import java.util.Map;
@@ -35,13 +36,13 @@ public final class ExtendedPurposeRegistry extends GenericPurposeRegistry {
   }
 
   @Override
-  protected void selectContributedMappingElementsToUse(Map contributedMappingsElements_p, Mapping mapping_p) {
-    for (Mapping mapping : ExtendedMappingHelper.getExtendedMappings(mapping_p)) {
-      selectContributedMappingElementsToUse(contributedMappingsElements_p, mapping);
+  protected void selectContributedMappingElementsToUse(Map contributedMappingsElements, Mapping mapping1) {
+    for (Mapping mapping : ExtendedMappingHelper.getExtendedMappings(mapping1)) {
+      selectContributedMappingElementsToUse(contributedMappingsElements, mapping);
     }
 
-    for (MappingElement currentElement : mapping_p.getAllOwnedMappingElements()) {
-      contributedMappingsElements_p.put(currentElement.getDomainMetaClass(), currentElement);
+    for (MappingElement currentElement : mapping1.getAllOwnedMappingElements()) {
+      contributedMappingsElements.put(currentElement.getDomainMetaClass(), currentElement);
     }
   }
 }

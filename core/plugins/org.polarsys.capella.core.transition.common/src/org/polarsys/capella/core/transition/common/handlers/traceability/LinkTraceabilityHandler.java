@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.traceability;
 
 import java.util.ArrayList;
@@ -32,8 +33,8 @@ public class LinkTraceabilityHandler extends TwoSideTraceabilityHandler {
 
   private String _linkTraceabilityKey = null;
 
-  public LinkTraceabilityHandler(String identifier_p) {
-    super(identifier_p);
+  public LinkTraceabilityHandler(String identifier) {
+    super(identifier);
     _linkTraceabilityKey = getIdentifier() + ICommonConstants.UNDERSCORE_CHARACTER + LINK_TRACEABILITY_MAPPING;
   }
 
@@ -42,50 +43,50 @@ public class LinkTraceabilityHandler extends TwoSideTraceabilityHandler {
   }
 
   @Override
-  protected List<EObject> retrieveRelatedElements(EObject source_p, IContext context_p, MappingTraceability maps_p) {
-    if (!context_p.exists(getLinkTraceabilityKey())) {
-      initializeRootMappings(context_p);
-      context_p.put(getLinkTraceabilityKey(), getLinkTraceabilityKey());
+  protected List<EObject> retrieveRelatedElements(EObject source, IContext context, MappingTraceability maps) {
+    if (!context.exists(getLinkTraceabilityKey())) {
+      initializeRootMappings(context);
+      context.put(getLinkTraceabilityKey(), getLinkTraceabilityKey());
     }
     ArrayList<EObject> result = new ArrayList<EObject>();
-    Collection<EObject> mapped = maps_p.get(source_p);
+    Collection<EObject> mapped = maps.get(source);
     if (mapped != null) {
       result.addAll(mapped);
     }
     return result;
   }
 
-  protected void initializeRootMappings(IContext context_p) {
+  protected void initializeRootMappings(IContext context) {
     //Initialize root mapping
   }
 
-  protected void initializeMappings(EObject source_p, EObject target_p, IContext context_p) {
-    Iterator<EObject> iterator = target_p.eAllContents();
+  protected void initializeMappings(EObject source, EObject target, IContext context) {
+    Iterator<EObject> iterator = target.eAllContents();
 
     //For all elements from target, retrieve a source and addMapping
-    addMappings(source_p, target_p, context_p);
+    addMappings(source, target, context);
     while (iterator.hasNext()) {
       EObject object = iterator.next();
-      for (EObject sourceAttachment : getSourceAttachments(object, context_p)) {
+      for (EObject sourceAttachment : getSourceAttachments(object, context)) {
 
-        if (initTraceabilityMapping(sourceAttachment, object, context_p)) {
-          addMappings(sourceAttachment, object, context_p);
+        if (initTraceabilityMapping(sourceAttachment, object, context)) {
+          addMappings(sourceAttachment, object, context);
         }
       }
     }
   }
 
   /**
-   * @param sourceAttachment_p
-   * @param object_p
-   * @param context_p
+   * @param sourceAttachment
+   * @param object
+   * @param context
    * @return
    */
-  protected boolean initTraceabilityMapping(EObject sourceAttachment_p, EObject object_p, IContext context_p) {
-    return sourceAttachment_p != null;
+  protected boolean initTraceabilityMapping(EObject sourceAttachment, EObject object, IContext context) {
+    return sourceAttachment != null;
   }
 
-  protected List<EObject> getSourceAttachments(EObject targetElement_p, IContext context_p) {
+  protected List<EObject> getSourceAttachments(EObject targetElement, IContext context) {
     return Collections.emptyList();
   }
 
@@ -93,7 +94,7 @@ public class LinkTraceabilityHandler extends TwoSideTraceabilityHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -101,7 +102,7 @@ public class LinkTraceabilityHandler extends TwoSideTraceabilityHandler {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 

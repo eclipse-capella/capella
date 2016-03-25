@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,15 +26,15 @@ public class PropertyExt {
 
   /**
    * Returns the regarding association, i.e the association the current property is bound to (since the current query is applied to properties)
-   * @param elem_p the property (must be a <code>Property</code> instance
+   * @param elem the property (must be a <code>Property</code> instance
    * @return the <code>Association</code> or <code>null</code> if the property is not bound to an association
    */
-  public static Association getRegardingAssociation(CapellaElement elem_p) {
-    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(elem_p);
+  public static Association getRegardingAssociation(CapellaElement elem) {
+    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(elem);
     if (semEditDomain != null) {
       ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
       if (crossReferencer != null) {
-        for (Setting setting : crossReferencer.getInverseReferences(elem_p)) {
+        for (Setting setting : crossReferencer.getInverseReferences(elem)) {
           EObject eObject = setting.getEObject();
           if (eObject instanceof Association) {
             return (Association) eObject;
@@ -48,7 +49,7 @@ public class PropertyExt {
   /**
    * @return
    */
-  public static boolean isTyped(Property ppt_p) {
-    return (null != ppt_p.getAbstractType());
+  public static boolean isTyped(Property ppt) {
+    return (null != ppt.getAbstractType());
   }
 }

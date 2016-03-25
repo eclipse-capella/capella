@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -31,14 +32,14 @@ public class StructureExt {
 
   /**
    * Gets the root component from an element container
-   * @param elementContainer_p
+   * @param elementContainer
    *          the element container
    * @return the root component
    */
-  static public Component getRootComponent(Structure elementContainer_p) {
+  static public Component getRootComponent(Structure elementContainer) {
     Component comp = null;
-    if (null != elementContainer_p) {
-      Object container = elementContainer_p.eContainer();
+    if (null != elementContainer) {
+      Object container = elementContainer.eContainer();
       if (container instanceof Component) {
         comp = (Component) container;
       } else if (container instanceof Structure) {
@@ -50,14 +51,14 @@ public class StructureExt {
 
   /**
    * Gets the root component architecture from the element container
-   * @param elementContainer_p
+   * @param elementContainer
    *          the element container
    * @return the component architecture
    */
-  static public ComponentArchitecture getRootComponentArchitecture(Structure elementContainer_p) {
+  static public ComponentArchitecture getRootComponentArchitecture(Structure elementContainer) {
     ComponentArchitecture compArch = null;
-    if (null != elementContainer_p) {
-      Object container = elementContainer_p.eContainer();
+    if (null != elementContainer) {
+      Object container = elementContainer.eContainer();
       if (container instanceof ComponentArchitecture) {
         compArch = (ComponentArchitecture) container;
       } else if (container instanceof Structure) {
@@ -75,22 +76,22 @@ public class StructureExt {
    *          the element container
    * @return the block architecture
    */
-  static public BlockArchitecture getRootBlockArchitecture(Structure modelElement_p) {
-	  return BlockArchitectureExt.getRootBlockArchitecture(modelElement_p);
+  static public BlockArchitecture getRootBlockArchitecture(Structure modelElement) {
+	  return BlockArchitectureExt.getRootBlockArchitecture(modelElement);
   }
 
   
   /**
    * Gets all the DataPkgs from the Parent Hierarchy of the root component/component architecture of the current structure according to layer visibility and
    * multiple decomposition rules
-   * @param structure_p
+   * @param structure
    *          the structure
    * @return list of DataPkgs
    */
-  static public List<DataPkg> getDataPkgsFromParentHierarchy(Structure structure_p) {
+  static public List<DataPkg> getDataPkgsFromParentHierarchy(Structure structure) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    if (null != structure_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(structure_p);
+    if (null != structure) {
+      BlockArchitecture compArch = getRootBlockArchitecture(structure);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -101,7 +102,7 @@ public class StructureExt {
           return list; // return if SystemEngineering
         list.addAll(DataPkgExt.getDataPkgsFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(structure_p);
+      Component parentComp = getRootComponent(structure);
       if (null != parentComp) {
 	      DataPkg dataPkg = parentComp.getOwnedDataPkg();
 	      if (null != dataPkg) {
@@ -116,13 +117,13 @@ public class StructureExt {
   /**
    * Gets all the Interfaces from the Parent Hierarchy of the root component/component architecture of the current operation according to layer visibility and
    * multiple decomposition rules
-   * @param classifier_p the Classifier
+   * @param classifier the Classifier
    * @return list of Interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromParentHierarchy(Structure classifier_p) {
+  static public List<Interface> getOwnedInterfacesFromParentHierarchy(Structure classifier) {
     List<Interface> list = new ArrayList<Interface>(1);
-    if (null != classifier_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(classifier_p);
+    if (null != classifier) {
+      BlockArchitecture compArch = getRootBlockArchitecture(classifier);
       if (null != compArch) {
         list.addAll(InterfacePkgExt.getAllInterfaces(compArch.getOwnedInterfacePkg()));
         // Layer visibility is there
@@ -130,7 +131,7 @@ public class StructureExt {
           return list; // return if SystemEngineering
         list.addAll(InterfacePkgExt.getOwnedInterfacesFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(classifier_p);
+      Component parentComp = getRootComponent(classifier);
       if (null != parentComp) {
         list.addAll(InterfacePkgExt.getAllInterfaces(parentComp.getOwnedInterfacePkg()));
         list.addAll(InterfacePkgExt.getOwnedInterfacesFromComponentParent(parentComp));

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -43,8 +44,8 @@ import org.polarsys.capella.common.queries.debug.QueryDebugger;
  */
 public class ClassExt {
 
-  static public boolean containsKeyPart(Class class_p, Property property_p) {
-    return (getRelatedKeyPart(class_p, property_p) != null);
+  static public boolean containsKeyPart(Class class1, Property property1) {
+    return (getRelatedKeyPart(class1, property1) != null);
   }
 
   /**
@@ -70,20 +71,20 @@ public class ClassExt {
   /**
    * @see #getClassDependencies(Class)
    */
-  public static Map<AbstractDependenciesPkg, Collection<EObject>> getClassDependencies2(Class class_p) {
+  public static Map<AbstractDependenciesPkg, Collection<EObject>> getClassDependencies2(Class class1) {
 
     Map<AbstractDependenciesPkg, Collection<EObject>> result =
         new HashMap<AbstractDependenciesPkg, Collection<EObject>>();
 
     // types and cardinalities for properties
-    for (Property aProperty : class_p.getContainedProperties()) {
+    for (Property aProperty : class1.getContainedProperties()) {
       AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, aProperty.getType());
       checkDependenciesAndAddToResult(result, aProperty.getOwnedMaxCard());
       checkDependenciesAndAddToResult(result, aProperty.getOwnedMinCard());
     }
 
     // Operations
-    for (Operation anOperation : class_p.getContainedOperations()) {
+    for (Operation anOperation : class1.getContainedOperations()) {
       // thrown exceptions
       if (anOperation instanceof Service) {
         for (Exception anException : (((Service) anOperation).getThrownExceptions())) {
@@ -99,7 +100,7 @@ public class ClassExt {
     }
 
     // superClasses
-    for (Generalization aGeneralization : class_p.getSuperGeneralizations()) {
+    for (Generalization aGeneralization : class1.getSuperGeneralizations()) {
       AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, aGeneralization.getSuper());
     }
 
@@ -108,44 +109,44 @@ public class ClassExt {
 
   /**
    * Added to handle numeric references in cardinalities. FIXME: I don't take chains of references into account.
-   * @param result_p
+   * @param result
    * @param card
    */
-  private static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> result_p,
+  private static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> result,
       NumericValue card) {
     if (card instanceof NumericReference) {
-      AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result_p,
+      AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result,
           ((NumericReference) card).getReferencedValue());
     }
   }
 
   /**
    * Find all packages upon which a certain class depends on. E.g. If a class C has a property that has a certain type defined in package X, C depends on X
-   * @param class_p
+   * @param class1
    * @return Packages that this class depends on
    */
-  public static Collection<AbstractDependenciesPkg> getClassDependencies(Class class_p) {
-    return getClassDependencies2(class_p).keySet();
+  public static Collection<AbstractDependenciesPkg> getClassDependencies(Class class1) {
+    return getClassDependencies2(class1).keySet();
   }
 
   /**
    * This method returns the class package of the current class
-   * @param class_p
+   * @param class1
    * @return
    */
-  public static DataPkg getOwnerDataPkg(Class class_p) {
-    if (class_p.eContainer() instanceof Class) {
-      return getOwnerDataPkg((Class) class_p.eContainer());
-    } else if (class_p.eContainer() instanceof DataPkg) {
-      return (DataPkg) class_p.eContainer();
+  public static DataPkg getOwnerDataPkg(Class class1) {
+    if (class1.eContainer() instanceof Class) {
+      return getOwnerDataPkg((Class) class1.eContainer());
+    } else if (class1.eContainer() instanceof DataPkg) {
+      return (DataPkg) class1.eContainer();
     }
 
     return null;
   }
 
-  static public KeyPart getRelatedKeyPart(Class class_p, Property property_p) {
-    for (KeyPart keyPart : class_p.getKeyParts()) {
-      if ((keyPart.getProperty() != null) && keyPart.getProperty().equals(property_p)) {
+  static public KeyPart getRelatedKeyPart(Class class1, Property property) {
+    for (KeyPart keyPart : class1.getKeyParts()) {
+      if ((keyPart.getProperty() != null) && keyPart.getProperty().equals(property)) {
         return keyPart;
       }
     }
@@ -154,29 +155,29 @@ public class ClassExt {
 
   /**
    * This method returns the root class package of the current class
-   * @param class_p
+   * @param class1
    * @return
    */
-  public static DataPkg getRootOwnerDataPkg(Class class_p) {
-    if (class_p.eContainer() instanceof Class) {
-      return getRootOwnerDataPkg((Class) class_p.eContainer());
-    } else if (class_p.eContainer() instanceof DataPkg) {
-      return DataPkgExt.getRootDataPkg((DataPkg) class_p.eContainer());
+  public static DataPkg getRootOwnerDataPkg(Class class1) {
+    if (class1.eContainer() instanceof Class) {
+      return getRootOwnerDataPkg((Class) class1.eContainer());
+    } else if (class1.eContainer() instanceof DataPkg) {
+      return DataPkgExt.getRootDataPkg((DataPkg) class1.eContainer());
     }
 
     return null;
   }
 
   /**
-   * @param class_p
+   * @param classif
    * @return
    */
-  public static List<Association> getOutgoingAssociations(Classifier classif_p) {
+  public static List<Association> getOutgoingAssociations(Classifier classif) {
     List<Association> result = new ArrayList<Association>();
-    List<Association> allAssociations = getAllAssociations(classif_p);
+    List<Association> allAssociations = getAllAssociations(classif);
     for (Association assoc : allAssociations) {
       if (AssociationExt.isUnidirectional(assoc)
-          && AssociationExt.getOwnedMembersClassifiers(assoc).contains(classif_p)) {
+          && AssociationExt.getOwnedMembersClassifiers(assoc).contains(classif)) {
         result.add(assoc);
       }
     }
@@ -185,15 +186,15 @@ public class ClassExt {
   }
 
   /**
-   * @param classif_p
+   * @param classif
    * @return
    */
-  public static List<Association> getIncomingAssociations(Classifier classif_p) {
+  public static List<Association> getIncomingAssociations(Classifier classif) {
     List<Association> result = new ArrayList<Association>();
-    List<Association> allAssociations = getAllAssociations(classif_p);
+    List<Association> allAssociations = getAllAssociations(classif);
     for (Association assoc : allAssociations) {
       if (AssociationExt.isUnidirectional(assoc)
-          && AssociationExt.getNavigableMembersClassifiers(assoc).contains(classif_p)) {
+          && AssociationExt.getNavigableMembersClassifiers(assoc).contains(classif)) {
         result.add(assoc);
       }
     }
@@ -202,15 +203,15 @@ public class ClassExt {
   }
 
   /**
-   * @param class_p_p
+   * @param classif
    * @return
    */
-  public static List<Association> getNondirectionalAssociations(Classifier classif_p) {
-    List<Association> allAssociations = getAllAssociations(classif_p);
+  public static List<Association> getNondirectionalAssociations(Classifier classif) {
+    List<Association> allAssociations = getAllAssociations(classif);
     List<Association> result = new ArrayList<Association>();
     for (Association assoc : allAssociations) {
       if (AssociationExt.isNondirectional(assoc)
-          && AssociationExt.getOwnedMembersClassifiers(assoc).contains(classif_p)) {
+          && AssociationExt.getOwnedMembersClassifiers(assoc).contains(classif)) {
         result.add(assoc);
       }
     }
@@ -218,32 +219,32 @@ public class ClassExt {
   }
 
   /**
-   * @param class_p_p
+   * @param classif
    * @return
    */
-  public static List<Association> getBidirectionalAssociations(Classifier classif_p) {
-    List<Association> allAssociations = getAllAssociations(classif_p);
+  public static List<Association> getBidirectionalAssociations(Classifier classif) {
+    List<Association> allAssociations = getAllAssociations(classif);
     List<Association> result = new ArrayList<Association>();
     for (Association assoc : allAssociations) {
       if (AssociationExt.isBidirectional(assoc)
-          && AssociationExt.getNavigableMembersClassifiers(assoc).contains(classif_p)) {
+          && AssociationExt.getNavigableMembersClassifiers(assoc).contains(classif)) {
         result.add(assoc);
       }
     }
     return result;
   }
 
-  public static List<Association> getAllAssociationsButIncoming(Classifier classif_p) {
+  public static List<Association> getAllAssociationsButIncoming(Classifier classif) {
     List<Association> result = new ArrayList<Association>();
-    result.addAll(getOutgoingAssociations(classif_p));
-    result.addAll(getBidirectionalAssociations(classif_p));
-    result.addAll(getNondirectionalAssociations(classif_p));
+    result.addAll(getOutgoingAssociations(classif));
+    result.addAll(getBidirectionalAssociations(classif));
+    result.addAll(getNondirectionalAssociations(classif));
     return result;
   }
 
-  public static List<Association> getAllAssociations(Classifier classif_p) {
+  public static List<Association> getAllAssociations(Classifier classif) {
     List<Association> result = new ArrayList<Association>();
-    BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(classif_p);
+    BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(classif);
     if (arch != null) {
       DataPkg dataPkg = arch.getOwnedDataPkg();
       result = DataPkgExt.getAllAssociations(dataPkg);

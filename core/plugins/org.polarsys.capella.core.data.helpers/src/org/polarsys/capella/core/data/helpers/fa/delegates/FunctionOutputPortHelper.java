@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -33,27 +34,27 @@ public class FunctionOutputPortHelper {
 		return instance;
 	}
 
-	public Object doSwitch(FunctionOutputPort element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(FunctionOutputPort element, EStructuralFeature feature) {
 		Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES)) {
-      ret = getOutgoingFunctionalExchanges(element_p);
+    if (feature.equals(FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_FUNCTIONAL_EXCHANGES)) {
+      ret = getOutgoingFunctionalExchanges(element);
     }
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = FunctionPortHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = FunctionPortHelper.getInstance().doSwitch(element, feature);
 		}
     if (null == ret) {
-      ret = ActivityNodeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = ActivityNodeHelper.getInstance().doSwitch(element, feature);
     }
 
 		return ret;
 	}
 
-  protected List<FunctionalExchange> getOutgoingFunctionalExchanges(FunctionOutputPort element_p) {
+  protected List<FunctionalExchange> getOutgoingFunctionalExchanges(FunctionOutputPort element) {
     List <FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
-    for (ActivityEdge activityEdge : element_p.getOutgoing()) {
+    for (ActivityEdge activityEdge : element.getOutgoing()) {
       if (activityEdge instanceof FunctionalExchange){
         ret.add((FunctionalExchange) activityEdge);
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import java.util.ArrayList;
@@ -38,26 +39,26 @@ public class OperationHelper {
 		return instance;
 	}
 
-	public Object doSwitch(Operation element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(Operation element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.OPERATION__ALLOCATED_OPERATIONS)) {
-			return ret = getAllocatedOperations(element_p);
-		} else if (feature_p.equals(InformationPackage.Literals.OPERATION__ALLOCATING_OPERATIONS)) {
-			return ret = getAllocatingOperations(element_p);
-    } else if (feature_p.equals(InformationPackage.Literals.OPERATION__REALIZED_EXCHANGE_ITEMS)) {
-      ret = getRealizedExchangeItems(element_p);
+		if (feature.equals(InformationPackage.Literals.OPERATION__ALLOCATED_OPERATIONS)) {
+			return ret = getAllocatedOperations(element);
+		} else if (feature.equals(InformationPackage.Literals.OPERATION__ALLOCATING_OPERATIONS)) {
+			return ret = getAllocatingOperations(element);
+    } else if (feature.equals(InformationPackage.Literals.OPERATION__REALIZED_EXCHANGE_ITEMS)) {
+      ret = getRealizedExchangeItems(element);
 		} 
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = FeatureHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = FeatureHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractTypeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractTypeHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractEventOperationHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractEventOperationHelper.getInstance().doSwitch(element, feature);
     }
 
 		return ret;
@@ -66,9 +67,9 @@ public class OperationHelper {
   /**
    *
    */
-	protected List<Operation> getAllocatedOperations(Operation element_p) {
+	protected List<Operation> getAllocatedOperations(Operation element) {
 		List <Operation> ret = new ArrayList<Operation>();
-		for (AbstractTrace trace : element_p.getOutgoingTraces()) {	
+		for (AbstractTrace trace : element.getOutgoingTraces()) {	
 			if (trace instanceof OperationAllocation) {
 			  Operation op = ((OperationAllocation) trace).getAllocatedOperation();
 				if (null != op) ret.add(op);
@@ -80,9 +81,9 @@ public class OperationHelper {
   /**
    *
    */
-	protected List<Operation> getAllocatingOperations(Operation element_p) {
+	protected List<Operation> getAllocatingOperations(Operation element) {
 		List <Operation> ret = new ArrayList<Operation>();
-		for (AbstractTrace trace : element_p.getIncomingTraces()) {	
+		for (AbstractTrace trace : element.getIncomingTraces()) {	
 			if (trace instanceof OperationAllocation) {
         Operation op = ((OperationAllocation) trace).getAllocatingOperation();
         if (null != op) ret.add(op);
@@ -94,9 +95,9 @@ public class OperationHelper {
   /**
    *
    */
-  protected List<ExchangeItem> getRealizedExchangeItems(Operation element_p) {
+  protected List<ExchangeItem> getRealizedExchangeItems(Operation element) {
     List <ExchangeItem> ret = new ArrayList <ExchangeItem>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ExchangeItemRealization) {
         AbstractExchangeItem item = ((ExchangeItemRealization) trace).getRealizedItem();
         if (item instanceof ExchangeItem) {

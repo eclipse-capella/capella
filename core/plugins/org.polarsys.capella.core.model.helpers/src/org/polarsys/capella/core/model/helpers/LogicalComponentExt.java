@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -44,20 +45,20 @@ public class LogicalComponentExt {
 
   /**
    * Gets all the interfaces in LogicalComponent
-   * @param lc_p the LogicalComponent
+   * @param logicalComponent1 the LogicalComponent
    * @return list of interfaces
    */
-  static public List<CapellaElement> getAllInterfacesInLogicalComponent(LogicalComponent lc_p) {
+  static public List<CapellaElement> getAllInterfacesInLogicalComponent(LogicalComponent logicalComponent1) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != lc_p) {
-      list.addAll(InterfacePkgExt.getAllInterfacesFiltered(lc_p.getOwnedInterfacePkg(), null, false));
-      for (LogicalComponent lc : lc_p.getSubLogicalComponents()) {
+    if (null != logicalComponent1) {
+      list.addAll(InterfacePkgExt.getAllInterfacesFiltered(logicalComponent1.getOwnedInterfacePkg(), null, false));
+      for (LogicalComponent lc : logicalComponent1.getSubLogicalComponents()) {
         list.addAll(getAllInterfacesInLogicalComponent(lc));
       }
-      for (LogicalComponentPkg lcPkg : lc_p.getOwnedLogicalComponentPkgs()) {
+      for (LogicalComponentPkg lcPkg : logicalComponent1.getOwnedLogicalComponentPkgs()) {
         list.addAll(LogicalComponentPkgExt.getAllInterfacesInLogicalComponentPkg(lcPkg));
       }
-      for (LogicalArchitecture logArch : lc_p.getOwnedLogicalArchitectures()) {
+      for (LogicalArchitecture logArch : logicalComponent1.getOwnedLogicalArchitectures()) {
         list.addAll(LogicalArchitectureExt.getAllInterfacesInLogicalArchitecture(logArch));
       }
     }
@@ -66,17 +67,17 @@ public class LogicalComponentExt {
 
   /**
    * Gets all LCDcmps
-   * @param lc_p the logical component
+   * @param logicalComponent1 the logical component
    * @return list of logical architectures
    */
-  static public List<LogicalArchitecture> getAllLogicalArchitectures(LogicalComponent lc_p) {
+  static public List<LogicalArchitecture> getAllLogicalArchitectures(LogicalComponent logicalComponent1) {
     List<LogicalArchitecture> list = new ArrayList<LogicalArchitecture>();
-    if (null != lc_p) {
-      list.addAll(lc_p.getOwnedLogicalArchitectures());
-      for (LogicalComponentPkg lcPkg : lc_p.getOwnedLogicalComponentPkgs()) {
+    if (null != logicalComponent1) {
+      list.addAll(logicalComponent1.getOwnedLogicalArchitectures());
+      for (LogicalComponentPkg lcPkg : logicalComponent1.getOwnedLogicalComponentPkgs()) {
         list.addAll(LogicalComponentPkgExt.getAllLogicalArchitectures(lcPkg));
       }
-      for (LogicalComponent lc : lc_p.getSubLogicalComponents()) {
+      for (LogicalComponent lc : logicalComponent1.getSubLogicalComponents()) {
         list.addAll(getAllLogicalArchitectures(lc));
       }
     }
@@ -85,15 +86,15 @@ public class LogicalComponentExt {
 
   /**
    * This method gets all the CapabilityRealizations in Parent's hierarchy of current LC
-   * @param component_p the Logical Component
+   * @param component the Logical Component
    * @return List of CapabilityRealizations
    */
-  static public List<CapabilityRealization> getCapabilityRealizationUseCaseFromLCParentHierarchy(LogicalComponent component_p) {
+  static public List<CapabilityRealization> getCapabilityRealizationUseCaseFromLCParentHierarchy(LogicalComponent component) {
     List<CapabilityRealization> list = new ArrayList<CapabilityRealization>();
-    Component parentComponent = getParentContainer(component_p);
+    Component parentComponent = getParentContainer(component);
 
     // Add CapabilityRealizationUseCases from parent Logical Architecture
-    BlockArchitecture arch = ComponentExt.getRootBlockArchitecture(component_p);
+    BlockArchitecture arch = ComponentExt.getRootBlockArchitecture(component);
     if (null != arch) {
       list.addAll(CapellaElementExt.getAllCapabilityRealizationInvolvedWith(arch));
     }
@@ -114,9 +115,9 @@ public class LogicalComponentExt {
   /**
    * Return the LogicalComponent list involved in decomposition for the LogicalComponent given in parameter
    */
-  public static List<LogicalComponent> getDecompositionLogicalComponentInvolved(LogicalComponent lc_p) {
+  public static List<LogicalComponent> getDecompositionLogicalComponentInvolved(LogicalComponent lc) {
     List<LogicalComponent> decompLcInvolved = new ArrayList<LogicalComponent>();
-    for (Partition partition : lc_p.getOwnedPartitions()) {
+    for (Partition partition : lc.getOwnedPartitions()) {
       AbstractType currentLc = partition.getAbstractType();
       if ((currentLc instanceof LogicalComponent) && !decompLcInvolved.contains(currentLc)) {
         decompLcInvolved.add((LogicalComponent) currentLc);
@@ -127,13 +128,13 @@ public class LogicalComponentExt {
 
   /**
    * This method retrieves the implementor physical component.
-   * @param component_p the component whose implementor physical component will be retrieved
+   * @param component the component whose implementor physical component will be retrieved
    * @return the implementor physical component
    */
-  public static PhysicalComponent getImplementor(LogicalComponent component_p, PhysicalArchitecture physicalArchitecture_p) {
+  public static PhysicalComponent getImplementor(LogicalComponent component, PhysicalArchitecture physicalArchitecture) {
     PhysicalComponent implementorPC = null;
-    for (PhysicalComponent pc : getImplementors(component_p)) {
-      if (EcoreUtil2.isContainedBy(pc, physicalArchitecture_p)) {
+    for (PhysicalComponent pc : getImplementors(component)) {
+      if (EcoreUtil2.isContainedBy(pc, physicalArchitecture)) {
         implementorPC = pc;
       }
     }
@@ -142,14 +143,14 @@ public class LogicalComponentExt {
 
   /**
    * This method retrieves all physical components which implement the specified logical component.
-   * @param component_p The source logical component.
+   * @param component The source logical component.
    * @return The physical components list.
    */
-  public static List<PhysicalComponent> getImplementors(LogicalComponent component_p) {
+  public static List<PhysicalComponent> getImplementors(LogicalComponent component) {
     // The result list.
     List<PhysicalComponent> implementorsList = new ArrayList<PhysicalComponent>();
 
-    EList<?> eImplementors = component_p.getAllocatingComponents();
+    EList<?> eImplementors = component.getAllocatingComponents();
     for (Object object : eImplementors) {
       PhysicalComponent implementorPC = (PhysicalComponent) object;
       if (null != implementorPC) {
@@ -161,20 +162,20 @@ public class LogicalComponentExt {
 
   /**
    * This method gets all the interfaces in Parent's hierarchy of current LC
-   * @param component_p the Logical Component
+   * @param component the Logical Component
    * @return List of interfaces
    */
-  static public List<Interface> getInterfacesFromLCParentHierarchy(LogicalComponent component_p) {
+  static public List<Interface> getInterfacesFromLCParentHierarchy(LogicalComponent component) {
     List<Interface> list = new ArrayList<Interface>();
     // Add interfaces from parent Logical Architecture
-    BlockArchitecture arch = ComponentExt.getRootBlockArchitecture(component_p);
+    BlockArchitecture arch = ComponentExt.getRootBlockArchitecture(component);
     if (null != arch) {
       list.addAll(InterfacePkgExt.getAllInterfaces(arch.getOwnedInterfacePkg()));
       // get recursively all the interfaces from the parent hierarchy
       list.addAll(InterfacePkgExt.getOwnedInterfacesFromBlockArchitectureParent(arch));
     }
 
-    Component parentComponent = getParentContainer(component_p);
+    Component parentComponent = getParentContainer(component);
 
     if ((parentComponent != null) && (parentComponent instanceof LogicalComponent)) {
       LogicalComponent parentLC = (LogicalComponent) parentComponent;
@@ -191,36 +192,36 @@ public class LogicalComponentExt {
   }
 
   /**
-   * Gets all the interfaces used/implemented by LCs in Logical Component Pkg and its sub LCPkgs of the logicalComponent_p. Also it gets all the interfaces in
+   * Gets all the interfaces used/implemented by LCs in Logical Component Pkg and its sub LCPkgs of the logicalComponent. Also it gets all the interfaces in
    * the interfacePkgs and subInterfacePkgs of the LCs.
-   * @param logicalComponent_p the Logical Component
-   * @param currentLC_p the current Logical Component
-   * @param usedFlag_p flag for checking used / implemented interface
+   * @param logicalComponent the Logical Component
+   * @param currentLC the current Logical Component
+   * @param usedFlag flag for checking used / implemented interface
    * @return list of interfaces.
    */
-  static public List<CapellaElement> getInterfacesFromLogicalComponent(LogicalComponent logicalComponent_p, LogicalComponent currentLC_p, boolean usedFlag_p) {
+  static public List<CapellaElement> getInterfacesFromLogicalComponent(LogicalComponent logicalComponent, LogicalComponent currentLC, boolean usedFlag) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != logicalComponent_p) {
-      int lcLevel = LogicalComponentExt.getRecursiveLogicalComponentLevel(logicalComponent_p);
-      int currentLCLevel = LogicalComponentExt.getRecursiveLogicalComponentLevel(currentLC_p);
+    if (null != logicalComponent) {
+      int lcLevel = LogicalComponentExt.getRecursiveLogicalComponentLevel(logicalComponent);
+      int currentLCLevel = LogicalComponentExt.getRecursiveLogicalComponentLevel(currentLC);
       if (lcLevel == currentLCLevel) { // check for same level
-        if (!logicalComponent_p.equals(currentLC_p)) {
-          if (usedFlag_p) {
-            list.addAll(ComponentExt.getUsedInterfacesFiltered(logicalComponent_p, ((currentLC_p != null) ? currentLC_p : logicalComponent_p)));
+        if (!logicalComponent.equals(currentLC)) {
+          if (usedFlag) {
+            list.addAll(ComponentExt.getUsedInterfacesFiltered(logicalComponent, ((currentLC != null) ? currentLC : logicalComponent)));
           } else {
-            list.addAll(ComponentExt.getImplementedInterfacesFiltered(logicalComponent_p, ((currentLC_p != null) ? currentLC_p : logicalComponent_p)));
+            list.addAll(ComponentExt.getImplementedInterfacesFiltered(logicalComponent, ((currentLC != null) ? currentLC : logicalComponent)));
           }
         }
-        list.addAll(InterfacePkgExt.getAllInterfacesFiltered(logicalComponent_p.getOwnedInterfacePkg(), currentLC_p, usedFlag_p));
+        list.addAll(InterfacePkgExt.getAllInterfacesFiltered(logicalComponent.getOwnedInterfacePkg(), currentLC, usedFlag));
       }
-      for (LogicalComponentPkg logicalComponentPkg : logicalComponent_p.getOwnedLogicalComponentPkgs()) {
-        list.addAll(LogicalComponentPkgExt.getAllInterfacesInLogicalComponentPkg(logicalComponentPkg, currentLC_p, usedFlag_p));
+      for (LogicalComponentPkg logicalComponentPkg : logicalComponent.getOwnedLogicalComponentPkgs()) {
+        list.addAll(LogicalComponentPkgExt.getAllInterfacesInLogicalComponentPkg(logicalComponentPkg, currentLC, usedFlag));
       }
-      for (LogicalComponent lc : logicalComponent_p.getSubLogicalComponents()) {
-        list.addAll(getInterfacesFromLogicalComponent(lc, currentLC_p, usedFlag_p));
+      for (LogicalComponent lc : logicalComponent.getSubLogicalComponents()) {
+        list.addAll(getInterfacesFromLogicalComponent(lc, currentLC, usedFlag));
       }
-      for (LogicalArchitecture logArch : logicalComponent_p.getOwnedLogicalArchitectures()) {
-        list.addAll(LogicalArchitectureExt.getAllInterfacesInLogicalArchitecture(logArch, currentLC_p, usedFlag_p));
+      for (LogicalArchitecture logArch : logicalComponent.getOwnedLogicalArchitectures()) {
+        list.addAll(LogicalArchitectureExt.getAllInterfacesInLogicalArchitecture(logArch, currentLC, usedFlag));
       }
     }
     return list;
@@ -228,24 +229,24 @@ public class LogicalComponentExt {
 
   /**
    * Gets the interfaces used/implemented by the same level LCs
-   * @param logicalComponent_p
-   * @param currentLC_p
+   * @param logicalComponent
+   * @param currentLC
    * @return
    */
-  static public List<CapellaElement> getInterfacesFromSameLevelLogicalComponent(LogicalComponent logicalComponent_p, LogicalComponent currentLC_p) {
+  static public List<CapellaElement> getInterfacesFromSameLevelLogicalComponent(LogicalComponent logicalComponent, LogicalComponent currentLC) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != logicalComponent_p) {
-      int lcLevel = getRecursiveLogicalComponentLevel(logicalComponent_p);
-      int currentLCLevel = getRecursiveLogicalComponentLevel(currentLC_p);
+    if (null != logicalComponent) {
+      int lcLevel = getRecursiveLogicalComponentLevel(logicalComponent);
+      int currentLCLevel = getRecursiveLogicalComponentLevel(currentLC);
       if (lcLevel == currentLCLevel) { // check for same level
-        if (!logicalComponent_p.equals(currentLC_p)) {
-          list.addAll(logicalComponent_p.getUsedInterfaces());
-          list.addAll(logicalComponent_p.getImplementedInterfaces());
+        if (!logicalComponent.equals(currentLC)) {
+          list.addAll(logicalComponent.getUsedInterfaces());
+          list.addAll(logicalComponent.getImplementedInterfaces());
 
-          // Notes in the same layer, for instance currentLC_p shall
+          // Notes in the same layer, for instance currentLC shall
           // not propose any Interface, even if it is badly
-          // used/implemented by logicalComponent_p.
-          List<Interface> innerInterfaces = InterfacePkgExt.getAllInterfacesFiltered(logicalComponent_p.getOwnedInterfacePkg(), null, true);
+          // used/implemented by logicalComponent.
+          List<Interface> innerInterfaces = InterfacePkgExt.getAllInterfacesFiltered(logicalComponent.getOwnedInterfacePkg(), null, true);
           list.removeAll(innerInterfaces);
         }
       }
@@ -256,26 +257,26 @@ public class LogicalComponentExt {
   /**
    * Gets all the interfaces used/implemented by the same level Logical Component. Also it gets all the interfaces in the interfacePkgs and subInterfacePkgs of
    * the LCs.
-   * @param logicalComponent_p the Logical Component
-   * @param currentLC_p the current Logical Component
-   * @param usedFlag_p flag for checking used / implemented interface
+   * @param logicalComponent the Logical Component
+   * @param currentLC the current Logical Component
+   * @param usedFlag flag for checking used / implemented interface
    * @return list of interfaces.
    */
-  static public List<CapellaElement> getInterfacesFromSameLevelLogicalComponent(LogicalComponent logicalComponent_p, LogicalComponent currentLC_p,
-      boolean usedFlag_p) {
+  static public List<CapellaElement> getInterfacesFromSameLevelLogicalComponent(LogicalComponent logicalComponent, LogicalComponent currentLC,
+      boolean usedFlag) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != logicalComponent_p) {
-      int lcLevel = getRecursiveLogicalComponentLevel(logicalComponent_p);
-      int currentLCLevel = getRecursiveLogicalComponentLevel(currentLC_p);
+    if (null != logicalComponent) {
+      int lcLevel = getRecursiveLogicalComponentLevel(logicalComponent);
+      int currentLCLevel = getRecursiveLogicalComponentLevel(currentLC);
       if (lcLevel == currentLCLevel) { // check for same level
-        if (!logicalComponent_p.equals(currentLC_p)) {
-          if (usedFlag_p) {
-            list.addAll(ComponentExt.getUsedInterfacesFiltered(logicalComponent_p, ((currentLC_p != null) ? currentLC_p : logicalComponent_p)));
+        if (!logicalComponent.equals(currentLC)) {
+          if (usedFlag) {
+            list.addAll(ComponentExt.getUsedInterfacesFiltered(logicalComponent, ((currentLC != null) ? currentLC : logicalComponent)));
           } else {
-            list.addAll(ComponentExt.getImplementedInterfacesFiltered(logicalComponent_p, ((currentLC_p != null) ? currentLC_p : logicalComponent_p)));
+            list.addAll(ComponentExt.getImplementedInterfacesFiltered(logicalComponent, ((currentLC != null) ? currentLC : logicalComponent)));
           }
         }
-        list.addAll(InterfacePkgExt.getAllInterfacesFiltered(logicalComponent_p.getOwnedInterfacePkg(), currentLC_p, usedFlag_p));
+        list.addAll(InterfacePkgExt.getAllInterfacesFiltered(logicalComponent.getOwnedInterfacePkg(), currentLC, usedFlag));
       }
     }
     return list;
@@ -285,23 +286,23 @@ public class LogicalComponentExt {
    * Retrieves the Logical component container of Scenario given in parameter. (For Scenario under the LogicalArchitecture, return Root LogicalComponent
    * @return
    */
-  public static LogicalComponent getLogicalComponentContainerFromScenario(Scenario scenario_p) {
+  public static LogicalComponent getLogicalComponentContainerFromScenario(Scenario scenario) {
     LogicalComponent containerLc = null;
 
-    containerLc = (LogicalComponent) EcoreUtil2.getFirstContainer(scenario_p, LaPackage.Literals.LOGICAL_COMPONENT);
+    containerLc = (LogicalComponent) EcoreUtil2.getFirstContainer(scenario, LaPackage.Literals.LOGICAL_COMPONENT);
     if (containerLc == null) {
       // Case : Scenario contained by LogicalArchitecture (not under a Logical Component)
       // Retrieve the Root Logical Component (from System)
-      LogicalArchitecture la = (LogicalArchitecture) EcoreUtil2.getFirstContainer(scenario_p, LaPackage.Literals.LOGICAL_ARCHITECTURE);
+      LogicalArchitecture la = (LogicalArchitecture) EcoreUtil2.getFirstContainer(scenario, LaPackage.Literals.LOGICAL_ARCHITECTURE);
       containerLc = SystemEngineeringExt.getRootLogicalComponent(la);
     }
 
     return containerLc;
   }
 
-  private static LogicalComponent getParentComponent(LogicalComponent component_p) {
+  private static LogicalComponent getParentComponent(LogicalComponent component) {
     LogicalComponent parentComponent = null;
-    for (Partition partition : component_p.getRepresentingPartitions()) {
+    for (Partition partition : component.getRepresentingPartitions()) {
       Classifier ownerClassifier = (Classifier) partition.eContainer();
       if (ownerClassifier instanceof LogicalComponent) {
         parentComponent = (LogicalComponent) ownerClassifier;
@@ -311,21 +312,21 @@ public class LogicalComponentExt {
   }
 
   /**
-   * @param component_p the current Logical Component
+   * @param component the current Logical Component
    * @return returns the Component containing the given Logical Component (can be either a Logical Component, or the System)
    */
-  public static Component getParentContainer(LogicalComponent component_p) {
-    return getRecursiveParentContainer(component_p);
+  public static Component getParentContainer(LogicalComponent component) {
+    return getRecursiveParentContainer(component);
   }
 
   /**
    * This method calculates a component level.<br/>
    * It will go up through the component's hierarchy by following the "Partition" link until the Root Component is found.
    */
-  private static int getRecursiveLogicalComponentLevel(LogicalComponent component_p) {
+  private static int getRecursiveLogicalComponentLevel(LogicalComponent component) {
     int level = 0;
     LogicalComponent parentComponent = null;
-    LogicalComponent currentComponent = component_p;
+    LogicalComponent currentComponent = component;
 
     while (getParentComponent(currentComponent) != null) {
       parentComponent = getParentComponent(currentComponent);
@@ -336,12 +337,12 @@ public class LogicalComponentExt {
   }
 
   /**
-   * @param component_p
+   * @param component
    * @return
    */
-  private static Component getRecursiveParentContainer(LogicalArchitecture component_p) {
+  private static Component getRecursiveParentContainer(LogicalArchitecture component) {
     Component cpnt = null;
-    EObject container = component_p.eContainer();
+    EObject container = component.eContainer();
 
     if (container instanceof SystemEngineering) {
       cpnt = SystemEngineeringExt.getSystem((SystemEngineering) container);
@@ -356,12 +357,12 @@ public class LogicalComponentExt {
   }
 
   /**
-   * @param component_p
+   * @param component
    * @return
    */
-  private static Component getRecursiveParentContainer(LogicalArchitecturePkg component_p) {
+  private static Component getRecursiveParentContainer(LogicalArchitecturePkg component) {
     Component cpnt = null;
-    EObject container = component_p.eContainer();
+    EObject container = component.eContainer();
 
     if (container instanceof SystemEngineering) {
       cpnt = SystemEngineeringExt.getSystem((SystemEngineering) container);
@@ -371,12 +372,12 @@ public class LogicalComponentExt {
   }
 
   /**
-   * @param component_p
+   * @param component
    * @return
    */
-  private static Component getRecursiveParentContainer(LogicalComponent component_p) {
+  private static Component getRecursiveParentContainer(LogicalComponent component) {
     Component cpnt = null;
-    EObject container = component_p.eContainer();
+    EObject container = component.eContainer();
 
     if (container instanceof LogicalArchitecture) {
       cpnt = getRecursiveParentContainer((LogicalArchitecture) container);
@@ -390,12 +391,12 @@ public class LogicalComponentExt {
   }
 
   /**
-   * @param componentPkg_p
+   * @param componentPkg
    * @return
    */
-  private static Component getRecursiveParentContainer(LogicalComponentPkg componentPkg_p) {
+  private static Component getRecursiveParentContainer(LogicalComponentPkg componentPkg) {
     Component cpnt = null;
-    EObject container = componentPkg_p.eContainer();
+    EObject container = componentPkg.eContainer();
 
     if (container instanceof LogicalArchitecture) {
       cpnt = getRecursiveParentContainer((LogicalArchitecture) container);
@@ -411,21 +412,21 @@ public class LogicalComponentExt {
   /**
    * @return RootLogicalComponent from the LogicalComponent given in parameter
    */
-  public static LogicalComponent getRootLogicalComponentFromCurrentLC(EObject elt_p) {
-    if ((elt_p == null) || ComponentExt.isComponentRoot(elt_p)) {
-      return (LogicalComponent) elt_p;
+  public static LogicalComponent getRootLogicalComponentFromCurrentLC(EObject elt) {
+    if ((elt == null) || ComponentExt.isComponentRoot(elt)) {
+      return (LogicalComponent) elt;
     }
 
-    return getRootLogicalComponentFromCurrentLC(elt_p.eContainer());
+    return getRootLogicalComponentFromCurrentLC(elt.eContainer());
   }
 
-  public static List<LogicalComponent> getSameLevelComponents(LogicalComponent currentElement_p) {
+  public static List<LogicalComponent> getSameLevelComponents(LogicalComponent currentElement) {
     List<LogicalComponent> list = new ArrayList<LogicalComponent>(1);
-    if (null != currentElement_p) {
-      for (LogicalComponent alc : currentElement_p.getSubLogicalComponents()) {
+    if (null != currentElement) {
+      for (LogicalComponent alc : currentElement.getSubLogicalComponents()) {
         list.add(alc);
       }
-      for (LogicalComponentPkg lcPkg : currentElement_p.getOwnedLogicalComponentPkgs()) {
+      for (LogicalComponentPkg lcPkg : currentElement.getOwnedLogicalComponentPkgs()) {
         for (LogicalComponent alc : LogicalComponentPkgExt.getAllLCsFromLCPkg(lcPkg)) {
           list.add(alc);
         }
@@ -436,16 +437,16 @@ public class LogicalComponentExt {
 
   /**
    * This method retrieves recursively the children of a given logical component.
-   * @param component_p the component whose children will be retrieved
+   * @param component the component whose children will be retrieved
    * @return List<LogicalComponent>
    */
-  public static List<LogicalComponent> getAllSubComponents(LogicalComponent component_p) {
+  public static List<LogicalComponent> getAllSubComponents(LogicalComponent component) {
     List<LogicalComponent> result = new ArrayList<LogicalComponent>();
 
-    for (LogicalComponent lc : component_p.getSubLogicalComponents()) {
+    for (LogicalComponent lc : component.getSubLogicalComponents()) {
       result.addAll(getAllSubComponents(lc));
     }
-    result.add(component_p);
+    result.add(component);
 
     return result;
   }

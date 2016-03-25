@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.ArrayList;
@@ -37,43 +38,43 @@ public class AbstractDeploymentLinkRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  public IStatus transformRequired(EObject source_p, IContext context_p) {
-    IStatus result = super.transformRequired(source_p, context_p);
+  public IStatus transformRequired(EObject source, IContext context) {
+    IStatus result = super.transformRequired(source, context);
 
     if (result.isOK()) {
-      AbstractDeploymentLink element = (AbstractDeploymentLink) source_p;
+      AbstractDeploymentLink element = (AbstractDeploymentLink) source;
       EObject sourceElement = element.getDeployedElement();
       EObject targetElement = element.getLocation();
 
-      result = TransformationHandlerHelper.getInstance(context_p).checkTransformRequired(element, context_p, sourceElement, targetElement);
+      result = TransformationHandlerHelper.getInstance(context).checkTransformRequired(element, context, sourceElement, targetElement);
     }
     return result;
 
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    AbstractDeploymentLink element = (AbstractDeploymentLink) source_p;
-    result_p.add(element.getDeployedElement());
-    result_p.add(element.getLocation());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    AbstractDeploymentLink element = (AbstractDeploymentLink) source;
+    result.add(element.getDeployedElement());
+    result.add(element.getLocation());
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
-      ContextScopeHandlerHelper.getInstance(context_p).add(ITransitionConstants.SOURCE_SCOPE, element.getDeployedElement(), context_p);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
+      ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, element.getDeployedElement(), context);
     }
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__LOCATION));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT));
+    needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__LOCATION));
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__LOCATION, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__LOCATION, context);
   }
 }

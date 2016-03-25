@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.capellacore;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -55,65 +56,65 @@ public class CapellaCoreHelper implements IHelper {
 	 * @see org.polarsys.capella.common.model.helpers.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EAnnotation)
 	 */
   @Override
-  public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+  public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
-		if (object_p instanceof TypedElement) {
-			ret = TypedElementHelper.getInstance().doSwitch((TypedElement) object_p, feature_p);
+		if (object instanceof TypedElement) {
+			ret = TypedElementHelper.getInstance().doSwitch((TypedElement) object, feature);
 		}
-		else if (object_p instanceof Type) {
-			ret = TypeHelper.getInstance().doSwitch((Type) object_p, feature_p);
+		else if (object instanceof Type) {
+			ret = TypeHelper.getInstance().doSwitch((Type) object, feature);
 		}
-		else if (object_p instanceof GeneralizableElement) {
-			ret = GeneralizableElementHelper.getInstance().doSwitch((GeneralizableElement) object_p, feature_p);
+		else if (object instanceof GeneralizableElement) {
+			ret = GeneralizableElementHelper.getInstance().doSwitch((GeneralizableElement) object, feature);
 		}
-		else if (object_p instanceof KeyValue) {
-			ret = CapellaElementHelper.getInstance().doSwitch((KeyValue) object_p, feature_p);
+		else if (object instanceof KeyValue) {
+			ret = CapellaElementHelper.getInstance().doSwitch((KeyValue) object, feature);
 		}
-		else if (object_p instanceof Involvement) {
-			ret = InvolvementHelper.getInstance().doSwitch((Involvement) object_p, feature_p);
+		else if (object instanceof Involvement) {
+			ret = InvolvementHelper.getInstance().doSwitch((Involvement) object, feature);
 		}
-		else if (object_p instanceof InvolverElement) {
-			ret = InvolverElementHelper.getInstance().doSwitch((InvolverElement) object_p, feature_p);
+		else if (object instanceof InvolverElement) {
+			ret = InvolverElementHelper.getInstance().doSwitch((InvolverElement) object, feature);
 		}
-		else if (object_p instanceof InvolvedElement) {
-			ret = InvolvedElementHelper.getInstance().doSwitch((InvolvedElement) object_p, feature_p);
+		else if (object instanceof InvolvedElement) {
+			ret = InvolvedElementHelper.getInstance().doSwitch((InvolvedElement) object, feature);
 		}
-		else if (object_p instanceof Relationship) {
-			ret = RelationshipHelper.getInstance().doSwitch((Relationship) object_p, feature_p);
+		else if (object instanceof Relationship) {
+			ret = RelationshipHelper.getInstance().doSwitch((Relationship) object, feature);
 		}
-		else if (object_p instanceof Structure) {
-			ret = StructureHelper.getInstance().doSwitch((Structure) object_p, feature_p);
+		else if (object instanceof Structure) {
+			ret = StructureHelper.getInstance().doSwitch((Structure) object, feature);
 		}
-		else if (object_p instanceof Trace) {
-			ret = TraceHelper.getInstance().doSwitch((Trace) object_p, feature_p);
+		else if (object instanceof Trace) {
+			ret = TraceHelper.getInstance().doSwitch((Trace) object, feature);
 		}
-    else if (object_p instanceof NamingRule) {
-      ret = CapellaElementHelper.getInstance().doSwitch((NamingRule) object_p, feature_p);
+    else if (object instanceof NamingRule) {
+      ret = CapellaElementHelper.getInstance().doSwitch((NamingRule) object, feature);
     }
-    else if (object_p instanceof AbstractPropertyValue) {
-      ret = AbstractPropertyValueHelper.getInstance().doSwitch((AbstractPropertyValue) object_p, feature_p);
+    else if (object instanceof AbstractPropertyValue) {
+      ret = AbstractPropertyValueHelper.getInstance().doSwitch((AbstractPropertyValue) object, feature);
     }
-    else if (object_p instanceof EnumerationPropertyType) {
-      ret = NamedElementHelper.getInstance().doSwitch((EnumerationPropertyType) object_p, feature_p);
+    else if (object instanceof EnumerationPropertyType) {
+      ret = NamedElementHelper.getInstance().doSwitch((EnumerationPropertyType) object, feature);
     }
-    else if (object_p instanceof EnumerationPropertyLiteral) {
-      ret = NamedElementHelper.getInstance().doSwitch((EnumerationPropertyLiteral) object_p, feature_p);
+    else if (object instanceof EnumerationPropertyLiteral) {
+      ret = NamedElementHelper.getInstance().doSwitch((EnumerationPropertyLiteral) object, feature);
     }
-    else if (object_p instanceof PropertyValueGroup) {
-      ret = PropertyValueGroupHelper.getInstance().doSwitch((PropertyValueGroup) object_p, feature_p);
+    else if (object instanceof PropertyValueGroup) {
+      ret = PropertyValueGroupHelper.getInstance().doSwitch((PropertyValueGroup) object, feature);
     }
-    else if (object_p instanceof PropertyValuePkg) {
-      ret = StructureHelper.getInstance().doSwitch((PropertyValuePkg) object_p, feature_p);
+    else if (object instanceof PropertyValuePkg) {
+      ret = StructureHelper.getInstance().doSwitch((PropertyValuePkg) object, feature);
     }
-    else if (object_p instanceof Constraint) {
-      ret = ConstraintHelper.getInstance().doSwitch((Constraint) object_p, feature_p);
+    else if (object instanceof Constraint) {
+      ret = ConstraintHelper.getInstance().doSwitch((Constraint) object, feature);
     }
-    else if (object_p instanceof Namespace) {
-      ret = NamespaceHelper.getInstance().doSwitch((Namespace) object_p, feature_p);
+    else if (object instanceof Namespace) {
+      ret = NamespaceHelper.getInstance().doSwitch((Namespace) object, feature);
     }
 
-		if (null != ret || feature_p.getUpperBound() == 1)
+		if (null != ret || feature.getUpperBound() == 1)
 			return ret;
 
 		throw new HelperNotFoundException();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.traceability;
 
 import java.util.ArrayList;
@@ -84,17 +85,17 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     protected EStructuralFeature feature;
 
     /**
-     * @param source_p_p
-     * @param target_p_p
-     * @param realizationLink_p_p
-     * @param feature_p
+     * @param source
+     * @param target
+     * @param realizationLink
+     * @param feature
      */
-    public RealizationLinkMapping(EClass source_p, EClass target_p, EClass realizationLink_p, EStructuralFeature feature_p) {
+    public RealizationLinkMapping(EClass source, EClass target, EClass realizationLink, EStructuralFeature feature) {
       super();
-      source = source_p;
-      target = target_p;
-      realizationLink = realizationLink_p;
-      feature = feature_p;
+      this.source = source;
+      this.target = target;
+      this.realizationLink = realizationLink;
+      this.feature = feature;
     }
 
     @Override
@@ -103,43 +104,43 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     }
 
     /**
-     * @param sourceElement_p
-     * @param targetElement_p
-     * @param context_p
+     * @param sourceElement
+     * @param targetElement
+     * @param context
      * @return
      */
-    public boolean isValid(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-      if (sourceElement_p == null) {
+    public boolean isValid(EObject sourceElement, EObject targetElement, IContext context) {
+      if (sourceElement == null) {
         return false;
       }
-      if (targetElement_p == null) {
+      if (targetElement == null) {
         return false;
       }
       return true;
     }
 
     /**
-     * @param targetElement_p
-     * @param context_p
+     * @param targetElement
+     * @param context
      * @return
      */
-    public boolean isValidSource(EObject targetElement_p, IContext context_p) {
-      if (targetElement_p == null) {
+    public boolean isValidSource(EObject targetElement, IContext context) {
+      if (targetElement == null) {
         return false;
       }
-      return source.equals(targetElement_p.eClass());
+      return source.equals(targetElement.eClass());
     }
 
     /**
-     * @param targetElement_p
-     * @param context_p
+     * @param targetElement
+     * @param context
      * @return
      */
-    public boolean isValidTarget(EObject targetElement_p, IContext context_p) {
-      if (targetElement_p == null) {
+    public boolean isValidTarget(EObject targetElement, IContext context) {
+      if (targetElement == null) {
         return false;
       }
-      return target.equals(targetElement_p.eClass());
+      return target.equals(targetElement.eClass());
     }
   }
 
@@ -157,43 +158,43 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
      * {@inheritDoc}
      */
     @Override
-    public boolean isValid(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-      if (sourceElement_p instanceof BlockArchitecture) {
-        if (targetElement_p instanceof BlockArchitecture) {
+    public boolean isValid(EObject sourceElement, EObject targetElement, IContext context) {
+      if (sourceElement instanceof BlockArchitecture) {
+        if (targetElement instanceof BlockArchitecture) {
           return false;
         }
       }
 
-      if (sourceElement_p instanceof ComponentExchange) {
-        if (targetElement_p instanceof Interface) {
+      if (sourceElement instanceof ComponentExchange) {
+        if (targetElement instanceof Interface) {
           return false;
         }
       }
 
-      return super.isValid(sourceElement_p, targetElement_p, context_p);
+      return super.isValid(sourceElement, targetElement, context);
     }
 
     @Override
-    public boolean isValidSource(EObject targetElement_p, IContext context_p) {
-      return source.isInstance(targetElement_p);
+    public boolean isValidSource(EObject targetElement, IContext context) {
+      return source.isInstance(targetElement);
     }
 
     /**
-     * @param targetElement_p
-     * @param context_p
+     * @param targetElement
+     * @param context
      * @return
      */
     @Override
-    public boolean isValidTarget(EObject targetElement_p, IContext context_p) {
-      return target.isInstance(targetElement_p);
+    public boolean isValidTarget(EObject targetElement, IContext context) {
+      return target.isInstance(targetElement);
     }
 
   };
 
   private String _realizationIdentifier = null;
 
-  public RealizationLinkTraceabilityHandler(String identifier_p) {
-    super(identifier_p);
+  public RealizationLinkTraceabilityHandler(String identifier) {
+    super(identifier);
     _realizationIdentifier = REALISATION_LINKS + getIdentifier();
   }
 
@@ -201,72 +202,72 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
-    NotifyHandlerHelper.getInstance(context_p).addListener(ITransitionConstants.NOTIFY__END_TRANSFORMATION, this, context_p);
-    return super.init(context_p);
+  public IStatus init(IContext context) {
+    NotifyHandlerHelper.getInstance(context).addListener(ITransitionConstants.NOTIFY__END_TRANSFORMATION, this, context);
+    return super.init(context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
-    disposeUnattachedElements(context_p);
-    return super.dispose(context_p);
+  public IStatus dispose(IContext context) {
+    disposeUnattachedElements(context);
+    return super.dispose(context);
   }
 
   /**
-   * @param context_p
+   * @param context
    */
-  private void disposeUnattachedElements(IContext context_p) {
-    Collection<EObject> traces = Collections.singletonList((EObject) getDefaultOwner(context_p));
+  private void disposeUnattachedElements(IContext context) {
+    Collection<EObject> traces = Collections.singletonList((EObject) getDefaultOwner(context));
     if (!traces.isEmpty()) {
       DeleteStructureCommand command =
-          new DeleteStructureCommand((TransactionalEditingDomain) context_p.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN), getDefaultOwner(
-              context_p).eContents(), true);
+          new DeleteStructureCommand((TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN), getDefaultOwner(
+              context).eContents(), true);
       if (command.canExecute()) {
         command.execute();
       }
     }
   }
 
-  protected Namespace getDefaultOwner(IContext context_p) {
-    if (!context_p.exists(DEFAULT_OWNER)) {
+  protected Namespace getDefaultOwner(IContext context) {
+    if (!context.exists(DEFAULT_OWNER)) {
       Namespace owner = CapellamodellerFactory.eINSTANCE.createFolder();
-      AttachmentHelper.getInstance(context_p).createdElement(owner, owner, context_p);
-      context_p.put(DEFAULT_OWNER, owner);
+      AttachmentHelper.getInstance(context).createdElement(owner, owner, context);
+      context.put(DEFAULT_OWNER, owner);
     }
-    return (Namespace) context_p.get(DEFAULT_OWNER);
+    return (Namespace) context.get(DEFAULT_OWNER);
   }
 
-  protected Collection<AbstractTrace> getRealizationLinks(IContext context_p) {
-    if (!context_p.exists(_realizationIdentifier)) {
+  protected Collection<AbstractTrace> getRealizationLinks(IContext context) {
+    if (!context.exists(_realizationIdentifier)) {
       Collection<AbstractTrace> mapping = new ArrayList<AbstractTrace>();
-      context_p.put(_realizationIdentifier, mapping);
+      context.put(_realizationIdentifier, mapping);
     }
-    return (Collection<AbstractTrace>) context_p.get(_realizationIdentifier);
+    return (Collection<AbstractTrace>) context.get(_realizationIdentifier);
   }
 
-  protected Collection<RealizationLinkMapping> getMappings(IContext context_p) {
+  protected Collection<RealizationLinkMapping> getMappings(IContext iContext1) {
 
-    if (!context_p.exists(MAPPING_MAP)) {
+    if (!iContext1.exists(MAPPING_MAP)) {
       Collection<RealizationLinkMapping> mapping = new ArrayList<RealizationLinkMapping>();
-      context_p.put(MAPPING_MAP, mapping);
+      iContext1.put(MAPPING_MAP, mapping);
 
       // miscellaneous realizations
       mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE,
           PaPackage.Literals.LOGICAL_INTERFACE_REALIZATION, CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS) {
         @Override
-        public boolean isValid(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-          return !CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) sourceElement_p);
+        public boolean isValid(EObject sourceElement, EObject targetElement, IContext context) {
+          return !CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) sourceElement);
         }
       });
 
       mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE,
           LaPackage.Literals.CONTEXT_INTERFACE_REALIZATION, CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS) {
         @Override
-        public boolean isValid(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-          return CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) sourceElement_p);
+        public boolean isValid(EObject sourceElement, EObject targetElement, IContext context) {
+          return CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) sourceElement);
         }
       });
 
@@ -407,25 +408,25 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
 
     }
 
-    return (Collection<RealizationLinkMapping>) context_p.get(MAPPING_MAP);
+    return (Collection<RealizationLinkMapping>) iContext1.get(MAPPING_MAP);
 
   }
 
   /**
-   * @param mapping_p
-   * @param realizationLinkMapping_p
+   * @param mapping
+   * @param realizationLinkMapping
    */
-  private void mappingAdd(Collection<RealizationLinkMapping> mapping_p, RealizationLinkMapping realizationLinkMapping_p) {
-    mapping_p.add(realizationLinkMapping_p);
+  private void mappingAdd(Collection<RealizationLinkMapping> mapping, RealizationLinkMapping realizationLinkMapping) {
+    mapping.add(realizationLinkMapping);
   }
 
-  protected Collection<RealizationLinkMapping> getMappingsSource(EObject targetElement_p, IContext context_p) {
+  protected Collection<RealizationLinkMapping> getMappingsSource(EObject targetElement, IContext context) {
 
     Collection<RealizationLinkMapping> traces = new LinkedList<RealizationLinkMapping>();
-    if (targetElement_p instanceof CapellaElement) {
-      Collection<RealizationLinkMapping> map = getMappings(context_p);
+    if (targetElement instanceof CapellaElement) {
+      Collection<RealizationLinkMapping> map = getMappings(context);
       for (RealizationLinkMapping link : map) {
-        if (link.isValidSource(targetElement_p, context_p)) { // link are inverted
+        if (link.isValidSource(targetElement, context)) { // link are inverted
           traces.add(link);
         }
       }
@@ -437,13 +438,13 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     return traces;
   }
 
-  protected Collection<RealizationLinkMapping> getMappingsTarget(EObject targetElement_p, IContext context_p) {
+  protected Collection<RealizationLinkMapping> getMappingsTarget(EObject targetElement, IContext context) {
 
     Collection<RealizationLinkMapping> traces = new LinkedList<RealizationLinkMapping>();
-    if (targetElement_p instanceof CapellaElement) {
-      Collection<RealizationLinkMapping> map = getMappings(context_p);
+    if (targetElement instanceof CapellaElement) {
+      Collection<RealizationLinkMapping> map = getMappings(context);
       for (RealizationLinkMapping link : map) {
-        if (link.isValidTarget(targetElement_p, context_p)) { // link are inverted
+        if (link.isValidTarget(targetElement, context)) { // link are inverted
           traces.add(link);
         }
       }
@@ -456,14 +457,14 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   }
 
   @Override
-  protected List<EObject> getSourceAttachments(EObject targetElement_p, IContext context_p) {
+  protected List<EObject> getSourceAttachments(EObject targetElement, IContext context) {
     List<EObject> elements = new ArrayList<EObject>();
 
-    Collection<RealizationLinkMapping> traces = getMappingsTarget(targetElement_p, context_p);
-    if (targetElement_p instanceof TraceableElement) {
-      for (AbstractTrace trace : ((TraceableElement) targetElement_p).getOutgoingTraces()) {
+    Collection<RealizationLinkMapping> traces = getMappingsTarget(targetElement, context);
+    if (targetElement instanceof TraceableElement) {
+      for (AbstractTrace trace : ((TraceableElement) targetElement).getOutgoingTraces()) {
         for (RealizationLinkMapping link : traces) {
-          if (isValidMapping(trace, link, context_p)) {
+          if (isValidMapping(trace, link, context)) {
             elements.add(trace.getTargetElement()); // link is inverted
           }
         }
@@ -472,14 +473,14 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     return elements;
   }
 
-  protected List<EObject> getTargetAttachments(EObject sourceElement_p, IContext context_p) {
+  protected List<EObject> getTargetAttachments(EObject sourceElement, IContext context) {
     List<EObject> elements = new ArrayList<EObject>();
 
-    Collection<RealizationLinkMapping> traces = getMappingsSource(sourceElement_p, context_p);
-    if (sourceElement_p instanceof TraceableElement) {
-      for (AbstractTrace trace : ((TraceableElement) sourceElement_p).getIncomingTraces()) {
+    Collection<RealizationLinkMapping> traces = getMappingsSource(sourceElement, context);
+    if (sourceElement instanceof TraceableElement) {
+      for (AbstractTrace trace : ((TraceableElement) sourceElement).getIncomingTraces()) {
         for (RealizationLinkMapping link : traces) {
-          if (isValidMapping(trace, link, context_p)) {
+          if (isValidMapping(trace, link, context)) {
             elements.add(trace.getSourceElement()); // link is inverted
           }
         }
@@ -489,18 +490,18 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   }
 
   /**
-   * @param link_p
+   * @param link
    * @param targetElement_p
    * @param targetElement2_p
    * @return
    */
-  private boolean isValidMapping(AbstractTrace trace, RealizationLinkMapping link_p, IContext context_p) {
+  private boolean isValidMapping(AbstractTrace trace, RealizationLinkMapping link, IContext context) {
     EObject sourceElement = trace.getTargetElement(); // link is inverted
     EObject targetElement = trace.getSourceElement();
 
-    if (link_p.realizationLink.isInstance(trace)) {
-      if ((link_p.isValidSource(sourceElement, context_p)) && link_p.isValidTarget(targetElement, context_p)
-          && link_p.isValid(sourceElement, targetElement, context_p)) {
+    if (link.realizationLink.isInstance(trace)) {
+      if ((link.isValidSource(sourceElement, context)) && link.isValidTarget(targetElement, context)
+          && link.isValid(sourceElement, targetElement, context)) {
         return true;
       }
     }
@@ -508,63 +509,63 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   }
 
   @Override
-  public void attachTraceability(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
+  public void attachTraceability(EObject sourceElement, EObject targetElement, IContext context) {
 
-    if (targetElement_p != null) { // we allow transformation one to nothing
-      createAttachment(sourceElement_p, targetElement_p, context_p);
+    if (targetElement != null) { // we allow transformation one to nothing
+      createAttachment(sourceElement, targetElement, context);
     }
   }
 
-  protected RealizationLinkMapping getBestMapping(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-    Collection<RealizationLinkMapping> map = getMappings(context_p);
+  protected RealizationLinkMapping getBestMapping(EObject sourceElement, EObject targetElement, IContext context) {
+    Collection<RealizationLinkMapping> map = getMappings(context);
 
     RealizationLinkMapping mapping = defaultMapping;
     for (RealizationLinkMapping link : map) {
-      if (link.isValidSource(sourceElement_p, context_p) && link.isValidTarget(targetElement_p, context_p)
-          && link.isValid(sourceElement_p, targetElement_p, context_p)) {
+      if (link.isValidSource(sourceElement, context) && link.isValidTarget(targetElement, context)
+          && link.isValid(sourceElement, targetElement, context)) {
         mapping = link;
         break;
       }
     }
 
     if (mapping == defaultMapping) {
-      if (!(mapping.isValidSource(sourceElement_p, context_p) && mapping.isValidTarget(targetElement_p, context_p) && mapping.isValid(sourceElement_p,
-          targetElement_p, context_p))) {
+      if (!(mapping.isValidSource(sourceElement, context) && mapping.isValidTarget(targetElement, context) && mapping.isValid(sourceElement,
+          targetElement, context))) {
         mapping = null;
       }
     }
     return mapping;
   }
 
-  protected void createAttachment(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
-    RealizationLinkMapping mapping = getBestMapping(sourceElement_p, targetElement_p, context_p);
+  protected void createAttachment(EObject sourceElement, EObject targetElement, IContext context) {
+    RealizationLinkMapping mapping = getBestMapping(sourceElement, targetElement, context);
 
     if (mapping != null) {
       EObject link = ((EPackage) mapping.realizationLink.eContainer()).getEFactoryInstance().create(mapping.realizationLink);
 
-      if (sourceElement_p instanceof TraceableElement) {
-        if (targetElement_p instanceof TraceableElement) {
+      if (sourceElement instanceof TraceableElement) {
+        if (targetElement instanceof TraceableElement) {
           // A trace is inverted!
-          ((AbstractTrace) link).setSourceElement((TraceableElement) targetElement_p);
-          ((AbstractTrace) link).setTargetElement((TraceableElement) sourceElement_p);
-          getRealizationLinks(context_p).add((AbstractTrace) link);
+          ((AbstractTrace) link).setSourceElement((TraceableElement) targetElement);
+          ((AbstractTrace) link).setTargetElement((TraceableElement) sourceElement);
+          getRealizationLinks(context).add((AbstractTrace) link);
         }
       }
     }
-    addMappings(sourceElement_p, targetElement_p, context_p);
+    addMappings(sourceElement, targetElement, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isTrace(EObject element_p, IContext context_p) {
+  public boolean isTrace(EObject element, IContext context) {
 
-    if (element_p != null) {
-      if (element_p instanceof TransfoLink) {
+    if (element != null) {
+      if (element instanceof TransfoLink) {
         return true;
-      } else if (element_p.eClass().getName().endsWith("Realization")) {
-        if (!(element_p instanceof CapabilityRealization)) {
+      } else if (element.eClass().getName().endsWith("Realization")) {
+        if (!(element instanceof CapabilityRealization)) {
           return true;
         }
       }
@@ -576,9 +577,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
    * {@inheritDoc}
    */
   @Override
-  public EObject getSourceElement(EObject trace_p, IContext context_p) {
-    if (trace_p instanceof AbstractTrace) {
-      return ((AbstractTrace) trace_p).getTargetElement(); // bottom up
+  public EObject getSourceElement(EObject trace, IContext context) {
+    if (trace instanceof AbstractTrace) {
+      return ((AbstractTrace) trace).getTargetElement(); // bottom up
     }
     return null;
   }
@@ -587,9 +588,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
    * {@inheritDoc}
    */
   @Override
-  public EObject getTargetElement(EObject trace_p, IContext context_p) {
-    if (trace_p instanceof AbstractTrace) {
-      return ((AbstractTrace) trace_p).getSourceElement(); // bottom up
+  public EObject getTargetElement(EObject trace, IContext context) {
+    if (trace instanceof AbstractTrace) {
+      return ((AbstractTrace) trace).getSourceElement(); // bottom up
     }
     return null;
   }
@@ -598,12 +599,12 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
    * {@inheritDoc}
    */
   @Override
-  public void notifyChanged(INotifyChangeEvent event_p, IContext context_p) {
+  public void notifyChanged(INotifyChangeEvent event, IContext context) {
 
-    Collection<RealizationLinkMapping> map = getMappings(context_p);
+    Collection<RealizationLinkMapping> map = getMappings(context);
     HashMap<EClass, EStructuralFeature> refs = new HashMap<EClass, EStructuralFeature>();
 
-    for (AbstractTrace realizationLink : getRealizationLinks(context_p)) {
+    for (AbstractTrace realizationLink : getRealizationLinks(context)) {
       EObject sourceElement = realizationLink.getSourceElement();
       EObject targetElement = realizationLink.getTargetElement();
 
@@ -647,7 +648,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
         }
 
         if (!isAttached) {
-          getDefaultOwner(context_p).getOwnedTraces().add((Trace) realizationLink);
+          getDefaultOwner(context).getOwnedTraces().add((Trace) realizationLink);
         }
       }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Thales Global Services S.A.S.
+ * Copyright (c) 2016 Thales Global Services S.A.S.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,52 +39,52 @@ import org.polarsys.kitalpha.transposer.scheduler.scheduler.impl.GenericTopologi
  */
 public class ExtendedTopologicalSorter {
 
-  protected Set<Edge<?>> _backtracks;
-  protected Set<Vertex<?>> _model;
-  protected LinkedHashSet<Vertex<?>> _sortedModel;
+  protected Set<Edge<?>> backtracks;
+  protected Set<Vertex<?>> model;
+  protected LinkedHashSet<Vertex<?>> sortedModel;
 
   /**
    * @return the backtracks
    */
   public Set<Edge<?>> getBacktracks() {
-    return _backtracks;
+    return backtracks;
   }
 
   /**
    * @return the model
    */
   public Set<Vertex<?>> getModel() {
-    return _model;
+    return model;
   }
 
   /**
    * @return the sortedModel
    */
   public LinkedHashSet<Vertex<?>> getSortedModel() {
-    return _sortedModel;
+    return sortedModel;
   }
 
   /**
    * 
    */
   public void dispose() {
-    _backtracks.clear();
-    _model.clear();
-    _sortedModel.clear();
+    backtracks.clear();
+    model.clear();
+    sortedModel.clear();
 
-    _backtracks = null;
-    _model = null;
-    _sortedModel = null;
+    backtracks = null;
+    model = null;
+    sortedModel = null;
 
   }
 
   /**
-   * @param toSort_p
-   * @param backtracks_p
+   * @param toSort
+   * @param backtracks
    */
-  public ExtendedTopologicalSorter(Set<Vertex<?>> toSort_p, Set<Edge<?>> backtracks_p) {
-    _model = toSort_p;
-    _backtracks = backtracks_p;
+  public ExtendedTopologicalSorter(Set<Vertex<?>> toSort, Set<Edge<?>> backtracks) {
+    this.model = toSort;
+    this.backtracks = backtracks;
   }
 
   /**
@@ -102,7 +102,7 @@ public class ExtendedTopologicalSorter {
     while (independant && iterator.hasNext()) {
       Edge<?> currentedge = iterator.next();
 
-      if (_backtracks.contains(currentedge)) {
+      if (backtracks.contains(currentedge)) {
         independant = true;
       } else {
         Vertex<?> currentType = currentedge.getTarget();
@@ -115,41 +115,41 @@ public class ExtendedTopologicalSorter {
 
   /**
    * Determines the individual elements within a set of elements
-   * @param monitor_p
+   * @param monitor
    * @param toSort all of the elements in which one seeks the independent
    * @return all independent elements
    */
-  private Set<Vertex<?>> findIndependantsInTypeSet(Set<Vertex<?>> toSort, IProgressMonitor monitor_p) {
+  private Set<Vertex<?>> findIndependantsInTypeSet(Set<Vertex<?>> toSort, IProgressMonitor monitor) {
     Set<Vertex<?>> independants = new HashSet<Vertex<?>>();
 
     for (Vertex<?> currentType : toSort) {
       if (isIndependantInTypeSet(currentType, toSort)) {
         independants.add(currentType);
-        if (monitor_p != null) {
-          monitor_p.worked(1 / _model.size());
+        if (monitor != null) {
+          monitor.worked(1 / model.size());
         }
       }
     }
 
     if (independants.isEmpty()) {
       lookForOtherBacktracks(toSort);
-      independants = findIndependantsInTypeSet(toSort, monitor_p);
+      independants = findIndependantsInTypeSet(toSort, monitor);
     }
     return independants;
   }
 
   /**
-   * @param toSort_p
+   * @param toSort
    */
-  private void lookForOtherBacktracks(Set<Vertex<?>> toSort_p) {
+  private void lookForOtherBacktracks(Set<Vertex<?>> toSort) {
     // try to break non detected cycles : list non backtracked (non critical) edges, outputs of vertices to sort.
     List<Edge<?>> nonBacktrackedEdges = new ArrayList<Edge<?>>();
     // if possible, only break edges from vertices with multiples output.
     List<Edge<?>> edgesToBreak = new ArrayList<Edge<?>>();
-    for (Vertex<?> v : toSort_p) {
+    for (Vertex<?> v : toSort) {
       List<Edge<?>> breakables = new ArrayList<Edge<?>>();
       for (Edge<?> e : v.getOutgoingEdges()) {
-        if (toSort_p.contains(e.getTarget()) && !e.isCritical() && !_backtracks.contains(e)) {
+        if (toSort.contains(e.getTarget()) && !e.isCritical() && !backtracks.contains(e)) {
           breakables.add(e);
         }
       }
@@ -166,20 +166,20 @@ public class ExtendedTopologicalSorter {
     }
 
     if (!edgesToBreak.isEmpty()) {
-      _backtracks.addAll(edgesToBreak);
+      backtracks.addAll(edgesToBreak);
     } else {
-      _backtracks.addAll(nonBacktrackedEdges);
+      backtracks.addAll(nonBacktrackedEdges);
     }
   }
 
   /**
    *
    */
-  public LinkedHashSet<Vertex<?>> sort(IProgressMonitor monitor_p) {
-    if (monitor_p != null) {
-      monitor_p.subTask("Topological sort"); //$NON-NLS-1$ 
+  public LinkedHashSet<Vertex<?>> sort(IProgressMonitor monitor) {
+    if (monitor != null) {
+      monitor.subTask("Topological sort"); //$NON-NLS-1$ 
     }
-    _sortedModel = topologicalSort(new LinkedHashSet<Vertex<?>>(), _model, monitor_p);
+    sortedModel = topologicalSort(new LinkedHashSet<Vertex<?>>(), model, monitor);
 
     return getSortedModel();
   }
@@ -190,11 +190,11 @@ public class ExtendedTopologicalSorter {
    * @param toSort set of not processed elements
    * @return set of processed elements (at the end of the recursive calls)
    */
-  private LinkedHashSet<Vertex<?>> topologicalSort(LinkedHashSet<Vertex<?>> sorted, Set<Vertex<?>> toSort, IProgressMonitor monitor_p) {
+  private LinkedHashSet<Vertex<?>> topologicalSort(LinkedHashSet<Vertex<?>> sorted, Set<Vertex<?>> toSort, IProgressMonitor monitor) {
     Set<Vertex<?>> independants;
 
     while (!toSort.isEmpty()) {
-      independants = findIndependantsInTypeSet(toSort, monitor_p);
+      independants = findIndependantsInTypeSet(toSort, monitor);
       if (independants.isEmpty()) {
         throw new TransitionException(new Status(IStatus.ERROR, "Transposer cycle exception", "Transposer cycle exception"));
       }
@@ -206,7 +206,7 @@ public class ExtendedTopologicalSorter {
     return sorted;
   }
 
-  public List<ITransposerTask<Vertex<?>>> getWork(IProgressMonitor monitor_p) {
+  public List<ITransposerTask<Vertex<?>>> getWork(IProgressMonitor monitor) {
     GenericTopologicalSorter sorter = new GenericTopologicalSorter(getModel(), getBacktracks()) {
 
       /**
@@ -218,6 +218,6 @@ public class ExtendedTopologicalSorter {
       }
 
     };
-    return sorter.getWork(monitor_p);
+    return sorter.getWork(monitor);
   }
 }

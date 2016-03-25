@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.services;
 
 import java.util.ArrayList;
@@ -31,71 +32,71 @@ public class AbstractCapabilityExt {
 
   /**
    * This method adds an extended capability.
-   * @param capability_p The capability source.
-   * @param extendedCapability_p The capability to extend.
+   * @param capability The capability source.
+   * @param extendedCapability The capability to extend.
    */
-  public static void addExtendedCapability(AbstractCapability capability_p, AbstractCapability extendedCapability_p) {
-    if ((capability_p != null) && (extendedCapability_p != null)) {
-      if (!capability_p.getExtendedAbstractCapabilities().contains(extendedCapability_p)) {
+  public static void addExtendedCapability(AbstractCapability capability, AbstractCapability extendedCapability) {
+    if ((capability != null) && (extendedCapability != null)) {
+      if (!capability.getExtendedAbstractCapabilities().contains(extendedCapability)) {
         AbstractCapabilityExtend extend = InteractionFactory.eINSTANCE.createAbstractCapabilityExtend();
-        capability_p.getExtends().add(extend);
-        extend.setExtended(extendedCapability_p);
+        capability.getExtends().add(extend);
+        extend.setExtended(extendedCapability);
       }
     }
   }
 
   /**
    * This method adds an included capability.
-   * @param capability_p The capability source.
-   * @param includedCapability_p The capability to include.
+   * @param capability The capability source.
+   * @param includedCapability The capability to include.
    */
-  public static void addIncludedCapability(AbstractCapability capability_p, AbstractCapability includedCapability_p) {
-    if ((capability_p != null) && (includedCapability_p != null)) {
-      if (!capability_p.getIncludedAbstractCapabilities().contains(includedCapability_p)) {
+  public static void addIncludedCapability(AbstractCapability capability, AbstractCapability includedCapability) {
+    if ((capability != null) && (includedCapability != null)) {
+      if (!capability.getIncludedAbstractCapabilities().contains(includedCapability)) {
         AbstractCapabilityInclude include = InteractionFactory.eINSTANCE.createAbstractCapabilityInclude();
-        capability_p.getIncludes().add(include);
-        include.setIncluded(includedCapability_p);
+        capability.getIncludes().add(include);
+        include.setIncluded(includedCapability);
       }
     }
   }
 
   /**
    * This method adds an inherited capability.
-   * @param capability_p The capability source.
-   * @param superCapability_p The parent capability to add.
+   * @param capability The capability source.
+   * @param superCapability The parent capability to add.
    */
-  public static void addSuperCapability(AbstractCapability capability_p, AbstractCapability superCapability_p) {
-    if ((capability_p != null) && (superCapability_p != null)) {
-      if (!capability_p.getSuper().contains(superCapability_p)) {
+  public static void addSuperCapability(AbstractCapability capability, AbstractCapability superCapability) {
+    if ((capability != null) && (superCapability != null)) {
+      if (!capability.getSuper().contains(superCapability)) {
         AbstractCapabilityGeneralization generalization = InteractionFactory.eINSTANCE.createAbstractCapabilityGeneralization();
-        capability_p.getSuperGeneralizations().add(generalization);
-        generalization.setSuper(superCapability_p);
+        capability.getSuperGeneralizations().add(generalization);
+        generalization.setSuper(superCapability);
       }
     }
   }
 
   /**
    * This method retrieves the extended capabilities.
-   * @param capability_p The capability source.
+   * @param capability The capability source.
    * @return The list of extended capabilities.
    * @deprecated use org.polarsys.capella.core.data.interaction.AbstractCapability#getExtendedCapabilityUseCases() instead
    */
   @Deprecated
-  public static List<AbstractCapability> getExtendedCapabilities(AbstractCapability capability_p) {
-    return capability_p.getExtendedAbstractCapabilities();
+  public static List<AbstractCapability> getExtendedCapabilities(AbstractCapability capability) {
+    return capability.getExtendedAbstractCapabilities();
   }
 
   /**
    * Gets the list of extended capabilities of the current capability
-   * @param currentCapability_p the capability for which extended capabilities have to be found
+   * @param currentCapability the capability for which extended capabilities have to be found
    * @return list of extended capabilities
    */
-  static public List<AbstractCapability> getExtendHierarchy(AbstractCapability currentCapability_p) {
+  static public List<AbstractCapability> getExtendHierarchy(AbstractCapability currentCapability) {
     List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
 
-    for (AbstractCapabilityExtend extend : currentCapability_p.getExtends()) {
+    for (AbstractCapabilityExtend extend : currentCapability.getExtends()) {
       AbstractCapability extCap = extend.getExtended();
-      if ((extCap != null) && !extCap.equals(currentCapability_p) && !capabilityList.contains(extCap)) {
+      if ((extCap != null) && !extCap.equals(currentCapability) && !capabilityList.contains(extCap)) {
         capabilityList.add(extCap);
         capabilityList.addAll(getExtendHierarchy(extCap));
       }
@@ -106,156 +107,156 @@ public class AbstractCapabilityExt {
 
   /**
    * This method retrieves the included capabilities.
-   * @param capability_p The capability source.
+   * @param capability The capability source.
    * @return The list of included capabilities.
    * @deprecated use org.polarsys.capella.core.data.interaction.AbstractCapability#getIncludedAbstractCapabilityUseCases() instead
    */
   @Deprecated
-  public static List<AbstractCapability> getIncludedCapabilities(AbstractCapability capability_p) {
-    return capability_p.getIncludedAbstractCapabilities();
+  public static List<AbstractCapability> getIncludedCapabilities(AbstractCapability capability) {
+    return capability.getIncludedAbstractCapabilities();
   }
 
   /**
    * Return recursive included capabilities
-   * @param capabilityList_p
-   * @param currentCapability_p
+   * @param capabilityList
+   * @param currentCapability
    */
-  static private void getIncludedCapabilitiesRecursively(List<AbstractCapability> capabilityList_p, AbstractCapability currentCapability_p) {
-    EList<AbstractCapabilityInclude> including = currentCapability_p.getIncludes();
+  static private void getIncludedCapabilitiesRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+    EList<AbstractCapabilityInclude> including = currentCapability.getIncludes();
     for (AbstractCapabilityInclude cap : including) {
       AbstractCapability inclusionCap = cap.getIncluded();
-      if ((inclusionCap != null) && !inclusionCap.equals(currentCapability_p) && !capabilityList_p.contains(inclusionCap)) {
-        capabilityList_p.add(inclusionCap);
-        getIncludingCapabilitiesRecursively(capabilityList_p, inclusionCap);
+      if ((inclusionCap != null) && !inclusionCap.equals(currentCapability) && !capabilityList.contains(inclusionCap)) {
+        capabilityList.add(inclusionCap);
+        getIncludingCapabilitiesRecursively(capabilityList, inclusionCap);
       }
     }
   }
 
   /**
    * Gets the list of included capabilities of the current capability
-   * @param currentCapability_p the capability for which included capabilities have to be found
+   * @param currentCapability the capability for which included capabilities have to be found
    * @return list of included capabilities
    */
-  static public List<AbstractCapability> getIncludedHierarchy(AbstractCapability currentCapability_p) {
+  static public List<AbstractCapability> getIncludedHierarchy(AbstractCapability currentCapability) {
     List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
 
-    getIncludedCapabilitiesRecursively(capabilityList, currentCapability_p);
+    getIncludedCapabilitiesRecursively(capabilityList, currentCapability);
 
     return capabilityList;
   }
 
   /**
    * Return recursive including capabilities
-   * @param capabilityList_p
-   * @param currentCapability_p
+   * @param capabilityList
+   * @param currentCapability
    */
-  static private void getIncludingCapabilitiesRecursively(List<AbstractCapability> capabilityList_p, AbstractCapability currentCapability_p) {
-    EList<AbstractCapabilityInclude> including = currentCapability_p.getIncluding();
+  static private void getIncludingCapabilitiesRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+    EList<AbstractCapabilityInclude> including = currentCapability.getIncluding();
     for (AbstractCapabilityInclude cap : including) {
       AbstractCapability inclusionCap = cap.getInclusion();
-      if ((inclusionCap != null) && !inclusionCap.equals(currentCapability_p) && !capabilityList_p.contains(inclusionCap)) {
-        capabilityList_p.add(inclusionCap);
-        getIncludingCapabilitiesRecursively(capabilityList_p, inclusionCap);
+      if ((inclusionCap != null) && !inclusionCap.equals(currentCapability) && !capabilityList.contains(inclusionCap)) {
+        capabilityList.add(inclusionCap);
+        getIncludingCapabilitiesRecursively(capabilityList, inclusionCap);
       }
     }
   }
 
   /**
    * Gets the list of including capabilities of the current capability
-   * @param currentCapability_p the capability for which including capabilities have to be found
+   * @param currentCapability the capability for which including capabilities have to be found
    * @return list of including capabilities
    */
-  static public List<AbstractCapability> getIncludingHierarchy(AbstractCapability currentCapability_p) {
+  static public List<AbstractCapability> getIncludingHierarchy(AbstractCapability currentCapability) {
     List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
 
-    getIncludingCapabilitiesRecursively(capabilityList, currentCapability_p);
+    getIncludingCapabilitiesRecursively(capabilityList, currentCapability);
 
     return capabilityList;
   }
 
   /**
    * Gets the list of super capabilities of the current capability
-   * @param currentCapability_p the capability for which super capabilities have to be found
+   * @param currentCapability the capability for which super capabilities have to be found
    * @return list of super capabilities
    */
-  static public List<AbstractCapability> getInheritanceHierarchy(AbstractCapability currentCapability_p) {
+  static public List<AbstractCapability> getInheritanceHierarchy(AbstractCapability currentCapability) {
     List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
 
-    getInheritanceHierarchyRecursively(capabilityList, currentCapability_p);
+    getInheritanceHierarchyRecursively(capabilityList, currentCapability);
 
     return capabilityList;
   }
 
-  static private void getInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList_p, AbstractCapability currentCapability_p) {
-    for (AbstractCapabilityGeneralization generalization : currentCapability_p.getSuperGeneralizations()) {
+  static private void getInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+    for (AbstractCapabilityGeneralization generalization : currentCapability.getSuperGeneralizations()) {
       AbstractCapability superCap = generalization.getSuper();
-      if ((superCap != null) && !superCap.equals(currentCapability_p) && !capabilityList_p.contains(superCap)) {
-        capabilityList_p.add(superCap);
-        getInheritanceHierarchyRecursively(capabilityList_p, superCap);
+      if ((superCap != null) && !superCap.equals(currentCapability) && !capabilityList.contains(superCap)) {
+        capabilityList.add(superCap);
+        getInheritanceHierarchyRecursively(capabilityList, superCap);
       }
     }
   }
 
   /**
    * This method retrieves the scenarios related to the given use case.
-   * @param capability_p the use case whose related scenarios will be retrieved
+   * @param capability the use case whose related scenarios will be retrieved
    * @return the related scenarios
    * @deprecated
    */
   @Deprecated
-  public static List<Scenario> getRelatedScenarios(AbstractCapability capability_p) {
-    return capability_p.getOwnedScenarios();
+  public static List<Scenario> getRelatedScenarios(AbstractCapability capability) {
+    return capability.getOwnedScenarios();
   }
 
   /**
    * Gets the list of capabilities related to the current capability (by Inheritance)
-   * @param currentCapability_p the capability for which related capabilities have to be found
+   * @param currentCapability the capability for which related capabilities have to be found
    * @return list of related capabilities
    */
-  static public List<AbstractCapability> getSuperHierarchy(AbstractCapability currentCapability_p) {
+  static public List<AbstractCapability> getSuperHierarchy(AbstractCapability currentCapability) {
     List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
 
-    capabilityList.addAll(getInheritanceHierarchy(currentCapability_p));
-    /*capabilityList.addAll(getIncludedHierarchy(currentCapability_p));
-    capabilityList.addAll(getExtendHierarchy(currentCapability_p));*/
+    capabilityList.addAll(getInheritanceHierarchy(currentCapability));
+    /*capabilityList.addAll(getIncludedHierarchy(currentCapability));
+    capabilityList.addAll(getExtendHierarchy(currentCapability));*/
 
     return capabilityList;
   }
 
   /**
    * Gets the list of sub capabilities of the current capability
-   * @param currentCapability_p the capability for which sub capabilities have to be found
+   * @param currentCapability the capability for which sub capabilities have to be found
    * @return list of super capabilities
    */
-  static public List<AbstractCapability> getSubInheritanceHierarchy(AbstractCapability currentCapability_p) {
+  static public List<AbstractCapability> getSubInheritanceHierarchy(AbstractCapability currentCapability) {
     List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
 
-    getSubInheritanceHierarchyRecursively(capabilityList, currentCapability_p);
+    getSubInheritanceHierarchyRecursively(capabilityList, currentCapability);
 
     return capabilityList;
   }
 
-  static private void getSubInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList_p, AbstractCapability currentCapability_p) {
-    for (AbstractCapabilityGeneralization generalization : currentCapability_p.getSubGeneralizations()) {
+  static private void getSubInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+    for (AbstractCapabilityGeneralization generalization : currentCapability.getSubGeneralizations()) {
       AbstractCapability subCap = generalization.getSub();
-      if ((subCap != null) && !subCap.equals(currentCapability_p) && !capabilityList_p.contains(subCap)) {
-        capabilityList_p.add(subCap);
-        getInheritanceHierarchyRecursively(capabilityList_p, subCap);
+      if ((subCap != null) && !subCap.equals(currentCapability) && !capabilityList.contains(subCap)) {
+        capabilityList.add(subCap);
+        getInheritanceHierarchyRecursively(capabilityList, subCap);
       }
     }
   }
 
   /**
    * This method checks whether the capability has been included in the mission.
-   * @param capability_p the capability included
-   * @param mission_p the mission
+   * @param capability the capability included
+   * @param mission the mission
    * @return true if the capability has been included in the mission
    */
-  static public boolean isIncluded(AbstractCapability capability_p, Mission mission_p) {
+  static public boolean isIncluded(AbstractCapability capability, Mission mission) {
     boolean isIncluded = false;
 
-    for (CapabilityExploitation capabilityExploitation : mission_p.getOwnedCapabilityExploitations()) {
-      if (capabilityExploitation.getCapability().equals(capability_p)) {
+    for (CapabilityExploitation capabilityExploitation : mission.getOwnedCapabilityExploitations()) {
+      if (capabilityExploitation.getCapability().equals(capability)) {
         isIncluded = true;
         break;
       }
@@ -266,70 +267,70 @@ public class AbstractCapabilityExt {
 
   /**
    * This method checks for Inheritance Relationship between two capabilities and return true if any of the relationships exists.
-   * @param currentCapability_p the first Capability
-   * @param capability_p the second Capability
+   * @param currentCapability the first Capability
+   * @param capability the second Capability
    * @return if there is an Inheritance Relationship existence
    */
-  static public boolean isSuperCapability(AbstractCapability currentCapability_p, AbstractCapability capability_p) {
-    return getSuperHierarchy(currentCapability_p).contains(capability_p);
+  static public boolean isSuperCapability(AbstractCapability currentCapability, AbstractCapability capability) {
+    return getSuperHierarchy(currentCapability).contains(capability);
   }
 
   /**
    * This method removes an included capability from the specified capability.
-   * @param capability_p The source capability.
-   * @param extendedCapability_p The included capability to remove.
+   * @param capability The source capability.
+   * @param extendedCapability The included capability to remove.
    */
-  public static void removeExtendedCapability(AbstractCapability capability_p, AbstractCapability extendedCapability_p) {
+  public static void removeExtendedCapability(AbstractCapability capability, AbstractCapability extendedCapability) {
     AbstractCapabilityExtend extend = null;
-    ListIterator<AbstractCapabilityExtend> it = capability_p.getExtends().listIterator();
+    ListIterator<AbstractCapabilityExtend> it = capability.getExtends().listIterator();
     while (it.hasNext()) {
       AbstractCapabilityExtend ext = it.next();
-      if (ext.getExtended().equals(extendedCapability_p)) {
+      if (ext.getExtended().equals(extendedCapability)) {
         extend = ext;
       }
     }
     if (extend != null) {
-      capability_p.getExtends().remove(extend);
+      capability.getExtends().remove(extend);
       extend.destroy();
     }
   }
 
   /**
    * This method removes an included capability from the specified capability.
-   * @param capability_p The source capability.
-   * @param includedCapability_p The included capability to remove.
+   * @param capability The source capability.
+   * @param includedCapability The included capability to remove.
    */
-  public static void removeIncludedCapability(AbstractCapability capability_p, AbstractCapability includedCapability_p) {
+  public static void removeIncludedCapability(AbstractCapability capability, AbstractCapability includedCapability) {
     AbstractCapabilityInclude include = null;
-    ListIterator<AbstractCapabilityInclude> it = capability_p.getIncludes().listIterator();
+    ListIterator<AbstractCapabilityInclude> it = capability.getIncludes().listIterator();
     while (it.hasNext()) {
       AbstractCapabilityInclude inc = it.next();
-      if (inc.getIncluded().equals(includedCapability_p)) {
+      if (inc.getIncluded().equals(includedCapability)) {
         include = inc;
       }
     }
     if (include != null) {
-      capability_p.getIncludes().remove(include);
+      capability.getIncludes().remove(include);
       include.destroy();
     }
   }
 
   /**
    * This method removes an inherited capability from the specified capability.
-   * @param capability_p The source capability.
-   * @param superCapability_p The parent capability to remove.
+   * @param capability The source capability.
+   * @param superCapability The parent capability to remove.
    */
-  public static void removeSuperCapability(AbstractCapability capability_p, AbstractCapability superCapability_p) {
+  public static void removeSuperCapability(AbstractCapability capability, AbstractCapability superCapability) {
     AbstractCapabilityGeneralization generalization = null;
-    ListIterator<AbstractCapabilityGeneralization> it = capability_p.getSuperGeneralizations().listIterator();
+    ListIterator<AbstractCapabilityGeneralization> it = capability.getSuperGeneralizations().listIterator();
     while (it.hasNext()) {
       AbstractCapabilityGeneralization gen = it.next();
-      if (gen.getSuper().equals(superCapability_p)) {
+      if (gen.getSuper().equals(superCapability)) {
         generalization = gen;
       }
     }
     if (generalization != null) {
-      capability_p.getSuperGeneralizations().remove(generalization);
+      capability.getSuperGeneralizations().remove(generalization);
       generalization.destroy();
     }
   }

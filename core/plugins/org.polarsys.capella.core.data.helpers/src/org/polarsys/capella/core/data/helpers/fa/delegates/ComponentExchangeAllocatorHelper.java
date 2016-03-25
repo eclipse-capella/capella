@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -35,24 +36,24 @@ public class ComponentExchangeAllocatorHelper {
 		return instance;
 	}
 
-	public Object doSwitch(ComponentExchangeAllocator element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(ComponentExchangeAllocator element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES)) {
-			ret = getAllocatedComponentExchanges(element_p);
+		if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES)) {
+			ret = getAllocatedComponentExchanges(element);
 		}
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamedElementHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected List<ComponentExchange> getAllocatedComponentExchanges(ComponentExchangeAllocator element_p) {
+	protected List<ComponentExchange> getAllocatedComponentExchanges(ComponentExchangeAllocator element) {
 		List<ComponentExchange> ret = new ArrayList<ComponentExchange>();
-		for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+		for (AbstractTrace trace : element.getOutgoingTraces()) {
 			if (trace instanceof ComponentExchangeAllocation) {
 			  ComponentExchange cpnt = ((ComponentExchangeAllocation) trace).getComponentExchangeAllocated();
 				if (cpnt != null) {

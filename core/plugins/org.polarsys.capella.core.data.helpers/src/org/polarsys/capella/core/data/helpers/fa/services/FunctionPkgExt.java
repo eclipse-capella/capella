@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.services;
 
 import java.util.ArrayList;
@@ -29,13 +30,13 @@ public class FunctionPkgExt {
 
   /**
    * Get All the ExchangeCategories from FunctionPkg
-   * @param functionPkg_p
+   * @param functionPkg
    * @return list of ExchageCategories
    */
-  public static List<ExchangeCategory> getAllExchangeCategories(FunctionPkg functionPkg_p) {
+  public static List<ExchangeCategory> getAllExchangeCategories(FunctionPkg functionPkg) {
     List<ExchangeCategory> list = new ArrayList<ExchangeCategory>(1);
 
-    for (FunctionPkg pkg : getAllFunctionPkgs(functionPkg_p)) {
+    for (FunctionPkg pkg : getAllFunctionPkgs(functionPkg)) {
       list.addAll(pkg.getOwnedCategories());
     }
 
@@ -43,50 +44,50 @@ public class FunctionPkgExt {
   }
 
   /**
-   * @param arch_p
-   * @return all functionPkgs contained in arch_p
+   * @param arch
+   * @return all functionPkgs contained in arch
    */
-  public static List<FunctionPkg> getAllFunctionPkgs(BlockArchitecture arch_p) {
-    return getAllFunctionPkgs(arch_p.getOwnedFunctionPkg());
+  public static List<FunctionPkg> getAllFunctionPkgs(BlockArchitecture arch) {
+    return getAllFunctionPkgs(arch.getOwnedFunctionPkg());
   }
 
   /**
-   * @param functionPkg_p
+   * @param functionPkg
    * @return all contained FunctionPkgs
    */
-  public static List<FunctionPkg> getOwnedFunctionPkgs(FunctionPkg functionPkg_p) {
+  public static List<FunctionPkg> getOwnedFunctionPkgs(FunctionPkg functionPkg) {
     List<FunctionPkg> containedFunctionPkgs = new ArrayList<FunctionPkg>();
-    if (functionPkg_p instanceof OperationalActivityPkg) {
-      containedFunctionPkgs.addAll(((OperationalActivityPkg) functionPkg_p).getOwnedOperationalActivityPkgs());
+    if (functionPkg instanceof OperationalActivityPkg) {
+      containedFunctionPkgs.addAll(((OperationalActivityPkg) functionPkg).getOwnedOperationalActivityPkgs());
     }
-    if (functionPkg_p instanceof SystemFunctionPkg) {
-      containedFunctionPkgs.addAll(((SystemFunctionPkg) functionPkg_p).getOwnedSystemFunctionPkgs());
+    if (functionPkg instanceof SystemFunctionPkg) {
+      containedFunctionPkgs.addAll(((SystemFunctionPkg) functionPkg).getOwnedSystemFunctionPkgs());
     }
-    if (functionPkg_p instanceof LogicalFunctionPkg) {
-      containedFunctionPkgs.addAll(((LogicalFunctionPkg) functionPkg_p).getOwnedLogicalFunctionPkgs());
+    if (functionPkg instanceof LogicalFunctionPkg) {
+      containedFunctionPkgs.addAll(((LogicalFunctionPkg) functionPkg).getOwnedLogicalFunctionPkgs());
     }
-    if (functionPkg_p instanceof PhysicalFunctionPkg) {
-      containedFunctionPkgs.addAll(((PhysicalFunctionPkg) functionPkg_p).getOwnedPhysicalFunctionPkgs());
+    if (functionPkg instanceof PhysicalFunctionPkg) {
+      containedFunctionPkgs.addAll(((PhysicalFunctionPkg) functionPkg).getOwnedPhysicalFunctionPkgs());
     }
     return containedFunctionPkgs;
   }
 
   /**
-   * @param functionPkg_p
-   * @return all functionPkgs contained recursively in functionPkg_p
+   * @param functionPkg
+   * @return all functionPkgs contained recursively in functionPkg
    */
-  public static List<FunctionPkg> getAllFunctionPkgs(FunctionPkg functionPkg_p) {
+  public static List<FunctionPkg> getAllFunctionPkgs(FunctionPkg functionPkg) {
     List<FunctionPkg> returnedList = new ArrayList<FunctionPkg>();
-    if (functionPkg_p == null) {
+    if (functionPkg == null) {
       return returnedList;
     }
-    returnedList.add(functionPkg_p);
+    returnedList.add(functionPkg);
 
-    for (AbstractFunction aFunction : getOwnedFunctions(functionPkg_p)) {
+    for (AbstractFunction aFunction : getOwnedFunctions(functionPkg)) {
       returnedList.addAll(FunctionExt.getAllFunctionPkgs(aFunction));
     }
 
-    for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg_p)) {
+    for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg)) {
       returnedList.addAll(getAllFunctionPkgs(aFunctionPkg));
     }
     return returnedList;
@@ -96,50 +97,50 @@ public class FunctionPkgExt {
    * Returns functions owned by the function or owned function pkg
    * @return
    */
-  public static Collection<AbstractFunction> getFirstLevelAbstractFunctions(FunctionPkg container_p) {
+  public static Collection<AbstractFunction> getFirstLevelAbstractFunctions(FunctionPkg container) {
     Collection<AbstractFunction> result = new ArrayList<AbstractFunction>();
 
-    result.addAll(FunctionPkgExt.getOwnedFunctions(container_p));
-    for (FunctionPkg pkg : FunctionPkgExt.getOwnedFunctionPkgs(container_p)) {
+    result.addAll(FunctionPkgExt.getOwnedFunctions(container));
+    for (FunctionPkg pkg : FunctionPkgExt.getOwnedFunctionPkgs(container)) {
       result.addAll(getFirstLevelAbstractFunctions(pkg));
     }
     return result;
   }
 
   /**
-   * @param functionPkg_p
-   * @return functions contained in functionPkg_p
+   * @param functionPkg
+   * @return functions contained in functionPkg
    */
-  public static List<AbstractFunction> getOwnedFunctions(FunctionPkg functionPkg_p) {
+  public static List<AbstractFunction> getOwnedFunctions(FunctionPkg functionPkg) {
     List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-    if (functionPkg_p instanceof OperationalActivityPkg) {
-      returnedList.addAll(((OperationalActivityPkg) functionPkg_p).getOwnedOperationalActivities());
+    if (functionPkg instanceof OperationalActivityPkg) {
+      returnedList.addAll(((OperationalActivityPkg) functionPkg).getOwnedOperationalActivities());
     }
-    if (functionPkg_p instanceof SystemFunctionPkg) {
-      returnedList.addAll(((SystemFunctionPkg) functionPkg_p).getOwnedSystemFunctions());
+    if (functionPkg instanceof SystemFunctionPkg) {
+      returnedList.addAll(((SystemFunctionPkg) functionPkg).getOwnedSystemFunctions());
     }
-    if (functionPkg_p instanceof LogicalFunctionPkg) {
-      returnedList.addAll(((LogicalFunctionPkg) functionPkg_p).getOwnedLogicalFunctions());
+    if (functionPkg instanceof LogicalFunctionPkg) {
+      returnedList.addAll(((LogicalFunctionPkg) functionPkg).getOwnedLogicalFunctions());
     }
-    if (functionPkg_p instanceof PhysicalFunctionPkg) {
-      returnedList.addAll(((PhysicalFunctionPkg) functionPkg_p).getOwnedPhysicalFunctions());
+    if (functionPkg instanceof PhysicalFunctionPkg) {
+      returnedList.addAll(((PhysicalFunctionPkg) functionPkg).getOwnedPhysicalFunctions());
     }
     return returnedList;
   }
 
   /**
-   * @param blockArchitecture_p
-   * @return all abstractFunctions in blockArchitecture_p
+   * @param functionPkg
+   * @return all abstractFunctions in blockArchitecture
    */
-  public static List<AbstractFunction> getAllAbstractFunctions(FunctionPkg functionPkg_p) {
+  public static List<AbstractFunction> getAllAbstractFunctions(FunctionPkg functionPkg) {
     List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
 
-    if (functionPkg_p != null) {
-      for (AbstractFunction aFunction : getOwnedFunctions(functionPkg_p)) {
+    if (functionPkg != null) {
+      for (AbstractFunction aFunction : getOwnedFunctions(functionPkg)) {
         returnedList.addAll(FunctionExt.getAllAbstractFunctions(aFunction));
       }
 
-      for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg_p)) {
+      for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg)) {
         returnedList.addAll(getAllAbstractFunctions(aFunctionPkg));
       }
     }

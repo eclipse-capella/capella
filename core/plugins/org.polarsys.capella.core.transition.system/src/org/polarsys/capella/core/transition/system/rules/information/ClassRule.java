@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information;
 
 import java.util.List;
@@ -49,44 +50,44 @@ public class ClassRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getDataPkg(target);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    org.polarsys.capella.core.data.information.Class element = (org.polarsys.capella.core.data.information.Class) source_p;
+    org.polarsys.capella.core.data.information.Class element = (org.polarsys.capella.core.data.information.Class) source;
 
-    result_p.addAll(element.getOwnedFeatures());
-    result_p.addAll(element.getOwnedDataValues());
-    result_p.addAll(element.getNestedGeneralClasses());
-    result_p.addAll(element.getSuperGeneralizations());
-    result_p.addAll(element.getOwnedStateMachines());
+    result.addAll(element.getOwnedFeatures());
+    result.addAll(element.getOwnedDataValues());
+    result.addAll(element.getNestedGeneralClasses());
+    result.addAll(element.getSuperGeneralizations());
+    result.addAll(element.getOwnedStateMachines());
 
     for (TypedElement typedElt : element.getTypedElements()) {
       if ((typedElt instanceof Property) && (typedElt.eContainer() instanceof Association)) {
-        result_p.add(typedElt);
+        result.add(typedElt);
       }
     }
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
 
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedFeatures(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDataValues(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getNestedGeneralClasses(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getSuperGeneralizations(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedStateMachines(), context_p);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedFeatures(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDataValues(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getNestedGeneralClasses(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getSuperGeneralizations(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedStateMachines(), context);
 
       for (TypedElement typedElt : element.getTypedElements()) {
         if ((typedElt instanceof Property) && (typedElt.eContainer() instanceof Association)) {
-          handler.add(ITransitionConstants.SOURCE_SCOPE, typedElt, context_p);
+          handler.add(ITransitionConstants.SOURCE_SCOPE, typedElt, context);
         }
       }
     }
@@ -94,13 +95,13 @@ public class ClassRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected boolean isOrderedContainment(EObject element_p) {
+  protected boolean isOrderedContainment(EObject element) {
     return true;
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveContainer(element_p, result_p, context_p);
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    super.retrieveContainer(element, result, context);
   }
 
 }

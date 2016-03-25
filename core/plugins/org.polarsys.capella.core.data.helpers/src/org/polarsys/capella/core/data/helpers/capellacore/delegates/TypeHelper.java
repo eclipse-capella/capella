@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.capellacore.delegates;
 
 import java.util.ArrayList;
@@ -34,26 +35,26 @@ public class TypeHelper {
 		return instance;
 	}
 
-	public Object doSwitch(Type element_p, EStructuralFeature feature_p){
+	public Object doSwitch(Type element, EStructuralFeature feature){
 		Object ret = null;
 
-		if (feature_p.equals(CapellacorePackage.Literals.TYPE__TYPED_ELEMENTS)) {
-			ret = getTypedElements(element_p);
+		if (feature.equals(CapellacorePackage.Literals.TYPE__TYPED_ELEMENTS)) {
+			ret = getTypedElements(element);
 		}
 
 		// no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractTypeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractTypeHelper.getInstance().doSwitch(element, feature);
     }
 		if (null == ret) {
-			ret = NamespaceHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamespaceHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected List<TypedElement> getTypedElements(Type element_p){
-		List <AbstractTypedElement> absTypedElements = element_p.getAbstractTypedElements();
+	protected List<TypedElement> getTypedElements(Type element){
+		List <AbstractTypedElement> absTypedElements = element.getAbstractTypedElements();
 		List <TypedElement> ret = new ArrayList<TypedElement>();
 
 		for (AbstractTypedElement abstractTypedElement : absTypedElements) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.scope;
 
 import java.util.Collection;
@@ -33,36 +34,36 @@ public class RuleRelatedElementsScopeRetriever implements IScopeRetriever {
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public Collection<? extends EObject> retrieveRelatedElements(EObject source_p, IContext context_p) {
+  public Collection<? extends EObject> retrieveRelatedElements(EObject source, IContext context) {
 
-    IRulesHandler ruleHandler = (IRulesHandler) context_p.get(ITransitionConstants.RULES_HANDLER);
+    IRulesHandler ruleHandler = (IRulesHandler) context.get(ITransitionConstants.RULES_HANDLER);
 
     try {
       if (ruleHandler != null) {
-        MappingPossibility mapping = ruleHandler.getApplicablePossibility(source_p);
+        MappingPossibility mapping = ruleHandler.getApplicablePossibility(source);
         if (mapping != null) {
-          IRule<?> rule = ruleHandler.getApplicablePossibility(source_p).getCompleteRule();
+          IRule<?> rule = ruleHandler.getApplicablePossibility(source).getCompleteRule();
           if ((rule != null) && (rule instanceof IRuleScope)) {
             IRuleScope deeperRule = (IRuleScope) rule;
-            return deeperRule.retrieveRelatedElements(source_p, context_p);
+            return deeperRule.retrieveRelatedElements(source, context);
           }
         }
       }
-    } catch (MappingPossibilityResolutionException exception_p) {
+    } catch (MappingPossibilityResolutionException exception) {
       //Nothing to report
     }
 
@@ -72,7 +73,7 @@ public class RuleRelatedElementsScopeRetriever implements IScopeRetriever {
   /**
    * {@inheritDoc}
    */
-  public Collection<? extends EObject> retrieveSharedElements(IContext context_p) {
+  public Collection<? extends EObject> retrieveSharedElements(IContext context) {
     return Collections.emptyList();
   }
 

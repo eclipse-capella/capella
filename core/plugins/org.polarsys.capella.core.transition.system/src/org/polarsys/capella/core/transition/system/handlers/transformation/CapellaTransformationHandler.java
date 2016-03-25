@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.transformation;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,11 +27,11 @@ public class CapellaTransformationHandler extends DefaultTransformationHandler {
    * {@inheritDoc}
    */
   @Override
-  public EObject getLevelElement(EObject source_p, IContext context_p) {
-    if (source_p instanceof BlockArchitecture) {
-      return source_p.eContainer();
+  public EObject getLevelElement(EObject source, IContext context) {
+    if (source instanceof BlockArchitecture) {
+      return source.eContainer();
     }
-    return BlockArchitectureExt.getRootBlockArchitecture(source_p);
+    return BlockArchitectureExt.getRootBlockArchitecture(source);
   }
 
 }

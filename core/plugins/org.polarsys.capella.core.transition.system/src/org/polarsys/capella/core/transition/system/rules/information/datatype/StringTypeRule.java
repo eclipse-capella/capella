@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information.datatype;
 
 import java.util.List;
@@ -37,20 +38,20 @@ public class StringTypeRule extends DataTypeRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    StringType element = (StringType) source_p;
-    result_p.add(element.getOwnedDefaultValue());
-    result_p.add(element.getOwnedMaxLength());
-    result_p.add(element.getOwnedMinLength());
-    result_p.add(element.getOwnedNullValue());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    StringType element = (StringType) source;
+    result.add(element.getOwnedDefaultValue());
+    result.add(element.getOwnedMaxLength());
+    result.add(element.getOwnedMinLength());
+    result.add(element.getOwnedNullValue());
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDefaultValue(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxLength(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinLength(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedNullValue(), context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDefaultValue(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxLength(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinLength(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedNullValue(), context);
     }
 
   }

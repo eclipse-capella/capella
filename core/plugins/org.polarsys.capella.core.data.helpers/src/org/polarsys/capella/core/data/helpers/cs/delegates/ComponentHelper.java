@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import java.util.ArrayList;
@@ -45,57 +46,57 @@ public class ComponentHelper {
     return instance;
   }
 
-  public Object doSwitch(Component element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(Component element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS)) {
-      ret = getAllocatedComponents(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS)) {
-      ret = getAllocatingComponents(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS)) {
-      ret = getProvisionedComponentAllocations(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS)) {
-      ret = getProvisioningComponentAllocations(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES)) {
-      ret = getProvidedInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES)) {
-      ret = getRequiredInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES)) {
-      ret = getImplementedInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__USED_INTERFACES)) {
-      ret = getUsedInterfaces(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACE_LINKS)) {
-      ret = getImplementedInterfaceLinks(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__USED_INTERFACE_LINKS)) {
-      ret = getUsedInterfaceLinks(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__CONTAINED_COMPONENT_PORTS)) {
-      ret = getContainedComponentPorts(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__CONTAINED_PARTS)) {
-      ret = getContainedParts(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.COMPONENT__CONTAINED_PHYSICAL_PORTS)) {
-      ret = getContainedPhysicalPorts(element_p);
+    if (feature.equals(CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS)) {
+      ret = getAllocatedComponents(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS)) {
+      ret = getAllocatingComponents(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS)) {
+      ret = getProvisionedComponentAllocations(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS)) {
+      ret = getProvisioningComponentAllocations(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES)) {
+      ret = getProvidedInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES)) {
+      ret = getRequiredInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES)) {
+      ret = getImplementedInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__USED_INTERFACES)) {
+      ret = getUsedInterfaces(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACE_LINKS)) {
+      ret = getImplementedInterfaceLinks(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__USED_INTERFACE_LINKS)) {
+      ret = getUsedInterfaceLinks(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__CONTAINED_COMPONENT_PORTS)) {
+      ret = getContainedComponentPorts(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__CONTAINED_PARTS)) {
+      ret = getContainedParts(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__CONTAINED_PHYSICAL_PORTS)) {
+      ret = getContainedPhysicalPorts(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractFunctionalBlockHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractFunctionalBlockHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InterfaceAllocatorHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InterfaceAllocatorHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = PartitionableElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = PartitionableElementHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = CommunicationLinkExchangerHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = CommunicationLinkExchangerHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<ComponentAllocation> getProvisionedComponentAllocations(Component element_p) {
+  protected List<ComponentAllocation> getProvisionedComponentAllocations(Component element) {
     List<ComponentAllocation> ret = new ArrayList<ComponentAllocation>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentAllocation) {
         ret.add((ComponentAllocation) trace);
       }
@@ -103,9 +104,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<ComponentAllocation> getProvisioningComponentAllocations(Component element_p) {
+  protected List<ComponentAllocation> getProvisioningComponentAllocations(Component element) {
     List<ComponentAllocation> ret = new ArrayList<ComponentAllocation>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentAllocation) {
         ret.add((ComponentAllocation) trace);
       }
@@ -113,9 +114,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<Component> getAllocatedComponents(Component element_p) {
+  protected List<Component> getAllocatedComponents(Component element) {
     List<Component> ret = new ArrayList<Component>();
-    for (ComponentAllocation componentAllocation : element_p.getProvisionedComponentAllocations()) {
+    for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       Component cpnt = componentAllocation.getAllocatedComponent();
       if (null != cpnt) {
         ret.add(cpnt);
@@ -124,9 +125,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<Component> getAllocatingComponents(Component element_p) {
+  protected List<Component> getAllocatingComponents(Component element) {
     List<Component> ret = new ArrayList<Component>();
-    for (ComponentAllocation componentAllocation : element_p.getProvisioningComponentAllocations()) {
+    for (ComponentAllocation componentAllocation : element.getProvisioningComponentAllocations()) {
       Component cpnt = componentAllocation.getAllocatingComponent();
       if (null != cpnt) {
         ret.add(cpnt);
@@ -135,9 +136,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<Interface> getProvidedInterfaces(Component element_p) {
+  protected List<Interface> getProvidedInterfaces(Component element) {
     List<Interface> ret = new ArrayList<Interface>();
-    for (Partition partition : element_p.getOwnedPartitions()) {
+    for (Partition partition : element.getOwnedPartitions()) {
       if (partition instanceof ComponentPort) {
         ret.addAll(((ComponentPort) partition).getProvidedInterfaces());
       }
@@ -145,9 +146,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<Interface> getRequiredInterfaces(Component element_p) {
+  protected List<Interface> getRequiredInterfaces(Component element) {
     List<Interface> ret = new ArrayList<Interface>();
-    for (Partition partition : element_p.getOwnedPartitions()) {
+    for (Partition partition : element.getOwnedPartitions()) {
       if (partition instanceof ComponentPort) {
         ret.addAll(((ComponentPort) partition).getRequiredInterfaces());
       }
@@ -155,17 +156,17 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<InterfaceImplementation> getImplementedInterfaceLinks(Component element_p) {
-    return element_p.getOwnedInterfaceImplementations();
+  protected List<InterfaceImplementation> getImplementedInterfaceLinks(Component element) {
+    return element.getOwnedInterfaceImplementations();
   }
 
-  protected List<InterfaceUse> getUsedInterfaceLinks(Component element_p) {
-    return element_p.getOwnedInterfaceUses();
+  protected List<InterfaceUse> getUsedInterfaceLinks(Component element) {
+    return element.getOwnedInterfaceUses();
   }
 
-  protected List<Interface> getImplementedInterfaces(Component element_p) {
+  protected List<Interface> getImplementedInterfaces(Component element) {
     List<Interface> ret = new ArrayList<Interface>();
-    for (InterfaceImplementation interfaceImplementation : element_p.getImplementedInterfaceLinks()) {
+    for (InterfaceImplementation interfaceImplementation : element.getImplementedInterfaceLinks()) {
       Interface itf = interfaceImplementation.getImplementedInterface();
       if (null != itf) {
         ret.add(itf);
@@ -174,9 +175,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<Interface> getUsedInterfaces(Component element_p) {
+  protected List<Interface> getUsedInterfaces(Component element) {
     List<Interface> ret = new ArrayList<Interface>();
-    for (InterfaceUse interfaceUse : element_p.getUsedInterfaceLinks()) {
+    for (InterfaceUse interfaceUse : element.getUsedInterfaceLinks()) {
       Interface itf = interfaceUse.getUsedInterface();
       if (null != itf) {
         ret.add(itf);
@@ -185,9 +186,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<ComponentPort> getContainedComponentPorts(Component element_p) {
+  protected List<ComponentPort> getContainedComponentPorts(Component element) {
     List<ComponentPort> ret = new ArrayList<ComponentPort>();
-    for (Feature feature : element_p.getOwnedFeatures()) {
+    for (Feature feature : element.getOwnedFeatures()) {
       if (feature instanceof ComponentPort) {
         ret.add((ComponentPort) feature);
       }
@@ -195,9 +196,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<Part> getContainedParts(Component element_p) {
+  protected List<Part> getContainedParts(Component element) {
     List<Part> ret = new ArrayList<Part>();
-    for (Feature feature : element_p.getOwnedFeatures()) {
+    for (Feature feature : element.getOwnedFeatures()) {
       if (feature instanceof Part) {
         ret.add((Part) feature);
       }
@@ -205,9 +206,9 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<PhysicalPort> getContainedPhysicalPorts(Component element_p) {
+  protected List<PhysicalPort> getContainedPhysicalPorts(Component element) {
     List<PhysicalPort> ret = new ArrayList<PhysicalPort>();
-    for (Feature feature : element_p.getOwnedFeatures()) {
+    for (Feature feature : element.getOwnedFeatures()) {
       if (feature instanceof PhysicalPort) {
         ret.add((PhysicalPort) feature);
       }

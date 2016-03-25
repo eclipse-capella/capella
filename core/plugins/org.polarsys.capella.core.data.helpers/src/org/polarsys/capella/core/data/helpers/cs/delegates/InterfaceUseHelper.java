@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import org.eclipse.emf.ecore.EObject;
@@ -31,23 +32,23 @@ public class InterfaceUseHelper {
 		return instance;
 	}
 
-	public Object doSwitch(InterfaceUse element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(InterfaceUse element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(CsPackage.Literals.INTERFACE_USE__INTERFACE_USER)) {
-			ret = getInterfaceUser(element_p);
+		if (feature.equals(CsPackage.Literals.INTERFACE_USE__INTERFACE_USER)) {
+			ret = getInterfaceUser(element);
 		}
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = RelationshipHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = RelationshipHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected Component getInterfaceUser(InterfaceUse element_p) {
-		EObject owner = element_p.eContainer();
+	protected Component getInterfaceUser(InterfaceUse element) {
+		EObject owner = element.eContainer();
 		if (owner instanceof Component) {
 			return (Component) owner;
 		}

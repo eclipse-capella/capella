@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.List;
@@ -68,16 +69,16 @@ public class ComponentRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
+  protected EObject transformDirectElement(EObject element, IContext context) {
 
-    if (element_p.eContainer() instanceof BlockArchitecture) {
-      EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+    if (element.eContainer() instanceof BlockArchitecture) {
+      EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
       BlockArchitecture target =
-          (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
+          (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);
       return BlockArchitectureExt.getFirstComponent(target);
     }
 
-    EObject result = super.transformDirectElement(element_p, context_p);
+    EObject result = super.transformDirectElement(element, context);
     if (result instanceof PhysicalComponent) {
       ((PhysicalComponent) result).setNature(PhysicalComponentNature.BEHAVIOR);
     }
@@ -85,16 +86,16 @@ public class ComponentRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
 
-    if (root.equals(element_p.eContainer())) {
+    if (root.equals(element.eContainer())) {
       return target;
     }
-    if (result_p instanceof AbstractActor) {
+    if (result instanceof AbstractActor) {
       return BlockArchitectureExt.getActorPkg(target, true);
     }
     return BlockArchitectureExt.getFirstComponent(target, true);
@@ -106,49 +107,49 @@ public class ComponentRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveContainer(element_p, result_p, context_p);
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    super.retrieveContainer(element, result, context);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    retrieveComponentGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    retrieveComponentGoDeep(source, result, context);
   }
 
-  protected void retrieveComponentGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveComponentGoDeep(EObject source, List<EObject> result, IContext context) {
 
-    Component element = (Component) source_p;
+    Component element = (Component) source;
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
 
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
 
-      retrieveComponentAllocations(source_p, result_p, context_p);
-      retrieveRepresentingPartitions(source_p, result_p, context_p);
-      result_p.addAll(element.getUsedInterfaceLinks());
-      result_p.addAll(element.getImplementedInterfaceLinks());
+      retrieveComponentAllocations(source, result, context);
+      retrieveRepresentingPartitions(source, result, context);
+      result.addAll(element.getUsedInterfaceLinks());
+      result.addAll(element.getImplementedInterfaceLinks());
 
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getRepresentingPartitions(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getUsedInterfaceLinks(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getImplementedInterfaceLinks(), context_p);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getRepresentingPartitions(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getUsedInterfaceLinks(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getImplementedInterfaceLinks(), context);
 
       if (element instanceof InformationsExchanger) {
         InformationsExchanger info = (InformationsExchanger) element;
-        result_p.addAll(info.getInformationFlows());
-        handler.addAll(ITransitionConstants.SOURCE_SCOPE, info.getInformationFlows(), context_p);
+        result.addAll(info.getInformationFlows());
+        handler.addAll(ITransitionConstants.SOURCE_SCOPE, info.getInformationFlows(), context);
 
       }
       // Retrieve component ports
-      result_p.addAll(ComponentExt.getOwnedComponentPort(element));
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, ComponentExt.getOwnedComponentPort(element), context_p);
+      result.addAll(ComponentExt.getOwnedComponentPort(element));
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, ComponentExt.getOwnedComponentPort(element), context);
 
       // Retrieve physical ports
-      result_p.addAll(ComponentExt.getOwnedPhysicalPort(element));
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, ComponentExt.getOwnedPhysicalPort(element), context_p);
+      result.addAll(ComponentExt.getOwnedPhysicalPort(element));
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, ComponentExt.getOwnedPhysicalPort(element), context);
 
       for (Generalization generalization : element.getSuperGeneralizations()) {
-        result_p.add(generalization);
+        result.add(generalization);
       }
 
     }
@@ -158,40 +159,40 @@ public class ComponentRule extends AbstractCapellaElementRule {
       for (Involvement involvement : ((InvolvedElement) element).getInvolvingInvolvements()) {
         InvolverElement invo = involvement.getInvolver();
         if ((invo != null) && ((invo instanceof AbstractCapability) || (invo instanceof PhysicalPath))) {
-          result_p.add(involvement);
+          result.add(involvement);
         }
       }
     }
 
   }
 
-  protected void retrieveRepresentingPartitions(EObject source_p, List<EObject> result_p, IContext context_p) {
-    Component element = (Component) source_p;
-    result_p.addAll(element.getRepresentingPartitions());
+  protected void retrieveRepresentingPartitions(EObject source, List<EObject> result, IContext context) {
+    Component element = (Component) source;
+    result.addAll(element.getRepresentingPartitions());
   }
 
   /**
-   * @param source_p
-   * @param result_p
-   * @param context_p
+   * @param source
+   * @param result
+   * @param context
    */
-  protected void retrieveComponentAllocations(EObject source_p, List<EObject> result_p, IContext context_p) {
-    Component element = (Component) source_p;
+  protected void retrieveComponentAllocations(EObject source, List<EObject> result, IContext context) {
+    Component element = (Component) source;
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    result_p.addAll(element.getFunctionalAllocations());
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    result.addAll(element.getFunctionalAllocations());
 
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getFunctionalAllocations(), context_p);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getFunctionalAllocations(), context);
     }
 
     if (element instanceof Entity) {
       for (RoleAllocation ra : ((Entity) element).getRoleAllocations()) {
         Role role = ra.getRole();
         for (ActivityAllocation aa : role.getActivityAllocations()) {
-          result_p.add(aa);
-          if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
-            handler.add(ITransitionConstants.SOURCE_SCOPE, aa, context_p);
+          result.add(aa);
+          if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
+            handler.add(ITransitionConstants.SOURCE_SCOPE, aa, context);
           }
         }
       }
@@ -199,10 +200,10 @@ public class ComponentRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    EClass targetType = getTargetType(element_p, context_p);
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    EClass targetType = getTargetType(element, context);
 
-    if (container_p instanceof EntityPkg) {
+    if (container instanceof EntityPkg) {
       if (OaPackage.Literals.ENTITY.isSuperTypeOf(targetType)) {
         return OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES;
 
@@ -210,12 +211,12 @@ public class ComponentRule extends AbstractCapellaElementRule {
         return OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS;
       }
 
-    } else if (container_p instanceof Entity) {
+    } else if (container instanceof Entity) {
       if (OaPackage.Literals.ENTITY.isSuperTypeOf(targetType)) {
         return OaPackage.Literals.ENTITY__OWNED_ENTITIES;
       }
 
-    } else if (container_p instanceof SystemAnalysis) {
+    } else if (container instanceof SystemAnalysis) {
       if (CtxPackage.Literals.SYSTEM.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM;
 
@@ -224,7 +225,7 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
       }
 
-    } else if (container_p instanceof ActorPkg) {
+    } else if (container instanceof ActorPkg) {
       if (CtxPackage.Literals.ACTOR.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.ACTOR_PKG__OWNED_ACTORS;
 
@@ -233,9 +234,9 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
       }
 
-    } else if (container_p instanceof org.polarsys.capella.core.data.ctx.System) {
+    } else if (container instanceof org.polarsys.capella.core.data.ctx.System) {
 
-    } else if (container_p instanceof LogicalArchitecture) {
+    } else if (container instanceof LogicalArchitecture) {
       if (LaPackage.Literals.LOGICAL_COMPONENT.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT;
 
@@ -247,28 +248,28 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
       }
 
-    } else if (container_p instanceof LogicalActorPkg) {
+    } else if (container instanceof LogicalActorPkg) {
       if (LaPackage.Literals.LOGICAL_ACTOR.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS;
       } else if (LaPackage.Literals.LOGICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS;
       }
 
-    } else if (container_p instanceof LogicalComponentPkg) {
+    } else if (container instanceof LogicalComponentPkg) {
       if (LaPackage.Literals.LOGICAL_COMPONENT.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS;
       } else if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS;
       }
 
-    } else if (container_p instanceof LogicalComponent) {
+    } else if (container instanceof LogicalComponent) {
       if (LaPackage.Literals.LOGICAL_COMPONENT.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS;
       } else if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalArchitecture) {
+    } else if (container instanceof PhysicalArchitecture) {
       if (PaPackage.Literals.PHYSICAL_COMPONENT.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT;
 
@@ -280,30 +281,30 @@ public class ComponentRule extends AbstractCapellaElementRule {
 
       }
 
-    } else if (container_p instanceof PhysicalActorPkg) {
+    } else if (container instanceof PhysicalActorPkg) {
       if (PaPackage.Literals.PHYSICAL_ACTOR.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS;
       } else if (PaPackage.Literals.PHYSICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalComponentPkg) {
+    } else if (container instanceof PhysicalComponentPkg) {
       if (PaPackage.Literals.PHYSICAL_COMPONENT.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS;
       } else if (PaPackage.Literals.PHYSICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalComponent) {
+    } else if (container instanceof PhysicalComponent) {
       if (PaPackage.Literals.PHYSICAL_COMPONENT.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS;
       } else if (PaPackage.Literals.PHYSICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS;
       }
 
-    } else if (container_p instanceof Part) {
+    } else if (container instanceof Part) {
       return CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE;
     }
-    return element_p.eContainingFeature();
+    return element.eContainingFeature();
   }
 }

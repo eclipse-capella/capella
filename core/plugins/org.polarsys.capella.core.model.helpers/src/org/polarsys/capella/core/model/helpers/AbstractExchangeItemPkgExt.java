@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -23,19 +24,19 @@ import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
  */
 public class AbstractExchangeItemPkgExt {
   
-  public static List<AbstractExchangeItem> getAllAbstractExchangeItems(AbstractExchangeItemPkg pkg_p) {
+  public static List<AbstractExchangeItem> getAllAbstractExchangeItems(AbstractExchangeItemPkg pkg) {
     List<AbstractExchangeItem> list = new ArrayList<AbstractExchangeItem>();
-    if (null != pkg_p) {
+    if (null != pkg) {
       // retrieve from current package
-      list.addAll(pkg_p.getOwnedExchangeItems());
+      list.addAll(pkg.getOwnedExchangeItems());
       // retrieve from all subPkgs
-      if (pkg_p instanceof DataPkg){
-        for (DataPkg subPkg : ((DataPkg)pkg_p).getOwnedDataPkgs()) {
+      if (pkg instanceof DataPkg){
+        for (DataPkg subPkg : ((DataPkg)pkg).getOwnedDataPkgs()) {
           list.addAll(getAllAbstractExchangeItems(subPkg));
         } 
       }
-      if (pkg_p instanceof InterfacePkg){
-        for (InterfacePkg subPkg : ((InterfacePkg)pkg_p).getOwnedInterfacePkgs()) {
+      if (pkg instanceof InterfacePkg){
+        for (InterfacePkg subPkg : ((InterfacePkg)pkg).getOwnedInterfacePkgs()) {
           list.addAll(getAllAbstractExchangeItems(subPkg));
         } 
       } 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -25,12 +26,12 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  */
 public class LogicalComponentPkgExt {
   
-  static public LogicalComponentPkg getRootLogicalComponentPkg(LogicalComponentPkg lcPkg_p) {
+  static public LogicalComponentPkg getRootLogicalComponentPkg(LogicalComponentPkg lcPkg) {
     LogicalComponentPkg rootPkg = null;
-    if(null != lcPkg_p) {
-      Object container = lcPkg_p.eContainer();
+    if(null != lcPkg) {
+      Object container = lcPkg.eContainer();
       if (container instanceof LogicalComponent || container instanceof LogicalArchitecture) {
-        return lcPkg_p;
+        return lcPkg;
       }
       if (container instanceof LogicalComponentPkg) {
         rootPkg = getRootLogicalComponentPkg((LogicalComponentPkg) container);
@@ -43,16 +44,16 @@ public class LogicalComponentPkgExt {
    * Gets all LCDcmps from LCs in a LogicalComponentPkg
    * 
    * 
-   * @param lcPkg_p the LogicalComponentPkg
+   * @param lcPkg the LogicalComponentPkg
    * @return list of LogicalArchitecture
    */
-  static public List<LogicalArchitecture> getAllLogicalArchitectures(LogicalComponentPkg lcPkg_p) {
+  static public List<LogicalArchitecture> getAllLogicalArchitectures(LogicalComponentPkg lcPkg) {
     List<LogicalArchitecture> list = new ArrayList<LogicalArchitecture>();
-    if (null != lcPkg_p) {
-      for (LogicalComponent lc : lcPkg_p.getOwnedLogicalComponents()) {
+    if (null != lcPkg) {
+      for (LogicalComponent lc : lcPkg.getOwnedLogicalComponents()) {
         list.addAll(LogicalComponentExt.getAllLogicalArchitectures( lc));
       }
-      for (LogicalComponentPkg subLCPkg : lcPkg_p.getOwnedLogicalComponentPkgs()) {
+      for (LogicalComponentPkg subLCPkg : lcPkg.getOwnedLogicalComponentPkgs()) {
         list.addAll(getAllLogicalArchitectures(subLCPkg));
       }
     }
@@ -63,14 +64,14 @@ public class LogicalComponentPkgExt {
    * Gets all the LogicalComponents from LogicalComponentPkg
    * 
    * 
-   * @param lcPkg_p the LogicalComponentPkg
+   * @param lcPkg the LogicalComponentPkg
    * @return list of LogicalComponents
    */
-  static public List<LogicalComponent> getAllLCsFromLCPkg(LogicalComponentPkg lcPkg_p) {
+  static public List<LogicalComponent> getAllLCsFromLCPkg(LogicalComponentPkg lcPkg) {
     List<LogicalComponent> list = new ArrayList<LogicalComponent>();
-    if (null != lcPkg_p) {
-      list.addAll(lcPkg_p.getOwnedLogicalComponents());
-      for (LogicalComponentPkg subLCPkg : lcPkg_p.getOwnedLogicalComponentPkgs()) {
+    if (null != lcPkg) {
+      list.addAll(lcPkg.getOwnedLogicalComponents());
+      for (LogicalComponentPkg subLCPkg : lcPkg.getOwnedLogicalComponentPkgs()) {
         list.addAll(getAllLCsFromLCPkg(subLCPkg));
       }
     }
@@ -81,16 +82,16 @@ public class LogicalComponentPkgExt {
    * Gets all the interfaces in LogicalComponentPkg
    * 
    * 
-   * @param lcPkg_p the LogicalComponentPkg
+   * @param lcPkg the LogicalComponentPkg
    * @return list of interfaces
    */
-  static public List<CapellaElement> getAllInterfacesInLogicalComponentPkg(LogicalComponentPkg lcPkg_p) {
+  static public List<CapellaElement> getAllInterfacesInLogicalComponentPkg(LogicalComponentPkg lcPkg) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != lcPkg_p) {
-      for (LogicalComponent lc : lcPkg_p.getOwnedLogicalComponents()) {
+    if (null != lcPkg) {
+      for (LogicalComponent lc : lcPkg.getOwnedLogicalComponents()) {
           list.addAll(LogicalComponentExt.getAllInterfacesInLogicalComponent(lc));
       }
-      for (LogicalComponentPkg subLCPkg : lcPkg_p.getOwnedLogicalComponentPkgs()) {
+      for (LogicalComponentPkg subLCPkg : lcPkg.getOwnedLogicalComponentPkgs()) {
         list.addAll(getAllInterfacesInLogicalComponentPkg(subLCPkg));
       }
     }
@@ -101,19 +102,19 @@ public class LogicalComponentPkgExt {
    * Gets all the interfaces used / implemented by lcs in LogicalComponentPkg and sub pkgs.
    * 
    * 
-   * @param lcPkg_p
-   * @param currentLC_p
-   * @param usedFlag_p
+   * @param lcPkg
+   * @param currentLC
+   * @param usedFlag
    * @return
    */
-  static public List<CapellaElement> getAllInterfacesInLogicalComponentPkg(LogicalComponentPkg lcPkg_p, LogicalComponent currentLC_p, boolean usedFlag_p) {
+  static public List<CapellaElement> getAllInterfacesInLogicalComponentPkg(LogicalComponentPkg lcPkg, LogicalComponent currentLC, boolean usedFlag) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != lcPkg_p) {
-      for (LogicalComponent lc : lcPkg_p.getOwnedLogicalComponents()) {
-          list.addAll(LogicalComponentExt.getInterfacesFromSameLevelLogicalComponent(  lc, currentLC_p, usedFlag_p));
+    if (null != lcPkg) {
+      for (LogicalComponent lc : lcPkg.getOwnedLogicalComponents()) {
+          list.addAll(LogicalComponentExt.getInterfacesFromSameLevelLogicalComponent(  lc, currentLC, usedFlag));
       }
-      for (LogicalComponentPkg subLCPkg : lcPkg_p.getOwnedLogicalComponentPkgs()) {
-        list.addAll(getAllInterfacesInLogicalComponentPkg(subLCPkg, currentLC_p, usedFlag_p));
+      for (LogicalComponentPkg subLCPkg : lcPkg.getOwnedLogicalComponentPkgs()) {
+        list.addAll(getAllInterfacesInLogicalComponentPkg(subLCPkg, currentLC, usedFlag));
       }
     }
     return list;

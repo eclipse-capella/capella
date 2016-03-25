@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,25 +33,25 @@ public class ComponentPortAllocationHelper {
     return instance;
   }
 
-  public Object doSwitch(ComponentPortAllocation element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(ComponentPortAllocation element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT_ALLOCATION__ALLOCATING_PORT)) {
-      ret = getAllocatingPort(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.COMPONENT_PORT_ALLOCATION__ALLOCATED_PORT)) {
-      ret = getAllocatedPort(element_p);
+    if (feature.equals(FaPackage.Literals.COMPONENT_PORT_ALLOCATION__ALLOCATING_PORT)) {
+      ret = getAllocatingPort(element);
+    } else if (feature.equals(FaPackage.Literals.COMPONENT_PORT_ALLOCATION__ALLOCATED_PORT)) {
+      ret = getAllocatedPort(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AllocationHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AllocationHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected Port getAllocatingPort(ComponentPortAllocation element_p) {
-    TraceableElement source = element_p.getSourceElement();
+  protected Port getAllocatingPort(ComponentPortAllocation element) {
+    TraceableElement source = element.getSourceElement();
     if (source instanceof ComponentPortAllocationEnd) {
       return ((ComponentPortAllocationEnd) source).getPort();
     } else if (source instanceof Port) {
@@ -59,8 +60,8 @@ public class ComponentPortAllocationHelper {
     return null;
   }
 
-  protected Port getAllocatedPort(ComponentPortAllocation element_p) {
-    TraceableElement target = element_p.getTargetElement();
+  protected Port getAllocatedPort(ComponentPortAllocation element) {
+    TraceableElement target = element.getTargetElement();
     if (target instanceof ComponentPortAllocationEnd) {
       return ((ComponentPortAllocationEnd) target).getPort();
     } else if (target instanceof Port) {

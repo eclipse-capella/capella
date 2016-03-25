@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -91,29 +92,29 @@ public class ScenarioExt {
   /**
    * Return functions that can be used as StateFragment for a given instanceRole
    */
-  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(AbstractInstance instance_p) {
-    if (instance_p instanceof Role) {
-      Role role = (Role) instance_p;
+  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(AbstractInstance instance) {
+    if (instance instanceof Role) {
+      Role role = (Role) instance;
       List<AbstractFunction> result = new ArrayList<AbstractFunction>();
       for (ActivityAllocation alloc : role.getActivityAllocations()) {
         result.add(alloc.getActivity());
       }
       return result;
     }
-    return getAvailableFunctionsStateFragment((Component) instance_p.getAbstractType());
+    return getAvailableFunctionsStateFragment((Component) instance.getAbstractType());
   }
 
   /**
    * Return functions that can be used as StateFragment for a given component
    */
-  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(Component component_p) {
+  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(Component component1) {
     List<AbstractFunction> result = new ArrayList<AbstractFunction>();
     Collection<AbstractFunction> functions = new java.util.HashSet<AbstractFunction>();
 
     List<Component> baseComponents = new ArrayList<Component>();
-    baseComponents.add(component_p);
+    baseComponents.add(component1);
     // adding all sub Components
-    baseComponents.addAll(ComponentExt.getAllSubUsedAndDeployedComponents(component_p));
+    baseComponents.addAll(ComponentExt.getAllSubUsedAndDeployedComponents(component1));
 
     for (Component component : baseComponents) {
       List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
@@ -163,19 +164,19 @@ public class ScenarioExt {
     return result;
   }
 
-  public static Collection<AbstractState> getAvailableStateModeStateFragment(AbstractInstance instance_p) {
+  public static Collection<AbstractState> getAvailableStateModeStateFragment(AbstractInstance instance) {
     Collection<AbstractState> result = new java.util.HashSet<AbstractState>();
     Collection<StateMachine> stateMachinas = new java.util.HashSet<StateMachine>();
 
-    if (instance_p instanceof Part) {
-      Collection<Part> parts = ComponentExt.getPartAncestors((Part) instance_p, true);
-      parts.add((Part) instance_p);
+    if (instance instanceof Part) {
+      Collection<Part> parts = ComponentExt.getPartAncestors((Part) instance, true);
+      parts.add((Part) instance);
 
       for (Part part : parts) {
         if (part.getAbstractType() != null) {
-          Component component_p = (Component) part.getAbstractType();
-          List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component_p);
-          elements.add(component_p);
+          Component component = (Component) part.getAbstractType();
+          List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
+          elements.add(component);
           for (GeneralizableElement element : elements) {
             if (element instanceof Block) {
               stateMachinas.addAll(((Block) element).getOwnedStateMachines());
@@ -195,10 +196,10 @@ public class ScenarioExt {
         }
       }
 
-    } else if (instance_p instanceof AbstractFunction) {
+    } else if (instance instanceof AbstractFunction) {
       // functional scenario can use states by relationship
       // function:availableInStateModes
-      AbstractFunction af = (AbstractFunction) instance_p;
+      AbstractFunction af = (AbstractFunction) instance;
       for (State asm : af.getAvailableInStates()) {
         result.add(asm);
       }
@@ -210,10 +211,10 @@ public class ScenarioExt {
   /**
    * Retrieve scenarios in which the Event given in parameter is manipulated
    */
-  public static List<Scenario> getScenariosFromEvent(Event event_p) {
+  public static List<Scenario> getScenariosFromEvent(Event event) {
     List<Scenario> listScenario = new ArrayList<Scenario>();
 
-    for (Object objectRef : EObjectExt.getReferencers(event_p, InteractionPackage.Literals.ABSTRACT_END__EVENT)) {
+    for (Object objectRef : EObjectExt.getReferencers(event, InteractionPackage.Literals.ABSTRACT_END__EVENT)) {
       if (objectRef instanceof MessageEnd) {
         Scenario scenario = (Scenario) ((MessageEnd) objectRef).eContainer();
         if (!listScenario.contains(scenario)) {
@@ -226,22 +227,22 @@ public class ScenarioExt {
 
   /**
    * This method returns TRUE is the current scenario has been created from a refinement
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static boolean createdByRefinement(Scenario scenario_p) {
-    return (getUpperScenario(scenario_p) != null);
+  public static boolean createdByRefinement(Scenario scenario) {
+    return (getUpperScenario(scenario) != null);
   }
 
   /**
    * This method returns the parent scenario of the current scenario
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static Scenario getUpperScenario(Scenario scenario_p) {
+  public static Scenario getUpperScenario(Scenario scenario) {
     Scenario upperScenario = null;
 
-    for (CapellaElement target : RefinementLinkExt.getRefinementRelatedTargetElements(scenario_p, InteractionPackage.Literals.SCENARIO)) {
+    for (CapellaElement target : RefinementLinkExt.getRefinementRelatedTargetElements(scenario, InteractionPackage.Literals.SCENARIO)) {
       upperScenario = (Scenario) target;
     }
 
@@ -250,13 +251,13 @@ public class ScenarioExt {
 
   /**
    * This method returns the sub-scenario(s) of the current scenario
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<Scenario> getSubScenarios(Scenario scenario_p) {
+  public static List<Scenario> getSubScenarios(Scenario scenario) {
     List<Scenario> subScenarios = new ArrayList<Scenario>();
 
-    for (CapellaElement source : RefinementLinkExt.getRefinementRelatedSourceElements(scenario_p, InteractionPackage.Literals.SCENARIO)) {
+    for (CapellaElement source : RefinementLinkExt.getRefinementRelatedSourceElements(scenario, InteractionPackage.Literals.SCENARIO)) {
       subScenarios.add((Scenario) source);
     }
 
@@ -264,31 +265,31 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
-   * @param cpnt_p
+   * @param scenario
+   * @param cpnt
    * @return
    */
-  public static boolean contains(Scenario scenario_p, Component cpnt_p) {
-    return getOwnedComponents(scenario_p).contains(cpnt_p);
+  public static boolean contains(Scenario scenario, Component cpnt) {
+    return getOwnedComponents(scenario).contains(cpnt);
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @param cpnt_p
    * @return
    */
-  public static boolean contains(Scenario scenario_p, Part part_p) {
-    return getOwnedParts(scenario_p).contains(part_p);
+  public static boolean contains(Scenario scenario, Part part) {
+    return getOwnedParts(scenario).contains(part);
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static System getOwnedSystem(Scenario scenario_p) {
+  public static System getOwnedSystem(Scenario scenario) {
     System system = null;
 
-    for (Component cpnt : getOwnedComponents(scenario_p)) {
+    for (Component cpnt : getOwnedComponents(scenario)) {
       if (cpnt instanceof System) {
         system = (System) cpnt;
       }
@@ -298,13 +299,13 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<Actor> getOwnedActors(Scenario scenario_p) {
+  public static List<Actor> getOwnedActors(Scenario scenario) {
     List<Actor> actorSet = new ArrayList<Actor>();
 
-    for (Component cpnt : getOwnedComponents(scenario_p)) {
+    for (Component cpnt : getOwnedComponents(scenario)) {
       if (cpnt instanceof Actor) {
         actorSet.add((Actor) cpnt);
       }
@@ -314,13 +315,13 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<LogicalComponent> getOwnedLogicalComponents(Scenario scenario_p) {
+  public static List<LogicalComponent> getOwnedLogicalComponents(Scenario scenario) {
     List<LogicalComponent> logicalComponentSet = new ArrayList<LogicalComponent>();
 
-    for (Component cpnt : getOwnedComponents(scenario_p)) {
+    for (Component cpnt : getOwnedComponents(scenario)) {
       if (cpnt instanceof LogicalComponent) {
         logicalComponentSet.add((LogicalComponent) cpnt);
       }
@@ -330,13 +331,13 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<PhysicalComponent> getOwnedPhysicalComponents(Scenario scenario_p) {
+  public static List<PhysicalComponent> getOwnedPhysicalComponents(Scenario scenario) {
     List<PhysicalComponent> physicalComponentSet = new ArrayList<PhysicalComponent>();
 
-    for (Component cpnt : getOwnedComponents(scenario_p)) {
+    for (Component cpnt : getOwnedComponents(scenario)) {
       if (cpnt instanceof PhysicalComponent) {
         physicalComponentSet.add((PhysicalComponent) cpnt);
       }
@@ -346,13 +347,13 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<ConfigurationItem> getOwnedConfigurationItems(Scenario scenario_p) {
+  public static List<ConfigurationItem> getOwnedConfigurationItems(Scenario scenario) {
     List<ConfigurationItem> configurationItemSet = new ArrayList<ConfigurationItem>();
 
-    for (Component cpnt : getOwnedComponents(scenario_p)) {
+    for (Component cpnt : getOwnedComponents(scenario)) {
       if (cpnt instanceof ConfigurationItem) {
         configurationItemSet.add((ConfigurationItem) cpnt);
       }
@@ -362,13 +363,13 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<SystemComponent> getOwnedSystemComponents(Scenario scenario_p) {
+  public static List<SystemComponent> getOwnedSystemComponents(Scenario scenario) {
     List<SystemComponent> systemComponentSet = new ArrayList<SystemComponent>();
 
-    for (Component cpnt : getOwnedComponents(scenario_p)) {
+    for (Component cpnt : getOwnedComponents(scenario)) {
       if (cpnt instanceof SystemComponent) {
         systemComponentSet.add((SystemComponent) cpnt);
       }
@@ -377,10 +378,10 @@ public class ScenarioExt {
     return systemComponentSet;
   }
 
-  public static List<Component> getOwnedComponents(Scenario scenario_p) {
+  public static List<Component> getOwnedComponents(Scenario scenario) {
     List<Component> cpntSet = new ArrayList<Component>();
 
-    for (Part part : getOwnedParts(scenario_p)) {
+    for (Part part : getOwnedParts(scenario)) {
       Component cpnt = (Component) part.getType();
       if (cpnt != null) {
         cpntSet.add(cpnt);
@@ -390,10 +391,10 @@ public class ScenarioExt {
     return cpntSet;
   }
 
-  public static List<Part> getOwnedParts(Scenario scenario_p) {
+  public static List<Part> getOwnedParts(Scenario scenario) {
     List<Part> partSet = new ArrayList<Part>();
 
-    for (InstanceRole role : scenario_p.getOwnedInstanceRoles()) {
+    for (InstanceRole role : scenario.getOwnedInstanceRoles()) {
       AbstractInstance inst = role.getRepresentedInstance();
       if (inst instanceof Part) {
         partSet.add((Part) inst);
@@ -404,13 +405,13 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<AbstractEnd> getOwnedAbstractEnds(Scenario scenario_p) {
+  public static List<AbstractEnd> getOwnedAbstractEnds(Scenario scenario) {
     List<AbstractEnd> ownedMsgEnd = new ArrayList<AbstractEnd>();
 
-    for (InteractionFragment abs : scenario_p.getOwnedInteractionFragments()) {
+    for (InteractionFragment abs : scenario.getOwnedInteractionFragments()) {
       if (abs instanceof AbstractEnd) {
         ownedMsgEnd.add((AbstractEnd) abs);
       }
@@ -420,13 +421,13 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static List<MessageEnd> getOwnedMessagesEnds(Scenario scenario_p) {
+  public static List<MessageEnd> getOwnedMessagesEnds(Scenario scenario) {
     List<MessageEnd> ownedMsgEnd = new ArrayList<MessageEnd>();
 
-    for (InteractionFragment abs : scenario_p.getOwnedInteractionFragments()) {
+    for (InteractionFragment abs : scenario.getOwnedInteractionFragments()) {
       if (abs instanceof MessageEnd) {
         ownedMsgEnd.add((MessageEnd) abs);
       }
@@ -437,35 +438,35 @@ public class ScenarioExt {
 
   /**
    * This method returns the capability related to the given scenario
-   * @param scenario_p
+   * @param scenario
    * @return AbstractCapability
    */
-  public static AbstractCapability getRelatedCapability(Scenario scenario_p) {
-    if (scenario_p != null) {
-      return (AbstractCapability) scenario_p.eContainer();
+  public static AbstractCapability getRelatedCapability(Scenario scenario) {
+    if (scenario != null) {
+      return (AbstractCapability) scenario.eContainer();
     }
     return null;
   }
 
   /**
    * This method returns the container of the given scenario
-   * @param scenario_p
+   * @param scenario
    * @return CapellaElement
    */
-  public static NamedElement getContainer(Scenario scenario_p) {
-    return getRecursiveContainer(scenario_p);
+  public static NamedElement getContainer(Scenario scenario) {
+    return getRecursiveContainer(scenario);
   }
 
   /**
    * This method recursively returns the container of the given scenario
-   * @param elt_p
+   * @param namedElement1
    * @return CapellaElement
    */
-  private static NamedElement getRecursiveContainer(NamedElement elt_p) {
+  private static NamedElement getRecursiveContainer(NamedElement namedElement1) {
     NamedElement elt = null;
 
-    if (elt_p != null) {
-      NamedElement container = (NamedElement) elt_p.eContainer();
+    if (namedElement1 != null) {
+      NamedElement container = (NamedElement) namedElement1.eContainer();
 
       if (container instanceof SystemEngineering) {
         elt = container;
@@ -532,11 +533,11 @@ public class ScenarioExt {
     return toMove;
   }
 
-  public static EObject moveInteractionFragmentAfter(InteractionFragment element_p, InteractionFragment elementReference_p) {
-    if (elementReference_p == null) {
-      return moveEndOnBeginingOfScenario(element_p);
+  public static EObject moveInteractionFragmentAfter(InteractionFragment element, InteractionFragment elementReference) {
+    if (elementReference == null) {
+      return moveEndOnBeginingOfScenario(element);
     }
-    return moveEndOnScenario(element_p, elementReference_p);
+    return moveEndOnScenario(element, elementReference);
   }
 
   /**
@@ -696,11 +697,11 @@ public class ScenarioExt {
 
   /**
    * Returns whether the scenario is a Functional Scenario (ie involves Functions)
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static boolean isFunctionalScenario(Scenario scenario_p) {
-    for (InstanceRole ir : scenario_p.getOwnedInstanceRoles()) {
+  public static boolean isFunctionalScenario(Scenario scenario) {
+    for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
       if (ir.getRepresentedInstance() instanceof AbstractFunction) {
         return true;
       }
@@ -710,12 +711,12 @@ public class ScenarioExt {
 
   /**
    * Returns whether the scenario is a Data Flow behavioural Scenario (ie a DataFlow or Interaction scenario with messages use ComponentExchanges)
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static boolean isDataFlowBehaviouralScenario(Scenario scenario_p) {
-    if ((scenario_p.getKind() == ScenarioKind.INTERACTION) || (scenario_p.getKind() == ScenarioKind.DATA_FLOW)) {
-      for (SequenceMessage message : scenario_p.getOwnedMessages()) {
+  public static boolean isDataFlowBehaviouralScenario(Scenario scenario) {
+    if ((scenario.getKind() == ScenarioKind.INTERACTION) || (scenario.getKind() == ScenarioKind.DATA_FLOW)) {
+      for (SequenceMessage message : scenario.getOwnedMessages()) {
         if ((message.getInvokedOperation() != null) && (message.getInvokedOperation() instanceof ComponentExchange)) {
           return true;
         }
@@ -726,12 +727,12 @@ public class ScenarioExt {
 
   /**
    * Returns whether the scenario is a Data Flow behavioural Scenario (ie a DataFlow or Interaction scenario with messages use FunctionalExchanges)
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static boolean isDataFlowFunctionalScenario(Scenario scenario_p) {
-    if ((scenario_p.getKind() == ScenarioKind.INTERACTION) || (scenario_p.getKind() == ScenarioKind.DATA_FLOW)) {
-      for (SequenceMessage message : scenario_p.getOwnedMessages()) {
+  public static boolean isDataFlowFunctionalScenario(Scenario scenario) {
+    if ((scenario.getKind() == ScenarioKind.INTERACTION) || (scenario.getKind() == ScenarioKind.DATA_FLOW)) {
+      for (SequenceMessage message : scenario.getOwnedMessages()) {
         if ((message.getInvokedOperation() != null) && (message.getInvokedOperation() instanceof FunctionalExchange)) {
           return true;
         }
@@ -741,8 +742,8 @@ public class ScenarioExt {
   }
 
   @SuppressWarnings("unchecked")
-  public static Object getTargetOnExchangeItem(Object object_p) {
-    List<EObject> objs = (List<EObject>) object_p;
+  public static Object getTargetOnExchangeItem(Object object) {
+    List<EObject> objs = (List<EObject>) object;
 
     EObject result = null;
     if (objs == null) {
@@ -769,27 +770,27 @@ public class ScenarioExt {
   }
 
   /**
-   * Returns whether scenario_p can realize the given scenario2_p
-   * @param scenario_p
+   * Returns whether scenario can realize the given scenario2
+   * @param scenario
    * @param eobject_p
    * @return
    */
-  public static boolean canRealize(Scenario scenario_p, Scenario scenario2_p) {
-    ScenarioKind sourceKind = scenario_p.getKind();
-    ScenarioKind targetKind = scenario2_p.getKind();
+  public static boolean canRealize(Scenario scenario, Scenario scenario2) {
+    ScenarioKind sourceKind = scenario.getKind();
+    ScenarioKind targetKind = scenario2.getKind();
 
-    if (scenario2_p.isMerged()) { // not merged one
+    if (scenario2.isMerged()) { // not merged one
       return false;
 
     } else if (targetKind.equals(sourceKind)) { // same kind, valid if
       // different architecture or
       // if they are dataflow
-      BlockArchitecture sourceArchitecture = BlockArchitectureExt.getRootBlockArchitecture(scenario_p);
-      BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(scenario2_p);
+      BlockArchitecture sourceArchitecture = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+      BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(scenario2);
 
       if (((sourceArchitecture == null) || sourceArchitecture.equals(targetArchitecture))) {
         return ScenarioKind.DATA_FLOW.equals(sourceKind)
-               || (ScenarioKind.INTERACTION.equals(sourceKind) && (isFunctionalScenario(scenario2_p) || (scenario2_p.getOwnedInstanceRoles().size() == 0)));
+               || (ScenarioKind.INTERACTION.equals(sourceKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().size() == 0)));
       }
 
       return true;
@@ -801,7 +802,7 @@ public class ScenarioExt {
       return ScenarioKind.DATA_FLOW.equals(targetKind);
 
     } else if (ScenarioKind.FUNCTIONAL.equals(sourceKind)) {
-      return ScenarioKind.INTERACTION.equals(targetKind) && (isFunctionalScenario(scenario2_p) || (scenario2_p.getOwnedInstanceRoles().size() == 0));
+      return ScenarioKind.INTERACTION.equals(targetKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().size() == 0));
     }
 
     return false;
@@ -961,13 +962,13 @@ public class ScenarioExt {
    * @param eObj_p
    * @return
    */
-  public static boolean checkOrdering(Scenario scenario_p) {
+  public static boolean checkOrdering(Scenario scenario) {
     // The starting must be absolutely before the end in the relation for each execution and fragments.
-    for (TimeLapse tl : scenario_p.getOwnedTimeLapses()) {
+    for (TimeLapse tl : scenario.getOwnedTimeLapses()) {
       InteractionFragment beginIf = tl.getStart();
       InteractionFragment finishIf = tl.getFinish();
 
-      EList<InteractionFragment> ownedInteractionFragments = scenario_p.getOwnedInteractionFragments();
+      EList<InteractionFragment> ownedInteractionFragments = scenario.getOwnedInteractionFragments();
       int beginIndex = ownedInteractionFragments.indexOf(beginIf);
       int endIndex = ownedInteractionFragments.indexOf(finishIf);
 
@@ -998,11 +999,11 @@ public class ScenarioExt {
   }
 
   /**
-   * @param scenario_p
+   * @param scenario
    * @return
    */
-  public static boolean isInterfaceScenario(Scenario scenario_p) {
-    return scenario_p.getKind() == ScenarioKind.INTERFACE;
+  public static boolean isInterfaceScenario(Scenario scenario) {
+    return scenario.getKind() == ScenarioKind.INTERFACE;
   }
 
   public static StateFragment getFragment(InteractionState state) {

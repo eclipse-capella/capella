@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.pa.delegates;
 
 import java.util.ArrayList;
@@ -52,41 +53,41 @@ public class PhysicalComponentHelper {
     return instance;
   }
 
-  public Object doSwitch(PhysicalComponent element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(PhysicalComponent element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__SUB_PHYSICAL_COMPONENTS)) {
-      ret = getSubPhysicalComponents(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__LOGICAL_INTERFACE_REALIZATIONS)) {
-      ret = getLogicalInterfaceRealizations(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__LOGICAL_COMPONENT_REALIZATIONS)) {
-      ret = getLogicalComponentRealizations(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__REALIZED_LOGICAL_COMPONENTS)) {
-      ret = getRealizedLogicalComponents(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__ALLOCATED_PHYSICAL_FUNCTIONS)) {
-      ret = getAllocatedPhysicalFunctions(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYED_PHYSICAL_COMPONENTS)) {
-      ret = getDeployedPhysicalComponents(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_ACTORS)) {
-      ret = getDeployingPhysicalActors(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_COMPONENTS)) {
-      ret = getDeployingPhysicalComponents(element_p);
+    if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__SUB_PHYSICAL_COMPONENTS)) {
+      ret = getSubPhysicalComponents(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__LOGICAL_INTERFACE_REALIZATIONS)) {
+      ret = getLogicalInterfaceRealizations(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__LOGICAL_COMPONENT_REALIZATIONS)) {
+      ret = getLogicalComponentRealizations(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__REALIZED_LOGICAL_COMPONENTS)) {
+      ret = getRealizedLogicalComponents(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__ALLOCATED_PHYSICAL_FUNCTIONS)) {
+      ret = getAllocatedPhysicalFunctions(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYED_PHYSICAL_COMPONENTS)) {
+      ret = getDeployedPhysicalComponents(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_ACTORS)) {
+      ret = getDeployingPhysicalActors(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_COMPONENTS)) {
+      ret = getDeployingPhysicalComponents(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractPhysicalArtifactHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractPhysicalArtifactHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractPhysicalComponentHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractPhysicalComponentHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<LogicalComponentRealization> getLogicalComponentRealizations(PhysicalComponent element_p) {
+  protected List<LogicalComponentRealization> getLogicalComponentRealizations(PhysicalComponent element) {
     List<LogicalComponentRealization> ret = new ArrayList<LogicalComponentRealization>();
-    for (ComponentAllocation componentAllocation : element_p.getProvisionedComponentAllocations()) {
+    for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof LogicalComponentRealization) {
         ret.add((LogicalComponentRealization) componentAllocation);
       }
@@ -94,9 +95,9 @@ public class PhysicalComponentHelper {
     return ret;
   }
 
-  protected List<LogicalInterfaceRealization> getLogicalInterfaceRealizations(PhysicalComponent element_p) {
+  protected List<LogicalInterfaceRealization> getLogicalInterfaceRealizations(PhysicalComponent element) {
     List<LogicalInterfaceRealization> ret = new ArrayList<LogicalInterfaceRealization>();
-    for (InterfaceAllocation componentAllocation : element_p.getProvisionedInterfaceAllocations()) {
+    for (InterfaceAllocation componentAllocation : element.getProvisionedInterfaceAllocations()) {
       if (componentAllocation instanceof LogicalInterfaceRealization) {
         ret.add((LogicalInterfaceRealization) componentAllocation);
       }
@@ -105,9 +106,9 @@ public class PhysicalComponentHelper {
     return ret;
   }
 
-  protected List<PhysicalComponent> getSubPhysicalComponents(PhysicalComponent element_p) {
+  protected List<PhysicalComponent> getSubPhysicalComponents(PhysicalComponent element) {
     List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
-    for (Partition thePartition : element_p.getOwnedPartitions()) {
+    for (Partition thePartition : element.getOwnedPartitions()) {
       Type representedElement = thePartition.getType();
       // we need to be invariant
       if (null != representedElement && representedElement.eClass().equals(PaPackage.Literals.PHYSICAL_COMPONENT)) {
@@ -117,9 +118,9 @@ public class PhysicalComponentHelper {
     return ret;
   }
 
-  protected List<LogicalComponent> getRealizedLogicalComponents(PhysicalComponent element_p) {
+  protected List<LogicalComponent> getRealizedLogicalComponents(PhysicalComponent element) {
     List<LogicalComponent> ret = new ArrayList<LogicalComponent>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof LogicalComponentRealization) {
         TraceableElement elt = ((LogicalComponentRealization) trace).getTargetElement();
         if (elt instanceof LogicalComponent) {
@@ -130,9 +131,9 @@ public class PhysicalComponentHelper {
     return ret;
   }
 
-  protected List<PhysicalFunction> getAllocatedPhysicalFunctions(PhysicalComponent element_p) {
+  protected List<PhysicalFunction> getAllocatedPhysicalFunctions(PhysicalComponent element) {
     List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
-    for (AbstractFunction function : element_p.getAllocatedFunctions()) {
+    for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);
       }
@@ -140,9 +141,9 @@ public class PhysicalComponentHelper {
     return ret;
   }
 
-  protected List<PhysicalComponent> getDeployedPhysicalComponents(PhysicalComponent element_p) {
+  protected List<PhysicalComponent> getDeployedPhysicalComponents(PhysicalComponent element) {
     List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
+    for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deploymentLink : ((Part) obj).getDeploymentLinks()) {
           DeployableElement deployableElement = deploymentLink.getDeployedElement();
@@ -160,9 +161,9 @@ public class PhysicalComponentHelper {
     return ret;
   }
 
-  protected List<PhysicalActor> getDeployingPhysicalActors(PhysicalComponent element_p) {
+  protected List<PhysicalActor> getDeployingPhysicalActors(PhysicalComponent element) {
     List<PhysicalActor> ret = new ArrayList<PhysicalActor>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
+    for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deployingLink : ((Part) obj).getDeployingLinks()) {
           DeploymentTarget deploymentTarget = deployingLink.getLocation();
@@ -180,9 +181,9 @@ public class PhysicalComponentHelper {
     return ret;
   }
 
-  protected List<PhysicalComponent> getDeployingPhysicalComponents(PhysicalComponent element_p) {
+  protected List<PhysicalComponent> getDeployingPhysicalComponents(PhysicalComponent element) {
     List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
+    for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deployingLink : ((Part) obj).getDeployingLinks()) {
           DeploymentTarget deploymentTarget = deployingLink.getLocation();

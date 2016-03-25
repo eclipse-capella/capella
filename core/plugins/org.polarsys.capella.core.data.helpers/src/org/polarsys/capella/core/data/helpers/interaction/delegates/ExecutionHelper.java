@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -31,30 +32,30 @@ public class ExecutionHelper {
 		return instance;
 	}
 
-	public Object doSwitch(Execution element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(Execution element, EStructuralFeature feature) {
 		Object ret = null;
 
-    if (feature_p.equals(InteractionPackage.Literals.EXECUTION__COVERED)) {
-      ret = getCovered(element_p);
+    if (feature.equals(InteractionPackage.Literals.EXECUTION__COVERED)) {
+      ret = getCovered(element);
     }
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamedElementHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-  protected InstanceRole getCovered(Execution element_p) {
-    if (element_p != null) {
-      InteractionFragment ifstart = element_p.getStart();
+  protected InstanceRole getCovered(Execution element) {
+    if (element != null) {
+      InteractionFragment ifstart = element.getStart();
       if (ifstart != null) {
         for (InstanceRole instanceRole : ifstart.getCoveredInstanceRoles()) {
           return instanceRole;
         }
       }
-      InteractionFragment iffinish = element_p.getFinish();
+      InteractionFragment iffinish = element.getFinish();
       if (iffinish != null) {
         for (InstanceRole instanceRole : iffinish.getCoveredInstanceRoles()) {
           return instanceRole;

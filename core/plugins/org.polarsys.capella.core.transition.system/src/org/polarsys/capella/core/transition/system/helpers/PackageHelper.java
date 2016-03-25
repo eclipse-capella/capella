@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.helpers;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,10 +24,10 @@ public class PackageHelper {
   /**
    * Retrieve whether given object is a capella package
    * @param object
-   * @param context_p
+   * @param context
    * @return
    */
-  public static boolean isPackage(EObject object, IContext context_p) {
+  public static boolean isPackage(EObject object, IContext context) {
     if (object != null) {
       if (object instanceof Structure) {
         EClass clazz = object.eClass();

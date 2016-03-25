@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -45,13 +46,13 @@ public class ClassifierExt {
 
   /**
    * Gets all types for a classifier
-   * @param classifier_p the classifier
+   * @param classifier the classifier
    * @return list of all the available types (from DataPkg) and Interfaces
    */
-  static public List<CapellaElement> getAllTypes(GeneralizableElement classifier_p) {
+  static public List<CapellaElement> getAllTypes(GeneralizableElement classifier) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != classifier_p) {
-      Structure structure = (Structure) classifier_p.eContainer();
+    if (null != classifier) {
+      Structure structure = (Structure) classifier.eContainer();
 
       if (structure != null) {
         BlockArchitecture arch = StructureExt.getRootBlockArchitecture(structure);
@@ -71,7 +72,7 @@ public class ClassifierExt {
           }
         }
         // ComponentArchitecture is null; Get the SystemEngineering
-        SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(classifier_p);
+        SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(classifier);
 
         // FIXME : update to SystemAnalysis
         SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
@@ -101,21 +102,21 @@ public class ClassifierExt {
 //  }
 
   /**
-   * @param modelElement_p : any 'ModelElement'
+   * @param modelElement : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
-  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement_p) {
-	  return BlockArchitectureExt.getRootBlockArchitecture(modelElement_p);
+  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
+	  return BlockArchitectureExt.getRootBlockArchitecture(modelElement);
   }
 
   /**
-   * @param classifier_p
+   * @param classifier
    * @return
    */
-  public static Component getRootComponent(GeneralizableElement classifier_p) {
+  public static Component getRootComponent(GeneralizableElement classifier) {
     Component comp = null;
-    if (null != classifier_p) {
-      Structure structure = (Structure) classifier_p.eContainer();
+    if (null != classifier) {
+      Structure structure = (Structure) classifier.eContainer();
       if (null != structure)
         comp = StructureExt.getRootComponent(structure);
     }
@@ -125,13 +126,13 @@ public class ClassifierExt {
   /**
    * Gets all the DataPkgs from the Parent Hierarchy of the root component/Block architecture of the current classifier according to layer visibility and
    * multiple decomposition rules
-   * @param classifier_p the Classifier
+   * @param classifier the Classifier
    * @return list of DataPkgs
    */
-  static public List<DataPkg> getDataPkgsFromParentHierarchy(GeneralizableElement classifier_p) {
+  static public List<DataPkg> getDataPkgsFromParentHierarchy(GeneralizableElement classifier) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    if (null != classifier_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(classifier_p);
+    if (null != classifier) {
+      BlockArchitecture compArch = getRootBlockArchitecture(classifier);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -142,7 +143,7 @@ public class ClassifierExt {
           return list; // return if SystemEngineering
         list.addAll(DataPkgExt.getDataPkgsFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(classifier_p);
+      Component parentComp = getRootComponent(classifier);
       if (null != parentComp) {
         DataPkg dataPkg = parentComp.getOwnedDataPkg();
         if (null != dataPkg) {
@@ -157,13 +158,13 @@ public class ClassifierExt {
   /**
    * Gets all the Interfaces from the Parent Hierarchy of the root component/Block architecture of the current operation according to layer visibility and
    * multiple decomposition rules
-   * @param classifier_p the Classifier
+   * @param classifier the Classifier
    * @return list of Interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromParentHierarchy(GeneralizableElement classifier_p) {
+  static public List<Interface> getOwnedInterfacesFromParentHierarchy(GeneralizableElement classifier) {
     List<Interface> list = new ArrayList<Interface>(1);
-    if (null != classifier_p) {
-      BlockArchitecture compArch = getRootBlockArchitecture(classifier_p);
+    if (null != classifier) {
+      BlockArchitecture compArch = getRootBlockArchitecture(classifier);
       if (null != compArch) {
         list.addAll(InterfacePkgExt.getAllInterfaces(compArch.getOwnedInterfacePkg()));
         // Layer visibility is there
@@ -171,7 +172,7 @@ public class ClassifierExt {
           return list; // return if SystemEngineering
         list.addAll(InterfacePkgExt.getOwnedInterfacesFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = getRootComponent(classifier_p);
+      Component parentComp = getRootComponent(classifier);
       if (null != parentComp) {
         list.addAll(InterfacePkgExt.getAllInterfaces(parentComp.getOwnedInterfacePkg()));
         list.addAll(InterfacePkgExt.getOwnedInterfacesFromComponentParent(parentComp));
@@ -181,13 +182,13 @@ public class ClassifierExt {
   }
 
   /**
-   * @param classifier_p
+   * @param classifier
    * @return
    */
-  static public DataPkg getRootDataPkg(GeneralizableElement classifier_p) {
+  static public DataPkg getRootDataPkg(GeneralizableElement classifier) {
     DataPkg dataPkg = null;
-    if (null != classifier_p) {
-      Object container = classifier_p.eContainer();
+    if (null != classifier) {
+      Object container = classifier.eContainer();
       if (container instanceof DataPkg) {
         dataPkg = (DataPkg) container;
       } else if (container instanceof Structure) {
@@ -198,13 +199,13 @@ public class ClassifierExt {
   }
 
   /**
-   * @param structure_p
+   * @param structure
    * @return
    */
-  static public DataPkg getDataPkg(Structure structure_p) {
+  static public DataPkg getDataPkg(Structure structure) {
     DataPkg dataPkg = null;
-    if (null != structure_p) {
-      Object container = structure_p.eContainer();
+    if (null != structure) {
+      Object container = structure.eContainer();
       if (container instanceof DataPkg) {
         dataPkg = (DataPkg) container;
       } else if (container instanceof Structure) {
@@ -214,9 +215,9 @@ public class ClassifierExt {
     return dataPkg;
   }
   
-  public static Collection<Property> getOwnedProperties(final Classifier classifier_p){
+  public static Collection<Property> getOwnedProperties(final Classifier classifier){
     Collection<Property> returnedCollection = new HashSet<Property>();
-    for (Feature aFeature : classifier_p.getOwnedFeatures()){
+    for (Feature aFeature : classifier.getOwnedFeatures()){
       if (aFeature instanceof Property){
         returnedCollection.add((Property) aFeature);
       }
@@ -224,11 +225,11 @@ public class ClassifierExt {
     return returnedCollection;
   }
   
-  public static Collection<Association> getIncomingAndOutgoingAssociations(final Classifier classifier_p){
+  public static Collection<Association> getIncomingAndOutgoingAssociations(final Classifier classifier){
     Collection<Association> returnedCollection = new HashSet<Association>();
     Set<Property> linkedProperties = new HashSet<Property>();
-    linkedProperties.addAll(getOwnedProperties(classifier_p));
-    for (TypedElement aTypedElement : classifier_p.getTypedElements()){
+    linkedProperties.addAll(getOwnedProperties(classifier));
+    for (TypedElement aTypedElement : classifier.getTypedElements()){
       if (aTypedElement instanceof Property){
         linkedProperties.add((Property) aTypedElement);
       }

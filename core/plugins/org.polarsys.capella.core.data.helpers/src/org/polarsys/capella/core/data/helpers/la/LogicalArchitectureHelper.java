@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.la;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -40,44 +41,44 @@ import org.polarsys.capella.core.data.la.SystemRealization;
 
 public class LogicalArchitectureHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
-		if (object_p instanceof LogicalArchitecture) {
-			ret = LaArchitectureHelper.getInstance().doSwitch((LogicalArchitecture) object_p, feature_p);
+		if (object instanceof LogicalArchitecture) {
+			ret = LaArchitectureHelper.getInstance().doSwitch((LogicalArchitecture) object, feature);
 		}
-		else if (object_p instanceof LogicalContext) {
-			ret = LogicalContextHelper.getInstance().doSwitch((LogicalContext) object_p, feature_p);
+		else if (object instanceof LogicalContext) {
+			ret = LogicalContextHelper.getInstance().doSwitch((LogicalContext) object, feature);
 		}
-		else if (object_p instanceof LogicalComponent) {
-			ret = LogicalComponentHelper.getInstance().doSwitch((LogicalComponent) object_p, feature_p);
+		else if (object instanceof LogicalComponent) {
+			ret = LogicalComponentHelper.getInstance().doSwitch((LogicalComponent) object, feature);
 		}
-		else if (object_p instanceof LogicalFunction) {
-			ret = LogicalFunctionHelper.getInstance().doSwitch((LogicalFunction) object_p, feature_p); 
+		else if (object instanceof LogicalFunction) {
+			ret = LogicalFunctionHelper.getInstance().doSwitch((LogicalFunction) object, feature); 
 		}
-		else if (object_p instanceof SystemAnalysisRealization) {
-			ret = SystemAnalysisRealizationHelper.getInstance().doSwitch((SystemAnalysisRealization) object_p, feature_p);
+		else if (object instanceof SystemAnalysisRealization) {
+			ret = SystemAnalysisRealizationHelper.getInstance().doSwitch((SystemAnalysisRealization) object, feature);
 		}
-		else if (object_p instanceof ContextInterfaceRealization) {
-			ret = ContextInterfaceRealizationHelper.getInstance().doSwitch((ContextInterfaceRealization) object_p, feature_p);
+		else if (object instanceof ContextInterfaceRealization) {
+			ret = ContextInterfaceRealizationHelper.getInstance().doSwitch((ContextInterfaceRealization) object, feature);
 		}
-		else if (object_p instanceof SystemRealization) {
-			ret = SystemRealizationHelper.getInstance().doSwitch((SystemRealization) object_p, feature_p);
+		else if (object instanceof SystemRealization) {
+			ret = SystemRealizationHelper.getInstance().doSwitch((SystemRealization) object, feature);
 		}
-		else if (object_p instanceof LogicalActor) {
-			ret = LogicalActorHelper.getInstance().doSwitch((LogicalActor) object_p, feature_p);
+		else if (object instanceof LogicalActor) {
+			ret = LogicalActorHelper.getInstance().doSwitch((LogicalActor) object, feature);
 		}
-		else if (object_p instanceof SystemActorRealization) {
-			ret = SystemActorRealizationHelper.getInstance().doSwitch((SystemActorRealization) object_p, feature_p);
+		else if (object instanceof SystemActorRealization) {
+			ret = SystemActorRealizationHelper.getInstance().doSwitch((SystemActorRealization) object, feature);
 		}
-		else if (object_p instanceof CapabilityRealization) {
-			ret = CapabilityRealizationHelper.getInstance().doSwitch((CapabilityRealization) object_p, feature_p);
+		else if (object instanceof CapabilityRealization) {
+			ret = CapabilityRealizationHelper.getInstance().doSwitch((CapabilityRealization) object, feature);
 		}
-		else if (object_p instanceof Structure) {
-			ret = StructureHelper.getInstance().doSwitch((Structure) object_p, feature_p);
+		else if (object instanceof Structure) {
+			ret = StructureHelper.getInstance().doSwitch((Structure) object, feature);
 		}
 
-		if(null != ret || feature_p.getUpperBound() == 1)
+		if(null != ret || feature.getUpperBound() == 1)
 			return ret;
 		
 		throw new HelperNotFoundException();

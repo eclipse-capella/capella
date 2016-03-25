@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.ArrayList;
@@ -35,8 +36,8 @@ public class PostDiffMergeActivity extends AbstractActivity implements ITranspos
    * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
    */
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
     disposeSharedContents(context);
 
@@ -49,12 +50,12 @@ public class PostDiffMergeActivity extends AbstractActivity implements ITranspos
   }
 
   /**
-   * @param context_p
+   * @param context
    */
-  protected void removeTemporaryElements(IContext context_p) {
+  protected void removeTemporaryElements(IContext context) {
 
     // Delete content of the root transformation element
-    Object root = context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+    Object root = context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
     if ((root != null) && (root instanceof EObject)) {
       EObject rootObject = (EObject) root;
       if (rootObject.eContainer() == null) {
@@ -64,27 +65,27 @@ public class PostDiffMergeActivity extends AbstractActivity implements ITranspos
             toDelete.add(o);
           }
         }
-        AttachmentHelper.getInstance(context_p).removeElements(toDelete, context_p);
+        AttachmentHelper.getInstance(context).removeElements(toDelete, context);
       }
     }
 
   }
 
   /**
-   * @param context_p
+   * @param context
    */
-  protected void disposeSharedContents(IContext context_p) {
-    Object value = context_p.get(ITransitionConstants.TRANSFORMED_ELEMENTS);
+  protected void disposeSharedContents(IContext context) {
+    Object value = context.get(ITransitionConstants.TRANSFORMED_ELEMENTS);
     if ((value != null) && (value instanceof Collection)) {
       ((Collection<?>) value).clear();
     }
   }
 
   /**
-   * @param context_p
+   * @param context
    */
-  protected void disposeHandlers(IContext context_p) {
-    ContextScopeHandlerHelper.getInstance(context_p).dispose(context_p);
+  protected void disposeHandlers(IContext context) {
+    ContextScopeHandlerHelper.getInstance(context).dispose(context);
   }
 
 }

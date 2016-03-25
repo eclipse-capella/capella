@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.fa;
 
 import java.util.ArrayList;
@@ -33,29 +34,29 @@ public class ComponentExchangeEndRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      ComponentExchangeEnd element = (ComponentExchangeEnd) source_p;
-      result_p.add(element.getPart());
-      result_p.add(element.getPort());
-      ContextScopeHandlerHelper.getInstance(context_p).add(ITransitionConstants.SOURCE_SCOPE, element.getPart(), context_p);
-      ContextScopeHandlerHelper.getInstance(context_p).add(ITransitionConstants.SOURCE_SCOPE, element.getPort(), context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      ComponentExchangeEnd element = (ComponentExchangeEnd) source;
+      result.add(element.getPart());
+      result.add(element.getPort());
+      ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, element.getPart(), context);
+      ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, element.getPort(), context);
     }
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, FaPackage.Literals.COMPONENT_EXCHANGE_END__PART, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, FaPackage.Literals.COMPONENT_EXCHANGE_END__PORT, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.COMPONENT_EXCHANGE_END__PART, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.COMPONENT_EXCHANGE_END__PORT, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    ComponentExchangeEnd element = (ComponentExchangeEnd) element_p;
-    needed_p.addAll(createDefaultPrecedencePremices(element, FaPackage.Literals.COMPONENT_EXCHANGE_END__PART));
-    needed_p.addAll(createDefaultPrecedencePremices(element, FaPackage.Literals.COMPONENT_EXCHANGE_END__PORT));
+  protected void premicesRelated(EObject eObject1, ArrayList<IPremise> needed) {
+    super.premicesRelated(eObject1, needed);
+    ComponentExchangeEnd element = (ComponentExchangeEnd) eObject1;
+    needed.addAll(createDefaultPrecedencePremices(element, FaPackage.Literals.COMPONENT_EXCHANGE_END__PART));
+    needed.addAll(createDefaultPrecedencePremices(element, FaPackage.Literals.COMPONENT_EXCHANGE_END__PORT));
   }
 }

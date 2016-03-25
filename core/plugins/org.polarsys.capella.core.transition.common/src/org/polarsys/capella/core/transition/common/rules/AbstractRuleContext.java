@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.rules;
 
 import java.util.ArrayList;
@@ -29,26 +30,26 @@ public abstract class AbstractRuleContext extends AbstractRule implements IRuleC
 
   private IDefinitionContext DEFAULT_CONTEXT = new IDefinitionContext();
 
-  protected List<IDefinitionContext> getDefinitionContexts(EObject element_p) {
+  protected List<IDefinitionContext> getDefinitionContexts(EObject element) {
     return Collections.singletonList(DEFAULT_CONTEXT);
   }
 
   @Override
-  protected Collection<EObject> transformElement(EObject element_p, IContext context_p) {
+  protected Collection<EObject> transformElement(EObject eObject1, IContext iContext1) {
     Collection<EObject> results = new ArrayList<EObject>();
 
-    for (IDefinitionContext context : getDefinitionContexts(element_p)) {
-      EObject transitioned = transformDirectElement(element_p, context_p);
+    for (IDefinitionContext context : getDefinitionContexts(eObject1)) {
+      EObject transitioned = transformDirectElement(eObject1, iContext1);
       results.add(transitioned);
     }
 
     return results;
   }
 
-  public void registerContext(EObject object_p, String keyContext_p, EObject contextElement_p) {
+  public void registerContext(EObject object, String keyContext, EObject contextElement) {
   }
 
-  public IDefinitionContext retrieveContext(EObject object_p) {
+  public IDefinitionContext retrieveContext(EObject object) {
     return DEFAULT_CONTEXT;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.Collection;
@@ -32,12 +33,12 @@ public class InitializeScopeActivity extends AbstractActivity implements ITransp
    * {@inheritDoc}
    */
   @Override
-  protected IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
+  protected IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
     IStatus status = Status.OK_STATUS;
 
     //Compute scope
-    status = initializeTransformationScope(context, activityParams_p);
+    status = initializeTransformationScope(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
@@ -47,13 +48,13 @@ public class InitializeScopeActivity extends AbstractActivity implements ITransp
 
   /**
    * Should compute scope
-   * ScopeHandlerHelper.getInstance(context_p).getScope should not be null
-   * @param context_p
+   * ScopeHandlerHelper.getInstance(context).getScope should not be null
+   * @param context
    */
-  protected IStatus initializeTransformationScope(IContext context_p, ActivityParameters activityParams_p) {
-    Collection<EObject> selection = (Collection<EObject>) context_p.get(ITransitionConstants.SCOPE_SOURCES);
+  protected IStatus initializeTransformationScope(IContext context, ActivityParameters activityParams) {
+    Collection<EObject> selection = (Collection<EObject>) context.get(ITransitionConstants.SCOPE_SOURCES);
     if (selection.size() > 0) {
-      ScopeHandlerHelper.getInstance(context_p).computeScope(selection, context_p);
+      ScopeHandlerHelper.getInstance(context).computeScope(selection, context);
     }
     return Status.OK_STATUS;
   }

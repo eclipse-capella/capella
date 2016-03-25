@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -33,32 +34,32 @@ public class EntityOperationalCapabilityInvolvementHelper {
     return instance;
   }
 
-  public Object doSwitch(EntityOperationalCapabilityInvolvement element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(EntityOperationalCapabilityInvolvement element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY)) {
-      ret = getEntity(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY)) {
-      ret = getOperationalCapability(element_p);
+    if (feature.equals(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY)) {
+      ret = getEntity(element);
+    } else if (feature.equals(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY)) {
+      ret = getOperationalCapability(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = InvolvementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InvolvementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected Entity getEntity(EntityOperationalCapabilityInvolvement element_p) {
-    InvolvedElement elt = element_p.getInvolved();
+  protected Entity getEntity(EntityOperationalCapabilityInvolvement element) {
+    InvolvedElement elt = element.getInvolved();
     if (elt instanceof Entity)
       return (Entity) elt;
     return null;
   }
 
-  protected OperationalCapability getOperationalCapability(EntityOperationalCapabilityInvolvement element_p) {
-    InvolverElement elt = element_p.getInvolver();
+  protected OperationalCapability getOperationalCapability(EntityOperationalCapabilityInvolvement element) {
+    InvolverElement elt = element.getInvolver();
     if (elt instanceof OperationalCapability)
       return (OperationalCapability) elt;
     return null;

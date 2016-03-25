@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.List;
@@ -22,13 +23,13 @@ public class MessageExt {
 
   /**
    * This method returns the root owner {@link MessagePkg} of the current {@link Message}
-   * @param message_p
+   * @param message
    *          the current message
    * @return the root owner DataPkg
    */
-  static public DataPkg getRootOwnerDataPkg(Message message_p) {
-    if (null != message_p) {
-      Object container = message_p.eContainer();
+  static public DataPkg getRootOwnerDataPkg(Message message) {
+    if (null != message) {
+      Object container = message.eContainer();
       if (container instanceof Message) {
         return getRootOwnerDataPkg((Message) container);
       } else if (container instanceof DataPkg) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.scope;
 
 import java.util.ArrayList;
@@ -32,11 +33,11 @@ public class DefaultScopeHandler implements IScopeHandler {
 
   Collection<IScopeRetriever> childsRetrievers;
 
-  public Collection<EObject> retrieveElements(EObject source_p, IContext context_p) {
+  public Collection<EObject> retrieveElements(EObject source, IContext context) {
     Collection<EObject> elements = new LinkedList<EObject>();
     if (childsRetrievers != null) {
       for (IScopeRetriever retriever : childsRetrievers) {
-        Collection<? extends EObject> retrievedElements = retriever.retrieveRelatedElements(source_p, context_p);
+        Collection<? extends EObject> retrievedElements = retriever.retrieveRelatedElements(source, context);
         if (retrievedElements != null) {
           elements.addAll(retrievedElements);
         }
@@ -45,20 +46,20 @@ public class DefaultScopeHandler implements IScopeHandler {
     return elements;
   }
 
-  public boolean isInScope(EObject element_p, IContext context_p) {
-    Collection<EObject> scope = getScope(context_p);
-    return ((scope != null) && scope.contains(element_p));
+  public boolean isInScope(EObject element, IContext context) {
+    Collection<EObject> scope = getScope(context);
+    return ((scope != null) && scope.contains(element));
   }
 
-  public IStatus computeScope(Collection<EObject> bootstrap_p, IContext context_p) {
-    Collection<EObject> scope = computeScopeInternal(bootstrap_p, context_p);
-    ContextScopeHandlerHelper.getInstance(context_p).clear(ITransitionConstants.TRANSITION_SCOPE, context_p);
-    ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.TRANSITION_SCOPE, scope, context_p);
+  public IStatus computeScope(Collection<EObject> bootstrap, IContext context) {
+    Collection<EObject> scope = computeScopeInternal(bootstrap, context);
+    ContextScopeHandlerHelper.getInstance(context).clear(ITransitionConstants.TRANSITION_SCOPE, context);
+    ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.TRANSITION_SCOPE, scope, context);
     return Status.OK_STATUS;
   }
 
-  public Collection<EObject> getScope(IContext context_p) {
-    return ContextScopeHandlerHelper.getInstance(context_p).getCollection(ITransitionConstants.TRANSITION_SCOPE, context_p);
+  public Collection<EObject> getScope(IContext context) {
+    return ContextScopeHandlerHelper.getInstance(context).getCollection(ITransitionConstants.TRANSITION_SCOPE, context);
   }
 
   /**
@@ -131,10 +132,10 @@ public class DefaultScopeHandler implements IScopeHandler {
    * @param relatedElement_p
    * @return
    */
-  public boolean isValidScopeElement(EObject element_p, IContext context_p) {
+  public boolean isValidScopeElement(EObject element, IContext context) {
     if (childsFilters != null) {
       for (IScopeFilter filter : childsFilters) {
-        if (!filter.isValidScopeElement(element_p, context_p)) {
+        if (!filter.isValidScopeElement(element, context)) {
           return false;
         }
       }
@@ -145,15 +146,15 @@ public class DefaultScopeHandler implements IScopeHandler {
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     if (childsFilters != null) {
       for (IScopeFilter filter : childsFilters) {
-        filter.init(context_p);
+        filter.init(context);
       }
     }
     if (childsRetrievers != null) {
       for (IScopeRetriever retriever : childsRetrievers) {
-        retriever.init(context_p);
+        retriever.init(context);
       }
     }
 
@@ -163,15 +164,15 @@ public class DefaultScopeHandler implements IScopeHandler {
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     if (childsFilters != null) {
       for (IScopeFilter filter : childsFilters) {
-        filter.dispose(context_p);
+        filter.dispose(context);
       }
     }
     if (childsRetrievers != null) {
       for (IScopeRetriever retriever : childsRetrievers) {
-        retriever.dispose(context_p);
+        retriever.dispose(context);
       }
     }
     return Status.OK_STATUS;
@@ -180,12 +181,12 @@ public class DefaultScopeHandler implements IScopeHandler {
   /**
    * {@inheritDoc}
    */
-  public void addScopeFilter(IScopeFilter filter_p, IContext context_p) {
-    if (filter_p != null) {
+  public void addScopeFilter(IScopeFilter filter, IContext context) {
+    if (filter != null) {
       if (childsFilters == null) {
         childsFilters = new ArrayList<IScopeFilter>();
       }
-      childsFilters.add(filter_p);
+      childsFilters.add(filter);
     }
 
   }
@@ -193,12 +194,12 @@ public class DefaultScopeHandler implements IScopeHandler {
   /**
    * {@inheritDoc}
    */
-  public void addScopeRetriever(IScopeRetriever retriever_p, IContext context_p) {
-    if (retriever_p != null) {
+  public void addScopeRetriever(IScopeRetriever retriever, IContext context) {
+    if (retriever != null) {
       if (childsRetrievers == null) {
         childsRetrievers = new ArrayList<IScopeRetriever>();
       }
-      childsRetrievers.add(retriever_p);
+      childsRetrievers.add(retriever);
     }
   }
 }

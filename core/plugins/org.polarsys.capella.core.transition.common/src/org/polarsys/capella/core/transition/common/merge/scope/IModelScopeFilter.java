@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.merge.scope;
 
 import org.eclipse.emf.ecore.EObject;
@@ -18,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface IModelScopeFilter {
   /**
    * Return whether the given element is accepted by this filter
-   * @param element_p a non-null element
+   * @param element a non-null element
    */
-  boolean accepts(EObject element_p);
+  boolean accepts(EObject element);
 }

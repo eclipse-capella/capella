@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer.current;
 
 import java.util.HashMap;
@@ -41,25 +42,25 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
   }
 
   @Override
-  public RuntimePurpose getRegisteredPurpose(String purpose_p, String mappingId_p) {
+  public RuntimePurpose getRegisteredPurpose(String string1, String mappingId) {
     for (Object element : getRegisteredPurposes()) {
       RuntimePurpose purpose = (RuntimePurpose) element;
-      if ((purpose_p != null) && purpose_p.equals(purpose.getName()) && (mappingId_p != null) && mappingId_p.equals(purpose.getId())) {
+      if ((string1 != null) && string1.equals(purpose.getName()) && (mappingId != null) && mappingId.equals(purpose.getId())) {
         return purpose;
       }
     }
 
-    return registerPurpose(purpose_p, mappingId_p);
+    return registerPurpose(string1, mappingId);
   }
 
   @Override
-  public Mapping getContributedMapping(String purpose_p, String mappingId_p) {
-    ContributedPurpose purpose = getContributedPurpose(purpose_p);
+  public Mapping getContributedMapping(String purpose, String mappingId) {
+    ContributedPurpose contributedPurpose = getContributedPurpose(purpose);
     Mapping result = null;
-    if ((purpose != null) && (mappingId_p != null)) {
-      for (Object element : purpose.getMappings()) {
+    if ((contributedPurpose != null) && (mappingId != null)) {
+      for (Object element : contributedPurpose.getMappings()) {
         Mapping mapping = (Mapping) element;
-        if (mappingId_p.equals(mapping.getId())) {
+        if (mappingId.equals(mapping.getId())) {
           result = mapping;
         }
       }
@@ -69,11 +70,11 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
   }
 
   @Override
-  public ContributedPurpose getContributedPurpose(String purpose_p) {
+  public ContributedPurpose getContributedPurpose(String purpose) {
     for (Object element : getContributedPurposes()) {
-      ContributedPurpose purpose = (ContributedPurpose) element;
-      if ((purpose_p != null) && purpose_p.equals(purpose.getName())) {
-        return purpose;
+      ContributedPurpose contributedPurpose = (ContributedPurpose) element;
+      if ((purpose != null) && purpose.equals(contributedPurpose.getName())) {
+        return contributedPurpose;
       }
     }
 
@@ -134,33 +135,33 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
   }
 
   @Override
-  public RuntimePurpose registerPurpose(String purpose_p, String mappingId_p) {
+  public RuntimePurpose registerPurpose(String purpose, String mappingId) {
     ContributedPurpose selectedPurpose = null;
     Mapping selectedMapping = null;
     for (Object element : getContributedPurposes()) {
       ContributedPurpose contributedPurpose = (ContributedPurpose) element;
-      if (purpose_p.equals(contributedPurpose.getName())) {
+      if (purpose.equals(contributedPurpose.getName())) {
         selectedPurpose = contributedPurpose;
       }
     }
 
     if (selectedPurpose == null) {
-      throw new NullPointerException((new StringBuilder("The purpose to register is not in contributed ones : ")).append(purpose_p).toString());
+      throw new NullPointerException((new StringBuilder("The purpose to register is not in contributed ones : ")).append(purpose).toString());
     }
     for (Object element : selectedPurpose.getMappings()) {
       Mapping contributedMapping = (Mapping) element;
-      if (mappingId_p.equals(contributedMapping.getId())) {
+      if (mappingId.equals(contributedMapping.getId())) {
         selectedMapping = contributedMapping;
       }
     }
 
     if (selectedMapping == null) {
-      throw new NullPointerException((new StringBuilder("The mapping to register is not in contributed ones : ")).append(purpose_p).append("::")
-          .append(mappingId_p).toString());
+      throw new NullPointerException((new StringBuilder("The mapping to register is not in contributed ones : ")).append(purpose).append("::")
+          .append(mappingId).toString());
     }
     RuntimePurpose runtimePurpose = RuntimeFactory.eINSTANCE.createRuntimePurpose();
     runtimePurpose.setName(selectedPurpose.getName());
-    runtimePurpose.setDescription(getDescription(purpose_p, selectedMapping));
+    runtimePurpose.setDescription(getDescription(purpose, selectedMapping));
 
     if ((selectedPurpose.getMappings().size() == 1) && ((ExtendedMappingHelper.getExtendedMappings(selectedPurpose.getMappings().get(0)).isEmpty()))) {
       runtimePurpose.setMapping(EcoreUtil.copy(selectedPurpose.getMappings().get(0)));
@@ -173,21 +174,21 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
     return runtimePurpose;
   }
 
-  private String getDescription(String purpose_p, Mapping mapping_p) {
+  private String getDescription(String purpose, Mapping mapping) {
     StringBuilder runtimeDescription = new StringBuilder();
-    runtimeDescription.append("Purpose ").append(purpose_p).append("\n").append("\n").append(mapping_p.getCompleteDescription());
+    runtimeDescription.append("Purpose ").append(purpose).append("\n").append("\n").append(mapping.getCompleteDescription());
     return runtimeDescription.toString();
   }
 
-  private Mapping buildRuntimeMapping(ContributedPurpose contributedPurpose_p, Mapping selectedMapping_p) {
+  private Mapping buildRuntimeMapping(ContributedPurpose contributedPurpose, Mapping selectedMapping) {
     Mapping runtimeMapping = CommonFactory.eINSTANCE.createMapping();
     Map runtimeMappingElements = new HashMap();
     Map contributedMappingsElements = new HashMap();
-    selectContributedMappingElementsToUse(contributedMappingsElements, selectedMapping_p);
-    runtimeMapping.setId(selectedMapping_p.getId());
-    runtimeMapping.setName(selectedMapping_p.getName());
-    runtimeMapping.setOwnedContext(selectedMapping_p.getContext());
-    runtimeMapping.setOwnedDomainHelper(selectedMapping_p.getDomainHelper());
+    selectContributedMappingElementsToUse(contributedMappingsElements, selectedMapping);
+    runtimeMapping.setId(selectedMapping.getId());
+    runtimeMapping.setName(selectedMapping.getName());
+    runtimeMapping.setOwnedContext(selectedMapping.getContext());
+    runtimeMapping.setOwnedDomainHelper(selectedMapping.getDomainHelper());
     MappingElement runtimeElement;
     for (Iterator iterator = contributedMappingsElements.values().iterator(); iterator.hasNext(); runtimeMappingElements.put(
         runtimeElement.getDomainMetaClass(), runtimeElement)) {
@@ -207,12 +208,12 @@ public class GenericPurposeRegistry extends PurposeRegistryImpl {
     return runtimeMapping;
   }
 
-  protected void selectContributedMappingElementsToUse(Map contributedMappingsElements_p, Mapping mapping_p) {
-    if (mapping_p.getExtendedMapping() != null) {
-      selectContributedMappingElementsToUse(contributedMappingsElements_p, mapping_p.getExtendedMapping());
+  protected void selectContributedMappingElementsToUse(Map contributedMappingsElements, Mapping mapping) {
+    if (mapping.getExtendedMapping() != null) {
+      selectContributedMappingElementsToUse(contributedMappingsElements, mapping.getExtendedMapping());
     }
     MappingElement currentElement;
-    for (Iterator iterator = mapping_p.getAllOwnedMappingElements().iterator(); iterator.hasNext(); contributedMappingsElements_p.put(
+    for (Iterator iterator = mapping.getAllOwnedMappingElements().iterator(); iterator.hasNext(); contributedMappingsElements.put(
         currentElement.getDomainMetaClass(), currentElement)) {
       currentElement = (MappingElement) iterator.next();
     }

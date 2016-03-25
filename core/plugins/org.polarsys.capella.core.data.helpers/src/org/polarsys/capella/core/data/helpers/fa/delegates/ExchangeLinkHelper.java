@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -34,25 +35,25 @@ private static ExchangeLinkHelper instance;
 		return instance;
 	}
 	
-	public Object doSwitch(ExchangeLink element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(ExchangeLink element, EStructuralFeature feature) {
 		
 		Object ret = null;
 		
-		if (feature_p.equals(FaPackage.Literals.EXCHANGE_LINK__EXCHANGES)) {
-			ret = getExchanges(element_p);
+		if (feature.equals(FaPackage.Literals.EXCHANGE_LINK__EXCHANGES)) {
+			ret = getExchanges(element);
 		} 
 
     // no helper found... searching in super classes...
     if (ret == null) {
-      ret = NamedRelationshipHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamedRelationshipHelper.getInstance().doSwitch(element, feature);
     }
 
 		return ret;
 	}
 	
-	protected List<ExchangeSpecification> getExchanges(ExchangeLink element_p) {
+	protected List<ExchangeSpecification> getExchanges(ExchangeLink element) {
 		
-		List<ExchangeContainment> containements = element_p.getOwnedExchangeContainments();
+		List<ExchangeContainment> containements = element.getOwnedExchangeContainments();
 		List<ExchangeSpecification> ret = new ArrayList<ExchangeSpecification>();
 		
 		for (ExchangeContainment cont : containements) {

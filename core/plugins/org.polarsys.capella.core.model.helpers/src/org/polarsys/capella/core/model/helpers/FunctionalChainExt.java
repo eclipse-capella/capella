@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -62,15 +63,15 @@ public class FunctionalChainExt {
 
   static String PLUGIN_ID = "org.polarsys.capella.core.model.helpers"; //$NON-NLS-1$
 
-  public static boolean isFirstFunctionalChainInvolvement(FunctionalChainInvolvement involment_p) {
-    if ((involment_p.getInvolved() != null) && involment_p.getPreviousFunctionalChainInvolvements().isEmpty()) {
+  public static boolean isFirstFunctionalChainInvolvement(FunctionalChainInvolvement involment) {
+    if ((involment.getInvolved() != null) && involment.getPreviousFunctionalChainInvolvements().isEmpty()) {
       return true;
     }
     return false;
   }
 
-  public static boolean isLastFunctionalChainInvolvement(FunctionalChainInvolvement involment_p) {
-    if ((involment_p.getInvolved() != null) && involment_p.getNextFunctionalChainInvolvements().isEmpty()) {
+  public static boolean isLastFunctionalChainInvolvement(FunctionalChainInvolvement involment) {
+    if ((involment.getInvolved() != null) && involment.getNextFunctionalChainInvolvements().isEmpty()) {
       return true;
     }
     return false;
@@ -78,17 +79,17 @@ public class FunctionalChainExt {
 
   /**
    * Returns for an involvement linked to FunctionalExchange all ExchangeItem allocated to the involvement which are not allocated to the FunctionalExchange
-   * @param involvement_p
+   * @param involvement
    * @return
    */
-  public static Collection<AbstractExchangeItem> getInvalidExchangeItems(FunctionalChainInvolvement involvement_p) {
+  public static Collection<AbstractExchangeItem> getInvalidExchangeItems(FunctionalChainInvolvement involvement) {
     // Get ExchangeItems from SequenceMessage.
-    List<ExchangeItem> exchangedItemsFromInvolvement = involvement_p.getExchangedItems();
+    List<ExchangeItem> exchangedItemsFromInvolvement = involvement.getExchangedItems();
 
-    if ((involvement_p.getInvolved() != null) && (involvement_p.getInvolved() instanceof FunctionalExchange)) {
+    if ((involvement.getInvolved() != null) && (involvement.getInvolved() instanceof FunctionalExchange)) {
 
       // Get ExchangeItems from invoked operation of given SequenceMessage.
-      Collection<ExchangeItem> exchangeItemsFromInvokedOperation = ((FunctionalExchange) involvement_p.getInvolved()).getExchangedItems();
+      Collection<ExchangeItem> exchangeItemsFromInvokedOperation = ((FunctionalExchange) involvement.getInvolved()).getExchangedItems();
       // Collect invalid ExchangeItems (ExchangeItems referenced by the SequenceMessage but not associated with the invoked operation).
       List<AbstractExchangeItem> invalidExchangeItems = new ArrayList<AbstractExchangeItem>(exchangedItemsFromInvolvement);
       invalidExchangeItems.removeAll(exchangeItemsFromInvokedOperation);
@@ -99,12 +100,12 @@ public class FunctionalChainExt {
 
   /**
    * retrieves the source functions of a functional chain
-   * @param functionalChain_p a functional chain
-   * @return source functions of functionalChain_p
+   * @param functionalChain a functional chain
+   * @return source functions of functionalChain
    */
-  public static Set<AbstractFunction> getFunctionalChainFirstFunctions(FunctionalChain functionalChain_p) {
+  public static Set<AbstractFunction> getFunctionalChainFirstFunctions(FunctionalChain functionalChain) {
     Set<AbstractFunction> result = new HashSet<AbstractFunction>();
-    for (FunctionalChainInvolvement inv : functionalChain_p.getOwnedFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement inv : functionalChain.getOwnedFunctionalChainInvolvements()) {
       if (isFirstFunctionalChainInvolvement(inv)) {
         if (inv.getInvolved() instanceof AbstractFunction) {
           result.add((AbstractFunction) inv.getInvolved());
@@ -116,15 +117,15 @@ public class FunctionalChainExt {
 
   /**
    * retrieves the source functions of a functional chain. if functional chain is composite, returns also starting functions of sub functional chains
-   * @param functionalChain_p a functional chain
-   * @return source functions of functionalChain_p
+   * @param functionalChain a functional chain
+   * @return source functions of functionalChain
    */
-  public static Collection<FunctionalChainInvolvement> getFlatFirstFunctionalChainInvolvments(FunctionalChain chain_p) {
+  public static Collection<FunctionalChainInvolvement> getFlatFirstFunctionalChainInvolvments(FunctionalChain functionalChain) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
 
     LinkedList<FunctionalChain> toVisit = new LinkedList<FunctionalChain>();
     HashSet<FunctionalChain> visited = new HashSet<FunctionalChain>();
-    toVisit.add(chain_p);
+    toVisit.add(functionalChain);
 
     while (!toVisit.isEmpty()) {
       FunctionalChain chain = toVisit.removeFirst();
@@ -147,13 +148,13 @@ public class FunctionalChainExt {
 
   /**
    * retrieves the source functions of a functional chain. if functional chain is composite, returns also starting functions of sub functional chains
-   * @param functionalChain_p a functional chain
-   * @return source functions of functionalChain_p
+   * @param chain a functional chain
+   * @return source functions of functionalChain
    */
-  public static Set<AbstractFunction> getFlatFunctionalChainFirstFunctions(FunctionalChain chain_p) {
+  public static Set<AbstractFunction> getFlatFunctionalChainFirstFunctions(FunctionalChain chain) {
     Set<AbstractFunction> result = new HashSet<AbstractFunction>();
 
-    for (FunctionalChainInvolvement inv : getFlatFirstFunctionalChainInvolvments(chain_p)) {
+    for (FunctionalChainInvolvement inv : getFlatFirstFunctionalChainInvolvments(chain)) {
       if (inv.getInvolved() instanceof AbstractFunction) {
         result.add((AbstractFunction) inv.getInvolved());
       }
@@ -164,12 +165,12 @@ public class FunctionalChainExt {
 
   /**
    * retrieves the target functions of a functional chain
-   * @param functionalChain_p a functional chain
-   * @return target functions of functionalChain_p
+   * @param functionalChain a functional chain
+   * @return target functions of functionalChain
    */
-  public static Set<AbstractFunction> getFunctionalChainLastFunctions(FunctionalChain functionalChain_p) {
+  public static Set<AbstractFunction> getFunctionalChainLastFunctions(FunctionalChain functionalChain) {
     Set<AbstractFunction> result = new HashSet<AbstractFunction>();
-    for (FunctionalChainInvolvement inv : functionalChain_p.getOwnedFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement inv : functionalChain.getOwnedFunctionalChainInvolvements()) {
       if (isLastFunctionalChainInvolvement(inv)) {
         if (inv.getInvolved() instanceof AbstractFunction) {
           result.add((AbstractFunction) inv.getInvolved());
@@ -184,12 +185,12 @@ public class FunctionalChainExt {
    * @param functionalChain_p a functional chain
    * @return source functions of functionalChain_p
    */
-  public static Collection<FunctionalChainInvolvement> getFlatLastFunctionalChainInvolvments(FunctionalChain chain_p) {
+  public static Collection<FunctionalChainInvolvement> getFlatLastFunctionalChainInvolvments(FunctionalChain functionalChain1) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
 
     LinkedList<FunctionalChain> toVisit = new LinkedList<FunctionalChain>();
     HashSet<FunctionalChain> visited = new HashSet<FunctionalChain>();
-    toVisit.add(chain_p);
+    toVisit.add(functionalChain1);
 
     while (!toVisit.isEmpty()) {
       FunctionalChain chain = toVisit.removeFirst();
@@ -215,10 +216,10 @@ public class FunctionalChainExt {
    * @param functionalChain_p a functional chain
    * @return target functions of functionalChain_p
    */
-  public static Set<AbstractFunction> getFlatFunctionalChainLastFunctions(FunctionalChain chain_p) {
+  public static Set<AbstractFunction> getFlatFunctionalChainLastFunctions(FunctionalChain chain) {
     Set<AbstractFunction> result = new HashSet<AbstractFunction>();
 
-    for (FunctionalChainInvolvement inv : getFlatLastFunctionalChainInvolvments(chain_p)) {
+    for (FunctionalChainInvolvement inv : getFlatLastFunctionalChainInvolvments(chain)) {
       if (inv.getInvolved() instanceof AbstractFunction) {
         result.add((AbstractFunction) inv.getInvolved());
       }
@@ -226,11 +227,11 @@ public class FunctionalChainExt {
     return result;
   }
 
-  public static Set<FunctionalChainInvolvement> getPreviousExchangeInvolvements(FunctionalChainInvolvement involvement_p) {
+  public static Set<FunctionalChainInvolvement> getPreviousExchangeInvolvements(FunctionalChainInvolvement involvement) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
     LinkedList<FunctionalChainInvolvement> toVisit = new LinkedList<FunctionalChainInvolvement>();
     HashSet<FunctionalChainInvolvement> visited = new HashSet<FunctionalChainInvolvement>();
-    toVisit.add(involvement_p);
+    toVisit.add(involvement);
 
     while (!toVisit.isEmpty()) {
       FunctionalChainInvolvement involvment = toVisit.removeFirst();
@@ -254,13 +255,13 @@ public class FunctionalChainExt {
 
   /**
    * Returns previous exchanges involved before this involvement. if its a functional chain reference, returns last exchanges info this functional chain
-   * @param involvement_p
+   * @param involvement
    * @return the previous involvements that involve a Functional Exchange
    */
-  public static Set<FunctionalChainInvolvement> getFlatPreviousExchangeInvolvements(FunctionalChainInvolvement involvement_p) {
+  public static Set<FunctionalChainInvolvement> getFlatPreviousExchangeInvolvements(FunctionalChainInvolvement involvement) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
 
-    for (FunctionalChainInvolvement aPreviousInv : getFlatPreviousFunctionalChainInvolvements(involvement_p)) {
+    for (FunctionalChainInvolvement aPreviousInv : getFlatPreviousFunctionalChainInvolvements(involvement)) {
       if (aPreviousInv.getInvolved() != null) {
         if (aPreviousInv.getInvolved() instanceof FunctionalExchange) {
           result.add(aPreviousInv);
@@ -277,14 +278,14 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param involvement_p
+   * @param involvement
    * @return the next involvements that involve a Functional Exchange
    */
-  public static Set<FunctionalChainInvolvement> getNextExchangeInvolvements(FunctionalChainInvolvement involvement_p) {
+  public static Set<FunctionalChainInvolvement> getNextExchangeInvolvements(FunctionalChainInvolvement involvement) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
     LinkedList<FunctionalChainInvolvement> toVisit = new LinkedList<FunctionalChainInvolvement>();
     HashSet<FunctionalChainInvolvement> visited = new HashSet<FunctionalChainInvolvement>();
-    toVisit.add(involvement_p);
+    toVisit.add(involvement);
 
     while (!toVisit.isEmpty()) {
       FunctionalChainInvolvement involvment = toVisit.removeFirst();
@@ -308,13 +309,13 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param involvement_p
+   * @param involvement
    * @return the next involvements that involve a Functional Exchange
    */
-  public static Set<FunctionalChainInvolvement> getFlatNextExchangeInvolvements(FunctionalChainInvolvement involvement_p) {
+  public static Set<FunctionalChainInvolvement> getFlatNextExchangeInvolvements(FunctionalChainInvolvement involvement) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
 
-    for (FunctionalChainInvolvement aPreviousInv : getFlatNextFunctionalChainInvolvements(involvement_p)) {
+    for (FunctionalChainInvolvement aPreviousInv : getFlatNextFunctionalChainInvolvements(involvement)) {
       if (aPreviousInv.getInvolved() != null) {
         if (aPreviousInv.getInvolved() instanceof FunctionalExchange) {
           result.add(aPreviousInv);
@@ -330,9 +331,9 @@ public class FunctionalChainExt {
     return result;
   }
 
-  public static List<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements(FunctionalChain element_p) {
+  public static List<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements(FunctionalChain element) {
     List<FunctionalChainInvolvement> ret = new ArrayList<FunctionalChainInvolvement>();
-    for (FunctionalChainInvolvement inv : element_p.getOwnedFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement inv : element.getOwnedFunctionalChainInvolvements()) {
       if (isFirstFunctionalChainInvolvement(inv)) {
         ret.add(inv);
       }
@@ -340,9 +341,9 @@ public class FunctionalChainExt {
     return ret;
   }
 
-  public static List<FunctionalChainInvolvement> getLastFunctionalChainInvolvements(FunctionalChain element_p) {
+  public static List<FunctionalChainInvolvement> getLastFunctionalChainInvolvements(FunctionalChain element) {
     List<FunctionalChainInvolvement> ret = new ArrayList<FunctionalChainInvolvement>();
-    for (FunctionalChainInvolvement inv : element_p.getOwnedFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement inv : element.getOwnedFunctionalChainInvolvements()) {
       if (isLastFunctionalChainInvolvement(inv)) {
         ret.add(inv);
       }
@@ -350,11 +351,11 @@ public class FunctionalChainExt {
     return ret;
   }
 
-  public static Set<FunctionalChainInvolvement> getFlatPreviousFunctionalChainInvolvements(FunctionalChainInvolvement involvement_p) {
+  public static Set<FunctionalChainInvolvement> getFlatPreviousFunctionalChainInvolvements(FunctionalChainInvolvement involvement) {
 
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
 
-    for (FunctionalChainInvolvement in : involvement_p.getPreviousFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement in : involvement.getPreviousFunctionalChainInvolvements()) {
       if (in.getInvolved() instanceof FunctionalChain) {
         result.addAll(getFlatLastFunctionalChainInvolvments((FunctionalChain) in.getInvolved()));
       } else {
@@ -366,11 +367,11 @@ public class FunctionalChainExt {
 
   }
 
-  public static Set<FunctionalChainInvolvement> getFlatNextFunctionalChainInvolvements(FunctionalChainInvolvement involvement_p) {
+  public static Set<FunctionalChainInvolvement> getFlatNextFunctionalChainInvolvements(FunctionalChainInvolvement involvement) {
 
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
 
-    for (FunctionalChainInvolvement in : involvement_p.getNextFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement in : involvement.getNextFunctionalChainInvolvements()) {
       if (in.getInvolved() instanceof FunctionalChain) {
         result.addAll(getFlatFirstFunctionalChainInvolvments((FunctionalChain) in.getInvolved()));
       } else {
@@ -383,21 +384,21 @@ public class FunctionalChainExt {
 
   /**
    * Highly related with org.polarsys.capella.core.data.fa.validation.functionalChain.MDCHK_FunctionalChain_Involvements_1
-   * @param fc_p
+   * @param fc
    * @return true if the functional chain is valid, false otherwise
    */
-  public static boolean isFunctionalChainValid(FunctionalChain fc_p) {
+  public static boolean isFunctionalChainValid(FunctionalChain fc) {
     // Well formed
-    if (!isFunctionalChainWellFormed(fc_p)) {
+    if (!isFunctionalChainWellFormed(fc)) {
       return false;
     }
     // At least one chain involvement
-    List<FunctionalChainInvolvement> sources = fc_p.getFirstFunctionalChainInvolvements();
+    List<FunctionalChainInvolvement> sources = fc.getFirstFunctionalChainInvolvements();
     if (sources.isEmpty()) {
       return false;
     }
     // Check for cycles
-    boolean cycleFound = containsACycle(fc_p);
+    boolean cycleFound = containsACycle(fc);
     if (cycleFound) {
       return false;
     }
@@ -405,15 +406,15 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param fc_p
+   * @param fc
    * @return true if the functional chain is well-formed, false otherwise
    */
-  public static boolean isFunctionalChainWellFormed(FunctionalChain fc_p) {
+  public static boolean isFunctionalChainWellFormed(FunctionalChain fc) {
     SimpleOrientedGraph<AbstractFunction> graph = new SimpleOrientedGraph<AbstractFunction>();
-    if (fc_p.getOwnedFunctionalChainInvolvements().isEmpty()) {
+    if (fc.getOwnedFunctionalChainInvolvements().isEmpty()) {
       return false;
     }
-    for (FunctionalChainInvolvement inv : getFlatInvolvements(fc_p)) {
+    for (FunctionalChainInvolvement inv : getFlatInvolvements(fc)) {
       if (!isFunctionalChainInvolvementValid(inv)) {
         return false;
       }
@@ -431,12 +432,12 @@ public class FunctionalChainExt {
     return true;
   }
 
-  public static Collection<FunctionalExchange> getFlatIncomingExchanges(FunctionalChainInvolvement element_p) {
+  public static Collection<FunctionalExchange> getFlatIncomingExchanges(FunctionalChainInvolvement element) {
 
     Collection<AbstractFunction> targetFunctions = new HashSet<AbstractFunction>();
     Collection<FunctionalExchange> targetExchanges = new HashSet<FunctionalExchange>();
 
-    InvolvedElement involvedElement = element_p.getInvolved();
+    InvolvedElement involvedElement = element.getInvolved();
     if (involvedElement instanceof FunctionalExchange) {
       targetExchanges.add((FunctionalExchange) involvedElement);
 
@@ -453,12 +454,12 @@ public class FunctionalChainExt {
     return targetExchanges;
   }
 
-  public static Collection<FunctionalExchange> getFlatOutgoingExchanges(FunctionalChainInvolvement element_p) {
+  public static Collection<FunctionalExchange> getFlatOutgoingExchanges(FunctionalChainInvolvement element) {
 
     Collection<AbstractFunction> sourceFunctions = new HashSet<AbstractFunction>();
     Collection<FunctionalExchange> sourceExchanges = new HashSet<FunctionalExchange>();
 
-    InvolvedElement involvedElement = element_p.getInvolved();
+    InvolvedElement involvedElement = element.getInvolved();
 
     if (involvedElement instanceof FunctionalExchange) {
       sourceExchanges.add((FunctionalExchange) involvedElement);
@@ -477,18 +478,18 @@ public class FunctionalChainExt {
     return sourceExchanges;
   }
 
-  public static Collection<FunctionalExchange> getFlatCommonFunctionalExchanges(FunctionalChainInvolvement source_p, FunctionalChainInvolvement target_p) {
-    Collection<FunctionalExchange> sourceExchanges = getFlatOutgoingExchanges(source_p);
-    Collection<FunctionalExchange> targetExchanges = getFlatIncomingExchanges(target_p);
+  public static Collection<FunctionalExchange> getFlatCommonFunctionalExchanges(FunctionalChainInvolvement source, FunctionalChainInvolvement target) {
+    Collection<FunctionalExchange> sourceExchanges = getFlatOutgoingExchanges(source);
+    Collection<FunctionalExchange> targetExchanges = getFlatIncomingExchanges(target);
     sourceExchanges.retainAll(targetExchanges);
     return sourceExchanges;
   }
 
-  public static Collection<FunctionalExchange> getFlatIncomingExchanges(FunctionalChain element_p) {
+  public static Collection<FunctionalExchange> getFlatIncomingExchanges(FunctionalChain element) {
     Collection<AbstractFunction> targetFunctions = new HashSet<AbstractFunction>();
     Collection<FunctionalExchange> targetExchanges = new HashSet<FunctionalExchange>();
 
-    targetFunctions.addAll(FunctionalChainExt.getFlatFunctionalChainFirstFunctions(element_p));
+    targetFunctions.addAll(FunctionalChainExt.getFlatFunctionalChainFirstFunctions(element));
 
     for (AbstractFunction function : targetFunctions) {
       targetExchanges.addAll(FunctionExt.getIncomingExchange(function));
@@ -497,13 +498,13 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param inv_p
+   * @param inv
    * @return true if the functional chain involvement is valid, false otherwise
    */
-  public static IStatus isFunctionalChainInvolvementValidWithStatus(FunctionalChainInvolvement inv_p) {
+  public static IStatus isFunctionalChainInvolvementValidWithStatus(FunctionalChainInvolvement inv) {
     IStatus status = Status.OK_STATUS;
 
-    boolean isOperational = CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(inv_p);
+    boolean isOperational = CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(inv);
     String functionalChain = isOperational ? Messages.FunctionalChainExt_OperationalProcess : Messages.FunctionalChainExt_FunctionalChain;
     String function = isOperational ? Messages.FunctionalChainExt_OperationalActivity : Messages.FunctionalChainExt_Function;
     String exchange = isOperational ? Messages.FunctionalChainExt_Interaction : Messages.FunctionalChainExt_FunctionalExchange;
@@ -512,62 +513,62 @@ public class FunctionalChainExt {
     String aFunctionalChain = (isOperational ? Messages.FunctionalChainExt_an : Messages.FunctionalChainExt_a) + functionalChain;
 
     // Check null and containment
-    if (inv_p.getInvolved() == null) {
+    if (inv.getInvolved() == null) {
       return new Status(IStatus.ERROR, PLUGIN_ID, Messages.Involvement_InvolvedNull);
     }
-    if (inv_p.getInvolver() == null) {
+    if (inv.getInvolver() == null) {
       return new Status(IStatus.ERROR, PLUGIN_ID, Messages.FunctionalChainExt_InvolverNull);
     }
-    if (!(inv_p.eContainer().equals(inv_p.getInvolver()))) {
+    if (!(inv.eContainer().equals(inv.getInvolver()))) {
       return new Status(IStatus.ERROR, PLUGIN_ID, Messages.FunctionalChainExt_InvolverNotContainer);
     }
 
     // Check correct involved element
-    if (inv_p instanceof FunctionalChainReference) {
-      if (!(inv_p.getInvolved() instanceof FunctionalChain)) {
+    if (inv instanceof FunctionalChainReference) {
+      if (!(inv.getInvolved() instanceof FunctionalChain)) {
         return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvedElementNot, aFunctionalChain));
       }
     } else {
-      if (!((inv_p.getInvolved() instanceof AbstractFunction) || (inv_p.getInvolved() instanceof FunctionalExchange))) {
+      if (!((inv.getInvolved() instanceof AbstractFunction) || (inv.getInvolved() instanceof FunctionalExchange))) {
         return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvedElementNotAndNot, aFunction, aExchange));
       }
     }
 
     // Check next involvement count
-    if (inv_p.getInvolved() instanceof FunctionalExchange) {
-      if (inv_p.getNextFunctionalChainInvolvements().size() > 1) {
+    if (inv.getInvolved() instanceof FunctionalExchange) {
+      if (inv.getNextFunctionalChainInvolvements().size() > 1) {
 	    return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvedElementWithMultipleNext, aExchange));
 	  }
-	  if (inv_p.getPreviousFunctionalChainInvolvements().size() > 1) {
+	  if (inv.getPreviousFunctionalChainInvolvements().size() > 1) {
 	    return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvedElementWithMultiplePrevious, aExchange));
 	  }
 	}
-    if (((inv_p.getInvolved() instanceof AbstractFunction) && inv_p.getNextFunctionalChainInvolvements().isEmpty() && inv_p
+    if (((inv.getInvolved() instanceof AbstractFunction) && inv.getNextFunctionalChainInvolvements().isEmpty() && inv
         .getPreviousFunctionalChainInvolvements().isEmpty())) {
       return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_InvolvementAlone, aFunction));
     }
 
-    for (FunctionalChainInvolvement aNext : inv_p.getNextFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement aNext : inv.getNextFunctionalChainInvolvements()) {
 
       // A function should be linked to a functional exchange
-      if (inv_p.getInvolved() instanceof AbstractFunction) {
+      if (inv.getInvolved() instanceof AbstractFunction) {
         if ((aNext.getInvolved() == null) || !(aNext.getInvolved() instanceof FunctionalExchange)) {
           return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsButNextIsNotA, aFunction, aExchange));
         }
-        AbstractFunction currentFunction = (AbstractFunction) inv_p.getInvolved();
+        AbstractFunction currentFunction = (AbstractFunction) inv.getInvolved();
         if (!currentFunction.equals(FunctionExt.getIncomingAbstractFunction((FunctionalExchange) aNext.getInvolved()))) {
           return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToSourceNext, aFunction, exchange));
         }
 
       }
       // A functional exchange should be an incoming exchange of next involvement
-      else if (inv_p.getInvolved() instanceof FunctionalExchange) {
+      else if (inv.getInvolved() instanceof FunctionalExchange) {
         if ((aNext.getInvolved() == null) || !((aNext.getInvolved() instanceof AbstractFunction) || (aNext.getInvolved() instanceof FunctionalChain))) {
           return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_NextIsNotOrNot, new Object[] { aExchange, aFunction,
                                                                                                                          aFunctionalChain }));
         }
 
-        if (getFlatCommonFunctionalExchanges(inv_p, aNext).isEmpty()) {
+        if (getFlatCommonFunctionalExchanges(inv, aNext).isEmpty()) {
           if (aNext.getInvolved() instanceof FunctionalChain) {
             return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNextFunctionalChain,
                 new Object[] { aExchange, function, functionalChain }));
@@ -577,8 +578,8 @@ public class FunctionalChainExt {
         }
       }
       // A functional chain should be between both involvement
-      else if (inv_p.getInvolved() instanceof FunctionalChain) {
-        if (getFlatCommonFunctionalExchanges(inv_p, aNext).isEmpty()) {
+      else if (inv.getInvolved() instanceof FunctionalChain) {
+        if (getFlatCommonFunctionalExchanges(inv, aNext).isEmpty()) {
           if (aNext.getInvolved() instanceof FunctionalChain) {
             return new Status(IStatus.ERROR, PLUGIN_ID, NLS.bind(Messages.FunctionalChainExt_IsNotRelatedToTargetNextFunctionalChain,
                 new Object[] { aFunctionalChain, function, functionalChain }));
@@ -593,23 +594,23 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param inv_p
+   * @param inv
    * @return true if the functional chain involvement is valid, false otherwise
    */
-  public static boolean isFunctionalChainInvolvementValid(FunctionalChainInvolvement inv_p) {
-    return isFunctionalChainInvolvementValidWithStatus(inv_p).isOK();
+  public static boolean isFunctionalChainInvolvementValid(FunctionalChainInvolvement inv) {
+    return isFunctionalChainInvolvementValidWithStatus(inv).isOK();
   }
 
   /**
    * detect a cycle in a FunctionalChain
-   * @param involvement_p
+   * @param involvement
    * @param visitedInvolvements_p
    * @return
    */
-  public static boolean containsACycle(FunctionalChainInvolvement involvement_p) {
+  public static boolean containsACycle(FunctionalChainInvolvement involvement) {
     // We delegate the calculation to the containsACycle for functional chains
-    if (involvement_p.getInvolved() instanceof FunctionalChain) {
-      FunctionalChain fc = (FunctionalChain) involvement_p.getInvolved();
+    if (involvement.getInvolved() instanceof FunctionalChain) {
+      FunctionalChain fc = (FunctionalChain) involvement.getInvolved();
       return containsACycle(fc);
     }
     return false;
@@ -617,12 +618,12 @@ public class FunctionalChainExt {
 
   /**
    * Contains a cycle
-   * @param functionalChain_p
+   * @param functionalChain
    * @return if there is cycle or not
    */
-  public static boolean containsACycle(FunctionalChain functionalChain_p) {
+  public static boolean containsACycle(FunctionalChain functionalChain) {
     // Get the graph representation
-    FunctionalChainDirectedGraph graph = getFunctionalChainDirectedGraph(functionalChain_p);
+    FunctionalChainDirectedGraph graph = getFunctionalChainDirectedGraph(functionalChain);
     if (graph != null) {
       // Compute detection algorithm
       boolean cycleFound = CycleDetectionUtils.containsCycles(graph);
@@ -634,20 +635,20 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param container_p
-   * @param involvedElements_p
+   * @param container
+   * @param involvedElements
    * @return a new FunctionalChain initialized with the given involved elements
    */
-  public static FunctionalChain createFunctionalChain(AbstractFunctionalChainContainer container_p, Collection<EObject> involvedElements_p) {
+  public static FunctionalChain createFunctionalChain(AbstractFunctionalChainContainer container, Collection<EObject> involvedElements) {
     FunctionalChain newFC;
-    if (BlockArchitectureExt.getRootBlockArchitecture(container_p) instanceof OperationalAnalysis) {
+    if (BlockArchitectureExt.getRootBlockArchitecture(container) instanceof OperationalAnalysis) {
       newFC = OaFactory.eINSTANCE.createOperationalProcess();
     } else {
       newFC = FaFactory.eINSTANCE.createFunctionalChain();
     }
-    container_p.getOwnedFunctionalChains().add(newFC);
-    if (container_p instanceof AbstractCapability) {
-      createFunctionalChainAbstractCapabilityInvolvement((AbstractCapability) container_p, newFC);
+    container.getOwnedFunctionalChains().add(newFC);
+    if (container instanceof AbstractCapability) {
+      createFunctionalChainAbstractCapabilityInvolvement((AbstractCapability) container, newFC);
     }
     EditingDomain editingDomain = TransactionHelper.getEditingDomain(newFC);
     StrictCompoundCommand command = CreationHelper.getAdditionnalCommand(editingDomain, newFC);
@@ -657,7 +658,7 @@ public class FunctionalChainExt {
     HashMap<FunctionalExchange, FunctionalChainInvolvement> involvedExchanges = new HashMap<FunctionalExchange, FunctionalChainInvolvement>();
     HashMap<AbstractFunction, FunctionalChainInvolvement> involvedFunctions = new HashMap<AbstractFunction, FunctionalChainInvolvement>();
 
-    for (EObject elt : involvedElements_p) {
+    for (EObject elt : involvedElements) {
       if (((elt instanceof AbstractFunction) && !(involvedFunctions.containsKey(elt)))
           || ((elt instanceof FunctionalExchange) && !(involvedExchanges.containsKey(elt)))) {
 
@@ -711,15 +712,15 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param fc_p the functional chain which contains the new involvement
-   * @param involved_p the involved element
+   * @param fc the functional chain which contains the new involvement
+   * @param involved the involved element
    * @return a new FunctionalChainInvolvement initialized with the given arguments
    */
-  public static FunctionalChainInvolvement createInvolvement(FunctionalChain fc_p, InvolvedElement involved_p) {
+  public static FunctionalChainInvolvement createInvolvement(FunctionalChain fc, InvolvedElement involved) {
     FunctionalChainInvolvement newInv = FaFactory.eINSTANCE.createFunctionalChainInvolvement();
-    fc_p.getOwnedFunctionalChainInvolvements().add(newInv);
-    newInv.setInvolver(fc_p);
-    newInv.setInvolved(involved_p);
+    fc.getOwnedFunctionalChainInvolvements().add(newInv);
+    newInv.setInvolver(fc);
+    newInv.setInvolved(involved);
     return newInv;
   }
 
@@ -744,14 +745,14 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param fc_p
-   * @param involved_p
+   * @param fc
+   * @param involved
    * @return all the involvements of the functional chain that involves the given element
    */
-  public static Set<FunctionalChainInvolvement> getInvolvementsOf(FunctionalChain fc_p, InvolvedElement involved_p) {
+  public static Set<FunctionalChainInvolvement> getInvolvementsOf(FunctionalChain fc, InvolvedElement involved) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
-    for (FunctionalChainInvolvement anInvolvement : fc_p.getOwnedFunctionalChainInvolvements()) {
-      if (involved_p.equals(anInvolvement.getInvolved())) {
+    for (FunctionalChainInvolvement anInvolvement : fc.getOwnedFunctionalChainInvolvements()) {
+      if (involved.equals(anInvolvement.getInvolved())) {
         result.add(anInvolvement);
       }
     }
@@ -760,14 +761,14 @@ public class FunctionalChainExt {
 
   /**
    * Returns all involvement related to chain inclosed all involvements of sub functional chains, and involvement of functional chains
-   * @param chain_p
+   * @param functionalChain1
    * @return
    */
-  public static Collection<FunctionalChainInvolvement> getFlatInvolvements(FunctionalChain chain_p) {
+  public static Collection<FunctionalChainInvolvement> getFlatInvolvements(FunctionalChain functionalChain1) {
     Collection<FunctionalChainInvolvement> involvments = new ArrayList<FunctionalChainInvolvement>();
     LinkedList<FunctionalChain> toVisit = new LinkedList<FunctionalChain>();
     HashSet<FunctionalChain> visited = new HashSet<FunctionalChain>();
-    toVisit.add(chain_p);
+    toVisit.add(functionalChain1);
 
     while (!toVisit.isEmpty()) {
       FunctionalChain chain = toVisit.removeFirst();
@@ -786,23 +787,23 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param fc_p
+   * @param fc
    * @param involved_p
    * @return all the involvements of the functional chain that involves the given element
    */
-  public static Set<FunctionalChainInvolvement> getInvolvementsOf(FunctionalChain fc_p, EClass involvedClass_p) {
+  public static Set<FunctionalChainInvolvement> getInvolvementsOf(FunctionalChain fc, EClass involvedClass) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
-    for (FunctionalChainInvolvement anInvolvement : fc_p.getOwnedFunctionalChainInvolvements()) {
-      if ((anInvolvement.getInvolved() != null) && involvedClass_p.isInstance(anInvolvement.getInvolved())) {
+    for (FunctionalChainInvolvement anInvolvement : fc.getOwnedFunctionalChainInvolvements()) {
+      if ((anInvolvement.getInvolved() != null) && involvedClass.isInstance(anInvolvement.getInvolved())) {
         result.add(anInvolvement);
       }
     }
     return result;
   }
 
-  public static Set<FunctionalExchange> getFunctionalExchanges(FunctionalChain fc_p) {
+  public static Set<FunctionalExchange> getFunctionalExchanges(FunctionalChain fc) {
     Set<FunctionalExchange> result = new HashSet<FunctionalExchange>();
-    for (FunctionalChainInvolvement involvement : getInvolvementsOf(fc_p, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+    for (FunctionalChainInvolvement involvement : getInvolvementsOf(fc, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
       if (involvement.getInvolved() != null) {
         result.add((FunctionalExchange) involvement.getInvolved());
       }
@@ -810,10 +811,10 @@ public class FunctionalChainExt {
     return result;
   }
 
-  public static Set<FunctionalExchange> getFlatFunctionalExchanges(FunctionalChain fc_p) {
+  public static Set<FunctionalExchange> getFlatFunctionalExchanges(FunctionalChain fc) {
     Set<FunctionalExchange> result = new HashSet<FunctionalExchange>();
 
-    for (FunctionalChainInvolvement involvement : getFlatInvolvementsOf(fc_p, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+    for (FunctionalChainInvolvement involvement : getFlatInvolvementsOf(fc, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
       if (involvement.getInvolved() != null) {
         result.add((FunctionalExchange) involvement.getInvolved());
       }
@@ -825,10 +826,10 @@ public class FunctionalChainExt {
    * @param key_p
    * @return
    */
-  public static Set<FunctionalChainInvolvement> getFlatInvolvementsOf(FunctionalChain fc_p, EClass involvedClass_p) {
+  public static Set<FunctionalChainInvolvement> getFlatInvolvementsOf(FunctionalChain fc, EClass involvedClass) {
     Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
-    for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvements(fc_p)) {
-      if ((involvement.getInvolved() != null) && involvedClass_p.isInstance(involvement.getInvolved())) {
+    for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvements(fc)) {
+      if ((involvement.getInvolved() != null) && involvedClass.isInstance(involvement.getInvolved())) {
         result.add(involvement);
       }
     }
@@ -839,10 +840,10 @@ public class FunctionalChainExt {
    * @param key_p
    * @return
    */
-  public static Set<EObject> getFlatInvolvedElements(FunctionalChain fc_p, EClass involvedClass_p) {
+  public static Set<EObject> getFlatInvolvedElements(FunctionalChain fc, EClass involvedClass) {
     Set<EObject> result = new HashSet<EObject>();
-    for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvements(fc_p)) {
-      if ((involvement.getInvolved() != null) && involvedClass_p.isInstance(involvement.getInvolved())) {
+    for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvements(fc)) {
+      if ((involvement.getInvolved() != null) && involvedClass.isInstance(involvement.getInvolved())) {
         result.add(involvement.getInvolved());
       }
     }
@@ -850,11 +851,11 @@ public class FunctionalChainExt {
   }
 
   /**
-   * @param functionalChain_p
+   * @param functionalChain
    * @return
    */
-  public static FunctionalChainDirectedGraph getFunctionalChainDirectedGraph(FunctionalChain functionalChain_p) {
-    return new FunctionalChainExt().new FunctionalChainDirectedGraph(functionalChain_p);
+  public static FunctionalChainDirectedGraph getFunctionalChainDirectedGraph(FunctionalChain functionalChain) {
+    return new FunctionalChainExt().new FunctionalChainDirectedGraph(functionalChain);
   }
 
   /**
@@ -865,16 +866,16 @@ public class FunctionalChainExt {
 
     FunctionalChain chain;
 
-    public FunctionalChainDirectedGraph(FunctionalChain functionalChain_p) {
-      chain = functionalChain_p;
+    public FunctionalChainDirectedGraph(FunctionalChain functionalChain) {
+      chain = functionalChain;
     }
 
     /**
      * Directed links of a source FunctionalChainInvolvements are obtained from NextFunctionalChainInvolvements method {@inheritDoc}
      */
-    public Iterator<Object> getSucessors(Object source_p) {
-      if (source_p instanceof FunctionalChainInvolvement) {
-        FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) source_p;
+    public Iterator<Object> getSucessors(Object source) {
+      if (source instanceof FunctionalChainInvolvement) {
+        FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) source;
         List sucessors = involvement.getNextFunctionalChainInvolvements();
         if (sucessors != null) {
           return sucessors.iterator();

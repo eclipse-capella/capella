@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import java.util.ArrayList;
@@ -36,24 +37,24 @@ public class OperationalProcessHelper {
     return instance;
   }
 
-  public Object doSwitch(OperationalProcess element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(OperationalProcess element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(OaPackage.Literals.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES)) {
-      ret = getInvolvingOperationalCapabilities(element_p);
+    if (feature.equals(OaPackage.Literals.OPERATIONAL_PROCESS__INVOLVING_OPERATIONAL_CAPABILITIES)) {
+      ret = getInvolvingOperationalCapabilities(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = FunctionalChainHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = FunctionalChainHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<OperationalCapability> getInvolvingOperationalCapabilities(OperationalProcess element_p) {
+  protected List<OperationalCapability> getInvolvingOperationalCapabilities(OperationalProcess element) {
     List<OperationalCapability> ret = new ArrayList<OperationalCapability>();
-    for (Involvement inv : element_p.getInvolvingInvolvements()) {
+    for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof FunctionalChainAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((FunctionalChainAbstractCapabilityInvolvement) inv).getCapability();
         if (cap instanceof OperationalCapability) {

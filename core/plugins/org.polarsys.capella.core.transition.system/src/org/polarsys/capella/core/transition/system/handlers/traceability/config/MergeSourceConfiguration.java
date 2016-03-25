@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.traceability.config;
 
 import org.eclipse.emf.ecore.EObject;
@@ -33,25 +34,25 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
   protected class SourceReconciliationTraceabilityHandler extends ReconciliationTraceabilityHandler {
 
     /**
-     * @param identifier_p
+     * @param identifier
      */
-    public SourceReconciliationTraceabilityHandler(String identifier_p) {
-      super(identifier_p);
+    public SourceReconciliationTraceabilityHandler(String identifier) {
+      super(identifier);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void initializeBlockArchitecture(BlockArchitecture source_p, BlockArchitecture target_p, IContext context_p, LevelMappingTraceability map_p) {
-      super.initializeBlockArchitecture(source_p, target_p, context_p, map_p);
+    protected void initializeBlockArchitecture(BlockArchitecture source, BlockArchitecture target, IContext context, LevelMappingTraceability map) {
+      super.initializeBlockArchitecture(source, target, context, map);
 
       //We add a mapping between both root components
-      Component sourceComponent = BlockArchitectureExt.getFirstComponent(source_p);
-      Component targetComponent = BlockArchitectureExt.getFirstComponent(target_p);
+      Component sourceComponent = BlockArchitectureExt.getFirstComponent(source);
+      Component targetComponent = BlockArchitectureExt.getFirstComponent(target);
       if ((sourceComponent != null) && (targetComponent != null)) {
-        if ((!map_p.contains(sourceComponent)) && (!map_p.contains(targetComponent))) {
-          addMapping(map_p, sourceComponent, targetComponent, context_p);
+        if ((!map.contains(sourceComponent)) && (!map.contains(targetComponent))) {
+          addMapping(map, sourceComponent, targetComponent, context);
         }
       }
     }
@@ -60,32 +61,32 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
      * {@inheritDoc}
      */
     @Override
-    protected void initializeRootMappings(IContext context_p) {
-      super.initializeRootMappings(context_p);
-      EObject source = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
-      EObject target = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-      addMappings(source, target, context_p);
+    protected void initializeRootMappings(IContext context) {
+      super.initializeRootMappings(context);
+      EObject source = (EObject) context.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
+      EObject target = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+      addMappings(source, target, context);
     }
 
   }
 
   protected class SourceSIDTraceabilityHandler extends SIDTraceabilityHandler {
     /**
-     * @param identifier_p
+     * @param identifier
      */
-    public SourceSIDTraceabilityHandler(String identifier_p) {
-      super(identifier_p);
+    public SourceSIDTraceabilityHandler(String identifier) {
+      super(identifier);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void initializeRootMappings(IContext context_p) {
-      super.initializeRootMappings(context_p);
-      EObject source = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
-      EObject target = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-      initializeMappings(source, target, context_p);
+    protected void initializeRootMappings(IContext context) {
+      super.initializeRootMappings(context);
+      EObject source = (EObject) context.get(ITransitionConstants.TRANSFORMATION_SOURCE_ROOT);
+      EObject target = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+      initializeMappings(source, target, context);
     }
   }
 
@@ -93,44 +94,44 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
    * {@inheritDoc}
    */
   @Override
-  protected String getExtensionIdentifier(IContext context_p) {
+  protected String getExtensionIdentifier(IContext context) {
     return ISchemaConstants.SOURCE_TRACEABILITY_CONFIGURATION;
   }
 
   @Override
-  protected void initHandlers(IContext fContext_p) {
-    addHandler(fContext_p, new SourceReconciliationTraceabilityHandler(getIdentifier(fContext_p)));
-    addHandler(fContext_p, new SourceSIDTraceabilityHandler(getIdentifier(fContext_p)));
+  protected void initHandlers(IContext fContext) {
+    addHandler(fContext, new SourceReconciliationTraceabilityHandler(getIdentifier(fContext)));
+    addHandler(fContext, new SourceSIDTraceabilityHandler(getIdentifier(fContext)));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForAttachment(EObject source_p, EObject target_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForAttachment(EObject source, EObject target, ITraceabilityHandler handler, IContext context) {
 
     //We disable Reconciliation for attachment
-    if (handler_p instanceof ReconciliationTraceabilityHandler) {
+    if (handler instanceof ReconciliationTraceabilityHandler) {
       return false;
     }
 
-    return super.useHandlerForAttachment(source_p, target_p, handler_p, context_p);
+    return super.useHandlerForAttachment(source, target, handler, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForTracedElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForTracedElements(EObject source, ITraceabilityHandler handler, IContext context) {
 
-    boolean result = super.useHandlerForTracedElements(source_p, handler_p, context_p);
+    boolean result = super.useHandlerForTracedElements(source, handler, context);
     if (result) {
 
       //We disable RealizationLinks for SystemEngineering and BlockArchitecture
-      if (handler_p instanceof RealizationLinkTraceabilityHandler) {
-        if (source_p instanceof SystemEngineering) {
+      if (handler instanceof RealizationLinkTraceabilityHandler) {
+        if (source instanceof SystemEngineering) {
           result = false;
-        } else if (source_p instanceof BlockArchitecture) {
+        } else if (source instanceof BlockArchitecture) {
           result = false;
         }
       }
@@ -144,16 +145,16 @@ public class MergeSourceConfiguration extends ExtendedTraceabilityConfiguration 
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForSourceElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForSourceElements(EObject source, ITraceabilityHandler handler, IContext context) {
 
-    boolean result = super.useHandlerForSourceElements(source_p, handler_p, context_p);
+    boolean result = super.useHandlerForSourceElements(source, handler, context);
     if (result) {
 
       //We disable RealizationLinks for SystemEngineering and BlockArchitecture
-      if (handler_p instanceof RealizationLinkTraceabilityHandler) {
-        if (source_p instanceof SystemEngineering) {
+      if (handler instanceof RealizationLinkTraceabilityHandler) {
+        if (source instanceof SystemEngineering) {
           result = false;
-        } else if (source_p instanceof BlockArchitecture) {
+        } else if (source instanceof BlockArchitecture) {
           result = false;
         }
       }

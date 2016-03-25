@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.traceability;
 
 import java.util.Collection;
@@ -33,40 +34,40 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    * {@inheritDoc}
    */
   @Override
-  public void attachTraceability(EObject sourceElement_p, EObject targetElement_p, IContext context_p) {
+  public void attachTraceability(EObject sourceElement, EObject targetElement, IContext context) {
     //Nothing here. we don't transform, so we don't attach traceability
   }
 
-  public static boolean isLibraryElement(EObject source_p, IContext context_p) {
+  public static boolean isLibraryElement(EObject source, IContext context) {
 
     IModel sourceModel = null;
-    if (!context_p.exists(TRANSITION_SOURCE_ROOT_MODEL)) {
-      EObject root = (EObject) context_p.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
+    if (!context.exists(TRANSITION_SOURCE_ROOT_MODEL)) {
+      EObject root = (EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
       sourceModel = ILibraryManager.INSTANCE.getModel(root);
-      context_p.put(TRANSITION_SOURCE_ROOT_MODEL, sourceModel);
+      context.put(TRANSITION_SOURCE_ROOT_MODEL, sourceModel);
     } else {
-      sourceModel = (IModel) context_p.get(TRANSITION_SOURCE_ROOT_MODEL);
+      sourceModel = (IModel) context.get(TRANSITION_SOURCE_ROOT_MODEL);
     }
 
     IModel targetModel = null;
-    if (!context_p.exists(TRANSITION_TARGET_ROOT_MODEL)) {
-      EObject root = (EObject) context_p.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
+    if (!context.exists(TRANSITION_TARGET_ROOT_MODEL)) {
+      EObject root = (EObject) context.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
       targetModel = ILibraryManager.INSTANCE.getModel(root);
-      context_p.put(TRANSITION_TARGET_ROOT_MODEL, targetModel);
+      context.put(TRANSITION_TARGET_ROOT_MODEL, targetModel);
     } else {
-      targetModel = (IModel) context_p.get(TRANSITION_TARGET_ROOT_MODEL);
+      targetModel = (IModel) context.get(TRANSITION_TARGET_ROOT_MODEL);
     }
 
     IModel transformedModel = null;
-    if (!context_p.exists(TRANSITION_TRANSFORMATION_ROOT_MODEL)) {
-      EObject root = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+    if (!context.exists(TRANSITION_TRANSFORMATION_ROOT_MODEL)) {
+      EObject root = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
       transformedModel = ILibraryManager.INSTANCE.getModel(root);
-      context_p.put(TRANSITION_TRANSFORMATION_ROOT_MODEL, transformedModel);
+      context.put(TRANSITION_TRANSFORMATION_ROOT_MODEL, transformedModel);
     } else {
-      transformedModel = (IModel) context_p.get(TRANSITION_TRANSFORMATION_ROOT_MODEL);
+      transformedModel = (IModel) context.get(TRANSITION_TRANSFORMATION_ROOT_MODEL);
     }
 
-    IModel currentModel = ILibraryManager.INSTANCE.getModel(source_p);
+    IModel currentModel = ILibraryManager.INSTANCE.getModel(source);
     if (currentModel != null) {
       if (!currentModel.equals(sourceModel) && !currentModel.equals(targetModel) && !currentModel.equals(transformedModel)) {
         return true;
@@ -79,9 +80,9 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    * {@inheritDoc}
    */
   @Override
-  public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p) {
-    if (isLibraryElement(source_p, context_p)) {
-      return Collections.singleton(source_p);
+  public Collection<EObject> retrieveTracedElements(EObject source, IContext context) {
+    if (isLibraryElement(source, context)) {
+      return Collections.singleton(source);
     }
     return Collections.emptyList();
   }
@@ -90,9 +91,9 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    * {@inheritDoc}
    */
   @Override
-  public Collection<EObject> retrieveSourceElements(EObject source_p, IContext context_p) {
-    if (isLibraryElement(source_p, context_p)) {
-      return Collections.singleton(source_p);
+  public Collection<EObject> retrieveSourceElements(EObject source, IContext context) {
+    if (isLibraryElement(source, context)) {
+      return Collections.singleton(source);
     }
     return Collections.emptyList();
   }
@@ -101,7 +102,7 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    * {@inheritDoc}
    */
   @Override
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -109,7 +110,7 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    * {@inheritDoc}
    */
   @Override
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
     return Status.OK_STATUS;
   }
 
@@ -118,9 +119,9 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    */
   @Override
   @Deprecated
-  public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p, EClass clazz_p) {
-    if (isLibraryElement(source_p, context_p)) {
-      return Collections.singleton(source_p);
+  public Collection<EObject> retrieveTracedElements(EObject source, IContext context, EClass clazz) {
+    if (isLibraryElement(source, context)) {
+      return Collections.singleton(source);
     }
     return Collections.emptyList();
   }
@@ -130,7 +131,7 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    */
   @Override
   @Deprecated
-  public String getId(EObject element_p, IContext context_p) {
+  public String getId(EObject element, IContext context) {
     return null;
   }
 
@@ -139,8 +140,8 @@ public class LibraryTraceabilityHandler implements ITraceabilityHandler2 {
    */
   @Override
   @Deprecated
-  public boolean isTraced(EObject element_p, IContext context_p) {
-    if (isLibraryElement(element_p, context_p)) {
+  public boolean isTraced(EObject element, IContext context) {
+    if (isLibraryElement(element, context)) {
       return true;
     }
     return false;

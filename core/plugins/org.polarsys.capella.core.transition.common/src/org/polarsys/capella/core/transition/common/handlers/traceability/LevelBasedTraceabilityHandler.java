@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.traceability;
 
 import java.util.Collection;
@@ -23,8 +24,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class LevelBasedTraceabilityHandler extends TwoSideTraceabilityHandler {
 
-  public LevelBasedTraceabilityHandler(String identifier_p) {
-    super(identifier_p);
+  public LevelBasedTraceabilityHandler(String identifier) {
+    super(identifier);
   }
 
   protected class LevelMappingTraceability extends MappingTraceability {
@@ -37,38 +38,38 @@ public class LevelBasedTraceabilityHandler extends TwoSideTraceabilityHandler {
 
     public String key;
 
-    public LevelMappingTraceability(IContext context_p, String key_p) {
-      initialized = new HashSet<EObject>();
-      context = context_p;
-      key = key_p;
+    public LevelMappingTraceability(IContext context, String key) {
+      this.initialized = new HashSet<EObject>();
+      this.context = context;
+      this.key = key;
     }
 
   }
 
   protected class BackwardTraceability extends LevelMappingTraceability {
 
-    public BackwardTraceability(IContext context_p, String key_p) {
-      super(context_p, key_p);
+    public BackwardTraceability(IContext context, String key) {
+      super(context, key);
     }
 
   }
 
   protected class ForwardTraceability extends LevelMappingTraceability {
 
-    public ForwardTraceability(IContext context_p, String key_p) {
-      super(context_p, key_p);
+    public ForwardTraceability(IContext context, String key) {
+      super(context, key);
     }
   }
 
   @Override
-  protected Collection<EObject> retrieveRelatedElements(EObject source_p, IContext context_p, MappingTraceability maps_p) {
+  protected Collection<EObject> retrieveRelatedElements(EObject source, IContext context, MappingTraceability maps) {
     Collection<EObject> mapped = null;
-    if (maps_p.contains(source_p)) {
-      mapped = maps_p.get(source_p);
+    if (maps.contains(source)) {
+      mapped = maps.get(source);
 
-    } else if (maps_p instanceof LevelMappingTraceability) {
-      initializeMappings(source_p, context_p, (LevelMappingTraceability) maps_p);
-      mapped = maps_p.get(source_p);
+    } else if (maps instanceof LevelMappingTraceability) {
+      initializeMappings(source, context, (LevelMappingTraceability) maps);
+      mapped = maps.get(source);
     }
 
     if (mapped != null) {
@@ -77,16 +78,16 @@ public class LevelBasedTraceabilityHandler extends TwoSideTraceabilityHandler {
     return Collections.emptyList();
   }
 
-  protected boolean isLevelElement(EObject object_p, IContext context_p) {
+  protected boolean isLevelElement(EObject object, IContext context) {
     return true;
   }
 
-  protected EObject getLevelElement(EObject source_p, IContext context_p) {
+  protected EObject getLevelElement(EObject source, IContext context) {
     EObject parent = null;
-    if (source_p != null) {
-      parent = source_p.eContainer();
+    if (source != null) {
+      parent = source.eContainer();
       while (parent != null) {
-        if (isLevelElement(parent, context_p)) {
+        if (isLevelElement(parent, context)) {
           break;
         }
         parent = parent.eContainer();
@@ -95,29 +96,29 @@ public class LevelBasedTraceabilityHandler extends TwoSideTraceabilityHandler {
     return parent;
   }
 
-  protected void initializeMappings(EObject source_p, IContext context_p, LevelMappingTraceability map_p) {
-    EObject sourceRoot = getLevelElement(source_p, context_p);
+  protected void initializeMappings(EObject source, IContext context, LevelMappingTraceability map) {
+    EObject sourceRoot = getLevelElement(source, context);
 
-    if (!map_p.initialized.contains(sourceRoot)) {
-      map_p.initialized.add(sourceRoot);
+    if (!map.initialized.contains(sourceRoot)) {
+      map.initialized.add(sourceRoot);
 
       if (sourceRoot == null) {
-        initializeRootMappings(context_p);
+        initializeRootMappings(context);
 
       } else {
-        ITraceabilityHandler handler = TraceabilityHandlerHelper.getInstance(context_p);
+        ITraceabilityHandler handler = TraceabilityHandlerHelper.getInstance(context);
 
-        if (!isBackward(map_p.key)) {
-          for (EObject targetRoot : handler.retrieveTracedElements(sourceRoot, context_p)) {
+        if (!isBackward(map.key)) {
+          for (EObject targetRoot : handler.retrieveTracedElements(sourceRoot, context)) {
             if (targetRoot != null) {
-              initializeMapping(sourceRoot, targetRoot, context_p, map_p);
+              initializeMapping(sourceRoot, targetRoot, context, map);
             }
           }
 
         } else { //backward, target is source, source is target !
-          for (EObject targetRoot : handler.retrieveSourceElements(sourceRoot, context_p)) {
+          for (EObject targetRoot : handler.retrieveSourceElements(sourceRoot, context)) {
             if (targetRoot != null) {
-              initializeMapping(targetRoot, sourceRoot, context_p, map_p);
+              initializeMapping(targetRoot, sourceRoot, context, map);
             }
           }
         }
@@ -125,23 +126,23 @@ public class LevelBasedTraceabilityHandler extends TwoSideTraceabilityHandler {
     }
   }
 
-  protected boolean isBackward(String key_p) {
-    return getBackwardMappingKey().equals(key_p);
+  protected boolean isBackward(String key) {
+    return getBackwardMappingKey().equals(key);
   }
 
   @Override
-  protected MappingTraceability createMappingTraceability(EObject source_p, IContext context_p, String key_p) {
-    if (isBackward(key_p)) {
-      return new BackwardTraceability(context_p, key_p);
+  protected MappingTraceability createMappingTraceability(EObject source, IContext context, String key) {
+    if (isBackward(key)) {
+      return new BackwardTraceability(context, key);
     }
-    return new ForwardTraceability(context_p, key_p);
+    return new ForwardTraceability(context, key);
   }
 
-  protected void initializeRootMappings(IContext context_p) {
+  protected void initializeRootMappings(IContext context) {
     //Nothing yet
   }
 
-  protected void initializeMapping(EObject sourceRoot_p, EObject targetRoot_p, IContext context_p, LevelMappingTraceability map_p) {
+  protected void initializeMapping(EObject sourceRoot, EObject targetRoot, IContext context, LevelMappingTraceability map) {
     //Nothing yet
   }
 

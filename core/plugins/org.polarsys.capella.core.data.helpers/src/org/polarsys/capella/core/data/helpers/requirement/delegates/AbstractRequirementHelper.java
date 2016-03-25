@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.requirement.delegates;
 
 import java.util.ArrayList;
@@ -36,24 +37,24 @@ public class AbstractRequirementHelper {
 		return instance;
 	}
 
-	public Object doSwitch(Requirement element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(Requirement element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(RequirementPackage.Literals.REQUIREMENT__RELATED_CAPELLA_ELEMENTS)) {
-			ret = getRelatedCapellaElements(element_p);
+		if (feature.equals(RequirementPackage.Literals.REQUIREMENT__RELATED_CAPELLA_ELEMENTS)) {
+			ret = getRelatedCapellaElements(element);
 		}
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = NamespaceHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamespaceHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected List<CapellaElement> getRelatedCapellaElements(Requirement element_p) {
+	protected List<CapellaElement> getRelatedCapellaElements(Requirement element) {
 		List<CapellaElement> ret = new ArrayList<CapellaElement>();
-		for (AbstractTrace trace : element_p.getIncomingTraces()) {
+		for (AbstractTrace trace : element.getIncomingTraces()) {
 			if (trace instanceof RequirementsTrace) {
 			  TraceableElement elt = ((RequirementsTrace) trace).getSourceElement();
 				if (elt instanceof CapellaElement) {

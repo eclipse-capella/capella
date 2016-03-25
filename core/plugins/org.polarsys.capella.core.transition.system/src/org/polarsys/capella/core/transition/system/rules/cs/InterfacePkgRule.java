@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.List;
@@ -36,30 +37,30 @@ public class InterfacePkgRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getInterfacePkg(target);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      InterfacePkg pkg = (InterfacePkg) source_p;
-      result_p.addAll(pkg.getOwnedInterfacePkgs());
-      result_p.addAll(pkg.getOwnedInterfaces());
-      result_p.addAll(pkg.getOwnedExchangeItems());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      InterfacePkg pkg = (InterfacePkg) source;
+      result.addAll(pkg.getOwnedInterfacePkgs());
+      result.addAll(pkg.getOwnedInterfaces());
+      result.addAll(pkg.getOwnedExchangeItems());
     }
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    if (!(element_p.eContainer() instanceof Component)) {
-      if (!(element_p.eContainer() instanceof BlockArchitecture)) {
-        super.retrieveContainer(element_p, result_p, context_p);
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    if (!(element.eContainer() instanceof Component)) {
+      if (!(element.eContainer() instanceof BlockArchitecture)) {
+        super.retrieveContainer(element, result, context);
       }
     }
   }
@@ -68,17 +69,17 @@ public class InterfacePkgRule extends AbstractCapellaElementRule {
    * {@inheritDoc}
    */
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    if (container_p instanceof Block) {
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    if (container instanceof Block) {
       return CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG;
 
-    } else if (container_p instanceof InterfacePkg) {
+    } else if (container instanceof InterfacePkg) {
       return CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACE_PKGS;
 
-    } else if (container_p instanceof BlockArchitecture) {
+    } else if (container instanceof BlockArchitecture) {
       return CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG;
     }
 
-    return super.getTargetContainementFeature(element_p, result_p, container_p, context_p);
+    return super.getTargetContainementFeature(element, result, container, context);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.epbs.delegates;
 
 import java.util.ArrayList;
@@ -36,25 +37,25 @@ public class ConfigurationItemHelper {
     return instance;
   }
 
-  public Object doSwitch(ConfigurationItem element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(ConfigurationItem element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(EpbsPackage.Literals.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS)) {
-      ret = getAllocatedPhysicalArtifacts(element_p);
+    if (feature.equals(EpbsPackage.Literals.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS)) {
+      ret = getAllocatedPhysicalArtifacts(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = SystemComponentHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = SystemComponentHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<AbstractPhysicalArtifact> getAllocatedPhysicalArtifacts(ConfigurationItem element_p) {
+  protected List<AbstractPhysicalArtifact> getAllocatedPhysicalArtifacts(ConfigurationItem element) {
     List<AbstractPhysicalArtifact> ret = new ArrayList<AbstractPhysicalArtifact>();
 
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof PhysicalArtifactRealization) {
         TraceableElement elt = ((PhysicalArtifactRealization) trace).getTargetElement();
         if (elt instanceof AbstractPhysicalArtifact) {

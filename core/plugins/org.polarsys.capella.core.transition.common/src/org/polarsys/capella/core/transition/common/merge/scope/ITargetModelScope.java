@@ -15,7 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- *
+ * 
  */
 public interface ITargetModelScope {
 

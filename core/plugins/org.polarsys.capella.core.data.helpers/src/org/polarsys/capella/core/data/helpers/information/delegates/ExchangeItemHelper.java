@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import java.util.ArrayList;
@@ -43,22 +44,22 @@ public class ExchangeItemHelper {
 		return instance;
 	}
 	
-	public Object doSwitch(ExchangeItem element_p, EStructuralFeature feature_p){
+	public Object doSwitch(ExchangeItem element, EStructuralFeature feature){
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.EXCHANGE_ITEM__REALIZED_EXCHANGE_ITEMS)) {
-      ret = getRealizedExchangeItems(element_p);
-    } else if (feature_p.equals(InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_EXCHANGE_ITEMS)) {
-      ret = getRealizingExchangeItems(element_p);
-    } else if (feature_p.equals(InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_OPERATIONS)) {
-      ret = getRealizingOperations(element_p);
-    } else if (feature_p.equals(InformationPackage.Literals.EXCHANGE_ITEM__ALLOCATOR_INTERFACES)) {
-      ret = getAllocatorInterfaces(element_p);
+		if (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__REALIZED_EXCHANGE_ITEMS)) {
+      ret = getRealizedExchangeItems(element);
+    } else if (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_EXCHANGE_ITEMS)) {
+      ret = getRealizingExchangeItems(element);
+    } else if (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_OPERATIONS)) {
+      ret = getRealizingOperations(element);
+    } else if (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__ALLOCATOR_INTERFACES)) {
+      ret = getAllocatorInterfaces(element);
     }
 
     // no helper found... searching in super classes...
 		if(null == ret) {
-			ret = GeneralizableElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = GeneralizableElementHelper.getInstance().doSwitch(element, feature);
 		}
 		return ret;
 	}
@@ -66,9 +67,9 @@ public class ExchangeItemHelper {
   /**
    *
    */
-  protected List<ExchangeItem> getRealizedExchangeItems(ExchangeItem element_p) {
+  protected List<ExchangeItem> getRealizedExchangeItems(ExchangeItem element) {
     List <ExchangeItem> ret = new ArrayList <ExchangeItem>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getTargetElement();
         if (elt instanceof ExchangeItem) {
@@ -82,9 +83,9 @@ public class ExchangeItemHelper {
   /**
    *
    */
-  protected List<ExchangeItem> getRealizingExchangeItems(ExchangeItem element_p) {
+  protected List<ExchangeItem> getRealizingExchangeItems(ExchangeItem element) {
     List <ExchangeItem> ret = new ArrayList <ExchangeItem>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getSourceElement();
         if (elt instanceof ExchangeItem) {
@@ -98,9 +99,9 @@ public class ExchangeItemHelper {
   /**
    *
    */
-  protected List<Operation> getRealizingOperations(ExchangeItem element_p) {
+  protected List<Operation> getRealizingOperations(ExchangeItem element) {
     List <Operation> ret = new ArrayList <Operation>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ExchangeItemRealization) {
         Operation op = ((ExchangeItemRealization) trace).getRealizingOperation();
         if (null != op) {
@@ -114,9 +115,9 @@ public class ExchangeItemHelper {
   /**
    *
    */
-  protected List<Interface> getAllocatorInterfaces(ExchangeItem element_p) {
+  protected List<Interface> getAllocatorInterfaces(ExchangeItem element) {
     List<Interface> ret = new ArrayList<Interface>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM)) {
+    for (EObject obj : EObjectExt.getReferencers(element, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM)) {
       if (obj instanceof ExchangeItemAllocation) {
         Interface itf = ((ExchangeItemAllocation) obj).getAllocatingInterface();
         if (null != itf) {

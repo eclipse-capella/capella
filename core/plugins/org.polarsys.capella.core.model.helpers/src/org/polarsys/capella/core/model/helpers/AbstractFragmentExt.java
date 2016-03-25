@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -31,13 +32,13 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 public class AbstractFragmentExt {
 
   /**
-   * @param combinedFragment_p
-   * @param scenario_p
+   * @param combinedFragment
+   * @param scenario
    */
-  public static boolean isEmpty(CombinedFragment combinedFragment_p, Scenario scenario_p) {
-    InteractionFragment start = combinedFragment_p.getStart();
-    InteractionFragment finish = combinedFragment_p.getFinish();
-    List<InteractionFragment> interactionFragments = scenario_p.getOwnedInteractionFragments();
+  public static boolean isEmpty(CombinedFragment combinedFragment, Scenario scenario) {
+    InteractionFragment start = combinedFragment.getStart();
+    InteractionFragment finish = combinedFragment.getFinish();
+    List<InteractionFragment> interactionFragments = scenario.getOwnedInteractionFragments();
     int startIndex = interactionFragments.indexOf(start);
     int finishIndex = interactionFragments.indexOf(finish);
 
@@ -51,20 +52,20 @@ public class AbstractFragmentExt {
   }
 
   /**
-   * @param combinedFragment_p
-   * @param scenario_p
+   * @param combinedFragment
+   * @param scenario
    */
-  public static List<InteractionOperand> getOwnedOperands(CombinedFragment combinedFragment_p, Scenario scenario_p) {
+  public static List<InteractionOperand> getOwnedOperands(CombinedFragment combinedFragment, Scenario scenario) {
     List<InteractionOperand> result = new ArrayList<InteractionOperand>();
 
     // protection
-    if ((scenario_p == null) || (combinedFragment_p == null)) {
+    if ((scenario == null) || (combinedFragment == null)) {
       return result;
     }
 
-    InteractionFragment start = combinedFragment_p.getStart();
-    InteractionFragment finish = combinedFragment_p.getFinish();
-    List<InteractionFragment> interactionFragments = scenario_p.getOwnedInteractionFragments();
+    InteractionFragment start = combinedFragment.getStart();
+    InteractionFragment finish = combinedFragment.getFinish();
+    List<InteractionFragment> interactionFragments = scenario.getOwnedInteractionFragments();
     int startIndex = interactionFragments.indexOf(start);
     int finishIndex = interactionFragments.indexOf(finish);
 
@@ -78,29 +79,29 @@ public class AbstractFragmentExt {
   }
 
   /**
-   * @param abstractFragment_p
-   * @param scenario_p
+   * @param abstractFragment
+   * @param scenario
    */
-  public static List<InstanceRole> getCoveredInstanceRoles(AbstractFragment abstractFragment_p, Scenario scenario_p) {
+  public static List<InstanceRole> getCoveredInstanceRoles(AbstractFragment abstractFragment, Scenario scenario) {
     List<InstanceRole> coveredInstanceRoles = new ArrayList<InstanceRole>();
 
     // protection
-    if ((scenario_p == null) || (abstractFragment_p == null)) {
+    if ((scenario == null) || (abstractFragment == null)) {
       return coveredInstanceRoles;
     }
 
-    FragmentEnd srcStart = (FragmentEnd) abstractFragment_p.getStart();
+    FragmentEnd srcStart = (FragmentEnd) abstractFragment.getStart();
     for (InstanceRole srcInstanceRole : srcStart.getCoveredInstanceRoles()) {
-      for (CapellaElement tgtInstanceRole : CapellaElementExt.getRefinementSrcElements(srcInstanceRole, InteractionPackage.Literals.INSTANCE_ROLE, scenario_p)) {
+      for (CapellaElement tgtInstanceRole : CapellaElementExt.getRefinementSrcElements(srcInstanceRole, InteractionPackage.Literals.INSTANCE_ROLE, scenario)) {
         if ((tgtInstanceRole != null) && !coveredInstanceRoles.contains(tgtInstanceRole)) {
           coveredInstanceRoles.add((InstanceRole) tgtInstanceRole);
         }
       }
     }
 
-    FragmentEnd srcFinish = (FragmentEnd) abstractFragment_p.getFinish();
+    FragmentEnd srcFinish = (FragmentEnd) abstractFragment.getFinish();
     for (InstanceRole srcInstanceRole : srcFinish.getCoveredInstanceRoles()) {
-      for (CapellaElement tgtInstanceRole : CapellaElementExt.getRefinementSrcElements(srcInstanceRole, InteractionPackage.Literals.INSTANCE_ROLE, scenario_p)) {
+      for (CapellaElement tgtInstanceRole : CapellaElementExt.getRefinementSrcElements(srcInstanceRole, InteractionPackage.Literals.INSTANCE_ROLE, scenario)) {
         if ((tgtInstanceRole != null) && !coveredInstanceRoles.contains(tgtInstanceRole)) {
           coveredInstanceRoles.add((InstanceRole) tgtInstanceRole);
         }
@@ -111,21 +112,21 @@ public class AbstractFragmentExt {
   }
 
   /**
-   * @param start_p
-   * @param finish_p
-   * @param scenario_p
+   * @param fragmentEnd1
+   * @param fragmentEnd1
+   * @param scenario1
    */
-  public static List<InstanceRole> getCoveredInstanceRoles(FragmentEnd start_p, FragmentEnd finish_p, Scenario scenario_p) {
+  public static List<InstanceRole> getCoveredInstanceRoles(FragmentEnd fragmentStart, FragmentEnd fragmentFinish, Scenario scenario) {
     List<InstanceRole> coveredInstanceRoles = new ArrayList<InstanceRole>();
 
     // protection
-    if ((scenario_p == null) || (start_p == null) || (finish_p == null)) {
+    if ((scenario == null) || (fragmentStart == null) || (fragmentFinish == null)) {
       return coveredInstanceRoles;
     }
 
-    List<InteractionFragment> interactionFragments = scenario_p.getOwnedInteractionFragments();
-    int start = interactionFragments.indexOf(start_p);
-    int finish = interactionFragments.indexOf(finish_p);
+    List<InteractionFragment> interactionFragments = scenario.getOwnedInteractionFragments();
+    int start = interactionFragments.indexOf(fragmentStart);
+    int finish = interactionFragments.indexOf(fragmentFinish);
     for (InteractionFragment fragment : interactionFragments.subList(start, finish)) {
       if (fragment instanceof AbstractEnd) {
         InstanceRole instanceRole = ((AbstractEnd) fragment).getCovered();
@@ -144,13 +145,13 @@ public class AbstractFragmentExt {
     return coveredInstanceRoles;
   }
 
-  public static Set<InstanceRole> getMinimalCoveredInstanceRoles(CombinedFragment fragment_p) {
+  public static Set<InstanceRole> getMinimalCoveredInstanceRoles(CombinedFragment fragment) {
     Set<InstanceRole> coveredInstanceRoles = new HashSet<InstanceRole>();
 
-    Scenario scenario = (Scenario) fragment_p.eContainer();
+    Scenario scenario = (Scenario) fragment.eContainer();
 
-    FragmentEnd fragStart = (FragmentEnd) fragment_p.getStart();
-    FragmentEnd fragFinish = (FragmentEnd) fragment_p.getFinish();
+    FragmentEnd fragStart = (FragmentEnd) fragment.getStart();
+    FragmentEnd fragFinish = (FragmentEnd) fragment.getFinish();
     List<InteractionFragment> interactionFragments = scenario.getOwnedInteractionFragments();
     int start = interactionFragments.indexOf(fragStart);
     int finish = interactionFragments.indexOf(fragFinish);
@@ -165,7 +166,7 @@ public class AbstractFragmentExt {
         }
       } else {
     	// case of the fragments and the internals use (forgetting the operand CF being tested ...)  
-        if (!fragment_p.getReferencedOperands().contains(currentFragment)) {
+        if (!fragment.getReferencedOperands().contains(currentFragment)) {
           coveredInstanceRoles.addAll(currentFragment.getCoveredInstanceRoles());
         }
       }

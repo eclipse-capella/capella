@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.rules;
 
 import java.util.ArrayList;
@@ -27,51 +28,51 @@ public abstract class AbstractUpdateRule extends AbstractRule implements IRuleUp
 
   private List<EReference> updatedReferences = new ArrayList<EReference>();
 
-  public boolean isUpdatedAttribute(EAttribute attribute_p) {
-    return updatedAttributes.contains(attribute_p);
+  public boolean isUpdatedAttribute(EAttribute attribute) {
+    return updatedAttributes.contains(attribute);
   }
 
   public List<EAttribute> getUpdatedAttributes() {
     return updatedAttributes;
   }
 
-  protected void registerUpdatedAttribute(EAttribute attribute_p) {
-    updatedAttributes.add(attribute_p);
+  protected void registerUpdatedAttribute(EAttribute attribute) {
+    updatedAttributes.add(attribute);
   }
 
-  protected void unregisterUpdatedAttribute(EAttribute attribute_p) {
-    updatedAttributes.remove(attribute_p);
+  protected void unregisterUpdatedAttribute(EAttribute attribute) {
+    updatedAttributes.remove(attribute);
   }
 
-  public boolean isUpdatedReference(EReference reference_p) {
-    return updatedReferences.contains(reference_p);
+  public boolean isUpdatedReference(EReference reference) {
+    return updatedReferences.contains(reference);
   }
 
   public List<EReference> getUpdatedReferences() {
     return updatedReferences;
   }
 
-  protected void registerUpdatedReference(EReference reference_p) {
-    updatedReferences.add(reference_p);
+  protected void registerUpdatedReference(EReference reference) {
+    updatedReferences.add(reference);
   }
 
-  protected void unregisterUpdatedAttribute(EReference reference_p) {
-    updatedReferences.remove(reference_p);
+  protected void unregisterUpdatedAttribute(EReference reference) {
+    updatedReferences.remove(reference);
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    */
   @Override
-  protected void updateElement(EObject element_p, EObject result_p, IContext context_p) {
-    super.updateElement(element_p, result_p, context_p);
+  protected void updateElement(EObject element, EObject result, IContext context) {
+    super.updateElement(element, result, context);
 
     //Update registered updatedAttributes
-    for (EObject target : retrieveTracedElements(element_p, context_p)) {
+    for (EObject target : retrieveTracedElements(element, context)) {
       for (EAttribute attribute : getUpdatedAttributes()) {
-        AttachmentHelper.getInstance(context_p).updateElementAttribute(element_p, target, attribute, context_p);
+        AttachmentHelper.getInstance(context).updateElementAttribute(element, target, attribute, context);
       }
     }
   }

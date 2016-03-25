@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.filter;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class ElementPresenceManyToOne extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public String getDescription(IDifference difference_p) {
+  public String getDescription(IDifference difference) {
     return "A source element is traced to an element linked by many elements in source architecture";
   }
 
@@ -40,24 +41,24 @@ public class ElementPresenceManyToOne extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    if (difference_p instanceof IElementPresence) {
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+    if (difference instanceof IElementPresence) {
       // We merge ElementPresence only if it from source
-      if (role_p == Role.REFERENCE) {
+      if (role == Role.REFERENCE) {
 
         Collection<IDifference> toVisit = new ArrayList<IDifference>();
 
-        if (difference_p instanceof IElementPresence) {
-          EObject container = ((IElementPresence) difference_p).getElementMatch().get(Role.REFERENCE);
+        if (difference instanceof IElementPresence) {
+          EObject container = ((IElementPresence) difference).getElementMatch().get(Role.REFERENCE);
 
-          ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-          ITraceabilityHandler targetHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+          ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
+          ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
 
           Collection<EObject> nbElements = new HashSet<EObject>();
-          Collection<EObject> sources = sourceHandler.retrieveSourceElements(container, context_p);
+          Collection<EObject> sources = sourceHandler.retrieveSourceElements(container, context);
           for (EObject source : sources) {
-            for (EObject target : targetHandler.retrieveTracedElements(source, context_p)) {
-              nbElements.addAll(targetHandler.retrieveSourceElements(target, context_p));
+            for (EObject target : targetHandler.retrieveTracedElements(source, context)) {
+              nbElements.addAll(targetHandler.retrieveSourceElements(target, context));
             }
           }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,31 +44,31 @@ public class StateMachineRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getFirstComponent(target, true);
   }
 
   /**
-   * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param element
+   * @param result
+   * @param context
    * @return
    */
   @Override
-  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject parent = element_p.eContainer();
+  protected EObject getBestContainer(EObject element, EObject result, IContext context) {
+    EObject parent = element.eContainer();
     while (parent != null) {
       if ((parent instanceof Block) || (parent instanceof org.polarsys.capella.core.data.information.Class)) {
         ISelectionContext sContext =
-            SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION,
-                element_p, result_p);
-        EObject element = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(parent, context_p, sContext);
-        if (element != null) {
-          return element;
+            SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION,
+                element, result);
+        EObject bestTracedElement = TransformationHandlerHelper.getInstance(context).getBestTracedElement(parent, context, sContext);
+        if (bestTracedElement != null) {
+          return bestTracedElement;
         }
       }
       parent = parent.eContainer();
@@ -80,49 +80,49 @@ public class StateMachineRule extends AbstractCapellaElementRule {
    * {@inheritDoc}
    */
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     // Nothing here
   }
 
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    return super.transformDirectElement(element_p, context_p);
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    return super.transformDirectElement(element, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
 
-    if (!(element_p.eContainer() instanceof org.polarsys.capella.core.data.information.Class)) {
+    if (!(element.eContainer() instanceof org.polarsys.capella.core.data.information.Class)) {
       Collection<EObject> transfoSources = (Collection<EObject>) getCurrentContext().get(ITransitionConstants.TRANSITION_SOURCES);
       for (EObject transfoSource : transfoSources) {
         if ((transfoSource instanceof Part) || (transfoSource instanceof Component)) {
-          needed_p.addAll(createDefaultPrecedencePremices(transfoSources, "part"));
+          needed.addAll(createDefaultPrecedencePremices(transfoSources, "part"));
         }
       }
     }
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    StateMachine sourceElement = (StateMachine) source_p;
-    result_p.addAll(sourceElement.getOwnedRegions());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    StateMachine sourceElement = (StateMachine) source;
+    result.addAll(sourceElement.getOwnedRegions());
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedRegions(), context_p);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedRegions(), context);
     }
 
   }
 
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    if (container_p instanceof Component) {
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    if (container instanceof Component) {
       return CsPackage.Literals.BLOCK__OWNED_STATE_MACHINES;
-    } else if (container_p instanceof Class) {
+    } else if (container instanceof Class) {
       return InformationPackage.Literals.CLASS__OWNED_STATE_MACHINES;
     }
-    return element_p.eContainingFeature();
+    return element.eContainingFeature();
   }
 
 }

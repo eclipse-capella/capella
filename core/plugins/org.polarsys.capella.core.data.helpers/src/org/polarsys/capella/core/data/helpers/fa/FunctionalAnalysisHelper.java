@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -69,90 +70,90 @@ import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalExchangeSpe
 
 public class FunctionalAnalysisHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 
 		Object ret = null;
 
-		if (object_p instanceof AbstractFunctionalBlock) {
-			ret = AbstractFunctionalBlockHelper.getInstance().doSwitch((AbstractFunctionalBlock) object_p, feature_p);
+		if (object instanceof AbstractFunctionalBlock) {
+			ret = AbstractFunctionalBlockHelper.getInstance().doSwitch((AbstractFunctionalBlock) object, feature);
 		}
-		else if (object_p instanceof FunctionSpecification) {
-			ret = FunctionSpecificationHelper.getInstance().doSwitch((FunctionSpecification) object_p, feature_p);
+		else if (object instanceof FunctionSpecification) {
+			ret = FunctionSpecificationHelper.getInstance().doSwitch((FunctionSpecification) object, feature);
 		}
-    else if (object_p instanceof ComponentPort) {
-      ret = ComponentPortHelper.getInstance().doSwitch((ComponentPort) object_p, feature_p);
+    else if (object instanceof ComponentPort) {
+      ret = ComponentPortHelper.getInstance().doSwitch((ComponentPort) object, feature);
     }
-    else if (object_p instanceof ComponentExchange) {
-      ret = ComponentExchangeHelper.getInstance().doSwitch((ComponentExchange) object_p, feature_p);
+    else if (object instanceof ComponentExchange) {
+      ret = ComponentExchangeHelper.getInstance().doSwitch((ComponentExchange) object, feature);
     }
-    else if (object_p instanceof FunctionalChain) {
-			ret = FunctionalChainHelper.getInstance().doSwitch((FunctionalChain) object_p, feature_p);
+    else if (object instanceof FunctionalChain) {
+			ret = FunctionalChainHelper.getInstance().doSwitch((FunctionalChain) object, feature);
 		}
-    else if (object_p instanceof FunctionalChainReference) {
-      ret = FunctionalChainReferenceHelper.getInstance().doSwitch((FunctionalChainReference) object_p, feature_p);
+    else if (object instanceof FunctionalChainReference) {
+      ret = FunctionalChainReferenceHelper.getInstance().doSwitch((FunctionalChainReference) object, feature);
     }
-    else if (object_p instanceof FunctionalChainInvolvement) {
-      ret = FunctionalChainInvolvementHelper.getInstance().doSwitch((FunctionalChainInvolvement) object_p, feature_p);
+    else if (object instanceof FunctionalChainInvolvement) {
+      ret = FunctionalChainInvolvementHelper.getInstance().doSwitch((FunctionalChainInvolvement) object, feature);
     }
-		else if (object_p instanceof ExchangeLink) {
-			ret = ExchangeLinkHelper.getInstance().doSwitch((ExchangeLink) object_p, feature_p);
+		else if (object instanceof ExchangeLink) {
+			ret = ExchangeLinkHelper.getInstance().doSwitch((ExchangeLink) object, feature);
 		}
-    else if (object_p instanceof ExchangeContainment) {
-      ret = RelationshipHelper.getInstance().doSwitch((ExchangeContainment) object_p, feature_p);
+    else if (object instanceof ExchangeContainment) {
+      ret = RelationshipHelper.getInstance().doSwitch((ExchangeContainment) object, feature);
     }
-		else if (object_p instanceof FunctionalExchangeSpecification) {
-			ret = FunctionalExchangeSpecificationHelper.getInstance().doSwitch((FunctionalExchangeSpecification) object_p, feature_p);
+		else if (object instanceof FunctionalExchangeSpecification) {
+			ret = FunctionalExchangeSpecificationHelper.getInstance().doSwitch((FunctionalExchangeSpecification) object, feature);
 		}
-		else if (object_p instanceof FunctionalExchange) {
-			ret = FunctionalExchangeHelper.getInstance().doSwitch((FunctionalExchange) object_p, feature_p);
+		else if (object instanceof FunctionalExchange) {
+			ret = FunctionalExchangeHelper.getInstance().doSwitch((FunctionalExchange) object, feature);
 		}
-		else if (object_p instanceof AbstractFunction) {
-			ret = AbstractFunctionHelper.getInstance().doSwitch((AbstractFunction) object_p, feature_p);
+		else if (object instanceof AbstractFunction) {
+			ret = AbstractFunctionHelper.getInstance().doSwitch((AbstractFunction) object, feature);
 		}
-		else if (object_p instanceof ComponentFunctionalAllocation) {
-			ret = ComponentFunctionalAllocationHelper.getInstance().doSwitch((ComponentFunctionalAllocation) object_p, feature_p);
+		else if (object instanceof ComponentFunctionalAllocation) {
+			ret = ComponentFunctionalAllocationHelper.getInstance().doSwitch((ComponentFunctionalAllocation) object, feature);
 		}
-		else if (object_p instanceof FunctionRealization) {
-			ret = FunctionRealizationHelper.getInstance().doSwitch((FunctionRealization) object_p, feature_p);
+		else if (object instanceof FunctionRealization) {
+			ret = FunctionRealizationHelper.getInstance().doSwitch((FunctionRealization) object, feature);
 		}
-		else if (object_p instanceof FunctionalExchangeRealization) {
-			ret = FunctionalExchangeRealizationHelper.getInstance().doSwitch((FunctionalExchangeRealization) object_p, feature_p);
+		else if (object instanceof FunctionalExchangeRealization) {
+			ret = FunctionalExchangeRealizationHelper.getInstance().doSwitch((FunctionalExchangeRealization) object, feature);
 		}
-		else if (object_p instanceof ComponentExchangeRealization) {
-			ret = ComponentExchangeRealizationHelper.getInstance().doSwitch((ComponentExchangeRealization) object_p, feature_p);
+		else if (object instanceof ComponentExchangeRealization) {
+			ret = ComponentExchangeRealizationHelper.getInstance().doSwitch((ComponentExchangeRealization) object, feature);
 		}
-    else if (object_p instanceof FunctionalChainRealization) {
-      ret = AllocationHelper.getInstance().doSwitch((FunctionalChainRealization) object_p, feature_p);
+    else if (object instanceof FunctionalChainRealization) {
+      ret = AllocationHelper.getInstance().doSwitch((FunctionalChainRealization) object, feature);
     }
-		else if (object_p instanceof ComponentExchangeFunctionalExchangeAllocation) {
-			ret = ComponentExchangeFunctionalExchangeAllocationHelper.getInstance().doSwitch((ComponentExchangeFunctionalExchangeAllocation) object_p, feature_p);
+		else if (object instanceof ComponentExchangeFunctionalExchangeAllocation) {
+			ret = ComponentExchangeFunctionalExchangeAllocationHelper.getInstance().doSwitch((ComponentExchangeFunctionalExchangeAllocation) object, feature);
 		}
-		else if (object_p instanceof FunctionInputPort) {
-			ret = FunctionInputPortHelper.getInstance().doSwitch((FunctionInputPort) object_p, feature_p);
+		else if (object instanceof FunctionInputPort) {
+			ret = FunctionInputPortHelper.getInstance().doSwitch((FunctionInputPort) object, feature);
 		}
-    else if (object_p instanceof FunctionOutputPort) {
-      ret = FunctionOutputPortHelper.getInstance().doSwitch((FunctionOutputPort) object_p, feature_p);
+    else if (object instanceof FunctionOutputPort) {
+      ret = FunctionOutputPortHelper.getInstance().doSwitch((FunctionOutputPort) object, feature);
     }
-    else if (object_p instanceof ExchangeCategory) {
-      ret = NamedElementHelper.getInstance().doSwitch((ExchangeCategory) object_p, feature_p);
+    else if (object instanceof ExchangeCategory) {
+      ret = NamedElementHelper.getInstance().doSwitch((ExchangeCategory) object, feature);
     }
-    else if (object_p instanceof ComponentExchangeEnd) {
-      ret = ComponentExchangeEndHelper.getInstance().doSwitch((ComponentExchangeEnd) object_p, feature_p);
+    else if (object instanceof ComponentExchangeEnd) {
+      ret = ComponentExchangeEndHelper.getInstance().doSwitch((ComponentExchangeEnd) object, feature);
     }
-    else if (object_p instanceof ComponentExchangeCategory) {
-      ret = NamedElementHelper.getInstance().doSwitch((ComponentExchangeCategory) object_p, feature_p);
+    else if (object instanceof ComponentExchangeCategory) {
+      ret = NamedElementHelper.getInstance().doSwitch((ComponentExchangeCategory) object, feature);
     }
-    else if (object_p instanceof ComponentPortAllocation) {
-      ret = ComponentPortAllocationHelper.getInstance().doSwitch((ComponentPortAllocation) object_p, feature_p);
+    else if (object instanceof ComponentPortAllocation) {
+      ret = ComponentPortAllocationHelper.getInstance().doSwitch((ComponentPortAllocation) object, feature);
     }
-    else if (object_p instanceof ComponentPortAllocationEnd) {
-      ret = CapellaElementHelper.getInstance().doSwitch((ComponentPortAllocationEnd) object_p, feature_p);
+    else if (object instanceof ComponentPortAllocationEnd) {
+      ret = CapellaElementHelper.getInstance().doSwitch((ComponentPortAllocationEnd) object, feature);
     }
-    else if (object_p instanceof ComponentExchangeAllocation) {
-      ret = ComponentExchangeAllocationHelper.getInstance().doSwitch((ComponentExchangeAllocation) object_p, feature_p);
+    else if (object instanceof ComponentExchangeAllocation) {
+      ret = ComponentExchangeAllocationHelper.getInstance().doSwitch((ComponentExchangeAllocation) object, feature);
     }
 
-		if (null != ret || feature_p.getUpperBound() == 1)
+		if (null != ret || feature.getUpperBound() == 1)
 			return ret;
 
 		throw new HelperNotFoundException();

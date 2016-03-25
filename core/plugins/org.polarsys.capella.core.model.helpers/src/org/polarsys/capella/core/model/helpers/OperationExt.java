@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -42,10 +43,10 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  */
 public class OperationExt {
 
-  static public ComponentArchitecture getRootComponentArchitecture(Operation operation_p) {
+  static public ComponentArchitecture getRootComponentArchitecture(Operation operation) {
     ComponentArchitecture arch = null;
-    if (null != operation_p) {
-      Classifier owningClass = (Classifier) operation_p.eContainer();
+    if (null != operation) {
+      Classifier owningClass = (Classifier) operation.eContainer();
       if (owningClass instanceof Class) {
         arch = StructureExt.getRootComponentArchitecture((DataPkg) owningClass.eContainer());
       }
@@ -58,13 +59,13 @@ public class OperationExt {
 
   /**
    * 
-   * @param modelElement_p : any 'ModelElement'
+   * @param modelElement : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
-  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement_p) {
+  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
     BlockArchitecture arch = null;
-    if(modelElement_p != null) {
-      EObject container = modelElement_p.eContainer();
+    if(modelElement != null) {
+      EObject container = modelElement.eContainer();
       if (container instanceof BlockArchitecture) {
         return (BlockArchitecture) container;
       }else if(container instanceof Component) {
@@ -83,10 +84,10 @@ public class OperationExt {
     return arch;
   }
   
-  static public Component getRootComponent(Operation operation_p) {
+  static public Component getRootComponent(Operation operation) {
     Component comp = null;
-    if (null != operation_p) {
-      Classifier owningClass = (Classifier) operation_p.eContainer();
+    if (null != operation) {
+      Classifier owningClass = (Classifier) operation.eContainer();
       if (owningClass instanceof Class) {
         DataPkg ownerDataPkg = ClassExt.getOwnerDataPkg((Class) owningClass);
         comp = DataPkgExt.getRootComponent(ownerDataPkg);
@@ -100,16 +101,16 @@ public class OperationExt {
 
   /**
    * Gets all the data packages from the component architecture, traversing up from the operation
-   * @param operation_p
+   * @param operation
    *          the Operation from which the parent container is to be found out
    * @return list of DataPkg
    */
-  static public List<DataPkg> getAllDataPkgs(Operation operation_p) {
+  static public List<DataPkg> getAllDataPkgs(Operation operation) {
     // Container of Parameter is Operation
     List<DataPkg> list = new ArrayList<DataPkg>();
-    if (null != operation_p) {
+    if (null != operation) {
       BlockArchitecture arch = null;
-      Classifier owningClass = (Classifier) operation_p.eContainer();
+      Classifier owningClass = (Classifier) operation.eContainer();
       if (owningClass instanceof Class) {
         arch = StructureExt.getRootBlockArchitecture((DataPkg) owningClass.eContainer());
       }
@@ -139,20 +140,20 @@ public class OperationExt {
       }
 
       // ComponentArchitecture is null; Get the SharedPkg
-      SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(operation_p);
+      SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(operation);
       if (null != sysEng) {
-        for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(operation_p))
+        for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(operation))
           list.add(sharedPkg.getOwnedDataPkg());
       }
     }
     return list;
   }
   
-  static public List<DataPkg> getDataPkgsFromSharedPkg(Operation operation_p) {
+  static public List<DataPkg> getDataPkgsFromSharedPkg(Operation operation) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(operation_p);
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(operation);
     if (null != sysEng) {
-      for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(operation_p))
+      for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(operation))
         list.add(sharedPkg.getOwnedDataPkg());
     }
     return list;
@@ -160,14 +161,14 @@ public class OperationExt {
   
   /**
    * Gets all the interfaces from the operation
-   * @param operation_p
+   * @param operation
    *          the Operation from which the parent container is to be found out
    * @return list of interfaces
    */
-  static public List<CapellaElement> getAllInterfaces(Operation operation_p) {
+  static public List<CapellaElement> getAllInterfaces(Operation operation) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
-    if (null != operation_p) {
-      Classifier owningInterface = (Classifier) operation_p.eContainer();
+    if (null != operation) {
+      Classifier owningInterface = (Classifier) operation.eContainer();
       if (owningInterface instanceof Interface) {
         InterfacePkg interfacePkg = (InterfacePkg) owningInterface.eContainer();
         BlockArchitecture arch = InterfacePkgExt.getRootBlockArchitecture(interfacePkg);
@@ -183,9 +184,9 @@ public class OperationExt {
         }
         // TODO Do the same for SharedAssetsPkg
         // ComponentArchitecture is null; Get the SharedPkg
-        SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(operation_p);
+        SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(operation);
         if (null != sysEng) {
-          for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(operation_p)) {
+          for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(operation)) {
         	  list.addAll(GenericPkgExt.getAllInterfaces(sharedPkg.getOwnedGenericPkg()));
           }
         }
@@ -198,14 +199,14 @@ public class OperationExt {
   /**
    * Gets all the DataPkgs from the Parent Hierarchy of the root component/component architecture of the current operation according to layer visibility and
    * multiple decomposition rules
-   * @param operation_p
+   * @param operation
    *          the Operation
    * @return list of DataPkgs
    */
-  static public List<DataPkg> getDataPkgsFromParentHierarchy(Operation operation_p) {
+  static public List<DataPkg> getDataPkgsFromParentHierarchy(Operation operation) {
     List<DataPkg> list = new ArrayList<DataPkg>(1);
-    if (null != operation_p) {
-      BlockArchitecture compArch = OperationExt.getRootBlockArchitecture(operation_p);
+    if (null != operation) {
+      BlockArchitecture compArch = OperationExt.getRootBlockArchitecture(operation);
       if (null != compArch) {
         DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
         if (null != dataPkg) {
@@ -216,7 +217,7 @@ public class OperationExt {
           return list; // return if SystemEngineering
         list.addAll(DataPkgExt.getDataPkgsFromBlockArchitectureParent(compArch));
       }
-      Component parentComp = OperationExt.getRootComponent(operation_p);
+      Component parentComp = OperationExt.getRootComponent(operation);
       if (null != parentComp) {
           DataPkg dataPkg = parentComp.getOwnedDataPkg();
           if (null != dataPkg) {
@@ -231,14 +232,14 @@ public class OperationExt {
   /**
    * Gets all the Interfaces from the Parent Hierarchy of the root component/component architecture of the current operation according to layer visibility and
    * multiple decomposition rules
-   * @param operation_p
+   * @param operation
    *          the Operation
    * @return list of Interfaces
    */
-  static public List<Interface> getOwnedInterfacesFromParentHierarchy(Operation operation_p) {
+  static public List<Interface> getOwnedInterfacesFromParentHierarchy(Operation operation) {
     List<Interface> list = new ArrayList<Interface>(1);
-    if (null != operation_p) {
-      BlockArchitecture compArch = OperationExt.getRootBlockArchitecture(operation_p);
+    if (null != operation) {
+      BlockArchitecture compArch = OperationExt.getRootBlockArchitecture(operation);
       if (null != compArch) {
         list.addAll(InterfacePkgExt.getAllInterfaces(compArch.getOwnedInterfacePkg()));
         // Layer visibility is there
@@ -246,7 +247,7 @@ public class OperationExt {
           return list; // return if SystemEngineering
         list.addAll(InterfacePkgExt.getOwnedInterfacesFromBlockArchitectureParent(compArch, true));
       }
-      Component parentComp = OperationExt.getRootComponent(operation_p);
+      Component parentComp = OperationExt.getRootComponent(operation);
       if (null != parentComp) {
         if (parentComp instanceof LogicalComponent) {
           list.addAll(InterfacePkgExt.getAllInterfaces(((LogicalComponent) parentComp).getOwnedInterfacePkg()));

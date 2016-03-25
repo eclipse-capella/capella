@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.pa.delegates;
 
 import java.util.ArrayList;
@@ -46,33 +47,33 @@ public class PhysicalActorHelper {
     return instance;
   }
 
-  public Object doSwitch(PhysicalActor element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(PhysicalActor element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(PaPackage.Literals.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS)) {
-      ret = getLogicalActorRealizations(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS)) {
-      ret = getAllocatedPhysicalFunctions(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS)) {
-      ret = getRealizedLogicalActors(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS)) {
-      ret = getDeployedPhysicalComponents(element_p);
+    if (feature.equals(PaPackage.Literals.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS)) {
+      ret = getLogicalActorRealizations(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS)) {
+      ret = getAllocatedPhysicalFunctions(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS)) {
+      ret = getRealizedLogicalActors(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS)) {
+      ret = getDeployedPhysicalComponents(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractActorHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractActorHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractPhysicalComponentHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractPhysicalComponentHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<LogicalActorRealization> getLogicalActorRealizations(PhysicalActor element_p) {
+  protected List<LogicalActorRealization> getLogicalActorRealizations(PhysicalActor element) {
     List<LogicalActorRealization> ret = new ArrayList<LogicalActorRealization>();
-    for (ComponentAllocation componentAllocation : element_p.getProvisionedComponentAllocations()) {
+    for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof LogicalActorRealization) {
         ret.add((LogicalActorRealization) componentAllocation);
       }
@@ -80,9 +81,9 @@ public class PhysicalActorHelper {
     return ret;
   }
 
-  protected List<PhysicalFunction> getAllocatedPhysicalFunctions(PhysicalActor element_p) {
+  protected List<PhysicalFunction> getAllocatedPhysicalFunctions(PhysicalActor element) {
     List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
-    for (AbstractFunction function : element_p.getAllocatedFunctions()) {
+    for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);
       }
@@ -90,9 +91,9 @@ public class PhysicalActorHelper {
     return ret;
   }
 
-  protected List<LogicalActor> getRealizedLogicalActors(PhysicalActor element_p) {
+  protected List<LogicalActor> getRealizedLogicalActors(PhysicalActor element) {
     List<LogicalActor> ret = new ArrayList<LogicalActor>();
-    for (Component cpnt : element_p.getAllocatedComponents()) {
+    for (Component cpnt : element.getAllocatedComponents()) {
       if (cpnt instanceof LogicalActor) {
         ret.add((LogicalActor) cpnt);
       }
@@ -100,9 +101,9 @@ public class PhysicalActorHelper {
     return ret;
   }
 
-  protected List<PhysicalComponent> getDeployedPhysicalComponents(PhysicalActor element_p) {
+  protected List<PhysicalComponent> getDeployedPhysicalComponents(PhysicalActor element) {
     List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
-    for (EObject obj : EObjectExt.getReferencers(element_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
+    for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deploymentLink : ((Part) obj).getDeploymentLinks()) {
           DeployableElement deployableElement = deploymentLink.getDeployedElement();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.ArrayList;
@@ -47,25 +48,25 @@ public class DifferencesFilteringActivity extends AbstractActivity implements IT
 
   /**
    * Initialize the Options handler and set it into context via ITransitionConstants.OPTIONS_HANDLER
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeFilteringDifferencesHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, activityParams_p);
+  protected IStatus initializeFilteringDifferencesHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, activityParams);
     if (handler == null) {
       handler = new DefaultFilteringDifferencesHandler();
     }
-    context_p.put(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, handler);
-    IStatus status = handler.init(context_p);
+    context.put(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, handler);
+    IStatus status = handler.init(context);
     if ((handler != null) && (handler instanceof CompoundFilteringItems)) {
-      initializeFilterItemHandlers(context_p, (CompoundFilteringItems) handler, activityParams_p);
+      initializeFilterItemHandlers(context, (CompoundFilteringItems) handler, activityParams);
     }
 
     return status;
   }
 
-  protected IStatus initializeFilterItemHandlers(IContext context_p, CompoundFilteringItems handler_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeFilterItemHandlers(IContext context, CompoundFilteringItems handler, ActivityParameters activityParams) {
     return Status.OK_STATUS;
   }
 
@@ -75,10 +76,10 @@ public class DifferencesFilteringActivity extends AbstractActivity implements IT
    */
   @Override
   @SuppressWarnings("unchecked")
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
-    IStatus status = initializeFilteringDifferencesHandler(context, activityParams_p);
+    IStatus status = initializeFilteringDifferencesHandler(context, activityParams);
     if (status.matches(IStatus.CANCEL)) {
       return status;
     }
@@ -104,60 +105,60 @@ public class DifferencesFilteringActivity extends AbstractActivity implements IT
   /**
    * @return true if merge action can be applied
    */
-  protected boolean computeDifferences(Collection<IDifference> fromReference_p, Collection<IDifference> fromTarget_p, Collection<IDifference> toReference_p,
-      Collection<IDifference> toTarget_p, IContext context_p) {
+  protected boolean computeDifferences(Collection<IDifference> fromReference, Collection<IDifference> fromTarget, Collection<IDifference> toReference,
+      Collection<IDifference> toTarget, IContext context) {
 
     Collection<IDifference> filteredFromReference = new ArrayList<IDifference>();
     Collection<IDifference> filteredFromTarget = new ArrayList<IDifference>();
 
-    IFilteringDifferencesHandler handler = FilteringDifferencesHandlerHelper.getInstance(context_p);
+    IFilteringDifferencesHandler handler = FilteringDifferencesHandlerHelper.getInstance(context);
 
-    IStatus status = handler.processDifferences(context_p, fromReference_p, fromTarget_p);
+    IStatus status = handler.processDifferences(context, fromReference, fromTarget);
 
     if (status.isOK()) {
 
       //Retrieve differences from source differences
-      for (IDifference difference : fromReference_p) {
-        Role role = handler.getMergeDestination(context_p, difference, Role.REFERENCE);
+      for (IDifference difference : fromReference) {
+        Role role = handler.getMergeDestination(context, difference, Role.REFERENCE);
         if (role == null) {
           filteredFromReference.add(difference);
         } else if (role == Role.REFERENCE) {
-          toReference_p.add(difference);
+          toReference.add(difference);
         } else if (role == Role.TARGET) {
-          toTarget_p.add(difference);
+          toTarget.add(difference);
         }
       }
 
       //Retrieve differences from target differences
-      for (IDifference difference : fromTarget_p) {
-        Role role = handler.getMergeDestination(context_p, difference, Role.TARGET);
+      for (IDifference difference : fromTarget) {
+        Role role = handler.getMergeDestination(context, difference, Role.TARGET);
         if (role == null) {
           filteredFromTarget.add(difference);
         } else if (role == Role.REFERENCE) {
-          toReference_p.add(difference);
+          toReference.add(difference);
         } else if (role == Role.TARGET) {
-          toTarget_p.add(difference);
+          toTarget.add(difference);
         }
       }
 
-      if (displayLog(context_p)) {
+      if (displayLog(context)) {
 
         // Logging
         LogHelper.getInstance().debug("Differences :", Messages.Activity_FilteringDifferenceActivity);
-        for (IDifference diff : toReference_p) {
-          displayLog(diff, "To Merge from Reference", DiffScope.Source, FilterAction.TARGET, context_p);
+        for (IDifference diff : toReference) {
+          displayLog(diff, "To Merge from Reference", DiffScope.Source, FilterAction.TARGET, context);
         }
 
-        for (IDifference diff : toTarget_p) {
-          displayLog(diff, "To Merge from Target", DiffScope.Target, FilterAction.TARGET, context_p);
+        for (IDifference diff : toTarget) {
+          displayLog(diff, "To Merge from Target", DiffScope.Target, FilterAction.TARGET, context);
         }
 
         for (IDifference diff : filteredFromReference) {
-          displayLog(diff, "Filtered from Reference", DiffScope.Source, FilterAction.NO_ACTION, context_p);
+          displayLog(diff, "Filtered from Reference", DiffScope.Source, FilterAction.NO_ACTION, context);
         }
 
         for (IDifference diff : filteredFromTarget) {
-          displayLog(diff, "Filtered from Target", DiffScope.Target, FilterAction.NO_ACTION, context_p);
+          displayLog(diff, "Filtered from Target", DiffScope.Target, FilterAction.NO_ACTION, context);
         }
 
       }
@@ -167,26 +168,26 @@ public class DifferencesFilteringActivity extends AbstractActivity implements IT
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return
    */
-  protected boolean displayLog(IContext context_p) {
+  protected boolean displayLog(IContext context) {
     return true;
   }
 
-  private void displayLog(IDifference diff_p, String difftext_p, DiffScope diffscope_p, FilterAction diffaction_p, IContext context_p) {
-    IDiffModelViewer diffModelViewer = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff_p, diffscope_p, diffaction_p, context_p, false);
+  private void displayLog(IDifference diff, String difftext, DiffScope diffscope, FilterAction diffaction, IContext context) {
+    IDiffModelViewer diffModelViewer = IDiffModelViewerFactory.eINSTANCE.createDiffModelViewer(diff, diffscope, diffaction, context, false);
     EObject me = diffModelViewer.getSemanticElementDiff();
     Object[] listObject = null;
     if (me != null) {
-      context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, context_p.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER));
-      Collection<EObject> sourceObject = TraceabilityHandlerHelper.getInstance(context_p).retrieveSourceElements(me, context_p);
+      context.put(ITransitionConstants.TRACEABILITY_HANDLER, context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER));
+      Collection<EObject> sourceObject = TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(me, context);
 
       if (sourceObject != null) {
         EObject targetObject = null;
 
-        if (diff_p instanceof IElementRelativeDifference) {
-          IElementRelativeDifference techdiff = (IElementRelativeDifference) diff_p;
+        if (diff instanceof IElementRelativeDifference) {
+          IElementRelativeDifference techdiff = (IElementRelativeDifference) diff;
           targetObject = techdiff.getElementMatch().get(Role.TARGET);
         }
 
@@ -199,11 +200,11 @@ public class DifferencesFilteringActivity extends AbstractActivity implements IT
     }
 
     if (listObject != null) {
-      LogHelper.getInstance().debug(NLS.bind(" - {0} : {1}", difftext_p, diffModelViewer.getTextDiff()), listObject,
+      LogHelper.getInstance().debug(NLS.bind(" - {0} : {1}", difftext, diffModelViewer.getTextDiff()), listObject,
           Messages.Activity_MergingDifferenceActivity);
 
     } else {
-      LogHelper.getInstance().debug(NLS.bind(" - {0} : {1}", difftext_p, diffModelViewer.getTextDiff()), Messages.Activity_MergingDifferenceActivity);
+      LogHelper.getInstance().debug(NLS.bind(" - {0} : {1}", difftext, diffModelViewer.getTextDiff()), Messages.Activity_MergingDifferenceActivity);
     }
 
   }

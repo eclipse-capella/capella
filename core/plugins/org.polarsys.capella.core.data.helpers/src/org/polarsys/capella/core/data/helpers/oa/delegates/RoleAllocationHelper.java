@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,26 +33,26 @@ public class RoleAllocationHelper {
 		return instance;
 	}
 
-	public Object doSwitch(RoleAllocation element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(RoleAllocation element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(OaPackage.Literals.ROLE_ALLOCATION__ENTITY)) {
-			ret = getEntity(element_p);
+		if (feature.equals(OaPackage.Literals.ROLE_ALLOCATION__ENTITY)) {
+			ret = getEntity(element);
 		}
-		else if (feature_p.equals(OaPackage.Literals.ROLE_ALLOCATION__ROLE)) {
-			ret = getRole(element_p);
+		else if (feature.equals(OaPackage.Literals.ROLE_ALLOCATION__ROLE)) {
+			ret = getRole(element);
 		}
 
     // no helper found... searching in super classes...
     if(null == ret) {
-      ret = AllocationHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AllocationHelper.getInstance().doSwitch(element, feature);
     }
 
 		return ret;
 	}
 
-	protected Entity getEntity(RoleAllocation element_p) {
-		TraceableElement ret = element_p.getSourceElement();
+	protected Entity getEntity(RoleAllocation element) {
+		TraceableElement ret = element.getSourceElement();
 
 		if(null != ret && ret instanceof Entity)
 			return (Entity) ret;
@@ -59,8 +60,8 @@ public class RoleAllocationHelper {
 		return null;
 	}
 
-	protected Role getRole(RoleAllocation element_p) {
-		TraceableElement ret = element_p.getTargetElement();
+	protected Role getRole(RoleAllocation element) {
+		TraceableElement ret = element.getTargetElement();
 
 		if(null != ret && ret instanceof Role)
 			return (Role) ret;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer;
 
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
@@ -21,16 +22,16 @@ public class SharedWorkflowActivityParameter extends WorkflowActivityParameter {
 
   ActivityParameters _sharedParameters = new ActivityParameters();
 
-  public void addSharedParameter(GenericParameter<?> parameter_p) {
-    _sharedParameters.addParameter(parameter_p);
+  public void addSharedParameter(GenericParameter<?> parameter) {
+    _sharedParameters.addParameter(parameter);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public ActivityParameters getActivityParameters(String activityID_p) {
-    ActivityParameters activityParameter = super.getActivityParameters(activityID_p);
+  public ActivityParameters getActivityParameters(String activityID) {
+    ActivityParameters activityParameter = super.getActivityParameters(activityID);
     if (activityParameter == null) {
       activityParameter = new ActivityParameters();
     }

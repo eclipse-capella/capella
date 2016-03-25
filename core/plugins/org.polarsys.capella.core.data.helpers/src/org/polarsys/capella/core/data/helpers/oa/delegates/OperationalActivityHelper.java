@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import java.util.ArrayList;
@@ -45,39 +46,39 @@ public class OperationalActivityHelper {
     return instance;
   }
 
-  public Object doSwitch(OperationalActivity element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(OperationalActivity element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES)) {
-      ret = getOwnedSwimlanes(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS)) {
-      ret = getOwnedProcess(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS)) {
-      ret = getActivityAllocations(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES)) {
-      ret = getAllocatorEntities(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS)) {
-      ret = getRealizingSystemFunctions(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES)) {
-      ret = getAllocatingRoles(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES)) {
-      ret = getContainedOperationalActivities(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES)) {
-      ret = getChildrenOperationalActivities(element_p);
+    if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES)) {
+      ret = getOwnedSwimlanes(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS)) {
+      ret = getOwnedProcess(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS)) {
+      ret = getActivityAllocations(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES)) {
+      ret = getAllocatorEntities(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS)) {
+      ret = getRealizingSystemFunctions(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES)) {
+      ret = getAllocatingRoles(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES)) {
+      ret = getContainedOperationalActivities(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES)) {
+      ret = getChildrenOperationalActivities(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractFunctionHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractFunctionHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<ActivityAllocation> getActivityAllocations(OperationalActivity element_p) {
+  protected List<ActivityAllocation> getActivityAllocations(OperationalActivity element) {
     List<ActivityAllocation> ret = new ArrayList<ActivityAllocation>();
 
-    for (AbstractTrace abstractTrace : element_p.getIncomingTraces()) {
+    for (AbstractTrace abstractTrace : element.getIncomingTraces()) {
       if (abstractTrace instanceof ActivityAllocation) {
         ret.add((ActivityAllocation) abstractTrace);
       }
@@ -85,9 +86,9 @@ public class OperationalActivityHelper {
     return ret;
   }
 
-  protected List<OperationalProcess> getOwnedProcess(OperationalActivity element_p) {
+  protected List<OperationalProcess> getOwnedProcess(OperationalActivity element) {
     List<OperationalProcess> ret = new ArrayList<OperationalProcess>();
-    for (FunctionalChain functionalChain : element_p.getOwnedFunctionalChains()) {
+    for (FunctionalChain functionalChain : element.getOwnedFunctionalChains()) {
       if (functionalChain instanceof OperationalProcess) {
         ret.add((OperationalProcess) functionalChain);
       }
@@ -95,9 +96,9 @@ public class OperationalActivityHelper {
     return ret;
   }
 
-  protected List<OperationalActivity> getContainedOperationalActivities(OperationalActivity element_p) {
+  protected List<OperationalActivity> getContainedOperationalActivities(OperationalActivity element) {
     List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
-    for (AbstractFunction function : element_p.getOwnedFunctions()) {
+    for (AbstractFunction function : element.getOwnedFunctions()) {
       if (function instanceof OperationalActivity) {
         ret.add((OperationalActivity) function);
       }
@@ -105,9 +106,9 @@ public class OperationalActivityHelper {
     return ret;
   }
 
-  protected List<OperationalActivity> getChildrenOperationalActivities(OperationalActivity element_p) {
+  protected List<OperationalActivity> getChildrenOperationalActivities(OperationalActivity element) {
     List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
-    for (AbstractFunction function : element_p.getSubFunctions()) {
+    for (AbstractFunction function : element.getSubFunctions()) {
       if (function instanceof OperationalActivity) {
         ret.add((OperationalActivity) function);
       }
@@ -115,17 +116,17 @@ public class OperationalActivityHelper {
     return ret;
   }
 
-  protected List<Swimlane> getOwnedSwimlanes(OperationalActivity element_p) {
+  protected List<Swimlane> getOwnedSwimlanes(OperationalActivity element) {
     // FIXME to be updated according to M� enhancements
-    //		List<ActivityGroup> groups = element_p.getOwnedGroups();
+    //		List<ActivityGroup> groups = element.getOwnedGroups();
     List<Swimlane> ret = new ArrayList<Swimlane>();
 
     return ret;
   }
 
-  protected List<Entity> getAllocatorEntities(OperationalActivity element_p) {
+  protected List<Entity> getAllocatorEntities(OperationalActivity element) {
     List<Entity> ret = new ArrayList<Entity>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
         if (src instanceof Entity) {
@@ -136,9 +137,9 @@ public class OperationalActivityHelper {
     return ret;
   }
 
-  protected List<SystemFunction> getRealizingSystemFunctions(OperationalActivity element_p) {
+  protected List<SystemFunction> getRealizingSystemFunctions(OperationalActivity element) {
     List<SystemFunction> ret = new ArrayList<SystemFunction>();
-    for (FunctionRealization functionRealization : element_p.getInFunctionRealizations()) {
+    for (FunctionRealization functionRealization : element.getInFunctionRealizations()) {
       AbstractFunction abstractFunction = functionRealization.getAllocatingFunction();
       if (abstractFunction instanceof SystemFunction) {
         ret.add((SystemFunction) abstractFunction);
@@ -147,9 +148,9 @@ public class OperationalActivityHelper {
     return ret;
   }
 
-  protected List<Role> getAllocatingRoles(OperationalActivity element_p) {
+  protected List<Role> getAllocatingRoles(OperationalActivity element) {
     List<Role> ret = new ArrayList<Role>();
-    for (ActivityAllocation activityAllocation : element_p.getActivityAllocations()) {
+    for (ActivityAllocation activityAllocation : element.getActivityAllocations()) {
       Role role = activityAllocation.getRole();
       if (null != role){
         ret.add(role);

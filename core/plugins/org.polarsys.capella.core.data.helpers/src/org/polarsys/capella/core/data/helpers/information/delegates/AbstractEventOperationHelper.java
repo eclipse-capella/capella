@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import java.util.ArrayList;
@@ -36,16 +37,16 @@ public class AbstractEventOperationHelper {
 		return instance;
 	}
 
-	public Object doSwitch(AbstractEventOperation element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(AbstractEventOperation element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES)) {
-			ret = getInvokingSequenceMessages(element_p);
+		if (feature.equals(InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES)) {
+			ret = getInvokingSequenceMessages(element);
 		}
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = NamedElementHelper.getInstance().doSwitch(element, feature);
 		}		
 
 		return ret;
@@ -54,9 +55,9 @@ public class AbstractEventOperationHelper {
 	/**
 	 * 
 	 */
-	protected List<SequenceMessage> getInvokingSequenceMessages(AbstractEventOperation element_p) {
+	protected List<SequenceMessage> getInvokingSequenceMessages(AbstractEventOperation element) {
 		List <SequenceMessage> ret = new ArrayList <SequenceMessage>();
-		for (EObject evt : EObjectExt.getReferencers(element_p, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION)) {
+		for (EObject evt : EObjectExt.getReferencers(element, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION)) {
 	    for (EObject end : EObjectExt.getReferencers(evt, InteractionPackage.Literals.ABSTRACT_END__EVENT)) {
   	    for (EObject msg : EObjectExt.getReferencers(end, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END)) {
     		  if (msg instanceof SequenceMessage) {
@@ -67,7 +68,7 @@ public class AbstractEventOperationHelper {
   	    }
 	    }
 		}
-    for (EObject evt : EObjectExt.getReferencers(element_p, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION)) {
+    for (EObject evt : EObjectExt.getReferencers(element, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION)) {
       for (EObject end : EObjectExt.getReferencers(evt, InteractionPackage.Literals.ABSTRACT_END__EVENT)) {
         for (EObject msg : EObjectExt.getReferencers(end, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END)) {
           if (msg instanceof SequenceMessage) {

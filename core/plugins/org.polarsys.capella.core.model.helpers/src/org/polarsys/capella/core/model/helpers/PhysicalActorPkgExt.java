@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -24,12 +25,12 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  */
 public class PhysicalActorPkgExt {
   
-  static public PhysicalActorPkg getRootPhysicalActorPkg(PhysicalActorPkg lcPkg_p) {
+  static public PhysicalActorPkg getRootPhysicalActorPkg(PhysicalActorPkg lcPkg) {
     PhysicalActorPkg rootPkg = null;
-    if(null != lcPkg_p) {
-      Object container = lcPkg_p.eContainer();
+    if(null != lcPkg) {
+      Object container = lcPkg.eContainer();
       if (container instanceof PhysicalArchitecture) {
-        return lcPkg_p;
+        return lcPkg;
       }
       if (container instanceof PhysicalActorPkg) {
         rootPkg = getRootPhysicalActorPkg((PhysicalActorPkg) container);
@@ -42,14 +43,14 @@ public class PhysicalActorPkgExt {
    * Gets all the LogicalComponents from LogicalComponentPkg
    * 
    * 
-   * @param lcPkg_p the PhysicalActorPkg
+   * @param lcPkg the PhysicalActorPkg
    * @return list of LogicalComponents
    */
-  static public List<PhysicalActor> getAllPAsFromPAPkg(PhysicalActorPkg lcPkg_p) {
+  static public List<PhysicalActor> getAllPAsFromPAPkg(PhysicalActorPkg lcPkg) {
     List<PhysicalActor> list = new ArrayList<PhysicalActor>();
-    if (null != lcPkg_p) {
-      list.addAll(lcPkg_p.getOwnedPhysicalActors());
-      for (PhysicalActorPkg subLCPkg : lcPkg_p.getOwnedPhysicalActorPkgs()) {
+    if (null != lcPkg) {
+      list.addAll(lcPkg.getOwnedPhysicalActors());
+      for (PhysicalActorPkg subLCPkg : lcPkg.getOwnedPhysicalActorPkgs()) {
         list.addAll(getAllPAsFromPAPkg(subLCPkg));
       }
     }
@@ -60,13 +61,13 @@ public class PhysicalActorPkgExt {
    * Gets all the interfaces from  PhysicalActorPkg
    * 
    * 
-   * @param lcPkg_p the LogicalComponentPkg
+   * @param lcPkg the LogicalComponentPkg
    * @return list of interfaces
    */
-  static public List<CapellaElement> getAllInterfacesFromPhysicalActorPkg(PhysicalActorPkg lcPkg_p) {
+  static public List<CapellaElement> getAllInterfacesFromPhysicalActorPkg(PhysicalActorPkg lcPkg) {
     List<CapellaElement> list = new ArrayList<CapellaElement>();
  
-    List<PhysicalActor> actors = getAllPAsFromPAPkg(lcPkg_p);
+    List<PhysicalActor> actors = getAllPAsFromPAPkg(lcPkg);
     for (PhysicalActor actor : actors) {
       list.addAll(InterfacePkgExt.getAllInterfaces(actor.getOwnedInterfacePkg()));
     }

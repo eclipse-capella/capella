@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -65,99 +66,99 @@ import org.polarsys.capella.core.data.oa.Swimlane;
 
 public class OperationalAnalysisHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 
 		Object ret = null;
 		
-		if (object_p instanceof OperationalAnalysis) {
-			ret = OpAnalysisHelper.getInstance().doSwitch((OperationalAnalysis) object_p, feature_p);
+		if (object instanceof OperationalAnalysis) {
+			ret = OpAnalysisHelper.getInstance().doSwitch((OperationalAnalysis) object, feature);
 		}
-		else if(object_p instanceof OperationalActivity){
-			ret = OperationalActivityHelper.getInstance().doSwitch((OperationalActivity) object_p, feature_p);
+		else if(object instanceof OperationalActivity){
+			ret = OperationalActivityHelper.getInstance().doSwitch((OperationalActivity) object, feature);
 		}
-		else if(object_p instanceof OperationalCapability){
-			ret = OperationalCapabilityHelper.getInstance().doSwitch((OperationalCapability) object_p, feature_p);
+		else if(object instanceof OperationalCapability){
+			ret = OperationalCapabilityHelper.getInstance().doSwitch((OperationalCapability) object, feature);
 		}
-		else if(object_p instanceof Swimlane){
-			ret = SwimlaneHelper.getInstance().doSwitch((Swimlane) object_p, feature_p);
+		else if(object instanceof Swimlane){
+			ret = SwimlaneHelper.getInstance().doSwitch((Swimlane) object, feature);
 		}
-    else if (object_p instanceof OperationalActor) {
-      ret = OperationalActorHelper.getInstance().doSwitch((OperationalActor) object_p, feature_p);
+    else if (object instanceof OperationalActor) {
+      ret = OperationalActorHelper.getInstance().doSwitch((OperationalActor) object, feature);
     }
-		else if (object_p instanceof Entity) {
-			ret = EntityHelper.getInstance().doSwitch((Entity) object_p, feature_p);
+		else if (object instanceof Entity) {
+			ret = EntityHelper.getInstance().doSwitch((Entity) object, feature);
 		}
-		else if (object_p instanceof Role) {
-			ret = RoleHelper.getInstance().doSwitch((Role) object_p, feature_p);
+		else if (object instanceof Role) {
+			ret = RoleHelper.getInstance().doSwitch((Role) object, feature);
 		}
-		else if (object_p instanceof OperationalProcess) {
-			ret = OperationalProcessHelper.getInstance().doSwitch((OperationalProcess) object_p, feature_p);
+		else if (object instanceof OperationalProcess) {
+			ret = OperationalProcessHelper.getInstance().doSwitch((OperationalProcess) object, feature);
 		}
-		else if (object_p instanceof ActivityAllocation) {
-			ret = ActivityAllocationHelper.getInstance().doSwitch((ActivityAllocation) object_p, feature_p);
+		else if (object instanceof ActivityAllocation) {
+			ret = ActivityAllocationHelper.getInstance().doSwitch((ActivityAllocation) object, feature);
 		}
-		else if (object_p instanceof RoleAllocation) {
-			ret = RoleAllocationHelper.getInstance().doSwitch((RoleAllocation) object_p, feature_p);
+		else if (object instanceof RoleAllocation) {
+			ret = RoleAllocationHelper.getInstance().doSwitch((RoleAllocation) object, feature);
 		}
-		else if (object_p instanceof CommunicationMean) {
-			ret = CommunicationMeanHelper.getInstance().doSwitch((CommunicationMean) object_p, feature_p);
+		else if (object instanceof CommunicationMean) {
+			ret = CommunicationMeanHelper.getInstance().doSwitch((CommunicationMean) object, feature);
 		}
-    else if(object_p instanceof OperationalActivityPkg) {
-      ret = StructureHelper.getInstance().doSwitch((OperationalActivityPkg) object_p, feature_p);
+    else if(object instanceof OperationalActivityPkg) {
+      ret = StructureHelper.getInstance().doSwitch((OperationalActivityPkg) object, feature);
     }
-    else if(object_p instanceof OperationalCapabilityPkg) {
-      ret = StructureHelper.getInstance().doSwitch((OperationalCapabilityPkg) object_p, feature_p);
+    else if(object instanceof OperationalCapabilityPkg) {
+      ret = StructureHelper.getInstance().doSwitch((OperationalCapabilityPkg) object, feature);
     }
-    else if(object_p instanceof RolePkg) {
-      ret = StructureHelper.getInstance().doSwitch((RolePkg) object_p, feature_p);
+    else if(object instanceof RolePkg) {
+      ret = StructureHelper.getInstance().doSwitch((RolePkg) object, feature);
     }
-    else if(object_p instanceof EntityPkg) {
-      ret = StructureHelper.getInstance().doSwitch((EntityPkg) object_p, feature_p);
+    else if(object instanceof EntityPkg) {
+      ret = StructureHelper.getInstance().doSwitch((EntityPkg) object, feature);
     }
-    else if(object_p instanceof CapabilityConfiguration) {
-      ret = ComponentHelper.getInstance().doSwitch((CapabilityConfiguration) object_p, feature_p);
+    else if(object instanceof CapabilityConfiguration) {
+      ret = ComponentHelper.getInstance().doSwitch((CapabilityConfiguration) object, feature);
     }
-    else if(object_p instanceof OrganisationalUnit) {
-      ret = NamedElementHelper.getInstance().doSwitch((OrganisationalUnit) object_p, feature_p);
+    else if(object instanceof OrganisationalUnit) {
+      ret = NamedElementHelper.getInstance().doSwitch((OrganisationalUnit) object, feature);
     }
-    else if(object_p instanceof OrganisationalUnitComposition) {
-      ret = NamedElementHelper.getInstance().doSwitch((OrganisationalUnitComposition) object_p, feature_p);
+    else if(object instanceof OrganisationalUnitComposition) {
+      ret = NamedElementHelper.getInstance().doSwitch((OrganisationalUnitComposition) object, feature);
     }
-    else if(object_p instanceof Concept) {
-      ret = NamedElementHelper.getInstance().doSwitch((Concept) object_p, feature_p);
+    else if(object instanceof Concept) {
+      ret = NamedElementHelper.getInstance().doSwitch((Concept) object, feature);
     }
-    else if(object_p instanceof ConceptCompliance) {
-      ret = RelationshipHelper.getInstance().doSwitch((ConceptCompliance) object_p, feature_p);
+    else if(object instanceof ConceptCompliance) {
+      ret = RelationshipHelper.getInstance().doSwitch((ConceptCompliance) object, feature);
     }
-    else if(object_p instanceof ConceptPkg) {
-      ret = StructureHelper.getInstance().doSwitch((ConceptPkg) object_p, feature_p);
+    else if(object instanceof ConceptPkg) {
+      ret = StructureHelper.getInstance().doSwitch((ConceptPkg) object, feature);
     }
-    else if(object_p instanceof ItemInConcept) {
-      ret = NamedElementHelper.getInstance().doSwitch((ItemInConcept) object_p, feature_p);
+    else if(object instanceof ItemInConcept) {
+      ret = NamedElementHelper.getInstance().doSwitch((ItemInConcept) object, feature);
     }
-    else if(object_p instanceof Location) {
-      ret = ComponentHelper.getInstance().doSwitch((Location) object_p, feature_p);
+    else if(object instanceof Location) {
+      ret = ComponentHelper.getInstance().doSwitch((Location) object, feature);
     }
-    else if(object_p instanceof CommunityOfInterest) {
-      ret = NamedElementHelper.getInstance().doSwitch((CommunityOfInterest) object_p, feature_p);
+    else if(object instanceof CommunityOfInterest) {
+      ret = NamedElementHelper.getInstance().doSwitch((CommunityOfInterest) object, feature);
     }
-    else if(object_p instanceof CommunityOfInterestComposition) {
-      ret = NamedElementHelper.getInstance().doSwitch((CommunityOfInterestComposition) object_p, feature_p);
+    else if(object instanceof CommunityOfInterestComposition) {
+      ret = NamedElementHelper.getInstance().doSwitch((CommunityOfInterestComposition) object, feature);
     }
-    else if(object_p instanceof RoleAssemblyUsage) {
-      ret = NamedElementHelper.getInstance().doSwitch((RoleAssemblyUsage) object_p, feature_p);
+    else if(object instanceof RoleAssemblyUsage) {
+      ret = NamedElementHelper.getInstance().doSwitch((RoleAssemblyUsage) object, feature);
     }
-    else if(object_p instanceof EntityOperationalCapabilityInvolvement) {
-      ret = EntityOperationalCapabilityInvolvementHelper.getInstance().doSwitch((EntityOperationalCapabilityInvolvement) object_p, feature_p);
+    else if(object instanceof EntityOperationalCapabilityInvolvement) {
+      ret = EntityOperationalCapabilityInvolvementHelper.getInstance().doSwitch((EntityOperationalCapabilityInvolvement) object, feature);
     }
-    else if(object_p instanceof OperationalContext) {
-      ret = OperationalContextHelper.getInstance().doSwitch((OperationalContext) object_p, feature_p);
+    else if(object instanceof OperationalContext) {
+      ret = OperationalContextHelper.getInstance().doSwitch((OperationalContext) object, feature);
     }
-    else if(object_p instanceof OperationalScenario) {
-      ret = NamedElementHelper.getInstance().doSwitch((OperationalScenario) object_p, feature_p);
+    else if(object instanceof OperationalScenario) {
+      ret = NamedElementHelper.getInstance().doSwitch((OperationalScenario) object, feature);
     }
 
-		if(null != ret || feature_p.getUpperBound() == 1)
+		if(null != ret || feature.getUpperBound() == 1)
 			return ret;
 		
 		throw new HelperNotFoundException();

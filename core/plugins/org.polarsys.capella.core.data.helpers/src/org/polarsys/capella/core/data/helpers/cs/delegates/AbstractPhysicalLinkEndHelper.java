@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import java.util.ArrayList;
@@ -36,29 +37,29 @@ public class AbstractPhysicalLinkEndHelper {
 		return instance;
 	}
 
-	public Object doSwitch(AbstractPhysicalLinkEnd element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(AbstractPhysicalLinkEnd element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS)) {
-      ret = getInvolvedLinks(element_p);
+		if (feature.equals(CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS)) {
+      ret = getInvolvedLinks(element);
     }
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = CapellaElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = CapellaElementHelper.getInstance().doSwitch(element, feature);
 		}
 		return ret;
 	}
 
-  protected List<PhysicalLink> getInvolvedLinks(AbstractPhysicalLinkEnd element_p) {
+  protected List<PhysicalLink> getInvolvedLinks(AbstractPhysicalLinkEnd element) {
     List<PhysicalLink> ret = new ArrayList<PhysicalLink>();
 
-    for (EObject ref: EObjectExt.getReferencers(element_p, CsPackage.Literals.PHYSICAL_LINK__LINK_ENDS)) {
+    for (EObject ref: EObjectExt.getReferencers(element, CsPackage.Literals.PHYSICAL_LINK__LINK_ENDS)) {
       ret.add((PhysicalLink) ref);
     }
 
-    if (element_p instanceof PhysicalPort) {
-      for (EObject ref1 : EObjectExt.getReferencers(element_p, CsPackage.Literals.PHYSICAL_LINK_END__PORT)) {
+    if (element instanceof PhysicalPort) {
+      for (EObject ref1 : EObjectExt.getReferencers(element, CsPackage.Literals.PHYSICAL_LINK_END__PORT)) {
         for (EObject ref2 : EObjectExt.getReferencers(ref1, CsPackage.Literals.PHYSICAL_LINK__LINK_ENDS)) {
           ret.add((PhysicalLink) ref2);
         }

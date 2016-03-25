@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.io.IOException;
@@ -40,8 +41,8 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
    * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
    */
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
 
     boolean shouldSave = Boolean.TRUE.equals(context.get(ITransitionConstants.SAVE_REQUIRED));
 
@@ -63,9 +64,9 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
           try {
             LogHelper.getInstance().info(NLS.bind("Resource ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
             targetResource.save(Collections.EMPTY_MAP);
-          } catch (IOException exception_p) {
-            exception_p.printStackTrace();
-            LogHelper.getInstance().warn(exception_p.getMessage(), Messages.Activity_Transition);
+          } catch (IOException exception) {
+            exception.printStackTrace();
+            LogHelper.getInstance().warn(exception.getMessage(), Messages.Activity_Transition);
           }
         }
       }

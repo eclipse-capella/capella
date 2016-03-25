@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.ctx.delegates;
 
 import java.util.ArrayList;
@@ -41,32 +42,32 @@ public class SysAnalysisHelper {
     return instance;
   }
 
-  public Object doSwitch(SystemAnalysis element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(SystemAnalysis element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATED_OPERATIONAL_ANALYSIS_REALIZATIONS)) {
-      ret = getAllocatedOperationalAnalysisRealizations(element_p);
-    } else if (feature_p.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_CAPABILITY_PKG)) {
-      ret = getContainedCapabilityPkg(element_p);
-    } else if (feature_p.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_SYSTEM_FUNCTION_PKG)) {
-      ret = getContainedSystemFunctionPkg(element_p);
-    } else if (feature_p.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATED_OPERATIONAL_ANALYSES)) {
-      ret = getAllocatedOperationalAnalyses(element_p);
-    } else if (feature_p.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATING_LOGICAL_ARCHITECTURES)) {
-      ret = getAllocatingLogicalArchitectures(element_p);
+    if (feature.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATED_OPERATIONAL_ANALYSIS_REALIZATIONS)) {
+      ret = getAllocatedOperationalAnalysisRealizations(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_CAPABILITY_PKG)) {
+      ret = getContainedCapabilityPkg(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__CONTAINED_SYSTEM_FUNCTION_PKG)) {
+      ret = getContainedSystemFunctionPkg(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATED_OPERATIONAL_ANALYSES)) {
+      ret = getAllocatedOperationalAnalyses(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATING_LOGICAL_ARCHITECTURES)) {
+      ret = getAllocatingLogicalArchitectures(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = BlockArchitectureHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = BlockArchitectureHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<OperationalAnalysisRealization> getAllocatedOperationalAnalysisRealizations(SystemAnalysis element_p) {
+  protected List<OperationalAnalysisRealization> getAllocatedOperationalAnalysisRealizations(SystemAnalysis element) {
     List<OperationalAnalysisRealization> ret = new ArrayList<OperationalAnalysisRealization>();
-    for (ArchitectureAllocation architectureAllocation : element_p.getProvisionedArchitectureAllocations()) {
+    for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof OperationalAnalysisRealization) {
         ret.add((OperationalAnalysisRealization) architectureAllocation);
       }
@@ -74,25 +75,25 @@ public class SysAnalysisHelper {
     return ret;
   }
 
-  protected CapabilityPkg getContainedCapabilityPkg(SystemAnalysis element_p) {
-    AbstractCapabilityPkg abstractCapabilityPkg = element_p.getOwnedAbstractCapabilityPkg();
+  protected CapabilityPkg getContainedCapabilityPkg(SystemAnalysis element) {
+    AbstractCapabilityPkg abstractCapabilityPkg = element.getOwnedAbstractCapabilityPkg();
     if (abstractCapabilityPkg instanceof CapabilityPkg) {
       return (CapabilityPkg) abstractCapabilityPkg;
     }
     return null;
   }
 
-  protected SystemFunctionPkg getContainedSystemFunctionPkg(SystemAnalysis element_p) {
-    FunctionPkg functionPkg = element_p.getOwnedFunctionPkg();
+  protected SystemFunctionPkg getContainedSystemFunctionPkg(SystemAnalysis element) {
+    FunctionPkg functionPkg = element.getOwnedFunctionPkg();
     if (functionPkg instanceof SystemFunctionPkg) {
       return (SystemFunctionPkg) functionPkg;
     }
     return null;
   }
 
-  protected List<OperationalAnalysis> getAllocatedOperationalAnalyses(SystemAnalysis element_p){
+  protected List<OperationalAnalysis> getAllocatedOperationalAnalyses(SystemAnalysis element){
     List <OperationalAnalysis> ret = new ArrayList<OperationalAnalysis>();
-    for (BlockArchitecture architecture : element_p.getAllocatedArchitectures()) {
+    for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof OperationalAnalysis) {
         ret.add((OperationalAnalysis) architecture);
       }
@@ -100,9 +101,9 @@ public class SysAnalysisHelper {
     return ret;
   }
 
-  protected List <LogicalArchitecture> getAllocatingLogicalArchitectures(SystemAnalysis element_p) {
+  protected List <LogicalArchitecture> getAllocatingLogicalArchitectures(SystemAnalysis element) {
     List <LogicalArchitecture> ret = new ArrayList<LogicalArchitecture>();
-    for (BlockArchitecture architecture : element_p.getAllocatingArchitectures()) {
+    for (BlockArchitecture architecture : element.getAllocatingArchitectures()) {
       if (architecture instanceof LogicalArchitecture) {
         ret.add((LogicalArchitecture) architecture);
       }

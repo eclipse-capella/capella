@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.ctx.services;
 
 import java.util.ArrayList;
@@ -23,14 +24,14 @@ public class MissionPkgExt {
 
   /**
    * Get all the missions in a missionPkg (and SUB PKGS) recursively
-   * @param missionPkg_p the missionPkg
+   * @param missionPkg the missionPkg
    * @return list of missions
    */
-  static public List<Mission> getAllMissions(MissionPkg missionPkg_p) {
+  static public List<Mission> getAllMissions(MissionPkg missionPkg) {
     List<Mission> list = new ArrayList<Mission>(1);
-    if (null != missionPkg_p) {
-      list.addAll(missionPkg_p.getOwnedMissions());
-      for (MissionPkg subPkg : missionPkg_p.getOwnedMissionPkgs()) {
+    if (null != missionPkg) {
+      list.addAll(missionPkg.getOwnedMissions());
+      for (MissionPkg subPkg : missionPkg.getOwnedMissionPkgs()) {
         list.addAll(getAllMissions(subPkg));
       }
     }

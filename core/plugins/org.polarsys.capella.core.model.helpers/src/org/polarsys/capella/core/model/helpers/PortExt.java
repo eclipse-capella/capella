@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -56,44 +57,44 @@ public class PortExt {
 
   /**
    * Attach with PortAllocation the given port to the given activityNode if wasn't yet linked by a portAllocation
-   * @param port_p
-   * @param activityNode_p
+   * @param port
+   * @param activityNode
    */
-  public static void attachPort(Port port_p, ActivityNode activityNode_p) {
-    if (((activityNode_p instanceof AbstractFunction) || (activityNode_p instanceof FunctionPort)) && !isRelatedTo(port_p, activityNode_p)) {
+  public static void attachPort(Port port, ActivityNode activityNode) {
+    if (((activityNode instanceof AbstractFunction) || (activityNode instanceof FunctionPort)) && !isRelatedTo(port, activityNode)) {
       PortAllocation portrealS = InformationFactory.eINSTANCE.createPortAllocation();
-      portrealS.setSourceElement(port_p);
-      portrealS.setTargetElement((TraceableElement) activityNode_p);
-      port_p.getOwnedPortAllocations().add(portrealS);
+      portrealS.setSourceElement(port);
+      portrealS.setTargetElement((TraceableElement) activityNode);
+      port.getOwnedPortAllocations().add(portrealS);
       CapellaElementExt.creationService(portrealS);
     }
   }
 
   /**
    * Checks if two standard ports could be connected together.
-   * @param sourcePort_p The source standard port.
-   * @param targetPort_p The target standard port.
+   * @param sourcePort The source standard port.
+   * @param targetPort The target standard port.
    * @return <code>True</code> if the two standard ports could be connected together else <code>false</code>.
    */
-  public static boolean canCommunicate(ComponentPort sourcePort_p, ComponentPort targetPort_p) {
+  public static boolean canCommunicate(ComponentPort sourcePort, ComponentPort targetPort) {
     // Check if any provided interface of the source port matches with any
     // required interface of the target port.
-    EList<Interface> providedInterfaces = sourcePort_p.getProvidedInterfaces();
+    EList<Interface> providedInterfaces = sourcePort.getProvidedInterfaces();
     boolean matched = false;
     Iterator<?> iterator = providedInterfaces.iterator();
     while (iterator.hasNext() && !matched) {
       Interface providedInterface = (Interface) iterator.next();
-      matched = targetPort_p.getRequiredInterfaces().contains(providedInterface);
+      matched = targetPort.getRequiredInterfaces().contains(providedInterface);
     }
 
     // Check if any required interface of the source port matches with any
     // provided interface of the target port.
     if (!matched) {
-      EList<Interface> requiredInterfaces = sourcePort_p.getRequiredInterfaces();
+      EList<Interface> requiredInterfaces = sourcePort.getRequiredInterfaces();
       iterator = requiredInterfaces.iterator();
       while (iterator.hasNext() && !matched) {
         Interface requiredInterface = (Interface) iterator.next();
-        matched = targetPort_p.getProvidedInterfaces().contains(requiredInterface);
+        matched = targetPort.getProvidedInterfaces().contains(requiredInterface);
       }
     }
     return matched;
@@ -112,11 +113,11 @@ public class PortExt {
 
   /**
    * Create an in flow port
-   * @param name_p
+   * @param name
    * @return
    */
-  public static ComponentPort createInFlowPort(String name_p) {
-    ComponentPort inP = FaFactory.eINSTANCE.createComponentPort(name_p);
+  public static ComponentPort createInFlowPort(String name) {
+    ComponentPort inP = FaFactory.eINSTANCE.createComponentPort(name);
     inP.setKind(ComponentPortKind.FLOW);
     inP.setOrientation(OrientationPortKind.IN);
     return inP;
@@ -135,11 +136,11 @@ public class PortExt {
 
   /**
    * Create an out flow port
-   * @param name_p
+   * @param name
    * @return
    */
-  public static ComponentPort createOutFlowPort(String name_p) {
-    ComponentPort inP = FaFactory.eINSTANCE.createComponentPort(name_p);
+  public static ComponentPort createOutFlowPort(String name) {
+    ComponentPort inP = FaFactory.eINSTANCE.createComponentPort(name);
     inP.setKind(ComponentPortKind.FLOW);
     inP.setOrientation(OrientationPortKind.OUT);
     return inP;
@@ -247,11 +248,11 @@ public class PortExt {
     return componentExchanges;
   }
 
-  public static final Collection<ComponentPort> getAllLinkedDelegatedComponentPorts(ComponentPort port_p) {
+  public static final Collection<ComponentPort> getAllLinkedDelegatedComponentPorts(ComponentPort componentPort1) {
     LinkedList<ComponentPort> ports = new LinkedList<ComponentPort>();
     Collection<ComponentPort> visited = new ArrayList<ComponentPort>();
 
-    ports.add(port_p);
+    ports.add(componentPort1);
     while (ports.size() > 0) {
       ComponentPort port = ports.removeFirst();
       if (!visited.contains(port)) {
@@ -260,8 +261,8 @@ public class PortExt {
       }
     }
 
-    visited.remove(port_p);
-    ports.add(port_p);
+    visited.remove(componentPort1);
+    ports.add(componentPort1);
     while (ports.size() > 0) {
       ComponentPort port = ports.removeFirst();
       if (!visited.contains(port)) {
@@ -273,11 +274,11 @@ public class PortExt {
     return visited;
   }
 
-  public static final Collection<ComponentPort> getAllDelegatedComponentPorts(ComponentPort port_p) {
+  public static final Collection<ComponentPort> getAllDelegatedComponentPorts(ComponentPort componentPort1) {
     LinkedList<ComponentPort> ports = new LinkedList<ComponentPort>();
     Collection<ComponentPort> visited = new HashSet<ComponentPort>();
 
-    ports.add(port_p);
+    ports.add(componentPort1);
     while (ports.size() > 0) {
       ComponentPort port = ports.removeFirst();
       if (!visited.contains(port)) {
@@ -286,15 +287,15 @@ public class PortExt {
       }
     }
 
-    visited.remove(port_p);
+    visited.remove(componentPort1);
     return visited;
   }
 
-  public static final Collection<ComponentPort> getAllDelegatingComponentPorts(ComponentPort port_p) {
+  public static final Collection<ComponentPort> getAllDelegatingComponentPorts(ComponentPort componentPort1) {
     LinkedList<ComponentPort> ports = new LinkedList<ComponentPort>();
     Collection<ComponentPort> visited = new HashSet<ComponentPort>();
 
-    ports.add(port_p);
+    ports.add(componentPort1);
     while (ports.size() > 0) {
       ComponentPort port = ports.removeFirst();
       if (!visited.contains(port)) {
@@ -303,16 +304,16 @@ public class PortExt {
       }
     }
 
-    visited.remove(port_p);
+    visited.remove(componentPort1);
     return visited;
   }
 
-  public static final Collection<ComponentPort> getDelegatingComponentPorts(ComponentPort port_p) {
+  public static final Collection<ComponentPort> getDelegatingComponentPorts(ComponentPort port) {
     List<ComponentPort> ports = new ArrayList<ComponentPort>(1);
-    for (ComponentExchange flow : port_p.getComponentExchanges()) {
+    for (ComponentExchange flow : port.getComponentExchanges()) {
       if (flow.getKind() == ComponentExchangeKind.DELEGATION) {
-        if (port_p.equals(ComponentExchangeExt.getTargetPort(flow))) {
-          Port opposite = ComponentExchangeExt.getOppositePort(flow, port_p);
+        if (port.equals(ComponentExchangeExt.getTargetPort(flow))) {
+          Port opposite = ComponentExchangeExt.getOppositePort(flow, port);
           if (opposite instanceof ComponentPort) {
             ports.add((ComponentPort) opposite);
           }
@@ -322,11 +323,11 @@ public class PortExt {
     return ports;
   }
 
-  public static final Collection<ComponentExchange> getDelegatingComponentExchanges(ComponentPort port_p) {
+  public static final Collection<ComponentExchange> getDelegatingComponentExchanges(ComponentPort port) {
     List<ComponentExchange> exchanges = new ArrayList<ComponentExchange>(1);
-    for (ComponentExchange flow : port_p.getComponentExchanges()) {
+    for (ComponentExchange flow : port.getComponentExchanges()) {
       if (flow.getKind() == ComponentExchangeKind.DELEGATION) {
-        if (port_p.equals(ComponentExchangeExt.getTargetPort(flow))) {
+        if (port.equals(ComponentExchangeExt.getTargetPort(flow))) {
           exchanges.add(flow);
         }
       }
@@ -334,12 +335,12 @@ public class PortExt {
     return exchanges;
   }
 
-  public static final Collection<ComponentPort> getDelegatedComponentPorts(ComponentPort port_p) {
+  public static final Collection<ComponentPort> getDelegatedComponentPorts(ComponentPort port) {
     List<ComponentPort> ports = new ArrayList<ComponentPort>(1);
-    for (ComponentExchange flow : port_p.getComponentExchanges()) {
+    for (ComponentExchange flow : port.getComponentExchanges()) {
       if (flow.getKind() == ComponentExchangeKind.DELEGATION) {
-        if (port_p.equals(ComponentExchangeExt.getSourcePort(flow))) {
-          Port opposite = ComponentExchangeExt.getOppositePort(flow, port_p);
+        if (port.equals(ComponentExchangeExt.getSourcePort(flow))) {
+          Port opposite = ComponentExchangeExt.getOppositePort(flow, port);
           if (opposite instanceof ComponentPort) {
             ports.add((ComponentPort) opposite);
           }
@@ -349,11 +350,11 @@ public class PortExt {
     return ports;
   }
 
-  public static final Collection<ComponentExchange> getDelegatedComponentExchanges(ComponentPort port_p) {
+  public static final Collection<ComponentExchange> getDelegatedComponentExchanges(ComponentPort port) {
     List<ComponentExchange> exchanges = new ArrayList<ComponentExchange>(1);
-    for (ComponentExchange flow : port_p.getComponentExchanges()) {
+    for (ComponentExchange flow : port.getComponentExchanges()) {
       if (flow.getKind() == ComponentExchangeKind.DELEGATION) {
-        if (port_p.equals(ComponentExchangeExt.getSourcePort(flow))) {
+        if (port.equals(ComponentExchangeExt.getSourcePort(flow))) {
           exchanges.add(flow);
         }
       }
@@ -361,11 +362,11 @@ public class PortExt {
     return exchanges;
   }
 
-  public static final Collection<ComponentPort> getLinkedDelegatedComponentPorts(ComponentPort port_p) {
+  public static final Collection<ComponentPort> getLinkedDelegatedComponentPorts(ComponentPort port) {
     List<ComponentPort> ports = new ArrayList<ComponentPort>(1);
-    for (ComponentExchange flow : port_p.getComponentExchanges()) {
+    for (ComponentExchange flow : port.getComponentExchanges()) {
       if (flow.getKind() == ComponentExchangeKind.DELEGATION) {
-        Port opposite = ComponentExchangeExt.getOppositePort(flow, port_p);
+        Port opposite = ComponentExchangeExt.getOppositePort(flow, port);
         if (opposite instanceof ComponentPort) {
           ports.add((ComponentPort) opposite);
         }
@@ -376,14 +377,14 @@ public class PortExt {
 
   /**
    * This method retrieves the provided interfaces.
-   * @param port_p the port whose provided interfaces will be retrieved
+   * @param port the port whose provided interfaces will be retrieved
    * @return List<Interface> the provided interfaces
    */
-  public static List<Interface> getProvidedInterfaces(ComponentPort port_p) {
+  public static List<Interface> getProvidedInterfaces(ComponentPort port) {
     List<Interface> providedInterfaces = new ArrayList<Interface>();
 
-    if (port_p != null) {
-      SystemComponent portType = (SystemComponent) port_p.getType();
+    if (port != null) {
+      SystemComponent portType = (SystemComponent) port.getType();
       if (portType != null) {
         if (portType instanceof PhysicalComponent) {
           PhysicalComponent pc = (PhysicalComponent) portType;
@@ -401,25 +402,25 @@ public class PortExt {
   }
 
   /**
-   * Retrieve the owning component of the given port_p
+   * Retrieve the owning component of the given port
    * @param aFeature_p
    * @return
    */
-  public static Component getRelatedComponent(ComponentPort port_p) {
-    if (port_p.eContainer() instanceof Component) {
-      return (Component) port_p.eContainer();
+  public static Component getRelatedComponent(ComponentPort port) {
+    if (port.eContainer() instanceof Component) {
+      return (Component) port.eContainer();
     }
     return null;
   }
 
   /**
-   * Retrieve the owning component of the given port_p
+   * Retrieve the owning component of the given port
    * @param aFeature_p
    * @return
    */
-  public static Component getRelatedComponent(PhysicalPort port_p) {
-    if (port_p.eContainer() instanceof Component) {
-      return (Component) port_p.eContainer();
+  public static Component getRelatedComponent(PhysicalPort port) {
+    if (port.eContainer() instanceof Component) {
+      return (Component) port.eContainer();
     }
     return null;
   }
@@ -447,14 +448,14 @@ public class PortExt {
 
   /**
    * This method retrieves the required interfaces.
-   * @param port_p the port whose required interfaces will be retrieved
+   * @param port the port whose required interfaces will be retrieved
    * @return List<Interface> the required interfaces
    */
-  public static List<Interface> getRequiredInterfaces(ComponentPort port_p) {
+  public static List<Interface> getRequiredInterfaces(ComponentPort port) {
     List<Interface> requiredInterfaces = new ArrayList<Interface>();
 
-    if (port_p != null) {
-      SystemComponent portType = (SystemComponent) port_p.getType();
+    if (port != null) {
+      SystemComponent portType = (SystemComponent) port.getType();
       if (portType != null) {
         if (portType instanceof PhysicalComponent) {
           PhysicalComponent pc = (PhysicalComponent) portType;
@@ -522,8 +523,8 @@ public class PortExt {
   /**
    * Check if the Component related to a ComponentPort (or one of his subcomponents) is allocating the Function related to a FunctionPort.<br>
    * This method can be used to know if a PortAllocation can be created between the given ports.
-   * @param componentPort_p
-   * @param functionPort_p
+   * @param componentPort
+   * @param functionPort
    * @return <ul>
    *         <li><code>Boolean.TRUE</code> if the related Component (or one if its subcomponents) is allocating the related Function,</li>
    *         <li><code>Boolean.FALSE</code> if not,</li>
@@ -531,14 +532,14 @@ public class PortExt {
    *         AbstractFunction.</li>
    *         </ul>
    */
-  public static Boolean isRelatedComponentAllocatingRelatedFunction(ComponentPort componentPort_p, ActivityNode functionPort_p) {
+  public static Boolean isRelatedComponentAllocatingRelatedFunction(ComponentPort componentPort, ActivityNode functionPort) {
     // Get the Component containing the given port.
-    Component component = PortExt.getRelatedComponent(componentPort_p);
+    Component component = PortExt.getRelatedComponent(componentPort);
     if (null == component) {
       return null;
     }
     // Get the AbstractFunction containing the given port.
-    AbstractFunction abstractFunction = FunctionExt.getRelatedFunction(functionPort_p);
+    AbstractFunction abstractFunction = FunctionExt.getRelatedFunction(functionPort);
     if (null == abstractFunction) {
       return null;
     }
@@ -554,19 +555,19 @@ public class PortExt {
   }
 
   /**
-   * @param aFeature_p
+   * @param aFeature
    * @return
    */
-  public static boolean isFlowPort(EObject aFeature_p) {
-    return (aFeature_p instanceof ComponentPort) && (((ComponentPort) aFeature_p).getKind() == ComponentPortKind.FLOW);
+  public static boolean isFlowPort(EObject aFeature) {
+    return (aFeature instanceof ComponentPort) && (((ComponentPort) aFeature).getKind() == ComponentPortKind.FLOW);
   }
 
   /**
-   * @param aFeature_p
+   * @param aFeature
    * @return
    */
-  public static boolean isIn(ComponentPort aFeature_p) {
-    return (aFeature_p.getOrientation() == OrientationPortKind.IN) || (aFeature_p.getOrientation() == OrientationPortKind.INOUT);
+  public static boolean isIn(ComponentPort aFeature) {
+    return (aFeature.getOrientation() == OrientationPortKind.IN) || (aFeature.getOrientation() == OrientationPortKind.INOUT);
   }
 
   /**
@@ -579,38 +580,38 @@ public class PortExt {
   }
 
   /**
-   * @param cp_p
+   * @param cp
    * @return
    */
-  public static boolean isInStrict(ComponentPort cp_p) {
-    return OrientationPortKind.IN.equals(cp_p.getOrientation());
+  public static boolean isInStrict(ComponentPort cp) {
+    return OrientationPortKind.IN.equals(cp.getOrientation());
   }
 
   /**
-   * @param cp_p
+   * @param cp
    * @return
    */
-  public static boolean isOutStrict(ComponentPort cp_p) {
-    return OrientationPortKind.OUT.equals(cp_p.getOrientation());
+  public static boolean isOutStrict(ComponentPort cp) {
+    return OrientationPortKind.OUT.equals(cp.getOrientation());
   }
 
-  public static boolean isNotCompatibleWith(ComponentPort comparedPort_p, ComponentPort reference_p) {
-    if ((comparedPort_p == null) || (reference_p == null)) {
+  public static boolean isNotCompatibleWith(ComponentPort comparedPort, ComponentPort reference) {
+    if ((comparedPort == null) || (reference == null)) {
       return true;
     }
 
-    SystemComponent comparedType = (SystemComponent) comparedPort_p.getType();
-    SystemComponent referenceType = (SystemComponent) reference_p.getType();
+    SystemComponent comparedType = (SystemComponent) comparedPort.getType();
+    SystemComponent referenceType = (SystemComponent) reference.getType();
 
     if ((comparedType == null) || (referenceType == null)) {
       return true;
     }
 
-    List<Interface> comparedProvItf = comparedPort_p.getProvidedInterfaces();
-    List<Interface> comparedReqItf = comparedPort_p.getRequiredInterfaces();
+    List<Interface> comparedProvItf = comparedPort.getProvidedInterfaces();
+    List<Interface> comparedReqItf = comparedPort.getRequiredInterfaces();
 
-    List<Interface> referenceProvItf = reference_p.getProvidedInterfaces();
-    List<Interface> referenceReqItf = reference_p.getRequiredInterfaces();
+    List<Interface> referenceProvItf = reference.getProvidedInterfaces();
+    List<Interface> referenceReqItf = reference.getRequiredInterfaces();
 
     for (Interface refItf : referenceReqItf) {
       if (comparedProvItf.contains(refItf)) {
@@ -627,11 +628,11 @@ public class PortExt {
   }
 
   /**
-   * @param aFeature_p
+   * @param aFeature
    * @return
    */
-  public static boolean isOut(ComponentPort aFeature_p) {
-    return (aFeature_p.getOrientation() == OrientationPortKind.OUT) || (aFeature_p.getOrientation() == OrientationPortKind.INOUT);
+  public static boolean isOut(ComponentPort aFeature) {
+    return (aFeature.getOrientation() == OrientationPortKind.OUT) || (aFeature.getOrientation() == OrientationPortKind.INOUT);
   }
 
   /**
@@ -646,24 +647,24 @@ public class PortExt {
   /**
    * Returns whether the component port is related to the function port and has a connection which allocate the functional exchange
    */
-  public static boolean isRelatedTo(Port cport_p, ActivityNode fport_p) {
-    if ((cport_p == null) || (fport_p == null)) {
+  public static boolean isRelatedTo(Port cport, ActivityNode fport) {
+    if ((cport == null) || (fport == null)) {
       return false;
     }
-    for (AbstractTrace trace : cport_p.getIncomingTraces()) {
-      if ((trace.getSourceElement() != null) && trace.getSourceElement().equals(fport_p)) {
+    for (AbstractTrace trace : cport.getIncomingTraces()) {
+      if ((trace.getSourceElement() != null) && trace.getSourceElement().equals(fport)) {
         return true;
       }
-      if ((trace.getTargetElement() != null) && trace.getTargetElement().equals(fport_p)) {
+      if ((trace.getTargetElement() != null) && trace.getTargetElement().equals(fport)) {
         return true;
       }
     }
 
-    for (AbstractTrace trace : cport_p.getOutgoingTraces()) {
-      if ((trace.getSourceElement() != null) && trace.getSourceElement().equals(fport_p)) {
+    for (AbstractTrace trace : cport.getOutgoingTraces()) {
+      if ((trace.getSourceElement() != null) && trace.getSourceElement().equals(fport)) {
         return true;
       }
-      if ((trace.getTargetElement() != null) && trace.getTargetElement().equals(fport_p)) {
+      if ((trace.getTargetElement() != null) && trace.getTargetElement().equals(fport)) {
         return true;
       }
     }
@@ -675,21 +676,21 @@ public class PortExt {
    * @param eObject_p
    * @return
    */
-  public static boolean isStandardPort(Object aFeature_p) {
-    return (aFeature_p instanceof ComponentPort) && (((ComponentPort) aFeature_p).getKind() == ComponentPortKind.STANDARD);
+  public static boolean isStandardPort(Object aFeature) {
+    return (aFeature instanceof ComponentPort) && (((ComponentPort) aFeature).getKind() == ComponentPortKind.STANDARD);
   }
 
   /**
-   * Returns whether the port sourcePrevious_p is transitioned to sourceCurrent_p or if sourcePrevious_p is transitioned to one of parents ports of
-   * sourceCurrent_p (by delegation)
+   * Returns whether the port sourcePrevious is transitioned to sourceCurrent or if sourcePrevious is transitioned to one of parents ports of
+   * sourceCurrent (by delegation)
    */
-  public static boolean isTransitionedTo(ComponentPort sourcePrevious_p, ComponentPort sourceCurrent_p) {
-    if (RefinementLinkExt.isLinkedTo(sourceCurrent_p, sourcePrevious_p)) {
+  public static boolean isTransitionedTo(ComponentPort sourcePrevious, ComponentPort sourceCurrent) {
+    if (RefinementLinkExt.isLinkedTo(sourceCurrent, sourcePrevious)) {
       return true;
     }
 
-    for (ComponentPort port : retrieveParentDelegating(sourceCurrent_p)) {
-      if (RefinementLinkExt.isLinkedTo(port, sourcePrevious_p)) {
+    for (ComponentPort port : retrieveParentDelegating(sourceCurrent)) {
+      if (RefinementLinkExt.isLinkedTo(port, sourcePrevious)) {
         return true;
       }
     }
@@ -697,23 +698,23 @@ public class PortExt {
   }
 
   /**
-   * Returns whether the port sourcePrevious_p is transitioned to sourceCurrent_p or if sourcePrevious_p is transitioned to one of parents ports of
-   * sourceCurrent_p (by delegation)
+   * Returns whether the port sourcePrevious is transitioned to sourceCurrent or if sourcePrevious is transitioned to one of parents ports of
+   * sourceCurrent (by delegation)
    */
-  public static boolean isTransitionedTo(FunctionPort sourcePrevious_p, FunctionPort sourceCurrent_p) {
-    return RefinementLinkExt.isLinkedTo(sourceCurrent_p, sourcePrevious_p);
+  public static boolean isTransitionedTo(FunctionPort sourcePrevious, FunctionPort sourceCurrent) {
+    return RefinementLinkExt.isLinkedTo(sourceCurrent, sourcePrevious);
   }
 
-  public static Collection<ComponentPort> retrieveParentDelegating(ComponentPort sourceCurrent_p) {
+  public static Collection<ComponentPort> retrieveParentDelegating(ComponentPort sourceCurrent) {
     LinkedList<ComponentPort> ports = new LinkedList<ComponentPort>();
     HashSet<ComponentPort> visited = new HashSet<ComponentPort>();
-    ports.add(sourceCurrent_p);
+    ports.add(sourceCurrent);
 
     while (ports.size() > 0) {
       ComponentPort port = ports.removeFirst();
       visited.add(port);
 
-      for (ComponentPort cp : PortExt.getLinkedDelegatedComponentPorts(sourceCurrent_p)) {
+      for (ComponentPort cp : PortExt.getLinkedDelegatedComponentPorts(sourceCurrent)) {
         if (!visited.contains(cp)) {
           ports.addLast(cp);
         }
@@ -726,12 +727,12 @@ public class PortExt {
   /**
    * Returns whether the activity node is defined in a transitioned function or sub function of the given container (works for port and others activity nodes)
    */
-  public static boolean transitionedPortIsValid(ActivityNode eObj_p, TraceableElement container) {
+  public static boolean transitionedPortIsValid(ActivityNode eObj, TraceableElement container) {
     if (null != container) {
       for (AbstractTrace traceFunction : container.getIncomingTraces()) {
         if (traceFunction.getSourceElement() instanceof AbstractFunction) {
           AbstractFunction targetFunction = (AbstractFunction) traceFunction.getSourceElement();
-          if (EcoreUtil2.isOrIsContainedBy(eObj_p, targetFunction)) {
+          if (EcoreUtil2.isOrIsContainedBy(eObj, targetFunction)) {
             return true;
           }
         }
@@ -741,15 +742,15 @@ public class PortExt {
   }
 
   /**
-   * @param eObj_p
+   * @param eObj
    * @return
    */
-  public static boolean transitionedPortIsValid(ComponentPort eObj_p) {
-    for (AbstractTrace trace : eObj_p.getOutgoingTraces()) {
+  public static boolean transitionedPortIsValid(ComponentPort eObj) {
+    for (AbstractTrace trace : eObj.getOutgoingTraces()) {
       if (trace.getTargetElement() instanceof ComponentPort) {
         ComponentPort exc = (ComponentPort) trace.getTargetElement();
         Component container = (Component) exc.eContainer();
-        if (transitionedPortIsValid(eObj_p, container)) {
+        if (transitionedPortIsValid(eObj, container)) {
           return true;
         }
       }
@@ -760,12 +761,12 @@ public class PortExt {
   /**
    * Returns whether the port is defined in a transitioned function or sub function of the given container
    */
-  public static boolean transitionedPortIsValid(ComponentPort eObj_p, TraceableElement container) {
+  public static boolean transitionedPortIsValid(ComponentPort eObj, TraceableElement container) {
     if (null != container) {
       for (AbstractTrace traceFunction : container.getIncomingTraces()) {
         if (traceFunction.getSourceElement() instanceof Component) {
           Component targetFunction = (Component) traceFunction.getSourceElement();
-          if ((eObj_p.eContainer() == targetFunction) || ComponentExt.isComponentAncestor((Component) eObj_p.eContainer(), targetFunction)) {
+          if ((eObj.eContainer() == targetFunction) || ComponentExt.isComponentAncestor((Component) eObj.eContainer(), targetFunction)) {
             return true;
           }
         }
@@ -775,15 +776,15 @@ public class PortExt {
   }
 
   /**
-   * @param eObj_p
+   * @param eObj
    * @return
    */
-  public static boolean transitionedPortIsValid(FunctionPort eObj_p) {
-    for (AbstractTrace trace : eObj_p.getOutgoingTraces()) {
+  public static boolean transitionedPortIsValid(FunctionPort eObj) {
+    for (AbstractTrace trace : eObj.getOutgoingTraces()) {
       if (trace.getTargetElement() instanceof FunctionPort) {
         FunctionPort exc = (FunctionPort) trace.getTargetElement();
         AbstractFunction container = (AbstractFunction) exc.eContainer();
-        if ((eObj_p instanceof ActivityNode) && transitionedPortIsValid((ActivityNode) eObj_p, container)) {
+        if ((eObj instanceof ActivityNode) && transitionedPortIsValid((ActivityNode) eObj, container)) {
           return true;
         }
       }
@@ -796,13 +797,13 @@ public class PortExt {
    * @param delegationTargetPort_p
    * @return
    */
-  public static Collection<PhysicalLink> getDelegatedPhysicalLinks(PhysicalPort port_p) {
+  public static Collection<PhysicalLink> getDelegatedPhysicalLinks(PhysicalPort port) {
     Collection<PhysicalLink> links = new HashSet<PhysicalLink>();
 
-    Component component = PortExt.getRelatedComponent(port_p);
+    Component component = PortExt.getRelatedComponent(port);
     Collection<Part> parts = ComponentExt.getRepresentingParts(component);
 
-    for (PhysicalLink link : port_p.getInvolvedLinks()) {
+    for (PhysicalLink link : port.getInvolvedLinks()) {
       Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
       Collection<Part> targetParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetParts(link);
 
@@ -848,13 +849,13 @@ public class PortExt {
    * @param delegationTargetPort_p
    * @return
    */
-  public static Collection<PhysicalLink> getDelegatingPhysicalLinks(PhysicalPort port_p) {
+  public static Collection<PhysicalLink> getDelegatingPhysicalLinks(PhysicalPort port) {
     Collection<PhysicalLink> links = new HashSet<PhysicalLink>();
 
-    Component component = PortExt.getRelatedComponent(port_p);
+    Component component = PortExt.getRelatedComponent(port);
     Collection<Part> parts = ComponentExt.getRepresentingParts(component);
 
-    for (PhysicalLink link : port_p.getInvolvedLinks()) {
+    for (PhysicalLink link : port.getInvolvedLinks()) {
       Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
       Collection<Part> targetParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetParts(link);
 
@@ -900,10 +901,10 @@ public class PortExt {
    * @param delegationTargetPort_p
    * @return
    */
-  public static Collection<PhysicalLink> getDelegationPhysicalLinks(PhysicalPort port_p) {
+  public static Collection<PhysicalLink> getDelegationPhysicalLinks(PhysicalPort port) {
     Collection<PhysicalLink> links = new ArrayList<PhysicalLink>();
-    links.addAll(getDelegatedPhysicalLinks(port_p));
-    links.addAll(getDelegatingPhysicalLinks(port_p));
+    links.addAll(getDelegatedPhysicalLinks(port));
+    links.addAll(getDelegatingPhysicalLinks(port));
     return links;
   }
 }

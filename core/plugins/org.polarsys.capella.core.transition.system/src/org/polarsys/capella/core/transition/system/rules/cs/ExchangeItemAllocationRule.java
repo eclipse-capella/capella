@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.ArrayList;
@@ -42,28 +43,28 @@ public class ExchangeItemAllocationRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  public IStatus transformRequired(EObject source_p, IContext context_p) {
-    return super.transformRequired(source_p, context_p);
+  public IStatus transformRequired(EObject source, IContext context) {
+    return super.transformRequired(source, context);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    ExchangeItemAllocation element = (ExchangeItemAllocation) source_p;
-    result_p.add(element.getAllocatedItem());
-    result_p.add(element.getAllocatingInterface());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    ExchangeItemAllocation element = (ExchangeItemAllocation) source;
+    result.add(element.getAllocatedItem());
+    result.add(element.getAllocatingInterface());
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM));
   }
 
 }

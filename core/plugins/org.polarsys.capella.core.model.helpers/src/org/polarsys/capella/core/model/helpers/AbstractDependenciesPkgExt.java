@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -38,30 +39,30 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 public class AbstractDependenciesPkgExt {
 
   /**
-   * @param pkg_p
-   * @return all packages that pkg_p directly depends on
+   * @param pkg
+   * @return all packages that pkg directly depends on
    * @deprecated please use getDependencies() instead
    */
   @Deprecated
-  public static Collection<AbstractDependenciesPkg> getDependentPackages(AbstractDependenciesPkg pkg_p) {
-    return getDependencies(pkg_p);
+  public static Collection<AbstractDependenciesPkg> getDependentPackages(AbstractDependenciesPkg pkg) {
+    return getDependencies(pkg);
   }
 
 	/**
 	* Get all the dependencies of a package, including ancestor's dependencies
-	* @param pkg_p
+	* @param pkg
 	* @return
 	*/
 	public static Collection<AbstractDependenciesPkg> getDependencies2(
-			AbstractDependenciesPkg pkg_p) {
+			AbstractDependenciesPkg pkg) {
 		Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>();
-		if (pkg_p instanceof DataPkg) {
+		if (pkg instanceof DataPkg) {
 			dependencies.addAll(DataPkgExt
-				.getDataPkgDependenciesHierarchy((DataPkg) pkg_p));
+				.getDataPkgDependenciesHierarchy((DataPkg) pkg));
 		}
-		if (pkg_p instanceof InterfacePkg) {
+		if (pkg instanceof InterfacePkg) {
 			dependencies.addAll(InterfacePkgExt
-				.getInterfacePkgDependenciesHierarchy((InterfacePkg) pkg_p));
+				.getInterfacePkgDependenciesHierarchy((InterfacePkg) pkg));
 		}
 		return dependencies;
 	}
@@ -69,16 +70,16 @@ public class AbstractDependenciesPkgExt {
 
   /**
    * Search direct dependencies of a package.
-   * @param pkg_p an AbstractDependenciesPkg
-   * @return The dependencies of pkg_p, i.e. all packages that pkg_p directly depends on
+   * @param pkg an AbstractDependenciesPkg
+   * @return The dependencies of pkg, i.e. all packages that pkg directly depends on
    */
-  public static Collection<AbstractDependenciesPkg> getDependencies(AbstractDependenciesPkg pkg_p) {
+  public static Collection<AbstractDependenciesPkg> getDependencies(AbstractDependenciesPkg pkg) {
     Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>();
-    if (pkg_p instanceof DataPkg) {
-      dependencies.addAll(DataPkgExt.getDataPkgDependencies((DataPkg) pkg_p));
+    if (pkg instanceof DataPkg) {
+      dependencies.addAll(DataPkgExt.getDataPkgDependencies((DataPkg) pkg));
     }
-    if (pkg_p instanceof InterfacePkg) {
-      dependencies.addAll(InterfacePkgExt.getInterfacePkgDependencies((InterfacePkg) pkg_p));
+    if (pkg instanceof InterfacePkg) {
+      dependencies.addAll(InterfacePkgExt.getInterfacePkgDependencies((InterfacePkg) pkg));
     }
     return dependencies;
   }
@@ -86,16 +87,16 @@ public class AbstractDependenciesPkgExt {
   /**
    * Search for packages that directly depend on the parameter package, i.e the parameter's inverse dependencies. The scope of the search is the parameter's
    * entire ResourceSet.
-   * @param pkg_p an AbstractDependenciesPkg
-   * @return The inverse dependencies of pkg_p, i.e. all packages that depend directly on pkg_p
+   * @param pkg an AbstractDependenciesPkg
+   * @return The inverse dependencies of pkg, i.e. all packages that depend directly on pkg
    */
-  public static Collection<AbstractDependenciesPkg> getInverseDependencies(AbstractDependenciesPkg pkg_p) {
+  public static Collection<AbstractDependenciesPkg> getInverseDependencies(AbstractDependenciesPkg pkg) {
 
     List<AbstractDependenciesPkg> result = new ArrayList<AbstractDependenciesPkg>();
     List<AbstractDependenciesPkg> all = new ArrayList<AbstractDependenciesPkg>();
 
     // find all AbstractDependenciesPkg in the resource set.
-    Resource res = pkg_p.eResource();
+    Resource res = pkg.eResource();
     if (res != null) {
       ResourceSet rs = res.getResourceSet();
       for (Iterator<Notifier> it = rs.getAllContents(); it.hasNext();) {
@@ -107,7 +108,7 @@ public class AbstractDependenciesPkgExt {
 
       for (AbstractDependenciesPkg current : all) {
         for (AbstractDependenciesPkg dependency : AbstractDependenciesPkgExt.getDependencies(current)) {
-          if (dependency == pkg_p) {
+          if (dependency == pkg) {
             result.add(current);
           }
         }
@@ -160,32 +161,32 @@ public class AbstractDependenciesPkgExt {
   }
 
   /**
-   * @param root_p a systemEngineering
+   * @param root a systemEngineering
    * @return all InterfacePkgs and DataPkgs in the systemEngineering
    */
-  public static Collection<AbstractDependenciesPkg> getAllPackages(SystemEngineering root_p) {
+  public static Collection<AbstractDependenciesPkg> getAllPackages(SystemEngineering root) {
     Collection<AbstractDependenciesPkg> returnedList = new ArrayList<AbstractDependenciesPkg>();
-    PhysicalArchitecture pa = SystemEngineeringExt.getOwnedPhysicalArchitecture(root_p);
+    PhysicalArchitecture pa = SystemEngineeringExt.getOwnedPhysicalArchitecture(root);
     returnedList.addAll(DataPkgExt.getAllDataPkgs(pa));
     returnedList.addAll(InterfacePkgExt.getAllInterfacePkgs(pa));
     return returnedList;
   }
 
   /**
-   * Find 'eobject_p's first AbstractDependenciesPkg container. If this container is not null, adds the eobject_p to the collection stored as the value for the
+   * Find 'eobject's first AbstractDependenciesPkg container. If this container is not null, adds the eobject to the collection stored as the value for the
    * container. Lazily installs a new collection if none exists for the container.
-   * @param result_p
-   * @param eobject_p
+   * @param result
+   * @param eobject
    */
-  static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> result_p, EObject eobject_p) {
-    if (null != eobject_p) {
-      AbstractDependenciesPkg adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject_p, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+  static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> result, EObject eobject) {
+    if (null != eobject) {
+      AbstractDependenciesPkg adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
       if (adp != null) {
-        if (!result_p.containsKey(adp)) {
+        if (!result.containsKey(adp)) {
           Set<EObject> set = new HashSet<EObject>();
-          result_p.put(adp, set);
+          result.put(adp, set);
         }
-        result_p.get(adp).add(eobject_p);
+        result.get(adp).add(eobject);
       }
     }
   }

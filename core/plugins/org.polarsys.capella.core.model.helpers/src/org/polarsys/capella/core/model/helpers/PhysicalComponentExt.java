@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -84,30 +85,30 @@ public class PhysicalComponentExt {
 
   /**
    * This method adds a logical component implementation.
-   * @param physicalComponent_p component implementing
-   * @param logicalComponent_p component to be implemented
+   * @param physicalComponent component implementing
+   * @param logicalComponent component to be implemented
    */
-  public static void addImplementedLogicalComponent(PhysicalComponent physicalComponent_p, LogicalComponent logicalComponent_p) {
+  public static void addImplementedLogicalComponent(PhysicalComponent physicalComponent, LogicalComponent logicalComponent) {
     LogicalComponentRealization impl = PaFactory.eINSTANCE.createLogicalComponentRealization();
-    impl.setTargetElement(logicalComponent_p);
-    impl.setSourceElement(physicalComponent_p);
-    physicalComponent_p.getOwnedLogicalComponentRealizations().add(impl);
+    impl.setTargetElement(logicalComponent);
+    impl.setSourceElement(physicalComponent);
+    physicalComponent.getOwnedLogicalComponentRealizations().add(impl);
   }
 
   /**
-   * @param sourceDeployedElements_p
-   * @param targetDeployedElements_p
+   * @param sourceDeployedElements
+   * @param targetDeployedElements
    * @return
    */
-  public static Collection<ComponentExchange> findConnectionsBetweenPhysicalComponentes(List<Component> sourceDeployedElements_p,
-      List<Component> targetDeployedElements_p) {
+  public static Collection<ComponentExchange> findConnectionsBetweenPhysicalComponentes(List<Component> sourceDeployedElements,
+      List<Component> targetDeployedElements) {
     List<ComponentExchange> result = new ArrayList<ComponentExchange>(1);
 
-    for (Component component : sourceDeployedElements_p) {
+    for (Component component : sourceDeployedElements) {
       Collection<ComponentExchange> allRelatedConnection = ComponentExt.getAllRelatedComponentExchange(component);
       for (ComponentExchange connection : allRelatedConnection) {
         Component targetComponent = ComponentExchangeExt.getTargetComponent(connection);
-        if (targetDeployedElements_p.contains(targetComponent)) {
+        if (targetDeployedElements.contains(targetComponent)) {
           result.add(connection);
         }
       }
@@ -115,9 +116,9 @@ public class PhysicalComponentExt {
     return result;
   }
 
-  public static List<PhysicalComponent> getDeployedElements(PhysicalComponent location_p) {
+  public static List<PhysicalComponent> getDeployedElements(PhysicalComponent location) {
     List<PhysicalComponent> deployedElements = new ArrayList<PhysicalComponent>(1);
-    List<AbstractDeploymentLink> deployments = location_p.getDeploymentLinks();
+    List<AbstractDeploymentLink> deployments = location.getDeploymentLinks();
 
     for (AbstractDeploymentLink abstractDeployment : deployments) {
       deployedElements.add((PhysicalComponent) abstractDeployment.getDeployedElement());
@@ -125,9 +126,9 @@ public class PhysicalComponentExt {
     return deployedElements;
   }
 
-  public static List<PhysicalComponent> getDeploymentTargets(PhysicalComponent element_p) {
+  public static List<PhysicalComponent> getDeploymentTargets(PhysicalComponent element) {
     List<PhysicalComponent> deploymentTargets = new ArrayList<PhysicalComponent>();
-    List<AbstractDeploymentLink> deployments = element_p.getDeployingLinks();
+    List<AbstractDeploymentLink> deployments = element.getDeployingLinks();
 
     for (AbstractDeploymentLink abstractDeployment : deployments) {
       deploymentTargets.add((PhysicalComponent) abstractDeployment.getLocation());
@@ -137,13 +138,13 @@ public class PhysicalComponentExt {
 
   /**
    * This method retrieves all epbs component which implement the specified physical component.
-   * @param component_p The source physical component.
+   * @param component The source physical component.
    * @return The configuration item list.
    */
-  public static ConfigurationItem getImplementor(PhysicalComponent component_p, EPBSArchitecture epbsArchitecture_p) {
+  public static ConfigurationItem getImplementor(PhysicalComponent component, EPBSArchitecture epbsArchitecture) {
     ConfigurationItem implementorCI = null;
-    for (ConfigurationItem ci : getImplementors(component_p)) {
-      if (EcoreUtil2.isContainedBy(ci, epbsArchitecture_p)) {
+    for (ConfigurationItem ci : getImplementors(component)) {
+      if (EcoreUtil2.isContainedBy(ci, epbsArchitecture)) {
         implementorCI = ci;
       }
     }
@@ -152,13 +153,13 @@ public class PhysicalComponentExt {
 
   /**
    * This method retrieves all epbs component which implement the specified physical component.
-   * @param component_p The source physical component.
+   * @param component The source physical component.
    * @return The configuration item list.
    */
-  public static List<ConfigurationItem> getImplementors(PhysicalComponent component_p) {
+  public static List<ConfigurationItem> getImplementors(PhysicalComponent component) {
     List<ConfigurationItem> configurationItemsList = new ArrayList<ConfigurationItem>(1);
 
-    EList<AbstractTrace> incomingTraces = component_p.getIncomingTraces();
+    EList<AbstractTrace> incomingTraces = component.getIncomingTraces();
     for (AbstractTrace incomingTrace : incomingTraces) {
       if (incomingTrace instanceof PhysicalArtifactRealization) {
         TraceableElement source = ((PhysicalArtifactRealization) incomingTrace).getSourceElement();
@@ -172,17 +173,17 @@ public class PhysicalComponentExt {
 
   /**
    * Gets all the lcs from LogicalArchitecture
-   * @param logArch_p the {@link LogicalArchitecture}
-   * @param currentPC_p the current {@link PhysicalComponent}
-   * @param isFilterRequired_p flag for checking filters
+   * @param logArch the {@link LogicalArchitecture}
+   * @param currentPC the current {@link PhysicalComponent}
+   * @param isFilterRequired flag for checking filters
    * @return list of LCs
    */
-  public static List<CapellaElement> getLCsFromLogicalArchitecture(LogicalArchitecture logArch_p, PhysicalComponent currentPC_p, boolean isFilterRequired_p) {
+  public static List<CapellaElement> getLCsFromLogicalArchitecture(LogicalArchitecture logArch, PhysicalComponent currentPC, boolean isFilterRequired) {
     List<CapellaElement> list = new ArrayList<CapellaElement>(1);
-    if (null != logArch_p) {
-      for (LogicalComponent lc : LogicalArchitectureExt.getAllLCsFromLogicalArchitectureLayer(logArch_p)) {
-        if (isFilterRequired_p) {
-          if (hasImplementedLC(currentPC_p, lc)) {
+    if (null != logArch) {
+      for (LogicalComponent lc : LogicalArchitectureExt.getAllLCsFromLogicalArchitectureLayer(logArch)) {
+        if (isFilterRequired) {
+          if (hasImplementedLC(currentPC, lc)) {
             continue;
           }
         }
@@ -193,34 +194,34 @@ public class PhysicalComponentExt {
   }
 
   /**
-   * @param component_p the current PhysicalComponent
+   * @param component the current PhysicalComponent
    * @return returns the first containing PhysicalArchitecture
    */
-  public static PhysicalArchitecture getOwningPhysicalArchitecture(PhysicalComponent component_p) {
-    return (PhysicalArchitecture) EcoreUtil2.getFirstContainer(component_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
-    // return getRecursiveParentArchitecture(component_p);
+  public static PhysicalArchitecture getOwningPhysicalArchitecture(PhysicalComponent component) {
+    return (PhysicalArchitecture) EcoreUtil2.getFirstContainer(component, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+    // return getRecursiveParentArchitecture(component);
   }
 
   /**
-   * @param component_p the current Physical Component
+   * @param component the current Physical Component
    * @return returns the Component containing the given Physical Component (can be either a Physical Component, or a Physical Node)
    */
-  public static Component getParentContainer(PhysicalComponent component_p) {
-    return getRecursiveParentContainer(component_p);
+  public static Component getParentContainer(PhysicalComponent component) {
+    return getRecursiveParentContainer(component);
   }
 
   /**
    * Retrieves the Physical component container of Scenario given in parameter. (For Scenario under the PhysicalArchitecture, return Root PhysicalComponent
    * @return
    */
-  public static PhysicalComponent getPhysicalComponentContainerFromScenario(Scenario scenario_p) {
+  public static PhysicalComponent getPhysicalComponentContainerFromScenario(Scenario scenario) {
     PhysicalComponent containerPc = null;
 
-    containerPc = (PhysicalComponent) EcoreUtil2.getFirstContainer(scenario_p, PaPackage.Literals.PHYSICAL_COMPONENT);
+    containerPc = (PhysicalComponent) EcoreUtil2.getFirstContainer(scenario, PaPackage.Literals.PHYSICAL_COMPONENT);
     if (containerPc == null) {
       // Case : Scenario contained by PhysicalArchitecture (not under a Physical Component)
       // Retrieve the Root Physical Component
-      PhysicalArchitecture pa = (PhysicalArchitecture) EcoreUtil2.getFirstContainer(scenario_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+      PhysicalArchitecture pa = (PhysicalArchitecture) EcoreUtil2.getFirstContainer(scenario, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
       containerPc = SystemEngineeringExt.getRootPhysicalComponent(pa);
     }
 
@@ -229,14 +230,14 @@ public class PhysicalComponentExt {
 
   /**
    * Returns ALL provided interfaces including implemented interfaces and all the provided interfaces trough standard ports
-   * @param component_p current component
+   * @param component current component
    * @return returns all the provided interfaces of the current component
    */
-  public static List<Interface> getProvidedInterfaces(PhysicalComponent component_p) {
+  public static List<Interface> getProvidedInterfaces(PhysicalComponent component) {
     List<Interface> providedItfList = new ArrayList<Interface>(1);
-    List<Partition> exposedPorts = component_p.getOwnedPartitions();
+    List<Partition> exposedPorts = component.getOwnedPartitions();
 
-    providedItfList.addAll(component_p.getImplementedInterfaces());
+    providedItfList.addAll(component.getImplementedInterfaces());
 
     for (Partition port : exposedPorts) {
       if (port instanceof ComponentPort) {
@@ -249,12 +250,12 @@ public class PhysicalComponentExt {
   }
 
   /**
-   * @param component_p
+   * @param component
    * @return
    */
-  private static PhysicalArchitecture getRecursiveParentArchitecture(PhysicalComponent component_p) {
+  private static PhysicalArchitecture getRecursiveParentArchitecture(PhysicalComponent component) {
 
-    EObject container = component_p.eContainer();
+    EObject container = component.eContainer();
 
     if (container instanceof PhysicalArchitecture) {
       return (PhysicalArchitecture) container;
@@ -266,8 +267,8 @@ public class PhysicalComponentExt {
     return null;
   }
 
-  private static PhysicalArchitecture getRecursiveParentArchitecture(PhysicalComponentPkg comppkg_p) {
-    EObject container = comppkg_p.eContainer();
+  private static PhysicalArchitecture getRecursiveParentArchitecture(PhysicalComponentPkg comppkg) {
+    EObject container = comppkg.eContainer();
 
     if (container instanceof PhysicalArchitecture) {
       return (PhysicalArchitecture) container;
@@ -280,12 +281,12 @@ public class PhysicalComponentExt {
   }
 
   /**
-   * @param component_p
+   * @param component
    * @return
    */
-  private static Component getRecursiveParentContainer(PhysicalArchitecture component_p) {
+  private static Component getRecursiveParentContainer(PhysicalArchitecture component) {
     Component cpnt = null;
-    EObject container = component_p.eContainer();
+    EObject container = component.eContainer();
 
     if (container instanceof System) {
       cpnt = (System) container;
@@ -301,12 +302,12 @@ public class PhysicalComponentExt {
   }
 
   /**
-   * @param component_p
+   * @param component
    * @return
    */
-  private static Component getRecursiveParentContainer(PhysicalArchitecturePkg component_p) {
+  private static Component getRecursiveParentContainer(PhysicalArchitecturePkg component) {
     Component cpnt = null;
-    EObject container = component_p.eContainer();
+    EObject container = component.eContainer();
 
     if (container instanceof System) {
       cpnt = (System) container;
@@ -316,12 +317,12 @@ public class PhysicalComponentExt {
   }
 
   /**
-   * @param component_p
+   * @param component
    * @return
    */
-  private static Component getRecursiveParentContainer(PhysicalComponent component_p) {
+  private static Component getRecursiveParentContainer(PhysicalComponent component) {
     Component cpnt = null;
-    EObject container = component_p.eContainer();
+    EObject container = component.eContainer();
 
     if (container instanceof PhysicalArchitecture) {
       cpnt = getRecursiveParentContainer((PhysicalArchitecture) container);
@@ -335,12 +336,12 @@ public class PhysicalComponentExt {
   }
 
   /**
-   * @param componentPkg_p
+   * @param componentPkg
    * @return
    */
-  private static Component getRecursiveParentContainer(PhysicalComponentPkg componentPkg_p) {
+  private static Component getRecursiveParentContainer(PhysicalComponentPkg componentPkg) {
     Component cpnt = null;
-    EObject container = componentPkg_p.eContainer();
+    EObject container = componentPkg.eContainer();
 
     if (container instanceof PhysicalArchitecture) {
       cpnt = getRecursiveParentContainer((PhysicalArchitecture) container);
@@ -355,14 +356,14 @@ public class PhysicalComponentExt {
 
   /**
    * Returns ALL required interfaces including used interfaces and all the required interfaces trough standard ports
-   * @param component_p current component
+   * @param component current component
    * @return returns all the required interfaces of the current component
    */
-  public static List<Interface> getRequiredInterfaces(PhysicalComponent component_p) {
+  public static List<Interface> getRequiredInterfaces(PhysicalComponent component) {
     List<Interface> requiredItfList = new ArrayList<Interface>(1);
-    List<Partition> exposedPorts = component_p.getOwnedPartitions();
+    List<Partition> exposedPorts = component.getOwnedPartitions();
 
-    requiredItfList.addAll(component_p.getUsedInterfaces());
+    requiredItfList.addAll(component.getUsedInterfaces());
 
     for (Partition port : exposedPorts) {
       if (port instanceof ComponentPort) {
@@ -376,14 +377,14 @@ public class PhysicalComponentExt {
 
   /**
    * Checks whether the PhysicalComponent has implemented the logical component
-   * @param currentPC_p the PhysicalComponent
-   * @param lc_p the LogicalComponent
+   * @param currentPC the PhysicalComponent
+   * @param lc the LogicalComponent
    * @return true if the PhysicalComponent has implemented the logical component
    */
-  static public boolean hasImplementedLC(PhysicalComponent currentPC_p, LogicalComponent lc_p) {
+  static public boolean hasImplementedLC(PhysicalComponent currentPC, LogicalComponent lc) {
     boolean flag = false;
-    for (LogicalComponentRealization lcImpl : currentPC_p.getOwnedLogicalComponentRealizations()) {
-      if (lcImpl.getAllocatedComponent().equals(lc_p)) {
+    for (LogicalComponentRealization lcImpl : currentPC.getOwnedLogicalComponentRealizations()) {
+      if (lcImpl.getAllocatedComponent().equals(lc)) {
         flag = true;
         break;
       }
@@ -393,13 +394,13 @@ public class PhysicalComponentExt {
 
   /**
    * This method checks if the two specified physical components are implemented by the same epbs component.
-   * @param PC1_p
-   * @param PC2_p
+   * @param PC1
+   * @param PC2
    * @return
    */
-  public static boolean haveSameImplementor(PhysicalComponent PC1_p, PhysicalComponent PC2_p, EPBSArchitecture epbsArchitecture_p) {
-    ConfigurationItem CI1 = getImplementor(PC1_p, epbsArchitecture_p);
-    ConfigurationItem CI2 = getImplementor(PC2_p, epbsArchitecture_p);
+  public static boolean haveSameImplementor(PhysicalComponent PC1, PhysicalComponent PC2, EPBSArchitecture epbsArchitecture) {
+    ConfigurationItem CI1 = getImplementor(PC1, epbsArchitecture);
+    ConfigurationItem CI2 = getImplementor(PC2, epbsArchitecture);
 
     if ((CI1 == null) || (CI2 == null)) {
       return false;
@@ -408,12 +409,12 @@ public class PhysicalComponentExt {
     return CI1.equals(CI2);
   }
 
-  public static boolean isDeployedOn(PhysicalComponent location_p, PhysicalComponent deployedElement_p) {
+  public static boolean isDeployedOn(PhysicalComponent location, PhysicalComponent deployedElement) {
 
-    List<AbstractDeploymentLink> deployments = location_p.getDeploymentLinks();
+    List<AbstractDeploymentLink> deployments = location.getDeploymentLinks();
 
     for (AbstractDeploymentLink abstractDeployment : deployments) {
-      if (abstractDeployment.getDeployedElement().equals(deployedElement_p)) {
+      if (abstractDeployment.getDeployedElement().equals(deployedElement)) {
         return true;
       }
     }
@@ -424,42 +425,42 @@ public class PhysicalComponentExt {
   /*
    * Return true if the the PhysicalComponent given in parameter is the PhysicalComponent Root
    */
-  public static boolean isPhysicalComponentRoot(EObject element_p) {
-    if (!(element_p instanceof PhysicalComponent)) {
+  public static boolean isPhysicalComponentRoot(EObject element) {
+    if (!(element instanceof PhysicalComponent)) {
       return false;
     }
 
     // Last PhysicalComponent hierarchy detection
-    return (!EcoreUtil2.isContainedBy(element_p, PaPackage.Literals.PHYSICAL_COMPONENT));
+    return (!EcoreUtil2.isContainedBy(element, PaPackage.Literals.PHYSICAL_COMPONENT));
   }
 
   /**
    * This method removes a logical component implementation.
-   * @param physicalComponent_p the physical component who implements the logical component
-   * @param logicalComponent_p the implemented logical component
+   * @param physicalComponent the physical component who implements the logical component
+   * @param logicalComponent the implemented logical component
    */
-  public static void removeImplementedLogicalComponent(PhysicalComponent physicalComponent_p, LogicalComponent logicalComponent_p) {
+  public static void removeImplementedLogicalComponent(PhysicalComponent physicalComponent, LogicalComponent logicalComponent) {
     LogicalComponentRealization implementLink = null;
-    ListIterator<LogicalComponentRealization> it = physicalComponent_p.getLogicalComponentRealizations().listIterator();
+    ListIterator<LogicalComponentRealization> it = physicalComponent.getLogicalComponentRealizations().listIterator();
     while (it.hasNext()) {
       LogicalComponentRealization lnk = it.next();
-      if (lnk.getAllocatedComponent().equals(logicalComponent_p)) {
+      if (lnk.getAllocatedComponent().equals(logicalComponent)) {
         implementLink = lnk;
       }
     }
     if (implementLink != null) {
-      physicalComponent_p.getLogicalComponentRealizations().remove(implementLink);
-      physicalComponent_p.getOwnedLogicalComponentRealizations().remove(implementLink);
+      physicalComponent.getLogicalComponentRealizations().remove(implementLink);
+      physicalComponent.getOwnedLogicalComponentRealizations().remove(implementLink);
       implementLink.destroy();
     }
   }
 
-  public static void undeployElement(PhysicalComponent location_p, PhysicalComponent deployedElement_p) {
+  public static void undeployElement(PhysicalComponent location, PhysicalComponent deployedElement) {
     List<AbstractDeploymentLink> elementsToDelete = new ArrayList<AbstractDeploymentLink>();
-    List<AbstractDeploymentLink> deployements = location_p.getDeploymentLinks();
+    List<AbstractDeploymentLink> deployements = location.getDeploymentLinks();
 
     for (AbstractDeploymentLink abstractDeployment : deployements) {
-      if (abstractDeployment.getDeployedElement().equals(deployedElement_p)) {
+      if (abstractDeployment.getDeployedElement().equals(deployedElement)) {
         elementsToDelete.add(abstractDeployment);
       }
     }
@@ -489,15 +490,15 @@ public class PhysicalComponentExt {
     return true;
   }
 
-  public static boolean isNode(PhysicalComponent physicalComponent_p) {
-    if (PhysicalComponentNature.NODE == physicalComponent_p.getNature()) {
+  public static boolean isNode(PhysicalComponent physicalComponent) {
+    if (PhysicalComponentNature.NODE == physicalComponent.getNature()) {
       return true;
     }
     return false;
   }
 
-  public static boolean isBehaviour(PhysicalComponent physicalComponent_p) {
-    if (PhysicalComponentNature.BEHAVIOR == physicalComponent_p.getNature()) {
+  public static boolean isBehaviour(PhysicalComponent physicalComponent) {
+    if (PhysicalComponentNature.BEHAVIOR == physicalComponent.getNature()) {
       return true;
     }
     return false;

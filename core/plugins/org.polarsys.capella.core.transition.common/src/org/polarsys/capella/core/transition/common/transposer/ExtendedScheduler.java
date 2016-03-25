@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer;
 
 import java.util.ArrayList;
@@ -53,17 +54,17 @@ public class ExtendedScheduler implements IScheduler {
   }
 
   /**
-   * @param model_p the model to set
+   * @param model the model to set
    */
-  public void setModel(Graph model_p) {
-    _model = model_p;
+  public void setModel(Graph model) {
+    _model = model;
   }
 
   /**
-   * @param topologicalScheduler_p the topologicalScheduler to set
+   * @param topologicalScheduler the topologicalScheduler to set
    */
-  protected void setTopologicalSorter(ExtendedTopologicalSorter topologicalScheduler_p) {
-    _TopologicalSorter = topologicalScheduler_p;
+  protected void setTopologicalSorter(ExtendedTopologicalSorter topologicalScheduler) {
+    _TopologicalSorter = topologicalScheduler;
   }
 
   /**
@@ -110,10 +111,10 @@ public class ExtendedScheduler implements IScheduler {
 
   /**
    * Initialize all necessary variables.
-   * @param model_p
+   * @param model
    */
-  public ExtendedScheduler(Graph model_p) {
-    setModel(model_p);
+  public ExtendedScheduler(Graph model) {
+    setModel(model);
     init();
   }
 
@@ -181,13 +182,13 @@ public class ExtendedScheduler implements IScheduler {
   }
 
   /**
-   * @param currentCycle_p
+   * @param currentCycle
    * @return
    */
-  private boolean isNewCycle(LinkedList<Edge<?>> currentCycle_p) {
+  private boolean isNewCycle(LinkedList<Edge<?>> currentCycle) {
     for (LinkedList<Edge<?>> alreadyKnownCycle : _foundCycles) {
       // check cycle length && composition
-      if ((alreadyKnownCycle.size() == currentCycle_p.size()) && alreadyKnownCycle.containsAll(currentCycle_p)) {
+      if ((alreadyKnownCycle.size() == currentCycle.size()) && alreadyKnownCycle.containsAll(currentCycle)) {
 
         return false;
       }
@@ -360,17 +361,17 @@ public class ExtendedScheduler implements IScheduler {
   /**
    *
    */
-  public void schedule(Comparator<Vertex<?>> comparator, IProgressMonitor monitor_p) {
+  public void schedule(Comparator<Vertex<?>> comparator, IProgressMonitor monitor) {
     init();
 
     /* mark elements as not visited */
     markAllAsNotVisited();
 
-    if (monitor_p != null) {
-      _monitor = monitor_p;
+    if (monitor != null) {
+      _monitor = monitor;
       _monitorSize = _notVisited.size();
-      monitor_p.beginTask("Transposer Scheduling", 3); //$NON-NLS-1$
-      monitor_p.subTask("Cycle search"); //$NON-NLS-1$
+      monitor.beginTask("Transposer Scheduling", 3); //$NON-NLS-1$
+      monitor.subTask("Cycle search"); //$NON-NLS-1$
     }
 
     /*
@@ -389,8 +390,8 @@ public class ExtendedScheduler implements IScheduler {
      */
     try {
       setTopologicalSorter(new ExtendedTopologicalSorter(_visited, _backTracks));
-      getTopologicalSorter().sort(monitor_p);
-      _scheduleResult = getTopologicalSorter().getWork(monitor_p);
+      getTopologicalSorter().sort(monitor);
+      _scheduleResult = getTopologicalSorter().getWork(monitor);
       getTopologicalSorter().dispose();
     } catch (TransitionException e) {
       e.printStackTrace();

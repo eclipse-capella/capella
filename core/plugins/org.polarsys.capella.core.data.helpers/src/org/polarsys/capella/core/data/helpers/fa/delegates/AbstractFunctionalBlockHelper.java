@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -35,26 +36,26 @@ public class AbstractFunctionalBlockHelper {
     return instance;
   }
 
-  public Object doSwitch(AbstractFunctionalBlock element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(AbstractFunctionalBlock element, EStructuralFeature feature) {
 
     Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS)) {
-      ret = getAllocatedFunctions(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS)) {
-      ret = getFunctionalAllocations(element_p);
+    if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS)) {
+      ret = getAllocatedFunctions(element);
+    } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__FUNCTIONAL_ALLOCATIONS)) {
+      ret = getFunctionalAllocations(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = TypeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = TypeHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<ComponentFunctionalAllocation> getFunctionalAllocations(AbstractFunctionalBlock element_p) {
-    List<AbstractTrace> traces = element_p.getOutgoingTraces();
+  protected List<ComponentFunctionalAllocation> getFunctionalAllocations(AbstractFunctionalBlock element) {
+    List<AbstractTrace> traces = element.getOutgoingTraces();
     List<ComponentFunctionalAllocation> ret = new ArrayList<ComponentFunctionalAllocation>();
 
     for (AbstractTrace trace : traces) {
@@ -66,8 +67,8 @@ public class AbstractFunctionalBlockHelper {
     return ret;
   }
 
-  protected List<AbstractFunction> getAllocatedFunctions(AbstractFunctionalBlock element_p) {
-    List<ComponentFunctionalAllocation> allocs = element_p.getFunctionalAllocations();
+  protected List<AbstractFunction> getAllocatedFunctions(AbstractFunctionalBlock element) {
+    List<ComponentFunctionalAllocation> allocs = element.getFunctionalAllocations();
     List<AbstractFunction> ret = new ArrayList<AbstractFunction>();
     for (ComponentFunctionalAllocation componentFunctionalAllocation : allocs) {
       // Avoid gmf cross referencing issue.

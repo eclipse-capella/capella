@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer.current;
 
 import java.util.Collections;
@@ -36,12 +37,12 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.runtime.RuntimePurpo
  */
 public class GenericRulesHandler implements IRulesHandler {
 
-  public GenericRulesHandler(String purpose_p, String mappingId_p) throws NonExistingPurposeException {
+  public GenericRulesHandler(String purpose, String mappingId) throws NonExistingPurposeException {
     _context = null;
     _runtimePurpose = null;
     _knownObjects = new HashMap();
     _knownObjectsWithoutApplicablePossibitity = new HashSet();
-    init(purpose_p, mappingId_p);
+    init(purpose, mappingId);
   }
 
   public void dispose() {
@@ -54,27 +55,27 @@ public class GenericRulesHandler implements IRulesHandler {
     _runtimePurpose = null;
   }
 
-  public void setContext(IContext defaultContext_p) {
-    _context = defaultContext_p;
+  public void setContext(IContext defaultContext) {
+    _context = defaultContext;
   }
 
-  public List getPremises(Object object_p) throws ComputePremisesException {
+  public List getPremises(Object object) throws ComputePremisesException {
     MappingPossibility applicablePossibility = null;
     try {
-      applicablePossibility = getApplicablePossibility(object_p);
+      applicablePossibility = getApplicablePossibility(object);
     } catch (MappingPossibilityResolutionException e) {
-      throw new ComputePremisesException(e, object_p, getPurpose());
+      throw new ComputePremisesException(e, object, getPurpose());
     }
     if (applicablePossibility != null) {
       IRule completeRule = applicablePossibility.getCompleteRule();
-      return completeRule.getPremises(object_p);
+      return completeRule.getPremises(object);
     } else {
       return Collections.emptyList();
     }
   }
 
-  public void init(String purpose_p, String mappingId_p) throws NonExistingPurposeException {
-    _runtimePurpose = createRuntimePurpose(purpose_p, mappingId_p);
+  public void init(String purpose, String mappingId) throws NonExistingPurposeException {
+    _runtimePurpose = createRuntimePurpose(purpose, mappingId);
 
     if ((_runtimePurpose != null) && (_runtimePurpose.getMapping() != null)) {
       _context = _runtimePurpose.getMapping().getContext();
@@ -82,12 +83,12 @@ public class GenericRulesHandler implements IRulesHandler {
   }
 
   /**
-   * @param purpose_p
-   * @param mappingId_p
+   * @param purpose
+   * @param mappingId
    * @return
    */
-  protected RuntimePurpose createRuntimePurpose(String purpose_p, String mappingId_p) {
-    return GenericPurposeRegistry.getInstance().getRegisteredPurpose(purpose_p, mappingId_p);
+  protected RuntimePurpose createRuntimePurpose(String purpose, String mappingId) {
+    return GenericPurposeRegistry.getInstance().getRegisteredPurpose(purpose, mappingId);
   }
 
   public IDomainHelper getDomainHelper() {
@@ -98,10 +99,10 @@ public class GenericRulesHandler implements IRulesHandler {
     return _runtimePurpose.getName();
   }
 
-  public boolean apply(Object object_p, boolean complete_p, IProgressMonitor monitor_p) throws RuleExecutionException {
+  public boolean apply(Object object, boolean complete, IProgressMonitor monitor) throws RuleExecutionException {
     MappingPossibility applicablePossibility = null;
     try {
-      applicablePossibility = getApplicablePossibility(object_p);
+      applicablePossibility = getApplicablePossibility(object);
     } catch (MappingPossibilityResolutionException e) {
       throw new RuleExecutionException(e.getMessage(), e);
     }
@@ -109,29 +110,29 @@ public class GenericRulesHandler implements IRulesHandler {
       return false;
     }
     if (applicablePossibility.getContext() != null) {
-      applicablePossibility.updateContext(object_p, _context);
+      applicablePossibility.updateContext(object, _context);
     }
-    if (monitor_p != null) {
-      monitor_p.subTask((new StringBuilder(String.valueOf(applicablePossibility.getName()))).append(" (").append(complete_p ? "complete" : "incomplete")
-          .append(") ").append(object_p.getClass().getSimpleName()).toString());
+    if (monitor != null) {
+      monitor.subTask((new StringBuilder(String.valueOf(applicablePossibility.getName()))).append(" (").append(complete ? "complete" : "incomplete")
+          .append(") ").append(object.getClass().getSimpleName()).toString());
     }
-    applicablePossibility.applyRule(object_p, _context, complete_p);
+    applicablePossibility.applyRule(object, _context, complete);
     return true;
   }
 
-  public MappingPossibility getApplicablePossibility(Object object_p) throws MappingPossibilityResolutionException {
+  public MappingPossibility getApplicablePossibility(Object object) throws MappingPossibilityResolutionException {
     MappingPossibility applicablePossibility = null;
-    if (_knownObjects.containsKey(object_p)) {
-      return (MappingPossibility) _knownObjects.get(object_p);
+    if (_knownObjects.containsKey(object)) {
+      return (MappingPossibility) _knownObjects.get(object);
     }
-    if (_knownObjectsWithoutApplicablePossibitity.contains(object_p)) {
+    if (_knownObjectsWithoutApplicablePossibitity.contains(object)) {
       return null;
     }
-    applicablePossibility = _runtimePurpose.getMapping().resolveApplicablePossibility(object_p, _runtimePurpose.getMapping().getDomainHelper());
+    applicablePossibility = _runtimePurpose.getMapping().resolveApplicablePossibility(object, _runtimePurpose.getMapping().getDomainHelper());
     if (applicablePossibility != null) {
-      _knownObjects.put(object_p, applicablePossibility);
+      _knownObjects.put(object, applicablePossibility);
     } else {
-      _knownObjectsWithoutApplicablePossibitity.add(object_p);
+      _knownObjectsWithoutApplicablePossibitity.add(object);
     }
     return applicablePossibility;
   }

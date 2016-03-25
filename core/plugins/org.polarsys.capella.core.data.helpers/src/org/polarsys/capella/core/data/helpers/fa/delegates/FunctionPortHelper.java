@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -36,28 +37,28 @@ public class FunctionPortHelper {
 		return instance;
 	}
 
-	public Object doSwitch(FunctionPort element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(FunctionPort element, EStructuralFeature feature) {
 		Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS)) {
-      ret = getAllocatorComponentPorts(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTION_PORT__REALIZED_FUNCTION_PORTS)) {
-      ret = getRealizedFunctionPorts(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTION_PORT__REALIZING_FUNCTION_PORTS)) {
-      ret = getRealizingFunctionPorts(element_p);
+    if (feature.equals(FaPackage.Literals.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS)) {
+      ret = getAllocatorComponentPorts(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTION_PORT__REALIZED_FUNCTION_PORTS)) {
+      ret = getRealizedFunctionPorts(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTION_PORT__REALIZING_FUNCTION_PORTS)) {
+      ret = getRealizingFunctionPorts(element);
     }
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = PortHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = PortHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-  protected List<ComponentPort> getAllocatorComponentPorts(FunctionPort element_p) {
+  protected List<ComponentPort> getAllocatorComponentPorts(FunctionPort element) {
     List <ComponentPort> ret = new ArrayList<ComponentPort>();
-    for (PortAllocation portAllocation : element_p.getIncomingPortAllocations()) {
+    for (PortAllocation portAllocation : element.getIncomingPortAllocations()) {
       Port port = portAllocation.getAllocatingPort();
       if (port instanceof ComponentPort){
         ret.add((ComponentPort) port);
@@ -66,9 +67,9 @@ public class FunctionPortHelper {
     return ret;
   }
 
-  protected List<FunctionPort> getRealizedFunctionPorts(FunctionPort element_p) {
+  protected List<FunctionPort> getRealizedFunctionPorts(FunctionPort element) {
     List <FunctionPort> result = new ArrayList<FunctionPort>();
-    for (PortRealization portAllocation : element_p.getOutgoingPortRealizations()) {
+    for (PortRealization portAllocation : element.getOutgoingPortRealizations()) {
       Port port = portAllocation.getRealizedPort();
       if (port instanceof FunctionPort && !result.contains(port)){
         result.add((FunctionPort) port);
@@ -77,9 +78,9 @@ public class FunctionPortHelper {
     return result;
   }
 
-  protected List<FunctionPort> getRealizingFunctionPorts(FunctionPort element_p) {
+  protected List<FunctionPort> getRealizingFunctionPorts(FunctionPort element) {
     List <FunctionPort> result = new ArrayList<FunctionPort>();
-    for (PortRealization portAllocation : element_p.getIncomingPortRealizations()) {
+    for (PortRealization portAllocation : element.getIncomingPortRealizations()) {
       Port port = portAllocation.getRealizingPort();
       if (port instanceof FunctionPort && !result.contains(port)){
         result.add((FunctionPort) port);

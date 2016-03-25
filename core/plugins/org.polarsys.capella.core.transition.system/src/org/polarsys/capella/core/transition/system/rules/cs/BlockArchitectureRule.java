@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.ArrayList;
@@ -40,31 +41,31 @@ public class BlockArchitectureRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    return (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    return (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
   }
 
   @Override
-  protected void updateElement(EObject element_p, EObject result_p, IContext context_p) {
-    super.updateElement(element_p, result_p, context_p);
+  protected void updateElement(EObject element, EObject result, IContext context) {
+    super.updateElement(element, result, context);
 
     //We don't set the name as the source element, we use the metaclass name
-    if (result_p instanceof AbstractNamedElement) {
-      AbstractNamedElement r = (AbstractNamedElement) result_p;
-      r.setName(EObjectLabelProviderHelper.getMetaclassLabel(result_p, false) + Messages.TransitionedElement_Suffix);
+    if (result instanceof AbstractNamedElement) {
+      AbstractNamedElement r = (AbstractNamedElement) result;
+      r.setName(EObjectLabelProviderHelper.getMetaclassLabel(result, false) + Messages.TransitionedElement_Suffix);
     }
   }
 
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
+  protected EObject transformDirectElement(EObject element, IContext context) {
     //Retrieve the existing architecture if any
     EObject result = null;
 
-    EClass targetType = getTargetType(element_p, context_p);
+    EClass targetType = getTargetType(element, context);
 
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     SystemEngineering target =
-        (SystemEngineering) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p,
+        (SystemEngineering) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context,
             CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
     if (target != null) {
       for (ModellingArchitecture archi : target.getOwnedArchitectures()) {
@@ -76,7 +77,7 @@ public class BlockArchitectureRule extends AbstractCapellaElementRule {
     }
 
     if (result == null) {
-      result = super.transformDirectElement(element_p, context_p);
+      result = super.transformDirectElement(element, context);
     }
 
     //Theoretically, this should not be performed here, but log message requires a valid name
@@ -89,12 +90,12 @@ public class BlockArchitectureRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     //Nothing here, we are already in the root
   }
 
   @Override
-  protected void premicesContainement(EObject element_p, ArrayList<IPremise> needed_p) {
+  protected void premicesContainement(EObject element, ArrayList<IPremise> needed) {
     //Nothing here, we are already in the root
   }
 

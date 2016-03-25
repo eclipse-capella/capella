@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information;
 
 import java.util.ArrayList;
@@ -44,40 +45,40 @@ public class MultiplicityElementRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    MultiplicityElement element = (MultiplicityElement) source_p;
-    result_p.add(element.getOwnedMinCard());
-    result_p.add(element.getOwnedMaxCard());
-    result_p.add(element.getOwnedDefaultValue());
-    result_p.add(element.getOwnedMaxLength());
-    result_p.add(element.getOwnedMaxValue());
-    result_p.add(element.getOwnedMinLength());
-    result_p.add(element.getOwnedMinValue());
-    result_p.add(element.getOwnedNullValue());
+    MultiplicityElement element = (MultiplicityElement) source;
+    result.add(element.getOwnedMinCard());
+    result.add(element.getOwnedMaxCard());
+    result.add(element.getOwnedDefaultValue());
+    result.add(element.getOwnedMaxLength());
+    result.add(element.getOwnedMaxValue());
+    result.add(element.getOwnedMinLength());
+    result.add(element.getOwnedMinValue());
+    result.add(element.getOwnedNullValue());
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinCard(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxCard(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDefaultValue(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxLength(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxValue(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinLength(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinValue(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedNullValue(), context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinCard(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxCard(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDefaultValue(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxLength(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMaxValue(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinLength(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedMinValue(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedNullValue(), context);
     }
 
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers.listeners;
 
 import java.text.MessageFormat;
@@ -49,22 +50,22 @@ public class CapellaModelDataListenerForDatas extends CapellaModelDataListener {
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     // pre-condition: call contributed filters
-    if (filterNotification(notification_p)) {
+    if (filterNotification(notification)) {
       return;
     }
     
     // pre-condition: only SET notifications are wanted
-    if (notification_p.getEventType() != Notification.SET)
+    if (notification.getEventType() != Notification.SET)
       return;
 
-    EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
+    EStructuralFeature feature = (EStructuralFeature) notification.getFeature();
     if (feature != null) {
       if (feature.equals(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
-        final Object notifier = notification_p.getNotifier();
+        final Object notifier = notification.getNotifier();
         if (notifier instanceof Property) {
-          EObject value = (EObject) notification_p.getNewValue();
+          EObject value = (EObject) notification.getNewValue();
           if (value instanceof DataType)
           {
             if (!((Property) notifier).getAggregationKind().equals(AggregationKind.COMPOSITION)) {
@@ -77,9 +78,9 @@ public class CapellaModelDataListenerForDatas extends CapellaModelDataListener {
           }
         }
       } else if (feature.equals(InformationPackage.Literals.CLASS__IS_PRIMITIVE)) {
-        final Object notifier = notification_p.getNotifier();
+        final Object notifier = notification.getNotifier();
         if (notifier instanceof Class) {
-          Object value = notification_p.getNewValue();
+          Object value = notification.getNewValue();
           if ((value instanceof Boolean) && Boolean.TRUE.equals(value)
            && CapellaModelPreferencesPlugin.getDefault().isPrimitiveSynchroAllowed())
           {
@@ -107,43 +108,43 @@ public class CapellaModelDataListenerForDatas extends CapellaModelDataListener {
   }
 
   /**
-   * When the class 'cls_p' becomes 'primitive' the associations referencing it shall be removed
+   * When the class 'cls' becomes 'primitive' the associations referencing it shall be removed
    *
-   * @param cls_p
-   * @param associations_p
+   * @param cls
+   * @param associations
    */
-  protected void removeAssociations(Class cls_p, List<Association> associations_p) {
-    Iterator<Association> associationIt = associations_p.iterator();
+  protected void removeAssociations(Class cls, List<Association> associations) {
+    Iterator<Association> associationIt = associations.iterator();
     while (associationIt.hasNext()) {
       Association association = associationIt.next();
       for (Property property : association.getNavigableMembers()) {
         property.setAggregationKind(AggregationKind.COMPOSITION);
       }
-      removeProperties(cls_p, new ArrayList<Property>(association.getOwnedMembers()));
-      traceDeletion(cls_p, association);
+      removeProperties(cls, new ArrayList<Property>(association.getOwnedMembers()));
+      traceDeletion(cls, association);
       association.destroy();
     }
   }
 
   /**
-   * @param cls_p
-   * @param properties_p
+   * @param cls
+   * @param properties
    */
-  protected void removeProperties(Class cls_p, List<Property> properties_p) {
-    Iterator<Property> propertyIt = properties_p.iterator();
+  protected void removeProperties(Class cls, List<Property> properties) {
+    Iterator<Property> propertyIt = properties.iterator();
     while (propertyIt.hasNext()) {
       Property property = propertyIt.next();
-      traceDeletion(cls_p, property);
+      traceDeletion(cls, property);
       property.destroy();
     }
   }
 
   /**
-   * @param element1_p
-   * @param element2_p
+   * @param element1
+   * @param element2
    */
-  private void traceDeletion(NamedElement element1_p, NamedElement element2_p) {
-    String loggedMsg = MessageFormat.format(DELETION_MSG, element1_p.getName(), element2_p.getName(), element2_p.eClass().getName());
-    _logger.info(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.MODEL, element1_p));
+  private void traceDeletion(NamedElement element1, NamedElement element2) {
+    String loggedMsg = MessageFormat.format(DELETION_MSG, element1.getName(), element2.getName(), element2.eClass().getName());
+    _logger.info(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.MODEL, element1));
   }
 }
