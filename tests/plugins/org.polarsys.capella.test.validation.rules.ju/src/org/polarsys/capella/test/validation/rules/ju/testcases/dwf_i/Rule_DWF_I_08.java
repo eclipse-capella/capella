@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,9 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	@Override
-	protected void setUp() throws Exception {
+  protected void setUp() throws Exception {
 		super.setUp();
-		IEclipsePreferences preferences = new InstanceScope()
+		IEclipsePreferences preferences = InstanceScope.INSTANCE
 				.getNode(IProjectionPreferences.PREFS_PROJECTION_ID);
 		preferences.putBoolean(
 				IProjectionPreferences.PREFS_INTERFACE_PROJECTION, true);
@@ -45,9 +45,9 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	@Override
-	protected void tearDown() throws Exception {
+  protected void tearDown() throws Exception {
 		super.tearDown();
-		IEclipsePreferences preferences = new InstanceScope()
+		IEclipsePreferences preferences = InstanceScope.INSTANCE
 				.getNode(IProjectionPreferences.PREFS_PROJECTION_ID);
 		preferences.putBoolean(
 				IProjectionPreferences.PREFS_INTERFACE_PROJECTION, false);
@@ -57,7 +57,7 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
 	 * @generated
 	 */
-	protected EClass getTargetedEClass() {
+  protected EClass getTargetedEClass() {
 		return FaPackage.Literals.COMPONENT_PORT;
 	}
 
@@ -65,7 +65,7 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getRuleID()
 	 * @generated
 	 */
-	protected String getRuleID() {
+  protected String getRuleID() {
 		return "org.polarsys.capella.core.data.fa.validation.DWF_I_08";
 	}
 
@@ -73,7 +73,7 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRulePartialTestCase#getScopeDefinition()
 	 * @generated
 	 */
-	protected List<String> getScopeDefinition() {
+  protected List<String> getScopeDefinition() {
 		return Arrays.asList(new String[] {
 				"020f1ae5-ecb0-4c5a-954a-2bc2406adf75",
 				"a80f5ef0-92bb-4854-bdd1-74089d8c9b54",
@@ -89,7 +89,7 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getOracleDefinitions()
 	 * @generated
 	 */
-	protected List<OracleDefinition> getOracleDefinitions() {
+  protected List<OracleDefinition> getOracleDefinitions() {
 		return Arrays
 				.asList(new OracleDefinition[] {
 						new OracleDefinition(
