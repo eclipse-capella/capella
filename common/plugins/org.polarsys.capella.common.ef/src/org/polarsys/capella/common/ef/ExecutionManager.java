@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ef;
 
 import java.util.Collection;
@@ -34,8 +35,7 @@ public class ExecutionManager {
   private TransactionalEditingDomain _editingDomain;
 
   /**
-   * Set editing domain provider to use.
-   * @param editingDomainProvider_p A not <code>null</code> editing domain instance.
+   *
    */
   public ExecutionManager() {
     // Get editing domain.
@@ -52,64 +52,64 @@ public class ExecutionManager {
 
   /**
    * Execute given command in associated editing domain.
-   * @param command_p
+   * @param command
    */
-  public void execute(ICommand command_p) {
+  public void execute(ICommand command) {
     TransactionalEditingDomain editingDomain = getEditingDomain();
     // Preconditions.
     Assert.isNotNull(editingDomain);
-    Assert.isNotNull(command_p);
+    Assert.isNotNull(command);
     // Check whether command is read-only or read-write.
-    if (command_p.isReadOnly()) {
-      executeReadOnlyCommand(command_p, editingDomain);
+    if (command.isReadOnly()) {
+      executeReadOnlyCommand(command, editingDomain);
     } else {
-      executeReadWriteCommand(command_p, editingDomain);
+      executeReadWriteCommand(command, editingDomain);
     }
   }
 
   /**
    * Execute a command in read-only mode.
-   * @param command_p
-   * @param editingDomain_p
+   * @param command
+   * @param editingDomain
    */
-  protected void executeReadOnlyCommand(ICommand command_p, TransactionalEditingDomain editingDomain_p) {
+  protected void executeReadOnlyCommand(ICommand command, TransactionalEditingDomain editingDomain) {
     try {
-      editingDomain_p.runExclusive(command_p);
-    } catch (InterruptedException ie_p) {
-      command_p.commandInterrupted();
+      editingDomain.runExclusive(command);
+    } catch (InterruptedException ie) {
+      command.commandInterrupted();
     }
   }
 
   /**
    * Execute a command in read-write mode.
-   * @param command_p
-   * @param editingDomain_p
+   * @param command
+   * @param editingDomain
    */
-  protected void executeReadWriteCommand(final ICommand command_p, TransactionalEditingDomain editingDomain_p) {
-    TransactionalCommandStack stack = (TransactionalCommandStack) editingDomain_p.getCommandStack();
+  protected void executeReadWriteCommand(final ICommand command, TransactionalEditingDomain editingDomain) {
+    TransactionalCommandStack stack = (TransactionalCommandStack) editingDomain.getCommandStack();
     try {
-      stack.execute(createRecordingCommand(command_p, editingDomain_p), command_p.getExecutionOptions());
-    } catch (InterruptedException exception_p) {
-      command_p.commandInterrupted();
-    } catch (RollbackException exception_p) {
-      command_p.commandRolledBack();
+      stack.execute(createRecordingCommand(command, editingDomain), command.getExecutionOptions());
+    } catch (InterruptedException exception) {
+      command.commandInterrupted();
+    } catch (RollbackException exception) {
+      command.commandRolledBack();
     }
   }
 
   /**
    * Create the recording command that should be executed.
-   * @param command_p
-   * @param editingDomain_p
+   * @param command
+   * @param editingDomain
    * @return
    */
-  protected RecordingCommand createRecordingCommand(final ICommand command_p, TransactionalEditingDomain editingDomain_p) {
+  protected RecordingCommand createRecordingCommand(final ICommand command, TransactionalEditingDomain editingDomain) {
     RecordingCommand result = null;
     // Command is likely to change the model, but cheats the command stack not to do so.
-    if (command_p instanceof NonDirtying) {
-      result = new AbstractNonDirtyingRecordingCommand(editingDomain_p) {
+    if (command instanceof NonDirtying) {
+      result = new AbstractNonDirtyingRecordingCommand(editingDomain) {
         @Override
         protected void doExecute() {
-          command_p.run();
+          command.run();
         }
 
         /**
@@ -117,14 +117,14 @@ public class ExecutionManager {
          */
         @Override
         public Collection<?> getAffectedObjects() {
-          return command_p.getAffectedObjects();
+          return command.getAffectedObjects();
         }
       };
     } else { // Command is not hiding from modifying the model.
-      result = new RecordingCommand(editingDomain_p) {
+      result = new RecordingCommand(editingDomain) {
         @Override
         protected void doExecute() {
-          command_p.run();
+          command.run();
         }
 
         /**
@@ -132,11 +132,11 @@ public class ExecutionManager {
          */
         @Override
         public Collection<?> getAffectedObjects() {
-          return command_p.getAffectedObjects();
+          return command.getAffectedObjects();
         }
       };
     }
-    result.setLabel(command_p.toString());
+    result.setLabel(command.toString());
     return result;
   }
 

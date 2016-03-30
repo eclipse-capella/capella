@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,16 +40,16 @@ public class AvoidMergeUnmodifiableItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isReadOnly(IDifference diff_p, Role role_p, IContext context_p) {
+  public boolean isReadOnly(IDifference diff, Role role, IContext context) {
 
-    return super.isReadOnly(diff_p, role_p, context_p);
+    return super.isReadOnly(diff, role, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isMergeable(IDifference difference, Role role, IContext context) {
     return true;
   }
 
@@ -57,47 +57,47 @@ public class AvoidMergeUnmodifiableItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    if (difference_p instanceof IElementPresence) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference_p;
-      EObject source = diff.getElementMatch().get(role_p);
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+    if (difference instanceof IElementPresence) {
+      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
+      EObject source = diff.getElementMatch().get(role);
 
       if (source != null) {
-        if (ReplicableElementHandlerHelper.getInstance(context_p).isUnmodifiableElement(source, context_p)) {
+        if (ReplicableElementHandlerHelper.getInstance(context).isUnmodifiableElement(source, context)) {
           return FilterAction.NO_ACTION;
         }
       }
     }
-    return super.getDestinationRole(difference_p, role_p, context_p);
+    return super.getDestinationRole(difference, role, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isDisplayable(IDifference difference, Role role, IContext context) {
     LinkedList<IDifference> toVisit = new LinkedList<IDifference>();
     HashSet<IDifference> visited = new HashSet<IDifference>();
 
-    toVisit.add(difference_p);
+    toVisit.add(difference);
     while (!toVisit.isEmpty()) {
-      IDifference difference = toVisit.removeFirst();
-      if (!visited.contains(difference)) {
-        visited.add(difference);
+      IDifference diff = toVisit.removeFirst();
+      if (!visited.contains(diff)) {
+        visited.add(diff);
 
-        if (difference instanceof IElementPresence) {
-          IElementRelativeDifference diff = (IElementRelativeDifference) difference;
-          EObject source = diff.getElementMatch().get(role_p);
+        if (diff instanceof IElementPresence) {
+          IElementRelativeDifference relativeDiff = (IElementRelativeDifference) diff;
+          EObject source = relativeDiff.getElementMatch().get(role);
           if (source != null) {
-            if (ReplicableElementHandlerHelper.getInstance(context_p).isUnmodifiableElement(source, context_p)) {
+            if (ReplicableElementHandlerHelper.getInstance(context).isUnmodifiableElement(source, context)) {
               return false;
             }
           }
         }
 
         //If the given difference requires a not-visible dependencies (UnmodifiableElement), it becomes not-visible too! (to avoid some unwanted merges)
-        if (difference instanceof IMergeableDifference) {
-          toVisit.addAll(((IMergeableDifference) difference).getDirectRequiresDependencies(Role.TARGET)); //or role_p?
+        if (diff instanceof IMergeableDifference) {
+          toVisit.addAll(((IMergeableDifference) diff).getDirectRequiresDependencies(Role.TARGET)); //or role?
         }
       }
     }
@@ -108,7 +108,7 @@ public class AvoidMergeUnmodifiableItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isApplicable(EClass differenceClass_p) {
+  public boolean isApplicable(EClass differenceClass) {
     return true;
   }
 
@@ -116,7 +116,7 @@ public class AvoidMergeUnmodifiableItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(EStructuralFeature feature_p, IContext context_p) {
+  public boolean isMergeable(EStructuralFeature feature, IContext context) {
     return true;
   }
 

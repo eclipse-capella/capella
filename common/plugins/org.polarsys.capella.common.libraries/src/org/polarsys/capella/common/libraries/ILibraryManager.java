@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.libraries;
 
 import java.util.Collection;
@@ -34,26 +35,26 @@ public abstract class ILibraryManager {
    * Returns all models related to the given editing domain.
    * (instanciate all available models via library providers)
    */
-  public abstract Collection<IModel> getAllModels(TransactionalEditingDomain domain_p);
+  public abstract Collection<IModel> getAllModels(TransactionalEditingDomain domain);
 
   /**
    * Returns the model corresponding to the given identifier.
    */
-  public abstract IModel getModel(TransactionalEditingDomain domain_p, IModelIdentifier identifier_p);
+  public abstract IModel getModel(TransactionalEditingDomain domain, IModelIdentifier identifier);
 
   /** 
    * Returns the main model for the editing domain 
    */
-  public abstract IModel getModel(TransactionalEditingDomain domain_p);
+  public abstract IModel getModel(TransactionalEditingDomain domain);
 
   /** 
    * Returns the model corresponding to the given object. 
    * If the object is stored outside a model or a library, returns null
    */
-  public abstract IModel getModel(EObject object_p);
+  public abstract IModel getModel(EObject object);
 
   /**
    * Returns an identifier for the given model uri
    */
-  public abstract IModelIdentifier getModelIdentifier(URI modelUri_p);
+  public abstract IModelIdentifier getModelIdentifier(URI modelUri);
 }

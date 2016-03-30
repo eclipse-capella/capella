@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,23 +27,22 @@ public class ElementNameProperty extends AbstractProperty implements ICompoundPr
 	
 	public String _currentName;
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.polarsys.capella.common.flexibility.properties.schema.IProperty#getValue(org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext)
 	 */
-	@SuppressWarnings("restriction")
 	@Override
-	public Object getValue(IPropertyContext context_p) {
+	public Object getValue(IPropertyContext context) {
 		if (_currentName == null) {
-		      IContext context = (IContext) context_p.getSource();
+		      IContext ctx = (IContext) context.getSource();
 		      CatalogElement source =
-		          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+		          (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
 		      if (source != null) {
 		        CatalogElementPkg location =
-		            (CatalogElementPkg) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET));
+		            (CatalogElementPkg) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET));
 		        if ((source.getName() != null) && !(source.getName().isEmpty())) {
 		          _currentName = source.getName();
 		        } else {
-		          _currentName = ReplicableElementHandlerHelper.getInstance(context).getInitialReplicaName(context, location);
+		          _currentName = ReplicableElementHandlerHelper.getInstance(ctx).getInitialReplicaName(ctx, location);
 		        }
 		      }
 		    }
@@ -51,7 +50,7 @@ public class ElementNameProperty extends AbstractProperty implements ICompoundPr
 		
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.polarsys.capella.common.flexibility.properties.schema.IProperty#getType()
 	 */
 	@Override
@@ -59,36 +58,36 @@ public class ElementNameProperty extends AbstractProperty implements ICompoundPr
 		 return String.class;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.polarsys.capella.common.flexibility.properties.schema.IProperty#toType(java.lang.Object, org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext)
 	 */
 	@Override
-	public Object toType(Object value_p, IPropertyContext context_p) {
-		if(value_p!= null){
-		return value_p.toString();
+	public Object toType(Object value, IPropertyContext context) {
+		if(value!= null){
+		return value.toString();
 		}
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.polarsys.capella.common.flexibility.properties.schema.IModifiedProperty#isModified(org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext)
 	 */
 	@Override
-	public boolean isModified(IPropertyContext context_p) {
+	public boolean isModified(IPropertyContext context) {
 
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty#setValue(org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext)
 	 */
 	@Override
-	public void setValue(IPropertyContext context_p) {
+	public void setValue(IPropertyContext context) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty#getRelatedProperties()
 	 */
 	@Override
@@ -97,11 +96,11 @@ public class ElementNameProperty extends AbstractProperty implements ICompoundPr
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty#updatedValue(org.polarsys.capella.common.flexibility.properties.schema.IProperty, org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext)
 	 */
 	@Override
-	public void updatedValue(IProperty property_p, IPropertyContext context_p) {
+	public void updatedValue(IProperty property, IPropertyContext context) {
 		// TODO Auto-generated method stub
 		
 	}

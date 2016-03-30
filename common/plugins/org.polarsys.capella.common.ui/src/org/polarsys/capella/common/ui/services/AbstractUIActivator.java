@@ -30,16 +30,16 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
   /**
    * Get an image descriptor for given key.<br>
    * Images must be located in 'plug-in folder'/icons
-   * @param key_p the key must be the file name of the related image.
+   * @param key the key must be the file name of the related image.
    * @return an {@link ImageDescriptor} or null if not found
    */
-  public ImageDescriptor getImageDescriptor(String key_p) {
+  public ImageDescriptor getImageDescriptor(String key) {
     ImageRegistry imageRegistry = getImageRegistry();
-    ImageDescriptor imageDescriptor = imageRegistry.getDescriptor(key_p);
+    ImageDescriptor imageDescriptor = imageRegistry.getDescriptor(key);
 
     if (null == imageDescriptor) {
-      imageDescriptor = createImageDescriptor(key_p);
-      imageRegistry.put(key_p, imageDescriptor);
+      imageDescriptor = createImageDescriptor(key);
+      imageRegistry.put(key, imageDescriptor);
     }
     return imageDescriptor;
   }
@@ -47,23 +47,23 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
   /**
    * Get an image for given key.<br>
    * Images must be located in 'plug-in folder'/icons
-   * @param key_p the key must be the file name of the related image.
+   * @param key the key must be the file name of the related image.
    * @return an {@link Image} or null if not found
    */
-  public Image getImage(String key_p) {
+  public Image getImage(String key) {
     ImageRegistry imageRegistry = getImageRegistry();
 
-    Image image = imageRegistry.get(key_p);
+    Image image = imageRegistry.get(key);
     if (null == image) {
       // Create an image descriptor for given id.
-      ImageDescriptor imageDescriptor = createImageDescriptor(key_p);
+      ImageDescriptor imageDescriptor = createImageDescriptor(key);
       // Store the (id, imageDescriptor) rather than (id,image)
       // because with storing (id,image) the getDescriptor method will return null in later usage
       // this way, everything is correctly initialized.
-      imageRegistry.put(key_p, imageDescriptor);
+      imageRegistry.put(key, imageDescriptor);
 
       // Everything is all right at this step, let's get the real image
-      image = imageRegistry.get(key_p);
+      image = imageRegistry.get(key);
     }
     return image;
   }
@@ -71,11 +71,11 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
   /**
    * Create an image descriptor for given key.<br>
    * Images must be located in 'plug-in folder'/icons
-   * @param key_p the key must be the file name of the related image.
+   * @param key the key must be the file name of the related image.
    * @return an {@link ImageDescriptor} or null if error occurred
    */
-  protected ImageDescriptor createImageDescriptor(String key_p) {
-    ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(getPluginId(), ICONS_PATH + key_p);
+  protected ImageDescriptor createImageDescriptor(String key) {
+    ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(getPluginId(), ICONS_PATH + key);
     return imageDescriptor;
   }
 
@@ -89,26 +89,26 @@ public abstract class AbstractUIActivator extends AbstractUIPlugin {
 
   /**
    * Log a message in the Eclipse log file.
-   * @param severity_p one of <code>IStatus.OK</code>, <code>IStatus.ERROR</code>, <code>IStatus.INFO</code>, <code>IStatus.WARNING</code>, or
+   * @param severity one of <code>IStatus.OK</code>, <code>IStatus.ERROR</code>, <code>IStatus.INFO</code>, <code>IStatus.WARNING</code>, or
    *          <code>IStatus.CANCEL</code>
    * @param message a human-readable message, localized to the current locale
    * @param exception a low-level exception, or <code>null</code> if not applicable
    */
-  public void log(int severity_p, String message_p, Throwable exception_p) {
-    getLog().log(new Status(severity_p, getPluginId(), message_p, exception_p));
+  public void log(int severity, String message, Throwable exception) {
+    getLog().log(new Status(severity, getPluginId(), message, exception));
   }
 
   /**
    * Get icon url for specified image key.<br>
    * Images must be located in 'plug-in folder'/icons
-   * @param key_p the key must be the file name of the related image.
+   * @param key the key must be the file name of the related image.
    * @return null if image file not found.
    */
-  public URL getImageURL(String key_p) {
+  public URL getImageURL(String key) {
     Bundle bundle = Platform.getBundle(getPluginId());
     if (!BundleUtility.isReady(bundle)) {
       return null;
     }
-    return BundleUtility.find(bundle, ICONS_PATH + key_p);
+    return BundleUtility.find(bundle, ICONS_PATH + key);
   }
 }

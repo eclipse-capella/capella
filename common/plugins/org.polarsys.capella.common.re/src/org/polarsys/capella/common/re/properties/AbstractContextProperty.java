@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,14 @@ public abstract class AbstractContextProperty extends AbstractReProperty impleme
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = getContext(context_p);
-    Object element = context.get(getUniqueIdentifier());
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = getContext(context);
+    Object element = ctx.get(getUniqueIdentifier());
 
     if (element == null) {
-      element = getInitialValue(context_p);
+      element = getInitialValue(context);
       if (element != null) {
-        context.put(getUniqueIdentifier(), element);
+        ctx.put(getUniqueIdentifier(), element);
       }
     }
 
@@ -42,37 +42,36 @@ public abstract class AbstractContextProperty extends AbstractReProperty impleme
   }
 
   /**
-   * @param context_p
+   * @param context
    * @return
    */
-  protected Object getInitialValue(IPropertyContext context_p) {
-    Object element = null;
-    return element;
+  protected Object getInitialValue(IPropertyContext context) {
+    return null;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
-    IContext context = getContext(context_p);
-    Object element = context_p.getCurrentValue(this);
-    context.put(getUniqueIdentifier(), element);
+  public void setValue(IPropertyContext context) {
+    IContext ctx = getContext(context);
+    Object element = context.getCurrentValue(this);
+    ctx.put(getUniqueIdentifier(), element);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 

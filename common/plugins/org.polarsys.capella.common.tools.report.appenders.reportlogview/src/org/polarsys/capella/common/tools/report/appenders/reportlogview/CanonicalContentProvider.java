@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.ArrayList;
@@ -27,12 +28,12 @@ class CanonicalContentProvider extends AbstractMarkerViewContentProvider impleme
   
   
   /**
-   * @param viewer_p
-   * @param helper_p
-   * @param comparator_p
+   * @param viewer
+   * @param helper
+   * @param refresh
    */
-  public CanonicalContentProvider(TreeViewer viewer_p, MarkerViewHelper helper_p, IViewerRefresh refresh_p) {
-    super(viewer_p, helper_p, refresh_p);
+  public CanonicalContentProvider(TreeViewer viewer, MarkerViewHelper helper, IViewerRefresh refresh) {
+    super(viewer, helper, refresh);
     refillCache();
   }
 
@@ -48,9 +49,9 @@ class CanonicalContentProvider extends AbstractMarkerViewContentProvider impleme
   /**
    * {@inheritDoc}
    */
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     Object result = null;
-    if (element_p != viewer.getInput()){
+    if (element != viewer.getInput()){
       result = viewer.getInput();
     }
     return result;
@@ -62,42 +63,42 @@ class CanonicalContentProvider extends AbstractMarkerViewContentProvider impleme
   /**
    * {@inheritDoc}
    */
-  public synchronized Object[] getElements(Object inputElement_p) {
+  public synchronized Object[] getElements(Object inputElement) {
     return markers.toArray();
   }
 
   /**
    * {@inheritDoc}
    */
-  public Object[] getChildren(Object parentElement_p) {
+  public Object[] getChildren(Object parentElement) {
     return noChildren;
   }
   
   /**
    * {@inheritDoc}
    */
-  public boolean hasChildren(Object element_p) {
-    return element_p == viewer.getInput();
+  public boolean hasChildren(Object element) {
+    return element == viewer.getInput();
   }
 
-  private void markerAddedIntern(IMarker marker_p){
-    markers.add(marker_p);
+  private void markerAddedIntern(IMarker marker){
+    markers.add(marker);
     viewerRefresh.refresh();
   }
   
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerAdded(IMarker marker_p) {
-    markerAddedIntern(marker_p);
+  public synchronized void markerAdded(IMarker marker) {
+    markerAddedIntern(marker);
   }
 
 
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerDeleted(IMarker marker_p) {
-    markers.remove(marker_p);
+  public synchronized void markerDeleted(IMarker marker) {
+    markers.remove(marker);
     viewerRefresh.refresh();
   }
   

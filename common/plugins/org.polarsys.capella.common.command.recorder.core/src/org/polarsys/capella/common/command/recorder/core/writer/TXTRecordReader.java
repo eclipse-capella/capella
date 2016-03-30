@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.writer;
 
 import java.io.BufferedReader;
@@ -38,8 +39,8 @@ public class TXTRecordReader {
   /**
    * Constructor 
    */
-  public TXTRecordReader(File file_p) {
-    _file = file_p;
+  public TXTRecordReader(File file) {
+    _file = file;
 
   }
   
@@ -128,44 +129,44 @@ public class TXTRecordReader {
         }
       }
 
-    } catch (FileNotFoundException exception_p) {
+    } catch (FileNotFoundException exception) {
       result = false;
-    } catch (UnsupportedEncodingException exception_p) {
+    } catch (UnsupportedEncodingException exception) {
       result = false;
-    } catch (IOException exception_p) {
+    } catch (IOException exception) {
       result = false;
     } finally {
       if ( _reader != null ) {
         try {
           _reader.close();
           _reader = null;
-        } catch (IOException exception_p) {/* do nothing */}
+        } catch (IOException exception) {/* do nothing */}
       }
     }
 
     return result;
   }
   
-  protected String[] splitEntry(String line_p) {
-	  String tmp = removePrefix(line_p,  TXTWriterHelper.ENTRY_TAG);
+  protected String[] splitEntry(String line) {
+	  String tmp = removePrefix(line,  TXTWriterHelper.ENTRY_TAG);
 	  String tmp1 = tmp.split(WHITE_STRING)[0]; // OP'
 	  String tmp2;
     try {
       tmp2 = tmp.substring(tmp1.length() + 1 );
-    } catch (StringIndexOutOfBoundsException exception_p) {
+    } catch (StringIndexOutOfBoundsException exception) {
       tmp2 = ITXTConstants.NOT_FOUND_STRING;
     } 
 	  return new String[] {tmp1, tmp2};
   }
   
-  protected String[] splitSubEntry(String line_p) {
-	  String tmp = removePrefix(line_p,  TXTWriterHelper.SUBENTRY_TAG);
+  protected String[] splitSubEntry(String line) {
+	  String tmp = removePrefix(line,  TXTWriterHelper.SUBENTRY_TAG);
 	  String tmp1 = tmp.split(WHITE_STRING)[0]; // depth	  
 	  String tmp2;
 	  String tmp3 = ICommonConstants.EMPTY_STRING;
     try {
       tmp2 = tmp.substring(tmp1.length() + 1 );
-    } catch (StringIndexOutOfBoundsException exception_p) {
+    } catch (StringIndexOutOfBoundsException exception) {
       tmp2 = ITXTConstants.NOT_FOUND_STRING;
     }
     
@@ -178,18 +179,18 @@ public class TXTRecordReader {
 	  return new String[] {tmp1, tmp2, tmp3};
   }
   
-  protected String[] splitExtraDataForDate(String line_p) {
-	String tmp = removePrefix(line_p, TXTWriterHelper.EXTRADATA_TAG);
+  protected String[] splitExtraDataForDate(String line) {
+	String tmp = removePrefix(line, TXTWriterHelper.EXTRADATA_TAG);
 	return new String[]{tmp} ; // date as one string
   }
   
-  protected String[] splitExtraDataForEObject(String line_p) {
-	String tmp = removePrefix(line_p, TXTWriterHelper.EXTRADATA_TAG);
+  protected String[] splitExtraDataForEObject(String line) {
+	String tmp = removePrefix(line, TXTWriterHelper.EXTRADATA_TAG);
 	return tmp.split(WHITE_STRING); // EClass + package URI
   }
   
-  protected String removePrefix(String line_p, String prefix_p) {
-	  return line_p.substring(prefix_p.length() + 1); // prefix + white space
+  protected String removePrefix(String line, String prefix) {
+	  return line.substring(prefix.length() + 1); // prefix + white space
   }
   
 }

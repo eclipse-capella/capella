@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.List;
@@ -34,59 +35,59 @@ import org.polarsys.capella.common.ui.toolkit.widgets.handler.SelectionChangedHa
 public class OrderedTransferTreeListDialog extends TransferTreeListDialog {
   /**
    * Constructor.
-   * @param parentShell_p
-   * @param editingDomain_p
-   * @param adapterFactory_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
+   * @param parentShell
+   * @param editingDomain
+   * @param adapterFactory
+   * @param dialogTitle
+   * @param dialogMessage
    */
-  public OrderedTransferTreeListDialog(Shell parentShell_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p, String dialogTitle_p, String dialogMessage_p) {
-    super(parentShell_p, dialogTitle_p, dialogMessage_p, editingDomain_p, adapterFactory_p);
+  public OrderedTransferTreeListDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle, String dialogMessage) {
+    super(parentShell, dialogTitle, dialogMessage, editingDomain, adapterFactory);
   }
 
   /**
    * Constructor.
-   * @param parentShell_p
-   * @param dialogTitle_p
-   * @param dialogMessage_p
-   * @param leftLabelProvider_p
-   * @param rightLabelProvider_p
-   * @param leftViewerStyle_p
-   * @param rightViewerStyle_p
+   * @param parentShell
+   * @param dialogTitle
+   * @param dialogMessage
+   * @param leftLabelProvider
+   * @param rightLabelProvider
+   * @param leftViewerStyle
+   * @param rightViewerStyle
    */
-  public OrderedTransferTreeListDialog(Shell parentShell_p, String dialogTitle_p, String dialogMessage_p,
-    DataLabelProvider leftLabelProvider_p, DataLabelProvider rightLabelProvider_p,
-    int leftViewerStyle_p, int rightViewerStyle_p)
+  public OrderedTransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
+    DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider,
+    int leftViewerStyle, int rightViewerStyle)
   {
-    super(parentShell_p, dialogTitle_p, dialogMessage_p, leftLabelProvider_p, rightLabelProvider_p, leftViewerStyle_p, rightViewerStyle_p);
+    super(parentShell, dialogTitle, dialogMessage, leftLabelProvider, rightLabelProvider, leftViewerStyle, rightViewerStyle);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog#createRightViewerData(java.util.List, java.lang.Object)
    */
   @Override
-  protected AbstractData createRightViewerData(List<? extends EObject> elements_p, Object context_p) {
-    return new MultipleValidElementsTreeData(elements_p, context_p);
+  protected AbstractData createRightViewerData(List<? extends EObject> elements, Object context) {
+    return new MultipleValidElementsTreeData(elements, context);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog#createTransferTreeListViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected TransferTreeListViewer createTransferTreeListViewer(Composite parent_p) {
-    return new OrderedTransferTreeListViewer(parent_p, TRANSFER_TREE_STYLE, getLeftViewerStyle(), getRightViewerStyle());
+  protected TransferTreeListViewer createTransferTreeListViewer(Composite parent) {
+    return new OrderedTransferTreeListViewer(parent, TRANSFER_TREE_STYLE, getLeftViewerStyle(), getRightViewerStyle());
   }
 
   /**
    * Handle selection enablement for OrderedTransferTreeListViewer.UP_BUTTON & OrderedTransferTreeListViewer.DOWN_BUTTON buttons.<br>
    * Default implementation checks selected elements are moveable i.e. a top index object can't move up and bottom index object can't move down.
-   * @param rightInput_p
-   * @param selection_p
-   * @param isMovingUp_p
+   * @param input
+   * @param selection
+   * @param isMovingUp
    * @return <code>true</code> means valid, <code>false</code> if one selected element is not moveable.
    */
-  protected boolean handleSelectionForUpAndDownButton(AbstractData input_p, ISelection selection_p, boolean isMovingUp_p) {
-    boolean result = !selection_p.isEmpty();
+  protected boolean handleSelectionForUpAndDownButton(AbstractData input, ISelection selection, boolean isMovingUp) {
+    boolean result = !selection.isEmpty();
     // Precondition: selection must contain something.
     if (!result) {
       return result;
@@ -97,19 +98,19 @@ public class OrderedTransferTreeListDialog extends TransferTreeListDialog {
     for (TreeItem treeItem : treeItems) {
       Object data = treeItem.getData();
       // Selected element must be valid to be moved.
-      if (input_p.isValid(data)) {
+      if (input.isValid(data)) {
         TreeItem parentItems = treeItem.getParentItem();
         // Handle tree and flat structure.
         int index = (null != parentItems) ? parentItems.indexOf(treeItem) : tree.indexOf(treeItem);
         // Handle border index.
-        if ((index == 0) && isMovingUp_p) {
+        if ((index == 0) && isMovingUp) {
           // Move up an object at the top position is impossible.
           result = false;
           break;
         }
         // Handle tree and flat structure.
         int itemCount = (null != parentItems) ? parentItems.getItemCount() : tree.getItemCount();
-        if ((index == (itemCount - 1)) && !isMovingUp_p) {
+        if ((index == (itemCount - 1)) && !isMovingUp) {
           // Move down an object at the last position is impossible.
           result = false;
           break;
@@ -126,32 +127,32 @@ public class OrderedTransferTreeListDialog extends TransferTreeListDialog {
    * {@inheritDoc}
    */
   @Override
-  protected void initializeRightViewer(TransferTreeListViewer transferViewer_p) {
-    super.initializeRightViewer(transferViewer_p);
+  protected void initializeRightViewer(TransferTreeListViewer transferViewer) {
+    super.initializeRightViewer(transferViewer);
     // Override the default sorter to enable up & down buttons.
     getTransferViewer().getRightViewer().setSorter(null);
   }
 
   /**
    * Register selection handlers that drive the transfer buttons.
-   * @param transferViewer_p
+   * @param transferViewer
    */
   @Override
-  protected void registerSelectionHandler(final TransferTreeListViewer transferViewer_p) {
+  protected void registerSelectionHandler(final TransferTreeListViewer transferViewer) {
     // Register a selection handler to drive the Up button for right viewer.
-    transferViewer_p.setSelectionChangedHandler(new SelectionChangedHandler() {
+    transferViewer.setSelectionChangedHandler(new SelectionChangedHandler() {
       @Override
-      protected boolean doHandleSelection(ISelection selection_p) {
-        return handleSelectionForUpAndDownButton(transferViewer_p.getRightInput(), selection_p, true);
+      protected boolean doHandleSelection(ISelection selection) {
+        return handleSelectionForUpAndDownButton(transferViewer.getRightInput(), selection, true);
       }
     }, OrderedTransferTreeListViewer.UP_BUTTON);
     // Register a selection handler to drive the Down button for right viewer.
-    transferViewer_p.setSelectionChangedHandler(new SelectionChangedHandler() {
+    transferViewer.setSelectionChangedHandler(new SelectionChangedHandler() {
       @Override
-      protected boolean doHandleSelection(ISelection selection_p) {
-        return handleSelectionForUpAndDownButton(transferViewer_p.getRightInput(), selection_p, false);
+      protected boolean doHandleSelection(ISelection selection) {
+        return handleSelectionForUpAndDownButton(transferViewer.getRightInput(), selection, false);
       }
     }, OrderedTransferTreeListViewer.DOWN_BUTTON);
-    super.registerSelectionHandler(transferViewer_p);
+    super.registerSelectionHandler(transferViewer);
   }
 }

@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.oa.impl;
 
 import java.util.Collection;
@@ -183,8 +184,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<ActivityAllocation> resultAsList = (Collection<ActivityAllocation>) result;
 		return new EcoreEList.UnmodifiableEList<ActivityAllocation>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ACTIVITY_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -230,8 +231,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<Swimlane> resultAsList = (Collection<Swimlane>) result;
 		return new EcoreEList.UnmodifiableEList<Swimlane>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_SWIMLANES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -277,8 +278,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<OperationalProcess> resultAsList = (Collection<OperationalProcess>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalProcess>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_PROCESS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -324,8 +325,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<Entity> resultAsList = (Collection<Entity>) result;
 		return new EcoreEList.UnmodifiableEList<Entity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATOR_ENTITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -371,8 +372,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
 		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__REALIZING_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -418,8 +419,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<Role> resultAsList = (Collection<Role>) result;
 		return new EcoreEList.UnmodifiableEList<Role>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__ALLOCATING_ROLES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -465,8 +466,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CONTAINED_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -512,8 +513,8 @@ public class OperationalActivityImpl extends AbstractFunctionImpl implements Ope
 		@SuppressWarnings("unchecked")
 		Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, OaPackage.Literals.OPERATIONAL_ACTIVITY__CHILDREN_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

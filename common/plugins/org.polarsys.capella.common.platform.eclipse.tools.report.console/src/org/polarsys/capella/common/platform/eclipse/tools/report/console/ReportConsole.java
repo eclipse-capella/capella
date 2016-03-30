@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.platform.eclipse.tools.report.console;
 
 import java.io.OutputStream;
@@ -75,14 +76,14 @@ public class ReportConsole implements IReportConsole {
 	/**
 	 * Return OutPutStreams, colorized for each Level log.
 	 */
-	private HashMap<Level,MessageConsoleStream> createOutputStreamsColor(MessageConsole messageCons_p) {
+	private HashMap<Level,MessageConsoleStream> createOutputStreamsColor(MessageConsole messageCons) {
 		HashMap<Level, MessageConsoleStream> conStreamsMap = new HashMap<Level, MessageConsoleStream>();
 		
-		conStreamsMap.put(Level.DEBUG, createOutputStreamColor(rgb_BLACK, messageCons_p));
-		conStreamsMap.put(Level.INFO,  createOutputStreamColor(rgb_DARK_GREEN, messageCons_p));
-		conStreamsMap.put(Level.WARN,  createOutputStreamColor(rgb_DARK_MAGENTA, messageCons_p));
-		conStreamsMap.put(Level.ERROR, createOutputStreamColor(rgb_RED, messageCons_p));
-		conStreamsMap.put(Level.FATAL, createOutputStreamColor(rgb_DARK_YELLOW, messageCons_p));
+		conStreamsMap.put(Level.DEBUG, createOutputStreamColor(rgb_BLACK, messageCons));
+		conStreamsMap.put(Level.INFO,  createOutputStreamColor(rgb_DARK_GREEN, messageCons));
+		conStreamsMap.put(Level.WARN,  createOutputStreamColor(rgb_DARK_MAGENTA, messageCons));
+		conStreamsMap.put(Level.ERROR, createOutputStreamColor(rgb_RED, messageCons));
+		conStreamsMap.put(Level.FATAL, createOutputStreamColor(rgb_DARK_YELLOW, messageCons));
 
 		return conStreamsMap;
 	}
@@ -90,10 +91,10 @@ public class ReportConsole implements IReportConsole {
 	/**
 	 * Return OutPutStream with the color given in parameter.
 	 */
-	private MessageConsoleStream createOutputStreamColor(RGB rgb_color_p, MessageConsole messageCons_p) {
-		MessageConsoleStream consoleStream = messageCons_p.newMessageStream();
+	private MessageConsoleStream createOutputStreamColor(RGB rgb_color, MessageConsole messageCons) {
+		MessageConsoleStream consoleStream = messageCons.newMessageStream();
 		Display standardDisplay = ConsolePlugin.getStandardDisplay();
-		Color systemColor = new Color(standardDisplay, rgb_color_p);
+		Color systemColor = new Color(standardDisplay, rgb_color);
 		consoleStream.setColor(systemColor);
 		
 		return consoleStream;

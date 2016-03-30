@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.model.copypaste;
 
 import java.util.WeakHashMap;
@@ -52,30 +53,30 @@ public class SharedCopyPasteElements {
   
   /**
    * Get the copy object from its original.
-   * @param originalObject_p a potentially null object
+   * @param originalObject a potentially null object
    * @return a potentially null object
    */
-  public Object getCopyObject(Object originalObject_p) {
-    return _originalsToCopies.get(originalObject_p);
+  public Object getCopyObject(Object originalObject) {
+    return _originalsToCopies.get(originalObject);
   }
 
   /**
    * Get the original object from its copy.
-   * @param copiedObject_p
+   * @param copiedObject
    * @return
    */
-  public Object getOriginalObject(Object copiedObject_p) {
-    return _copiesToOriginals.get(copiedObject_p);
+  public Object getOriginalObject(Object copiedObject) {
+    return _copiesToOriginals.get(copiedObject);
   }
 
   /**
    * Get the the Paste copy of a previous copied object in the clipboard.<br>
    * The paste copy is removed from internal resource.
-   * @param pasteCopyObject_p
+   * @param pasteCopyObject
    * @return
    */
-  public Object getPasteCopyOfCopiedObject(Object pasteCopyObject_p) {
-    Object result = _copiesToOriginals.remove(pasteCopyObject_p);
+  public Object getPasteCopyOfCopiedObject(Object pasteCopyObject) {
+    Object result = _copiesToOriginals.remove(pasteCopyObject);
     if (result != null)
       _originalsToCopies.remove(result);
     return result;
@@ -83,12 +84,12 @@ public class SharedCopyPasteElements {
 
   /**
    * Put a copied element and its original representation.
-   * @param copiedElement_p
-   * @param originalObject_p
+   * @param copiedElement
+   * @param originalObject
    */
-  public void put(Object copiedElement_p, Object originalObject_p) {
-    _copiesToOriginals.put(copiedElement_p, originalObject_p);
-    _originalsToCopies.put(originalObject_p, copiedElement_p);
+  public void put(Object copiedElement, Object originalObject) {
+    _copiesToOriginals.put(copiedElement, originalObject);
+    _originalsToCopies.put(originalObject, copiedElement);
   }
 
   /**

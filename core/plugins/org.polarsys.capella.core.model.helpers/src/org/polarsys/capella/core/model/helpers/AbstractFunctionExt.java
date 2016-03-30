@@ -12,6 +12,7 @@ package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -142,59 +143,53 @@ public class AbstractFunctionExt {
 		List<AbstractFunction> srcAllocatedFuns = new ArrayList<AbstractFunction>(1);
 		List<AbstractFunction> tarAllocatedFuns = new ArrayList<AbstractFunction>(1);
 
-		if ((sourceBlock != null) && (targetBlock != null)) {
-			if ((sourceBlock instanceof PartitionableElement) && (targetBlock instanceof PartitionableElement)) {
-				// get allocated function for current source and target
-				srcAllocatedFuns.addAll(sourceBlock.getAllocatedFunctions());
-				tarAllocatedFuns.addAll(targetBlock.getAllocatedFunctions());
+    if ((sourceBlock instanceof PartitionableElement) && (targetBlock instanceof PartitionableElement)) {
+      // get allocated function for current source and target
+      srcAllocatedFuns.addAll(sourceBlock.getAllocatedFunctions());
+      tarAllocatedFuns.addAll(targetBlock.getAllocatedFunctions());
 
-				// get all recursive sub Components
-				// in this process the sourceBlock and targetBlock are also
-				// added to the lists
-				Collection<Component> allSourceRelatedEles = ComponentExt
-						.getAllSubUsedComponents((Component) sourceBlock);
-				Collection<Component> allTargetRelatedEles = ComponentExt
-						.getAllSubUsedComponents((Component) targetBlock);
+      // get all recursive sub Components
+      // in this process the sourceBlock and targetBlock are also
+      // added to the lists
+      Collection<Component> allSourceRelatedEles = ComponentExt.getAllSubUsedComponents((Component) sourceBlock);
+      Collection<Component> allTargetRelatedEles = ComponentExt.getAllSubUsedComponents((Component) targetBlock);
 
-				// get All Super GeneralizableElement of both sourceBlock and
-				// targetBlock
-				if (sourceBlock instanceof GeneralizableElement) {
-					getSuperGElesFilterAsComponent(sourceBlock, allSourceRelatedEles);
-					getSuperGElesFilterAsComponent(targetBlock, allTargetRelatedEles);
-				}
+      // get All Super GeneralizableElement of both sourceBlock and
+      // targetBlock
+      if (sourceBlock instanceof GeneralizableElement) {
+        getSuperGElesFilterAsComponent(sourceBlock, allSourceRelatedEles);
+        getSuperGElesFilterAsComponent(targetBlock, allTargetRelatedEles);
+      }
 
-				// get all deployedElement
-				allSourceRelatedEles.addAll(PartExt.getAllDeployableComponents((Component) sourceBlock));
-				allTargetRelatedEles.addAll(PartExt.getAllDeployableComponents((Component) targetBlock));
+      // get all deployedElement
+      allSourceRelatedEles.addAll(PartExt.getAllDeployableComponents((Component) sourceBlock));
+      allTargetRelatedEles.addAll(PartExt.getAllDeployableComponents((Component) targetBlock));
 
-				// get allocated function of recursive sub sourcePartition
-				for (Component partitionableElement : allSourceRelatedEles) {
-					srcAllocatedFuns.addAll(partitionableElement.getAllocatedFunctions());
-				}
-				// get allocated function of recursive sub targetPartition
-				for (Component partitionableElement : allTargetRelatedEles) {
-					tarAllocatedFuns.addAll(partitionableElement.getAllocatedFunctions());
-				}
+      // get allocated function of recursive sub sourcePartition
+      for (Component partitionableElement : allSourceRelatedEles) {
+        srcAllocatedFuns.addAll(partitionableElement.getAllocatedFunctions());
+      }
+      // get allocated function of recursive sub targetPartition
+      for (Component partitionableElement : allTargetRelatedEles) {
+        tarAllocatedFuns.addAll(partitionableElement.getAllocatedFunctions());
+      }
 
-				// now find the exchanges and add to result list [making sure
-				// that the target is contained in 'tarAllocatedFuns']
-				for (AbstractFunction abstractFunction : srcAllocatedFuns) {
-					List<FunctionalExchange> outGoingExchange = FunctionExt.getOutGoingExchange(abstractFunction);
-					for (FunctionalExchange functionalExchange : outGoingExchange) {
-						AbstractFunction outGoingAbstractFunction = FunctionExt
-								.getOutGoingAbstractFunction(functionalExchange);
-						if (null != outGoingAbstractFunction) {
-							if (tarAllocatedFuns.contains(outGoingAbstractFunction)) {
-								list.add(functionalExchange);
-							}
-						}
-					}
-				}
+      // now find the exchanges and add to result list [making sure
+      // that the target is contained in 'tarAllocatedFuns']
+      for (AbstractFunction abstractFunction : srcAllocatedFuns) {
+        List<FunctionalExchange> outGoingExchange = FunctionExt.getOutGoingExchange(abstractFunction);
+        for (FunctionalExchange functionalExchange : outGoingExchange) {
+          AbstractFunction outGoingAbstractFunction = FunctionExt.getOutGoingAbstractFunction(functionalExchange);
+          if (null != outGoingAbstractFunction) {
+            if (tarAllocatedFuns.contains(outGoingAbstractFunction)) {
+              list.add(functionalExchange);
+            }
+          }
+        }
+      }
 
-			}
-
-		}
-		return list;
+    }
+    return list;
 	}
 
 	private static void getSuperGElesFilterAsComponent(AbstractFunctionalBlock sourceBlock,
@@ -397,17 +392,17 @@ public class AbstractFunctionExt {
 	 *            the function considered
 	 * @return the components the function is allocated to
 	 */
-	protected static Collection<Component> getAllocatingComponents(AbstractFunction function) {
-		Collection<Component> result = new ArrayList<Component>();
-		if (null != function.getAllocationBlocks()) {
-			for (AbstractFunctionalBlock block : function.getAllocationBlocks()) {
-				if (block instanceof Component) {
-					result.add((Component) block);
-				}
-			}
-		}
-		return result;
-	}
+  public static List<Component> getAllocatingComponents(AbstractFunction function) {
+    List<Component> result = new ArrayList<Component>();
+    if (null != function.getAllocationBlocks()) {
+      for (AbstractFunctionalBlock block : function.getAllocationBlocks()) {
+        if (block instanceof Component) {
+          result.add((Component) block);
+        }
+      }
+    }
+    return result;
+  }
 
 	/**
 	 * Given an activity, returns the roles it is allocated to.
@@ -431,7 +426,7 @@ public class AbstractFunctionExt {
 	 * component/actor/entity.
 	 * 
 	 * The rule is that <b>a mother function/activity is allocated to a
-	 * component/actor/entity if and only if all of its sub functions are
+	 * component/actor/entity if and only if all of its leaf functions are
 	 * allocated to this component/actor/entity or children of them</b>.
 	 * 
 	 * <b>Note</b> that in case the mother function/activity is already
@@ -448,62 +443,34 @@ public class AbstractFunctionExt {
 	 * @return the <b>calculated</b> list of components/actors/entities the
 	 *         mother function is allocated to.
 	 */
-	public static List<AbstractFunctionalBlock> getMotherFunctionAllocation(AbstractFunction motherFunction) {
-		List<AbstractFunctionalBlock> result = new ArrayList<AbstractFunctionalBlock>();
-
-		// If motherFunction is already allocated to a component/actor
-		Collection<Component> components = getAllocatingComponents(motherFunction);
-		if (!components.isEmpty()) {
-			result.addAll(components);
-
-		} else {
-			// Get all leaves functions of the motherFunction
-			List<AbstractFunction> leaves = org.polarsys.capella.core.data.helpers.fa.services.FunctionExt
-					.getAllLeafAbstractFunctions(motherFunction);
-
-			// Mother function is not a leaf function by definition
-			if (null != leaves && !leaves.isEmpty()) {
-				Iterator<AbstractFunction> it = leaves.iterator();
-
-				result.addAll(getAllocatingComponents(it.next()));
-
-				// Iterate over leaves and do the intersection with result
-				while (it.hasNext()) {
-					result.retainAll(getAllocatingComponents(it.next()));
-				}
-
-				// If result is empty at this stage, we have to check if leaves
-				// are potentially allocated to sub components of the same
-				// component. In this case, we should return the parent
-				// component.
-				if (result.isEmpty()) {
-
-					// Reset iterator
-					it = leaves.iterator();
-					while (it.hasNext()) {
-						for (Component c : getAllocatingComponents(it.next())) {
-							Collection<Component> ancestors = ComponentExt.getComponentAncestors(c);
-							ancestors.add(c);
-							result.addAll(ancestors);
-						}
-
-						// Iterate over leaves and do the intersection with
-						// result
-						while (it.hasNext()) {
-							for (Component c : getAllocatingComponents(it.next())) {
-								Collection<Component> ancestors = ComponentExt.getComponentAncestors(c);
-								ancestors.add(c);
-								result.retainAll(ancestors);
-							}
-						}
-					}
-				}
-			}
-
-		}
-
-		return result;
-	}
+  public static List<Component> getMotherFunctionAllocation(AbstractFunction motherFunction) {
+    // If motherFunction is already allocated to a component/actor
+    List<Component> motherFunctionAllocatingComponents = getAllocatingComponents(motherFunction);
+    if (!motherFunctionAllocatingComponents.isEmpty()) {
+      return motherFunctionAllocatingComponents;
+    }
+    // Get all leaves functions of the motherFunction
+    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(motherFunction);
+    if (null == leaves || leaves.isEmpty()) {
+      return Collections.emptyList();
+    }
+    // Gather all allocating Components of all leaves
+    List<Component> allAllocatingComponents = new ArrayList<Component>();
+    for (AbstractFunction leaf : leaves) {
+      Collection<Component> allocatingComponents = getAllocatingComponents(leaf);
+      if (allocatingComponents == null || allocatingComponents.isEmpty()) {
+        // A leaf is not allocated -> stop here
+        return Collections.emptyList();
+      }
+      allAllocatingComponents.addAll(allocatingComponents);
+    }
+    // Get common ancestor of all Components allocation leaves.
+    Component commonAncestor = ComponentExt.getFirstCommonComponentAncestor(allAllocatingComponents);
+    if (commonAncestor == null) {
+      return Collections.emptyList();
+    }
+    return Collections.singletonList(commonAncestor);
+  }
 
 	/**
 	 * Given a mother activity that has sub activities, this method

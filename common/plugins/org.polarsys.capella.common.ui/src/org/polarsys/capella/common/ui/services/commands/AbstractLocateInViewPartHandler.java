@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.services.commands;
 
 import org.eclipse.core.commands.ExecutionEvent;
@@ -33,12 +34,12 @@ public abstract class AbstractLocateInViewPartHandler extends AbstractLocateInWo
    * @return the targeted view.
    */
   @Override
-  protected IViewPart handleSelection(ISelection selection_p, IWorkbenchPart activePart_p, ExecutionEvent event_p) {
+  protected IViewPart handleSelection(ISelection selection, IWorkbenchPart activePart, ExecutionEvent event) {
     String targetedPartId = getTargetedPartId();
     if (null != targetedPartId) {
       try {
-        return getWorkbenchWindow(event_p).getActivePage().showView(targetedPartId);
-      } catch (PartInitException exception_p) {
+        return getWorkbenchWindow(event).getActivePage().showView(targetedPartId);
+      } catch (PartInitException exception) {
         // Do nothing.
       }
     }

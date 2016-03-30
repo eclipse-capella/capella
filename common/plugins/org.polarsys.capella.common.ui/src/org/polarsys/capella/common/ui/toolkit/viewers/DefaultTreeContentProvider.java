@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import java.util.Collection;
@@ -24,15 +25,15 @@ public class DefaultTreeContentProvider extends AbstractStructuredContentProvide
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractStructuredContentProvider#handleElementAdded(org.eclipse.jface.viewers.Viewer, java.lang.Object)
    */
   @Override
-  protected void handleElementAdded(Viewer viewer_p, Object addedElements_p) {
-    TreeViewer treeViewer = (TreeViewer) viewer_p;
-    if (addedElements_p instanceof Object[]) {
-      Object[] array = (Object[]) addedElements_p;
+  protected void handleElementAdded(Viewer viewer, Object addedElements) {
+    TreeViewer treeViewer = (TreeViewer) viewer;
+    if (addedElements instanceof Object[]) {
+      Object[] array = (Object[]) addedElements;
       for (Object arr : array) {
         treeViewer.add(getParent(arr), arr);
       }
-    } else if (addedElements_p instanceof Collection<?>) {
-      Collection<?> collection = (Collection<?>) addedElements_p;
+    } else if (addedElements instanceof Collection<?>) {
+      Collection<?> collection = (Collection<?>) addedElements;
       for (Object elt : collection) {
         treeViewer.add(getParent(elt), elt);
       }
@@ -44,16 +45,16 @@ public class DefaultTreeContentProvider extends AbstractStructuredContentProvide
    *      java.lang.Object)
    */
   @Override
-  protected void handleElementRemoved(Viewer viewer_p, Object removedElements_p) {
-    TreeViewer treeViewer = (TreeViewer) viewer_p;
-    if (removedElements_p instanceof Object[]) {
-      Object[] array = (Object[]) removedElements_p;
+  protected void handleElementRemoved(Viewer viewer, Object removedElements) {
+    TreeViewer treeViewer = (TreeViewer) viewer;
+    if (removedElements instanceof Object[]) {
+      Object[] array = (Object[]) removedElements;
       treeViewer.remove(array);
-    } else if (removedElements_p instanceof Collection<?>) {
-      Collection<?> collection = (Collection<?>) removedElements_p;
+    } else if (removedElements instanceof Collection<?>) {
+      Collection<?> collection = (Collection<?>) removedElements;
       treeViewer.remove(collection.toArray());
     } else {
-      treeViewer.remove(removedElements_p);
+      treeViewer.remove(removedElements);
     }
   }
 
@@ -62,16 +63,16 @@ public class DefaultTreeContentProvider extends AbstractStructuredContentProvide
    *      java.lang.Object, java.lang.Object)
    */
   @Override
-  protected void handleElementUpdated(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
-    ((TreeViewer) viewer_p).refresh(newInput_p);
+  protected void handleElementUpdated(Viewer viewer, Object oldInput, Object newInput) {
+    ((TreeViewer) viewer).refresh(newInput);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractStructuredContentProvider#handleViewer(org.eclipse.jface.viewers.Viewer)
    */
   @Override
-  protected void handleViewer(Viewer viewer_p) {
-    if (!(viewer_p instanceof TreeViewer)) {
+  protected void handleViewer(Viewer viewer) {
+    if (!(viewer instanceof TreeViewer)) {
       throw new IllegalArgumentException("Viewer must be an instance of TreeViewer"); //$NON-NLS-1$
     }
 
@@ -80,12 +81,12 @@ public class DefaultTreeContentProvider extends AbstractStructuredContentProvide
   /**
    * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
    */
-  public Object[] getElements(Object inputElement_p) {
-    if (inputElement_p instanceof Object[]) {
-      return (Object[]) inputElement_p;
+  public Object[] getElements(Object inputElement) {
+    if (inputElement instanceof Object[]) {
+      return (Object[]) inputElement;
     }
-    if (inputElement_p instanceof Collection<?>) {
-      return ((Collection<?>) inputElement_p).toArray();
+    if (inputElement instanceof Collection<?>) {
+      return ((Collection<?>) inputElement).toArray();
     }
     return new Object[0];
   }
@@ -100,21 +101,21 @@ public class DefaultTreeContentProvider extends AbstractStructuredContentProvide
   /**
    * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
    */
-  public Object[] getChildren(Object parentElement_p) {
+  public Object[] getChildren(Object parentElement) {
     return null;
   }
 
   /**
    * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
    */
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     return null;
   }
 
   /**
    * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
    */
-  public boolean hasChildren(Object element_p) {
+  public boolean hasChildren(Object element) {
     return false;
   }
 }

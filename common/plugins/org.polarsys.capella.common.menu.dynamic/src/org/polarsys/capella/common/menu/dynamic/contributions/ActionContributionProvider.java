@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.menu.dynamic.contributions;
 
 import java.util.ArrayList;
@@ -80,10 +81,10 @@ public class ActionContributionProvider {
 
   /**
    * Get all contributed actions for given metaclass.
-   * @param cls_p
+   * @param cls
    * @return a not <code>null</code> list.
    */
-  public List<IMDEMenuItemContribution> getAllActionContributions(EClass cls_p) {
+  public List<IMDEMenuItemContribution> getAllActionContributions(EClass cls) {
     List<IMDEMenuItemContribution> result = new ArrayList<IMDEMenuItemContribution>();
     Iterator<Entry<EClass, List<IMDEMenuItemContribution>>> entries = _menuContributions.entrySet().iterator();
     // Iterate over all contributed menus.
@@ -92,7 +93,7 @@ public class ActionContributionProvider {
       // Get the metaclass.
       EClass currentMetaclass = entry.getKey();
       // Select this entry if criteria match.
-      if ((currentMetaclass.isAbstract() && currentMetaclass.isSuperTypeOf(cls_p)) || currentMetaclass.equals(cls_p)) {
+      if ((currentMetaclass.isAbstract() && currentMetaclass.isSuperTypeOf(cls)) || currentMetaclass.equals(cls)) {
         result.addAll(entry.getValue());
       }
     }

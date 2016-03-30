@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.handler;
 
 import java.util.List;
@@ -28,10 +29,10 @@ public class OpenHandler extends AbstractViewHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(ExecutionEvent event) throws ExecutionException {
     int index = 0;
 
-    for (Object selectedObject : getSelection(event_p)) {
+    for (Object selectedObject : getSelection(event)) {
       if (selectedObject instanceof IMarker) {
         IMarker marker = (IMarker) selectedObject;
         List<EObject> map = MarkerViewHelper.getModelElementsFromMarker(marker);
@@ -44,7 +45,7 @@ public class OpenHandler extends AbstractViewHandler {
           return null;
         }
       } else {
-        Viewer v = getView(event_p).getViewer();
+        Viewer v = getView(event).getViewer();
         if (v instanceof TreeViewer){
           boolean expanded = ((TreeViewer) v).getExpandedState(selectedObject);
           if (expanded){

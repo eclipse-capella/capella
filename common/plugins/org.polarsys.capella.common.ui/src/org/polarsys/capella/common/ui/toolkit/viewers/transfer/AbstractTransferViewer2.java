@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.transfer;
 
 import java.util.ArrayList;
@@ -124,67 +125,67 @@ public abstract class AbstractTransferViewer2 extends Viewer {
 
   /**
    * Constructs the abstract implementation of the transfer viewers.
-   * @param parent_p The parent composite.
-   * @param style_p The style constant is used to determine which widgets are displayed.<br> {@link #ADD_ALL_BUTTON}, {@link #ADD_SELECTED_BUTTON},
+   * @param parent The parent composite.
+   * @param style The style constant is used to determine which widgets are displayed.<br> {@link #ADD_ALL_BUTTON}, {@link #ADD_SELECTED_BUTTON},
    *          {@link #REMOVE_SELECTED_BUTTON}, {@link #REMOVE_ALL_BUTTON}, {@link #ALL_WIDGETS}, {@link #ALL_BUTTONS}.<br>
    *          If {@link SWT#NONE} is used, style is automatically set to {@link #ALL_WIDGETS}.
-   * @param leftViewerStyleBits_p style bits constant used for the left viewer.
-   * @param rightViewerStyleBits_p style bits constant used for the right viewer.
+   * @param leftViewerStyleBits style bits constant used for the left viewer.
+   * @param rightViewerStyleBits style bits constant used for the right viewer.
    */
-  protected AbstractTransferViewer2(Composite parent_p, int style_p, int leftViewerStyleBits_p, int rightViewerStyleBits_p) {
-    this(parent_p, style_p, leftViewerStyleBits_p, rightViewerStyleBits_p, AbstractTreeViewer.ALL_LEVELS, AbstractTreeViewer.ALL_LEVELS);
+  protected AbstractTransferViewer2(Composite parent, int style, int leftViewerStyleBits, int rightViewerStyleBits) {
+    this(parent, style, leftViewerStyleBits, rightViewerStyleBits, AbstractTreeViewer.ALL_LEVELS, AbstractTreeViewer.ALL_LEVELS);
   }
 
   /**
    * Constructs the abstract implementation of the transfer viewers.
-   * @param parent_p The parent composite.
-   * @param style_p The style constant is used to determine which widgets are displayed.<br> {@link #ADD_ALL_BUTTON}, {@link #ADD_SELECTED_BUTTON},
+   * @param parent The parent composite.
+   * @param style The style constant is used to determine which widgets are displayed.<br> {@link #ADD_ALL_BUTTON}, {@link #ADD_SELECTED_BUTTON},
    *          {@link #REMOVE_SELECTED_BUTTON}, {@link #REMOVE_ALL_BUTTON}, {@link #ALL_WIDGETS}, {@link #ALL_BUTTONS}.<br>
    *          If {@link SWT#NONE} is used, style is automatically set to {@link #ALL_WIDGETS}.
-   * @param leftViewerStyleBits_p style bits constant used for the left viewer.
-   * @param rightViewerStyleBits_p style bits constant used for the right viewer.
-   * @param leftViewerExpandLevel_p
-   * @param rightViewerExpandLevel_p
+   * @param leftViewerStyleBits style bits constant used for the left viewer.
+   * @param rightViewerStyleBits style bits constant used for the right viewer.
+   * @param leftViewerExpandLevel
+   * @param rightViewerExpandLevel
    */
-  protected AbstractTransferViewer2(Composite parent_p, int style_p, int leftViewerStyleBits_p, int rightViewerStyleBits_p, int leftViewerExpandLevel_p, int rightViewerExpandLevel_p) {
+  protected AbstractTransferViewer2(Composite parent, int style, int leftViewerStyleBits, int rightViewerStyleBits, int leftViewerExpandLevel, int rightViewerExpandLevel) {
     // Store the style of this viewer.
-    if (SWT.NONE == style_p) {
+    if (SWT.NONE == style) {
       _style = ALL_WIDGETS;
     } else {
-      _style = style_p;
+      _style = style;
     }
     // Initialize the selection changed handlers.
     _selectionChangedHandlersForBothViewers = new ArrayList<SelectionChangedHandler>(0);
     _selectionChangedHandlersForLeftViewer = new ArrayList<SelectionChangedHandler>(0);
     _selectionChangedHandlersForRightViewer = new ArrayList<SelectionChangedHandler>(0);
     // Store the left viewer style.
-    _leftViewerStyleBits = leftViewerStyleBits_p;
+    _leftViewerStyleBits = leftViewerStyleBits;
     // Store the right viewer style.
-    _rightViewerStyleBits = rightViewerStyleBits_p;
+    _rightViewerStyleBits = rightViewerStyleBits;
     // Store the left viewer expand level.
-    _leftViewerExpandLevel = leftViewerExpandLevel_p;
+    _leftViewerExpandLevel = leftViewerExpandLevel;
     // Store the right viewer expand level.
-    _rightViewerExpandLevel = rightViewerExpandLevel_p;
+    _rightViewerExpandLevel = rightViewerExpandLevel;
     // Finally, create the viewer.
-    createViewer(parent_p);
+    createViewer(parent);
   }
 
   /**
    * Creates and layout a single button.
-   * @param parent_p
-   * @param text_p
-   * @param tooltip_p
+   * @param parent
+   * @param text
+   * @param tooltip
    * @return
    */
-  protected Button createButton(Composite parent_p, String text_p, String tooltip_p) {
-    Button button = new Button(parent_p, SWT.CENTER);
+  protected Button createButton(Composite parent, String text, String tooltip) {
+    Button button = new Button(parent, SWT.CENTER);
     GridData gdData = new GridData();
     gdData.horizontalAlignment = SWT.FILL;
     gdData.grabExcessHorizontalSpace = true;
 
     button.setLayoutData(gdData);
-    button.setText(text_p);
-    button.setToolTipText(tooltip_p);
+    button.setText(text);
+    button.setToolTipText(tooltip);
     button.addSelectionListener(_buttonClickedListener);
 
     return button;
@@ -192,11 +193,11 @@ public abstract class AbstractTransferViewer2 extends Viewer {
 
   /**
    * Create the button area.
-   * @param parent_p The parent composite.
+   * @param parent The parent composite.
    */
-  protected void createButtonArea(Composite parent_p) {
+  protected void createButtonArea(Composite parent) {
     // The panel.
-    _buttonsPanel = new Composite(parent_p, SWT.NONE);
+    _buttonsPanel = new Composite(parent, SWT.NONE);
     GridData gdData = new GridData();
     gdData.widthHint = UI.convertHorizontalDLUsToPixels(_buttonsPanel, IDialogConstants.BUTTON_WIDTH);
     gdData.verticalAlignment = GridData.CENTER;
@@ -223,8 +224,8 @@ public abstract class AbstractTransferViewer2 extends Viewer {
   }
 
   // Create the composite that hosts all widgets and viewers.
-  private void createInternalComposite(Composite parent_p) {
-    _composite = new Composite(parent_p, SWT.NONE);
+  private void createInternalComposite(Composite parent) {
+    _composite = new Composite(parent, SWT.NONE);
     // Install a layout manager, all widgets are displayed on 3 columns.
     _composite.setLayout(new GridLayout(3, false));
     // Set its layout.
@@ -233,31 +234,31 @@ public abstract class AbstractTransferViewer2 extends Viewer {
   }
 
   // Create the left viewer.
-  private void createLeftViewer(Composite parent_p) {
+  private void createLeftViewer(Composite parent) {
     // If the left viewer is not already set, delegate its creation.
     if (null == _leftViewer) {
       // Create the left viewer from delegated method.
-      _leftViewer = doLeftViewer(parent_p);
+      _leftViewer = doLeftViewer(parent);
     }
     // Layout it.
     layoutViewer(_leftViewer, Messages.AbstractTransferViewer2_LeftViewer_Title);
   }
 
   // Create the right viewer.
-  private void createRightViewer(Composite parent_p) {
+  private void createRightViewer(Composite parent) {
     // If the right viewer is not already set, delegate its creation.
     if (null == _rightViewer) {
       // Create the right viewer from delegated method.
-      _rightViewer = doRightViewer(parent_p);
+      _rightViewer = doRightViewer(parent);
     }
     layoutViewer(_rightViewer, Messages.AbstractTransferViewer2_RightViewer_Title);
   }
 
   // Create the status text field according to the style.
-  private void createStatusTextField(Composite parent_p) {
+  private void createStatusTextField(Composite parent) {
     // Adds the status text field, if the style constant is set.
     if ((STATUS_TEXT_FIELD & _style) != 0) {
-      _statusBar = new Text(parent_p, SWT.READ_ONLY | SWT.BORDER);
+      _statusBar = new Text(parent, SWT.READ_ONLY | SWT.BORDER);
       _statusBar.setEditable(false);
       GridData gdData = new GridData();
       gdData.horizontalAlignment = SWT.FILL;
@@ -268,8 +269,8 @@ public abstract class AbstractTransferViewer2 extends Viewer {
   }
 
   // Create the contained viewers.
-  private void createViewer(Composite parent_p) {
-    createInternalComposite(parent_p);
+  private void createViewer(Composite parent) {
+    createInternalComposite(parent);
     // Initialization of the common listeners.
     initializeListeners();
     // Create the left viewer.
@@ -378,17 +379,17 @@ public abstract class AbstractTransferViewer2 extends Viewer {
 
   /**
    * Does the left viewer.
-   * @param composite_p This composite.
+   * @param composite This composite.
    * @return The left composite.
    */
-  protected abstract StructuredViewer doLeftViewer(Composite composite_p);
+  protected abstract StructuredViewer doLeftViewer(Composite composite);
 
   /**
    * Does the right viewer.
-   * @param composite_p This composite.
+   * @param composite This composite.
    * @return The right viewer.
    */
-  protected abstract StructuredViewer doRightViewer(Composite composite_p);
+  protected abstract StructuredViewer doRightViewer(Composite composite);
 
   /**
    * Return the buttons container.
@@ -557,16 +558,16 @@ public abstract class AbstractTransferViewer2 extends Viewer {
   /**
    * Handle button click. It performs changes between viewers according to the selected button given as argument.<br>
    * To change buttons behavior, please override doHandle'ButtonName' methods (e.g {@link #doHandleAddSelectedButton()}).
-   * @param button_p
+   * @param button
    */
-  protected void handleButtonClicked(Widget button_p) {
-    if (button_p == _addAllBtn) {
+  protected void handleButtonClicked(Widget button) {
+    if (button == _addAllBtn) {
       doHandleAddAllButton();
-    } else if (button_p == _addSelectedBtn) {
+    } else if (button == _addSelectedBtn) {
       doHandleAddSelectedButton();
-    } else if (button_p == _removeSelectedBtn) {
+    } else if (button == _removeSelectedBtn) {
       doHandleRemoveSelectedButton();
-    } else if (button_p == _removeAllBtn) {
+    } else if (button == _removeAllBtn) {
       doHandleRemoveAllButton();
     }
   }
@@ -576,26 +577,26 @@ public abstract class AbstractTransferViewer2 extends Viewer {
    * Default implementation uses label providing to render the status line text.
    * @return
    */
-  protected String handleStatusLineUpdate(Object selectedElement_p, SelectionChangedEvent event_p) {
+  protected String handleStatusLineUpdate(Object selectedElement, SelectionChangedEvent event) {
     String result = ICommonConstants.EMPTY_STRING;
     // Updates the status line.
-    ContentViewer source = (ContentViewer) event_p.getSource();
+    ContentViewer source = (ContentViewer) event.getSource();
     ILabelProvider labelProvider = (ILabelProvider) source.getLabelProvider();
-    result = labelProvider.getText(selectedElement_p);
+    result = labelProvider.getText(selectedElement);
     return result;
   }
 
   /**
    * Handle viewers selection mode depending on the style provided at construction time.<br>
    * If style is set to {@link #SINGLE_SELECTION_VIEWER}, the selection is revealed in only one viewer ie the selection in the other viewer is unset.
-   * @param event_p The selection changed event.
+   * @param event The selection changed event.
    */
-  protected void handleViewersSelectionMode(SelectionChangedEvent event_p) {
+  protected void handleViewersSelectionMode(SelectionChangedEvent event) {
     // If single selection viewer is set, handle the new given selection only if this one is not empty.
     // Indeed, the call to 'disableSelectionViewer.setSelection(StructuredSelection.EMPTY)' is reentrant.
-    if ((0 != (_style & SINGLE_SELECTION_VIEWER)) && !event_p.getSelection().isEmpty()) {
+    if ((0 != (_style & SINGLE_SELECTION_VIEWER)) && !event.getSelection().isEmpty()) {
       // It must be one of the two viewers : left or right.
-      ISelectionProvider selectionProvider = event_p.getSelectionProvider();
+      ISelectionProvider selectionProvider = event.getSelectionProvider();
       // If the originator of the new selection is the left viewer, disable the selection in the right viewer.
       StructuredViewer disableSelectionViewer = null;
       Button buttonDrivenByOppositeViewer = null;
@@ -629,8 +630,8 @@ public abstract class AbstractTransferViewer2 extends Viewer {
        * @see SelectionAdapter#widgetSelected(SelectionEvent)
        */
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        Widget button = event_p.widget;
+      public void widgetSelected(SelectionEvent event) {
+        Widget button = event.widget;
         handleButtonClicked(button);
       }
     };
@@ -639,18 +640,18 @@ public abstract class AbstractTransferViewer2 extends Viewer {
       /**
        * @see ISelectionChangedListener#selectionChanged(SelectionChangedEvent)
        */
-      public void selectionChanged(SelectionChangedEvent event_p) {
+      public void selectionChanged(SelectionChangedEvent event) {
         // Handle the viewers selection mode.
-        handleViewersSelectionMode(event_p);
+        handleViewersSelectionMode(event);
         // Handle the selection itself.
-        ISelection selection = event_p.getSelection();
+        ISelection selection = event.getSelection();
         // Update the buttons state according to the selection.
-        updateButtons(selection, event_p.getSelectionProvider());
+        updateButtons(selection, event.getSelectionProvider());
         if (!selection.isEmpty()) {
           // Gets the last element of the current selection.
           IStructuredSelection structSelection = (IStructuredSelection) selection;
           Object lastSelected = structSelection.toList().get(structSelection.size() - 1);
-          updateStatusLine(handleStatusLineUpdate(lastSelected, event_p));
+          updateStatusLine(handleStatusLineUpdate(lastSelected, event));
         }
       }
     };
@@ -662,7 +663,7 @@ public abstract class AbstractTransferViewer2 extends Viewer {
        */
       @SuppressWarnings("synthetic-access")
       @Override
-      public void controlResized(ControlEvent event_p) {
+      public void controlResized(ControlEvent event) {
         // Get left viewer control.
         Control leftControl = _leftViewer.getControl();
         Point leftViewerSize = leftControl.computeSize(SWT.DEFAULT, SWT.DEFAULT);
@@ -681,17 +682,17 @@ public abstract class AbstractTransferViewer2 extends Viewer {
   }
 
   // Layouts the specified viewer.
-  private void layoutViewer(StructuredViewer viewer_p, String tooltip_p) {
+  private void layoutViewer(StructuredViewer viewer, String tooltip) {
     // Pre-condition.
-    if (null == viewer_p) {
+    if (null == viewer) {
       return;
     }
     // Improve performances.
-    viewer_p.setUseHashlookup(true);
+    viewer.setUseHashlookup(true);
     // Updates viewer control.
-    Control control = viewer_p.getControl();
-    control.setToolTipText(tooltip_p);
-    viewer_p.addSelectionChangedListener(_viewerSelectionChangedListener);
+    Control control = viewer.getControl();
+    control.setToolTipText(tooltip);
+    viewer.addSelectionChangedListener(_viewerSelectionChangedListener);
     // Sets the viewer layout data.
     GridData gdData = new GridData();
     gdData.horizontalAlignment = SWT.FILL;
@@ -703,13 +704,13 @@ public abstract class AbstractTransferViewer2 extends Viewer {
 
   /**
    * Notify given list of selection changed handler with specified selection.
-   * @param selection_p The selection.
-   * @param handlers_p The selection handlers.
+   * @param selection The selection.
+   * @param handlers The selection handlers.
    */
-  private void notifySelectionChangedHandler(ISelection selection_p, List<SelectionChangedHandler> handlers_p) {
-    if (null != handlers_p) {
-      for (SelectionChangedHandler handler : handlers_p) {
-        handler.handleSelection(selection_p);
+  private void notifySelectionChangedHandler(ISelection selection, List<SelectionChangedHandler> handlers) {
+    if (null != handlers) {
+      for (SelectionChangedHandler handler : handlers) {
+        handler.handleSelection(selection);
       }
     }
   }
@@ -727,56 +728,56 @@ public abstract class AbstractTransferViewer2 extends Viewer {
    * Does nothing. <b>Use the {@link #setLeftInput(Object)} and {@link #setRightInput(Object)} methods instead of this one.</b>
    */
   @Override
-  public void setInput(Object input_p) {
+  public void setInput(Object input) {
     // Do nothing.
   }
 
   /**
    * Sets the content provider for the left viewer.
-   * @param provider_p The content provider.
+   * @param provider The content provider.
    */
-  public void setLeftContentProvider(IContentProvider provider_p) {
-    _leftViewer.setContentProvider(provider_p);
+  public void setLeftContentProvider(IContentProvider provider) {
+    _leftViewer.setContentProvider(provider);
   }
 
   /**
    * Sets the left viewer input.
-   * @param input_p The input to set.
+   * @param input The input to set.
    */
-  public void setLeftInput(Object input_p) {
-    _leftViewer.setInput(input_p);
+  public void setLeftInput(Object input) {
+    _leftViewer.setInput(input);
   }
 
   /**
    * Sets the label provider for the left viewer.
-   * @param provider_p The label provider.
+   * @param provider The label provider.
    */
-  public void setLeftLabelProvider(ILabelProvider provider_p) {
-    _leftViewer.setLabelProvider(provider_p);
+  public void setLeftLabelProvider(ILabelProvider provider) {
+    _leftViewer.setLabelProvider(provider);
   }
 
   /**
    * Sets the content provider for the right viewer.
-   * @param provider_p The content provider
+   * @param provider The content provider
    */
-  public void setRightContentProvider(IContentProvider provider_p) {
-    _rightViewer.setContentProvider(provider_p);
+  public void setRightContentProvider(IContentProvider provider) {
+    _rightViewer.setContentProvider(provider);
   }
 
   /**
    * Sets the right viewer input.
-   * @param input_p The input.
+   * @param input The input.
    */
-  public void setRightInput(Object input_p) {
-    _rightViewer.setInput(input_p);
+  public void setRightInput(Object input) {
+    _rightViewer.setInput(input);
   }
 
   /**
    * Sets the label provider for the right viewer.
-   * @param provider_p The label provider.
+   * @param provider The label provider.
    */
-  public void setRightLabelProvider(ILabelProvider provider_p) {
-    _rightViewer.setLabelProvider(provider_p);
+  public void setRightLabelProvider(ILabelProvider provider) {
+    _rightViewer.setLabelProvider(provider);
   }
 
   /**
@@ -784,61 +785,61 @@ public abstract class AbstractTransferViewer2 extends Viewer {
    * @see org.eclipse.jface.viewers.Viewer#setSelection(org.eclipse.jface.viewers.ISelection, boolean)
    */
   @Override
-  public void setSelection(ISelection selection_p, boolean reveal_p) {
+  public void setSelection(ISelection selection, boolean reveal) {
     // Do nothing.
   }
 
   /**
    * Set a selection changed handler used to compute enable state of given button.
-   * @param handler_p The selection changed handler.
-   * @param buttonStyleConstant_p The button style.
+   * @param handler The selection changed handler.
+   * @param buttonStyleConstant The button style.
    */
-  public void setSelectionChangedHandler(SelectionChangedHandler handler_p, int buttonStyleConstant_p) {
+  public void setSelectionChangedHandler(SelectionChangedHandler handler, int buttonStyleConstant) {
     // Register the given selection changed handler according to style constant.
-    if ((null != _addAllBtn) && ((ADD_ALL_BUTTON & buttonStyleConstant_p) != 0)) {
-      handler_p.addControl(_addAllBtn);
-      _selectionChangedHandlersForBothViewers.add(handler_p);
+    if ((null != _addAllBtn) && ((ADD_ALL_BUTTON & buttonStyleConstant) != 0)) {
+      handler.addControl(_addAllBtn);
+      _selectionChangedHandlersForBothViewers.add(handler);
     }
-    if ((null != _removeAllBtn) && ((REMOVE_ALL_BUTTON & buttonStyleConstant_p) != 0)) {
-      handler_p.addControl(_removeAllBtn);
-      _selectionChangedHandlersForBothViewers.add(handler_p);
+    if ((null != _removeAllBtn) && ((REMOVE_ALL_BUTTON & buttonStyleConstant) != 0)) {
+      handler.addControl(_removeAllBtn);
+      _selectionChangedHandlersForBothViewers.add(handler);
     }
-    if ((null != _addSelectedBtn) && ((ADD_SELECTED_BUTTON & buttonStyleConstant_p) != 0)) {
-      handler_p.addControl(_addSelectedBtn);
-      _selectionChangedHandlersForLeftViewer.add(handler_p);
+    if ((null != _addSelectedBtn) && ((ADD_SELECTED_BUTTON & buttonStyleConstant) != 0)) {
+      handler.addControl(_addSelectedBtn);
+      _selectionChangedHandlersForLeftViewer.add(handler);
     }
-    if ((null != _removeSelectedBtn) && ((REMOVE_SELECTED_BUTTON & buttonStyleConstant_p) != 0)) {
-      handler_p.addControl(_removeSelectedBtn);
-      _selectionChangedHandlersForRightViewer.add(handler_p);
+    if ((null != _removeSelectedBtn) && ((REMOVE_SELECTED_BUTTON & buttonStyleConstant) != 0)) {
+      handler.addControl(_removeSelectedBtn);
+      _selectionChangedHandlersForRightViewer.add(handler);
     }
   }
 
   /**
    * Update buttons through provided selection changed handlers.
-   * @param selection_p The selection.
-   * @param selectionProvider_p The selection provider.
+   * @param selection The selection.
+   * @param selectionProvider The selection provider.
    */
-  protected void updateButtons(ISelection selection_p, ISelectionProvider selectionProvider_p) {
+  protected void updateButtons(ISelection selection, ISelectionProvider selectionProvider) {
     List<SelectionChangedHandler> handlersForSelectionProvider = null;
     // Get the selection changed handlers for appropriate viewer : the one that the selection is coming from.
-    if (selectionProvider_p == _leftViewer) {
+    if (selectionProvider == _leftViewer) {
       handlersForSelectionProvider = _selectionChangedHandlersForLeftViewer;
-    } else if (selectionProvider_p == _rightViewer) {
+    } else if (selectionProvider == _rightViewer) {
       handlersForSelectionProvider = _selectionChangedHandlersForRightViewer;
     }
     // Notify selection changed handlers if at least one is registered for the selection provider.
-    notifySelectionChangedHandler(selection_p, handlersForSelectionProvider);
+    notifySelectionChangedHandler(selection, handlersForSelectionProvider);
     // Notify selection changed handlers if at least one is registered for both viewers.
-    notifySelectionChangedHandler(selection_p, _selectionChangedHandlersForBothViewers);
+    notifySelectionChangedHandler(selection, _selectionChangedHandlersForBothViewers);
   }
 
   /**
    * Update the status text field.
-   * @param text_p The text field.
+   * @param text The text field.
    */
-  protected void updateStatusLine(String text_p) {
+  protected void updateStatusLine(String text) {
     if (null != _statusBar) {
-      _statusBar.setText(text_p);
+      _statusBar.setText(text);
     }
   }
 }

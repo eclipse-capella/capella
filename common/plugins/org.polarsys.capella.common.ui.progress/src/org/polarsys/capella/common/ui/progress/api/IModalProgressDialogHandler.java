@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.progress.api;
 
 /**
@@ -20,37 +21,37 @@ public interface IModalProgressDialogHandler {
    * Runs the given thread displaying a modal platform progress bar, using the given task name. This method does not allow to give any tip about the progression
    * percentage. So this method use a progress dialog displaying an unknown amount of work. The run Runnable is run asynchronously.
    * @param runnable the Runnable to run
-   * @param taskName_p the task name
+   * @param taskName the task name
    */
-  public void asynchronousRunWithProgress(Runnable runnable, final String taskName_p);
+  public void asynchronousRunWithProgress(Runnable runnable, final String taskName);
 
   /**
    * Runs the given thread displaying a modal platform progress bar, using the given task name. This method does not allow to give any tip about the progression
    * percentage. So this method use a progress dialog displaying an unknown amount of work. The run Runnable is run synchronously.
    * @param runnable the Runnable to run
-   * @param taskName_p the task name
+   * @param taskName the task name
    */
-  public void synchronousRunWithProgress(Runnable runnable, final String taskName_p);
+  public void synchronousRunWithProgress(Runnable runnable, final String taskName);
 
   /**
    * Runs the given thread displaying a modal platform progress bar, using the given task name. This method handles the worked percentage using a
    * IProgressHandler. The run Runnable is run asynchronously. IMPORTANT: the given Runnable MUST correctly handle the iteration other the amount of work done
    * calling <code>worked(amountDone)</code> and <code>done()</code> on the given <code>IProgressHandler</code> when convenient.
    * @param runnable the Runnable to run
-   * @param taskName_p the task name
+   * @param taskName the task name
    * @param progressHandler the progress handler
    */
-  public void asynchronousRunWithProgress(final Runnable runnable_p, final String taskName_p, final int amountOfWork_p);
+  public void asynchronousRunWithProgress(final Runnable runnable, final String taskName, final int amountOfWork);
 
   /**
    * Runs the given thread displaying a modal platform progress bar, using the given task name. This method handles the worked percentage using a
    * IProgressHandler. The run Runnable is run synchronously. IMPORTANT: the given Runnable MUST correctly handle the iteration other the amount of work done
    * calling <code>worked(amountDone)</code> and <code>done()</code> on the given <code>IProgressHandler</code> when convenient.
    * @param runnable the Runnable to run
-   * @param taskName_p the task name
+   * @param taskName the task name
    * @param progressHandler the progress handler
    */
-  public void synchronousRunWithProgress(final Runnable runnable_p, final String taskName_p, final int amountOfWork_p);
+  public void synchronousRunWithProgress(final Runnable runnable, final String taskName, final int amountOfWork);
 
   /**
    * Creates a platform Progress Handler, for example, Progress Monitors in Eclipse,

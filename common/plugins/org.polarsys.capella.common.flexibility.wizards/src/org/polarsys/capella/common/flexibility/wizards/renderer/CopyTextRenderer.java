@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import org.eclipse.swt.SWT;
@@ -40,7 +41,7 @@ public class CopyTextRenderer extends TextRenderer {
   }
 
   @Override
-  protected void initializeControls(final Composite parent_p, IRendererContext context_p) {
+  protected void initializeControls(final Composite parent, IRendererContext context) {
 
     if (isCopyButton()) {
       copyButton = new Label(rootTextControl, SWT.NONE);
@@ -49,32 +50,32 @@ public class CopyTextRenderer extends TextRenderer {
       copyButton.addMouseListener(new MouseListener() {
 
         @Override
-        public void mouseUp(MouseEvent e_p) {
-          proceedCopy(parent_p.getShell());
+        public void mouseUp(MouseEvent e) {
+          proceedCopy(parent.getShell());
         }
 
         @Override
-        public void mouseDown(MouseEvent e_p) {
+        public void mouseDown(MouseEvent e) {
           //Nothing here
         }
 
         @Override
-        public void mouseDoubleClick(MouseEvent e_p) {
+        public void mouseDoubleClick(MouseEvent e) {
           //Nothing here
         }
       });
 
     }
 
-    super.initializeControls(parent_p, context_p);
+    super.initializeControls(parent, context);
 
   }
 
   @Override
-  protected void setBackgroundTextControl(Color color_p) {
-    super.setBackgroundTextControl(color_p);
+  protected void setBackgroundTextControl(Color color) {
+    super.setBackgroundTextControl(color);
     if (isCopyButton()) {
-      copyButton.setBackground(color_p);
+      copyButton.setBackground(color);
     }
   }
 
@@ -94,8 +95,8 @@ public class CopyTextRenderer extends TextRenderer {
     return super.getNbTextColumn() + 1;
   }
 
-  protected void proceedCopy(Shell shell_p) {
-    Clipboard cb = new Clipboard(shell_p.getDisplay());
+  protected void proceedCopy(Shell shell) {
+    Clipboard cb = new Clipboard(shell.getDisplay());
     TextTransfer textTransfer = TextTransfer.getInstance();
     cb.setContents(new Object[] { textControl.getText() }, new Transfer[] { textTransfer });
   }
@@ -105,8 +106,8 @@ public class CopyTextRenderer extends TextRenderer {
   }
 
   @Override
-  public void dispose(IRendererContext context_p) {
-    super.dispose(context_p);
+  public void dispose(IRendererContext context) {
+    super.dispose(context);
     if (copyButton != null) {
       copyButton.dispose();
     }

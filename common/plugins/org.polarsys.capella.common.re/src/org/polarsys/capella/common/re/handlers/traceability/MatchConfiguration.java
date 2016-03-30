@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.traceability;
 
 import java.util.Collection;
@@ -28,25 +29,25 @@ public class MatchConfiguration extends ExtendedTraceabilityConfiguration {
   }
 
   @Override
-  protected void initHandlers(IContext fContext_p) {
-    addHandler(fContext_p, new MatchTraceabilityHandler((ExtendedComparison) fContext_p.get(ITransitionConstants.MERGE_COMPARISON), getIdentifier(fContext_p)) {
+  protected void initHandlers(IContext fContext) {
+    addHandler(fContext, new MatchTraceabilityHandler((ExtendedComparison) fContext.get(ITransitionConstants.MERGE_COMPARISON), getIdentifier(fContext)) {
 
       @Override
-      public Collection<EObject> retrieveTracedElements(EObject source_p, IContext context_p) {
-        Collection<EObject> parent = super.retrieveTracedElements(source_p, context_p);
+      public Collection<EObject> retrieveTracedElements(EObject source, IContext context) {
+        Collection<EObject> parent = super.retrieveTracedElements(source, context);
         if ((parent != null) && !(parent.isEmpty())) {
           return parent;
         }
-        return Collections.singletonList(source_p);
+        return Collections.singletonList(source);
       }
 
       @Override
-      public Collection<EObject> retrieveSourceElements(EObject source_p, IContext context_p) {
-        Collection<EObject> parent = super.retrieveSourceElements(source_p, context_p);
+      public Collection<EObject> retrieveSourceElements(EObject source, IContext context) {
+        Collection<EObject> parent = super.retrieveSourceElements(source, context);
         if ((parent != null) && !(parent.isEmpty())) {
           return parent;
         }
-        return Collections.singletonList(source_p);
+        return Collections.singletonList(source);
       }
 
     });
@@ -57,7 +58,7 @@ public class MatchConfiguration extends ExtendedTraceabilityConfiguration {
    * {@inheritDoc}
    */
   @Override
-  protected String getExtensionIdentifier(IContext context_p) {
+  protected String getExtensionIdentifier(IContext context) {
     return "MATCH";
   }
 

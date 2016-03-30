@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.jface.viewers.AbstractTreeViewer;
@@ -24,36 +25,36 @@ public class RegExpTreeViewer extends AbstractRegExpViewer {
 
   /**
    * Constructor.
-   * @param parent_p
+   * @param parent
    */
-  public RegExpTreeViewer(Composite parent_p) {
-    super(parent_p);
+  public RegExpTreeViewer(Composite parent) {
+    super(parent);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param isMultipleSelection_p
+   * @param parent
+   * @param isMultipleSelection
    */
-  public RegExpTreeViewer(Composite parent_p, boolean isMultipleSelection_p) {
-    super(parent_p, isMultipleSelection_p);
+  public RegExpTreeViewer(Composite parent, boolean isMultipleSelection) {
+    super(parent, isMultipleSelection);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param isMultipleSelection_p
-   * @param style_p
+   * @param parent
+   * @param isMultipleSelection
+   * @param style
    */
-  public RegExpTreeViewer(Composite parent_p, boolean isMultipleSelection_p, int style_p, int viewerExpandLevel_p) {
-    super(parent_p, isMultipleSelection_p, style_p, viewerExpandLevel_p);
+  public RegExpTreeViewer(Composite parent, boolean isMultipleSelection, int style, int viewerExpandLevel) {
+    super(parent, isMultipleSelection, style, viewerExpandLevel);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer#createFilterText(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void createFilterText(Composite parent_p) {
+  protected void createFilterText(Composite parent) {
     // Do nothing as we use FilteredTree.
   }
 
@@ -70,15 +71,15 @@ public class RegExpTreeViewer extends AbstractRegExpViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer#doClientViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected TreeViewer doClientViewer(Composite parent_p) {
-    parent_p.setLayoutData(new GridData(GridData.FILL_BOTH));
+  protected TreeViewer doClientViewer(Composite parent) {
+    parent.setLayoutData(new GridData(GridData.FILL_BOTH));
     // Create a filtered tree viewer that expands all systematically.
-    FilteredTree filteredTree = new FilteredTree(parent_p, getTreeStyle(), getFilter()) {
+    FilteredTree filteredTree = new FilteredTree(parent, getTreeStyle(), getFilter()) {
       /**
        * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#handleTreeViewerExpansionWhenNoFilter(java.lang.Object[])
        */
       @Override
-      protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements_p) {
+      protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements) {
         treeViewer.expandAll();
       }
     };

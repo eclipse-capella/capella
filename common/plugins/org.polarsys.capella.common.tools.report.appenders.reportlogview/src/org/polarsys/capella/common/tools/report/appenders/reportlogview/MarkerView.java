@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.Arrays;
@@ -97,12 +98,12 @@ public class MarkerView extends ViewPart {
    * {@inheritDoc}
    */
   @Override
-  public void createPartControl(Composite parent_p) {
+  public void createPartControl(Composite parent) {
  
     
     
     // A custom tree to workaround https://bugs.eclipse.org/bugs/show_bug.cgi?id=259141
-    Tree tree = new MarkerViewTree(parent_p, SWT.BORDER | SWT.FULL_SELECTION | SWT.VIRTUAL | SWT.MULTI );
+    Tree tree = new MarkerViewTree(parent, SWT.BORDER | SWT.FULL_SELECTION | SWT.VIRTUAL | SWT.MULTI );
     
     tree.setHeaderVisible(true);
     tree.setLinesVisible(true);
@@ -142,8 +143,8 @@ public class MarkerView extends ViewPart {
     // install a listener on the state to switch flavours when needed
     flavourStateListener = new IStateListener(){
       @SuppressWarnings("synthetic-access")
-      public void handleStateChange(State state_p, Object oldValue_p) {
-        setFlavour(Flavour.valueOf(state_p.getValue().toString()));
+      public void handleStateChange(State state, Object oldValue) {
+        setFlavour(Flavour.valueOf(state.getValue().toString()));
       }
     };
     state.addListener(flavourStateListener);
@@ -153,9 +154,9 @@ public class MarkerView extends ViewPart {
   protected void hookSelectionListeners(){
     selectionListener = new ISelectionListener(){
       @SuppressWarnings("synthetic-access")
-      public void selectionChanged(IWorkbenchPart part_p, ISelection selection_p) {
-        if (part_p != MarkerView.this){
-          filter.setSelection(selection_p);
+      public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+        if (part != MarkerView.this){
+          filter.setSelection(selection);
         }
       }
     };
@@ -237,7 +238,7 @@ public class MarkerView extends ViewPart {
   
   // If the provider changes, also update the viewer columns.
   // Different providers favor different columns and alignment
-  private void hookProvider(AbstractMarkerViewContentProvider newProvider_p){
+  private void hookProvider(AbstractMarkerViewContentProvider newProvider){
     try {
       viewer.getTree().setRedraw(false);
 
@@ -254,30 +255,27 @@ public class MarkerView extends ViewPart {
       viewer.setSelection(StructuredSelection.EMPTY);
 
       // each flavour can have a custom set of tree columns
-      columns.update(newProvider_p);
+      columns.update(newProvider);
 
-      viewer.setContentProvider(newProvider_p);
+      viewer.setContentProvider(newProvider);
 
       // hook into marker source
-      lightMarkers.addListener(newProvider_p);
+      lightMarkers.addListener(newProvider);
 
       // hide markers, show intermediate nodes
       expandToDefault();
       
-      contentProvider = newProvider_p;
+      contentProvider = newProvider;
     } finally {
       viewer.getTree().setRedraw(true);      
     }
   }
 
   /** 
-   * Install a custom viewer refresh on the marker view. 
-   * @param refresh_p the viewer refresh. may be null, 
-   * in which case you must refresh the viewer manually, 
-   * e.g. after a bulk operation.
+   * @param enabled
    */
-  public void setAutomaticRefresh(boolean enabled_p){
-    if (enabled_p){
+  public void setAutomaticRefresh(boolean enabled){
+    if (enabled){
       contentProvider.setViewerRefresh(getDefaultRefresh());
     } else {
       contentProvider.setViewerRefresh(null);
@@ -299,16 +297,16 @@ public class MarkerView extends ViewPart {
    * group state passed as the parameter. Valid values
    * can be looked up in plugin.xml, under the 'group by'
    * menu contribution.
-   * @param currentState_p
+   * @param flavour
    */
-  private void setFlavour(Flavour flavour_p) {
-    if (flavour_p == Flavour.RULE){
+  private void setFlavour(Flavour flavour) {
+    if (flavour == Flavour.RULE){
       hookProvider(new RuleIdContentProvider(viewer, helper, getCurrentRefresh()));
-    } else if (flavour_p == Flavour.CATEGORY){
+    } else if (flavour == Flavour.CATEGORY){
       hookProvider(new CategoryContentProvider(viewer, helper, getCurrentRefresh()));
-    } else if (flavour_p == Flavour.SEVERITY){
+    } else if (flavour == Flavour.SEVERITY){
       hookProvider(new SeverityContentProvider(viewer, helper, getCurrentRefresh()));
-    } else if (flavour_p == Flavour.NONE){
+    } else if (flavour == Flavour.NONE){
       hookProvider(new CanonicalContentProvider(viewer, helper, getCurrentRefresh()));
     }
   }

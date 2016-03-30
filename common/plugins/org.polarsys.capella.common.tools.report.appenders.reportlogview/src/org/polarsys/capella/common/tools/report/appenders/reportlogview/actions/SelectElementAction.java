@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.actions;
 
 import org.eclipse.emf.ecore.EObject;
@@ -35,10 +36,10 @@ public class SelectElementAction extends Action {
   EObject eObject;
 
   /**
-   * @param contentProvider_p
+   * @param eObject
    */
-  public SelectElementAction(EObject eObject_p) {
-    eObject = eObject_p;
+  public SelectElementAction(EObject eObject) {
+    this.eObject = eObject;
   }
 
   @Override
@@ -60,16 +61,16 @@ public class SelectElementAction extends Action {
   }
 
   /**
-   * @param elem_p
+   * @param elem
    */
-  void selectInExplorer(EObject elem_p) {
-    if (null != elem_p) {
+  void selectInExplorer(EObject elem) {
+    if (null != elem) {
       IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
       try {
         IViewPart explorerView = activePage.showView(__EXPLORER_VIEW_ID);
-        ISelection newSelection = new StructuredSelection(elem_p);
+        ISelection newSelection = new StructuredSelection(elem);
         explorerView.getViewSite().getSelectionProvider().setSelection(newSelection);
-      } catch (PartInitException exception_p) {
+      } catch (PartInitException exception) {
         // nothing
       }
     }

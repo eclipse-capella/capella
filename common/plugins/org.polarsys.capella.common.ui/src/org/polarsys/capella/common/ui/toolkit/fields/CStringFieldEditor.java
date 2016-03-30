@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,66 +79,66 @@ public class CStringFieldEditor extends MdeFieldEditor {
   /**
    * Creates a string field editor of unlimited width which supports style. Use the method <code>setTextLimit</code> to limit the text. By default the style is
    * {@value SWT#SINGLE}|{@value SWT#BORDER}.
-   * @param name_p The name of field this field editor works on.
-   * @param label_p The label text of the field editor
-   * @param parent_p The parent of the field editor's control.
+   * @param name The name of field this field editor works on.
+   * @param label The label text of the field editor
+   * @param parent The parent of the field editor's control.
    */
-  public CStringFieldEditor(String name_p, String label_p, Composite parent_p) {
-    this(name_p, label_p, UNLIMITED, parent_p, SWT.SINGLE | SWT.BORDER);
+  public CStringFieldEditor(String name, String label, Composite parent) {
+    this(name, label, UNLIMITED, parent, SWT.SINGLE | SWT.BORDER);
   }
 
   /**
    * Creates a string field editor of unlimited width which supports style. Use the method <code>setTextLimit</code> to limit the text.
-   * @param name_p The name of field this field editor works on.
-   * @param label_p The label text of the field editor
-   * @param parent_p The parent of the field editor's control
-   * @param valueStyle_p The text style.
+   * @param name The name of field this field editor works on.
+   * @param label The label text of the field editor
+   * @param parent The parent of the field editor's control
+   * @param valueStyle The text style.
    * @see Text#Text(Composite, int)
    */
-  public CStringFieldEditor(String name_p, String label_p, Composite parent_p, int valueStyle_p) {
-    this(name_p, label_p, UNLIMITED, parent_p, valueStyle_p);
+  public CStringFieldEditor(String name, String label, Composite parent, int valueStyle) {
+    this(name, label, UNLIMITED, parent, valueStyle);
   }
 
   /**
    * Creates a string field editor which supports style. Use the method <code>setTextLimit</code> to limit the text.
-   * @param name_p The name of field this field editor works on.
-   * @param label_p The label text of the field editor
-   * @param width_p The width of the text input field in characters, or <code>UNLIMITED</code> for no limit
-   * @param parent_p The parent of the field editor's control
-   * @param valueStyle_p The text style.
+   * @param name The name of field this field editor works on.
+   * @param label The label text of the field editor
+   * @param width The width of the text input field in characters, or <code>UNLIMITED</code> for no limit
+   * @param parent The parent of the field editor's control
+   * @param valueStyle The text style.
    * @see Text#Text(Composite, int)
    */
-  public CStringFieldEditor(String name_p, String label_p, int width_p, Composite parent_p, int valueStyle_p) {
-    this(name_p, label_p, width_p, VALIDATE_ON_KEY_STROKE, parent_p, valueStyle_p);
+  public CStringFieldEditor(String name, String label, int width, Composite parent, int valueStyle) {
+    this(name, label, width, VALIDATE_ON_KEY_STROKE, parent, valueStyle);
   }
 
   /**
    * Creates a string field editor which supports style. Use the method <code>setTextLimit</code> to limit the text.
-   * @param name_p The name of field this field editor works on.
-   * @param label_p The label text of the field editor
-   * @param width_p The width of the text input field in characters, or <code>UNLIMITED</code> for no limit
-   * @param strategy_p either <code>VALIDATE_ON_KEY_STROKE</code> to perform on the fly checking (the default), or <code>VALIDATE_ON_FOCUS_LOST</code> to
+   * @param name The name of field this field editor works on.
+   * @param label The label text of the field editor
+   * @param width The width of the text input field in characters, or <code>UNLIMITED</code> for no limit
+   * @param strategy either <code>VALIDATE_ON_KEY_STROKE</code> to perform on the fly checking (the default), or <code>VALIDATE_ON_FOCUS_LOST</code> to
    *          perform validation only after the text has been typed in
-   * @param parent_p The parent of the field editor's control
-   * @param valueStyle_p The text style.
+   * @param parent The parent of the field editor's control
+   * @param valueStyle The text style.
    * @see Text#Text(Composite, int)
    */
-  public CStringFieldEditor(String name_p, String label_p, int width_p, int strategy_p, Composite parent_p, int valueStyle_p) {
-    init(name_p, label_p, SWT.LEFT, valueStyle_p);
-    _widthInChars = width_p;
-    setValidateStrategy(strategy_p);
+  public CStringFieldEditor(String name, String label, int width, int strategy, Composite parent, int valueStyle) {
+    init(name, label, SWT.LEFT, valueStyle);
+    _widthInChars = width;
+    setValidateStrategy(strategy);
     _isValid = false;
     setErrorMessage(JFaceResources.getString("StringFieldEditor.errorMessage"));//$NON-NLS-1$
-    createControl(parent_p);
+    createControl(parent);
   }
 
   /**
    * @see FieldEditor#adjustForNumColumns(int)
    */
   @Override
-  protected void adjustForNumColumns(int numColumns_p) {
+  protected void adjustForNumColumns(int numColumns) {
     GridData gd = (GridData) _textField.getLayoutData();
-    gd.horizontalSpan = numColumns_p - 1;
+    gd.horizontalSpan = numColumns - 1;
     // We only grab excess space if we have to
     // If another field editor has more columns then
     // we assume it is setting the width.
@@ -182,11 +182,11 @@ public class CStringFieldEditor extends MdeFieldEditor {
    * @see org.polarsys.capella.common.ui.toolkit.fields.MdeFieldEditor#checkValueStyle(int)
    */
   @Override
-  protected int checkValueStyle(int valueStyle_p) {
-    int newStyle = valueStyle_p;
+  protected int checkValueStyle(int valueStyle) {
+    int newStyle = valueStyle;
 
     // Force BORDER style, if not specified.
-    if (0 == (SWT.BORDER & valueStyle_p)) {
+    if (0 == (SWT.BORDER & valueStyle)) {
       newStyle |= SWT.BORDER;
     }
 
@@ -205,12 +205,12 @@ public class CStringFieldEditor extends MdeFieldEditor {
    * </p>
    */
   @Override
-  protected void doFillIntoGrid(Composite parent_p, int numColumns_p) {
-    getLabelControl(parent_p);
+  protected void doFillIntoGrid(Composite parent, int numColumns) {
+    getLabelControl(parent);
 
-    _textField = getTextControl(parent_p);
+    _textField = getTextControl(parent);
     GridData gd = new GridData();
-    gd.horizontalSpan = numColumns_p - 1;
+    gd.horizontalSpan = numColumns - 1;
     if (_widthInChars != UNLIMITED) {
       GC gc = new GC(_textField);
       try {
@@ -272,13 +272,13 @@ public class CStringFieldEditor extends MdeFieldEditor {
 
   /**
    * Does the text control.
-   * @param parent_p The parent composite.
-   * @param style_p The text style.
+   * @param parent The parent composite.
+   * @param style The text style.
    * @return The text control.
    */
-  protected Text doTextControl(Composite parent_p, int style_p) {
+  protected Text doTextControl(Composite parent, int style) {
     // Add Vertical Scroll for Text field
-    return new Text(parent_p, style_p | SWT.V_SCROLL);
+    return new Text(parent, style | SWT.V_SCROLL);
   }
 
   /**
@@ -321,25 +321,25 @@ public class CStringFieldEditor extends MdeFieldEditor {
    * <p>
    * The control is created if it does not yet exist
    * </p>
-   * @param parent_p The parent
+   * @param parent The parent
    * @return the text control
    */
-  protected Text getTextControl(Composite parent_p) {
+  protected Text getTextControl(Composite parent) {
     if (_textField == null) {
-      _textField = doTextControl(parent_p, _valueStyle);
-      _textField.setFont(parent_p.getFont());
+      _textField = doTextControl(parent, _valueStyle);
+      _textField.setFont(parent.getFont());
       switch (_validateStrategy) {
         case VALIDATE_ON_KEY_STROKE:
           _textField.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyReleased(KeyEvent event_p) {
+            public void keyReleased(KeyEvent event) {
               valueChanged();
             }
           });
         break;
         case VALIDATE_ON_MODIFICATION:
           _textField.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent event_p) {
+            public void modifyText(ModifyEvent event) {
               valueChanged();
             }
           });
@@ -348,19 +348,19 @@ public class CStringFieldEditor extends MdeFieldEditor {
           _textField.addKeyListener(new KeyAdapter() {
             @SuppressWarnings("synthetic-access")
             @Override
-            public void keyPressed(KeyEvent event_p) {
+            public void keyPressed(KeyEvent event) {
               clearErrorMessage();
             }
           });
           _textField.addFocusListener(new FocusAdapter() {
             @Override
-            public void focusGained(FocusEvent event_p) {
+            public void focusGained(FocusEvent event) {
               refreshValidState();
             }
 
             @SuppressWarnings("synthetic-access")
             @Override
-            public void focusLost(FocusEvent event_p) {
+            public void focusLost(FocusEvent event) {
               valueChanged();
               clearErrorMessage();
             }
@@ -368,7 +368,7 @@ public class CStringFieldEditor extends MdeFieldEditor {
         break;
       }
       _textField.addDisposeListener(new DisposeListener() {
-        public void widgetDisposed(DisposeEvent event_p) {
+        public void widgetDisposed(DisposeEvent event) {
           _textField = null;
         }
       });
@@ -376,7 +376,7 @@ public class CStringFieldEditor extends MdeFieldEditor {
         _textField.setTextLimit(_textLimit);
       }
     } else {
-      checkParent(_textField, parent_p);
+      checkParent(_textField, parent);
     }
     return _textField;
   }
@@ -386,7 +386,7 @@ public class CStringFieldEditor extends MdeFieldEditor {
    * @see org.polarsys.capella.common.ui.toolkit.fields.MdeFieldEditor#getValue(org.eclipse.swt.widgets.Control)
    */
   @Override
-  protected Object getValue(Control control_p) {
+  protected Object getValue(Control control) {
     return _textField.getText();
   }
 
@@ -417,20 +417,20 @@ public class CStringFieldEditor extends MdeFieldEditor {
 
   /**
    * Sets whether the empty string is a valid value or not.
-   * @param allowed_p <code>true</code> if the empty string is allowed, and <code>false</code> if it is considered invalid
+   * @param allowed <code>true</code> if the empty string is allowed, and <code>false</code> if it is considered invalid
    */
-  public void setEmptyStringAllowed(boolean allowed_p) {
-    _emptyStringAllowed = allowed_p;
+  public void setEmptyStringAllowed(boolean allowed) {
+    _emptyStringAllowed = allowed;
   }
 
   /**
    * @see FieldEditor#setEnabled(boolean, Composite)
    */
   @Override
-  public void setEnabled(boolean enabled_p, Composite parent_p) {
-    super.setEnabled(enabled_p, parent_p);
+  public void setEnabled(boolean enabled, Composite parent) {
+    super.setEnabled(enabled, parent);
 
-    getTextControl(parent_p).setEditable(enabled_p);
+    getTextControl(parent).setEditable(enabled);
   }
 
   /**
@@ -445,17 +445,17 @@ public class CStringFieldEditor extends MdeFieldEditor {
 
   /**
    * Sets this field editor's value.
-   * @param value_p The new value, or <code>null</code> meaning the empty string
+   * @param value The new value, or <code>null</code> meaning the empty string
    */
-  public void setStringValue(String value_p) {
-    String value = value_p;
+  public void setStringValue(String value) {
+    String val = value;
     if (_textField != null) {
-      if (value == null) {
-        value = "";//$NON-NLS-1$
+      if (val == null) {
+        val = "";//$NON-NLS-1$
       }
       _oldValue = _textField.getText();
-      if (!_oldValue.equals(value)) {
-        _textField.setText(value);
+      if (!_oldValue.equals(val)) {
+        _textField.setText(val);
         valueChanged();
       }
     }
@@ -463,12 +463,12 @@ public class CStringFieldEditor extends MdeFieldEditor {
 
   /**
    * Sets this text field's text limit.
-   * @param limit_p The limit on the number of character in the text input field, or <code>UNLIMITED</code> for no limit
+   * @param limit The limit on the number of character in the text input field, or <code>UNLIMITED</code> for no limit
    */
-  public void setTextLimit(int limit_p) {
-    _textLimit = limit_p;
+  public void setTextLimit(int limit) {
+    _textLimit = limit;
     if (_textField != null) {
-      _textField.setTextLimit(limit_p);
+      _textField.setTextLimit(limit);
     }
   }
 
@@ -478,12 +478,12 @@ public class CStringFieldEditor extends MdeFieldEditor {
    * Calling this method has no effect after <code>createPartControl</code> is called. Thus this method is really only useful for subclasses to call in their
    * constructor. However, it has public visibility for backward compatibility.
    * </p>
-   * @param value_p either <code>VALIDATE_ON_KEY_STROKE</code> to perform on the fly checking (the default), or <code>VALIDATE_ON_FOCUS_LOST</code> to perform
+   * @param value either <code>VALIDATE_ON_KEY_STROKE</code> to perform on the fly checking (the default), or <code>VALIDATE_ON_FOCUS_LOST</code> to perform
    *          validation only after the text has been typed in
    */
-  public void setValidateStrategy(int value_p) {
-    if ((value_p == VALIDATE_ON_FOCUS_LOST) || (value_p == VALIDATE_ON_KEY_STROKE) || (value_p == VALIDATE_ON_MODIFICATION)) {
-      _validateStrategy = value_p;
+  public void setValidateStrategy(int value) {
+    if ((value == VALIDATE_ON_FOCUS_LOST) || (value == VALIDATE_ON_KEY_STROKE) || (value == VALIDATE_ON_MODIFICATION)) {
+      _validateStrategy = value;
     }
   }
 

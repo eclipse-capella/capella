@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.group.renderer;
 
 import org.eclipse.swt.layout.GridData;
@@ -30,18 +31,18 @@ public class SectionGroupRenderer extends DefaultGroupRenderer {
    * 
    */
   @Override
-  protected Composite createGroup(Composite parent_p, IPropertyGroup group_p, IPropertyContext context, IRendererContext rendererContext_p) {
+  protected Composite createGroup(Composite parent, IPropertyGroup group, IPropertyContext context, IRendererContext rendererContext) {
 
     TabbedPropertySheetWidgetFactory factory = new TabbedPropertySheetWidgetFactory();
 
     Composite parentComposite = null;
-    Section section = factory.createSection(parent_p, ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
-    section.setText(getGroupName(group_p));
+    Section section = factory.createSection(parent, ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
+    section.setText(getGroupName(group));
     parentComposite = section;
     parentComposite = factory.createFlatFormComposite(section);
     section.setClient(parentComposite);
 
-    if (parent_p.getLayout() instanceof GridLayout) {
+    if (parent.getLayout() instanceof GridLayout) {
 
       GridLayout gridLayout = new GridLayout();
       gridLayout.marginHeight = 0;

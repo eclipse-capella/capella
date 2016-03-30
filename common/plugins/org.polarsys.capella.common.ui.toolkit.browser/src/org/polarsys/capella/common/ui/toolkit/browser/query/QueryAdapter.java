@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.query;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class QueryAdapter {
   /**
    * Singleton.
    */
-  private static QueryAdapter _instance = null;
+  private static QueryAdapter instance = null;
 
   /**
    * Singleton constructor.
@@ -43,23 +44,23 @@ public class QueryAdapter {
    * @return
    */
   public static QueryAdapter getInstance() {
-    if (_instance == null) {
-      _instance = new QueryAdapter();
+    if (instance == null) {
+      instance = new QueryAdapter();
     }
-    return _instance;
+    return instance;
   }
 
   /**
    * Compute a query and return its result.
-   * @param currentElement_p context of the query.
+   * @param currentElement context of the query.
    */
   @SuppressWarnings("unchecked")
-  public List<Object> compute(Object currentElement_p, Object query_p) {
+  public List<Object> compute(Object currentElement, Object query) {
     List<Object> result = Collections.emptyList();
-    if (currentElement_p instanceof EObject) {
-      ExecutionManager executionManager = TransactionHelper.getExecutionManager((EObject) currentElement_p);
+    if (currentElement instanceof EObject) {
+      ExecutionManager executionManager = TransactionHelper.getExecutionManager((EObject) currentElement);
       if (executionManager != null) {
-        QueryComputeCommand queryComputeCommand = new QueryComputeCommand(currentElement_p, query_p);
+        QueryComputeCommand queryComputeCommand = new QueryComputeCommand(currentElement, query);
         executionManager.execute(queryComputeCommand);
         result = new ArrayList<Object>((List<Object>) queryComputeCommand.getResult());
         // Trim result from useless 'null' values.
@@ -84,10 +85,10 @@ public class QueryAdapter {
     /**
      * Constructor
      */
-    public QueryComputeCommand(Object currentElement_p, Object query_p) {
+    public QueryComputeCommand(Object currentElement, Object query) {
       internalResult = new ArrayList<Object>(0);
-      currentElement = currentElement_p;
-      query = query_p;
+      this.currentElement = currentElement;
+      this.query = query;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.filter;
 
 import org.eclipse.emf.diffmerge.api.Role;
@@ -27,7 +28,7 @@ public class DefaultFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isMergeable(IDifference difference, Role role, IContext context) {
     return true;
   }
 
@@ -35,7 +36,7 @@ public class DefaultFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
     return FilterAction.TARGET;
   }
 
@@ -43,7 +44,7 @@ public class DefaultFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isDisplayable(IDifference difference, Role role, IContext context) {
     return true;
   }
 
@@ -51,7 +52,7 @@ public class DefaultFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isApplicable(EClass differenceClass_p) {
+  public boolean isApplicable(EClass differenceClass) {
     return true;
   }
 
@@ -59,7 +60,7 @@ public class DefaultFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(EStructuralFeature feature_p, IContext context_p) {
+  public boolean isMergeable(EStructuralFeature feature, IContext context) {
     return true;
   }
 

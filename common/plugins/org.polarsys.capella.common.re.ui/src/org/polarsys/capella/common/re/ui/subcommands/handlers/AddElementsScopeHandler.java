@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.Collection;
@@ -30,9 +31,9 @@ import org.polarsys.capella.common.re.constants.IReConstants;
 public class AddElementsScopeHandler extends SubCommandHandler {
 
   @Override
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    ISelection selection = HandlerUtil.getCurrentSelection(event_p);
-    IRendererContext context = ExecutionEventUtil.getRendererContext(event_p);
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    ISelection selection = HandlerUtil.getCurrentSelection(event);
+    IRendererContext context = ExecutionEventUtil.getRendererContext(event);
     IProperty sourceScope = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
 
     Collection scopeElements = (Collection) context.getPropertyContext().getCurrentValue(sourceScope);
@@ -49,9 +50,9 @@ public class AddElementsScopeHandler extends SubCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(Object evaluationContext_p) {
+  public void setEnabled(Object evaluationContext) {
 
-    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
+    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
 
     if (!(variable instanceof Collection)) {
       setBaseEnabled(false);
@@ -61,7 +62,7 @@ public class AddElementsScopeHandler extends SubCommandHandler {
         setBaseEnabled(false);
       } else {
 
-        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext_p);
+        IRendererContext rendererContext = ExecutionEventUtil.getRendererContext((IEvaluationContext) evaluationContext);
         if (rendererContext == null) {
           setBaseEnabled(false);
         } else {
@@ -80,7 +81,7 @@ public class AddElementsScopeHandler extends SubCommandHandler {
         }
       }
     }
-    super.setEnabled(evaluationContext_p);
+    super.setEnabled(evaluationContext);
 
   }
 

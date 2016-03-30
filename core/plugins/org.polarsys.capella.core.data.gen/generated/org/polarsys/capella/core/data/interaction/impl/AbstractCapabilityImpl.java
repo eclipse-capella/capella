@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.interaction.impl;
 
 import java.util.Collection;
@@ -418,8 +419,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
 		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -465,8 +466,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
 		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -548,8 +549,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -723,8 +724,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapabilityRealization> resultAsList = (Collection<AbstractCapabilityRealization>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapabilityRealization>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCOMING_CAPABILITY_ALLOCATION, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -770,8 +771,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapabilityRealization> resultAsList = (Collection<AbstractCapabilityRealization>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapabilityRealization>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__OUTGOING_CAPABILITY_ALLOCATION, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -835,8 +836,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapabilityExtend> resultAsList = (Collection<AbstractCapabilityExtend>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapabilityExtend>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -918,8 +919,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapabilityGeneralization> resultAsList = (Collection<AbstractCapabilityGeneralization>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapabilityGeneralization>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -983,8 +984,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapabilityInclude> resultAsList = (Collection<AbstractCapabilityInclude>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapabilityInclude>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1030,8 +1031,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUPER, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1077,8 +1078,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1124,8 +1125,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDED_ABSTRACT_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1171,8 +1172,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING_ABSTRACT_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1218,8 +1219,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDED_ABSTRACT_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1265,8 +1266,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING_ABSTRACT_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1384,8 +1385,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1431,8 +1432,8 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 		@SuppressWarnings("unchecked")
 		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

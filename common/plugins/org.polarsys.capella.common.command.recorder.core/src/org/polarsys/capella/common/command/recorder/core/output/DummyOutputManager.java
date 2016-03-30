@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.output;
 
 import java.io.Writer;
@@ -32,14 +33,14 @@ final public class DummyOutputManager implements IOutputManager {
   /**
    * {@inheritDoc}
    */
-  public Writer getWriter(IRecorder recorder_p) {
+  public Writer getWriter(IRecorder recorder) {
     return _writer;
   }
 
   /**
    * {@inheritDoc}
    */
-  public void registerRecorder(IRecorder recorder_p, boolean isNewRecordFileShouldBeCreated_p) {
+  public void registerRecorder(IRecorder recorder, boolean isNewRecordFileShouldBeCreated) {
    // Do nothing
    return;
   }
@@ -47,7 +48,7 @@ final public class DummyOutputManager implements IOutputManager {
   /**
    * {@inheritDoc}
    */
-  public void removeRecorder(IRecorder recorder_p) {
+  public void removeRecorder(IRecorder recorder) {
     // Do nothing
     return;
   }

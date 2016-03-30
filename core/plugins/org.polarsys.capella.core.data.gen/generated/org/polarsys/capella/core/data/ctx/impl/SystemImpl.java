@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.ctx.impl;
 
 import java.util.Collection;
@@ -198,8 +199,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -245,8 +246,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<CapabilityRealizationInvolvement> resultAsList = (Collection<CapabilityRealizationInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvement>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -292,8 +293,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<Capability> resultAsList = (Collection<Capability>) result;
 		return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -339,8 +340,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<SystemCapabilityInvolvement> resultAsList = (Collection<SystemCapabilityInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<SystemCapabilityInvolvement>(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -386,8 +387,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<Mission> resultAsList = (Collection<Mission>) result;
 		return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_MISSIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -433,8 +434,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<SystemMissionInvolvement> resultAsList = (Collection<SystemMissionInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<SystemMissionInvolvement>(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_MISSIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -516,8 +517,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<OperationalEntityRealization> resultAsList = (Collection<OperationalEntityRealization>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalEntityRealization>(this, CtxPackage.Literals.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -563,8 +564,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
 		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -610,8 +611,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<Entity> resultAsList = (Collection<Entity>) result;
 		return new EcoreEList.UnmodifiableEList<Entity>(this, CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -657,8 +658,8 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 		@SuppressWarnings("unchecked")
 		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, CtxPackage.Literals.SYSTEM__REALIZING_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

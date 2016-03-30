@@ -35,8 +35,8 @@ if (derive != null) {
 	  @SuppressWarnings("unchecked")
 		<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>> resultAsList = (<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>>) result;
 		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<<%=genFeature.getListItemType()%>>(this, eFeature, resultAsList.size(), resultAsList.toArray());
-	} catch (ClassCastException cce_p) {
-	  cce_p.printStackTrace();
+	} catch (ClassCastException exception) {
+	  exception.printStackTrace();
 	  return org.eclipse.emf.common.util.ECollections.emptyEList();
 	}
 	<% } else if (genFeature.isPrimitiveType()) { %>
@@ -44,8 +44,8 @@ if (derive != null) {
 	<% } else { %>
 	try {
 		return (<%=genFeature.getImportedType()%>) result;
-	} catch (ClassCastException cce_p) {
-	  cce_p.printStackTrace();
+	} catch (ClassCastException exception) {
+	  exception.printStackTrace();
 	  return null;
 	}
 	<% } %>
@@ -81,8 +81,8 @@ if (derive != null) {
 		@SuppressWarnings("unchecked")
 		<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>> resultAsList = (<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>>) result;
 		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<<%=genFeature.getListItemType()%>>(this, <%=genFeature.getQualifiedFeatureAccessor()%>, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		<% } else if (genFeature.isPrimitiveType()) {%>
@@ -90,8 +90,8 @@ if (derive != null) {
 		<% } else {%>
 		try {
 			return (<%=genFeature.getImportedType()%>) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		<% } %>

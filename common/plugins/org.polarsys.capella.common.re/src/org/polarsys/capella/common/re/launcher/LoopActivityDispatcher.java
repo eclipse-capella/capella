@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.launcher;
 
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
@@ -17,9 +18,9 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class LoopActivityDispatcher implements ILoopActivityDispatcher {
 
-  public boolean loop(IContext context_p, String current_p) {
-    if (IDefaultWorkflow.WORKFLOW_STEP__DIFF_MERGE.equals(current_p)) {
-      return !(ReplicableElementHandlerHelper.getInstance(context_p).getListSources(context_p).isEmpty());
+  public boolean loop(IContext context, String current) {
+    if (IDefaultWorkflow.WORKFLOW_STEP__DIFF_MERGE.equals(current)) {
+      return !(ReplicableElementHandlerHelper.getInstance(context).getListSources(context).isEmpty());
     }
     return false;
   }

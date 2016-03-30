@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.property;
 
 import java.util.ArrayList;
@@ -37,23 +38,23 @@ public class PropertyContext implements IPropertyContext {
 
   Collection<PropertyChangeListener> listeners = new LinkedList<PropertyChangeListener>();
 
-  public PropertyContext(IProperties properties_p) {
-    properties = properties_p;
+  public PropertyContext(IProperties properties) {
+    this.properties = properties;
     propertyValues = new HashMap<IProperty, Object>();
     shouldNotify = true;
   }
 
-  public PropertyContext(IProperties properties_p, Object source_p) {
-    this(properties_p);
-    _source = source_p;
+  public PropertyContext(IProperties properties, Object source) {
+    this(properties);
+    _source = source;
   }
 
   public Object getSource() {
     return _source;
   }
 
-  public void setSource(Object source_p) {
-    _source = source_p;
+  public void setSource(Object source) {
+    _source = source;
     propertyValues.clear();
 
     for (IProperty pro : getProperties().getAllItems()) {
@@ -63,9 +64,9 @@ public class PropertyContext implements IPropertyContext {
 
   boolean shouldNotify;
 
-  public void notifyListeners(IProperty property_p) {
+  public void notifyListeners(IProperty property) {
 
-    PropertyChangedEvent event = new PropertyChangedEvent(property_p, this);
+    PropertyChangedEvent event = new PropertyChangedEvent(property, this);
 
     for (PropertyChangeListener listener : listeners) {
       listener.update(event);
@@ -75,12 +76,12 @@ public class PropertyContext implements IPropertyContext {
 
     shouldNotify = false;
     if (properties != null) {
-      for (IProperty property : properties.getAllItems()) {
-        if (property instanceof ICompoundProperty) {
-          ICompoundProperty cProperty = (ICompoundProperty) property;
+      for (IProperty prop : properties.getAllItems()) {
+        if (prop instanceof ICompoundProperty) {
+          ICompoundProperty cProperty = (ICompoundProperty) prop;
           for (String id : cProperty.getRelatedProperties()) {
-            if (id.equals(property_p.getId())) {
-              cProperty.updatedValue(property_p, this);
+            if (id.equals(property.getId())) {
+              cProperty.updatedValue(property, this);
               setCurrentValue(cProperty, cProperty.getValue(this));
               updated.add(cProperty);
               break;
@@ -91,33 +92,33 @@ public class PropertyContext implements IPropertyContext {
     }
     shouldNotify = true;
 
-    for (IProperty property : updated) {
-      notifyListeners(property);
+    for (IProperty prop : updated) {
+      notifyListeners(prop);
     }
   }
 
-  public void registerListener(PropertyChangeListener listener_p) {
-    listeners.add(listener_p);
+  public void registerListener(PropertyChangeListener listener) {
+    listeners.add(listener);
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext#getCurrentValue(org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty)
    */
-  public Object getCurrentValue(IProperty property_p) {
-    if (!isModified(property_p) || !(propertyValues.containsKey(property_p))) {
-      return getDefaultValue(property_p);
+  public Object getCurrentValue(IProperty property) {
+    if (!isModified(property) || !(propertyValues.containsKey(property))) {
+      return getDefaultValue(property);
     }
-    return propertyValues.get(property_p);
+    return propertyValues.get(property);
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext#getDefaultValue(org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty)
    */
-  public Object getDefaultValue(IProperty property_p) {
-    if (property_p == null) {
+  public Object getDefaultValue(IProperty property) {
+    if (property == null) {
       return null;
     }
-    return property_p.getValue(this);
+    return property.getValue(this);
   }
 
   public boolean isModified() {
@@ -127,35 +128,35 @@ public class PropertyContext implements IPropertyContext {
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext#isModified(org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty)
    */
-  public boolean isModified(IProperty property_p) {
-    if (property_p instanceof IModifiedProperty) {
-      return ((IModifiedProperty) property_p).isModified(this);
+  public boolean isModified(IProperty property) {
+    if (property instanceof IModifiedProperty) {
+      return ((IModifiedProperty) property).isModified(this);
     }
-    return propertyValues.containsKey(property_p);
+    return propertyValues.containsKey(property);
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext#setCurrentValue(java.lang.Object,
    *      org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty)
    */
-  public void setCurrentValue(IProperty property_p, Object value_p) {
-    if (property_p == null) {
+  public void setCurrentValue(IProperty property, Object value) {
+    if (property == null) {
       return;
     }
 
-    propertyValues.put(property_p, property_p.toType(value_p, this));
+    propertyValues.put(property, property.toType(value, this));
 
     if (shouldNotify) {
-      notifyListeners(property_p);
+      notifyListeners(property);
     }
   }
 
   /**
    * @see org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IPropertyContext#write(org.polarsys.capella.common.flexibility.properties.schema.sirius.analysis.weightprice.properties.IProperty)
    */
-  public void write(IProperty property_p) {
-    if (property_p instanceof IEditableProperty) {
-      ((IEditableProperty) property_p).setValue(this);
+  public void write(IProperty property) {
+    if (property instanceof IEditableProperty) {
+      ((IEditableProperty) property).setValue(this);
     }
   }
 
@@ -200,8 +201,8 @@ public class PropertyContext implements IPropertyContext {
   /**
    * {@inheritDoc}
    */
-  public void unregisterListener(PropertyChangeListener listener_p) {
-    listeners.remove(listener_p);
+  public void unregisterListener(PropertyChangeListener listener) {
+    listeners.remove(listener);
   }
 
   public Collection<Object> getSourceAsList() {
@@ -211,24 +212,24 @@ public class PropertyContext implements IPropertyContext {
   /**
    * {@inheritDoc}
    */
-  public void registerListener(PropertyChangeListener listener_p, IProperty property_p) {
-    registerListener(listener_p);
+  public void registerListener(PropertyChangeListener listener, IProperty property) {
+    registerListener(listener);
   }
 
   /**
    * {@inheritDoc}
    */
-  public Collection<Object> getSourceAsList(Class clazz_p) {
+  public Collection<Object> getSourceAsList(Class clazz) {
     Collection<Object> sources = new ArrayList<Object>();
     Object source = getSource();
     if (source instanceof Collection) {
       for (Object object : (Collection) source) {
-        if ((clazz_p == null) || clazz_p.isInstance(object)) {
+        if ((clazz == null) || clazz.isInstance(object)) {
           sources.add(object);
         }
       }
     } else {
-      if ((clazz_p == null) || clazz_p.isInstance(source)) {
+      if ((clazz == null) || clazz.isInstance(source)) {
         sources.add(source);
       }
     }

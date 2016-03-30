@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.internal;
 
 import org.eclipse.core.runtime.IAdapterFactory;
@@ -28,8 +29,8 @@ public class ModelElementAdapterFactory implements IAdapterFactory {
     /**
      * Constructor.
      */
-    public ModelElementWrapper(ModelElement element_p) {
-      _element = element_p;
+    public ModelElementWrapper(ModelElement element) {
+      _element = element;
     }
 
     /**
@@ -44,11 +45,11 @@ public class ModelElementAdapterFactory implements IAdapterFactory {
    * {@inheritDoc}
    */
   @SuppressWarnings("unchecked")
-  public Object getAdapter(Object adaptableObject_p, Class adapterType_p) {
+  public Object getAdapter(Object adaptableObject, Class adapterType) {
     Object result = null;
     // Handle Link Selection adaptation.
-    if ((adaptableObject_p instanceof ModelElement) && ITreeLabelAdapter.class.equals(adapterType_p)) {
-      result = new ModelElementWrapper((ModelElement) adaptableObject_p);
+    if ((adaptableObject instanceof ModelElement) && ITreeLabelAdapter.class.equals(adapterType)) {
+      result = new ModelElementWrapper((ModelElement) adaptableObject);
     }
     return result;
   }

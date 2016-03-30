@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.transfer;
 
 import java.util.Iterator;
@@ -41,48 +42,48 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
-   * @param leftViewerStyleBits_p
-   * @param rightViewerStyleBits_p
+   * @param parent
+   * @param style
+   * @param leftViewerStyleBits
+   * @param rightViewerStyleBits
    */
-  public TransferTreeListViewer(Composite parent_p, int style_p, int leftViewerStyleBits_p, int rightViewerStyleBits_p) {
-    super(parent_p, style_p, leftViewerStyleBits_p, rightViewerStyleBits_p);
+  public TransferTreeListViewer(Composite parent, int style, int leftViewerStyleBits, int rightViewerStyleBits) {
+    super(parent, style, leftViewerStyleBits, rightViewerStyleBits);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
-   * @param leftViewerStyleBits_p
-   * @param rightViewerStyleBits_p
-   * @param leftViewerExpandLevel_p
-   * @param rightViewerExpandLevel_p
+   * @param parent
+   * @param style
+   * @param leftViewerStyleBits
+   * @param rightViewerStyleBits
+   * @param leftViewerExpandLevel
+   * @param rightViewerExpandLevel
    */
-  public TransferTreeListViewer(Composite parent_p, int style_p, int leftViewerStyleBits_p, int rightViewerStyleBits_p, int leftViewerExpandLevel_p, int rightViewerExpandLevel_p) {
-    super(parent_p, style_p, leftViewerStyleBits_p, rightViewerStyleBits_p, leftViewerExpandLevel_p, rightViewerExpandLevel_p);
+  public TransferTreeListViewer(Composite parent, int style, int leftViewerStyleBits, int rightViewerStyleBits, int leftViewerExpandLevel, int rightViewerExpandLevel) {
+    super(parent, style, leftViewerStyleBits, rightViewerStyleBits, leftViewerExpandLevel, rightViewerExpandLevel);
   }
 
   /**
    * Create the right {@link ListData} when the end-user changes the Tree view mode.
-   * @param viewer_p viewer that the end-user wants to change the Tree view mode.
-   * @param displayedElements_p
-   * @param context_p
+   * @param viewer viewer that the end-user wants to change the Tree view mode.
+   * @param displayedElements
+   * @param context
    * @return a not <code>null</code> instance.
    */
-  protected ListData createListDataWhenTreeViewModeClicked(TreeViewer viewer_p, java.util.List<? extends Object> displayedElements_p, Object context_p) {
-    return new ListData(displayedElements_p, context_p);
+  protected ListData createListDataWhenTreeViewModeClicked(TreeViewer viewer, java.util.List<?> displayedElements, Object context) {
+    return new ListData(displayedElements, context);
   }
 
   /**
    * Create the right {@link TreeData} when the end-user changes the Tree view mode.
-   * @param viewer_p viewer that the end-user wants to change the Tree view mode.
-   * @param displayedElements_p
-   * @param context_p
+   * @param viewer viewer that the end-user wants to change the Tree view mode.
+   * @param displayedElements
+   * @param context
    * @return a not <code>null</code> instance.
    */
-  protected TreeData createTreeDataWhenTreeViewModeClicked(TreeViewer viewer_p, java.util.List<? extends Object> displayedElements_p, Object context_p) {
-    return new TreeData(displayedElements_p, context_p);
+  protected TreeData createTreeDataWhenTreeViewModeClicked(TreeViewer viewer, java.util.List<?> displayedElements, Object context) {
+    return new TreeData(displayedElements, context);
   }
 
   /**
@@ -125,8 +126,8 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.transfer.AbstractTransferViewer2#doLeftViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected TreeViewer doLeftViewer(Composite composite_p) {
-    TreeAndListViewer treeViewer = new TreeAndListViewer(composite_p, (SWT.MULTI & getLeftViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _leftViewerExpandLevel);
+  protected TreeViewer doLeftViewer(Composite composite) {
+    TreeAndListViewer treeViewer = new TreeAndListViewer(composite, (SWT.MULTI & getLeftViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _leftViewerExpandLevel);
 //    treeViewer.setAutoExpandLevel(_leftViewerExpandLevel);
     // Register a double click listener to behave as a '>' button click.
     TreeViewer clientViewer = treeViewer.getClientViewer();
@@ -134,7 +135,7 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
       /**
        * @see org.eclipse.jface.viewers.IDoubleClickListener#doubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
        */
-      public void doubleClick(DoubleClickEvent event_p) {
+      public void doubleClick(DoubleClickEvent event) {
         // Handle the event if the related button is enabled (driven by its selection handlers).
         if (_addSelectedBtn.getEnabled()) {
           doHandleAddSelectedButton();
@@ -148,8 +149,8 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.transfer.AbstractTransferViewer2#doRightViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected TreeViewer doRightViewer(Composite composite_p) {
-    TreeAndListViewer treeViewer = new TreeAndListViewer(composite_p, (SWT.MULTI & getRightViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _rightViewerExpandLevel);
+  protected TreeViewer doRightViewer(Composite composite) {
+    TreeAndListViewer treeViewer = new TreeAndListViewer(composite, (SWT.MULTI & getRightViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _rightViewerExpandLevel);
 //    treeViewer.setAutoExpandLevel(_rightViewerExpandLevel);
     // Register a double click listener to behave as a '<' button click.
     TreeViewer clientViewer = treeViewer.getClientViewer();
@@ -157,7 +158,7 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
       /**
        * @see org.eclipse.jface.viewers.IDoubleClickListener#doubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
        */
-      public void doubleClick(DoubleClickEvent event_p) {
+      public void doubleClick(DoubleClickEvent event) {
         // Handle the event if the related button is enabled (driven by its selection handlers).
         if (_removeSelectedBtn.getEnabled()) {
           doHandleRemoveSelectedButton();
@@ -220,13 +221,13 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
    *      org.eclipse.jface.viewers.SelectionChangedEvent)
    */
   @Override
-  protected String handleStatusLineUpdate(Object selectedElement_p, SelectionChangedEvent event_p) {
+  protected String handleStatusLineUpdate(Object selectedElement, SelectionChangedEvent event) {
     String result = null;
-    ITreeLabelAdapter treeLabelAdapter = (ITreeLabelAdapter) AdapterManagerHelper.getAdapter(selectedElement_p, ITreeLabelAdapter.class);
+    ITreeLabelAdapter treeLabelAdapter = (ITreeLabelAdapter) AdapterManagerHelper.getAdapter(selectedElement, ITreeLabelAdapter.class);
     if (null != treeLabelAdapter) {
       result = treeLabelAdapter.getFullLabel();
     } else {
-      result = super.handleStatusLineUpdate(selectedElement_p, event_p);
+      result = super.handleStatusLineUpdate(selectedElement, event);
     }
     return result;
   }

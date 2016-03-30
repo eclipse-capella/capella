@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,9 +28,9 @@ public class DirectoryFieldEditor2 extends DirectoryFieldEditor {
   private File _filterPath = null;
   
   /**
-   * @param recorderRootPathPrefId_p
-   * @param recorderPreferencePage_RecordsLocation_Lbl_p
-   * @param historyGroup_p
+   * @param name
+   * @param labelText
+   * @param parent
    */
   public DirectoryFieldEditor2(String name, String labelText, Composite parent) {
     super(name, labelText, parent);
@@ -108,7 +108,7 @@ public class DirectoryFieldEditor2 extends DirectoryFieldEditor {
     
     try {
       fileName = svm.performStringSubstitution(getTextControl().getText());
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       fileName = getTextControl().getText();
     }
     

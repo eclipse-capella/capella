@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders;
 
 import java.util.List;
@@ -29,21 +30,18 @@ public class ReportManagerFilter extends org.apache.log4j.spi.Filter {
   ReportManagerRegistry reg = null;
   Appender theAppender = null;
 
-  public ReportManagerFilter(Appender appender_p) {
+  public ReportManagerFilter(Appender appender) {
     super();
-    theAppender = appender_p;
+    theAppender = appender;
   }
 
   /**
    * @see org.apache.log4j.spi.Filter#decide(org.apache.log4j.spi.LoggingEvent)
    */
   @Override
-  public int decide(LoggingEvent event_p) {
-    String componentName = null;
-    String level = event_p.getLevel().toString();
-  
-    componentName = event_p.getLoggerName();
-    
+  public int decide(LoggingEvent event) {
+    String level = event.getLevel().toString();
+    String componentName = event.getLoggerName();
     
     reg = ReportManagerRegistry.getInstance();
     

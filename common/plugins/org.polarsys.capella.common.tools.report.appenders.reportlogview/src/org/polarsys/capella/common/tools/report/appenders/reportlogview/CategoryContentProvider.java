@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.ArrayList;
@@ -38,12 +39,12 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
   private List<IMarker> messages;
   
   /**
-   * @param viewer_p
-   * @param helper_p 
-   * @param comparator_p
+   * @param viewer
+   * @param helper 
+   * @param refresh
    */
-  public CategoryContentProvider(TreeViewer viewer_p, MarkerViewHelper helper_p, IViewerRefresh refresh_p) {
-    super(viewer_p, helper_p, refresh_p);
+  public CategoryContentProvider(TreeViewer viewer, MarkerViewHelper helper, IViewerRefresh refresh) {
+    super(viewer, helper, refresh);
     markers = new HashMap<Category, List<IMarker>>();
     ecoreMarkers = new ArrayList<IMarker>();
     messages = new ArrayList<IMarker>();
@@ -56,7 +57,7 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized Object[] getElements(Object inputElement_p) {
+  public synchronized Object[] getElements(Object inputElement) {
     Set<Object> elements = new LinkedHashSet<Object>();
     for (Category cat : markers.keySet()){
       if (!markers.get(cat).isEmpty()){
@@ -78,19 +79,19 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized Object[] getChildren(Object parentElement_p) {
+  public synchronized Object[] getChildren(Object parentElement) {
     List<Object> children = new ArrayList<Object>();
-    if (parentElement_p instanceof Category){
-      for (Category subcategory : ((Category) parentElement_p).getChildren()){
+    if (parentElement instanceof Category){
+      for (Category subcategory : ((Category) parentElement).getChildren()){
         if (isVisible(subcategory)){
           children.add(subcategory);
         }
       }
-      List<IMarker> ownedMarkers = markers.get(parentElement_p);
+      List<IMarker> ownedMarkers = markers.get(parentElement);
       if (ownedMarkers != null && ownedMarkers.size() > 0){
         children.addAll(ownedMarkers);
       }
-    } else if (parentElement_p == MarkerViewHelper.OTHER_CATEGORY){
+    } else if (parentElement == MarkerViewHelper.OTHER_CATEGORY){
       children.addAll(ecoreMarkers);
     }
     return children.toArray();
@@ -112,20 +113,20 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized Object getParent(Object element_p) {
-    if (element_p instanceof IMarker){
-      Category cat = MarkerViewHelper.getCategory((IMarker) element_p);
+  public synchronized Object getParent(Object element) {
+    if (element instanceof IMarker){
+      Category cat = MarkerViewHelper.getCategory((IMarker) element);
       if (cat != null){
         return cat;
       } 
       return viewer.getInput();
-    } else if (element_p instanceof Category){
-      Category parent = ((Category) element_p).getParent();
+    } else if (element instanceof Category){
+      Category parent = ((Category) element).getParent();
       if (parent != null){
         return parent;
       } 
       return viewer.getInput();
-    } else if (element_p == MarkerViewHelper.OTHER_CATEGORY){
+    } else if (element == MarkerViewHelper.OTHER_CATEGORY){
       return viewer.getInput();
     }
     return null;
@@ -134,23 +135,23 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized boolean hasChildren(Object element_p) {
-    return getChildren(element_p).length > 0;
+  public synchronized boolean hasChildren(Object element) {
+    return getChildren(element).length > 0;
   }
 
-  private void markerAddedIntern(IMarker marker_p){
-    Category cat = MarkerViewHelper.getCategory(marker_p);
+  private void markerAddedIntern(IMarker marker){
+    Category cat = MarkerViewHelper.getCategory(marker);
     if (cat != null){
       List<IMarker> children = markers.get(cat);
       if (children == null){
         children = new ArrayList<IMarker>();
         markers.put(cat, children);
       }
-      children.add(marker_p);
-    } else if (MarkerViewHelper.isEcore(marker_p)){
-      ecoreMarkers.add(marker_p);
+      children.add(marker);
+    } else if (MarkerViewHelper.isEcore(marker)){
+      ecoreMarkers.add(marker);
     } else {
-      messages.add(marker_p);
+      messages.add(marker);
     }
     viewerRefresh.refresh();
   }
@@ -158,18 +159,18 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerAdded(IMarker marker_p) {
-    markerAddedIntern(marker_p);
+  public synchronized void markerAdded(IMarker marker) {
+    markerAddedIntern(marker);
   }
 
   /**
    * {@inheritDoc}
    */
-  public synchronized void markerDeleted(IMarker marker_p) {
+  public synchronized void markerDeleted(IMarker marker) {
     boolean removed = false;
     
-    if (MarkerViewHelper.isEcore(marker_p)){
-      ecoreMarkers.remove(marker_p);
+    if (MarkerViewHelper.isEcore(marker)){
+      ecoreMarkers.remove(marker);
       removed = true;
     } 
     
@@ -178,7 +179,7 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
       for (Category c : markers.keySet()){
         List<IMarker> children = markers.get(c);
         if (children != null){
-          removed = children.remove(marker_p);
+          removed = children.remove(marker);
           if (removed){
             break;
           }
@@ -187,7 +188,7 @@ class CategoryContentProvider extends AbstractMarkerViewContentProvider implemen
     }
     
     if (!removed){
-      removed = messages.remove(marker_p);
+      removed = messages.remove(marker);
     }
     
     if (removed){

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -46,16 +47,16 @@ public abstract class AbstractViewerDialog extends TitleAreaDialog {
 
   /**
    * Constructor.
-   * @param parentShell_p
-   * @param title_p title displayed as wizard title.
-   * @param message_p message displayed as wizard message.
-   * @param shellTitle_p title displayed as shell title (i.e window title).
+   * @param parentShell
+   * @param title title displayed as wizard title.
+   * @param message message displayed as wizard message.
+   * @param shellTitle title displayed as shell title (i.e window title).
    */
-  public AbstractViewerDialog(Shell parentShell_p, String title_p, String message_p, String shellTitle_p) {
-    super(parentShell_p);
-    _dialogTitle = (null == title_p) ? ICommonConstants.EMPTY_STRING : title_p;
-    _dialogMessage = (null == message_p) ? ICommonConstants.EMPTY_STRING : message_p;
-    _shellTitle = (null == shellTitle_p) ? ICommonConstants.EMPTY_STRING : shellTitle_p;
+  public AbstractViewerDialog(Shell parentShell, String title, String message, String shellTitle) {
+    super(parentShell);
+    _dialogTitle = (null == title) ? ICommonConstants.EMPTY_STRING : title;
+    _dialogMessage = (null == message) ? ICommonConstants.EMPTY_STRING : message;
+    _shellTitle = (null == shellTitle) ? ICommonConstants.EMPTY_STRING : shellTitle;
     setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MAX);
   }
 
@@ -63,31 +64,31 @@ public abstract class AbstractViewerDialog extends TitleAreaDialog {
    * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
    */
   @Override
-  protected void configureShell(Shell newShell_p) {
-    super.configureShell(newShell_p);
-    newShell_p.setText(_shellTitle);
+  protected void configureShell(Shell newShell) {
+    super.configureShell(newShell);
+    newShell.setText(_shellTitle);
   }
 
   /**
    * Constrain given viewer to have a "nice" presentation.<br>
    * Preferred size.x / 2 is used as width hint to constraint specified viewer.<br> {@link #constrainViewer(TreeViewer, int, int)}
    */
-  protected void constrainViewer(TreeViewer viewer_p, int heightHint_p) {
-    Control tree = viewer_p.getControl();
-    Point computeSize = tree.computeSize(SWT.DEFAULT, heightHint_p);
-    constrainViewer(viewer_p, heightHint_p, computeSize.x);
+  protected void constrainViewer(TreeViewer viewer, int heightHint) {
+    Control tree = viewer.getControl();
+    Point computeSize = tree.computeSize(SWT.DEFAULT, heightHint);
+    constrainViewer(viewer, heightHint, computeSize.x);
   }
 
   /**
    * Constrain given viewer to have a "nice" presentation.
-   * @param viewer_p
-   * @param heightHint_p
-   * @param widthHint_p
+   * @param viewer
+   * @param heightHint
+   * @param widthHint
    */
-  protected void constrainViewer(TreeViewer viewer_p, int heightHint_p, int widthHint_p) {
-    GridData gridData = (GridData) viewer_p.getControl().getLayoutData();
-    gridData.heightHint = convertHeightInCharsToPixels(heightHint_p);
-    gridData.widthHint = widthHint_p; //in 3.6 it seems to compute too much pixels width. convertWidthInCharsToPixels(widthHint_p);
+  protected void constrainViewer(TreeViewer viewer, int heightHint, int widthHint) {
+    GridData gridData = (GridData) viewer.getControl().getLayoutData();
+    gridData.heightHint = convertHeightInCharsToPixels(heightHint);
+    gridData.widthHint = widthHint; //in 3.6 it seems to compute too much pixels width. convertWidthInCharsToPixels(widthHint);
   }
 
   /**
@@ -104,8 +105,8 @@ public abstract class AbstractViewerDialog extends TitleAreaDialog {
    * @see org.eclipse.jface.dialogs.TitleAreaDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected Control createDialogArea(Composite parent_p) {
-    Composite dialogAreaComposite = (Composite) super.createDialogArea(parent_p);
+  protected Control createDialogArea(Composite parent) {
+    Composite dialogAreaComposite = (Composite) super.createDialogArea(parent);
 
     ScrolledComposite scrolled = new ScrolledComposite(dialogAreaComposite,SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER|SWT.RESIZE);
     scrolled.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_BLUE));
@@ -127,28 +128,28 @@ public abstract class AbstractViewerDialog extends TitleAreaDialog {
    	scrolled.setMinSize(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
     scrolled.setVisible(true);
 
-    return parent_p;
+    return parent;
   }
 
   /**
    * Creates a {@link Label} and sets layout data with a {@link GridData} : <code>new GridData(GridData.FILL, GridData.BEGINNING, false, false)</code>.
-   * @param parent_p
+   * @param parent
    */
-  protected Label createLabel(Composite parent_p, String title_p) {
-    Label label = new Label(parent_p, SWT.NONE);
-    label.setText(title_p);
-    label.setFont(parent_p.getFont());
+  protected Label createLabel(Composite parent, String title) {
+    Label label = new Label(parent, SWT.NONE);
+    label.setText(title);
+    label.setFont(parent.getFont());
     label.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, false, false));
     return label;
   }
 
   /**
    * Creates a {@link Text} and sets layout data with a {@link GridData} : <code>new GridData(GridData.FILL, GridData.BEGINNING, true, false)</code>.
-   * @param parent_p
+   * @param parent
    * @return the text widget
    */
-  protected Text createText(Composite parent_p) {
-    Text text = new Text(parent_p, SWT.SINGLE | SWT.BORDER);
+  protected Text createText(Composite parent) {
+    Text text = new Text(parent, SWT.SINGLE | SWT.BORDER);
     text.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
     return text;
   }
@@ -166,9 +167,9 @@ public abstract class AbstractViewerDialog extends TitleAreaDialog {
   /**
    * Do create dialog area content.<br>
    * Called by {@link #createDialogArea(Composite)}.
-   * @param dialogAreaComposite_p
+   * @param dialogAreaComposite
    */
-  protected abstract void doCreateDialogArea(Composite dialogAreaComposite_p);
+  protected abstract void doCreateDialogArea(Composite dialogAreaComposite);
 
   /**
    * Method used to get a result from an end-user selection.<br>

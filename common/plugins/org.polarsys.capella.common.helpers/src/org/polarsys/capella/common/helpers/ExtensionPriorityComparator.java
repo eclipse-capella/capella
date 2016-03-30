@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers;
 
 import java.util.Comparator;
@@ -49,13 +50,13 @@ public class ExtensionPriorityComparator implements Comparator<IConfigurationEle
   /**
    * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
    *
-   * @param cnfElt1_p the first compared element
-   * @param cnfElt2_p the second compared element
+   * @param cnfElt1 the first compared element
+   * @param cnfElt2 the second compared element
    * @return the result of the comparison
    */
-  public int compare(IConfigurationElement cnfElt1_p, IConfigurationElement cnfElt2_p) {
-    int p1 = _toInt(cnfElt1_p.getAttribute(_EXTENSION_ATT_PRIORITY));
-    int p2 = _toInt(cnfElt2_p.getAttribute(_EXTENSION_ATT_PRIORITY));
+  public int compare(IConfigurationElement cnfElt1, IConfigurationElement cnfElt2) {
+    int p1 = _toInt(cnfElt1.getAttribute(_EXTENSION_ATT_PRIORITY));
+    int p2 = _toInt(cnfElt2.getAttribute(_EXTENSION_ATT_PRIORITY));
     if (p1 > p2) return -1;
     else if (p1 == p2) return 0;
     else return 1;

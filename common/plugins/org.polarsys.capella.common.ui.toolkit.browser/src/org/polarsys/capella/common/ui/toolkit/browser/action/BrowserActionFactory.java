@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.browser.action;
 
 import org.eclipse.ui.IWorkbenchWindow;
@@ -18,7 +19,7 @@ import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewP
  *
  */
 public abstract class BrowserActionFactory {
-  String actionId_p;
+  String actionId;
   /**
    * Creates a new workbench action factory with the given id.
    * 
@@ -26,10 +27,10 @@ public abstract class BrowserActionFactory {
    *            the id of actions created by this action factory
    */
   protected BrowserActionFactory(String actionId) {
-      actionId_p = actionId;
+      this.actionId = actionId;
   }
   
-  public abstract IWorkbenchAction create(IWorkbenchWindow window, ISemanticBrowserViewPart semanticBrowserView_p);
+  public abstract IWorkbenchAction create(IWorkbenchWindow window, ISemanticBrowserViewPart semanticBrowserView);
   
   /**
    * Workbench action (id "backwardHistory"): Backward in the browser navigation
@@ -40,11 +41,11 @@ public abstract class BrowserActionFactory {
        * @see org.eclipse.ui.actions.ActionFactory#create(org.eclipse.ui.IWorkbenchWindow)
        */
       @Override
-      public IWorkbenchAction create(IWorkbenchWindow window,  ISemanticBrowserViewPart semanticBrowserView_p) {
+      public IWorkbenchAction create(IWorkbenchWindow window,  ISemanticBrowserViewPart semanticBrowserView) {
           if (window == null) {
               throw new IllegalArgumentException();
           }
-          IWorkbenchAction action = new SemanticBrowserHistoryAction(window, semanticBrowserView_p, false);
+          IWorkbenchAction action = new SemanticBrowserHistoryAction(window, semanticBrowserView, false);
           return action;
       }
   };
@@ -58,11 +59,11 @@ public abstract class BrowserActionFactory {
        * @see org.eclipse.ui.actions.ActionFactory#create(org.eclipse.ui.IWorkbenchWindow)
        */
       @Override
-      public IWorkbenchAction create(IWorkbenchWindow window,  ISemanticBrowserViewPart semanticBrowserView_p) {
+      public IWorkbenchAction create(IWorkbenchWindow window,  ISemanticBrowserViewPart semanticBrowserView) {
           if (window == null) {
               throw new IllegalArgumentException();
           }
-          IWorkbenchAction action = new SemanticBrowserHistoryAction(window, semanticBrowserView_p, true);
+          IWorkbenchAction action = new SemanticBrowserHistoryAction(window, semanticBrowserView, true);
           return action;
       }
   };

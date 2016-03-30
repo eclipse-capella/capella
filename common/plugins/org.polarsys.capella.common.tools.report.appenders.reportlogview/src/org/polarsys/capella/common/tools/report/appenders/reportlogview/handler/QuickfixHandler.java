@@ -135,11 +135,12 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
   }
 
   /**
-   * @param iMarkerResolution_p
+   * @param markers
+   * @param resolution
    * @return
    */
-  protected IContributionItem createContributionItem(final Collection<IMarker> markers_p,
-      final IMarkerResolution resolution_p) {
+  protected IContributionItem createContributionItem(final Collection<IMarker> markers,
+      final IMarkerResolution resolution) {
     return new ActionContributionItem(new Action() {
 
       /**
@@ -147,7 +148,7 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
        */
       @Override
       public String getText() {
-        return resolution_p.getLabel();
+        return resolution.getLabel();
       }
 
       /**
@@ -156,8 +157,8 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
       @Override
       public ImageDescriptor getImageDescriptor() {
         ImageDescriptor imgDesc = null;
-        if (resolution_p instanceof IMarkerResolution2) {
-          Image img = ((IMarkerResolution2) resolution_p).getImage();
+        if (resolution instanceof IMarkerResolution2) {
+          Image img = ((IMarkerResolution2) resolution).getImage();
           if (img != null) {
             imgDesc = ImageDescriptor.createFromImage(img);
           } else {
@@ -175,8 +176,8 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
       @Override
       public String getDescription() {
         String desc = null;
-        if (resolution_p instanceof IMarkerResolution2) {
-          desc = ((IMarkerResolution2) resolution_p).getDescription();
+        if (resolution instanceof IMarkerResolution2) {
+          desc = ((IMarkerResolution2) resolution).getDescription();
         } else {
           desc = super.getDescription();
         }
@@ -192,11 +193,11 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
         IRunnableWithProgress resolutionsRunnable = new IRunnableWithProgress() {
           @Override
           public void run(IProgressMonitor monitor) {
-            if (resolution_p instanceof WorkbenchMarkerResolution) {
-              ((WorkbenchMarkerResolution) resolution_p).run(markers_p.toArray(new IMarker[0]), monitor);
+            if (resolution instanceof WorkbenchMarkerResolution) {
+              ((WorkbenchMarkerResolution) resolution).run(markers.toArray(new IMarker[0]), monitor);
             } else {
-              for (IMarker marker : markers_p) {
-                resolution_p.run(marker);
+              for (IMarker marker : markers) {
+                resolution.run(marker);
               }
             }
           }
@@ -205,12 +206,12 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
             .getShell());
         try {
           PlatformUI.getWorkbench().getProgressService().runInUI(context, resolutionsRunnable, null);
-        } catch (InvocationTargetException exception_p) {
+        } catch (InvocationTargetException exception) {
           StatusManager.getManager().handle(
-              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
-        } catch (InterruptedException exception_p) {
+              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
+        } catch (InterruptedException exception) {
           StatusManager.getManager().handle(
-              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
+              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
         }
       }
     });

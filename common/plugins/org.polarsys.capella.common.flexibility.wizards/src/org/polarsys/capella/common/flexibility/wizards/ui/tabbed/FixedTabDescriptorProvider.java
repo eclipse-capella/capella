@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.ArrayList;
@@ -39,17 +40,17 @@ public abstract class FixedTabDescriptorProvider extends TabbedPropertyRegistry 
   protected Collection<ITabDescriptorProvider> _descs = new ArrayList<ITabDescriptorProvider>();
 
   /**
-   * @param id_p
+   * @param propertiesId
    */
-  public FixedTabDescriptorProvider(String propertiesId_p) {
-    super(propertiesId_p);
+  public FixedTabDescriptorProvider(String propertiesId) {
+    super(propertiesId);
   }
 
   /**
-   * @param capellaTabDescriptorProvider_p
+   * @param provider
    */
-  protected void addDescriptor(ITabDescriptorProvider provider_p) {
-    _descs.add(provider_p);
+  protected void addDescriptor(ITabDescriptorProvider provider) {
+    _descs.add(provider);
   }
 
   protected boolean isExtensionsPrior() {
@@ -60,19 +61,19 @@ public abstract class FixedTabDescriptorProvider extends TabbedPropertyRegistry 
    * {@inheritDoc}
    */
   @Override
-  public ITabDescriptor[] getTabDescriptors(IWorkbenchPart part_p, ISelection selection_p) {
+  public ITabDescriptor[] getTabDescriptors(IWorkbenchPart part, ISelection selection) {
     Collection<ITabDescriptor> descs = new ArrayList<ITabDescriptor>();
 
     if (isExtensionsPrior()) {
-      descs.addAll(Arrays.asList(super.getTabDescriptors(part_p, selection_p)));
+      descs.addAll(Arrays.asList(super.getTabDescriptors(part, selection)));
     }
 
     for (ITabDescriptorProvider provider : _descs) {
-      descs.addAll(Arrays.asList(provider.getTabDescriptors(part_p, selection_p)));
+      descs.addAll(Arrays.asList(provider.getTabDescriptors(part, selection)));
     }
 
     if (!isExtensionsPrior()) {
-      descs.addAll(Arrays.asList(super.getTabDescriptors(part_p, selection_p)));
+      descs.addAll(Arrays.asList(super.getTabDescriptors(part, selection)));
     }
 
     return descs.toArray(new ITabDescriptor[0]);

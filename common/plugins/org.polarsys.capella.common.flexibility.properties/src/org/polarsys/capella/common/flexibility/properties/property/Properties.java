@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.property;
 
 import java.util.ArrayList;
@@ -37,30 +38,29 @@ public class Properties implements IProperties {
   LinkedList<IPropertyGroup> allGroups = null;
 
   /**
-   * @param idProperties_p
+   * @param idProperties
    */
-  public Properties(String idProperties_p) {
-    idProperties = idProperties_p;
+  public Properties(String idProperties) {
+    this.idProperties = idProperties;
 
     groups = new ArrayList<IPropertyGroup>();
     items = new ArrayList<IProperty>();
-    idProperties = idProperties_p;
     parents = new ArrayList<IProperties>();
   }
 
   /**
-   * @param parent_p the parent to set
+   * @param parent the parent to set
    */
-  public void addParent(IProperties parent_p) {
-    if (!parents.contains(parent_p)) {
-      parents.add(parent_p);
+  public void addParent(IProperties parent) {
+    if (!parents.contains(parent)) {
+      parents.add(parent);
       allGroups = null;
       allProperties = null;
     }
   }
 
-  public void removeParent(IProperties parent_p) {
-    parents.remove(parent_p);
+  public void removeParent(IProperties parent) {
+    parents.remove(parent);
     allGroups = null;
     allProperties = null;
   }
@@ -204,14 +204,14 @@ public class Properties implements IProperties {
   /**
    * {@inheritDoc}
    */
-  public IProperty getProperty(String id_p) {
+  public IProperty getProperty(String id) {
     for (IProperty item : items) {
-      if (item.getId().equals(id_p)) {
+      if (item.getId().equals(id)) {
         return item;
       }
     }
     for (IProperties parent : getParents()) {
-      IProperty item = parent.getProperty(id_p);
+      IProperty item = parent.getProperty(id);
       if (item != null) {
         return item;
       }
@@ -220,10 +220,10 @@ public class Properties implements IProperties {
   }
 
   /**
-   * @param item_p
+   * @param item
    */
-  public void addItem(IProperty item_p) {
-    items.add(item_p);
+  public void addItem(IProperty item) {
+    items.add(item);
     allProperties = null;
   }
 

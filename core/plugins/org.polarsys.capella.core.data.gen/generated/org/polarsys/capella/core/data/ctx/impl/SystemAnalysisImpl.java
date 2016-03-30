@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.ctx.impl;
 
 import java.util.Collection;
@@ -568,8 +569,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 		
 		try {
 			return (CapabilityPkg) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -627,8 +628,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 		
 		try {
 			return (SystemFunctionPkg) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -693,8 +694,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 		@SuppressWarnings("unchecked")
 		Collection<OperationalAnalysisRealization> resultAsList = (Collection<OperationalAnalysisRealization>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalAnalysisRealization>(this, CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATED_OPERATIONAL_ANALYSIS_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -740,8 +741,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 		@SuppressWarnings("unchecked")
 		Collection<OperationalAnalysis> resultAsList = (Collection<OperationalAnalysis>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalAnalysis>(this, CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATED_OPERATIONAL_ANALYSES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -787,8 +788,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 		@SuppressWarnings("unchecked")
 		Collection<LogicalArchitecture> resultAsList = (Collection<LogicalArchitecture>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalArchitecture>(this, CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATING_LOGICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

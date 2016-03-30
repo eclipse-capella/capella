@@ -207,8 +207,8 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		@SuppressWarnings("unchecked")
 		Collection<AbstractConstraint> resultAsList = (Collection<AbstractConstraint>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractConstraint>(this, ModellingcorePackage.Literals.MODEL_ELEMENT__CONSTRAINTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

@@ -25,10 +25,10 @@ public abstract class AbstractActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
    */
   @Override
-  public void init(ICommonActionExtensionSite site_p) {
-    super.init(site_p);
+  public void init(ICommonActionExtensionSite site) {
+    super.init(site);
 
-    ICommonViewerSite commonViewerSite = site_p.getViewSite();
+    ICommonViewerSite commonViewerSite = site.getViewSite();
     if (commonViewerSite instanceof ICommonViewerWorkbenchSite) {
       ICommonViewerWorkbenchSite workbenchSite = (ICommonViewerWorkbenchSite) commonViewerSite;
       IWorkbenchPage page = workbenchSite.getPage();
@@ -40,9 +40,9 @@ public abstract class AbstractActionProvider extends CommonActionProvider {
 
   /**
    * Initialization actions
-   * @param shell_p
-   * @param page_p
-   * @param selectionProvider_p
+   * @param shell
+   * @param page
+   * @param selectionProvider
    */
-  protected abstract void initActions(Shell shell_p, IWorkbenchPage page_p, ISelectionProvider selectionProvider_p);
+  protected abstract void initActions(Shell shell, IWorkbenchPage page, ISelectionProvider selectionProvider);
 }

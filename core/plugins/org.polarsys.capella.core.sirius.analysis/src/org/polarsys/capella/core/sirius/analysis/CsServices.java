@@ -69,6 +69,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.polarsys.capella.common.data.activity.Pin;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
@@ -207,7 +208,6 @@ import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -292,7 +292,7 @@ public class CsServices {
 
     Logger logger = Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM);
 
-    ICommandService commandService = (ICommandService) SiriusViewActivator.getInstance().getWorkbench()
+    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench()
         .getService(ICommandService.class);
     if (commandService == null) {
       logger.error("Cannot access to diagram initialization tool");

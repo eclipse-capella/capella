@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.pa.deployment.impl;
 
 import java.util.Collection;
@@ -222,8 +223,8 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -269,8 +270,8 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -316,8 +317,8 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<PortInstance> resultAsList = (Collection<PortInstance>) result;
 		return new EcoreEList.UnmodifiableEList<PortInstance>(this, DeploymentPackage.Literals.COMPONENT_INSTANCE__PORT_INSTANCES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

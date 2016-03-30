@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.fields;
 
 import org.eclipse.swt.widgets.Composite;
@@ -22,7 +23,7 @@ public class SpacerFieldEditor extends LabelFieldEditor {
    * Constructor.<br>
    * Implemented as an empty label field editor.
    */
-  public SpacerFieldEditor(Composite parent_p) {
-    super(ICommonConstants.EMPTY_STRING, parent_p);
+  public SpacerFieldEditor(Composite parent) {
+    super(ICommonConstants.EMPTY_STRING, parent);
   }
 }

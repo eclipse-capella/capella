@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import org.eclipse.jface.viewers.Viewer;
@@ -39,17 +40,17 @@ public abstract class AbstractMessageDialogWithViewer extends AbstractMessageDia
 
   /**
    * Constructor.
-   * @param parentShell_p
-   * @param dialogTitle_p
-   * @param dialogTitleImage_p
-   * @param dialogMessage_p
-   * @param dialogImageType_p
-   * @param dialogButtonLabels_p
-   * @param defaultIndex_p
+   * @param parentShell
+   * @param dialogTitle
+   * @param dialogTitleImage
+   * @param dialogMessage
+   * @param dialogImageType
+   * @param dialogButtonLabels
+   * @param defaultIndex
    */
-  public AbstractMessageDialogWithViewer(Shell parentShell_p, String dialogTitle_p, Image dialogTitleImage_p, String dialogMessage_p, int dialogImageType_p,
-      String[] dialogButtonLabels_p, int defaultIndex_p) {
-    super(parentShell_p, dialogTitle_p, dialogTitleImage_p, dialogMessage_p, dialogImageType_p, dialogButtonLabels_p, defaultIndex_p);
+  public AbstractMessageDialogWithViewer(Shell parentShell, String dialogTitle, Image dialogTitleImage, String dialogMessage, int dialogImageType,
+      String[] dialogButtonLabels, int defaultIndex) {
+    super(parentShell, dialogTitle, dialogTitleImage, dialogMessage, dialogImageType, dialogButtonLabels, defaultIndex);
   }
 
   /**
@@ -57,14 +58,14 @@ public abstract class AbstractMessageDialogWithViewer extends AbstractMessageDia
    * @see org.eclipse.jface.dialogs.MessageDialog#configureShell(org.eclipse.swt.widgets.Shell)
    */
   @Override
-  protected void configureShell(Shell shell_p) {
-    super.configureShell(shell_p);
-    Shell activeShell = shell_p.getDisplay().getActiveShell();
+  protected void configureShell(Shell shell) {
+    super.configureShell(shell);
+    Shell activeShell = shell.getDisplay().getActiveShell();
     if (null != activeShell) {
       Rectangle bounds = activeShell.getBounds();
       int width = getDialogWidth();
       int height = getDialogHeight();
-      shell_p.setBounds(bounds.x + ((bounds.width - width) / 2), bounds.y + ((bounds.height - height) / 2), width, height);
+      shell.setBounds(bounds.x + ((bounds.width - width) / 2), bounds.y + ((bounds.height - height) / 2), width, height);
     }
   }
 
@@ -72,9 +73,9 @@ public abstract class AbstractMessageDialogWithViewer extends AbstractMessageDia
    * @see org.eclipse.jface.dialogs.MessageDialog#createCustomArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected Control createCustomArea(Composite parent_p) {
+  protected Control createCustomArea(Composite parent) {
     // Create a composing composite.
-    Composite containingComposite = new Composite(parent_p, SWT.NONE);
+    Composite containingComposite = new Composite(parent, SWT.NONE);
     GridLayout layout = new GridLayout(1, true);
     containingComposite.setLayout(layout);
     containingComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -86,18 +87,18 @@ public abstract class AbstractMessageDialogWithViewer extends AbstractMessageDia
   /**
    * Create the viewer displayed in the custom area.<br>
    * Implementors are responsible for setting the viewer layout data based on {@link GridLayout}.
-   * @param parent_p
+   * @param parent
    * @return must not <code>null</code>
    */
-  protected abstract Viewer createViewer(Composite parent_p);
+  protected abstract Viewer createViewer(Composite parent);
 
   /**
    * Create the viewer area, {@link #createViewer(Composite)} is called within this method.
-   * @param parent_p
+   * @param parent
    */
-  protected void createViewerArea(Composite parent_p) {
+  protected void createViewerArea(Composite parent) {
     // Create the viewer.
-    _viewer = createViewer(parent_p);
+    _viewer = createViewer(parent);
     // Set Input data.
     _viewer.setInput(getInitialInputData());
   }
@@ -136,8 +137,8 @@ public abstract class AbstractMessageDialogWithViewer extends AbstractMessageDia
    * @see org.eclipse.jface.window.Window#setShellStyle(int)
    */
   @Override
-  protected void setShellStyle(int newShellStyle_p) {
+  protected void setShellStyle(int newShellStyle) {
     // More user friendly if the dialog is resizable.
-    super.setShellStyle(newShellStyle_p | SWT.RESIZE);
+    super.setShellStyle(newShellStyle | SWT.RESIZE);
   }
 }

@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.information.communication.impl;
 
 import java.util.Collection;
@@ -187,8 +188,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -234,8 +235,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -281,8 +282,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -328,8 +329,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -375,8 +376,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -422,8 +423,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -469,8 +470,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -516,8 +517,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -563,8 +564,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -610,8 +611,8 @@ public abstract class CommunicationLinkExchangerImpl extends EObjectImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<CommunicationLink> resultAsList = (Collection<CommunicationLink>) result;
 		return new EcoreEList.UnmodifiableEList<CommunicationLink>(this, CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

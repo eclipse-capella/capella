@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -41,21 +42,21 @@ public class DisableConstraintHandler extends AbstractHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(ExecutionEvent event) throws ExecutionException {
 
-    IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event_p);
+    IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
     IHandlerService service = (IHandlerService) window.getService(IHandlerService.class);
     try {
       service.executeCommand(DeleteConstraintMarkersHandler.COMMAND_ID, null);
-    } catch (NotDefinedException exception_p) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception_p.getMessage(), exception_p);
-    } catch (NotEnabledException exception_p) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception_p.getMessage(), exception_p);
-    } catch (NotHandledException exception_p) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception_p.getMessage(), exception_p);
+    } catch (NotDefinedException exception) {
+      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+    } catch (NotEnabledException exception) {
+      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+    } catch (NotHandledException exception) {
+      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
     }
 
-    IConstraintDescriptor descriptor = getConstraintDescriptor(HandlerUtil.getCurrentSelection(event_p));
+    IConstraintDescriptor descriptor = getConstraintDescriptor(HandlerUtil.getCurrentSelection(event));
     if (descriptor != null) {
       EMFModelValidationPreferences.setConstraintDisabled(descriptor.getId(), true);
       EMFModelValidationPreferences.save();

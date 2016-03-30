@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,19 +31,19 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    CatalogElement rootElement = (CatalogElement) context.get("RE");
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    CatalogElement rootElement = (CatalogElement) ctx.get("RE");
 
     if (rootElement == null) {
-      Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
-      Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(context).getIndirectlySelectedReplicableElements(context);
+      Collection<Object> selection = (Collection<Object>) ctx.get(ITransitionConstants.TRANSITION_SOURCES);
+      Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(ctx).getIndirectlySelectedReplicableElements(ctx);
       if (selection.size() > 0) {
         if (rootElement == null) {
-          CatalogElement element = ReplicableElementHandlerHelper.getInstance(context).createReplicableElement();
+          CatalogElement element = ReplicableElementHandlerHelper.getInstance(ctx).createReplicableElement();
           rootElement = element;
         }
-        context.put("RE", rootElement);
+        ctx.put("RE", rootElement);
       }
     }
 
@@ -62,21 +62,21 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    CatalogElement element = (CatalogElement) context.get("RE");
-    if (value_p instanceof String) {
-      element.setName((String) value_p);
+  public Object toType(Object value, IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    CatalogElement element = (CatalogElement) ctx.get("RE");
+    if (value instanceof String) {
+      element.setName((String) value);
       return element;
     }
-    return value_p;
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -84,7 +84,7 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
 
   }
 

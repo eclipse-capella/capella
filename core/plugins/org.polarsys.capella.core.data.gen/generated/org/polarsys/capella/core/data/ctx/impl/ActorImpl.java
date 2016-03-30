@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.ctx.impl;
 
 import java.util.Collection;
@@ -207,8 +208,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<ActorMissionInvolvement> resultAsList = (Collection<ActorMissionInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<ActorMissionInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_MISSIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -254,8 +255,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<ActorCapabilityInvolvement> resultAsList = (Collection<ActorCapabilityInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<ActorCapabilityInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -301,8 +302,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -348,8 +349,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<Mission> resultAsList = (Collection<Mission>) result;
 		return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_MISSIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -395,8 +396,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<Capability> resultAsList = (Collection<Capability>) result;
 		return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -531,8 +532,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
 		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -578,8 +579,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<Entity> resultAsList = (Collection<Entity>) result;
 		return new EcoreEList.UnmodifiableEList<Entity>(this, CtxPackage.Literals.ACTOR__REALIZED_ENTITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -625,8 +626,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<OperationalActor> resultAsList = (Collection<OperationalActor>) result;
 		return new EcoreEList.UnmodifiableEList<OperationalActor>(this, CtxPackage.Literals.ACTOR__REALIZED_OPERATIONAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -672,8 +673,8 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 		@SuppressWarnings("unchecked")
 		Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalActor>(this, CtxPackage.Literals.ACTOR__REALIZING_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

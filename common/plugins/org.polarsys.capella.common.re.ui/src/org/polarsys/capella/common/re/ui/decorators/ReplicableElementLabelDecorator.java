@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.decorators;
 
 import org.eclipse.jface.viewers.ILabelDecorator;
@@ -17,7 +18,7 @@ import org.eclipse.swt.graphics.Image;
 public class ReplicableElementLabelDecorator implements ILabelDecorator {
 
   @Override
-  public void addListener(ILabelProviderListener listener_p) {
+  public void addListener(ILabelProviderListener listener) {
 
   }
 
@@ -27,23 +28,23 @@ public class ReplicableElementLabelDecorator implements ILabelDecorator {
   }
 
   @Override
-  public boolean isLabelProperty(Object element_p, String property_p) {
+  public boolean isLabelProperty(Object element, String property) {
     return false;
   }
 
   @Override
-  public void removeListener(ILabelProviderListener listener_p) {
+  public void removeListener(ILabelProviderListener listener) {
 
   }
 
   @Override
-  public Image decorateImage(Image image_p, Object element_p) {
+  public Image decorateImage(Image image, Object element) {
     // null means no decoration
     return null;
   }
 
   @Override
-  public String decorateText(String text_p, Object element_p) {
-    return text_p;
+  public String decorateText(String text, Object element) {
+    return text;
   }
 }

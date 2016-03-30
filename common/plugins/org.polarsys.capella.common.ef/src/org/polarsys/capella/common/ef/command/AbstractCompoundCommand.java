@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ef.command;
 
 import java.util.ArrayList;
@@ -35,38 +36,38 @@ public abstract class AbstractCompoundCommand extends AbstractCommand {
 
   /**
    * Constructor.
-   * @param commands_p used to initialize this compound command.
+   * @param commands used to initialize this compound command.
    */
-  protected AbstractCompoundCommand(List<ICommand> commands_p) {
+  protected AbstractCompoundCommand(List<ICommand> commands) {
     // Precondition.
-    Assert.isNotNull(commands_p);
-    _commands = commands_p;
+    Assert.isNotNull(commands);
+    _commands = commands;
   }
 
   /**
    * Append specified command to this compound command's list of commands.
-   * @param command_p the added command.
+   * @param command the added command.
    */
-  public void append(ICommand command_p) {
-    _commands.add(command_p);
+  public void append(ICommand command) {
+    _commands.add(command);
   }
 
   /**
    * Prepend specified command to this compound command's list of commands.
-   * @param command_p the added command.
+   * @param command the added command.
    */
-  public void prepend(ICommand command_p) {
-    _commands.add(0, command_p);
+  public void prepend(ICommand command) {
+    _commands.add(0, command);
   }
 
   /**
    * Insert specified command at the specified index in this compound command's list of commands.
-   * @param index_p index at which the specified command is to be inserted.
-   * @param command_p
+   * @param index index at which the specified command is to be inserted.
+   * @param command
    * @throws IndexOutOfBoundsException if the index is out of range (index &lt; 0 || index &gt; size()).
    */
-  public void insert(int index_p, ICommand command_p) {
-    _commands.add(index_p, command_p);
+  public void insert(int index, ICommand command) {
+    _commands.add(index, command);
   }
 
   /**
@@ -112,9 +113,9 @@ public abstract class AbstractCompoundCommand extends AbstractCommand {
   /**
    * Allow sub-classes to handle the execution of each contained command in this compound one.<br>
    * Default behavior simply runs specified contained command.
-   * @param aContainedCommand_p
+   * @param aContainedCommand
    */
-  protected void doRunContainedCommand(ICommand aContainedCommand_p) {
-    aContainedCommand_p.run();
+  protected void doRunContainedCommand(ICommand aContainedCommand) {
+    aContainedCommand.run();
   }
 }

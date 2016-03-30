@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.platform.sirius.ted;
 
 import java.util.HashMap;
@@ -30,13 +31,13 @@ public class SiriusSessionListener extends SessionManagerListener.Stub {
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session, int)
    */
   @Override
-  public void notify(Session updatedSession_p, int notification_p) {
-    if (SessionListener.CLOSED == notification_p) {
-      _status.remove(updatedSession_p.getTransactionalEditingDomain());
+  public void notify(Session updatedSession, int notification) {
+    if (SessionListener.CLOSED == notification) {
+      _status.remove(updatedSession.getTransactionalEditingDomain());
 
     } else {
 
-      _status.put(updatedSession_p.getTransactionalEditingDomain(), Integer.valueOf(notification_p));
+      _status.put(updatedSession.getTransactionalEditingDomain(), Integer.valueOf(notification));
     }
   }
 

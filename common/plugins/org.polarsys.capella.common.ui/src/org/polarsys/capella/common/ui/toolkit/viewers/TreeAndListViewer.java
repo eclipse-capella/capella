@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import java.util.Collection;
@@ -62,80 +63,80 @@ public class TreeAndListViewer extends RegExpTreeViewer {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param isMultipleSelection_p
-   * @param style_p could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
+   * @param parent
+   * @param isMultipleSelection
+   * @param style could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
    */
-  public TreeAndListViewer(Composite parent_p, boolean isMultipleSelection_p, int style_p, int viewerExpandLevel_p) {
-    super(parent_p, isMultipleSelection_p, style_p, viewerExpandLevel_p);
+  public TreeAndListViewer(Composite parent, boolean isMultipleSelection, int style, int viewerExpandLevel) {
+    super(parent, isMultipleSelection, style, viewerExpandLevel);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param isMultipleSelection_p
-   * @param style_p could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
+   * @param parent
+   * @param isMultipleSelection
+   * @param style could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
    */
-  public TreeAndListViewer(Composite parent_p, boolean isMultipleSelection_p, int style_p) {
-    super(parent_p, isMultipleSelection_p, style_p, AbstractTreeViewer.ALL_LEVELS);
+  public TreeAndListViewer(Composite parent, boolean isMultipleSelection, int style) {
+    super(parent, isMultipleSelection, style, AbstractTreeViewer.ALL_LEVELS);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param displayedElements_p
-   * @param isMultipleSelection_p
-   * @param labelProvider_p
+   * @param parent
+   * @param displayedElements
+   * @param isMultipleSelection
+   * @param labelProvider
    */
-  public TreeAndListViewer(Composite parent_p, Collection<? extends Object> displayedElements_p, boolean isMultipleSelection_p, ILabelProvider labelProvider_p) {
-    this(parent_p, displayedElements_p, null /* no context */, isMultipleSelection_p, labelProvider_p,
+  public TreeAndListViewer(Composite parent, Collection<? extends Object> displayedElements, boolean isMultipleSelection, ILabelProvider labelProvider) {
+    this(parent, displayedElements, null /* no context */, isMultipleSelection, labelProvider,
       IViewerStyle.SHOW_STATUS_BAR|IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, AbstractTreeViewer.ALL_LEVELS);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param displayedElements_p
-   * @param context_p to set an undefined context to {@link ILinkSelection} contribution, set {@link AbstractData#UNDEFINED_CONTEXT}.
-   * @param isMultipleSelection_p
+   * @param parent
+   * @param displayedElements
+   * @param context to set an undefined context to {@link ILinkSelection} contribution, set {@link AbstractData#UNDEFINED_CONTEXT}.
+   * @param isMultipleSelection
    * @param contentProvider
-   * @param labelProvider_p
-   * @param style_p could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
-   * @param viewerExpandLevel_p
+   * @param labelProvider
+   * @param style could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
+   * @param viewerExpandLevel
    */
-  public TreeAndListViewer(Composite parent_p, Collection<? extends Object> displayedElements_p, Object context_p, boolean isMultipleSelection_p,
-      IContentProvider contentProvider, ILabelProvider labelProvider_p, int style_p, int viewerExpandLevel_p)
+  public TreeAndListViewer(Composite parent, Collection<? extends Object> displayedElements, Object context, boolean isMultipleSelection,
+      IContentProvider contentProvider, ILabelProvider labelProvider, int style, int viewerExpandLevel)
   {
-    super(parent_p, isMultipleSelection_p, style_p, viewerExpandLevel_p);
+    super(parent, isMultipleSelection, style, viewerExpandLevel);
     // Default implementation displays elements as a tree.
     TreeViewer viewer = getClientViewer();
     viewer.setContentProvider(/*new GroupingContentProvider(*/contentProvider/*)*/);
-    viewer.setLabelProvider(labelProvider_p);
-    setInput(displayedElements_p, context_p);
+    viewer.setLabelProvider(labelProvider);
+    setInput(displayedElements, context);
   }
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param displayedElements_p
-   * @param context_p to set an undefined context to {@link ILinkSelection} contribution, set {@link AbstractData#UNDEFINED_CONTEXT}.
-   * @param isMultipleSelection_p
-   * @param labelProvider_p
-   * @param style_p could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
-   * @param viewerExpandLevel_p
+   * @param parent
+   * @param displayedElements
+   * @param context to set an undefined context to {@link ILinkSelection} contribution, set {@link AbstractData#UNDEFINED_CONTEXT}.
+   * @param isMultipleSelection
+   * @param labelProvider
+   * @param style could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
+   * @param viewerExpandLevel
    */
-  public TreeAndListViewer(Composite parent_p, Collection<? extends Object> displayedElements_p, Object context_p, boolean isMultipleSelection_p,
-      ILabelProvider labelProvider_p, int style_p, int viewerExpandLevel_p)
+  public TreeAndListViewer(Composite parent, Collection<? extends Object> displayedElements, Object context, boolean isMultipleSelection,
+      ILabelProvider labelProvider, int style, int viewerExpandLevel)
   {
-    this(parent_p, displayedElements_p, context_p, isMultipleSelection_p, new DataContentProvider(), labelProvider_p, style_p, viewerExpandLevel_p);
+    this(parent, displayedElements, context, isMultipleSelection, new DataContentProvider(), labelProvider, style, viewerExpandLevel);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void createControl(Composite parent_p) {
-    super.createControl(parent_p);
+  protected void createControl(Composite parent) {
+    super.createControl(parent);
     // Create the TreeViewer mode with the Tree Viewer composite as parent.
     createTreeViewerModeButton(getControl());
     // Create the status bar with the Tree Viewer composite as parent.
@@ -144,44 +145,44 @@ public class TreeAndListViewer extends RegExpTreeViewer {
 
   /**
    * Create the right {@link ListData} when the end-user changes the Tree view mode.
-   * @param viewer_p viewer that the end-user wants to change the Tree view mode.
-   * @param displayedElements_p
-   * @param context_p
+   * @param viewer viewer that the end-user wants to change the Tree view mode.
+   * @param displayedElements
+   * @param context
    * @return a not <code>null</code> instance.
    */
-  protected ListData createListDataWhenTreeViewModeClicked(TreeViewer viewer_p, java.util.List<? extends Object> displayedElements_p, Object context_p) {
-    return new ListData(displayedElements_p, context_p);
+  protected ListData createListDataWhenTreeViewModeClicked(TreeViewer viewer, java.util.List<?> displayedElements, Object context) {
+    return new ListData(displayedElements, context);
   }
 
   /**
    * Create Status bar widget.
-   * @param parent_p
+   * @param parent
    */
-  protected void createStatusBar(Composite parent_p) {
+  protected void createStatusBar(Composite parent) {
     if ((IViewerStyle.SHOW_STATUS_BAR & getStyle()) != 0) {
-      _statusBar = new Text(parent_p, SWT.BORDER | SWT.READ_ONLY);
+      _statusBar = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
       _statusBar.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, false));
     }
   }
 
   /**
    * Create the right {@link TreeData} when the end-user changes the Tree view mode.
-   * @param viewer_p viewer that the end-user wants to change the Tree view mode.
-   * @param displayedElements_p
-   * @param context_p
+   * @param viewer viewer that the end-user wants to change the Tree view mode.
+   * @param displayedElements
+   * @param context
    * @return a not <code>null</code> instance.
    */
-  protected TreeData createTreeDataWhenTreeViewModeClicked(TreeViewer viewer_p, java.util.List<? extends Object> displayedElements_p, Object context_p) {
-    return new TreeData(displayedElements_p, context_p);
+  protected TreeData createTreeDataWhenTreeViewModeClicked(TreeViewer viewer, java.util.List<? extends Object> displayedElements, Object context) {
+    return new TreeData(displayedElements, context);
   }
 
   /**
    * Create a checkbox button to switch between a Tree or Flat representation.
-   * @param parent_p
+   * @param parent
    */
-  protected void createTreeViewerModeButton(Composite parent_p) {
+  protected void createTreeViewerModeButton(Composite parent) {
     if ((IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON & getStyle()) != 0) {
-      _treeViewerModeButton = new Button(parent_p, SWT.CHECK);
+      _treeViewerModeButton = new Button(parent, SWT.CHECK);
       _treeViewerModeButton.setText(Messages.getString("TreeAndListViewer_TreeViewerMode_Title")); //$NON-NLS-1$
       _treeViewerModeButton.setSelection((IViewerStyle.SHOW_LIST_VIEW_MODE & getStyle()) == 0);
       _treeViewerModeButton.addSelectionListener(new SelectionAdapter() {
@@ -189,8 +190,8 @@ public class TreeAndListViewer extends RegExpTreeViewer {
          * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
          */
         @Override
-        public void widgetSelected(SelectionEvent event_p) {
-          handleTreeViewModeClicked(((Button) event_p.widget).getSelection(), getClientViewer());
+        public void widgetSelected(SelectionEvent event) {
+          handleTreeViewModeClicked(((Button) event.widget).getSelection(), getClientViewer());
         }
       });
     }
@@ -200,8 +201,8 @@ public class TreeAndListViewer extends RegExpTreeViewer {
    * {@inheritDoc}
    */
   @Override
-  protected TreeViewer doClientViewer(Composite parent_p) {
-    TreeViewer viewer = super.doClientViewer(parent_p);
+  protected TreeViewer doClientViewer(Composite parent) {
+    TreeViewer viewer = super.doClientViewer(parent);
     // We need to collect the selection to provide requesters with it even if the viewer is disposed.
     viewer.addSelectionChangedListener(new ISelectionChangedListener() {
       @SuppressWarnings("synthetic-access")
@@ -262,74 +263,74 @@ public class TreeAndListViewer extends RegExpTreeViewer {
   /**
    * Handle TreeView mode clicked event.
    * @param checked
-   * @param viewer_p
+   * @param viewer
    */
-  protected void handleTreeViewModeClicked(boolean checked, TreeViewer viewer_p) {
+  protected void handleTreeViewModeClicked(boolean checked, TreeViewer viewer) {
     // Get the current viewer input.
-    AbstractData currentInitialInput = (AbstractData) viewer_p.getInput();
+    AbstractData currentInitialInput = (AbstractData) viewer.getInput();
     // New viewer input.
     AbstractData newInitialInput = null;
     if (checked) {
       // Move from List To Tree representation.
-      newInitialInput = createTreeDataWhenTreeViewModeClicked(viewer_p, MiscHelper.asList(currentInitialInput.getElements()), currentInitialInput.getContext());
+      newInitialInput = createTreeDataWhenTreeViewModeClicked(viewer, MiscHelper.asList(currentInitialInput.getElements()), currentInitialInput.getContext());
     } else {
       // Move from Tree To List representation.
-      newInitialInput = createListDataWhenTreeViewModeClicked(viewer_p, currentInitialInput.getValidElements(), currentInitialInput.getContext());
+      newInitialInput = createListDataWhenTreeViewModeClicked(viewer, currentInitialInput.getValidElements(), currentInitialInput.getContext());
     }
     // Transfer the notified object.
     newInitialInput.setNotifiedForValidElementsChanges(currentInitialInput.getNotifiedForValidElementsChanges());
-    viewer_p.setInput(newInitialInput);
+    viewer.setInput(newInitialInput);
   }
 
   /**
    * Is given element valid ?
-   * @param element_p
+   * @param element
    * @return <code>true</code> means valid.
    */
-  public boolean isValidElement(Object element_p) {
-    return _data.isValid(element_p);
+  public boolean isValidElement(Object element) {
+    return _data.isValid(element);
   }
 
   /**
    * Set given list of objects as new input elements.
-   * @param displayedElements_p
-   * @param context_p
+   * @param displayedElements
+   * @param context
    */
-  public void setInput(Collection<? extends Object> displayedElements_p, Object context_p) {
+  public void setInput(Collection<? extends Object> displayedElements, Object context) {
     boolean hierarchicalDisplay = ((IViewerStyle.SHOW_LIST_VIEW_MODE & getStyle()) == 0);
     if ((null != _treeViewerModeButton) && !_treeViewerModeButton.isDisposed()) {
       hierarchicalDisplay = _treeViewerModeButton.getSelection();
     }
-    _data = (hierarchicalDisplay) ? new TreeData(displayedElements_p, context_p) : new ListData(displayedElements_p, context_p);
+    _data = (hierarchicalDisplay) ? new TreeData(displayedElements, context) : new ListData(displayedElements, context);
     getClientViewer().setInput(_data);
   }
 
   /**
    * Set the selection listener.
-   * @param listener_p
+   * @param listener
    */
-  public void setSelectionListener(ISelectionChangedListener listener_p) {
-    getClientViewer().addSelectionChangedListener(listener_p);
+  public void setSelectionListener(ISelectionChangedListener listener) {
+    getClientViewer().addSelectionChangedListener(listener);
   }
 
   /**
    * Set the expand level.
-   * @param expandLevel_p
+   * @param expandLevel
    */
-  public void setAutoExpandLevel(int expandLevel_p) {
-    getClientViewer().setAutoExpandLevel(expandLevel_p);
+  public void setAutoExpandLevel(int expandLevel) {
+    getClientViewer().setAutoExpandLevel(expandLevel);
   }
 
   /**
    * Update the status bar.
-   * @param selectedElement_p
+   * @param selectedElement
    */
-  protected void updateStatusBar(Object selectedElement_p) {
+  protected void updateStatusBar(Object selectedElement) {
     // Precondition
     if ((null == _statusBar) || _statusBar.isDisposed()) {
       return;
     }
-    ITreeLabelAdapter treeLabelAdapter = (ITreeLabelAdapter) AdapterManagerHelper.getAdapter(selectedElement_p, ITreeLabelAdapter.class);
+    ITreeLabelAdapter treeLabelAdapter = (ITreeLabelAdapter) AdapterManagerHelper.getAdapter(selectedElement, ITreeLabelAdapter.class);
     if (null != treeLabelAdapter) {
       _statusBar.setText(treeLabelAdapter.getFullLabel());
     } else {

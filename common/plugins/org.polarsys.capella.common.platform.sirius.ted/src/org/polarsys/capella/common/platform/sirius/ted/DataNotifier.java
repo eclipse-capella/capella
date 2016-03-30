@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2007, 2015 LCELB
+ *  Copyright (c) 2007, 2009 LCELB
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -79,68 +79,68 @@ public class DataNotifier extends EContentAdapter {
 
   /**
    * Add an adapter for model elements that implement given class.
-   * @param class_p The Java type for looked after elements.<br>
+   * @param cls The Java type for looked after elements.<br>
    *          This is <b>not</b> the EMF model EClass.<br>
    *          Thus this can only be called on generated models.
-   * @param adapter_p A not <code>null</code> {@link Adapter} listening to changes.
+   * @param adapter A not <code>null</code> {@link Adapter} listening to changes.
    */
-  public void addAdapter(Class<?> class_p, Adapter adapter_p) {
+  public void addAdapter(Class<?> cls, Adapter adapter) {
     // Preconditions.
-    if ((null == class_p) || (null == adapter_p)) {
+    if ((null == cls) || (null == adapter)) {
       return;
     }
     // Get set from class.
-    Set<Adapter> adapters = _classToAdapters.get(class_p);
+    Set<Adapter> adapters = _classToAdapters.get(cls);
     // Create set if it does not exist.
     if (null == adapters) {
       adapters = new HashSet<Adapter>(1);
-      _classToAdapters.put(class_p, adapters);
+      _classToAdapters.put(cls, adapters);
     }
     // Add notifier to set.
-    adapters.add(adapter_p);
+    adapters.add(adapter);
   }
 
   /**
    * Add an adapter for given model element.
-   * @param element_p A not <code>null</code> model element.
-   * @param adapter_p A not <code>null</code> {@link Adapter} listening to changes.
+   * @param element A not <code>null</code> model element.
+   * @param adapter A not <code>null</code> {@link Adapter} listening to changes.
    */
-  public void addAdapter(EObject element_p, Adapter adapter_p) {
+  public void addAdapter(EObject element, Adapter adapter) {
     // Preconditions.
-    if ((null == element_p) || (null == adapter_p)) {
+    if ((null == element) || (null == adapter)) {
       return;
     }
     // Get set from object.
-    Set<Adapter> adapters = _modelElementToAdapters.get(element_p);
+    Set<Adapter> adapters = _modelElementToAdapters.get(element);
     // Create set if it does not exist.
     if (null == adapters) {
       adapters = new HashSet<Adapter>(1);
-      _modelElementToAdapters.put(element_p, adapters);
+      _modelElementToAdapters.put(element, adapters);
     }
     // Add notifier to set.
-    adapters.add(adapter_p);
+    adapters.add(adapter);
   }
 
   /**
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     try {
-      super.notifyChanged(notification_p);
-    } catch (Exception exception_p) {
+      super.notifyChanged(notification);
+    } catch (Exception exception) {
 	  PlatformSiriusTedActivator.getDefault().getLog().log(
-          new Status(IStatus.ERROR, PlatformSiriusTedActivator.getDefault().getPluginId(), exception_p.getMessage(), exception_p));
+          new Status(IStatus.ERROR, PlatformSiriusTedActivator.getDefault().getPluginId(), exception.getMessage(), exception));
       // TODO: must handle this case, ie. provide a CDO version adapted to CDO of DataNotifier.
       // DataNotifier is instantiated by our SemanticResourceSet. there is already an extension point that allows to override the capella cross referencer.
       // Must do the same thing here.
       // In this state, it seems to turn approximately but I do not know the impacts.
       // it is a simple POC version, to improve.
     }
-    Object notifier = notification_p.getNotifier();
-    Object oldValue = notification_p.getOldValue();
-    Object newValue = notification_p.getNewValue();
-    Object feature = notification_p.getFeature();
+    Object notifier = notification.getNotifier();
+    Object oldValue = notification.getOldValue();
+    Object newValue = notification.getNewValue();
+    Object feature = notification.getFeature();
     boolean isContainmentReference = ((feature instanceof EReference) && ((EReference) feature).isContainment());
     // Add adapters by class first, then by reference.
     Set<Adapter> adapters = new HashSet<Adapter>(0);
@@ -149,7 +149,7 @@ public class DataNotifier extends EContentAdapter {
       adapters.addAll(searchAdapters(notifier, false));
     }
     // Add adapters depending on notification type.
-    switch (notification_p.getEventType()) {
+    switch (notification.getEventType()) {
       // Model element attribute set.
       case Notification.SET:
         // Do not add new value adapters if new value is indeed the notifier.
@@ -188,35 +188,35 @@ public class DataNotifier extends EContentAdapter {
       break;
     }
     // Do notify adapters.
-    doNotifyAdapters(adapters, notification_p);
+    doNotifyAdapters(adapters, notification);
   }
 
   /**
    * Do notify adapters.
-   * @param adapters_p
-   * @param notification_p void
+   * @param adapters
+   * @param notification void
    */
-  protected void doNotifyAdapters(Collection<Adapter> adapters_p, Notification notification_p) {
+  protected void doNotifyAdapters(Collection<Adapter> adapters, Notification notification) {
     // Pre-conditions.
-    if ((null == adapters_p) || (null == notification_p)) {
+    if ((null == adapters) || (null == notification)) {
       return;
     }
     // Notify adapters.
-    for (Adapter adapter : adapters_p) {
-      adapter.notifyChanged(notification_p);
+    for (Adapter adapter : adapters) {
+      adapter.notifyChanged(notification);
     }
   }
 
   /**
    * Search adapters for given object.
-   * @param object_p The model object being dealt within the notification.<br>
+   * @param object The model object being dealt within the notification.<br>
    *          Empty result is returned if this is not indeed a model element.
-   * @param removeExistingAdapters_p Should existing adapters be removed ? <code>true</code> if so, <code>false</code> otherwise.
+   * @param removeExistingAdapters Should existing adapters be removed ? <code>true</code> if so, <code>false</code> otherwise.
    * @return A not <code>null</code> collection of {@link Adapter}. May be empty.
    */
-  protected Collection<Adapter> searchAdapters(Object object_p, boolean removeExistingAdapters_p) {
-    Collection<Adapter> result = searchAdaptersByReference(object_p, removeExistingAdapters_p);
-    Collection<Adapter> resultByClass = searchAdaptersByClass(object_p);
+  protected Collection<Adapter> searchAdapters(Object object, boolean removeExistingAdapters) {
+    Collection<Adapter> result = searchAdaptersByReference(object, removeExistingAdapters);
+    Collection<Adapter> resultByClass = searchAdaptersByClass(object);
     if (null == result) {
       result = resultByClass;
     } else {
@@ -227,30 +227,30 @@ public class DataNotifier extends EContentAdapter {
 
   /**
    * Search adapters for given collection of objects.
-   * @param objects_p Model objects being dealt within the notification.<br>
+   * @param objects Model objects being dealt within the notification.<br>
    *          Empty result is returned if these are not indeed model elements.
-   * @param removeExistingAdapters_p Should existing adapters be removed ? <code>true</code> if so, <code>false</code> otherwise.
+   * @param removeExistingAdapters Should existing adapters be removed ? <code>true</code> if so, <code>false</code> otherwise.
    * @return A not <code>null</code> collection of {@link Adapter}. May be empty.
    */
-  protected Collection<Adapter> searchAdapters(Collection<?> objects_p, boolean removeExistingAdapters_p) {
+  protected Collection<Adapter> searchAdapters(Collection<?> objects, boolean removeExistingAdapters) {
     Collection<Adapter> result = new HashSet<Adapter>(0);
-    for (Object object : objects_p) {
-      result.addAll(searchAdapters(object, removeExistingAdapters_p));
+    for (Object object : objects) {
+      result.addAll(searchAdapters(object, removeExistingAdapters));
     }
     return result;
   }
 
   /**
    * Search adapters by object class.
-   * @param object_p The model object being dealt within the notification.<br>
+   * @param object The model object being dealt within the notification.<br>
    *          Empty result is returned if this is not indeed a model element.
    * @return A not <code>null</code> collection of {@link Adapter}. May be empty.
    */
-  protected Collection<Adapter> searchAdaptersByClass(Object object_p) {
+  protected Collection<Adapter> searchAdaptersByClass(Object object) {
     Set<Adapter> result = new HashSet<Adapter>(0);
-    if (object_p instanceof EObject) {
+    if (object instanceof EObject) {
       for (Class<?> modelElementClass : _classToAdapters.keySet()) {
-        if (modelElementClass.isInstance(object_p)) {
+        if (modelElementClass.isInstance(object)) {
           result.addAll(_classToAdapters.get(modelElementClass));
         }
       }
@@ -260,20 +260,20 @@ public class DataNotifier extends EContentAdapter {
 
   /**
    * Search adapters by object reference.
-   * @param object_p The model object being dealt within the notification.<br>
+   * @param object The model object being dealt within the notification.<br>
    *          Empty result is returned if this is not indeed a model element.
-   * @param removeAdapters_p Should existing adapters be removed ? <code>true</code> if so, <code>false</code> otherwise.
+   * @param removeAdapters Should existing adapters be removed ? <code>true</code> if so, <code>false</code> otherwise.
    * @return A not <code>null</code> collection of {@link Adapter}. May be empty.
    */
-  protected Collection<Adapter> searchAdaptersByReference(Object object_p, boolean removeAdapters_p) {
+  protected Collection<Adapter> searchAdaptersByReference(Object object, boolean removeAdapters) {
     Collection<Adapter> result = null;
-    if (object_p instanceof EObject) {
-      if (removeAdapters_p) {
+    if (object instanceof EObject) {
+      if (removeAdapters) {
         // Remove adapters.
-        result = _modelElementToAdapters.remove(object_p);
+        result = _modelElementToAdapters.remove(object);
       } else {
         // Just get adapters.
-        result = _modelElementToAdapters.get(object_p);
+        result = _modelElementToAdapters.get(object);
       }
     }
     return result;
@@ -281,9 +281,9 @@ public class DataNotifier extends EContentAdapter {
 
   /**
    * Remove adapter from registered ones.
-   * @param adapter_p A not <code>null</code> adapter to remove.
+   * @param adapter A not <code>null</code> adapter to remove.
    */
-  public void remove(Adapter adapter_p) {
+  public void remove(Adapter adapter) {
     // Retrieve all adapters.
     Collection<Set<Adapter>> allAdapters = new ArrayList<Set<Adapter>>(0);
     allAdapters.addAll(_modelElementToAdapters.values());
@@ -294,7 +294,7 @@ public class DataNotifier extends EContentAdapter {
       boolean found = false;
       for (Iterator<Adapter> adapters = adaptersSet.iterator(); adapters.hasNext() && !found;) {
         // Compare references.
-        found = (adapters.next() == adapter_p);
+        found = (adapters.next() == adapter);
         if (found) {
           adapters.remove();
         }

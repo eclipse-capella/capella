@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.actions;
 
 import java.util.List;
@@ -49,13 +50,13 @@ public abstract class AbstractTigAction extends AbstractHandler implements IObje
   /**
    * {@inheritDoc}
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    IEvaluationContext c = (IEvaluationContext) event_p.getApplicationContext();
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+    IEvaluationContext c = (IEvaluationContext) event.getApplicationContext();
     ISelection s = (ISelection) c.getVariable("selection");
     selectionChanged(null, s);
     setActivePart(null, PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart());
     run(null);
-    return event_p;
+    return event;
   }
 
   /**
@@ -85,8 +86,8 @@ public abstract class AbstractTigAction extends AbstractHandler implements IObje
   /**
    * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
    */
-  public void selectionChanged(IAction uiAction_p, ISelection selection_p) {
-    _selection = selection_p;
+  public void selectionChanged(IAction uiAction, ISelection selection) {
+    _selection = selection;
   }
 
   /**

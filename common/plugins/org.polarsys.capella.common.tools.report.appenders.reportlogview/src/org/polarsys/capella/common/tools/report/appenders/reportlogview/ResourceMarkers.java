@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.ArrayList;
@@ -42,9 +43,9 @@ class ResourceMarkers implements IResourceChangeListener, IMarkerSource {
   final IResource resource;
   
   
-  public ResourceMarkers(IResource resource_p, String[] markerTypes_p){
-    resource = resource_p;
-    markerTypes = markerTypes_p;
+  public ResourceMarkers(IResource resource, String[] markerTypes){
+    this.resource = resource;
+    this.markerTypes = markerTypes;
   }
   
   /**
@@ -78,30 +79,30 @@ class ResourceMarkers implements IResourceChangeListener, IMarkerSource {
   
   /**
    * Get marker deltas that are of interest for the problem view.
-   * @param event_p
+   * @param event
    * @return
    */
-  protected Collection<IMarkerDelta> retainMarkerDeltas(IResourceChangeEvent event_p) {
+  protected Collection<IMarkerDelta> retainMarkerDeltas(IResourceChangeEvent event) {
     Collection<IMarkerDelta> deltas = new ArrayList<IMarkerDelta>(0);
     for (String type : markerTypes) {
-      retainMarkerDeltasFor(type, event_p, deltas);
+      retainMarkerDeltasFor(type, event, deltas);
     }
     return deltas;
   }
 
   /**
    * Retain specified event marker deltas that match specified marker type.
-   * @param markerType_p
-   * @param event_p
-   * @param resultingCollection_p A not <code>null</code> collection that should host retained marker deltas.
+   * @param markerType
+   * @param event
+   * @param resultingCollection A not <code>null</code> collection that should host retained marker deltas.
    */
-  protected void retainMarkerDeltasFor(String markerType_p, IResourceChangeEvent event_p, Collection<IMarkerDelta> resultingCollection_p) {
-    IMarkerDelta[] markerDeltas = event_p.findMarkerDeltas(markerType_p, false);
+  protected void retainMarkerDeltasFor(String markerType, IResourceChangeEvent event, Collection<IMarkerDelta> resultingCollection) {
+    IMarkerDelta[] markerDeltas = event.findMarkerDeltas(markerType, false);
     if (null == markerDeltas) {
       return;
     }
     for (IMarkerDelta markerDelta : markerDeltas) {
-      resultingCollection_p.add(markerDelta);
+      resultingCollection.add(markerDelta);
     }
   }
 
@@ -115,8 +116,8 @@ class ResourceMarkers implements IResourceChangeListener, IMarkerSource {
         for (IMarker m : resource.findMarkers(t, false, IResource.DEPTH_INFINITE)){
           result.add(m);
         }
-      } catch (CoreException exception_p) {
-          exception_p.printStackTrace();
+      } catch (CoreException exception) {
+          exception.printStackTrace();
       }
     }
     return result;
@@ -125,16 +126,16 @@ class ResourceMarkers implements IResourceChangeListener, IMarkerSource {
   /**
    * {@inheritDoc}
    */
-  public void addListener(IMarkerSourceListener listener_p) {
-    listeners.add(listener_p);
+  public void addListener(IMarkerSourceListener listener) {
+    listeners.add(listener);
   }
 
 
   /**
    * {@inheritDoc}
    */
-  public void removeListener(IMarkerSourceListener listener_p) {
-    listeners.remove(listener_p);
+  public void removeListener(IMarkerSourceListener listener) {
+    listeners.remove(listener);
   }
   
 }

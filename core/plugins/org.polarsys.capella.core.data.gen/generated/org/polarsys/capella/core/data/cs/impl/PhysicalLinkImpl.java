@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
@@ -221,8 +222,8 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 		@SuppressWarnings("unchecked")
 		Collection<ConfigurationItem> resultAsList = (Collection<ConfigurationItem>) result;
 		return new EcoreEList.UnmodifiableEList<ConfigurationItem>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -268,8 +269,8 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -416,8 +417,8 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 		
 		try {
 			return (PhysicalPort) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -475,8 +476,8 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 		
 		try {
 			return (PhysicalPort) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -523,8 +524,8 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -570,8 +571,8 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

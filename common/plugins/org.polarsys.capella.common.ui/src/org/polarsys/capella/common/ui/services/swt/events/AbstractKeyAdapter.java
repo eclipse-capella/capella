@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.services.swt.events;
 
 import org.eclipse.jface.bindings.keys.IKeyLookup;
@@ -31,17 +32,17 @@ public class AbstractKeyAdapter extends KeyAdapter {
 
   /**
    * Is given key representation the one that raises the specified key event.
-   * @param event_p
-   * @param keyRepresentation_p
+   * @param event
+   * @param keyRepresentation
    * @return
    */
-  protected boolean handle(KeyEvent event_p, String keyRepresentation_p) {
+  protected boolean handle(KeyEvent event, String keyRepresentation) {
     boolean result = false;
     // Do not handle directly the event, as the key bindings may be different from the formal one (e.g Emacs key binding).
-    KeyStroke keyStroke = SWTKeySupport.convertAcceleratorToKeyStroke(SWTKeySupport.convertEventToUnmodifiedAccelerator(event_p));
+    KeyStroke keyStroke = SWTKeySupport.convertAcceleratorToKeyStroke(SWTKeySupport.convertEventToUnmodifiedAccelerator(event));
     try {
-      result = keyStroke.equals(KeyStroke.getInstance(keyRepresentation_p));
-    } catch (ParseException exception_p) {
+      result = keyStroke.equals(KeyStroke.getInstance(keyRepresentation));
+    } catch (ParseException exception) {
       // Ignore errors.
     }
     return result;
@@ -49,11 +50,11 @@ public class AbstractKeyAdapter extends KeyAdapter {
 
   /**
    * Is CTRL pressed for specified key event.
-   * @param event_p
+   * @param event
    * @return
    */
-  protected boolean isCtrlPressed(KeyEvent event_p) {
+  protected boolean isCtrlPressed(KeyEvent event) {
     IKeyLookup keyLookup = KeyLookupFactory.getSWTKeyLookup();
-    return keyLookup.getCtrl() == event_p.stateMask || keyLookup.getCtrl() == event_p.keyCode;
+    return keyLookup.getCtrl() == event.stateMask || keyLookup.getCtrl() == event.keyCode;
   }
 }

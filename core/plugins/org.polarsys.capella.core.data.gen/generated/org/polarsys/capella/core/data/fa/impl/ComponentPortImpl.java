@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.fa.impl;
 
 import java.util.Collection;
@@ -819,8 +820,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		
 		try {
 			return (Type) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -1638,8 +1639,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		
 		try {
 			return (Association) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
 	    return null;
 	  }
 		
@@ -1686,8 +1687,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<InstanceRole> resultAsList = (Collection<InstanceRole>) result;
 		return new EcoreEList.UnmodifiableEList<InstanceRole>(this, InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1733,8 +1734,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1780,8 +1781,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1827,8 +1828,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
 		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1938,8 +1939,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchange> resultAsList = (Collection<ComponentExchange>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchange>(this, FaPackage.Literals.COMPONENT_PORT__COMPONENT_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -1985,8 +1986,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<FunctionPort> resultAsList = (Collection<FunctionPort>) result;
 		return new EcoreEList.UnmodifiableEList<FunctionPort>(this, FaPackage.Literals.COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2032,8 +2033,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, FaPackage.Literals.COMPONENT_PORT__DELEGATED_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2079,8 +2080,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, FaPackage.Literals.COMPONENT_PORT__DELEGATING_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2126,8 +2127,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, FaPackage.Literals.COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2173,8 +2174,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, FaPackage.Literals.COMPONENT_PORT__REALIZED_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -2220,8 +2221,8 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, FaPackage.Literals.COMPONENT_PORT__REALIZING_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.formats;
 
 import java.util.regex.Matcher;
@@ -35,11 +36,11 @@ public class CardinalityBoundariesFormat extends DefaultFormat {
    * @see org.polarsys.capella.common.ui.toolkit.services.formats.DefaultFormat#doFormatText(String, Pattern)
    */
   @Override
-  protected String doFormatText(String input_p, Pattern pattern_p) {
-    String value = input_p;
-    if (null != input_p) {
+  protected String doFormatText(String input, Pattern pattern) {
+    String value = input;
+    if (null != input) {
       // If the boundaries are equals only displays one.
-      Matcher matcher = pattern_p.matcher(input_p);
+      Matcher matcher = pattern.matcher(input);
       if (matcher.matches()) {
         if (1 < matcher.end()) {
           if (matcher.group(1).equalsIgnoreCase(matcher.group(3))) {

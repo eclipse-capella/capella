@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.consonance.ui.sirius;
 
 import java.util.Set;
@@ -31,42 +32,42 @@ public class SiriusMergePolicy extends GMFMergePolicy {
    * @see org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy#isSingleMandatory(org.eclipse.emf.ecore.EReference)
    */
   @Override
-  protected boolean isSingleMandatory(EReference reference_p) {
-    return super.isSingleMandatory(reference_p) ||
-        reference_p == ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target();
+  protected boolean isSingleMandatory(EReference reference) {
+    return super.isSingleMandatory(reference) ||
+        reference == ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target();
   }
   
   /**
    * Extend the given addition group for the given element within the given scope
    * based on Viewpoint peculiarities
-   * @param group_p a non-null, modifiable collection
-   * @param element_p a non-null element
-   * @param scope_p a non-null scope
+   * @param group a non-null, modifiable collection
+   * @param element a non-null element
+   * @param scope a non-null scope
    */
-  protected void extendViewpointAdditionGroup(Set<EObject> group_p, EObject element_p,
-      IFeaturedModelScope scope_p) {
+  protected void extendViewpointAdditionGroup(Set<EObject> group, EObject element,
+      IFeaturedModelScope scope) {
     // Semantic element -> DSemanticDecorators
     if (isGraphicalFromSemantic()) {
-      ECrossReferenceAdapter crAdapter = ECrossReferenceAdapter.getCrossReferenceAdapter(element_p);
+      ECrossReferenceAdapter crAdapter = ECrossReferenceAdapter.getCrossReferenceAdapter(element);
       if (crAdapter != null) {
-        for (EStructuralFeature.Setting setting : crAdapter.getNonNavigableInverseReferences(element_p, false)) {
+        for (EStructuralFeature.Setting setting : crAdapter.getNonNavigableInverseReferences(element, false)) {
           if (setting.getEStructuralFeature() == ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target())
-            group_p.add(setting.getEObject());
+            group.add(setting.getEObject());
         }
       }
     }
     // Sirius/GMF consistency: GMF driven by Sirius
-    if (element_p instanceof DDiagramElement)
-      extendGMFAdditionGroupSemanticTarget(group_p, element_p, scope_p);
+    if (element instanceof DDiagramElement)
+      extendGMFAdditionGroupSemanticTarget(group, element, scope);
   }
   
   /**
    * @see org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy#getAdditionGroup(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope)
    */
   @Override
-  public Set<EObject> getAdditionGroup(EObject element_p, IFeaturedModelScope scope_p) {
-    Set<EObject> result = super.getAdditionGroup(element_p, scope_p);
-    extendViewpointAdditionGroup(result, element_p, scope_p);
+  public Set<EObject> getAdditionGroup(EObject element, IFeaturedModelScope scope) {
+    Set<EObject> result = super.getAdditionGroup(element, scope);
+    extendViewpointAdditionGroup(result, element, scope);
     return result;
   }
   

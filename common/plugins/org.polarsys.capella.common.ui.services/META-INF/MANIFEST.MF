@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.ui.services;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.data.core.gen;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport,
@@ -12,5 +12,5 @@ Require-Bundle: org.polarsys.capella.common.data.core.gen;visibility:=reexport,
 Export-Package: org.polarsys.capella.common.ui.actions,
  org.polarsys.capella.common.ui.services
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.handlers.uihead;
 
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
@@ -27,17 +28,17 @@ public class UIHeadHandler implements IUIHeadHandler {
    * {@inheritDoc}
    */
   @Override
-  public void fillParameter(SharedWorkflowActivityParameter parameter_p) {
+  public void fillParameter(SharedWorkflowActivityParameter parameter) {
 
     //Add UI Options handler
     GenericParameter<IHandler> param = new GenericParameter<IHandler>(ITransitionConstants.SCOPE_HANDLER, new ScopeUIHandler(), "Options handler"); //$NON-NLS-1$
-    parameter_p.addSharedParameter(param);
+    parameter.addSharedParameter(param);
 
     //Add UI Filtering handler
     GenericParameter<IHandler> param2 =
         new GenericParameter<IHandler>(ITransitionConstants.FILTERING_DIFFERENCES_HANDLER, new FilteringUIDifferencesHandler(),
             "Filtering differences UI handler"); //$NON-NLS-1$
-    parameter_p.addSharedParameter(param2);
+    parameter.addSharedParameter(param2);
 
   }
 

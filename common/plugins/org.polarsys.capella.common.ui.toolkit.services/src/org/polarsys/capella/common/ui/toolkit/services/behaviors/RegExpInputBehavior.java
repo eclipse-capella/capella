@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.services.behaviors;
 
 import java.util.regex.Matcher;
@@ -21,15 +22,15 @@ import org.polarsys.capella.common.ui.toolkit.services.validators.RegExpValidato
  */
 public abstract class RegExpInputBehavior implements IInputBehavior {
   // The regular expression pattern.
-  private Pattern _pattern = null;
+  private Pattern pattern = null;
 
   /**
    * Constructs the regular expression behavior.
    * @param The regular expression.
    * @deprecated
    */
-  protected RegExpInputBehavior(String regularExpression_p) {
-    _pattern = Pattern.compile(regularExpression_p);
+  protected RegExpInputBehavior(String regularExpression) {
+    pattern = Pattern.compile(regularExpression);
   }
 
   /**
@@ -38,38 +39,38 @@ public abstract class RegExpInputBehavior implements IInputBehavior {
    * @deprecated
    */
   public Pattern getPattern() {
-    return _pattern;
+    return pattern;
   }
 
   /**
    * @deprecated
    * @see org.polarsys.capella.common.ui.toolkit.services.behaviors.IInputBehavior#format(java.lang.String)
    */
-  public String format(String input_p) {
-    if (isValid(input_p)) {
-      return doFormatText(input_p);
+  public String format(String input) {
+    if (isValid(input)) {
+      return doFormatText(input);
     }
-    return input_p;
+    return input;
   }
 
   /**
    * Does the text formatting. This is the default implementation which returns the input.
-   * @param input_p The input to format.
+   * @param input The input to format.
    * @return The formatted value.
    * @deprecated
    */
-  protected String doFormatText(String input_p) {
-    return input_p;
+  protected String doFormatText(String input) {
+    return input;
   }
 
   /**
    * @deprecated
    * @see org.polarsys.capella.common.ui.toolkit.services.behaviors.IInputBehavior#isValid(java.lang.String)
    */
-  public boolean isValid(String value_p) {
+  public boolean isValid(String value) {
     boolean isValid = true;
-    if ((null != value_p) && (0 != value_p.length())) {
-      Matcher matcher = _pattern.matcher(value_p);
+    if ((null != value) && (0 != value.length())) {
+      Matcher matcher = pattern.matcher(value);
       isValid = matcher.matches();
     }
     return isValid;

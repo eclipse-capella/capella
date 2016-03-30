@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -24,10 +25,10 @@ public class ReportLogViewExtPointUtil {
 
   /**
    * Return an array 
-   * @param viewID_p
+   * @param viewID
    * @return
    */
-  public static String[] getMarkersID(String viewID_p) {
+  public static String[] getMarkersID(String viewID) {
     
     String result[] = null;
     
@@ -36,15 +37,13 @@ public class ReportLogViewExtPointUtil {
         ExtensionPointHelper.getConfigurationElements(
             MarkerViewPlugin.PLUGIN_ID,
             IReportLogViewExtPointConstants.EXT_POINT_ID
-        )
-    ;
+        );
     
     IReportLogViewMarkerIdsProvider provider = null;
     
-    String viewId = null;
     for (IConfigurationElement configurationElement : configurationElements) {
-      viewId = getTargetViewId(configurationElement);
-      if (viewId.equals(viewID_p)) { // we stop on the first contribution we found
+      String id = getTargetViewId(configurationElement);
+      if (id.equals(viewID)) { // we stop on the first contribution we found
         provider = instanciateMarkerIdsProvider(configurationElement);
         break;
       } 
@@ -57,24 +56,24 @@ public class ReportLogViewExtPointUtil {
   
   /**
    * Instanciate a {@link ITestSuitesProvider} object from a capellaTestSuitesProvider extension point contribution.
-   * @param configurationElement_p
-   * @return  <code>null</code> whether configurationElement_p is <code>null</code> or not set in proper way.
+   * @param configurationElement
+   * @return  <code>null</code> whether configurationElement is <code>null</code> or not set in proper way.
    */
-  private static IReportLogViewMarkerIdsProvider instanciateMarkerIdsProvider(IConfigurationElement configurationElement_p){
+  private static IReportLogViewMarkerIdsProvider instanciateMarkerIdsProvider(IConfigurationElement configurationElement){
     
     IReportLogViewMarkerIdsProvider result = null;
  
-    if (isFilterOnMarkersProviderContribution(configurationElement_p)) {
+    if (isFilterOnMarkersProviderContribution(configurationElement)) {
     
       try {
         result = (IReportLogViewMarkerIdsProvider) 
           ExtensionPointHelper.createInstance(
-              configurationElement_p,
+              configurationElement,
               IReportLogViewExtPointConstants.FILTER_PROVIDER_ATT
           )
         ;
-      } catch (Exception exception_p) {
-        exception_p.printStackTrace();
+      } catch (Exception exception) {
+        exception.printStackTrace();
       }
     }
     
@@ -83,15 +82,15 @@ public class ReportLogViewExtPointUtil {
   
   /**
    * See the 'type' attribute of the capellaTestSuitesProvider extension point.
-   * @param configurationElement_p
+   * @param configurationElement
    * @return an empty {@link String} whether the contribution is not of good type or whether this value is not set. 
    */
-  private static String getTargetViewId(IConfigurationElement configurationElement_p) {
+  private static String getTargetViewId(IConfigurationElement configurationElement) {
     
     String result = ICommonConstants.EMPTY_STRING;
     
-    if (isFilterOnMarkersProviderContribution(configurationElement_p)) {
-      result = configurationElement_p.getAttribute(IReportLogViewExtPointConstants.VIEW_ID_ATT);
+    if (isFilterOnMarkersProviderContribution(configurationElement)) {
+      result = configurationElement.getAttribute(IReportLogViewExtPointConstants.VIEW_ID_ATT);
     }
     
     return result;
@@ -100,14 +99,14 @@ public class ReportLogViewExtPointUtil {
   /**
    * Check whether a given configuration element is a contribution to the 
    * filterOnReportView extension point of type reportView. 
-   * @param configurationElement_p
-   * @return <code>true</code> if configurationElement_p is not <code>null</code> and verifies the condition, <code>false</code> otherwise. 
+   * @param configurationElement
+   * @return <code>true</code> if configurationElement is not <code>null</code> and verifies the condition, <code>false</code> otherwise. 
    */
-  public static boolean isFilterOnMarkersProviderContribution(IConfigurationElement configurationElement_p) {
+  public static boolean isFilterOnMarkersProviderContribution(IConfigurationElement configurationElement) {
     
     boolean result =
-      null != configurationElement_p &&
-      configurationElement_p.getName().equals(
+      null != configurationElement &&
+      configurationElement.getName().equals(
           IReportLogViewExtPointConstants.REPORT_VIEW_NODE
       )
     ;

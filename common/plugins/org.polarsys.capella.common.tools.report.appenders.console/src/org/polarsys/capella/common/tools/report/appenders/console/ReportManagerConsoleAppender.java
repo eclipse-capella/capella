@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.console;
 
 import java.io.BufferedWriter;
@@ -47,8 +48,8 @@ public class ReportManagerConsoleAppender extends AppenderSkeleton {
   private volatile boolean _running;
   private final List<LoggingEvent> _pending;
   
-  public ReportManagerConsoleAppender(Layout layout_p) {
-	  setLayout(layout_p);
+  public ReportManagerConsoleAppender(Layout layout) {
+	  setLayout(layout);
 	  setName(ReportManagerConstants.LOG_OUTPUT_CONSOLE);
 	  _console = ConsoleAppenderActivator.getDefault().getReportConsole();
 	  _logWriters = new HashMap<Level, Writer>();

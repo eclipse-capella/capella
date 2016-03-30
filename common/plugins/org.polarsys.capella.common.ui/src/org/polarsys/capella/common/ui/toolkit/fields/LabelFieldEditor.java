@@ -21,26 +21,26 @@ import org.eclipse.swt.widgets.Label;
 public class LabelFieldEditor extends FieldEditor {
   private Label _label;
 
-  public LabelFieldEditor(String labelText_p, Composite parent_p) {
-    super("label", labelText_p, parent_p); //$NON-NLS-1$
+  public LabelFieldEditor(String labelText, Composite parent) {
+    super("label", labelText, parent); //$NON-NLS-1$
   }
 
   /**
    * @see org.eclipse.jface.preference.FieldEditor#adjustForNumColumns(int)
    */
   @Override
-  protected void adjustForNumColumns(int numColumns_p) {
-    ((GridData) _label.getLayoutData()).horizontalSpan = numColumns_p;
+  protected void adjustForNumColumns(int numColumns) {
+    ((GridData) _label.getLayoutData()).horizontalSpan = numColumns;
   }
 
   /**
    * @see org.eclipse.jface.preference.FieldEditor#doFillIntoGrid(org.eclipse.swt.widgets.Composite, int)
    */
   @Override
-  protected void doFillIntoGrid(Composite parent_p, int numColumns_p) {
-    _label = getLabelControl(parent_p);
+  protected void doFillIntoGrid(Composite parent, int numColumns) {
+    _label = getLabelControl(parent);
     GridData gridData = new GridData();
-    gridData.horizontalSpan = numColumns_p;
+    gridData.horizontalSpan = numColumns;
     gridData.horizontalAlignment = GridData.FILL;
     gridData.grabExcessHorizontalSpace = false;
     gridData.verticalAlignment = GridData.CENTER;

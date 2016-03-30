@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.re2rpl.rules;
 
 import java.util.List;
@@ -29,16 +30,16 @@ public class ReplicableElementRule extends org.polarsys.capella.common.re.rules.
    * {@inheritDoc}
    */
   @Override
-  protected void retrieveCurrent(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveCurrent(source_p, result_p, context_p);
+  protected void retrieveCurrent(EObject source, List<EObject> result, IContext context) {
+    super.retrieveCurrent(source, result, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void retrieveRootElement(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveRootElement(source_p, result_p, context_p);
+  protected void retrieveRootElement(EObject source, List<EObject> result, IContext context) {
+    super.retrieveRootElement(source, result, context);
 
   }
 
@@ -46,14 +47,14 @@ public class ReplicableElementRule extends org.polarsys.capella.common.re.rules.
    * {@inheritDoc}
    */
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    result_p.addAll(ReplicableElementHandlerHelper.getInstance(context_p).getElements((CatalogElement) source_p));
+    result.addAll(ReplicableElementHandlerHelper.getInstance(context).getElements((CatalogElement) source));
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE,
-          ReplicableElementHandlerHelper.getInstance(context_p).getElements((CatalogElement) source_p), context_p);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
+          ReplicableElementHandlerHelper.getInstance(context).getElements((CatalogElement) source), context);
     }
 
   }
@@ -62,8 +63,8 @@ public class ReplicableElementRule extends org.polarsys.capella.common.re.rules.
    * {@inheritDoc}
    */
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveContainer(element_p, result_p, context_p);
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    super.retrieveContainer(element, result, context);
   }
 
 }

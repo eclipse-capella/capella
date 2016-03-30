@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,32 +18,32 @@ public class MaxIntegerValidator extends AbstractValidator {
   /**
    * Constructs an integer validator accepting any value <= Integer.MAX_VALUE or '*'.
    * 
-   * @param errorMessage_p The message displayed when {@link #isValid(Object)} returned <code>false</code>.
+   * @param errorMessage The message displayed when {@link #isValid(Object)} returned <code>false</code>.
    */
-  public MaxIntegerValidator(String errorMessage_p) {
-    super(errorMessage_p);
+  public MaxIntegerValidator(String errorMessage) {
+    super(errorMessage);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.services.validators.IValidator#isValid(java.lang.Object)
    */
-  public String isValid(Object value_p) {
+  public String isValid(Object value) {
     String result = getErrorMessage();
 
-    if (!value_p.equals("")) { //$NON-NLS-1$
-      if (value_p.equals("*")) { //$NON-NLS-1$
+    if (!value.equals("")) { //$NON-NLS-1$
+      if (value.equals("*")) { //$NON-NLS-1$
         // Returning null indicates that the value is valid.
         result = null;
       }
       else {
         try {
-          long value = Long.parseLong((String)value_p);
-          if (value <= Integer.MAX_VALUE) {
+          long val = Long.parseLong((String)value);
+          if (val <= Integer.MAX_VALUE) {
             // Returning null indicates that the value is valid.
             result = null;
           }
         }
-        catch (ClassCastException ex_p) {
+        catch (ClassCastException ex) {
           //
         }
         catch (NumberFormatException ex) {

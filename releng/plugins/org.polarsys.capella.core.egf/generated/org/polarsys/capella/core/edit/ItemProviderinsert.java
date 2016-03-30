@@ -1,4 +1,4 @@
-//Generated with EGF 1.2.0.v20150211-1405
+//Generated with EGF 1.3.0.v20150924-1035
 package org.polarsys.capella.core.edit;
 
 import org.eclipse.egf.common.helper.*;
@@ -8,8 +8,7 @@ import org.eclipse.egf.model.pattern.*;
 import org.eclipse.egf.pattern.execution.*;
 import org.eclipse.egf.pattern.query.*;
 
-public class ItemProviderinsert extends
-		org.eclipse.egf.emf.pattern.edit.call.ItemProvider.ItemProviderinsert {
+public class ItemProviderinsert extends org.eclipse.egf.emf.pattern.edit.call.ItemProvider.ItemProviderinsert {
 	protected static String nl;
 
 	public static synchronized ItemProviderinsert create(String lineSeparator) {
@@ -19,20 +18,16 @@ public class ItemProviderinsert extends
 		return result;
 	}
 
-	public final String NL = nl == null ? (System.getProperties()
-			.getProperty("line.separator")) : nl;
-	protected final String TEXT_1 = "\t// begin-capella-code" + NL + "\t/**"
-			+ NL + "\t * <!-- begin-user-doc -->" + NL
-			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL
-			+ "\t */";
+	public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
+	protected final String TEXT_1 = "\t// begin-capella-code" + NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL
+			+ "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
 	protected final String TEXT_2 = NL + "\t@Override";
 	protected final String TEXT_3 = NL + "\tprotected ";
 	protected final String TEXT_4 = " createInitializeCopyCommand(";
-	protected final String TEXT_5 = " domain_p, ";
-	protected final String TEXT_6 = " owner_p, ";
-	protected final String TEXT_7 = " helper_p) {" + NL + "\t\treturn new ";
-	protected final String TEXT_8 = "(domain_p, owner_p, helper_p);" + NL
-			+ "\t}" + NL + "\t// end-capella-code";
+	protected final String TEXT_5 = " domain, ";
+	protected final String TEXT_6 = " owner, ";
+	protected final String TEXT_7 = " helper) {" + NL + "\t\treturn new ";
+	protected final String TEXT_8 = "(domain, owner, helper);" + NL + "\t}" + NL + "\t// end-capella-code";
 	protected final String TEXT_9 = NL;
 	protected final String TEXT_10 = NL;
 
@@ -72,8 +67,7 @@ public class ItemProviderinsert extends
 						this._List = (java.lang.String) _ListParameter;
 
 						if (preCondition(ctx)) {
-							ctx.setNode(new Node.Container(currentNode,
-									getClass()));
+							ctx.setNode(new Node.Container(currentNode, getClass()));
 							orchestration(ctx);
 						}
 
@@ -83,8 +77,7 @@ public class ItemProviderinsert extends
 		}
 		ctx.setNode(currentNode);
 		if (ctx.useReporter()) {
-			ctx.getReporter().executionFinished(
-					OutputManager.computeExecutionOutput(ctx), ctx);
+			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
 		stringBuffer.append(TEXT_9);
@@ -105,8 +98,7 @@ public class ItemProviderinsert extends
 			parameterValues.put("_List", this._List);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
-			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx,
-					parameterValues);
+			ictx.getReporter().loopFinished(loop, outputWithCallBack, ictx, parameterValues);
 		}
 		return null;
 	}
@@ -120,33 +112,25 @@ public class ItemProviderinsert extends
 		return parameters;
 	}
 
-	protected void method_doGenerate(final StringBuffer stringBuffer,
-			final PatternContext ctx) throws Exception {
+	protected void method_doGenerate(final StringBuffer stringBuffer, final PatternContext ctx) throws Exception {
 
 		stringBuffer.append(TEXT_1);
 		if (genModel.useClassOverrideAnnotation()) {
 			stringBuffer.append(TEXT_2);
 		}
 		stringBuffer.append(TEXT_3);
-		stringBuffer.append(genModel
-				.getImportedName("org.eclipse.emf.common.command.Command"));
+		stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.command.Command"));
 		stringBuffer.append(TEXT_4);
-		stringBuffer.append(genModel
-				.getImportedName("org.eclipse.emf.edit.domain.EditingDomain"));
+		stringBuffer.append(genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain"));
 		stringBuffer.append(TEXT_5);
-		stringBuffer.append(genModel
-				.getImportedName("org.eclipse.emf.ecore.EObject"));
+		stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
 		stringBuffer.append(TEXT_6);
-		stringBuffer
-				.append(genModel
-						.getImportedName("org.eclipse.emf.edit.command.CopyCommand.Helper"));
+		stringBuffer.append(genModel.getImportedName("org.eclipse.emf.edit.command.CopyCommand.Helper"));
 		stringBuffer.append(TEXT_7);
-		stringBuffer
-				.append(genModel
-						.getImportedName("org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand"));
+		stringBuffer.append(
+				genModel.getImportedName("org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand"));
 		stringBuffer.append(TEXT_8);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
-		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate",
-				stringBuffer.toString());
+		new Node.DataLeaf(ictx.getNode(), getClass(), "doGenerate", stringBuffer.toString());
 	}
 }

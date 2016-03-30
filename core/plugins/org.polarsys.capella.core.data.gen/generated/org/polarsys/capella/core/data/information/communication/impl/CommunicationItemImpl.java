@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.information.communication.impl;
 
 import java.util.Collection;
@@ -275,8 +276,8 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 		@SuppressWarnings("unchecked")
 		Collection<Property> resultAsList = (Collection<Property>) result;
 		return new EcoreEList.UnmodifiableEList<Property>(this, CommunicationPackage.Literals.COMMUNICATION_ITEM__PROPERTIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

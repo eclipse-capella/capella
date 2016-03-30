@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.loader;
 
 import java.util.ArrayList;
@@ -37,23 +38,23 @@ public class RenderersLoader {
 
   HashMap<String, Renderers> renderersByProperties = new HashMap<String, Renderers>();
 
-  protected Renderers getStoredProperties(String idProperties_p) {
-    return renderersByProperties.get(idProperties_p);
+  protected Renderers getStoredProperties(String idProperties) {
+    return renderersByProperties.get(idProperties);
   }
 
-  protected void setStoredProperties(String idProperties_p, Renderers properties_p) {
-    renderersByProperties.put(idProperties_p, properties_p);
+  protected void setStoredProperties(String idProperties, Renderers properties) {
+    renderersByProperties.put(idProperties, properties);
   }
 
-  protected Renderers getOrCreateStoredProperties(String idProperties_p) {
+  protected Renderers getOrCreateStoredProperties(String idProperties) {
 
-    if (getStoredProperties(idProperties_p) == null) {
-      setStoredProperties(idProperties_p, new Renderers());
+    if (getStoredProperties(idProperties) == null) {
+      setStoredProperties(idProperties, new Renderers());
     }
-    return getStoredProperties(idProperties_p);
+    return getStoredProperties(idProperties);
   }
 
-  public IRenderers getRenderers(IProperties properties_p) {
+  public IRenderers getRenderers(IProperties properties) {
 
     HashMap<String, IConfigurationElement> renderersMap = new HashMap<String, IConfigurationElement>();
     HashMap<String, Collection<IConfigurationElement>> renderersBindingMapByProperties = new HashMap<String, Collection<IConfigurationElement>>();
@@ -109,7 +110,7 @@ public class RenderersLoader {
 
     // Retrieve most lower renderersBindings by IProperty.id
     LinkedList<IProperties> toVisit = new LinkedList<IProperties>();
-    toVisit.add(properties_p);
+    toVisit.add(properties);
     while (toVisit.size() > 0) {
       IProperties parent = toVisit.removeFirst();
       if (parent == null) {
@@ -130,7 +131,7 @@ public class RenderersLoader {
       }
 
       // Create a renderer for each IProperty
-      for (IProperty property : properties_p.getAllItems()) {
+      for (IProperty property : properties.getAllItems()) {
         for (IConfigurationElement extension : elements) {
           String propertyId = null;
           String rendererId = null;
@@ -168,14 +169,14 @@ public class RenderersLoader {
               }
             }
 
-          } catch (CoreException exception_p) {
-            exception_p.printStackTrace();
+          } catch (CoreException exception) {
+            exception.printStackTrace();
           }
         }
       }
 
       // Create a renderer for each IPropertyGroup
-      for (IPropertyGroup group : properties_p.getAllGroups()) {
+      for (IPropertyGroup group : properties.getAllGroups()) {
         for (IConfigurationElement extension : elements) {
           String propertyId = null;
           String rendererId = null;
@@ -203,15 +204,15 @@ public class RenderersLoader {
               }
             }
 
-          } catch (CoreException exception_p) {
-            exception_p.printStackTrace();
+          } catch (CoreException exception) {
+            exception.printStackTrace();
           }
         }
       }
 
     }
 
-    return getOrCreateStoredProperties(properties_p.getPropertiesId());
+    return getOrCreateStoredProperties(properties.getPropertiesId());
   }
 
 }

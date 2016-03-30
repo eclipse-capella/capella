@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.utils.graph;
 
 import java.util.ArrayList;
@@ -27,12 +28,11 @@ public class SCCSearch<T> {
    * Properties assigned to each node
    */
   private final class Properties {
-    public Properties(int index_p, int lowlink_p) {
-      index = index_p;
-      lowlink = lowlink_p;
+    public Properties(int index, int lowlink) {
+      this.index = index;
+      this.lowlink = lowlink;
     }
 
-    @SuppressWarnings("hiding")
     int index; // index at which the corresponding element was discovered
     int lowlink; // minimal index for some other node reachable from this one
   }
@@ -64,15 +64,15 @@ public class SCCSearch<T> {
 
   /**
    * Find the strongly connected components of a graph.
-   * @param contents_p An iterator over the graph's nodes.
-   * @param advisor_p Provides informations about the graphs edges.
+   * @param contents An iterator over the graph's nodes.
+   * @param advisor Provides informations about the graphs edges.
    * @param strict whether elementary (size 1) sccs should be added to the result
    * @return A list of strongly connected components of the graph. Never null.
    */
-  public List<List<T>> findSCC(IDirectedGraph<T> graph_p, boolean strict) {
+  public List<List<T>> findSCC(IDirectedGraph<T> graph, boolean strict) {
 
     result = new ArrayList<List<T>>();
-    graph = graph_p;
+    this.graph = graph;
     index = 0;
     propertyMap = new HashMap<T, Properties>();
     stack = new Stack<T>();

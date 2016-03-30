@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import org.eclipse.jface.viewers.ISelection;
@@ -22,10 +23,10 @@ public class DelegateSelectionProvider implements ISelectionProvider {
 
   /**
    * Constructor.
-   * @param selectionProvider_p
+   * @param selectionProvider
    */
-  public DelegateSelectionProvider(ISelectionProvider selectionProvider_p) {
-    _delegate = selectionProvider_p;
+  public DelegateSelectionProvider(ISelectionProvider selectionProvider) {
+    _delegate = selectionProvider;
   }
 
   /**
@@ -60,10 +61,10 @@ public class DelegateSelectionProvider implements ISelectionProvider {
 
   /**
    * Set the delegate
-   * @param delegate_p the delegate to set
+   * @param delegate the delegate to set
    */
-  public void setDelegate(ISelectionProvider delegate_p) {
-    _delegate = delegate_p;
+  public void setDelegate(ISelectionProvider delegate) {
+    _delegate = delegate;
   }
 
   /**

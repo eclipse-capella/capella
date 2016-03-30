@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.helpers.query;
 
 import org.eclipse.emf.ecore.EObject;
@@ -23,25 +24,25 @@ public class EObjectTypeCondition extends EObjectCondition {
   /**
    * 
    */
-  public EObjectTypeCondition(Class<?> targetType_p) {
-    _targetType = targetType_p;
+  public EObjectTypeCondition(Class<?> targetType) {
+    _targetType = targetType;
   }
 
   /**
-   * @param pruneHandler_p
+   * @param pruneHandler
    */
-  public EObjectTypeCondition(PruneHandler pruneHandler_p, Class<?> targetType_p) {
-    super(pruneHandler_p);
-    _targetType = targetType_p;
+  public EObjectTypeCondition(PruneHandler pruneHandler, Class<?> targetType) {
+    super(pruneHandler);
+    _targetType = targetType;
   }
 
   /**
    * @see org.eclipse.emf.query.conditions.eobjects.EObjectCondition#isSatisfied(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public boolean isSatisfied(EObject object_p) {
+  public boolean isSatisfied(EObject object) {
     // Element must match _targetType for being part of query result
-    if ((_targetType != null) && (_targetType.isInstance(object_p)))
+    if ((_targetType != null) && (_targetType.isInstance(object)))
       return true;
     return false;
   }

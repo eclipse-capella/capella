@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers.transfer;
 
 import java.util.ArrayList;
@@ -56,21 +57,21 @@ public class OrderedTransferTreeListViewer extends TransferTreeListViewer {
 
   /**
    * Constructor.
-   * @param parent_p
-   * @param style_p
-   * @param leftViewerStyleBits_p
-   * @param rightViewerStyleBits_p
+   * @param parent
+   * @param style
+   * @param leftViewerStyleBits
+   * @param rightViewerStyleBits
    */
-  public OrderedTransferTreeListViewer(Composite parent_p, int style_p, int leftViewerStyleBits_p, int rightViewerStyleBits_p) {
-    super(parent_p, style_p, leftViewerStyleBits_p, rightViewerStyleBits_p);
+  public OrderedTransferTreeListViewer(Composite parent, int style, int leftViewerStyleBits, int rightViewerStyleBits) {
+    super(parent, style, leftViewerStyleBits, rightViewerStyleBits);
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.viewers.transfer.AbstractTransferViewer2#createButtonArea(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  protected void createButtonArea(Composite parent_p) {
-    super.createButtonArea(parent_p);
+  protected void createButtonArea(Composite parent) {
+    super.createButtonArea(parent);
     _upButton = createButton(getButtonsContainer(), Messages.OrderedTransferTreeListViewer_Up_Title, Messages.OrderedTransferTreeListViewer_Up_Tooltip);
     _downButton = createButton(getButtonsContainer(), Messages.OrderedTransferTreeListViewer_Down_Title, Messages.OrderedTransferTreeListViewer_Down_Tooltip);
   }
@@ -120,18 +121,18 @@ public class OrderedTransferTreeListViewer extends TransferTreeListViewer {
   /**
    * Swap tree items.
    */
-  protected void swapElements(List<TreeItem> treeItems_p, boolean isMovingUp_p) {
+  protected void swapElements(List<TreeItem> treeItems, boolean isMovingUp) {
     TreeViewer rightViewer = getRightViewer();
     Tree tree = rightViewer.getTree();
     // A list that holds the selection after the move operation.
     // When an element is contained many times by a node in a tree viewer, after the refresh the tree viewer is lost (bug in AbstractTreeViewer) regarding the
     // selection.
-    List<TreeItem> newlySelectedElements = new ArrayList<TreeItem>(treeItems_p.size());
-    for (TreeItem treeItem : treeItems_p) {
+    List<TreeItem> newlySelectedElements = new ArrayList<TreeItem>(treeItems.size());
+    for (TreeItem treeItem : treeItems) {
       TreeItem parentItem = treeItem.getParentItem();
       // Handle tree and flat data structure.
       int index = (null != parentItem) ? parentItem.indexOf(treeItem) : tree.indexOf(treeItem);
-      int newIndex = index + ((isMovingUp_p) ? -1 : 1);
+      int newIndex = index + ((isMovingUp) ? -1 : 1);
       ((IMoveableData) getRightInput()).swap(treeItem.getData(), index, newIndex);
       // Treak : Add the TreeItem that will host the element.
       TreeItem selectedItem = (null != parentItem) ? parentItem.getItem(newIndex) : tree.getItem(newIndex);
@@ -149,13 +150,13 @@ public class OrderedTransferTreeListViewer extends TransferTreeListViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.transfer.AbstractTransferViewer2#handleButtonClicked(org.eclipse.swt.widgets.Widget)
    */
   @Override
-  protected void handleButtonClicked(Widget button_p) {
-    if (button_p == _upButton) {
+  protected void handleButtonClicked(Widget button) {
+    if (button == _upButton) {
       doHandleUpButton();
-    } else if (button_p == _downButton) {
+    } else if (button == _downButton) {
       doHandleDownButton();
     } else {
-      super.handleButtonClicked(button_p);
+      super.handleButtonClicked(button);
     }
   }
 
@@ -164,12 +165,12 @@ public class OrderedTransferTreeListViewer extends TransferTreeListViewer {
    *      java.util.List, java.lang.Object)
    */
   @Override
-  protected ListData createListDataWhenTreeViewModeClicked(TreeViewer viewer_p, List<? extends Object> displayedElements_p, Object context_p) {
+  protected ListData createListDataWhenTreeViewModeClicked(TreeViewer viewer, List<? extends Object> displayedElements, Object context) {
     // Only the TreeData for the right viewer is changed.
-    if (viewer_p == getRightViewer()) {
-      return new MultipleValidElementsListData(displayedElements_p, context_p);
+    if (viewer == getRightViewer()) {
+      return new MultipleValidElementsListData(displayedElements, context);
     }
-    return super.createListDataWhenTreeViewModeClicked(viewer_p, displayedElements_p, context_p);
+    return super.createListDataWhenTreeViewModeClicked(viewer, displayedElements, context);
   }
 
   /**
@@ -177,12 +178,12 @@ public class OrderedTransferTreeListViewer extends TransferTreeListViewer {
    *      java.util.List, java.lang.Object)
    */
   @Override
-  protected TreeData createTreeDataWhenTreeViewModeClicked(TreeViewer viewer_p, List<? extends Object> displayedElements_p, Object context_p) {
+  protected TreeData createTreeDataWhenTreeViewModeClicked(TreeViewer viewer, List<? extends Object> displayedElements, Object context) {
     // Only the TreeData for the right viewer is changed.
-    if (viewer_p == getRightViewer()) {
-      return new MultipleValidElementsTreeData(displayedElements_p, context_p);
+    if (viewer == getRightViewer()) {
+      return new MultipleValidElementsTreeData(displayedElements, context);
     }
-    return super.createTreeDataWhenTreeViewModeClicked(viewer_p, displayedElements_p, context_p);
+    return super.createTreeDataWhenTreeViewModeClicked(viewer, displayedElements, context);
   }
 
   /**
@@ -190,15 +191,15 @@ public class OrderedTransferTreeListViewer extends TransferTreeListViewer {
    *      int)
    */
   @Override
-  public void setSelectionChangedHandler(SelectionChangedHandler handler_p, int buttonStyleConstant_p) {
-    super.setSelectionChangedHandler(handler_p, buttonStyleConstant_p);
-    if ((null != _upButton) && (UP_BUTTON & buttonStyleConstant_p) != 0) {
-      handler_p.addControl(_upButton);
-      getSelectionChangedHandlersForRightViewer().add(handler_p);
+  public void setSelectionChangedHandler(SelectionChangedHandler handler, int buttonStyleConstant) {
+    super.setSelectionChangedHandler(handler, buttonStyleConstant);
+    if ((null != _upButton) && (UP_BUTTON & buttonStyleConstant) != 0) {
+      handler.addControl(_upButton);
+      getSelectionChangedHandlersForRightViewer().add(handler);
     }
-    if ((null != _downButton) && (DOWN_BUTTON & buttonStyleConstant_p) != 0) {
-      handler_p.addControl(_downButton);
-      getSelectionChangedHandlersForRightViewer().add(handler_p);
+    if ((null != _downButton) && (DOWN_BUTTON & buttonStyleConstant) != 0) {
+      handler.addControl(_downButton);
+      getSelectionChangedHandlersForRightViewer().add(handler);
     }
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.model.helpers.internal;
 
 import java.util.HashMap;
@@ -38,13 +39,13 @@ public class CapellaHelperAdapterFactory implements IAdapterFactory {
    * @see org.eclipse.core.runtime.IAdapterFactory#getAdapter(java.lang.Object, java.lang.Class)
    */
   @SuppressWarnings("rawtypes")
-  public Object getAdapter(Object adaptableObject_p, Class adapterType_p) {
+  public Object getAdapter(Object adaptableObject, Class adapterType) {
     IHelper result = null;
     // Make sure given parameters match expected types offered by this factory.
     // In theory, this factory is contributed through an extension that only exposes these adapters for EObject-based objects.
-    if (adaptableObject_p instanceof EObject) {
-      if (adapterType_p.equals(IHelper.class)) {
-        EObject object = (EObject) adaptableObject_p;
+    if (adaptableObject instanceof EObject) {
+      if (adapterType.equals(IHelper.class)) {
+        EObject object = (EObject) adaptableObject;
         // Package that contains the meta-class for given EObject.
         EPackage package_l = object.eClass().getEPackage();
         // Root package of owner package.

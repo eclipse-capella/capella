@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import java.util.Collection;
@@ -52,8 +53,8 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
      * {@inheritDoc}
      */
     @Override
-    protected String adapt(String canonicalName_p) {
-      return ObjectPropertiesTabDescriptorProvider.this.adapt(canonicalName_p);
+    protected String adapt(String canonicalName) {
+      return ObjectPropertiesTabDescriptorProvider.this.adapt(canonicalName);
     }
 
   };
@@ -83,11 +84,11 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
   }
 
   @Override
-  public IProperties getProperties(Collection<Object> selection_p) {
-    Collection<Object> selection = selection_p;
+  public IProperties getProperties(Collection<Object> selection) {
+    Collection<Object> sel = selection;
 
-    if (source != selection) {
-      source = selection;
+    if (source != sel) {
+      source = sel;
 
       // Compute a propertiesId for the selection
       String identifier = _propertiesLoader.getIdentifier(source);
@@ -114,8 +115,8 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
     IPropertyContext context;
     boolean isEnabled = true;
 
-    ContextAdapter(IPropertyContext context_p) {
-      context = context_p;
+    ContextAdapter(IPropertyContext context) {
+      this.context = context;
       context.registerListener(this);
     }
 
@@ -123,13 +124,13 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
      * {@inheritDoc}
      */
     @Override
-    public void notifyChanged(Notification msg_p) {
-      super.notifyChanged(msg_p);
+    public void notifyChanged(Notification msg) {
+      super.notifyChanged(msg);
       try {
         isEnabled = false;
         if ((context != null) && (context.getProperties() != null)) {
           for (IProperty property : context.getProperties().getAllItems()) {
-            EStructuralFeature feature = (EStructuralFeature) msg_p.getFeature();
+            EStructuralFeature feature = (EStructuralFeature) msg.getFeature();
             if ((feature != null) && (feature.getName() != null)) {
               if ((property != null) && (property instanceof EStructuralFeatureProperty)) {
                 EStructuralFeatureProperty featureProperty = (EStructuralFeatureProperty) property;
@@ -153,22 +154,22 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
      * {@inheritDoc}
      */
     @Override
-    public void update(final PropertyChangedEvent event_p) {
+    public void update(final PropertyChangedEvent event) {
       if (!isEnabled) {
         return;
       }
-      if ((context != null) && (event_p.getProperty() != null) && context.isModified(event_p.getProperty())) {
+      if ((context != null) && (event.getProperty() != null) && context.isModified(event.getProperty())) {
         AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
           /**
            * {@inheritDoc}
            */
           @Override
           public String getName() {
-            return "Modify " + event_p.getProperty().getName();
+            return "Modify " + event.getProperty().getName();
           }
 
           public void run() {
-            context.write(event_p.getProperty());
+            context.write(event.getProperty());
           }
         };
         TransactionHelper.getExecutionManager((Collection) context.getSourceAsList()).execute(cmd);
@@ -177,11 +178,11 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
   }
 
   /**
-   * @param properties_p
+   * @param properties
    * @return
    */
-  protected IPropertyContext createContext(IProperties properties_p) {
-    final IPropertyContext context = new PropertyContext(properties_p) {
+  protected IPropertyContext createContext(IProperties properties) {
+    final IPropertyContext context = new PropertyContext(properties) {
 
       Adapter adapter = new ContextAdapter(this);
 
@@ -189,9 +190,9 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
        * {@inheritDoc}
        */
       @Override
-      public void setSource(Object source_p) {
-        Object root = source_p;
-        if ((getSource() == source_p)) {
+      public void setSource(Object source) {
+        Object root = source;
+        if ((getSource() == source)) {
           return;
         }
         root = adapt(root);
@@ -208,21 +209,21 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
   }
 
   /**
-   * @param properties_p
+   * @param properties
    * @return
    */
   @Override
-  protected IRenderers createRenderers(IProperties properties_p) {
-    return _rendererLoader.getRenderers(properties_p);
+  protected IRenderers createRenderers(IProperties properties) {
+    return _rendererLoader.getRenderers(properties);
   }
 
-  protected String adapt(String canonicalName_p) {
-    return canonicalName_p;
+  protected String adapt(String canonicalName) {
+    return canonicalName;
   }
 
   @Override
-  protected Object adapt(Object source_p) {
-    return source;
+  protected Object adapt(Object source) {
+    return this.source;
   }
 
 }

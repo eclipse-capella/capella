@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -115,7 +115,11 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
    * Utility package suffix is used for switch, validator, resource, and adapter factory classes.
    */
   private String _utilityPackageSuffix;
-
+  /**
+   * 
+   */
+  private boolean _operationReflection;
+  
   /**
    * Create a model importer.
    * @return an {@link ModelImporter} instance.
@@ -134,10 +138,10 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
 
   /**
    * Create the genmodel file.
-   * @param monitor_p
+   * @param monitor
    * @return a GenModel instance or null if an error occurs
    */
-  private GenModel createGenModel(Monitor monitor_p) {
+  private GenModel createGenModel(Monitor monitor) {
     GenModel genModel = null;
     try {
       ModelImporter modelImporter = getModelImporter();
@@ -146,41 +150,41 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
         modelImporter.setModelPluginDirectory(getModelDirectory());
       }
       // Prepare gemodel and its content.
-      modelImporter.prepareGenModelAndEPackages(monitor_p);
+      modelImporter.prepareGenModelAndEPackages(monitor);
       // Get the genmodel instance.
       genModel = modelImporter.getGenModel();
       // Set genmodel parameters
       setGenModelParameters(genModel);
       try {
-        modelImporter.saveGenModelAndEPackages(monitor_p);
-      } catch (Exception exception_p) {
+        modelImporter.saveGenModelAndEPackages(monitor);
+      } catch (Exception exception) {
         StringBuffer loggerMessage = new StringBuffer("AbstractGenModelGenerator.generateGenModelWithImporter(..) _ "); //$NON-NLS-1$
-        _logger.warn(loggerMessage.toString(), exception_p);
+        _logger.warn(loggerMessage.toString(), exception);
         genModel = null;
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       genModel = null;
-      Diagnostic errorDiagnostic = ConverterUtil.createErrorDiagnostic(exception_p, true);
+      Diagnostic errorDiagnostic = ConverterUtil.createErrorDiagnostic(exception, true);
       if (errorDiagnostic != null) {
         handleDiagnostic(errorDiagnostic, "Error in genmodel creation"); //$NON-NLS-1$
       }
     } finally {
-      monitor_p.done();
+      monitor.done();
     }
     return genModel;
   }
 
   /**
    * Handle referenced packages.
-   * @param modelImporter_p
-   * @param monitor_p
+   * @param modelImporter
+   * @param monitor
    */
-  private void handleReferencedPackages(ModelImporter modelImporter_p, Monitor monitor_p) {
+  private void handleReferencedPackages(ModelImporter modelImporter, Monitor monitor) {
     // Get external genModels.
     List<GenModel> externalGenModels = new ArrayList<GenModel>(0);
     addExternalGenModels(externalGenModels);
     // Get all declared EPackages in modelImporter (ie from its underlying model).
-    List<EPackage> packages = modelImporter_p.getEPackages();
+    List<EPackage> packages = modelImporter.getEPackages();
 
     // Iterate over packages to know if they are coming from external models or from our underlying model.
     Iterator<EPackage> iteratorOverPackages = packages.iterator();
@@ -205,44 +209,46 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
       // External genPackage was retrieved for current EPackage.
       // Register this GenPackage as...
       if (null != externalGenPackage) {
-        modelImporter_p.getReferencedGenPackages().add(externalGenPackage);
+        modelImporter.getReferencedGenPackages().add(externalGenPackage);
         // TODO There is probably a problem here. Need more complete analysis
-        modelImporter_p.getReferenceGenPackageConvertInfo(externalGenPackage).setValidReference(true);
+        modelImporter.getReferenceGenPackageConvertInfo(externalGenPackage).setValidReference(true);
       } else {
         // Set the current EPackage to be converted ie it is owned by the underlying model.
-        modelImporter_p.getEPackageConvertInfo(currentPackage).setConvert(true);
+        modelImporter.getEPackageConvertInfo(currentPackage).setConvert(true);
       }
     }
   }
 
   /**
    * Set GenModel parameters.
-   * @param genModel_p
+   * @param genModel
    */
-  public void setGenModelParameters(GenModel genModel_p) {
+  public void setGenModelParameters(GenModel genModel) {
     // Force to enable containment proxies, if forced.
 //    if (MDSoFaGeneratorActivator.getDefault().isContainementProxiesEnabled()) {
-      genModel_p.setContainmentProxies(true);
+      genModel.setContainmentProxies(true);
 //    }
     // Set generation parameters
     if (null != _rootExtendsInterface) {
-      genModel_p.setRootExtendsInterface(_rootExtendsInterface);
+      genModel.setRootExtendsInterface(_rootExtendsInterface);
     }
     if (null != _rootExtendsClass) {
-      genModel_p.setRootExtendsClass(_rootExtendsClass);
+      genModel.setRootExtendsClass(_rootExtendsClass);
     }
     if (null != _jdkComplianceLevel) {
-      genModel_p.setComplianceLevel(_jdkComplianceLevel);
+      genModel.setComplianceLevel(_jdkComplianceLevel);
     }
-    genModel_p.setModelPluginID(_modelPluginId);
-    genModel_p.setNonNLSMarkers(true);
+    genModel.setModelPluginID(_modelPluginId);
+    genModel.setOperationReflection(_operationReflection);
+    genModel.setNonNLSMarkers(true);
+    //genModel.setImportOrganizing(true);
     
     // Set model directory based on provided project name and source folder name.
     if (null != _modelDirectory) {
-      genModel_p.setModelDirectory(getModelDirectory());
+      genModel.setModelDirectory(getModelDirectory());
     }
     // Get base GenPackages.
-    List<GenPackage> genPackages = genModel_p.getAllGenPackagesWithClassifiers();
+    List<GenPackage> genPackages = genModel.getAllGenPackagesWithClassifiers();
     // Evolution for multiple Ecores being handled by the same GenModel.
     // Use base package value for all GenPackages.
     for (GenPackage genPackage : genPackages) {
@@ -269,54 +275,54 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
 
   /**
    * Set package parameters.
-   * @param genPackage_p
+   * @param genPackage
    */
-  private void setPackageParameters(GenPackage genPackage_p, String basePackage_p) {
-    genPackage_p.setBasePackage(basePackage_p);
+  private void setPackageParameters(GenPackage genPackage, String basePackage) {
+    genPackage.setBasePackage(basePackage);
     if (null != _implementationPackageSuffix) {
-      genPackage_p.setClassPackageSuffix(_implementationPackageSuffix);
+      genPackage.setClassPackageSuffix(_implementationPackageSuffix);
     }
     if (null != _interfacePackageSuffix) {
-      genPackage_p.setInterfacePackageSuffix(_interfacePackageSuffix);
+      genPackage.setInterfacePackageSuffix(_interfacePackageSuffix);
     }
     if (null != _metadataPackageSuffix) {
-      genPackage_p.setMetaDataPackageSuffix(_metadataPackageSuffix);
+      genPackage.setMetaDataPackageSuffix(_metadataPackageSuffix);
     }
     if (null != _utilityPackageSuffix) {
-      genPackage_p.setUtilityPackageSuffix(_utilityPackageSuffix);
+      genPackage.setUtilityPackageSuffix(_utilityPackageSuffix);
     }
   }
 
   /**
    * Generate the genmodel file.
-   * @param monitor_p
+   * @param monitor
    * @return a {@link GenModel} instance or null if generation failed.
    */
-  public GenModel execute(Monitor monitor_p) {
+  public GenModel execute(Monitor monitor) {
     GenModel genModel = null;
     try {
       // Create an EcoreImporter.
       ModelImporter modelImporter = getModelImporter();
       // Set internal fields.
-      boolean result = adjustAttributes(CodeGenUtil.createMonitor(monitor_p, 1));
+      boolean result = adjustAttributes(CodeGenUtil.createMonitor(monitor, 1));
       if (result) {
         // Set the model importer.
-        adjustModelImporter(CodeGenUtil.createMonitor(monitor_p, 1));
+        adjustModelImporter(CodeGenUtil.createMonitor(monitor, 1));
         // Check the genmodel file name.
         Diagnostic diagnostic = modelImporter.checkGenModelFileName();
         result = handleDiagnostic(diagnostic, "Check genmodel file name failed"); //$NON-NLS-1$
         if (result) {
           // Compute and adjust packages.
-          result = handleEPackages(CodeGenUtil.createMonitor(monitor_p, 1));
+          result = handleEPackages(CodeGenUtil.createMonitor(monitor, 1));
           if (result) {
             // Finally, create genmodel
-            genModel = createGenModel(CodeGenUtil.createMonitor(monitor_p, 1));
+            genModel = createGenModel(CodeGenUtil.createMonitor(monitor, 1));
           }
         }
       }
-    } catch (RuntimeException exception_p) {
+    } catch (RuntimeException exception) {
       StringBuffer loggerMessage = new StringBuffer("AbstractGenModelGenerator.execute(..) _ "); //$NON-NLS-1$
-      _logger.error(loggerMessage.toString(), exception_p);
+      _logger.error(loggerMessage.toString(), exception);
       genModel = null;
     }
     return genModel;
@@ -335,17 +341,17 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
 
   /**
    * Adjust internal field from settings.
-   * @param monitor_p
+   * @param monitor
    */
-  protected boolean adjustAttributes(Monitor monitor_p) {
+  protected boolean adjustAttributes(Monitor monitor) {
     try {
-      monitor_p.beginTask(EMPTY_STRING, 1);
+      monitor.beginTask(EMPTY_STRING, 1);
       // Create genModel container
       _genModelContainerPath = getGenModelContainer();
       // Create the genmodel file location from input path.
       _genModelPath = getGenModelPath();
     } finally {
-      monitor_p.done();
+      monitor.done();
     }
     return true;
   }
@@ -358,11 +364,11 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
 
   /**
    * Adjust model importer settings.
-   * @param monitor_p
+   * @param monitor
    */
-  protected void adjustModelImporter(Monitor monitor_p) {
+  protected void adjustModelImporter(Monitor monitor) {
     try {
-      monitor_p.beginTask(EMPTY_STRING, 1);
+      monitor.beginTask(EMPTY_STRING, 1);
       ModelImporter modelImporter = getModelImporter();
       // Set the handled file extensions
       ModelImporterDescriptor modelImporterDescriptor = ModelImporterManager.INSTANCE.getModelImporterDescriptor(getModelImporter().getID());
@@ -374,20 +380,20 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
       // Handle genmodel path
       handleGenModelPath(_genModelPath);
     } finally {
-      monitor_p.done();
+      monitor.done();
     }
   }
 
   /**
    * Handle genmodel path settings.
-   * @param genModelPath_p
+   * @param genModelPath
    */
-  private void handleGenModelPath(IPath genModelPath_p) {
+  private void handleGenModelPath(IPath genModelPath) {
     ModelImporter modelImporter = getModelImporter();
     // Set the genmodel container.
     modelImporter.setGenModelContainerPath(_genModelContainerPath);
     // Set the genmodel file name.
-    modelImporter.setGenModelFileName(genModelPath_p.toString());
+    modelImporter.setGenModelFileName(genModelPath.toString());
   }
 
   /**
@@ -417,48 +423,48 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
 
   /**
    * Compute and adjust EPackages.
-   * @param modelImporter_p
+   * @param modelImporter
    * @return false if an error occurs; true otherwise.
    */
-  private boolean handleEPackages(Monitor monitor_p) {
+  private boolean handleEPackages(Monitor monitor) {
     boolean result = true;
     try {
       try {
         ModelImporter modelImporter = getModelImporter();
         // Compute packages
-        Diagnostic diagnostic = modelImporter.computeEPackages(monitor_p);
+        Diagnostic diagnostic = modelImporter.computeEPackages(monitor);
         result = handleDiagnostic(diagnostic, "Computes EPackages error"); //$NON-NLS-1$
         if (result) {
           // Handle referenced genPackages.
-          handleReferencedPackages(modelImporter, monitor_p);
+          handleReferencedPackages(modelImporter, monitor);
           // Adjust packages
-          modelImporter.adjustEPackages(monitor_p);
+          modelImporter.adjustEPackages(monitor);
         }
-      } catch (Exception exception_p) {
+      } catch (Exception exception) {
         StringBuffer loggerMessage = new StringBuffer("AbstractGenModelGenerator.handleEPackages(..) _ "); //$NON-NLS-1$
-        _logger.warn(loggerMessage.toString(), exception_p);
+        _logger.warn(loggerMessage.toString(), exception);
       }
     } finally {
-      monitor_p.done();
+      monitor.done();
     }
     return result;
   }
 
   /**
    * Add external genModels into given list.
-   * @param genModels_p must be not null.
+   * @param genModels must be not null.
    */
-  protected void addExternalGenModels(List<GenModel> genModels_p) {
+  protected void addExternalGenModels(List<GenModel> genModels) {
     ModelImporter modelImporter = getModelImporter();
     List<GenModel> externalGenModels = new ArrayList<GenModel>(modelImporter.getExternalGenModels());
     if (!externalGenModels.isEmpty()) {
       GenModel exporterGenModel = modelImporter.getGenModel();
-      boolean hasExporterGenModel = exporterGenModel != null && genModels_p.contains(exporterGenModel);
+      boolean hasExporterGenModel = exporterGenModel != null && genModels.contains(exporterGenModel);
       if (!hasExporterGenModel) {
-        genModels_p.add(exporterGenModel);
+        genModels.add(exporterGenModel);
       }
 
-      for (GenModel genModel : genModels_p) {
+      for (GenModel genModel : genModels) {
         for (Iterator<GenModel> j = externalGenModels.iterator(); j.hasNext();) {
           GenModel externalGenModel = j.next();
           if (genModel == externalGenModel) {
@@ -476,36 +482,36 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
           }
         }
       }
-      genModels_p.addAll(externalGenModels);
+      genModels.addAll(externalGenModels);
 
       if (!hasExporterGenModel) {
-        genModels_p.remove(exporterGenModel);
+        genModels.remove(exporterGenModel);
       }
     }
   }
 
   /**
    * Set the plugin that hosts model file, genmodel and generated java code.
-   * @param pluginId_p
+   * @param pluginId
    */
-  public void setPluginId(String pluginId_p) {
-    _modelPluginId = pluginId_p;
+  public void setPluginId(String pluginId) {
+    _modelPluginId = pluginId;
   }
 
   /**
    * Set the base package used as prefix.
-   * @param basePackage_p
+   * @param basePackage
    */
-  public void setBasePackagePrefix(String basePackage_p) {
-    _basePackage = basePackage_p;
+  public void setBasePackagePrefix(String basePackage) {
+    _basePackage = basePackage;
   }
 
   /**
    * Set the input path either a model file name (ie /myProject/model/myModel.ecore) or project location (ie /myProject)
-   * @param inputPath_p
+   * @param inputPath
    */
-  public void setInputPath(IPath inputPath_p) {
-    _inputPath = inputPath_p;
+  public void setInputPath(IPath inputPath) {
+    _inputPath = inputPath;
   }
 
   /**
@@ -545,56 +551,63 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
 
   /**
    * Set the interface declared as root interface in genmodel.
-   * @param rootExtendsInterface_p the rootExtendsInterface to set
+   * @param rootExtendsInterface the rootExtendsInterface to set
    */
-  public void setRootExtendsInterface(String rootExtendsInterface_p) {
-    _rootExtendsInterface = rootExtendsInterface_p;
+  public void setRootExtendsInterface(String rootExtendsInterface) {
+    _rootExtendsInterface = rootExtendsInterface;
   }
 
   /**
    * Set the class declared as root class in genmodel.
-   * @param rootExtendsClass_p the rootExtendsClass to set
+   * @param rootExtendsClass the rootExtendsClass to set
    */
-  public void setRootExtendsClass(String rootExtendsClass_p) {
-    _rootExtendsClass = rootExtendsClass_p;
+  public void setRootExtendsClass(String rootExtendsClass) {
+    _rootExtendsClass = rootExtendsClass;
   }
 
   /**
    * Set the JDK compliance Level in genmodel.
-   * @param jdkComplianceLevel_p the jdkComplianceLevel to set
+   * @param jdkComplianceLevel the jdkComplianceLevel to set
    */
-  public void setJdkComplianceLevel(GenJDKLevel jdkComplianceLevel_p) {
-    _jdkComplianceLevel = jdkComplianceLevel_p;
+  public void setJdkComplianceLevel(GenJDKLevel jdkComplianceLevel) {
+    _jdkComplianceLevel = jdkComplianceLevel;
   }
 
   /**
    * Set the model directory location ie the folder where the generated files are output
-   * @param modelDirectory_p
+   * @param modelDirectory
    */
-  public void setModelDirectory(String modelDirectory_p) {
-    _modelDirectory = modelDirectory_p;
+  public void setModelDirectory(String modelDirectory) {
+    _modelDirectory = modelDirectory;
+  }
+
+  /**
+   * @param operationReflection
+   */
+  public void setOperationReflection(boolean operationReflection) {
+    _operationReflection = operationReflection;
   }
 
   /**
    * Set the resource type.
-   * @param resourceType_p
+   * @param resourceType
    */
-  public void setResourceType(GenResourceKind resourceType_p) {
-    _resourcetype = resourceType_p;
+  public void setResourceType(GenResourceKind resourceType) {
+    _resourcetype = resourceType;
   }
 
   /**
    * The package suffix defines the last segment of the Java packages into which the various types of classes are generated.
-   * @param implementationPackageSuffix_p
-   * @param interfacePackageSuffix_p
-   * @param metadataPackageSuffix_p
-   * @param utilityPackageSuffix_p
+   * @param implementationPackageSuffix
+   * @param interfacePackageSuffix
+   * @param metadataPackageSuffix
+   * @param utilityPackageSuffix
    */
-  public void setPackagesSuffixes(String implementationPackageSuffix_p, String interfacePackageSuffix_p, String metadataPackageSuffix_p,
-      String utilityPackageSuffix_p) {
-    _implementationPackageSuffix = implementationPackageSuffix_p;
-    _interfacePackageSuffix = interfacePackageSuffix_p;
-    _metadataPackageSuffix = metadataPackageSuffix_p;
-    _utilityPackageSuffix = utilityPackageSuffix_p;
+  public void setPackagesSuffixes(String implementationPackageSuffix, String interfacePackageSuffix, String metadataPackageSuffix,
+      String utilityPackageSuffix) {
+    _implementationPackageSuffix = implementationPackageSuffix;
+    _interfacePackageSuffix = interfacePackageSuffix;
+    _metadataPackageSuffix = metadataPackageSuffix;
+    _utilityPackageSuffix = utilityPackageSuffix;
   }
 }

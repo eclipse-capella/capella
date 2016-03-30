@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.Collection;
@@ -28,10 +29,10 @@ public class BrowseScopeHandler extends SelectionCommandHandler {
    * {@inheritDoc}
    */
   @Override
-  public void setEnabled(Object evaluationContext_p) {
-    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
+  public void setEnabled(Object evaluationContext) {
+    Object variable = ((IEvaluationContext) evaluationContext).getDefaultVariable();
     setBaseEnabled(((variable instanceof Collection) && (!((Collection) variable).isEmpty())));
-    super.setEnabled(evaluationContext_p);
+    super.setEnabled(evaluationContext);
   }
 
 }

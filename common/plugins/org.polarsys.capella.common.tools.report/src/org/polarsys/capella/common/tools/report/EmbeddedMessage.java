@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report;
 
 
@@ -26,29 +27,29 @@ public class EmbeddedMessage {
   
   /**
    * Constructor without object list
-   * @param label_p : Title message
-   * @param componentName_p : Component name
+   * @param label : Title message
+   * @param componentName : Component name
    */
-  public EmbeddedMessage(String label_p, String componentName_p) {
-    setLabel(label_p);
-    setComponentName(componentName_p);
+  public EmbeddedMessage(String label, String componentName) {
+    setLabel(label);
+    setComponentName(componentName);
   }
 
-  public EmbeddedMessage(String label_p, String componentName_p, List<Object> capellaElements_p) {
-    this(label_p, componentName_p);
-    setCapellaElements(capellaElements_p);
+  public EmbeddedMessage(String label, String componentName, List<Object> capellaElements) {
+    this(label, componentName);
+    setCapellaElements(capellaElements);
   }
 
   @SuppressWarnings("unchecked")
-  public EmbeddedMessage(String label_p, String componentName_p, Object capellaElements_p) {
-    this(label_p, componentName_p);
-    if (capellaElements_p!=null) {
-      if (capellaElements_p instanceof List<?>) {
-        setCapellaElements((List<Object>)capellaElements_p);
+  public EmbeddedMessage(String label, String componentName, Object capellaElements) {
+    this(label, componentName);
+    if (capellaElements!=null) {
+      if (capellaElements instanceof List<?>) {
+        setCapellaElements((List<Object>)capellaElements);
       } else {
         List<Object> objets = new ArrayList<Object>();
-        if (capellaElements_p instanceof Object[]) {
-          for (Object obj : (Object[])capellaElements_p) {
+        if (capellaElements instanceof Object[]) {
+          for (Object obj : (Object[])capellaElements) {
             if (obj instanceof List<?>) {
               objets.addAll((List<?>)obj);
             } else {
@@ -56,7 +57,7 @@ public class EmbeddedMessage {
             }
           }
         } else {
-          objets.add(capellaElements_p);
+          objets.add(capellaElements);
         }
         setCapellaElements(objets);
       }
@@ -98,7 +99,7 @@ public class EmbeddedMessage {
     try {
       name = (String) theElement.getClass().getMethod("getFullLabel", new Class[] {}).invoke(theElement, (Object[]) new Class[] {}); //$NON-NLS-1$
       
-    } catch (Throwable exception_p) {
+    } catch (Throwable exception) {
     } finally {
       if (name == null) {
         name = theElement.toString();
@@ -111,36 +112,36 @@ public class EmbeddedMessage {
     return _componentName;
   }
 
-  public void setComponentName(String componentName_p) {
-    _componentName = componentName_p;
+  public void setComponentName(String componentName) {
+    _componentName = componentName;
   }
 
   public String getLabel() {
     return _label;
   }
 
-  public void setLabel(String label_p) {
-    _label = label_p;
+  public void setLabel(String label) {
+    _label = label;
   }
 
   public List<Object> getCapellaElements() {
     return _capellaElements;
   }
 
-  public void setCapellaElements(List<Object> capellaElements_p) {
-    _capellaElements = capellaElements_p;
+  public void setCapellaElements(List<Object> capellaElements) {
+    _capellaElements = capellaElements;
   }
   
   /**
    * @deprecated use {@link EmbeddedMessage#setSource(String)}
    */
   @Deprecated
-  public void setInfo(String info_p){
-    setSource(info_p);
+  public void setInfo(String info){
+    setSource(info);
   }
 
-  public void setSource(String source_p){
-    _source = source_p;
+  public void setSource(String source){
+    _source = source;
   }
   public String getSource(){
     return _source;

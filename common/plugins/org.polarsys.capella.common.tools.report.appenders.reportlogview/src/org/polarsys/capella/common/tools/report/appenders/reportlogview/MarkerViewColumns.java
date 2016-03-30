@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.text.DateFormat;
@@ -76,9 +77,9 @@ class MarkerViewColumns {
   private ColumnLabelProvider resourceLabelProvider;
   private ColumnLabelProvider severityLabelProvider;
 
-  public MarkerViewColumns(TreeViewer viewer_p) {
-    viewer = viewer_p;
-    listener = createSelectionListener();
+  public MarkerViewColumns(TreeViewer viewer) {
+    this.viewer = viewer;
+    this.listener = createSelectionListener();
 
     comparatorDirections = new HashMap<ColumnLabelProvider, Integer>();
 
@@ -184,8 +185,8 @@ class MarkerViewColumns {
     return new SelectionAdapter() {
       @SuppressWarnings({ "synthetic-access", "boxing" })
       @Override
-      public void widgetSelected(SelectionEvent event_p) {
-        ColumnLabelProvider provider = (ColumnLabelProvider) event_p.widget.getData(key);
+      public void widgetSelected(SelectionEvent event) {
+        ColumnLabelProvider provider = (ColumnLabelProvider) event.widget.getData(key);
         LabelProviderComparator comparator = (LabelProviderComparator) viewer.getComparator();
         if (comparator.getProvider() == provider) {
           comparator.flip();
@@ -198,7 +199,7 @@ class MarkerViewColumns {
           comparator.setDirection(direction);
         }
         comparatorDirections.put(provider, comparator.getDirection());
-        viewer.getTree().setSortColumn((TreeColumn) event_p.widget);
+        viewer.getTree().setSortColumn((TreeColumn) event.widget);
         viewer.getTree().setSortDirection(comparator.getDirection());
         viewer.refresh();
       }
@@ -208,16 +209,16 @@ class MarkerViewColumns {
   /**
    * Provide a ContentProvider to Column mapping. Must be called after installing a new content provider on the marker view's viewer.
    */
-  void update(AbstractMarkerViewContentProvider provider_p) {
-    Class<?> providerClass_p = provider_p.getClass();
-    if (providerClass_p != providerClass) {
+  void update(AbstractMarkerViewContentProvider provider) {
+    Class<?> providerClass = provider.getClass();
+    if (providerClass != this.providerClass) {
       disposeAll();
       for (Class<?> c : columnFactories.keySet()) {
-        if (c.isAssignableFrom(providerClass_p)) {
-          columnFactories.get(providerClass_p).run();
+        if (c.isAssignableFrom(providerClass)) {
+          columnFactories.get(providerClass).run();
         }
       }
-      providerClass = provider_p.getClass();
+      this.providerClass = provider.getClass();
     }
   }
 
@@ -491,9 +492,8 @@ class MarkerViewColumns {
 
               if (hasAtLeastOneMultipleMarkerResolution(marker, resolutions)) {
                 return MarkerViewPlugin.getDefault().getImage("quickfixAll-repository.png"); //$NON-NLS-1$								
-              } else {
-                return MarkerViewPlugin.getDefault().getImage("quickfix.gif"); //$NON-NLS-1$
               }
+              return MarkerViewPlugin.getDefault().getImage("quickfix.gif"); //$NON-NLS-1$
             }
           }
           return null;
@@ -625,9 +625,9 @@ class MarkerViewColumns {
     private ColumnLabelProvider provider;
     private int direction;
 
-    LabelProviderComparator(ColumnLabelProvider provider_p, int direction_p) {
-      provider = provider_p;
-      direction = direction_p;
+    LabelProviderComparator(ColumnLabelProvider provider, int direction) {
+      this.provider = provider;
+      this.direction = direction;
     }
 
     @Override
@@ -653,16 +653,16 @@ class MarkerViewColumns {
       }
     }
 
-    void setDirection(int direction_p) {
-      direction = direction_p;
+    void setDirection(int direction) {
+      this.direction = direction;
     }
 
     int getDirection() {
       return direction;
     }
 
-    void setProvider(ColumnLabelProvider provider_p) {
-      provider = provider_p;
+    void setProvider(ColumnLabelProvider provider) {
+      this.provider = provider;
     }
 
     ColumnLabelProvider getProvider() {
@@ -673,19 +673,19 @@ class MarkerViewColumns {
      * {@inheritDoc}
      */
     @Override
-    public int compare(Viewer viewer_p, Object o1_p, Object o2_p) {
+    public int compare(Viewer viewer, Object o1, Object o2) {
 
-      int cat1 = category(o1_p);
-      int cat2 = category(o2_p);
+      int cat1 = category(o1);
+      int cat2 = category(o2);
       if (cat1 != cat2) {
         return cat1 - cat2;
       }
 
       // for markers, just use the label provider of the current
       // sort column's label provider
-      if ((o1_p instanceof IMarker) && (o2_p instanceof IMarker)) {
-        String t1 = provider.getText(o1_p);
-        String t2 = provider.getText(o2_p);
+      if ((o1 instanceof IMarker) && (o2 instanceof IMarker)) {
+        String t1 = provider.getText(o1);
+        String t2 = provider.getText(o2);
         if (t1 == null) {
           t1 = ICommonConstants.EMPTY_STRING;
         }
@@ -701,21 +701,21 @@ class MarkerViewColumns {
 
       // high levels are on top of low levels. inverse the result because
       // SeverityLevel declares levels from low to high
-      if ((o1_p instanceof SeverityLevel) && (o2_p instanceof SeverityLevel)) {
-        SeverityLevel l1 = (SeverityLevel) o1_p;
-        SeverityLevel l2 = (SeverityLevel) o2_p;
+      if ((o1 instanceof SeverityLevel) && (o2 instanceof SeverityLevel)) {
+        SeverityLevel l1 = (SeverityLevel) o1;
+        SeverityLevel l2 = (SeverityLevel) o2;
         return -1 * l1.compareTo(l2);
       }
 
       // categories are always alphabetically
-      if ((o1_p instanceof Category) && (o2_p instanceof Category)) {
-        Category c1 = (Category) o1_p;
-        Category c2 = (Category) o2_p;
+      if ((o1 instanceof Category) && (o2 instanceof Category)) {
+        Category c1 = (Category) o1;
+        Category c2 = (Category) o2;
         return c1.getName().compareTo(c2.getName());
       }
 
       // last resort
-      return o1_p.toString().compareTo(o2_p.toString());
+      return o1.toString().compareTo(o2.toString());
 
     }
   }

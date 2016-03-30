@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.properties;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class CollectionProperty extends AbstractProperty implements IEditablePro
   /**
    * {@inheritDoc}
    */
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     if (_objects == null) {
       _objects = new ArrayList<Object>();
     }
@@ -40,7 +41,7 @@ public class CollectionProperty extends AbstractProperty implements IEditablePro
   /**
    * {@inheritDoc}
    */
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 
@@ -54,12 +55,12 @@ public class CollectionProperty extends AbstractProperty implements IEditablePro
   /**
    * {@inheritDoc}
    */
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    if (value_p instanceof Collection) {
-      return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    if (value instanceof Collection) {
+      return value;
     }
     ArrayList<Object> result = new ArrayList();
-    result.add(value_p);
+    result.add(value);
     return result;
   }
 
@@ -67,8 +68,8 @@ public class CollectionProperty extends AbstractProperty implements IEditablePro
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
-    _objects = (Collection) context_p.getCurrentValue(this);
+  public void setValue(IPropertyContext context) {
+    _objects = (Collection) context.getCurrentValue(this);
   }
 
 }

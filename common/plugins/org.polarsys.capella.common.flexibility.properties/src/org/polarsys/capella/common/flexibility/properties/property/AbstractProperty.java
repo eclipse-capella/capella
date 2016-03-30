@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.properties.property;
 
 import java.util.ArrayList;
@@ -36,10 +37,10 @@ public abstract class AbstractProperty implements ILoadableProperty {
   boolean enabled;
 
   /**
-   * @param item2_p
+   * @param item2
    */
-  public void addOption(IPropertyOption item2_p) {
-    getOptions().add(item2_p);
+  public void addOption(IPropertyOption item2) {
+    getOptions().add(item2);
   }
 
   public List<IPropertyOption> getOptions() {
@@ -57,10 +58,10 @@ public abstract class AbstractProperty implements ILoadableProperty {
   }
 
   /**
-   * @param id_p the id to set
+   * @param id the id to set
    */
-  public void setId(String id_p) {
-    id = id_p;
+  public void setId(String id) {
+    this.id = id;
   }
 
   /**
@@ -71,10 +72,10 @@ public abstract class AbstractProperty implements ILoadableProperty {
   }
 
   /**
-   * @param name_p the name to set
+   * @param name the name to set
    */
-  public void setName(String name_p) {
-    name = name_p;
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -85,10 +86,10 @@ public abstract class AbstractProperty implements ILoadableProperty {
   }
 
   /**
-   * @param description_p the description to set
+   * @param description the description to set
    */
-  public void setDescription(String description_p) {
-    description = description_p;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   /**
@@ -99,35 +100,35 @@ public abstract class AbstractProperty implements ILoadableProperty {
   }
 
   /**
-   * @param groupId_p the groupId to set
+   * @param groupId the groupId to set
    */
-  public void setGroupId(String groupId_p) {
-    groupId = groupId_p;
+  public void setGroupId(String groupId) {
+    this.groupId = groupId;
   }
 
   /**
    * @return the enabled
    */
-  public boolean isEnabled(IPropertyContext context_p) {
+  public boolean isEnabled(IPropertyContext context) {
     return enabled;
   }
 
   /**
-   * @param enabled_p the enabled to set
+   * @param enabled the enabled to set
    */
-  public void setEnabled(boolean enabled_p) {
-    enabled = enabled_p;
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
   }
 
   /**
    * {@inheritDoc}
    */
-  public String getParameter(String key_p) {
-    return getArgs().get(key_p);
+  public String getParameter(String key) {
+    return getArgs().get(key);
   }
 
-  public boolean isArgumentSet(String key_p) {
-    return getArgs().containsKey(key_p);
+  public boolean isArgumentSet(String key) {
+    return getArgs().containsKey(key);
   }
 
   public HashMap<String, String> getArgs() {
@@ -147,7 +148,7 @@ public abstract class AbstractProperty implements ILoadableProperty {
   /**
    * {@inheritDoc}
    */
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 

@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
@@ -224,8 +225,8 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 		@SuppressWarnings("unchecked")
 		Collection<ComponentExchange> resultAsList = (Collection<ComponentExchange>) result;
 		return new EcoreEList.UnmodifiableEList<ComponentExchange>(this, FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -271,8 +272,8 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -318,8 +319,8 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 		@SuppressWarnings("unchecked")
 		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
 		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -401,8 +402,8 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalPathInvolvement> resultAsList = (Collection<PhysicalPathInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalPathInvolvement>(this, CsPackage.Literals.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -466,8 +467,8 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalPath> resultAsList = (Collection<PhysicalPath>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalPath>(this, CsPackage.Literals.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -513,8 +514,8 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalPath> resultAsList = (Collection<PhysicalPath>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalPath>(this, CsPackage.Literals.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

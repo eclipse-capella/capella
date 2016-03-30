@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.queries;
 
 import java.util.Collections;
@@ -23,7 +24,7 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 public class GetAllCatalogElementQuery extends AbstractQuery {
 
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
+  public List<Object> execute(Object input, IQueryContext context) throws QueryException {
     return Collections.emptyList();
   }
 

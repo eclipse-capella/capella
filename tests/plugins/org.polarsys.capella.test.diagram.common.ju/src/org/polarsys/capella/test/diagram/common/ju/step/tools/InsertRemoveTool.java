@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 public class InsertRemoveTool extends AbstractToolStep {
 
@@ -180,7 +180,8 @@ public class InsertRemoveTool extends AbstractToolStep {
   @Override
   protected void postRunTest() {
     super.postRunTest();
-
+    DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+    
     for (String identifier : insertedElements) {
       getExecutionContext().hasView(identifier);
     }

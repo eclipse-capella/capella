@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.activities;
 
 import java.util.Collection;
@@ -55,69 +56,69 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   @Override
-  protected void initializeSelectionContextHandlers(IContext context_p, CompoundSelectionContextHandler handler_p, ActivityParameters activityParams_p) {
-    handler_p.addSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, new ReSelectionContext());
+  protected void initializeSelectionContextHandlers(IContext context, CompoundSelectionContextHandler handler, ActivityParameters activityParams) {
+    handler.addSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, new ReSelectionContext());
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected IStatus initializeScopeRetrieverHandlers(IContext context_p, CompoundScopeRetriever handler_p, ActivityParameters activityParams_p) {
-    IStatus status = super.initializeScopeRetrieverHandlers(context_p, handler_p, activityParams_p);
-    handler_p.addScopeRetriever(new UnmodifiableElementsScopeRetriever(), context_p);
+  protected IStatus initializeScopeRetrieverHandlers(IContext context, CompoundScopeRetriever handler, ActivityParameters activityParams) {
+    IStatus status = super.initializeScopeRetrieverHandlers(context, handler, activityParams);
+    handler.addScopeRetriever(new UnmodifiableElementsScopeRetriever(), context);
     return status;
   }
 
   @Override
-  protected IStatus initializeContext(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeContext(IContext context, ActivityParameters activityParams) {
 
     IStatus status = Status.OK_STATUS;
 
     // Initialize handlers and source/target of transition
-    status = initializeReplicableElementHandler(context_p, activityParams_p);
+    status = initializeReplicableElementHandler(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { IReConstants.REPLICABLE_ELEMENT_HANDLER });
-    if (!checkStatus(status)) {
-      return status;
-    }
-
-    // Initialize handlers and source/target of transition
-    status = initializeAttributeHandler(context_p, activityParams_p);
-    if (!checkStatus(status)) {
-      return status;
-    }
-
-    status = checkParameters(context_p, new String[] { IReConstants.ATTRIBUTE_HANDLER });
+    status = checkParameters(context, new String[] { IReConstants.REPLICABLE_ELEMENT_HANDLER });
     if (!checkStatus(status)) {
       return status;
     }
 
     // Initialize handlers and source/target of transition
-    status = initializeLocationHandler(context_p, activityParams_p);
+    status = initializeAttributeHandler(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { IReConstants.LOCATION_HANDLER });
+    status = checkParameters(context, new String[] { IReConstants.ATTRIBUTE_HANDLER });
     if (!checkStatus(status)) {
       return status;
     }
 
     // Initialize handlers and source/target of transition
-    status = initializeDependenciesHandler(context_p, activityParams_p);
+    status = initializeLocationHandler(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { IReConstants.DEPENDENCIES_HANDLER });
+    status = checkParameters(context, new String[] { IReConstants.LOCATION_HANDLER });
     if (!checkStatus(status)) {
       return status;
     }
-    status = super.initializeContext(context_p, activityParams_p);
+
+    // Initialize handlers and source/target of transition
+    status = initializeDependenciesHandler(context, activityParams);
+    if (!checkStatus(status)) {
+      return status;
+    }
+
+    status = checkParameters(context, new String[] { IReConstants.DEPENDENCIES_HANDLER });
+    if (!checkStatus(status)) {
+      return status;
+    }
+    status = super.initializeContext(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
@@ -126,17 +127,17 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeReplicableElementHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(IReConstants.REPLICABLE_ELEMENT_HANDLER, activityParams_p);
+  protected IStatus initializeReplicableElementHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(IReConstants.REPLICABLE_ELEMENT_HANDLER, activityParams);
     if (handler == null) {
       handler = createDefaultReplicableElementHandler();
     }
-    context_p.put(IReConstants.REPLICABLE_ELEMENT_HANDLER, handler);
-    handler.init(context_p);
+    context.put(IReConstants.REPLICABLE_ELEMENT_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
@@ -148,17 +149,17 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeDependenciesHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(IReConstants.DEPENDENCIES_HANDLER, activityParams_p);
+  protected IStatus initializeDependenciesHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(IReConstants.DEPENDENCIES_HANDLER, activityParams);
     if (handler == null) {
       handler = createDefaultDependenciesHandler();
     }
-    context_p.put(IReConstants.DEPENDENCIES_HANDLER, handler);
-    handler.init(context_p);
+    context.put(IReConstants.DEPENDENCIES_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
@@ -170,32 +171,32 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeAttributeHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(IReConstants.ATTRIBUTE_HANDLER, activityParams_p);
+  protected IStatus initializeAttributeHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(IReConstants.ATTRIBUTE_HANDLER, activityParams);
     if (handler == null) {
       handler = createDefaultAttributeHandler();
     }
-    context_p.put(IReConstants.ATTRIBUTE_HANDLER, handler);
-    handler.init(context_p);
+    context.put(IReConstants.ATTRIBUTE_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeLocationHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(IReConstants.LOCATION_HANDLER, activityParams_p);
+  protected IStatus initializeLocationHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(IReConstants.LOCATION_HANDLER, activityParams);
     if (handler == null) {
       handler = createDefaultLocationHandler();
     }
-    context_p.put(IReConstants.LOCATION_HANDLER, handler);
-    handler.init(context_p);
+    context.put(IReConstants.LOCATION_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
@@ -222,10 +223,10 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   @Override
-  protected IStatus initializeTransitionSources(IContext context_p, ActivityParameters activityParams_p) {
-    Collection<Object> selection = (Collection) context_p.get(ITransitionConstants.TRANSITION_SELECTION);
+  protected IStatus initializeTransitionSources(IContext context, ActivityParameters activityParams) {
+    Collection<Object> selection = (Collection) context.get(ITransitionConstants.TRANSITION_SELECTION);
     Collection<Object> result = selection;
-    context_p.put(ITransitionConstants.TRANSITION_SOURCES, result);
+    context.put(ITransitionConstants.TRANSITION_SOURCES, result);
     return Status.OK_STATUS;
   }
 
@@ -243,18 +244,18 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
    * TRANSITION_TARGET_ROOT = TRANSITION_TARGET_RESOURCE.getContents().get(0) 
    */
   @Override
-  protected IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeTarget(IContext context, ActivityParameters activityParams) {
     // default transition, targetResource is same resource
-    Resource sourceResource = (Resource) context_p.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
+    Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
     Resource outputResource = sourceResource;
 
     if ((outputResource != null) && (outputResource.getContents().size() != 0)) {
-      context_p.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
-      context_p.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
+      context.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
+      context.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
 
       EObject root = EcoreUtil.getRootContainer(outputResource.getContents().get(0));
       if (root != null) {
-        context_p.put(ITransitionConstants.TRANSITION_TARGET_ROOT, root);
+        context.put(ITransitionConstants.TRANSITION_TARGET_ROOT, root);
       }
     } else {
       return new Status(IStatus.ERROR, Messages.Activity_Transition, "Output model is invalid");

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.scope;
 
 import java.util.Collection;
@@ -23,30 +24,30 @@ public interface IDependenciesHandler extends IHandler {
 
   /**
    * Shared elements are elements which are not in the scopeElements but which will be shared by both ReplicableElement and Replica
-   * Retrieve the sharedElements for the given element_p
+   * Retrieve the sharedElements for the given element
    */
-  public Collection<EObject> getSharedElements(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p);
+  public Collection<EObject> getSharedElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context);
 
   /**
-   * Retrieve elements which are dependent of the given element_p but should be included in the scope
+   * Retrieve elements which are dependent of the given element but should be included in the scope
    * these elements, not included in the scope, will raise a warning to the user indicates him to include them (or not)
    */
-  public Collection<EObject> getDependencies(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p);
+  public Collection<EObject> getDependencies(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context);
 
   /**
-   * Retrieve elements which are related to the given element_p
+   * Retrieve elements which are related to the given elements
    * These elements will be included (or not) by the user into the scope
    */
-  public Collection<EObject> getRelatedElements(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p);
+  public Collection<EObject> getRelatedElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context);
 
   /**
-   * Retrieve all elements which will be included automatically in the scope for the given elements_p
+   * Retrieve all elements which will be included automatically in the scope for the given elements
    */
-  public Collection<EObject> getScopeElements(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p);
+  public Collection<EObject> getScopeElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context);
 
   /**
-   * When the scope is computed, complementary elements according to the given elements_p will also be included
+   * When the scope is computed, complementary elements according to the given elements will also be included
    */
-  public Collection<EObject> getComplementaryScopeElements(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p);
+  public Collection<EObject> getComplementaryScopeElements(Collection<EObject> elements, Collection<EObject> scopeElements, IContext context);
 
 }

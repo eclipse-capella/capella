@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ef;
 
 import java.util.Collection;
@@ -69,11 +70,11 @@ public class ExecutionManagerRegistry {
 
   /**
    * Remove manager from all maps.
-   * @param id_p The unique manager ID, also being the ID of its editing domain provider. Must be not <code>null</code>.
+   * @param executionManager
    */
-  public void removeManager(ExecutionManager executionManager_p) {
-    if ((executionManager_p != null) && (executionManager_p.getEditingDomain() != null)) {
-      _managers.remove(executionManager_p.getEditingDomain());
+  public void removeManager(ExecutionManager executionManager) {
+    if ((executionManager != null) && (executionManager.getEditingDomain() != null)) {
+      _managers.remove(executionManager.getEditingDomain());
     }
   }
 

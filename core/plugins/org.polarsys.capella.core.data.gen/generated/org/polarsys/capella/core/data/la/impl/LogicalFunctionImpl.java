@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.la.impl;
 
 import java.util.Collection;
@@ -171,8 +172,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalActor>(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -218,8 +219,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -265,8 +266,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
 		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -312,8 +313,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalFunction> resultAsList = (Collection<PhysicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -359,8 +360,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -406,8 +407,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_FUNCTION__CHILDREN_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

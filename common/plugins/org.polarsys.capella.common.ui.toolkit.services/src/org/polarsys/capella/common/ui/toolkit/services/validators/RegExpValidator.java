@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,13 +29,13 @@ public class RegExpValidator extends AbstractValidator {
   
   /**
    * Constructs the regular expression validator.
-   * @param errorMessage_p the error message displayed when given value do not match the regular expression.
-   * @param regularExpression_p the regular expression to match.
+   * @param errorMessage the error message displayed when given value do not match the regular expression.
+   * @param regularExpression the regular expression to match.
    */
-  public RegExpValidator(String errorMessage_p, String regularExpression_p, int style_p) {
-    super(errorMessage_p);
-    _regExpPattern = Pattern.compile(regularExpression_p);
-    _style = style_p;
+  public RegExpValidator(String errorMessage, String regularExpression, int style) {
+    super(errorMessage);
+    _regExpPattern = Pattern.compile(regularExpression);
+    _style = style;
   }
 
   /**
@@ -49,27 +49,26 @@ public class RegExpValidator extends AbstractValidator {
   /**
    * @see org.polarsys.capella.common.ui.toolkit.services.validators.IValidator#isValid(Object)
    */
-  public String isValid(Object value_p) {
+  public String isValid(Object value) {
     boolean isValid = false;
     // Pre-condition : given object must be a string.
-    if (value_p instanceof String) {
-      String value = (String) value_p;
-      if (value.length() > 0) {
+    if (value instanceof String) {
+      String val = (String) value;
+      if (val.length() > 0) {
         // Create a matcher for given value.
-        Matcher matcher = _regExpPattern.matcher(value);
+        Matcher matcher = _regExpPattern.matcher(val);
         // Does it match the regular expression ?
         isValid = matcher.matches();
       }
     }
     // If given value is not valid, returns the error message; otherwise null that means 'valid'.
-    return (!isValid && !checkEmptyValue(value_p)) ? getErrorMessage() : null;
+    return (!isValid && !checkEmptyValue(value)) ? getErrorMessage() : null;
   }
   
-  protected boolean checkEmptyValue(Object value_p) {
+  protected boolean checkEmptyValue(Object value) {
     if ((SUPPORT_EMPTY_VALUE & _style) != 0) {
-      if (value_p instanceof String) {
-        String value = (String) value_p;
-        return (value.length() == 0);
+      if (value instanceof String) {
+        return (((String) value).length() == 0);
       }
     }
     

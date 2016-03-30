@@ -2036,15 +2036,31 @@ public class CapellaServices {
     return isAllocatedFunctionCommon(function, container, allocatedFunctions);
   }
 
+  /**
+   * Is given AbtractFunction directly allocated (or considered as allocated) to given Component.<br>
+   * To be considered as allocated, all leaf of a non leaf AbstractFunction must be allocated to given Component.
+   * @param function
+   * @param container
+   * @return
+   */
   public boolean isAllocatedInThisComponent(AbstractFunction function, EObject container) {
-
-    List<AbstractFunctionalBlock> allocationBlocks = AbstractFunctionExt.getMotherFunctionAllocation(function);
-    if (allocationBlocks.size() == 1) {
-      AbstractFunctionalBlock allocationBlock = allocationBlocks.get(0);
-      return container == allocationBlock;
+    if (AbstractFunctionExt.isLeaf(function)) {
+      List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(function);
+      if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
+        // Function is a leaf but is not allocated to given Component
+        return false;
+      }
+    } else {
+      List<AbstractFunction> allLeaves = FunctionExt.getAllLeafAbstractFunctions(function);
+      for (AbstractFunction leaf : allLeaves) {
+        List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(leaf);
+        if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
+          // Function is not a leaf and at least one of its leaf is not allocated to given Component
+          return false;
+        }
+      }
     }
-
-    return false;
+    return true;
   }
 
   protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container,

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.command.recorder.core.manager.utils;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -51,12 +52,12 @@ public enum NotificationEnum {
     _literal = literal;
   }
   
-  static public NotificationEnum getOperationEnum(int closingEventType_p) {
+  static public NotificationEnum getOperationEnum(int closingEventType) {
     
     NotificationEnum result = UNDEFINED;
     
     for (int i = 0; i < values().length; i++) {
-      if ( closingEventType_p == values()[i].getEvent() ) {
+      if ( closingEventType == values()[i].getEvent() ) {
         result = values()[i];
         break;
       }
@@ -65,12 +66,12 @@ public enum NotificationEnum {
     return result;
   }
   
-  static public NotificationEnum getOperationEnum(String literal_p) {
+  static public NotificationEnum getOperationEnum(String literal) {
     
     NotificationEnum result = UNDEFINED;
     
     for (int i = 0; i < values().length; i++) {
-      if ( literal_p.equals(values()[i].getLiteral()) ) {
+      if ( literal.equals(values()[i].getLiteral()) ) {
         result = values()[i];
         break;
       }

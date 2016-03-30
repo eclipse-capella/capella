@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
 import org.eclipse.jface.action.ContributionManager;
@@ -47,21 +48,22 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
   IRenderer _renderer;
 
   /**
-   * @param contributionManager_p
-   * @param selectListRenderer_p
-   * @param rendererContext_p
-   * @param viewer_p
-   * @param activeWorkbenchWindow_p
+   * @param contributionManager
+   * @param location
+   * @param rendererContext
+   * @param renderer
+   * @param provider
+   * @param parent
    */
-  public ToolbarPopulator(ContributionManager contributionManager_p, String location_p, IRendererContext rendererContext_p, IRenderer renderer_p,
-      ISelectionProvider provider_p, IServiceLocator parent_p) {
-    _contributionManager = contributionManager_p;
-    _location = location_p;
-    _provider = provider_p;
-    _parent = parent_p;
+  public ToolbarPopulator(ContributionManager contributionManager, String location, IRendererContext rendererContext, IRenderer renderer,
+      ISelectionProvider provider, IServiceLocator parent) {
+    _contributionManager = contributionManager;
+    _location = location;
+    _provider = provider;
+    _parent = parent;
 
-    _renderer = renderer_p;
-    _rendererContext = rendererContext_p;
+    _renderer = renderer;
+    _rendererContext = rendererContext;
   }
 
   public void populate() {
@@ -100,7 +102,7 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
    * {@inheritDoc}
    */
   @Override
-  public void selectionChanged(IWorkbenchPart part_p, ISelection selection_p) {
+  public void selectionChanged(IWorkbenchPart part, ISelection selection) {
     _contributionManager.update(true);
     for (IContributionItem item : _contributionManager.getItems()) {
       item.isEnabled();
@@ -111,7 +113,7 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
    * {@inheritDoc}
    */
   @Override
-  public void update(PropertyChangedEvent event_p) {
+  public void update(PropertyChangedEvent event) {
     ISelectionService service = (ISelectionService) _locator.getService(ISelectionService.class);
     ISelectionChangedListener sChanged = (ISelectionChangedListener) service;
     sChanged.selectionChanged(new SelectionChangedEvent(_provider, _provider.getSelection()));

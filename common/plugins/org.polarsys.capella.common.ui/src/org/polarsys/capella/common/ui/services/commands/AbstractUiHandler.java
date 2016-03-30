@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.services.commands;
 
 import java.util.ArrayList;
@@ -38,37 +39,37 @@ public abstract class AbstractUiHandler extends AbstractHandler implements IElem
   /**
    * Get an adapted instance for given object in specified type.
    * @param <T>
-   * @param object_p
-   * @param expectedSelectionType_p
+   * @param object
+   * @param expectedSelectionType
    * @return <code>null</code> if given object is not the expected type or not adaptable to expected type.
    */
-  private <T> T getAdapter(Object object_p, Class<T> expectedSelectionType_p) {
+  private <T> T getAdapter(Object object, Class<T> expectedSelectionType) {
     T result = null;
     // Check given object is instance of expected class.
-    if (expectedSelectionType_p.isInstance(object_p)) {
-      result = expectedSelectionType_p.cast(object_p);
+    if (expectedSelectionType.isInstance(object)) {
+      result = expectedSelectionType.cast(object);
     }
     // Given object is adaptable, try to get an instance of expected type.
-    if ((null == result) && (object_p instanceof IAdaptable)) {
-      result = expectedSelectionType_p.cast(((IAdaptable) object_p).getAdapter(expectedSelectionType_p));
+    if ((null == result) && (object instanceof IAdaptable)) {
+      result = expectedSelectionType.cast(((IAdaptable) object).getAdapter(expectedSelectionType));
     }
     return result;
   }
 
   /**
    * Return the selected objects in current selection matching given expected type.
-   * @param event_p
-   * @param expectedSelectionType_p
+   * @param event
+   * @param expectedSelectionType
    * @return an empty list if no object is found matching expected type.
    */
-  protected <T> List<T> getSelection(ExecutionEvent event_p, Class<T> expectedSelectionType_p) {
+  protected <T> List<T> getSelection(ExecutionEvent event, Class<T> expectedSelectionType) {
     List<T> result = new ArrayList<T>(0);
     // Pre-condition.
-    if (null == event_p) {
+    if (null == event) {
       return result;
     }
 
-    Object applicationContext = event_p.getApplicationContext();
+    Object applicationContext = event.getApplicationContext();
     // Pre-condition.
     if (null == applicationContext) {
       return result;
@@ -78,7 +79,7 @@ public abstract class AbstractUiHandler extends AbstractHandler implements IElem
       return result;
     }
 
-    IEvaluationContext evaluationContext = (IEvaluationContext) event_p.getApplicationContext();
+    IEvaluationContext evaluationContext = (IEvaluationContext) event.getApplicationContext();
 
     // Get default variable as context.
     Object defaultVariable = evaluationContext.getDefaultVariable();
@@ -91,7 +92,7 @@ public abstract class AbstractUiHandler extends AbstractHandler implements IElem
 
       // Loop over the context variables.
       for (Object currentVariable : variables) {
-        T adapter = getAdapter(currentVariable, expectedSelectionType_p);
+        T adapter = getAdapter(currentVariable, expectedSelectionType);
         if (null != adapter) {
           result.add(adapter);
         }
@@ -102,29 +103,29 @@ public abstract class AbstractUiHandler extends AbstractHandler implements IElem
 
   /**
    * Get variable value.
-   * @param event_p
-   * @param variableName_p
+   * @param event
+   * @param variableName
    * @return <code>null</code> if not found.
    */
-  protected Object getVariableValue(ExecutionEvent event_p, String variableName_p) {
+  protected Object getVariableValue(ExecutionEvent event, String variableName) {
     Object result = null;
     // Pre-condition.
-    if (null == event_p) {
+    if (null == event) {
       return result;
     }
 
-    if (!(event_p.getApplicationContext() instanceof IEvaluationContext)) {
+    if (!(event.getApplicationContext() instanceof IEvaluationContext)) {
       return result;
     }
 
-    IEvaluationContext applicationContext = (IEvaluationContext) event_p.getApplicationContext();
+    IEvaluationContext applicationContext = (IEvaluationContext) event.getApplicationContext();
 
     // Pre-condition.
     if (null == applicationContext) {
       return result;
     }
     // Get default variable as context.
-    result = applicationContext.getVariable(variableName_p);
+    result = applicationContext.getVariable(variableName);
     return result;
   }
 
@@ -132,7 +133,7 @@ public abstract class AbstractUiHandler extends AbstractHandler implements IElem
    * {@inheritDoc}
    */
   @SuppressWarnings("rawtypes")
-  public void updateElement(UIElement element_p, Map parameters_p) {
+  public void updateElement(UIElement element, Map parameters) {
     // Do nothing.
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.attributes;
 
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
@@ -19,11 +20,11 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class AttributesHandlerHelper {
 
-  public static IAttributeHandler getInstance(IContext context_p) {
-    if (!context_p.exists(IReConstants.ATTRIBUTE_HANDLER)) {
+  public static IAttributeHandler getInstance(IContext context) {
+    if (!context.exists(IReConstants.ATTRIBUTE_HANDLER)) {
       IHandler handler = new DefaultAttributeHandler();
-      context_p.put(IReConstants.ATTRIBUTE_HANDLER, handler);
+      context.put(IReConstants.ATTRIBUTE_HANDLER, handler);
     }
-    return (IAttributeHandler) context_p.get(IReConstants.ATTRIBUTE_HANDLER);
+    return (IAttributeHandler) context.get(IReConstants.ATTRIBUTE_HANDLER);
   }
 }

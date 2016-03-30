@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,19 +35,19 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    Collection result = (Collection) context.get("SCOPE_ELEMENTS_PROPERTY");
+  public Object getValue(IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    Collection result = (Collection) ctx.get("SCOPE_ELEMENTS_PROPERTY");
 
     if (result == null) {
       result = new HashSet<EObject>();
 
       CatalogElement element =
-          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+          (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
 
-      result.addAll(ReplicableElementHandlerHelper.getInstance(context).getElements(element));
+      result.addAll(ReplicableElementHandlerHelper.getInstance(ctx).getElements(element));
       // TODO Add replica elements to scope
-      context.put("SCOPE_ELEMENTS_PROPERTY", result);
+      ctx.put("SCOPE_ELEMENTS_PROPERTY", result);
 
     }
 
@@ -66,23 +66,23 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    if ((newValue_p instanceof Collection) && ((Collection) newValue_p).isEmpty()) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
+    if ((newValue instanceof Collection) && ((Collection) newValue).isEmpty()) {
       return new Status(IStatus.ERROR, getId(), "Scope should not be empty");
     }
     return Status.OK_STATUS;
@@ -100,8 +100,8 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    context.put("SCOPE_ELEMENTS_PROPERTY", null);
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    ctx.put("SCOPE_ELEMENTS_PROPERTY", null);
   }
 }

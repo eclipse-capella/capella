@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.linkedtext.ui;
 
 import java.util.ArrayList;
@@ -30,26 +31,26 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
   private boolean sessionStarted = false;
   private int sessionStartOffset = 0;
   
-  public LinkedTextCompletionProcessor(IStructuredContentProvider provider_p){
-    _contentProvider = provider_p;
+  public LinkedTextCompletionProcessor(IStructuredContentProvider provider){
+    _contentProvider = provider;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public ICompletionProposal[] computeCompletionProposals(final ITextViewer viewer_p, final int offset_p) {
+  public ICompletionProposal[] computeCompletionProposals(final ITextViewer viewer, final int offset) {
     ICompletionProposal[] result = null;
-    LinkedTextDocument doc = (LinkedTextDocument) viewer_p.getDocument();
+    LinkedTextDocument doc = (LinkedTextDocument) viewer.getDocument();
 
     if (sessionStarted){
       sessionStarted = false;
-      sessionStartOffset = offset_p;
+      sessionStartOffset = offset;
     }
 
     try {
-      if (sessionStartOffset <= offset_p){
-        String prefix = viewer_p.getDocument().get(sessionStartOffset, offset_p - sessionStartOffset).toLowerCase();
+      if (sessionStartOffset <= offset){
+        String prefix = viewer.getDocument().get(sessionStartOffset, offset - sessionStartOffset).toLowerCase();
         List<ICompletionProposal> res = new ArrayList<ICompletionProposal>();
         if (_contentProvider != null){
           for (Object element : _contentProvider.getElements(doc.getDocumentBase())){
@@ -58,7 +59,7 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
               if (prefix.length() > 0 && !text.toLowerCase().contains(prefix)){
                 continue;
               }
-              res.add(new LinkedTextCompletionProposal(doc.getLabelProvider(), element, sessionStartOffset, offset_p, null, null));
+              res.add(new LinkedTextCompletionProposal(doc.getLabelProvider(), element, sessionStartOffset, offset, null, null));
             }
           }
         }
@@ -66,8 +67,8 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
           result = res.toArray(new ICompletionProposal[res.size()]);
         }
       }
-    } catch (BadLocationException exception_p) {
-      exception_p.printStackTrace();
+    } catch (BadLocationException exception) {
+      exception.printStackTrace();
       //FIXME
     }
     return result;
@@ -77,7 +78,7 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
    * {@inheritDoc}
    */
   @Override
-  public IContextInformation[] computeContextInformation(ITextViewer viewer_p, int offset_p) {
+  public IContextInformation[] computeContextInformation(ITextViewer viewer, int offset) {
     return null;
   }
 
@@ -118,7 +119,7 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
    * {@inheritDoc}
    */
   @Override
-  public void assistSessionStarted(ContentAssistEvent event_p) {
+  public void assistSessionStarted(ContentAssistEvent event) {
     sessionStarted = true;
   }
 
@@ -127,7 +128,7 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
    * {@inheritDoc}
    */
   @Override
-  public void assistSessionEnded(ContentAssistEvent event_p) {
+  public void assistSessionEnded(ContentAssistEvent event) {
     sessionStarted = false;
     sessionStartOffset = 0;
   }
@@ -137,7 +138,7 @@ public class LinkedTextCompletionProcessor implements IContentAssistProcessor, I
    * {@inheritDoc}
    */
   @Override
-  public void selectionChanged(ICompletionProposal proposal_p, boolean smartToggle_p) {
+  public void selectionChanged(ICompletionProposal proposal, boolean smartToggle) {
     /**/
   }
 

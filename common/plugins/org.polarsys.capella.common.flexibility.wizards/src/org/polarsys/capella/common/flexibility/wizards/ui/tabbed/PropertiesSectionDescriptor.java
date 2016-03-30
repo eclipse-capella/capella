@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.ui.tabbed;
 
 import org.eclipse.ui.views.properties.tabbed.AbstractSectionDescriptor;
@@ -22,10 +23,10 @@ public class PropertiesSectionDescriptor extends AbstractSectionDescriptor {
   IPropertyGroup _group;
   IRendererContext _rendererContext;
 
-  public PropertiesSectionDescriptor(IPropertyContext context_p, IRendererContext renderers_p, IPropertyGroup group_p) {
-    _propertyContext = context_p;
-    _group = group_p;
-    _rendererContext = renderers_p;
+  public PropertiesSectionDescriptor(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
+    _propertyContext = context;
+    _group = group;
+    _rendererContext = renderers;
   }
 
   /**
@@ -54,7 +55,7 @@ public class PropertiesSectionDescriptor extends AbstractSectionDescriptor {
 
   /**
    */
-  protected ISection createSection(IPropertyContext context_p, IRendererContext renderers_p, IPropertyGroup group_p) {
-    return new PropertiesSection(context_p, renderers_p, group_p);
+  protected ISection createSection(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
+    return new PropertiesSection(context, renderers, group);
   }
 }

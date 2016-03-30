@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.la.impl;
 
 import java.util.Collection;
@@ -265,8 +266,8 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<SystemRealization> resultAsList = (Collection<SystemRealization>) result;
 		return new EcoreEList.UnmodifiableEList<SystemRealization>(this, LaPackage.Literals.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -312,8 +313,8 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -359,8 +360,8 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -406,8 +407,8 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -453,8 +454,8 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 		@SuppressWarnings("unchecked")
 		Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
 		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

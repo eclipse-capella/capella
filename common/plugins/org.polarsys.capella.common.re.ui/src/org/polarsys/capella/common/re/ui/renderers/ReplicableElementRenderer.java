@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.ui.renderers;
 
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
@@ -28,17 +29,17 @@ public class ReplicableElementRenderer extends BrowseRenderer {
    * {@inheritDoc}
    */
   @Override
-  protected boolean isEditable(IProperty property_p, IRendererContext context_p) {
-    return super.isEditable(property_p, context_p);
+  protected boolean isEditable(IProperty property, IRendererContext context) {
+    return super.isEditable(property, context);
   }
 
   @Override
-  protected String getEditableText(IRendererContext context_p) {
-    Object currentValue = context_p.getPropertyContext().getCurrentValue(context_p.getProperty(this));
+  protected String getEditableText(IRendererContext context) {
+    Object currentValue = context.getPropertyContext().getCurrentValue(context.getProperty(this));
     if (currentValue instanceof CatalogElement) {
       return ((CatalogElement) currentValue).getName();
     }
-    return super.getEditableText(context_p);
+    return super.getEditableText(context);
   }
 
   @Override

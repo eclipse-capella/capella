@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,10 +38,10 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
   IQueryContext queryContext;
 
   /**
-   * @param context_p2_p
+   * @param context
    */
-  public ReMatchPolicy(IContext context_p2_p) {
-    super(context_p2_p);
+  public ReMatchPolicy(IContext context) {
+    super(context);
 
     queryContext = new QueryContext();
   }
@@ -50,7 +50,7 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
    * {@inheritDoc}
    */
   @Override
-  public Comparable<?> getMatchID(EObject element_p, IModelScope scope_p) {
+  public Comparable<?> getMatchID(EObject element, IModelScope scope) {
     IContext context = getContext();
 
     //Retrieve handlers from context
@@ -58,26 +58,26 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
     ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
 
     ITraceabilityHandler currentHandler = null;
-    CatalogElement element = null;
+    CatalogElement elt = null;
     CatalogElement otherElement = null;
 
-    if ((scope_p instanceof ReSourceScope) && !(scope_p instanceof ReTargetScope)) {
+    if ((scope instanceof ReSourceScope) && !(scope instanceof ReTargetScope)) {
       currentHandler = sourceHandler;
-      element = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+      elt = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
       otherElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
     } else {
       currentHandler = targetHandler;
-      element = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
+      elt = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
       otherElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
     }
 
-    Collection<CatalogElementLink> usedLinks = ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(element, queryContext);
+    Collection<CatalogElementLink> usedLinks = ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(elt, queryContext);
 
-    //Retrieve a link using the element_p in the given CatalogElement and its owned elements.
+    //Retrieve a link using the element in the given CatalogElement and its owned elements.
     //We consider that an element cannot be used two time in several CatalogElement used by the given CatalogElement
     CatalogElementLink link = null;
-    Collection<EObject> links = EObjectExt.getReferencers(element_p, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
+    Collection<EObject> links = EObjectExt.getReferencers(element, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
     if (links.size() > 0) {
       for (EObject linkItem : links) {
         if (usedLinks.contains(linkItem)) {
@@ -89,7 +89,7 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
     if (link == null) {
       //sometimes, created links are not available via crossreferencer. see why..
       for (CatalogElementLink linkItem : usedLinks) {
-        if (linkItem.getTarget().equals(element_p)) {
+        if (linkItem.getTarget().equals(element)) {
           link = linkItem;
           break;
         }
@@ -123,10 +123,10 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
     }
 
     String id = "";
-    if ((link != null) && (element != null) && (otherElement != null)) {
+    if ((link != null) && (elt != null) && (otherElement != null)) {
       id = currentHandler.getId(link, context);
     } else {
-      id = currentHandler.getId(element_p, context);
+      id = currentHandler.getId(element, context);
     }
     return id;
   }

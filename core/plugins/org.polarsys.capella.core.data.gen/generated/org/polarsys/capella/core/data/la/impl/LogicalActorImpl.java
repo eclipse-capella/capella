@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.la.impl;
 
 import java.util.Collection;
@@ -166,8 +167,8 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
 		@SuppressWarnings("unchecked")
 		Collection<SystemActorRealization> resultAsList = (Collection<SystemActorRealization>) result;
 		return new EcoreEList.UnmodifiableEList<SystemActorRealization>(this, LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -213,8 +214,8 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
 		@SuppressWarnings("unchecked")
 		Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
 		return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -260,8 +261,8 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
 		@SuppressWarnings("unchecked")
 		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -307,8 +308,8 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
 		@SuppressWarnings("unchecked")
 		Collection<Actor> resultAsList = (Collection<Actor>) result;
 		return new EcoreEList.UnmodifiableEList<Actor>(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -354,8 +355,8 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalActor> resultAsList = (Collection<PhysicalActor>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalActor>(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

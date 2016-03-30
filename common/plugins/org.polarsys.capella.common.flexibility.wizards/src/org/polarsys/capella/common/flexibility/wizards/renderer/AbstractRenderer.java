@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -28,39 +29,39 @@ public abstract class AbstractRenderer implements IPropertyRenderer {
    * {@inheritDoc}
    */
   @Override
-  public void render(Composite parent_p, IRendererContext context_p) {
-    performRender(parent_p, context_p);
+  public void render(Composite parent, IRendererContext context) {
+    performRender(parent, context);
     setDisposed(false);
-    initialize(context_p.getProperty(this), context_p);
+    initialize(context.getProperty(this), context);
   }
 
-  public void performRender(Composite parent_p, IRendererContext context_p) {
+  public void performRender(Composite parent, IRendererContext context) {
 
   }
 
-  public void setDisposed(boolean disposed_p) {
-    disposed = disposed_p;
+  public void setDisposed(boolean disposed) {
+    this.disposed = disposed;
   }
 
   protected boolean isDisposed() {
     return disposed;
   }
 
-  protected ILabelProvider getLabelProvider(IRendererContext context_p) {
-    return context_p.getLabelProvider();
+  protected ILabelProvider getLabelProvider(IRendererContext context) {
+    return context.getLabelProvider();
   }
 
-  public void changeValue(IProperty property_p, IRendererContext context_p, Object newValue_p) {
-    if (property_p instanceof IEditableProperty) {
-      context_p.getPropertyContext().setCurrentValue(property_p, newValue_p);
+  public void changeValue(IProperty property, IRendererContext context, Object newValue) {
+    if (property instanceof IEditableProperty) {
+      context.getPropertyContext().setCurrentValue(property, newValue);
     }
   }
 
-  public void updatedValue(IProperty property_p, IRendererContext propertyContext_p, Object newValue_p) {
+  public void updatedValue(IProperty property, IRendererContext propertyContext, Object newValue) {
 
   }
 
-  public void dispose(IRendererContext context_p) {
+  public void dispose(IRendererContext context) {
     setDisposed(true);
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,18 +37,18 @@ public class InvalidSharedElementsProperty extends AbstractProperty implements I
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
 
-    IContext context = (IContext) context_p.getSource();
-    if (!context.exists(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS) || (context.get(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS) == null)) {
-      Collection<EObject> scopeElements = (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
+    IContext ctx = (IContext) context.getSource();
+    if (!ctx.exists(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS) || (ctx.get(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS) == null)) {
+      Collection<EObject> scopeElements = (Collection) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
 
       if (scopeElements == null) {
-        context.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, Collections.emptyList());
+        ctx.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, Collections.emptyList());
       } else {
 
         Collection<EObject> result = new HashSet<EObject>();
-        CatalogElementPkg pkg = (CatalogElementPkg) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET));
+        CatalogElementPkg pkg = (CatalogElementPkg) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET));
         if (pkg != null) {
 
           IModel targetModel = ILibraryManager.INSTANCE.getModel(pkg);
@@ -67,21 +67,21 @@ public class InvalidSharedElementsProperty extends AbstractProperty implements I
           }
         }
 
-        context.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, new HashSet<Object>(result));
+        ctx.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, new HashSet<Object>(result));
       }
     }
 
-    return context.get(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS);
+    return ctx.get(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
 
-    if (newValue_p instanceof Collection) {
-      if (!((Collection) newValue_p).isEmpty()) {
+    if (newValue instanceof Collection) {
+      if (!((Collection) newValue).isEmpty()) {
         return new Status(IStatus.WARNING, getId(),
             "Some referenced elements are not available in the target location.\nReferences to such elements will be lost.");
       }
@@ -103,8 +103,8 @@ public class InvalidSharedElementsProperty extends AbstractProperty implements I
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    return value_p;
+  public Object toType(Object value, IPropertyContext context) {
+    return value;
   }
 
   /**
@@ -119,8 +119,8 @@ public class InvalidSharedElementsProperty extends AbstractProperty implements I
    * {@inheritDoc}
    */
   @Override
-  public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    context.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, null);
+  public void updatedValue(IProperty property, IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    ctx.put(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS, null);
   }
 }

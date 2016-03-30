@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,11 +27,11 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public Object getValue(IPropertyContext context_p) {
+  public Object getValue(IPropertyContext context) {
     try {
 
-      IContext context = (IContext) context_p.getSource();
-      CatalogElement replica = (CatalogElement) context.get("RPL");
+      IContext ctx = (IContext) context.getSource();
+      CatalogElement replica = (CatalogElement) ctx.get("RPL");
 
       return replica;
     } catch (Exception e) {
@@ -52,31 +52,31 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
    * {@inheritDoc}
    */
   @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    CatalogElement element = (CatalogElement) context.get("RPL");
+  public Object toType(Object value, IPropertyContext context) {
+    IContext ctx = (IContext) context.getSource();
+    CatalogElement element = (CatalogElement) ctx.get("RPL");
     if (element != null) {
 
-      if (value_p instanceof String) {
-        element.setName((String) value_p);
+      if (value instanceof String) {
+        element.setName((String) value);
         return element;
       }
     }
-    return value_p;
+    return value;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setValue(IPropertyContext context_p) {
+  public void setValue(IPropertyContext context) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
+  public IStatus validate(Object newValue, IPropertyContext context) {
     return Status.OK_STATUS;
   }
 

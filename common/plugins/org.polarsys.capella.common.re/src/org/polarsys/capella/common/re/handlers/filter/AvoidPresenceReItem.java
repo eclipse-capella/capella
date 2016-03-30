@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.handlers.filter;
 
 import org.eclipse.emf.diffmerge.api.Role;
@@ -38,7 +39,7 @@ public class AvoidPresenceReItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isMergeable(IDifference difference, Role role, IContext context) {
     return true;
   }
 
@@ -46,32 +47,32 @@ public class AvoidPresenceReItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    return super.getDestinationRole(difference_p, role_p, context_p);
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+    return super.getDestinationRole(difference, role, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p) {
-    if (difference_p instanceof IElementPresence) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference_p;
-      EObject source = diff.getElementMatch().get(role_p);
+  public boolean isDisplayable(IDifference difference, Role role, IContext context) {
+    if (difference instanceof IElementPresence) {
+      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
+      EObject source = diff.getElementMatch().get(role);
 
       if (source != null) {
-        if (ReplicableElementHandlerHelper.getInstance(context_p).isUnmodifiableElement(source, context_p)) {
+        if (ReplicableElementHandlerHelper.getInstance(context).isUnmodifiableElement(source, context)) {
           // return false;
         }
       }
     }
 
-    if (difference_p instanceof IReferenceValuePresence) {
-      IReferenceValuePresence diff = (IReferenceValuePresence) difference_p;
-      EObject source = diff.getValue().get(role_p);
+    if (difference instanceof IReferenceValuePresence) {
+      IReferenceValuePresence diff = (IReferenceValuePresence) difference;
+      EObject source = diff.getValue().get(role);
 
       if (source != null) {
-        if (ReplicableElementHandlerHelper.getInstance(context_p).isUnmodifiableElement(source, context_p)) {
+        if (ReplicableElementHandlerHelper.getInstance(context).isUnmodifiableElement(source, context)) {
           // return false;
         }
       }
@@ -84,7 +85,7 @@ public class AvoidPresenceReItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isApplicable(EClass differenceClass_p) {
+  public boolean isApplicable(EClass differenceClass) {
     return true;
   }
 
@@ -92,7 +93,7 @@ public class AvoidPresenceReItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(EStructuralFeature feature_p, IContext context_p) {
+  public boolean isMergeable(EStructuralFeature feature, IContext context) {
     return true;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import java.util.MissingResourceException;
@@ -29,14 +30,14 @@ public class Messages {
 
   /**
    * Gets the string corresponding from the specified key.
-   * @param key_p The key.
+   * @param key The key.
    * @return The string corresponding to the given key..
    */
-  public static String getString(String key_p) {
+  public static String getString(String key) {
     try {
-      return RESOURCE_BUNDLE.getString(key_p);
+      return RESOURCE_BUNDLE.getString(key);
     } catch (MissingResourceException e) {
-      return '!' + key_p + '!';
+      return '!' + key + '!';
     }
   }
 }

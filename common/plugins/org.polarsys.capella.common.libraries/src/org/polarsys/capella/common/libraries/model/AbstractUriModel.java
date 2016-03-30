@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.libraries.model;
 
 import org.eclipse.emf.common.util.URI;
@@ -19,12 +20,12 @@ public abstract class AbstractUriModel implements IModel {
 
   protected URI uriSemanticFile;
 
-  public AbstractUriModel(URI uriSemanticFile_p) {
-    uriSemanticFile = uriSemanticFile_p;
+  public AbstractUriModel(URI uriSemanticFile) {
+    this.uriSemanticFile = uriSemanticFile;
   }
 
   @Override
-  public AccessPolicy getDefaultAccess(IModel referencedLibrary_p) {
+  public AccessPolicy getDefaultAccess(IModel referencedLibrary) {
     // see https://polarsys.org/bugs/show_bug.cgi?id=142
     return AccessPolicy.READ_AND_WRITE;
   }
@@ -45,12 +46,12 @@ public abstract class AbstractUriModel implements IModel {
   }
 
   @Override
-  public boolean equals(Object object_p) {
-    if (object_p instanceof AbstractUriModel) {
-      return uriSemanticFile.equals(((AbstractUriModel) object_p).uriSemanticFile);
+  public boolean equals(Object object) {
+    if (object instanceof AbstractUriModel) {
+      return uriSemanticFile.equals(((AbstractUriModel) object).uriSemanticFile);
     }
-    if (object_p instanceof Resource) {
-      return uriSemanticFile.equals(((Resource) object_p).getURI());
+    if (object instanceof Resource) {
+      return uriSemanticFile.equals(((Resource) object).getURI());
     }
     return false;
   }

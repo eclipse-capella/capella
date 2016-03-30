@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.data.helpers.activity.delegates;
 
 import org.eclipse.emf.ecore.EObject;
@@ -32,38 +33,38 @@ public class ActivityEdgeHelper {
     return instance;
   }
 
-  public Object doSwitch(ActivityEdge element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(ActivityEdge element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION)) {
-      ret = getInActivityPartition(element_p);
-    } else if (feature_p.equals(ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION)) {
-      ret = getInInterruptibleRegion(element_p);
-    } else if (feature_p.equals(ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE)) {
-      ret = getInStructuredNode(element_p);
+    if (feature.equals(ActivityPackage.Literals.ACTIVITY_EDGE__IN_ACTIVITY_PARTITION)) {
+      ret = getInActivityPartition(element);
+    } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_EDGE__IN_INTERRUPTIBLE_REGION)) {
+      ret = getInInterruptibleRegion(element);
+    } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE)) {
+      ret = getInStructuredNode(element);
     }
 
     return ret;
   }
 
-  protected ActivityPartition getInActivityPartition(ActivityEdge element_p) {
-    EObject group = element_p.eContainer();
+  protected ActivityPartition getInActivityPartition(ActivityEdge element) {
+    EObject group = element.eContainer();
     if (null != group && group instanceof ActivityPartition) {
       return (ActivityPartition) group;
     }
     return null;
   }
 
-  protected InterruptibleActivityRegion getInInterruptibleRegion(ActivityEdge element_p) {
-    EObject group = element_p.eContainer();
+  protected InterruptibleActivityRegion getInInterruptibleRegion(ActivityEdge element) {
+    EObject group = element.eContainer();
     if (null != group && group instanceof InterruptibleActivityRegion) {
       return (InterruptibleActivityRegion) group;
     }
     return null;
   }
 
-  protected StructuredActivityNode getInStructuredNode(ActivityEdge element_p) {
-    EObject group = element_p.eContainer();
+  protected StructuredActivityNode getInStructuredNode(ActivityEdge element) {
+    EObject group = element.eContainer();
     if (null != group && group instanceof StructuredActivityNode) {
       return (StructuredActivityNode) group;
     }

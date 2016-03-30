@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.re.re2rpl.filters;
 
 import org.eclipse.emf.diffmerge.api.Role;
@@ -34,10 +35,10 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public String getDescription(IDifference difference_p) {
+  public String getDescription(IDifference difference) {
     String value = "attribute";
-    if (difference_p instanceof IAttributeValuePresence) {
-      IAttributeValuePresence diff = (IAttributeValuePresence) difference_p;
+    if (difference instanceof IAttributeValuePresence) {
+      IAttributeValuePresence diff = (IAttributeValuePresence) difference;
       if (diff.getFeature() != null) {
         value = diff.getFeature().getName();
       }
@@ -49,7 +50,7 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isMergeable(IDifference difference, Role role, IContext context) {
     return true;
   }
 
@@ -57,15 +58,15 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    if (difference_p instanceof IAttributeValuePresence) {
-      IAttributeValuePresence diff = (IAttributeValuePresence) difference_p;
-      EObject sourceElement = diff.getElementMatch().get(role_p);
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+    if (difference instanceof IAttributeValuePresence) {
+      IAttributeValuePresence diff = (IAttributeValuePresence) difference;
+      EObject sourceElement = diff.getElementMatch().get(role);
 
       if (sourceElement != null) {
 
-        CatalogElement source = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-        CatalogElement target = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+        CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+        CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
         CatalogElementLink linkedLink = null;
         //Unmodifiable element if linked to internal replicable elements of source / target
@@ -84,7 +85,7 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
 
         if (linkedLink != null) {
 
-          String value = (String) context_p.get(IReConstants.COMMAND__CURRENT_VALUE);
+          String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
 
           if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)
               || IReConstants.COMMAND__UPDATE_CURRENT_REPLICA_FROM_REPLICA.equals(value) || IReConstants.COMMAND__CREATE_REPLICABLE_ELEMENT.equals(value)) {
@@ -92,7 +93,7 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
             if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
 
               //if (update replicableElement from replica)
-              if (role_p == Role.REFERENCE) {
+              if (role == Role.REFERENCE) {
                 linkedLink = linkedLink.getOrigin();
               }
 
@@ -100,7 +101,7 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
           } else if (IReConstants.COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE.equals(value)
                      || IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(value)) {
             //if (update replica from replicableElement)
-            if (role_p == Role.TARGET) {
+            if (role == Role.TARGET) {
               linkedLink = linkedLink.getOrigin();
             }
           }
@@ -111,23 +112,23 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
         }
       }
     }
-    return super.getDestinationRole(difference_p, role_p, context_p);
+    return super.getDestinationRole(difference, role, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p) {
+  public boolean isDisplayable(IDifference difference, Role role, IContext context) {
 
-    return getDestinationRole(difference_p, role_p, context_p) != FilterAction.NO_ACTION;
+    return getDestinationRole(difference, role, context) != FilterAction.NO_ACTION;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean isApplicable(EClass differenceClass_p) {
+  public boolean isApplicable(EClass differenceClass) {
     return true;
   }
 
@@ -135,7 +136,7 @@ public class AvoidUnsynchronizedFeatureItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isMergeable(EStructuralFeature feature_p, IContext context_p) {
+  public boolean isMergeable(EStructuralFeature feature, IContext context) {
     return true;
   }
 

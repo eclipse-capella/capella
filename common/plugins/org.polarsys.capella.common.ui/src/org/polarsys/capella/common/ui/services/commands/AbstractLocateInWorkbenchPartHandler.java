@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.ui.services.commands;
 
 import org.eclipse.core.commands.ExecutionEvent;
@@ -26,36 +27,36 @@ public abstract class AbstractLocateInWorkbenchPartHandler extends
   /**
    * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
+  public Object execute(ExecutionEvent event) throws ExecutionException {
     // Get the active part.
-    IWorkbenchPart activePart = (IWorkbenchPart) getVariableValue(event_p, ACTIVE_PART_VARIABLE);
+    IWorkbenchPart activePart = (IWorkbenchPart) getVariableValue(event, ACTIVE_PART_VARIABLE);
     // Precondition.
     if (null == activePart) {
       return null;
     }
     // Get the current selection from the active part.
 		handleSelection(activePart.getSite().getSelectionProvider()
-				.getSelection(), activePart, event_p);
+				.getSelection(), activePart, event);
     return null;
   }
 
   /**
    * Get the active workbench window
 	 * 
-   * @param event_p
+   * @param event
    */
-  protected IWorkbenchWindow getWorkbenchWindow(ExecutionEvent event_p) {
-    return (IWorkbenchWindow) getVariableValue(event_p, ACTIVE_WORKBENCH_WINDOW);
+  protected IWorkbenchWindow getWorkbenchWindow(ExecutionEvent event) {
+    return (IWorkbenchWindow) getVariableValue(event, ACTIVE_WORKBENCH_WINDOW);
   }
 
   /**
 	 * Handle active part selection as new selection for a targeted workbench
 	 * part.<br>
 	 * 
-   * @param selection_p
-   * @param activePart_p
-   * @param event_p
+   * @param selection
+   * @param activePart
+   * @param event
    */
-	protected abstract Object handleSelection(ISelection selection_p,
-			IWorkbenchPart activePart_p, ExecutionEvent event_p);
+	protected abstract Object handleSelection(ISelection selection,
+			IWorkbenchPart activePart, ExecutionEvent event);
 }

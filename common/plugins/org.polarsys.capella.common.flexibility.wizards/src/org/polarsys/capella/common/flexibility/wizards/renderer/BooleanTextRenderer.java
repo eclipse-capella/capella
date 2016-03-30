@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import org.eclipse.core.runtime.IStatus;
@@ -30,11 +31,11 @@ public class BooleanTextRenderer extends AbstractRenderer {
    * @see org.polarsys.capella.common.flexibility.wizards.schema.IRenderer#render(org.eclipse.swt.widgets.Composite)
    */
   @Override
-  public void performRender(Composite parent_p, IRendererContext context_p) {
-    IProperty property = context_p.getProperty(this);
-    dataExport = new Label(parent_p, SWT.NONE);
+  public void performRender(Composite parent, IRendererContext context) {
+    IProperty property = context.getProperty(this);
+    dataExport = new Label(parent, SWT.NONE);
 
-    if (parent_p.getLayout() instanceof GridLayout) {
+    if (parent.getLayout() instanceof GridLayout) {
       dataExport.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     }
 
@@ -43,39 +44,39 @@ public class BooleanTextRenderer extends AbstractRenderer {
     dataExport.setData(property);
   }
 
-  public void initialize(IProperty property_p, IRendererContext rendererContext_p) {
-    Object value = rendererContext_p.getPropertyContext().getDefaultValue(property_p);
-    updatedValue(property_p, rendererContext_p, value);
+  public void initialize(IProperty property, IRendererContext rendererContext) {
+    Object value = rendererContext.getPropertyContext().getDefaultValue(property);
+    updatedValue(property, rendererContext, value);
   }
 
   @Override
-  public void updatedValue(IProperty property_p, IRendererContext rendererContext_p, Object newValue_p) {
+  public void updatedValue(IProperty property, IRendererContext rendererContext, Object newValue) {
     if (isDisposed()) {
       return;
     }
 
-    IProperty property = rendererContext_p.getProperty(this);
-    IPropertyContext propertyContext = rendererContext_p.getPropertyContext();
-    if (property_p.equals(property)) {
-      dataExport.setEnabled(property.isEnabled(propertyContext));
-      IStatus diag_p = property_p.validate(property_p.toType(newValue_p, propertyContext), propertyContext);
+    IProperty prop = rendererContext.getProperty(this);
+    IPropertyContext propertyContext = rendererContext.getPropertyContext();
+    if (property.equals(prop)) {
+      dataExport.setEnabled(prop.isEnabled(propertyContext));
+      IStatus diag = property.validate(property.toType(newValue, propertyContext), propertyContext);
 
-      dataExport.setText(property.getName() + " : " + rendererContext_p.getLabelProvider().getText(diag_p.getMessage()));
+      dataExport.setText(prop.getName() + " : " + rendererContext.getLabelProvider().getText(diag.getMessage()));
 
-      if (IStatus.INFO == diag_p.getSeverity()) {
+      if (IStatus.INFO == diag.getSeverity()) {
         dataExport.setForeground(dataExport.getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_BLUE));
-      } else if (IStatus.OK == diag_p.getSeverity()) {
+      } else if (IStatus.OK == diag.getSeverity()) {
         dataExport.setForeground(dataExport.getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_GREEN));
-      } else if (IStatus.WARNING == diag_p.getSeverity()) {
+      } else if (IStatus.WARNING == diag.getSeverity()) {
         dataExport.setForeground(dataExport.getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_YELLOW));
-      } else if (IStatus.ERROR == diag_p.getSeverity()) {
+      } else if (IStatus.ERROR == diag.getSeverity()) {
         dataExport.setForeground(dataExport.getShell().getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
       }
     }
   }
 
   @Override
-  public void dispose(IRendererContext context_p) {
+  public void dispose(IRendererContext context) {
     dataExport.dispose();
   }
 

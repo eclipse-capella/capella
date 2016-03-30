@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.pa.impl;
 
 import java.util.Collection;
@@ -159,8 +160,8 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
 		@SuppressWarnings("unchecked")
 		Collection<LogicalActorRealization> resultAsList = (Collection<LogicalActorRealization>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalActorRealization>(this, PaPackage.Literals.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -206,8 +207,8 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalFunction> resultAsList = (Collection<PhysicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalFunction>(this, PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -253,8 +254,8 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
 		@SuppressWarnings("unchecked")
 		Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalActor>(this, PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -300,8 +301,8 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

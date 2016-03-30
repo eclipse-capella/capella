@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.flexibility.wizards.group.renderer;
 
 import org.eclipse.swt.SWT;
@@ -32,7 +33,7 @@ public class FlatSectionGroupRenderer extends DefaultGroupRenderer {
   protected Section section;
 
   @Override
-  public void updatedValue(IPropertyGroup property_p, IRendererContext context_p) {
+  public void updatedValue(IPropertyGroup property, IRendererContext context) {
     //Nothing here
   }
 
@@ -40,22 +41,22 @@ public class FlatSectionGroupRenderer extends DefaultGroupRenderer {
    * 
    */
   @Override
-  protected Composite createGroup(Composite parent_p, IPropertyGroup group_p, IPropertyContext context, IRendererContext rendererContext_p) {
+  protected Composite createGroup(Composite parent, IPropertyGroup group, IPropertyContext context, IRendererContext rendererContext) {
 
     int i = 0;
-    for (IProperty property : context.getProperties().getItems(group_p)) {
-      IRenderer rent = rendererContext_p.getRenderer(property);
+    for (IProperty property : context.getProperties().getItems(group)) {
+      IRenderer rent = rendererContext.getRenderer(property);
       if ((rent != null) && !(rent instanceof NullRenderer)) {
         i++;
       }
     }
     if (i == 0) {
-      return parent_p;
+      return parent;
     }
 
     Composite parentComposite = null;
-    section = new Section(parent_p, ExpandableComposite.TWISTIE);
-    section.setText(getGroupName(group_p));
+    section = new Section(parent, ExpandableComposite.TWISTIE);
+    section.setText(getGroupName(group));
     parentComposite = section;
     parentComposite = new Composite(parentComposite, SWT.NONE);
     section.setClient(parentComposite);

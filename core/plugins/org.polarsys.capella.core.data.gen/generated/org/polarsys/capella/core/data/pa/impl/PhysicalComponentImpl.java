@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.pa.impl;
 
 import java.util.Collection;
@@ -201,8 +202,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<ConfigurationItem> resultAsList = (Collection<ConfigurationItem>) result;
 		return new EcoreEList.UnmodifiableEList<ConfigurationItem>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -302,8 +303,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<LogicalComponentRealization> resultAsList = (Collection<LogicalComponentRealization>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalComponentRealization>(this, PaPackage.Literals.PHYSICAL_COMPONENT__LOGICAL_COMPONENT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -349,8 +350,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<LogicalInterfaceRealization> resultAsList = (Collection<LogicalInterfaceRealization>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalInterfaceRealization>(this, PaPackage.Literals.PHYSICAL_COMPONENT__LOGICAL_INTERFACE_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -396,8 +397,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_COMPONENT__SUB_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -443,8 +444,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, PaPackage.Literals.PHYSICAL_COMPONENT__REALIZED_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -490,8 +491,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalFunction> resultAsList = (Collection<PhysicalFunction>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalFunction>(this, PaPackage.Literals.PHYSICAL_COMPONENT__ALLOCATED_PHYSICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -537,8 +538,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYED_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -584,8 +585,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
@@ -631,8 +632,8 @@ public class PhysicalComponentImpl extends AbstractPhysicalComponentImpl impleme
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalActor> resultAsList = (Collection<PhysicalActor>) result;
 		return new EcoreEList.UnmodifiableEList<PhysicalActor>(this, PaPackage.Literals.PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		

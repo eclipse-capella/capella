@@ -36,37 +36,37 @@ public abstract class AbstractNavigatorAction extends Action {
 	/**
 	 * Constructor..
 	 * 
-	 * @param selectionProvider_p
+	 * @param selectionProvider
 	 */
-	protected AbstractNavigatorAction(ISelectionProvider selectionProvider_p) {
-		_provider = selectionProvider_p;
+	protected AbstractNavigatorAction(ISelectionProvider selectionProvider) {
+		_provider = selectionProvider;
 	}
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param shell_p
-	 * @param selectionProvider_p
+	 * @param shell
+	 * @param selectionProvider
 	 */
-	protected AbstractNavigatorAction(Shell shell_p, ISelectionProvider selectionProvider_p) {
-		this(selectionProvider_p);
-		_shell = shell_p;
+	protected AbstractNavigatorAction(Shell shell, ISelectionProvider selectionProvider) {
+		this(selectionProvider);
+		_shell = shell;
 	}
 
 	/**
 	 * Get the current selected object
 	 * 
-	 * @param objectType_p
+	 * @param objectType
 	 *            the object type that the selection must be an instance of
 	 */
-	protected Object getSelection(Class<?> objectType_p) {
+	protected Object getSelection(Class<?> objectType) {
 		Object selectedObject = null;
 		// Get selected objects if any.
 		IStructuredSelection selectedObjects = (IStructuredSelection) _provider.getSelection();
 		// If not empty, get the first selected object.
 		if (!selectedObjects.isEmpty()) {
 			Object firstElement = selectedObjects.getFirstElement();
-			if (selectedObjects.size() == 1 && objectType_p.isInstance(firstElement)) {
+			if (selectedObjects.size() == 1 && objectType.isInstance(firstElement)) {
 				selectedObject = firstElement;
 			}
 		}
@@ -108,9 +108,9 @@ public abstract class AbstractNavigatorAction extends Action {
 	/**
 	 * Set given object as the selected object.
 	 * 
-	 * @param object_p
+	 * @param object
 	 */
-	protected abstract void setSelectedElement(Object object_p);
+	protected abstract void setSelectedElement(Object object);
 
 	/**
 	 * Get the shared images.

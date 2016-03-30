@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.common.consonance.ui.sirius;
 
 import java.util.HashMap;
@@ -46,27 +47,27 @@ public class SiriusComparisonMethod extends GMFComparisonMethod {
   
   /**
    * Constructor
-   * @param leftScopeSpec_p a non-null scope specification
-   * @param rightScopeSpec_p a non-null scope specification
-   * @param ancestorScopeSpec_p an optional scope specification
+   * @param leftScopeSpec a non-null scope specification
+   * @param rightScopeSpec a non-null scope specification
+   * @param ancestorScopeSpec an optional scope specification
    */
-  public SiriusComparisonMethod(IModelScopeDefinition leftScopeSpec_p,
-      IModelScopeDefinition rightScopeSpec_p, IModelScopeDefinition ancestorScopeSpec_p) {
-    super(leftScopeSpec_p, rightScopeSpec_p, ancestorScopeSpec_p);
+  public SiriusComparisonMethod(IModelScopeDefinition leftScopeSpec,
+      IModelScopeDefinition rightScopeSpec, IModelScopeDefinition ancestorScopeSpec) {
+    super(leftScopeSpec, rightScopeSpec, ancestorScopeSpec);
     _roleToSession = new HashMap<Role, Session>(3);
   }
   
   /**
    * Return the Sirius session for the given role if possible
    * (this method is only called once per role)
-   * @param role_p a non-null role
+   * @param role a non-null role
    * @return a potentially null resource set
    */
-  protected Session checkSession(Role role_p) {
+  protected Session checkSession(Role role) {
     Session result = null;
-    if (role_p != Role.ANCESTOR || isThreeWay()) {
+    if (role != Role.ANCESTOR || isThreeWay()) {
       // Use session resource set if available
-      IModelScopeDefinition scopeDefinition = getModelScopeDefinition(role_p);
+      IModelScopeDefinition scopeDefinition = getModelScopeDefinition(role);
       if (scopeDefinition instanceof URIScopeDefinition) {
         URIScopeDefinition uriScopeDefinition = (URIScopeDefinition)scopeDefinition;
         URI uri = uriScopeDefinition.getEntrypoint();
@@ -169,12 +170,12 @@ public class SiriusComparisonMethod extends GMFComparisonMethod {
    * @see org.eclipse.emf.diffmerge.ui.specification.ext.DefaultComparisonMethod#getResourceSet(org.eclipse.emf.diffmerge.api.Role)
    */
   @Override
-  public ResourceSet getResourceSet(Role role_p) {
+  public ResourceSet getResourceSet(Role role) {
     ResourceSet result = null;
     EditingDomain centralDomain = getEditingDomain(); // Ensure initialization
     if (centralDomain == null) {
       // Only if no central editing domain
-      Session roleSession = _roleToSession.get(role_p);
+      Session roleSession = _roleToSession.get(role);
       if (roleSession != null) {
         EditingDomain sessionDomain = roleSession.getTransactionalEditingDomain();
         if (sessionDomain != null)
