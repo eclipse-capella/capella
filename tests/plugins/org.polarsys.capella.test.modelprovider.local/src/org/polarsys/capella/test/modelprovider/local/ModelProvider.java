@@ -15,6 +15,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -23,10 +24,12 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.test.framework.api.AbstractProvider;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
+import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
 /**
  * Manages input models for test. Called by @see BasicTestCase and @see BasicTestSuite to load and unload models used in
@@ -93,6 +96,12 @@ public class ModelProvider extends AbstractProvider {
     ModelProviderHelper.getInstance().removeCapellaProject(relativeModelPath, artefact, eraseProject);
   }
 
+  @Override
+  public IFile getAirdFileForLoadedModel(String relativeModelPath) {
+    return IResourceHelpers.getEclipseProjectInWorkspace(relativeModelPath).getFile(
+        relativeModelPath + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
+  }
+  
   @Override
   public Resource getAirdResource(Session session) {
     if (session != null) {

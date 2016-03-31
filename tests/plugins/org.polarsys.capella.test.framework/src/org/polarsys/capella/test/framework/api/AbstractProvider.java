@@ -212,11 +212,6 @@ public abstract class AbstractProvider implements IModelProvider{
     return project;
   }
   
-  protected static IFile getAirdFileForLoadedModel(String modelName) {
-    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(
-        modelName + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
-  }
-  
   public static String getModelIdentifier2ProjectNameInWorkspace(String modelIdentifier) {
     return modelIdentifier2ProjectNameInWorkspace.get(modelIdentifier);
   }
