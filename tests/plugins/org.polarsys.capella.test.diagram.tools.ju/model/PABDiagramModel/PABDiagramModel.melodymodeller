@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_0.8.4-->
+<!--Capella_Version_0.8.5-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.0.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/0.8.0"
@@ -275,10 +275,21 @@
         </ownedFeatures>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="9d9c7a25-5944-491a-a765-68763f8e1dc9"
             name="PC 2" abstractType="#5941dde8-8742-4492-bd8a-a818c126b5a3"/>
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="a6991f53-69f1-44f9-a294-6a83c9239670"
+            name="PC 2" abstractType="#ba85b8a2-38e9-453c-ba04-0ee794107300"/>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="32169238-7ba4-4075-b101-f39361e15b6f" name="PC 1" nature="NODE"/>
+            id="32169238-7ba4-4075-b101-f39361e15b6f" name="PC 1" nature="NODE">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="3e09cbe9-01ff-4135-bdb2-e94d357bd455"
+              name="PC 11" abstractType="#d4dc87fb-1959-45bc-a99d-6fa1ab377e24"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="d4dc87fb-1959-45bc-a99d-6fa1ab377e24" name="PC 11" kind="SOFTWARE"
+              nature="NODE"/>
+        </ownedPhysicalComponents>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="5941dde8-8742-4492-bd8a-a818c126b5a3" name="PC 2" nature="BEHAVIOR"/>
+        <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+            id="ba85b8a2-38e9-453c-ba04-0ee794107300" name="PC 2" kind="SOFTWARE"
+            nature="NODE"/>
         <ownedLogicalComponentRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalComponentRealization"
             id="fb9f2a9a-6df0-44bd-986c-2e828c6152de" targetElement="#d3bca87d-5de3-47a6-a92d-8e99c5e30249"
             sourceElement="#da9fd915-8c19-4ef2-a8f0-fa3bf489e23b"/>
