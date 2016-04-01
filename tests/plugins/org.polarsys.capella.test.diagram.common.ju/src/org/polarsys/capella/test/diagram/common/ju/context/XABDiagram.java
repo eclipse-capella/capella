@@ -27,6 +27,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
@@ -273,7 +274,17 @@ public class XABDiagram extends DiagramContext {
     return result;
   }
 
-  /**
-   * 
-   */
+  public void createConstraint(String id) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_CREATE_CONSTRAINT;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_CREATE_CONSTRAINT;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_CREATE_CONSTRAINT;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_CREATE_CONSTRAINT;
+    }
+    new CreateAbstractDNodeTool(this, name, getDiagramId(), id).run();
+  }
 }
