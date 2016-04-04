@@ -24,7 +24,7 @@ public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
 
   String _sourceView;
   String _targetView;
-  String _newIdentifier;
+  protected String _newIdentifier;
   String _newSourceIdentifier;
   String _newTargetIdentifier;
 
@@ -33,7 +33,7 @@ public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
   Collection<DDiagramElement> _newSourceElements;
   Collection<DDiagramElement> _newTargetElements;
   Collection<DDiagramElement> _edgesElements;
-  Collection<DDiagramElement> _newEdgesElements;
+  protected Collection<DDiagramElement> _newEdgesElements;
 
   public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView) {
     super(context, toolName);
