@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.fa;
 
 import java.util.List;
@@ -32,37 +33,37 @@ public class FunctionalChainRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveRequired(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveRequired(element_p, result_p, context_p);
+  protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
+    super.retrieveRequired(element, result, context);
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     // Nothing here. We don't want to add container
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getRootFunction(target);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
   }
 
   /**
    * @param element_p
-   * @param result_p
-   * @param context_p
+   * @param result
+   * @param context
    */
-  protected void retrieveDeepValidChain(EObject source_p, List<EObject> result_p, IContext context_p) {
-    FunctionalChain element = (FunctionalChain) source_p;
-    result_p.addAll(element.getOwnedFunctionalChainInvolvements());
+  protected void retrieveDeepValidChain(EObject source, List<EObject> result, IContext context) {
+    FunctionalChain element = (FunctionalChain) source;
+    result.addAll(element.getOwnedFunctionalChainInvolvements());
   }
 
 }

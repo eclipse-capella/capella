@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.services;
 
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -38,17 +39,17 @@ public class MessageEndExt {
   }
 
   /**
-   * @param msg_p
+   * @param msg
    * @return The component type.
    */
-  public static COMPONENT_TYPE getMessageEndType(MessageEnd msg_p) {
+  public static COMPONENT_TYPE getMessageEndType(MessageEnd msg) {
     COMPONENT_TYPE type = COMPONENT_TYPE.UNDEFINED;
 
-    SequenceMessage seqMsg = msg_p.getMessage();
+    SequenceMessage seqMsg = msg.getMessage();
     if (seqMsg != null) {
-      if (seqMsg.getReceivingEnd() == msg_p) {
+      if (seqMsg.getReceivingEnd() == msg) {
         type = COMPONENT_TYPE.RECEIVER;
-      } else if (seqMsg.getSendingEnd() == msg_p) {
+      } else if (seqMsg.getSendingEnd() == msg) {
         type = COMPONENT_TYPE.SENDER;
       }
     }
@@ -57,17 +58,17 @@ public class MessageEndExt {
   }
 
   /**
-   * @param msg_p
+   * @param msg
    * @return The message end.
    */
-  public static MessageEnd getOppositeMessageEnd(MessageEnd msg_p) {
+  public static MessageEnd getOppositeMessageEnd(MessageEnd msg) {
     MessageEnd msgEnd = null;
 
-    SequenceMessage seqMsg = msg_p.getMessage();
+    SequenceMessage seqMsg = msg.getMessage();
     if (seqMsg != null) {
-      if (seqMsg.getReceivingEnd() == msg_p)
+      if (seqMsg.getReceivingEnd() == msg)
         msgEnd = seqMsg.getSendingEnd();
-      else if (seqMsg.getSendingEnd() == msg_p)
+      else if (seqMsg.getSendingEnd() == msg)
         msgEnd = seqMsg.getReceivingEnd();
     }
 
@@ -75,18 +76,18 @@ public class MessageEndExt {
   }
 
   /**
-   * @param msg_p
+   * @param msg
    * @return the operation
    */
-  public static AbstractEventOperation getOperation(MessageEnd msg_p) {
+  public static AbstractEventOperation getOperation(MessageEnd msg) {
     AbstractEventOperation op = null;
-    COMPONENT_TYPE type = getMessageEndType(msg_p);
-    Event evt = msg_p.getEvent();
+    COMPONENT_TYPE type = getMessageEndType(msg);
+    Event evt = msg.getEvent();
 
     if (evt != null) {
       switch (type) {
         case RECEIVER: {
-          Event event = msg_p.getEvent();
+          Event event = msg.getEvent();
           if (event instanceof EventReceiptOperation) {
             EventReceiptOperation evtOp = (EventReceiptOperation)evt;
             op = evtOp.getOperation();
@@ -94,7 +95,7 @@ public class MessageEndExt {
           break;
         }
         case SENDER: {
-          Event event = msg_p.getEvent();
+          Event event = msg.getEvent();
           if (event instanceof EventSentOperation) {
             EventSentOperation evtOp = (EventSentOperation)evt;
             op = evtOp.getOperation();

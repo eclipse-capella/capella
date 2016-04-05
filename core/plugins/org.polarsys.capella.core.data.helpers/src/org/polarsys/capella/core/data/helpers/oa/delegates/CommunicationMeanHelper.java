@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,36 +33,36 @@ public class CommunicationMeanHelper {
     return instance;
   }
 
-  public Object doSwitch(CommunicationMean element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(CommunicationMean element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(OaPackage.Literals.COMMUNICATION_MEAN__SOURCE_ENTITY)) {
-      ret = getSourceEntity(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.COMMUNICATION_MEAN__TARGET_ENTITY)) {
-      ret = getTargetEntity(element_p);
+    if (feature.equals(OaPackage.Literals.COMMUNICATION_MEAN__SOURCE_ENTITY)) {
+      ret = getSourceEntity(element);
+    } else if (feature.equals(OaPackage.Literals.COMMUNICATION_MEAN__TARGET_ENTITY)) {
+      ret = getTargetEntity(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = ComponentExchangeHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = ComponentExchangeHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = NamedRelationshipHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamedRelationshipHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected Entity getSourceEntity(CommunicationMean element_p) {
-    InformationsExchanger source = element_p.getSource();
+  protected Entity getSourceEntity(CommunicationMean element) {
+    InformationsExchanger source = element.getSource();
     if (source instanceof Entity) {
       return (Entity) source;
     }
     return null;
   }
 
-  protected Entity getTargetEntity(CommunicationMean element_p) {
-    InformationsExchanger target = element_p.getTarget();
+  protected Entity getTargetEntity(CommunicationMean element) {
+    InformationsExchanger target = element.getTarget();
     if (target instanceof Entity) {
       return (Entity) target;
     }

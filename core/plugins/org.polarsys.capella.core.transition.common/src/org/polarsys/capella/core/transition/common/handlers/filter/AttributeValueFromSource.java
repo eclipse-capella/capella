@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.filter;
 
 import org.eclipse.emf.diffmerge.api.Role;
@@ -28,7 +29,7 @@ public class AttributeValueFromSource extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public String getDescription(IDifference difference_p) {
+  public String getDescription(IDifference difference) {
     return "Propagation, target attribute is not set";
   }
 
@@ -36,12 +37,12 @@ public class AttributeValueFromSource extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
+  public FilterAction getDestinationRole(IDifference iDifference1, Role role1, IContext iContext1) {
     FilterAction role = null;
-    if (difference_p instanceof IAttributeValuePresence) {
+    if (iDifference1 instanceof IAttributeValuePresence) {
       // We merge AttributeValuePresence if value is empty into target
-      if (role_p == Role.REFERENCE) {
-        IAttributeValuePresence avp = (IAttributeValuePresence) difference_p;
+      if (role1 == Role.REFERENCE) {
+        IAttributeValuePresence avp = (IAttributeValuePresence) iDifference1;
         role = FilterAction.TARGET;
         EObject diffelt = avp.getElementMatch().get(Role.REFERENCE);
         if (diffelt != null) {
@@ -49,9 +50,9 @@ public class AttributeValueFromSource extends AbstractFilterItem {
             if (mergeDiff instanceof IAttributeValuePresence) {
               role = null;
               if (isMergeableAttribute(avp.getFeature(), diffelt, avp.getElementMatch().get(Role.TARGET), ((IAttributeValuePresence) mergeDiff).getValue(),
-                  avp.getValue(), context_p)) {
+                  avp.getValue(), iContext1)) {
                 if (isMergeableAttributeValue(avp.getFeature(), diffelt, avp.getElementMatch().get(Role.TARGET),
-                    ((IAttributeValuePresence) mergeDiff).getValue(), avp.getValue(), context_p)) {
+                    ((IAttributeValuePresence) mergeDiff).getValue(), avp.getValue(), iContext1)) {
                   role = FilterAction.TARGET;
                 } else {
                   role = FilterAction.NO_ACTION;
@@ -66,15 +67,15 @@ public class AttributeValueFromSource extends AbstractFilterItem {
   }
 
   /**
-   * @param feature_p
-   * @param diffelt_p
-   * @param eObject_p
-   * @param value_p
-   * @param value2_p
-   * @param context_p
+   * @param feature
+   * @param diffelt
+   * @param eObject
+   * @param value
+   * @param value2
+   * @param context
    * @return
    */
-  public boolean isMergeableAttributeValue(EAttribute feature_p, EObject diffelt_p, EObject eObject_p, Object value_p, Object value2_p, IContext context_p) {
+  public boolean isMergeableAttributeValue(EAttribute feature, EObject diffelt, EObject eObject, Object value, Object value2, IContext context) {
     return true;
   }
 
@@ -82,8 +83,8 @@ public class AttributeValueFromSource extends AbstractFilterItem {
    * Returns whether the difference from attribute value should be merged or not
    * @return
    */
-  public boolean isMergeableAttribute(EAttribute attribute_p, EObject source_p, EObject target_p, Object oldValue_p, Object newValue_p, IContext context_p) {
-    return oldValue_p == null;
+  public boolean isMergeableAttribute(EAttribute attribute, EObject source, EObject target, Object oldValue, Object newValue, IContext context) {
+    return oldValue == null;
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import java.util.ArrayList;
@@ -39,37 +40,37 @@ public class PhysicalPathHelper {
     return instance;
   }
 
-  public Object doSwitch(PhysicalPath element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(PhysicalPath element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(CsPackage.Literals.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS)) {
-      ret = getFirstPhysicalPathInvolvements(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS)) {
-      ret = getRealizedPhysicalPaths(element_p);
-    } else if (feature_p.equals(CsPackage.Literals.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS)) {
-      ret = getRealizingPhysicalPaths(element_p);
+    if (feature.equals(CsPackage.Literals.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS)) {
+      ret = getFirstPhysicalPathInvolvements(element);
+    } else if (feature.equals(CsPackage.Literals.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS)) {
+      ret = getRealizedPhysicalPaths(element);
+    } else if (feature.equals(CsPackage.Literals.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS)) {
+      ret = getRealizingPhysicalPaths(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamedElementHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = ComponentExchangeAllocatorHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = ComponentExchangeAllocatorHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = AbstractPathInvolvedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractPathInvolvedElementHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InvolverElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InvolverElementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<PhysicalPathInvolvement> getFirstPhysicalPathInvolvements(PhysicalPath element_p) {
+  protected List<PhysicalPathInvolvement> getFirstPhysicalPathInvolvements(PhysicalPath element) {
     List<PhysicalPathInvolvement> ret = new ArrayList<PhysicalPathInvolvement>();
-    for (PhysicalPathInvolvement inv : element_p.getOwnedPhysicalPathInvolvements()) {
+    for (PhysicalPathInvolvement inv : element.getOwnedPhysicalPathInvolvements()) {
       if ((inv.getInvolved() != null) && inv.getPreviousInvolvements().isEmpty()) {
         ret.add(inv);
       }
@@ -77,9 +78,9 @@ public class PhysicalPathHelper {
     return ret;
   }
 
-  protected List<PhysicalPath> getRealizedPhysicalPaths(PhysicalPath element_p) {
+  protected List<PhysicalPath> getRealizedPhysicalPaths(PhysicalPath element) {
     List<PhysicalPath> paths = new ArrayList<PhysicalPath>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof PhysicalPathRealization) {
         TraceableElement path = ((PhysicalPathRealization) trace).getTargetElement();
         if (path instanceof PhysicalPath) {
@@ -90,9 +91,9 @@ public class PhysicalPathHelper {
     return paths;
   }
 
-  protected List<PhysicalPath> getRealizingPhysicalPaths(PhysicalPath element_p) {
+  protected List<PhysicalPath> getRealizingPhysicalPaths(PhysicalPath element) {
     List<PhysicalPath> paths = new ArrayList<PhysicalPath>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof PhysicalPathRealization) {
         TraceableElement path = ((PhysicalPathRealization) trace).getSourceElement();
         if (path instanceof PhysicalPath) {

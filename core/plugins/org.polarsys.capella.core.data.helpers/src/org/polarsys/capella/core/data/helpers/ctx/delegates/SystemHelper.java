@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.ctx.delegates;
 
 import java.util.ArrayList;
@@ -46,41 +47,41 @@ public class SystemHelper {
 		return instance;
 	}
 
-	public Object doSwitch(System element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(System element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES)) {
-			ret = getParticipationsInCapabilities(element_p);
-		} else if (feature_p.equals(CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_MISSIONS)) {
-			ret = getParticipationsInMissions(element_p);
-		} else if (feature_p.equals(CtxPackage.Literals.SYSTEM__CONTRIBUTED_CAPABILITIES)) {
-			ret = getContributedCapabilities(element_p);
-		} else if (feature_p.equals(CtxPackage.Literals.SYSTEM__CONTRIBUTED_MISSIONS)) {
-			ret = getContributedMissions(element_p);
-		} else if (feature_p.equals(CtxPackage.Literals.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS)) {
-			ret = getAllocatedEntityRealizations(element_p);
-    } else if (feature_p.equals(CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS)) {
-      ret = getAllocatedSystemFunctions(element_p);
-    } else if (feature_p.equals(CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES)) {
-      ret = getRealizedEntities(element_p);
-    } else if (feature_p.equals(CtxPackage.Literals.SYSTEM__REALIZING_LOGICAL_COMPONENTS)) {
-      ret = getRealizingLogicalComponents(element_p);
+		if (feature.equals(CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES)) {
+			ret = getParticipationsInCapabilities(element);
+		} else if (feature.equals(CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_MISSIONS)) {
+			ret = getParticipationsInMissions(element);
+		} else if (feature.equals(CtxPackage.Literals.SYSTEM__CONTRIBUTED_CAPABILITIES)) {
+			ret = getContributedCapabilities(element);
+		} else if (feature.equals(CtxPackage.Literals.SYSTEM__CONTRIBUTED_MISSIONS)) {
+			ret = getContributedMissions(element);
+		} else if (feature.equals(CtxPackage.Literals.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS)) {
+			ret = getAllocatedEntityRealizations(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS)) {
+      ret = getAllocatedSystemFunctions(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES)) {
+      ret = getRealizedEntities(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM__REALIZING_LOGICAL_COMPONENTS)) {
+      ret = getRealizingLogicalComponents(element);
 		}
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = CapabilityRealizationInvolvedElementHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = CapabilityRealizationInvolvedElementHelper.getInstance().doSwitch(element, feature);
 		}
 		if(null == ret) {
-			ret = ComponentHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = ComponentHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected List<SystemCapabilityInvolvement> getParticipationsInCapabilities(System element_p) {
+	protected List<SystemCapabilityInvolvement> getParticipationsInCapabilities(System element) {
 		List<SystemCapabilityInvolvement> ret = new ArrayList<SystemCapabilityInvolvement>();
-		for (Involvement involvement : element_p.getInvolvingInvolvements()) {
+		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof SystemCapabilityInvolvement){
 				ret.add((SystemCapabilityInvolvement)involvement);
 			}
@@ -88,9 +89,9 @@ public class SystemHelper {
 		return ret;
 	}
 
-	protected List<SystemMissionInvolvement> getParticipationsInMissions(System element_p) {
+	protected List<SystemMissionInvolvement> getParticipationsInMissions(System element) {
 		List<SystemMissionInvolvement> ret = new ArrayList<SystemMissionInvolvement>();
-		for (Involvement involvement : element_p.getInvolvingInvolvements()) {
+		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof SystemMissionInvolvement){
 				ret.add((SystemMissionInvolvement)involvement);
 			}
@@ -98,9 +99,9 @@ public class SystemHelper {
 		return ret;
 	}
 
-	protected List<Capability> getContributedCapabilities(System element_p) {
+	protected List<Capability> getContributedCapabilities(System element) {
 		List<Capability> ret = new ArrayList<Capability>();
-		for (SystemCapabilityInvolvement capabilitySupplierLink : element_p.getParticipationsInCapabilities()) {
+		for (SystemCapabilityInvolvement capabilitySupplierLink : element.getParticipationsInCapabilities()) {
 			Capability capa = capabilitySupplierLink.getCapability();
 			if(null != capa){
 				ret.add(capa);
@@ -109,9 +110,9 @@ public class SystemHelper {
 		return ret;
 	}
 
-	protected List<Mission> getContributedMissions(System element_p) {
+	protected List<Mission> getContributedMissions(System element) {
 		List<Mission> ret = new ArrayList<Mission>();
-		for (SystemMissionInvolvement missionSupplierLink : element_p.getParticipationsInMissions()) {
+		for (SystemMissionInvolvement missionSupplierLink : element.getParticipationsInMissions()) {
 			Mission mission = missionSupplierLink.getMission();
 			if(null != mission){
 				ret.add(mission);
@@ -120,9 +121,9 @@ public class SystemHelper {
 		return ret;
 	}
 
-	protected List<OperationalEntityRealization> getAllocatedEntityRealizations(System element_p) {
+	protected List<OperationalEntityRealization> getAllocatedEntityRealizations(System element) {
 		List<OperationalEntityRealization> ret = new ArrayList<OperationalEntityRealization>();
-		for (ComponentAllocation componentAllocation : element_p.getProvisionedComponentAllocations()) {
+		for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
 			if(componentAllocation instanceof OperationalEntityRealization){
 				ret.add((OperationalEntityRealization) componentAllocation);	
 			}
@@ -130,9 +131,9 @@ public class SystemHelper {
 		return ret;
 	}
 
-  protected List<SystemFunction> getAllocatedSystemFunctions(System element_p) {
+  protected List<SystemFunction> getAllocatedSystemFunctions(System element) {
     List<SystemFunction> ret = new ArrayList<SystemFunction>();
-    for (AbstractFunction function : element_p.getAllocatedFunctions()) {
+    for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof SystemFunction) {
         ret.add((SystemFunction) function);
       }
@@ -140,9 +141,9 @@ public class SystemHelper {
     return ret;
   }
 
-  protected List<Entity> getRealizedEntities(System element_p) {
+  protected List<Entity> getRealizedEntities(System element) {
     List<Entity> ret = new ArrayList<Entity>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof OperationalEntityRealization) {
         Component cpnt = ((OperationalEntityRealization)trace).getAllocatedComponent();
         if (cpnt instanceof Entity) {
@@ -153,9 +154,9 @@ public class SystemHelper {
     return ret;
   }
 
-  protected List<LogicalComponent> getRealizingLogicalComponents(System element_p) {
+  protected List<LogicalComponent> getRealizingLogicalComponents(System element) {
     List<LogicalComponent> ret = new ArrayList<LogicalComponent>();
-    for (Component cpnt : element_p.getAllocatingComponents()) {
+    for (Component cpnt : element.getAllocatingComponents()) {
       if (cpnt instanceof LogicalComponent) {
         ret.add((LogicalComponent) cpnt);
       }

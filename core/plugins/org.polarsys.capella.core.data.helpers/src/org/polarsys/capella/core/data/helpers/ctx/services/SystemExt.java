@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.ctx.services;
 
 import org.polarsys.capella.core.data.ctx.Capability;
@@ -24,17 +25,17 @@ public class SystemExt {
 	 * This method checks whether the System interacts with the given
 	 * CapabilityUseCase
 	 * 
-	 * @param system_p
+	 * @param system
 	 *            the interacting System
-	 * @param capabilityUseCase_p
+	 * @param capabilityUseCase
 	 *            the CapabilityUseCase
 	 * @return true if the actor interacts with the CapabilityUseCase
 	 */
-	static public boolean hasInteraction(System system_p, Capability capabilityUseCase_p) {
+	static public boolean hasInteraction(System system, Capability capabilityUseCase) {
 		boolean isInteracting = false;
 
-		for (SystemCapabilityInvolvement capabilitySupplierLink : system_p.getParticipationsInCapabilities()) {
-			if (capabilitySupplierLink.getCapability().equals(capabilityUseCase_p)) {
+		for (SystemCapabilityInvolvement capabilitySupplierLink : system.getParticipationsInCapabilities()) {
+			if (capabilitySupplierLink.getCapability().equals(capabilityUseCase)) {
 				isInteracting = true;
 				break;
 			}

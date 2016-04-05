@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -35,11 +36,11 @@ public class BlockExt {
 
   /**
    * Gets all the ports from the specified block model element.
-   * @param element_p The block where to get ports from.
+   * @param element The block where to get ports from.
    * @return The ports list.
    */
-  public static List<CapellaElement> getAllPorts(CapellaElement element_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+  public static List<CapellaElement> getAllPorts(CapellaElement element) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
  // FIXME : update to SystemAnalysis
     Set<EObject> portsSet = EObjectExt.getAll(SystemEngineeringExt.getSystem(sysEng), InformationPackage.Literals.PORT);
 
@@ -53,20 +54,20 @@ public class BlockExt {
 
   /**
    * Gets all the ports from the specified block model element.
-   * @param element_p The block where to get ports from.
+   * @param element The block where to get ports from.
    * @return The ports list.
    */
-  public static Collection<CapellaElement> getAllOwnedPorts(CapellaElement element_p) {
+  public static Collection<CapellaElement> getAllOwnedPorts(CapellaElement element) {
     Collection<CapellaElement> portsList = new HashSet<CapellaElement>();
-    if (!(element_p instanceof ComponentPort)) {
+    if (!(element instanceof ComponentPort)) {
       return portsList;
     }
-    ComponentPort port = (ComponentPort)element_p;
+    ComponentPort port = (ComponentPort)element;
     for (ComponentExchange connection : port.getComponentExchanges()) {
       portsList.addAll(FunctionalExt.getRelatedPorts(connection)); 
     }
     
-    portsList.remove(element_p);
+    portsList.remove(element);
     return portsList;
   }
 

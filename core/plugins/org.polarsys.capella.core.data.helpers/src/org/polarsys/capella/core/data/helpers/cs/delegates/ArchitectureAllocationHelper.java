@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -31,33 +32,33 @@ public class ArchitectureAllocationHelper {
 		return instance;
 	}
 
-	public Object doSwitch(ArchitectureAllocation element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(ArchitectureAllocation element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE)) {
-			ret = getAllocatedArchitecture(element_p);
+		if (feature.equals(CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE)) {
+			ret = getAllocatedArchitecture(element);
 		}
-		else if (feature_p.equals(CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE)) {
-			ret = getAllocatingArchitecture(element_p);
+		else if (feature.equals(CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE)) {
+			ret = getAllocatingArchitecture(element);
 		} 
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
-			ret = AllocationHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = AllocationHelper.getInstance().doSwitch(element, feature);
 		}
 
 		return ret;
 	}
 
-	protected BlockArchitecture getAllocatedArchitecture(ArchitectureAllocation element_p) {
-		TraceableElement ret = element_p.getTargetElement();
+	protected BlockArchitecture getAllocatedArchitecture(ArchitectureAllocation element) {
+		TraceableElement ret = element.getTargetElement();
 		if(null != ret && ret instanceof BlockArchitecture)
 			return (BlockArchitecture) ret;
 		return null;
 	}
 
-	protected BlockArchitecture getAllocatingArchitecture(ArchitectureAllocation element_p) {
-		TraceableElement ret = element_p.getSourceElement();
+	protected BlockArchitecture getAllocatingArchitecture(ArchitectureAllocation element) {
+		TraceableElement ret = element.getSourceElement();
 		if(null != ret && ret instanceof BlockArchitecture)
 			return (BlockArchitecture) ret;
 		return null;

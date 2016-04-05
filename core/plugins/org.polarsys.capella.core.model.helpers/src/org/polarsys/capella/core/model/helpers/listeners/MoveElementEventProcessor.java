@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers.listeners;
 
 import java.util.ArrayList;
@@ -37,17 +38,17 @@ public class MoveElementEventProcessor implements EventProcessor {
    * {@inheritDoc}
    */
   @Override
-  public void add(Notification notif_p) {
-    if (notif_p.getEventType() == Notification.ADD) {
-      Object newValue = notif_p.getNewValue();
+  public void add(Notification notif) {
+    if (notif.getEventType() == Notification.ADD) {
+      Object newValue = notif.getNewValue();
       if (newValue instanceof EObject) {
-        newValueNotificationMap.add((EObject) newValue, notif_p);
+        newValueNotificationMap.add((EObject) newValue, notif);
       }
     }
-    if (notif_p.getEventType() == Notification.REMOVE) {
-      Object oldValue = notif_p.getOldValue();
+    if (notif.getEventType() == Notification.REMOVE) {
+      Object oldValue = notif.getOldValue();
       if (oldValue instanceof EObject) {
-        oldValueNotificationMap.add((EObject) oldValue, notif_p);
+        oldValueNotificationMap.add((EObject) oldValue, notif);
       }
     }
   }

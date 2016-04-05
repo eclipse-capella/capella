@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.pa.delegates;
 
 import java.util.ArrayList;
@@ -41,32 +42,32 @@ public class PhysicalFunctionHelper {
     return instance;
   }
 
-  public Object doSwitch(PhysicalFunction element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(PhysicalFunction element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS)) {
-      ret = getAllocatorPhysicalActors(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS)) {
-      ret = getAllocatorPhysicalComponents(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_FUNCTION__REALIZED_LOGICAL_FUNCTIONS)) {
-      ret = getRealizedLogicalFunctions(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_FUNCTION__CONTAINED_PHYSICAL_FUNCTIONS)) {
-      ret = getContainedPhysicalFunctions(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_FUNCTION__CHILDREN_PHYSICAL_FUNCTIONS)) {
-      ret = getChildrenPhysicalFunctions(element_p);
+    if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS)) {
+      ret = getAllocatorPhysicalActors(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS)) {
+      ret = getAllocatorPhysicalComponents(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__REALIZED_LOGICAL_FUNCTIONS)) {
+      ret = getRealizedLogicalFunctions(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__CONTAINED_PHYSICAL_FUNCTIONS)) {
+      ret = getContainedPhysicalFunctions(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__CHILDREN_PHYSICAL_FUNCTIONS)) {
+      ret = getChildrenPhysicalFunctions(element);
     }
 
     // no helper found... searching in super classes...
     if (ret == null) {
-      ret = AbstractFunctionHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractFunctionHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<PhysicalActor> getAllocatorPhysicalActors(PhysicalFunction element_p) {
+  protected List<PhysicalActor> getAllocatorPhysicalActors(PhysicalFunction element) {
     List<PhysicalActor> ret = new ArrayList<PhysicalActor>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
         if (src instanceof PhysicalActor) {
@@ -77,9 +78,9 @@ public class PhysicalFunctionHelper {
     return ret;
   }
 
-  protected List<PhysicalComponent> getAllocatorPhysicalComponents(PhysicalFunction element_p) {
+  protected List<PhysicalComponent> getAllocatorPhysicalComponents(PhysicalFunction element) {
     List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
         if (src instanceof PhysicalComponent) {
@@ -90,9 +91,9 @@ public class PhysicalFunctionHelper {
     return ret;
   }
 
-  protected List<LogicalFunction> getRealizedLogicalFunctions(PhysicalFunction element_p) {
+  protected List<LogicalFunction> getRealizedLogicalFunctions(PhysicalFunction element) {
     List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
-    for (FunctionRealization functionRealization : element_p.getOutFunctionRealizations()) {
+    for (FunctionRealization functionRealization : element.getOutFunctionRealizations()) {
       AbstractFunction abstractFunction = functionRealization.getAllocatedFunction();
       if (abstractFunction instanceof LogicalFunction) {
         ret.add((LogicalFunction) abstractFunction);
@@ -101,9 +102,9 @@ public class PhysicalFunctionHelper {
     return ret;
   }
 
-  protected List<PhysicalFunction> getContainedPhysicalFunctions(PhysicalFunction element_p) {
+  protected List<PhysicalFunction> getContainedPhysicalFunctions(PhysicalFunction element) {
     List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
-    for (AbstractFunction function : element_p.getOwnedFunctions()) {
+    for (AbstractFunction function : element.getOwnedFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);
       }
@@ -111,9 +112,9 @@ public class PhysicalFunctionHelper {
     return ret;
   }
 
-  protected List<PhysicalFunction> getChildrenPhysicalFunctions(PhysicalFunction element_p) {
+  protected List<PhysicalFunction> getChildrenPhysicalFunctions(PhysicalFunction element) {
     List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
-    for (AbstractFunction function : element_p.getSubFunctions()) {
+    for (AbstractFunction function : element.getSubFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);
       }

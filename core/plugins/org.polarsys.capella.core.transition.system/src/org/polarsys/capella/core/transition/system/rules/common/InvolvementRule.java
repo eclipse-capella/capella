@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.common;
 
 import java.util.ArrayList;
@@ -42,45 +43,45 @@ public class InvolvementRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveRequired(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveRequired(element_p, result_p, context_p);
-    result_p.add(((Involvement) element_p).getInvolved());
-    result_p.add(((Involvement) element_p).getInvolver());
+  protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
+    super.retrieveRequired(element, result, context);
+    result.add(((Involvement) element).getInvolved());
+    result.add(((Involvement) element).getInvolver());
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    Involvement element = (Involvement) element_p;
-    needed_p.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED));
-    needed_p.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER));
+  protected void premicesRelated(EObject eObject1, ArrayList<IPremise> needed) {
+    super.premicesRelated(eObject1, needed);
+    Involvement element = (Involvement) eObject1;
+    needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED));
+    needed.addAll(createDefaultPrecedencePremices(element, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, context);
   }
 
   @Override
-  public IStatus transformRequired(EObject element_p, IContext context_p) {
-    IStatus result = super.transformRequired(element_p, context_p);
+  public IStatus transformRequired(EObject element, IContext context) {
+    IStatus result = super.transformRequired(element, context);
     if (result.isOK()) {
-      Involvement ce = (Involvement) element_p;
+      Involvement ce = (Involvement) element;
 
       if (ce.getInvolved() == null) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.constants.Messages.SourceNull);
@@ -88,11 +89,11 @@ public class InvolvementRule extends AbstractCapellaElementRule {
       if (ce.getInvolver() == null) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, org.polarsys.capella.core.transition.system.constants.Messages.TargetNull);
       }
-      if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(ce.getInvolved(), context_p).isOK()) {
+      if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getInvolved(), context).isOK()) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(
             org.polarsys.capella.core.transition.system.constants.Messages.SourceBoundNotTransitioned, EObjectLabelProviderHelper.getText(ce.getInvolved())));
       }
-      if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(ce.getInvolver(), context_p).isOK()) {
+      if (!TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(ce.getInvolver(), context).isOK()) {
         return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(
             org.polarsys.capella.core.transition.system.constants.Messages.TargetBoundNotTransitioned, EObjectLabelProviderHelper.getText(ce.getInvolver())));
       }

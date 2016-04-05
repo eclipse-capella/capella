@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.filter;
 
 import org.eclipse.emf.diffmerge.api.Role;
@@ -21,14 +22,14 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class UnmatchableElementFilterItem extends AbstractFilterItem {
 
-  public boolean isUnmatchable(IDifference diff_p, Role role_p, IContext context_p) {
+  public boolean isUnmatchable(IDifference diff, Role role, IContext context) {
 
-    if (diff_p instanceof IElementRelativeDifference) {
-      IElementRelativeDifference presence = (IElementRelativeDifference) diff_p;
+    if (diff instanceof IElementRelativeDifference) {
+      IElementRelativeDifference presence = (IElementRelativeDifference) diff;
       EObject target = presence.getElementMatch().get(Role.TARGET);
 
       if (target != null) {
-        Object id = (diff_p.getComparison()).getLastMatchPolicy().getMatchID(target, diff_p.getComparison().getScope(Role.TARGET));
+        Object id = (diff.getComparison()).getLastMatchPolicy().getMatchID(target, diff.getComparison().getScope(Role.TARGET));
         if (id.toString().startsWith("UNMATCHABLE")) {
           return true;
         }
@@ -41,16 +42,16 @@ public class UnmatchableElementFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isDisplayable(IDifference diff_p, Role role_p, IContext context_p) {
-    return !isUnmatchable(diff_p, role_p, context_p);
+  public boolean isDisplayable(IDifference diff, Role role, IContext context) {
+    return !isUnmatchable(diff, role, context);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    if (isUnmatchable(difference_p, role_p, context_p)) {
+  public FilterAction getDestinationRole(IDifference difference, Role role, IContext context) {
+    if (isUnmatchable(difference, role, context)) {
       return FilterAction.TARGET;
     }
     return null;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.common;
 
 import java.util.ArrayList;
@@ -35,16 +36,16 @@ public class RegionRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    Region sourceElement = (Region) source_p;
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    Region sourceElement = (Region) source;
 
-    result_p.addAll(sourceElement.getOwnedStates());
-    result_p.addAll(sourceElement.getOwnedTransitions());
+    result.addAll(sourceElement.getOwnedStates());
+    result.addAll(sourceElement.getOwnedTransitions());
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedStates(), context_p);
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedTransitions(), context_p);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedStates(), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, sourceElement.getOwnedTransitions(), context);
     }
 
   }
@@ -56,28 +57,28 @@ public class RegionRule extends AbstractCapellaElementRule {
 
   @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
+  protected EObject transformDirectElement(EObject element, IContext context) {
     ISelectionContext sContext =
-        SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION);
-    EObject parent = TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(element_p.eContainer(), context_p, sContext);
+        SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION);
+    EObject parent = TransformationHandlerHelper.getInstance(context).getBestTracedElement(element.eContainer(), context, sContext);
     if ((parent != null) && (parent.eContainer() != null) && (parent.eContainer() instanceof org.polarsys.capella.core.data.ctx.System)) {
-      List<EObject> regions = (List) parent.eGet(element_p.eContainingFeature());
+      List<EObject> regions = (List) parent.eGet(element.eContainingFeature());
       if (regions.size() == 1) {
         return regions.get(0);
       }
     }
-    return super.transformDirectElement(element_p, context_p);
+    return super.transformDirectElement(element, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.REGION__INVOLVED_STATES));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, CapellacommonPackage.Literals.REGION__INVOLVED_STATES));
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.REGION__INVOLVED_STATES, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CapellacommonPackage.Literals.REGION__INVOLVED_STATES, context);
   }
 }

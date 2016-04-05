@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import java.util.ArrayList;
@@ -51,43 +52,43 @@ public class EntityHelper {
 		return instance;
 	}
 
-	public Object doSwitch(Entity element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(Entity element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature_p.equals(OaPackage.Literals.ENTITY__SUB_ENTITIES)) {
-			ret = getSubEntities(element_p);
-		} else if (feature_p.equals(OaPackage.Literals.ENTITY__ROLE_ALLOCATIONS)) {
-			ret = getRoleAllocations(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.ENTITY__ALLOCATED_OPERATIONAL_ACTIVITIES)) {
-      ret = getAllocatedOperationalActivities(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES)) {
-      ret = getInvolvingOperationalCapabilities(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.ENTITY__REALIZING_SYSTEMS)) {
-      ret = getRealizingSystems(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.ENTITY__ALLOCATED_ROLES)) {
-      ret = getAllocatedRoles(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.ENTITY__REALIZING_ACTORS)) {
-      ret = getRealizingActors(element_p);
+		if (feature.equals(OaPackage.Literals.ENTITY__SUB_ENTITIES)) {
+			ret = getSubEntities(element);
+		} else if (feature.equals(OaPackage.Literals.ENTITY__ROLE_ALLOCATIONS)) {
+			ret = getRoleAllocations(element);
+    } else if (feature.equals(OaPackage.Literals.ENTITY__ALLOCATED_OPERATIONAL_ACTIVITIES)) {
+      ret = getAllocatedOperationalActivities(element);
+    } else if (feature.equals(OaPackage.Literals.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES)) {
+      ret = getInvolvingOperationalCapabilities(element);
+    } else if (feature.equals(OaPackage.Literals.ENTITY__REALIZING_SYSTEMS)) {
+      ret = getRealizingSystems(element);
+    } else if (feature.equals(OaPackage.Literals.ENTITY__ALLOCATED_ROLES)) {
+      ret = getAllocatedRoles(element);
+    } else if (feature.equals(OaPackage.Literals.ENTITY__REALIZING_ACTORS)) {
+      ret = getRealizingActors(element);
 		}
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
-			ret = ComponentHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = ComponentHelper.getInstance().doSwitch(element, feature);
 		}
     if (null == ret) {
-      ret = InformationsExchangerHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InformationsExchangerHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InvolvedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InvolvedElementHelper.getInstance().doSwitch(element, feature);
     }
 
 		return ret;
 	}
 
-	protected List<RoleAllocation> getRoleAllocations(Entity element_p) {
+	protected List<RoleAllocation> getRoleAllocations(Entity element) {
 		List<RoleAllocation> ret = new ArrayList<RoleAllocation>();
 
-		for (AbstractTrace abstractTrace : element_p.getOutgoingTraces()) {
+		for (AbstractTrace abstractTrace : element.getOutgoingTraces()) {
 			if (abstractTrace instanceof RoleAllocation) {
 				ret.add((RoleAllocation) abstractTrace);
 			}
@@ -95,10 +96,10 @@ public class EntityHelper {
 		return ret;
 	}
 
-	protected List<Entity> getSubEntities(Entity element_p) {
+	protected List<Entity> getSubEntities(Entity element) {
 		List<Entity> ret = new ArrayList<Entity>();
 
-		for (Partition thePartition : element_p.getOwnedPartitions()) {
+		for (Partition thePartition : element.getOwnedPartitions()) {
 			Type representedElement = thePartition.getType();
 			if (null != representedElement && representedElement instanceof Entity) {
 				ret.add((Entity) representedElement);
@@ -107,9 +108,9 @@ public class EntityHelper {
 		return ret;
 	}
 
-  protected List<OperationalActivity> getAllocatedOperationalActivities(Entity element_p) {
+  protected List<OperationalActivity> getAllocatedOperationalActivities(Entity element) {
     List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
-    for (AbstractFunction function : element_p.getAllocatedFunctions()) {
+    for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof OperationalActivity) {
         ret.add((OperationalActivity) function);
       }
@@ -117,9 +118,9 @@ public class EntityHelper {
     return ret;
   }
 
-  protected List<OperationalCapability> getInvolvingOperationalCapabilities(Entity element_p) {
+  protected List<OperationalCapability> getInvolvingOperationalCapabilities(Entity element) {
     List<OperationalCapability> ret = new ArrayList<OperationalCapability>();
-    for (Involvement inv : element_p.getInvolvingInvolvements()) {
+    for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof EntityOperationalCapabilityInvolvement) {
         OperationalCapability cap = ((EntityOperationalCapabilityInvolvement) inv).getCapability();
         if (null != cap) {
@@ -130,9 +131,9 @@ public class EntityHelper {
     return ret;
   }
 
-  protected List<System> getRealizingSystems(Entity element_p) {
+  protected List<System> getRealizingSystems(Entity element) {
     List<System> ret = new ArrayList<System>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if ((trace instanceof OperationalEntityRealization) || (trace instanceof OperationalActorRealization)) {
         Component cpnt = ((ComponentAllocation)trace).getAllocatingComponent();
         if (cpnt instanceof System) {
@@ -143,10 +144,10 @@ public class EntityHelper {
     return ret;
   }
 
-  protected List<Actor> getRealizingActors(Entity element_p) {
+  protected List<Actor> getRealizingActors(Entity element) {
     List<Actor> ret = new ArrayList<Actor>();
-    if (!(element_p instanceof OperationalActor)) {
-      for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    if (!(element instanceof OperationalActor)) {
+      for (AbstractTrace trace : element.getIncomingTraces()) {
         if (trace instanceof OperationalEntityRealization) {
           Component cpnt = ((ComponentAllocation)trace).getAllocatingComponent();
           if (cpnt instanceof Actor) {
@@ -158,9 +159,9 @@ public class EntityHelper {
     return ret;
   }
 
-  protected List<Role> getAllocatedRoles(Entity element_p) {
+  protected List<Role> getAllocatedRoles(Entity element) {
     List<Role> ret = new ArrayList<Role>();
-    for (RoleAllocation roleAllocation : element_p.getRoleAllocations()) {
+    for (RoleAllocation roleAllocation : element.getRoleAllocations()) {
       Role role = roleAllocation.getRole();
       if (null != role){
         ret.add(role);

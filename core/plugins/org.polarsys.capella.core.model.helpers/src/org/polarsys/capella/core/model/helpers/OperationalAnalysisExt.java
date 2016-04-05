@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -43,12 +44,12 @@ public class OperationalAnalysisExt {
 
   /**
    * Gets all the components contained in a component architecture
-   * @param blockArchitecture_p the parent component architecture
+   * @param blockArchitecture the parent component architecture
    * @return list of components
    */
-  static public List<Component> getComponentsFromBlockArchitecture(BlockArchitecture blockArchitecture_p) {
+  static public List<Component> getComponentsFromBlockArchitecture(BlockArchitecture blockArchitecture) {
     List<Component> list = new ArrayList<Component>();
-    for (Object obj : blockArchitecture_p.eContents()) {
+    for (Object obj : blockArchitecture.eContents()) {
       if (obj instanceof Component) {
         list.add((Component) obj);
       } else if (obj instanceof Structure) {
@@ -63,10 +64,10 @@ public class OperationalAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctions(BlockArchitecture arch_p) {
+  static public List<AbstractFunction> getAllFunctions(BlockArchitecture arch) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != arch_p) {
-      FunctionPkg functionPkg = arch_p.getOwnedFunctionPkg();
+    if (null != arch) {
+      FunctionPkg functionPkg = arch.getOwnedFunctionPkg();
       if ((functionPkg != null) && (functionPkg instanceof OperationalActivityPkg)) {
         list = getAllFunctionsFromOperationalActivityPkg((OperationalActivityPkg) functionPkg);
       }
@@ -74,18 +75,18 @@ public class OperationalAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctionsFromOperationalActivityPkg(OperationalActivityPkg sysFunPkg_p) {
+  static public List<AbstractFunction> getAllFunctionsFromOperationalActivityPkg(OperationalActivityPkg sysFunPkg) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != sysFunPkg_p) {
-      EList<OperationalActivity> ownedOperationalActivities = sysFunPkg_p.getOwnedOperationalActivities();
+    if (null != sysFunPkg) {
+      EList<OperationalActivity> ownedOperationalActivities = sysFunPkg.getOwnedOperationalActivities();
       // owned function of SystemFunctionPkg
       list.addAll(ownedOperationalActivities);
       // owned function of Function
       for (AbstractFunction function : ownedOperationalActivities) {
         list.addAll(getAllFunctionsFromFunction(function));
       }
-      // owned function of (subPkg of sysFunPkg_p) SystemFunctionPkg
-      for (OperationalActivityPkg ownedOperActiPkg : sysFunPkg_p.getOwnedOperationalActivityPkgs()) {
+      // owned function of (subPkg of sysFunPkg) SystemFunctionPkg
+      for (OperationalActivityPkg ownedOperActiPkg : sysFunPkg.getOwnedOperationalActivityPkgs()) {
         list.addAll(getAllFunctionsFromOperationalActivityPkg(ownedOperActiPkg));
       }
     }
@@ -93,10 +94,10 @@ public class OperationalAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctionsFromFunction(AbstractFunction fun_p) {
+  static public List<AbstractFunction> getAllFunctionsFromFunction(AbstractFunction fun) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != fun_p) {
-      EList<AbstractFunction> ownedSystemFunctions = fun_p.getOwnedFunctions();
+    if (null != fun) {
+      EList<AbstractFunction> ownedSystemFunctions = fun.getOwnedFunctions();
       for (AbstractFunction abstractFunction : ownedSystemFunctions) {
         list.add(abstractFunction);
       }
@@ -109,11 +110,11 @@ public class OperationalAnalysisExt {
     return list;
   }
 
-  public static List<Entity> getAllEntity(EntityPkg ownedEntityPkg_p) {
+  public static List<Entity> getAllEntity(EntityPkg ownedEntityPkg) {
     List<Entity> list = new ArrayList<Entity>(1);
-    if (null != ownedEntityPkg_p) {
+    if (null != ownedEntityPkg) {
       // get all entities from root entity package
-      Set<EObject> scSet = EObjectExt.getAll(ownedEntityPkg_p, OaPackage.Literals.ENTITY);
+      Set<EObject> scSet = EObjectExt.getAll(ownedEntityPkg, OaPackage.Literals.ENTITY);
       for (EObject object : scSet) {
         list.add((Entity) object);
       }
@@ -137,21 +138,21 @@ public class OperationalAnalysisExt {
     return list;
   }
 
-  public static List<Role> getAllRoles(OperationalAnalysis arch_p) {
+  public static List<Role> getAllRoles(OperationalAnalysis arch) {
     List<Role> list = new ArrayList<Role>();
-    if (null != arch_p) {
-      for (RolePkg aRolePkg : getAllRolePkgs(arch_p.getOwnedRolePkg())) {
+    if (null != arch) {
+      for (RolePkg aRolePkg : getAllRolePkgs(arch.getOwnedRolePkg())) {
         list.addAll(aRolePkg.getOwnedRoles());
       }
     }
     return list;
   }
 
-  public static List<RolePkg> getAllRolePkgs(RolePkg rolePkg_p) {
+  public static List<RolePkg> getAllRolePkgs(RolePkg rolePkg) {
     List<RolePkg> list = new ArrayList<RolePkg>();
-    if (rolePkg_p != null) {
-      list.add(rolePkg_p);
-      for (RolePkg aRolePkg : rolePkg_p.getOwnedRolePkgs()) {
+    if (rolePkg != null) {
+      list.add(rolePkg);
+      for (RolePkg aRolePkg : rolePkg.getOwnedRolePkgs()) {
         list.addAll(getAllRolePkgs(aRolePkg));
       }
     }
@@ -160,21 +161,21 @@ public class OperationalAnalysisExt {
 
   /**
    * Return all the communication mean from OperationalContext and EntityPkg
-   * @param arch_p
+   * @param arch
    * @return
    */
-  public static List<CommunicationMean> getAllCommunicationMeans(OperationalAnalysis arch_p) {
+  public static List<CommunicationMean> getAllCommunicationMeans(OperationalAnalysis arch) {
     List<CommunicationMean> list = new ArrayList<CommunicationMean>();
-    if (null != arch_p) {
+    if (null != arch) {
       // get all communication means from root entity package
-      EntityPkg ownedEntityPkg = arch_p.getOwnedEntityPkg();
+      EntityPkg ownedEntityPkg = arch.getOwnedEntityPkg();
       if (null != ownedEntityPkg) {
         for (EObject object : EObjectExt.getAll(ownedEntityPkg, OaPackage.Literals.COMMUNICATION_MEAN)) {
           list.add((CommunicationMean) object);
         }
       }
       // get all communication means from operational context
-      OperationalContext context = arch_p.getOwnedOperationalContext();
+      OperationalContext context = arch.getOwnedOperationalContext();
       if (null != context) {
         for (EObject object : EObjectExt.getAll(context, OaPackage.Literals.COMMUNICATION_MEAN)) {
           list.add((CommunicationMean) object);
@@ -185,11 +186,11 @@ public class OperationalAnalysisExt {
     return list;
   }
 
-  public static List<OperationalCapability> getAllOperationalCapabilities(OperationalAnalysis arch_p) {
+  public static List<OperationalCapability> getAllOperationalCapabilities(OperationalAnalysis arch) {
     List<OperationalCapability> list = new ArrayList<OperationalCapability>(1);
-    if (null != arch_p) {
+    if (null != arch) {
       // get all entities from root entity package
-      AbstractCapabilityPkg ownedAbstractCapabilityPkg = arch_p.getOwnedAbstractCapabilityPkg();
+      AbstractCapabilityPkg ownedAbstractCapabilityPkg = arch.getOwnedAbstractCapabilityPkg();
       if (null != ownedAbstractCapabilityPkg) {
         Set<EObject> scSet = EObjectExt.getAll(ownedAbstractCapabilityPkg, OaPackage.Literals.OPERATIONAL_CAPABILITY);
         for (EObject object : scSet) {

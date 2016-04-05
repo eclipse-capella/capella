@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.pa.services;
 
 import java.util.ArrayList;
@@ -63,12 +64,12 @@ public class ComponentInstanceExt {
 
 	}
 
-	public static boolean isDeployedOn(ComponentInstance location_p, ComponentInstance deployedElement_p) {
+	public static boolean isDeployedOn(ComponentInstance location, ComponentInstance deployedElement) {
 
-		List<AbstractDeploymentLink> deployments = location_p.getDeploymentLinks();
+		List<AbstractDeploymentLink> deployments = location.getDeploymentLinks();
 
 		for (AbstractDeploymentLink abstractDeployment : deployments) {
-			if (abstractDeployment.getDeployedElement().equals(deployedElement_p)) {
+			if (abstractDeployment.getDeployedElement().equals(deployedElement)) {
 				return true;
 			}
 		}
@@ -76,9 +77,9 @@ public class ComponentInstanceExt {
 		return false;
 	}
 
-	public static List<ComponentInstance> getDeployedElements(ComponentInstance location_p) {
+	public static List<ComponentInstance> getDeployedElements(ComponentInstance location) {
 		List<ComponentInstance> deployedElements = new ArrayList<ComponentInstance>(1);
-		List<AbstractDeploymentLink> deployments = location_p.getDeploymentLinks();
+		List<AbstractDeploymentLink> deployments = location.getDeploymentLinks();
 
 		for (AbstractDeploymentLink abstractDeployment : deployments) {
 			deployedElements.add((ComponentInstance) abstractDeployment.getDeployedElement());
@@ -86,9 +87,9 @@ public class ComponentInstanceExt {
 		return deployedElements;
 	}
 
-	public static List<ComponentInstance> getDeploymentTargets(ComponentInstance element_p) {
+	public static List<ComponentInstance> getDeploymentTargets(ComponentInstance element) {
 		List<ComponentInstance> deploymentTargets = new ArrayList<ComponentInstance>();
-		List<AbstractDeploymentLink> deployments = element_p.getDeployingLinks();
+		List<AbstractDeploymentLink> deployments = element.getDeployingLinks();
 
 		for (AbstractDeploymentLink abstractDeployment : deployments) {
 			deploymentTargets.add((ComponentInstance) abstractDeployment.getLocation());
@@ -96,12 +97,12 @@ public class ComponentInstanceExt {
 		return deploymentTargets;
 	}
 
-	public static void undeployElement(ComponentInstance location_p, ComponentInstance deployedElement_p) {
+	public static void undeployElement(ComponentInstance location, ComponentInstance deployedElement) {
 		List<AbstractDeploymentLink> elementsToDelete = new ArrayList<AbstractDeploymentLink>();
-		List<AbstractDeploymentLink> deployements = location_p.getDeploymentLinks();
+		List<AbstractDeploymentLink> deployements = location.getDeploymentLinks();
 
 		for (AbstractDeploymentLink abstractDeployment : deployements) {
-			if (abstractDeployment.getDeployedElement().equals(deployedElement_p)) {
+			if (abstractDeployment.getDeployedElement().equals(deployedElement)) {
 				elementsToDelete.add(abstractDeployment);
 			}
 		}

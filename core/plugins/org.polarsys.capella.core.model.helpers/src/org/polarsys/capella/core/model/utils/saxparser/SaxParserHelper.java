@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.utils.saxparser;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class SaxParserHelper {
    * @param result
    * @return
    */
-  public static String escapeSpecialCharacter(String result_p) {
-    String result = result_p;
+  public static String escapeSpecialCharacter(String input) {
+    String result = input;
     result = result.replace(IConstantValidation.NON_BREAKING_SPACE_NAME_CODE, IConstantValidation.NON_BREAKING_SPACE_NUMBER_CODE);
     result = result.replace(IConstantValidation.EURO_NAME_CODE, IConstantValidation.EURO_NUMBER_CODE);
     result = result.replace(IConstantValidation.TRADE_NAME_CODE, IConstantValidation.TRADE_NUMBER_CODE);
@@ -41,15 +42,15 @@ public class SaxParserHelper {
     return result;
   }
 
-  public static EObject getEObjectFromHrefAttribute(final EObject context_p, String attValue_p) {
-    String[] split = attValue_p.split("hlink://"); //$NON-NLS-1$
+  public static EObject getEObjectFromHrefAttribute(final EObject context, String attValue) {
+    String[] split = attValue.split("hlink://"); //$NON-NLS-1$
     EObject eObject = null;
     if (split.length == 2) {
       String id = split[1].replace("/", ""); //$NON-NLS-1$ //$NON-NLS-2$
       eObject = IdManager.getInstance().getEObject(id, new IScope() {
         @Override
         public List<Resource> getResources() {
-          return TransactionHelper.getEditingDomain(context_p).getResourceSet().getResources();
+          return TransactionHelper.getEditingDomain(context).getResourceSet().getResources();
         }
       });
     }

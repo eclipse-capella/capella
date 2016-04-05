@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.policies.diff;
 
 import org.eclipse.emf.diffmerge.api.IDiffPolicy;
@@ -19,6 +20,6 @@ import org.eclipse.emf.ecore.EReference;
  */
 public interface IDiffPolicy2 extends IDiffPolicy {
 
-  boolean coverMatchOnReference(IMatch match_p, EReference reference_p);
+  boolean coverMatchOnReference(IMatch match, EReference reference);
 
 }

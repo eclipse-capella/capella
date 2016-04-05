@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.fa;
 
 import java.util.ArrayList;
@@ -63,73 +64,73 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
    * {@inheritDoc}
    */
   @Override
-  public IStatus transformRequired(EObject source_p, IContext context_p) {
-    IStatus result = super.transformRequired(source_p, context_p);
+  public IStatus transformRequired(EObject source, IContext context) {
+    IStatus result = super.transformRequired(source, context);
 
     return result;
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    if (BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(element_p)) == element_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    if (BlockArchitectureExt.getRootFunction(BlockArchitectureExt.getRootBlockArchitecture(element)) == element) {
       return;
     }
-    super.retrieveContainer(element_p, result_p, context_p);
+    super.retrieveContainer(element, result, context);
   }
 
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    EClass targetType = getTargetType(element_p, context_p);
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    EClass targetType = getTargetType(element, context);
 
-    if (container_p instanceof OperationalActivityPkg) {
+    if (container instanceof OperationalActivityPkg) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITIES;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
         return OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG__OWNED_OPERATIONAL_ACTIVITY_PKGS;
       }
-    } else if (container_p instanceof OperationalActivity) {
+    } else if (container instanceof OperationalActivity) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
         return OaPackage.Literals.OPERATIONAL_ACTIVITY__OWNED_OPERATIONAL_ACTIVITY_PKGS;
       }
 
-    } else if (container_p instanceof SystemFunctionPkg) {
+    } else if (container instanceof SystemFunctionPkg) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS;
       }
 
-    } else if (container_p instanceof SystemFunction) {
+    } else if (container instanceof SystemFunction) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
         return CtxPackage.Literals.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS;
       }
 
-    } else if (container_p instanceof LogicalFunctionPkg) {
+    } else if (container instanceof LogicalFunctionPkg) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTIONS;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_FUNCTION_PKG__OWNED_LOGICAL_FUNCTION_PKGS;
       }
 
-    } else if (container_p instanceof LogicalFunction) {
+    } else if (container instanceof LogicalFunction) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalFunctionPkg) {
+    } else if (container instanceof PhysicalFunctionPkg) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS;
       }
 
-    } else if (container_p instanceof PhysicalFunction) {
+    } else if (container instanceof PhysicalFunction) {
       if (FaPackage.Literals.ABSTRACT_FUNCTION.isSuperTypeOf(targetType)) {
         return FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS;
       } else if (FaPackage.Literals.FUNCTION_PKG.isSuperTypeOf(targetType)) {
@@ -137,21 +138,21 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
       }
 
     }
-    return element_p.eContainingFeature();
+    return element.eContainingFeature();
   }
 
   @Override
-  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject currentContainer = element_p.eContainer();
+  protected EObject getBestContainer(EObject element, EObject result, IContext context) {
+    EObject currentContainer = element.eContainer();
     EObject bestContainer = null;
     while ((currentContainer != null)) {
       bestContainer =
-          TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(currentContainer, context_p, FaPackage.Literals.ABSTRACT_FUNCTION, element_p,
-              result_p);
+          TransformationHandlerHelper.getInstance(context).getBestTracedElement(currentContainer, context, FaPackage.Literals.ABSTRACT_FUNCTION, element,
+              result);
       if (bestContainer == null) {
         bestContainer =
-            TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(currentContainer, context_p, FaPackage.Literals.FUNCTION_PKG, element_p,
-                result_p);
+            TransformationHandlerHelper.getInstance(context).getBestTracedElement(currentContainer, context, FaPackage.Literals.FUNCTION_PKG, element,
+                result);
       }
 
       if (bestContainer != null) {
@@ -163,42 +164,42 @@ public class AbstractFunctionRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getRootFunction(target);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    AbstractFunction element = (AbstractFunction) source_p;
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    AbstractFunction element = (AbstractFunction) source;
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
-      result_p.addAll(FunctionExt.getOwnedFunctionPorts(element));
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, FunctionExt.getOwnedFunctionPorts(element), context_p);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
+      result.addAll(FunctionExt.getOwnedFunctionPorts(element));
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, FunctionExt.getOwnedFunctionPorts(element), context);
 
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getIncoming(), context_p);
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoing(), context_p);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getIncoming(), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoing(), context);
 
-      result_p.addAll(element.getIncoming());
-      result_p.addAll(element.getOutgoing());
+      result.addAll(element.getIncoming());
+      result.addAll(element.getOutgoing());
     }
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    AbstractFunction element = (AbstractFunction) element_p;
-    needed_p.addAll(createDefaultPrecedencePremices(element, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES));
+  protected void premicesRelated(EObject eObject1, ArrayList<IPremise> needed) {
+    super.premicesRelated(eObject1, needed);
+    AbstractFunction element = (AbstractFunction) eObject1;
+    needed.addAll(createDefaultPrecedencePremices(element, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES));
   }
 
 }

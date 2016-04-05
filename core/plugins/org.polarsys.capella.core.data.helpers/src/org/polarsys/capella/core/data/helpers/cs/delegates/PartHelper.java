@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import java.util.ArrayList;
@@ -72,10 +73,10 @@ public class PartHelper {
 
   }
 
-  protected List<Interface> getProvidedInterfaces(Part element_p) {
+  protected List<Interface> getProvidedInterfaces(Part element) {
     List<Interface> ret = new ArrayList<Interface>();
 
-    Type representedElement = element_p.getType();
+    Type representedElement = element.getType();
     if (representedElement instanceof Component) {
       ret = ComponentHelper.getInstance().getProvidedInterfaces((Component) representedElement);
     }
@@ -83,10 +84,10 @@ public class PartHelper {
     return ret;
   }
 
-  protected List<Interface> getRequiredInterfaces(Part element_p) {
+  protected List<Interface> getRequiredInterfaces(Part element) {
     List<Interface> ret = new ArrayList<Interface>();
 
-    Type representedElement = element_p.getType();
+    Type representedElement = element.getType();
     if (representedElement instanceof Component) {
       ret = ComponentHelper.getInstance().getRequiredInterfaces((Component) representedElement);
     }
@@ -94,9 +95,9 @@ public class PartHelper {
     return ret;
   }
 
-  protected List<Part> getDeployedParts(Part element_p) {
+  protected List<Part> getDeployedParts(Part element) {
     List<Part> ret = new ArrayList<Part>();
-    for (AbstractDeploymentLink deploymentLink : element_p.getDeploymentLinks()) {
+    for (AbstractDeploymentLink deploymentLink : element.getDeploymentLinks()) {
       DeployableElement deployableElement = deploymentLink.getDeployedElement();
       if (deployableElement instanceof Part) {
         ret.add((Part) deployableElement);
@@ -105,9 +106,9 @@ public class PartHelper {
     return ret;
   }
 
-  protected List<Part> getDeployingParts(Part element_p) {
+  protected List<Part> getDeployingParts(Part element) {
     List<Part> ret = new ArrayList<Part>();
-    for (AbstractDeploymentLink deploymentLink : element_p.getDeployingLinks()) {
+    for (AbstractDeploymentLink deploymentLink : element.getDeployingLinks()) {
       DeploymentTarget deploymentTarget = deploymentLink.getLocation();
       if (deploymentTarget instanceof Part) {
         ret.add((Part) deploymentTarget);

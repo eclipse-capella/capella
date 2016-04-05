@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.merge.scope;
 
 import java.util.ArrayList;
@@ -37,40 +38,40 @@ public class PartialRootedModelScope extends RootedModelScope {
 
   /**
    * Constructor
-   * @param elements_p a non-null list of the elements initially in the scope
+   * @param elements a non-null list of the elements initially in the scope
    */
-  public PartialRootedModelScope(Collection<? extends EObject> elements_p) {
-    super(MiscUtil.getRoots(elements_p));
-    _inScope = new FHashSet<EObject>(elements_p, IEqualityTester.BY_REFERENCE);
+  public PartialRootedModelScope(Collection<? extends EObject> elements) {
+    super(MiscUtil.getRoots(elements));
+    _inScope = new FHashSet<EObject>(elements, IEqualityTester.BY_REFERENCE);
   }
 
   /**
    * @see org.polarsys.capella.common.consonance.scopes.RootedModelScope#add(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public boolean add(EObject element_p) {
-    return add(element_p, false);
+  public boolean add(EObject element) {
+    return add(element, false);
   }
 
-  protected List<EObject> retains(List<EObject> object_p) {
-    object_p.retainAll(_inScope);
-    return object_p;
+  protected List<EObject> retains(List<EObject> object) {
+    object.retainAll(_inScope);
+    return object;
   }
 
   /**
    * Add the given element to the scope
-   * @param element_p a non-null element which is out of the scope
-   * @param includeChildren_p whether all its children must be added too
+   * @param element a non-null element which is out of the scope
+   * @param includeChildren whether all its children must be added too
    */
-  public boolean add(EObject element_p, boolean includeChildren_p) {
+  public boolean add(EObject element, boolean includeChildren) {
     boolean result = true;
-    if (!EcoreUtil.isAncestor(getContents(), element_p)) {
-      result = super.add(element_p);
+    if (!EcoreUtil.isAncestor(getContents(), element)) {
+      result = super.add(element);
     }
     if (result) {
-      _inScope.add(element_p);
-      if (includeChildren_p) {
-        addAllChildrenToScope(element_p, null);
+      _inScope.add(element);
+      if (includeChildren) {
+        addAllChildrenToScope(element, null);
       }
     }
     return result;
@@ -81,37 +82,37 @@ public class PartialRootedModelScope extends RootedModelScope {
    *      org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public boolean add(EObject source_p, EReference reference_p, EObject value_p) {
+  public boolean add(EObject source, EReference reference, EObject value) {
     // Remember previously owned value if relevant
     EObject previouslyContainedValue = null;
-    if (!reference_p.isMany() && reference_p.isContainment()) {
-      List<EObject> values = get(source_p, reference_p);
+    if (!reference.isMany() && reference.isContainment()) {
+      List<EObject> values = get(source, reference);
       if (!values.isEmpty()) {
         previouslyContainedValue = values.get(0);
       }
     }
-    boolean result = super.add(source_p, reference_p, value_p);
+    boolean result = super.add(source, reference, value);
     if (result) {
       // Remove previously owned value from scope
       if (previouslyContainedValue != null) {
         _inScope.remove(previouslyContainedValue);
       }
       // Add new value in scope
-      _inScope.add(value_p);
+      _inScope.add(value);
     }
     return result;
   }
 
   /**
    * Add all children of the current roots that are accepted by the given filter
-   * @param filter_p an optional filter, where null stands for no filtering
+   * @param filter an optional filter, where null stands for no filtering
    */
-  public void build(IModelScopeFilter filter_p) {
+  public void build(IModelScopeFilter filter) {
     _inScope.clear();
     for (EObject root : super.getContents()) {
-      if ((filter_p == null) || filter_p.accepts(root)) {
+      if ((filter == null) || filter.accepts(root)) {
         _inScope.add(root);
-        addAllChildrenToScope(root, filter_p);
+        addAllChildrenToScope(root, filter);
       }
     }
 
@@ -129,9 +130,9 @@ public class PartialRootedModelScope extends RootedModelScope {
    */
 
   @Override
-  protected List<EObject> get(EObject source_p, EReference reference_p, boolean resolveProxies_p) {
+  protected List<EObject> get(EObject source, EReference reference, boolean resolveProxies) {
 
-    List<EObject> originalValues = super.get(source_p, reference_p, resolveProxies_p);
+    List<EObject> originalValues = super.get(source, reference, resolveProxies);
     List<EObject> result = new FArrayList<EObject>(originalValues, IEqualityTester.BY_REFERENCE);
     retains(result);
     return result;
@@ -140,14 +141,14 @@ public class PartialRootedModelScope extends RootedModelScope {
 
   /**
    * Add all children of the given in-scope element
-   * @param element_p a non-null element which already belongs to the scope
-   * @param filter_p an optional filter, where null stands for no filtering
+   * @param element a non-null element which already belongs to the scope
+   * @param filter an optional filter, where null stands for no filtering
    */
-  protected void addAllChildrenToScope(EObject element_p, IModelScopeFilter filter_p) {
-    TreeIterator<EObject> technicalIterator = element_p.eAllContents();
+  protected void addAllChildrenToScope(EObject element, IModelScopeFilter filter) {
+    TreeIterator<EObject> technicalIterator = element.eAllContents();
     while (technicalIterator.hasNext()) {
       EObject child = technicalIterator.next();
-      if ((filter_p == null) || filter_p.accepts(child)) {
+      if ((filter == null) || filter.accepts(child)) {
         _inScope.add(child);
       } else {
         technicalIterator.prune();
@@ -159,8 +160,8 @@ public class PartialRootedModelScope extends RootedModelScope {
    * @see org.polarsys.capella.common.consonance.scopes.RootedModelScope#covers(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public boolean covers(EObject element_p) {
-    return _inScope.contains(element_p);
+  public boolean covers(EObject element) {
+    return _inScope.contains(element);
   }
 
   /**
@@ -178,8 +179,8 @@ public class PartialRootedModelScope extends RootedModelScope {
    * @see org.polarsys.capella.common.consonance.scopes.AbstractModelScope#getContents(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public List<EObject> getContents(EObject element_p) {
-    List<EObject> result = new FArrayList<EObject>(super.getContents(element_p), IEqualityTester.BY_REFERENCE);
+  public List<EObject> getContents(EObject element) {
+    List<EObject> result = new FArrayList<EObject>(super.getContents(element), IEqualityTester.BY_REFERENCE);
     retains(result);
     return Collections.unmodifiableList(result);
   }
@@ -188,19 +189,19 @@ public class PartialRootedModelScope extends RootedModelScope {
    * @see org.polarsys.capella.common.consonance.scopes.RootedModelScope#remove(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public boolean remove(EObject element_p) {
-    boolean result = super.remove(element_p);
-    removeFromScope(element_p);
+  public boolean remove(EObject element) {
+    boolean result = super.remove(element);
+    removeFromScope(element);
     return result;
   }
 
   /**
    * Remove the given element and its children from the scope while leaving the model untouched
-   * @param element_p a non-null element
+   * @param element a non-null element
    */
-  public void removeFromScope(EObject element_p) {
-    _inScope.remove(element_p);
-    TreeIterator<EObject> technicalIterator = element_p.eAllContents();
+  public void removeFromScope(EObject element) {
+    _inScope.remove(element);
+    TreeIterator<EObject> technicalIterator = element.eAllContents();
     while (technicalIterator.hasNext()) {
       EObject child = technicalIterator.next();
       _inScope.remove(child);
@@ -211,7 +212,7 @@ public class PartialRootedModelScope extends RootedModelScope {
    * Return whether the given element is meaningful when considered within the given set of elements or their children only, i.e., when separated from anything
    * outside those elements.
    */
-  protected boolean isMeaningfulWithin(EObject element_p, Collection<? extends EObject> contexts_p) {
+  protected boolean isMeaningfulWithin(EObject element, Collection<? extends EObject> contexts) {
     return true;
   }
 

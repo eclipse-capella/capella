@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.filter;
 
 import java.util.Collection;
@@ -31,11 +32,11 @@ public class AttributeStringValueFromSource extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public String getDescription(IDifference difference_p) {
+  public String getDescription(IDifference difference) {
     String attribute = "attribute";
-    if (difference_p != null) {
-      if (difference_p instanceof IAttributeValuePresence) {
-        IAttributeValuePresence o = (IAttributeValuePresence) difference_p;
+    if (difference != null) {
+      if (difference instanceof IAttributeValuePresence) {
+        IAttributeValuePresence o = (IAttributeValuePresence) difference;
         if (o.getFeature() != null) {
           attribute = o.getFeature().getName();
         }
@@ -48,12 +49,12 @@ public class AttributeStringValueFromSource extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
+  public FilterAction getDestinationRole(IDifference difference, Role role1, IContext iContext1) {
     FilterAction role = null;
-    if (difference_p instanceof IAttributeValuePresence) {
+    if (difference instanceof IAttributeValuePresence) {
       // We merge AttributeValuePresence if value is empty into target
-      if (role_p == Role.REFERENCE) {
-        IAttributeValuePresence avp = (IAttributeValuePresence) difference_p;
+      if (role1 == Role.REFERENCE) {
+        IAttributeValuePresence avp = (IAttributeValuePresence) difference;
         EObject diffelt = avp.getElementMatch().get(Role.REFERENCE);
         if (diffelt != null) {
           Collection<IMergeableDifference> diffs = avp.getDirectImpliesDependencies(Role.TARGET);
@@ -92,7 +93,7 @@ public class AttributeStringValueFromSource extends AbstractFilterItem {
    * Returns whether the difference from attribute value should be merged or not
    * @return
    */
-  public boolean isMergeableAttribute(EAttribute attribute_p, EObject source_p, EObject target_p, Object oldValue_p, Object newValue_p) {
+  public boolean isMergeableAttribute(EAttribute attribute, EObject source, EObject target, Object oldValue, Object newValue) {
     return false;
   }
 
@@ -100,9 +101,9 @@ public class AttributeStringValueFromSource extends AbstractFilterItem {
    * Returns whether the difference from attribute value should be merged or not
    * @return
    */
-  public boolean isMergeableAttributeValue(EAttribute attribute_p, EObject source_p, EObject target_p, Object oldValue_p, Object newValue_p) {
+  public boolean isMergeableAttributeValue(EAttribute attribute, EObject source, EObject target, Object oldValue, Object newValue) {
     // Merge name of element if name is same as EClass of the element
-    if ((oldValue_p == null) || ((oldValue_p instanceof String) && (((String) oldValue_p).length() == 0))) {
+    if ((oldValue == null) || ((oldValue instanceof String) && (((String) oldValue).length() == 0))) {
       return true;
     }
     return false;

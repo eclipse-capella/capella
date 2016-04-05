@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.fa;
 
 import java.util.List;
@@ -33,10 +34,10 @@ public class FunctionOutputPortRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  public IStatus transformRequired(EObject element_p, IContext context_p) {
-    IStatus result = super.transformRequired(element_p, context_p);
+  public IStatus transformRequired(EObject element, IContext context) {
+    IStatus result = super.transformRequired(element, context);
     if (result.isOK()) {
-      result = TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(element_p.eContainer(), context_p);
+      result = TransformationHandlerHelper.getInstance(context).isOrWillBeTransformed(element.eContainer(), context);
     }
     return result;
   }
@@ -47,27 +48,27 @@ public class FunctionOutputPortRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS,
-        context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.FUNCTION_OUTPUT_PORT__OUTGOING_EXCHANGE_ITEMS,
+        context);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    FunctionOutputPort element = (FunctionOutputPort) source_p;
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    FunctionOutputPort element = (FunctionOutputPort) source;
 
-    result_p.addAll(element.getIncomingPortAllocations());
-    result_p.addAll(element.getOutgoingPortAllocations());
+    result.addAll(element.getIncomingPortAllocations());
+    result.addAll(element.getOutgoingPortAllocations());
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
-      result_p.addAll(element.getIncoming());
-      result_p.addAll(element.getOutgoing());
-      result_p.addAll(element.getOutgoingExchangeItems());
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getIncoming(), context_p);
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoing(), context_p);
-      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoingExchangeItems(), context_p);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
+      result.addAll(element.getIncoming());
+      result.addAll(element.getOutgoing());
+      result.addAll(element.getOutgoingExchangeItems());
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getIncoming(), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoing(), context);
+      ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOutgoingExchangeItems(), context);
 
     }
   }

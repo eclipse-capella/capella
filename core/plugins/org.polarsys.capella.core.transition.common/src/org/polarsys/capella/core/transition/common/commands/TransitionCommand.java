@@ -26,13 +26,13 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 public abstract class TransitionCommand extends AbstractReadWriteCommand {
 
   /** current selection */
-  protected Collection<Object> _selection = null;
+  protected Collection<Object> selection = null;
 
   /** a progress monitor */
-  private IProgressMonitor _progressMonitor = null;
+  private IProgressMonitor progressMonitor = null;
 
   /** the name of the command */
-  protected String _name;
+  protected String name;
 
   /**
    * @param modelElement
@@ -46,8 +46,8 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
    * @param progressMonitor
    */
   public TransitionCommand(Collection<Object> selection, IProgressMonitor progressMonitor) {
-    _selection = selection;
-    _progressMonitor = progressMonitor;
+    this.selection = selection;
+    this.progressMonitor = progressMonitor;
     setName(getClass().getSimpleName());
   }
 
@@ -56,7 +56,7 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
    * @param the command's name
    */
   public void setName(String name) {
-    _name = name;
+    this.name = name;
   }
 
   /**
@@ -64,14 +64,14 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
    */
   @Override
   public String getName() {
-    return _name;
+    return name;
   }
 
   /**
    * @return the progressMonitor
    */
   public IProgressMonitor getProgressMonitor() {
-    return _progressMonitor;
+    return progressMonitor;
   }
 
   /**
@@ -79,7 +79,7 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
    */
   public void run() {
 
-    Collection<Object> elements = retrieveElements(_selection);
+    Collection<Object> elements = retrieveElements(selection);
 
     // Perform a transition for all retrieved elements
     IProgressMonitor monitor = getProgressMonitor();

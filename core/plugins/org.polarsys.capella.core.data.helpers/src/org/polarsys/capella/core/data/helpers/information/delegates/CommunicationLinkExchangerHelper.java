@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import java.util.ArrayList;
@@ -37,37 +38,37 @@ public class CommunicationLinkExchangerHelper {
     return instance;
   }
 
-  public Object doSwitch(CommunicationLinkExchanger element_p, EStructuralFeature feature_p){
+  public Object doSwitch(CommunicationLinkExchanger element, EStructuralFeature feature){
     Object ret = null;
-    if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE)) {
-      ret = getLinks(element_p, CommunicationLinkKind.PRODUCE);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME)) {
-      ret = getLinks(element_p, CommunicationLinkKind.CONSUME);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND)) {
-      ret = getLinks(element_p, CommunicationLinkKind.SEND);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE)) {
-      ret = getLinks(element_p, CommunicationLinkKind.RECEIVE);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL)) {
-      ret = getLinks(element_p, CommunicationLinkKind.CALL);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE)) {
-      ret = getLinks(element_p, CommunicationLinkKind.EXECUTE);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE)) {
-      ret = getLinks(element_p, CommunicationLinkKind.WRITE);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS)) {
-      ret = getLinks(element_p, CommunicationLinkKind.ACCESS);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE)) {
-      ret = getLinks(element_p, CommunicationLinkKind.ACQUIRE);
-    } else if (feature_p.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT)) {
-      ret = getLinks(element_p, CommunicationLinkKind.TRANSMIT);
+    if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE)) {
+      ret = getLinks(element, CommunicationLinkKind.PRODUCE);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME)) {
+      ret = getLinks(element, CommunicationLinkKind.CONSUME);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND)) {
+      ret = getLinks(element, CommunicationLinkKind.SEND);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE)) {
+      ret = getLinks(element, CommunicationLinkKind.RECEIVE);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL)) {
+      ret = getLinks(element, CommunicationLinkKind.CALL);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE)) {
+      ret = getLinks(element, CommunicationLinkKind.EXECUTE);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE)) {
+      ret = getLinks(element, CommunicationLinkKind.WRITE);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS)) {
+      ret = getLinks(element, CommunicationLinkKind.ACCESS);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE)) {
+      ret = getLinks(element, CommunicationLinkKind.ACQUIRE);
+    } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT)) {
+      ret = getLinks(element, CommunicationLinkKind.TRANSMIT);
     }
 
     return ret;
   }
   
-  private List<CommunicationLink> getLinks(CommunicationLinkExchanger element_p, CommunicationLinkKind kind_p) {
+  private List<CommunicationLink> getLinks(CommunicationLinkExchanger element, CommunicationLinkKind kind) {
     List<CommunicationLink> links = new ArrayList<CommunicationLink>();
-    for (CommunicationLink link : element_p.getOwnedCommunicationLinks()) {
-      if (kind_p.equals(link.getKind())) {
+    for (CommunicationLink link : element.getOwnedCommunicationLinks()) {
+      if (kind.equals(link.getKind())) {
         links.add(link);
       }
     }

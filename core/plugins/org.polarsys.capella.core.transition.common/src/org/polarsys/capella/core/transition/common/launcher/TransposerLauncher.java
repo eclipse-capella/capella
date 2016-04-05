@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.launcher;
 
 import java.util.ArrayList;
@@ -55,8 +56,8 @@ public class TransposerLauncher extends ActivitiesLauncher {
     return MAPPING;
   }
 
-  protected ExtendedTransposer createTransposer(String purpose_p, String mappingId_p) {
-    return new ExtendedTransposer(purpose_p, mappingId_p) {
+  protected ExtendedTransposer createTransposer(String purpose, String mappingId) {
+    return new ExtendedTransposer(purpose, mappingId) {
       @Override
       public void initCadence() {
         cadenceLauncher = _cadenceLauncher;
@@ -107,8 +108,8 @@ public class TransposerLauncher extends ActivitiesLauncher {
    * @param parameter_p
    */
   @Override
-  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId_p) {
-    SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId_p);
+  protected SharedWorkflowActivityParameter getSharedParameter(String workflowId) {
+    SharedWorkflowActivityParameter parameter = super.getSharedParameter(workflowId);
 
     parameter.addSharedParameter(new GenericParameter<IContext>(ITransposerWorkflow.TRANSPOSER_CONTEXT, _transposer.getContext(),
         "Context used during rules execution")); //$NON-NLS-1$
@@ -120,24 +121,24 @@ public class TransposerLauncher extends ActivitiesLauncher {
    * (non-Javadoc)
    * @see org.eclipse.jface.action.Action#run()
    */
-  public void run(Collection<Object> selection_p, boolean save, IProgressMonitor monitor_p) {
+  public void run(Collection<Object> selection1, boolean save, IProgressMonitor monitor) {
     List<Object> selection = new ArrayList<Object>();
-    selection.addAll(selection_p);
-    launch(selection, getPurpose(), getMapping(), monitor_p);
+    selection.addAll(selection1);
+    launch(selection, getPurpose(), getMapping(), monitor);
   }
 
   @Override
-  public void launch(Collection<Object> selection_p, String purpose_p, String mappingId_p, IProgressMonitor monitor_p) {
+  public void launch(Collection<Object> selection, String purpose, String mappingId, IProgressMonitor monitor) {
 
     try {
       initializeLogHandler();
 
-      _transposer = createTransposer(purpose_p, mappingId_p);
+      _transposer = createTransposer(purpose, mappingId);
       _transposer.getContext().put(ITransitionConstants.TRANSPOSER_INSTANCE, _transposer);
-      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_SELECTION, selection_p);
+      _transposer.getContext().put(ITransitionConstants.TRANSPOSER_SELECTION, selection);
       _transposer.getContext().put(ITransposerWorkflow.TRANSPOSER_ANALYSIS_SOURCES, new ArrayList<Object>());
 
-      triggerActivities(selection_p, getWorkflow(), monitor_p);
+      triggerActivities(selection, getWorkflow(), monitor);
 
     } catch (OperationCanceledException e) {
       processCancel();
@@ -162,8 +163,8 @@ public class TransposerLauncher extends ActivitiesLauncher {
     private String array[];
     private int pos = 0;
 
-    public DispatcherArrayIterator(String array_p[]) {
-      array = array_p;
+    public DispatcherArrayIterator(String array[]) {
+      this.array = array;
     }
 
     public boolean hasNext() {

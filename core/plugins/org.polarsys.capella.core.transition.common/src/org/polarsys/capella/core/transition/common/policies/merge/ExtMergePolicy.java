@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.policies.merge;
 
 import java.util.Collection;
@@ -32,66 +33,66 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
 
   protected static final String MERGE_POLICY__UNCOPY_FEATURES = "MERGE_POLICY__UNCOPY_FEATURES"; //$NON-NLS-1$
 
-  private IContext _context;
+  private IContext context;
 
-  protected Collection<EStructuralFeature> getUnwantedFeatures(IContext context_p) {
-    if (!context_p.exists(MERGE_POLICY__UNCOPY_FEATURES)) {
-      context_p.put(MERGE_POLICY__UNCOPY_FEATURES, new HashSet<EStructuralFeature>());
+  protected Collection<EStructuralFeature> getUnwantedFeatures(IContext context) {
+    if (!context.exists(MERGE_POLICY__UNCOPY_FEATURES)) {
+      context.put(MERGE_POLICY__UNCOPY_FEATURES, new HashSet<EStructuralFeature>());
     }
-    return (Collection<EStructuralFeature>) context_p.get(MERGE_POLICY__UNCOPY_FEATURES);
+    return (Collection<EStructuralFeature>) context.get(MERGE_POLICY__UNCOPY_FEATURES);
   }
 
   public IContext getContext() {
-    return _context;
+    return context;
   }
 
-  public ExtMergePolicy(IContext context_p) {
-    _context = context_p;
+  public ExtMergePolicy(IContext context) {
+    this.context = context;
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean copyFeature(EStructuralFeature feature_p, IFeaturedModelScope scope_p) {
+  public boolean copyFeature(EStructuralFeature feature, IFeaturedModelScope scope) {
     IContext context = getContext();
 
-    if (getUnwantedFeatures(context).contains(feature_p)) {
+    if (getUnwantedFeatures(context).contains(feature)) {
       return false;
     }
 
     IHandler handler = FilteringDifferencesHandlerHelper.getInstance(context);
     if (handler instanceof CompoundFilteringItems) {
       for (IFilterItem item : ((CompoundFilteringItems) handler).getFilterItems(context)) {
-        if (!item.isMergeable(feature_p, context)) {
-          getUnwantedFeatures(context).add(feature_p);
+        if (!item.isMergeable(feature, context)) {
+          getUnwantedFeatures(context).add(feature);
           return false;
         }
       }
     }
 
-    return super.copyFeature(feature_p, scope_p);
+    return super.copyFeature(feature, scope);
   }
 
   /**
    * {@inheritDoc}
    */
-  public boolean copy(EObject source_p) {
+  public boolean copy(EObject source) {
     return true;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
-    getUnwantedFeatures(context_p).clear();
+  public IStatus dispose(IContext context) {
+    getUnwantedFeatures(context).clear();
     return Status.OK_STATUS;
   }
 

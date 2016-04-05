@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information;
 
 import java.util.ArrayList;
@@ -50,58 +51,58 @@ public class CollectionRule extends MultiplicityElementRule {
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getDataPkg(target);
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    Collection element = (Collection) source_p;
-    result_p.addAll(element.getIndex());
-    result_p.addAll(element.getContainedOperations());
-    result_p.add(element.getType());
-    result_p.addAll(element.getOwnedFeatures());
-    result_p.addAll(element.getOwnedDataValues());
-    result_p.addAll(element.getSuperGeneralizations());
+    Collection element = (Collection) source;
+    result.addAll(element.getIndex());
+    result.addAll(element.getContainedOperations());
+    result.add(element.getType());
+    result.addAll(element.getOwnedFeatures());
+    result.addAll(element.getOwnedDataValues());
+    result.addAll(element.getSuperGeneralizations());
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getIndex(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getContainedOperations(), context_p);
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getType(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedFeatures(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDataValues(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getSuperGeneralizations(), context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getIndex(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getContainedOperations(), context);
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getType(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedFeatures(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDataValues(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getSuperGeneralizations(), context);
 
     }
 
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveContainer(element_p, result_p, context_p);
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
+    super.retrieveContainer(element, result, context);
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InformationPackage.Literals.COLLECTION__INDEX, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InformationPackage.Literals.COLLECTION__CONTAINED_OPERATIONS, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, InformationPackage.Literals.COLLECTION__TYPE, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, InformationPackage.Literals.COLLECTION__INDEX, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, InformationPackage.Literals.COLLECTION__CONTAINED_OPERATIONS, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, InformationPackage.Literals.COLLECTION__TYPE, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, InformationPackage.Literals.COLLECTION__INDEX));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, InformationPackage.Literals.COLLECTION__CONTAINED_OPERATIONS));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, InformationPackage.Literals.COLLECTION__TYPE));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, InformationPackage.Literals.COLLECTION__INDEX));
+    needed.addAll(createDefaultPrecedencePremices(element, InformationPackage.Literals.COLLECTION__CONTAINED_OPERATIONS));
+    needed.addAll(createDefaultPrecedencePremices(element, InformationPackage.Literals.COLLECTION__TYPE));
   }
 
 }

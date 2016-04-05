@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.ArrayList;
@@ -39,54 +40,54 @@ public class InterfaceUseRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  public IStatus transformRequired(EObject source_p, IContext context_p) {
-    IStatus result = super.transformRequired(source_p, context_p);
+  public IStatus transformRequired(EObject source, IContext context) {
+    IStatus result = super.transformRequired(source, context);
 
     if (result.isOK()) {
-      InterfaceUse element = (InterfaceUse) source_p;
+      InterfaceUse element = (InterfaceUse) source;
       EObject sourceElement = element.getUsedInterface();
-      EObject targetElement = getSource(source_p, context_p);
-      result = TransformationHandlerHelper.getInstance(context_p).checkTransformRequired(element, context_p, sourceElement, targetElement);
+      EObject targetElement = getSource(source, context);
+      result = TransformationHandlerHelper.getInstance(context).checkTransformRequired(element, context, sourceElement, targetElement);
     }
     return result;
 
   }
 
   @Override
-  protected EObject getSourceContainer(EObject element_p, EObject result_p, IContext context_p) {
-    return getSource(element_p, context_p);
+  protected EObject getSourceContainer(EObject element, EObject result, IContext context) {
+    return getSource(element, context);
   }
 
-  protected EObject getSource(EObject source_p, IContext context_p) {
-    InterfaceUse element = (InterfaceUse) source_p;
+  protected EObject getSource(EObject source, IContext context) {
+    InterfaceUse element = (InterfaceUse) source;
     return element.getInterfaceUser();
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    InterfaceUse element = (InterfaceUse) source_p;
-    result_p.add(getSource(source_p, context_p));
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    InterfaceUse element = (InterfaceUse) source;
+    result.add(getSource(source, context));
 
     // Add related function if linked to the source of the transformation
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
-      result_p.add(element.getUsedInterface());
-      ContextScopeHandlerHelper.getInstance(context_p).add(ITransitionConstants.SOURCE_SCOPE, element.getUsedInterface(), context_p);
+    if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
+      result.add(element.getUsedInterface());
+      ContextScopeHandlerHelper.getInstance(context).add(ITransitionConstants.SOURCE_SCOPE, element.getUsedInterface(), context);
     }
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    InterfaceUse element = (InterfaceUse) element_p;
-    needed_p.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE));
-    needed_p.addAll(createDefaultPrecedencePremices(Collections.singletonList(getSource(element_p, getCurrentContext())), "part"));
+  protected void premicesRelated(EObject eObject1, ArrayList<IPremise> needed) {
+    super.premicesRelated(eObject1, needed);
+    InterfaceUse element = (InterfaceUse) eObject1;
+    needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE));
+    needed.addAll(createDefaultPrecedencePremices(Collections.singletonList(getSource(eObject1, getCurrentContext())), "part"));
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CsPackage.Literals.INTERFACE_USE__USED_INTERFACE, context);
   }
 
 }

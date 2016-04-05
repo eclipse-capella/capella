@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.ArrayList;
@@ -44,61 +45,61 @@ public class InitializeDiffMergeFromScopeActivity extends InitializeDiffMergeFro
   public static final String ID = "org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromScopeActivity"; //$NON-NLS-1$
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
   @Override
-  protected IStatus initializeReferenceScope(IContext context_p, ActivityParameters activityParams_p) {
-    EObject sourceTop = (EObject) context_p.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
-    context_p.put(ITransitionConstants.MERGE_REFERENCE_CONTAINER, sourceTop);
+  protected IStatus initializeReferenceScope(IContext context, ActivityParameters activityParams) {
+    EObject sourceTop = (EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
+    context.put(ITransitionConstants.MERGE_REFERENCE_CONTAINER, sourceTop);
 
     List<EObject> rootSource = new ArrayList<EObject>();
-    rootSource.add((EObject) context_p.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
+    rootSource.add((EObject) context.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
 
-    IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
+    IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context);
 
-    context_p.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
+    context.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
 
-    ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context_p));
+    ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context));
 
     return Status.OK_STATUS;
   }
 
   @Override
-  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
     return ITraceabilityHandler.DEFAULT;
   }
 
   @Override
-  protected IModelScopeFilter getReferenceFilter(final IContext context_p) {
+  protected IModelScopeFilter getReferenceFilter(final IContext context) {
     // With an initialization of diffMerge from scope, we filter build of scope with
     // all elements which contain one of scope elements.
     // In fact, without a transformation, each container should be present in the scope in order to diffMerge correctly.
 
     return new IModelScopeFilter() {
 
-      public boolean accepts(EObject source_p) {
-        IRulesHandler ruleHandler = (IRulesHandler) context_p.get(ITransitionConstants.RULES_HANDLER);
+      public boolean accepts(EObject source) {
+        IRulesHandler ruleHandler = (IRulesHandler) context.get(ITransitionConstants.RULES_HANDLER);
 
         boolean result = true;
         try {
-          MappingPossibility mapping = ruleHandler.getApplicablePossibility(source_p);
+          MappingPossibility mapping = ruleHandler.getApplicablePossibility(source);
           if (mapping != null) {
-            IRule<?> rule = ruleHandler.getApplicablePossibility(source_p).getCompleteRule();
+            IRule<?> rule = ruleHandler.getApplicablePossibility(source).getCompleteRule();
             if ((rule != null) && (rule instanceof IRuleTransformation)) {
               IRuleTransformation deeperRule = (IRuleTransformation) rule;
-              result = deeperRule.transformRequired(source_p, context_p).isOK();
+              result = deeperRule.transformRequired(source, context).isOK();
             }
           }
-        } catch (MappingPossibilityResolutionException exception_p) {
+        } catch (MappingPossibilityResolutionException exception) {
         }
 
         if (result) {
           result = false;
-          Collection<EObject> scope = ScopeHandlerHelper.getInstance(context_p).getScope(context_p);
+          Collection<EObject> scope = ScopeHandlerHelper.getInstance(context).getScope(context);
           for (EObject element : scope) {
-            if (element.equals(source_p) || EcoreUtil2.isContainedBy(element, source_p)) {
+            if (element.equals(source) || EcoreUtil2.isContainedBy(element, source)) {
               result = true;
               break;
             }
@@ -106,7 +107,7 @@ public class InitializeDiffMergeFromScopeActivity extends InitializeDiffMergeFro
         }
 
         if (!result) {
-          LogHelper.getInstance().warn(NLS.bind("{0} is removed from scope", LogHelper.getInstance().getText(source_p)), "okok");
+          LogHelper.getInstance().warn(NLS.bind("{0} is removed from scope", LogHelper.getInstance().getText(source)), "okok");
         }
         return result;
       }
@@ -114,11 +115,11 @@ public class InitializeDiffMergeFromScopeActivity extends InitializeDiffMergeFro
   }
 
   @Override
-  protected IModelScopeFilter getTargetFilter(final IContext context_p) {
+  protected IModelScopeFilter getTargetFilter(final IContext context) {
     // No specific rule here.
 
     return new IModelScopeFilter() {
-      public boolean accepts(EObject element_p) {
+      public boolean accepts(EObject element) {
         return true;
       }
     };

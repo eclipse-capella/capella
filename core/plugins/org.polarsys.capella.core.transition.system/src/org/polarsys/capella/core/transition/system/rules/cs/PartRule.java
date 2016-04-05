@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.ArrayList;
@@ -52,93 +53,93 @@ public class PartRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  public IStatus transformRequired(EObject element_p, IContext context_p) {
-    IStatus result = super.transformRequired(element_p, context_p);
+  public IStatus transformRequired(EObject eObject1, IContext iContext1) {
+    IStatus result = super.transformRequired(eObject1, iContext1);
 
     if (result.isOK()) {
-      AbstractTypedElement element = (AbstractTypedElement) element_p;
+      AbstractTypedElement element = (AbstractTypedElement) eObject1;
       AbstractType inSrc = element.getAbstractType();
 
-      result = TransformationHandlerHelper.getInstance(context_p).checkTransformRequired(element, context_p, inSrc);
+      result = TransformationHandlerHelper.getInstance(iContext1).checkTransformRequired(element, iContext1, inSrc);
     }
     return result;
   }
 
   @Override
-  protected void retrieveRequired(EObject element_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveRequired(element_p, result_p, context_p);
-    result_p.add(((Part) element_p).getAbstractType());
+  protected void retrieveRequired(EObject element, List<EObject> result, IContext context) {
+    super.retrieveRequired(element, result, context);
+    result.add(((Part) element).getAbstractType());
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
     return BlockArchitectureExt.getContext(target);
   }
 
   @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    if (container_p instanceof Component) {
+  protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
+    if (container instanceof Component) {
       return CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
     }
-    return element_p.eContainingFeature();
+    return element.eContainingFeature();
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    Part element = (Part) source_p;
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    Part element = (Part) source;
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
 
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getAbstractType(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getDeploymentLinks(), context_p);
-      result_p.addAll(element.getDeploymentLinks());
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, element, context)) {
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getAbstractType(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getDeploymentLinks(), context);
+      result.addAll(element.getDeploymentLinks());
     }
 
     // Add all involving involvements
-    handler.addAll(ITransitionConstants.SOURCE_SCOPE, ((InvolvedElement) element).getInvolvingInvolvements(), context_p);
+    handler.addAll(ITransitionConstants.SOURCE_SCOPE, ((InvolvedElement) element).getInvolvingInvolvements(), context);
 
     for (Involvement involvement : ((InvolvedElement) element).getInvolvingInvolvements()) {
       if (involvement instanceof PhysicalPathInvolvement) {
-        result_p.add(involvement);
+        result.add(involvement);
         InvolverElement involver = involvement.getInvolver();
         if ((involver != null) && (involver instanceof PhysicalPath)) {
-          result_p.add(involver);
-          handler.addAll(ITransitionConstants.SOURCE_SCOPE, Arrays.asList(involver), context_p);
+          result.add(involver);
+          handler.addAll(ITransitionConstants.SOURCE_SCOPE, Arrays.asList(involver), context);
         }
       }
     }
 
-    result_p.add(element.getAbstractType());
-    result_p.add(element.getOwnedMinCard());
-    result_p.add(element.getOwnedMinLength());
-    result_p.add(element.getOwnedMinValue());
-    result_p.add(element.getOwnedMaxCard());
-    result_p.add(element.getOwnedMaxLength());
-    result_p.add(element.getOwnedMaxValue());
+    result.add(element.getAbstractType());
+    result.add(element.getOwnedMinCard());
+    result.add(element.getOwnedMinLength());
+    result.add(element.getOwnedMinValue());
+    result.add(element.getOwnedMaxCard());
+    result.add(element.getOwnedMaxLength());
+    result.add(element.getOwnedMaxValue());
   }
 
   @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
+  protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     // Nothing here
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-        context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
+        context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE));
+  protected void premicesRelated(EObject element, ArrayList<IPremise> needed) {
+    super.premicesRelated(element, needed);
+    needed.addAll(createDefaultPrecedencePremices(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE));
   }
 
 }

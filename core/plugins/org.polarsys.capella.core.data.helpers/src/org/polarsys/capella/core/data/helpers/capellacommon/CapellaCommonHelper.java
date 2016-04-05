@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.capellacommon;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -53,80 +54,80 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
 
 public class CapellaCommonHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
-		if (object_p instanceof CapabilityRealizationInvolvement) {
-			ret = CapabilityRealizationInvolvementHelper.getInstance().doSwitch((CapabilityRealizationInvolvement) object_p, feature_p);
+		if (object instanceof CapabilityRealizationInvolvement) {
+			ret = CapabilityRealizationInvolvementHelper.getInstance().doSwitch((CapabilityRealizationInvolvement) object, feature);
 		}
-		else if (object_p instanceof CapabilityRealizationInvolvedElement) {
-			ret = CapabilityRealizationInvolvedElementHelper.getInstance().doSwitch((CapabilityRealizationInvolvedElement) object_p, feature_p);
+		else if (object instanceof CapabilityRealizationInvolvedElement) {
+			ret = CapabilityRealizationInvolvedElementHelper.getInstance().doSwitch((CapabilityRealizationInvolvedElement) object, feature);
 		}
-		else if (object_p instanceof GenericTrace) {
-			ret = GenericTraceHelper.getInstance().doSwitch((GenericTrace) object_p, feature_p);
+		else if (object instanceof GenericTrace) {
+			ret = GenericTraceHelper.getInstance().doSwitch((GenericTrace) object, feature);
 		}
-		else if (object_p instanceof StateMachine) {
-			ret = CapellaElementHelper.getInstance().doSwitch((StateMachine) object_p, feature_p);
+		else if (object instanceof StateMachine) {
+			ret = CapellaElementHelper.getInstance().doSwitch((StateMachine) object, feature);
 		}
-		else if (object_p instanceof Region) {
-			ret = NamedElementHelper.getInstance().doSwitch((Region) object_p, feature_p);
+		else if (object instanceof Region) {
+			ret = NamedElementHelper.getInstance().doSwitch((Region) object, feature);
 		}
-    else if (object_p instanceof ChoicePseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((ChoicePseudoState) object_p, feature_p);
+    else if (object instanceof ChoicePseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((ChoicePseudoState) object, feature);
     }
-    else if (object_p instanceof ForkPseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((ForkPseudoState) object_p, feature_p);
+    else if (object instanceof ForkPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((ForkPseudoState) object, feature);
     }
-    else if (object_p instanceof InitialPseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((InitialPseudoState) object_p, feature_p);
+    else if (object instanceof InitialPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((InitialPseudoState) object, feature);
     }
-    else if (object_p instanceof JoinPseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((JoinPseudoState) object_p, feature_p);
+    else if (object instanceof JoinPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((JoinPseudoState) object, feature);
     }
-    else if (object_p instanceof TerminatePseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((TerminatePseudoState) object_p, feature_p);
+    else if (object instanceof TerminatePseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((TerminatePseudoState) object, feature);
     }
-    else if (object_p instanceof EntryPointPseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((EntryPointPseudoState) object_p, feature_p);
+    else if (object instanceof EntryPointPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((EntryPointPseudoState) object, feature);
     }
-    else if (object_p instanceof ExitPointPseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((ExitPointPseudoState) object_p, feature_p);
+    else if (object instanceof ExitPointPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((ExitPointPseudoState) object, feature);
     }
-    else if (object_p instanceof ShallowHistoryPseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((ShallowHistoryPseudoState) object_p, feature_p);
+    else if (object instanceof ShallowHistoryPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((ShallowHistoryPseudoState) object, feature);
     }
-    else if (object_p instanceof DeepHistoryPseudoState) {
-      ret = AbstractStateHelper.getInstance().doSwitch((DeepHistoryPseudoState) object_p, feature_p);
+    else if (object instanceof DeepHistoryPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((DeepHistoryPseudoState) object, feature);
     }
-    else if (object_p instanceof FinalState) {
-      ret = StateHelper.getInstance().doSwitch((FinalState) object_p, feature_p);
+    else if (object instanceof FinalState) {
+      ret = StateHelper.getInstance().doSwitch((FinalState) object, feature);
     }
-    else if (object_p instanceof Mode) {
-      ret = StateHelper.getInstance().doSwitch((Mode) object_p, feature_p);
+    else if (object instanceof Mode) {
+      ret = StateHelper.getInstance().doSwitch((Mode) object, feature);
     }
-    else if (object_p instanceof State) {
-      ret = StateHelper.getInstance().doSwitch((State) object_p, feature_p);
+    else if (object instanceof State) {
+      ret = StateHelper.getInstance().doSwitch((State) object, feature);
     }
-    else if (object_p instanceof StateTransition) {
-      ret = StateTransitionHelper.getInstance().doSwitch((StateTransition) object_p, feature_p);
+    else if (object instanceof StateTransition) {
+      ret = StateTransitionHelper.getInstance().doSwitch((StateTransition) object, feature);
     }
-    else if (object_p instanceof StateEvent) {
-      ret = StateEventHelper.getInstance().doSwitch((StateEvent) object_p, feature_p);
+    else if (object instanceof StateEvent) {
+      ret = StateEventHelper.getInstance().doSwitch((StateEvent) object, feature);
     }
-    else if (object_p instanceof GenericTrace) {
-      ret = TraceHelper.getInstance().doSwitch((GenericTrace) object_p, feature_p);
+    else if (object instanceof GenericTrace) {
+      ret = TraceHelper.getInstance().doSwitch((GenericTrace) object, feature);
     }
-    else if (object_p instanceof AbstractStateRealization) {
-      ret = AbstractStateRealizationHelper.getInstance().doSwitch((AbstractStateRealization) object_p, feature_p);
+    else if (object instanceof AbstractStateRealization) {
+      ret = AbstractStateRealizationHelper.getInstance().doSwitch((AbstractStateRealization) object, feature);
     }
-    else if (object_p instanceof StateTransitionRealization) {
-      ret = StateTransitionRealizationHelper.getInstance().doSwitch((StateTransitionRealization) object_p, feature_p);
+    else if (object instanceof StateTransitionRealization) {
+      ret = StateTransitionRealizationHelper.getInstance().doSwitch((StateTransitionRealization) object, feature);
     }
-    else if (object_p instanceof StateEventRealization) {
-      ret = StateEventRealizationHelper.getInstance().doSwitch((StateEventRealization) object_p, feature_p);
+    else if (object instanceof StateEventRealization) {
+      ret = StateEventRealizationHelper.getInstance().doSwitch((StateEventRealization) object, feature);
     }
 
-		if(null != ret || feature_p.getUpperBound() == 1)
+		if(null != ret || feature.getUpperBound() == 1)
 			return ret;
 
 		throw new HelperNotFoundException();

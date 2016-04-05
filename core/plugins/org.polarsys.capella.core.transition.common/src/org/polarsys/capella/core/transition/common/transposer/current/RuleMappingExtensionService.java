@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer.current;
 
 import java.util.ArrayList;
@@ -133,32 +134,32 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
     _contributedPurposesLoaded = true;
   }
 
-  protected void handleMappingElementHierarchy(Mapping mapping_p, HashMap hashMap_p) {
+  protected void handleMappingElementHierarchy(Mapping mapping, HashMap hashMap) {
     MappingElement element;
-    for (Iterator iterator = mapping_p.getAllOwnedMappingElements().iterator(); iterator.hasNext(); hashMap_p.put(element.getDomainMetaClass(), element)) {
+    for (Iterator iterator = mapping.getAllOwnedMappingElements().iterator(); iterator.hasNext(); hashMap.put(element.getDomainMetaClass(), element)) {
       element = (MappingElement) iterator.next();
-      if (hashMap_p.containsKey(element.getDomainMetaClass())) {
-        element.setExtendedMappingElement((MappingElement) hashMap_p.get(element.getDomainMetaClass()));
+      if (hashMap.containsKey(element.getDomainMetaClass())) {
+        element.setExtendedMappingElement((MappingElement) hashMap.get(element.getDomainMetaClass()));
       }
     }
 
-    if ((mapping_p.getExtenders() != null) && (mapping_p.getExtenders().size() > 0)) {
+    if ((mapping.getExtenders() != null) && (mapping.getExtenders().size() > 0)) {
       Mapping extender;
-      for (Iterator iterator1 = mapping_p.getExtenders().iterator(); iterator1.hasNext(); handleMappingElementHierarchy(extender, new HashMap(hashMap_p))) {
+      for (Iterator iterator1 = mapping.getExtenders().iterator(); iterator1.hasNext(); handleMappingElementHierarchy(extender, new HashMap(hashMap))) {
         extender = (Mapping) iterator1.next();
       }
 
     }
   }
 
-  protected ContributedPurpose getCurrentPurpose(String purpose_p) {
+  protected ContributedPurpose getCurrentPurpose(String purpose) {
     ContributedPurpose currentPurpose;
-    if (_contributedPurposes.containsKey(purpose_p)) {
-      currentPurpose = (ContributedPurpose) _contributedPurposes.get(purpose_p);
+    if (_contributedPurposes.containsKey(purpose)) {
+      currentPurpose = (ContributedPurpose) _contributedPurposes.get(purpose);
     } else {
       currentPurpose = ContributionFactory.eINSTANCE.createContributedPurpose();
-      currentPurpose.setName(purpose_p);
-      _contributedPurposes.put(purpose_p, currentPurpose);
+      currentPurpose.setName(purpose);
+      _contributedPurposes.put(purpose, currentPurpose);
     }
     return currentPurpose;
   }
@@ -173,73 +174,73 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
     }
   }
 
-  protected Mapping createMapping(IConfigurationElement mappingConfigurationElement_p) {
+  protected Mapping createMapping(IConfigurationElement mappingConfigurationElement) {
     Mapping currentMapping = CommonFactory.eINSTANCE.createMapping();
-    currentMapping.setName(mappingConfigurationElement_p.getAttribute("mappingName"));
-    currentMapping.setDescription(mappingConfigurationElement_p.getAttribute("description"));
-    if (mappingConfigurationElement_p.getAttribute("domainHelper") != null) {
+    currentMapping.setName(mappingConfigurationElement.getAttribute("mappingName"));
+    currentMapping.setDescription(mappingConfigurationElement.getAttribute("description"));
+    if (mappingConfigurationElement.getAttribute("domainHelper") != null) {
       try {
-        currentMapping.setOwnedDomainHelper((IDomainHelper) mappingConfigurationElement_p.createExecutableExtension("domainHelper"));
-      } catch (CoreException exception_p) {
-        exception_p.printStackTrace();
+        currentMapping.setOwnedDomainHelper((IDomainHelper) mappingConfigurationElement.createExecutableExtension("domainHelper"));
+      } catch (CoreException exception) {
+        exception.printStackTrace();
       }
     }
-    if (mappingConfigurationElement_p.getAttribute("context") != null) {
+    if (mappingConfigurationElement.getAttribute("context") != null) {
       try {
-        currentMapping.setOwnedContext((IContext) mappingConfigurationElement_p.createExecutableExtension("context"));
-      } catch (CoreException exception_p) {
-        exception_p.printStackTrace();
+        currentMapping.setOwnedContext((IContext) mappingConfigurationElement.createExecutableExtension("context"));
+      } catch (CoreException exception) {
+        exception.printStackTrace();
       }
     }
     return currentMapping;
   }
 
-  protected void loadMapping(Mapping currentMapping_p, IConfigurationElement mappingConfigurationElement_p) {
-    IConfigurationElement mappingChildren[] = mappingConfigurationElement_p.getChildren();
+  protected void loadMapping(Mapping currentMapping, IConfigurationElement mappingConfigurationElement) {
+    IConfigurationElement mappingChildren[] = mappingConfigurationElement.getChildren();
     IConfigurationElement aiconfigurationelement[];
     int j = (aiconfigurationelement = mappingChildren).length;
     for (int i = 0; i < j; i++) {
       IConfigurationElement configurationElement = aiconfigurationelement[i];
       if (configurationElement.getName().equals("mappingElement")) {
-        currentMapping_p.getOwnedMappingElements().add(handleMappingElement(configurationElement, currentMapping_p));
+        currentMapping.getOwnedMappingElements().add(handleMappingElement(configurationElement, currentMapping));
       }
       if (configurationElement.getName().equals("mappingPackage")) {
-        currentMapping_p.getOwnedPackages().add(handleMappingPackage(configurationElement, currentMapping_p));
+        currentMapping.getOwnedPackages().add(handleMappingPackage(configurationElement, currentMapping));
       }
     }
 
   }
 
-  protected MappingPackage handleMappingPackage(IConfigurationElement packageConfigurationElement_p, Mapping currentMapping_p_p) {
+  protected MappingPackage handleMappingPackage(IConfigurationElement packageConfigurationElement, Mapping currentMapping) {
     MappingPackage currentPackage = CommonFactory.eINSTANCE.createMappingPackage();
-    currentPackage.setName(packageConfigurationElement_p.getAttribute("name"));
-    IConfigurationElement mappingChildren[] = packageConfigurationElement_p.getChildren();
+    currentPackage.setName(packageConfigurationElement.getAttribute("name"));
+    IConfigurationElement mappingChildren[] = packageConfigurationElement.getChildren();
     IConfigurationElement aiconfigurationelement[];
     int j = (aiconfigurationelement = mappingChildren).length;
     for (int i = 0; i < j; i++) {
       IConfigurationElement configurationElement = aiconfigurationelement[i];
       if (configurationElement.getName().equals("mappingElement")) {
-        currentPackage.getOwnedMappingElements().add(handleMappingElement(configurationElement, currentMapping_p_p));
+        currentPackage.getOwnedMappingElements().add(handleMappingElement(configurationElement, currentMapping));
       }
       if (configurationElement.getName().equals("mappingPackage")) {
-        currentPackage.getOwnedPackages().add(handleMappingPackage(configurationElement, currentMapping_p_p));
+        currentPackage.getOwnedPackages().add(handleMappingPackage(configurationElement, currentMapping));
       }
     }
 
     return currentPackage;
   }
 
-  protected MappingElement handleMappingElement(IConfigurationElement configurationElement_p, Mapping currentMapping_p) {
+  protected MappingElement handleMappingElement(IConfigurationElement configurationElement, Mapping currentMapping) {
     MappingElement currentElement = CommonFactory.eINSTANCE.createMappingElement();
-    String name = configurationElement_p.getAttribute("name");
+    String name = configurationElement.getAttribute("name");
     currentElement.setName(name);
-    String domainMetaclassName = configurationElement_p.getAttribute("domainMetaClass");
-    currentElement.setDomainMetaClass(currentMapping_p.getDomainHelper().getDomainMetaclass(domainMetaclassName));
-    String reusedSuperPossibilities = configurationElement_p.getAttribute("reuseExtendedElementPossibilities");
+    String domainMetaclassName = configurationElement.getAttribute("domainMetaClass");
+    currentElement.setDomainMetaClass(currentMapping.getDomainHelper().getDomainMetaclass(domainMetaclassName));
+    String reusedSuperPossibilities = configurationElement.getAttribute("reuseExtendedElementPossibilities");
     currentElement.setReuseSuperPossibilities(Boolean.parseBoolean(reusedSuperPossibilities));
-    String reusedSuperDefaultPossibility = configurationElement_p.getAttribute("reuseExtendedElementDefaultPossibility");
+    String reusedSuperDefaultPossibility = configurationElement.getAttribute("reuseExtendedElementDefaultPossibility");
     currentElement.setReuseSuperDefaultPossibility(Boolean.parseBoolean(reusedSuperDefaultPossibility));
-    IConfigurationElement defaultPossibilities[] = configurationElement_p.getChildren("defaultMappingPossibility");
+    IConfigurationElement defaultPossibilities[] = configurationElement.getChildren("defaultMappingPossibility");
     IConfigurationElement aiconfigurationelement[];
     int j = (aiconfigurationelement = defaultPossibilities).length;
     for (int i = 0; i < j; i++) {
@@ -247,7 +248,7 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
       currentElement.setOwnedDefaultPossibility(handlePossibility(defaultPossibility));
     }
 
-    IConfigurationElement possibilities[] = configurationElement_p.getChildren("mappingPossibility");
+    IConfigurationElement possibilities[] = configurationElement.getChildren("mappingPossibility");
     IConfigurationElement aiconfigurationelement1[];
     int l = (aiconfigurationelement1 = possibilities).length;
     for (int k = 0; k < l; k++) {
@@ -258,42 +259,42 @@ public class RuleMappingExtensionService implements IRuleMappingExtensionConstan
     return currentElement;
   }
 
-  protected MappingPossibility handlePossibility(IConfigurationElement possibilityConfigurationElement_p) {
+  protected MappingPossibility handlePossibility(IConfigurationElement possibilityConfigurationElement) {
     MappingPossibility currentPossibility = CommonFactory.eINSTANCE.createMappingPossibility();
-    currentPossibility.setName(possibilityConfigurationElement_p.getAttribute("name"));
-    String enabled = possibilityConfigurationElement_p.getAttribute("enabled");
+    currentPossibility.setName(possibilityConfigurationElement.getAttribute("name"));
+    String enabled = possibilityConfigurationElement.getAttribute("enabled");
     if (!Boolean.parseBoolean(enabled)) {
       return currentPossibility;
     }
-    String completeRuleClassName = possibilityConfigurationElement_p.getAttribute("completeRule");
+    String completeRuleClassName = possibilityConfigurationElement.getAttribute("completeRule");
     if (completeRuleClassName != null) {
       if (_classNameToIRule.containsKey(completeRuleClassName)) {
         currentPossibility.setCompleteRule((IRule) _classNameToIRule.get(completeRuleClassName));
       } else {
         try {
-          currentPossibility.setCompleteRule((IRule) possibilityConfigurationElement_p.createExecutableExtension("completeRule"));
-        } catch (CoreException exception_p) {
-          exception_p.printStackTrace();
+          currentPossibility.setCompleteRule((IRule) possibilityConfigurationElement.createExecutableExtension("completeRule"));
+        } catch (CoreException exception) {
+          exception.printStackTrace();
         }
       }
     }
-    String incompleteRuleClassName = possibilityConfigurationElement_p.getAttribute("incompleteRule");
+    String incompleteRuleClassName = possibilityConfigurationElement.getAttribute("incompleteRule");
     if (incompleteRuleClassName != null) {
       if (_classNameToIRule.containsKey(incompleteRuleClassName)) {
         currentPossibility.setIncompleteRule((IRule) _classNameToIRule.get(incompleteRuleClassName));
       } else {
         try {
-          currentPossibility.setIncompleteRule((IRule) possibilityConfigurationElement_p.createExecutableExtension("incompleteRule"));
-        } catch (CoreException exception_p) {
-          exception_p.printStackTrace();
+          currentPossibility.setIncompleteRule((IRule) possibilityConfigurationElement.createExecutableExtension("incompleteRule"));
+        } catch (CoreException exception) {
+          exception.printStackTrace();
         }
       }
     }
-    if (possibilityConfigurationElement_p.getAttribute("context") != null) {
+    if (possibilityConfigurationElement.getAttribute("context") != null) {
       try {
-        currentPossibility.setContext((IContext) possibilityConfigurationElement_p.createExecutableExtension("context"));
-      } catch (CoreException exception_p) {
-        exception_p.printStackTrace();
+        currentPossibility.setContext((IContext) possibilityConfigurationElement.createExecutableExtension("context"));
+      } catch (CoreException exception) {
+        exception.printStackTrace();
       }
     }
     return currentPossibility;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.activities;
 
 import org.eclipse.emf.ecore.EClass;
@@ -33,29 +34,29 @@ public class InitializeDiffMergeActivity extends InitializeDiffMergeFromTransfor
   public static final String ID = "org.polarsys.capella.core.transition.system.activities.InitializeDiffMergeActivity"; //$NON-NLS-1$
 
   @Override
-  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
     ITraceabilityConfiguration configuration = new MergeSourceConfiguration();
     return new CompoundTraceabilityHandler(configuration);
   }
 
   @Override
-  protected IHandler createDefaultTraceabilityTargetHandler(IContext context_p) {
+  protected IHandler createDefaultTraceabilityTargetHandler(IContext context) {
     ITraceabilityConfiguration configuration = new MergeTargetConfiguration();
     return new CompoundTraceabilityHandler(configuration);
   }
 
   @Override
-  protected IModelScopeFilter getTargetFilter(final IContext context_p) {
+  protected IModelScopeFilter getTargetFilter(final IContext context) {
 
     return new IModelScopeFilter() {
-      public boolean accepts(EObject element_p) {
+      public boolean accepts(EObject element) {
 
         // With a transformation, we filter the target model according to the transformed architecture.
-        BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+        BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(element);
         if (architecture == null) {
           return true;
         }
-        EClass targetArchitecture = TransformationHandlerHelper.getInstance(context_p).getTargetType(architecture, context_p);
+        EClass targetArchitecture = TransformationHandlerHelper.getInstance(context).getTargetType(architecture, context);
         if ((targetArchitecture != null) && (architecture.eClass() == targetArchitecture)) {
           return true;
         }

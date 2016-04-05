@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.handlers.filter;
 
 import org.eclipse.emf.diffmerge.api.Role;
@@ -61,28 +62,28 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class PreferenceFilterItem extends AbstractFilterItem {
 
-  private boolean getDisplayPref(String prefName_p) {
-    return AbstractPreferencesInitializer.getBoolean(prefName_p, false);
+  private boolean getDisplayPref(String prefName) {
+    return AbstractPreferencesInitializer.getBoolean(prefName, false);
   }
 
-  protected EObject getSemantic(IDifference difference_p, Role role_p) {
+  protected EObject getSemantic(IDifference difference, Role role) {
     EObject result = null;
 
     // Difference on Reference of element
-    if (difference_p instanceof IReferenceValuePresence) {
-      IReferenceValuePresence rvp = (IReferenceValuePresence) difference_p;
-      result = rvp.getValue().get(role_p);
+    if (difference instanceof IReferenceValuePresence) {
+      IReferenceValuePresence rvp = (IReferenceValuePresence) difference;
+      result = rvp.getValue().get(role);
     }
 
     // Difference on Presence of new element
-    if (difference_p instanceof IElementPresence) {
-      IElementPresence ep = (IElementPresence) difference_p;
+    if (difference instanceof IElementPresence) {
+      IElementPresence ep = (IElementPresence) difference;
       result = ep.getElement();
     }
 
     // Difference on Attribute of an element
-    if (difference_p instanceof IAttributeValuePresence) {
-      IAttributeValuePresence avp = (IAttributeValuePresence) difference_p;
+    if (difference instanceof IAttributeValuePresence) {
+      IAttributeValuePresence avp = (IAttributeValuePresence) difference;
       result = avp.getElementMatch().get(Role.REFERENCE);
     }
     return result;
@@ -92,8 +93,8 @@ public class PreferenceFilterItem extends AbstractFilterItem {
    * {@inheritDoc}
    */
   @Override
-  public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p) {
-    EObject me = getSemantic(difference_p, role_p);
+  public boolean isDisplayable(IDifference difference, Role role, IContext context) {
+    EObject me = getSemantic(difference, role);
     boolean _isToDisplay = true;
 
     if (me instanceof AbstractFunction) {

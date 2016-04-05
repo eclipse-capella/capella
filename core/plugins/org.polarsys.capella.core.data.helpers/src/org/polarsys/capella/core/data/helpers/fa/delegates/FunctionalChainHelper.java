@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -47,54 +48,54 @@ public class FunctionalChainHelper {
     return instance;
   }
 
-  public Object doSwitch(FunctionalChain element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(FunctionalChain element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS)) {
-      ret = getInvolvedFunctionalChainInvolvements(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS)) {
-      ret = getInvolvedElements(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES)) {
-      ret = getInvolvedFunctionalExchanges(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS)) {
-      ret = getInvolvedFunctions(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS)) {
-      ret = getEnactedFunctions(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS)) {
-      ret = getEnactedFunctionalBlocks(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS)) {
-      ret = getFirstFunctionalChainInvolvements(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES)) {
-      ret = getInvolvingCapabilities(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS)) {
-      ret = getInvolvingCapabilityRealizations(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS)) {
-      ret = getRealizedFunctionalChains(element_p);
-    } else if (feature_p.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS)) {
-      ret = getRealizingFunctionalChains(element_p);
+    if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_CHAIN_INVOLVEMENTS)) {
+      ret = getInvolvedFunctionalChainInvolvements(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_ELEMENTS)) {
+      ret = getInvolvedElements(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONAL_EXCHANGES)) {
+      ret = getInvolvedFunctionalExchanges(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVED_FUNCTIONS)) {
+      ret = getInvolvedFunctions(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONS)) {
+      ret = getEnactedFunctions(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__ENACTED_FUNCTIONAL_BLOCKS)) {
+      ret = getEnactedFunctionalBlocks(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__FIRST_FUNCTIONAL_CHAIN_INVOLVEMENTS)) {
+      ret = getFirstFunctionalChainInvolvements(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITIES)) {
+      ret = getInvolvingCapabilities(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS)) {
+      ret = getInvolvingCapabilityRealizations(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS)) {
+      ret = getRealizedFunctionalChains(element);
+    } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS)) {
+      ret = getRealizingFunctionalChains(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamedElementHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InvolverElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InvolverElementHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InvolvedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = InvolvedElementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<FunctionalChainInvolvement> getInvolvedFunctionalChainInvolvements(FunctionalChain element_p) {
-    return new ArrayList<FunctionalChainInvolvement>(element_p.getOwnedFunctionalChainInvolvements());
+  protected List<FunctionalChainInvolvement> getInvolvedFunctionalChainInvolvements(FunctionalChain element) {
+    return new ArrayList<FunctionalChainInvolvement>(element.getOwnedFunctionalChainInvolvements());
   }
 
-  protected List<InvolvedElement> getInvolvedElements(FunctionalChain element_p) {
+  protected List<InvolvedElement> getInvolvedElements(FunctionalChain element) {
     List<InvolvedElement> ret = new ArrayList<InvolvedElement>();
-    for (FunctionalChainInvolvement involvement : getInvolvedFunctionalChainInvolvements(element_p)) {
+    for (FunctionalChainInvolvement involvement : getInvolvedFunctionalChainInvolvements(element)) {
       InvolvedElement elt = involvement.getInvolved();
       if (null != elt) {
         ret.add(elt);
@@ -103,9 +104,9 @@ public class FunctionalChainHelper {
     return ret;
   }
 
-  protected List<FunctionalExchange> getInvolvedFunctionalExchanges(FunctionalChain element_p) {
+  protected List<FunctionalExchange> getInvolvedFunctionalExchanges(FunctionalChain element) {
     List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
-    for (InvolvedElement involvedElement : getInvolvedElements(element_p)) {
+    for (InvolvedElement involvedElement : getInvolvedElements(element)) {
       if (involvedElement instanceof FunctionalExchange) {
         ret.add((FunctionalExchange) involvedElement);
       }
@@ -113,9 +114,9 @@ public class FunctionalChainHelper {
     return ret;
   }
 
-  protected List<AbstractFunction> getInvolvedFunctions(FunctionalChain element_p) {
+  protected List<AbstractFunction> getInvolvedFunctions(FunctionalChain element) {
     List<AbstractFunction> ret = new ArrayList<AbstractFunction>();
-    for (InvolvedElement involvedElement : getInvolvedElements(element_p)) {
+    for (InvolvedElement involvedElement : getInvolvedElements(element)) {
       if (involvedElement instanceof AbstractFunction) {
         ret.add((AbstractFunction) involvedElement);
       }
@@ -124,21 +125,21 @@ public class FunctionalChainHelper {
     return ret;
   }
 
-  protected List<AbstractFunction> getEnactedFunctions(FunctionalChain element_p) {
-    return getInvolvedFunctions(element_p);
+  protected List<AbstractFunction> getEnactedFunctions(FunctionalChain element) {
+    return getInvolvedFunctions(element);
   }
 
-  protected List<AbstractFunctionalBlock> getEnactedFunctionalBlocks(FunctionalChain element_p) {
+  protected List<AbstractFunctionalBlock> getEnactedFunctionalBlocks(FunctionalChain element) {
     List<AbstractFunctionalBlock> ret = new ArrayList<AbstractFunctionalBlock>();
-    for (AbstractFunction func : getEnactedFunctions(element_p)) {
+    for (AbstractFunction func : getEnactedFunctions(element)) {
       ret.addAll(func.getAllocationBlocks());
     }
     return ret;
   }
 
-  protected List<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements(FunctionalChain element_p) {
+  protected List<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements(FunctionalChain element) {
     List<FunctionalChainInvolvement> ret = new ArrayList<FunctionalChainInvolvement>();
-    for (FunctionalChainInvolvement inv : element_p.getOwnedFunctionalChainInvolvements()) {
+    for (FunctionalChainInvolvement inv : element.getOwnedFunctionalChainInvolvements()) {
       if ((inv.getInvolved() != null) && inv.getPreviousFunctionalChainInvolvements().isEmpty()) {
         ret.add(inv);
       }
@@ -146,9 +147,9 @@ public class FunctionalChainHelper {
     return ret;
   }
 
-  protected List<Capability> getInvolvingCapabilities(FunctionalChain element_p) {
+  protected List<Capability> getInvolvingCapabilities(FunctionalChain element) {
     List<Capability> ret = new ArrayList<Capability>();
-    for (Involvement inv : element_p.getInvolvingInvolvements()) {
+    for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof FunctionalChainAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((FunctionalChainAbstractCapabilityInvolvement) inv).getCapability();
         if (cap instanceof Capability) {
@@ -159,9 +160,9 @@ public class FunctionalChainHelper {
     return ret;
   }
 
-  protected List<CapabilityRealization> getInvolvingCapabilityRealizations(FunctionalChain element_p) {
+  protected List<CapabilityRealization> getInvolvingCapabilityRealizations(FunctionalChain element) {
     List<CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
-    for (Involvement inv : element_p.getInvolvingInvolvements()) {
+    for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof FunctionalChainAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((FunctionalChainAbstractCapabilityInvolvement) inv).getCapability();
         if (cap instanceof CapabilityRealization) {
@@ -172,9 +173,9 @@ public class FunctionalChainHelper {
     return ret;
   }
 
-  protected List<FunctionalChain> getRealizedFunctionalChains(FunctionalChain element_p) {
+  protected List<FunctionalChain> getRealizedFunctionalChains(FunctionalChain element) {
     List <FunctionalChain> ret = new ArrayList<FunctionalChain>();
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionalChainRealization){
         ret.add((FunctionalChain) trace.getTargetElement());
       }
@@ -182,9 +183,9 @@ public class FunctionalChainHelper {
     return ret;
   }
 
-  protected List<FunctionalChain> getRealizingFunctionalChains(FunctionalChain element_p) {
+  protected List<FunctionalChain> getRealizingFunctionalChains(FunctionalChain element) {
     List <FunctionalChain> ret = new ArrayList<FunctionalChain>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionalChainRealization){
         ret.add((FunctionalChain) trace.getSourceElement());
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.cs.delegates;
 
 import java.util.ArrayList;
@@ -36,24 +37,24 @@ public class AbstractPhysicalArtifactHelper {
     return instance;
   }
 
-  public Object doSwitch(AbstractPhysicalArtifact element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(AbstractPhysicalArtifact element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS)) {
-      ret = getAllocatorConfigurationItems(element_p);
+    if (feature.equals(CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS)) {
+      ret = getAllocatorConfigurationItems(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = CapellaElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = CapellaElementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<ConfigurationItem> getAllocatorConfigurationItems(AbstractPhysicalArtifact element_p) {
+  protected List<ConfigurationItem> getAllocatorConfigurationItems(AbstractPhysicalArtifact element) {
     List<ConfigurationItem> ret = new ArrayList<ConfigurationItem>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof PhysicalArtifactRealization) {
         Component cpnt = ((PhysicalArtifactRealization) trace).getAllocatingComponent();
         if (cpnt instanceof ConfigurationItem) {

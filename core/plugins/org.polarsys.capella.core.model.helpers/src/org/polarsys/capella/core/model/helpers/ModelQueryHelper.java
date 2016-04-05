@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import org.eclipse.emf.common.util.EList;
@@ -62,21 +63,21 @@ import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
  */
 public class ModelQueryHelper {
 
-  static public CapabilityPkg getCapabilityPkg(Project project_p) {
-    return (CapabilityPkg) getCapabilityPkgFrom(project_p, getSystemAnalysis(project_p));
+  static public CapabilityPkg getCapabilityPkg(Project project) {
+    return (CapabilityPkg) getCapabilityPkgFrom(project, getSystemAnalysis(project));
   }
 
-  static public AbstractCapabilityPkg getCapabilityPkgFrom(Project project_p, ComponentArchitecture architecture_p) {
-    if (architecture_p != null) {
-      AbstractCapabilityPkg abstractCapabilityPkg = architecture_p.getOwnedAbstractCapabilityPkg();
+  static public AbstractCapabilityPkg getCapabilityPkgFrom(Project project, ComponentArchitecture architecture) {
+    if (architecture != null) {
+      AbstractCapabilityPkg abstractCapabilityPkg = architecture.getOwnedAbstractCapabilityPkg();
       return abstractCapabilityPkg;
     }
     return null;
   }
 
-  static private CapabilityRealizationPkg getCapabilityRealizationPkg(BlockArchitecture blockArchitecture_p) {
-    if (blockArchitecture_p != null) {
-      AbstractCapabilityPkg abstractCapabilityPkg = blockArchitecture_p.getOwnedAbstractCapabilityPkg();
+  static private CapabilityRealizationPkg getCapabilityRealizationPkg(BlockArchitecture blockArchitecture) {
+    if (blockArchitecture != null) {
+      AbstractCapabilityPkg abstractCapabilityPkg = blockArchitecture.getOwnedAbstractCapabilityPkg();
       if (abstractCapabilityPkg instanceof CapabilityRealizationPkg) {
         return (CapabilityRealizationPkg) abstractCapabilityPkg;
       }
@@ -84,12 +85,12 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static private DataPkg getDataPkg(BlockArchitecture blockArchitecture_p) {
-    return blockArchitecture_p.getOwnedDataPkg();
+  static private DataPkg getDataPkg(BlockArchitecture blockArchitecture) {
+    return blockArchitecture.getOwnedDataPkg();
   }
 
-  static public EPBSArchitecture getEPBSArchitecture(Project project_p) {
-    SystemEngineering systemEngineering = getSystemEngineering(project_p);
+  static public EPBSArchitecture getEPBSArchitecture(Project project) {
+    SystemEngineering systemEngineering = getSystemEngineering(project);
     if (systemEngineering != null) {
       for (ModellingArchitecture arch : systemEngineering.getOwnedArchitectures()) {
         if (arch instanceof EPBSArchitecture) {
@@ -100,40 +101,40 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public ConfigurationItem getEpbsSystem(Project project_p) {
-    EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project_p);
+  static public ConfigurationItem getEpbsSystem(Project project) {
+    EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project);
     if (epbsArchitecture != null) {
       return epbsArchitecture.getOwnedConfigurationItem();
     }
     return null;
   }
 
-  static public CapabilityRealizationPkg getLACapabilityRealizationPkg(Project project_p) {
-    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project_p);
+  static public CapabilityRealizationPkg getLACapabilityRealizationPkg(Project project) {
+    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
       return getCapabilityRealizationPkg(logicalArchitecture);
     }
     return null;
   }
 
-  static public DataPkg getLADataPkg(Project project_p) {
-    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project_p);
+  static public DataPkg getLADataPkg(Project project) {
+    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
       return getDataPkg(logicalArchitecture);
     }
     return null;
   }
 
-  static public LogicalActorPkg getLogicalActorPkg(Project project_p) {
-    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project_p);
+  static public LogicalActorPkg getLogicalActorPkg(Project project) {
+    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
       return logicalArchitecture.getOwnedLogicalActorPkg();
     }
     return null;
   }
 
-  static public LogicalArchitecture getLogicalArchitecture(Project project_p) {
-    SystemEngineering systemEngineering = getSystemEngineering(project_p);
+  static public LogicalArchitecture getLogicalArchitecture(Project project) {
+    SystemEngineering systemEngineering = getSystemEngineering(project);
     if (systemEngineering != null) {
       for (ModellingArchitecture arch : systemEngineering.getOwnedArchitectures()) {
         if (arch instanceof LogicalArchitecture) {
@@ -144,16 +145,16 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public Region getLogicalStateMachineRegion(Project project_p) {
-    LogicalComponent lc = getLogicalSystem(project_p);
+  static public Region getLogicalStateMachineRegion(Project project) {
+    LogicalComponent lc = getLogicalSystem(project);
     if (lc != null) {
       return getStateMachineRegion(lc);
     }
     return null;
   }
 
-  static public LogicalComponent getLogicalSystem(Project project_p) {
-    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project_p);
+  static public LogicalComponent getLogicalSystem(Project project) {
+    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
       return logicalArchitecture.getOwnedLogicalComponent();
     }
@@ -164,17 +165,17 @@ public class ModelQueryHelper {
    * Get Operation Analysis class package.
    * @return can be <code>null</code>.
    */
-  static public DataPkg getOADataPkg(Project project_p) {
+  static public DataPkg getOADataPkg(Project project) {
     DataPkg result = null;
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (null != operationalAnalysis) {
       result = getDataPkg(operationalAnalysis);
     }
     return result;
   }
 
-  static public OperationalAnalysis getOperationalAnalysis(Project project_p) {
-    SystemEngineering systemEngineering = getSystemEngineering(project_p);
+  static public OperationalAnalysis getOperationalAnalysis(Project project) {
+    SystemEngineering systemEngineering = getSystemEngineering(project);
     if (systemEngineering != null) {
       for (ModellingArchitecture arch : systemEngineering.getOwnedArchitectures()) {
         if (arch instanceof OperationalAnalysis) {
@@ -185,8 +186,8 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public OperationalCapabilityPkg getOperationalCapabilityPkg(Project project_p) {
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+  static public OperationalCapabilityPkg getOperationalCapabilityPkg(Project project) {
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (operationalAnalysis != null) {
       AbstractCapabilityPkg abstractCapabilityPkg = operationalAnalysis.getOwnedAbstractCapabilityPkg();
       if (abstractCapabilityPkg instanceof OperationalCapabilityPkg) {
@@ -196,51 +197,51 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public EntityPkg getOperationalEntityPkg(Project project_p) {
+  static public EntityPkg getOperationalEntityPkg(Project project) {
     EntityPkg result = null;
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (operationalAnalysis != null) {
       result = operationalAnalysis.getOwnedEntityPkg();
     }
     return result;
   }
 
-  static public RolePkg getOperationalRolePkg(Project project_p) {
+  static public RolePkg getOperationalRolePkg(Project project) {
     RolePkg result = null;
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (operationalAnalysis != null) {
       result = operationalAnalysis.getOwnedRolePkg();
     }
     return result;
   }
 
-  static public OperationalContext getOperationalContext(Project project_p) {
+  static public OperationalContext getOperationalContext(Project project) {
     OperationalContext result = null;
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (operationalAnalysis != null) {
       result = operationalAnalysis.getOwnedOperationalContext();
     }
     return result;
   }
 
-  static public CapabilityRealizationPkg getPACapabilityRealizationPkg(Project project_p) {
-    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project_p);
+  static public CapabilityRealizationPkg getPACapabilityRealizationPkg(Project project) {
+    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
     if (physicalArchitecture != null) {
       return getCapabilityRealizationPkg(physicalArchitecture);
     }
     return null;
   }
 
-  static public DataPkg getPADataPkg(Project project_p) {
-    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project_p);
+  static public DataPkg getPADataPkg(Project project) {
+    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
     if (physicalArchitecture != null) {
       return getDataPkg(physicalArchitecture);
     }
     return null;
   }
 
-  static public PhysicalArchitecture getPhysicalArchitecture(Project project_p) {
-    SystemEngineering systemEngineering = getSystemEngineering(project_p);
+  static public PhysicalArchitecture getPhysicalArchitecture(Project project) {
+    SystemEngineering systemEngineering = getSystemEngineering(project);
     if (systemEngineering != null) {
       for (ModellingArchitecture arch : systemEngineering.getOwnedArchitectures()) {
         if (arch instanceof PhysicalArchitecture) {
@@ -251,32 +252,32 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public Region getPhysicalStateMachineRegion(Project project_p) {
-    PhysicalComponent pc = getPhysicalSystem(project_p);
+  static public Region getPhysicalStateMachineRegion(Project project) {
+    PhysicalComponent pc = getPhysicalSystem(project);
     if (pc != null) {
       return getStateMachineRegion(pc);
     }
     return null;
   }
 
-  static public PhysicalComponent getPhysicalSystem(Project project_p) {
-    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project_p);
+  static public PhysicalComponent getPhysicalSystem(Project project) {
+    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
     if (physicalArchitecture != null) {
       return physicalArchitecture.getOwnedPhysicalComponent();
     }
     return null;
   }
 
-  static public ConfigurationItem getRootConfigurationItem(Project project_p) {
-    EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project_p);
+  static public ConfigurationItem getRootConfigurationItem(Project project) {
+    EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project);
     if (epbsArchitecture != null) {
       return epbsArchitecture.getOwnedConfigurationItem();
     }
     return null;
   }
 
-  static public Entity getRootEntity(Project project_p) {
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+  static public Entity getRootEntity(Project project) {
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (operationalAnalysis != null) {
       EntityPkg pkg = operationalAnalysis.getOwnedEntityPkg();
       for (Entity entity : pkg.getOwnedEntities()) {
@@ -286,8 +287,8 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public LogicalFunction getRootLogicalFunction(Project project_p) {
-    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project_p);
+  static public LogicalFunction getRootLogicalFunction(Project project) {
+    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
       FunctionPkg pkg = logicalArchitecture.getOwnedFunctionPkg();
       if (pkg instanceof LogicalFunctionPkg) {
@@ -299,8 +300,8 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public OperationalActivity getRootOperationalActivity(Project project_p) {
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+  static public OperationalActivity getRootOperationalActivity(Project project) {
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (operationalAnalysis != null) {
       FunctionPkg pkg = operationalAnalysis.getOwnedFunctionPkg();
       if (pkg instanceof OperationalActivityPkg) {
@@ -312,9 +313,9 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public OperationalActivity getAnOperationalActivity(String operationalActivityName, Project project_p) {
+  static public OperationalActivity getAnOperationalActivity(String operationalActivityName, Project project) {
     OperationalActivity result = null;
-    OperationalActivity rootOperationalActivity = getRootOperationalActivity(project_p);
+    OperationalActivity rootOperationalActivity = getRootOperationalActivity(project);
     if (rootOperationalActivity != null) {
       EList<OperationalActivity> subOpActivities = rootOperationalActivity.getChildrenOperationalActivities();
       for (OperationalActivity op : subOpActivities) {
@@ -326,8 +327,8 @@ public class ModelQueryHelper {
     return result;
   }
 
-  static public OperationalCapabilityPkg getRootOperationalCapability(Project project_p) {
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project_p);
+  static public OperationalCapabilityPkg getRootOperationalCapability(Project project) {
+    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
     if (operationalAnalysis != null) {
       AbstractCapabilityPkg pkg = operationalAnalysis.getOwnedAbstractCapabilityPkg();
       if (pkg instanceof OperationalCapabilityPkg) {
@@ -337,8 +338,8 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public PhysicalFunction getRootPhysicalFunction(Project project_p) {
-    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project_p);
+  static public PhysicalFunction getRootPhysicalFunction(Project project) {
+    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
     if (physicalArchitecture != null) {
       FunctionPkg pkg = physicalArchitecture.getOwnedFunctionPkg();
       if (pkg instanceof PhysicalFunctionPkg) {
@@ -350,8 +351,8 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public SystemFunction getRootSystemFunction(Project project_p) {
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+  static public SystemFunction getRootSystemFunction(Project project) {
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       FunctionPkg pkg = systemAnalysis.getOwnedFunctionPkg();
       if (pkg instanceof SystemFunctionPkg) {
@@ -363,32 +364,32 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public AbstractCapabilityPkg getSACapabilityPkg(Project project_p) {
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+  static public AbstractCapabilityPkg getSACapabilityPkg(Project project) {
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       return systemAnalysis.getOwnedAbstractCapabilityPkg();
     }
     return null;
   }
 
-  static public DataPkg getSADataPkg(Project project_p) {
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+  static public DataPkg getSADataPkg(Project project) {
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       return getDataPkg(systemAnalysis);
     }
     return null;
   }
 
-  static public MissionPkg getSAMissionPkg(Project project_p) {
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+  static public MissionPkg getSAMissionPkg(Project project) {
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       return systemAnalysis.getOwnedMissionPkg();
     }
     return null;
   }
 
-  static public Region getStateMachineRegion(Block block_p) {
-    for (StateMachine sm : block_p.getOwnedStateMachines()) {
+  static public Region getStateMachineRegion(Block block) {
+    for (StateMachine sm : block.getOwnedStateMachines()) {
       for (Region region : sm.getOwnedRegions()) {
         return region;
       }
@@ -396,16 +397,16 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public System getSystem(Project project_p) {
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+  static public System getSystem(Project project) {
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       return systemAnalysis.getOwnedSystem();
     }
     return null;
   }
 
-  static public ActorPkg getSystemActorPkg(Project project_p) {
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+  static public ActorPkg getSystemActorPkg(Project project) {
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       return systemAnalysis.getOwnedActorPkg();
     }
@@ -414,12 +415,12 @@ public class ModelQueryHelper {
 
   /**
    * Get the Interface Package from the System layer for a given Project
-   * @param project_p a given Project
+   * @param project a given Project
    * @return Interface Package from the System layer
    */
-  public static InterfacePkg getSystemInterfacePkg(Project project_p) {
+  public static InterfacePkg getSystemInterfacePkg(Project project) {
     InterfacePkg resultInterfacePkg = null;
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       resultInterfacePkg = systemAnalysis.getOwnedInterfacePkg();
     }
@@ -428,12 +429,12 @@ public class ModelQueryHelper {
 
   /**
    * Get the Interface Package from the Logical layer for a given Project
-   * @param project_p a given Project
+   * @param project a given Project
    * @return Interface Package from the Logical layer
    */
-  public static InterfacePkg getLogicalInterfacePkg(Project project_p) {
+  public static InterfacePkg getLogicalInterfacePkg(Project project) {
     InterfacePkg resultInterfacePkg = null;
-    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project_p);
+    LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
       resultInterfacePkg = logicalArchitecture.getOwnedInterfacePkg();
     }
@@ -442,12 +443,12 @@ public class ModelQueryHelper {
 
   /**
    * Get the Data Package from the System layer for a given Project
-   * @param project_p a given Project
+   * @param project a given Project
    * @return the Data Package from the System layer
    */
-  public static DataPkg getSystemDataPkg(Project project_p) {
+  public static DataPkg getSystemDataPkg(Project project) {
     DataPkg resultDataPkg = null;
-    SystemAnalysis systemAnalysis = getSystemAnalysis(project_p);
+    SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
       resultDataPkg = systemAnalysis.getOwnedDataPkg();
     }
@@ -456,12 +457,12 @@ public class ModelQueryHelper {
 
   /**
    * Find the sub Package Predefined Types in Data Package in a System Layer
-   * @param project_p a given Project
+   * @param project a given Project
    * @return the Predefined Types Package from Data Package
    */
-  public static DataPkg getSystemDataPredefinedTypesPkg(Project project_p) {
+  public static DataPkg getSystemDataPredefinedTypesPkg(Project project) {
     DataPkg result = null;
-    DataPkg systemDataPkg = getSystemDataPkg(project_p);
+    DataPkg systemDataPkg = getSystemDataPkg(project);
     EList<DataPkg> ownedDataPkgs = systemDataPkg.getOwnedDataPkgs();
     for (DataPkg dataPkg : ownedDataPkgs) {
       if (NamingConstants.PredefinedTypesCmd_predefinedDataTypePkg_name.equalsIgnoreCase(dataPkg.getName())) {
@@ -487,8 +488,8 @@ public class ModelQueryHelper {
     return resultDataType;
   }
 
-  static public SystemAnalysis getSystemAnalysis(Project project_p) {
-    SystemEngineering systemEngineering = getSystemEngineering(project_p);
+  static public SystemAnalysis getSystemAnalysis(Project project) {
+    SystemEngineering systemEngineering = getSystemEngineering(project);
     if (systemEngineering != null) {
       for (ModellingArchitecture arch : systemEngineering.getOwnedArchitectures()) {
         if (arch instanceof SystemAnalysis) {
@@ -499,9 +500,9 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public SystemEngineering getSystemEngineering(Project project_p) {
-    if (project_p != null) {
-      for (ModelRoot root : project_p.getOwnedModelRoots()) {
+  static public SystemEngineering getSystemEngineering(Project project) {
+    if (project != null) {
+      for (ModelRoot root : project.getOwnedModelRoots()) {
         if (root instanceof SystemEngineering) {
           return (SystemEngineering) root;
         }
@@ -510,8 +511,8 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public Region getSystemStateMachineRegion(Project project_p) {
-    System system = getSystem(project_p);
+  static public Region getSystemStateMachineRegion(Project project) {
+    System system = getSystem(project);
     if (system != null) {
       return getStateMachineRegion(system);
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.transposer;
 
 import java.util.Collection;
@@ -33,32 +34,32 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 
 public class ExtendedAnalyzer implements IAnalyzer {
 
-  protected Graph _modelGraph;
-  protected IRulesHandler _rulesHandler;
-  private Map _graphHashMap;
+  protected Graph modelGraph;
+  protected IRulesHandler rulesHandler;
+  private Map graphHashMap;
 
-  public ExtendedAnalyzer(IRulesHandler rulesHandler_p) {
-    _modelGraph = GraphFactory.eINSTANCE.createGraph();
-    _rulesHandler = rulesHandler_p;
-    _graphHashMap = new HashMap();
+  public ExtendedAnalyzer(IRulesHandler rulesHandler) {
+    this.modelGraph = GraphFactory.eINSTANCE.createGraph();
+    this.rulesHandler = rulesHandler;
+    this.graphHashMap = new HashMap();
   }
 
   public Graph getModelGraph() {
-    return _modelGraph;
+    return modelGraph;
   }
 
-  public Graph analyze(Collection analysisSource_p, Collection selection_p, IProgressMonitor monitor_p) throws AnalysisException {
-    if (monitor_p != null) {
-      monitor_p.beginTask("Transposer Analysis", analysisSource_p.size());
+  public Graph analyze(Collection analysisSource, Collection selection, IProgressMonitor monitor) throws AnalysisException {
+    if (monitor != null) {
+      monitor.beginTask("Transposer Analysis", analysisSource.size());
     }
-    for (Iterator iterator = analysisSource_p.iterator(); iterator.hasNext();) {
+    for (Iterator iterator = analysisSource.iterator(); iterator.hasNext();) {
       Object source = iterator.next();
       try {
-        if (_rulesHandler.getApplicablePossibility(source) != null) {
-          createVertexForType(source, monitor_p);
-          createSubGraphForType(source, monitor_p);
-          if (monitor_p != null) {
-            monitor_p.worked(1);
+        if (rulesHandler.getApplicablePossibility(source) != null) {
+          createVertexForType(source, monitor);
+          createSubGraphForType(source, monitor);
+          if (monitor != null) {
+            monitor.worked(1);
           }
         }
       } catch (ComputePremisesException e) {
@@ -68,54 +69,54 @@ public class ExtendedAnalyzer implements IAnalyzer {
       }
     }
 
-    if (monitor_p != null) {
-      monitor_p.subTask("");
+    if (monitor != null) {
+      monitor.subTask("");
     }
-    return _modelGraph;
+    return modelGraph;
   }
 
-  private void createVertexForType(Object currentType_p, IProgressMonitor monitor_p) {
-    if (graphHasAlreadyVertex(currentType_p)) {
+  private void createVertexForType(Object currentType, IProgressMonitor monitor) {
+    if (graphHasAlreadyVertex(currentType)) {
       return;
     }
-    if (monitor_p != null) {
-      monitor_p.subTask((new StringBuilder("Creating vertex for ")).append(currentType_p.getClass().getSimpleName()).toString());
-      monitor_p.worked(1);
+    if (monitor != null) {
+      monitor.subTask((new StringBuilder("Creating vertex for ")).append(currentType.getClass().getSimpleName()).toString());
+      monitor.worked(1);
     }
-    String name = _rulesHandler.getDomainHelper().getName(currentType_p);
+    String name = rulesHandler.getDomainHelper().getName(currentType);
     if ((name == null) || "".equals(name)) {
-      name = currentType_p.getClass().getName();
+      name = currentType.getClass().getName();
     }
-    boolean isHotSpot = _rulesHandler.getDomainHelper().isHotSpot(currentType_p);
+    boolean isHotSpot = rulesHandler.getDomainHelper().isHotSpot(currentType);
     Vertex newVertex = GraphFactory.eINSTANCE.createVertex();
-    newVertex.setContent(currentType_p);
+    newVertex.setContent(currentType);
     newVertex.setName(name);
     newVertex.setHotSpot(isHotSpot);
-    _graphHashMap.put(currentType_p, newVertex);
-    _modelGraph.addVertex(newVertex);
+    graphHashMap.put(currentType, newVertex);
+    modelGraph.addVertex(newVertex);
   }
 
-  private boolean graphHasAlreadyVertex(Object currentType_p) {
-    return _graphHashMap.containsKey(currentType_p);
+  private boolean graphHasAlreadyVertex(Object currentType) {
+    return graphHashMap.containsKey(currentType);
   }
 
-  private void createSubGraphForType(Object currentType_p, IProgressMonitor monitor_p) throws ComputePremisesException {
-    Vertex currentVertex = (Vertex) _graphHashMap.get(currentType_p);
+  private void createSubGraphForType(Object object1, IProgressMonitor iProgressMonitor1) throws ComputePremisesException {
+    Vertex currentVertex = (Vertex) graphHashMap.get(object1);
 
     LinkedList<Object> toVisit = new LinkedList<Object>();
-    toVisit.add(currentType_p);
+    toVisit.add(object1);
 
     while (!toVisit.isEmpty()) {
       Object currentType = toVisit.removeFirst();
-      currentVertex = (Vertex) _graphHashMap.get(currentType);
+      currentVertex = (Vertex) graphHashMap.get(currentType);
 
       List needed = null;
-      needed = _rulesHandler.getPremises(currentType);
+      needed = rulesHandler.getPremises(currentType);
       if (needed == null) {
         return;
       }
-      if (monitor_p != null) {
-        monitor_p.subTask((new StringBuilder("Creating subgraph for ")).append(currentType.getClass().getSimpleName()).toString());
+      if (iProgressMonitor1 != null) {
+        iProgressMonitor1.subTask((new StringBuilder("Creating subgraph for ")).append(currentType.getClass().getSimpleName()).toString());
       }
 
       for (Iterator iterator = needed.iterator(); iterator.hasNext();) {
@@ -128,10 +129,10 @@ public class ExtendedAnalyzer implements IAnalyzer {
           boolean createdVertex = false;
           Object dependingObject = precedentePremise.getFirstElement();
           String dependingObjectDescription = precedentePremise.getSecondElement();
-          Vertex dependingVertex = (Vertex) _graphHashMap.get(dependingObject);
+          Vertex dependingVertex = (Vertex) graphHashMap.get(dependingObject);
           if (dependingVertex == null) {
-            createVertexForType(dependingObject, monitor_p);
-            dependingVertex = (Vertex) _graphHashMap.get(dependingObject);
+            createVertexForType(dependingObject, iProgressMonitor1);
+            dependingVertex = (Vertex) graphHashMap.get(dependingObject);
             createdVertex = true;
           }
           isCriticalDependency = precedentePremise.isCritical();
@@ -140,7 +141,7 @@ public class ExtendedAnalyzer implements IAnalyzer {
             edge.setCritical(true);
           } else if (edge == null) {
 
-            _modelGraph.addAdjacent(currentVertex, dependingVertex, dependingObjectDescription, isCriticalDependency);
+            modelGraph.addAdjacent(currentVertex, dependingVertex, dependingObjectDescription, isCriticalDependency);
           }
 
           if (createdVertex) {
@@ -154,10 +155,10 @@ public class ExtendedAnalyzer implements IAnalyzer {
   }
 
   public void dispose() {
-    _graphHashMap.clear();
-    _graphHashMap = null;
-    _modelGraph = null;
-    _rulesHandler = null;
+    graphHashMap.clear();
+    graphHashMap = null;
+    modelGraph = null;
+    rulesHandler = null;
   }
 
 }

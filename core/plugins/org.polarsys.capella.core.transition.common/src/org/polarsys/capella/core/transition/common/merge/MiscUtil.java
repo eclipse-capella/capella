@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.merge;
 
 import java.util.ArrayList;
@@ -31,9 +32,9 @@ public final class MiscUtil {
   /**
    * From a set of elements, filter out those which are transitively contained in others
    */
-  public static <T extends EObject> List<T> getRoots(Collection<? extends T> elements_p) {
-    List<EObject> result = new ArrayList<EObject>(elements_p);
-    Set<EObject> elements = new HashSet<EObject>(elements_p);
+  public static <T extends EObject> List<T> getRoots(Collection<? extends T> elements1) {
+    List<EObject> result = new ArrayList<EObject>(elements1);
+    Set<EObject> elements = new HashSet<EObject>(elements1);
 
     for (EObject element : elements) {
       if ((element.eContainer() != null) && elements.contains(element.eContainer())) {
@@ -47,10 +48,10 @@ public final class MiscUtil {
    * 
    * Return whether the given element is not transitively contained by any of the given elements, unless it is one of the given elements.
    */
-  private static boolean isRootAmong(EObject element_p, Collection<? extends EObject> elements_p) {
-    Collection<EObject> filtered = new ArrayList<EObject>(elements_p);
-    filtered.remove(element_p);
-    return !EcoreUtil.isAncestor(filtered, element_p);
+  private static boolean isRootAmong(EObject element, Collection<? extends EObject> elements) {
+    Collection<EObject> filtered = new ArrayList<EObject>(elements);
+    filtered.remove(element);
+    return !EcoreUtil.isAncestor(filtered, element);
   }
 
 }

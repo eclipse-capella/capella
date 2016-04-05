@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.utils;
 
 import java.util.ArrayList;
@@ -41,30 +42,30 @@ public class CapellaLayerCheckingExt {
 
   /**
    * This method return All the container up to SystemEngineering.
-   * @param ele_p CapellaElement, eleList_p
-   * @param eleList_p set of all the ele_p's container Capella Elements
+   * @param ele CapellaElement, eleList
+   * @param eleList set of all the ele's container Capella Elements
    */
-  public static void getAll_ContainerElements(CapellaElement ele_p, ArrayList<CapellaElement> eleList_p) {
-    EObject elodyElement = ele_p.eContainer();
+  public static void getAll_ContainerElements(CapellaElement ele, ArrayList<CapellaElement> eleList) {
+    EObject elodyElement = ele.eContainer();
     if (null != elodyElement) {
-      eleList_p.add((CapellaElement) elodyElement);
-      getAll_ContainerElements((CapellaElement) elodyElement, eleList_p);
+      eleList.add((CapellaElement) elodyElement);
+      getAll_ContainerElements((CapellaElement) elodyElement, eleList);
     }
   }
 
   /**
-   * This method evaluates if a ele_p is a or in OperationalAnalysis
-   * @param ele_p
+   * This method evaluates if a ele is a or in OperationalAnalysis
+   * @param ele
    * @return 'true' if in OperationalAnalysis , 'false' if not
    */
-  public static boolean isAOrInOperationalAnalysisLayer(CapellaElement ele_p) {
-    return (ele_p instanceof OperationalAnalysis) || isInOperationalAnalysisLayer(ele_p);
+  public static boolean isAOrInOperationalAnalysisLayer(CapellaElement ele) {
+    return (ele instanceof OperationalAnalysis) || isInOperationalAnalysisLayer(ele);
   }
 
-  public static boolean isInOperationalAnalysisLayer(CapellaElement ele_p) {
+  public static boolean isInOperationalAnalysisLayer(CapellaElement ele) {
 
     ArrayList<CapellaElement> meleList = new ArrayList<CapellaElement>(0);
-    getAll_ContainerElements(ele_p, meleList);
+    getAll_ContainerElements(ele, meleList);
 
     for (CapellaElement element : meleList) {
       if ((element instanceof OperationalAnalysis) || (element instanceof OperationalActivityPkg)) {
@@ -76,24 +77,24 @@ public class CapellaLayerCheckingExt {
   }
 
   /**
-   * This method evaluates if a ele_p is a or in Logical Layer
-   * @param ele_p
+   * This method evaluates if a ele is a or in Logical Layer
+   * @param ele
    * @return 'true' if in Logical Layer , 'false' if not
    */
-  public static boolean isAOrInLogicalLayer(CapellaElement ele_p) {
-    return (ele_p instanceof LogicalArchitecture) || isInLogicalLayer(ele_p);
+  public static boolean isAOrInLogicalLayer(CapellaElement ele) {
+    return (ele instanceof LogicalArchitecture) || isInLogicalLayer(ele);
   }
 
   /**
-   * This method evaluates if a ele_p is in Logical Layer or not.
-   * @param ele_p
+   * This method evaluates if a ele is in Logical Layer or not.
+   * @param ele
    * @return 'true' if in Logical Layer , 'false' if not
    */
-  public static boolean isInLogicalLayer(CapellaElement ele_p) {
+  public static boolean isInLogicalLayer(CapellaElement ele) {
 
     ArrayList<CapellaElement> meleList = new ArrayList<CapellaElement>(0);
-    getAll_ContainerElements(ele_p, meleList);
-    meleList.add(ele_p);
+    getAll_ContainerElements(ele, meleList);
+    meleList.add(ele);
     for (CapellaElement element : meleList) {
       if ((element instanceof LogicalArchitecture) || (element instanceof LogicalArchitecturePkg) || (element instanceof LogicalComponent)) {
         return true;
@@ -104,23 +105,23 @@ public class CapellaLayerCheckingExt {
   }
 
   /**
-   * This method evaluates if a ele_p is a or in SystemAnalysis
-   * @param ele_p
+   * This method evaluates if a ele is a or in SystemAnalysis
+   * @param ele
    * @return 'true' if in SystemAnalysis , 'false' if not
    */
-  public static boolean isAOrInContextLayer(CapellaElement ele_p) {
-    return (ele_p instanceof SystemAnalysis) || isInContextLayer(ele_p);
+  public static boolean isAOrInContextLayer(CapellaElement ele) {
+    return (ele instanceof SystemAnalysis) || isInContextLayer(ele);
   }
 
   /**
-   * This method evaluates if a ele_p is in Context Layer or not.
-   * @param ele_p
+   * This method evaluates if a ele is in Context Layer or not.
+   * @param ele
    * @return 'true' if in Logical Layer , 'false' if not
    */
-  public static boolean isInContextLayer(CapellaElement ele_p) {
+  public static boolean isInContextLayer(CapellaElement ele) {
 
     ArrayList<CapellaElement> meleList = new ArrayList<CapellaElement>(0);
-    getAll_ContainerElements(ele_p, meleList);
+    getAll_ContainerElements(ele, meleList);
 
     for (CapellaElement element : meleList) {
       if (element instanceof SystemAnalysis) {
@@ -132,24 +133,24 @@ public class CapellaLayerCheckingExt {
   }
 
   /**
-   * This method evaluates if a ele_p is a or in PhysicalArchitecture
-   * @param ele_p
+   * This method evaluates if a ele is a or in PhysicalArchitecture
+   * @param ele
    * @return 'true' if in PhysicalArchitecture , 'false' if not
    */
-  public static boolean isAOrInPhysicalLayer(CapellaElement ele_p) {
-    return (ele_p instanceof PhysicalArchitecture) || isInPhysicalLayer(ele_p);
+  public static boolean isAOrInPhysicalLayer(CapellaElement ele) {
+    return (ele instanceof PhysicalArchitecture) || isInPhysicalLayer(ele);
   }
 
   /**
-   * This method evaluates if a ele_p is in Physical Layer or not.
-   * @param ele_p
+   * This method evaluates if a ele is in Physical Layer or not.
+   * @param ele
    * @return 'true' if in Physical Layer , 'false' if not
    */
-  public static boolean isInPhysicalLayer(CapellaElement ele_p) {
+  public static boolean isInPhysicalLayer(CapellaElement ele) {
 
     ArrayList<CapellaElement> meleList = new ArrayList<CapellaElement>(0);
-    getAll_ContainerElements(ele_p, meleList);
-    meleList.add(ele_p);
+    getAll_ContainerElements(ele, meleList);
+    meleList.add(ele);
     for (CapellaElement element : meleList) {
       if ((element instanceof PhysicalArchitecture) || (element instanceof PhysicalArchitecturePkg) || (element instanceof PhysicalComponent)) {
         return true;
@@ -160,24 +161,24 @@ public class CapellaLayerCheckingExt {
   }
 
   /**
-   * This method evaluates if a ele_p is a or in PhysicalArchitecture
-   * @param ele_p
+   * This method evaluates if a ele is a or in PhysicalArchitecture
+   * @param ele
    * @return 'true' if in PhysicalArchitecture , 'false' if not
    */
-  public static boolean isAOrInEPBSLayer(CapellaElement ele_p) {
-    return (ele_p instanceof EPBSArchitecture) || isInEPBSLayer(ele_p);
+  public static boolean isAOrInEPBSLayer(CapellaElement ele) {
+    return (ele instanceof EPBSArchitecture) || isInEPBSLayer(ele);
   }
 
   /**
-   * This method evaluates if a ele_p is in EPBS Layer or not.
-   * @param ele_p
+   * This method evaluates if a ele is in EPBS Layer or not.
+   * @param ele
    * @return 'true' if in Logical EPBS , 'false' if not
    */
-  public static boolean isInEPBSLayer(CapellaElement ele_p) {
+  public static boolean isInEPBSLayer(CapellaElement ele) {
 
     ArrayList<CapellaElement> meleList = new ArrayList<CapellaElement>(0);
-    getAll_ContainerElements(ele_p, meleList);
-    meleList.add(ele_p);
+    getAll_ContainerElements(ele, meleList);
+    meleList.add(ele);
     for (CapellaElement element : meleList) {
       if ((element instanceof ConfigurationItem) || (element instanceof EPBSArchitecture) || (element instanceof EPBSArchitecturePkg)) {
         return true;
@@ -189,21 +190,21 @@ public class CapellaLayerCheckingExt {
   /**
    * Return the Layer name belong to the element given in parameter
    */
-  public static LAYERSNAME getLayersName(CapellaElement ele_p) {
+  public static LAYERSNAME getLayersName(CapellaElement ele) {
 
-    if (CapellaLayerCheckingExt.isInOperationalAnalysisLayer(ele_p) || (ele_p instanceof OperationalAnalysis)) {
+    if (CapellaLayerCheckingExt.isInOperationalAnalysisLayer(ele) || (ele instanceof OperationalAnalysis)) {
       return LAYERSNAME.OA;
     }
-    if (CapellaLayerCheckingExt.isInContextLayer(ele_p) || (ele_p instanceof SystemAnalysis)) {
+    if (CapellaLayerCheckingExt.isInContextLayer(ele) || (ele instanceof SystemAnalysis)) {
       return LAYERSNAME.CTX;
     }
-    if (CapellaLayerCheckingExt.isInLogicalLayer(ele_p) || (ele_p instanceof LogicalArchitecture)) {
+    if (CapellaLayerCheckingExt.isInLogicalLayer(ele) || (ele instanceof LogicalArchitecture)) {
       return LAYERSNAME.LA;
     }
-    if (CapellaLayerCheckingExt.isInPhysicalLayer(ele_p) || (ele_p instanceof PhysicalArchitecture)) {
+    if (CapellaLayerCheckingExt.isInPhysicalLayer(ele) || (ele instanceof PhysicalArchitecture)) {
       return LAYERSNAME.PA;
     }
-    if (CapellaLayerCheckingExt.isInEPBSLayer(ele_p) || (ele_p instanceof EPBSArchitecture)) {
+    if (CapellaLayerCheckingExt.isInEPBSLayer(ele) || (ele instanceof EPBSArchitecture)) {
       return LAYERSNAME.EPBS;
     }
 
@@ -213,37 +214,37 @@ public class CapellaLayerCheckingExt {
   /**
    * Returns whether both elements are in the same block architecture
    */
-  public static boolean areInSameLayer(EObject ele_p, EObject ele2_p) {
-    BlockArchitecture archi1 = BlockArchitectureExt.getRootBlockArchitecture(ele_p);
-    BlockArchitecture archi2 = BlockArchitectureExt.getRootBlockArchitecture(ele2_p);
+  public static boolean areInSameLayer(EObject ele, EObject ele2) {
+    BlockArchitecture archi1 = BlockArchitectureExt.getRootBlockArchitecture(ele);
+    BlockArchitecture archi2 = BlockArchitectureExt.getRootBlockArchitecture(ele2);
     return (archi1 == archi2) || archi1.equals(archi2);
   }
 
   /**
-   * Check weather given element belong to current layer(calculated from @param elementOnCurrentLayer_p) or upper layer
-   * @param elementToCheck_p : on which the check is applied
-   * @param elementOnCurrentLayer_p : used to calculate current layer
+   * Check weather given element belong to current layer(calculated from @param elementOnCurrentLayer) or upper layer
+   * @param elementToCheck : on which the check is applied
+   * @param elementOnCurrentLayer : used to calculate current layer
    */
-  public static boolean isElementFromCurrentOrUpperLayer(CapellaElement elementToCheck_p, CapellaElement elementOnCurrentLayer_p) {
+  public static boolean isElementFromCurrentOrUpperLayer(CapellaElement elementToCheck, CapellaElement elementOnCurrentLayer) {
     // null value check
 
-    if (isAOrInOperationalAnalysisLayer(elementOnCurrentLayer_p)) {
-      if (isAOrInOperationalAnalysisLayer(elementToCheck_p)) {
+    if (isAOrInOperationalAnalysisLayer(elementOnCurrentLayer)) {
+      if (isAOrInOperationalAnalysisLayer(elementToCheck)) {
         return true;
       }
-    } else if (isAOrInContextLayer(elementOnCurrentLayer_p)) {
-      if (isAOrInOperationalAnalysisLayer(elementToCheck_p) || isAOrInContextLayer(elementToCheck_p)) {
+    } else if (isAOrInContextLayer(elementOnCurrentLayer)) {
+      if (isAOrInOperationalAnalysisLayer(elementToCheck) || isAOrInContextLayer(elementToCheck)) {
         return true;
       }
-    } else if (isAOrInLogicalLayer(elementOnCurrentLayer_p)) {
-      if (!isAOrInPhysicalLayer(elementToCheck_p) && !isAOrInEPBSLayer((elementToCheck_p))) {
+    } else if (isAOrInLogicalLayer(elementOnCurrentLayer)) {
+      if (!isAOrInPhysicalLayer(elementToCheck) && !isAOrInEPBSLayer((elementToCheck))) {
         return true;
       }
-    } else if (isAOrInPhysicalLayer(elementOnCurrentLayer_p)) {
-      if (!isAOrInEPBSLayer((elementToCheck_p))) {
+    } else if (isAOrInPhysicalLayer(elementOnCurrentLayer)) {
+      if (!isAOrInEPBSLayer((elementToCheck))) {
         return true;
       }
-    } else if (isAOrInEPBSLayer(elementOnCurrentLayer_p) && isAOrInEPBSLayer(elementToCheck_p)) {
+    } else if (isAOrInEPBSLayer(elementOnCurrentLayer) && isAOrInEPBSLayer(elementToCheck)) {
       return true;
     }
 
@@ -251,32 +252,32 @@ public class CapellaLayerCheckingExt {
   }
 
   /**
-   * Check weather given element belong to current layer(calculated from @param elementOnCurrentLayer_p) or upper layer
-   * @param elementToCheck_p : on which the check is applied
-   * @param elementOnCurrentLayer_p : used to calculate current layer
+   * Check weather given element belong to current layer(calculated from @param elementOnCurrentLayer) or upper layer
+   * @param elementToCheck : on which the check is applied
+   * @param elementOnCurrentLayer : used to calculate current layer
    */
-  public static boolean isElementFromUpperLayer(CapellaElement elementToCheck_p, CapellaElement elementOnCurrentLayer_p) {
+  public static boolean isElementFromUpperLayer(CapellaElement elementToCheck, CapellaElement elementOnCurrentLayer) {
     // null value check
-    if ((elementToCheck_p == null) || (elementOnCurrentLayer_p == null)) {
+    if ((elementToCheck == null) || (elementOnCurrentLayer == null)) {
       return false;
     }
 
-    if (isAOrInOperationalAnalysisLayer(elementOnCurrentLayer_p)) {
+    if (isAOrInOperationalAnalysisLayer(elementOnCurrentLayer)) {
       return false;
-    } else if (isAOrInContextLayer(elementOnCurrentLayer_p)) {
-      if (isAOrInOperationalAnalysisLayer(elementToCheck_p)) {
+    } else if (isAOrInContextLayer(elementOnCurrentLayer)) {
+      if (isAOrInOperationalAnalysisLayer(elementToCheck)) {
         return true;
       }
-    } else if (isAOrInLogicalLayer(elementOnCurrentLayer_p)) {
-      if (isAOrInContextLayer(elementToCheck_p) || isAOrInOperationalAnalysisLayer(elementToCheck_p)) {
+    } else if (isAOrInLogicalLayer(elementOnCurrentLayer)) {
+      if (isAOrInContextLayer(elementToCheck) || isAOrInOperationalAnalysisLayer(elementToCheck)) {
         return true;
       }
-    } else if (isAOrInPhysicalLayer(elementOnCurrentLayer_p)) {
-      if (isAOrInLogicalLayer(elementToCheck_p) || isAOrInContextLayer(elementToCheck_p) || isAOrInOperationalAnalysisLayer(elementOnCurrentLayer_p)) {
+    } else if (isAOrInPhysicalLayer(elementOnCurrentLayer)) {
+      if (isAOrInLogicalLayer(elementToCheck) || isAOrInContextLayer(elementToCheck) || isAOrInOperationalAnalysisLayer(elementOnCurrentLayer)) {
         return true;
       }
-    } else if (isAOrInEPBSLayer(elementOnCurrentLayer_p)) {
-      if (!isAOrInEPBSLayer(elementToCheck_p)) {
+    } else if (isAOrInEPBSLayer(elementOnCurrentLayer)) {
+      if (!isAOrInEPBSLayer(elementToCheck)) {
         return true;
       }
     }

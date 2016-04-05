@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.pa.delegates;
 
 import java.util.ArrayList;
@@ -41,33 +42,33 @@ public class PaArchitectureHelper {
     return instance;
   }
 
-  public Object doSwitch(PhysicalArchitecture element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(PhysicalArchitecture element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS)) {
-      ret = getAllocatedLogicalArchitectureRealizations(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG)) {
-      ret = getContainedCapabilityRealizationPkg(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG)) {
-      ret = getContainedPhysicalFunctionPkg(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES)) {
-      ret = getAllocatedLogicalArchitectures(element_p);
-    } else if (feature_p.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES)) {
-      ret = getAllocatingEpbsArchitectures(element_p);
+    if (feature.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE_REALIZATIONS)) {
+      ret = getAllocatedLogicalArchitectureRealizations(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG)) {
+      ret = getContainedCapabilityRealizationPkg(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG)) {
+      ret = getContainedPhysicalFunctionPkg(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES)) {
+      ret = getAllocatedLogicalArchitectures(element);
+    } else if (feature.equals(PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATING_EPBS_ARCHITECTURES)) {
+      ret = getAllocatingEpbsArchitectures(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = BlockArchitectureHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = BlockArchitectureHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<LogicalArchitectureRealization> getAllocatedLogicalArchitectureRealizations(PhysicalArchitecture element_p) {
+  protected List<LogicalArchitectureRealization> getAllocatedLogicalArchitectureRealizations(PhysicalArchitecture element) {
     List<LogicalArchitectureRealization> ret = new ArrayList<LogicalArchitectureRealization>();
 
-    for (ArchitectureAllocation architectureAllocation : element_p.getProvisionedArchitectureAllocations()) {
+    for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof LogicalArchitectureRealization) {
         ret.add((LogicalArchitectureRealization) architectureAllocation);
       }
@@ -75,25 +76,25 @@ public class PaArchitectureHelper {
     return ret;
   }
 
-  protected CapabilityRealizationPkg getContainedCapabilityRealizationPkg(PhysicalArchitecture element_p) {
-    AbstractCapabilityPkg abstractCapabilityPkg = element_p.getOwnedAbstractCapabilityPkg();
+  protected CapabilityRealizationPkg getContainedCapabilityRealizationPkg(PhysicalArchitecture element) {
+    AbstractCapabilityPkg abstractCapabilityPkg = element.getOwnedAbstractCapabilityPkg();
     if (abstractCapabilityPkg instanceof CapabilityRealizationPkg) {
       return (CapabilityRealizationPkg) abstractCapabilityPkg;
     }
     return null;
   }
 
-  protected PhysicalFunctionPkg getContainedPhysicalFunctionPkg(PhysicalArchitecture element_p) {
-    FunctionPkg functionPkg = element_p.getOwnedFunctionPkg();
+  protected PhysicalFunctionPkg getContainedPhysicalFunctionPkg(PhysicalArchitecture element) {
+    FunctionPkg functionPkg = element.getOwnedFunctionPkg();
     if (functionPkg instanceof PhysicalFunctionPkg) {
       return (PhysicalFunctionPkg) functionPkg;
     }
     return null;
   }
 
-  protected List<LogicalArchitecture> getAllocatedLogicalArchitectures(PhysicalArchitecture element_p){
+  protected List<LogicalArchitecture> getAllocatedLogicalArchitectures(PhysicalArchitecture element){
     List <LogicalArchitecture> ret = new ArrayList<LogicalArchitecture>();
-    for (BlockArchitecture architecture : element_p.getAllocatedArchitectures()) {
+    for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof LogicalArchitecture) {
         ret.add((LogicalArchitecture) architecture);
       }
@@ -101,9 +102,9 @@ public class PaArchitectureHelper {
     return ret;
   }
 
-  protected List <EPBSArchitecture> getAllocatingEpbsArchitectures(PhysicalArchitecture element_p) {
+  protected List <EPBSArchitecture> getAllocatingEpbsArchitectures(PhysicalArchitecture element) {
     List <EPBSArchitecture> ret = new ArrayList<EPBSArchitecture>();
-    for (BlockArchitecture architecture : element_p.getAllocatingArchitectures()) {
+    for (BlockArchitecture architecture : element.getAllocatingArchitectures()) {
       if (architecture instanceof EPBSArchitecture) {
         ret.add((EPBSArchitecture) architecture);
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -31,15 +32,15 @@ public class SystemComponentExt {
    * Checks whether a capability realization is involved with the component
    * 
    * 
-   * @param component_p the component
-   * @param capabilityRealization_p the capability realization
+   * @param component the component
+   * @param capabilityRealization the capability realization
    * @return true if the capability realization is involved with the component
    */
-  static public boolean isRealizationInvolved(SystemComponent component_p, CapabilityRealization capabilityRealization_p) {
+  static public boolean isRealizationInvolved(SystemComponent component, CapabilityRealization capabilityRealization) {
     boolean isRealizationInvolved = false;
 
-    for (SystemComponentCapabilityRealizationInvolvement systemComponentCapabilityRealizationInvolvement : component_p.getParticipationsInCapabilityRealizations()) {
-      if (systemComponentCapabilityRealizationInvolvement.getInvolver().equals(capabilityRealization_p)) {
+    for (SystemComponentCapabilityRealizationInvolvement systemComponentCapabilityRealizationInvolvement : component.getParticipationsInCapabilityRealizations()) {
+      if (systemComponentCapabilityRealizationInvolvement.getInvolver().equals(capabilityRealization)) {
         isRealizationInvolved = true;
         break;
       }
@@ -51,20 +52,20 @@ public class SystemComponentExt {
   /**
    * This method removes an involved actor.
    * 
-   * @param cpnt_p the actor in which the capability will not be involved to
+   * @param cpnt the actor in which the capability will not be involved to
    * @param capabilityUseCase_p the non involved capability
    */
-  public static void removeInvolvedCapabilityRealisationUseCase(SystemComponent cpnt_p, CapabilityRealization capabilityRealisation_p) {
+  public static void removeInvolvedCapabilityRealisationUseCase(SystemComponent cpnt, CapabilityRealization capabilityRealisation) {
     SystemComponentCapabilityRealizationInvolvement systemCapabilityInvolvement = null;
-    ListIterator<SystemComponentCapabilityRealizationInvolvement> it = cpnt_p.getParticipationsInCapabilityRealizations().listIterator();
+    ListIterator<SystemComponentCapabilityRealizationInvolvement> it = cpnt.getParticipationsInCapabilityRealizations().listIterator();
     while (it.hasNext()) {
       SystemComponentCapabilityRealizationInvolvement inv = it.next();
-      if (inv.getInvolver().equals(capabilityRealisation_p)) {
+      if (inv.getInvolver().equals(capabilityRealisation)) {
         systemCapabilityInvolvement = inv;
       }
     }
     if (systemCapabilityInvolvement != null) {
-      ((CapabilityRealization) capabilityRealisation_p.eContainer()).getOwnedSystemComponentCapabilityRealizations().remove(systemCapabilityInvolvement);
+      ((CapabilityRealization) capabilityRealisation.eContainer()).getOwnedSystemComponentCapabilityRealizations().remove(systemCapabilityInvolvement);
       systemCapabilityInvolvement.destroy();
     }
   }
@@ -72,24 +73,24 @@ public class SystemComponentExt {
   /**
    * This method retrieves the involved capabilities.
    * 
-   * @param cpnt_p the actor whose involved capabilities will be retrieved
+   * @param cpnt the actor whose involved capabilities will be retrieved
    * @return the involved capabilities
    */
-  public static List<CapabilityRealization> getInvolvedCapabilityRealisations(SystemComponent cpnt_p) {
-    return getInvolvedCapabilityRealisations(cpnt_p, false);
+  public static List<CapabilityRealization> getInvolvedCapabilityRealisations(SystemComponent cpnt) {
+    return getInvolvedCapabilityRealisations(cpnt, false);
   }
 
   /**
    * This method retrieves the involved capabilities.
    * 
-   * @param cpnt_p the actor whose involved capabilities will be retrieved
-   * @param onlyGenerated_p
+   * @param cpnt the actor whose involved capabilities will be retrieved
+   * @param onlyGenerated
    * @return the involved capabilities
    */
-  public static List<CapabilityRealization> getInvolvedCapabilityRealisations(SystemComponent cpnt_p, boolean onlyGenerated_p) {
+  public static List<CapabilityRealization> getInvolvedCapabilityRealisations(SystemComponent cpnt, boolean onlyGenerated) {
     List<CapabilityRealization> involvedCapabilities = new ArrayList<CapabilityRealization>();
 
-    for (SystemComponentCapabilityRealizationInvolvement systemCapabilityInvolvement : cpnt_p.getParticipationsInCapabilityRealizations()) {
+    for (SystemComponentCapabilityRealizationInvolvement systemCapabilityInvolvement : cpnt.getParticipationsInCapabilityRealizations()) {
       CapabilityRealization capabilityRealizationUseCase = (CapabilityRealization) systemCapabilityInvolvement.getInvolver();
       if (capabilityRealizationUseCase != null) {
         involvedCapabilities.add(capabilityRealizationUseCase);
@@ -102,16 +103,16 @@ public class SystemComponentExt {
   /**
    * This method adds an involved capability.
    * 
-   * @param cpnt_p the actor in which the capability will be involved to
+   * @param cpnt the actor in which the capability will be involved to
    * @param capabilityUseCase_p the involved capability
    */
-  public static void addInvolvedCapabilityRealisation(SystemComponent cpnt_p, CapabilityRealization capabilityRealisationUseCase_p) {
-    if ((cpnt_p != null) && (capabilityRealisationUseCase_p != null)) {
-      if (!getInvolvedCapabilityRealisations(cpnt_p).contains(capabilityRealisationUseCase_p)) {
+  public static void addInvolvedCapabilityRealisation(SystemComponent cpnt, CapabilityRealization capabilityRealisationUseCase) {
+    if ((cpnt != null) && (capabilityRealisationUseCase != null)) {
+      if (!getInvolvedCapabilityRealisations(cpnt).contains(capabilityRealisationUseCase)) {
         SystemComponentCapabilityRealizationInvolvement capabilityInv = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
-        capabilityInv.setInvolved(cpnt_p);
-        capabilityInv.setInvolver(capabilityRealisationUseCase_p);
-        ((CapabilityRealization) capabilityRealisationUseCase_p.eContainer()).getOwnedSystemComponentCapabilityRealizations().add(capabilityInv);
+        capabilityInv.setInvolved(cpnt);
+        capabilityInv.setInvolver(capabilityRealisationUseCase);
+        ((CapabilityRealization) capabilityRealisationUseCase.eContainer()).getOwnedSystemComponentCapabilityRealizations().add(capabilityInv);
       }
     }
   }
@@ -119,14 +120,14 @@ public class SystemComponentExt {
   /**
    * Gets a filtered list of {@link CapabilityRealizationUseCase} from the capella element
    *
-   * @param currentComponent_p the SystemComponent to be filtered
-   * @param element_p the capella element from which list of CapabilityRealizationUseCases to be got
+   * @param currentComponent the SystemComponent to be filtered
+   * @param element the capella element from which list of CapabilityRealizationUseCases to be got
    * @return list of filtered CapabilityRealizationUseCases
    */
-  public static List<CapellaElement> getCapabilityRealizationUseCasesFiltered(SystemComponent currentComponent_p, CapellaElement element_p) {
+  public static List<CapellaElement> getCapabilityRealizationUseCasesFiltered(SystemComponent currentComponent, CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    for (CapabilityRealization capabilityRealization : CapellaElementExt.getAllCapabilityRealizationInvolvedWith(element_p)) {
-      if (isRealizationInvolved(currentComponent_p, capabilityRealization))
+    for (CapabilityRealization capabilityRealization : CapellaElementExt.getAllCapabilityRealizationInvolvedWith(element)) {
+      if (isRealizationInvolved(currentComponent, capabilityRealization))
         continue;
       availableElements.add(capabilityRealization);
     }

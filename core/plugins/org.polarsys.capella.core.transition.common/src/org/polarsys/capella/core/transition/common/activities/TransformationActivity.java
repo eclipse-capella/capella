@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.Collection;
@@ -38,13 +39,13 @@ public class TransformationActivity extends AbstractActivity implements ITranspo
    * {@inheritDoc}
    */
   @Override
-  protected IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = getContext(activityParams_p);
+  protected IStatus _run(ActivityParameters activityParams) {
+    IContext context = getContext(activityParams);
     IStatus status = Status.OK_STATUS;
 
     context.put(ITransitionConstants.TRACEABILITY_HANDLER, context.get(ITransitionConstants.TRACEABILITY_TRANSFORMATION_HANDLER));
 
-    status = initializeTransposerSources(context, activityParams_p);
+    status = initializeTransposerSources(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
@@ -61,15 +62,15 @@ public class TransformationActivity extends AbstractActivity implements ITranspo
 
   /**
    * Initialize Transposer sources according to scope
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeTransposerSources(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeTransposerSources(IContext context, ActivityParameters activityParams) {
 
     // Initialize scope of the transformation according to scope of transition
-    Collection<EObject> analysesSource = (Collection<EObject>) context_p.get(TRANSPOSER_ANALYSIS_SOURCES);
-    analysesSource.addAll(ScopeHandlerHelper.getInstance(context_p).getScope(context_p));
+    Collection<EObject> analysesSource = (Collection<EObject>) context.get(TRANSPOSER_ANALYSIS_SOURCES);
+    analysesSource.addAll(ScopeHandlerHelper.getInstance(context).getScope(context));
 
     return Status.OK_STATUS;
   }

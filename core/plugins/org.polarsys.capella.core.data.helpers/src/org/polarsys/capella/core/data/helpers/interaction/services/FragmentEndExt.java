@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.interaction.services;
 
 import org.polarsys.capella.core.data.interaction.AbstractFragment;
@@ -35,32 +36,32 @@ public class FragmentEndExt {
   }
 
   /**
-   * @param fragmentEnd_p
+   * @param fragmentEnd
    * @return The fragment end type.
    */
-  public static FRAGMENT_END_TYPE getFragmentEndType(FragmentEnd fragmentEnd_p) {
-    AbstractFragment abstractFragment = fragmentEnd_p.getAbstractFragment();
+  public static FRAGMENT_END_TYPE getFragmentEndType(FragmentEnd fragmentEnd) {
+    AbstractFragment abstractFragment = fragmentEnd.getAbstractFragment();
     if (abstractFragment != null) {
       FragmentEnd start = (FragmentEnd) abstractFragment.getStart();
       FragmentEnd finish = (FragmentEnd) abstractFragment.getFinish();
 
-      return (fragmentEnd_p.equals(start) ? FRAGMENT_END_TYPE.START :
-        fragmentEnd_p.equals(finish) ? FRAGMENT_END_TYPE.FINISH : FRAGMENT_END_TYPE.UNDEFINED);
+      return (fragmentEnd.equals(start) ? FRAGMENT_END_TYPE.START :
+        fragmentEnd.equals(finish) ? FRAGMENT_END_TYPE.FINISH : FRAGMENT_END_TYPE.UNDEFINED);
     }
     return FRAGMENT_END_TYPE.UNDEFINED;
   }
 
   /**
-   * @param fragmentEnd_p
+   * @param fragmentEnd
    * @return The opposite fragment end.
    */
-  public static FragmentEnd getOppositeFragmentEnd(FragmentEnd fragmentEnd_p) {
-    AbstractFragment abstractFragment = fragmentEnd_p.getAbstractFragment();
+  public static FragmentEnd getOppositeFragmentEnd(FragmentEnd fragmentEnd) {
+    AbstractFragment abstractFragment = fragmentEnd.getAbstractFragment();
     if (abstractFragment != null) {
       FragmentEnd start = (FragmentEnd) abstractFragment.getStart();
       FragmentEnd finish = (FragmentEnd) abstractFragment.getFinish();
 
-      return (fragmentEnd_p.equals(start) ? finish : fragmentEnd_p.equals(finish) ? start : null);
+      return (fragmentEnd.equals(start) ? finish : fragmentEnd.equals(finish) ? start : null);
     }
     return null;
   }

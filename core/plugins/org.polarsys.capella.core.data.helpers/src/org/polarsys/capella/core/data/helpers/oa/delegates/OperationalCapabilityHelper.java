@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import java.util.ArrayList;
@@ -39,26 +40,26 @@ public class OperationalCapabilityHelper {
     return instance;
   }
 
-  public Object doSwitch(OperationalCapability element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(OperationalCapability element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY__REALIZING_CAPABILITIES)) {
-      ret = getRealizingCapabilities(element_p);
-    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES)) {
-      ret = getInvolvedEntities(element_p);
+    if (feature.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY__REALIZING_CAPABILITIES)) {
+      ret = getRealizingCapabilities(element);
+    } else if (feature.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES)) {
+      ret = getInvolvedEntities(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = AbstractCapabilityHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = AbstractCapabilityHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected List<Capability> getRealizingCapabilities(OperationalCapability element_p) {
+  protected List<Capability> getRealizingCapabilities(OperationalCapability element) {
     List <Capability> ret = new ArrayList<Capability>();
-    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+    for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizingCapability();
         if (capability instanceof Capability) {
@@ -69,9 +70,9 @@ public class OperationalCapabilityHelper {
     return ret;
   }
 
-  protected List<Entity> getInvolvedEntities(OperationalCapability element_p) {
+  protected List<Entity> getInvolvedEntities(OperationalCapability element) {
     List<Entity> ret = new ArrayList<Entity>();
-    for (Involvement trace : element_p.getInvolvedInvolvements()) {
+    for (Involvement trace : element.getInvolvedInvolvements()) {
       if (trace instanceof EntityOperationalCapabilityInvolvement) {
         Entity entity = ((EntityOperationalCapabilityInvolvement) trace).getEntity();
         if (null != entity) {

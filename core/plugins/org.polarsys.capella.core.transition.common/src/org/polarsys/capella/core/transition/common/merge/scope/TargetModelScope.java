@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.merge.scope;
 
 import java.util.ArrayList;
@@ -28,16 +29,16 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class TargetModelScope extends ContextModelScope implements ITargetModelScope {
 
-  public TargetModelScope(List<? extends EObject> elements_p, IContext context_p) {
-    super(elements_p, context_p);
+  public TargetModelScope(List<? extends EObject> elements, IContext context) {
+    super(elements, context);
   }
 
-  public Collection<EObject> retrieveTransformedElementsFromTarget(EObject targetElement_p) {
+  public Collection<EObject> retrieveTransformedElementsFromTarget(EObject targetElement) {
 
     ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
     ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
 
-    Collection<EObject> bounds = targetHandler.retrieveSourceElements(targetElement_p, context);
+    Collection<EObject> bounds = targetHandler.retrieveSourceElements(targetElement, context);
 
     if (!bounds.isEmpty()) {
       Iterator<EObject> objects = bounds.iterator();
@@ -58,20 +59,20 @@ public class TargetModelScope extends ContextModelScope implements ITargetModelS
   }
 
   @Override
-  protected List<EObject> retains(List<EObject> object_p) {
-    //If object_p is contained into resource of scope, but not in the scope we need to exclude it.
+  protected List<EObject> retains(List<EObject> object) {
+    //If object is contained into resource of scope, but not in the scope we need to exclude it.
     //Otherwise, if it is contained into an other resource, we can add it. (this can happen using the traceability link)
     EObject sourceRoot = (EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
 
-    for (EObject obj : new ArrayList<EObject>(object_p)) {
+    for (EObject obj : new ArrayList<EObject>(object)) {
       if (!_inScope.contains(obj)) {
         if (!(EcoreUtil2.isOrIsContainedBy(obj, sourceRoot))) {
-          object_p.remove(obj);
+          object.remove(obj);
         }
       }
     }
 
-    return object_p;
+    return object;
   }
 
 }

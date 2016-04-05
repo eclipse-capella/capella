@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.activities;
 
 import java.util.ArrayList;
@@ -51,14 +52,14 @@ public class InitializeTransformationActivity extends org.polarsys.capella.core.
    * @return
    */
   @Override
-  protected EObject createTargetTransformationContainer(Resource source_p, IContext context_p) {
+  protected EObject createTargetTransformationContainer(Resource source, IContext context) {
     // Should create a temporary model
     // For debug purpose, we create another systemEngineering into the root project of the element
     // We create another engineering if already exist
 
-    Project project = (Project) org.polarsys.capella.core.model.helpers.CapellaElementExt.getRoot((CapellaElement) source_p.getContents().get(0));
+    Project project = (Project) org.polarsys.capella.core.model.helpers.CapellaElementExt.getRoot((CapellaElement) source.getContents().get(0));
 
-    SystemEngineering engineering = getEngineering(project, "TRANSFORMED", context_p);
+    SystemEngineering engineering = getEngineering(project, "TRANSFORMED", context);
     if (engineering != null) {
 
       // Delete content of the engineering
@@ -67,7 +68,7 @@ public class InitializeTransformationActivity extends org.polarsys.capella.core.
       ExecutionManager em = TransactionHelper.getExecutionManager(toDelete);
       DeleteStructureCommand command = new DeleteStructureCommand(em.getEditingDomain(), toDelete, true);
 
-      if (context_p.get(ITransitionConstants.DIFFMERGE_DISABLE) == null) {
+      if (context.get(ITransitionConstants.DIFFMERGE_DISABLE) == null) {
         if (command.canExecute()) {
           command.execute();
         }
@@ -76,10 +77,10 @@ public class InitializeTransformationActivity extends org.polarsys.capella.core.
     }
     if (engineering == null) {
       engineering = CapellamodellerFactory.eINSTANCE.createSystemEngineering("TRANSFORMED");
-      AttachmentHelper.getInstance(context_p).createdElement(null, engineering, context_p);
+      AttachmentHelper.getInstance(context).createdElement(null, engineering, context);
 
       // for debug purposes only
-      if (context_p.get(ITransitionConstants.DIFFMERGE_DISABLE) != null) {
+      if (context.get(ITransitionConstants.DIFFMERGE_DISABLE) != null) {
         project.getOwnedModelRoots().add(1, engineering);
       }
     }
@@ -87,7 +88,7 @@ public class InitializeTransformationActivity extends org.polarsys.capella.core.
     return engineering;
   }
 
-  private SystemEngineering getEngineering(Project project, String name, IContext context_p) {
+  private SystemEngineering getEngineering(Project project, String name, IContext context) {
     for (ModelRoot root : project.getOwnedModelRoots()) {
       if (root instanceof SystemEngineering) {
         if (name.equals(((SystemEngineering) root).getName())) {

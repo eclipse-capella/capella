@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -102,88 +103,88 @@ public class InformationHelper implements IHelper {
    * @see org.polarsys.capella.common.model.helpers.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature,
    *      org.eclipse.emf.ecore.EAnnotation)
    */
-  public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+  public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
     Object ret = null;
 
-    if (object_p instanceof ExchangeItemInstance) {
-      ret = AbstractInstanceHelper.getInstance().doSwitch((ExchangeItemInstance) object_p, feature_p);
-    } else if (object_p instanceof SignalInstance) {
-      ret = AbstractInstanceHelper.getInstance().doSwitch((SignalInstance) object_p, feature_p);
-    } else if (object_p instanceof Partition) {
-      ret = PartitionHelper.getInstance().doSwitch((Partition) object_p, feature_p);
-    } else if (object_p instanceof Port) {
-      ret = PortHelper.getInstance().doSwitch((Port) object_p, feature_p);
-    } else if (object_p instanceof PortRealization) {
-      ret = PortRealizationHelper.getInstance().doSwitch((PortRealization) object_p, feature_p);
-    } else if (object_p instanceof PortAllocation) {
-      ret = PortAllocationHelper.getInstance().doSwitch((PortAllocation) object_p, feature_p);
-    } else if (object_p instanceof PartitionableElement) {
-      ret = PartitionableElementHelper.getInstance().doSwitch((PartitionableElement) object_p, feature_p);
-    } else if (object_p instanceof Property) {
-      ret = PropertyHelper.getInstance().doSwitch((Property) object_p, feature_p);
-    } else if (object_p instanceof Association) {
-      ret = NamedRelationshipHelper.getInstance().doSwitch((Association) object_p, feature_p);
-    } else if (object_p instanceof Union) {
-      ret = UnionHelper.getInstance().doSwitch((Union) object_p, feature_p);
-    } else if (object_p instanceof Class) {
-      ret = ClassHelper.getInstance().doSwitch((Class) object_p, feature_p);
-    } else if (object_p instanceof Collection) {
-      ret = CollectionHelper.getInstance().doSwitch((Collection) object_p, feature_p);
-    } else if (object_p instanceof Service) {
-      ret = ServiceHelper.getInstance().doSwitch((Service) object_p, feature_p);
-    } else if (object_p instanceof ValuePart) {
-      ret = CapellaElementHelper.getInstance().doSwitch((ValuePart) object_p, feature_p);
-    } else if (object_p instanceof CommunicationItem) {
-      ret = CommunicationItemHelper.getInstance().doSwitch((CommunicationItem) object_p, feature_p);
-    } else if (object_p instanceof Parameter) {
-      ret = TypedElementHelper.getInstance().doSwitch((Parameter) object_p, feature_p);
-    } else if (object_p instanceof OperationAllocation) {
-      ret = OperationAllocationHelper.getInstance().doSwitch((OperationAllocation) object_p, feature_p);
-    } else if (object_p instanceof ExchangeItemRealization) {
-      ret = ExchangeItemRealizationHelper.getInstance().doSwitch((ExchangeItemRealization) object_p, feature_p);
-    } else if (object_p instanceof KeyPart) {
-      ret = RelationshipHelper.getInstance().doSwitch((KeyPart) object_p, feature_p);
-    } else if (object_p instanceof Unit) {
-      ret = NamedElementHelper.getInstance().doSwitch((Unit) object_p, feature_p);
-    } else if (object_p instanceof MessageReference) {
-      ret = RelationshipHelper.getInstance().doSwitch((MessageReference) object_p, feature_p);
-    } else if (object_p instanceof MessageReferencePkg) {
-      ret = StructureHelper.getInstance().doSwitch((MessageReferencePkg) object_p, feature_p);
-    } else if (object_p instanceof BinaryExpression) {
-      ret = BinaryExpressionHelper.getInstance().doSwitch((BinaryExpression) object_p, feature_p);
-    } else if (object_p instanceof UnaryExpression) {
-      ret = UnaryExpressionHelper.getInstance().doSwitch((UnaryExpression) object_p, feature_p);
-    } else if (object_p instanceof AbstractBooleanValue) {
-      ret = AbstractBooleanValueHelper.getInstance().doSwitch((AbstractBooleanValue) object_p, feature_p);
-    } else if (object_p instanceof AbstractCollectionValue) {
-      ret = AbstractCollectionValueHelper.getInstance().doSwitch((AbstractCollectionValue) object_p, feature_p);
-    } else if (object_p instanceof AbstractComplexValue) {
-      ret = AbstractComplexValueHelper.getInstance().doSwitch((AbstractComplexValue) object_p, feature_p);
-    } else if (object_p instanceof AbstractEnumerationValue) {
-      ret = AbstractEnumerationValueHelper.getInstance().doSwitch((AbstractEnumerationValue) object_p, feature_p);
-    } else if (object_p instanceof NumericValue) {
-      ret = AbstractNumericValueHelper.getInstance().doSwitch((NumericValue) object_p, feature_p);
-    } else if (object_p instanceof AbstractStringValue) {
-      ret = AbstractStringValueHelper.getInstance().doSwitch((AbstractStringValue) object_p, feature_p);
-    } else if (object_p instanceof DataType) {
-      ret = DataTypeHelper.getInstance().doSwitch((DataType) object_p, feature_p);
-    } else if (object_p instanceof Structure) {
-      ret = StructureHelper.getInstance().doSwitch((Structure) object_p, feature_p);
-    } else if (object_p instanceof ExchangeItem) {
-      ret = ExchangeItemHelper.getInstance().doSwitch((ExchangeItem) object_p, feature_p);
-    } else if (object_p instanceof ExchangeItemElement) {
-      ret = ExchangeItemElementHelper.getInstance().doSwitch((ExchangeItemElement) object_p, feature_p);
-    } else if (object_p instanceof InformationRealization) {
-      ret = RelationshipHelper.getInstance().doSwitch((InformationRealization) object_p, feature_p);
-    } else if (object_p instanceof CommunicationLink) {
-      ret = CommunicationLinkHelper.getInstance().doSwitch((CommunicationLink) object_p, feature_p);
-    } else if (object_p instanceof CommunicationLinkExchanger) {
-      ret = CommunicationLinkExchangerHelper.getInstance().doSwitch((CommunicationLinkExchanger) object_p, feature_p);
-    } else if (object_p instanceof OpaqueExpression){
-      ret = OpaqueExpressionHelper.getInstance().doSwitch((OpaqueExpression) object_p, feature_p);
+    if (object instanceof ExchangeItemInstance) {
+      ret = AbstractInstanceHelper.getInstance().doSwitch((ExchangeItemInstance) object, feature);
+    } else if (object instanceof SignalInstance) {
+      ret = AbstractInstanceHelper.getInstance().doSwitch((SignalInstance) object, feature);
+    } else if (object instanceof Partition) {
+      ret = PartitionHelper.getInstance().doSwitch((Partition) object, feature);
+    } else if (object instanceof Port) {
+      ret = PortHelper.getInstance().doSwitch((Port) object, feature);
+    } else if (object instanceof PortRealization) {
+      ret = PortRealizationHelper.getInstance().doSwitch((PortRealization) object, feature);
+    } else if (object instanceof PortAllocation) {
+      ret = PortAllocationHelper.getInstance().doSwitch((PortAllocation) object, feature);
+    } else if (object instanceof PartitionableElement) {
+      ret = PartitionableElementHelper.getInstance().doSwitch((PartitionableElement) object, feature);
+    } else if (object instanceof Property) {
+      ret = PropertyHelper.getInstance().doSwitch((Property) object, feature);
+    } else if (object instanceof Association) {
+      ret = NamedRelationshipHelper.getInstance().doSwitch((Association) object, feature);
+    } else if (object instanceof Union) {
+      ret = UnionHelper.getInstance().doSwitch((Union) object, feature);
+    } else if (object instanceof Class) {
+      ret = ClassHelper.getInstance().doSwitch((Class) object, feature);
+    } else if (object instanceof Collection) {
+      ret = CollectionHelper.getInstance().doSwitch((Collection) object, feature);
+    } else if (object instanceof Service) {
+      ret = ServiceHelper.getInstance().doSwitch((Service) object, feature);
+    } else if (object instanceof ValuePart) {
+      ret = CapellaElementHelper.getInstance().doSwitch((ValuePart) object, feature);
+    } else if (object instanceof CommunicationItem) {
+      ret = CommunicationItemHelper.getInstance().doSwitch((CommunicationItem) object, feature);
+    } else if (object instanceof Parameter) {
+      ret = TypedElementHelper.getInstance().doSwitch((Parameter) object, feature);
+    } else if (object instanceof OperationAllocation) {
+      ret = OperationAllocationHelper.getInstance().doSwitch((OperationAllocation) object, feature);
+    } else if (object instanceof ExchangeItemRealization) {
+      ret = ExchangeItemRealizationHelper.getInstance().doSwitch((ExchangeItemRealization) object, feature);
+    } else if (object instanceof KeyPart) {
+      ret = RelationshipHelper.getInstance().doSwitch((KeyPart) object, feature);
+    } else if (object instanceof Unit) {
+      ret = NamedElementHelper.getInstance().doSwitch((Unit) object, feature);
+    } else if (object instanceof MessageReference) {
+      ret = RelationshipHelper.getInstance().doSwitch((MessageReference) object, feature);
+    } else if (object instanceof MessageReferencePkg) {
+      ret = StructureHelper.getInstance().doSwitch((MessageReferencePkg) object, feature);
+    } else if (object instanceof BinaryExpression) {
+      ret = BinaryExpressionHelper.getInstance().doSwitch((BinaryExpression) object, feature);
+    } else if (object instanceof UnaryExpression) {
+      ret = UnaryExpressionHelper.getInstance().doSwitch((UnaryExpression) object, feature);
+    } else if (object instanceof AbstractBooleanValue) {
+      ret = AbstractBooleanValueHelper.getInstance().doSwitch((AbstractBooleanValue) object, feature);
+    } else if (object instanceof AbstractCollectionValue) {
+      ret = AbstractCollectionValueHelper.getInstance().doSwitch((AbstractCollectionValue) object, feature);
+    } else if (object instanceof AbstractComplexValue) {
+      ret = AbstractComplexValueHelper.getInstance().doSwitch((AbstractComplexValue) object, feature);
+    } else if (object instanceof AbstractEnumerationValue) {
+      ret = AbstractEnumerationValueHelper.getInstance().doSwitch((AbstractEnumerationValue) object, feature);
+    } else if (object instanceof NumericValue) {
+      ret = AbstractNumericValueHelper.getInstance().doSwitch((NumericValue) object, feature);
+    } else if (object instanceof AbstractStringValue) {
+      ret = AbstractStringValueHelper.getInstance().doSwitch((AbstractStringValue) object, feature);
+    } else if (object instanceof DataType) {
+      ret = DataTypeHelper.getInstance().doSwitch((DataType) object, feature);
+    } else if (object instanceof Structure) {
+      ret = StructureHelper.getInstance().doSwitch((Structure) object, feature);
+    } else if (object instanceof ExchangeItem) {
+      ret = ExchangeItemHelper.getInstance().doSwitch((ExchangeItem) object, feature);
+    } else if (object instanceof ExchangeItemElement) {
+      ret = ExchangeItemElementHelper.getInstance().doSwitch((ExchangeItemElement) object, feature);
+    } else if (object instanceof InformationRealization) {
+      ret = RelationshipHelper.getInstance().doSwitch((InformationRealization) object, feature);
+    } else if (object instanceof CommunicationLink) {
+      ret = CommunicationLinkHelper.getInstance().doSwitch((CommunicationLink) object, feature);
+    } else if (object instanceof CommunicationLinkExchanger) {
+      ret = CommunicationLinkExchangerHelper.getInstance().doSwitch((CommunicationLinkExchanger) object, feature);
+    } else if (object instanceof OpaqueExpression){
+      ret = OpaqueExpressionHelper.getInstance().doSwitch((OpaqueExpression) object, feature);
     }
 
-    if (null != ret || feature_p.getUpperBound() == 1)
+    if (null != ret || feature.getUpperBound() == 1)
       return ret;
 
     throw new HelperNotFoundException();

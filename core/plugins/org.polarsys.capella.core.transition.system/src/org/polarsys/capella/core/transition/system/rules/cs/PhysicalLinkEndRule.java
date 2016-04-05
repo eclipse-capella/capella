@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.cs;
 
 import java.util.ArrayList;
@@ -31,25 +32,25 @@ public class PhysicalLinkEndRule extends AbstractCapellaElementRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-    PhysicalLinkEnd element = (PhysicalLinkEnd) source_p;
-    result_p.add(element.getPart());
-    result_p.add(element.getPort());
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    PhysicalLinkEnd element = (PhysicalLinkEnd) source;
+    result.add(element.getPart());
+    result.add(element.getPort());
   }
 
   @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CsPackage.Literals.PHYSICAL_LINK_END__PART, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CsPackage.Literals.PHYSICAL_LINK_END__PORT, context_p);
+  protected void attachRelated(EObject element, EObject result, IContext context) {
+    super.attachRelated(element, result, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CsPackage.Literals.PHYSICAL_LINK_END__PART, context);
+    AttachmentHelper.getInstance(context).attachTracedElements(element, result, CsPackage.Literals.PHYSICAL_LINK_END__PORT, context);
   }
 
   @Override
-  protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
-    super.premicesRelated(element_p, needed_p);
-    PhysicalLinkEnd element = (PhysicalLinkEnd) element_p;
-    needed_p.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.PHYSICAL_LINK_END__PART));
-    needed_p.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.PHYSICAL_LINK_END__PORT));
+  protected void premicesRelated(EObject eObject1, ArrayList<IPremise> needed) {
+    super.premicesRelated(eObject1, needed);
+    PhysicalLinkEnd element = (PhysicalLinkEnd) eObject1;
+    needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.PHYSICAL_LINK_END__PART));
+    needed.addAll(createDefaultPrecedencePremices(element, CsPackage.Literals.PHYSICAL_LINK_END__PORT));
   }
 }

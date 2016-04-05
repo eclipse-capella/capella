@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.merge.scope;
 
 import java.util.Collection;
@@ -25,11 +26,11 @@ public class ContextModelScope extends PartialRootedModelScope {
 
   /**
    * Constructor
-   * @param elements_p a non-null list of the elements initially in the scope
+   * @param elements a non-null list of the elements initially in the scope
    */
-  public ContextModelScope(Collection<? extends EObject> elements_p, IContext context_p) {
-    super(elements_p);
-    this.context = context_p;
+  public ContextModelScope(Collection<? extends EObject> elements, IContext context) {
+    super(elements);
+    this.context = context;
   }
 
 }

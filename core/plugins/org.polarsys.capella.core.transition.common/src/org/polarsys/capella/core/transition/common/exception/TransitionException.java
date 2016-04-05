@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.exception;
 
 import org.eclipse.core.runtime.IStatus;
@@ -32,11 +33,11 @@ public class TransitionException extends RuntimeException {
     return getMessage();
   }
 
-  public TransitionException(IStatus status_p) {
-    super(status_p == null ? ICommonConstants.EMPTY_STRING : status_p.getMessage());
+  public TransitionException(IStatus status) {
+    super(status == null ? ICommonConstants.EMPTY_STRING : status.getMessage());
   }
 
-  public TransitionException(Throwable e_p) {
-    super(e_p);
+  public TransitionException(Throwable e) {
+    super(e);
   }
 }

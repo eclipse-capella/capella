@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.rules.information;
 
 import java.util.List;
@@ -35,17 +36,17 @@ public class CollectionValueRule extends DataValueRule {
   }
 
   @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
 
-    CollectionValue element = (CollectionValue) source_p;
-    result_p.add(element.getOwnedDefaultElement());
-    result_p.addAll(element.getOwnedElements());
+    CollectionValue element = (CollectionValue) source;
+    result.add(element.getOwnedDefaultElement());
+    result.addAll(element.getOwnedElements());
 
-    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context_p);
-    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
-      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDefaultElement(), context_p);
-      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedElements(), context_p);
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getOwnedDefaultElement(), context);
+      handler.addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedElements(), context);
 
     }
 

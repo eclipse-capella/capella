@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers.listeners;
 
 import java.util.Collection;
@@ -29,16 +30,16 @@ import org.polarsys.capella.common.model.IDelegatedListener;
  */
 public class CapellaModelDataListener extends AdapterImpl {
 
-  private IDelegatedListener _delegatedListener;
+  private IDelegatedListener delegatedListener;
 
   /**
    * @return {@code TRUE} if at least one contributor to the extension point {@code delegatedCapellaListener}
-   *  wants the given notification {@code notification_p} to be filtered, and {@code FALSE} otherwise.
+   *  wants the given notification {@code notification} to be filtered, and {@code FALSE} otherwise.
    */
-  public boolean filterNotification(Notification notification_p) {
+  public boolean filterNotification(Notification notification) {
     IDelegatedListener delegatedListener = getDelegatedListener();
     if (null != delegatedListener) {
-      return delegatedListener.filterNotification(notification_p);
+      return delegatedListener.filterNotification(notification);
     }
     return false;
   }
@@ -47,43 +48,43 @@ public class CapellaModelDataListener extends AdapterImpl {
    * @return {@link IDelegatedListener}
    */
   private IDelegatedListener getDelegatedListener() {
-    if (null == _delegatedListener) {
+    if (null == delegatedListener) {
       for (IConfigurationElement configurationElement : ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.common.model", "DelegatedListener")) { //$NON-NLS-1$ //$NON-NLS-2$
-        _delegatedListener = (IDelegatedListener) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
+        delegatedListener = (IDelegatedListener) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
       }
     }
-    return _delegatedListener;
+    return delegatedListener;
   }
 
   /**
    * 
    */
-  protected void executeCommand(EObject context_p, ICommand command_p) {
-	executeCommand(TransactionHelper.getEditingDomain(context_p), TransactionHelper.getExecutionManager(context_p), command_p);
+  protected void executeCommand(EObject context, ICommand command) {
+	executeCommand(TransactionHelper.getEditingDomain(context), TransactionHelper.getExecutionManager(context), command);
   }
 
   /**
    * 
    */
-  protected void executeCommand(Collection<? extends EObject> context_p, ICommand command_p) {
-	executeCommand(TransactionHelper.getEditingDomain(context_p), TransactionHelper.getExecutionManager(context_p), command_p);
+  protected void executeCommand(Collection<? extends EObject> context, ICommand command) {
+	executeCommand(TransactionHelper.getEditingDomain(context), TransactionHelper.getExecutionManager(context), command);
   }
 
   /**
    * This method verifies if there is an active transaction.<br>
    * If such case, the command is simply run.<br>
    * If not, the command is executed through the execution manager.<br>
-   * @param editingDomain_p the editing domain
-   * @param executionManager_p the execution manager
-   * @param command_p the command to be executed
+   * @param editingDomain the editing domain
+   * @param executionManager the execution manager
+   * @param command the command to be executed
    */
-  protected void executeCommand(TransactionalEditingDomain editingDomain_p, ExecutionManager executionManager_p, ICommand command_p) {
-    if (editingDomain_p instanceof InternalTransactionalEditingDomain) {
-      InternalTransaction activeTransaction = ((InternalTransactionalEditingDomain) editingDomain_p).getActiveTransaction();
+  protected void executeCommand(TransactionalEditingDomain editingDomain, ExecutionManager executionManager, ICommand command) {
+    if (editingDomain instanceof InternalTransactionalEditingDomain) {
+      InternalTransaction activeTransaction = ((InternalTransactionalEditingDomain) editingDomain).getActiveTransaction();
       if (null != activeTransaction && activeTransaction.isActive()) {
-        command_p.run();
+        command.run();
       } else {
-    	executionManager_p.execute(command_p);
+    	executionManager.execute(command);
       }
     }
   }

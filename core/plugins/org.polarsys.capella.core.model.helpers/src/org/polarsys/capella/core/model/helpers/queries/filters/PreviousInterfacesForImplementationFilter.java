@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers.queries.filters;
 
 import org.eclipse.emf.common.util.EList;
@@ -23,13 +24,13 @@ public class PreviousInterfacesForImplementationFilter implements IQueryFilter {
 
   private Component component;
 
-  public PreviousInterfacesForImplementationFilter(Component component_p) {
-    component = component_p;
+  public PreviousInterfacesForImplementationFilter(Component component) {
+    this.component = component;
   }
 
   @Override
-  public boolean keepElement(Object interface_p, IQueryContext context_p) {
-    Interface inte = (Interface) interface_p;
+  public boolean keepElement(Object object1, IQueryContext iQueryContext1) {
+    Interface inte = (Interface) object1;
     EList<Component> lcs = component.getAllocatedComponents();
     if (lcs.isEmpty()) {
       return true;

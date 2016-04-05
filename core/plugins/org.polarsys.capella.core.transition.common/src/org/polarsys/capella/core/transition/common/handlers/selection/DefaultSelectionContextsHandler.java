@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.selection;
 
 import java.util.HashMap;
@@ -27,39 +28,39 @@ public class DefaultSelectionContextsHandler implements CompoundSelectionContext
 
   public static final ISelectionContext EMPTY_CONTEXT = new ISelectionContext() {
 
-    public boolean match(EObject source_p, EObject target_p, IContext context_p) {
+    public boolean match(EObject source, EObject target, IContext context) {
       return true;
     }
 
   };
 
-  public ISelectionContext getSelectionContext(IContext context_p, String id_p) {
+  public ISelectionContext getSelectionContext(IContext context, String id) {
 
-    if (!context_p.exists(SELECTION_CONTEXTS_HANDLER_MAP)) {
+    if (!context.exists(SELECTION_CONTEXTS_HANDLER_MAP)) {
       HashMap<String, ISelectionContext> map = new HashMap<String, ISelectionContext>();
-      context_p.put(SELECTION_CONTEXTS_HANDLER_MAP, map);
+      context.put(SELECTION_CONTEXTS_HANDLER_MAP, map);
     }
 
-    HashMap<String, ISelectionContext> map = (HashMap<String, ISelectionContext>) context_p.get(SELECTION_CONTEXTS_HANDLER_MAP);
-    if (!map.containsKey(id_p)) {
+    HashMap<String, ISelectionContext> map = (HashMap<String, ISelectionContext>) context.get(SELECTION_CONTEXTS_HANDLER_MAP);
+    if (!map.containsKey(id)) {
       return EMPTY_CONTEXT;
     }
-    return map.get(id_p);
+    return map.get(id);
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus init(IContext context_p) {
+  public IStatus init(IContext context) {
     return Status.OK_STATUS;
   }
 
   /**
    * {@inheritDoc}
    */
-  public IStatus dispose(IContext context_p) {
+  public IStatus dispose(IContext context) {
 
-    if (context_p.exists(SELECTION_CONTEXTS_HANDLER_MAP)) {
+    if (context.exists(SELECTION_CONTEXTS_HANDLER_MAP)) {
       HashMap<String, ISelectionContext> map = new HashMap<String, ISelectionContext>();
       map.clear();
     }
@@ -70,21 +71,21 @@ public class DefaultSelectionContextsHandler implements CompoundSelectionContext
   /**
    * {@inheritDoc}
    */
-  public void addSelectionContext(IContext context_p, String id_p, ISelectionContext sContext_p) {
+  public void addSelectionContext(IContext context, String id, ISelectionContext sContext) {
 
-    if (!context_p.exists(SELECTION_CONTEXTS_HANDLER_MAP)) {
+    if (!context.exists(SELECTION_CONTEXTS_HANDLER_MAP)) {
       HashMap<String, ISelectionContext> map = new HashMap<String, ISelectionContext>();
-      context_p.put(SELECTION_CONTEXTS_HANDLER_MAP, map);
+      context.put(SELECTION_CONTEXTS_HANDLER_MAP, map);
     }
 
-    HashMap<String, ISelectionContext> map = (HashMap<String, ISelectionContext>) context_p.get(SELECTION_CONTEXTS_HANDLER_MAP);
-    map.put(id_p, sContext_p);
+    HashMap<String, ISelectionContext> map = (HashMap<String, ISelectionContext>) context.get(SELECTION_CONTEXTS_HANDLER_MAP);
+    map.put(id, sContext);
   }
 
   /**
    * {@inheritDoc}
    */
-  public ISelectionContext getSelectionContext(IContext context_p, String id_p, EObject eContext_p, EObject result_p) {
-    return getSelectionContext(context_p, id_p);
+  public ISelectionContext getSelectionContext(IContext context, String id, EObject eContext, EObject result) {
+    return getSelectionContext(context, id);
   }
 }

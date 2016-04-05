@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.Collection;
@@ -29,15 +30,15 @@ public class SignalExt {
 
   /**
    * This method returns the root data package of the current signal
-   * @param signal_p
+   * @param signal
    * @return
    */
-  public static DataPkg getOwnerSignalPkg(Signal signal_p) {
-    if (null != signal_p) {
-      if (signal_p.eContainer() instanceof Signal) {
-        return getRootOwnerDataPkg((Signal) signal_p.eContainer());
-      } else if (signal_p.eContainer() instanceof DataPkg) {
-        return (DataPkg) signal_p.eContainer();
+  public static DataPkg getOwnerSignalPkg(Signal signal) {
+    if (null != signal) {
+      if (signal.eContainer() instanceof Signal) {
+        return getRootOwnerDataPkg((Signal) signal.eContainer());
+      } else if (signal.eContainer() instanceof DataPkg) {
+        return (DataPkg) signal.eContainer();
       }
     }
     return null;
@@ -45,15 +46,15 @@ public class SignalExt {
 
   /**
    * This method returns the root data package of the current signal
-   * @param signal_p
+   * @param signal
    * @return
    */
-  public static DataPkg getRootOwnerDataPkg(Signal signal_p) {
-    if (null != signal_p) {
-      if (signal_p.eContainer() instanceof Signal) {
-        return getRootOwnerDataPkg((Signal) signal_p.eContainer());
-      } else if (signal_p.eContainer() instanceof DataPkg) {
-        return DataPkgExt.getRootDataPkg((DataPkg) signal_p.eContainer());
+  public static DataPkg getRootOwnerDataPkg(Signal signal) {
+    if (null != signal) {
+      if (signal.eContainer() instanceof Signal) {
+        return getRootOwnerDataPkg((Signal) signal.eContainer());
+      } else if (signal.eContainer() instanceof DataPkg) {
+        return DataPkgExt.getRootDataPkg((DataPkg) signal.eContainer());
       }
     }
     return null;
@@ -62,17 +63,17 @@ public class SignalExt {
   /**
    * @see #getSignalDependencies(Signal)
    */
-  public static Map<AbstractDependenciesPkg, Collection<EObject>> getSignalDependencies2(Signal signal_p) {
+  public static Map<AbstractDependenciesPkg, Collection<EObject>> getSignalDependencies2(Signal signal) {
 
     Map<AbstractDependenciesPkg, Collection<EObject>> result = new HashMap<AbstractDependenciesPkg, Collection<EObject>>();
 
     // properties
-    for (Property aProperty : signal_p.getProperties()) {
+    for (Property aProperty : signal.getProperties()) {
       // type of properties
       AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, aProperty.getType());
     }
     // superSignals
-    for (Generalization aGeneralization : signal_p.getSuperGeneralizations()) {
+    for (Generalization aGeneralization : signal.getSuperGeneralizations()) {
       AbstractDependenciesPkgExt.checkDependenciesAndAddToResult(result, aGeneralization.getSuper());
     }
 
@@ -80,11 +81,11 @@ public class SignalExt {
   }
 
   /**
-   * @param signal_p
-   * @return all dependent packages of signal_p
+   * @param signal
+   * @return all dependent packages of signal
    */
-  public static Collection<AbstractDependenciesPkg> getSignalDependencies(Signal signal_p) {
-    return getSignalDependencies2(signal_p).keySet();
+  public static Collection<AbstractDependenciesPkg> getSignalDependencies(Signal signal) {
+    return getSignalDependencies2(signal).keySet();
   }
 
 }

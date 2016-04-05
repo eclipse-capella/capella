@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.log;
 
 import java.io.IOException;
@@ -65,27 +66,27 @@ public class DiffModelViewer implements IDiffModelViewer {
   boolean isReadOnly = false;
 
   /**
-   * @param isReadOnly_p 
+   * @param isReadOnly 
    * @param diff
    * @param diffScope
    * @param diffAction
    */
-  public DiffModelViewer(IDifference diff_p, DiffScope diffScope_p, FilterAction diffAction_p, IContext context_p, boolean isReadOnly_p) {
-    this._relatedDiff = diff_p;
+  public DiffModelViewer(IDifference diff, DiffScope diffScope, FilterAction diffAction, IContext context, boolean isReadOnly) {
+    this._relatedDiff = diff;
 
-    this._scopeDiff = diffScope_p;
-    this._defaultActionDiff = diffAction_p;
-    this._actionDiff = diffAction_p;
-    this.isReadOnly = isReadOnly_p;
+    this._scopeDiff = diffScope;
+    this._defaultActionDiff = diffAction;
+    this._actionDiff = diffAction;
+    this.isReadOnly = isReadOnly;
 
     EObject me = null;
     EObject diffelt = null;
 
-    Role scope = diffScope_p == DiffScope.Source ? Role.REFERENCE : Role.TARGET;
+    Role scope = diffScope == DiffScope.Source ? Role.REFERENCE : Role.TARGET;
 
     // Difference on Reference of element
-    if (diff_p instanceof IReferenceValuePresence) {
-      IReferenceValuePresence rvp = (IReferenceValuePresence) diff_p;
+    if (diff instanceof IReferenceValuePresence) {
+      IReferenceValuePresence rvp = (IReferenceValuePresence) diff;
       this._typeDiff = DiffType.Reference;
       this._detailedDiff = rvp.toString();
 
@@ -96,8 +97,8 @@ public class DiffModelViewer implements IDiffModelViewer {
     }
 
     // Difference on Presence of new element
-    if (diff_p instanceof IElementPresence) {
-      IElementPresence ep = (IElementPresence) diff_p;
+    if (diff instanceof IElementPresence) {
+      IElementPresence ep = (IElementPresence) diff;
       this._typeDiff = DiffType.Element;
       this._detailedDiff = ep.toString();
       diffelt = ep.getElement();
@@ -107,8 +108,8 @@ public class DiffModelViewer implements IDiffModelViewer {
     }
 
     // Difference on Attribute of an element
-    if (diff_p instanceof IAttributeValuePresence) {
-      IAttributeValuePresence avp = (IAttributeValuePresence) diff_p;
+    if (diff instanceof IAttributeValuePresence) {
+      IAttributeValuePresence avp = (IAttributeValuePresence) diff;
       this._typeDiff = DiffType.Attribute;
       this._detailedDiff = avp.toString();
       diffelt = avp.getElementMatch().get(Role.REFERENCE);
@@ -119,7 +120,7 @@ public class DiffModelViewer implements IDiffModelViewer {
 
     if (diffelt != null) {
       computeElementProperties(diffelt);
-      computeTraceability(_relatedDiff, scope, context_p);
+      computeTraceability(_relatedDiff, scope, context);
     }
 
     if (me != null) {
@@ -129,15 +130,15 @@ public class DiffModelViewer implements IDiffModelViewer {
 
   }
 
-  protected void computeTraceability(IDifference diffelt_p, Role scope, IContext context_p) {
+  protected void computeTraceability(IDifference diffelt, Role scope, IContext context) {
 
     traceability = TRACEABILITY_1 + TRACEABILITY_SEPARATOR + TRACEABILITY_1;
 
-    if (diffelt_p instanceof IElementRelativeDifference) {
-      EObject object = ((IElementRelativeDifference) diffelt_p).getElementMatch().get(Role.REFERENCE);
+    if (diffelt instanceof IElementRelativeDifference) {
+      EObject object = ((IElementRelativeDifference) diffelt).getElementMatch().get(Role.REFERENCE);
 
-      ITraceabilityHandler sourceMergeHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-      ITraceabilityHandler targetMergeHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+      ITraceabilityHandler sourceMergeHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
+      ITraceabilityHandler targetMergeHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
 
       ITraceabilityHandler sourceHandler = sourceMergeHandler;
       ITraceabilityHandler targetHandler = targetMergeHandler;
@@ -150,17 +151,17 @@ public class DiffModelViewer implements IDiffModelViewer {
       Collection<EObject> targetElements = new HashSet<EObject>();
       Collection<EObject> sourceElements = new HashSet<EObject>();
 
-      Collection<EObject> ancestors = sourceHandler.retrieveSourceElements(object, context_p);
+      Collection<EObject> ancestors = sourceHandler.retrieveSourceElements(object, context);
       for (EObject ancestor : ancestors) {
 
-        Collection<EObject> targets = targetHandler.retrieveTracedElements(ancestor, context_p);
+        Collection<EObject> targets = targetHandler.retrieveTracedElements(ancestor, context);
         targetElements.addAll(targets);
 
         for (EObject target : targets) {
-          Collection<EObject> ancestorTargets = targetHandler.retrieveSourceElements(target, context_p);
+          Collection<EObject> ancestorTargets = targetHandler.retrieveSourceElements(target, context);
 
           for (EObject ancestorTarget : ancestorTargets) {
-            sourceElements.addAll(sourceHandler.retrieveTracedElements(ancestorTarget, context_p));
+            sourceElements.addAll(sourceHandler.retrieveTracedElements(ancestorTarget, context));
           }
         }
       }
@@ -299,8 +300,8 @@ public class DiffModelViewer implements IDiffModelViewer {
    * {@inheritDoc}
    */
   @Override
-  public void setRoot(IDiffModelViewer source_p) {
-    _root = source_p;
+  public void setRoot(IDiffModelViewer source) {
+    _root = source;
   }
 
   /**
@@ -315,8 +316,8 @@ public class DiffModelViewer implements IDiffModelViewer {
    * {@inheritDoc}
    */
   @Override
-  public void setDefaultActionDiff(FilterAction diff_p) {
-    _defaultActionDiff = diff_p;
+  public void setDefaultActionDiff(FilterAction diff) {
+    _defaultActionDiff = diff;
 
   }
 

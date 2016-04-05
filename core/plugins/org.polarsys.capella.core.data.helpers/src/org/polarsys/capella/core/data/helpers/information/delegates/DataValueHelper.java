@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.delegates;
 
 import org.apache.log4j.Logger;
@@ -40,23 +41,23 @@ public class DataValueHelper {
     return instance;
   }
 
-  public Object doSwitch(DataValue element_p, EStructuralFeature feature_p) {
+  public Object doSwitch(DataValue element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature_p.equals(DatavaluePackage.Literals.DATA_VALUE__TYPE)) {
-      return getType(element_p);
+    if (feature.equals(DatavaluePackage.Literals.DATA_VALUE__TYPE)) {
+      return getType(element);
     }
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = NamedElementHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamedElementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
   }
 
-  protected Type getType(DataValue element_p) {
-    AbstractType absType = element_p.getAbstractType();
+  protected Type getType(DataValue element) {
+    AbstractType absType = element.getAbstractType();
     if (null != absType && absType instanceof Type) {
       return (Type) absType;
     }
@@ -68,24 +69,24 @@ public class DataValueHelper {
    * @param value the numeric value.
    * @return the value of the given numeric value.
    */
-  public static Object getValue(final NumericValue value_p) {
-    return new ValueOfNumericValueSwitch().doSwitch(value_p);
+  public static Object getValue(final NumericValue value) {
+    return new ValueOfNumericValueSwitch().doSwitch(value);
   }
 
   /**
    * Allows to convert the given numeric value into an <code>int</code>
-   * @param value_p the numeric value
+   * @param value the numeric value
    * @return the corresponding <code>int</code> or <code>-1</code> if it us impossible to convert
    */
-  public static int getValueAsInt(final NumericValue value_p) {
+  public static int getValueAsInt(final NumericValue value) {
     int foundInt;
     try {
-      String string = (String) (getValue(value_p));
+      String string = (String) (getValue(value));
       foundInt = Integer.parseInt(string);
-    } catch (ClassCastException exception_p) {
-      __logger.warn(Messages.DataValueHelper_cannotConvertToIntTheNumericValue + value_p, exception_p);
+    } catch (ClassCastException exception) {
+      __logger.warn(Messages.DataValueHelper_cannotConvertToIntTheNumericValue + value, exception);
       return -1;
-    } catch (NumberFormatException exception_p) {
+    } catch (NumberFormatException exception) {
       // DO NOT LOG, this case is handled by the caller.
       return -1;
     }

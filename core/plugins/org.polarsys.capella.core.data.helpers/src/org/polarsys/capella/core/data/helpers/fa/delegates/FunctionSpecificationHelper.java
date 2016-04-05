@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.delegates;
 
 import java.util.ArrayList;
@@ -35,27 +36,27 @@ private static FunctionSpecificationHelper instance;
 		return instance;
 	}
 
-	public Object doSwitch(FunctionSpecification element_p, EStructuralFeature feature_p) {
+	public Object doSwitch(FunctionSpecification element, EStructuralFeature feature) {
 		
 		Object ret = null;
 		
-		if (feature_p.equals(FaPackage.Literals.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS)) {
-			ret = getSubFunctions(element_p);
+		if (feature.equals(FaPackage.Literals.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS)) {
+			ret = getSubFunctions(element);
 		}
 
 		// no helper found... searching in super classes...
     if(ret == null) {
-      ret = NamespaceHelper.getInstance().doSwitch(element_p, feature_p);
+      ret = NamespaceHelper.getInstance().doSwitch(element, feature);
     }
 		if(ret == null) {
-			ret = AbstractActivityHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = AbstractActivityHelper.getInstance().doSwitch(element, feature);
 		}
 		
 		return ret;
 	}
 
-	protected List<FunctionSpecification> getSubFunctions(FunctionSpecification element_p) {
-		List<ActivityNode> nodes = element_p.getOwnedNodes();
+	protected List<FunctionSpecification> getSubFunctions(FunctionSpecification element) {
+		List<ActivityNode> nodes = element.getOwnedNodes();
 		List<FunctionSpecification> ret = new ArrayList<FunctionSpecification>();
 		
 		for (ActivityNode activityNode : nodes) {

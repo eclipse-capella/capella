@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -34,12 +35,12 @@ public class SystemAnalysisExt {
 
   /**
    * Gets all the components contained in a component architecture
-   * @param componentArchitecture_p the parent component architecture
+   * @param componentArchitecture the parent component architecture
    * @return list of components
    */
-  static public List<Component> getComponentsFromComponentArchitecture(ComponentArchitecture componentArchitecture_p) {
+  static public List<Component> getComponentsFromComponentArchitecture(ComponentArchitecture componentArchitecture) {
     List<Component> list = new ArrayList<Component>();
-    for (Object obj : componentArchitecture_p.eContents()) {
+    for (Object obj : componentArchitecture.eContents()) {
       if (obj instanceof Component) {
         list.add((Component) obj);
       } else if (obj instanceof Structure) {
@@ -54,10 +55,10 @@ public class SystemAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctions(BlockArchitecture arch_p) {
+  static public List<AbstractFunction> getAllFunctions(BlockArchitecture arch) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != arch_p) {
-      FunctionPkg functionPkg = arch_p.getOwnedFunctionPkg();
+    if (null != arch) {
+      FunctionPkg functionPkg = arch.getOwnedFunctionPkg();
       if (functionPkg != null && functionPkg instanceof SystemFunctionPkg) {
         list = getAllFunctionsFromFunctionPkg((SystemFunctionPkg) functionPkg);
       }
@@ -66,10 +67,10 @@ public class SystemAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllAbstractFunctions(BlockArchitecture arch_p) {
+  static public List<AbstractFunction> getAllAbstractFunctions(BlockArchitecture arch) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != arch_p) {
-      FunctionPkg functionPkg = arch_p.getOwnedFunctionPkg();
+    if (null != arch) {
+      FunctionPkg functionPkg = arch.getOwnedFunctionPkg();
       if (functionPkg != null && functionPkg instanceof SystemFunctionPkg) {
         list = getAllFunctionsFromAbstractFunctionPkg((SystemFunctionPkg) functionPkg);
       }
@@ -78,19 +79,19 @@ public class SystemAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctionsFromFunctionPkg(SystemFunctionPkg sysFunPkg_p) {
+  static public List<AbstractFunction> getAllFunctionsFromFunctionPkg(SystemFunctionPkg sysFunPkg) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
 
-    if (null != sysFunPkg_p) {
-      EList<SystemFunction> ownedSystemFunctions = sysFunPkg_p.getOwnedSystemFunctions();
+    if (null != sysFunPkg) {
+      EList<SystemFunction> ownedSystemFunctions = sysFunPkg.getOwnedSystemFunctions();
       // owned function of SystemFunctionPkg
       list.addAll(ownedSystemFunctions);
       // owned function of Function
       for (AbstractFunction function : ownedSystemFunctions) {
         list.addAll(getAllFunctionsFromFunction(function));
       }
-      // owned function of (subPkg of sysFunPkg_p) SystemFunctionPkg
-      for (SystemFunctionPkg ownedSysFunPkg : sysFunPkg_p.getOwnedSystemFunctionPkgs()) {
+      // owned function of (subPkg of sysFunPkg) SystemFunctionPkg
+      for (SystemFunctionPkg ownedSysFunPkg : sysFunPkg.getOwnedSystemFunctionPkgs()) {
         list.addAll(getAllFunctionsFromFunctionPkg(ownedSysFunPkg));
       }
     }
@@ -98,19 +99,19 @@ public class SystemAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctionsFromAbstractFunctionPkg(SystemFunctionPkg sysFunPkg_p) {
+  static public List<AbstractFunction> getAllFunctionsFromAbstractFunctionPkg(SystemFunctionPkg sysFunPkg) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
 
-    if (null != sysFunPkg_p) {
-      EList<SystemFunction> ownedSystemFunctions = sysFunPkg_p.getOwnedSystemFunctions();
+    if (null != sysFunPkg) {
+      EList<SystemFunction> ownedSystemFunctions = sysFunPkg.getOwnedSystemFunctions();
       // owned function of SystemFunctionPkg
       list.addAll(ownedSystemFunctions);
       // owned function of Function
       for (AbstractFunction function : ownedSystemFunctions) {
         list.addAll(getAllFunctionsFromAbstractFunction(function));
       }
-      // owned function of (subPkg of sysFunPkg_p) SystemFunctionPkg
-      for (SystemFunctionPkg ownedSysFunPkg : sysFunPkg_p.getOwnedSystemFunctionPkgs()) {
+      // owned function of (subPkg of sysFunPkg) SystemFunctionPkg
+      for (SystemFunctionPkg ownedSysFunPkg : sysFunPkg.getOwnedSystemFunctionPkgs()) {
         list.addAll(getAllFunctionsFromAbstractFunctionPkg(ownedSysFunPkg));
       }
     }
@@ -118,12 +119,12 @@ public class SystemAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctionsFromFunction(AbstractFunction fun_p) {
+  static public List<AbstractFunction> getAllFunctionsFromFunction(AbstractFunction fun) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
 
-    if (null != fun_p) {
+    if (null != fun) {
 
-      EList<AbstractFunction> ownedSystemFunctions = fun_p.getOwnedFunctions();
+      EList<AbstractFunction> ownedSystemFunctions = fun.getOwnedFunctions();
       for (AbstractFunction abstractFunction : ownedSystemFunctions) {
         list.add(abstractFunction);
       }
@@ -136,11 +137,11 @@ public class SystemAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctionsFromAbstractFunction(AbstractFunction fun_p) {
+  static public List<AbstractFunction> getAllFunctionsFromAbstractFunction(AbstractFunction fun) {
     List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
 
-    if (null != fun_p) {
-      EList<AbstractFunction> ownedSystemFunctions = fun_p.getOwnedFunctions();
+    if (null != fun) {
+      EList<AbstractFunction> ownedSystemFunctions = fun.getOwnedFunctions();
       for (AbstractFunction abstractFunction : ownedSystemFunctions) {
         list.add(abstractFunction);
       }
@@ -156,12 +157,12 @@ public class SystemAnalysisExt {
   /**
    * Retrieve the data pkg from the given architecture
    */
-  public static MissionPkg getMissionPkg(SystemAnalysis architecture_p) {
-    if (architecture_p.getOwnedMissionPkg() == null) {
+  public static MissionPkg getMissionPkg(SystemAnalysis architecture) {
+    if (architecture.getOwnedMissionPkg() == null) {
       // to externalize when constants in skeleton will be into helpers.
       MissionPkg pkg = CtxFactory.eINSTANCE.createMissionPkg("Missions"); //$NON-NLS-1$
-      architecture_p.setOwnedMissionPkg(pkg);
+      architecture.setOwnedMissionPkg(pkg);
     }
-    return architecture_p.getOwnedMissionPkg();
+    return architecture.getOwnedMissionPkg();
   }
 }

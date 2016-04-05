@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.information.services;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -44,84 +45,84 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 public class DataValueNamingHelper {
 
   /**
-   * @param feature_p feature to be tested
+   * @param feature feature to be tested
    */
-  public static boolean isReferencedValue(EStructuralFeature feature_p) {
-    return DatavaluePackage.Literals.BOOLEAN_REFERENCE__REFERENCED_VALUE.equals(feature_p)
-           || DatavaluePackage.Literals.COMPLEX_VALUE_REFERENCE__REFERENCED_VALUE.equals(feature_p)
-           || DatavaluePackage.Literals.ENUMERATION_REFERENCE__REFERENCED_VALUE.equals(feature_p)
-           || DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_VALUE.equals(feature_p)
-           || DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE.equals(feature_p);
+  public static boolean isReferencedValue(EStructuralFeature feature) {
+    return DatavaluePackage.Literals.BOOLEAN_REFERENCE__REFERENCED_VALUE.equals(feature)
+           || DatavaluePackage.Literals.COMPLEX_VALUE_REFERENCE__REFERENCED_VALUE.equals(feature)
+           || DatavaluePackage.Literals.ENUMERATION_REFERENCE__REFERENCED_VALUE.equals(feature)
+           || DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_VALUE.equals(feature)
+           || DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE.equals(feature);
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(DataValue element_p, EStructuralFeature feature_p) {
-    if (element_p instanceof AbstractEnumerationValue) {
-      return getValue((AbstractEnumerationValue) element_p, feature_p);
-    } else if (element_p instanceof AbstractBooleanValue) {
-      return getValue((AbstractBooleanValue) element_p, feature_p);
-    } else if (element_p instanceof AbstractComplexValue) {
-      return getValue((AbstractComplexValue) element_p, feature_p);
-    } else if (element_p instanceof NumericValue) {
-      return getValue((NumericValue) element_p, feature_p);
-    } else if (element_p instanceof AbstractStringValue) {
-      return getValue((AbstractStringValue) element_p, feature_p);
-    } else if (element_p instanceof CollectionValue) {
-      return getValue((CollectionValue) element_p, feature_p);
+  public static String getValue(DataValue element, EStructuralFeature feature) {
+    if (element instanceof AbstractEnumerationValue) {
+      return getValue((AbstractEnumerationValue) element, feature);
+    } else if (element instanceof AbstractBooleanValue) {
+      return getValue((AbstractBooleanValue) element, feature);
+    } else if (element instanceof AbstractComplexValue) {
+      return getValue((AbstractComplexValue) element, feature);
+    } else if (element instanceof NumericValue) {
+      return getValue((NumericValue) element, feature);
+    } else if (element instanceof AbstractStringValue) {
+      return getValue((AbstractStringValue) element, feature);
+    } else if (element instanceof CollectionValue) {
+      return getValue((CollectionValue) element, feature);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(AbstractBooleanValue element_p, EStructuralFeature feature_p) {
-    if (element_p instanceof LiteralBooleanValue) {
-      return getValue((LiteralBooleanValue) element_p, feature_p);
-    } else if (element_p instanceof BooleanReference) {
-      return getValue((BooleanReference) element_p, feature_p);
-    } else if (element_p instanceof AbstractExpressionValue) {
-      return getValue((AbstractExpressionValue) element_p, feature_p);
+  public static String getValue(AbstractBooleanValue element, EStructuralFeature feature) {
+    if (element instanceof LiteralBooleanValue) {
+      return getValue((LiteralBooleanValue) element, feature);
+    } else if (element instanceof BooleanReference) {
+      return getValue((BooleanReference) element, feature);
+    } else if (element instanceof AbstractExpressionValue) {
+      return getValue((AbstractExpressionValue) element, feature);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(LiteralBooleanValue element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(LiteralBooleanValue element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if (null == name) {
         name = ICommonConstants.EMPTY_STRING;
       }
 
-      return name + " = " + (element_p.isValue() ? "TRUE" : "FALSE"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      return name + " = " + (element.isValue() ? "TRUE" : "FALSE"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(BooleanReference element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(BooleanReference element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if (null == name) {
         name = ICommonConstants.EMPTY_STRING;
       }
 
-      AbstractBooleanValue referencedValue = element_p.getReferencedValue();
+      AbstractBooleanValue referencedValue = element.getReferencedValue();
       if (referencedValue != null) {
-        return name + " -> " + getValue(referencedValue, feature_p); //$NON-NLS-1$
+        return name + " -> " + getValue(referencedValue, feature); //$NON-NLS-1$
       }
-      Property referencedProperty = element_p.getReferencedProperty();
+      Property referencedProperty = element.getReferencedProperty();
       if (referencedProperty != null) {
         return name + " -> " + InformationNamingHelper.getValue(referencedProperty); //$NON-NLS-1$
       }
@@ -131,42 +132,42 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(NumericValue element_p, EStructuralFeature feature_p) {
-    if (element_p instanceof LiteralNumericValue) {
-      return getValue((LiteralNumericValue) element_p, feature_p);
-    } else if (element_p instanceof NumericReference) {
-      return getValue((NumericReference) element_p, feature_p);
-    } else if (element_p instanceof AbstractExpressionValue) {
-      return getValue((AbstractExpressionValue) element_p, feature_p);
+  public static String getValue(NumericValue element, EStructuralFeature feature) {
+    if (element instanceof LiteralNumericValue) {
+      return getValue((LiteralNumericValue) element, feature);
+    } else if (element instanceof NumericReference) {
+      return getValue((NumericReference) element, feature);
+    } else if (element instanceof AbstractExpressionValue) {
+      return getValue((AbstractExpressionValue) element, feature);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(AbstractStringValue element_p, EStructuralFeature feature_p) {
-    if (element_p instanceof LiteralStringValue) {
-      return getValue((LiteralStringValue) element_p, feature_p);
-    } else if (element_p instanceof StringReference) {
-      return getValue((StringReference) element_p, feature_p);
-    } else if (element_p instanceof AbstractExpressionValue) {
-      return getValue((AbstractExpressionValue) element_p, feature_p);
+  public static String getValue(AbstractStringValue element, EStructuralFeature feature) {
+    if (element instanceof LiteralStringValue) {
+      return getValue((LiteralStringValue) element, feature);
+    } else if (element instanceof StringReference) {
+      return getValue((StringReference) element, feature);
+    } else if (element instanceof AbstractExpressionValue) {
+      return getValue((AbstractExpressionValue) element, feature);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(CollectionValue element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(CollectionValue element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if (name == null) {
         return ICommonConstants.EMPTY_STRING;
       }
@@ -176,18 +177,18 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(LiteralNumericValue element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      if (isReferencedValue(feature_p)) {
-        String name = element_p.getName();
+  public static String getValue(LiteralNumericValue element, EStructuralFeature feature) {
+    if (element != null) {
+      if (isReferencedValue(feature)) {
+        String name = element.getName();
         if ((name != null) && !name.equals(ICommonConstants.EMPTY_STRING)) {
           return name;
         }
       }
-      String value = element_p.getValue();
+      String value = element.getValue();
       if (value == null) {
         return ICommonConstants.EMPTY_STRING;
       }
@@ -197,22 +198,22 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(NumericReference element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(NumericReference element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if (null == name) {
         name = ICommonConstants.EMPTY_STRING;
       }
 
-      NumericValue referencedValue = element_p.getReferencedValue();
+      NumericValue referencedValue = element.getReferencedValue();
       if (referencedValue != null) {
         // Reference case: the name of the referenced object is returned instead of its value.
         return name + " -> " + referencedValue.getName(); //$NON-NLS-1$
       }
-      Property referencedProperty = element_p.getReferencedProperty();
+      Property referencedProperty = element.getReferencedProperty();
       if (referencedProperty != null) {
         return name + " -> " + InformationNamingHelper.getValue(referencedProperty); //$NON-NLS-1$
       }
@@ -222,17 +223,17 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(LiteralStringValue element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(LiteralStringValue element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if ((name != null) && (!name.equals(ICommonConstants.EMPTY_STRING))) {
         return name;
       }
 
-      String value = element_p.getValue();
+      String value = element.getValue();
       if (null != value) {
         return "\"" + value + "\""; //$NON-NLS-1$//$NON-NLS-2$
       }
@@ -241,21 +242,21 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(StringReference element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(StringReference element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if (null == name) {
         name = ICommonConstants.EMPTY_STRING;
       }
 
-      AbstractStringValue referencedValue = element_p.getReferencedValue();
+      AbstractStringValue referencedValue = element.getReferencedValue();
       if (referencedValue != null) {
-        return name + " -> " + getValue(referencedValue, feature_p); //$NON-NLS-1$
+        return name + " -> " + getValue(referencedValue, feature); //$NON-NLS-1$
       }
-      Property referencedProperty = element_p.getReferencedProperty();
+      Property referencedProperty = element.getReferencedProperty();
       if (referencedProperty != null) {
         return name + " -> " + InformationNamingHelper.getValue(referencedProperty); //$NON-NLS-1$
       }
@@ -265,37 +266,37 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(AbstractEnumerationValue element_p, EStructuralFeature feature_p) {
-    if (element_p instanceof EnumerationLiteral) {
-      return getValue((EnumerationLiteral) element_p, feature_p);
-    } else if (element_p instanceof EnumerationReference) {
-      return getValue((EnumerationReference) element_p, feature_p);
-    } else if (element_p instanceof AbstractExpressionValue) {
-      return getValue((AbstractExpressionValue) element_p, feature_p);
+  public static String getValue(AbstractEnumerationValue element, EStructuralFeature feature) {
+    if (element instanceof EnumerationLiteral) {
+      return getValue((EnumerationLiteral) element, feature);
+    } else if (element instanceof EnumerationReference) {
+      return getValue((EnumerationReference) element, feature);
+    } else if (element instanceof AbstractExpressionValue) {
+      return getValue((AbstractExpressionValue) element, feature);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(EnumerationReference element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(EnumerationReference element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if (null == name) {
         name = ICommonConstants.EMPTY_STRING;
       }
 
-      AbstractEnumerationValue referencedValue = element_p.getReferencedValue();
+      AbstractEnumerationValue referencedValue = element.getReferencedValue();
       if (referencedValue != null) {
         AbstractNamedElement eContainer = (AbstractNamedElement) referencedValue.eContainer();
         return name + " -> " + eContainer.getName() + '.' + referencedValue.getName(); //$NON-NLS-1$
       }
-      Property referencedProperty = element_p.getReferencedProperty();
+      Property referencedProperty = element.getReferencedProperty();
       if (referencedProperty != null) {
         return name + " -> " + InformationNamingHelper.getValue(referencedProperty); //$NON-NLS-1$
       }
@@ -305,60 +306,60 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(EnumerationLiteral element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      return element_p.getName();
+  public static String getValue(EnumerationLiteral element, EStructuralFeature feature) {
+    if (element != null) {
+      return element.getName();
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(AbstractComplexValue element_p, EStructuralFeature feature_p) {
-    if (element_p instanceof ComplexValue) {
-      return getValue((ComplexValue) element_p, feature_p);
-    } else if (element_p instanceof ComplexValueReference) {
-      return getValue((ComplexValueReference) element_p, feature_p);
-    } else if (element_p instanceof AbstractExpressionValue) {
-      return getValue((AbstractExpressionValue) element_p, feature_p);
+  public static String getValue(AbstractComplexValue element, EStructuralFeature feature) {
+    if (element instanceof ComplexValue) {
+      return getValue((ComplexValue) element, feature);
+    } else if (element instanceof ComplexValueReference) {
+      return getValue((ComplexValueReference) element, feature);
+    } else if (element instanceof AbstractExpressionValue) {
+      return getValue((AbstractExpressionValue) element, feature);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(ComplexValue element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      return element_p.getName();
+  public static String getValue(ComplexValue element, EStructuralFeature feature) {
+    if (element != null) {
+      return element.getName();
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(ComplexValueReference element_p, EStructuralFeature feature_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
+  public static String getValue(ComplexValueReference element, EStructuralFeature feature) {
+    if (element != null) {
+      String name = element.getName();
       if (null == name) {
         name = ICommonConstants.EMPTY_STRING;
       }
 
-      Property referencedProperty = element_p.getReferencedProperty();
+      Property referencedProperty = element.getReferencedProperty();
       if (referencedProperty != null) {
         return name + " -> " + InformationNamingHelper.getValue(referencedProperty); //$NON-NLS-1$
       }
-      AbstractComplexValue referencedValue = element_p.getReferencedValue();
+      AbstractComplexValue referencedValue = element.getReferencedValue();
       if (referencedValue != null) {
-        return name + " -> " + getValue(referencedValue, feature_p); //$NON-NLS-1$
+        return name + " -> " + getValue(referencedValue, feature); //$NON-NLS-1$
       }
       return name + " -> " + Messages.getString("UndefinedValue"); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -366,46 +367,46 @@ public class DataValueNamingHelper {
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(AbstractExpressionValue element_p, EStructuralFeature feature_p) {
-    if (element_p instanceof BinaryExpression) {
-      return getValue((BinaryExpression) element_p, feature_p);
-    } else if (element_p instanceof UnaryExpression) {
-      return getValue((UnaryExpression) element_p, feature_p);
+  public static String getValue(AbstractExpressionValue element, EStructuralFeature feature) {
+    if (element instanceof BinaryExpression) {
+      return getValue((BinaryExpression) element, feature);
+    } else if (element instanceof UnaryExpression) {
+      return getValue((UnaryExpression) element, feature);
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(BinaryExpression element_p, EStructuralFeature feature_p) {
-    return getValue(element_p, feature_p, false);
+  public static String getValue(BinaryExpression element, EStructuralFeature feature) {
+    return getValue(element, feature, false);
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
-   * @param forceExpand_p force (or not) expression expansion
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
+   * @param forceExpand force (or not) expression expansion
    */
-  public static String getValue(BinaryExpression element_p, EStructuralFeature feature_p, boolean forceExpand_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
-      if (((name == null) || (name.equals(ICommonConstants.EMPTY_STRING))) && BinaryOperator.UNSET.equals(element_p.getOperator())) {
-        String exp = element_p.getUnparsedExpression();
+  public static String getValue(BinaryExpression element, EStructuralFeature feature, boolean forceExpand) {
+    if (element != null) {
+      String name = element.getName();
+      if (((name == null) || (name.equals(ICommonConstants.EMPTY_STRING))) && BinaryOperator.UNSET.equals(element.getOperator())) {
+        String exp = element.getUnparsedExpression();
         if (null == exp) {
           return ICommonConstants.EMPTY_STRING;
         }
         return exp;
-      } else if (!forceExpand_p && (name != null) && (!name.equals(ICommonConstants.EMPTY_STRING))) {
+      } else if (!forceExpand && (name != null) && (!name.equals(ICommonConstants.EMPTY_STRING))) {
         return name;
       }
 
       String operator = null;
-      BinaryOperator op = element_p.getOperator();
+      BinaryOperator op = element.getOperator();
       switch (op) {
         case UNSET:
           operator = Messages.getString("UndefinedValue");break; //$NON-NLS-1$
@@ -434,69 +435,69 @@ public class DataValueNamingHelper {
       }
       if (operator != null) {
         return operator
-               + "(" + getOperandValue(element_p.getOwnedLeftOperand(), feature_p) + ", " + getOperandValue(element_p.getOwnedRightOperand(), feature_p) + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+               + "(" + getOperandValue(element.getOwnedLeftOperand(), feature) + ", " + getOperandValue(element.getOwnedRightOperand(), feature) + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       }
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  protected static String getOperandValue(DataValue element_p, EStructuralFeature feature_p) {
+  protected static String getOperandValue(DataValue element, EStructuralFeature feature) {
     String value = null;
-    if (element_p instanceof AbstractExpressionValue) {
-      value = getValue((AbstractExpressionValue) element_p, feature_p, true);
+    if (element instanceof AbstractExpressionValue) {
+      value = getValue((AbstractExpressionValue) element, feature, true);
     } else {
-      value = getValue(element_p, feature_p);
+      value = getValue(element, feature);
     }
     return value;
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
-   * @param forceExpand_p
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
+   * @param forceExpand
    */
-  public static String getValue(AbstractExpressionValue element_p, EStructuralFeature feature_p, boolean forceExpand_p) {
-    if (element_p instanceof UnaryExpression) {
-      return getValue((UnaryExpression) element_p, feature_p, forceExpand_p);
-    } else if (element_p instanceof BinaryExpression) {
-      return getValue((BinaryExpression) element_p, feature_p, forceExpand_p);
+  public static String getValue(AbstractExpressionValue element, EStructuralFeature feature, boolean forceExpand) {
+    if (element instanceof UnaryExpression) {
+      return getValue((UnaryExpression) element, feature, forceExpand);
+    } else if (element instanceof BinaryExpression) {
+      return getValue((BinaryExpression) element, feature, forceExpand);
     }
     // Should not happen.
     return null;
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
    */
-  public static String getValue(UnaryExpression element_p, EStructuralFeature feature_p) {
-    return getValue(element_p, feature_p, false);
+  public static String getValue(UnaryExpression element, EStructuralFeature feature) {
+    return getValue(element, feature, false);
   }
 
   /**
-   * @param element_p element whose value is requested
-   * @param feature_p feature referencing given element
-   * @param forceExpand_p force (or not) expression expansion
+   * @param element element whose value is requested
+   * @param feature feature referencing given element
+   * @param forceExpand force (or not) expression expansion
    */
-  public static String getValue(UnaryExpression element_p, EStructuralFeature feature_p, boolean forceExpand_p) {
-    if (element_p != null) {
-      String name = element_p.getName();
-      if (((name == null) || (name.equals(ICommonConstants.EMPTY_STRING))) && UnaryOperator.UNSET.equals(element_p.getOperator())) {
-        String exp = element_p.getUnparsedExpression();
+  public static String getValue(UnaryExpression element, EStructuralFeature feature, boolean forceExpand) {
+    if (element != null) {
+      String name = element.getName();
+      if (((name == null) || (name.equals(ICommonConstants.EMPTY_STRING))) && UnaryOperator.UNSET.equals(element.getOperator())) {
+        String exp = element.getUnparsedExpression();
         if (null == exp) {
           return ICommonConstants.EMPTY_STRING;
         }
         return exp;
-      } else if (!forceExpand_p && (name != null) && (!name.equals(ICommonConstants.EMPTY_STRING))) {
+      } else if (!forceExpand && (name != null) && (!name.equals(ICommonConstants.EMPTY_STRING))) {
         return name;
       }
 
       String operator = null;
-      UnaryOperator op = element_p.getOperator();
+      UnaryOperator op = element.getOperator();
       switch (op) {
         case UNSET:
           operator = Messages.getString("UndefinedValue");break; //$NON-NLS-1$
@@ -512,7 +513,7 @@ public class DataValueNamingHelper {
           operator = Messages.getString("UnaryOperator_VAL");break; //$NON-NLS-1$
       }
       if (operator != null) {
-        return operator + "(" + getValue(element_p.getOwnedOperand(), feature_p) + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+        return operator + "(" + getValue(element.getOwnedOperand(), feature) + ")"; //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$

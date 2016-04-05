@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.handlers.selection;
 
 import org.eclipse.emf.ecore.EClass;
@@ -20,26 +21,26 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class EClassSelectionContext implements ISelectionContext {
 
-  EClass _class;
+  EClass eClass;
 
   ISelectionContext parent;
 
-  public EClassSelectionContext(ISelectionContext parent_p, EClass class_p) {
-    _class = class_p;
-    parent = parent_p;
+  public EClassSelectionContext(ISelectionContext parent, EClass eClass) {
+    this.eClass = eClass;
+    this.parent = parent;
   }
 
-  public EClassSelectionContext(EClass class_p) {
-    _class = class_p;
+  public EClassSelectionContext(EClass eClass) {
+    this.eClass = eClass;
   }
 
-  public boolean match(EObject source_p, EObject target_p, IContext context_p) {
+  public boolean match(EObject source, EObject target, IContext context) {
     if (parent != null) {
-      if (!(parent.match(source_p, target_p, context_p))) {
+      if (!(parent.match(source, target, context))) {
         return false;
       }
     }
-    return ((_class == null) || _class.isInstance(target_p));
+    return ((eClass == null) || eClass.isInstance(target));
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.services;
 
 import java.util.Set;
@@ -25,7 +26,7 @@ public abstract class PatternHelper {
 	 * @param the
 	 *            pattern.
 	 */
-	public boolean isHelperFor(Pattern pattern_p) {
+	public boolean isHelperFor(Pattern pattern) {
 		return false;
 	}
 
@@ -45,17 +46,17 @@ public abstract class PatternHelper {
 	 * 
 	 * @param the
 	 *            model object to start from.
-	 * @return the list of model all objects associated to from_p through our
-	 *         Pattern (from_p is excluded from this list).
+	 * @return the list of model all objects associated to from through our
+	 *         Pattern (from is excluded from this list).
 	 */
-	public abstract Set<EObject> getCurrent(EObject from_p);
+	public abstract Set<EObject> getCurrent(EObject from);
 
 	/**
 	 * Returns the model objects currently available for relation to given model
 	 * object following this helper's associated pattern rules. Currently
 	 * related objects must not be included.
 	 */
-	public abstract Set<EObject> getAvailable(EObject from_p);
+	public abstract Set<EObject> getAvailable(EObject from);
 
 	/**
 	 * Connects the given list of model objects to given model object following
@@ -63,7 +64,7 @@ public abstract class PatternHelper {
 	 * 
 	 * @return true if connection was successful for all objects.
 	 */
-	public abstract boolean doConnect(Set<EObject> toConnect_p);
+	public abstract boolean doConnect(Set<EObject> toConnect);
 
 	/**
 	 * Dis-connects the given list of model objects to given model object
@@ -71,7 +72,7 @@ public abstract class PatternHelper {
 	 * 
 	 * @return true if dis-connection was successful for all objects.
 	 */
-	public abstract boolean doDisconnect(Set<EObject> toDisconnect_p);
+	public abstract boolean doDisconnect(Set<EObject> toDisconnect);
 
 	/**
 	 * Pre-Validates Connection of the model objects following this helper's
@@ -79,7 +80,7 @@ public abstract class PatternHelper {
 	 * 
 	 * @return true if pre-validation is successful for all objects.
 	 */
-	public abstract boolean validateConnection(Set<EObject> toConnect_p);
+	public abstract boolean validateConnection(Set<EObject> toConnect);
 
 	/**
 	 * Pre-Validates Dis-connection of the given model objects following this
@@ -87,7 +88,7 @@ public abstract class PatternHelper {
 	 * 
 	 * @return true if pre-validation was successful.
 	 */
-	public abstract boolean validateDisconnection(Set<EObject> toDisconnect_p);
+	public abstract boolean validateDisconnection(Set<EObject> toDisconnect);
 
 	/**
 	 * Validates the relation of the given list of model objects following this
@@ -95,6 +96,6 @@ public abstract class PatternHelper {
 	 * 
 	 * @return true if validation is successful.
 	 */
-	public abstract boolean validatePattern(Set<EObject> objects_p);
+	public abstract boolean validatePattern(Set<EObject> objects);
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.system.activities;
 
 import org.eclipse.core.runtime.IStatus;
@@ -33,20 +34,20 @@ public class DifferencesFilteringActivity extends org.polarsys.capella.core.tran
   public static final String ID = "org.polarsys.capella.core.transition.system.activities.DifferencesFilteringActivity"; //$NON-NLS-1$
 
   @Override
-  protected IStatus initializeFilterItemHandlers(IContext context_p, CompoundFilteringItems handler_p, ActivityParameters activityParams_p) {
-    super.initializeFilterItemHandlers(context_p, handler_p, activityParams_p);
+  protected IStatus initializeFilterItemHandlers(IContext context, CompoundFilteringItems handler, ActivityParameters activityParams) {
+    super.initializeFilterItemHandlers(context, handler, activityParams);
 
     //Add default filters on transition.system only
-    handler_p.addFilterItem(new RootFilterItem(), context_p);
-    handler_p.addFilterItem(new PreferenceFilterItem(), context_p);
-    handler_p.addFilterItem(new AttributeValueFromSource(), context_p);
-    handler_p.addFilterItem(new ElementPresenceFromSource(), context_p);
+    handler.addFilterItem(new RootFilterItem(), context);
+    handler.addFilterItem(new PreferenceFilterItem(), context);
+    handler.addFilterItem(new AttributeValueFromSource(), context);
+    handler.addFilterItem(new ElementPresenceFromSource(), context);
 
     //Filter to avoid name propagation
-    handler_p.addFilterItem(new AttributeNameValueFromSource(), context_p);
+    handler.addFilterItem(new AttributeNameValueFromSource(), context);
 
-    handler_p.addFilterItem(new ElementPresenceOneToMany(), context_p);
-    handler_p.addFilterItem(new ElementPresenceManyToOne(), context_p);
+    handler.addFilterItem(new ElementPresenceOneToMany(), context);
+    handler.addFilterItem(new ElementPresenceManyToOne(), context);
 
     return Status.OK_STATUS;
   }

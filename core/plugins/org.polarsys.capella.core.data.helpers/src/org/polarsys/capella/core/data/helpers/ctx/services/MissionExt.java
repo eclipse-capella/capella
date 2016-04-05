@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.ctx.services;
 
 import java.util.ArrayList;
@@ -28,13 +29,13 @@ public class MissionExt {
 	/**
 	 * This method retrieves the exploited capabilities.
 	 * 
-	 * @param mission_p
+	 * @param mission
 	 *            the mission whose exploited capability will be retrieved
 	 * @return the exploited capabilities
 	 */
-	public static List<Capability> getExploitedCapabilities(Mission mission_p) {
+	public static List<Capability> getExploitedCapabilities(Mission mission) {
 		List<Capability> exploitedCapabilities = new ArrayList<Capability>();
-		List<CapabilityExploitation> exploitationSet = mission_p.getOwnedCapabilityExploitations();
+		List<CapabilityExploitation> exploitationSet = mission.getOwnedCapabilityExploitations();
 		for (CapabilityExploitation exploit : exploitationSet) {
 			exploitedCapabilities.add(exploit.getCapability());
 		}
@@ -44,13 +45,13 @@ public class MissionExt {
 	/**
 	 * This method retrieves the involved actors.
 	 * 
-	 * @param mission_p
+	 * @param mission
 	 *            the mission whose contributing actors will be retrieved
 	 * @return the contributing actors
 	 */
-	public static List<Actor> getInvolvedActors(Mission mission_p) {
+	public static List<Actor> getInvolvedActors(Mission mission) {
 		List<Actor> involvedActors = new ArrayList<Actor>();
-		List<ActorMissionInvolvement> contributionSet = mission_p.getInvolvedActors();
+		List<ActorMissionInvolvement> contributionSet = mission.getInvolvedActors();
 		for (ActorMissionInvolvement involvement : contributionSet) {
 			involvedActors.add(involvement.getActor());
 		}
@@ -58,17 +59,17 @@ public class MissionExt {
 	}
 
 	/**
-	 * @param mission_p
+	 * @param mission
 	 *            The mission.
-	 * @param actors_p
+	 * @param actors
 	 *            The actors to remove.
 	 */
-	public static void removeInvolvedActors(Mission mission_p, List<Actor> actors_p) {
+	public static void removeInvolvedActors(Mission mission, List<Actor> actors) {
 		List<ActorMissionInvolvement> removedLinks = new ArrayList<ActorMissionInvolvement>();
 
-		for (Object involvement : mission_p.getInvolvedActors()) {
+		for (Object involvement : mission.getInvolvedActors()) {
 			ActorMissionInvolvement actorInvolvement = (ActorMissionInvolvement) involvement;
-			if (actors_p.contains(actorInvolvement.getActor())) {
+			if (actors.contains(actorInvolvement.getActor())) {
 				removedLinks.add(actorInvolvement);
 			}
 		}
@@ -79,15 +80,15 @@ public class MissionExt {
 	}
 
 	/**
-	 * @param mission_p
-	 * @param useCases_p
+	 * @param mission
+	 * @param useCases
 	 */
-	public static void removeExploitedCapabilities(Mission mission_p, List<Capability> useCases_p) {
+	public static void removeExploitedCapabilities(Mission mission, List<Capability> useCases) {
 		List<CapabilityExploitation> removedLinks = new ArrayList<CapabilityExploitation>();
 
-		for (Object capabilityExp : mission_p.getOwnedCapabilityExploitations()) {
+		for (Object capabilityExp : mission.getOwnedCapabilityExploitations()) {
 			CapabilityExploitation capabilitExploitation = (CapabilityExploitation) capabilityExp;
-			if (useCases_p.contains(capabilitExploitation.getCapability())) {
+			if (useCases.contains(capabilitExploitation.getCapability())) {
 				removedLinks.add(capabilitExploitation);
 			}
 		}

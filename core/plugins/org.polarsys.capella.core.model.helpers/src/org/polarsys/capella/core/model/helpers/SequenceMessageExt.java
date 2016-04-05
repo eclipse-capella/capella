@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -52,21 +53,21 @@ public class SequenceMessageExt {
 
   /**
    * Returns the 'calling' or 'reply' branch related to the given sequence message.
-   * @param msg_p
+   * @param sequenceMessage1
    * @return
    */
-  public static SequenceMessage getOppositeSequenceMessage(SequenceMessage msg_p) {
+  public static SequenceMessage getOppositeSequenceMessage(SequenceMessage sequenceMessage1) {
 
     boolean flag = false;
     List<SequenceMessage> setPortionMessage = new ArrayList<SequenceMessage>();
     Stack<SequenceMessage> stack = new Stack<SequenceMessage>();
 
-    if (msg_p != null) {
+    if (sequenceMessage1 != null) {
       /** On messages of type 'destroy' there is no processing */
-      if (!msg_p.getKind().equals(MessageKind.CREATE) && !msg_p.getKind().equals(MessageKind.DELETE) && !msg_p.getKind().equals(MessageKind.ASYNCHRONOUS_CALL)) {
-        Scenario sc = (Scenario) msg_p.eContainer();
+      if (!sequenceMessage1.getKind().equals(MessageKind.CREATE) && !sequenceMessage1.getKind().equals(MessageKind.DELETE) && !sequenceMessage1.getKind().equals(MessageKind.ASYNCHRONOUS_CALL)) {
+        Scenario sc = (Scenario) sequenceMessage1.eContainer();
         if (sc != null) {
-          if (msg_p.getKind().equals(MessageKind.REPLY)) {
+          if (sequenceMessage1.getKind().equals(MessageKind.REPLY)) {
             /** If this is a REPLY message => the CALLING branch is present in the upper portion of the messages */
             flag = false;
             for (Iterator<MessageEnd> it = ScenarioExt.getOwnedMessagesEnds(sc).iterator(); it.hasNext() && !flag;) {
@@ -74,7 +75,7 @@ public class SequenceMessageExt {
               if (msgEnd != null) {
                 SequenceMessage msg = msgEnd.getMessage();
                 if (msg != null) {
-                  if (!msg.equals(msg_p)) {
+                  if (!msg.equals(sequenceMessage1)) {
                     setPortionMessage.add(msg);
                   } else {
                     flag = true;
@@ -93,7 +94,7 @@ public class SequenceMessageExt {
                 if (msg != null) {
                   if (flag) {
                     setPortionMessage.add(msg);
-                  } else if (msg.equals(msg_p)) {
+                  } else if (msg.equals(sequenceMessage1)) {
                     flag = true;
                   }
                 }
@@ -103,7 +104,7 @@ public class SequenceMessageExt {
 
           for (SequenceMessage msg : setPortionMessage) {
             if (!msg.getKind().equals(MessageKind.CREATE) && !msg.getKind().equals(MessageKind.DELETE) && !msg.getKind().equals(MessageKind.ASYNCHRONOUS_CALL)) {
-              if (msg_p.getKind().equals(MessageKind.REPLY)) {
+              if (sequenceMessage1.getKind().equals(MessageKind.REPLY)) {
                 /**
                  * Treatment: research branch "aller" 
                  * - if the message type is "retour" : Stacks current message 
@@ -146,13 +147,13 @@ public class SequenceMessageExt {
 
   /**
    * Gets all the interfaces implemented by the receiver of the sequence message
-   * @param currentSequenceMessage_p the current sequence message
+   * @param currentSequenceMessage the current sequence message
    * @return list of Interfaces.
    */
-  public static List<Interface> getOwnedInterfacesImplementedByReceiverOfSequenceMessage(SequenceMessage currentSequenceMessage_p) {
+  public static List<Interface> getOwnedInterfacesImplementedByReceiverOfSequenceMessage(SequenceMessage currentSequenceMessage) {
     List<Interface> list = new ArrayList<Interface>(1);
-    if (null != currentSequenceMessage_p) {
-      NamedElement component = getReceiver(currentSequenceMessage_p);
+    if (null != currentSequenceMessage) {
+      NamedElement component = getReceiver(currentSequenceMessage);
       if ((null != component) && (component instanceof Component)) {
         list.addAll(ComponentExt.getImplementedInterfaces((Component) component));
       }
@@ -162,13 +163,13 @@ public class SequenceMessageExt {
 
   /**
    * Gets all the interfaces used by the sender of the sequence message
-   * @param currentSequenceMessage_p the current sequence message
+   * @param currentSequenceMessage the current sequence message
    * @return list of Interfaces
    */
-  public static List<Interface> getOwnedInterfacesUsedBySenderOfSequenceMessage(SequenceMessage currentSequenceMessage_p) {
+  public static List<Interface> getOwnedInterfacesUsedBySenderOfSequenceMessage(SequenceMessage currentSequenceMessage) {
     List<Interface> list = new ArrayList<Interface>(1);
-    if (null != currentSequenceMessage_p) {
-      NamedElement component = getSender(currentSequenceMessage_p);
+    if (null != currentSequenceMessage) {
+      NamedElement component = getSender(currentSequenceMessage);
       if ((null != component) && (component instanceof Component)) {
         list.addAll(ComponentExt.getUsedInterfaces((Component) component));
       }
@@ -178,12 +179,12 @@ public class SequenceMessageExt {
 
   /**
    * Gets the sender of the sequence message
-   * @param currentSequenceMessage_p the current sequence message
+   * @param currentSequenceMessage the current sequence message
    * @return the sender component
    */
-  public static NamedElement getSender(SequenceMessage currentSequenceMessage_p) {
-    if (null != currentSequenceMessage_p) {
-      MessageEnd messageEnd = currentSequenceMessage_p.getSendingEnd();
+  public static NamedElement getSender(SequenceMessage currentSequenceMessage) {
+    if (null != currentSequenceMessage) {
+      MessageEnd messageEnd = currentSequenceMessage.getSendingEnd();
       return AbstractEndExt.getComponent(messageEnd);
     }
     return null;
@@ -191,12 +192,12 @@ public class SequenceMessageExt {
 
   /**
    * Gets the receiver of the sequence message
-   * @param currentSequenceMessage_p the current sequence message
+   * @param currentSequenceMessage the current sequence message
    * @return the receiver component
    */
-  public static NamedElement getReceiver(SequenceMessage currentSequenceMessage_p) {
-    if (null != currentSequenceMessage_p) {
-      MessageEnd messageEnd = currentSequenceMessage_p.getReceivingEnd();
+  public static NamedElement getReceiver(SequenceMessage currentSequenceMessage) {
+    if (null != currentSequenceMessage) {
+      MessageEnd messageEnd = currentSequenceMessage.getReceivingEnd();
       return AbstractEndExt.getComponent(messageEnd);
     }
     return null;
@@ -204,14 +205,14 @@ public class SequenceMessageExt {
 
   /**
    * For the display purposes, testing if the message between the two elements is a message of writing (SD) or sends (Event). For this we test if the component is a user of an interface allocating the exchange item.
-   * @param componentSide_p
-   * @param eiSide_p
+   * @param componentSide
+   * @param eiSide
    * @return
    */
-  private static boolean isSDWriteAccessMessage(Component componentSide_p, ExchangeItem eiSide_p) {
-    for (Interface interf : componentSide_p.getUsedInterfaces()) {
+  private static boolean isSDWriteAccessMessage(Component componentSide, ExchangeItem eiSide) {
+    for (Interface interf : componentSide.getUsedInterfaces()) {
       for (ExchangeItemAllocation alloc : interf.getOwnedExchangeItemAllocations()) {
-        if (alloc.getAllocatedItem() == eiSide_p) {
+        if (alloc.getAllocatedItem() == eiSide) {
           return true;
         }
       }
@@ -219,13 +220,13 @@ public class SequenceMessageExt {
     return false;
   }
 
-  public static String getMessageNameForSharedDataAccess(SequenceMessage message_p) {
+  public static String getMessageNameForSharedDataAccess(SequenceMessage message) {
 
-    if (message_p.getKind() == MessageKind.DELETE) {
+    if (message.getKind() == MessageKind.DELETE) {
       return ICommonConstants.EMPTY_STRING;
     }
 
-    if (message_p.getKind() == MessageKind.REPLY) {
+    if (message.getKind() == MessageKind.REPLY) {
       return ICommonConstants.EMPTY_STRING;
     }
 
@@ -233,11 +234,11 @@ public class SequenceMessageExt {
     // BROADCAST/UNICAST/MULTICAST or RECEIVE in case of an event
     // defaultly, we use the kind on the ExchangeItemAllocation on the
     // message
-    InstanceRole src = message_p.getSendingEnd().getCovered();
-    InstanceRole tgt = message_p.getReceivingEnd().getCovered();
+    InstanceRole src = message.getSendingEnd().getCovered();
+    InstanceRole tgt = message.getReceivingEnd().getCovered();
 
-    if(message_p.getSendingEnd().getEvent() instanceof EventSentOperation){
-    EventSentOperation eso = (EventSentOperation) message_p.getSendingEnd().getEvent();
+    if(message.getSendingEnd().getEvent() instanceof EventSentOperation){
+    EventSentOperation eso = (EventSentOperation) message.getSendingEnd().getEvent();
     ExchangeItemAllocation eia = (ExchangeItemAllocation) eso.getOperation();
 
     if (eia == null) {
@@ -262,7 +263,7 @@ public class SequenceMessageExt {
 
     // The create message must display "CREATE" in the case of sharedData,
     // and the send protocol in the case of an event.
-    if (message_p.getKind() == MessageKind.CREATE) {
+    if (message.getKind() == MessageKind.CREATE) {
       if (ei.getExchangeMechanism() == ExchangeMechanism.SHARED_DATA) {
         return "CREATE"; //$NON-NLS-1$
       } else if (ei.getExchangeMechanism() == ExchangeMechanism.EVENT) {
@@ -353,16 +354,16 @@ public class SequenceMessageExt {
     return result;
   }
 
-  private static Execution top(List<Execution> stack_p) {
-    if (stack_p.size() == 0) {
+  private static Execution top(List<Execution> stack) {
+    if (stack.size() == 0) {
       return null;
     }
-    return (stack_p.get(stack_p.size() - 1));
+    return (stack.get(stack.size() - 1));
   }
 
-  public static Execution getStartedExecution(SequenceMessage seqMsg_p) {
-    MessageEnd re = seqMsg_p.getReceivingEnd();
-    Scenario scenario = (Scenario) seqMsg_p.eContainer();
+  public static Execution getStartedExecution(SequenceMessage seqMsg) {
+    MessageEnd re = seqMsg.getReceivingEnd();
+    Scenario scenario = (Scenario) seqMsg.eContainer();
     for (TimeLapse tl : scenario.getOwnedTimeLapses()) {
       if (tl instanceof Execution) {
         Execution exec = (Execution) tl;
@@ -377,15 +378,15 @@ public class SequenceMessageExt {
 
   /**
    * Returns all exchange items allovated to the sequence message which are not allocated to the related operation
-   * @param message_p
+   * @param message
    * @return
    */
-  public static Collection<AbstractExchangeItem> getInvalidExchangeItems(SequenceMessage message_p) {
+  public static Collection<AbstractExchangeItem> getInvalidExchangeItems(SequenceMessage message) {
     // Get ExchangeItems from SequenceMessage.
-    List<ExchangeItem> exchangedItemsFromSequenceMessage = message_p.getExchangedItems();
+    List<ExchangeItem> exchangedItemsFromSequenceMessage = message.getExchangedItems();
 
     // Get ExchangeItems from invoked operation of given SequenceMessage.
-    Collection<AbstractExchangeItem> exchangeItemsFromInvokedOperation = SequenceMessageExt.getExchangeItemsFromOperation(message_p);
+    Collection<AbstractExchangeItem> exchangeItemsFromInvokedOperation = SequenceMessageExt.getExchangeItemsFromOperation(message);
 
     // Collect invalid ExchangeItems (ExchangeItems referenced by the SequenceMessage but not associated with the invoked operation).
     List<AbstractExchangeItem> invalidExchangeItems = new ArrayList<AbstractExchangeItem>(exchangedItemsFromSequenceMessage);
@@ -397,8 +398,8 @@ public class SequenceMessageExt {
    * Returns exchange items linked to the associated operation
    */
   @SuppressWarnings({ "rawtypes", "unchecked" })
-public static Collection<AbstractExchangeItem> getExchangeItemsFromOperation(SequenceMessage message_p) {
-    AbstractEventOperation invokedOperation = message_p.getInvokedOperation();
+public static Collection<AbstractExchangeItem> getExchangeItemsFromOperation(SequenceMessage message) {
+    AbstractEventOperation invokedOperation = message.getInvokedOperation();
 
     Collection<AbstractExchangeItem> result = Collections.emptyList();
 

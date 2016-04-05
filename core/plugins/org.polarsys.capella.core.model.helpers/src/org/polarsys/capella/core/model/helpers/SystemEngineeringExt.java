@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -94,11 +95,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the abstract logical components from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<AbstractLogicalComponent>
    */
-  public static List<LogicalComponent> getAllAbstractLogicalComponents(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<LogicalComponent> getAllAbstractLogicalComponents(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
 
     LogicalArchitecture la = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng);
 
@@ -120,11 +121,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the physical components from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<PhysicalComponent>
    */
-  public static List<AbstractPhysicalComponent> getAllAbstractPhysicalComponents(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<AbstractPhysicalComponent> getAllAbstractPhysicalComponents(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
 
     PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
     Set<EObject> pcSet = EObjectExt.getAll(physArch, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT);
@@ -137,11 +138,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the actors from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<Actor>
    */
-  public static List<Actor> getAllActors(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<Actor> getAllActors(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     Set<EObject> actorsSet = EObjectExt.getAll(sysEng, CtxPackage.Literals.ACTOR);
     List<Actor> actorsList = new ArrayList<Actor>();
     for (EObject obj : actorsSet) {
@@ -152,13 +153,13 @@ public class SystemEngineeringExt {
 
   /**
    * Get All the 'DataValue' from all Visible layer(s)
-   * @param arch_p the 'BlockArchitecture'
+   * @param arch the 'BlockArchitecture'
    * @return List of 'DataValue'
    */
-  public static List<DataValue> getAllAvailableDataValues(BlockArchitecture arch_p) {
+  public static List<DataValue> getAllAvailableDataValues(BlockArchitecture arch) {
     List<DataValue> availableElements = new ArrayList<DataValue>();
-    if (null != arch_p) {
-      SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(arch_p);
+    if (null != arch) {
+      SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(arch);
       OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
       if (null != oa) {
         DataPkg ownedDataPkg = oa.getOwnedDataPkg();
@@ -173,21 +174,21 @@ public class SystemEngineeringExt {
         }
       }
 
-      if (((null != oa) && (arch_p instanceof LogicalArchitecture)) || (arch_p instanceof PhysicalArchitecture) || (arch_p instanceof EPBSArchitecture)) {
+      if (((null != oa) && (arch instanceof LogicalArchitecture)) || (arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
         SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
         DataPkg ownedDataPkg = ctxArch.getOwnedDataPkg();
         if (null != ownedDataPkg) {
           availableElements.addAll(DataPkgExt.getAllDataValues(ownedDataPkg));
         }
       }
-      if ((arch_p instanceof PhysicalArchitecture) || (arch_p instanceof EPBSArchitecture)) {
+      if ((arch instanceof PhysicalArchitecture) || (arch instanceof EPBSArchitecture)) {
         LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng);
         DataPkg ownedDataPkg = logArch.getOwnedDataPkg();
         if (null != ownedDataPkg) {
           availableElements.addAll(DataPkgExt.getAllDataValues(ownedDataPkg));
         }
       }
-      if ((arch_p instanceof EPBSArchitecture)) {
+      if ((arch instanceof EPBSArchitecture)) {
         PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
         DataPkg ownedDataPkg = physArch.getOwnedDataPkg();
         if (null != ownedDataPkg) {
@@ -201,11 +202,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the capability realizations from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<CapabilityRealization>
    */
-  public static List<CapabilityRealization> getAllCapabilityRealization(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<CapabilityRealization> getAllCapabilityRealization(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     Set<EObject> capabilityRealizationsSet = EObjectExt.getAll(sysEng, LaPackage.Literals.CAPABILITY_REALIZATION);
     List<CapabilityRealization> capabilityRealizationsList = new ArrayList<CapabilityRealization>();
     for (EObject obj : capabilityRealizationsSet) {
@@ -216,11 +217,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the capability realizations from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<CapabilityRealization>
    */
-  public static List<CapabilityRealization> getAllCapabilityRealizations(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<CapabilityRealization> getAllCapabilityRealizations(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     Set<EObject> capabilityRealizationsSet = EObjectExt.getAll(sysEng, LaPackage.Literals.CAPABILITY_REALIZATION);
     List<CapabilityRealization> capabilityRealizationsList = new ArrayList<CapabilityRealization>();
     for (EObject obj : capabilityRealizationsSet) {
@@ -231,11 +232,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the epbs components from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<EPBSComponent>
    */
-  public static List<ConfigurationItem> getAllConfigurationItems(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<ConfigurationItem> getAllConfigurationItems(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     EPBSArchitecture epbsArch = getEPBSArchitecture(sysEng);
     Set<EObject> epbsSet = EObjectExt.getAll(epbsArch, EpbsPackage.Literals.CONFIGURATION_ITEM);
     List<ConfigurationItem> epbsList = new ArrayList<ConfigurationItem>();
@@ -317,12 +318,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the Logical Architecture packages from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return LogicalArchitecture
    */
-  public static List<LogicalArchitecture> getAllLogicalArchitecture(CapellaElement currentElement_p) {
+  public static List<LogicalArchitecture> getAllLogicalArchitecture(CapellaElement currentElement) {
     List<LogicalArchitecture> archSet = new ArrayList<LogicalArchitecture>();
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     if (sysEng != null) {
 
       LogicalArchitecture arch = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng);
@@ -342,11 +343,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the logical components from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<LogicalComponent>
    */
-  public static List<LogicalComponent> getAllLogicalComponents(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<LogicalComponent> getAllLogicalComponents(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
 
     LogicalArchitecture la = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng);
 
@@ -367,17 +368,17 @@ public class SystemEngineeringExt {
 
   /**
    * Gets all the Physical architectures from the SystemEngineering
-   * @param systemEngineering_p the parent SystemEngineering
+   * @param systemEngineering the parent SystemEngineering
    * @return List of PhysicalArchitectures
    */
-  static public List<PhysicalArchitecture> getAllPhysicalArchitectures(SystemEngineering systemEngineering_p) {
+  static public List<PhysicalArchitecture> getAllPhysicalArchitectures(SystemEngineering systemEngineering) {
     List<PhysicalArchitecture> list = new ArrayList<PhysicalArchitecture>(1);
-    if (null != systemEngineering_p) {
-      if (null != SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering_p)) {
-        list.add(SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering_p));
+    if (null != systemEngineering) {
+      if (null != SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering)) {
+        list.add(SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering));
       }
 
-      PhysicalArchitecturePkg pkg = getOwnedPhysicalArchitecturePkg(systemEngineering_p);
+      PhysicalArchitecturePkg pkg = getOwnedPhysicalArchitecturePkg(systemEngineering);
       if (null != pkg) {
         for (PhysicalArchitecture arch : pkg.getOwnedPhysicalArchitectures()) {
           if (null == arch) {
@@ -393,11 +394,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the physical components from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<PhysicalComponent>
    */
-  public static List<PhysicalComponent> getAllPhysicalComponents(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<PhysicalComponent> getAllPhysicalComponents(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
 
     PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
     Set<EObject> pcSet = EObjectExt.getAll(physArch, PaPackage.Literals.PHYSICAL_COMPONENT);
@@ -410,11 +411,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the physical components from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<PhysicalComponent>
    */
-  public static List<PhysicalActor> getAllPhysicalActors(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<PhysicalActor> getAllPhysicalActors(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
 
     PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
     Set<EObject> pcSet = EObjectExt.getAll(physArch, PaPackage.Literals.PHYSICAL_ACTOR);
@@ -426,19 +427,19 @@ public class SystemEngineeringExt {
   }
   /**
    * This method retrieves all the physical components from the model by nature.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<PhysicalComponent>
    */
-  public static List<PhysicalComponent> getAllPhysicalComponentsByNature(CapellaElement currentElement_p, PhysicalComponentNature nature_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<PhysicalComponent> getAllPhysicalComponentsByNature(CapellaElement currentElement, PhysicalComponentNature nature) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
 
     PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
     Set<EObject> pcSet = EObjectExt.getAll(physArch, PaPackage.Literals.PHYSICAL_COMPONENT);
     List<PhysicalComponent> pcList = new ArrayList<PhysicalComponent>();
     for (EObject obj : pcSet) {
       PhysicalComponent comp = (PhysicalComponent) obj;
-      if (nature_p != null) {
-        if (comp.getNature() == nature_p) {
+      if (nature != null) {
+        if (comp.getNature() == nature) {
           pcList.add(comp);
         }
       } else {
@@ -450,11 +451,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the physical objects from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<PhysicalObject>
    */
-  public static List<AbstractPhysicalInstance> getAllPhysicalObject(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<AbstractPhysicalInstance> getAllPhysicalObject(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
     Set<EObject> poSet = EObjectExt.getAll(physArch, DeploymentPackage.Literals.ABSTRACT_PHYSICAL_INSTANCE);
     List<AbstractPhysicalInstance> poList = new ArrayList<AbstractPhysicalInstance>();
@@ -466,21 +467,21 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the EPBS Architecture package from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return EPBSArchitecture
    */
-  public static EPBSArchitecture getEPBSArchitecture(CapellaElement currentElement_p) {
+  public static EPBSArchitecture getEPBSArchitecture(CapellaElement currentElement) {
     EPBSArchitecture arch = null;
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     if (sysEng != null) {
       arch = getEPBSArchitecture(sysEng);
     }
     return arch;
   }
 
-  public static EPBSArchitecture getEPBSArchitecture(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static EPBSArchitecture getEPBSArchitecture(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof EPBSArchitecture) {
           return (EPBSArchitecture) block;
         }
@@ -489,9 +490,9 @@ public class SystemEngineeringExt {
     return null;
   }
 
-  public static PhysicalArchitecture getPhysicalArchitecture(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static PhysicalArchitecture getPhysicalArchitecture(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof PhysicalArchitecture) {
           return (PhysicalArchitecture) block;
         }
@@ -500,9 +501,9 @@ public class SystemEngineeringExt {
     return null;
   }
   
-  public static LogicalArchitecture getLogicalArchitecture(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static LogicalArchitecture getLogicalArchitecture(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof LogicalArchitecture) {
           return (LogicalArchitecture) block;
         }
@@ -511,9 +512,9 @@ public class SystemEngineeringExt {
     return null;
   }
 
-  public static SystemAnalysis getSystemAnalysis(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static SystemAnalysis getSystemAnalysis(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof SystemAnalysis) {
           return (SystemAnalysis) block;
         }
@@ -522,9 +523,9 @@ public class SystemEngineeringExt {
     return null;
   }
   
-  public static OperationalAnalysis getOperationalAnalysis(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static OperationalAnalysis getOperationalAnalysis(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof OperationalAnalysis) {
           return (OperationalAnalysis) block;
         }
@@ -533,9 +534,9 @@ public class SystemEngineeringExt {
     return null;
   }  
   
-  public static EPBSArchitecturePkg getEPBSArchitecturePkg(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecturePkg block : currentElement_p.getOwnedArchitecturePkgs()) {
+  public static EPBSArchitecturePkg getEPBSArchitecturePkg(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecturePkg block : currentElement.getOwnedArchitecturePkgs()) {
         if (block instanceof EPBSArchitecturePkg) {
           return (EPBSArchitecturePkg) block;
         }
@@ -584,21 +585,21 @@ public class SystemEngineeringExt {
 
   /**
    * Gets all the logical architectures from the system, filtering out the allocated LAs of the current Physical Architecture
-   * @param systemEngineering_p the parent System of the PA
-   * @param physicalArchitecture_p the PhysicalArchitecture
+   * @param systemEngineering the parent System of the PA
+   * @param physicalArchitecture the PhysicalArchitecture
    * @return List of LogicalArchitectures
    */
-  static public List<LogicalArchitecture> getLogicalArchitecturesFiltered(SystemEngineering systemEngineering_p, PhysicalArchitecture physicalArchitecture_p) {
+  static public List<LogicalArchitecture> getLogicalArchitecturesFiltered(SystemEngineering systemEngineering, PhysicalArchitecture physicalArchitecture) {
     List<LogicalArchitecture> list = new ArrayList<LogicalArchitecture>(1);
-    if ((null != systemEngineering_p) && (null != physicalArchitecture_p)) {
-      List<BlockArchitecture> allocated = physicalArchitecture_p.getAllocatedArchitectures();
+    if ((null != systemEngineering) && (null != physicalArchitecture)) {
+      List<BlockArchitecture> allocated = physicalArchitecture.getAllocatedArchitectures();
 
-      LogicalArchitecture la = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering_p);
+      LogicalArchitecture la = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
       if ((la != null) && !allocated.contains(la)) {
         list.add(la);
       }
 
-      LogicalArchitecturePkg laPkg = getOwnedLogicalArchitecturePkg(systemEngineering_p);
+      LogicalArchitecturePkg laPkg = getOwnedLogicalArchitecturePkg(systemEngineering);
       if (null != laPkg) {
         for (LogicalArchitecture arch : laPkg.getOwnedLogicalArchitectures()) {
           if ((null != arch) && !allocated.contains(arch)) {
@@ -611,9 +612,9 @@ public class SystemEngineeringExt {
     return list;
   }
 
-  public static FunctionPkg getOwnedFunctionalAnalysis(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static FunctionPkg getOwnedFunctionalAnalysis(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof FunctionPkg) {
           return (FunctionPkg) block;
         }
@@ -624,12 +625,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves all the Logical Architecture packages from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return LogicalArchitecture
    */
-  public static LogicalArchitecture getOwnedLogicalArchitecture(CapellaElement currentElement_p) {
+  public static LogicalArchitecture getOwnedLogicalArchitecture(CapellaElement currentElement) {
     LogicalArchitecture arch = null;
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     if (sysEng != null) {
       arch = getOwnedLogicalArchitecture(sysEng);
     }
@@ -638,12 +639,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the Logical Architecture packages from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return LogicalArchitecture
    */
-  public static LogicalArchitecture getOwnedLogicalArchitecture(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static LogicalArchitecture getOwnedLogicalArchitecture(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof LogicalArchitecture) {
           return (LogicalArchitecture) block;
         }
@@ -652,9 +653,9 @@ public class SystemEngineeringExt {
     return null;
   }
 
-  public static LogicalArchitecturePkg getOwnedLogicalArchitecturePkg(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecturePkg block : currentElement_p.getOwnedArchitecturePkgs()) {
+  public static LogicalArchitecturePkg getOwnedLogicalArchitecturePkg(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecturePkg block : currentElement.getOwnedArchitecturePkgs()) {
         if (block instanceof LogicalArchitecturePkg) {
           return (LogicalArchitecturePkg) block;
         }
@@ -665,12 +666,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the Operational Analysis packages from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return OperationalAnalysis
    */
-  public static OperationalAnalysis getOwnedOperationalAnalysis(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static OperationalAnalysis getOwnedOperationalAnalysis(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof OperationalAnalysis) {
           return (OperationalAnalysis) block;
         }
@@ -681,12 +682,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the Physical Architecture packages from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return PhysicalArchitecture
    */
-  public static PhysicalArchitecture getOwnedPhysicalArchitecture(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static PhysicalArchitecture getOwnedPhysicalArchitecture(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof PhysicalArchitecture) {
           return (PhysicalArchitecture) block;
         }
@@ -695,9 +696,9 @@ public class SystemEngineeringExt {
     return null;
   }
 
-  public static PhysicalArchitecturePkg getOwnedPhysicalArchitecturePkg(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecturePkg block : currentElement_p.getOwnedArchitecturePkgs()) {
+  public static PhysicalArchitecturePkg getOwnedPhysicalArchitecturePkg(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecturePkg block : currentElement.getOwnedArchitecturePkgs()) {
         if (block instanceof PhysicalArchitecturePkg) {
           return (PhysicalArchitecturePkg) block;
         }
@@ -708,12 +709,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the System Analysis packages from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return SystemAnalysis
    */
-  public static SystemAnalysis getOwnedSystemAnalysis(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+  public static SystemAnalysis getOwnedSystemAnalysis(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      for (ModellingArchitecture block : currentElement.getOwnedArchitectures()) {
         if (block instanceof SystemAnalysis) {
           return (SystemAnalysis) block;
         }
@@ -724,12 +725,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the Physical Architecture package from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return PhysicalArchitecture
    */
-  public static PhysicalArchitecture getPhysicalArchitecture(CapellaElement currentElement_p) {
+  public static PhysicalArchitecture getPhysicalArchitecture(CapellaElement currentElement) {
     PhysicalArchitecture arch = null;
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     if (sysEng != null) {
       arch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
     }
@@ -737,21 +738,21 @@ public class SystemEngineeringExt {
   }
 
   /**
-   * @param modelElement_p : any 'ModelElement'
+   * @param modelElement : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
-  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement_p) {
-	  return BlockArchitectureExt.getRootBlockArchitecture(modelElement_p);
+  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
+	  return BlockArchitectureExt.getRootBlockArchitecture(modelElement);
   }
 
   /**
    * Return the 'RootLogicalComponent' for 'LogicalArchitecture' Layer given in parameter
    */
-  public static LogicalComponent getRootLogicalComponent(LogicalArchitecture LA_p) {
-    System system = getSystem(LA_p);
+  public static LogicalComponent getRootLogicalComponent(LogicalArchitecture LA) {
+    System system = getSystem(LA);
 
     for (LogicalComponent rootComponent : getRootLogicalComponentsForCurrentSystem(system)) {
-      if (EcoreUtil2.isContainedBy(rootComponent, LA_p)) {
+      if (EcoreUtil2.isContainedBy(rootComponent, LA)) {
         return rootComponent;
       }
     }
@@ -778,9 +779,9 @@ public class SystemEngineeringExt {
   /**
    * Return All 'RootLogicalComponent' existing in all LogicalArchitecture layer(s) defined for the 'System' given in parameter
    */
-  public static List<LogicalComponent> getRootLogicalComponentsForCurrentSystem(System system_p) {
+  public static List<LogicalComponent> getRootLogicalComponentsForCurrentSystem(System system) {
     List<LogicalComponent> rootComponentList = new ArrayList<LogicalComponent>();
-    for (ComponentAllocation componentAllocation : system_p.getProvisioningComponentAllocations()) {
+    for (ComponentAllocation componentAllocation : system.getProvisioningComponentAllocations()) {
       Component cpnt = componentAllocation.getAllocatingComponent();
       if (cpnt instanceof LogicalComponent) {
         rootComponentList.add((LogicalComponent) cpnt);
@@ -792,8 +793,8 @@ public class SystemEngineeringExt {
   /**
    * Return the 'RootPhysicalComponent' for 'PhysicalArchitecture' Layer given in parameter
    */
-  public static PhysicalComponent getRootPhysicalComponent(PhysicalArchitecture PA_p) {
-    PhysicalContext context = PA_p.getOwnedPhysicalContext();
+  public static PhysicalComponent getRootPhysicalComponent(PhysicalArchitecture PA) {
+    PhysicalContext context = PA.getOwnedPhysicalContext();
     if (context != null) {
       for (Partition partition : context.getOwnedPartitions()) {
         AbstractType type = partition.getAbstractType();
@@ -805,18 +806,18 @@ public class SystemEngineeringExt {
     return null;
   }
 
-  public static SharedPkg getSharedPkg(CapellaElement modelElement_p) {
-    return (SharedPkg) getSharedPkgRecursively(modelElement_p);
+  public static SharedPkg getSharedPkg(CapellaElement modelElement) {
+    return (SharedPkg) getSharedPkgRecursively(modelElement);
   }
 
-  private static ModelElement getSharedPkgRecursively(ModelElement modelElement_p) {
+  private static ModelElement getSharedPkgRecursively(ModelElement modelElement) {
     ModelElement result;
-    if (null == modelElement_p) {
+    if (null == modelElement) {
       result = null;
-    } else if (modelElement_p instanceof SharedPkg) {
-      result = modelElement_p;
+    } else if (modelElement instanceof SharedPkg) {
+      result = modelElement;
     } else {
-      ModelElement container = (ModelElement) modelElement_p.eContainer();
+      ModelElement container = (ModelElement) modelElement.eContainer();
       result = getSharedPkgRecursively(container);
     }
     return result;
@@ -824,23 +825,23 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the Shared Packages used by the current SystemEngineering.
-   * @param currentElement_p
+   * @param currentElement
    * @return List<SharedPkg>
    */
-  public static List<SharedPkg> getSharedPkgs(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static List<SharedPkg> getSharedPkgs(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
 
     return getSharedPkgs(sysEng);
   }
 
   /**
    * This method retrieves the Shared Packages used by the current SystemEngineering.
-   * @param sysEng_p
+   * @param sysEng
    * @return List<SharedPkg>
    */
-  public static List<SharedPkg> getSharedPkgs(SystemEngineering sysEng_p) {
+  public static List<SharedPkg> getSharedPkgs(SystemEngineering sysEng) {
     List<SharedPkg> sharedPkgs = new ArrayList<SharedPkg>();
-    for (ReuseLink lnk : sysEng_p.getReuseLinks()) {
+    for (ReuseLink lnk : sysEng.getReuseLinks()) {
       ReuseableStructure struct = lnk.getReused();
       if (struct instanceof SharedPkg) {
         sharedPkgs.add((SharedPkg) struct);
@@ -851,11 +852,11 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the System from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return System
    */
-  public static System getSystem(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static System getSystem(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     if (sysEng != null) {
       return getSystem(sysEng);
     }
@@ -864,12 +865,12 @@ public class SystemEngineeringExt {
 
   /**
    * This method retrieves the System from the model.
-   * @param currentElement_p
+   * @param currentElement
    * @return System
    */
-  public static System getSystem(SystemEngineering currentElement_p) {
-    if (currentElement_p != null) {
-      SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(currentElement_p);
+  public static System getSystem(SystemEngineering currentElement) {
+    if (currentElement != null) {
+      SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(currentElement);
       if (ca != null) {
         return ca.getOwnedSystem();
       }
@@ -877,8 +878,8 @@ public class SystemEngineeringExt {
     return null;
   }
 
-  public static SystemEngineering getSystemEngineering(CapellaElement currentElement_p) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
+  public static SystemEngineering getSystemEngineering(CapellaElement currentElement) {
+    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     return sysEng;
   }
 
@@ -889,8 +890,8 @@ public class SystemEngineeringExt {
     return null;
   }
   
-  public static void setEPBSArchitecturePkg(SystemEngineering currentElement_p, EPBSArchitecturePkg epbsArchitecturePkg) {
-    currentElement_p.getOwnedArchitecturePkgs().add(epbsArchitecturePkg);
+  public static void setEPBSArchitecturePkg(SystemEngineering currentElement, EPBSArchitecturePkg epbsArchitecturePkg) {
+    currentElement.getOwnedArchitecturePkgs().add(epbsArchitecturePkg);
 
   }
 

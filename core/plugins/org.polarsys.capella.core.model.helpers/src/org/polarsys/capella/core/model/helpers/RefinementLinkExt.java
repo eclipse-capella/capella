@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
@@ -48,32 +49,32 @@ public class RefinementLinkExt {
 
   /**
    * Creates a refinement traceability link owned by the source's first possible container.
-   * @param sourceElt_p
-   * @param targetElt_p
+   * @param sourceElt
+   * @param targetElt
    * @return RefinementLink
    */
-  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt_p, NamedElement targetElt_p) {
-    return createRefinementTraceabilityLink(sourceElt_p, targetElt_p, sourceElt_p);
+  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt, NamedElement targetElt) {
+    return createRefinementTraceabilityLink(sourceElt, targetElt, sourceElt);
   }
 
   /**
    * Creates a refinement traceability link owned by given NamedElement first possible container.
-   * @param sourceElt_p
-   * @param targetElt_p
-   * @param container_p
+   * @param sourceElt
+   * @param targetElt
+   * @param container
    * @return RefinementLink
    */
-  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt_p, NamedElement targetElt_p, NamedElement container_p) {
+  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt, NamedElement targetElt, NamedElement container) {
     RefinementLink lnk = null;
     Namespace ownerElt =
-        (Namespace) ((container_p instanceof Namespace) ? container_p : EcoreUtil2.getFirstContainer(container_p, CapellacorePackage.Literals.NAMESPACE));
+        (Namespace) ((container instanceof Namespace) ? container : EcoreUtil2.getFirstContainer(container, CapellacorePackage.Literals.NAMESPACE));
 
     if (ownerElt != null) {
-      lnk = createRefinementTraceabilityLink(sourceElt_p, targetElt_p, ownerElt);
+      lnk = createRefinementTraceabilityLink(sourceElt, targetElt, ownerElt);
     } else {
       _logger
           .debug(new EmbeddedMessage(
-              "The traceability between '" + sourceElt_p.getName() + "' and '" + targetElt_p.getName() + "' have no container.", IReportManagerDefaultComponents.MODEL)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+              "The traceability between '" + sourceElt.getName() + "' and '" + targetElt.getName() + "' have no container.", IReportManagerDefaultComponents.MODEL)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     return lnk;
@@ -81,44 +82,44 @@ public class RefinementLinkExt {
 
   /**
    * Creates a refinement traceability link.
-   * @param sourceElt_p
-   * @param targetElt_p
-   * @param container_p
+   * @param sourceElt
+   * @param targetElt
+   * @param container
    * @return RefinementLink
    */
-  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt_p, NamedElement targetElt_p, Namespace container_p) {
+  static public RefinementLink createRefinementTraceabilityLink(NamedElement sourceElt, NamedElement targetElt, Namespace container) {
     RefinementLink lnk = null;
 
-    if (container_p != null) {
+    if (container != null) {
       lnk = InteractionFactory.eINSTANCE.createRefinementLink();
-      lnk.setSourceElement(sourceElt_p);
-      lnk.setTargetElement(targetElt_p);
-      container_p.getOwnedTraces().add(lnk);
+      lnk.setSourceElement(sourceElt);
+      lnk.setTargetElement(targetElt);
+      container.getOwnedTraces().add(lnk);
 
       /** do some additional stuff */
-      CreationHelper.performContributionCommands(sourceElt_p, container_p);
+      CreationHelper.performContributionCommands(sourceElt, container);
     }
 
     return lnk;
   }
 
   /**
-   * Returns elements values for sourceElt_p.eGet(reference) where values isn't the best values used. (best value as in isAttachedToBestElement method)
+   * Returns elements values for sourceElt.eGet(reference) where values isn't the best values used. (best value as in isAttachedToBestElement method)
    */
-  public static List<EObject> getInvalidAttachedToBestElement(EObject sourceElt_p, EReference reference) {
+  public static List<EObject> getInvalidAttachedToBestElement(EObject sourceElt, EReference reference) {
     List<EObject> list = new ArrayList<EObject>();
     if (reference.isMany()) {
-      for (Object obj : ((List<?>) sourceElt_p.eGet(reference))) {
+      for (Object obj : ((List<?>) sourceElt.eGet(reference))) {
         if ((obj != null) && (obj instanceof EObject)) {
-          if (!isAttachedToBestElement(sourceElt_p, (EObject) obj)) {
+          if (!isAttachedToBestElement(sourceElt, (EObject) obj)) {
             list.add((EObject) obj);
           }
         }
       }
     } else {
-      Object obj = sourceElt_p.eGet(reference);
+      Object obj = sourceElt.eGet(reference);
       if ((obj != null) && (obj instanceof EObject)) {
-        if (!isAttachedToBestElement(sourceElt_p, (EObject) obj)) {
+        if (!isAttachedToBestElement(sourceElt, (EObject) obj)) {
           list.add((EObject) obj);
         }
       }
@@ -129,18 +130,18 @@ public class RefinementLinkExt {
   /**
    * Returns list of attribute values which isn't equals from the source element and refined elements
    */
-  public static List<Object> getMissingValuesFromRefined(EObject sourceElt_p, EAttribute attribute, Collection<?> excludeValuesFromSources) {
+  public static List<Object> getMissingValuesFromRefined(EObject sourceElt, EAttribute attribute, Collection<?> excludeValuesFromSources) {
     List<Object> list = new ArrayList<Object>();
 
-    for (AbstractTrace lnk : ((TraceableElement) sourceElt_p).getOutgoingTraces()) {
+    for (AbstractTrace lnk : ((TraceableElement) sourceElt).getOutgoingTraces()) {
       TraceableElement target = lnk.getTargetElement();
 
-      if ((target != null) && EcoreUtil2.isEqualOrSuperClass(target.eClass(), sourceElt_p.eClass())) {
+      if ((target != null) && EcoreUtil2.isEqualOrSuperClass(target.eClass(), sourceElt.eClass())) {
 
         if (attribute.isMany()) {
           for (Object obj : ((List<?>) target.eGet(attribute))) {
             if ((obj != null) && !excludeValuesFromSources.contains(obj)) {
-              if (!((List<?>) sourceElt_p.eGet(attribute)).contains(obj)) {
+              if (!((List<?>) sourceElt.eGet(attribute)).contains(obj)) {
                 list.add(obj);
               }
             }
@@ -148,7 +149,7 @@ public class RefinementLinkExt {
         } else {
           Object obj = target.eGet(attribute);
           if ((obj != null) && !excludeValuesFromSources.contains(obj)) {
-            if (!obj.equals(sourceElt_p.eGet(attribute))) {
+            if (!obj.equals(sourceElt.eGet(attribute))) {
               list.add(obj);
             }
           }
@@ -161,18 +162,18 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all source elements linked, by a refinement traceability link, with a given target element.
-   * @param currentElt_p
-   * @param type_p
+   * @param currentElt
+   * @param type
    * @return List<NamedElement>
    */
-  static public List<CapellaElement> getRefinementRelatedSourceElements(CapellaElement currentElt_p, EClass type_p) {
+  static public List<CapellaElement> getRefinementRelatedSourceElements(CapellaElement currentElt, EClass type) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
 
-    if (currentElt_p != null) {
-      for (AbstractTrace lnk : currentElt_p.getIncomingTraces()) {
+    if (currentElt != null) {
+      for (AbstractTrace lnk : currentElt.getIncomingTraces()) {
         if (lnk instanceof RefinementLink) {
           TraceableElement elt = lnk.getSourceElement();
-          if ((elt instanceof CapellaElement) && (type_p.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
+          if ((elt instanceof CapellaElement) && (type.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
             result.add((CapellaElement) elt);
           }
         }
@@ -184,18 +185,18 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all target elements linked, by a refinement traceability link, with a given source element.
-   * @param currentElt_p
-   * @param type_p
+   * @param currentElt
+   * @param type
    * @return List<NamedElement>
    */
-  static public List<CapellaElement> getRefinementRelatedTargetElements(CapellaElement currentElt_p, EClass type_p) {
+  static public List<CapellaElement> getRefinementRelatedTargetElements(CapellaElement currentElt, EClass type) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
 
-    if (currentElt_p != null) {
-      for (AbstractTrace lnk : currentElt_p.getOutgoingTraces()) {
+    if (currentElt != null) {
+      for (AbstractTrace lnk : currentElt.getOutgoingTraces()) {
         if (lnk instanceof RefinementLink) {
           TraceableElement elt = lnk.getTargetElement();
-          if ((elt instanceof CapellaElement) && (type_p.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
+          if ((elt instanceof CapellaElement) && (type.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
             result.add((CapellaElement) elt);
           }
         }
@@ -207,17 +208,17 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all source elements linked, by a refinement traceability link, with a given target element.
-   * @param currentElt_p
-   * @param type_p
+   * @param currentElt
+   * @param type
    * @return List<NamedElement>
    */
-  static public List<CapellaElement> getRelatedSourceElements(CapellaElement currentElt_p, EClass type_p) {
+  static public List<CapellaElement> getRelatedSourceElements(CapellaElement currentElt, EClass type) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
 
-    if (currentElt_p != null) {
-      for (AbstractTrace lnk : currentElt_p.getIncomingTraces()) {
+    if (currentElt != null) {
+      for (AbstractTrace lnk : currentElt.getIncomingTraces()) {
         TraceableElement elt = lnk.getSourceElement();
-        if ((elt instanceof CapellaElement) && (type_p.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
+        if ((elt instanceof CapellaElement) && (type.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
           result.add((CapellaElement) elt);
         }
       }
@@ -228,17 +229,17 @@ public class RefinementLinkExt {
 
   /**
    * Retrieves all target elements linked, by a traceability link, with a given source element.
-   * @param currentElt_p
-   * @param type_p
+   * @param currentElt
+   * @param type
    * @return List<NamedElement>
    */
-  static public List<CapellaElement> getRelatedTargetElements(CapellaElement currentElt_p, EClass type_p) {
+  static public List<CapellaElement> getRelatedTargetElements(CapellaElement currentElt, EClass type) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
 
-    if (currentElt_p != null) {
-      for (AbstractTrace lnk : currentElt_p.getOutgoingTraces()) {
+    if (currentElt != null) {
+      for (AbstractTrace lnk : currentElt.getOutgoingTraces()) {
         TraceableElement elt = lnk.getTargetElement();
-        if ((elt instanceof CapellaElement) && (type_p.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
+        if ((elt instanceof CapellaElement) && (type.isSuperTypeOf(elt.eClass())) && !result.contains(elt)) {
           result.add((CapellaElement) elt);
         }
       }
@@ -250,17 +251,17 @@ public class RefinementLinkExt {
   /**
    * Returns list of attribute values which isn't equals from the source element and refined elements
    */
-  public static boolean hasMissingValuesFromRefined(EObject sourceElt_p, EAttribute attribute, Collection<?> excludeValuesFromSources) {
-    return getMissingValuesFromRefined(sourceElt_p, attribute, excludeValuesFromSources).size() > 0;
+  public static boolean hasMissingValuesFromRefined(EObject sourceElt, EAttribute attribute, Collection<?> excludeValuesFromSources) {
+    return getMissingValuesFromRefined(sourceElt, attribute, excludeValuesFromSources).size() > 0;
   }
 
   /**
-   * Returns whether the element objValue is the best element defined for the sourceElt_p. (It means returns whether objValue is in the same layer than
-   * sourceElement or if it isn't refined in the sourceElt_p architecture)
+   * Returns whether the element objValue is the best element defined for the sourceElt. (It means returns whether objValue is in the same layer than
+   * sourceElement or if it isn't refined in the sourceElt architecture)
    */
-  public static boolean isAttachedToBestElement(EObject sourceElt_p, EObject objValue) {
-    if (!CapellaLayerCheckingExt.areInSameLayer(sourceElt_p, objValue)) {
-      if (RefinementLinkExt.isTransitionedInto(objValue, BlockArchitectureExt.getRootBlockArchitecture(sourceElt_p))) {
+  public static boolean isAttachedToBestElement(EObject sourceElt, EObject objValue) {
+    if (!CapellaLayerCheckingExt.areInSameLayer(sourceElt, objValue)) {
+      if (RefinementLinkExt.isTransitionedInto(objValue, BlockArchitectureExt.getRootBlockArchitecture(sourceElt))) {
         return false;
       }
     }
@@ -268,15 +269,15 @@ public class RefinementLinkExt {
   }
 
   /**
-   * Verifies whether {@link sourceElt_p} has a refinement link towards {@link targetElt_p} or not.
-   * @param sourceElt_p
-   * @param targetElt_p
+   * Verifies whether {@link sourceElt} has a refinement link towards {@link targetElt} or not.
+   * @param sourceElt
+   * @param targetElt
    */
-  static public boolean isLinkedTo(TraceableElement sourceElt_p, TraceableElement targetElt_p) {
-    if (sourceElt_p != null) {
-      for (AbstractTrace lnk : sourceElt_p.getOutgoingTraces()) {
+  static public boolean isLinkedTo(TraceableElement sourceElt, TraceableElement targetElt) {
+    if (sourceElt != null) {
+      for (AbstractTrace lnk : sourceElt.getOutgoingTraces()) {
         TraceableElement target = lnk.getTargetElement();
-        if ((target != null) && target.equals(targetElt_p)) {
+        if ((target != null) && target.equals(targetElt)) {
           return true;
         }
       }
@@ -285,13 +286,13 @@ public class RefinementLinkExt {
   }
 
   /**
-   * Returns whether the sourceElt_p is refined or not into the given architecture
+   * Returns whether the sourceElt is refined or not into the given architecture
    */
-  public static boolean isTransitionedInto(EObject sourceElt_p, BlockArchitecture rootBlockArchitecture_p) {
-    if ((sourceElt_p != null) && (sourceElt_p instanceof TraceableElement)) {
-      for (AbstractTrace lnk : ((TraceableElement) sourceElt_p).getIncomingTraces()) {
+  public static boolean isTransitionedInto(EObject sourceElt, BlockArchitecture rootBlockArchitecture) {
+    if ((sourceElt != null) && (sourceElt instanceof TraceableElement)) {
+      for (AbstractTrace lnk : ((TraceableElement) sourceElt).getIncomingTraces()) {
         TraceableElement target = lnk.getSourceElement();
-        if ((target != null) && rootBlockArchitecture_p.equals(BlockArchitectureExt.getRootBlockArchitecture(target))) {
+        if ((target != null) && rootBlockArchitecture.equals(BlockArchitectureExt.getRootBlockArchitecture(target))) {
           return true;
         }
       }

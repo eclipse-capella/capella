@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.data.helpers.fa.services;
 
 import java.util.ArrayList;
@@ -34,12 +35,12 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 public class FunctionPortExt {
 
   /**
-   * @param fp_p
+   * @param fp
    * @return
    */
-  public static List<Port> getRealizedPorts(FunctionPort fp_p) {
+  public static List<Port> getRealizedPorts(FunctionPort fp) {
     List<Port> result = new ArrayList<Port>();
-    for (AbstractTrace trace : fp_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : fp.getOutgoingTraces()) {
       if (trace instanceof PortRealization) {
         result.add(((PortRealization) trace).getRealizedPort());
       }
@@ -48,12 +49,12 @@ public class FunctionPortExt {
   }
 
   /**
-   * @param fp_p
+   * @param fp
    * @return
    */
-  public static List<Port> getRealizingPorts(FunctionPort fp_p) {
+  public static List<Port> getRealizingPorts(FunctionPort fp) {
     List<Port> result = new ArrayList<Port>();
-    for (AbstractTrace trace : fp_p.getIncomingTraces()) {
+    for (AbstractTrace trace : fp.getIncomingTraces()) {
       if (trace instanceof PortRealization) {
         result.add(((PortRealization) trace).getRealizingPort());
       }
@@ -63,18 +64,18 @@ public class FunctionPortExt {
   
   
   /**
-   * @param fp_p
+   * @param fp
    * @return
    */
-  public static Set<ExchangeItem> getAllIncomingExchangeItems(FunctionPort fp_p) {
+  public static Set<ExchangeItem> getAllIncomingExchangeItems(FunctionPort fp) {
 	  
 	  Set<ExchangeItem> exchangesItems = new HashSet<ExchangeItem>();
 	  
-	  if (fp_p instanceof FunctionInputPort) {
-		FunctionInputPort functionInputPort = (FunctionInputPort) fp_p;
+	  if (fp instanceof FunctionInputPort) {
+		FunctionInputPort functionInputPort = (FunctionInputPort) fp;
 		exchangesItems.addAll(functionInputPort.getIncomingExchangeItems()) ;
-	  }else if (fp_p instanceof FunctionOutputPort) {
-		FunctionOutputPort functionOutputPort = (FunctionOutputPort) fp_p;
+	  }else if (fp instanceof FunctionOutputPort) {
+		FunctionOutputPort functionOutputPort = (FunctionOutputPort) fp;
 		exchangesItems.addAll(functionOutputPort.getOutgoingExchangeItems()) ;
 	  }
 	  
@@ -84,12 +85,12 @@ public class FunctionPortExt {
   
   
   /**
-   * @param fp_p
+   * @param fp
    * @return
    */
-  public static Set<Component> getAllProvidedRealizedRequiredInterfaces(FunctionPort fp_p) {
+  public static Set<Component> getAllProvidedRealizedRequiredInterfaces(FunctionPort fp) {
 	  Set<Component> exchangesItems = new HashSet<Component>();
-	  AbstractFunction abstractFunction = (AbstractFunction) fp_p.eContainer();
+	  AbstractFunction abstractFunction = (AbstractFunction) fp.eContainer();
 	  EList<ComponentFunctionalAllocation> componentFunctionalAllocation = abstractFunction.getComponentFunctionalAllocations() ;
 	  for (ComponentFunctionalAllocation componentFunctionalAllocation2 : componentFunctionalAllocation) {
 		  Component containerComponent = (Component) componentFunctionalAllocation2.getSourceElement();

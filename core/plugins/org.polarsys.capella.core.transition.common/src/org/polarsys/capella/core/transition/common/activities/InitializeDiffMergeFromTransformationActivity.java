@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.activities;
 
 import java.util.ArrayList;
@@ -39,27 +40,27 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
    * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
    */
   @Override
-  public IStatus _run(ActivityParameters activityParams_p) {
-    IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
+  public IStatus _run(ActivityParameters activityParams) {
+    IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
     IStatus status = Status.OK_STATUS;
 
-    status = initializeTraceabilitySourceHandler(context, activityParams_p);
+    status = initializeTraceabilitySourceHandler(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = initializeTraceabilityTargetHandler(context, activityParams_p);
+    status = initializeTraceabilityTargetHandler(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = initializeReferenceScope(context, activityParams_p);
+    status = initializeReferenceScope(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = initializeTargetScope(context, activityParams_p);
+    status = initializeTargetScope(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
@@ -68,60 +69,60 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeReferenceScope(IContext context_p, ActivityParameters activityParams_p) {
-    EObject sourceTop = (EObject) context_p.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-    context_p.put(ITransitionConstants.MERGE_REFERENCE_CONTAINER, sourceTop);
+  protected IStatus initializeReferenceScope(IContext context, ActivityParameters activityParams) {
+    EObject sourceTop = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
+    context.put(ITransitionConstants.MERGE_REFERENCE_CONTAINER, sourceTop);
 
     List<EObject> rootSource = new ArrayList<EObject>();
-    rootSource.add((EObject) context_p.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
+    rootSource.add((EObject) context.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
 
-    IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
+    IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context);
 
-    context_p.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
+    context.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
 
-    ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context_p));
+    ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context));
 
     return Status.OK_STATUS;
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeTargetScope(IContext context_p, ActivityParameters activityParams_p) {
+  protected IStatus initializeTargetScope(IContext context, ActivityParameters activityParams) {
 
-    EObject targetTop = (EObject) context_p.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
-    context_p.put(ITransitionConstants.MERGE_TARGET_CONTAINER, targetTop);
+    EObject targetTop = (EObject) context.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
+    context.put(ITransitionConstants.MERGE_TARGET_CONTAINER, targetTop);
 
     List<EObject> rootTarget = new ArrayList<EObject>();
-    rootTarget.add((EObject) context_p.get(ITransitionConstants.MERGE_TARGET_CONTAINER));
+    rootTarget.add((EObject) context.get(ITransitionConstants.MERGE_TARGET_CONTAINER));
 
-    IEditableModelScope targetScope = new TargetModelScope(rootTarget, context_p);
-    context_p.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
+    IEditableModelScope targetScope = new TargetModelScope(rootTarget, context);
+    context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
 
-    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context_p));
+    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
 
     return Status.OK_STATUS;
   }
 
   /**
    * Initialize the traceability handler for source of diffMerge and set it into context via TRACEABILITY_SOURCE_MERGE_HANDLER
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeTraceabilitySourceHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER, activityParams_p);
+  protected IStatus initializeTraceabilitySourceHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER, activityParams);
     if (handler == null) {
-      handler = createDefaultTraceabilitySourceHandler(context_p);
+      handler = createDefaultTraceabilitySourceHandler(context);
     }
-    context_p.put(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER, handler);
-    handler.init(context_p);
+    context.put(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
@@ -129,23 +130,23 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
    * Create default traceability handler for source of diffMerge
    * @return
    */
-  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
     return ITraceabilityHandler.DEFAULT;
   }
 
   /**
    * Initialize the traceability handler for target of diffMerge and set it into context via TRACEABILITY_TARGET_MERGE_HANDLER
-   * @param context_p
-   * @param activityParams_p
+   * @param context
+   * @param activityParams
    * @return
    */
-  protected IStatus initializeTraceabilityTargetHandler(IContext context_p, ActivityParameters activityParams_p) {
-    IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER, activityParams_p);
+  protected IStatus initializeTraceabilityTargetHandler(IContext context, ActivityParameters activityParams) {
+    IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER, activityParams);
     if (handler == null) {
-      handler = createDefaultTraceabilityTargetHandler(context_p);
+      handler = createDefaultTraceabilityTargetHandler(context);
     }
-    context_p.put(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER, handler);
-    handler.init(context_p);
+    context.put(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER, handler);
+    handler.init(context);
     return Status.OK_STATUS;
   }
 
@@ -153,24 +154,24 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
    * Create default traceability handler for target of diffMerge
    * @return
    */
-  protected IHandler createDefaultTraceabilityTargetHandler(IContext context_p) {
+  protected IHandler createDefaultTraceabilityTargetHandler(IContext context) {
     return ITraceabilityHandler.DEFAULT;
   }
 
-  protected IModelScopeFilter getReferenceFilter(final IContext context_p) {
+  protected IModelScopeFilter getReferenceFilter(final IContext context) {
     // No specific rule here.
 
     return new IModelScopeFilter() {
-      public boolean accepts(EObject element_p) {
+      public boolean accepts(EObject element) {
         return true;
       }
     };
   }
 
-  protected IModelScopeFilter getTargetFilter(final IContext context_p) {
+  protected IModelScopeFilter getTargetFilter(final IContext context) {
 
     return new IModelScopeFilter() {
-      public boolean accepts(EObject element_p) {
+      public boolean accepts(EObject element) {
         return true;
 
       }

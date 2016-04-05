@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.transition.common.domain;
 
 import java.util.ArrayList;
@@ -32,14 +33,14 @@ import org.polarsys.kitalpha.transposer.transformation.emf.util.EmfDomainHelper;
  */
 public class DomainHelper extends EmfDomainHelper {
 
-  private HashMap<String, EPackage> _packages;
+  private HashMap<String, EPackage> packages;
 
   /** 
    * @see org.polarsys.kitalpha.transposer.transformation.emf.util.EmfDomainHelper#getAnalysisSources(java.util.Collection)
    */
   @Override
-  public Collection<Object> getAnalysisSources(Collection<?> selection_p) {
-    Collection<Object> sources = new ArrayList<Object>(selection_p);
+  public Collection<Object> getAnalysisSources(Collection<?> selection) {
+    Collection<Object> sources = new ArrayList<Object>(selection);
     return sources;
   }
 
@@ -47,17 +48,17 @@ public class DomainHelper extends EmfDomainHelper {
    * @see org.polarsys.kitalpha.transposer.transformation.emf.util.EmfDomainHelper#getDomainMetaclass(java.lang.String)
    */
   @Override
-  public Class<?> getDomainMetaclass(String name_p) {
+  public Class<?> getDomainMetaclass(String name) {
 
     try {
-      return Class.forName(name_p);
+      return Class.forName(name);
 
     } catch (ClassNotFoundException e) {
-      if (name_p != null) {
+      if (name != null) {
         try {
-          int index = name_p.lastIndexOf(".");
-          String pkgName = name_p.substring(0, index);
-          String className = name_p.substring(index + 1);
+          int index = name.lastIndexOf(".");
+          String pkgName = name.substring(0, index);
+          String className = name.substring(index + 1);
 
           for (EPackage pkg : getPackages(pkgName)) {
             EClassifier clazz = pkg.getEClassifier(className);
@@ -70,7 +71,7 @@ public class DomainHelper extends EmfDomainHelper {
           //Nothing more
         }
       }
-      TransposerEMFPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name_p, e)); //$NON-NLS-1$
+      TransposerEMFPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
     }
 
     return null;
@@ -78,26 +79,26 @@ public class DomainHelper extends EmfDomainHelper {
 
   /**
    * Return an optimized list of EPackage to check
-   * @param pkgName_p
+   * @param pkgName
    * @return
    */
-  protected Collection<EPackage> getPackages(String pkgName_p) {
+  protected Collection<EPackage> getPackages(String pkgName) {
 
-    if (_packages == null) {
-      _packages = new HashMap<String, EPackage>();
+    if (packages == null) {
+      packages = new HashMap<String, EPackage>();
       for (EPackage pkg : getEPackages()) {
         for (EClassifier clazz : pkg.getEClassifiers()) {
           Class<?> a = clazz.getInstanceClass();
           if (a != null) {
             String name = a.getPackage().getName();
-            _packages.put(name, pkg);
+            packages.put(name, pkg);
             break;
           }
         }
       }
     }
 
-    EPackage pkg = _packages.get(pkgName_p);
+    EPackage pkg = packages.get(pkgName);
     if (pkg != null) {
       return Collections.singletonList(pkg);
 
@@ -105,7 +106,7 @@ public class DomainHelper extends EmfDomainHelper {
 
     Collection<EPackage> pkgs = new ArrayList<EPackage>();
     for (EPackage pkgItem : getEPackages()) {
-      if (pkgName_p.contains(pkgItem.getName())) {
+      if (pkgName.contains(pkgItem.getName())) {
         pkgs.add(pkgItem);
       }
     }
@@ -138,7 +139,7 @@ public class DomainHelper extends EmfDomainHelper {
    * @see org.polarsys.kitalpha.transposer.rules.handler.rules.api.IDomainHelper#isDomainFor(java.lang.Object)
    */
   @Override
-  public boolean isDomainFor(Object object_p) {
+  public boolean isDomainFor(Object object) {
     return true;
   }
 
@@ -146,7 +147,7 @@ public class DomainHelper extends EmfDomainHelper {
    * @see org.polarsys.kitalpha.transposer.transformation.emf.util.EmfDomainHelper#isHotSpot(java.lang.Object)
    */
   @Override
-  public boolean isHotSpot(Object object_p) {
+  public boolean isHotSpot(Object object) {
     return true;
   }
 }
