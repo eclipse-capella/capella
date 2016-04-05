@@ -26,14 +26,15 @@ import org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.test.framework.provider.ModelProvider;
 
 public class ModelProviderHelper {
   private IModelProvider modelProvider;
-  
+
   private ModelProviderHelper() {
     initExtensionListeners();
   }
-  
+
   private static class SingletonHolder {
     private static final ModelProviderHelper INSTANCE = new ModelProviderHelper();
   }
@@ -41,22 +42,26 @@ public class ModelProviderHelper {
   public static ModelProviderHelper getInstance() {
     return SingletonHolder.INSTANCE;
   }
-  
+
   public static String MODEL_PROVIDER_EXT_POINT = "modelprovider";
-  
+
   /**
    * Build the extension listener list.
    */
   private void initExtensionListeners() {
-    for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements(
-        CapellaTestFrameworkPlugin.PLUGIN_ID, MODEL_PROVIDER_EXT_POINT)) {
+    for (IConfigurationElement configElement : ExtensionPointHelper
+        .getConfigurationElements(CapellaTestFrameworkPlugin.PLUGIN_ID, MODEL_PROVIDER_EXT_POINT)) {
       modelProvider = (IModelProvider) ExtensionPointHelper.createInstance(configElement,
           ExtensionPointHelper.ATT_CLASS);
     }
+
+    if (modelProvider == null) {
+      modelProvider = new ModelProvider();
+    }
+
   }
-  
-  public IModelProvider getModelProvider()
-  {
+
+  public IModelProvider getModelProvider() {
     return modelProvider;
   }
 
@@ -77,7 +82,7 @@ public class ModelProviderHelper {
   public void removeCapellaProject(String relativeModelPath, BasicTestArtefact artefact, boolean eraseProject) {
     Session session = AbstractProvider.getExistingSessionForTestModel(relativeModelPath, artefact);
     if (session.isOpen()) {
-      //GuiActions.saveSession(session);
+      // GuiActions.saveSession(session);
       GuiActions.closeSession(session, false);
     }
 
@@ -92,7 +97,7 @@ public class ModelProviderHelper {
       e.printStackTrace();
     }
   }
-  
+
   public void removeCapellaProject(String relativeModelPath) {
     String projectName = new File(relativeModelPath).getName();
     IProject eclipseProject = IResourceHelpers.getEclipseProjectInWorkspace(projectName);
