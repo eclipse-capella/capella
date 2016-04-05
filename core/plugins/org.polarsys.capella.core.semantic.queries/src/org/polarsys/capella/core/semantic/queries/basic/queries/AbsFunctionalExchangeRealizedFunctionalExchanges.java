@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,34 +37,32 @@ public abstract class AbsFunctionalExchangeRealizedFunctionalExchanges
 		// do nothing
 	}
 
-	/**
-	 * 
-	 * current.outExchangeRealisations.allocatedExchange
-	 * 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
-	public List<Object> compute(Object object_p) {
-		List<Object> result = new ArrayList<Object>();
-		if (object_p instanceof FunctionalExchange) {
-			FunctionalExchange e = (FunctionalExchange) object_p;
-			// get root architecture
-			BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(e);
-			if (isValidArchitectureLavel(arch)) {
-				// get outgoing functional exchange realization link
-				EList<FunctionalExchangeRealization> links = e
-						.getOutgoingFunctionalExchangeRealizations();
-				for (FunctionalExchangeRealization link : links) {
-					// get link target element
-					TraceableElement targetElement = link.getTargetElement();
-					if (null != targetElement) {
-						result.add(targetElement);
-					}
+  /**
+   * current.outExchangeRealisations.allocatedExchange
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  @Override
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<Object>();
+    if (object instanceof FunctionalExchange) {
+      FunctionalExchange e = (FunctionalExchange) object;
+      // get root architecture
+      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(e);
+      if (isValidArchitectureLavel(arch)) {
+        // get outgoing functional exchange realization link
+        EList<FunctionalExchangeRealization> links = e.getOutgoingFunctionalExchangeRealizations();
+        for (FunctionalExchangeRealization link : links) {
+          // get link target element
+          TraceableElement targetElement = link.getTargetElement();
+          if (null != targetElement) {
+            result.add(targetElement);
+          }
 
-				}
-			}
-		}
-		return result;
-	}
+        }
+      }
+    }
+    return result;
+  }
 
-	abstract public boolean isValidArchitectureLavel(BlockArchitecture arch_p);
+	abstract public boolean isValidArchitectureLavel(BlockArchitecture arch);
 }
