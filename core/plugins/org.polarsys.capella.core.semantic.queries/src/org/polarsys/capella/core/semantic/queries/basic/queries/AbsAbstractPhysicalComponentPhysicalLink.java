@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,10 +37,11 @@ public abstract class AbsAbstractPhysicalComponentPhysicalLink implements IQuery
    * current.componentPorts.outgoingFlows
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  @Override
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof AbstractPhysicalComponent) {
-      AbstractPhysicalComponent absPhyComp = (AbstractPhysicalComponent) object_p;
+    if (object instanceof AbstractPhysicalComponent) {
+      AbstractPhysicalComponent absPhyComp = (AbstractPhysicalComponent) object;
       Collection<PhysicalLink> allRelatedPhysicalLinks = PhysicalLinkExt.getAllRelatedPhysicalLinks(absPhyComp);
       for (PhysicalLink physicalLink : allRelatedPhysicalLinks) {
         result.add(physicalLink);
@@ -51,10 +52,10 @@ public abstract class AbsAbstractPhysicalComponentPhysicalLink implements IQuery
 
   /**
    * Get source or target of the physical link
-   * @param physicalLink_p
+   * @param physicalLink
    * @return
    */
   @Deprecated
-  abstract public EObject getRequiredComponent(PhysicalLink physicalLink_p);
+  abstract public EObject getRequiredComponent(PhysicalLink physicalLink);
 
 }
