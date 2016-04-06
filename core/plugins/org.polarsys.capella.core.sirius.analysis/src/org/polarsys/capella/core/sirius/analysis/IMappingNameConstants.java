@@ -438,6 +438,7 @@ public interface IMappingNameConstants {
   String HIDE_CROSS_FE_IN_MULTIPART = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
   String HIDE_ASSOCIATION_LABELS = "Hide Association Labels";//$NON-NLS-1$
   String HIDE_ROLE_LABELS = "Hide Role Labels";//$NON-NLS-1$
+  String SHOW_MODIFIERS = "Show Modifiers";//$NON-NLS-1$
   String HIDE_ROLE_NAMES = "Hide Role Names";//$NON-NLS-1$
   String HIDE_FUNCTIONAL_EXCHANGES_NAMES = "Hide Functional Exchanges names";//$NON-NLS-1$
   String HIDE_COMPONENT_EXCHANGES_NAMES = "Hide Component Exchanges names";//$NON-NLS-1$

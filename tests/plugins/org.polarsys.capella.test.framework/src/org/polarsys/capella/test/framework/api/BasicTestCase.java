@@ -106,7 +106,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   }
 
   protected IFile getAirdFileForLoadedModel(String modelName) {
-    return AbstractProvider.getAirdFileForLoadedModel(modelName);
+    return ModelProviderHelper.getInstance().getModelProvider().getAirdFileForLoadedModel(modelName);
   }
 
   protected IFile getCapellaFileForLoadedModel(String modelName) {

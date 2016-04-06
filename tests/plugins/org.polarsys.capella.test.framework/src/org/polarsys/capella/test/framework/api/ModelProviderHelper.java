@@ -12,8 +12,6 @@ package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -28,9 +26,9 @@ import org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.test.framework.provider.ModelProvider;
 
 public class ModelProviderHelper {
-  private static final String ATT_OVERRIDE = "override";
   private IModelProvider modelProvider;
 
   private ModelProviderHelper() {
@@ -51,26 +49,16 @@ public class ModelProviderHelper {
    * Build the extension listener list.
    */
   private void initExtensionListeners() {
-    Map<String, IModelProvider> providers = new HashMap<String, IModelProvider>();
-
-    for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements(
-        CapellaTestFrameworkPlugin.PLUGIN_ID, MODEL_PROVIDER_EXT_POINT)) {
-
-      String id = configElement.getAttribute(ExtensionPointHelper.ATT_ID);
-      String override_id = configElement.getAttribute(ATT_OVERRIDE);
-      IModelProvider modelProviderInstance = (IModelProvider) ExtensionPointHelper.createInstance(configElement,
+    for (IConfigurationElement configElement : ExtensionPointHelper
+        .getConfigurationElements(CapellaTestFrameworkPlugin.PLUGIN_ID, MODEL_PROVIDER_EXT_POINT)) {
+      modelProvider = (IModelProvider) ExtensionPointHelper.createInstance(configElement,
           ExtensionPointHelper.ATT_CLASS);
-
-      if (override_id != null) {
-        providers.put(override_id, modelProviderInstance);
-      } else {
-        if (!providers.containsKey(id)) {
-          providers.put(id, modelProviderInstance);
-        }
-      }
     }
 
-    modelProvider = providers.values().iterator().next();
+    if (modelProvider == null) {
+      modelProvider = new ModelProvider();
+    }
+
   }
 
   public IModelProvider getModelProvider() {

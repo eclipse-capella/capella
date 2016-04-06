@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
@@ -45,12 +46,17 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
     Command cmd = UnexecutableCommand.INSTANCE;
 
     if (isContextOk()) {
-      EdgeCreationDescription tool = (EdgeCreationDescription) _tool;
 
+      EdgeCreationDescription tool = (EdgeCreationDescription) _tool;
       EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType.SOURCE);
       EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType.TARGET);
 
+      if (!new EdgeCreationCommandBuilder(tool, source, target).checkStartPrecondition()) {
+        return cmd;
+      }
+
       cmd = _diagramCommandFactory.buildCreateEdgeCommandFromTool(source, target, tool);
+
     }
 
     return cmd;
@@ -66,7 +72,8 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
+      Collections.addAll(list,
+          new AbstractToolWrapper.ArgumentData(ArgumentType.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
           new AbstractToolWrapper.ArgumentData(ArgumentType.TARGET, DiagramPackage.Literals.EDGE_TARGET));
       ret = Collections.unmodifiableList(list);
     } else {

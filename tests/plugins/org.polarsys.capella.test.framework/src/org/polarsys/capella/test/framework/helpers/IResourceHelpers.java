@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,9 +47,17 @@ public class IResourceHelpers {
 
 	public static File getFileInPlugin(Class<?> oneClassInThePlugin, String relativeFilePath)
 			throws URISyntaxException, IOException {
-		Bundle bundle = FrameworkUtil.getBundle(oneClassInThePlugin);
-		URL fileURL = bundle.getEntry(relativeFilePath);
-		return new File(FileLocator.resolve(fileURL).toURI());
+    Bundle bundle = FrameworkUtil.getBundle(oneClassInThePlugin);
+    URL fileURL = bundle.getEntry(relativeFilePath);
+    
+    // Use FileLocator.toFileURL(fileURL) rather than resolve(fileURL)
+    // because when the plugin is packed into a jar this will cause Eclipse to create an unpacked version in a temporary
+    // location so that the object can be accessed using File.
+    URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+    // We need to use the 3-arg constructor of URI in order to properly escape file system chars
+    URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+
+    return new File(resolvedURI);
 	}
 
 	/**
