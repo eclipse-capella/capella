@@ -63,10 +63,10 @@
   <steps xsi:type="buildcore:StepContainer" xmi:id="_LkfoEOnyEeWL_q5RF2Gh7A" name="RunTestSuites">
     <properties xmi:id="_NcEGUOn1EeWL_q5RF2Gh7A" key="usedTP" value="${publish}/CapellaTP" type="INLINED"/>
     <steps xsi:type="buildstep:AntStep" xmi:id="_dcQhkOn3EeWL_q5RF2Gh7A" name="InitCapellaEnvForTests" targetName="untar.capella.linux" xml="&lt;target name=&quot;untar.capella.linux&quot;>&#xD;&#xA;&#x9;&lt;gunzip dest=&quot;${usedTP}.tar&quot;>&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${publish}&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;capella-*-linux-gtk-x86_64-*.tar.gz&quot; />&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/gunzip>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;untar src=&quot;${usedTP}.tar&quot; dest=&quot;${usedTP}&quot; />&#xD;&#xA;&#xD;&#xA;&#x9;&lt;delete file=&quot;${usedTP}.tar&quot; />&#xD;&#xA;&lt;/target>"/>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_78yZwOn5EeWL_q5RF2Gh7A" name="RunCapellaTestSuites" enabled="false">
+    <steps xsi:type="buildcore:ReuseStep" xmi:id="_78yZwOn5EeWL_q5RF2Gh7A" name="RunCapellaTestSuites">
       <reusedStep xsi:type="buildcore:StepContainer" href="Job_CapellaTestSuite.egfbuild#_8w87QOnxEeWL_q5RF2Gh7A"/>
     </steps>
-    <steps xsi:type="buildcore:ReuseStep" xmi:id="_wSoCMO06EeW8IfWbl-F86g" name="RunRCPTTTestSuites" enabled="false">
+    <steps xsi:type="buildcore:ReuseStep" xmi:id="_wSoCMO06EeW8IfWbl-F86g" name="RunRCPTTTestSuites">
       <reusedStep xsi:type="buildcore:StepContainer" href="Job_CapellaRcpttTestSuite.egfbuild#_EiyIsO07EeW8IfWbl-F86g"/>
     </steps>
   </steps>
