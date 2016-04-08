@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -37,17 +38,17 @@ public class FunctionPortAllocatedExchangeItems implements IQuery {
 	 * 
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
-	public List<Object> compute(Object object_p) {
+	public List<Object> compute(Object object) {
 		List<Object> result = new ArrayList<Object>();
-		if (object_p instanceof FunctionPort) {
-		  if (object_p instanceof FunctionInputPort) {
-		    FunctionInputPort input = (FunctionInputPort) object_p;
+		if (object instanceof FunctionPort) {
+		  if (object instanceof FunctionInputPort) {
+		    FunctionInputPort input = (FunctionInputPort) object;
 		    EList<ExchangeItem> exchangeItems = input.getIncomingExchangeItems();
 		    if (!exchangeItems.isEmpty()) {
           result.addAll(exchangeItems);
         }
-      }else  if (object_p instanceof FunctionOutputPort) {
-        FunctionOutputPort input = (FunctionOutputPort) object_p;
+      }else  if (object instanceof FunctionOutputPort) {
+        FunctionOutputPort input = (FunctionOutputPort) object;
         EList<ExchangeItem> exchangeItems = input.getOutgoingExchangeItems();
         if (!exchangeItems.isEmpty()) {
           result.addAll(exchangeItems);

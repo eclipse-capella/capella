@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,12 +22,12 @@ import org.polarsys.capella.core.data.oa.OperationalActor;
 public class QueriesFilters {
   /**
    * Filters the given list to remove instances of <code>AbstractActor</code> and <code>OperationalActor</code> in it.
-   * @param objects_p the list
+   * @param objects the list
    * @return the filtered list
    */
-  public static List<Object> filterListToRemoveActors(List<Object> objects_p) {
+  public static List<Object> filterListToRemoveActors(List<Object> objects) {
     List<Object> returnValue = new ArrayList<Object>();
-    for (Object obj : objects_p) {
+    for (Object obj : objects) {
       if (!(obj instanceof AbstractActor || obj instanceof OperationalActor)) {
         returnValue.add(obj);
       }
@@ -37,12 +37,12 @@ public class QueriesFilters {
   
   /**
    * Filters the given list to remove instances of <code>AbstractActor</code> and <code>OperationalActor</code> in it.
-   * @param objects_p the list
+   * @param objects the list
    * @return the filtered list
    */
-  public static List<Object> filterListToGetOnlyActors(List<Object> objects_p) {
+  public static List<Object> filterListToGetOnlyActors(List<Object> objects) {
     List<Object> returnValue = new ArrayList<Object>();
-    for (Object obj : objects_p) {
+    for (Object obj : objects) {
       if ((obj instanceof AbstractActor || obj instanceof OperationalActor)) {
         returnValue.add(obj);
       }

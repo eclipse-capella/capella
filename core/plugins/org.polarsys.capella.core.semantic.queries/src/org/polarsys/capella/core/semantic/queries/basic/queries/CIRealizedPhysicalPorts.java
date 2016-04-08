@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import org.polarsys.capella.core.data.cs.PhysicalPort;
@@ -27,7 +28,7 @@ public class CIRealizedPhysicalPorts extends AbstractCIRealizedPhysicalArtifacts
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractCIRealizedPhysicalArtifacts#isValidElement(org.polarsys.capella.common.data.modellingcore.TraceableElement)
    */
   @Override
-  public boolean isValidElement(TraceableElement element_p) {
-    return element_p instanceof PhysicalPort;
+  public boolean isValidElement(TraceableElement element) {
+    return element instanceof PhysicalPort;
   }
 }

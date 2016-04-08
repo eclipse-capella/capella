@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,9 +33,9 @@ public abstract class AbstractComponentPortIncomingComponentExchanges extends Ab
 	 * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractComponentPortComponentExchanges#getInformationFlows(org.polarsys.capella.core.data.fa.ComponentPort)
 	 */
 	@Override
-	public List<AbstractInformationFlow> getInformationFlows(ComponentPort port_p) {
-	  if (null != port_p) {
-      return port_p.getIncomingInformationFlows();
+	public List<AbstractInformationFlow> getInformationFlows(ComponentPort port) {
+	  if (null != port) {
+      return port.getIncomingInformationFlows();
     }
 	  return new ArrayList<AbstractInformationFlow>();
 	}

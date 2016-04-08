@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -36,10 +37,10 @@ public class FunctionInternalInComingDataflows extends AbstractFunctionInternalD
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractFunctionInternalDataflows#getActivityNode(org.polarsys.capella.core.data.fa.FunctionalExchange)
    */
   @Override
-  public List<ActivityNode> getActivityNode(FunctionalExchange functionalExchange_p) {
+  public List<ActivityNode> getActivityNode(FunctionalExchange functionalExchange) {
     List<ActivityNode> result = new ArrayList<ActivityNode>(0);
-    if (null != functionalExchange_p) {
-      ActivityNode source = functionalExchange_p.getSource();
+    if (null != functionalExchange) {
+      ActivityNode source = functionalExchange.getSource();
       if (null != source) {
         result.add(source);
       }
@@ -53,9 +54,9 @@ public class FunctionInternalInComingDataflows extends AbstractFunctionInternalD
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractFunctionInternalDataflows#getFunctionalExchanges(org.polarsys.capella.core.data.fa.AbstractFunction)
    */
   @Override
-  public List<FunctionalExchange> getFunctionalExchanges(AbstractFunction abstractFunction_p) {
-    if (abstractFunction_p != null) {
-      List<FunctionalExchange> inComingExchange = FunctionExt.getIncomingExchange(abstractFunction_p);
+  public List<FunctionalExchange> getFunctionalExchanges(AbstractFunction abstractFunction) {
+    if (abstractFunction != null) {
+      List<FunctionalExchange> inComingExchange = FunctionExt.getIncomingExchange(abstractFunction);
       if (!inComingExchange.isEmpty()) {
         return inComingExchange;
       }

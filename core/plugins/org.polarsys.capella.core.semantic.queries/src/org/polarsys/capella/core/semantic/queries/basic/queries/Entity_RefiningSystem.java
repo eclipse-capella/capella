@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -35,23 +36,23 @@ public class Entity_RefiningSystem implements IQuery {
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
     // gets the Semantic Editing Domain
-    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain((EObject) object_p);
+    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain((EObject) object);
     // Gets the Cross Referencer
     ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
-    Collection<Setting> inverseReferences = crossReferencer.getInverseReferences((EObject) object_p);
+    Collection<Setting> inverseReferences = crossReferencer.getInverseReferences((EObject) object);
 
     for (Setting setting : inverseReferences) {
       EObject eObject = setting.getEObject();
-      if ((object_p instanceof OperationalActor) && (eObject instanceof OperationalActorRealization)) {
+      if ((object instanceof OperationalActor) && (eObject instanceof OperationalActorRealization)) {
         OperationalActorRealization sar = (OperationalActorRealization) eObject;
         TraceableElement sourceElement = sar.getSourceElement();
         if (sourceElement instanceof System) {
           result.add(sourceElement);
         }
-      } else if ((object_p instanceof Entity) && (eObject instanceof OperationalEntityRealization)) {
+      } else if ((object instanceof Entity) && (eObject instanceof OperationalEntityRealization)) {
         OperationalEntityRealization sar = (OperationalEntityRealization) eObject;
         TraceableElement sourceElement = sar.getSourceElement();
         if (sourceElement instanceof System) {
