@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -37,5 +37,27 @@
       <advisor
             class="org.polarsys.capella.core.af.integration.AFDelegateWorkbenchAdvisor">
       </advisor>
+   </extension>
+   <extension point="org.polarsys.kitalpha.resourcereuse.resources">
+	  <resource
+	        domain="AF"
+	        id="org.polarsys.capella.core.viewpoint"
+	        tags="vp, stateReadOnly"
+	        name="Capella viewpoint"
+	        path="/org.polarsys.capella.core.af.integration/model/capella.vp#capella"/>
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.data.migration.migrationContributions">
+	  <migrationContribution
+         class="org.polarsys.capella.core.af.integration.migration.ViewpointMigrationContribution"/>         
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.data.migration.migrationContributors">
+      <migrationContributor
+         class="org.polarsys.capella.core.af.integration.migration.MetadataCreationContributor"/>
+      <migrationContributor
+         class="org.polarsys.capella.core.af.integration.migration.MetadataUpdateContributor"/>
+      <migrationContributor
+         class="org.polarsys.capella.core.af.integration.migration.ViewpointMigrationContributor"/>
    </extension>
 </plugin>

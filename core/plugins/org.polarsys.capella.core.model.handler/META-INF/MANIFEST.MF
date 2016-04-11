@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.libraries;visibility:=reexport,
  org.polarsys.capella.shared.id.handler;visibility:=reexport,
  com.google.guava,
- org.polarsys.capella.core.data.gen.edit
+ org.polarsys.capella.core.data.gen.edit,
+ org.polarsys.kitalpha.ad.metadata.model.edit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.handler,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.actions;singleton:=true
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: com.google.guava,
@@ -21,7 +21,8 @@ Require-Bundle: com.google.guava,
  org.polarsys.capella.core.platform.eclipse.ui.trace,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.ui.toolkit,
- org.eclipse.sirius.diagram.ui
+ org.eclipse.sirius.diagram.ui,
+ org.polarsys.kitalpha.ad.services
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.platform.sirius.ui.commands,
  org.polarsys.capella.core.platform.sirius.ui.preferences,

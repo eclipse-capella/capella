@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,6 +59,7 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaPreferences;
 import org.polarsys.capella.core.preferences.Activator;
+import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 import org.polarsys.kitalpha.emde.xmi.UnknownEObject;
 
 /**
@@ -132,27 +133,40 @@ public class CapellaSessionHelper {
    * @return an {@link IStatus} with severity OK, if no errors are detected or with severity ERROR (with a message and an exception) else.
    */
   public static IStatus checkModelsCompliancy(URI uri) {
-    boolean detectVersion = Activator.getDefault().getPreferenceStore().getBoolean(ICapellaPreferences.PREFERENCE_DETECTION_VERSION);
-    if (detectVersion) {
-      ResourceSet resourceSet = new ResourceSetImpl();
-      resourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
-      resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.FALSE);
-      try {
-        // Load the file in a temporary resource and catch loading errors.
-        resourceSet.getResource(uri, true);
-        EcoreUtil.resolveAll(resourceSet);
-      } catch (Exception exception) {
-        String handleLoadingErrors = handleLoadingErrors(exception);
-        if (handleLoadingErrors == null) {
-          return Status.OK_STATUS; // at the end there is no error.
+    ResourceSet resourceSet = new ResourceSetImpl();
+    resourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
+    resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.FALSE);
+
+    try {
+      // Load the file in a temporary resource and catch loading errors.
+      Resource resource = resourceSet.getResource(uri, true);
+      // load root object to fill the resourceSet with semantic resources
+      resource.getContents().get(0);
+      // first check if used viewpoints are available with the expected versions
+      IStatus result = ViewpointManager.checkViewpointsCompliancy(resourceSet);
+ 	  if (!result.isOK())
+	  {
+		reportError(result);
+		return result;
+	  }
+
+	  boolean detectVersion = Activator.getDefault().getPreferenceStore().getBoolean(ICapellaPreferences.PREFERENCE_DETECTION_VERSION);
+      if (detectVersion) {
+        try {
+          EcoreUtil.resolveAll(resourceSet);
+        } catch (Exception exception) {
+          String handleLoadingErrors = handleLoadingErrors(exception);
+          if (handleLoadingErrors == null) {
+            return Status.OK_STATUS; // at the end there is no error.
+          }
+          IStatus status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception);
+          reportError(status);
+          return status;
         }
-        IStatus status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), handleLoadingErrors, exception);
-        reportError(status);
-        return status;
-      } finally {
-        // Make sure all loaded resources in the temporary resourceSet are unloaded & removed.
-        cleanResourceSet(resourceSet);
       }
+    } finally {
+      // Make sure all loaded resources in the temporary resourceSet are unloaded & removed.
+      cleanResourceSet(resourceSet);
     }
 
     return Status.OK_STATUS;

@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-SymbolicName: org.polarsys.capella.core.af.integration;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.af.integration.Activator
 Require-Bundle: org.eclipse.ui.navigator,
  org.eclipse.gmf.runtime.diagram.ui,
@@ -16,7 +16,11 @@ Require-Bundle: org.eclipse.ui.navigator,
  org.polarsys.kitalpha.ad.viewpoint.coredomain.model.edit,
  org.polarsys.kitalpha.ad.viewpoint.ui,
  org.eclipse.sirius,
- org.eclipse.emf.edit.ui
+ org.eclipse.emf.edit.ui,
+ org.polarsys.capella.core.data.migration,
+ org.polarsys.kitalpha.model.common.scrutiny,
+ org.polarsys.kitalpha.model.common.scrutiny.contrib.viewpoints,
+ org.polarsys.kitalpha.ad.metadata
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.polarsys.capella.core.af.integration,
  org.polarsys.capella.core.af.integration.provider,

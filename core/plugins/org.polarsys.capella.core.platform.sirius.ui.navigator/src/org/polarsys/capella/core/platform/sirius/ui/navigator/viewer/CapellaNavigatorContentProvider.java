@@ -78,6 +78,7 @@ import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryPro
 import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.ICapellaNavigatorPreferences;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 
 /**
  * The Capella navigator content provider.
@@ -330,26 +331,29 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           // for any other children from sirius, we add it to the end
           for (Object child : _sessionContentProvider.getChildren(element)) {
 
-            if ((child instanceof Resource) && !resourcesDone.contains(child)
+			if ((child instanceof Resource) && !resourcesDone.contains(child)
                 && (!((Resource) child).getContents().isEmpty())) {
 
+				Resource childResource = (Resource) child;
               // Don't handle semantic fragments as theirs
               // contents are displayed as children of model
               // elements.
               if (CapellaResourceHelper.isCapellaResource(child)) {
 
-                if (!CapellaResourceHelper.isCapellaFragment(((Resource) child).getURI())) {
+                if (!CapellaResourceHelper.isCapellaFragment(childResource.getURI())) {
                   // add any referenced resources which is not
                   // a compatible library (it may happen)
-                  for (EObject object : ((Resource) child).getContents()) {
+                  for (EObject object : childResource.getContents()) {
                     IModel referencedLibrary = ILibraryManager.INSTANCE.getModel(object);
                     if ((referencedLibrary == null)) {
                       others.addFirst(object);
                     }
                   }
                 }
+              } else if (MetadataHelper.isMetadataResource(childResource)){
+            	others.addAll(0,childResource.getContents());
               } else {
-                others.addFirst(((Resource) child).getContents());
+                others.addFirst(childResource.getContents());
               }
 
             } else {

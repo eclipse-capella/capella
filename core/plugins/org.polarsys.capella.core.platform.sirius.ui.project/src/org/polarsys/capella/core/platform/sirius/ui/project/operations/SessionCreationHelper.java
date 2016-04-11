@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.polarsys.capella.core.platform.sirius.ui.project.operations;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -53,6 +54,10 @@ import org.polarsys.capella.core.platform.sirius.ui.project.CapellaNature;
 import org.polarsys.capella.core.platform.sirius.ui.project.Messages;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
+import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
+import org.polarsys.kitalpha.ad.services.manager.ViewpointActivationException;
+import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 /**
  * This class allows to create a new capella project
@@ -75,10 +80,13 @@ public class SessionCreationHelper {
   /**
    * Create an aird resource (and so on session) for the given semantic resource file
    */
-  protected Session createAirdResource(IProject eclipseProject, IFile semanticResource, String projectName, IProgressMonitor monitor) {
+  protected Session createAirdResource(IProject eclipseProject, IFile semanticResource, IFile metadataResource, String projectName, IProgressMonitor monitor) {
     // Builds the .aird filename.
     URI airdResourceURI = buildAirdFileName(eclipseProject, projectName);
-    return createAirdSession(Collections.singletonList(semanticResource), airdResourceURI, monitor);
+    List<IFile> semanticFiles = new ArrayList<IFile>();
+    semanticFiles.add(semanticResource);
+    semanticFiles.add(metadataResource);
+    return createAirdSession(semanticFiles, airdResourceURI, monitor);
   }
 
   /**
@@ -182,6 +190,43 @@ public class SessionCreationHelper {
 
   }
 
+  protected IFile createMetadataResource(final IProject project, final IProgressMonitor monitor) {
+	  SubMonitor progress = SubMonitor.convert(monitor, 4);  
+	  ExecutionManager manager = ExecutionManagerRegistry.getInstance().addNewManager();
+	  TransactionalEditingDomain domain = manager.getEditingDomain();
+	  try {
+		    String fullPath = project.getFullPath().toString() + ICommonConstants.SLASH_CHARACTER + project.getName()
+		            + ICommonConstants.POINT_CHARACTER + ViewpointMetadata.STORAGE_EXTENSION;
+		        URI uri = URI.createPlatformResourceURI(fullPath, true);
+
+		  progress.beginTask("Create an empty metadata resource", 1);
+		  Resource resource = MetadataHelper.getViewpointMetadata(domain.getResourceSet()).initMetadataStorage(uri);
+		  progress.worked(1);
+		  try {
+			  progress.beginTask("Start using Capella viewpoint", 1);
+			  ViewpointManager.getInstance(domain.getResourceSet()).startUse("org.polarsys.capella.core.viewpoint");
+		  } catch (ViewpointActivationException e1) {
+		  }
+		  progress.worked(1);
+		  
+	      try {
+	          progress.beginTask("Save metadata model", 1);
+	          resource.save(Collections.emptyMap());
+	        } catch (Exception e) {
+	          // we couldn't do this
+	        }
+	        progress.worked(1);
+
+	      IFile semanticFile = EcoreUtil2.getFile(resource);
+	      return semanticFile;
+
+	  } finally {
+		  domain.dispose();
+	      progress.done();
+	      ExecutionManagerRegistry.getInstance().removeManager(manager);
+	  }
+
+  }
   /**
    * Create the semantic resource in the given project
    */
@@ -264,9 +309,10 @@ public class SessionCreationHelper {
       eclipseProject = createNewEclipseProject(projectName, newPath, referencedProjects, progress.newChild(1));
 
       IFile semanticFile = createSemanticResource(eclipseProject, progress.newChild(1));
+      IFile metadataFile = createMetadataResource(eclipseProject, progress.newChild(1));
 
       // 4- Creates the aird resource.
-      Session session = createAirdResource(eclipseProject, semanticFile, projectName, progress.newChild(1));
+      Session session = createAirdResource(eclipseProject, semanticFile, metadataFile, projectName, progress.newChild(1));
       if (null == session) {
         throw new InterruptedException("Cannot create the session"); //$NON-NLS-1$
       }
