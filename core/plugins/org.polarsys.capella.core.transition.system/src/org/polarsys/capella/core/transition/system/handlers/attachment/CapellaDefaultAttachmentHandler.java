@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -35,26 +36,29 @@ public class CapellaDefaultAttachmentHandler extends DefaultAttachmentHandler {
   private static final String HOLDING_RESOURCE = "HOLDING_RESOURCE";
 
   @Override
-  protected boolean shouldUpdateAttribute(EObject sourceElement_p, EObject targetElement_p, EAttribute feature_p, Object valueSource, Object valueTarget,
-      IContext context_p) {
+  protected boolean shouldUpdateAttribute(EObject sourceElement, EObject targetElement, EAttribute feature,
+      Object valueSource, Object valueTarget, IContext context) {
 
-    if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(feature_p) || CapellacorePackage.Literals.CAPELLA_ELEMENT__SUMMARY.equals(feature_p)
-        || CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION.equals(feature_p)) {
-      return shouldUpdateAttributeIfEmpty(sourceElement_p, targetElement_p, feature_p, valueSource, valueTarget, context_p);
+    if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(feature)
+        || CapellacorePackage.Literals.CAPELLA_ELEMENT__SUMMARY.equals(feature)
+        || CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION.equals(feature)) {
+      return shouldUpdateAttributeIfEmpty(sourceElement, targetElement, feature, valueSource, valueTarget, context);
     }
 
-    return super.shouldUpdateAttribute(sourceElement_p, targetElement_p, feature_p, valueSource, valueTarget, context_p);
+    return super.shouldUpdateAttribute(sourceElement, targetElement, feature, valueSource, valueTarget, context);
   }
 
-  protected boolean shouldUpdateAttributeIfEmpty(EObject sourceElement_p, EObject targetElement_p, EAttribute feature_p, Object valueSource,
-      Object valueTarget, IContext context_p) {
+  protected boolean shouldUpdateAttributeIfEmpty(EObject sourceElement, EObject targetElement, EAttribute feature,
+      Object valueSource, Object valueTarget, IContext context) {
     return ((valueSource != null) && (valueSource != ICommonConstants.EMPTY_STRING)
-            && ((valueTarget == null) || ((valueTarget instanceof String) && (((String) valueTarget).length() == 0))) && !valueSource.equals(valueTarget));
+        && ((valueTarget == null) || ((valueTarget instanceof String) && (((String) valueTarget).length() == 0))) && !valueSource
+          .equals(valueTarget));
   }
 
   @Override
-  public IStatus dispose(IContext context_p) {
-    HoldingResourceHelper.flushHoldingResource((TransactionalEditingDomain) context_p.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN));
+  public IStatus dispose(IContext context) {
+    HoldingResourceHelper.flushHoldingResource((TransactionalEditingDomain) context
+        .get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN));
     return Status.OK_STATUS;
   }
 
@@ -62,11 +66,10 @@ public class CapellaDefaultAttachmentHandler extends DefaultAttachmentHandler {
    * {@inheritDoc}
    */
   @Override
-  public void removeElements(Collection<EObject> objects_p, IContext context_p) {
+  public void removeElements(Collection<EObject> objects, IContext context) {
 
-    DeleteStructureCommand command =
-        new DeleteStructureCommand(TransactionHelper.getEditingDomain((Collection) context_p.get(ITransitionConstants.TRANSITION_SOURCES)), objects_p,
-            true);
+    DeleteStructureCommand command = new DeleteStructureCommand(TransactionHelper.getEditingDomain((Collection) context
+        .get(ITransitionConstants.TRANSITION_SOURCES)), objects, true);
     if (command.canExecute()) {
       command.execute();
     }
@@ -76,17 +79,29 @@ public class CapellaDefaultAttachmentHandler extends DefaultAttachmentHandler {
    * {@inheritDoc}
    */
   @Override
-  public void createdElement(EObject element_p, EObject result_p, IContext context_p) {
-    super.createdElement(element_p, result_p, context_p);
+  public void createdElement(EObject element, EObject result, IContext context) {
+    super.createdElement(element, result, context);
 
     Resource resource = null;
 
-    if ((result_p != null) && (result_p.eResource() == null)) {
-      if (!context_p.exists(HOLDING_RESOURCE)) {
-        resource = HoldingResourceHelper.getHoldingResource((TransactionalEditingDomain) context_p.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN));
-        context_p.put(HOLDING_RESOURCE, resource);
+    if ((result != null) && (result.eResource() == null)) {
+      if (!context.exists(HOLDING_RESOURCE)) {
+        resource = HoldingResourceHelper.getHoldingResource((TransactionalEditingDomain) context
+            .get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN));
+        context.put(HOLDING_RESOURCE, resource);
       }
-      HoldingResourceHelper.attachToHoldingResource(result_p, (Resource) context_p.get(HOLDING_RESOURCE));
+      HoldingResourceHelper.attachToHoldingResource(result, (Resource) context.get(HOLDING_RESOURCE));
     }
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean attachElementByReference(EObject sourceAttaching, EObject targetAttaching, EObject sourceAttached,
+      EObject targetAttached, EReference sourceFeature, EReference targetFeature) {
+    HoldingResourceHelper.ensureMoveElement(targetAttached, targetAttaching);
+    return super.attachElementByReference(sourceAttaching, targetAttaching, sourceAttached, targetAttached,
+        sourceFeature, targetFeature);
   }
 }
