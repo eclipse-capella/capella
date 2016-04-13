@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.polarsys.capella.test.semantic.queries.ju
+Bundle-SymbolicName: org.polarsys.capella.test.semantic.queries.ju;singleton:=true
 Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.polarsys.capella.test.semantic.queries.ju.TestSemanticQueriesPlugin
 Require-Bundle: org.eclipse.core.runtime,
@@ -13,4 +13,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.semantic.queries.ju,
- org.polarsys.capella.test.semantic.queries.ju.testcases
+ org.polarsys.capella.test.semantic.queries.ju.testcases,
+ org.polarsys.capella.test.semantic.queries.ju.testsuites

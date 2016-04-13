@@ -12,6 +12,7 @@ package org.polarsys.capella.common.ui.toolkit.browser.category;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.mdsofa.common.misc.ExtensionClassDescriptor;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserContentProvider;
 
@@ -42,10 +44,10 @@ public class CategoryRegistry {
 	 */
 	protected HashMap<String, ICategory> currentElementRegistry = null;
 	protected HashMap<String, ICategory> diagramElementRegistry = null;
-
 	protected HashMap<String, ICategory> referencedElementRegistry = null;
-
 	protected HashMap<String, ICategory> referencingElementRegistry = null;
+	
+	private Collection<ExtensionClassDescriptor> availableForTypeClassDescriptors;
 
 	/**
 	 * Singleton constructor.
@@ -135,6 +137,7 @@ public class CategoryRegistry {
 		referencedElementRegistry = new HashMap<String, ICategory>(0);
 		referencingElementRegistry = new HashMap<String, ICategory>(0);
 		diagramElementRegistry = new HashMap<String, ICategory>(0);
+		availableForTypeClassDescriptors = new HashSet<ExtensionClassDescriptor>();
 
 		IConfigurationElement[] categories = org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper
 				.getConfigurationElements(BrowserActivator.PLUGIN_ID, CONTENT_PROVIDER_CATEGORY);
@@ -211,7 +214,7 @@ public class CategoryRegistry {
 
 				if (categoryQueries.length > 0) {
 					query = org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper.createInstance(
-							categoryQueries[0],
+					    categoryQueries[0],
 							org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper.ATT_CLASS);
 				}
 				category.setQuery(query);
@@ -224,6 +227,7 @@ public class CategoryRegistry {
 				String qualifiedClassName = typeConfigurationElement[0]
 						.getAttribute(org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper.ATT_CLASS);
 				category.setTypeFullyQualifiedName(qualifiedClassName);
+				availableForTypeClassDescriptors.add(new ExtensionClassDescriptor(typeConfigurationElement[0]));
 			}
 
 			// Retrieve target browser id : a category is specific to a browser.
@@ -274,6 +278,13 @@ public class CategoryRegistry {
 		}
 
 		return category;
+	}
+	
+	/**
+	 * This method is added for testing purpose.
+	 */
+	public Collection<ExtensionClassDescriptor> getAvailableForTypeClassDescriptors(){
+	  return availableForTypeClassDescriptors;
 	}
 
 	/**

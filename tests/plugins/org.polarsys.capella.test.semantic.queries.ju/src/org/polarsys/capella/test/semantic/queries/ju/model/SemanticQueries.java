@@ -195,6 +195,6 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
 
 	@Override
 	public List<String> getRequiredTestModels() {
-		return Collections.singletonList(SemanticQueries.class.getSimpleName());
+	  return null;
 	}
 }
