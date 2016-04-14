@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import org.polarsys.capella.core.data.oa.CommunicationMean;
@@ -29,8 +30,8 @@ public class FunctionalExchangeAllocatingCommunicationMean extends
 	}
   
 	@Override
-	public boolean isValidInstanceOf(Object element_p) {
-		if (null != element_p && element_p instanceof CommunicationMean) {
+	public boolean isValidInstanceOf(Object element) {
+		if (null != element && element instanceof CommunicationMean) {
 			return true;
 		}
 		return false;

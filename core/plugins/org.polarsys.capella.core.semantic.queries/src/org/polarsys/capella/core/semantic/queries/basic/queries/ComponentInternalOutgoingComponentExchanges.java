@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -41,10 +42,10 @@ public class ComponentInternalOutgoingComponentExchanges extends ComponentOutgoi
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   @Override
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (isValidComponentForComponentExchanges(object_p)) {
-      List<Partition> ownedPartitions = getOwnedPartitionableElements(object_p);
+    if (isValidComponentForComponentExchanges(object)) {
+      List<Partition> ownedPartitions = getOwnedPartitionableElements(object);
       for (Partition partition : ownedPartitions) {
         Type subcomp = partition.getType();
         if (null != subcomp && subcomp instanceof Component) {

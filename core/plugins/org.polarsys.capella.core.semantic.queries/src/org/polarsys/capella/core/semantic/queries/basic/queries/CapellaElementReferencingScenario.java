@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -41,29 +42,29 @@ public class CapellaElementReferencingScenario implements IQuery {
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
     // Component, because of the part
-    if (object_p instanceof Component) {
-      Component component = (Component) object_p;
+    if (object instanceof Component) {
+      Component component = (Component) object;
       List<AbstractTypedElement> abstractTypedElements = component.getAbstractTypedElements();
       for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
     	  getReferencingScenarios(result, abstractTypedElement,InteractionPackage.Literals.INSTANCE_ROLE);
 	  }
     }
     // Role, ExchangeItemInstance & AbstractFunction
-    if (object_p instanceof Role || object_p instanceof AbstractFunction
-    		|| object_p instanceof ExchangeItemInstance) {
-    	 getReferencingScenarios(result, (EObject) object_p, InteractionPackage.Literals.INSTANCE_ROLE);
-    	 getReferencingScenarios(result, (EObject) object_p,InteractionPackage.Literals.STATE_FRAGMENT);
+    if (object instanceof Role || object instanceof AbstractFunction
+    		|| object instanceof ExchangeItemInstance) {
+    	 getReferencingScenarios(result, (EObject) object, InteractionPackage.Literals.INSTANCE_ROLE);
+    	 getReferencingScenarios(result, (EObject) object,InteractionPackage.Literals.STATE_FRAGMENT);
     }
     // AbstractEventOperation
-    if (object_p instanceof AbstractEventOperation) {
-    	 getReferencingScenarios(result, (EObject) object_p,InteractionPackage.Literals.EVENT_RECEIPT_OPERATION);
+    if (object instanceof AbstractEventOperation) {
+    	 getReferencingScenarios(result, (EObject) object,InteractionPackage.Literals.EVENT_RECEIPT_OPERATION);
     }
     // State
-    if (object_p instanceof State) {
-    	getReferencingScenarios(result, (EObject) object_p,InteractionPackage.Literals.STATE_FRAGMENT);
+    if (object instanceof State) {
+    	getReferencingScenarios(result, (EObject) object,InteractionPackage.Literals.STATE_FRAGMENT);
     }
     
     

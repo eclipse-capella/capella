@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -37,11 +38,11 @@ public class ComponentOutgoingDelegation extends AbstractComponentFilteredCompon
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   @Override
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (isValidComponentForComponentExchanges(object_p)) {
+    if (isValidComponentForComponentExchanges(object)) {
     // get the filtered component exchange by kinds
-    result = ComponentExchangeExt.filteredComponentExchangesBykind(super.compute(object_p),
+    result = ComponentExchangeExt.filteredComponentExchangesBykind(super.compute(object),
         new ComponentExchangeKind[]{ComponentExchangeKind.DELEGATION});
     }
     
@@ -55,9 +56,9 @@ public class ComponentOutgoingDelegation extends AbstractComponentFilteredCompon
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractComponentFilteredComponentExchange#getRelatedParts(org.polarsys.capella.core.data.fa.Connection)
    */
   @Override
-  public List<Part> getRelatedParts(ComponentExchange connection_p) {
+  public List<Part> getRelatedParts(ComponentExchange connection) {
     List<Part> result = new ArrayList<Part>(0);
-    Part part = ComponentExchangeExt.getSourcePart(connection_p);
+    Part part = ComponentExchangeExt.getSourcePart(connection);
     if (null != part) {
       result.add(part);
     }
@@ -69,9 +70,9 @@ public class ComponentOutgoingDelegation extends AbstractComponentFilteredCompon
    * @see org.polarsys.capella.core.semantic.queries.basic.queries.AbstractComponentFilteredComponentExchange#getRelatedPorts(org.polarsys.capella.core.data.fa.Connection)
    */
   @Override
-  public List<Port> getRelatedPorts(ComponentExchange connection_p) {
+  public List<Port> getRelatedPorts(ComponentExchange connection) {
     List<Port> result = new ArrayList<Port>(0);
-    Port port = ComponentExchangeExt.getSourcePort(connection_p);
+    Port port = ComponentExchangeExt.getSourcePort(connection);
     if (null != port) {
       result.add(port);
     }

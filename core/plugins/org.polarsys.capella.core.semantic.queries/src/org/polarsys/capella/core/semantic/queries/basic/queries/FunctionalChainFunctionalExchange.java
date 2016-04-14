@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public abstract class FunctionalChainFunctionalExchange implements IQuery {
   /**
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (isValidInstanceOf(object_p)) {
-      FunctionalChain functionalChain = (FunctionalChain) object_p;
+    if (isValidInstanceOf(object)) {
+      FunctionalChain functionalChain = (FunctionalChain) object;
       EList<FunctionalExchange> involvedFunctionalExchanges = functionalChain.getInvolvedFunctionalExchanges();
       if(!involvedFunctionalExchanges.isEmpty())
         result.addAll(involvedFunctionalExchanges);
@@ -48,8 +49,8 @@ public abstract class FunctionalChainFunctionalExchange implements IQuery {
 
 	/**
 	 * filter the valid instance type
-	 * @param element_p
+	 * @param element
 	 * @return
 	 */
-  abstract public boolean isValidInstanceOf(Object element_p);
+  abstract public boolean isValidInstanceOf(Object element);
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
@@ -33,10 +34,10 @@ public class FunctionalChainInvolvmentInvolvedFunctionalChain implements IQuery 
    * current.getEnactedFunctions
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>(1);
-    if (object_p instanceof FunctionalChainInvolvement) {
-      FunctionalChainInvolvement chain = (FunctionalChainInvolvement) object_p;
+    if (object instanceof FunctionalChainInvolvement) {
+      FunctionalChainInvolvement chain = (FunctionalChainInvolvement) object;
       InvolvedElement involved = chain.getInvolved();
       if ((null != involved) && isValidInstanceOf(chain)) {
         result.add(involved);
@@ -45,9 +46,9 @@ public class FunctionalChainInvolvmentInvolvedFunctionalChain implements IQuery 
     return result;
   }
 
-  public boolean isValidInstanceOf(Object element_p) {
-    if ((null != element_p) && (element_p instanceof FunctionalChainInvolvement)) {
-      FunctionalChainInvolvement involvment = (FunctionalChainInvolvement) element_p;
+  public boolean isValidInstanceOf(Object element) {
+    if ((null != element) && (element instanceof FunctionalChainInvolvement)) {
+      FunctionalChainInvolvement involvment = (FunctionalChainInvolvement) element;
       if ((involvment.getInvolved() instanceof FunctionalChain)) {
         if ((involvment.getInvolver() instanceof FunctionalChain)) {
           if (!(involvment.getInvolver() instanceof OperationalProcess)) {

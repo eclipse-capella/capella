@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,11 +40,11 @@ public abstract class AbstractFunctionInternalDataflows implements IQuery {
    * 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
 
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof AbstractFunction) {
-      AbstractFunction currentFunction = (AbstractFunction) object_p;
+    if (object instanceof AbstractFunction) {
+      AbstractFunction currentFunction = (AbstractFunction) object;
       // collect all the sub functions recursively 
       List<AbstractFunction> subfunctions = FunctionExt.getAllAbstractFunctions(currentFunction);
       // remove the current function
@@ -81,15 +81,15 @@ public abstract class AbstractFunctionInternalDataflows implements IQuery {
   
   /**
    * Implementation should Provide the outGoing, inComing or both kind of Functional exchanges of the current abstractFunction
-   * @param abstractFunction_p
+   * @param abstractFunction
    * @return
    */
-  public abstract List<FunctionalExchange> getFunctionalExchanges(AbstractFunction abstractFunction_p);
+  public abstract List<FunctionalExchange> getFunctionalExchanges(AbstractFunction abstractFunction);
   
   /**
    * Implementation should Provide the target, source or both activities nodes of the current functionalExchange 
-   * @param functionalExchange_p
+   * @param functionalExchange
    * @return
    */
-  public abstract List<ActivityNode> getActivityNode(FunctionalExchange functionalExchange_p);
+  public abstract List<ActivityNode> getActivityNode(FunctionalExchange functionalExchange);
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,11 +30,11 @@ public class ActorAllocatingCapabilities implements IQuery {
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
     // gets the Semantic Editing Domain
-    if (object_p instanceof Actor) {
-      Actor actor = (Actor) object_p;
+    if (object instanceof Actor) {
+      Actor actor = (Actor) object;
       EList<Involvement> involvingInvolvements = actor.getInvolvingInvolvements();
       for (Involvement involvement : involvingInvolvements) {
         if (involvement instanceof ActorCapabilityInvolvement) {
