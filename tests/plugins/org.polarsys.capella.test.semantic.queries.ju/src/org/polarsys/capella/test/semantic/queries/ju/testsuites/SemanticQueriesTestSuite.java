@@ -38,8 +38,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new CapellaElement_applied_property_values());
     tests.add(new PropertyValue_applying_valued_element());
     tests.add(new PropertyValueGroup_applying_valued_element());
-    
-    return null;
+    return tests;
   }
   @Override
   public List<String> getRequiredTestModels() {
