@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -63,9 +64,9 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  */
 public class FunctionalChainServices {
 
-	private static final Integer THICK_BORDER_SOURCE_FUNCTION = new Integer(4);
-	private static final Integer THICK_BORDER_TARGET_FUNCTION = new Integer(4);
-	private static final Integer THICK_EDGE_FUNCTIONAL_CHAIN = new Integer(4);
+	private static final Integer THICK_BORDER_SOURCE_FUNCTION = Integer.valueOf(4);
+	private static final Integer THICK_BORDER_TARGET_FUNCTION = Integer.valueOf(4);
+	private static final Integer THICK_EDGE_FUNCTIONAL_CHAIN = Integer.valueOf(4);
 	private static final String INCOMPLETE_FUNCTIONAL_CHAIN_LABEL = "incomplete"; //$NON-NLS-1$
 	private static final String INVALID_FUNCTIONAL_CHAIN_LABEL = "invalid"; //$NON-NLS-1$
 
@@ -111,10 +112,8 @@ public class FunctionalChainServices {
 	public AbstractFunction getBestFunction(AbstractFunction element, Collection<? extends EObject> elements) {
 		EObject current = element;
 		while (current != null) {
-			if (current instanceof AbstractFunction) {
-				if (elements.contains(current)) {
-					return (AbstractFunction) current;
-				}
+			if (current instanceof AbstractFunction && elements.contains(current)) {
+				return (AbstractFunction) current;
 			}
 			current = current.eContainer();
 		}
@@ -154,18 +153,18 @@ public class FunctionalChainServices {
 		Set<FunctionalChain> incompleteFC = new HashSet<FunctionalChain>(); // incomplete displayed functional chains
 		HashMap<DEdge, Set<FunctionalChain>> coloredFE = new HashMap<DEdge, Set<FunctionalChain>>(); // colored functional Exchanges
 		Set<DEdge> updatedInternalLinks = new HashSet<DEdge>();
-		boolean hasResetNode = false;
 
 		// find displayed Functional chains and functions
 		for (DNode aNode : diagram.getNodes()) {
-			if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionalChain)) {
-				displayedFC.put((FunctionalChain) aNode.getTarget(), aNode);
+		  EObject target = aNode.getTarget();
+		  if (target instanceof FunctionalChain) {
+				displayedFC.put((FunctionalChain) target, aNode);
 			}
 		}
 		// find displayed functions
 		for (DNode aNode : diagram.getNodes()) {
 			EObject target = aNode.getTarget();
-			if ((target != null) && (aNode.getTarget() instanceof AbstractFunction)) {
+			if (target instanceof AbstractFunction) {
 				Set<DDiagramElement> set = displayedFunctions.get(target);
 				if (set == null) {
 					set = new HashSet<DDiagramElement>();
@@ -176,7 +175,7 @@ public class FunctionalChainServices {
 		}
 		for (DDiagramElement aContainer : diagram.getContainers()) {
 			EObject target = aContainer.getTarget();
-			if ((target != null) && (aContainer.getTarget() instanceof AbstractFunction)) {
+			if ((target instanceof AbstractFunction)) {
 				Set<DDiagramElement> set = displayedFunctions.get(target);
 				if (set == null) {
 					set = new HashSet<DDiagramElement>();
@@ -189,35 +188,31 @@ public class FunctionalChainServices {
 		// find displayed Functional Exchanges and Internal Links
 		for (DEdge anEdge : diagram.getEdges()) {
 			EObject edgeTarget = anEdge.getTarget();
-			if (edgeTarget != null) {
-				if (edgeTarget instanceof FunctionalExchange) {
-					FunctionalExchange fe = (FunctionalExchange) edgeTarget;
-					Set<DEdge> edges = displayedFE.get(fe);
-					if (edges == null) {
-						edges = new HashSet<DEdge>();
-						displayedFE.put(fe, edges);
-					}
-					edges.add(anEdge);
+			if (edgeTarget instanceof FunctionalExchange) {
+				FunctionalExchange fe = (FunctionalExchange) edgeTarget;
+				Set<DEdge> edges = displayedFE.get(fe);
+				if (edges == null) {
+					edges = new HashSet<DEdge>();
+					displayedFE.put(fe, edges);
 				}
+				edges.add(anEdge);
 			}
 			if (edgeTarget instanceof FunctionalChain) {
-				if (!displayedIL.containsKey(anEdge.getTarget())) {
+				if (!displayedIL.containsKey(edgeTarget)) {
 					Set<DEdge> newSet = new HashSet<DEdge>();
 					newSet.add(anEdge);
-					displayedIL.put((FunctionalChain) anEdge.getTarget(), newSet);
+					displayedIL.put((FunctionalChain) edgeTarget, newSet);
 				} else {
-					displayedIL.get(anEdge.getTarget()).add(anEdge);
+					displayedIL.get(edgeTarget).add(anEdge);
 				}
 			}
 		}
 
 		// find source and target functions that must be colored
 		for (Entry<FunctionalChain, DNode> me : displayedFC.entrySet()) {
-			Set<DDiagramElement> sourceFunctionNodes = null; // source Node of the functional chain
-			Set<DDiagramElement> targetFunctionNodes = null; // target Node of the functional chain
-
 			for (AbstractFunction aSourceFunction : FunctionalChainExt.getFlatFunctionalChainFirstFunctions(me.getKey())) {
-				sourceFunctionNodes = getBestDisplayedFunctionNode(aSourceFunction, displayedFunctions);
+			  // source Node of the functional chain
+			  Set<DDiagramElement> sourceFunctionNodes = getBestDisplayedFunctionNode(aSourceFunction, displayedFunctions);
 				if (sourceFunctionNodes != null) {
 					for (DDiagramElement sourceFunctionNode : sourceFunctionNodes) {
 						if (!coloredFunctionNodes.containsKey(sourceFunctionNode)) {
@@ -231,7 +226,8 @@ public class FunctionalChainServices {
 				}
 			}
 			for (AbstractFunction aTargetFunction : FunctionalChainExt.getFlatFunctionalChainLastFunctions(me.getKey())) {
-				targetFunctionNodes = getBestDisplayedFunctionNode(aTargetFunction, displayedFunctions);
+			  // target Node of the functional chain
+			  Set<DDiagramElement> targetFunctionNodes = getBestDisplayedFunctionNode(aTargetFunction, displayedFunctions);
 				if (targetFunctionNodes != null) {
 					for (DDiagramElement targetFunctionNode : targetFunctionNodes) {
 						if (!coloredFunctionNodes.containsKey(targetFunctionNode)) {
@@ -265,7 +261,6 @@ public class FunctionalChainServices {
 			if (!displayedFC.containsKey(me.getKey())) {
 				for (DEdge anEdge : me.getValue()) {
 					DiagramServices.getDiagramServices().removeEdgeView(anEdge);
-					hasResetNode = true;
 				}
 			}
 		}
@@ -275,9 +270,7 @@ public class FunctionalChainServices {
 			Set<DDiagramElement> functionNodes = me.getValue();
 			for (DDiagramElement functionNode : functionNodes) {
 				if (!coloredFunctionNodes.containsKey(functionNode)) {
-					if (resetFunctionStyle(functionNode)) {
-						hasResetNode = true;
-					}
+					resetFunctionStyle(functionNode);
 				}
 			}
 		}
@@ -290,15 +283,13 @@ public class FunctionalChainServices {
 			if (color == null) {
 				continue;
 			}
-			Set<DDiagramElement> sourceFunctionNodes = null; // source Node of the functional chain
-			Set<DDiagramElement> targetFunctionNodes = null; // target Node of the functional chain
-
 			// customize source function of the chain
 			for (AbstractFunction aSourceFunction : FunctionalChainExt.getFlatFunctionalChainFirstFunctions(me.getKey())) {
-				sourceFunctionNodes = getBestDisplayedFunctionNode(aSourceFunction, displayedFunctions);
+			  // source Node of the functional chain
+			  Set<DDiagramElement>  sourceFunctionNodes = getBestDisplayedFunctionNode(aSourceFunction, displayedFunctions);
 				if (sourceFunctionNodes != null) {
 					for (DDiagramElement sourceFunctionNode : sourceFunctionNodes) {
-						if ((color == null) || (coloredFunctionNodes.get(sourceFunctionNode).size() == 1)) {
+						if (coloredFunctionNodes.get(sourceFunctionNode).size() == 1) {
 							customizeSourceFunctionStyle(sourceFunctionNode, color);
 							// color the border of the source function with the color of the functional chain
 						} else {
@@ -311,7 +302,8 @@ public class FunctionalChainServices {
 
 			// customize target function of the chain
 			for (AbstractFunction aTargetFunction : FunctionalChainExt.getFlatFunctionalChainLastFunctions(me.getKey())) {
-				targetFunctionNodes = getBestDisplayedFunctionNode(aTargetFunction, displayedFunctions);
+			// target Node of the functional chain
+			  Set<DDiagramElement> targetFunctionNodes = getBestDisplayedFunctionNode(aTargetFunction, displayedFunctions);
 				if (targetFunctionNodes != null) {
 					for (DDiagramElement targetFunctionNode : targetFunctionNodes) {
 						if (coloredFunctionNodes.get(targetFunctionNode).size() == 1) {
@@ -357,7 +349,6 @@ public class FunctionalChainServices {
 			for (DEdge anInternalLink : anInternalLinkSet) {
 				if (!updatedInternalLinks.contains(anInternalLink)) {
 					DiagramServices.getDiagramServices().removeEdgeView(anInternalLink);
-					hasResetNode = true;
 				}
 			}
 		}
@@ -377,9 +368,6 @@ public class FunctionalChainServices {
 	 * @return
 	 */
 	private boolean isValidNodeForInternalLink(EdgeTarget currentNode) {
-		if (null == currentNode) {
-			return false;
-		}
 		if (!(currentNode instanceof DNode)) {
 			return false;
 		}
@@ -389,8 +377,8 @@ public class FunctionalChainServices {
 		return true;
 	}
 
-	protected Set<DEdge> updateInternalLinks(FunctionalChain fc, HashMap<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges,
-			HashMap<FunctionalChain, Set<DEdge>> displayedIL, RGBValues color) {
+	protected Set<DEdge> updateInternalLinks(FunctionalChain fc, Map<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges,
+			Map<FunctionalChain, Set<DEdge>> displayedIL, RGBValues color) {
 		Set<DEdge> internalLinks = new HashSet<DEdge>();
 
 		// iterate over involved functional exchange
@@ -402,9 +390,12 @@ public class FunctionalChainServices {
 
 			Set<DEdge> currentEdges = displayedFunctionalExchanges.get(currentExchange);
 			for (DEdge currentEdge : currentEdges) {
-				EdgeTarget currentSourceNode = currentEdge.getSourceNode();
+				if (currentEdge == null) {
+				  continue;
+				}
+			  EdgeTarget currentSourceNode = currentEdge.getSourceNode();
 				EdgeTarget currentTargetNode = currentEdge.getTargetNode();
-				if ((currentEdge != null) && isValidNodeForInternalLink(currentSourceNode)) {
+				if (isValidNodeForInternalLink(currentSourceNode)) {
 
 					Collection<FunctionalExchange> previousExchanges = getFlatPreviousFunctionalExchanges(fc, anInvolvement);
 					Collection<FunctionalExchange> nextExchanges = getFlatNextFunctionalExchanges(fc, anInvolvement);
@@ -614,9 +605,7 @@ public class FunctionalChainServices {
 
 			 if(desc != null){
 				 defaultStyleSize = desc.getBorderSizeComputationExpression();
-				 if(node != null){
-					 style = (BorderedStyle) ShapeUtil.getCurrentStyle(node);
-				 }
+				 style = (BorderedStyle) ShapeUtil.getCurrentStyle(node);
 				 if(style != null){
 					 currentSize = style.getBorderSize();
 				 }
@@ -698,7 +687,7 @@ public class FunctionalChainServices {
 	  * @param displayedFunctions
 	  * @return the function or one of its container contained in the map keys
 	  */
-	 public Set<DDiagramElement> getBestDisplayedFunctionNode(AbstractFunction function, HashMap<AbstractFunction, Set<DDiagramElement>> displayedFunctions) {
+	 public Set<DDiagramElement> getBestDisplayedFunctionNode(AbstractFunction function, Map<AbstractFunction, Set<DDiagramElement>> displayedFunctions) {
 		 if (displayedFunctions.containsKey(function)) {
 			 return displayedFunctions.get(function);
 		 }
