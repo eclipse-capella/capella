@@ -124,6 +124,7 @@
       <components xsi:type="buildstep:Feature" xmi:id="_R8z5wO_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.model.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_s61GoC0YEeSpNZCH09tG3Q" id="org.polarsys.capella.patterns.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_N2hU4JZyEeS4v-7NYpWHgw" id="org.polarsys.capella.detachment.version.precondition.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_PSaX8ALjEeaHt4HX7aKb2g" id="org.polarsys.capella.detachment.propertyvalue.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_c_rJMJo_EeSestiG7b7wRQ" id="org.polarsys.capella.core.properties.description.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_d0TtsTRnEeWZJ6pwcp_y_g" id="org.polarsys.capella.doc.feature"/>
     </steps>
@@ -160,11 +161,12 @@
       <steps xsi:type="buildstep:PublishStep" xmi:id="_Rbzf0PAvEeCsV7GIvIT8ig" name="Publish Shared" description="" component="_Qt-vIO_wEeC6vvY4iAtS4w"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_UMYxEPAvEeCsV7GIvIT8ig" name="Publish Shared Base" component="_Rbul8O_wEeC6vvY4iAtS4w"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_aq_KsC0bEeSpNZCH09tG3Q" name="Publish Patterns Contribution" component="_s61GoC0YEeSpNZCH09tG3Q"/>
-      <steps xsi:type="buildstep:PublishStep" xmi:id="_RrqacJZyEeS4v-7NYpWHgw" name="Publish Detachment Contribution" component="_N2hU4JZyEeS4v-7NYpWHgw"/>
+      <steps xsi:type="buildstep:PublishStep" xmi:id="_a1Z6AALjEeaHt4HX7aKb2g" name="Publish Detachment PropertyValues Contribution" component="_PSaX8ALjEeaHt4HX7aKb2g"/>
+      <steps xsi:type="buildstep:PublishStep" xmi:id="_RrqacJZyEeS4v-7NYpWHgw" name="Publish Detachment Version PostCondition Contribution" component="_N2hU4JZyEeS4v-7NYpWHgw"/>
       <steps xsi:type="buildstep:PublishStep" xmi:id="_hS4tYDRnEeWZJ6pwcp_y_g" name="Publish Capella embedded documentation" component="_d0TtsTRnEeWZJ6pwcp_y_g"/>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_Y3638IOvEeGEKpWdrghARA" name="Archive Update Site">
-      <steps xsi:type="buildstep:AggregateStep" xmi:id="_aFZ-wIOvEeGEKpWdrghARA" name="Capella Update Site" id="org.polarsys.capella" publishSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g"/>
+      <steps xsi:type="buildstep:AggregateStep" xmi:id="_aFZ-wIOvEeGEKpWdrghARA" name="Capella Update Site" id="org.polarsys.capella" publishSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _a1Z6AALjEeaHt4HX7aKb2g _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g"/>
       <steps xsi:type="buildfile:ZipStep" xmi:id="_PxpxgIoGEeGSbqNfjJWsgA" name="Archive Capella Update Site" description="" enabled="false" baseDir="${publish}/org.polarsys.capella/site.p2" destinationFilePath="${publish}/capella-${archiveSuffix}.zip"/>
     </steps>
   </steps>
@@ -216,7 +218,7 @@
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_SQQb0F1tEeGnJaeCI-TkHw" name="PrepareCleanTP">
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_NGDOgF1yEeGnJaeCI-TkHw"/>
       </steps>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _a1Z6AALjEeaHt4HX7aKb2g _jkp5IJo_EeSestiG7b7wRQ _hS4tYDRnEeWZJ6pwcp_y_g" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
         <updateSiteUrls>${site_Kitalpha_CTK}</updateSiteUrls>
         <updateSiteUrls>${orbit.download.url}</updateSiteUrls>
         <updateSiteUrls>${site_QueryLegacy}</updateSiteUrls>
