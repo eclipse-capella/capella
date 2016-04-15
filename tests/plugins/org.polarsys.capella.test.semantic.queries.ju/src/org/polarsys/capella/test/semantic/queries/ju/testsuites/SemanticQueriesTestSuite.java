@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import junit.framework.Test;
+
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
@@ -40,8 +42,16 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new PropertyValueGroup_applying_valued_element());
     return tests;
   }
+  
   @Override
   public List<String> getRequiredTestModels() {
     return Collections.singletonList(SemanticQueries.class.getSimpleName());
+  }
+  
+  /**
+   * Added in order to launch this test suite without the Capella test framework.
+   */
+  public static Test suite() {
+    return new SemanticQueriesTestSuite();
   }
 }

@@ -34,7 +34,7 @@ public class CapellaElement_applied_property_value_groups extends SemanticQuerie
 	 */
 	@Override
 	public void test() throws Exception {
-		testQuery(LA__LOGICAL_ACTORS__LA_1, LA__PROPERTYVALUEPKG__BOOLEANPROPERTYVALUE);
+		testQuery(LA__ROOT_LF__LOGICALFUNCTION_1, LA__PROPERTYVALUEPKG__PROPERTYVALUEGROUP);
 	}
 
 }
