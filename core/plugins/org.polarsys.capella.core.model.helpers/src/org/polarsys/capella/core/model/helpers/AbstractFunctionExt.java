@@ -28,9 +28,9 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
-import org.polarsys.capella.core.data.ctx.SystemContext;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -467,7 +467,7 @@ public class AbstractFunctionExt {
     }
     // Get common ancestor of all Components allocation leaves.
     Component commonAncestor = ComponentExt.getFirstCommonComponentAncestor(allAllocatingComponents);
-    if (commonAncestor == null || commonAncestor instanceof SystemContext) {
+    if (commonAncestor == null || commonAncestor instanceof ComponentContext) {
       return Collections.emptyList();
     }
     return Collections.singletonList(commonAncestor);
