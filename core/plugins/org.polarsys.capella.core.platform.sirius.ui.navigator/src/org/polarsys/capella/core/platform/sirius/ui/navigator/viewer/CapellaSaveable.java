@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,12 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ui.business.internal.session.SessionSaveable;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Cursor;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.internal.PartSite;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.ui.SaveSessionAction;
@@ -30,6 +36,15 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
  */
 public class CapellaSaveable extends SessionSaveable {
 
+  /**
+   * Either {@code null} or the System's {@link SWT#CURSOR_WAIT} cursor
+   * instance. Should never be disposed.
+   */
+  //FIXME Delete both cursor fields when migrating to Eclipse 4.6 
+  // (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=479356)
+  private Cursor waitCursor;
+  private Cursor originalCursor;
+  
   /**
    * Constructor.
    * @param session
@@ -141,4 +156,46 @@ public class CapellaSaveable extends SessionSaveable {
     
     return false;
   }
+  
+  // FIXME Delete this when migrating to Eclipse 4.6 
+  // (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=479356)
+  public void disableUI(IWorkbenchPart[] parts, boolean closing) {
+    for (int i = 0; i < parts.length; i++) {
+      IWorkbenchPart workbenchPart = parts[i];
+      Composite paneComposite = (Composite) ((PartSite) workbenchPart
+          .getSite()).getPane().getControl();
+      Control[] paneChildren = paneComposite.getChildren();
+      Composite toDisable = ((Composite) paneChildren[0]);
+      toDisable.setEnabled(false);
+      if (waitCursor == null) {
+        waitCursor = workbenchPart.getSite().getWorkbenchWindow().getShell().getDisplay()
+            .getSystemCursor(SWT.CURSOR_WAIT);
+      }
+      if (waitCursor.equals(paneComposite.getCursor())) {
+        originalCursor = paneComposite.getCursor();
+        paneComposite.setCursor(waitCursor);
+      }
+    }
+  }
+  
+  //FIXME Delete this when migrating to Eclipse 4.6 
+  // (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=479356)
+  public void enableUI(IWorkbenchPart[] parts) {
+    for (int i = 0; i < parts.length; i++) {
+      IWorkbenchPart workbenchPart = parts[i];
+      Composite paneComposite = (Composite) ((PartSite) workbenchPart
+          .getSite()).getPane().getControl();
+      Control[] paneChildren = paneComposite.getChildren();
+      Composite toEnable = ((Composite) paneChildren[0]);
+      paneComposite.setCursor(originalCursor);
+      if (waitCursor != null) {
+        /*
+         * waitCursor is always the System SWT.CURSOR_WAIT instance and
+         * should never be disposed
+         */
+        waitCursor = null;
+      }
+      toEnable.setEnabled(true);
+    }
+  }  
 }
