@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,9 @@ import org.polarsys.capella.core.preferences.Activator;
  */
 public class ConfigurabilityPreferences {
 
-  private static final IEclipsePreferences defaultScopPref = new DefaultScope().getNode(Activator.PLUGIN_ID);
+  private static final IEclipsePreferences defaultScopPref = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
-  private static final IEclipsePreferences instanceScopPrefs = new InstanceScope().getNode(Activator.PLUGIN_ID);
+  private static final IEclipsePreferences instanceScopPrefs = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
   /**
    * Not instantiable, as all features are static.
@@ -42,14 +42,10 @@ public class ConfigurabilityPreferences {
   public static void save() {
     try {
 
-      new InstanceScope().getNode(Activator.PLUGIN_ID).flush();
-
+      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).flush();
       instanceScopPrefs.flush();
-
-      PreferencesHandler.initializePreferenceCommands();
-
-    } catch (BackingStoreException exception_p) {
-      exception_p.printStackTrace();
+    } catch (BackingStoreException exception) {
+      exception.printStackTrace();
     }
   }
 
@@ -84,11 +80,9 @@ public class ConfigurabilityPreferences {
     if (constraint != null) {
       // set its enablement from the new preference value
       constraint.setEnabled(!disabled);
-
     } else {
       // remove this preference to declutter the prefs.ini file
       defaultScopPref.put(id, Boolean.valueOf(disabled).toString());
-
     }
   }
 
@@ -105,5 +99,4 @@ public class ConfigurabilityPreferences {
   public static void setInstanceScopePreferenceItem(String id, boolean disabled) {
     instanceScopPrefs.put(id, Boolean.valueOf(disabled).toString());
   }
-
 }

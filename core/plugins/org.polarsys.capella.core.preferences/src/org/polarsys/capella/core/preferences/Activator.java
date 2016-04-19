@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,7 +71,7 @@ public class Activator extends AbstractUIPlugin {
   /*
    * 
    */
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
   /*
    * Track extensions for extension points defined in this bundle.
@@ -140,14 +140,6 @@ public class Activator extends AbstractUIPlugin {
     PreferencesItemsRegistry.getInstance().getAllDescriptors();
 
     initializeExtensionsPointProvider();
-
-    //FIXME E4 : the two following methods seems to cause others bundles to load and will cause troubles with E4
-    //we should defer these operation after workbench loading
-    
-    //initializeUserProfilePreferences();
-
-    //initializePreferenceCommands();
-
   }
 
   // Overlay preference store for property pages
@@ -159,8 +151,7 @@ public class Activator extends AbstractUIPlugin {
   public IPreferenceStore getPreferenceStore() {
     // Create the preference store lazily.
     if (preferenceStore == null) {
-      preferenceStore = new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID);
-
+      preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
     }
     return preferenceStore;
   }
@@ -169,7 +160,6 @@ public class Activator extends AbstractUIPlugin {
     if (propertiesStore.get(project) != null) {
       return propertiesStore.get(project);
     }
-
     return propertiesStore.get(project);
   }
 
@@ -183,7 +173,6 @@ public class Activator extends AbstractUIPlugin {
     super.stop(context);
     extensionTracker.close();
     extensionTracker = null;
-
   }
 
   /**
@@ -192,24 +181,18 @@ public class Activator extends AbstractUIPlugin {
   public void initializePreferenceCommands() throws NotDefinedException {
     List<String> commandsNames = new ArrayList<String>();
     ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);// ActivitySupport().getActiveWorkbenchWindow().getService(ICommandService.class);
-    Command[] commands = commandService.getDefinedCommands();
-    for (Object object : commands) {
-      Command command = (Command) object;
+    for (Command command : commandService.getDefinedCommands()) {
       IItemDescriptor commandDescriptor = PreferencesItemsRegistry.getInstance().getDescriptor(command.getId());
-
       if ((commandDescriptor != null) && command.isDefined()) {
         preferencedCommands.add(command.getId());
-
         PreferencesHandler.getInstance(command);
         commandService.refreshElements(command.getId(), null);
         commandsNames.add(command.getName());
-
       }
 
       else if (command.getId().equals("org.eclipse.ui.file.export")) {
         ExportPreferencesHandler.getInstance(command);
       }
-
     }
 
     String[] prop = new String[commandsNames.size()];
@@ -218,7 +201,6 @@ public class Activator extends AbstractUIPlugin {
       prop[i] = commandsNames.get(i);
     }
     proposalContent = new SimpleContentProposalProvider(prop);
-
   }
 
   /**
@@ -255,13 +237,6 @@ public class Activator extends AbstractUIPlugin {
   }
 
   /**
-   * 
-   */
-  private void initializeUserProfilePreferences() {
-    CategoryPreferencesManager.getInstance().loadUserProfile();
-  }
-
-  /**
    * Returns the shared instance
    * @return the shared instance
    */
@@ -292,7 +267,6 @@ public class Activator extends AbstractUIPlugin {
           extensionHandler.addExtension(extTracker, extension);
         }
       }
-
     }
   }
 
@@ -312,7 +286,6 @@ public class Activator extends AbstractUIPlugin {
     if (fullPath != null) {
       return ImageDescriptor.createFromURL(fullPath);
     }
-
     return ImageDescriptor.getMissingImageDescriptor();
   }
 
