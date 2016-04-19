@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,15 +31,21 @@ public class SemanticBrowserUpdater implements ModelExtensionOverallListener {
 	}
 
 	private void refresh() {
-		IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		if (activePage == null)
-			return;
-		ISemanticBrowserViewPart view = (ISemanticBrowserViewPart) activePage.findView("org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID");
-		if (view != null) {
-			refresh(view.getCurrentViewer());
-			refresh(view.getReferencedViewer());
-			refresh(view.getReferencingViewer());
-		}
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			
+			@Override
+			public void run() {
+				IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+				if (activePage == null)
+					return;
+				ISemanticBrowserViewPart view = (ISemanticBrowserViewPart) activePage.findView("org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID");
+				if (view != null) {
+					refresh(view.getCurrentViewer());
+					refresh(view.getReferencedViewer());
+					refresh(view.getReferencingViewer());
+				}
+			}
+		});
 	}
 
 	private void refresh(TreeViewer viewer) {
