@@ -50,6 +50,10 @@ import org.polarsys.capella.core.data.oa.Entity;
  */
 public class ComponentExchangeExt {
 
+	
+	private ComponentExchangeExt() {
+	}
+	  
   /**
    * Return source port of the connection (mono Part mode)
    * @param connection
@@ -68,7 +72,7 @@ public class ComponentExchangeExt {
     return null;
   }
 
-  /**
+/**
    * Return target port of the connection (mono Part mode)
    * @param connection
    * @return
@@ -212,11 +216,9 @@ public class ComponentExchangeExt {
     // part
     else if (source instanceof Part) {
       Part part = (Part) source;
-      if (null != part) {
-        AbstractType abstractType = part.getType();
-        if ((null != abstractType) && (abstractType instanceof Component)) {
-          return (Component) abstractType;
-        }
+      AbstractType abstractType = part.getType();
+      if ((null != abstractType) && (abstractType instanceof Component)) {
+        return (Component) abstractType;
       }
     }
     // component port
@@ -261,11 +263,9 @@ public class ComponentExchangeExt {
     // part
     else if (target instanceof Part) {
       Part part = (Part) target;
-      if (null != part) {
-        AbstractType abstractType = part.getType();
-        if ((null != abstractType) && (abstractType instanceof Component)) {
-          return (Component) abstractType;
-        }
+      AbstractType abstractType = part.getType();
+      if ((null != abstractType) && (abstractType instanceof Component)) {
+        return (Component) abstractType;
       }
     }
     // component port
@@ -315,14 +315,14 @@ public class ComponentExchangeExt {
 
   /**
    * Return filtered list of Connection by kinds
-   * @param Objects1
+   * @param objects
    * @param kinds1
    * @return list of Objects
    */
-  public static List<Object> filteredComponentExchangesBykind(List<Object> Objects1, ComponentExchangeKind[] kinds1) {
+  public static List<Object> filteredComponentExchangesBykind(List<Object> objects, ComponentExchangeKind[] kinds1) {
     List<Object> results = new ArrayList<Object>();
     List<ComponentExchangeKind> kinds = Arrays.asList(kinds1);
-    for (Object object : Objects1) {
+    for (Object object : objects) {
       if (object instanceof ComponentExchange) {
         ComponentExchangeKind currentKind = ((ComponentExchange) object).getKind();
         if (kinds.contains(currentKind)) {
@@ -513,7 +513,7 @@ public class ComponentExchangeExt {
     if (cp instanceof ComponentPort) {
       // The "pivot" port is available, find the ports that are not from the delegation.
       for (ComponentExchange ce : ((ComponentPort) cp).getComponentExchanges()) {
-        if (ce != delegation) {
+        if (!ce.equals(delegation)) {
           if (ce.getKind().equals(ComponentExchangeKind.DELEGATION)) {
             result.addAll(getDelegatedComponentExchanges((ComponentPort) cp, ce));
           } else {
@@ -569,9 +569,7 @@ public class ComponentExchangeExt {
    */
   public static List<CapellaElement> getValidFEAvailableForAllocation(ComponentExchange element) {
     List<CapellaElement> result = new ArrayList<CapellaElement>(1);
-    // Source{Component}
     AbstractFunctionalBlock source = null;
-    // Target{Component}
     AbstractFunctionalBlock target = null;
 
     Port sourcePort = ComponentExchangeExt.getSourcePort(element);

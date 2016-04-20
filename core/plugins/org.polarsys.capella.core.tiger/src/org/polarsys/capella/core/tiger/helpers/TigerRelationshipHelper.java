@@ -49,7 +49,7 @@ import org.polarsys.capella.core.tiger.impl.Transfo;
  * EMF Helper to provide transformation and update services
  * TODO provide a better tooling than attach-* methods
  */
-public class TigerRelationshipHelper {
+public final class TigerRelationshipHelper {
 
 	/**
 	 * Constructor
@@ -521,9 +521,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
         if (tre != null) {
           if (tre instanceof EObject) {
             EObject targetRelatedElement = (EObject) tre;
-            if (targetRelatedElement != null) {
-              targetRelatedElements.add(targetRelatedElement);
-            }
+            targetRelatedElements.add(targetRelatedElement);
           } else {
             List<EObject> tres = (List<EObject>) tre;
             for (EObject targetRelatedElement : tres) {
@@ -719,14 +717,12 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
       CapellaElement sourceElement = (CapellaElement) sourceObject;
       CapellaElement targetElement = (CapellaElement) targetObject;
 
-      if ((sourceElement != null) && (targetElement != null)) {
-        // 2- Create the transformation link
-        abstractTrace = createAbstractTrace(sourceElement, targetElement, transfo);
-        if (abstractTrace != null) {
-          // 3- Update relationships and roles
-          abstractTrace.setSourceElement(targetElement);
-          abstractTrace.setTargetElement(sourceElement);
-        }
+      // 2- Create the transformation link
+      abstractTrace = createAbstractTrace(sourceElement, targetElement, transfo);
+      if (abstractTrace != null) {
+        // 3- Update relationships and roles
+        abstractTrace.setSourceElement(targetElement);
+        abstractTrace.setTargetElement(sourceElement);
       }
 
     }

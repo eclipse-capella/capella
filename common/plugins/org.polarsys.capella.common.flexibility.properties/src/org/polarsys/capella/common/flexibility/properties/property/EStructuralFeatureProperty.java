@@ -34,11 +34,10 @@ import org.polarsys.capella.common.flexibility.properties.schema.PropertiesSchem
  */
 public class EStructuralFeatureProperty extends AbstractProperty implements IEditableProperty, IEStructuralFeatureProperty {
 
-  Pattern _split = Pattern.compile("\\.");
+  private Pattern split = Pattern.compile("\\.");
 
   public String getRelatedEReference() {
-    String value = getParameter(PropertiesSchemaConstants.PropertiesSchema_ESTRUCTURAL_FEATURE_PROPERTY__EFEATURE);
-    return value;
+	  return getParameter(PropertiesSchemaConstants.PropertiesSchema_ESTRUCTURAL_FEATURE_PROPERTY__EFEATURE);
   }
 
   public EClass getRelatedEClass() {
@@ -52,7 +51,7 @@ public class EStructuralFeatureProperty extends AbstractProperty implements IEdi
         EPackage ePackage = (EPackage) pkg;
         String prefix = ePackage.getName();
 
-        String[] values = _split.split(name);
+        String[] values = split.split(name);
         String prefix2 = values[values.length - 2];
         String lastName = values[values.length - 1];
 
@@ -90,15 +89,13 @@ public class EStructuralFeatureProperty extends AbstractProperty implements IEdi
       if (object instanceof EObject) {
         EObject element = (EObject) object;
         EStructuralFeature feature = element.eClass().getEStructuralFeature(getRelatedEReference());
-        if ((element != null) && (feature != null)) {
-          if ((clazz == null) || clazz.isSuperTypeOf(element.eClass())) {
+        if (feature != null && (clazz == null || clazz.isSuperTypeOf(element.eClass()))) {
             Object result = getFeatureValue(context, element, feature);
-            if (result != null) {
-              values.add(result);
-            }
-          }
-        }
-      }
+            	if (result != null) {
+            		values.add(result);
+            	}
+        	}
+    	  }
     }
     if (values.size() == 1) {
       return values.iterator().next();
