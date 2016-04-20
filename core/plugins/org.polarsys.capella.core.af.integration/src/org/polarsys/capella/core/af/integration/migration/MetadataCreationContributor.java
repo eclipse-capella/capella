@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.osgi.framework.Version;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.af.integration.Messages;
 import org.polarsys.capella.core.data.migration.AbstractMigrationRunnable;
@@ -30,6 +31,7 @@ import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contributor.AbstractMigrationContributor;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
+import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 /**
  * @author Thomas Guiu
@@ -65,6 +67,11 @@ public class MetadataCreationContributor extends AbstractMigrationContributor {
 					EObject eObject = resource.getContents().get(0);
 					DAnalysis session = (DAnalysis) eObject;
 					session.getSemanticResources().add(new ResourceDescriptor(initIntegrationStorage.getURI()));
+					
+					// enable capella viewpoint
+					org.polarsys.kitalpha.resourcereuse.model.Resource capellaVp = ViewpointManager.getViewpoint("org.polarsys.capella.core.viewpoint");
+					Version readVersion = ViewpointManager.readVersion(capellaVp);
+					MetadataHelper.getViewpointMetadata(resourceSet).setUsage(capellaVp, readVersion, true);
 				}
 			}
 
