@@ -6,15 +6,5 @@
 The level of System just above the System-of-Interest. It is the level concerned by the Customer.
 
  
-(Opposite of sub-system: the System-of-Interest is a Sub-System of the Super-System
-
- 
-=== ICONS ===
- 
-<br>
-<br>
-
- 
-<br>
-
+(Opposite of sub-system: the System-of-Interest is a Sub-System of the Super-System)
    
