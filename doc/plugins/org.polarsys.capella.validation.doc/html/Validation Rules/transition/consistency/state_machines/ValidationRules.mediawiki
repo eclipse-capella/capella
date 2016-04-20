@@ -1,21 +1,18 @@
       
 = > Validation Rules > capella.category > transition > consistency > state_machines =
             
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|    TC_SM_01 - StateTransition Realization  
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a StateTransition realizing a StateTransition from a previous level is consistent with the realized StateTransition and the Bounds of the StateTransition realize both bounds of the realized StateTransition. 
-|-
-|- 
+| colspan="2" |This rule checks that a StateTransition realizing a StateTransition from a previous level is consistent with the realized StateTransition and the Bounds of the StateTransition realize both bounds of the realized StateTransition. 
 |}            
-{| border="1"
+<br> 
+   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
+! |[[Image:../../../../Images/error.gif|ERROR]]
+|    TC_SM_02 - A Region shall have only one Shallow/Deep History State  
 |-
-|This rule check that region have unique history state. 
-|-
-|- 
+| colspan="2" |This rule check that region have unique history state. 
 |}   

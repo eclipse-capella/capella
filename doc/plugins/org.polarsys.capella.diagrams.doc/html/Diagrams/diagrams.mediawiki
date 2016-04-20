@@ -20,7 +20,7 @@
 | 		Creates a new Sequence Message invoking an Interaction without return branch between the Source and Target Lifelines representing existing Operational Activities. This tool opens a selection wizard to select an available existing Interaction or to create a new one between these Operational Activities. 	
 |-
 | 	Interaction with return branch 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking an Interaction with return branch between the Source and Target Lifelines representing existing Operational Activities. This tool opens a selection wizard to select an available existing Interaction or to create a new one between these Operational Activities. 	
 |-
 | 	Reference 	
@@ -130,7 +130,7 @@
 | 		Creates a new Generalization relationship between the source and target Capability Realizations. 	
 |-
 | 	Actor Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Creates a new Generalization relationship between the source and target Actors. 	
 |-
 | 	Capability Realizations 	
@@ -198,19 +198,19 @@
 {| border="1"
 |-
 | 	Data Package 	
-| 
+| [[Image:Images/icons/full/obj16/ClassPkg.gif]] 
 | 		Creates a new Data Package. 	
 |-
 | 	Class 	
-| 
+| [[Image:Images/icons/full/obj16/Class.gif]] 
 | 		Creates a new Class. 	
 |-
 | 	Union 	
-| 
+| [[Image:Images/icons/full/obj16/Union.gif]] 
 | 		Creates a new Union. 	
 |-
 | 	Collection 	
-| 
+| [[Image:Images/icons/full/obj16/Collection.gif]] 
 | 		Creates a new Collection. 	
 |-
 | 	BooleanType 	
@@ -218,15 +218,15 @@
 | 		Creates a new Boolean Type. 	
 |-
 | 	BooleanLiteral 	
-| 
+| [[Image:Images/icons/full/obj16/LiteralStringValue.gif]] 
 | 		Creates a new Boolean Literal. 	
 |-
 | 	Enumeration 	
-| 
+| [[Image:Images/icons/full/obj16/Enumeration.gif]] 
 | 		Creates a new Enumeration. 	
 |-
 | 	EnumerationLiteral 	
-| 
+| [[Image:Images/icons/full/obj16/EnumerationLiteral.gif]] 
 | 		Creates a new Enumeration Literal in the selected Enumeration. 	
 |-
 | 	NumericType 	
@@ -242,7 +242,7 @@
 | 		Creates a new Physical Quantity. 	
 |-
 | 	Unit 	
-| 
+| [[Image:Images/icons/full/obj16/Unit.gif]] 
 | 		Creates a new Unit. 	
 |-
 | 	Numeric Reference 	
@@ -294,7 +294,7 @@
 | 		Creates a new Collection Value Reference. 	
 |-
 | 	Property 	
-| 
+| [[Image:Images/icons/full/obj16/Property.gif]] 
 | 		Creates a new Property in the selected Class or Union. This tool opens a selection wizard to select the type of the Property. 	
 |-
 | 	Class Operation 	
@@ -318,7 +318,7 @@
 | 		Creates a new Composition relationship between the Source and Target Classifiers (Class, Union, Collection). 	
 |-
 | 	Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Creates a new Generalization relationship between the Source and Target elements (Class, Union, Collection, Datatypes, etc.). 	
 |-
 | 	Collection Type 	
@@ -366,7 +366,7 @@
 | 		Creates a new Interface Package. 	
 |-
 | 	Interface 	
-| 
+| [[Image:Images/icons/full/obj16/Interface.gif]] 
 | 		Creates a new Interface. 	
 |-
 | 	Event 	
@@ -414,7 +414,7 @@
 | 		Insert/Remove Exchange Item Element Links 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
@@ -460,7 +460,7 @@
 | 		Creates a new Sequence Message invoking a Functional Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions. This tool is masked as soon as a Component Exchange is displayed on the scenario. 	
 |-
 | 	Functional Exchange with Return Branch 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Functional Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions. This tool is masked as soon as a Component Exchange is displayed on the scenario.  	
 |-
 | 	Component Exchange 	
@@ -468,15 +468,15 @@
 | 		Creates a new Sequence Message invoking a Component Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario. 	
 |-
 | 	Component Exchange with Return Branch 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Component Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario. 	
 |-
 | 	Arm timer 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Create a new sequence message to arm a timer. 	
 |-
 | 	Cancel timer 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Create a new sequence message to cancel a prieviously armed timer. 	
 |-
 | 	Found Functional Exchange 	
@@ -550,35 +550,35 @@
 {| border="1"
 |-
 | 	Component 	
-| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	COTS 	
-| 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	CS 	
-| 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	HW 	
-| 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	Interface 	
-| 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	NDI 	
-| 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	Prime Item 	
-| 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	System 	
-| 
+| [[Image:Images/icons/full/obj16/InstanceRole.gif]] 
 | 
 |-
 | 	Actor 	
@@ -602,7 +602,7 @@
 | 		Creates a new Sequence Message invoking a Interface Exchange Item allocation without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
 |-
 | 	Sequence Message with Return Branch 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Interface Exchange Item allocation with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
 |-
 | 	Create message 	
@@ -614,11 +614,11 @@
 | 		Creates a new Delete Sequence Message invoking a Interface Exchange Item allocation between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface. 	
 |-
 | 	Arm timer 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Create a new sequence message to arm a timer. 	
 |-
 | 	Cancel timer 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]]  
 | 		Create a new sequence message to cancel a prieviously armed timer. 	
 |-
 | 	Found Message 	
@@ -770,7 +770,7 @@
 | 		Create a new Capability Generalization relationship between the Source and Target Super Capabilities. 	
 |-
 | 	Actor Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Create a new Actor Generalization relationship between the Source and Target Super Actors. 	
 |-
 | 	Actors 	
@@ -866,7 +866,7 @@
 | 		Creates a Provide relationship from a Component Port to an Interface 	
 |-
 | 	Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
 |-
 | 	Event 	
@@ -988,7 +988,7 @@
 | 		Creates a Require relationship from a Component Port to an Interface 	
 |-
 | 	Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
 |-
 | 	Event 	
@@ -1102,11 +1102,11 @@
 | 		Creates a Require relationship from a Component Port to an Interface 	
 |-
 | 	Delegation 	
-| 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. 	
 |-
 | 	Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
 |-
 | 	Event 	
@@ -1188,7 +1188,7 @@
 | 
 |-
 | 	Actor Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 
 |-
 | 	Actors 	
@@ -1284,11 +1284,11 @@
 {| border="1"
 |-
 | 	Actor 	
-| 
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
 | 
 |-
 | 	Actor Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 
 |-
 | 	Constraint 	
@@ -1372,15 +1372,15 @@
 {| border="1"
 |-
 | 	Involve Function 	
-| 
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
 | 		Creates a new step referencing the selected Function. 	
 |-
 | 	Involve Functional Exchange 	
-| 
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
 | 		Creates a new step referencing one existing Functional Exchange between the Function respectively referenced by the preceeding and following steps. 	
 |-
 | 	Involve Functional Chain 	
-| 
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
 | 		Creates a new step referencing the selected Functional Chain. 	
 |-
 | 	Involve Functional Exchange & Target Function 	
@@ -1404,7 +1404,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
@@ -1454,7 +1454,7 @@
 | 		Insert/Remove Functions. Creates or delete semantic Lifelines representing existing Functions. Removing a Lifeline from a scenario deletes incoming and outgoing sequence messages, but does not delete from model the represented Functions and related Functional Exchanges. 	
 |-
 | 	Functional Exchange with return branch 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a  Functional Exchange with a return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one. 	
 |-
 | 	Functional Exchange 	
@@ -1606,11 +1606,11 @@
 | 		Creates a Require relationship from a Component Port to an Interface 	
 |-
 | 	Delegation 	
-| 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. 	
 |-
 | 	Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]]  
 | 		Creates a Generalization relationship (inheritance) between two Components or between two Interfaces 	
 |-
 | 	Event 	
@@ -1698,7 +1698,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
@@ -1708,7 +1708,7 @@
 {| border="1"
 |-
 | 	Logical Component 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalObject.gif]] 
 | 		Creates a new Logical Component and a Part typed by this Logical Component.  The Part is created in the Component target of the click. 	
 |-
 | 	Reuse Logical Component 	
@@ -1716,7 +1716,7 @@
 | 		&#91;Reusable Components&#93; Creates a new Part of an existing Logical Component into the targeted Component. 	
 |-
 | 	Logical Actor 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalObject.gif]] 
 | 		Creates a new Logical Actor and a Part typed by this Logical Actor.  The Part is created in the Logical Context. 	
 |-
 | 	Reuse Logical Actor 	
@@ -1724,31 +1724,31 @@
 | 		&#91;Reusable Components&#93; Creates a new Part of an existing Actor. 	
 |-
 | 	Component Exchange 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components.  This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	Component Exchange with Delegations 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. When necessary (for example when used to relate two sub components), Delegation relationships are also created. This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	Component Exchange with ports 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Reusable Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Parts. Component Ports are created automatically if the Source and / or Target are Parts instead of Ports.  	
 |-
 | 	Component Exchange without ports 	
-| 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Reusable Components&#93; Creates a Component Exchange of kind ASSEMBLY between the Source Part and Target Parts. 	
 |-
 | 	Component Exchange between types 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components.  This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	Delegation 	
-| 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	Physical Link 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalLink.gif]] 
 | 		Creates a new Physical Link between the source and target Logicall Components or Actors. 	
 |-
 | 	In Flow Port 	
@@ -1828,7 +1828,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Logical Function 	
-| 
+| [[Image:Images/icons/full/obj16/LogicalFunction.gif]] 
 | 		Creates a new Logical Function and allocates it to the target Logical Component / Actor. 	
 |-
 | 	Duplicate 	
@@ -1896,7 +1896,7 @@
 | 		Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges.  	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |-
 | 	Functions from Mode / State 	
@@ -1914,12 +1914,8 @@
 {| border="1"
 |-
 | 	Logical Component 	
-| 
+| [[Image:Images/icons/full/obj16/LogicalComponent.gif]] 
 | 		Creates a new Logical Component in the target Logical Component 	
-|-
-| 	Create Part 	
-| [[Image:Images/icons/full/obj16/containedIn.png]] 
-| 		&#91;Reusable Components&#93; Creates a new Part typed by the source Logical Component in the target Logical Component 	
 |-
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
@@ -1944,7 +1940,7 @@
 {| border="1"
 |-
 | 	Logical Function 	
-| 
+| [[Image:Images/icons/full/obj16/LogicalFunction.gif]] 
 | 		Creates a new Logical Function 	
 |-
 | 	Duplicate 	
@@ -2024,7 +2020,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |-
 | 	Functions from Mode / State 	
@@ -2046,7 +2042,7 @@
 {| border="1"
 |-
 | 	Logical Function 	
-| 
+| [[Image:Images/icons/full/obj16/LogicalFunction.gif]] 
 | 		Creates a new Logical Function in the target Function 	
 |-
 | 	Duplicate 	
@@ -2112,7 +2108,7 @@
 | 		Creates a new Involvement relationship between the source Mission / Capability and the target System Actor 	
 |-
 | 	Actor Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Creates a new Generalization relationship between the source and target System Actors 	
 |-
 | 	Actors 	
@@ -2182,7 +2178,7 @@
 | 		Creates a new Generalization relationship between the source and target Capabilities 	
 |-
 | 	Actor Generalization 	
-| 
+| [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 		Creates a new Generalization relationship between the source and target System Actors 	
 |-
 | 	Actors 	
@@ -2220,7 +2216,7 @@
 {| border="1"
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |-
 | 	Mode 	
@@ -2306,7 +2302,7 @@
 {| border="1"
 |-
 | 	Operational Activity 	
-| 
+| [[Image:Images/icons/full/obj16/OperationalActivity.gif]] 
 | 		Creates a new Operational Activity in the target Operational Activity 	
 |-
 | 	Contained In 	
@@ -2332,7 +2328,7 @@
 {| border="1"
 |-
 | 	Operational Activity 	
-| 
+| [[Image:Images/icons/full/obj16/OperationalActivity.gif]] 
 | 		Creates a new Operational Activity  	
 |-
 | 	Interaction 	
@@ -2394,7 +2390,7 @@
 | 		Creates a new Operational Capability 	
 |-
 | 	CommunicationMean 	
-| 
+| [[Image:Images/icons/full/obj16/CommunicationMean.gif]] 
 | 		Creates a new Communication Mean between two Operational Entities / Actors 	
 |-
 | 	Involvement 	
@@ -2456,7 +2452,7 @@
 | 		Creates a new Operational Actor 	
 |-
 | 	Communication Mean 	
-| 
+| [[Image:Images/icons/full/obj16/CommunicationMean.gif]] 
 | 		Creates a Communication Mean 	
 |-
 | 	Operational Entities 	
@@ -2484,7 +2480,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Role 	
-| 
+| [[Image:Images/icons/full/obj16/Role.gif]] 
 | 		Create a new Role and allocate it to the selected Operational Entity 	
 |-
 | 	Manage Role Allocation 	
@@ -2500,7 +2496,7 @@
 | 		Insert/Remove Allocated Roles. Create or delete graphical objects corresponding to already allocated Roles. Removing a Role graphical object from an Operational Entity does not delete the allocation relationship between this Operational Entity and the Role. This tool does not modify the semantic model 	
 |-
 | 	Operational Activity 	
-| 
+| [[Image:Images/icons/full/obj16/OperationalActivity.gif]] 
 | 		Create a new Operational Activity and allocate it to the selected Operational Entity or the selected Role. 	
 |-
 | 	Interaction 	
@@ -2596,7 +2592,7 @@
 | 
 |-
 | 	Interaction with Return Branch 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking an Operational Interaction with return branch between the Source and Target Lifelines (representing existing Operational Entities Parts). This tool opens a selection wizard to select an available existing Interaction or to create a new one between existing/new allocated  Operational Activities. This tool is masked as soon as a Communication Mean is displayed on the scenario.  	
 |-
 | 	Interaction 	
@@ -2604,7 +2600,7 @@
 | 		Creates a new Sequence Message invoking an Operational Interaction without return branch between the Source and Target Lifelines (representing existing Operational Entities Parts). This tool opens a selection wizard to select an available existing Interaction or to create a new one between existing/new allocated  Operational Activities. This tool is masked as soon as a Communication Mean is displayed on the scenario. 	
 |-
 | 	CommunicationMean Return Branch 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities. This tool is masked as soon as an Operational Interaction is displayed on the scenario. 	
 |-
 | 	Communication Mean 	
@@ -2620,11 +2616,11 @@
 | 		Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean. 	
 |-
 | 	Arm timer 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Create a new sequence message to arm a timer. 	
 |-
 | 	Cancel timer 	
-| 
+| [[Image:Images/icons/full/obj16/SequenceMessage.gif]] 
 | 		Create a new sequence message to cancel a prieviously armed timer. 	
 |-
 | 	Reference 	
@@ -2682,15 +2678,15 @@
 {| border="1"
 |-
 | 	Involve Operational Activity 	
-| 
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
 | 		Creates a new step referencing the selected Operational Activity. 	
 |-
 | 	Involve Interaction 	
-| 
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
 | 		Creates a new step referencing one existing Interaction between the Operational Activities respectively referenced by the preceeding and following steps. 	
 |-
 | 	Involve Operational Process 	
-| 
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
 | 		Creates a new step referencing the selected Functional Chain. 	
 |-
 | 	Involve Interaction & Target Activity 	
@@ -2720,7 +2716,7 @@
 {| border="1"
 |-
 | 	Operational Role 	
-| 
+| [[Image:Images/icons/full/obj16/Role.gif]] 
 | 		Creates a new Operational Role 	
 |-
 | 	Operational Roles 	
@@ -2740,7 +2736,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Operational Activity 	
-| 
+| [[Image:Images/icons/full/obj16/OperationalActivity.gif]] 
 | 		Creates a new Operational Activity allocated to the target Operational Role 	
 |-
 | 	Interaction 	
@@ -2820,7 +2816,7 @@
 | 		&#91;Reusable Components&#93; Creates a new Part of an existing Physical Actor. 	
 |-
 | 	Physical Link 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalLink.gif]] 
 | 		Creates a new Physical Link between the source and target Node Physical Components or Actors. 	
 |-
 | 	Physical Port 	
@@ -2900,27 +2896,27 @@
 | 		&#91;Reusable Component&#93; Creates a new Part of an existing Behavior Physical Component into the targeted element. 	
 |-
 | 	Component Exchange 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	Component Exchange with Delegations 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. When necessary (for example when used to relate two sub components), Delegation relationships are also created. This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	Component Exchange with ports 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Reusable Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Parts. Component Ports are created automatically if the Source and / or Target are Parts instead of Ports. 	
 |-
 | 	Component Exchange without ports 	
-| 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Reusable Components&#93; Creates a Component Exchange of kind ASSEMBLY between the Source Part and Target Parts. 	
 |-
 | 	Component Exchange between types 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		&#91;Singleton Components&#93; Creates a Component Exchange of kind FLOW between the Source and Target Components. This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	Delegation 	
-| 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component. This delegation relationship is contextual to the parent Component. This tool can be used directly from / to Component or from / to Component Ports. 	
 |-
 | 	In Flow Port 	
@@ -2976,7 +2972,7 @@
 | 		&#91;Unsynchronized diagrams only&#93; Create or delete graphical objects corresponding to Component Ports. This tool does not modify the semantic model. 	
 |-
 | 	Physical Function 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalFunction.gif]]
 | 		Creates a new Physical Function and allocates it to the target Physical Component or Actor. 	
 |-
 | 	Duplicate 	
@@ -3044,7 +3040,7 @@
 | 		Switch between the representation of individual Physical Links and their representation as Category-based Physical Links. 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |-
 | 	Functions from Mode / State 	
@@ -3066,12 +3062,8 @@
 | 		Creates a new Node Physical Component in the target Physical Component 	
 |-
 | 	Behavior PC 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalComponent.gif]] 
 | 		Creates a new Behavior Physical Component in the target Physical Component 	
-|-
-| 	Create Part 	
-| [[Image:Images/icons/full/obj16/containedIn.png]] 
-| 		&#91;Reusable Components&#93; Creates a new Part typed by the source Node Physical Component in the target Physical Component 	
 |-
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
@@ -3096,7 +3088,7 @@
 {| border="1"
 |-
 | 	Physical Function 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalFunction.gif]] 
 | 		Creates a new Physical Function 	
 |-
 | 	Duplicate 	
@@ -3176,7 +3168,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |-
 | 	Functions from Mode / State 	
@@ -3198,7 +3190,7 @@
 {| border="1"
 |-
 | 	Physical Function 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalFunction.gif]] 
 | 		Creates a new Physical Function in the target Function 	
 |-
 | 	Duplicate 	
@@ -3243,20 +3235,16 @@
                                                                                                                                                
 {| border="1"
 |-
-| 	Involve Part 	
-| 
-| 		&#91;Reusable Components&#93; Creates a new step referencing the selected Physical Component Part. 	
-|-
 | 	Involve Component 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalPathInvolvement.gif]] 
 | 		&#91;Singleton Components&#93; Creates a new step referencing the selected Physical Component. 	
 |-
 | 	Involve Physical Path 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalPathInvolvement.gif]] 
 | 		Creates a new step referencing the selected Physical Path. 	
 |-
 | 	Involve Physical Link 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalPathInvolvement.gif]] 
 | 		Creates a new step referencing one existing Physical Link between the Physical Components / Parts respectively referenced by the preceeding and following steps. 	
 |-
 | 	Involve Physical Link & Target Part 	
@@ -3290,7 +3278,7 @@
 {| border="1"
 |-
 | 	Actor 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalObject.gif]] 
 | 		Create an Actor and its Part 	
 |-
 | 	Reuse Actor 	
@@ -3298,23 +3286,23 @@
 | 		Create a Part of a chosen Actor 	
 |-
 | 	Component Exchange 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Create a new component exchange binding a port of a part to another port of a part. Port binded must be of the same kind. If two flowports are linked, they must have complementary orientation. 	
 |-
 | 	Component Exchange with ports 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Create a new component exchange binding a port of a part to another port of a part. Port binded must be of the same kind. If two flowports are linked, they must have complementary orientation. 	
 |-
 | 	Component Exchange without ports 	
-| 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Create a new component exchange binding a part to another part. 	
 |-
 | 	Component Exchange between types 	
-| [[Image:Images/icons/full/obj16/Connection.gif]] 
+| [[Image:Images/icons/full/obj16/ComponentExchange.gif]] 
 | 		Create a new component exchange binding a port of a part to another port of a part. Port binded must be of the same kind. If two flowports are linked, they must have complementary orientation. 	
 |-
 | 	Physical Link 	
-| 
+| [[Image:Images/icons/full/obj16/PhysicalLink.gif]] 
 | 		Creates a new Physical Link between the source and target System Components or Actors. 	
 |-
 | 	In Flow Port 	
@@ -3386,7 +3374,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	System Function 	
-| 
+| [[Image:Images/icons/full/obj16/SystemFunction.gif]] 
 | 		Create a new System Function 	
 |-
 | 	Duplicate 	
@@ -3454,7 +3442,7 @@
 | 		Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges. 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |-
 | 	Functions from Mode / State 	
@@ -3472,7 +3460,7 @@
 {| border="1"
 |-
 | 	System Function 	
-| 
+| [[Image:Images/icons/full/obj16/SystemFunction.gif]] 
 | 		Creates a new System Function 	
 |-
 | 	Duplicate 	
@@ -3552,7 +3540,7 @@
 | 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.gif]] 
+| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
 |-
 | 	Functions from Mode / State 	
@@ -3574,7 +3562,7 @@
 {| border="1"
 |-
 | 	System Function 	
-| 
+| [[Image:Images/icons/full/obj16/SystemFunction.gif]] 
 | 		Creates a new System Function in the target Function 	
 |-
 | 	Duplicate 	
