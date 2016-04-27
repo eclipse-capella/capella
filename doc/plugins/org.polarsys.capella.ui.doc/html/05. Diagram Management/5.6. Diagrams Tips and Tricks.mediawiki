@@ -94,63 +94,6 @@ The origin is now on the top left of Logical System, which result in a better la
 '''Figure 9: New layout after the reset origin action'''
 
  
-== Advanced Automated Layout ==
- 
-Capella editor enable to simplify layout of complex diagram and reorganize it simply by following the direction of the connection between elements. Then, those connections can be followed from &ldquo;Left to Right&rdquo;, from &ldquo;Bottom to Top&rdquo; or &ldquo;From Top to Bottom&rdquo; with the advanced automated layout tools.
-
- 
-The following model used of this test is interesting because the Functional Chain highlight the fact that connectors flow are going in all directions.
-
- 
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m386ae1c8.png|641x447px]]
-
- 
-'''Figure 10: Test model (PAB in EOLE) with flows going in all directions'''
-
- 
-Using the advanced automated layout, the previous model can be reorganized in three different ways.
-
- 
-Right click on the editor of this diagram:
-
- 
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_c34b73b.png|384x226px]]
-
- 
-'''Figure 11: Advanced Automated Layout in Contextual Menu'''
-
- 
-- From Left to right:
-
- 
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_33d30936.png|696x295px]]
-
- 
-'''Figure 12: Left to Right layout result'''
-
- 
-- From Bottom to top:
-
- 
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_m27cfbd5f.png|464x598px]]
-
- 
-'''Figure 13: Bottom to Top layout result'''
-
- 
-<br>
-<br>
-
- 
-- From Top to Bottom:
-
- 
-[[Image:Images/5.6.%20Diagrams%20Tips%20and%20Tricks_html_730643e2.png|437x628px]]
-
- 
-'''Figure 14: Top to Bottom layout result'''
-
- 
 == Select All ==
  
 Trying to select all the connectors (edge) or all the Shapes (Nodes) in a big diagram can be tedious. The select all tool provide a way to easily select all the elements, all the connector or all the shapes in just one click. This is particularly useful when we want to modify the appearance of all the elements at the same time or to perform an action (show hide, delete &hellip;) only on connectors or only on nodes.

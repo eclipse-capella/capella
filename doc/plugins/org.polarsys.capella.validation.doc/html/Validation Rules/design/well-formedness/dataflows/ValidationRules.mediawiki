@@ -1,75 +1,60 @@
       
 = > Validation Rules > capella.category > design > well-formedness > dataflows =
             
-{| border="1"
+<br>         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+| DWF_DF_01 - A duplicate or a split function must have only one incoming exchange 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that a duplicate or a split function have only one incoming exchange. 
-|-
-|- 
+| colspan="2" |This rule checks that a duplicate or a split function have only one incoming exchange. 
 |}            
-{| border="1"
+<br>         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+| DWF_DF_02 - A gather function must have only one outgoing exchange 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
+| colspan="2" |This rule checks that a gather function must have only one outgoing exchange. 
+|}          
+<br>           
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DF_03 - Functional chain check 
 |-
-|This rule checks that a gather function must have only one outgoing exchange. 
+| colspan="2"|This rule checks that a FunctionalChain is valid. 
+|}           
+<br>          
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+| DWF_DF_04 - Functional chain involvement check 1 
 |-
-|- 
+| colspan="2"|This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain. 
+|}      
+<br>         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+| DWF_DF_05 - Functional chain involved functions active in state 
+|-
+| colspan="2"|This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain. 
 |}            
-{| border="1"
+<br>         
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+| DWF_DF_06 - Functional Exchange location check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
+| colspan="2"|This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements. 
+|}       
+<br>              
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
 |-
-|This rule checks that a FunctionalChain is valid. 
+!|[[Image:../../../../Images/error.gif|ERROR]]
+| DWF_DF_12 - A duplicate, a gather, a route, a select or a split function must be a leaf function 
 |-
-|- 
-|}            
-{| border="1"
+| colspan="2"|This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function. 
+|}       
+<br>              
+{| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|  DWF_DF_14 - Functional chain involvement allocated exchange items 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain. 
-|-
-|- 
-|}            
-{| border="1"
-|-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain. 
-|-
-|- 
-|}            
-{| border="1"
-|-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements. 
-|-
-|- 
-|}            
-{| border="1"
-|-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function. 
-|-
-|- 
-|}            
-{| border="1"
-|-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange. 
-|-
-|- 
+| colspan="2"|This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange. 
 |}   

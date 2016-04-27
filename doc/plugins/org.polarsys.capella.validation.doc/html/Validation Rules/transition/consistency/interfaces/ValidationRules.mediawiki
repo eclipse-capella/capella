@@ -1,120 +1,94 @@
       
 = > Validation Rules > capella.category > transition > consistency > interfaces =
             
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_01 - ExchangeItem mechanism realization check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an ExchangeItem realizing an ExchangeItem has the same mechanism than the realized ExchangeItem. 
-|-
-|- 
+| colspan="2" |This rule checks that an ExchangeItem realizing an ExchangeItem has the same mechanism than the realized ExchangeItem. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_02 - Exchange item element Type realization check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an ExchangeItemElement isn't linked to a Type from a previous level whereas it is realized in the same level than the ExchangeItemElement. ExchangeItemElement should be linked to the realized Type. A warning can be raised if you have performed a transition of the ExchangeItemElement before performing a transition of the linked Type. You should perform another transition of the ExchangeItemElement from the lower level to use the realized Type 
-|-
-|- 
+| colspan="2" |This rule checks that an ExchangeItemElement isn't linked to a Type from a previous level whereas it is realized in the same level than the ExchangeItemElement. ExchangeItemElement should be linked to the realized Type. A warning can be raised if you have performed a transition of the ExchangeItemElement before performing a transition of the linked Type. You should perform another transition of the ExchangeItemElement from the lower level to use the realized Type 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_03 - Exchange item allocation check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an Interface isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the Interface. A warning can be raised if you have performed a transition of the Interface before performing a transition of the allocated ExchangeItem. You should perform another transition of the Interface from the lower level to use the realized ExchangeItem.  Interface should be linked to the realized ExchangeItem. 
-|-
-|- 
+| colspan="2" |This rule checks that an Interface isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the Interface. A warning can be raised if you have performed a transition of the Interface before performing a transition of the allocated ExchangeItem. You should perform another transition of the Interface from the lower level to use the realized ExchangeItem.  Interface should be linked to the realized ExchangeItem. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_04 - CommunicationLink kind and protocol realization check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a CommunicationLink realizing a CommunicationLink has the same protocol and kind than the realized CommunicationLink. 
-|-
-|- 
+| colspan="2" |This rule checks that a CommunicationLink realizing a CommunicationLink has the same protocol and kind than the realized CommunicationLink. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_05 - CommunicationLink exchange item check 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that a CommunicationLink isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the CommunicationLink. CommunicationLink should be linked to the realized ExchangeItem. A warning can be raised if you have performed a transition of the Component before performing a transition of the linked ExchangeItem.  You should perform another transition of the Component from the lower level to use the realized ExchangeItem. 
-|-
-|- 
+| colspan="2" |This rule checks that a CommunicationLink isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the CommunicationLink. CommunicationLink should be linked to the realized ExchangeItem. A warning can be raised if you have performed a transition of the Component before performing a transition of the linked ExchangeItem.  You should perform another transition of the Component from the lower level to use the realized ExchangeItem. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/error.gif|ERROR]]
+|   TC_I_06 - PA ExchangeItem restriction on UNSET exchangeMechanism 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for ExchangeItem's of PA Layer and ExchangeItem's of other layers if referred by any elements of PA Layer  *PA=Physical Architecture 
-|-
-|- 
+| colspan="2" |This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for ExchangeItem's of PA Layer and ExchangeItem's of other layers if referred by any elements of PA Layer  *PA=Physical Architecture 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/error.gif|ERROR]]
+|   TC_I_07 - OA ExchangeItem restriction on UNSET exchangeMechanism 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of Operational Analysis Layer. 
-|-
-|- 
+| colspan="2" |This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of Operational Analysis Layer. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/error.gif|ERROR]]
+|   TC_I_08 - SA ExchangeItem restriction on UNSET exchangeMechanism 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of System Analysis Layer. 
-|-
-|- 
+| colspan="2" |This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of System Analysis Layer. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/error.gif|ERROR]]
+|   TC_I_09 - LA ExchangeItem restriction on UNSET exchangeMechanism 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of Logical Architecture Layer. 
-|-
-|- 
+| colspan="2" |This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of Logical Architecture Layer. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/error.gif|ERROR]]
+|   TC_I_10 - EPBS ExchangeItem restriction on UNSET exchangeMechanism 
 |-
-|[[Image:Images/error.gif|ERROR]]
-|  
-|-
-|This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of EPBS Architecture Layer. 
-|-
-|- 
+| colspan="2" |This rule checks that an ExchangeItem's ExchangeMechanism is not UNSET.  Rule is only applicable for all ExchangeItem of EPBS Architecture Layer. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_11 - Exchange Items with an inheritance relationship have the same exchange mechanism 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that Exchange Items with an inheritance relationship have the same exchange mechanism. 
-|-
-|- 
+| colspan="2" |This rule checks that Exchange Items with an inheritance relationship have the same exchange mechanism. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_12 - Inheritance Constraint for Exchange Item Element 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that an Exchange Item (EI 2) with Exchange Item Element (EIE 2) of Type T2, which inherits from an Exchange Item EI (EI 1) with an Exchange Item Element (EIE 1) of Type T1,verifies that T2 inherits from T1. 
-|-
-|- 
+| colspan="2" |This rule checks that an Exchange Item (EI 2) with Exchange Item Element (EIE 2) of Type T2, which inherits from an Exchange Item EI (EI 1) with an Exchange Item Element (EIE 1) of Type T1,verifies that T2 inherits from T1. 
 |}            
-{| border="1"
+<br> 
+  {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
+! |[[Image:../../../../Images/warning.gif|WARNING]]
+|   TC_I_13 - Inheritance Constraint for Exchange Item Element 
 |-
-|[[Image:Images/warning.gif|WARNING]]
-|  
-|-
-|This rule checks that two exchange items involved in an inheritance relationship must define an exchange item element. 
-|-
-|- 
+| colspan="2" |This rule checks that two exchange items involved in an inheritance relationship must define an exchange item element. 
 |}   

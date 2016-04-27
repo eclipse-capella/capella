@@ -27,6 +27,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.MessageCreationTool;
 
 public class ESDiagram extends DiagramContext {
 
@@ -139,6 +140,11 @@ public class ESDiagram extends DiagramContext {
       name = IToolNameConstants.TOOL_ES_INSERT_REMOVE_COMPONENTS;
     }
     new InsertRemoveTool(this, name).remove(id);
+  }
+  
+  public void createFunctionalExchange(String id, String source, String target) {
+    String name = IToolNameConstants.TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE;
+    new MessageCreationTool(this, name, id, source, target).run();
   }
   
   @Override
